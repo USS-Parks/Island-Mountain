@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact | Island Mountain</title>
+  <meta name="description" content="Get in touch with Island Mountain for AI hardware quotes, investment inquiries, or lending partnerships.">
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="nav-logo">Island Mountain</a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="why-island-mountain.html">Why Local AI</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="technology.html">Technology</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li><a href="contact.html" class="nav-cta active">Request Quote</a></li>
+      </ul>
+      <button class="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="sidebar-overlay"></div>
+  <div class="mobile-sidebar">
+    <a href="index.html">Home</a>
+    <a href="why-island-mountain.html">Why Local AI</a>
+    <a href="products.html">Products</a>
+    <a href="technology.html">Technology</a>
+    <a href="pricing.html">Pricing</a>
+    <a href="contact.html" class="nav-cta">Request Quote</a>
+  </div>
+
+  <!-- Hero -->
+  <section class="hero hero-page">
+    <canvas id="particles-canvas"></canvas>
+    <div class="hero-inner">
+      <span class="hero-badge">Start the Conversation</span>
+      <h1>Let's Talk</h1>
+      <p>Whether you're looking for a quote, exploring investment, or evaluating equipment financing -- one conversation, no sales pitch, just straight talk.</p>
+    </div>
+  </section>
+
+  <!-- Contact Form + Sidebar -->
+  <section class="section section-dark">
+    <div class="container">
+      <div class="contact-grid fade-in">
+
+        <!-- Form -->
+        <div>
+          <h2 style="margin-bottom:8px;">Request a Quote</h2>
+          <p style="margin-bottom:32px;">Fill out the form below and I'll respond within 24 hours. If you'd rather just email directly, that works too.</p>
+
+          <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+            <div class="form-group">
+              <label for="name">Name *</label>
+              <input type="text" id="name" name="name" required placeholder="Your full name">
+            </div>
+            <div class="form-group">
+              <label for="email">Email *</label>
+              <input type="email" id="email" name="email" required placeholder="you@organization.com">
+            </div>
+            <div class="form-group">
+              <label for="organization">Organization</label>
+              <input type="text" id="organization" name="organization" placeholder="Company or organization name">
+            </div>
+            <div class="form-group">
+              <label for="interest">I'm interested in:</label>
+              <select id="interest" name="interest">
+                <option value="">Select an option</option>
+                <option value="starter">Starter Tier ($60,000-$70,000)</option>
+                <option value="performance">Performance Tier ($85,000-$95,000)</option>
+                <option value="premium">Premium Tier Waitlist</option>
+                <option value="investment">Investment Opportunity</option>
+                <option value="lending">Lending Partnership</option>
+                <option value="other">Other / General Inquiry</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="message">Message *</label>
+              <textarea id="message" name="message" required placeholder="Tell me about your organization, what you're trying to accomplish with local AI, and any specific questions you have."></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width:100%;">Send Message</button>
+          </form>
+        </div>
+
+        <!-- Sidebar -->
+        <div>
+          <div class="info-sidebar">
+            <h3>Contact Information</h3>
+            <div class="info-item">
+              <i class="ri-building-line"></i>
+              <div>
+                <strong>Island Mountain LLC</strong>
+                <p>Northwestern California</p>
+              </div>
+            </div>
+            <div class="info-item">
+              <i class="ri-mail-line"></i>
+              <div>
+                <strong>Email</strong>
+                <p><a href="mailto:basho.parks@gmail.com">basho.parks@gmail.com</a></p>
+              </div>
+            </div>
+            <div class="info-item">
+              <i class="ri-time-line"></i>
+              <div>
+                <strong>Response Time</strong>
+                <p>Within 24 hours, typically same day</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="info-sidebar" style="margin-top:24px;">
+            <h3>Business Formation</h3>
+            <ul class="formation-list">
+              <li><i class="ri-checkbox-circle-line"></i> California LLC</li>
+              <li><i class="ri-checkbox-circle-line"></i> Federal EIN</li>
+              <li><i class="ri-checkbox-circle-line"></i> California Seller's Permit</li>
+              <li><i class="ri-checkbox-circle-line"></i> General Liability Insurance</li>
+              <li><i class="ri-checkbox-circle-line"></i> Professional Liability Insurance</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-logo">Island Mountain</a>
+          <p>Local AI infrastructure for data-sovereign organizations. Northwestern California.</p>
+        </div>
+        <div>
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="technology.html">Technology</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <ul class="footer-links">
+            <li><a href="why-island-mountain.html">Why Local AI</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <ul class="footer-links">
+            <li><a href="mailto:basho.parks@gmail.com">basho.parks@gmail.com</a></li>
+            <li>Island Mountain LLC</li>
+            <li>Est. 2026</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Island Mountain LLC. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Products | Island Mountain</title>
+  <meta name="description" content="Island Mountain product tiers: Starter, Performance, and Premium AI hardware racks with NVIDIA A100, H100, and H200 GPUs.">
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="nav-logo">Island Mountain</a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="why-island-mountain.html">Why Local AI</a></li>
+        <li><a href="products.html" class="active">Products</a></li>
+        <li><a href="technology.html">Technology</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li><a href="contact.html" class="nav-cta">Request Quote</a></li>
+      </ul>
+      <button class="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="sidebar-overlay"></div>
+  <div class="mobile-sidebar">
+    <a href="index.html">Home</a>
+    <a href="why-island-mountain.html">Why Local AI</a>
+    <a href="products.html">Products</a>
+    <a href="technology.html">Technology</a>
+    <a href="pricing.html">Pricing</a>
+    <a href="contact.html" class="nav-cta">Request Quote</a>
+  </div>
+
+  <!-- Hero -->
+  <section class="hero hero-page">
+    <canvas id="particles-canvas"></canvas>
+    <div class="hero-inner">
+      <span class="hero-badge">Hardware Configurations</span>
+      <h1>Product Tiers</h1>
+      <p>Three configurations built for different workloads and budgets. Every system ships pre-configured, burn-tested, and ready to run.</p>
+    </div>
+  </section>
+
+  <!-- Product Tiers -->
+  <section class="section section-dark">
+    <div class="container">
+      <div class="card-grid card-grid-3 fade-in">
+
+        <!-- Starter -->
+        <div class="tier-card featured">
+          <span class="tier-badge tier-badge-green">Starter Tier</span>
+          <h3>Starter</h3>
+          <div class="tier-price">$60,000-$70,000</div>
+          <ul class="tier-features">
+            <li><i class="ri-cpu-line"></i> 2x NVIDIA A100 80GB PCIe (used/refurbished)</li>
+            <li><i class="ri-server-line"></i> AMD EPYC 7413 (Milan) + 512GB DDR4 ECC</li>
+            <li><i class="ri-hard-drive-3-line"></i> 1TB boot + 4TB model NVMe storage</li>
+            <li><i class="ri-box-3-line"></i> Supermicro 4U GPU chassis, redundant 2000W PSU</li>
+            <li><i class="ri-brain-line"></i> DeepSeek R1 70B, Llama 3.1 70B, Mixtral 8x22B pre-installed</li>
+            <li><i class="ri-window-line"></i> OpenWebUI interface configured</li>
+            <li><i class="ri-fire-line"></i> 72-hour burn-in tested</li>
+            <li><i class="ri-shield-check-line"></i> 1-year hardware warranty + 30-day setup support</li>
+          </ul>
+          <a href="contact.html" class="btn btn-primary" style="width:100%;text-align:center;">Request Quote</a>
+        </div>
+
+        <!-- Performance -->
+        <div class="tier-card">
+          <span class="tier-badge tier-badge-indigo">Performance Tier</span>
+          <h3>Performance</h3>
+          <div class="tier-price">$85,000-$95,000 <span>Build-to-Order</span></div>
+          <ul class="tier-features">
+            <li><i class="ri-cpu-line"></i> 2x NVIDIA H100 80GB PCIe (refurbished)</li>
+            <li><i class="ri-server-line"></i> Same platform as Starter</li>
+            <li><i class="ri-speed-line"></i> 2-3x faster inference vs. A100</li>
+            <li><i class="ri-group-line"></i> vLLM tensor parallelism for multi-user workloads</li>
+            <li><i class="ri-brain-line"></i> Same model suite pre-installed</li>
+            <li><i class="ri-fire-line"></i> 72-hour burn-in tested</li>
+            <li><i class="ri-shield-check-line"></i> 1-year hardware warranty + 30-day setup support</li>
+          </ul>
+          <p class="tier-note">Available by special order with confirmed deposit. GPU sourcing timeline: 2-4 weeks depending on market availability.</p>
+          <a href="contact.html" class="btn btn-secondary" style="width:100%;text-align:center;margin-top:16px;">Inquire</a>
+        </div>
+
+        <!-- Premium -->
+        <div class="tier-card">
+          <span class="tier-badge tier-badge-amber">Premium Tier</span>
+          <h3>Premium</h3>
+          <div class="tier-price">$110,000-$130,000 <span>Coming Q3 2026</span></div>
+          <ul class="tier-features">
+            <li><i class="ri-cpu-line"></i> 2x NVIDIA H200 141GB</li>
+            <li><i class="ri-brain-line"></i> DeepSeek V4-Flash at full 1M context window</li>
+            <li><i class="ri-star-line"></i> The only tier that supports V4-Flash at native quality</li>
+            <li><i class="ri-speed-line"></i> Next-generation inference performance</li>
+            <li><i class="ri-fire-line"></i> Full burn-in and benchmark suite</li>
+          </ul>
+          <p class="tier-note">Availability pending used H200 market development. V4-Flash requires 282GB VRAM -- dual H200 141GB GPUs are the minimum hardware to run it at full quality. This tier does not currently ship.</p>
+          <a href="contact.html" class="btn btn-secondary" style="width:100%;text-align:center;margin-top:16px;">Join Waitlist</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- GPU Comparison Table -->
+  <section class="section section-darker">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-badge">Hardware Specs</span>
+        <h2>GPU Comparison</h2>
+      </div>
+      <div class="table-wrapper fade-in">
+        <table>
+          <thead>
+            <tr>
+              <th>Specification</th>
+              <th>NVIDIA A100 80GB</th>
+              <th>NVIDIA H100 80GB</th>
+              <th>NVIDIA H200 141GB</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>VRAM</strong></td>
+              <td>80GB HBM2e</td>
+              <td>80GB HBM3</td>
+              <td>141GB HBM3e</td>
+            </tr>
+            <tr>
+              <td><strong>Memory Bandwidth</strong></td>
+              <td>2.0 TB/s</td>
+              <td>3.35 TB/s</td>
+              <td>4.8 TB/s</td>
+            </tr>
+            <tr>
+              <td><strong>FP16 Performance</strong></td>
+              <td>312 TFLOPS</td>
+              <td>989 TFLOPS</td>
+              <td>989 TFLOPS</td>
+            </tr>
+            <tr>
+              <td><strong>Interconnect</strong></td>
+              <td>PCIe Gen 4</td>
+              <td>PCIe Gen 5</td>
+              <td>PCIe Gen 5</td>
+            </tr>
+            <tr>
+              <td><strong>Combined VRAM (2x)</strong></td>
+              <td>160GB</td>
+              <td>160GB</td>
+              <td>282GB</td>
+            </tr>
+            <tr>
+              <td><strong>70B Model Fit</strong></td>
+              <td class="highlight-cell">Yes (FP16)</td>
+              <td class="highlight-cell">Yes (FP16, 2-3x faster)</td>
+              <td class="highlight-cell">Yes (FP16, fastest)</td>
+            </tr>
+            <tr>
+              <td><strong>V4-Flash (284B, full quality)</strong></td>
+              <td>No</td>
+              <td>No</td>
+              <td class="highlight-cell">Yes (282GB required)</td>
+            </tr>
+            <tr>
+              <td><strong>Island Mountain Tier</strong></td>
+              <td>Starter ($60-70K)</td>
+              <td>Performance ($85-95K)</td>
+              <td>Premium ($110-130K)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Power Notice -->
+      <div class="power-notice fade-in">
+        <i class="ri-flashlight-line"></i>
+        <p><strong>Power Requirement:</strong> All systems require a 208V/30A dedicated power circuit (NEMA L6-30R). This is standard in server rooms and data closets. Residential or office installation by a licensed electrician typically costs $500-$2,000. The PSU operates at 200-240V only.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- GPU Upgrade Disclosure -->
+  <section class="section section-dark">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-badge">Upgrade Path</span>
+        <h2>GPU Upgrade Program</h2>
+      </div>
+      <div class="fade-in" style="max-width:760px;margin:0 auto;">
+        <p style="font-size:1.05rem;line-height:1.9;">As newer models demand more VRAM or faster memory bandwidth, Island Mountain offers a GPU upgrade path. This is a hardware swap -- your existing GPUs are removed, credited at current secondary market value, and replaced with the next-generation cards.</p>
+        <p style="font-size:1.05rem;line-height:1.9;">This is not a firmware update or a software toggle. It's a physical component replacement that requires shipping the system or scheduling an on-site visit. Upgrade pricing depends on the current market price of the replacement GPUs minus your trade-in credit.</p>
+        <p style="font-size:1.05rem;line-height:1.9;">We disclose this upfront because "upgrade-ready" language in this industry often hides the reality: getting to the next tier of performance means buying new silicon. We'd rather you know that going in.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section section-darker" style="text-align:center;">
+    <div class="container fade-in">
+      <h2>Which Tier Fits Your Workload?</h2>
+      <p style="max-width:600px;margin:16px auto 32px;">Tell us what you're running, how many users need access, and what models matter most. We'll spec the right system.</p>
+      <a href="contact.html" class="btn btn-primary">Request a Quote</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-logo">Island Mountain</a>
+          <p>Local AI infrastructure for data-sovereign organizations. Northwestern California.</p>
+        </div>
+        <div>
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="technology.html">Technology</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <ul class="footer-links">
+            <li><a href="why-island-mountain.html">Why Local AI</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <ul class="footer-links">
+            <li><a href="mailto:basho.parks@gmail.com">basho.parks@gmail.com</a></li>
+            <li>Island Mountain LLC</li>
+            <li>Est. 2026</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Island Mountain LLC. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

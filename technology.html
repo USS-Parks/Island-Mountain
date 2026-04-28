@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Technology | Island Mountain</title>
+  <meta name="description" content="The technology stack behind Island Mountain AI hardware: DeepSeek V4, open-source models, OpenWebUI, and our build and testing process.">
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="nav-logo">Island Mountain</a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="why-island-mountain.html">Why Local AI</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="technology.html" class="active">Technology</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li><a href="contact.html" class="nav-cta">Request Quote</a></li>
+      </ul>
+      <button class="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="sidebar-overlay"></div>
+  <div class="mobile-sidebar">
+    <a href="index.html">Home</a>
+    <a href="why-island-mountain.html">Why Local AI</a>
+    <a href="products.html">Products</a>
+    <a href="technology.html">Technology</a>
+    <a href="pricing.html">Pricing</a>
+    <a href="contact.html" class="nav-cta">Request Quote</a>
+  </div>
+
+  <!-- Hero -->
+  <section class="hero hero-page">
+    <canvas id="particles-canvas"></canvas>
+    <div class="hero-inner">
+      <span class="hero-badge">Models &amp; Infrastructure</span>
+      <h1>The Technology Stack</h1>
+      <p>Open-source frontier models, battle-tested inference engines, and a browser-based interface that lets anyone on your team start prompting in minutes.</p>
+    </div>
+  </section>
+
+  <!-- DeepSeek V4 -->
+  <section class="section section-dark">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-badge">Latest Models</span>
+        <h2>DeepSeek V4 (Released April 24, 2026)</h2>
+        <p>The DeepSeek V4 family represents the current frontier of open-source large language models. MIT licensed, fully open weights, and commercially unrestricted.</p>
+      </div>
+      <div class="table-wrapper fade-in">
+        <table>
+          <thead>
+            <tr>
+              <th>Model</th>
+              <th>Parameters</th>
+              <th>Active Parameters</th>
+              <th>Context Window</th>
+              <th>License</th>
+              <th>VRAM Required</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>DeepSeek V4-Pro</strong></td>
+              <td>1.6 Trillion</td>
+              <td>~160B (MoE)</td>
+              <td>128K</td>
+              <td>MIT</td>
+              <td>~800GB+ (multi-node)</td>
+            </tr>
+            <tr>
+              <td><strong>DeepSeek V4-Flash</strong></td>
+              <td>284 Billion</td>
+              <td>~13B (MoE)</td>
+              <td>1M</td>
+              <td>MIT</td>
+              <td>~282GB (FP16)</td>
+            </tr>
+            <tr>
+              <td><strong>DeepSeek V3</strong></td>
+              <td>671 Billion</td>
+              <td>~37B (MoE)</td>
+              <td>128K</td>
+              <td>MIT</td>
+              <td>~350GB+ (FP16)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- What Ships on Your System -->
+  <section class="section section-darker">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-badge">Pre-Installed</span>
+        <h2>What Ships on Your System</h2>
+        <p>Every Island Mountain Starter and Performance system ships with these models installed, configured, and tested.</p>
+      </div>
+      <div class="card-grid card-grid-3 fade-in">
+        <div class="card">
+          <div class="card-icon card-icon-green">
+            <i class="ri-brain-line"></i>
+          </div>
+          <h3>DeepSeek R1 70B</h3>
+          <p><strong>40-48GB VRAM</strong></p>
+          <p>Reasoning-focused model built for complex analysis, multi-step problem solving, and structured thinking. Strong at code generation, mathematical reasoning, and research synthesis.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon card-icon-indigo">
+            <i class="ri-robot-2-line"></i>
+          </div>
+          <h3>Llama 3.1 70B</h3>
+          <p><strong>40-48GB VRAM</strong></p>
+          <p>Meta's general-purpose workhorse. Strong across writing, summarization, question answering, and conversational tasks. The most capable general-purpose model in the stack.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon card-icon-purple">
+            <i class="ri-translate-2"></i>
+          </div>
+          <h3>Mixtral 8x22B</h3>
+          <p><strong>~80GB VRAM</strong></p>
+          <p>Mistral's mixture-of-experts model with strong multilingual capability. Excellent for organizations that work across languages or need efficient multi-task inference.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OpenWebUI -->
+  <section class="section section-dark">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-badge">User Interface</span>
+        <h2>OpenWebUI Platform</h2>
+        <p>No command line required. Open your browser, pick a model, start prompting.</p>
+      </div>
+      <div class="card-grid card-grid-4 fade-in">
+        <div class="card">
+          <div class="card-icon card-icon-green">
+            <i class="ri-window-line"></i>
+          </div>
+          <h3>Browser-Based</h3>
+          <p>Access from any device on your network. Chrome, Firefox, Safari, Edge -- any modern browser works.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon card-icon-indigo">
+            <i class="ri-stack-line"></i>
+          </div>
+          <h3>Multi-Model Selector</h3>
+          <p>Switch between DeepSeek R1, Llama 3.1, Mixtral, or any model with a dropdown. No config files.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon card-icon-amber">
+            <i class="ri-history-line"></i>
+          </div>
+          <h3>Conversation History</h3>
+          <p>Full chat history stored locally on the system. Search, organize, and reference past conversations.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon card-icon-purple">
+            <i class="ri-admin-line"></i>
+          </div>
+          <h3>Admin Controls</h3>
+          <p>User management, model access controls, and usage monitoring. Set up teams with different model permissions.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Build & Test Process -->
+  <section class="section section-darker">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-badge">How It Works</span>
+        <h2>Build &amp; Test Process</h2>
+        <p>Every system goes through the same four-phase process before it ships.</p>
+      </div>
+      <div class="process-grid fade-in">
+        <div class="process-step">
+          <h4>Component Sourcing &amp; Verification</h4>
+          <p>GPUs sourced from verified enterprise resellers with documented provenance. Every component tested individually before assembly begins.</p>
+        </div>
+        <div class="process-step">
+          <h4>Assembly &amp; Configuration</h4>
+          <p>15-phase build process: chassis prep, CPU/RAM install, NVMe config, GPU seating and power, BIOS optimization, OS install, CUDA toolkit, inference engine, model deployment, OpenWebUI setup.</p>
+        </div>
+        <div class="process-step">
+          <h4>72-Hour Burn-In Testing</h4>
+          <p>Continuous stress testing across all GPUs with automated temperature, error rate, and performance monitoring. Automated alerting on any anomaly. Systems that fail burn-in don't ship.</p>
+        </div>
+        <div class="process-step">
+          <h4>Benchmarking &amp; Delivery</h4>
+          <p>Full performance benchmark suite across all installed models. Delivery manifest documenting every component serial number, test result, and configuration detail.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- V4-Flash Roadmap -->
+  <section class="section section-dark">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-badge">Roadmap</span>
+        <h2>V4-Flash: What's Coming</h2>
+      </div>
+      <div class="fade-in" style="max-width:760px;margin:0 auto;">
+        <p style="font-size:1.05rem;line-height:1.9;">DeepSeek V4-Flash (284B parameters, 13B active via mixture-of-experts) represents the next generation of efficient large-scale inference. With a 1M token context window, it's built for tasks that current models can't handle: full-codebase analysis, book-length document processing, and extended research sessions.</p>
+        <p style="font-size:1.05rem;line-height:1.9;">Running V4-Flash at full quality requires approximately 282GB of VRAM -- our Premium tier with dual H200 141GB GPUs is the minimum hardware configuration that can deliver this. We're tracking community quantization development and will validate V4-Flash on reference hardware before offering it as a shipping configuration.</p>
+        <p style="font-size:1.05rem;line-height:1.9;">V4-Flash does not run on the Starter tier (A100) or Performance tier (H100). We won't claim otherwise. When the Premium tier ships with validated V4-Flash support, that capability will be real and tested, not aspirational.</p>
+        <div style="text-align:center;margin-top:40px;">
+          <a href="contact.html" class="btn btn-primary">Join the Premium Tier Waitlist</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-logo">Island Mountain</a>
+          <p>Local AI infrastructure for data-sovereign organizations. Northwestern California.</p>
+        </div>
+        <div>
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="technology.html">Technology</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <ul class="footer-links">
+            <li><a href="why-island-mountain.html">Why Local AI</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <ul class="footer-links">
+            <li><a href="mailto:basho.parks@gmail.com">basho.parks@gmail.com</a></li>
+            <li>Island Mountain LLC</li>
+            <li>Est. 2026</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Island Mountain LLC. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
