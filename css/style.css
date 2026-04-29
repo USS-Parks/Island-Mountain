@@ -394,8 +394,7 @@ p {
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 120px 24px 0;
-  overflow: hidden;
+  padding: 120px 24px 60px;
   background: transparent;
 }
 
@@ -412,11 +411,13 @@ p {
   letter-spacing: 3px;
   text-transform: uppercase;
   color: #ffffff;
-  border: 1px solid rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.4);
   padding: 8px 20px;
   border-radius: 50px;
   margin-bottom: 28px;
-  background: rgba(255, 255, 255, 0.12);
+  background: rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 
 .hero h1 {
@@ -425,23 +426,38 @@ p {
   font-weight: 800;
   letter-spacing: -1px;
   line-height: 1.1;
-  color: #0a1525;
+  color: #ffffff;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.4);
+}
+
+.hero-subheading {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--copper-light);
+  margin: 0 auto 16px;
+  letter-spacing: 1px;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
 }
 
 .hero p {
-  font-size: 1.2rem;
-  color: rgba(10, 21, 37, 0.7);
+  font-size: 1.15rem;
+  color: rgba(255, 255, 255, 0.88);
   max-width: 640px;
-  margin: 0 auto 40px;
+  margin: 0 auto 36px;
   line-height: 1.8;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
 }
 
+/* --- Hero Background Photo (fixed, body-level, top band) --- */
 .hero-photo {
-  position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
-  max-height: 65vh;
+  height: 38vh;
+  z-index: 0;
   overflow: hidden;
-  margin-top: 48px;
+  pointer-events: none;
 }
 
 .hero-photo img {
@@ -455,23 +471,36 @@ p {
 .hero-photo::after {
   content: '';
   position: absolute;
-  bottom: 0;
+  top: 0;
   left: 0;
   width: 100%;
-  height: 40%;
-  background: linear-gradient(to bottom, transparent, rgba(42, 64, 96, 0.6));
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.12) 0%,
+    rgba(0, 0, 0, 0.04) 35%,
+    rgba(10, 20, 40, 0.35) 65%,
+    rgba(10, 20, 40, 0.8) 88%,
+    rgba(8, 20, 32, 1) 100%
+  );
   pointer-events: none;
 }
 
 .hero-page {
-  min-height: 45vh;
-  padding: 160px 24px 80px;
+  min-height: auto;
+  padding: 130px 24px 60px;
   background: transparent;
 }
 
 .hero-page h1 {
   font-size: 3rem;
-  color: #0a1525;
+  color: #ffffff;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.4);
+}
+
+.hero-page p {
+  color: rgba(255, 255, 255, 0.88);
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
 }
 
 /* Particle canvas */
@@ -499,25 +528,29 @@ p {
 }
 
 .hero .btn-primary {
-  background: linear-gradient(135deg, #0a1525, #1a3050);
+  background: linear-gradient(135deg, var(--copper), var(--copper-deep));
   color: #ffffff;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 4px 20px rgba(245, 158, 11, 0.35);
 }
 
 .hero .btn-primary:hover {
-  box-shadow: 0 6px 28px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 6px 28px rgba(245, 158, 11, 0.55);
   transform: translateY(-2px);
   color: #ffffff;
 }
 
 .hero .btn-secondary {
-  color: #0a1525;
-  border-color: rgba(10, 21, 37, 0.3);
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  background: rgba(255, 255, 255, 0.08);
 }
 
 .hero .btn-secondary:hover {
-  border-color: #0a1525;
-  color: #0a1525;
+  border-color: rgba(255, 255, 255, 0.6);
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.15);
 }
 
 .btn-primary {
@@ -648,10 +681,10 @@ p {
 }
 
 .stat-card {
-  background: rgba(10, 21, 37, 0.35);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(10, 21, 37, 0.45);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: var(--border-radius);
   padding: 24px;
   text-align: center;
@@ -1313,8 +1346,8 @@ table tbody tr:last-child td {
   .hero h1 { font-size: 2.2rem; }
   .hero-page h1 { font-size: 2rem; }
 
-  .hero-photo {
-    max-height: 45vh;
+  .hero-photo img {
+    object-position: center center;
   }
 
   .stats-row {
@@ -1349,14 +1382,10 @@ table tbody tr:last-child td {
 @media (max-width: 600px) {
   html { font-size: 15px; }
 
-  .hero { padding: 120px 16px 60px; }
-  .hero-page { padding: 140px 16px 60px; }
+  .hero { padding: 110px 16px 48px; }
+  .hero-page { padding: 110px 16px 48px; }
 
   .hero h1 { font-size: 1.8rem; }
-
-  .hero-photo {
-    max-height: 35vh;
-  }
 
   .container { padding: 0 16px; }
 
