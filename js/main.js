@@ -180,27 +180,6 @@
     });
   }
 
-  // --- Hero photo scroll fade ---
-  // Fixed background image fades out as user scrolls past the first few sections,
-  // revealing the html gradient beneath. Cards scroll through the image.
-  var heroPhoto = document.querySelector('.hero-photo');
-  if (heroPhoto) {
-    function updateHeroPhotoOpacity() {
-      var fadeStart = 100;    // start fading after 100px scroll
-      var fadeEnd = 800;      // fully invisible by 800px scroll
-      var scrollY = window.scrollY;
-      if (scrollY <= fadeStart) {
-        heroPhoto.style.opacity = '1';
-      } else if (scrollY >= fadeEnd) {
-        heroPhoto.style.opacity = '0';
-      } else {
-        heroPhoto.style.opacity = String(1 - (scrollY - fadeStart) / (fadeEnd - fadeStart));
-      }
-    }
-    window.addEventListener('scroll', updateHeroPhotoOpacity, { passive: true });
-    updateHeroPhotoOpacity();
-  }
-
   // --- Smooth scroll for anchor links ---
   document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
     anchor.addEventListener('click', function (e) {
