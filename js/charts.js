@@ -1,23 +1,22 @@
 /* ============================================================
    Island Mountain -- Chart.js Visualizations
-   Cost donut, margin waterfall, revenue projections, market comparison
+   Copper Bronze palette.
    ============================================================ */
 
 (function () {
   'use strict';
 
-  // --- Color constants ---
-  var green = '#10b981';
-  var greenDeep = '#059669';
-  var indigo = '#6366f1';
-  var amber = '#f59e0b';
+  var copper = '#f59e0b';
+  var copperDeep = '#d97706';
+  var copperDark = '#b45309';
+  var amber = '#fbbf24';
+  var slate = '#94a3b8';
+  var slateLight = '#cbd5e1';
   var red = '#ef4444';
-  var purple = '#8b5cf6';
   var textMuted = '#94a3b8';
   var textLight = '#f1f5f9';
   var gridColor = 'rgba(148, 163, 184, 0.1)';
 
-  // Chart.js defaults
   Chart.defaults.color = textMuted;
   Chart.defaults.font.family = "'Inter', -apple-system, BlinkMacSystemFont, sans-serif";
   Chart.defaults.plugins.legend.labels.usePointStyle = true;
@@ -28,7 +27,6 @@
   if (donutEl) {
     var donutCtx = donutEl.getContext('2d');
 
-    // Center text plugin
     var centerTextPlugin = {
       id: 'centerText',
       afterDraw: function (chart) {
@@ -54,7 +52,7 @@
         labels: ['Hardware ($31,500)', 'Labor ($1,700)', 'Shipping ($2,000)', 'Warranty Reserve ($6,300)', 'Packaging ($350)'],
         datasets: [{
           data: [31500, 1700, 2000, 6300, 350],
-          backgroundColor: [green, indigo, amber, red, purple],
+          backgroundColor: [copper, slate, amber, red, copperDark],
           borderColor: 'transparent',
           borderWidth: 0,
           hoverOffset: 8
@@ -94,11 +92,9 @@
   if (waterfallEl) {
     var wCtx = waterfallEl.getContext('2d');
 
-    // Floating bar waterfall
     var labels = ['BOM', 'Labor', 'Shipping', 'Warranty', 'Packaging', 'Total Cost', 'Sale Price', 'Gross Profit'];
     var values = [31500, 1700, 2000, 6300, 350, null, 65000, null];
 
-    // Calculate running totals for the waterfall
     var running = 0;
     var lows = [];
     var highs = [];
@@ -112,11 +108,11 @@
       } else if (labels[i] === 'Sale Price') {
         lows.push(0);
         highs.push(65000);
-        bgColors.push(green);
+        bgColors.push(copper);
       } else if (labels[i] === 'Gross Profit') {
         lows.push(41850);
         highs.push(65000);
-        bgColors.push(indigo);
+        bgColors.push(slateLight);
       } else {
         var prevRunning = running;
         running += values[i];
@@ -190,13 +186,10 @@
     });
   }
 
-  // --- 3. Annual Revenue Projection (renders on a LIGHT section) ---
+  // --- 3. Annual Revenue Projection ---
   var revenueEl = document.getElementById('revenueProjection');
   if (revenueEl) {
     var rCtx = revenueEl.getContext('2d');
-    var textDark = '#1e293b';
-    var textDarkMuted = '#475569';
-    var gridColorLight = 'rgba(30, 41, 59, 0.08)';
 
     new Chart(rCtx, {
       type: 'line',
@@ -206,32 +199,32 @@
           {
             label: 'Conservative (4 units)',
             data: [65000, 130000, 195000, 260000],
-            borderColor: green,
-            backgroundColor: 'rgba(16, 185, 129, 0.1)',
+            borderColor: copper,
+            backgroundColor: 'rgba(245, 158, 11, 0.08)',
             fill: true,
             tension: 0.3,
             pointRadius: 5,
             pointHoverRadius: 7,
-            pointBackgroundColor: green,
+            pointBackgroundColor: copper,
             borderWidth: 2
           },
           {
             label: 'Moderate (8 units)',
             data: [130000, 260000, 390000, 520000],
-            borderColor: indigo,
-            backgroundColor: 'rgba(99, 102, 241, 0.08)',
+            borderColor: slate,
+            backgroundColor: 'rgba(148, 163, 184, 0.06)',
             fill: true,
             tension: 0.3,
             pointRadius: 5,
             pointHoverRadius: 7,
-            pointBackgroundColor: indigo,
+            pointBackgroundColor: slate,
             borderWidth: 2
           },
           {
             label: 'Aggressive (14 units)',
             data: [227500, 455000, 682500, 910000],
             borderColor: amber,
-            backgroundColor: 'rgba(245, 158, 11, 0.08)',
+            backgroundColor: 'rgba(245, 158, 11, 0.05)',
             fill: true,
             tension: 0.3,
             pointRadius: 5,
@@ -250,13 +243,12 @@
         },
         scales: {
           x: {
-            grid: { color: gridColorLight },
-            ticks: { color: textDarkMuted, font: { size: 12 } }
+            grid: { color: gridColor },
+            ticks: { font: { size: 12 } }
           },
           y: {
-            grid: { color: gridColorLight },
+            grid: { color: gridColor },
             ticks: {
-              color: textDarkMuted,
               callback: function (val) { return '$' + (val / 1000).toFixed(0) + 'K'; },
               font: { size: 11 }
             }
@@ -265,13 +257,13 @@
         plugins: {
           legend: {
             position: 'bottom',
-            labels: { color: textDark, font: { size: 12 }, padding: 16 }
+            labels: { font: { size: 12 }, padding: 16 }
           },
           tooltip: {
-            backgroundColor: '#ffffff',
-            titleColor: textDark,
-            bodyColor: textDarkMuted,
-            borderColor: '#e2e8f0',
+            backgroundColor: '#1e293b',
+            titleColor: textLight,
+            bodyColor: textMuted,
+            borderColor: 'rgba(148,163,184,0.2)',
             borderWidth: 1,
             padding: 12,
             callbacks: {
@@ -296,7 +288,7 @@
         labels: ['Island Mountain\nStarter', 'Lambda Labs\nSingle H100', 'Puget Systems\nAI Workstation', 'Dell Enterprise\nCustom Config'],
         datasets: [{
           data: [65000, 60000, 45000, 80000],
-          backgroundColor: [green, '#64748b', '#64748b', '#64748b'],
+          backgroundColor: [copper, '#64748b', '#64748b', '#64748b'],
           borderRadius: 6,
           barPercentage: 0.55
         }]
@@ -329,4 +321,15 @@
             borderWidth: 1,
             padding: 12,
             callbacks: {
-              label: fu
+              label: function (ctx) {
+                var suffix = ctx.raw === 80000 ? '+' : '';
+                return ' $' + ctx.raw.toLocaleString() + suffix;
+              }
+            }
+          }
+        }
+      }
+    });
+  }
+
+})();
