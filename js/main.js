@@ -1,13 +1,14 @@
 /* ============================================================
    Island Mountain -- Main JavaScript
-   Navbar, mobile menu, scroll effects, Intersection Observer
+   Navbar, mobile menu, scroll effects, Intersection Observer,
+   Full-page particle system with scroll-based color shifting
    ============================================================ */
 
 (function () {
   'use strict';
 
   // --- Navbar scroll effect ---
-  const navbar = document.querySelector('.navbar');
+  var navbar = document.querySelector('.navbar');
   function handleNavScroll() {
     if (window.scrollY > 50) {
       navbar.classList.add('scrolled');
@@ -16,12 +17,12 @@
     }
   }
   window.addEventListener('scroll', handleNavScroll, { passive: true });
-  handleNavScroll(); // Run on load
+  handleNavScroll();
 
   // --- Mobile menu toggle ---
-  const hamburger = document.querySelector('.hamburger');
-  const sidebar = document.querySelector('.mobile-sidebar');
-  const overlay = document.querySelector('.sidebar-overlay');
+  var hamburger = document.querySelector('.hamburger');
+  var sidebar = document.querySelector('.mobile-sidebar');
+  var overlay = document.querySelector('.sidebar-overlay');
 
   function openMenu() {
     hamburger.classList.add('active');
@@ -51,26 +52,25 @@
     overlay.addEventListener('click', closeMenu);
   }
 
-  // Close sidebar on link click
-  const sidebarLinks = document.querySelectorAll('.mobile-sidebar a');
+  var sidebarLinks = document.querySelectorAll('.mobile-sidebar a');
   sidebarLinks.forEach(function (link) {
     link.addEventListener('click', closeMenu);
   });
 
   // --- Active nav link highlighting ---
-  const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-  const navLinks = document.querySelectorAll('.nav-links a, .mobile-sidebar a');
-  navLinks.forEach(function (link) {
-    const href = link.getAttribute('href');
+  var currentPage = window.location.pathname.split('/').pop() || 'index.html';
+  var navAllLinks = document.querySelectorAll('.nav-links a, .mobile-sidebar a');
+  navAllLinks.forEach(function (link) {
+    var href = link.getAttribute('href');
     if (href === currentPage || (currentPage === '' && href === 'index.html')) {
       link.classList.add('active');
     }
   });
 
   // --- Intersection Observer for fade-in-on-scroll ---
-  const fadeElements = document.querySelectorAll('.fade-in');
+  var fadeElements = document.querySelectorAll('.fade-in');
   if ('IntersectionObserver' in window) {
-    const observer = new IntersectionObserver(
+    var observer = new IntersectionObserver(
       function (entries) {
         entries.forEach(function (entry) {
           if (entry.isIntersecting) {
@@ -89,79 +89,90 @@
       observer.observe(el);
     });
   } else {
-    // Fallback: show everything
     fadeElements.forEach(function (el) {
       el.classList.add('visible');
     });
   }
 
-  // --- Floating particles (hero) ---
-  const canvas = document.getElementById('particles-canvas');
+  // --- Full-page drifting particles ---
+  // Fixed canvas covers viewport. Particles shift from light blue
+  // (on warm sunset background) to amber (on deep blue background)
+  // based on scroll position. No connection lines -- just lazy drifting dots.
+
+  var canvas = document.getElementById('particles-canvas');
   if (canvas) {
-    const ctx = canvas.getContext('2d');
-    let particles = [];
-    let animId;
+    var ctx = canvas.getContext('2d');
+    var particles = [];
+    var scrollRatio = 0;
 
     function resize() {
-      canvas.width = canvas.parentElement.offsetWidth;
-      canvas.height = canvas.parentElement.offsetHeight;
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
     }
 
     function createParticles() {
       particles = [];
-      const count = Math.floor((canvas.width * canvas.height) / 18000);
-      for (let i = 0; i < count; i++) {
+      var count = Math.floor((canvas.width * canvas.height) / 22000);
+      count = Math.min(count, 120); // cap for performance
+      for (var i = 0; i < count; i++) {
         particles.push({
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
-          r: Math.random() * 1.5 + 0.5,
-          dx: (Math.random() - 0.5) * 0.4,
-          dy: (Math.random() - 0.5) * 0.4,
-          opacity: Math.random() * 0.4 + 0.1
+          r: Math.random() * 1.6 + 0.4,
+          dx: (Math.random() - 0.5) * 0.15,   // very slow drift
+          dy: (Math.random() - 0.5) * 0.15,
+          baseOpacity: Math.random() * 0.45 + 0.1,
+          twinkleSpeed: Math.random() * 0.002 + 0.001,
+          twinklePhase: Math.random() * Math.PI * 2
         });
       }
     }
 
-    function drawParticles() {
+    // Update scroll ratio on scroll (throttled via passive listener)
+    function updateScrollRatio() {
+      var maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+      scrollRatio = maxScroll > 0 ? Math.min(window.scrollY / maxScroll, 1) : 0;
+    }
+    window.addEventListener('scroll', updateScrollRatio, { passive: true });
+    updateScrollRatio();
+
+    function draw(time) {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      particles.forEach(function (p) {
+
+      // Color blend: light blue rgb(136,200,232) -> amber rgb(245,158,11)
+      var r = Math.round(136 + (245 - 136) * scrollRatio);
+      var g = Math.round(200 + (158 - 200) * scrollRatio);
+      var b = Math.round(232 + (11 - 232) * scrollRatio);
+
+      for (var i = 0; i < particles.length; i++) {
+        var p = particles[i];
+
+        // Twinkle: gentle sine oscillation
+        var twinkle = Math.sin(time * p.twinkleSpeed + p.twinklePhase) * 0.3 + 0.7;
+        var opacity = p.baseOpacity * twinkle;
+
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = 'rgba(245, 158, 11, ' + p.opacity + ')';
+        ctx.fillStyle = 'rgba(' + r + ',' + g + ',' + b + ',' + opacity + ')';
         ctx.fill();
 
+        // Move
         p.x += p.dx;
         p.y += p.dy;
 
-        if (p.x < 0) p.x = canvas.width;
-        if (p.x > canvas.width) p.x = 0;
-        if (p.y < 0) p.y = canvas.height;
-        if (p.y > canvas.height) p.y = 0;
-      });
-
-      // Draw connections
-      for (let i = 0; i < particles.length; i++) {
-        for (let j = i + 1; j < particles.length; j++) {
-          var dx = particles[i].x - particles[j].x;
-          var dy = particles[i].y - particles[j].y;
-          var dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < 120) {
-            ctx.beginPath();
-            ctx.moveTo(particles[i].x, particles[i].y);
-            ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.strokeStyle = 'rgba(245, 158, 11, ' + (0.06 * (1 - dist / 120)) + ')';
-            ctx.lineWidth = 0.5;
-            ctx.stroke();
-          }
-        }
+        // Wrap around edges
+        if (p.x < -2) p.x = canvas.width + 2;
+        if (p.x > canvas.width + 2) p.x = -2;
+        if (p.y < -2) p.y = canvas.height + 2;
+        if (p.y > canvas.height + 2) p.y = -2;
       }
 
-      animId = requestAnimationFrame(drawParticles);
+      requestAnimationFrame(draw);
     }
 
     resize();
     createParticles();
-    drawParticles();
+    requestAnimationFrame(draw);
 
     window.addEventListener('resize', function () {
       resize();
