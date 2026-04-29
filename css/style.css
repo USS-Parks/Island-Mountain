@@ -172,6 +172,11 @@ p {
   background-color: rgba(10, 18, 35, 0.95);
 }
 
+/* First section after inner-page hero: gentler opacity for smooth gradient transition */
+.section-first {
+  background-color: rgba(15, 23, 42, 0.82);
+}
+
 /* --- Section Header Pattern --- */
 .section-header {
   text-align: center;
@@ -236,11 +241,11 @@ p {
   font-size: 1.4rem;
   font-weight: 800;
   letter-spacing: -0.5px;
-  color: var(--copper-light);
+  color: #ffffff;
 }
 
 .nav-logo:hover {
-  color: var(--white);
+  color: #d97706;
 }
 
 .nav-links {
@@ -251,7 +256,7 @@ p {
 }
 
 .nav-links a {
-  color: var(--text-muted);
+  color: #ffffff;
   font-size: 0.9rem;
   font-weight: 500;
   position: relative;
@@ -260,7 +265,7 @@ p {
 
 .nav-links a:hover,
 .nav-links a.active {
-  color: var(--text-light);
+  color: #c026d3;
 }
 
 .nav-links a.active::after {
@@ -270,7 +275,7 @@ p {
   left: 0;
   width: 100%;
   height: 2px;
-  background: var(--copper);
+  background: #c026d3;
   border-radius: 2px;
 }
 
@@ -346,7 +351,7 @@ p {
 }
 
 .mobile-sidebar a {
-  color: var(--text-muted);
+  color: #ffffff;
   font-size: 1.1rem;
   padding: 12px 0;
   border-bottom: 1px solid var(--card-border);
@@ -356,7 +361,7 @@ p {
 
 .mobile-sidebar a:hover,
 .mobile-sidebar a.active {
-  color: var(--text-light);
+  color: #c026d3;
   padding-left: 8px;
 }
 
@@ -423,7 +428,7 @@ p {
 
 .hero h1 {
   margin-bottom: 24px;
-  font-size: 3.5rem;
+  font-size: 4.55rem;
   font-weight: 800;
   letter-spacing: -1px;
   line-height: 1.1;
@@ -488,8 +493,8 @@ p {
 }
 
 .hero-page {
-  min-height: 50vh;
-  padding: 160px 24px 80px;
+  min-height: 70vh;
+  padding: 180px 24px 100px;
   background: transparent;
 }
 
@@ -1309,7 +1314,7 @@ table tbody tr:last-child td {
   h1 { font-size: 2.6rem; }
   h2 { font-size: 2rem; }
 
-  .hero h1 { font-size: 2.8rem; }
+  .hero h1 { font-size: 3.6rem; }
 
   .card-grid-3,
   .card-grid-4 {
@@ -1346,7 +1351,7 @@ table tbody tr:last-child td {
     display: flex;
   }
 
-  .hero h1 { font-size: 2.2rem; }
+  .hero h1 { font-size: 2.85rem; }
   .hero-page h1 { font-size: 2rem; }
 
   .hero-photo img {
@@ -1388,7 +1393,7 @@ table tbody tr:last-child td {
   .hero { padding: 120px 16px 60px; }
   .hero-page { padding: 140px 16px 60px; }
 
-  .hero h1 { font-size: 1.8rem; }
+  .hero h1 { font-size: 2.3rem; }
 
   .container { padding: 0 16px; }
 
