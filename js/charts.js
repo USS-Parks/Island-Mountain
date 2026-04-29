@@ -190,10 +190,13 @@
     });
   }
 
-  // --- 3. Annual Revenue Projection ---
+  // --- 3. Annual Revenue Projection (renders on a LIGHT section) ---
   var revenueEl = document.getElementById('revenueProjection');
   if (revenueEl) {
     var rCtx = revenueEl.getContext('2d');
+    var textDark = '#1e293b';
+    var textDarkMuted = '#475569';
+    var gridColorLight = 'rgba(30, 41, 59, 0.08)';
 
     new Chart(rCtx, {
       type: 'line',
@@ -204,7 +207,7 @@
             label: 'Conservative (4 units)',
             data: [65000, 130000, 195000, 260000],
             borderColor: green,
-            backgroundColor: 'rgba(16, 185, 129, 0.08)',
+            backgroundColor: 'rgba(16, 185, 129, 0.1)',
             fill: true,
             tension: 0.3,
             pointRadius: 5,
@@ -216,7 +219,7 @@
             label: 'Moderate (8 units)',
             data: [130000, 260000, 390000, 520000],
             borderColor: indigo,
-            backgroundColor: 'rgba(99, 102, 241, 0.06)',
+            backgroundColor: 'rgba(99, 102, 241, 0.08)',
             fill: true,
             tension: 0.3,
             pointRadius: 5,
@@ -228,7 +231,7 @@
             label: 'Aggressive (14 units)',
             data: [227500, 455000, 682500, 910000],
             borderColor: amber,
-            backgroundColor: 'rgba(245, 158, 11, 0.05)',
+            backgroundColor: 'rgba(245, 158, 11, 0.08)',
             fill: true,
             tension: 0.3,
             pointRadius: 5,
@@ -247,12 +250,13 @@
         },
         scales: {
           x: {
-            grid: { color: gridColor },
-            ticks: { font: { size: 12 } }
+            grid: { color: gridColorLight },
+            ticks: { color: textDarkMuted, font: { size: 12 } }
           },
           y: {
-            grid: { color: gridColor },
+            grid: { color: gridColorLight },
             ticks: {
+              color: textDarkMuted,
               callback: function (val) { return '$' + (val / 1000).toFixed(0) + 'K'; },
               font: { size: 11 }
             }
@@ -261,13 +265,13 @@
         plugins: {
           legend: {
             position: 'bottom',
-            labels: { font: { size: 12 }, padding: 16 }
+            labels: { color: textDark, font: { size: 12 }, padding: 16 }
           },
           tooltip: {
-            backgroundColor: '#1e293b',
-            titleColor: textLight,
-            bodyColor: textMuted,
-            borderColor: 'rgba(148,163,184,0.2)',
+            backgroundColor: '#ffffff',
+            titleColor: textDark,
+            bodyColor: textDarkMuted,
+            borderColor: '#e2e8f0',
             borderWidth: 1,
             padding: 12,
             callbacks: {
@@ -325,15 +329,4 @@
             borderWidth: 1,
             padding: 12,
             callbacks: {
-              label: function (ctx) {
-                var suffix = ctx.raw === 80000 ? '+' : '';
-                return ' $' + ctx.raw.toLocaleString() + suffix;
-              }
-            }
-          }
-        }
-      }
-    });
-  }
-
-})();
+              label: fu
