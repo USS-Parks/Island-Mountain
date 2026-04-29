@@ -94,10 +94,10 @@
     });
   }
 
-  // --- Full-page drifting particles ---
-  // Fixed canvas covers viewport. Particles shift from light blue
-  // (on warm sunset background) to amber (on deep blue background)
-  // based on scroll position. No connection lines -- just lazy drifting dots.
+  // --- Lazy stars ---
+  // Fixed canvas above all content. Stars drift slowly, twinkle,
+  // and shift from cool white-blue to warm amber as you scroll.
+  // ~15% are "bright stars" with soft glow halos.
 
   var canvas = document.getElementById('particles-canvas');
   if (canvas) {
@@ -112,23 +112,30 @@
 
     function createParticles() {
       particles = [];
-      var count = Math.floor((canvas.width * canvas.height) / 22000);
-      count = Math.min(count, 120); // cap for performance
+      // Denser field: ~1 star per 8000px², capped at 250
+      var count = Math.floor((canvas.width * canvas.height) / 8000);
+      count = Math.min(count, 250);
       for (var i = 0; i < count; i++) {
+        // ~15% chance of a bright star
+        var isBright = Math.random() < 0.15;
         particles.push({
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
-          r: Math.random() * 1.6 + 0.4,
-          dx: (Math.random() - 0.5) * 0.15,   // very slow drift
-          dy: (Math.random() - 0.5) * 0.15,
-          baseOpacity: Math.random() * 0.45 + 0.1,
-          twinkleSpeed: Math.random() * 0.002 + 0.001,
-          twinklePhase: Math.random() * Math.PI * 2
+          r: isBright
+            ? Math.random() * 2.0 + 2.0    // bright: 2.0 - 4.0
+            : Math.random() * 1.4 + 0.5,   // normal: 0.5 - 1.9
+          dx: (Math.random() - 0.5) * 0.12,
+          dy: (Math.random() - 0.5) * 0.12,
+          baseOpacity: isBright
+            ? Math.random() * 0.35 + 0.55   // bright: 0.55 - 0.90
+            : Math.random() * 0.4 + 0.15,   // normal: 0.15 - 0.55
+          twinkleSpeed: Math.random() * 0.003 + 0.001,
+          twinklePhase: Math.random() * Math.PI * 2,
+          bright: isBright
         });
       }
     }
 
-    // Update scroll ratio on scroll (throttled via passive listener)
     function updateScrollRatio() {
       var maxScroll = document.documentElement.scrollHeight - window.innerHeight;
       scrollRatio = maxScroll > 0 ? Math.min(window.scrollY / maxScroll, 1) : 0;
@@ -139,32 +146,46 @@
     function draw(time) {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      // Color blend: light blue rgb(136,200,232) -> amber rgb(245,158,11)
-      var r = Math.round(136 + (245 - 136) * scrollRatio);
-      var g = Math.round(200 + (158 - 200) * scrollRatio);
-      var b = Math.round(232 + (11 - 232) * scrollRatio);
+      // Color blend: cool white-blue rgb(180,210,240) -> warm amber rgb(245,178,50)
+      var cr = Math.round(180 + (245 - 180) * scrollRatio);
+      var cg = Math.round(210 + (178 - 210) * scrollRatio);
+      var cb = Math.round(240 + (50 - 240) * scrollRatio);
 
       for (var i = 0; i < particles.length; i++) {
         var p = particles[i];
 
-        // Twinkle: gentle sine oscillation
-        var twinkle = Math.sin(time * p.twinkleSpeed + p.twinklePhase) * 0.3 + 0.7;
+        // Twinkle oscillation -- brighter stars pulse more dramatically
+        var amp = p.bright ? 0.45 : 0.3;
+        var twinkle = Math.sin(time * p.twinkleSpeed + p.twinklePhase) * amp + (1 - amp);
         var opacity = p.baseOpacity * twinkle;
 
+        // Bright stars get a soft glow halo
+        if (p.bright) {
+          var grad = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r * 3);
+          grad.addColorStop(0, 'rgba(' + cr + ',' + cg + ',' + cb + ',' + (opacity * 0.6) + ')');
+          grad.addColorStop(0.4, 'rgba(' + cr + ',' + cg + ',' + cb + ',' + (opacity * 0.2) + ')');
+          grad.addColorStop(1, 'rgba(' + cr + ',' + cg + ',' + cb + ',0)');
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.r * 3, 0, Math.PI * 2);
+          ctx.fillStyle = grad;
+          ctx.fill();
+        }
+
+        // Core dot
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = 'rgba(' + r + ',' + g + ',' + b + ',' + opacity + ')';
+        ctx.fillStyle = 'rgba(' + cr + ',' + cg + ',' + cb + ',' + opacity + ')';
         ctx.fill();
 
-        // Move
+        // Drift
         p.x += p.dx;
         p.y += p.dy;
 
-        // Wrap around edges
-        if (p.x < -2) p.x = canvas.width + 2;
-        if (p.x > canvas.width + 2) p.x = -2;
-        if (p.y < -2) p.y = canvas.height + 2;
-        if (p.y > canvas.height + 2) p.y = -2;
+        // Wrap edges
+        if (p.x < -5) p.x = canvas.width + 5;
+        if (p.x > canvas.width + 5) p.x = -5;
+        if (p.y < -5) p.y = canvas.height + 5;
+        if (p.y > canvas.height + 5) p.y = -5;
       }
 
       requestAnimationFrame(draw);
