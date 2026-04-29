@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pricing &amp; Investment | Island Mountain</title>
-  <meta name="description" content="Island Mountain unit economics, margin structure, annual projections, and information for investors.">
+  <title>Pricing | Island Mountain</title>
+  <meta name="description" content="Island Mountain pricing: three hardware tiers starting at $60,000. One purchase. No subscriptions. No per-token fees.">
   <link rel="icon" type="image/x-icon" href="favicon.ico?v=2">
   <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png?v=2">
   <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png?v=2">
@@ -17,7 +17,6 @@
 
   <canvas id="particles-canvas"></canvas>
 
-  <!-- Hero background photo -->
   <div class="hero-photo">
     <img src="images/hero-mountain.png" alt="Island Mountain rising from the ocean at sunset">
   </div>
@@ -49,130 +48,200 @@
 
   <section class="hero hero-page">
     <div class="hero-inner">
-      <span class="hero-badge">Unit Economics &amp; Projections</span>
-      <h1>Investment &amp; Returns</h1>
-      <p>Transparent economics. Every number on this page comes from actual supplier quotes, real labor estimates, and conservative financial modeling.</p>
+      <span class="hero-badge">Simple, Transparent Pricing</span>
+      <h1>What It Costs</h1>
+      <p>One purchase. No subscriptions. No per-token fees. You own the hardware, the models, and every inference you run.</p>
     </div>
   </section>
 
-  <section class="section section-dark">
+  <!-- Tier Summary -->
+  <section class="section section-first">
     <div class="container">
       <div class="section-header fade-in">
-        <span class="section-badge">Unit Economics</span>
-        <h2>Cost Structure Per System (Starter Tier Midpoint)</h2>
-        <p>Every unit ships with $28,000-$35,000 in tangible, depreciable hardware assets -- NVIDIA GPUs, enterprise server chassis, ECC memory. This hardware has active resale value on the secondary market.</p>
+        <span class="section-badge">Three Tiers</span>
+        <h2>Pick the System That Fits Your Workload</h2>
+        <p>Each tier is a complete, ready-to-run AI inference system. The difference is GPU performance and what models you can run at full quality.</p>
       </div>
-      <div class="chart-grid fade-in">
-        <div class="chart-container">
-          <h3>Cost Breakdown</h3>
-          <p>Component allocation at Starter tier midpoint pricing.</p>
-          <div class="chart-wrapper"><canvas id="costDonut"></canvas></div>
+      <div class="card-grid card-grid-3 fade-in">
+        <div class="card" style="text-align:center;">
+          <h3>Starter</h3>
+          <div class="tier-price">$60,000 - $70,000</div>
+          <p>2x NVIDIA A100 80GB. Runs 70B-parameter models at full quality. The workhorse configuration for most organizations.</p>
+          <a href="products.html" class="btn btn-primary" style="margin-top:16px;">See Full Specs</a>
         </div>
-        <div class="chart-container">
-          <h3>Margin Waterfall</h3>
-          <p>From bill of materials through sale price to gross profit. 36% gross margin at midpoint.</p>
-          <div class="chart-wrapper chart-wrapper-wide"><canvas id="marginWaterfall"></canvas></div>
+        <div class="card" style="text-align:center;">
+          <h3>Performance</h3>
+          <div class="tier-price">$85,000 - $95,000</div>
+          <p>2x NVIDIA H100 80GB. Same models, 2-3x faster inference. Built for teams with heavier concurrent usage.</p>
+          <a href="products.html" class="btn btn-secondary" style="margin-top:16px;">See Full Specs</a>
+        </div>
+        <div class="card" style="text-align:center;">
+          <h3>Premium</h3>
+          <div class="tier-price">$110,000 - $130,000</div>
+          <p>2x NVIDIA H200 141GB. The only tier that runs DeepSeek V4-Flash at full quality with 1M context window.</p>
+          <a href="products.html" class="btn btn-secondary" style="margin-top:16px;">Join Waitlist</a>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- What's Included -->
   <section class="section section-darker">
     <div class="container">
       <div class="section-header fade-in">
-        <span class="section-badge">Projections</span>
-        <h2>Annual Revenue Scenarios</h2>
-        <p>Year one target: 2-4 units. One sale every 2-3 months through regional networking and referrals.</p>
+        <span class="section-badge">Included With Every System</span>
+        <h2>No Hidden Costs. No Add-Ons.</h2>
       </div>
-      <div class="chart-container fade-in">
-        <h3>Cumulative Quarterly Revenue</h3>
-        <p>Three scenarios based on unit volume. Conservative assumes 1 unit per quarter. Moderate assumes 2 units per quarter. Aggressive assumes 3-4 units per quarter.</p>
-        <div class="chart-wrapper chart-wrapper-wide" style="max-width:800px;"><canvas id="revenueProjection"></canvas></div>
+      <div class="card-grid card-grid-4 fade-in">
+        <div class="card">
+          <div class="card-icon card-icon-green"><i class="ri-brain-line"></i></div>
+          <h3>3+ Models Pre-Installed</h3>
+          <p>DeepSeek R1 70B, Llama 3.1 70B, and Mixtral 8x22B installed, configured, and tested before it ships.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon card-icon-amber"><i class="ri-window-line"></i></div>
+          <h3>OpenWebUI Interface</h3>
+          <p>Browser-based interface with multi-model switching, chat history, user management. Open your browser and start prompting.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon card-icon-indigo"><i class="ri-fire-line"></i></div>
+          <h3>72-Hour Burn-In Test</h3>
+          <p>Every system runs 72 hours of continuous stress testing with automated monitoring before it leaves the build bench.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon card-icon-purple"><i class="ri-shield-check-line"></i></div>
+          <h3>1-Year Warranty + Support</h3>
+          <p>Full hardware warranty plus 30 days of hands-on setup support. One phone call, one person, real answers.</p>
+        </div>
       </div>
-      <div class="table-wrapper fade-in" style="margin-top:40px;">
+    </div>
+  </section>
+
+  <!-- Cloud vs Local TCO -->
+  <section class="section section-dark">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-badge">Total Cost of Ownership</span>
+        <h2>Cloud Subscriptions vs. Island Mountain</h2>
+        <p>The cloud costs every month, forever. The hardware costs once.</p>
+      </div>
+      <div class="table-wrapper fade-in">
         <table>
           <thead>
-            <tr><th>Scenario</th><th>Units/Year</th><th>Annual Revenue</th><th>Gross Profit</th><th>Net Income (Est.)</th></tr>
+            <tr>
+              <th></th>
+              <th>Cloud LLM (10 users)</th>
+              <th>Island Mountain Starter</th>
+            </tr>
           </thead>
           <tbody>
-            <tr><td><strong>Conservative</strong></td><td>4</td><td>$260,000</td><td>$93,320</td><td>$78,000</td></tr>
-            <tr><td><strong>Moderate</strong></td><td>8</td><td>$520,000</td><td>$186,640</td><td>$167,000</td></tr>
-            <tr><td><strong>Aggressive</strong></td><td>14</td><td>$910,000</td><td>$326,620</td><td>$292,000</td></tr>
+            <tr>
+              <td><strong>Year 1</strong></td>
+              <td>$2,400 - $24,000</td>
+              <td class="highlight-cell">$60,000 - $70,000 (one time)</td>
+            </tr>
+            <tr>
+              <td><strong>Year 2</strong></td>
+              <td>$4,800 - $48,000 cumulative</td>
+              <td class="highlight-cell">Electricity only (~$1,200 - $2,400/yr)</td>
+            </tr>
+            <tr>
+              <td><strong>Year 3</strong></td>
+              <td>$7,200 - $72,000 cumulative</td>
+              <td class="highlight-cell">Electricity only</td>
+            </tr>
+            <tr>
+              <td><strong>Year 5</strong></td>
+              <td>$12,000 - $120,000 cumulative</td>
+              <td class="highlight-cell">Electricity only</td>
+            </tr>
+            <tr>
+              <td><strong>Per-Token Fees</strong></td>
+              <td>$15 - $60 per million tokens</td>
+              <td class="highlight-cell">None. Unlimited inference.</td>
+            </tr>
+            <tr>
+              <td><strong>Data Location</strong></td>
+              <td>Cloud provider servers</td>
+              <td class="highlight-cell">Your building. Period.</td>
+            </tr>
+            <tr>
+              <td><strong>Vendor Lock-In</strong></td>
+              <td>Complete</td>
+              <td class="highlight-cell">None. You own everything.</td>
+            </tr>
           </tbody>
         </table>
       </div>
-    </div>
-  </section>
-
-  <section class="section section-dark">
-    <div class="container">
-      <div class="section-header fade-in">
-        <span class="section-badge">Risk Management</span>
-        <h2>Cash Flow &amp; Risk Controls</h2>
-      </div>
-      <div class="risk-grid fade-in">
-        <div class="risk-card">
-          <h4><i class="ri-money-dollar-circle-line"></i> 50% Deposit Policy</h4>
-          <p>Buyer funds cover component procurement. The business never floats more than $3,000-$7,000 in working capital per build. No inventory risk on speculative builds.</p>
-        </div>
-        <div class="risk-card">
-          <h4><i class="ri-line-chart-line"></i> GPU Price Volatility Clause</h4>
-          <p>14-day price lock from quote acceptance. Price increases above 15% allow mutual cancellation. Buyer cancellation right above 10% increase. Protects both parties from market swings.</p>
-        </div>
-        <div class="risk-card">
-          <h4><i class="ri-shield-check-line"></i> 20% Warranty Reserve</h4>
-          <p>20% of hardware cost set aside per unit for warranty obligations. Covers component failure within the 1-year warranty period. Supplier RMA agreements serve as primary failure mitigation.</p>
-        </div>
-        <div class="risk-card">
-          <h4><i class="ri-arrow-up-circle-line"></i> Positive from Unit One</h4>
-          <p>Deposit policy means every completed sale generates positive cash flow. No break-even volume required. The business is profitable on the first unit sold.</p>
-        </div>
+      <div class="comparison-note fade-in" style="margin-top:20px;">
+        <i class="ri-information-line"></i>
+        Cloud estimates based on $20-$200/user/month for enterprise AI platforms (ChatGPT Enterprise, Anthropic, Azure OpenAI). Electricity estimate assumes 1.5-2.5 kW average draw at $0.12/kWh.
       </div>
     </div>
   </section>
 
+  <!-- How Purchasing Works -->
   <section class="section section-darker">
     <div class="container">
       <div class="section-header fade-in">
-        <span class="section-badge">For Investors</span>
-        <h2>Investment &amp; Business Fundamentals</h2>
+        <span class="section-badge">Purchase Process</span>
+        <h2>How It Works</h2>
       </div>
-      <div class="lender-section fade-in">
-        <div class="lender-grid">
-          <div class="lender-item">
-            <i class="ri-server-line"></i>
-            <div><h4>Tangible Collateral</h4><p>Each unit contains $28,000-$35,000 in NVIDIA GPUs and enterprise hardware with active secondary market resale value. GPUs are depreciable assets with documented market pricing.</p></div>
-          </div>
-          <div class="lender-item">
-            <i class="ri-calendar-check-line"></i>
-            <div><h4>5-Year MACRS Depreciation</h4><p>Computing equipment qualifies for 5-year MACRS depreciation. Section 179 deduction may apply for buyers. Accelerated depreciation provides tax advantage for purchasers.</p></div>
-          </div>
-          <div class="lender-item">
-            <i class="ri-funds-line"></i>
-            <div><h4>Cash Flow Positive Immediately</h4><p>50% deposit policy means the business generates positive cash flow from the first completed sale. No minimum volume required to break even. Working capital requirement per build: $3,000-$7,000.</p></div>
-          </div>
-          <div class="lender-item">
-            <i class="ri-building-line"></i>
-            <div><h4>Business Formation</h4><p>Colorado LLC with EIN, Sales Tax License, and general liability + professional liability insurance. Proper business formation and tax compliance from day one.</p></div>
-          </div>
-          <div class="lender-item">
-            <i class="ri-bar-chart-grouped-line"></i>
-            <div><h4>Structural Market Demand</h4><p>Data sovereignty demand is driven by regulatory requirements (HIPAA, ITAR, attorney-client privilege), not market trends. This demand is structural and growing as AI adoption increases.</p></div>
-          </div>
-          <div class="lender-item">
-            <i class="ri-percent-line"></i>
-            <div><h4>36% Gross Margin</h4><p>Healthy margin structure at midpoint pricing with built-in warranty reserve. No recurring costs eat into margins. Every unit sold contributes directly to the bottom line.</p></div>
-          </div>
+      <div class="process-grid fade-in">
+        <div class="process-step">
+          <h4>Conversation</h4>
+          <p>Tell us what you need: workload type, number of users, data sensitivity requirements. We recommend the right tier.</p>
+        </div>
+        <div class="process-step">
+          <h4>Quote &amp; Deposit</h4>
+          <p>Custom quote with 14-day price lock. 50% deposit to begin component sourcing. No speculative builds.</p>
+        </div>
+        <div class="process-step">
+          <h4>Build &amp; Test</h4>
+          <p>Assembly, model installation, OpenWebUI configuration, and 72-hour burn-in testing. 3-5 weeks from deposit to delivery.</p>
+        </div>
+        <div class="process-step">
+          <h4>Delivery &amp; Support</h4>
+          <p>Shipped or hand-delivered with full documentation. 30 days of setup support included. Balance due on delivery.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="section section-dark" style="text-align:center;">
+  <!-- Warranty & Protections -->
+  <section class="section section-dark">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-badge">Your Protection</span>
+        <h2>Warranty &amp; Buyer Protections</h2>
+      </div>
+      <div class="risk-grid fade-in">
+        <div class="risk-card">
+          <h4><i class="ri-shield-check-line"></i> 1-Year Hardware Warranty</h4>
+          <p>Full coverage on all components. If something fails within the first year, we fix or replace it. Supplier RMA agreements back every component.</p>
+        </div>
+        <div class="risk-card">
+          <h4><i class="ri-line-chart-line"></i> 14-Day Price Lock</h4>
+          <p>GPU markets fluctuate. Your quote is locked for 14 days from acceptance. If GPU prices spike above 10%, you can cancel with a full deposit refund.</p>
+        </div>
+        <div class="risk-card">
+          <h4><i class="ri-user-heart-line"></i> 30-Day Setup Support</h4>
+          <p>Direct phone and email access to the builder for the first 30 days. Network configuration, user setup, model questions -- whatever you need to get running.</p>
+        </div>
+        <div class="risk-card">
+          <h4><i class="ri-arrow-up-circle-line"></i> GPU Upgrade Path</h4>
+          <p>When you are ready for more performance, your existing GPUs are credited at secondary market value toward the next-generation cards.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section section-darker" style="text-align:center;">
     <div class="container fade-in">
-      <h2>Ready to Talk Numbers?</h2>
-      <p style="max-width:600px;margin:16px auto 32px;">Whether you're a potential buyer or investor -- we're happy to walk through the financials in detail.</p>
-      <a href="contact.html" class="btn btn-primary">Get in Touch</a>
+      <h2>Ready to Talk?</h2>
+      <p style="max-width:600px;margin:16px auto 32px;">One conversation. No sales pitch. Tell us what you need and we will build you a quote.</p>
+      <a href="contact.html" class="btn btn-primary">Request a Quote</a>
     </div>
   </section>
 
@@ -183,16 +252,36 @@
           <a href="index.html" class="nav-logo">Island Mountain</a>
           <p>Local AI infrastructure for data-sovereign organizations. Colorado.</p>
         </div>
-        <div><h4>Quick Links</h4><ul class="footer-links"><li><a href="index.html">Home</a></li><li><a href="products.html">Products</a></li><li><a href="technology.html">Technology</a></li><li><a href="pricing.html">Pricing</a></li></ul></div>
-        <div><h4>Company</h4><ul class="footer-links"><li><a href="why-island-mountain.html">Why Local AI</a></li><li><a href="contact.html">Contact</a></li></ul></div>
-        <div><h4>Contact</h4><ul class="footer-links"><li><a href="mailto:info@islandmountain.io">info@islandmountain.io</a></li><li>Island Mountain LLC</li><li>Est. 2026</li></ul></div>
+        <div>
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="technology.html">Technology</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <ul class="footer-links">
+            <li><a href="why-island-mountain.html">Why Local AI</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="investors.html">Investors</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <ul class="footer-links">
+            <li><a href="mailto:info@islandmountain.io">info@islandmountain.io</a></li>
+            <li>Island Mountain LLC</li>
+            <li>Est. 2026</li>
+          </ul>
+        </div>
       </div>
       <div class="footer-bottom"><p>&copy; 2026 Island Mountain LLC. All rights reserved.</p></div>
     </div>
   </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
-  <script src="js/charts.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>
