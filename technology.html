@@ -218,6 +218,43 @@
     </div>
   </section>
 
+  <!-- Maintenance & Lifecycle -->
+  <section class="section section-darker">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-badge">Ownership &amp; Lifecycle</span>
+        <h2>After It Ships: Maintenance, Updates, and Support</h2>
+        <p>IT directors need to know what happens after delivery. Here's the full lifecycle story.</p>
+      </div>
+      <div class="risk-grid fade-in">
+        <div class="risk-card">
+          <h4><i class="ri-download-cloud-line"></i> Model Updates</h4>
+          <p>New open-source models are released regularly. Updating is a download-and-configure process through Ollama or the OpenWebUI interface. We publish tested model compatibility lists for each hardware tier so you know what runs before you install it. For the first 30 days, we'll walk you through model updates directly.</p>
+        </div>
+        <div class="risk-card">
+          <h4><i class="ri-shield-keyhole-line"></i> Security Patches</h4>
+          <p>The system runs Ubuntu Server LTS with standard package management. OS-level security patches are applied through <code>apt update &amp;&amp; apt upgrade</code>, the same process your IT team uses on any Linux server. CUDA drivers and inference engine updates are managed through NVIDIA's official repositories.</p>
+        </div>
+        <div class="risk-card">
+          <h4><i class="ri-shield-check-line"></i> Hardware Warranty</h4>
+          <p>Every system ships with a 1-year hardware warranty covering all components. GPU failures are handled through supplier RMA agreements with documented replacement timelines. We maintain a 20% warranty reserve per unit to ensure we can cover replacements without delay. Extended warranty options are available at purchase.</p>
+        </div>
+        <div class="risk-card">
+          <h4><i class="ri-arrow-up-circle-line"></i> GPU Upgrade Path</h4>
+          <p>When next-generation models demand more VRAM or faster memory bandwidth, your existing GPUs are credited at current secondary market value toward replacement cards. This is a physical hardware swap, not a firmware toggle. Upgrade pricing depends on the replacement GPU market price minus your trade-in credit.</p>
+        </div>
+        <div class="risk-card">
+          <h4><i class="ri-flashlight-line"></i> Power &amp; Cooling Requirements</h4>
+          <p>All systems require a dedicated 208V/30A circuit (NEMA L6-30R), standard in server rooms and data closets. Average power draw is 1.5-2.5 kW under typical inference loads. The system runs at standard server room temperatures (64-80&deg;F / 18-27&deg;C). No specialized cooling infrastructure required beyond normal HVAC.</p>
+        </div>
+        <div class="risk-card">
+          <h4><i class="ri-customer-service-line"></i> Ongoing Support Options</h4>
+          <p>After the 30-day included support period, ongoing support is available on a per-incident or annual retainer basis. This covers model configuration, performance tuning, troubleshooting, and remote diagnostics. You always have direct access to the person who built the system.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- V4-Flash Roadmap -->
   <section class="section section-darker">
     <div class="container">
@@ -230,7 +267,10 @@
         <p style="font-size:1.05rem;line-height:1.9;">Running V4-Flash at full quality requires approximately 282GB of VRAM -- our Premium tier with dual H200 141GB GPUs is the minimum hardware configuration that can deliver this. We're tracking community quantization development and will validate V4-Flash on reference hardware before offering it as a shipping configuration.</p>
         <p style="font-size:1.05rem;line-height:1.9;">V4-Flash does not run on the Starter tier (A100) or Performance tier (H100). We won't claim otherwise. When the Premium tier ships with validated V4-Flash support, that capability will be real and tested, not aspirational.</p>
         <div style="text-align:center;margin-top:40px;">
-          <a href="contact.html" class="btn btn-primary">Join the Premium Tier Waitlist</a>
+          <div class="btn-group">
+            <a href="contact.html" class="btn btn-primary">Join the Premium Tier Waitlist</a>
+            <a href="products.html" class="btn btn-secondary">See All Product Tiers</a>
+          </div>
         </div>
       </div>
     </div>
