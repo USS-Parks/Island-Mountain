@@ -1,4 +1,444 @@
-<h2>Attorney-Client Privilege and Cloud AI: The Structural Problem Law Firms Can't Negotiate Away</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Attorney-Client Privilege and Cloud AI: The Structural Problem Law Firms Can't Negotiate Away | Island Mountain Blog</title>
+  <meta name="description" content="Cloud AI creates privilege waiver risk that NDAs cannot fix. ABA Model Rule 1.6, Formal Opinion 477R, and why local inference is the structural solution.">
+  <link rel="icon" type="image/x-icon" href="../favicon.ico?v=2">
+  <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon-32.png?v=2">
+  <link rel="apple-touch-icon" sizes="180x180" href="../images/apple-touch-icon.png?v=2">
+  <link rel="stylesheet" href="../css/style.css">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="canonical" href="https://islandmountain.io/blog/attorney-client-privilege-cloud-ai.html">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Attorney-Client Privilege and Cloud AI: The Structural Problem Law Firms Can't Negotiate Away | Island Mountain Blog">
+  <meta property="og:description" content="Cloud AI creates privilege waiver risk that NDAs cannot fix. ABA Model Rule 1.6, Formal Opinion 477R, and why local inference is the structural solution.">
+  <meta property="og:url" content="https://islandmountain.io/blog/attorney-client-privilege-cloud-ai.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Island Mountain">
+  <meta property="og:image" content="https://islandmountain.io/images/hero-mountain.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Attorney-Client Privilege and Cloud AI: The Structural Problem Law Firms Can't Negotiate Away | Island Mountain Blog">
+  <meta name="twitter:description" content="Cloud AI creates privilege waiver risk that NDAs cannot fix. ABA Model Rule 1.6, Formal Opinion 477R, and why local inference is the structural solution.">
+  <meta name="twitter:image" content="https://islandmountain.io/images/hero-mountain.png">
+
+  <!-- Article Schema -->
+  <script type="application/ld+json">
+  {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Attorney-Client Privilege and Cloud AI: The Structural Problem Law Firms Can't Negotiate Away",
+  "description": "Cloud AI creates privilege waiver risk that NDAs cannot fix. ABA Model Rule 1.6, Formal Opinion 477R, and why local inference is the structural solution.",
+  "url": "https://islandmountain.io/blog/attorney-client-privilege-cloud-ai.html",
+  "datePublished": "2026-04-23",
+  "dateModified": "2026-04-23",
+  "author": {
+    "@type": "Organization",
+    "name": "Island Mountain",
+    "url": "https://islandmountain.io"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Island Mountain",
+    "url": "https://islandmountain.io",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://islandmountain.io/images/hero-mountain.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://islandmountain.io/blog/attorney-client-privilege-cloud-ai.html"
+  },
+  "image": "https://islandmountain.io/images/hero-mountain.png"
+}
+  </script>
+
+  <!-- Blog post styles -->
+  <style>
+    .breadcrumb {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 32px;
+    }
+
+    .breadcrumb a {
+      color: var(--text-muted);
+      transition: color var(--transition-speed);
+    }
+
+    .breadcrumb a:hover {
+      color: var(--copper);
+    }
+
+    .breadcrumb span {
+      margin: 0 8px;
+      color: var(--slate-500);
+    }
+
+    .article-header {
+      margin-bottom: 48px;
+      max-width: 760px;
+    }
+
+    .article-meta {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+
+    .article-date {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .article-tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 50px;
+    }
+
+    .tag-technical {
+      background: rgba(148, 163, 184, 0.1);
+      color: var(--slate-400);
+    }
+
+    .tag-compliance {
+      background: rgba(245, 158, 11, 0.12);
+      color: var(--copper);
+    }
+
+    .tag-financial {
+      background: rgba(180, 83, 9, 0.15);
+      color: var(--copper-darker);
+    }
+
+    .tag-how-to {
+      background: rgba(100, 116, 139, 0.15);
+      color: var(--slate-300);
+    }
+
+    .tag-industry {
+      background: rgba(245, 158, 11, 0.08);
+      color: var(--copper-light);
+    }
+
+    .article-read-time {
+      font-size: 0.85rem;
+      color: var(--slate-500);
+    }
+
+    .article-author {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--card-border);
+    }
+
+    .article-body {
+      max-width: 760px;
+      line-height: 1.9;
+    }
+
+    .article-body h2 {
+      font-size: 1.6rem;
+      margin-top: 48px;
+      margin-bottom: 20px;
+      color: var(--text-light);
+    }
+
+    .article-body h3 {
+      font-size: 1.25rem;
+      margin-top: 36px;
+      margin-bottom: 16px;
+      color: var(--text-light);
+    }
+
+    .article-body p {
+      font-size: 1.05rem;
+      margin-bottom: 20px;
+      color: var(--text-muted);
+    }
+
+    .article-body a {
+      color: var(--copper);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    .article-body a:hover {
+      color: var(--copper-light);
+    }
+
+    .article-body ul,
+    .article-body ol {
+      margin-bottom: 20px;
+      padding-left: 24px;
+    }
+
+    .article-body li {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+      line-height: 1.8;
+    }
+
+    .article-body blockquote {
+      border-left: 3px solid var(--copper);
+      padding: 16px 24px;
+      margin: 24px 0;
+      background: rgba(245, 158, 11, 0.04);
+      border-radius: 0 var(--border-radius-sm) var(--border-radius-sm) 0;
+    }
+
+    .article-body blockquote p {
+      margin-bottom: 0;
+      font-style: italic;
+    }
+
+    .article-body table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0;
+      border: 1px solid var(--card-border);
+      border-radius: var(--border-radius);
+      overflow: hidden;
+    }
+
+    .article-body code {
+      background: rgba(15, 23, 42, 0.6);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.9rem;
+      color: var(--copper-light);
+    }
+
+    .article-body .disclaimer {
+      background: rgba(245, 158, 11, 0.06);
+      border: 1px solid rgba(245, 158, 11, 0.2);
+      border-radius: var(--border-radius);
+      padding: 16px 20px;
+      margin: 24px 0;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    .article-cta {
+      background: var(--card-bg);
+      backdrop-filter: blur(var(--glass-blur));
+      -webkit-backdrop-filter: blur(var(--glass-blur));
+      border: 1px solid var(--card-border);
+      border-radius: var(--border-radius);
+      padding: 40px;
+      margin-top: 60px;
+      text-align: center;
+    }
+
+    .article-cta h3 {
+      color: var(--text-light);
+      margin-bottom: 12px;
+    }
+
+    .article-cta p {
+      color: var(--text-muted);
+      max-width: 500px;
+      margin: 0 auto 24px;
+    }
+
+    .related-articles {
+      margin-top: 60px;
+      padding-top: 40px;
+      border-top: 1px solid var(--card-border);
+    }
+
+    .related-articles h3 {
+      font-size: 1.3rem;
+      margin-bottom: 24px;
+      color: var(--text-light);
+    }
+
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .related-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(var(--glass-blur));
+      border: 1px solid var(--card-border);
+      border-radius: var(--border-radius-sm);
+      padding: 24px;
+      transition: border-color var(--transition-speed);
+    }
+
+    .related-card:hover {
+      border-color: rgba(245, 158, 11, 0.3);
+    }
+
+    .related-card h4 {
+      font-size: 1rem;
+      margin-bottom: 8px;
+      line-height: 1.4;
+    }
+
+    .related-card h4 a {
+      color: var(--text-light);
+      transition: color var(--transition-speed);
+    }
+
+    .related-card h4 a:hover {
+      color: var(--copper);
+    }
+
+    .related-card p {
+      font-size: 0.85rem;
+      margin: 0;
+      color: var(--text-muted);
+    }
+
+    .article-nav {
+      margin-top: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .article-back {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      transition: color var(--transition-speed);
+    }
+
+    .article-back:hover {
+      color: var(--copper);
+    }
+
+    .share-links {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .share-links span {
+      font-size: 0.85rem;
+      color: var(--slate-500);
+    }
+
+    .share-links a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      color: var(--text-muted);
+      font-size: 1rem;
+      transition: border-color var(--transition-speed), color var(--transition-speed);
+    }
+
+    .share-links a:hover {
+      border-color: var(--copper);
+      color: var(--copper);
+    }
+
+    @media (max-width: 768px) {
+      .related-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .article-nav {
+        flex-direction: column;
+        gap: 16px;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Full-page particle canvas -->
+  <canvas id="particles-canvas"></canvas>
+
+  <!-- Hero background photo -->
+  <div class="hero-photo">
+    <img src="../images/hero-mountain.png" alt="Island Mountain rising from the ocean at sunset">
+  </div>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="../index.html" class="nav-logo">Island Mountain</a>
+      <ul class="nav-links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../why-island-mountain.html">Why Local AI</a></li>
+        <li><a href="../products.html">Products</a></li>
+        <li><a href="../technology.html">Technology</a></li>
+        <li><a href="../pricing.html">Pricing</a></li>
+        <li><a href="../faq.html">FAQ</a></li>
+        <li><a href="../blog.html" class="active">Blog</a></li>
+        <li><a href="../contact.html" class="nav-cta">Request Quote</a></li>
+      </ul>
+      <button class="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Sidebar -->
+  <div class="sidebar-overlay"></div>
+  <div class="mobile-sidebar">
+    <a href="../index.html">Home</a>
+    <a href="../why-island-mountain.html">Why Local AI</a>
+    <a href="../products.html">Products</a>
+    <a href="../technology.html">Technology</a>
+    <a href="../pricing.html">Pricing</a>
+    <a href="../faq.html">FAQ</a>
+    <a href="../blog.html">Blog</a>
+    <a href="../contact.html" class="nav-cta">Request Quote</a>
+  </div>
+
+  <!-- Article -->
+  <section class="hero hero-page" style="min-height:50vh;padding:160px 24px 60px;">
+    <div class="hero-inner" style="max-width:760px;text-align:left;">
+      <!-- Breadcrumb -->
+      <nav class="breadcrumb">
+        <a href="../index.html">Home</a><span>&rsaquo;</span><a href="../blog.html">Blog</a><span>&rsaquo;</span>Attorney-Client Privilege and Cloud AI: The Structural Problem Law Firms Can't Negotiate Away
+      </nav>
+
+      <!-- Article Header -->
+      <div class="article-header">
+        <div class="article-meta">
+          <span class="article-date">April 23, 2026</span>
+          <span class="article-tag tag-compliance">Compliance</span>
+          <span class="article-read-time">8 min read</span>
+        </div>
+        <h1 style="font-size:2.4rem;">Attorney-Client Privilege and Cloud AI: The Structural Problem Law Firms Can't Negotiate Away</h1>
+        <p class="article-author">Island Mountain</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-first" style="padding-top:60px;">
+    <div class="container">
+      <article class="article-body fade-in">
+
+        <h2>Attorney-Client Privilege and Cloud AI: The Structural Problem Law Firms Can't Negotiate Away</h2>
 
 <p><em>Disclaimer: This article is not legal advice. Attorney-client privilege is a matter of jurisdiction-specific law and ethics rules. Consult your state bar association and your own counsel before making decisions about how to use AI tools with client information.</em></p>
 
@@ -105,3 +545,92 @@
 <p>If you're running local AI already, document it. Make sure your staff understands the rules. Build audit trails. Be able to explain why you chose local systems and how you manage access.</p>
 
 <p>For questions about configuring Island Mountain hardware for a law firm environment, including OpenWebUI access control and air-gapping options, <a href="../contact.html">reach out to us.</a> We work with practices of every size and can help you build a compliance-first AI workflow.</p>  
+
+      </article>
+
+      <!-- CTA -->
+      <div class="article-cta fade-in">
+        <h3>Ready to Stop Paying Per Token?</h3>
+        <p>One conversation. No sales pitch. Just straight talk about what local AI hardware can do for your organization.</p>
+        <a href="../contact.html" class="btn btn-primary">Start a Conversation</a>
+      </div>
+
+      <!-- Related Articles -->
+      <div class="related-articles fade-in">
+        <h3>Related Articles</h3>
+        <div class="related-grid">
+          <div class="related-card">
+            <h4><a href="cloud-ai-vs-local-hardware-tco.html">Cloud AI vs. Local Hardware: The Honest 5-Year TCO</a></h4>
+            <p>The full cost comparison including compliance overhead, financing, and tax advantages.</p>
+          </div>
+          <div class="related-card">
+            <h4><a href="openwebui-admin-setup-guide.html">OpenWebUI for Administrators: Multi-User Access and Permissions</a></h4>
+            <p>Setting up user accounts, model access, conversation retention, and backups.</p>
+          </div>
+          <div class="related-card">
+            <h4><a href="deepseek-v4-flash-local-deployment.html">What Is DeepSeek V4-Flash and Why Does It Change Local AI?</a></h4>
+            <p>284 billion parameters, 13B active per token, and what it means for local deployment.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Navigation -->
+      <div class="article-nav fade-in">
+        <a href="../blog.html" class="article-back">&larr; All articles</a>
+        <div class="share-links">
+          <span>Share:</span>
+          <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://islandmountain.io/blog/attorney-client-privilege-cloud-ai.html" target="_blank" rel="noopener" aria-label="Share on LinkedIn"><i class="ri-linkedin-fill"></i></a>
+          <a href="https://twitter.com/intent/tweet?url=https://islandmountain.io/blog/attorney-client-privilege-cloud-ai.html&text=Attorney-Client Privilege and Cloud AI: The Structural Problem Law Firms Can't Negotiate Away" target="_blank" rel="noopener" aria-label="Share on X"><i class="ri-twitter-x-fill"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="../index.html" class="nav-logo">Island Mountain</a>
+          <p>Local AI infrastructure for data-sovereign organizations. Colorado.</p>
+        </div>
+        <div>
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../products.html">Products</a></li>
+            <li><a href="../technology.html">Technology</a></li>
+            <li><a href="../pricing.html">Pricing</a></li>
+            <li><a href="../faq.html">FAQ</a></li>
+            <li><a href="../blog.html">Blog</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Solutions</h4>
+          <ul class="footer-links">
+            <li><a href="../law-firms.html">Law Firms</a></li>
+            <li><a href="../medical-practices.html">Medical Practices</a></li>
+            <li><a href="../tribal-nations.html">Tribal Nations</a></li>
+            <li><a href="../research-labs.html">Research Labs</a></li>
+            <li><a href="../defense-contractors.html">Defense Contractors</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <ul class="footer-links">
+            <li><a href="../why-island-mountain.html">Why Local AI</a></li>
+            <li><a href="../contact.html">Contact</a></li>
+            <li><a href="../investors.html">Investors</a></li>
+            <li><a href="mailto:info@islandmountain.io">info@islandmountain.io</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Island Mountain LLC. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>
