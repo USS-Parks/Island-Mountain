@@ -1,0 +1,37 @@
+# Island Mountain
+
+## About
+Pre-built, burn-tested on-premise AI inference servers with NVIDIA H100 and H200 GPUs. Air-gapped, HIPAA-ready, ITAR-compliant. One-time purchase. No cloud fees. No subscriptions. No per-token charges. Built in Colorado.
+
+## Products
+Three tiers of local AI inference hardware:
+- Starter: 2x NVIDIA H100 80GB PCIe, 160GB VRAM, AMD EPYC 7413, 512GB DDR4 ECC. $75K-$85K.
+- Performance: Build-to-order configuration. $150K-$160K.
+- Premium: 2x NVIDIA H200 141GB SXM, 282GB VRAM. $350K-$400K.
+
+All systems ship with DeepSeek V4-Flash pre-installed, OpenWebUI configured, and 72 hours of burn-in testing completed.
+
+## Who This Is For
+- Law firms protecting attorney-client privilege (ABA Model Rule 1.6)
+- Medical practices needing HIPAA compliance without a BAA
+- Defense contractors handling ITAR/CUI/CMMC-regulated data
+- Tribal nations exercising data sovereignty (OCAP principles)
+- Research labs protecting unpublished data and grant-funded IP
+
+## Key Pages
+- Products: https://islandmountain.io/products.html
+- Pricing: https://islandmountain.io/pricing.html
+- FAQ (25 Q&A pairs): https://islandmountain.io/faq.html
+- Contact/Quote: https://islandmountain.io/contact.html
+
+## Blog
+- DeepSeek V4-Flash Deployment: https://islandmountain.io/blog/deepseek-v4-flash-local-deployment.html
+- Attorney-Client Privilege & Cloud AI: https://islandmountain.io/blog/attorney-client-privilege-cloud-ai.html
+- H100 vs H200 Comparison: https://islandmountain.io/blog/h100-vs-h200-inference-comparison.html
+- Cloud vs Local TCO: https://islandmountain.io/blog/cloud-ai-vs-local-hardware-tco.html
+- OpenWebUI Admin Guide: https://islandmountain.io/blog/openwebui-admin-setup-guide.html
+- Tribal Data Sovereignty: https://islandmountain.io/blog/tribal-data-sovereignty-ai-infrastructure.html
+
+## Contact
+basho@islandmountain.io
+https://islandmountain.io/contact.html
