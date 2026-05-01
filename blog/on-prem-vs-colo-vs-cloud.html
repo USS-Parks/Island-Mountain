@@ -3,28 +3,28 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The H100 vs. H200: What the Hardware Specs Actually Mean for Your Workload | Island Mountain Blog</title>
-  <meta name="description" content="H100 vs H200 GPU comparison for AI inference. Bandwidth, VRAM, cost per token, and honest guidance on which tier your organization actually needs.">
+  <title>On-Premise vs. Colocation vs. Cloud AI: A Decision Framework for Regulated Industries | Island Mountain Blog</title>
+  <meta name="description" content="Decision framework comparing on-premise, colocation, and cloud AI deployment for organizations with compliance requirements. Cost, control, latency, and regulatory analysis.">
   <link rel="icon" type="image/x-icon" href="../favicon.ico?v=2">
   <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon-32.png?v=2">
   <link rel="apple-touch-icon" sizes="180x180" href="../images/apple-touch-icon.png?v=2">
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="../icons/remixicon.css">
   <link rel="stylesheet" href="../fonts/fonts.css">
-  <link rel="canonical" href="https://islandmountain.io/blog/h100-vs-h200-inference-comparison.html">
+  <link rel="canonical" href="https://islandmountain.io/blog/on-prem-vs-colo-vs-cloud.html">
 
   <!-- Open Graph -->
-  <meta property="og:title" content="The H100 vs. H200: What the Hardware Specs Actually Mean for Your Workload | Island Mountain Blog">
-  <meta property="og:description" content="H100 vs H200 GPU comparison for AI inference. Bandwidth, VRAM, cost per token, and honest guidance on which tier your organization actually needs.">
-  <meta property="og:url" content="https://islandmountain.io/blog/h100-vs-h200-inference-comparison.html">
+  <meta property="og:title" content="On-Premise vs. Colocation vs. Cloud AI: A Decision Framework for Regulated Industries | Island Mountain Blog">
+  <meta property="og:description" content="Decision framework comparing on-premise, colocation, and cloud AI deployment for organizations with compliance requirements. Cost, control, latency, and regulatory analysis.">
+  <meta property="og:url" content="https://islandmountain.io/blog/on-prem-vs-colo-vs-cloud.html">
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="Island Mountain">
   <meta property="og:image" content="https://islandmountain.io/images/hero-mountain.png">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="The H100 vs. H200: What the Hardware Specs Actually Mean for Your Workload | Island Mountain Blog">
-  <meta name="twitter:description" content="H100 vs H200 GPU comparison for AI inference. Bandwidth, VRAM, cost per token, and honest guidance on which tier your organization actually needs.">
+  <meta name="twitter:title" content="On-Premise vs. Colocation vs. Cloud AI: A Decision Framework for Regulated Industries | Island Mountain Blog">
+  <meta name="twitter:description" content="Decision framework comparing on-premise, colocation, and cloud AI deployment for organizations with compliance requirements. Cost, control, latency, and regulatory analysis.">
   <meta name="twitter:image" content="https://islandmountain.io/images/hero-mountain.png">
 
   <!-- Article Schema -->
@@ -32,11 +32,11 @@
   {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
-  "headline": "The H100 vs. H200: What the Hardware Specs Actually Mean for Your Workload",
-  "description": "H100 vs H200 GPU comparison for AI inference. Bandwidth, VRAM, cost per token, and honest guidance on which tier your organization actually needs.",
-  "url": "https://islandmountain.io/blog/h100-vs-h200-inference-comparison.html",
-  "datePublished": "2026-04-16",
-  "dateModified": "2026-04-16",
+  "headline": "On-Premise vs. Colocation vs. Cloud AI: A Decision Framework for Regulated Industries",
+  "description": "Decision framework comparing on-premise, colocation, and cloud AI deployment for organizations with compliance requirements. Cost, control, latency, and regulatory analysis.",
+  "url": "https://islandmountain.io/blog/on-prem-vs-colo-vs-cloud.html",
+  "datePublished": "2026-05-01",
+  "dateModified": "2026-05-01",
   "author": {
     "@type": "Organization",
     "name": "Island Mountain",
@@ -53,7 +53,7 @@
   },
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "https://islandmountain.io/blog/h100-vs-h200-inference-comparison.html"
+    "@id": "https://islandmountain.io/blog/on-prem-vs-colo-vs-cloud.html"
   },
   "image": "https://islandmountain.io/images/hero-mountain.png"
 }
@@ -436,138 +436,128 @@
 
       <!-- Breadcrumb -->
       <nav class="breadcrumb">
-        <a href="../index.html">Home</a><span>&rsaquo;</span><a href="../blog.html">Blog</a><span>&rsaquo;</span>The H100 vs. H200: What the Hardware Specs Actually Mean for Your Workload
+        <a href="../index.html">Home</a><span>&rsaquo;</span><a href="../blog.html">Blog</a><span>&rsaquo;</span>On-Premise vs. Colocation vs. Cloud AI: A Decision Framework for Regulated Industries
       </nav>
 
       <!-- Article Header -->
       <div class="article-header">
         <div class="article-meta">
-          <span class="article-date">April 16, 2026</span>
-          <span class="article-tag tag-technical">Technical</span>
-          <span class="article-read-time">8 min read</span>
+          <span class="article-date">April 23, 2026</span>
+          <span class="article-tag tag-compliance">Compliance</span>
+          <span class="article-read-time">9 min read</span>
         </div>
-        <h1 style="font-size:2.4rem;">The H100 vs. H200: What the Hardware Specs Actually Mean for Your Workload</h1>
+        <h1 style="font-size:2.4rem;">On-Premise vs. Colocation vs. Cloud AI: A Decision Framework for Regulated Industries</h1>
         <p class="article-author">Island Mountain</p>
       </div>
 
       <article class="article-body">
 
-        <h2>The H100 vs. H200: What the Hardware Specs Actually Mean for Your Workload</h2>
+        <h2>On-Premise vs. Colocation vs. Cloud AI: A Decision Framework for Regulated Industries</h2>
 
-<p>When you're choosing between Island Mountain's Starter, Performance, and Premium tiers, the GPU decision is the decision. Everything else is lead time and warranty. So let's talk about which tier you actually need, which means taking an honest look at what these GPUs do.</p>
+<p class="disclaimer">Disclaimer: This is not legal advice. Attorney-client privilege is jurisdiction-specific and governed by your state's ethics rules. Talk to your state bar and your own counsel before making decisions about AI tools and client information.</p>
 
-<h2>The Headline Numbers</h2>
+<p>Every law firm conversation starts the same way. "Can we use cloud AI if we have an NDA with the vendor?"</p>
 
-<p>Here's the comparison stripped down:</p>
+<p>No. Not because NDAs are worthless. Because privilege isn't a contract. It's a rule of evidence. Breaking it doesn't violate a vendor's terms of service. It breaks the law.</p>
 
-<table>
-<thead>
-<tr>
-<th>GPU</th>
-<th>Memory Per GPU</th>
-<th>Total VRAM (2x)</th>
-<th>Memory Bandwidth</th>
-<th>FP16 TFLOPS</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>H100 80GB</td>
-<td>80GB HBM3</td>
-<td>160GB</td>
-<td>3.35 TB/s</td>
-<td>989</td>
-</tr>
-<tr>
-<td>H200 141GB</td>
-<td>141GB HBM3e</td>
-<td>282GB</td>
-<td>4.8 TB/s</td>
-<td>989</td>
-</tr>
-</tbody>
-</table>
+<h2>ABA Model Rule 1.6 and the Third-Party Disclosure Problem</h2>
 
-<p>First thing to notice: both GPUs have identical compute performance at 989 TFLOPS in FP16. The H200 is not faster at math. The differences are memory and bandwidth. The H200 carries 76% more VRAM per GPU and hits 43% better bandwidth. Those numbers look great on a spec sheet. Whether they matter for your workload is a different question entirely.</p>
+<p>Model Rule of Professional Conduct 1.6 requires lawyers to maintain confidentiality of client information. It's broad and it's strict. Secrets, strategies, plans, everything a client tells you in confidence for the purpose of obtaining legal advice. All of it.</p>
 
-<h2>Why Bandwidth Beats Compute for Inference</h2>
+<p>Rule 1.6(a) does carve out space for disclosure when it's reasonably necessary to carry out the representation. Billing services, document management systems, paralegals, co-counsel. Client information has to leave the strictest vault of privilege sometimes because the work demands it.</p>
 
-<p>This is the concept most people miss, and it's the one that actually drives your purchasing decision.</p>
+<p>The operative word is "necessary." If you can do the work without the third-party disclosure, you must. Share unnecessarily, and you've waived privilege.</p>
 
-<p>In language model inference, you're not compute-bound. You're memory-bandwidth-bound. When a model processes a token, it loads weights from VRAM into GPU caches, runs matrix multiplications, and writes results back. The multiplication itself is fast. The memory transfer is what takes time.</p>
+<p>Cloud AI providers are where this breaks down. When you send client information to OpenAI, Claude, or any cloud service, you're disclosing that information to a third party that isn't your employee, isn't under your supervision, and isn't bound by your client retainer. The model processes data from millions of sources. Your specific query may touch systems in multiple countries.</p>
 
-<p>Take V4-Flash with 13 billion active parameters. A single forward pass loads those 13 billion parameters from VRAM. On H100 bandwidth at 3.35 TB/s, that transfer takes roughly 4 milliseconds. The actual compute takes a fraction of that. The bottleneck isn't the math. It's the memory bus.</p>
+<p>Was that disclosure necessary? For most law firm cloud AI workflows, the honest answer is no. You could use local inference. The disclosure happens because cloud services are convenient and cheap, not because the work requires it.</p>
 
-<p>This is also why larger batches don't help on constrained VRAM. More tokens means more independent inferences, which means parallelization potential, except you can't use it because all those model weights still have to move through the same memory bus. You're waiting on bandwidth regardless.</p>
+<h2>ABA Formal Opinion 477R: The 2017 Ruling That Still Governs</h2>
 
-<p>The H200's 43% bandwidth improvement is material for exactly this reason. It's the difference between 4ms and 2.8ms per token, roughly 30% faster inference, all from bandwidth alone.</p>
+<p>In 2017, the ABA issued Formal Opinion 477R addressing cloud-based legal services directly. It doesn't ban cloud use. It establishes conditions: the cloud provider must be contractually bound by confidentiality and security obligations comparable to the lawyer's own, and the lawyer must exercise reasonable supervision and due diligence over the provider.</p>
 
-<h2>What Fits Where</h2>
+<p>That sounds workable. Here's the catch embedded in the same opinion: the lawyer remains responsible for any breach by the cloud provider. If the vendor leaks data, the client sues the lawyer, not the vendor, because the lawyer made the disclosure decision.</p>
 
-<p>The H100 tier gives you 160GB. The H200 tier gives you 282GB. What fits and what doesn't is mostly a function of model size and quantization.</p>
+<p>477R was issued in 2017, before large language models existed. No major state bar has since clarified how it applies to AI systems that train on input data, that modify model behavior based on usage patterns, or that operate under terms of service explicitly reserving the right to use submissions for improvement. The legal terrain isn't settled. It's actively moving, and not in law firms' favor.</p>
 
-<p>V4-Flash at INT4 quantization fits on 160GB comfortably. Llama 3.1 70B in full FP16 precision fits. Mixtral 8x22B in quantization fits. You can load two models simultaneously on H100 if each stays under 80GB.</p>
+<h2>Where State Bars Are Heading</h2>
 
-<p>At 282GB you gain flexibility. Less aggressive quantization. Multiple large models loaded simultaneously. Larger working datasets in VRAM. But "can" and "should" are different words. If your workload fits on 160GB, spending an additional $275K for 282GB of VRAM is not a good investment. You're paying for capacity that sits idle.</p>
+<p>California State Bar Opinion 2023-201 warns that lawyers must obtain informed client consent before using generative AI with client information. Informed consent means the client understands what the tool is, who operates it, where the data goes, and how it might be used. Most clients, when actually asked, say no.</p>
 
-<h2>Who Should Buy H100</h2>
+<p>Through 2024, New York and several other states issued ethics opinions raising explicit concerns about AI use with privileged information. The emerging consensus is narrow: cloud AI with client data is permitted only with explicit client consent and demonstrable necessity.</p>
 
-<p>Most organizations. That's the honest answer.</p>
+<p>Five years ago this was a gray area most firms quietly ignored. Now it's moving toward prohibition unless you meet strict conditions. That trajectory isn't reversing.</p>
 
-<p>Your workload fits on H100 if you have a defined set of models you're running, you're not planning to load multiple large models simultaneously, your use case doesn't require unquantized FP16 inference, and your load is predictable rather than spiky.</p>
+<h2>Why Terms of Service Don't Fix This</h2>
 
-<p>A law firm running contract analysis on a single V4-Flash instance. A medical practice analyzing notes with Mixtral. A customer service team running classification models. H100 handles all of it.</p>
+<p>A vendor's NDA is not privilege protection. Here's the structural reason why.</p>
 
-<p>The Starter tier runs $75K to $85K and ships now on refurbished H100s. The Performance tier runs $150K to $160K, built to order on new H100s with a four to six week lead time. Performance tier is for buyers who want warranty coverage and just-in-time delivery.</p>
+<p>Privilege governs whether a court will compel you to disclose information. If you've disclosed client information to a third party, even under a confidentiality agreement, a court may hold that privilege is waived. The information is no longer protected.</p>
 
-<p>For most first deployments, Starter is the right call. You get working hardware today. If you need to upgrade after understanding your actual load, you upgrade then.</p>
+<p>A vendor's promise not to use your data doesn't restore privilege. It creates a breach-of-contract claim if they break the promise. But the evidence has already been disclosed. Once disclosed, a court can compel it.</p>
 
-<h2>Who Should Buy H200</h2>
+<p>Walk through the hypothetical. You send a client's sensitive tax strategy to a cloud AI under an NDA with the vendor. Two years later, your client gets audited. The IRS subpoenas the chat history. The vendor deletes conversations daily, so nothing comes back. But if anything did, you've arguably waived privilege by sharing with a third party, NDA or not.</p>
 
-<p>Specific scenarios. Be honest about whether you have one.</p>
+<p>The NDA protects against data breach. It does not protect against disclosure. Those are fundamentally different things.</p>
 
-<p>You need H200 if you're running models larger than 160GB, you need multiple large models loaded simultaneously, you're doing multimodal workloads pairing vision and language, you have concurrent user load demanding higher throughput, or your inference pipeline holds large embedding datasets in VRAM for retrieval augmented generation.</p>
+<h2>How Privilege Breaks in Practice</h2>
 
-<p>Concrete example: a large firm with 50 attorneys querying the same system concurrently. You can't guarantee single-user performance. You need bandwidth to serve multiple queries in parallel. The H200's 43% bandwidth advantage becomes genuinely material.</p>
+<p>Most privilege failures in law firms aren't intentional. They're casual. A partner wants to draft a motion faster, copies the complaint into a cloud chat, and nobody's thinking about waiver. It's just convenient.</p>
 
-<p>Another example: running both V4-Flash and a vision model simultaneously. V4-Flash at INT4 is roughly 142GB. A vision model might run 40 to 50GB. You want both in VRAM. 160GB is tight. 282GB is comfortable.</p>
+<p>Then opposing counsel requests all communications related to the motion. Your firm discloses the chat history. Opposing counsel subpoenas the vendor's servers. The vendor says they don't retain conversation data, which may be true, but the motion is now on record as having been processed by a cloud system.</p>
 
-<p>But most organizations don't face these constraints. Most run single models with predictable load. For those organizations, H200 is overprovisioning. Premium tier ships Q3 2026 at $350K to $400K. Don't pay that premium unless your workload concretely demands it.</p>
+<p>A sophisticated opposing counsel argues privilege was waived the moment you disclosed to a third party. Some courts will agree, particularly in jurisdictions that read privilege narrowly. Internal attorney strategy that was fully privileged before is now potentially discoverable.</p>
 
-<h2>The Cost-Per-Token Math</h2>
+<p>The cost isn't just that one motion draft. It's potentially every communication connected to it.</p>
 
-<p>Here's the brutal version. Starter tier at $80K depreciated over three years is roughly $27K per year. At one billion tokens annually, a reasonable figure for a medium-sized organization, that's $0.000027 per token in hardware cost.</p>
+<h2>What Local Inference Actually Changes</h2>
 
-<p>Cloud inference from major providers runs $0.003 to $0.01 per token. Even factoring in electricity, cooling, and staffing, local inference is cheaper by an order of magnitude. The capital cost is front-loaded. The unit cost is low and stays low.</p>
+<p>When V4-Flash runs on your own hardware, the model runs on your server. Your data never leaves your premises. No third-party disclosure occurs. Privilege isn't waived.</p>
 
-<p>Premium tier at $375K changes the math. One billion tokens annually puts you at $0.000125 per token in hardware cost. Still cheaper than cloud, but you need to justify the $295K delta over Starter. That justification has to come from your workload, not from a spec sheet.</p>
+<p>This isn't a theoretical advantage. It's structural. There's no confidentiality agreement to parse, no vendor terms of service to audit, no question about whether the disclosure was "necessary." The information stays in your control, full stop.</p>
 
-<h2>What H100 Actually Delivers in Practice</h2>
+<p>Local deployment doesn't eliminate the need to think carefully about how you use AI with client data. You still need internal policies. You still need staff training. You still need access controls. But you eliminate the disclosure question entirely, and that's the question that kills you in court.</p>
 
-<p>On H100 with V4-Flash at INT4, sustained single-user inference runs 60 to 90 tokens per second. Batch multiple requests and you push 200-plus tokens per second across all requests combined.</p>
+<h2>Building Internal Policies Around Local AI</h2>
 
-<p>A law firm with 30 lawyers generating 10 queries each per day is processing roughly 300 queries daily. At 500 tokens per query average, that's 150,000 tokens. H100 processes that in under a second of wall-clock time. You have enormous headroom.</p>
+<p>Even running locally, good practice requires structure.</p>
 
-<p>Scale it to 300 lawyers. 1.5 million tokens per day. H100 handles that in 15 to 20 seconds of processing time. Sequential workload doesn't need Premium tier.</p>
+<p>Designate which matters can use AI assistance and which cannot. Some firms treat AI as internal support only covering drafting, research, and initial analysis, but exclude it from final client deliverables without explicit consent. Others permit AI assistance in client communications as long as the system isn't cloud-based.</p>
 
-<p>You need Premium tier when you have concurrent load demanding parallel inference at scale. If 50 lawyers query simultaneously and you need sub-100ms response times, bandwidth becomes the deciding factor. If queries are sequential or loosely concurrent, H100 is fine.</p>
+<p>Control access. Not every staff member should touch sensitive client data. OpenWebUI's admin interface allows granular user permissions. Restrict which staff query which models. Build an audit trail.</p>
 
-<h2>Build vs. Buy</h2>
+<p>Establish retention policies. How long do conversation histories live? Who can retrieve them? Local systems let you enforce this. Cloud systems leave the vendor in control of the answer.</p>
 
-<p>People ask whether they can build cheaper on consumer GPUs or older enterprise hardware. You can. You shouldn't.</p>
+<p>Document your decisions. If you restrict AI use on a particular matter, record why. If you use it only in limited ways, record how. When a privilege question surfaces later, you want evidence that you thought it through.</p>
 
-<p>Consumer RTX 4090s carry 24GB VRAM at roughly $2K each. Getting to 160GB means seven cards, which means seven motherboards, seven power supplies, seven network connections, and seven sets of drivers. Hardware cost lands around $30K, which sounds better than $75K. Then you add cooling infrastructure, networking, system administration, warranty coverage, and deployment time. By the time you've built it and debugged it, you've spent more time than the capital savings justify.</p>
+<h2>Air-Gapping: When Maximalist Makes Sense</h2>
 
-<p>Island Mountain systems are purpose-built for this workload. The software stack is pre-installed. The firmware is tuned for inference. Support is included. Pay the premium for a system that works on day one.</p>
+<p>Some firms go further and operate local AI hardware completely offline. No internet connection. No external API calls. Nothing leaves the network except physical mail.</p>
 
-<h2>The Honest Guidance</h2>
+<p>Island Mountain systems run on air-gapped networks. OpenWebUI as your interface, everything on internal hardware, fixed cost with no per-query cloud fees.</p>
 
-<p>Start with the Starter tier. $80K is real money and it's the price of admission to working local inference today. You learn your actual usage patterns. If year two demands an upgrade, you upgrade then. Most organizations don't reach that point.</p>
+<p>This is overkill for most practices. For firms handling M&A, CFIUS matters, or client information that is itself a trade secret, it's entirely reasonable.</p>
 
-<p>If you have a concrete architectural reason you need 282GB of VRAM, or you're confident your concurrent user load demands the bandwidth, buy Premium tier. But don't buy it because the spec sheet looks impressive. Buy it because your workload requires it. Those are completely different reasons and only one of them is worth $375K.</p>
+<h2>The Client Consent Conversation</h2>
+
+<p>Even with local AI, consider getting explicit client consent. Most jurisdictions don't legally require it, but it's sound practice and takes thirty seconds.</p>
+
+<p>"We use local AI systems to assist with research, drafting, and analysis. The systems run on our own hardware, not cloud services. Your information stays on our network. Do you consent to this use?"</p>
+
+<p>Most clients say yes. The consent letter goes in the file and becomes evidence of thoughtful practice.</p>
+
+<h2>What You Should Do Right Now</h2>
+
+<p>If your firm is using cloud AI with client information, stop. The risk isn't speculative anymore. State bars are issuing opinions. Courts are beginning to address privilege waiver in the context of AI use. The trend is moving toward strict liability for cloud disclosure.</p>
+
+<p>If you're considering it, don't. The convenience is real. So is the privilege exposure. Local AI is no longer a specialized or expensive solution. It's economically practical and structurally safer.</p>
+
+<p>If you're already running local AI, document it. Train your staff. Build audit trails. Be able to explain exactly why you chose local systems and how you manage access.</p>
+
+<p>For questions about configuring Island Mountain hardware for a law firm environment, including OpenWebUI access control and air-gapping, <a href="../contact.html">reach out</a>. We work with practices of every size and can help you build a compliance-first AI workflow.</p>
 
         <div class="aeo-summary" style="background:var(--surface-alt,#1a1a2e);border-left:4px solid var(--copper,#f59e0b);padding:1.5rem;margin:2rem 0;border-radius:4px;">
-          <p style="margin:0;font-weight:600;font-size:1.05rem;"><strong>Bottom line:</strong> Memory bandwidth, not compute power, determines inference performance; most organizations fit their workload on H100 GPUs unless they need concurrent multi-user load or unquantized models.</p>
+          <p style="margin:0;font-weight:600;font-size:1.05rem;"><strong>Bottom line:</strong> Cloud AI creates structural privilege waiver risk that no NDA resolves because disclosure to a third party can destroy confidentiality regardless of contractual protections.</p>
         </div>
       </article>
 
@@ -583,16 +573,16 @@
         <h3>Related Articles</h3>
         <div class="related-grid">
           <div class="related-card">
-            <h4><a href="deepseek-v4-flash-local-deployment.html">DeepSeek V4-Flash Just Changed the Game for Local AI</a></h4>
-            <p>284 billion parameters, 13B active per token, and what it means for local deployment.</p>
-          </div>
-          <div class="related-card">
             <h4><a href="cloud-ai-vs-local-hardware-tco.html">Cloud AI vs. Local Hardware: The Honest 5-Year TCO</a></h4>
             <p>The full cost comparison including compliance overhead, financing, and tax advantages.</p>
           </div>
           <div class="related-card">
-            <h4><a href="tribal-data-sovereignty-ai-infrastructure.html">Tribal Data Sovereignty and the Cloud AI Problem</a></h4>
-            <p>Why sovereign nations need sovereign infrastructure for AI workloads.</p>
+            <h4><a href="openwebui-admin-setup-guide.html">OpenWebUI for Administrators: Multi-User Access and Permissions</a></h4>
+            <p>Setting up user accounts, model access, conversation retention, and backups.</p>
+          </div>
+          <div class="related-card">
+            <h4><a href="deepseek-v4-flash-local-deployment.html">DeepSeek V4-Flash Just Changed the Game for Local AI</a></h4>
+            <p>284 billion parameters, 13B active per token, and what it means for local deployment.</p>
           </div>
         </div>
       </div>
@@ -602,8 +592,8 @@
         <a href="../blog.html" class="article-back">&larr; All articles</a>
         <div class="share-links">
           <span>Share:</span>
-          <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://islandmountain.io/blog/h100-vs-h200-inference-comparison.html" target="_blank" rel="noopener" aria-label="Share on LinkedIn"><i class="ri-linkedin-fill"></i></a>
-          <a href="https://twitter.com/intent/tweet?url=https://islandmountain.io/blog/h100-vs-h200-inference-comparison.html&text=The H100 vs. H200: What the Hardware Specs Actually Mean for Your Workload" target="_blank" rel="noopener" aria-label="Share on X"><i class="ri-twitter-x-fill"></i></a>
+          <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://islandmountain.io/blog/on-prem-vs-colo-vs-cloud.html" target="_blank" rel="noopener" aria-label="Share on LinkedIn"><i class="ri-linkedin-fill"></i></a>
+          <a href="https://twitter.com/intent/tweet?url=https://islandmountain.io/blog/on-prem-vs-colo-vs-cloud.html&text=On-Premise vs. Colocation vs. Cloud AI: A Decision Framework for Regulated Industries" target="_blank" rel="noopener" aria-label="Share on X"><i class="ri-twitter-x-fill"></i></a>
         </div>
       </div>
     </div>
