@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cloud AI vs. Local Hardware: Building the Honest Five-Year TCO | Island Mountain Blog</title>
+  <meta name="description" content="Five-year total cost of ownership comparison between cloud AI and local inference hardware, including compliance overhead, equipment financing, and Section 179.">
+  <link rel="icon" type="image/x-icon" href="../favicon.ico?v=2">
+  <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon-32.png?v=2">
+  <link rel="apple-touch-icon" sizes="180x180" href="../images/apple-touch-icon.png?v=2">
+  <link rel="stylesheet" href="../css/style.css">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="canonical" href="https://islandmountain.io/blog/cloud-ai-vs-local-hardware-tco.html">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Cloud AI vs. Local Hardware: Building the Honest Five-Year TCO | Island Mountain Blog">
+  <meta property="og:description" content="Five-year total cost of ownership comparison between cloud AI and local inference hardware, including compliance overhead, equipment financing, and Section 179.">
+  <meta property="og:url" content="https://islandmountain.io/blog/cloud-ai-vs-local-hardware-tco.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Island Mountain">
+  <meta property="og:image" content="https://islandmountain.io/images/hero-mountain.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Cloud AI vs. Local Hardware: Building the Honest Five-Year TCO | Island Mountain Blog">
+  <meta name="twitter:description" content="Five-year total cost of ownership comparison between cloud AI and local inference hardware, including compliance overhead, equipment financing, and Section 179.">
+  <meta name="twitter:image" content="https://islandmountain.io/images/hero-mountain.png">
+
+  <!-- Article Schema -->
+  <script type="application/ld+json">
+  {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Cloud AI vs. Local Hardware: Building the Honest Five-Year TCO",
+  "description": "Five-year total cost of ownership comparison between cloud AI and local inference hardware, including compliance overhead, equipment financing, and Section 179.",
+  "url": "https://islandmountain.io/blog/cloud-ai-vs-local-hardware-tco.html",
+  "datePublished": "2026-04-09",
+  "dateModified": "2026-04-09",
+  "author": {
+    "@type": "Organization",
+    "name": "Island Mountain",
+    "url": "https://islandmountain.io"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Island Mountain",
+    "url": "https://islandmountain.io",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://islandmountain.io/images/hero-mountain.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://islandmountain.io/blog/cloud-ai-vs-local-hardware-tco.html"
+  },
+  "image": "https://islandmountain.io/images/hero-mountain.png"
+}
+  </script>
+
+  <!-- Blog post styles -->
+  <style>
+    .breadcrumb {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 32px;
+    }
+
+    .breadcrumb a {
+      color: var(--text-muted);
+      transition: color var(--transition-speed);
+    }
+
+    .breadcrumb a:hover {
+      color: var(--copper);
+    }
+
+    .breadcrumb span {
+      margin: 0 8px;
+      color: var(--slate-500);
+    }
+
+    .article-header {
+      margin-bottom: 48px;
+      max-width: 760px;
+    }
+
+    .article-meta {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+
+    .article-date {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .article-tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 50px;
+    }
+
+    .tag-technical {
+      background: rgba(148, 163, 184, 0.1);
+      color: var(--slate-400);
+    }
+
+    .tag-compliance {
+      background: rgba(245, 158, 11, 0.12);
+      color: var(--copper);
+    }
+
+    .tag-financial {
+      background: rgba(180, 83, 9, 0.15);
+      color: var(--copper-darker);
+    }
+
+    .tag-how-to {
+      background: rgba(100, 116, 139, 0.15);
+      color: var(--slate-300);
+    }
+
+    .tag-industry {
+      background: rgba(245, 158, 11, 0.08);
+      color: var(--copper-light);
+    }
+
+    .article-read-time {
+      font-size: 0.85rem;
+      color: var(--slate-500);
+    }
+
+    .article-author {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--card-border);
+    }
+
+    .article-body {
+      max-width: 760px;
+      line-height: 1.9;
+    }
+
+    .article-body h2 {
+      font-size: 1.6rem;
+      margin-top: 48px;
+      margin-bottom: 20px;
+      color: var(--text-light);
+    }
+
+    .article-body h3 {
+      font-size: 1.25rem;
+      margin-top: 36px;
+      margin-bottom: 16px;
+      color: var(--text-light);
+    }
+
+    .article-body p {
+      font-size: 1.05rem;
+      margin-bottom: 20px;
+      color: var(--text-muted);
+    }
+
+    .article-body a {
+      color: var(--copper);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    .article-body a:hover {
+      color: var(--copper-light);
+    }
+
+    .article-body ul,
+    .article-body ol {
+      margin-bottom: 20px;
+      padding-left: 24px;
+    }
+
+    .article-body li {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+      line-height: 1.8;
+    }
+
+    .article-body blockquote {
+      border-left: 3px solid var(--copper);
+      padding: 16px 24px;
+      margin: 24px 0;
+      background: rgba(245, 158, 11, 0.04);
+      border-radius: 0 var(--border-radius-sm) var(--border-radius-sm) 0;
+    }
+
+    .article-body blockquote p {
+      margin-bottom: 0;
+      font-style: italic;
+    }
+
+    .article-body table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0;
+      border: 1px solid var(--card-border);
+      border-radius: var(--border-radius);
+      overflow: hidden;
+    }
+
+    .article-body code {
+      background: rgba(15, 23, 42, 0.6);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.9rem;
+      color: var(--copper-light);
+    }
+
+    .article-body .disclaimer {
+      background: rgba(245, 158, 11, 0.06);
+      border: 1px solid rgba(245, 158, 11, 0.2);
+      border-radius: var(--border-radius);
+      padding: 16px 20px;
+      margin: 24px 0;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    .article-cta {
+      background: var(--card-bg);
+      backdrop-filter: blur(var(--glass-blur));
+      -webkit-backdrop-filter: blur(var(--glass-blur));
+      border: 1px solid var(--card-border);
+      border-radius: var(--border-radius);
+      padding: 40px;
+      margin-top: 60px;
+      text-align: center;
+    }
+
+    .article-cta h3 {
+      color: var(--text-light);
+      margin-bottom: 12px;
+    }
+
+    .article-cta p {
+      color: var(--text-muted);
+      max-width: 500px;
+      margin: 0 auto 24px;
+    }
+
+    .related-articles {
+      margin-top: 60px;
+      padding-top: 40px;
+      border-top: 1px solid var(--card-border);
+    }
+
+    .related-articles h3 {
+      font-size: 1.3rem;
+      margin-bottom: 24px;
+      color: var(--text-light);
+    }
+
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .related-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(var(--glass-blur));
+      border: 1px solid var(--card-border);
+      border-radius: var(--border-radius-sm);
+      padding: 24px;
+      transition: border-color var(--transition-speed);
+    }
+
+    .related-card:hover {
+      border-color: rgba(245, 158, 11, 0.3);
+    }
+
+    .related-card h4 {
+      font-size: 1rem;
+      margin-bottom: 8px;
+      line-height: 1.4;
+    }
+
+    .related-card h4 a {
+      color: var(--text-light);
+      transition: color var(--transition-speed);
+    }
+
+    .related-card h4 a:hover {
+      color: var(--copper);
+    }
+
+    .related-card p {
+      font-size: 0.85rem;
+      margin: 0;
+      color: var(--text-muted);
+    }
+
+    .article-nav {
+      margin-top: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .article-back {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      transition: color var(--transition-speed);
+    }
+
+    .article-back:hover {
+      color: var(--copper);
+    }
+
+    .share-links {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .share-links span {
+      font-size: 0.85rem;
+      color: var(--slate-500);
+    }
+
+    .share-links a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      color: var(--text-muted);
+      font-size: 1rem;
+      transition: border-color var(--transition-speed), color var(--transition-speed);
+    }
+
+    .share-links a:hover {
+      border-color: var(--copper);
+      color: var(--copper);
+    }
+
+    @media (max-width: 768px) {
+      .related-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .article-nav {
+        flex-direction: column;
+        gap: 16px;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Full-page particle canvas -->
+  <canvas id="particles-canvas"></canvas>
+
+  <!-- Hero background photo -->
+  <div class="hero-photo">
+    <img src="../images/hero-mountain.png" alt="Island Mountain rising from the ocean at sunset">
+  </div>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="../index.html" class="nav-logo">Island Mountain</a>
+      <ul class="nav-links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../why-island-mountain.html">Why Local AI</a></li>
+        <li><a href="../products.html">Products</a></li>
+        <li><a href="../technology.html">Technology</a></li>
+        <li><a href="../pricing.html">Pricing</a></li>
+        <li class="nav-dropdown">
+          <a href="#" class="nav-dropdown-toggle">Solutions <i class="ri-arrow-down-s-line"></i></a>
+          <ul class="nav-dropdown-menu">
+            <li><a href="../law-firms.html">Law Firms</a></li>
+            <li><a href="../medical-practices.html">Medical Practices</a></li>
+            <li><a href="../tribal-nations.html">Tribal Nations</a></li>
+            <li><a href="../research-labs.html">Research Labs</a></li>
+            <li><a href="../defense-contractors.html">Defense Contractors</a></li>
+          </ul>
+        </li>
+        <li><a href="../faq.html">FAQ</a></li>
+        <li><a href="../blog.html" class="active">Blog</a></li>
+        <li><a href="../contact.html" class="nav-cta">Request Quote</a></li>
+      </ul>
+      <button class="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Sidebar -->
+  <div class="sidebar-overlay"></div>
+  <div class="mobile-sidebar">
+    <a href="../index.html">Home</a>
+    <a href="../why-island-mountain.html">Why Local AI</a>
+    <a href="../products.html">Products</a>
+    <a href="../technology.html">Technology</a>
+    <a href="../pricing.html">Pricing</a>
+    <a href="#" class="mobile-solutions-toggle">Solutions <i class="ri-arrow-down-s-line"></i></a>
+    <div class="mobile-solutions-links">
+      <a href="../law-firms.html">Law Firms</a>
+      <a href="../medical-practices.html">Medical Practices</a>
+      <a href="../tribal-nations.html">Tribal Nations</a>
+      <a href="../research-labs.html">Research Labs</a>
+      <a href="../defense-contractors.html">Defense Contractors</a>
+    </div>
+    <a href="../faq.html">FAQ</a>
+    <a href="../blog.html">Blog</a>
+    <a href="../contact.html" class="nav-cta">Request Quote</a>
+  </div>
+
+  <!-- Article -->
+  <section class="section section-first" style="padding-top:160px;">
+    <div class="container" style="max-width:840px;">
+
+      <!-- Breadcrumb -->
+      <nav class="breadcrumb">
+        <a href="../index.html">Home</a><span>&rsaquo;</span><a href="../blog.html">Blog</a><span>&rsaquo;</span>Cloud AI vs. Local Hardware: Building the Honest Five-Year TCO
+      </nav>
+
+      <!-- Article Header -->
+      <div class="article-header">
+        <div class="article-meta">
+          <span class="article-date">April 9, 2026</span>
+          <span class="article-tag tag-financial">Financial</span>
+          <span class="article-read-time">9 min read</span>
+        </div>
+        <h1 style="font-size:2.4rem;">Cloud AI vs. Local Hardware: Building the Honest Five-Year TCO</h1>
+        <p class="article-author">Island Mountain</p>
+      </div>
+
+      <article class="article-body">
+
+        <h2>Cloud AI vs. Local Hardware: Building the Honest Five-Year TCO</h2>
+
+<p>The question we get constantly: "Shouldn't we just use AWS or Azure for AI?"</p>
+
+<p>The answer depends entirely on what you're actually spending, what compliance costs you, and how much your data is worth to you. Let's work through the numbers without flinching.</p>
+
+<p>Most organizations comparing cloud AI to local hardware make the same mistake. They look at the first month's bill and call it done. Cloud pricing appears cheap until it doesn't. A $500 monthly OpenAI API bill doesn't stay $500 a month. Your queries increase. Your teams multiply. Your compliance requirements tighten. Over five years, that $500 a month becomes something very different.</p>
+
+<h2>Cloud Cost Escalation: The Real Picture</h2>
+
+<p>Cloud AI pricing climbs 10 to 15% annually, even when usage stays flat. That's documented across AWS, Azure, and Google Cloud historical pricing. Start at $500 a month for moderate usage. After five years of compounding increases, you're at roughly $960 a month at minimum, and that's on price escalation alone, not increased usage. A larger team starting at $2,000 a month hits $3,800 to $4,100 a month by year five.</p>
+
+<p>But usage doesn't stay flat. Your legal team finds the tools useful for discovery summaries. Your medical practice needs monthly analyses of clinical notes. Your tribal enrollment office integrates it into their case management system. Suddenly you're hitting API limits. Overage charges hit two to three times the per-unit cost. That's where $500 a month becomes $8,000 a month for "unexpected" usage spikes.</p>
+
+<p>These numbers are verifiable across public cloud pricing histories and customer accounts. We've seen firms discover $50,000-plus in quarterly overage bills after moving to cloud AI infrastructure.</p>
+
+<h2>Compliance and Hidden Overhead</h2>
+
+<p>If you're handling HIPAA-protected health information or FERPA student records, cloud AI isn't just an API call. It's a compliance operation. Adding AWS or Azure AI services to your compliance framework costs real money.</p>
+
+<p>BAA execution and legal review runs $5,000 to $15,000. Annual compliance audits of cloud AI cost $10,000 to $20,000. Data retention policy updates run $3,000 to $8,000. Encryption key management integration adds $2,000 to $5,000 in setup costs. Log aggregation and monitoring runs $1,000 to $3,000 monthly.</p>
+
+<p>For covered entities and institutions, that's $15,000 to $30,000 in year one alone just to make cloud AI legally defensible. Tribes managing enrollment data under inherent sovereignty face even stricter requirements. They often can't use cloud AI at all without tribal council approval and explicit data handling agreements that can take six to twelve months to negotiate.</p>
+
+<h2>Exit Costs and Lock-In</h2>
+
+<p>Cloud AI creates operational lock-in that isn't always obvious upfront. Your applications are built to call Azure OpenAI endpoints. Your workflows expect specific API response formats. Your team is trained on Microsoft interfaces. Switching platforms costs real money in code rewrites, testing, and staff retraining. Moving from one cloud platform to another typically costs 15 to 25% of annual software spend in labor and testing alone.</p>
+
+<p>On-premises hardware has lock-in too, but the exit path is simpler. You already own the hardware. You can sell it, retire it, or redeploy it. Your data stays on your network without vendor involvement.</p>
+
+<p>There's also integration maintenance cost. Cloud AI APIs change. OpenAI has modified its API structure three times since 2023. Each change requires developer time to update integrations. If you've built internal tools around a specific cloud AI endpoint, an API deprecation forces a rewrite on the vendor's timeline, not yours. Local AI running on vLLM uses a stable, OpenAI-compatible API format. If the open-source inference engine updates, you update on your schedule. Your workflows don't break because a vendor pushed a release on a Tuesday afternoon.</p>
+
+<h2>On-Premises Economics: Equipment and Electricity</h2>
+
+<p>Island Mountain's hardware lineup makes this comparison concrete. The Starter configuration carries two H100 GPUs with 160GB total VRAM and runs $75,000 to $85,000. It handles most inference workloads for mid-sized organizations. The Performance configuration is build-to-order with a four to six week lead time and runs $150,000 to $160,000 with the same VRAM capacity, faster delivery, and standard warranty support.</p>
+
+<p>Finance the Starter unit at 8% over 36 months and your monthly cost is roughly $2,500 in principal and interest. Add electricity: these systems draw 1.5 to 2.5 kilowatts and cost $100 to $200 monthly in power. Add basic maintenance and colocation if you're not running it on-site, another $500 a month. You're at roughly $3,100 a month in hardware and operational costs for the first three years.</p>
+
+<p>Here's where the five-year horizon matters. After 36 months, the hardware is paid off. Operational costs drop to maybe $400 a month in power and basic maintenance. You're running the same GPU compute with no monthly fees beyond utilities.</p>
+
+<h2>The Break-Even Calculation</h2>
+
+<p>Two realistic scenarios over 60 months:</p>
+
+<table>
+<thead>
+<tr>
+<th>Cost Category</th>
+<th>Cloud (Starting $500/mo)</th>
+<th>On-Premises (H100 Starter)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Year 1</td>
+<td>$7,200</td>
+<td>$37,200 (hardware + ops)</td>
+</tr>
+<tr>
+<td>Year 2</td>
+<td>$8,400</td>
+<td>$30,000 (ops only)</td>
+</tr>
+<tr>
+<td>Year 3</td>
+<td>$9,600</td>
+<td>$30,000</td>
+</tr>
+<tr>
+<td>Year 4</td>
+<td>$11,000</td>
+<td>$5,000</td>
+</tr>
+<tr>
+<td>Year 5</td>
+<td>$12,500</td>
+<td>$5,000</td>
+</tr>
+<tr>
+<td><strong>5-Year Total</strong></td>
+<td><strong>$48,700</strong></td>
+<td><strong>$107,200</strong></td>
+</tr>
+</tbody>
+</table>
+
+<p>At first glance, cloud wins. But we haven't added compliance costs, which run $20,000-plus for HIPAA organizations. We haven't added overage costs. Assume 30% above listed price for realistic usage growth and the cloud total climbs to $58,440. Add $20,000 for compliance and legal review and you're at $78,440. Now on-premises is competitive, and you own a $75,000 asset at the end of it.</p>
+
+<p>Below $1,200 a month in cloud spend, cloud wins on five-year TCO. Above that threshold, the break-even point shifts quickly toward on-premises, especially when compliance is in the picture.</p>
+
+<h2>Equipment Financing: Making the Cash Flow Work</h2>
+
+<p>A $75,000 to $85,000 purchase is a budget event. Not every organization can write that check in Q2. Equipment financing exists for exactly this situation.</p>
+
+<p>AI inference hardware qualifies as capital equipment under standard lending criteria. Current market rates run 6 to 12% depending on credit profile and lender. At $80,000 financed over 36 months at 8% interest, monthly payments land at approximately $2,507. That's comparable to what many organizations already spend on mid-tier cloud AI subscriptions for a ten-person team. The difference: at month 37, you own the hardware outright. Cloud subscriptions at month 37 cost the same or more than they did at month one.</p>
+
+<p>GPU hardware also retains meaningful residual value. NVIDIA H100 GPUs currently trade on the secondary market at 40 to 60% of original enterprise pricing. An $80,000 system carries an estimated resale value of $20,000 to $40,000 at the five-year mark depending on market conditions. Cloud subscriptions carry zero residual value. Every dollar spent is gone.</p>
+
+<h2>The Section 179 Advantage</h2>
+
+<p>Section 179 of the tax code lets businesses deduct the full purchase price of qualifying equipment in the year it's placed in service, rather than depreciating it across five to seven years. AI inference hardware qualifies.</p>
+
+<p>At an $80,000 purchase price, a Section 179 deduction drops your effective first-year cost by $17,600 to $28,000 depending on your tax bracket. That changes the five-year TCO comparison materially. The on-premises column shrinks. The break-even point arrives earlier. And unlike cloud subscriptions, which generate no deductible asset, you're writing down real capital equipment that you own and that retains resale value.</p>
+
+<p>For tribal governments and nonprofit entities that don't carry federal tax liability, Section 179 doesn't apply directly. But many tribal enterprises and tribally-chartered businesses do carry taxable income. Talk to your finance office. The deduction may be available through your enterprise structure even if the tribe itself doesn't benefit.</p>
+
+<h2>What the Numbers Are Actually Telling You</h2>
+
+<p>The five-year TCO comparison isn't really about which option is cheaper in year one. It's about where control lives at year five.</p>
+
+<p>At the end of five years of cloud AI spend, you have receipts. No hardware. No data sovereignty. No residual value. Your workflows are built around vendor endpoints that changed three times while you were using them, and will change again. Your compliance costs recur annually with no end date. And your per-token cost is the same on day one as it is on day 1,825, or higher.</p>
+
+<p>At the end of five years of on-premises deployment, you own enterprise GPU hardware with real secondary market value. Your data never left your network. Your compliance posture is structurally cleaner. Your per-token cost dropped to near zero after month 36. And you've spent three years understanding your actual inference workload, which means any upgrade decision you make is grounded in real usage data, not vendor projections.</p>
+
+<p>The math favors cloud at low usage volumes. The math, the compliance picture, the sovereignty argument, and the exit flexibility all favor local hardware once you cross the threshold where AI is genuinely embedded in your operations.</p>
+
+<p>If you're still on the fence about where your organization falls on that curve, <a href="../contact.html">reach out</a>. We'll work through your actual numbers with you, not hypothetical ones.</p>
+
+      </article>
+
+      <!-- CTA -->
+      <div class="article-cta">
+        <h3>Ready to Stop Paying Per Token?</h3>
+        <p>One conversation. No sales pitch. Just straight talk about what local AI hardware can do for your organization.</p>
+        <a href="../contact.html" class="btn btn-primary">Start a Conversation</a>
+      </div>
+
+      <!-- Related Articles -->
+      <div class="related-articles">
+        <h3>Related Articles</h3>
+        <div class="related-grid">
+          <div class="related-card">
+            <h4><a href="h100-vs-h200-inference-comparison.html">The H100 vs. H200: What the Hardware Specs Actually Mean for Your Workload</a></h4>
+            <p>Bandwidth, VRAM, and the real performance difference between GPU tiers.</p>
+          </div>
+          <div class="related-card">
+            <h4><a href="attorney-client-privilege-cloud-ai.html">Attorney-Client Privilege and Cloud AI</a></h4>
+            <p>Why NDAs don't fix the privilege waiver problem with cloud AI services.</p>
+          </div>
+          <div class="related-card">
+            <h4><a href="openwebui-admin-setup-guide.html">OpenWebUI for Administrators: Multi-User Access and Permissions</a></h4>
+            <p>Setting up user accounts, model access, conversation retention, and backups.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Navigation -->
+      <div class="article-nav">
+        <a href="../blog.html" class="article-back">&larr; All articles</a>
+        <div class="share-links">
+          <span>Share:</span>
+          <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://islandmountain.io/blog/cloud-ai-vs-local-hardware-tco.html" target="_blank" rel="noopener" aria-label="Share on LinkedIn"><i class="ri-linkedin-fill"></i></a>
+          <a href="https://twitter.com/intent/tweet?url=https://islandmountain.io/blog/cloud-ai-vs-local-hardware-tco.html&text=Cloud AI vs. Local Hardware: Building the Honest Five-Year TCO" target="_blank" rel="noopener" aria-label="Share on X"><i class="ri-twitter-x-fill"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="../index.html" class="nav-logo">Island Mountain</a>
+          <p>Local AI infrastructure for data-sovereign organizations. Colorado.</p>
+        </div>
+        <div>
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../products.html">Products</a></li>
+            <li><a href="../technology.html">Technology</a></li>
+            <li><a href="../pricing.html">Pricing</a></li>
+            <li><a href="../faq.html">FAQ</a></li>
+            <li><a href="../blog.html">Blog</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Solutions</h4>
+          <ul class="footer-links">
+            <li
