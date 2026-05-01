@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Local AI Hardware FAQ: HIPAA, ITAR, Privilege, Data Sovereignty Answers | Island Mountain</title>
-  <meta name="description" content="25 straight answers: Does local AI comply with HIPAA? Can law firms use AI without privilege risk? How much VRAM for DeepSeek V4-Flash? What does on-premises AI cost over 5 years?">
+  <title>Local AI Hardware FAQ | Island Mountain</title>
+  <meta name="description" content="Straight answers about local AI hardware for business: HIPAA compliance, attorney-client privilege, cost, VRAM requirements, and what it actually takes to run AI on your own servers.">
   <link rel="icon" type="image/x-icon" href="favicon.ico?v=2">
   <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png?v=2">
   <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png?v=2">
@@ -15,8 +15,8 @@
   <link rel="canonical" href="https://islandmountain.io/faq.html">
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Local AI Hardware FAQ: HIPAA, ITAR, Privilege, Data Sovereignty Answers | Island Mountain">
-  <meta property="og:description" content="25 straight answers: Does local AI comply with HIPAA? Can law firms use AI without privilege risk? How much VRAM for DeepSeek V4-Flash? What does on-premises AI cost over 5 years?">
+  <meta property="og:title" content="Local AI Hardware FAQ | Island Mountain">
+  <meta property="og:description" content="Straight answers about local AI hardware for business: HIPAA compliance, attorney-client privilege, cost, VRAM requirements, and what it actually takes to run AI on your own servers.">
   <meta property="og:url" content="https://islandmountain.io/faq.html">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Island Mountain">
@@ -24,8 +24,8 @@
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Local AI Hardware FAQ: HIPAA, ITAR, Privilege, Data Sovereignty Answers | Island Mountain">
-  <meta name="twitter:description" content="25 straight answers: Does local AI comply with HIPAA? Can law firms use AI without privilege risk? How much VRAM for DeepSeek V4-Flash? What does on-premises AI cost over 5 years?">
+  <meta name="twitter:title" content="Local AI Hardware FAQ | Island Mountain">
+  <meta name="twitter:description" content="Straight answers about local AI hardware for business: HIPAA compliance, attorney-client privilege, cost, VRAM requirements, and what it actually takes to run AI on your own servers.">
   <meta name="twitter:image" content="https://islandmountain.io/images/hero-mountain.png">
 
   <!-- FAQPage Schema -->
@@ -472,7 +472,7 @@
         <div class="faq-item">
           <h3>What is local AI inference hardware and how is it different from cloud AI?</h3>
           <div class="faq-answer">
-            <p><strong>Local AI inference hardware is a physical server with GPUs that runs AI models on your premises instead of sending your data to someone else's data center.</strong> "Inference" means the system processes your prompts and generates responses. It does not train new models. It runs pre-trained models locally.</p>
+            <p>Local AI inference hardware is a physical server with GPUs that runs AI models on your premises instead of sending your data to someone else's data center. "Inference" means the system processes your prompts and generates responses. It does not train new models. It runs pre-trained models locally.</p>
             <p>When you use a cloud AI service (ChatGPT, Claude, Gemini, Azure OpenAI), your prompts leave your network, get processed on the cloud provider's GPUs, and the response comes back over the internet. The provider sees your data, processes it on shared infrastructure, and may use it according to their terms of service.</p>
             <p>With local hardware, the entire cycle happens inside your building. Prompt goes to your GPU. Response comes back from your GPU. Nothing leaves your network. You own the hardware, you own the models (MIT licensed, open weights), and you control every variable.</p>
             <p>The tradeoff is straightforward: cloud AI gives you access to the latest proprietary models (GPT-4o, Claude Opus) without hardware investment. Local AI gives you data sovereignty, zero recurring costs after purchase, and models you control entirely, but you are limited to open-source models that typically lag cloud releases by weeks or months. For a detailed comparison, see our <a href="why-island-mountain.html">Why Local AI</a> page.</p>
@@ -482,7 +482,7 @@
         <div class="faq-item">
           <h3>Does local AI hardware work without an internet connection?</h3>
           <div class="faq-answer">
-            <p><strong>Yes. Every Island Mountain system is designed to operate completely air-gapped.</strong> The models, the inference engine (vLLM/Ollama), and the interface (OpenWebUI) all run locally. Once the system is set up and models are loaded, you can disconnect the ethernet cable entirely and everything still works.</p>
+            <p>Yes. Every Island Mountain system is designed to operate completely air-gapped. The models, the inference engine (vLLM/Ollama), and the interface (OpenWebUI) all run locally. Once the system is set up and models are loaded, you can disconnect the ethernet cable entirely and everything still works.</p>
             <p>Users access the system through a web browser on your local network. As long as the device and the server are on the same network (even an isolated, non-internet-connected network), inference runs normally. No phone-home. No license checks. No cloud dependencies.</p>
             <p>The only things that require internet access are downloading new models and applying OS security updates. Both are optional and can be done on a schedule that fits your security posture. Some organizations in high-security environments load models via physical media and apply security patches through an isolated update process. The system supports that workflow. For more on the technology stack, see our <a href="technology.html">Technology</a> page.</p>
           </div>
@@ -491,7 +491,7 @@
         <div class="faq-item">
           <h3>Who should NOT buy local AI hardware?</h3>
           <div class="faq-answer">
-            <p><strong>Local AI hardware is the wrong purchase for several types of buyers, and we would rather tell you now than after you have spent $75,000.</strong></p>
+            <p>Local AI hardware is the wrong purchase for several types of buyers, and we would rather tell you now than after you have spent $75,000.</p>
             <p>If your organization needs the absolute latest proprietary models (GPT-4o, Claude Opus, Gemini Ultra) on the day they release, local hardware will not deliver that. Open-source models lag proprietary releases. They close the gap over time, but there is always a gap.</p>
             <p>If you need to serve more than 50 concurrent heavy users, a dual-GPU system at this price point is not the right architecture. You need enterprise cloud infrastructure or multiple local systems.</p>
             <p>If your organization has no IT capability at all and cannot manage a server, be aware that after 30 days of included support, your team owns the maintenance. OS updates, network configuration, and troubleshooting fall to you. We offer ongoing support retainers, but the system lives in your server room.</p>
@@ -507,7 +507,7 @@
         <div class="faq-item">
           <h3>Does running AI locally comply with HIPAA?</h3>
           <div class="faq-answer">
-            <p><strong>Running AI on local hardware eliminates the data transmission vector that creates HIPAA exposure in the first place.</strong> When you use a cloud AI service, Protected Health Information (PHI) leaves your network and is processed on shared infrastructure controlled by a third party. Under 45 CFR &sect;164.402, that transmission can constitute a reportable disclosure event. With local inference hardware, PHI never leaves your premises. There is no cloud provider to execute a Business Associate Agreement with because no business associate is involved. The prompts stay on your server. The responses stay on your server. The model weights sit on drives you physically control.</p>
+            <p>Running AI on local hardware eliminates the data transmission vector that creates HIPAA exposure in the first place. When you use a cloud AI service, Protected Health Information (PHI) leaves your network and is processed on shared infrastructure controlled by a third party. Under 45 CFR &sect;164.402, that transmission can constitute a reportable disclosure event. With local inference hardware, PHI never leaves your premises. There is no cloud provider to execute a Business Associate Agreement with because no business associate is involved. The prompts stay on your server. The responses stay on your server. The model weights sit on drives you physically control.</p>
             <p>That said, local hardware does not automatically make your entire AI workflow HIPAA-compliant. You still need proper access controls, audit logging, encryption at rest, and staff training. The hardware eliminates the cloud transmission risk; your organization still owns the operational compliance. Island Mountain is not a compliance attorney, and we do not certify HIPAA compliance. What we build is hardware that removes the third-party processing variable from the equation entirely. For a full breakdown of how local infrastructure fits into a compliance strategy, see our <a href="medical-practices.html">Medical Practices</a> page.</p>
           </div>
         </div>
@@ -515,7 +515,7 @@
         <div class="faq-item">
           <h3>Can a law firm use local AI without violating attorney-client privilege?</h3>
           <div class="faq-answer">
-            <p><strong>The core issue with cloud AI for law firms is this: client data sent to a third-party API is data disclosed to a third party.</strong> Under ABA Model Rule 1.6, attorneys have a duty to make reasonable efforts to prevent unauthorized disclosure of client information. Courts have found privilege waived when confidential information is processed through systems outside the firm's control.</p>
+            <p>The core issue with cloud AI for law firms is this: client data sent to a third-party API is data disclosed to a third party. Under ABA Model Rule 1.6, attorneys have a duty to make reasonable efforts to prevent unauthorized disclosure of client information. Courts have found privilege waived when confidential information is processed through systems outside the firm's control.</p>
             <p>Local AI hardware keeps every prompt, every document, and every response on a server inside your office. No data travels to an external API. No third party processes your client's information. The model runs on hardware you own, connected to your network, behind your firewall.</p>
             <p>This does not mean local AI automatically preserves privilege in every scenario. Your firm still needs internal policies governing who accesses the system, what data can be input, and how outputs are treated in the work product. But the fundamental architectural risk of third-party disclosure is eliminated. The system sits in your server room, not someone else's data center. For more on how different organization types benefit from local infrastructure, see our <a href="law-firms.html">Law Firms</a> page.</p>
           </div>
@@ -524,7 +524,7 @@
         <div class="faq-item">
           <h3>Can a tribal government run AI without cloud providers?</h3>
           <div class="faq-answer">
-            <p><strong>Yes. That is one of the primary use cases Island Mountain hardware is built for.</strong> Tribal nations exercise inherent sovereignty over constituent data, enrollment records, health information, and internal governance documents. Routing that data through cloud AI providers means processing sovereign data through jurisdictions and infrastructure outside tribal authority.</p>
+            <p>Yes. That is one of the primary use cases Island Mountain hardware is built for. Tribal nations exercise inherent sovereignty over constituent data, enrollment records, health information, and internal governance documents. Routing that data through cloud AI providers means processing sovereign data through jurisdictions and infrastructure outside tribal authority.</p>
             <p>Local AI hardware keeps everything on tribal premises, under tribal law, processed by hardware the nation owns outright. No data leaves the reservation. No cloud provider terms of service apply to your data. No federal or state jurisdiction touches the processing.</p>
             <p>The models pre-installed on every system (DeepSeek V4-Flash quantized, Llama 3.1 70B, Mixtral 8x22B) are MIT licensed, meaning the tribe owns the models with no usage restrictions. The system works fully air-gapped if your security posture requires it. Disconnect the ethernet cable and it still runs.</p>
             <p>Tribal IT infrastructure varies widely. If you have a server room or even a climate-controlled data closet with the right electrical circuit (208V/30A), the system fits. If you don't, we can discuss what site preparation looks like. See our <a href="tribal-nations.html">Tribal Nations</a> page for governance, emergency management, and health services workflows, or visit our <a href="contact.html">contact page</a> to start a conversation about your specific setup.</p>
@@ -534,7 +534,7 @@
         <div class="faq-item">
           <h3>Does local AI hardware meet ITAR requirements for defense contractors?</h3>
           <div class="faq-answer">
-            <p><strong>ITAR restricts the processing and storage of controlled technical data to environments that prevent foreign access.</strong> Cloud infrastructure operated by providers with multinational operations, overseas data centers, or foreign-national employees creates structural compliance risk for ITAR-regulated data.</p>
+            <p>ITAR (International Traffic in Arms Regulations) restricts the processing and storage of controlled technical data to environments that prevent foreign access. Cloud infrastructure operated by providers with multinational operations, overseas data centers, or foreign-national employees creates structural compliance risk for ITAR-regulated data.</p>
             <p>Local AI hardware that you own, operate on US soil, and control with US-person-only access eliminates the cloud processing vector entirely. The data stays on your premises, processed by hardware under your physical control, with no third-party infrastructure involved.</p>
             <p>Island Mountain systems run open-source models (MIT licensed, publicly available weights), which are not themselves controlled under ITAR. The controlled element is your data, and local hardware ensures that data never transits infrastructure you do not control.</p>
             <p>However, Island Mountain does not provide ITAR compliance certification, documentation, or legal guidance. ITAR compliance is an organizational responsibility that covers physical security, personnel screening, access controls, and documentation well beyond the hardware layer. What we provide is infrastructure that removes the cloud processing variable from your compliance posture. Consult your ITAR compliance officer or legal counsel for guidance specific to your program. For CUI, CMMC, and ITAR-specific workflows, see our <a href="defense-contractors.html">Defense Contractors</a> page.</p>
@@ -545,7 +545,7 @@
           <h3>Is DeepSeek V4-Flash safe to use with sensitive organizational data?</h3>
           <div class="faq-answer">
             <p>The safety question about DeepSeek V4-Flash usually comes from two concerns: the model's Chinese origin and data handling. Here are the facts.</p>
-            <p><strong>DeepSeek V4-Flash is an open-weights model released under the MIT license. When you run it on Island Mountain hardware, the model executes entirely on your local GPUs. No data is sent to DeepSeek, to any Chinese server, or to any external endpoint.</strong> The model weights are publicly available and have been independently audited by the open-source community. The model does not phone home. It cannot phone home. It is a file sitting on your hard drive being processed by your GPUs.</p>
+            <p>DeepSeek V4-Flash is an open-weights model released under the MIT license. The model weights are publicly available and have been independently audited by the open-source community. When you run DeepSeek V4-Flash on Island Mountain hardware, the model executes entirely on your local GPUs. No data is sent to DeepSeek, to any Chinese server, or to any external endpoint. The model does not phone home. It cannot phone home. It is a file sitting on your hard drive being processed by your GPUs.</p>
             <p>The risk with DeepSeek exists only when you use it through DeepSeek's cloud API, which routes your data through their servers. That is not how Island Mountain systems work. Our systems run the model locally, air-gapped if you want, with zero external communication.</p>
             <p>The model itself does not contain backdoors or data exfiltration code. It is a set of numerical weights processed through standard inference engines (vLLM/Ollama). Treat it like any other software asset: verify the download hash, review your organization's acceptable use policy, and run it on infrastructure you control. For more on DeepSeek and the full model stack, see our <a href="technology.html">Technology</a> page.</p>
           </div>
@@ -559,7 +559,7 @@
         <div class="faq-item">
           <h3>What VRAM do I need to run DeepSeek V4-Flash?</h3>
           <div class="faq-answer">
-            <p><strong>DeepSeek V4-Flash (284B parameters) requires approximately 160GB of VRAM to run quantized or 282GB VRAM to run at full FP16 precision.</strong> Running it across two GPUs using tensor parallelism delivers faster inference because the model layers are split and processed in parallel.</p>
+            <p>DeepSeek V4-Flash (284B parameters) requires approximately 160GB of VRAM to run quantized on the Starter tier or 282GB VRAM to run at full FP16 precision. Running it across two GPUs using tensor parallelism delivers faster inference because the model layers are split and processed in parallel.</p>
             <p>All Island Mountain systems ship with at least 160GB of combined VRAM (two GPUs). On our Starter tier (2x H100 80GB refurbished, pre-made), you can run DeepSeek V4-Flash in quantized form with approximately 60-90 tokens per second for single-user inference thanks to the H100's 3.35 TB/s memory bandwidth. On the Performance tier (2x H100 80GB, build-to-order), performance is similar with the same quantized version.</p>
             <p>If you need to run DeepSeek V4-Flash at full FP16 quality with maximum fidelity, you will need our Premium tier with dual H200 141GB GPUs (282GB VRAM), coming Q3 2026. The Starter and Performance tiers can run quantized versions, but not full FP16. See our full GPU comparison on the <a href="products.html">Products</a> page.</p>
           </div>
@@ -568,7 +568,7 @@
         <div class="faq-item">
           <h3>What models come pre-installed on Island Mountain hardware?</h3>
           <div class="faq-answer">
-            <p><strong>Every Starter and Performance system ships with three models installed, configured, and burn-tested:</strong></p>
+            <p>Every Starter and Performance system ships with three models installed, configured, and burn-tested:</p>
             <p><strong>DeepSeek V4-Flash (quantized)</strong> is a reasoning and general-purpose model built for complex analysis, multi-step problem solving, code generation, and structured thinking. The quantized version uses approximately 160GB of VRAM on the Starter tier.</p>
             <p><strong>Llama 3.1 70B</strong> is Meta's general-purpose model, strong across writing, summarization, question answering, and conversational tasks. It uses approximately 40-48GB of VRAM.</p>
             <p><strong>Mixtral 8x22B</strong> is Mistral's mixture-of-experts model with strong multilingual capability and efficient multi-task inference. It uses approximately 80GB of VRAM.</p>
@@ -579,7 +579,7 @@
         <div class="faq-item">
           <h3>What is OpenWebUI and how does it work?</h3>
           <div class="faq-answer">
-            <p><strong>OpenWebUI is a free, open-source, browser-based interface for interacting with local AI models. Think of it as a private version of ChatGPT that runs entirely on your network.</strong> No account with any cloud provider. No external data transmission.</p>
+            <p>OpenWebUI is a free, open-source, browser-based interface for interacting with local AI models. Think of it as a private version of ChatGPT that runs entirely on your network. No account with any cloud provider. No external data transmission.</p>
             <p>You open a web browser on any device connected to your network (Chrome, Firefox, Safari, Edge), navigate to the server's local address, and start prompting. The interface includes a dropdown menu to switch between installed models (DeepSeek V4-Flash quantized, Llama 3.1 70B, Mixtral 8x22B), full conversation history stored locally on the server, and an admin panel for user management and model access controls.</p>
             <p>Your administrator can create accounts for each team member, control which models each user can access, and monitor usage. Conversations are stored on the server's local drive, not in any cloud. Search, organize, and reference past conversations just like you would in any chat application.</p>
             <p>OpenWebUI requires no command-line knowledge to use. If someone can use ChatGPT, they can use OpenWebUI. The interface is pre-configured on every Island Mountain system before it ships. For more on OpenWebUI and the full software stack, see our <a href="technology.html">Technology</a> page.</p>
@@ -589,7 +589,7 @@
         <div class="faq-item">
           <h3>What is the difference between H100 and H200 GPUs for AI inference?</h3>
           <div class="faq-answer">
-            <p><strong>The two GPUs differ in VRAM capacity, memory bandwidth, and compute performance.</strong> Here is the comparison:</p>
+            <p>The two GPUs differ in VRAM capacity, memory bandwidth, and compute performance. Here is the comparison:</p>
             <p>The <strong>NVIDIA H100 80GB</strong> (PCIe, refurbished on Starter tier) uses HBM3 memory with 3.35 TB/s bandwidth and delivers 989 TFLOPS of FP16 compute. Two H100s give you 160GB of total VRAM. The Starter tier (pre-made) costs $75,000-$85,000. The Performance tier (build-to-order H100) costs $150,000-$160,000 and offers comparable performance with new units and custom configuration.</p>
             <p>The <strong>NVIDIA H200 141GB</strong> uses HBM3e memory with 4.8 TB/s bandwidth. Two H200s give you 282GB of total VRAM, which is the minimum required to run DeepSeek V4-Flash at full FP16 quality with its 1M token context window. This is our Premium tier ($350,000-$400,000), coming Q3 2026.</p>
             <p>The H100 Starter tier is the best value for most organizations needing good performance at lower cost. The H100 Performance tier (build-to-order) offers custom configuration and new units. The H200 Premium tier is for organizations that need the largest models at full quality. See our <a href="products.html">Products</a> page for the complete specification table.</p>
@@ -599,7 +599,7 @@
         <div class="faq-item">
           <h3>How many users can simultaneously access an Island Mountain system?</h3>
           <div class="faq-answer">
-            <p><strong>A dual-GPU Island Mountain system comfortably serves a team of 5-15 simultaneous users</strong> for typical business inference tasks like document drafting, research queries, contract review, and summarization.</p>
+            <p>A dual-GPU Island Mountain system comfortably serves a team of 5-15 simultaneous users for typical business inference tasks like document drafting, research queries, contract review, and summarization.</p>
             <p>The exact number depends on the model being used, prompt complexity, and how long responses need to be. Simple queries return fast and queue efficiently. Long-form document generation with high token counts takes more time per request, which means fewer concurrent users before response times stretch.</p>
             <p>The Performance tier (H100 GPUs, build-to-order) handles concurrent workloads with full new hardware. The Starter tier (H100 GPUs refurbished, pre-made) handles concurrent workloads well, with the H100's 3.35 TB/s memory bandwidth allowing fast processing of queued requests across vLLM tensor parallelism.</p>
             <p>This system is not designed to serve 50 or 100 simultaneous heavy users. If your organization has that kind of demand, you either need multiple systems or enterprise cloud infrastructure is the better fit. Island Mountain is built for the team of 5-15 who need data sovereignty and personal service, not for mass-scale deployment. See our <a href="products.html">Products</a> page for a full comparison of how each tier handles concurrency.</p>
@@ -609,7 +609,7 @@
         <div class="faq-item">
           <h3>What power requirements does local AI inference hardware need?</h3>
           <div class="faq-answer">
-            <p><strong>All Island Mountain systems require a dedicated 208V/30A power circuit with a NEMA L6-30R outlet.</strong> This is the same kind of circuit found in server rooms, data closets, and commercial facilities. The power supply operates at 200-240V only. It will not run on a standard 120V wall outlet.</p>
+            <p>All Island Mountain systems require a dedicated 208V/30A power circuit with a NEMA L6-30R outlet. This is the same kind of circuit found in server rooms, data closets, and commercial facilities. The power supply operates at 200-240V only. It will not run on a standard 120V wall outlet.</p>
             <p>If your facility does not already have this circuit, a licensed electrician can install one. Typical installation cost ranges from $500-$2,000 depending on your building's electrical infrastructure and how far the new circuit needs to run from the panel.</p>
             <p>Average power draw under typical inference loads is 1.5-2.5 kW. At $0.12/kWh, that translates to roughly $100-$200 per month in electricity. The system runs at standard server room temperatures (64-80&deg;F / 18-27&deg;C) and does not require specialized cooling beyond normal HVAC. The chassis includes redundant 2000W power supplies for reliability. See our <a href="products.html">Products</a> page for complete hardware specifications.</p>
           </div>
@@ -618,7 +618,7 @@
         <div class="faq-item">
           <h3>Can I add models after the system ships?</h3>
           <div class="faq-answer">
-            <p><strong>Yes. The system is not locked to the three pre-installed models.</strong> You can download and install any compatible open-source model through the Ollama interface or directly through OpenWebUI's model management panel.</p>
+            <p>Yes. The system is not locked to the three pre-installed models. You can download and install any compatible open-source model through the Ollama interface or directly through OpenWebUI's model management panel.</p>
             <p>The constraint is VRAM. Your system has a fixed amount of GPU memory, and each model consumes VRAM when loaded. On the Starter and Performance tiers (160GB total VRAM), you can run any model that fits within that memory. Most 70B-parameter models require 40-48GB of VRAM at FP16 precision. Smaller models (7B, 13B, 30B) use less and can run alongside larger models if you want multiple loaded simultaneously.</p>
             <p>You cannot run models that exceed your total VRAM. For example, DeepSeek V4-Flash (284B parameters) requires approximately 282GB of VRAM, which only fits on the Premium tier (282GB). Quantized versions of larger models can sometimes fit on lower tiers, but with reduced quality.</p>
             <p>For the first 30 days after delivery, we walk you through the model installation process directly. After that, it is a download-and-configure process your IT team can handle. We publish tested compatibility lists for each hardware tier. See our <a href="technology.html">Technology</a> page for current model details.</p>
@@ -633,7 +633,7 @@
         <div class="faq-item">
           <h3>How much does it cost to set up a private AI server for a small organization?</h3>
           <div class="faq-answer">
-            <p><strong>Island Mountain systems range from $75,000 to $400,000 depending on GPU configuration.</strong> The Starter tier with 2x NVIDIA H100 80GB PCIe (refurbished, pre-made) costs $75,000-$85,000. The Performance tier with 2x H100 80GB (build-to-order) costs $150,000-$160,000. The Premium tier with 2x H200 141GB GPUs costs $350,000-$400,000, coming Q3 2026.</p>
+            <p>Island Mountain systems range from $75,000 to $400,000 depending on GPU configuration. The Starter tier with 2x NVIDIA H100 80GB PCIe (refurbished, pre-made) costs $75,000-$85,000. The Performance tier with 2x H100 80GB (build-to-order) costs $150,000-$160,000. The Premium tier with 2x H200 141GB GPUs costs $350,000-$400,000, coming Q3 2026.</p>
             <p>Every system is a one-time purchase. There are no subscription fees, no per-token charges, and no recurring software licensing costs. The models are MIT licensed and free to use. The interface (OpenWebUI) is open-source.</p>
             <p>Beyond the hardware purchase, plan for a dedicated 208V/30A electrical circuit if you don't already have one in your server room. A licensed electrician typically installs this for $500-$2,000. Ongoing electricity costs run approximately $100-$200 per month depending on usage and your local power rates. That's it. No hidden fees. For a detailed breakdown of total cost of ownership versus cloud alternatives, see our <a href="pricing.html">Pricing</a> page.</p>
           </div>
@@ -643,8 +643,8 @@
           <h3>What is the total cost of cloud AI versus local AI hardware over five years?</h3>
           <div class="faq-answer">
             <p>The math depends on your team size and usage, but here is a representative comparison for a 10-user organization:</p>
-            <p><strong>Cloud AI subscriptions cost $12,000-$120,000 over five years for a 10-user team. An Island Mountain Starter system costs $75,000-$85,000 once, with a five-year total cost of ownership of approximately $81,000-$97,000 including electricity.</strong></p>
-            <p>Cloud options (ChatGPT Enterprise, Azure OpenAI, Anthropic) run $20-$200 per user per month, plus per-token overages. For 10 users, that's $2,400-$24,000 per year, with prices that historically only increase. The Island Mountain Starter system's annual electricity runs $1,200-$2,400, and that is your only recurring cost.</p>
+            <p>Cloud AI subscriptions (ChatGPT Enterprise, Azure OpenAI, Anthropic) cost $20-$200 per user per month, plus per-token overages. For 10 users, that's $2,400-$24,000 per year. Over five years: $12,000-$120,000 in cumulative subscription costs, with prices that historically only increase.</p>
+            <p>An Island Mountain Starter system costs $75,000-$85,000 once. Annual electricity runs $1,200-$2,400. Over five years, your total cost of ownership is approximately $81,000-$97,000, including electricity.</p>
             <p>The crossover point where local hardware becomes cheaper than cloud depends on your cloud spend. At $500/month in cloud AI costs (modest usage), local hardware pays for itself in roughly 13 years. At $2,000/month, the payback period is under 4 years. At $5,000/month or above, you break even in under two years.</p>
             <p>The cost advantage of local hardware grows every month it runs, because the marginal cost of each additional inference is just electricity. Cloud costs compound. Hardware costs don't. See the full comparison table on our <a href="pricing.html">Pricing</a> page.</p>
           </div>
@@ -653,7 +653,7 @@
         <div class="faq-item">
           <h3>What are the ongoing costs after purchasing local AI hardware?</h3>
           <div class="faq-answer">
-            <p><strong>After the one-time hardware purchase, your recurring costs are electricity ($100-$200/month) and optional support. There are no software licensing fees.</strong></p>
+            <p>After the one-time hardware purchase, your recurring costs are electricity and optional support.</p>
             <p>Electricity runs approximately $100-$200 per month, or $1,200-$2,400 per year. This estimate assumes 1.5-2.5 kW average power draw at $0.12/kWh, which is the US national average. Your actual cost depends on local utility rates and how heavily the system is used.</p>
             <p>There are no software licensing fees. The models (DeepSeek V4-Flash quantized, Llama 3.1 70B, Mixtral 8x22B) are MIT licensed. OpenWebUI is open-source. The operating system is Ubuntu Server LTS, also free.</p>
             <p>After the included 30-day support period, ongoing support is available on a per-incident basis or through an annual retainer. This covers model configuration, performance tuning, troubleshooting, and remote diagnostics.</p>
@@ -669,7 +669,7 @@
         <div class="faq-item">
           <h3>How long does it take to receive and set up an Island Mountain system?</h3>
           <div class="faq-answer">
-            <p><strong>From deposit to delivery, expect 3-5 weeks for the Starter tier (pre-made).</strong> The process has four phases: component sourcing and verification (GPUs sourced from verified enterprise resellers with documented provenance), assembly and configuration (15-phase build process), 72-hour continuous burn-in testing, and full benchmarking with delivery manifest.</p>
+            <p>From deposit to delivery, expect 3-5 weeks for Starter tier (pre-made). The process has four phases: component sourcing and verification (GPUs sourced from verified enterprise resellers with documented provenance), assembly and configuration (15-phase build process), 72-hour continuous burn-in testing, and full benchmarking with delivery manifest.</p>
             <p>The system arrives pre-configured. Models are installed, OpenWebUI is set up, and the server is ready to run. Setup on your end means racking the server, connecting power (208V/30A circuit), connecting to your network, and opening a browser. Most organizations are running their first prompts within hours of receiving the hardware.</p>
             <p>The Performance tier may take 4-6 weeks because H100 GPUs are sourced on a build-to-order basis with custom configuration. The Premium tier with H200 GPUs is coming Q3 2026. We include 30 days of hands-on setup support with every purchase, so if your IT team hits a snag during network configuration or user setup, you have direct access to the person who built the system. See our <a href="pricing.html">Pricing</a> page for the full purchase process.</p>
           </div>
@@ -678,7 +678,7 @@
         <div class="faq-item">
           <h3>How does the 50% deposit and payment structure work?</h3>
           <div class="faq-answer">
-            <p><strong>The purchase process starts with a conversation about your workload, followed by a custom quote with a 14-day price lock. A 50% deposit initiates the build; the remaining 50% is due upon delivery.</strong> Quotes include a 14-day price lock, meaning the quoted price holds for 14 days from acceptance. If GPU market prices spike above 10% during that window, you can cancel with a full deposit refund.</p>
+            <p>The purchase process starts with a conversation about your workload and requirements, followed by a custom quote. Quotes include a 14-day price lock, meaning the quoted price holds for 14 days from acceptance. If GPU market prices spike above 10% during that window, you can cancel with a full deposit refund.</p>
             <p>Once you accept the quote, a 50% deposit initiates component sourcing and the build process. We do not build speculatively. Your deposit triggers the purchase of your specific GPUs and components.</p>
             <p>The remaining 50% is due upon delivery. You do not pay the balance until the system arrives, burn-tested and benchmarked, with a complete delivery manifest documenting every component serial number, test result, and configuration detail.</p>
             <p>Payment methods and financing options can be discussed during the quote process. Some buyers have successfully financed hardware purchases through equipment financing lenders who treat AI servers like any other capital equipment purchase. Island Mountain does not currently offer direct financing, but we can point you toward lenders who work with technology equipment purchases. See our <a href="pricing.html">Pricing</a> page for the complete purchase timeline.</p>
@@ -688,7 +688,7 @@
         <div class="faq-item">
           <h3>What does the 72-hour burn-in test actually verify?</h3>
           <div class="faq-answer">
-            <p><strong>Every Island Mountain system runs 72 hours of continuous stress testing before it ships.</strong> This is not a quick benchmark or a 10-minute smoke test. It is three straight days of sustained GPU compute at high load with automated monitoring.</p>
+            <p>Every Island Mountain system runs 72 hours of continuous stress testing before it ships. This is not a quick benchmark or a 10-minute smoke test. It is three straight days of sustained GPU compute at high load with automated monitoring.</p>
             <p>The test verifies thermal stability under continuous load (GPUs maintain safe operating temperatures without throttling), memory integrity (no VRAM errors across billions of operations), inference consistency (model outputs remain stable and correct across thousands of sequential prompts), power supply reliability under sustained draw, and storage performance under continuous read/write activity.</p>
             <p>Automated monitoring tracks temperature, clock speeds, error rates, and performance metrics throughout the entire 72-hour window. Any anomaly triggers an alert. Systems that show instability, thermal throttling, VRAM errors, or any deviation from expected performance do not ship. Components are swapped and the test restarts.</p>
             <p>You receive a complete benchmark report and delivery manifest with your system, documenting every test result, component serial number, and configuration detail. This is not a certificate of perfection; it is proof that the system ran hard for three days without failing. See our <a href="technology.html">Technology</a> page for more on the build and test process.</p>
@@ -698,7 +698,7 @@
         <div class="faq-item">
           <h3>What happens if a component fails during the warranty period?</h3>
           <div class="faq-answer">
-            <p><strong>Every Island Mountain system ships with a 1-year hardware warranty covering all components, including GPUs, CPU, RAM, storage drives, and power supplies.</strong> If a component fails within the first year, we handle the replacement.</p>
+            <p>Every Island Mountain system ships with a 1-year hardware warranty covering all components, including GPUs, CPU, RAM, storage drives, and power supplies. If a component fails within the first year, we handle the replacement.</p>
             <p>GPU failures are managed through supplier RMA (Return Merchandise Authorization) agreements with documented replacement timelines. We maintain a 20% warranty reserve per unit specifically to ensure we can cover replacements without delay. You are not waiting for us to find budget.</p>
             <p>The process works like this: you contact us (direct phone or email to the builder), we diagnose the issue remotely, and if a physical component needs replacement, we ship the part or arrange a swap. For GPU replacements, turnaround depends on the specific card and current availability, but our supplier agreements include prioritized RMA processing.</p>
             <p>Extended warranty options beyond the first year are available at the time of purchase. After warranty, ongoing support is available on a per-incident or annual retainer basis. For full warranty and support details, see our <a href="pricing.html">Pricing</a> page.</p>
@@ -714,7 +714,7 @@
           <h3>Island Mountain is a new company with no shipped units. Why should I trust a first purchase?</h3>
           <div class="faq-answer">
             <p>This is a fair question and you should ask it. Here is the honest answer.</p>
-            <p><strong>Island Mountain is a Colorado LLC founded by John Dougherty, a 25-year enterprise security and technology veteran. The company is new. The person behind it is not.</strong> Every system is built, tested, and delivered by someone with decades of experience deploying technology infrastructure in demanding environments.</p>
+            <p>Island Mountain is a Colorado LLC founded by John Dougherty, a 25-year enterprise security and technology veteran. The company is new. The person behind it is not. Every system is built, tested, and delivered by someone with decades of experience deploying technology infrastructure in demanding environments.</p>
             <p>The specific protections built into the purchase process exist because we know trust has to be earned: the 14-day price lock lets you cancel if GPU prices spike above 10%. The 50% deposit / 50% on delivery structure means you do not pay in full until you have a working, tested system in your hands. The 1-year hardware warranty is backed by a 20% warranty reserve per unit. The 30-day setup support gives you direct access to the builder, not a call center.</p>
             <p>The hardware is standard enterprise components (NVIDIA GPUs, AMD EPYC CPUs, Supermicro chassis) with established supplier RMA agreements. The software is open-source (OpenWebUI, vLLM, Ubuntu Server LTS). Nothing is proprietary, nothing is locked, and if Island Mountain disappeared tomorrow, your system would keep running because every piece of it is built on publicly available, open-source infrastructure. See our <a href="why-island-mountain.html">Why Local AI</a> page for our honest positioning on what we are and what we are not.</p>
           </div>
@@ -723,7 +723,7 @@
         <div class="faq-item">
           <h3>What happens if Island Mountain goes out of business after I buy?</h3>
           <div class="faq-answer">
-            <p><strong>Your system keeps running. This is by design, not by accident.</strong></p>
+            <p>Your system keeps running. This is by design, not by accident.</p>
             <p>Every component of the system is built on open-source software and standard enterprise hardware. The operating system is Ubuntu Server LTS (free, community-supported). The inference engines are vLLM and Ollama (open-source). The interface is OpenWebUI (open-source). The models are MIT licensed with no usage restrictions. None of it depends on Island Mountain's continued existence.</p>
             <p>If Island Mountain were to close, you would lose access to our specific support, warranty coverage, and GPU upgrade program. But the system itself requires no license, no activation, and no connection to any Island Mountain server. It is a standalone server running open-source software on standard hardware.</p>
             <p>OS updates come from Ubuntu's repositories. CUDA driver updates come from NVIDIA. Model updates come from Hugging Face and Ollama's public model library. Your IT team or any competent Linux administrator can maintain the system independently.</p>
@@ -734,7 +734,7 @@
         <div class="faq-item">
           <h3>Can local AI keep up with cloud AI as models improve?</h3>
           <div class="faq-answer">
-            <p><strong>Not on day one. But within weeks or months, yes.</strong></p>
+            <p>Not on day one. But within weeks or months, yes.</p>
             <p>Cloud providers release proprietary models (GPT-4o, Claude Opus, Gemini) immediately because they control the infrastructure. You get access the day they launch. Open-source models lag that release cycle. When OpenAI ships a new flagship, you will not have an equivalent open-source model on your local hardware that afternoon.</p>
             <p>What has consistently happened over the past two years is that open-source models close the gap rapidly. DeepSeek V4-Flash, Llama 3.1, and Mixtral all reached or exceeded the performance of the proprietary models they followed within weeks to months of those models' releases. The open-source AI development community is massive, well-funded, and accelerating.</p>
             <p>Your Island Mountain system can run any new open-source model that fits within its VRAM. When a new model releases, you download it through Ollama or the OpenWebUI interface, and it is available to your team. No hardware swap needed unless the new model exceeds your VRAM capacity.</p>
@@ -792,4 +792,5 @@
           <ul class="footer-links">
             <li><a href="why-island-mountain.html">Why Local AI</a></li>
             <li><a href="contact.html">Contact</a></li>
-            <li><a href="investors.html">Investor
+            <li><a href="investors.html">Investors</a></li>
+            <li><a href="mailto:info@islandmountain.io">info@islandmountain.io</a><
