@@ -50,6 +50,40 @@
     }
   }
   </script>
+
+  <!-- FAQPage Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is tensor parallelism and why does it make local AI faster?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Tensor parallelism splits a single model across multiple GPUs so they process different parts of each computation simultaneously. Without it, a 70B-parameter model running on two GPUs would load entirely onto one GPU while the other sits idle. With vLLM's tensor parallelism, the model layers are distributed across both GPUs, cutting inference latency roughly in half. On Island Mountain systems, vLLM tensor parallelism is pre-configured for all tiers."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I run DeepSeek V4-Flash on the Starter or Performance tier?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. DeepSeek V4-Flash is a 284B-parameter model that requires approximately 282GB of VRAM at full FP16 quality. The Starter and Performance tiers each provide 160GB of total VRAM, which is not enough. The Premium tier with 2x H200 141GB GPUs providing 282GB total VRAM is the minimum configuration for V4-Flash at native quality. The Premium tier is expected to ship Q3 2026."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does OpenWebUI handle multiple users accessing the system at the same time?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "OpenWebUI manages concurrent users through a request queue. vLLM's continuous batching groups compatible requests to maximize GPU throughput. Each user sees their own conversation interface and history with no cross-user data leakage. On the Starter tier, expect response time increases when more than 5-8 users are prompting simultaneously. The Performance tier comfortably serves 10-15 simultaneous users for typical business tasks."
+        }
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
 
@@ -71,6 +105,7 @@
         <li><a href="products.html">Products</a></li>
         <li><a href="technology.html" class="active">Technology</a></li>
         <li><a href="pricing.html">Pricing</a></li>
+        <li><a href="faq.html">FAQ</a></li>
         <li><a href="contact.html" class="nav-cta">Request Quote</a></li>
       </ul>
       <button class="hamburger" aria-label="Menu">
@@ -86,6 +121,7 @@
     <a href="products.html">Products</a>
     <a href="technology.html">Technology</a>
     <a href="pricing.html">Pricing</a>
+    <a href="faq.html">FAQ</a>
     <a href="contact.html" class="nav-cta">Request Quote</a>
   </div>
 
@@ -293,6 +329,33 @@
     </div>
   </section>
 
+  <!-- Technology FAQ Section -->
+  <section class="section section-dark">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-badge">Technical Questions</span>
+        <h2>Common Technical Questions</h2>
+      </div>
+      <div class="risk-grid fade-in">
+        <div class="risk-card">
+          <h4><i class="ri-speed-line"></i> What is tensor parallelism and why does it make local AI faster?</h4>
+          <p>Tensor parallelism splits a model across multiple GPUs so they process different parts of each computation simultaneously. Without it, one GPU works while the other sits idle. With vLLM's tensor parallelism, model layers are distributed across both GPUs, cutting inference latency roughly in half. Pre-configured on all Island Mountain systems.</p>
+        </div>
+        <div class="risk-card">
+          <h4><i class="ri-brain-line"></i> Can I run DeepSeek V4-Flash on the Starter or Performance tier?</h4>
+          <p>No. V4-Flash requires approximately 282GB of VRAM at full FP16 quality. The Starter and Performance tiers provide 160GB each -- not enough. The Premium tier (2x H200 141GB, 282GB total) is the minimum configuration for V4-Flash at native quality, expected to ship Q3 2026.</p>
+        </div>
+        <div class="risk-card">
+          <h4><i class="ri-group-line"></i> How does OpenWebUI handle multiple users at once?</h4>
+          <p>OpenWebUI manages concurrent users through a request queue. vLLM's continuous batching groups compatible requests to maximize GPU throughput. Each user sees their own conversation interface -- no cross-user data leakage. The Performance tier comfortably serves 10-15 simultaneous users for typical business tasks.</p>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:32px;">
+        <a href="faq.html" class="btn btn-secondary">See All FAQs</a>
+      </div>
+    </div>
+  </section>
+
   <!-- V4-Flash Roadmap -->
   <section class="section section-darker">
     <div class="container">
@@ -329,6 +392,7 @@
             <li><a href="products.html">Products</a></li>
             <li><a href="technology.html">Technology</a></li>
             <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="faq.html">FAQ</a></li>
           </ul>
         </div>
         <div>
