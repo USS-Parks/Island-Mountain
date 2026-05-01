@@ -123,6 +123,15 @@
     });
   }
 
+  // Safety net: if any fade-in element is still invisible after 1.5s, force visible
+  setTimeout(function () {
+    fadeElements.forEach(function (el) {
+      if (!el.classList.contains('visible')) {
+        el.classList.add('visible');
+      }
+    });
+  }, 1500);
+
   // --- Lazy stars ---
   // Fixed canvas above all content. Stars drift slowly, twinkle,
   // and shift from cool white-blue to warm amber as you scroll.
