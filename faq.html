@@ -55,7 +55,7 @@
         "name": "Who should NOT buy local AI hardware?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Local AI hardware is the wrong purchase for several types of buyers. If your organization needs the absolute latest proprietary models (GPT-4o, Claude Opus, Gemini Ultra) on the day they release, local hardware will not deliver that. Open-source models lag proprietary releases. If you need to serve more than 50 concurrent heavy users, a dual-GPU system at this price point is not the right architecture. You need enterprise cloud infrastructure or multiple local systems. If your organization has no IT capability at all and cannot manage a server, be aware that after 30 days of included support, your team owns the maintenance. We offer ongoing support retainers, but the system lives in your server room. If your data sensitivity does not require local processing and cloud AI is working fine for your team at $200 per month, spending $60,000 on hardware does not make financial sense. Cloud is cheaper for low-volume, non-sensitive use cases."
+          "text": "Local AI hardware is the wrong purchase for several types of buyers. If your organization needs the absolute latest proprietary models (GPT-4o, Claude Opus, Gemini Ultra) on the day they release, local hardware will not deliver that. Open-source models lag proprietary releases. If you need to serve more than 50 concurrent heavy users, a dual-GPU system at this price point is not the right architecture. You need enterprise cloud infrastructure or multiple local systems. If your organization has no IT capability at all and cannot manage a server, be aware that after 30 days of included support, your team owns the maintenance. We offer ongoing support retainers, but the system lives in your server room. If your data sensitivity does not require local processing and cloud AI is working fine for your team at $200 per month, spending $75,000 on hardware does not make financial sense. Cloud is cheaper for low-volume, non-sensitive use cases."
         }
       },
       {
@@ -79,7 +79,7 @@
         "name": "Can a tribal government run AI without cloud providers?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes. That is one of the primary use cases Island Mountain hardware is built for. Tribal nations exercise inherent sovereignty over constituent data, enrollment records, health information, and internal governance documents. Routing that data through cloud AI providers means processing sovereign data through jurisdictions and infrastructure outside tribal authority. Local AI hardware keeps everything on tribal premises, under tribal law, processed by hardware the nation owns outright. No data leaves the reservation. No cloud provider terms of service apply to your data. No federal or state jurisdiction touches the processing. The models pre-installed on every system (DeepSeek R1 70B, Llama 3.1 70B, Mixtral 8x22B) are MIT licensed, meaning the tribe owns the models with no usage restrictions. The system works fully air-gapped if your security posture requires it. Disconnect the ethernet cable and it still runs."
+          "text": "Yes. That is one of the primary use cases Island Mountain hardware is built for. Tribal nations exercise inherent sovereignty over constituent data, enrollment records, health information, and internal governance documents. Routing that data through cloud AI providers means processing sovereign data through jurisdictions and infrastructure outside tribal authority. Local AI hardware keeps everything on tribal premises, under tribal law, processed by hardware the nation owns outright. No data leaves the reservation. No cloud provider terms of service apply to your data. No federal or state jurisdiction touches the processing. The models pre-installed on every system (DeepSeek V4-Flash quantized, Llama 3.1 70B, Mixtral 8x22B) are MIT licensed, meaning the tribe owns the models with no usage restrictions. The system works fully air-gapped if your security posture requires it. Disconnect the ethernet cable and it still runs."
         }
       },
       {
@@ -92,18 +92,18 @@
       },
       {
         "@type": "Question",
-        "name": "Is DeepSeek R1 safe to use with sensitive organizational data?",
+        "name": "Is DeepSeek V4-Flash safe to use with sensitive organizational data?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "The safety question about DeepSeek R1 usually comes from two concerns: the model's Chinese origin and data handling. Here are the facts. DeepSeek R1 is an open-weights model released under the MIT license. The model weights are publicly available and have been independently audited by the open-source community. When you run DeepSeek R1 on Island Mountain hardware, the model executes entirely on your local GPUs. No data is sent to DeepSeek, to any Chinese server, or to any external endpoint. The model does not phone home. It cannot phone home. It is a file sitting on your hard drive being processed by your GPUs. The risk with DeepSeek exists only when you use it through DeepSeek's cloud API, which routes your data through their servers. That is not how Island Mountain systems work. Our systems run the model locally, air-gapped if you want, with zero external communication. The model itself does not contain backdoors or data exfiltration code. It is a set of numerical weights processed through standard inference engines."
+          "text": "The safety question about DeepSeek V4-Flash usually comes from two concerns: the model's Chinese origin and data handling. Here are the facts. DeepSeek V4-Flash is an open-weights model released under the MIT license. The model weights are publicly available and have been independently audited by the open-source community. When you run DeepSeek V4-Flash on Island Mountain hardware, the model executes entirely on your local GPUs. No data is sent to DeepSeek, to any Chinese server, or to any external endpoint. The model does not phone home. It cannot phone home. It is a file sitting on your hard drive being processed by your GPUs. The risk with DeepSeek exists only when you use it through DeepSeek's cloud API, which routes your data through their servers. That is not how Island Mountain systems work. Our systems run the model locally, air-gapped if you want, with zero external communication. The model itself does not contain backdoors or data exfiltration code. It is a set of numerical weights processed through standard inference engines."
         }
       },
       {
         "@type": "Question",
-        "name": "What VRAM do I need to run DeepSeek R1 70B?",
+        "name": "What VRAM do I need to run DeepSeek V4-Flash?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "DeepSeek R1 70B requires approximately 40-48GB of VRAM to run at full FP16 precision. A single NVIDIA A100 80GB GPU can run it, but running it across two GPUs using tensor parallelism delivers faster inference because the model layers are split and processed in parallel. All Island Mountain systems ship with at least 160GB of combined VRAM (two GPUs), which means you can run DeepSeek R1 70B at full quality with substantial VRAM headroom for the KV cache that builds up during long conversations. On the Starter tier (2x A100 80GB), expect approximately 30-35 tokens per second for single-user inference. On the Performance tier (2x H100 80GB), that jumps to roughly 60-90 tokens per second thanks to the H100's 3.35 TB/s memory bandwidth versus the A100's 2.0 TB/s. If you need to run larger models like DeepSeek V4-Flash (284B parameters, requiring approximately 282GB VRAM), you will need the Premium tier with dual H200 141GB GPUs."
+          "text": "DeepSeek V4-Flash requires approximately 160GB of VRAM to run quantized on the Starter tier or 282GB VRAM to run at full FP16 precision. A single NVIDIA H100 80GB GPU cannot run it, but running it across two GPUs using tensor parallelism delivers faster inference because the model layers are split and processed in parallel. On the Starter tier (2x H100 80GB refurbished, 160GB total VRAM), you can run DeepSeek V4-Flash in quantized form. The quantized version trades some numerical precision for inference speed. On the Performance tier (2x H100 80GB, 160GB total VRAM), the same quantized performance applies, with expect approximately 60-90 tokens per second for single-user inference thanks to the H100's 3.35 TB/s memory bandwidth. If you need to run DeepSeek V4-Flash at full FP16 quality, you will need the Premium tier with dual H200 141GB GPUs (282GB total VRAM), coming Q3 2026."
         }
       },
       {
@@ -111,7 +111,7 @@
         "name": "What models come pre-installed on Island Mountain hardware?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Every Starter and Performance system ships with three models installed, configured, and burn-tested. DeepSeek R1 70B is a reasoning-focused model built for complex analysis, multi-step problem solving, code generation, and structured thinking. It uses approximately 40-48GB of VRAM. Llama 3.1 70B is Meta's general-purpose model, strong across writing, summarization, question answering, and conversational tasks. It uses approximately 40-48GB of VRAM. Mixtral 8x22B is Mistral's mixture-of-experts model with strong multilingual capability and efficient multi-task inference. It uses approximately 80GB of VRAM. All three are MIT licensed with no usage restrictions. You own them outright. You can switch between them instantly through the OpenWebUI dropdown menu. Additional open-source models can be downloaded and installed after delivery through Ollama or the OpenWebUI interface."
+          "text": "Every Starter and Performance system ships with three models installed, configured, and burn-tested. DeepSeek V4-Flash (quantized) is a reasoning and general-purpose model built for complex analysis, multi-step problem solving, code generation, and structured thinking. The quantized version uses approximately 160GB of VRAM on the Starter tier. Llama 3.1 70B is Meta's general-purpose model, strong across writing, summarization, question answering, and conversational tasks. It uses approximately 40-48GB of VRAM. Mixtral 8x22B is Mistral's mixture-of-experts model with strong multilingual capability and efficient multi-task inference. It uses approximately 80GB of VRAM. All three are MIT licensed with no usage restrictions. You own them outright. You can switch between them instantly through the OpenWebUI dropdown menu. Additional open-source models can be downloaded and installed after delivery through Ollama or the OpenWebUI interface."
         }
       },
       {
@@ -124,10 +124,10 @@
       },
       {
         "@type": "Question",
-        "name": "What is the difference between A100, H100, and H200 GPUs for AI inference?",
+        "name": "What is the difference between H100 and H200 GPUs for AI inference?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "The three GPUs differ in VRAM capacity, memory bandwidth, and compute performance. The NVIDIA A100 80GB uses HBM2e memory with 2.0 TB/s bandwidth and delivers 312 TFLOPS of FP16 compute. Two A100s give you 160GB of total VRAM. This is the GPU in the Starter tier at $60,000-$70,000 and runs 70B-parameter models at full quality. The NVIDIA H100 80GB uses faster HBM3 memory with 3.35 TB/s bandwidth and delivers 989 TFLOPS of FP16 compute. Two H100s also give you 160GB of total VRAM, but inference runs 2-3x faster than the A100. This is the Performance tier at $85,000-$95,000. The NVIDIA H200 141GB uses HBM3e memory with 4.8 TB/s bandwidth. Two H200s give you 282GB of total VRAM, the minimum required to run DeepSeek V4-Flash at full quality with its 1M token context window. This is the Premium tier at $110,000-$130,000, coming Q3 2026."
+          "text": "The two GPUs differ in VRAM capacity, memory bandwidth, and compute performance. The NVIDIA H100 80GB (PCIe, refurbished) uses HBM3 memory with 3.35 TB/s bandwidth and delivers 989 TFLOPS of FP16 compute. Two H100s give you 160GB of total VRAM. This is the GPU in the Starter tier (pre-made) at $75,000-$85,000 and runs quantized models at high speed. The NVIDIA H200 141GB uses HBM3e memory with 4.8 TB/s bandwidth. Two H200s give you 282GB of total VRAM, the minimum required to run DeepSeek V4-Flash at full quality with its 1M token context window. This is the Premium tier at $350,000-$400,000, coming Q3 2026. The Performance tier (H100, build-to-order) costs $150,000-$160,000 and delivers intermediate capability between Starter and Premium."
         }
       },
       {
@@ -135,7 +135,7 @@
         "name": "How many users can simultaneously access an Island Mountain system?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "A dual-GPU Island Mountain system comfortably serves a team of 5-15 simultaneous users for typical business inference tasks like document drafting, research queries, contract review, and summarization. The exact number depends on the model being used, prompt complexity, and response length. Simple queries return fast and queue efficiently. Long-form document generation takes more time per request, which means fewer concurrent users before response times stretch. The Performance tier (H100 GPUs) handles concurrent workloads significantly better than the Starter tier (A100 GPUs) because vLLM tensor parallelism and the H100's higher memory bandwidth (3.35 TB/s vs. 2.0 TB/s) allow faster processing of queued requests. This system is not designed to serve 50 or 100 simultaneous heavy users. If your organization has that kind of demand, you need multiple systems or enterprise cloud infrastructure."
+          "text": "A dual-GPU Island Mountain system comfortably serves a team of 5-15 simultaneous users for typical business inference tasks like document drafting, research queries, contract review, and summarization. The exact number depends on the model being used, prompt complexity, and response length. Simple queries return fast and queue efficiently. Long-form document generation takes more time per request, which means fewer concurrent users before response times stretch. The Performance tier (H100 GPUs build-to-order) handles concurrent workloads significantly better than the Starter tier (H100 GPUs pre-made refurbished) because vLLM tensor parallelism and the H100's 3.35 TB/s memory bandwidth allow fast processing of queued requests. This system is not designed to serve 50 or 100 simultaneous heavy users. If your organization has that kind of demand, you need multiple systems or enterprise cloud infrastructure."
         }
       },
       {
@@ -159,7 +159,7 @@
         "name": "How much does it cost to set up a private AI server for a small organization?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Island Mountain systems range from $60,000 to $130,000 depending on GPU configuration. The Starter tier with 2x NVIDIA A100 80GB GPUs costs $60,000-$70,000. The Performance tier with 2x H100 80GB GPUs costs $85,000-$95,000. The Premium tier with 2x H200 141GB GPUs costs $110,000-$130,000. Every system is a one-time purchase. There are no subscription fees, no per-token charges, and no recurring software licensing costs. The models are MIT licensed and free to use. The interface (OpenWebUI) is open-source. Beyond the hardware purchase, plan for a dedicated 208V/30A electrical circuit if you do not already have one. A licensed electrician typically installs this for $500-$2,000. Ongoing electricity costs run approximately $100-$200 per month. No hidden fees."
+          "text": "Island Mountain systems range from $75,000 to $400,000 depending on GPU configuration. The Starter tier with 2x NVIDIA H100 80GB PCIe (refurbished, pre-made) costs $75,000-$85,000. The Performance tier with 2x H100 80GB (build-to-order) costs $150,000-$160,000. The Premium tier with 2x H200 141GB GPUs costs $350,000-$400,000, coming Q3 2026. Every system is a one-time purchase. There are no subscription fees, no per-token charges, and no recurring software licensing costs. The models are MIT licensed and free to use. The interface (OpenWebUI) is open-source. Beyond the hardware purchase, plan for a dedicated 208V/30A electrical circuit if you do not already have one. A licensed electrician typically installs this for $500-$2,000. Ongoing electricity costs run approximately $100-$200 per month. No hidden fees."
         }
       },
       {
@@ -167,7 +167,7 @@
         "name": "What is the total cost of cloud AI versus local AI hardware over five years?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "The math depends on your team size and usage, but here is a representative comparison for a 10-user organization. Cloud AI subscriptions (ChatGPT Enterprise, Azure OpenAI, Anthropic) cost $20-$200 per user per month, plus per-token overages. For 10 users, that is $2,400-$24,000 per year. Over five years: $12,000-$120,000 in cumulative subscription costs, with prices that historically only increase. An Island Mountain Starter system costs $60,000-$70,000 once. Annual electricity runs $1,200-$2,400. Over five years, your total cost of ownership is approximately $66,000-$82,000. The crossover point where local hardware becomes cheaper than cloud depends on your cloud spend. At $500/month in cloud costs, local hardware pays for itself in roughly 10 years. At $2,000/month, the payback period is under 3 years. At $5,000/month, you break even in the first year."
+          "text": "The math depends on your team size and usage, but here is a representative comparison for a 10-user organization. Cloud AI subscriptions (ChatGPT Enterprise, Azure OpenAI, Anthropic) cost $20-$200 per user per month, plus per-token overages. For 10 users, that is $2,400-$24,000 per year. Over five years: $12,000-$120,000 in cumulative subscription costs, with prices that historically only increase. An Island Mountain Starter system costs $75,000-$85,000 once. Annual electricity runs $1,200-$2,400. Over five years, your total cost of ownership is approximately $81,000-$97,000. The crossover point where local hardware becomes cheaper than cloud depends on your cloud spend. At $500/month in cloud costs, local hardware pays for itself in roughly 13 years. At $2,000/month, the payback period is under 4 years. At $5,000/month or above, you break even in under two years."
         }
       },
       {
@@ -175,7 +175,7 @@
         "name": "What are the ongoing costs after purchasing local AI hardware?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "After the one-time hardware purchase, your recurring costs are electricity and optional support. Electricity runs approximately $100-$200 per month, or $1,200-$2,400 per year. This estimate assumes 1.5-2.5 kW average power draw at $0.12/kWh. Your actual cost depends on local utility rates and usage intensity. There are no software licensing fees. The models (DeepSeek R1 70B, Llama 3.1 70B, Mixtral 8x22B) are MIT licensed. OpenWebUI is open-source. The operating system is Ubuntu Server LTS, also free. After the included 30-day support period, ongoing support is available on a per-incident basis or through an annual retainer. This covers model configuration, performance tuning, troubleshooting, and remote diagnostics. The only additional cost you might encounter is a future GPU upgrade, where your existing cards are credited at secondary market value toward replacement GPUs."
+          "text": "After the one-time hardware purchase, your recurring costs are electricity and optional support. Electricity runs approximately $100-$200 per month, or $1,200-$2,400 per year. This estimate assumes 1.5-2.5 kW average power draw at $0.12/kWh. Your actual cost depends on local utility rates and usage intensity. There are no software licensing fees. The models (DeepSeek V4-Flash quantized, Llama 3.1 70B, Mixtral 8x22B) are MIT licensed. OpenWebUI is open-source. The operating system is Ubuntu Server LTS, also free. After the included 30-day support period, ongoing support is available on a per-incident basis or through an annual retainer. This covers model configuration, performance tuning, troubleshooting, and remote diagnostics. The only additional cost you might encounter is a future GPU upgrade, where your existing cards are credited at secondary market value toward replacement GPUs."
         }
       },
       {
@@ -231,7 +231,7 @@
         "name": "Can local AI keep up with cloud AI as models improve?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Not on day one. But within weeks or months, yes. Cloud providers release proprietary models immediately because they control the infrastructure. Open-source models lag that release cycle. When OpenAI ships a new flagship, you will not have an equivalent open-source model on your local hardware that afternoon. What has consistently happened over the past two years is that open-source models close the gap rapidly. DeepSeek R1, Llama 3.1, and Mixtral all reached or exceeded the performance of the proprietary models they followed within weeks to months of release. Your Island Mountain system can run any new open-source model that fits within its VRAM. When a new model releases, you download it through Ollama or the OpenWebUI interface. No hardware swap needed unless the new model exceeds your VRAM capacity. The risk is that a future model generation requires significantly more VRAM than your system has. That is why we offer a GPU upgrade path where existing GPUs are credited at secondary market value toward next-generation cards."
+          "text": "Not on day one. But within weeks or months, yes. Cloud providers release proprietary models immediately because they control the infrastructure. Open-source models lag that release cycle. When OpenAI ships a new flagship, you will not have an equivalent open-source model on your local hardware that afternoon. What has consistently happened over the past two years is that open-source models close the gap rapidly. DeepSeek V4-Flash, Llama 3.1, and Mixtral all reached or exceeded the performance of the proprietary models they followed within weeks to months of release. Your Island Mountain system can run any new open-source model that fits within its VRAM. When a new model releases, you download it through Ollama or the OpenWebUI interface. No hardware swap needed unless the new model exceeds your VRAM capacity. The risk is that a future model generation requires significantly more VRAM than your system has. That is why we offer a GPU upgrade path where existing GPUs are credited at secondary market value toward next-generation cards."
         }
       }
     ]
@@ -471,11 +471,11 @@
         <div class="faq-item">
           <h3>Who should NOT buy local AI hardware?</h3>
           <div class="faq-answer">
-            <p>Local AI hardware is the wrong purchase for several types of buyers, and we would rather tell you now than after you have spent $60,000.</p>
+            <p>Local AI hardware is the wrong purchase for several types of buyers, and we would rather tell you now than after you have spent $75,000.</p>
             <p>If your organization needs the absolute latest proprietary models (GPT-4o, Claude Opus, Gemini Ultra) on the day they release, local hardware will not deliver that. Open-source models lag proprietary releases. They close the gap over time, but there is always a gap.</p>
             <p>If you need to serve more than 50 concurrent heavy users, a dual-GPU system at this price point is not the right architecture. You need enterprise cloud infrastructure or multiple local systems.</p>
             <p>If your organization has no IT capability at all and cannot manage a server, be aware that after 30 days of included support, your team owns the maintenance. OS updates, network configuration, and troubleshooting fall to you. We offer ongoing support retainers, but the system lives in your server room.</p>
-            <p>If your data sensitivity does not require local processing and cloud AI is working fine for your team at $200/month, spending $60,000 on hardware does not make financial sense. Cloud is cheaper for low-volume, non-sensitive use cases. We say this on our <a href="why-island-mountain.html">Why Local AI</a> page because it is true.</p>
+            <p>If your data sensitivity does not require local processing and cloud AI is working fine for your team at $200/month, spending $75,000 on hardware does not make financial sense. Cloud is cheaper for low-volume, non-sensitive use cases. We say this on our <a href="why-island-mountain.html">Why Local AI</a> page because it is true.</p>
           </div>
         </div>
       </div>
@@ -506,7 +506,7 @@
           <div class="faq-answer">
             <p>Yes. That is one of the primary use cases Island Mountain hardware is built for. Tribal nations exercise inherent sovereignty over constituent data, enrollment records, health information, and internal governance documents. Routing that data through cloud AI providers means processing sovereign data through jurisdictions and infrastructure outside tribal authority.</p>
             <p>Local AI hardware keeps everything on tribal premises, under tribal law, processed by hardware the nation owns outright. No data leaves the reservation. No cloud provider terms of service apply to your data. No federal or state jurisdiction touches the processing.</p>
-            <p>The models pre-installed on every system (DeepSeek R1 70B, Llama 3.1 70B, Mixtral 8x22B) are MIT licensed, meaning the tribe owns the models with no usage restrictions. The system works fully air-gapped if your security posture requires it. Disconnect the ethernet cable and it still runs.</p>
+            <p>The models pre-installed on every system (DeepSeek V4-Flash quantized, Llama 3.1 70B, Mixtral 8x22B) are MIT licensed, meaning the tribe owns the models with no usage restrictions. The system works fully air-gapped if your security posture requires it. Disconnect the ethernet cable and it still runs.</p>
             <p>Tribal IT infrastructure varies widely. If you have a server room or even a climate-controlled data closet with the right electrical circuit (208V/30A), the system fits. If you don't, we can discuss what site preparation looks like. Visit our <a href="contact.html">contact page</a> to start a conversation about your specific setup.</p>
           </div>
         </div>
@@ -522,10 +522,10 @@
         </div>
 
         <div class="faq-item">
-          <h3>Is DeepSeek R1 safe to use with sensitive organizational data?</h3>
+          <h3>Is DeepSeek V4-Flash safe to use with sensitive organizational data?</h3>
           <div class="faq-answer">
-            <p>The safety question about DeepSeek R1 usually comes from two concerns: the model's Chinese origin and data handling. Here are the facts.</p>
-            <p>DeepSeek R1 is an open-weights model released under the MIT license. The model weights are publicly available and have been independently audited by the open-source community. When you run DeepSeek R1 on Island Mountain hardware, the model executes entirely on your local GPUs. No data is sent to DeepSeek, to any Chinese server, or to any external endpoint. The model does not phone home. It cannot phone home. It is a file sitting on your hard drive being processed by your GPUs.</p>
+            <p>The safety question about DeepSeek V4-Flash usually comes from two concerns: the model's Chinese origin and data handling. Here are the facts.</p>
+            <p>DeepSeek V4-Flash is an open-weights model released under the MIT license. The model weights are publicly available and have been independently audited by the open-source community. When you run DeepSeek V4-Flash on Island Mountain hardware, the model executes entirely on your local GPUs. No data is sent to DeepSeek, to any Chinese server, or to any external endpoint. The model does not phone home. It cannot phone home. It is a file sitting on your hard drive being processed by your GPUs.</p>
             <p>The risk with DeepSeek exists only when you use it through DeepSeek's cloud API, which routes your data through their servers. That is not how Island Mountain systems work. Our systems run the model locally, air-gapped if you want, with zero external communication.</p>
             <p>The model itself does not contain backdoors or data exfiltration code. It is a set of numerical weights processed through standard inference engines (vLLM/Ollama). Treat it like any other software asset: verify the download hash, review your organization's acceptable use policy, and run it on infrastructure you control. For more on DeepSeek and the full model stack, see our <a href="technology.html">Technology</a> page.</p>
           </div>
@@ -537,11 +537,11 @@
         <h2>How the Hardware Works</h2>
 
         <div class="faq-item">
-          <h3>What VRAM do I need to run DeepSeek R1 70B?</h3>
+          <h3>What VRAM do I need to run DeepSeek V4-Flash?</h3>
           <div class="faq-answer">
-            <p>DeepSeek R1 70B requires approximately 40-48GB of VRAM to run at full FP16 precision. A single NVIDIA A100 80GB GPU can run it, but running it across two GPUs using tensor parallelism delivers faster inference because the model layers are split and processed in parallel.</p>
-            <p>All Island Mountain systems ship with at least 160GB of combined VRAM (two GPUs), which means you can run DeepSeek R1 70B at full quality with substantial VRAM headroom for the KV cache that builds up during long conversations. On our Starter tier (2x A100 80GB), you can expect approximately 30-35 tokens per second for single-user inference. On the Performance tier (2x H100 80GB), that jumps to roughly 60-90 tokens per second thanks to the H100's 3.35 TB/s memory bandwidth versus the A100's 2.0 TB/s.</p>
-            <p>If you need to run larger models like DeepSeek V4-Flash (284B parameters, requiring approximately 282GB VRAM), you will need our Premium tier with dual H200 141GB GPUs. The Starter and Performance tiers cannot run V4-Flash at full quality. See our full GPU comparison on the <a href="products.html">Products</a> page.</p>
+            <p>DeepSeek V4-Flash (284B parameters) requires approximately 160GB of VRAM to run quantized on the Starter tier or 282GB VRAM to run at full FP16 precision. Running it across two GPUs using tensor parallelism delivers faster inference because the model layers are split and processed in parallel.</p>
+            <p>All Island Mountain systems ship with at least 160GB of combined VRAM (two GPUs). On our Starter tier (2x H100 80GB refurbished, pre-made), you can run DeepSeek V4-Flash in quantized form with approximately 60-90 tokens per second for single-user inference thanks to the H100's 3.35 TB/s memory bandwidth. On the Performance tier (2x H100 80GB, build-to-order), performance is similar with the same quantized version.</p>
+            <p>If you need to run DeepSeek V4-Flash at full FP16 quality with maximum fidelity, you will need our Premium tier with dual H200 141GB GPUs (282GB VRAM), coming Q3 2026. The Starter and Performance tiers can run quantized versions, but not full FP16. See our full GPU comparison on the <a href="products.html">Products</a> page.</p>
           </div>
         </div>
 
@@ -549,7 +549,7 @@
           <h3>What models come pre-installed on Island Mountain hardware?</h3>
           <div class="faq-answer">
             <p>Every Starter and Performance system ships with three models installed, configured, and burn-tested:</p>
-            <p><strong>DeepSeek R1 70B</strong> is a reasoning-focused model built for complex analysis, multi-step problem solving, code generation, and structured thinking. It uses approximately 40-48GB of VRAM.</p>
+            <p><strong>DeepSeek V4-Flash (quantized)</strong> is a reasoning and general-purpose model built for complex analysis, multi-step problem solving, code generation, and structured thinking. The quantized version uses approximately 160GB of VRAM on the Starter tier.</p>
             <p><strong>Llama 3.1 70B</strong> is Meta's general-purpose model, strong across writing, summarization, question answering, and conversational tasks. It uses approximately 40-48GB of VRAM.</p>
             <p><strong>Mixtral 8x22B</strong> is Mistral's mixture-of-experts model with strong multilingual capability and efficient multi-task inference. It uses approximately 80GB of VRAM.</p>
             <p>All three are MIT licensed with no usage restrictions. You own them outright. You can switch between them instantly through the OpenWebUI dropdown menu. Additional open-source models can be downloaded and installed after delivery through Ollama or the OpenWebUI interface. For the first 30 days, we walk you through model management directly. See our <a href="technology.html">Technology</a> page for detailed specifications on each model.</p>
@@ -560,20 +560,19 @@
           <h3>What is OpenWebUI and how does it work?</h3>
           <div class="faq-answer">
             <p>OpenWebUI is a free, open-source, browser-based interface for interacting with local AI models. Think of it as a private version of ChatGPT that runs entirely on your network. No account with any cloud provider. No external data transmission.</p>
-            <p>You open a web browser on any device connected to your network (Chrome, Firefox, Safari, Edge), navigate to the server's local address, and start prompting. The interface includes a dropdown menu to switch between installed models (DeepSeek R1 70B, Llama 3.1 70B, Mixtral 8x22B), full conversation history stored locally on the server, and an admin panel for user management and model access controls.</p>
+            <p>You open a web browser on any device connected to your network (Chrome, Firefox, Safari, Edge), navigate to the server's local address, and start prompting. The interface includes a dropdown menu to switch between installed models (DeepSeek V4-Flash quantized, Llama 3.1 70B, Mixtral 8x22B), full conversation history stored locally on the server, and an admin panel for user management and model access controls.</p>
             <p>Your administrator can create accounts for each team member, control which models each user can access, and monitor usage. Conversations are stored on the server's local drive, not in any cloud. Search, organize, and reference past conversations just like you would in any chat application.</p>
             <p>OpenWebUI requires no command-line knowledge to use. If someone can use ChatGPT, they can use OpenWebUI. The interface is pre-configured on every Island Mountain system before it ships. For more on OpenWebUI and the full software stack, see our <a href="technology.html">Technology</a> page.</p>
           </div>
         </div>
 
         <div class="faq-item">
-          <h3>What is the difference between A100, H100, and H200 GPUs for AI inference?</h3>
+          <h3>What is the difference between H100 and H200 GPUs for AI inference?</h3>
           <div class="faq-answer">
-            <p>The three GPUs differ in VRAM capacity, memory bandwidth, and compute performance. Here is the comparison:</p>
-            <p>The <strong>NVIDIA A100 80GB</strong> uses HBM2e memory with 2.0 TB/s bandwidth and delivers 312 TFLOPS of FP16 compute. Two A100s give you 160GB of total VRAM. This is the GPU in our Starter tier ($60,000-$70,000) and runs 70B-parameter models at full quality.</p>
-            <p>The <strong>NVIDIA H100 80GB</strong> uses faster HBM3 memory with 3.35 TB/s bandwidth and delivers 989 TFLOPS of FP16 compute. Two H100s also give you 160GB of total VRAM, but inference runs 2-3x faster than the A100 due to the higher bandwidth and compute. This is our Performance tier ($85,000-$95,000).</p>
-            <p>The <strong>NVIDIA H200 141GB</strong> uses HBM3e memory with 4.8 TB/s bandwidth. Two H200s give you 282GB of total VRAM, which is the minimum required to run DeepSeek V4-Flash at full quality with its 1M token context window. This is our Premium tier ($110,000-$130,000), coming Q3 2026.</p>
-            <p>The A100 is the best value for most organizations. The H100 is for teams that need faster response times under heavier concurrent use. The H200 is for organizations that need the largest models at full quality. See our <a href="products.html">Products</a> page for the complete specification table.</p>
+            <p>The two GPUs differ in VRAM capacity, memory bandwidth, and compute performance. Here is the comparison:</p>
+            <p>The <strong>NVIDIA H100 80GB</strong> (PCIe, refurbished on Starter tier) uses HBM3 memory with 3.35 TB/s bandwidth and delivers 989 TFLOPS of FP16 compute. Two H100s give you 160GB of total VRAM. The Starter tier (pre-made) costs $75,000-$85,000. The Performance tier (build-to-order H100) costs $150,000-$160,000 and offers comparable performance with new units and custom configuration.</p>
+            <p>The <strong>NVIDIA H200 141GB</strong> uses HBM3e memory with 4.8 TB/s bandwidth. Two H200s give you 282GB of total VRAM, which is the minimum required to run DeepSeek V4-Flash at full FP16 quality with its 1M token context window. This is our Premium tier ($350,000-$400,000), coming Q3 2026.</p>
+            <p>The H100 Starter tier is the best value for most organizations needing good performance at lower cost. The H100 Performance tier (build-to-order) offers custom configuration and new units. The H200 Premium tier is for organizations that need the largest models at full quality. See our <a href="products.html">Products</a> page for the complete specification table.</p>
           </div>
         </div>
 
@@ -582,7 +581,7 @@
           <div class="faq-answer">
             <p>A dual-GPU Island Mountain system comfortably serves a team of 5-15 simultaneous users for typical business inference tasks like document drafting, research queries, contract review, and summarization.</p>
             <p>The exact number depends on the model being used, prompt complexity, and how long responses need to be. Simple queries return fast and queue efficiently. Long-form document generation with high token counts takes more time per request, which means fewer concurrent users before response times stretch.</p>
-            <p>The Performance tier (H100 GPUs) handles concurrent workloads significantly better than the Starter tier (A100 GPUs) because vLLM tensor parallelism and the H100's higher memory bandwidth (3.35 TB/s vs. 2.0 TB/s) allow faster processing of queued requests.</p>
+            <p>The Performance tier (H100 GPUs, build-to-order) handles concurrent workloads with full new hardware. The Starter tier (H100 GPUs refurbished, pre-made) handles concurrent workloads well, with the H100's 3.35 TB/s memory bandwidth allowing fast processing of queued requests across vLLM tensor parallelism.</p>
             <p>This system is not designed to serve 50 or 100 simultaneous heavy users. If your organization has that kind of demand, you either need multiple systems or enterprise cloud infrastructure is the better fit. Island Mountain is built for the team of 5-15 who need data sovereignty and personal service, not for mass-scale deployment. See our <a href="products.html">Products</a> page for a full comparison of how each tier handles concurrency.</p>
           </div>
         </div>
@@ -614,7 +613,7 @@
         <div class="faq-item">
           <h3>How much does it cost to set up a private AI server for a small organization?</h3>
           <div class="faq-answer">
-            <p>Island Mountain systems range from $60,000 to $130,000 depending on GPU configuration. The Starter tier with 2x NVIDIA A100 80GB GPUs costs $60,000-$70,000. The Performance tier with 2x H100 80GB GPUs costs $85,000-$95,000. The Premium tier with 2x H200 141GB GPUs costs $110,000-$130,000.</p>
+            <p>Island Mountain systems range from $75,000 to $400,000 depending on GPU configuration. The Starter tier with 2x NVIDIA H100 80GB PCIe (refurbished, pre-made) costs $75,000-$85,000. The Performance tier with 2x H100 80GB (build-to-order) costs $150,000-$160,000. The Premium tier with 2x H200 141GB GPUs costs $350,000-$400,000, coming Q3 2026.</p>
             <p>Every system is a one-time purchase. There are no subscription fees, no per-token charges, and no recurring software licensing costs. The models are MIT licensed and free to use. The interface (OpenWebUI) is open-source.</p>
             <p>Beyond the hardware purchase, plan for a dedicated 208V/30A electrical circuit if you don't already have one in your server room. A licensed electrician typically installs this for $500-$2,000. Ongoing electricity costs run approximately $100-$200 per month depending on usage and your local power rates. That's it. No hidden fees. For a detailed breakdown of total cost of ownership versus cloud alternatives, see our <a href="pricing.html">Pricing</a> page.</p>
           </div>
@@ -625,8 +624,8 @@
           <div class="faq-answer">
             <p>The math depends on your team size and usage, but here is a representative comparison for a 10-user organization:</p>
             <p>Cloud AI subscriptions (ChatGPT Enterprise, Azure OpenAI, Anthropic) cost $20-$200 per user per month, plus per-token overages. For 10 users, that's $2,400-$24,000 per year. Over five years: $12,000-$120,000 in cumulative subscription costs, with prices that historically only increase.</p>
-            <p>An Island Mountain Starter system costs $60,000-$70,000 once. Annual electricity runs $1,200-$2,400. Over five years, your total cost of ownership is approximately $66,000-$82,000, including electricity.</p>
-            <p>The crossover point where local hardware becomes cheaper than cloud depends on your cloud spend. At $500/month in cloud AI costs (modest usage), local hardware pays for itself in roughly 10 years. At $2,000/month, the payback period is under 3 years. At $5,000/month or above, you break even in the first year.</p>
+            <p>An Island Mountain Starter system costs $75,000-$85,000 once. Annual electricity runs $1,200-$2,400. Over five years, your total cost of ownership is approximately $81,000-$97,000, including electricity.</p>
+            <p>The crossover point where local hardware becomes cheaper than cloud depends on your cloud spend. At $500/month in cloud AI costs (modest usage), local hardware pays for itself in roughly 13 years. At $2,000/month, the payback period is under 4 years. At $5,000/month or above, you break even in under two years.</p>
             <p>The cost advantage of local hardware grows every month it runs, because the marginal cost of each additional inference is just electricity. Cloud costs compound. Hardware costs don't. See the full comparison table on our <a href="pricing.html">Pricing</a> page.</p>
           </div>
         </div>
@@ -636,7 +635,7 @@
           <div class="faq-answer">
             <p>After the one-time hardware purchase, your recurring costs are electricity and optional support.</p>
             <p>Electricity runs approximately $100-$200 per month, or $1,200-$2,400 per year. This estimate assumes 1.5-2.5 kW average power draw at $0.12/kWh, which is the US national average. Your actual cost depends on local utility rates and how heavily the system is used.</p>
-            <p>There are no software licensing fees. The models (DeepSeek R1 70B, Llama 3.1 70B, Mixtral 8x22B) are MIT licensed. OpenWebUI is open-source. The operating system is Ubuntu Server LTS, also free.</p>
+            <p>There are no software licensing fees. The models (DeepSeek V4-Flash quantized, Llama 3.1 70B, Mixtral 8x22B) are MIT licensed. OpenWebUI is open-source. The operating system is Ubuntu Server LTS, also free.</p>
             <p>After the included 30-day support period, ongoing support is available on a per-incident basis or through an annual retainer. This covers model configuration, performance tuning, troubleshooting, and remote diagnostics.</p>
             <p>The only additional cost you might encounter is if you want a GPU upgrade in the future. GPU upgrades are a hardware swap where your existing cards are credited at secondary market value toward the replacement. This is not an annual cost; it is a one-time decision you make if and when you need more capability. See our <a href="pricing.html">Pricing</a> page for the full cost breakdown.</p>
           </div>
@@ -650,9 +649,9 @@
         <div class="faq-item">
           <h3>How long does it take to receive and set up an Island Mountain system?</h3>
           <div class="faq-answer">
-            <p>From deposit to delivery, expect 3-5 weeks. The process has four phases: component sourcing and verification (GPUs sourced from verified enterprise resellers with documented provenance), assembly and configuration (15-phase build process), 72-hour continuous burn-in testing, and full benchmarking with delivery manifest.</p>
+            <p>From deposit to delivery, expect 3-5 weeks for Starter tier (pre-made). The process has four phases: component sourcing and verification (GPUs sourced from verified enterprise resellers with documented provenance), assembly and configuration (15-phase build process), 72-hour continuous burn-in testing, and full benchmarking with delivery manifest.</p>
             <p>The system arrives pre-configured. Models are installed, OpenWebUI is set up, and the server is ready to run. Setup on your end means racking the server, connecting power (208V/30A circuit), connecting to your network, and opening a browser. Most organizations are running their first prompts within hours of receiving the hardware.</p>
-            <p>The Performance tier may take slightly longer (2-4 additional weeks) because H100 GPUs are sourced on a build-to-order basis. The Premium tier with H200 GPUs is not yet shipping. We include 30 days of hands-on setup support with every purchase, so if your IT team hits a snag during network configuration or user setup, you have direct access to the person who built the system. See our <a href="pricing.html">Pricing</a> page for the full purchase process.</p>
+            <p>The Performance tier may take 4-6 weeks because H100 GPUs are sourced on a build-to-order basis with custom configuration. The Premium tier with H200 GPUs is coming Q3 2026. We include 30 days of hands-on setup support with every purchase, so if your IT team hits a snag during network configuration or user setup, you have direct access to the person who built the system. See our <a href="pricing.html">Pricing</a> page for the full purchase process.</p>
           </div>
         </div>
 
@@ -717,7 +716,7 @@
           <div class="faq-answer">
             <p>Not on day one. But within weeks or months, yes.</p>
             <p>Cloud providers release proprietary models (GPT-4o, Claude Opus, Gemini) immediately because they control the infrastructure. You get access the day they launch. Open-source models lag that release cycle. When OpenAI ships a new flagship, you will not have an equivalent open-source model on your local hardware that afternoon.</p>
-            <p>What has consistently happened over the past two years is that open-source models close the gap rapidly. DeepSeek R1, Llama 3.1, and Mixtral all reached or exceeded the performance of the proprietary models they followed within weeks to months of those models' releases. The open-source AI development community is massive, well-funded, and accelerating.</p>
+            <p>What has consistently happened over the past two years is that open-source models close the gap rapidly. DeepSeek V4-Flash, Llama 3.1, and Mixtral all reached or exceeded the performance of the proprietary models they followed within weeks to months of those models' releases. The open-source AI development community is massive, well-funded, and accelerating.</p>
             <p>Your Island Mountain system can run any new open-source model that fits within its VRAM. When a new model releases, you download it through Ollama or the OpenWebUI interface, and it is available to your team. No hardware swap needed unless the new model exceeds your VRAM capacity.</p>
             <p>The risk is that a future model generation requires significantly more VRAM than your system has. That is why we offer a GPU upgrade path. Your existing GPUs are credited at secondary market value toward next-generation cards. See our <a href="technology.html">Technology</a> page for roadmap details, including V4-Flash and the Premium tier timeline.</p>
           </div>
