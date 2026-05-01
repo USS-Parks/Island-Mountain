@@ -27,6 +27,40 @@
   <meta name="twitter:title" content="Why Local AI Infrastructure Beats Cloud LLMs">
   <meta name="twitter:description" content="Cloud AI subscriptions risk your data sovereignty and cost more over time. See why law firms, medical practices, and tribal nations choose local AI.">
   <meta name="twitter:image" content="https://islandmountain.io/images/hero-mountain.png">
+
+  <!-- FAQPage Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How do I know if my organization actually needs local AI instead of cloud AI?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Ask three questions: Does your organization process data that cannot be sent to a third-party API? Is your team spending more than $1,500 per month on cloud AI subscriptions? Is your sector subject to regulations that restrict data processing on shared infrastructure such as HIPAA, ITAR, CJIS, or tribal data sovereignty? If any answer is yes, local hardware is worth evaluating. If all three are no, cloud AI is probably the better fit."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the real risk of using cloud AI with sensitive client data?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "When you send a prompt to a cloud AI service, your data leaves your network and is processed on shared infrastructure controlled by the provider. Your data may be logged, stored, or used for model training. A data breach at the provider exposes your data. HIPAA may classify the transmission as a reportable disclosure under 45 CFR 164.402. Attorney-client privilege can be challenged if client data is processed by a third party under ABA Model Rule 1.6. Local hardware eliminates the transmission entirely."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is local AI actually practical for a small law firm or medical practice with limited IT staff?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, with honest caveats. The system arrives pre-configured with models installed, OpenWebUI running, and 72 hours of burn-in testing completed. Setup means racking the server, connecting power (208V/30A circuit), plugging in the network cable, and opening a browser. Staff use it like ChatGPT. Ongoing maintenance includes OS security updates and occasional model updates through a graphical interface. 30 days of setup support are included, and ongoing support retainers are available."
+        }
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
 
@@ -48,6 +82,7 @@
         <li><a href="products.html">Products</a></li>
         <li><a href="technology.html">Technology</a></li>
         <li><a href="pricing.html">Pricing</a></li>
+        <li><a href="faq.html">FAQ</a></li>
         <li><a href="contact.html" class="nav-cta">Request Quote</a></li>
       </ul>
       <button class="hamburger" aria-label="Menu">
@@ -63,6 +98,7 @@
     <a href="products.html">Products</a>
     <a href="technology.html">Technology</a>
     <a href="pricing.html">Pricing</a>
+    <a href="faq.html">FAQ</a>
     <a href="contact.html" class="nav-cta">Request Quote</a>
   </div>
 
@@ -254,6 +290,33 @@
     </div>
   </section>
 
+  <!-- Why Local AI FAQ Section -->
+  <section class="section section-dark">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-badge">Decision Questions</span>
+        <h2>Is Local AI Right for You?</h2>
+      </div>
+      <div class="risk-grid fade-in">
+        <div class="risk-card">
+          <h4><i class="ri-question-line"></i> How do I know if my organization actually needs local AI?</h4>
+          <p>Ask three questions: Does your organization process data that cannot be sent to a third-party API? Is your team spending more than $1,500/month on cloud AI? Is your sector subject to data processing regulations (HIPAA, ITAR, CJIS, tribal sovereignty)? If any answer is yes, local hardware is worth evaluating. If all three are no, cloud AI is probably the better fit.</p>
+        </div>
+        <div class="risk-card">
+          <h4><i class="ri-error-warning-line"></i> What is the real risk of using cloud AI with sensitive data?</h4>
+          <p>Your data leaves your network and is processed on shared infrastructure. It may be logged, stored, or used for model training. A provider breach exposes your data. HIPAA may classify the transmission as a reportable disclosure. Attorney-client privilege can be challenged. These are structural consequences of the cloud model. Local hardware eliminates the transmission entirely.</p>
+        </div>
+        <div class="risk-card">
+          <h4><i class="ri-stethoscope-line"></i> Is local AI practical for a small firm with limited IT staff?</h4>
+          <p>Yes, with honest caveats. The system arrives pre-configured and ready to run. Your IT person needs to rack it, connect power and network, and open a browser. We include 30 days of setup support. Ongoing maintenance is manageable -- OS updates, occasional model updates through a graphical interface. If you have even one technical staff member or a part-time IT contractor, you can manage it.</p>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:32px;">
+        <a href="faq.html" class="btn btn-secondary">See All FAQs</a>
+      </div>
+    </div>
+  </section>
+
   <!-- What We're NOT -->
   <section class="section section-darker">
     <div class="container">
@@ -325,6 +388,7 @@
             <li><a href="products.html">Products</a></li>
             <li><a href="technology.html">Technology</a></li>
             <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="faq.html">FAQ</a></li>
           </ul>
         </div>
         <div>
