@@ -192,6 +192,40 @@
     ]
   }
   </script>
+
+  <!-- FAQPage Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Can I upgrade from the Starter tier to the Performance tier later?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Island Mountain offers a GPU upgrade path. Your existing A100 GPUs are removed, credited at current secondary market value, and replaced with H100 GPUs. This is a physical hardware swap, not a software update. The chassis, CPU, RAM, and storage remain the same. Upgrade pricing depends on the market price of the replacement GPUs minus your trade-in credit. Turnaround is typically 2-4 weeks from order."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the largest AI model I can run on the Starter tier?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The Starter tier with 2x A100 80GB GPUs and 160GB total VRAM can run any model that fits within 160GB at FP16 precision. This includes all 70B-parameter models like DeepSeek R1 70B and Llama 3.1 70B, plus mixture-of-experts models like Mixtral 8x22B. It cannot run DeepSeek V4-Flash (284B parameters, requires 282GB VRAM) at full quality. The Performance tier has the same VRAM ceiling but processes models 2-3x faster."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Are the GPUs in Island Mountain systems new or used?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The Starter tier uses verified refurbished NVIDIA A100 80GB PCIe GPUs and the Performance tier uses refurbished H100 80GB PCIe GPUs, all sourced from enterprise resellers with documented provenance. Using verified refurbished datacenter GPUs keeps pricing at $60,000-$70,000 instead of $150,000+. Every GPU undergoes individual testing before assembly and then 72 hours of continuous burn-in testing in the completed system."
+        }
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
 
@@ -213,6 +247,7 @@
         <li><a href="products.html" class="active">Products</a></li>
         <li><a href="technology.html">Technology</a></li>
         <li><a href="pricing.html">Pricing</a></li>
+        <li><a href="faq.html">FAQ</a></li>
         <li><a href="contact.html" class="nav-cta">Request Quote</a></li>
       </ul>
       <button class="hamburger" aria-label="Menu">
@@ -228,6 +263,7 @@
     <a href="products.html">Products</a>
     <a href="technology.html">Technology</a>
     <a href="pricing.html">Pricing</a>
+    <a href="faq.html">FAQ</a>
     <a href="contact.html" class="nav-cta">Request Quote</a>
   </div>
 
@@ -394,6 +430,33 @@
     </div>
   </section>
 
+  <!-- Product FAQ Section -->
+  <section class="section section-dark">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-badge">Common Questions</span>
+        <h2>Product Questions</h2>
+      </div>
+      <div class="risk-grid fade-in">
+        <div class="risk-card">
+          <h4><i class="ri-arrow-up-circle-line"></i> Can I upgrade from Starter to Performance later?</h4>
+          <p>Yes. Your existing A100 GPUs are credited at current secondary market value and replaced with H100 GPUs. This is a physical hardware swap, not a software update. The chassis, CPU, RAM, and storage remain the same. Upgrade pricing depends on the replacement GPU market price minus your trade-in credit. Turnaround is typically 2-4 weeks from order.</p>
+        </div>
+        <div class="risk-card">
+          <h4><i class="ri-cpu-line"></i> What is the largest model I can run on the Starter tier?</h4>
+          <p>The Starter tier (160GB total VRAM) runs any model that fits within 160GB at FP16 precision, including all 70B-parameter models and Mixtral 8x22B. It cannot run DeepSeek V4-Flash (284B parameters, requires 282GB VRAM) at full quality. The Performance tier has the same VRAM ceiling but processes models 2-3x faster.</p>
+        </div>
+        <div class="risk-card">
+          <h4><i class="ri-shield-check-line"></i> Are the GPUs new or used?</h4>
+          <p>Starter and Performance tiers use verified refurbished datacenter GPUs sourced from enterprise resellers with documented provenance. This keeps pricing at $60,000-$70,000 instead of $150,000+. Every GPU is individually tested before assembly and then undergoes 72 hours of continuous burn-in testing. GPUs showing any instability are rejected.</p>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:32px;">
+        <a href="faq.html" class="btn btn-secondary">See All FAQs</a>
+      </div>
+    </div>
+  </section>
+
   <!-- CTA -->
   <section class="section section-darker" style="text-align:center;">
     <div class="container fade-in">
@@ -421,6 +484,7 @@
             <li><a href="products.html">Products</a></li>
             <li><a href="technology.html">Technology</a></li>
             <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="faq.html">FAQ</a></li>
           </ul>
         </div>
         <div>
