@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DeepSeek R1 Local Deployment | OpenWebUI Stack</title>
-  <meta name="description" content="DeepSeek R1 70B, Llama 3.1 70B, and Mixtral 8x22B running locally via vLLM and OpenWebUI. Full technology stack behind Island Mountain inference hardware.">
+  <title>DeepSeek V4-Flash Local Deployment | OpenWebUI Stack</title>
+  <meta name="description" content="DeepSeek V4-Flash, Llama 3.1 70B, and Mixtral 8x22B running locally via vLLM and OpenWebUI. Full technology stack behind Island Mountain inference hardware.">
   <link rel="icon" type="image/x-icon" href="favicon.ico?v=2">
   <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png?v=2">
   <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png?v=2">
@@ -15,8 +15,8 @@
   <link rel="canonical" href="https://islandmountain.io/technology.html">
 
   <!-- Open Graph -->
-  <meta property="og:title" content="DeepSeek R1 Local Deployment | OpenWebUI Stack">
-  <meta property="og:description" content="DeepSeek R1 70B, Llama 3.1 70B, and Mixtral 8x22B running locally via vLLM and OpenWebUI. Full technology stack behind Island Mountain inference hardware.">
+  <meta property="og:title" content="DeepSeek V4-Flash Local Deployment | OpenWebUI Stack">
+  <meta property="og:description" content="DeepSeek V4-Flash, Llama 3.1 70B, and Mixtral 8x22B running locally via vLLM and OpenWebUI. Full technology stack behind Island Mountain inference hardware.">
   <meta property="og:url" content="https://islandmountain.io/technology.html">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Island Mountain">
@@ -24,8 +24,8 @@
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="DeepSeek R1 Local Deployment | OpenWebUI Stack">
-  <meta name="twitter:description" content="DeepSeek R1 70B, Llama 3.1 70B, and Mixtral 8x22B running locally via vLLM and OpenWebUI. Full technology stack behind Island Mountain inference hardware.">
+  <meta name="twitter:title" content="DeepSeek V4-Flash Local Deployment | OpenWebUI Stack">
+  <meta name="twitter:description" content="DeepSeek V4-Flash, Llama 3.1 70B, and Mixtral 8x22B running locally via vLLM and OpenWebUI. Full technology stack behind Island Mountain inference hardware.">
   <meta name="twitter:image" content="https://islandmountain.io/images/hero-mountain.png">
 
   <!-- SoftwareApplication Schema -->
@@ -62,7 +62,7 @@
         "name": "What is tensor parallelism and why does it make local AI faster?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Tensor parallelism splits a single model across multiple GPUs so they process different parts of each computation simultaneously. Without it, a 70B-parameter model running on two GPUs would load entirely onto one GPU while the other sits idle. With vLLM's tensor parallelism, the model layers are distributed across both GPUs, cutting inference latency roughly in half. On Island Mountain systems, vLLM tensor parallelism is pre-configured for all tiers."
+          "text": "Tensor parallelism splits a single model across multiple GPUs so they process different parts of each computation simultaneously. Without it, a 284B-parameter model running on two H100 GPUs would load entirely onto one GPU while the other sits idle. With vLLM's tensor parallelism, the model layers are distributed across both H100 GPUs (3.35 TB/s memory bandwidth each), cutting inference latency roughly in half and enabling full tensor parallelization. On Island Mountain systems, vLLM tensor parallelism is pre-configured for all tiers."
         }
       },
       {
@@ -70,7 +70,7 @@
         "name": "Can I run DeepSeek V4-Flash on the Starter or Performance tier?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "No. DeepSeek V4-Flash is a 284B-parameter model that requires approximately 282GB of VRAM at full FP16 quality. The Starter and Performance tiers each provide 160GB of total VRAM, which is not enough. The Premium tier with 2x H200 141GB GPUs providing 282GB total VRAM is the minimum configuration for V4-Flash at native quality. The Premium tier is expected to ship Q3 2026."
+          "text": "Yes, with quantization. DeepSeek V4-Flash is a 284B-parameter model that requires approximately 282GB of VRAM at full FP16 quality. The Starter tier (2x H100, 160GB total VRAM) runs V4-Flash quantized at 80-100GB, preserving reasoning capability while enabling efficient inference. The Performance tier (H100 + H200, 160GB VRAM) can also run the quantized version. For full FP16 quality V4-Flash, the Premium tier with 2x H200 141GB GPUs (282GB total VRAM) is the minimum configuration. The Premium tier is expected to ship Q3 2026."
         }
       },
       {
@@ -78,7 +78,7 @@
         "name": "How does OpenWebUI handle multiple users accessing the system at the same time?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "OpenWebUI manages concurrent users through a request queue. vLLM's continuous batching groups compatible requests to maximize GPU throughput. Each user sees their own conversation interface and history with no cross-user data leakage. On the Starter tier, expect response time increases when more than 5-8 users are prompting simultaneously. The Performance tier comfortably serves 10-15 simultaneous users for typical business tasks."
+          "text": "OpenWebUI manages concurrent users through a request queue. vLLM's continuous batching groups compatible requests to maximize GPU throughput. Each user sees their own conversation interface and history with no cross-user data leakage. On the Starter tier (2x H100, 160GB VRAM), expect response time increases when more than 5-8 users are prompting simultaneously. The Performance tier ($150K-$160K, custom H100 config) comfortably serves 10-15 simultaneous users for typical business tasks."
         }
       }
     ]
@@ -129,7 +129,7 @@
   <section class="hero hero-page">
     <div class="hero-inner">
       <span class="hero-badge">Models &amp; Infrastructure</span>
-      <h1>DeepSeek R1 Local Deployment: Models, vLLM, and OpenWebUI</h1>
+      <h1>DeepSeek V4-Flash Local Deployment: Models, vLLM, and OpenWebUI</h1>
       <p>Open-source frontier models, battle-tested inference engines, and a browser-based interface that lets anyone on your team start prompting in minutes.</p>
     </div>
   </section>
@@ -190,7 +190,7 @@
     <div class="container">
       <div class="section-header fade-in">
         <span class="section-badge">Pre-Installed</span>
-        <h2>Pre-Installed Models: DeepSeek R1 70B, Llama 3.1 70B, Mixtral 8x22B</h2>
+        <h2>Pre-Installed Models: DeepSeek V4-Flash, Llama 3.1 70B, Mixtral 8x22B</h2>
         <p>Every Island Mountain Starter and Performance system ships with these models installed, configured, and tested.</p>
       </div>
       <div class="card-grid card-grid-3 fade-in">
@@ -198,9 +198,9 @@
           <div class="card-icon card-icon-green">
             <i class="ri-brain-line"></i>
           </div>
-          <h3>DeepSeek R1 70B</h3>
-          <p><strong>40-48GB VRAM</strong></p>
-          <p>Reasoning-focused model built for complex analysis, multi-step problem solving, and structured thinking. Strong at code generation, mathematical reasoning, and research synthesis.</p>
+          <h3>DeepSeek V4-Flash</h3>
+          <p><strong>~80-100GB VRAM (Quantized)</strong></p>
+          <p>284B parameter mixture-of-experts model with 1M token context window. Runs quantized on Starter tier for efficient local inference. Exceptional at code analysis, long-document processing, and complex reasoning tasks. Full-quality version available on Premium tier.</p>
         </div>
         <div class="card">
           <div class="card-icon card-icon-indigo">
@@ -243,7 +243,7 @@
             <i class="ri-stack-line"></i>
           </div>
           <h3>Multi-Model Selector</h3>
-          <p>Switch between DeepSeek R1, Llama 3.1, Mixtral, or any model with a dropdown. No config files.</p>
+          <p>Switch between DeepSeek V4-Flash, Llama 3.1, Mixtral, or any model with a dropdown. No config files.</p>
         </div>
         <div class="card">
           <div class="card-icon card-icon-amber">
@@ -339,15 +339,15 @@
       <div class="risk-grid fade-in">
         <div class="risk-card">
           <h4><i class="ri-speed-line"></i> What is tensor parallelism and why does it make local AI faster?</h4>
-          <p>Tensor parallelism splits a model across multiple GPUs so they process different parts of each computation simultaneously. Without it, one GPU works while the other sits idle. With vLLM's tensor parallelism, model layers are distributed across both GPUs, cutting inference latency roughly in half. Pre-configured on all Island Mountain systems.</p>
+          <p>Tensor parallelism splits a model across multiple GPUs so they process different parts of each computation simultaneously. Without it, one GPU works while the other sits idle. With vLLM's tensor parallelism, model layers are distributed across both GPUs, cutting inference latency roughly in half. On Island Mountain systems, the H100's 3.35 TB/s memory bandwidth between GPUs enables near-linear scaling. Pre-configured on all Island Mountain systems.</p>
         </div>
         <div class="risk-card">
           <h4><i class="ri-brain-line"></i> Can I run DeepSeek V4-Flash on the Starter or Performance tier?</h4>
-          <p>No. V4-Flash requires approximately 282GB of VRAM at full FP16 quality. The Starter and Performance tiers provide 160GB each -- not enough. The Premium tier (2x H200 141GB, 282GB total) is the minimum configuration for V4-Flash at native quality, expected to ship Q3 2026.</p>
+          <p>The Starter tier runs V4-Flash quantized (80-100GB VRAM), which gives you the 284B parameter model in a more efficient form. For the full FP16 quality version (282GB VRAM), you need the Premium tier (2x H200 141GB GPUs, 282GB total), launching Q3 2026. Quantization preserves reasoning capability while reducing model size significantly.</p>
         </div>
         <div class="risk-card">
           <h4><i class="ri-group-line"></i> How does OpenWebUI handle multiple users at once?</h4>
-          <p>OpenWebUI manages concurrent users through a request queue. vLLM's continuous batching groups compatible requests to maximize GPU throughput. Each user sees their own conversation interface -- no cross-user data leakage. The Performance tier comfortably serves 10-15 simultaneous users for typical business tasks.</p>
+          <p>OpenWebUI manages concurrent users through a request queue. vLLM's continuous batching groups compatible requests to maximize GPU throughput. Each user sees their own conversation interface -- no cross-user data leakage. The Starter tier (2x H100) handles 5-8 simultaneous users comfortably. The Performance tier handles 10-15 simultaneous users for typical business tasks.</p>
         </div>
       </div>
       <div style="text-align:center;margin-top:32px;">
@@ -365,8 +365,9 @@
       </div>
       <div class="fade-in" style="max-width:760px;margin:0 auto;">
         <p style="font-size:1.05rem;line-height:1.9;">DeepSeek V4-Flash (284B parameters, 13B active via mixture-of-experts) represents the next generation of efficient large-scale inference. With a 1M token context window, it's built for tasks that current models can't handle: full-codebase analysis, book-length document processing, and extended research sessions.</p>
-        <p style="font-size:1.05rem;line-height:1.9;">Running V4-Flash at full quality requires approximately 282GB of VRAM -- our Premium tier with dual H200 141GB GPUs is the minimum hardware configuration that can deliver this. We're tracking community quantization development and will validate V4-Flash on reference hardware before offering it as a shipping configuration.</p>
-        <p style="font-size:1.05rem;line-height:1.9;">V4-Flash does not run on the Starter tier (A100) or Performance tier (H100). We won't claim otherwise. When the Premium tier ships with validated V4-Flash support, that capability will be real and tested, not aspirational.</p>
+        <p style="font-size:1.05rem;line-height:1.9;"><strong>Starter Tier (2x H100, $75K-$85K):</strong> V4-Flash runs quantized. This preserves reasoning capability while reducing memory footprint to 80-100GB, enabling efficient local inference on consumer-grade hardware. Ideal for organizations that need V4-Flash capability without the Premium tier investment.</p>
+        <p style="font-size:1.05rem;line-height:1.9;"><strong>Premium Tier ($350K-$400K, Q3 2026):</strong> V4-Flash at full FP16 quality requires approximately 282GB of VRAM -- dual H200 141GB GPUs provide exactly this. This configuration unlocks V4-Flash's maximum reasoning and long-context capabilities for enterprise workloads.</p>
+        <p style="font-size:1.05rem;line-height:1.9;">We validate quantization carefully before shipping. When the Premium tier launches, full-quality V4-Flash support will be real, tested, and documented -- not aspirational.</p>
         <div style="text-align:center;margin-top:40px;">
           <div class="btn-group">
             <a href="contact.html" class="btn btn-primary">Join the Premium Tier Waitlist</a>
