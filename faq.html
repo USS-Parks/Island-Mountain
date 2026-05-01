@@ -792,4 +792,49 @@
           <ul class="footer-links">
             <li><a href="why-island-mountain.html">Why Local AI</a></li>
             <li><a href="contact.html">Contact</a></li>
-            <li><a href="investors.html">Investor
+            <li><a href="investors.html">Investors</a></li>
+            <li><a href="mailto:info@islandmountain.io">info@islandmountain.io</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Island Mountain LLC. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+
+  <!-- FAQ Expand/Collapse -->
+  <script>
+  (function () {
+    'use strict';
+
+    var faqItems = document.querySelectorAll('.faq-item');
+
+    faqItems.forEach(function (item) {
+      var heading = item.querySelector('h3');
+      if (!heading) return;
+
+      heading.addEventListener('click', function () {
+        var isActive = item.classList.contains('active');
+
+        // Close all other items
+        faqItems.forEach(function (other) {
+          if (other !== item) {
+            other.classList.remove('active');
+          }
+        });
+
+        // Toggle clicked item
+        if (isActive) {
+          item.classList.remove('active');
+        } else {
+          item.classList.add('active');
+        }
+      });
+    });
+  })();
+  </script>
+</body>
+</html>
