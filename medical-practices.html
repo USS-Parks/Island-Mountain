@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Local AI for Medical Practices | HIPAA, No BAA Needed</title>
+  <meta name="description" content="HIPAA-simpler local AI for medical practices. PHI stays on your hardware, no BAA required. Clinical note drafting, prior auth letters, and admin AI.">
+  <link rel="icon" type="image/x-icon" href="favicon.ico?v=2">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png?v=2">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png?v=2">
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="canonical" href="https://islandmountain.io/medical-practices.html">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Local AI for Medical Practices | HIPAA, No BAA Needed">
+  <meta property="og:description" content="HIPAA-simpler local AI for medical practices. PHI stays on your hardware, no BAA required. Clinical note drafting, prior auth letters, and admin AI.">
+  <meta property="og:url" content="https://islandmountain.io/medical-practices.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Island Mountain">
+  <meta property="og:image" content="https://islandmountain.io/images/hero-mountain.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Local AI for Medical Practices | HIPAA, No BAA Needed">
+  <meta name="twitter:description" content="HIPAA-simpler local AI for medical practices. PHI stays on your hardware, no BAA required. Clinical note drafting, prior auth letters, and admin AI.">
+  <meta name="twitter:image" content="https://islandmountain.io/images/hero-mountain.png">
+
+  <!-- FAQPage Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Do I need a Business Associate Agreement to use local AI with patient data?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. A BAA is required under HIPAA when you share Protected Health Information with a third-party service provider (a business associate). When you run AI on hardware you own, on your own network, with no data transmitted to any external service, there is no business associate relationship. The data never leaves your infrastructure, so the BAA requirement does not apply. This is the core advantage of local AI for medical practices: it removes the cloud provider from the compliance equation entirely."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is Island Mountain hardware a medical device or clinical decision support tool?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. Island Mountain hardware is general-purpose AI inference infrastructure. It is not a medical device. It is not classified under FDA regulations. It does not provide clinical decision support, diagnostic assistance, or treatment recommendations. It does not integrate with EHR systems. It is the same type of AI capability your staff currently accesses through cloud services like ChatGPT, now running on hardware you physically control. Any use of AI output in clinical contexts requires the same professional judgment and oversight that applies to any other information source."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can non-technical medical staff use the system without IT training?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. The system runs OpenWebUI, a browser-based chat interface. Staff open a web browser on any device connected to your office network, log in with their credentials, and start typing prompts. The interface looks and works like ChatGPT. No command line, no technical configuration, no special software installation. Administrative staff, billing specialists, and clinical support staff who can use a web browser can use the system on day one."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does the cost compare to cloud AI for a 15-provider medical practice?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Cloud AI subscriptions for healthcare-adjacent platforms typically cost $30 to $150 per user per month. For 15 providers plus 10 administrative staff (25 total users), that is $9,000 to $45,000 per year. Over three years, cumulative cloud costs reach $27,000 to $135,000 with ongoing BAA management overhead and breach exposure at every session. An Island Mountain Starter system costs $75,000 to $85,000 one time. After purchase, the only ongoing cost is electricity at approximately $100 to $200 per month. No per-user fees. No per-token charges. No BAA required."
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <!-- Full-page particle canvas -->
+  <canvas id="particles-canvas"></canvas>
+
+  <!-- Hero background photo -->
+  <div class="hero-photo">
+    <img src="images/hero-mountain.png" alt="Island Mountain rising from the ocean at sunset">
+  </div>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="nav-logo">Island Mountain</a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="why-island-mountain.html">Why Local AI</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="technology.html">Technology</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="contact.html" class="nav-cta">Request Quote</a></li>
+      </ul>
+      <button class="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="sidebar-overlay"></div>
+  <div class="mobile-sidebar">
+    <a href="index.html">Home</a>
+    <a href="why-island-mountain.html">Why Local AI</a>
+    <a href="products.html">Products</a>
+    <a href="technology.html">Technology</a>
+    <a href="pricing.html">Pricing</a>
+    <a href="faq.html">FAQ</a>
+    <a href="contact.html" class="nav-cta">Request Quote</a>
+  </div>
+
+  <!-- Hero -->
+  <section class="hero hero-page">
+    <div class="hero-inner">
+      <span class="hero-badge">Local AI for Medical Practices</span>
+      <h1>PHI Stays on Your Hardware. No BAA Required.</h1>
+      <p>Cloud AI services require Business Associate Agreements and create breach exposure every time PHI is transmitted. Local AI hardware eliminates both problems because patient data never leaves your network.</p>
+    </div>
+  </section>
+
+  <!-- The Cloud AI Problem for Medical Practices -->
+  <section class="section section-first">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-badge">The HIPAA Problem</span>
+        <h2>The Cloud AI Problem for Medical Practices</h2>
+        <p>HIPAA was built for a world where data stays within defined boundaries. Cloud AI breaks those boundaries by design.</p>
+      </div>
+      <div class="fade-in" style="max-width:760px;margin:0 auto;">
+        <p style="font-size:1.05rem;line-height:1.9;">When a provider uses a cloud AI service to draft a clinical note, summarize a patient encounter, or write a prior authorization letter, the Protected Health Information in that prompt leaves the practice's network. It is transmitted to a cloud data center, processed on shared infrastructure, and returned over the public internet. Under HIPAA, this transmission makes the cloud AI provider a business associate. A Business Associate Agreement (BAA) is required. The provider's data handling practices become your compliance responsibility.</p>
+        <p style="font-size:1.05rem;line-height:1.9;">Some cloud AI providers now offer "HIPAA-eligible" tiers with BAA support. This addresses the contractual requirement -- but it does not eliminate the structural risk. PHI is still transmitted to, and processed on, infrastructure you do not control. A breach at the cloud provider is a breach of your patient data. Under the HIPAA Breach Notification Rule (45 CFR 164.402), that disclosure may be reportable.</p>
+        <p style="font-size:1.05rem;line-height:1.9;">The distinction matters: "HIPAA-eligible" means a cloud provider has agreed to certain contractual obligations. "HIPAA-simpler" means the data never left your building in the first place, and the entire third-party compliance layer does not apply.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- What Local AI Actually Means -->
+  <section class="section section-dark">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-badge">How It Works</span>
+        <h2>What Local AI Actually Means for Your Practice</h2>
+        <p>PHI stays within your physical infrastructure. The compliance path gets shorter.</p>
+      </div>
+      <div class="card-grid card-grid-3 fade-in">
+        <div class="card">
+          <div class="card-icon card-icon-green">
+            <i class="ri-shield-check-line"></i>
+          </div>
+          <h3>No PHI Transmission</h3>
+          <p>AI models run on a physical server in your facility. Patient data travels from the workstation to the server over your internal network. No internet connection required for inference. No data packets leave your building.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon card-icon-indigo">
+            <i class="ri-file-shield-2-line"></i>
+          </div>
+          <h3>No BAA Required</h3>
+          <p>When PHI never leaves your network, there is no third-party business associate. The BAA requirement, the vendor security assessment, and the ongoing compliance monitoring of the cloud provider -- all of it goes away.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon card-icon-purple">
+            <i class="ri-lock-line"></i>
+          </div>
+          <h3>Your Security Controls</h3>
+          <p>The server lives behind your firewall, under your physical access controls, governed by your security policies. You control who accesses it, how data is handled, and what stays logged. Your compliance posture. Your rules.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Medical AI Workflows -->
+  <section class="section section-darker">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-badge">Workflows</span>
+        <h2>Workflows Island Mountain Hardware Supports</h2>
+        <p>The same AI capabilities your staff wants from cloud services, running on hardware that keeps PHI under your control.</p>
+      </div>
+      <div class="card-grid card-grid-3 fade-in">
+        <div class="card">
+          <div class="card-icon card-icon-green">
+            <i class="ri-file-text-line"></i>
+          </div>
+          <h3>Clinical Note Drafting</h3>
+          <p>Generate first drafts of SOAP notes, progress notes, and visit summaries from dictated or typed encounter descriptions. Providers review and finalize. The AI handles the documentation burden -- the provider retains clinical judgment.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon card-icon-indigo">
+            <i class="ri-mail-send-line"></i>
+          </div>
+          <h3>Prior Authorization Letters</h3>
+          <p>Draft prior authorization narratives with clinical justification language. Feed in the procedure, diagnosis, and clinical context -- the AI produces a structured letter that addresses common payer denial patterns.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon card-icon-purple">
+            <i class="ri-hearts-line"></i>
+          </div>
+          <h3>Patient Education Materials</h3>
+          <p>Generate plain-language patient education documents tailored to specific conditions, procedures, or medication regimens. Produce materials at appropriate reading levels for your patient population.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon card-icon-amber">
+            <i class="ri-barcode-box-line"></i>
+          </div>
+          <h3>Coding Documentation Review</h3>
+          <p>Review encounter documentation against coding requirements. Identify documentation gaps that could affect code selection or audit defensibility. Flag areas where additional clinical detail would support the billed level of service.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon card-icon-green">
+            <i class="ri-customer-service-2-line"></i>
+          </div>
+          <h3>Administrative Correspondence</h3>
+          <p>Draft referral letters, insurance appeal letters, patient recall correspondence, and internal communications. Consistent formatting and professional tone across all practice communications.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon card-icon-indigo">
+            <i class="ri-translate-2"></i>
+          </div>
+          <h3>Multilingual Support</h3>
+          <p>Mixtral 8x22B provides strong multilingual capability for practices serving diverse patient populations. Draft patient communications, translate educational materials, and produce discharge instructions in multiple languages.</p>
+        </div>
+      </div>
+
+      <!-- Critical Disclaimer -->
+      <div class="comparison-note fade-in" style="margin-top:32px;border-color:rgba(239,68,68,0.3);background:rgba(239,68,68,0.04);">
+        <i class="ri-error-warning-line" style="color:var(--red-accent);"></i>
+        <strong style="color:var(--text-light);">Island Mountain hardware is not a medical device.</strong> It does not provide clinical decision support. It does not integrate with EHR systems. It is not FDA-classified or regulated. It is AI infrastructure -- the same kind your staff currently routes through cloud services, now kept on your own hardware. Any clinical use of AI-generated content requires professional review and judgment.
+      </div>
+    </div>
+  </section>
+
+  <!-- Staff Training Reality -->
+  <section class="section section-dark">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-badge">Usability</span>
+        <h2>Staff Training: Same Day, Same Browser</h2>
+      </div>
+      <div class="fade-in" style="max-width:760px;margin:0 auto;">
+        <p style="font-size:1.05rem;line-height:1.9;">OpenWebUI is a browser-based chat interface. It looks and operates like ChatGPT. Your staff open Chrome or Firefox on any device connected to your office network, log in with their credentials, and start typing. There is no software to install on workstations, no command-line interface, no technical configuration.</p>
+        <p style="font-size:1.05rem;line-height:1.9;">Administrative staff who draft correspondence, billing specialists who write appeal letters, and clinical support staff who prepare patient education materials can use the system immediately. The learning curve is the same as any chat-based AI tool they may have already tried at home.</p>
+        <p style="font-size:1.05rem;line-height:1.9;">OpenWebUI includes user management and access controls. You can create accounts for each staff member, track usage, and control which models are available to which users. Admin controls are built in.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Comparison Table -->
+  <section class="section section-darker">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-badge">Cost Comparison</span>
+        <h2>Cloud AI vs. Island Mountain for a 15-Provider Practice</h2>
+        <p>25 total users: 15 providers plus 10 administrative and billing staff.</p>
+      </div>
+      <div class="table-wrapper fade-in">
+        <table>
+          <thead>
+            <tr>
+              <th></th>
+              <th>Cloud AI (25 Users)</th>
+              <th>Island Mountain Starter</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Year 1 Cost</strong></td>
+              <td>$9,000 - $45,000</td>
+              <td class="highlight-cell">$75,000 - $85,000 (one time)</td>
+            </tr>
+            <tr>
+              <td><strong>Year 3 Cumulative</strong></td>
+              <td>$27,000 - $135,000</td>
+              <td class="highlight-cell">Electricity only (~$1,200 - $2,400/yr)</td>
+            </tr>
+            <tr>
+              <td><strong>PHI Location</strong></td>
+              <td>Cloud provider data centers</td>
+              <td class="highlight-cell">Your server room. Your control.</td>
+            </tr>
+            <tr>
+              <td><strong>BAA Required</strong></td>
+              <td>Yes -- mandatory for HIPAA</td>
+              <td class="highlight-cell">No. Data never leaves your network.</td>
+            </tr>
+            <tr>
+              <td><strong>Breach Exposure</strong></td>
+              <td>Every session transmits PHI externally</td>
+              <td class="highlight-cell">Zero external transmission.</td>
+            </tr>
+            <tr>
+              <td><strong>Per-User Fees</strong></td>
+              <td>$30 - $150 per user per month</td>
+              <td class="highlight-cell">None. Unlimited users.</td>
+            </tr>
+            <tr>
+              <td><strong>EHR Integration</strong></td>
+              <td>Some platforms offer integrations</td>
+              <td>Not included. Standalone AI.</td>
+            </tr>
+            <tr>
+              <td><strong>Vendor Compliance Monitoring</strong></td>
+              <td>Ongoing -- your responsibility</td>
+              <td class="highlight-cell">Not applicable. No vendor.</td>
+            </tr>
+            <tr>
+              <td><strong>Staff Training</strong></td>
+              <td>Platform-specific onboarding</td>
+              <td class="highlight-cell">Browser-based. Same day.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="comparison-note fade-in" style="margin-top:20px;">
+        <i class="ri-information-line"></i>
+        Cloud estimates based on healthcare AI platforms charging $30-$150/user/month. Island Mountain electricity estimate assumes 1.5-2.5 kW average draw at $0.12/kWh. For higher concurrent usage (15+ simultaneous users), the Performance tier ($150K-$160K) may be more appropriate.
+      </div>
+    </div>
+  </section>
+
+  <!-- What You Do Not Get -->
+  <section class="section section-dark">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-badge">Honest Limitations</span>
+        <h2>What You Do Not Get</h2>
+        <p>Clarity on boundaries prevents bad purchasing decisions.</p>
+      </div>
+      <div class="risk-grid fade-in">
+        <div class="risk-card">
+          <h4><i class="ri-hospital-line"></i> Not an EHR Integration</h4>
+          <p>Island Mountain hardware does not connect to Epic, Cerner, Athenahealth, or any EHR system. The AI runs through OpenWebUI -- a standalone browser-based interface. Moving data between your EHR and the AI is a manual copy-paste process.</p>
+        </div>
+        <div class="risk-card">
+          <h4><i class="ri-stethoscope-line"></i> Not a Medical Device</h4>
+          <p>This hardware is not FDA-classified, not a clinical decision support tool, and not a diagnostic system. It generates text based on what you provide. It does not access medical databases, imaging systems, or lab results. Clinical judgment remains entirely with the provider.</p>
+        </div>
+        <div class="risk-card">
+          <h4><i class="ri-bar-chart-line"></i> No Clinical Analytics</h4>
+          <p>The system does not perform population health analytics, quality measure reporting, or clinical outcome tracking. It is a text generation tool, not a data analytics platform. It writes what you ask it to write -- it does not analyze your practice data.</p>
+        </div>
+        <div class="risk-card">
+          <h4><i class="ri-settings-3-line"></i> You Own the Maintenance</h4>
+          <p>After the 30-day included support period, your practice or IT contractor handles OS updates, model updates, and general system maintenance. This is standard Linux server administration. Most managed service providers who support medical offices can handle it.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Power Requirements -->
+  <section class="section section-darker">
+    <div class="container">
+      <div class="power-notice fade-in">
+        <i class="ri-flashlight-line"></i>
+        <p><strong>Power &amp; Installation:</strong> All Island Mountain systems require a dedicated 208V/30A power circuit (NEMA L6-30R). Most medical offices with an existing server closet or IT room have this infrastructure or can add it for $500-$2,000 through a licensed electrician. The system fits in a standard 4U rack space. Average power draw under typical inference loads is 1.5-2.5 kW. Temperature requirements are standard office HVAC (64-80&deg;F).</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section section-dark">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-badge">Medical Practice Questions</span>
+        <h2>Questions Medical Practices Ask</h2>
+      </div>
+      <div class="risk-grid fade-in">
+        <div class="risk-card">
+          <h4><i class="ri-file-shield-2-line"></i> Do I need a BAA to use local AI with patient data?</h4>
+          <p>No. A BAA is required when you share PHI with a third-party business associate. When AI runs on hardware you own, on your network, with no external data transmission, there is no business associate relationship. The BAA requirement does not apply. This is the structural advantage of local AI: it removes the cloud provider from your compliance equation entirely.</p>
+        </div>
+        <div class="risk-card">
+          <h4><i class="ri-error-warning-line"></i> Is this a medical device or clinical decision support tool?</h4>
+          <p>No. Island Mountain hardware is general-purpose AI infrastructure. It is not FDA-classified, does not provide diagnostic support, and does not integrate with EHR systems. It is the same type of AI your staff uses through cloud services, running on hardware you control. All clinical use requires professional review and judgment.</p>
+        </div>
+        <div class="risk-card">
+          <h4><i class="ri-group-line"></i> Can non-technical staff use it without IT training?</h4>
+          <p>Yes. OpenWebUI is a browser-based interface that works like ChatGPT. Staff open a web browser, log in, and start typing. No software installation, no command line, no technical configuration. Administrative staff, billing specialists, and clinical support staff can use the system on day one.</p>
+        </div>
+        <div class="risk-card">
+          <h4><i class="ri-coin-line"></i> How does cost compare for a 15-provider practice?</h4>
+          <p>Cloud AI for 25 users (15 providers + 10 admin) costs $9,000-$45,000 per year. Over three years: $27,000-$135,000 cumulative with ongoing BAA overhead. An Island Mountain Starter is $75,000-$85,000 one time with only electricity after that. No per-user fees. No BAA management. Cost parity typically occurs between year two and year three.</p>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:32px;">
+        <a href="faq.html" class="btn btn-secondary">See All FAQs</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Compliance Disclaimer -->
+  <section class="section section-darker">
+    <div class="container">
+      <div class="fade-in" style="max-width:760px;margin:0 auto;padding:24px;border:1px solid rgba(245,158,11,0.2);border-radius:var(--border-radius);background:rgba(245,158,11,0.04);">
+        <p style="font-size:0.9rem;line-height:1.8;margin:0;color:var(--text-muted);">Island Mountain LLC is a hardware company, not a compliance authority. References to HIPAA, the Breach Notification Rule, or Business Associate Agreement requirements on this page reflect factual descriptions of data handling mechanics -- not legal or regulatory advice. Consult qualified counsel or your compliance officer for determinations specific to your practice.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section section-dark" style="text-align:center;">
+    <div class="container fade-in">
+      <h2>Ready to Keep PHI Where It Belongs?</h2>
+      <p style="max-width:600px;margin:16px auto 32px;">One conversation. No sales pitch. Tell us about your practice's AI needs and we will spec the right system.</p>
+      <div class="btn-group">
+        <a href="contact.html" class="btn btn-primary">Request a Quote</a>
+        <a href="products.html" class="btn btn-secondary">See Full Specs</a>
+      </div>
+      <p style="margin-top:24px;font-size:0.9rem;color:var(--text-muted);">See how other regulated sectors use local AI: <a href="law-firms.html">Law Firms</a> &middot; <a href="tribal-nations.html">Tribal Nations</a></p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-logo">Island Mountain</a>
+          <p>Local AI infrastructure for data-sovereign organizations. Colorado.</p>
+        </div>
+        <div>
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="technology.html">Technology</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <ul class="footer-links">
+            <li><a href="why-island-mountain.html">Why Local AI</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="investors.html">Investors</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <ul class="footer-links">
+            <li><a href="mailto:info@islandmountain.io">info@islandmountain.io</a></li>
+            <li>Island Mountain LLC</li>
+            <li>Est. 2026</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Island Mountain LLC. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

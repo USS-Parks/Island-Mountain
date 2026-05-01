@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Local AI for Defense Contractors | CUI &amp; ITAR Ready</title>
+  <meta name="description" content="Local AI hardware for defense contractors. CUI and ITAR-controlled data stays on your infrastructure. Air-gap capable. CMMC-compatible network architecture.">
+  <link rel="icon" type="image/x-icon" href="favicon.ico?v=2">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png?v=2">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png?v=2">
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="canonical" href="https://islandmountain.io/defense-contractors.html">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Local AI for Defense Contractors | CUI &amp; ITAR Ready">
+  <meta property="og:description" content="Local AI hardware for defense contractors. CUI and ITAR-controlled data stays on your infrastructure. Air-gap capable. CMMC-compatible network architecture.">
+  <meta property="og:url" content="https://islandmountain.io/defense-contractors.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Island Mountain">
+  <meta property="og:image" content="https://islandmountain.io/images/hero-mountain.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Local AI for Defense Contractors | CUI &amp; ITAR Ready">
+  <meta name="twitter:description" content="Local AI hardware for defense contractors. CUI and ITAR-controlled data stays on your infrastructure. Air-gap capable. CMMC-compatible network architecture.">
+  <meta name="twitter:image" content="https://islandmountain.io/images/hero-mountain.png">
+
+  <!-- FAQPage Schema with ITAR entity -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "about": {
+      "@type": "Thing",
+      "name": "ITAR Compliance",
+      "sameAs": "https://www.pmddtc.state.gov/ddtc_public"
+    },
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Can I process CUI through a commercial cloud AI API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Processing Controlled Unclassified Information through a commercial cloud AI API is generally incompatible with CUI handling requirements under DFARS 252.204-7012. CUI must be processed in environments that meet NIST SP 800-171 security requirements. Most commercial AI APIs do not operate on FedRAMP High authorized infrastructure, which means they do not meet the minimum security baseline for CUI processing. Some cloud providers offer GovCloud or FedRAMP authorized tiers, but commercial AI API endpoints typically do not carry these authorizations. Local AI hardware, properly network-segregated and physically secured within your facility, enables you to process CUI-adjacent documents and analysis tasks under your own security controls without introducing a non-compliant cloud processing path."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does processing ITAR-controlled technical data through cloud AI constitute an unauthorized export?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ITAR restricts the export of defense articles and technical data to foreign persons and entities. If a cloud AI provider's infrastructure is accessible to foreign nationals or located outside the United States, processing ITAR-controlled technical data through that infrastructure may constitute an unauthorized export under 22 CFR 120-130. This is not a theoretical risk; ITAR enforcement actions have addressed unauthorized data transfers through commercial technology services. Local AI hardware located in your facility, under your physical access controls, with network segregation preventing external data transmission, eliminates this export control concern because the data never leaves your controlled environment. This is a complex regulatory area and you should consult your export compliance officer or counsel for fact-specific guidance."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does Island Mountain hardware support CMMC compliance?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Island Mountain hardware is commercial off-the-shelf AI infrastructure. It does not carry CMMC certification and is not a compliance product. However, local AI hardware that is properly network-segregated and physically secured within your facility supports several CMMC Level 2 and Level 3 practices. Access control practices benefit from hardware under your physical and logical access controls. Media protection practices are simplified when AI processing data stays on hardware you own. System and communications protection practices are supported by air-gap capability and network segregation. The system runs on Linux, which supports the audit and accountability logging practices required by CMMC. Your CMMC assessor evaluates your overall security posture, not individual components. Local AI hardware gives you a cleaner compliance story than routing CUI-adjacent data through commercial cloud APIs."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can the system operate in an air-gapped or restricted network environment?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. After initial configuration, model installation, and testing, Island Mountain hardware can operate entirely disconnected from the internet. The AI models are stored locally on the system's NVMe drives. The inference engine and user interface run locally. No external network connectivity is required for day-to-day AI operations. For environments requiring air-gapped or restricted-network operation, the system can be configured during the 30-day setup support period to operate without any external connections. Model updates in air-gapped environments require a manual transfer process using approved removable media."
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <!-- Full-page particle canvas -->
+  <canvas id="particles-canvas"></canvas>
+
+  <!-- Hero background photo -->
+  <div class="hero-photo">
+    <img src="images/hero-mountain.png" alt="Island Mountain rising from the ocean at sunset">
+  </div>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="nav-logo">Island Mountain</a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="why-island-mountain.html">Why Local AI</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="technology.html">Technology</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="contact.html" class="nav-cta">Request Quote</a></li>
+      </ul>
+      <button class="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="sidebar-overlay"></div>
+  <div class="mobile-sidebar">
+    <a href="index.html">Home</a>
+    <a href="why-island-mountain.html">Why Local AI</a>
+    <a href="products.html">Products</a>
+    <a href="technology.html">Technology</a>
+    <a href="pricing.html">Pricing</a>
+    <a href="faq.html">FAQ</a>
+    <a href="contact.html" class="nav-cta">Request Quote</a>
+  </div>
+
+  <!-- Hero -->
+  <section class="hero hero-page">
+    <div class="hero-inner">
+      <span class="hero-badge">Local AI for Defense Contractors</span>
+      <h1>CUI and ITAR Require Infrastructure You Control</h1>
+      <p>Commercial cloud AI APIs are structurally incompatible with CUI handling requirements and ITAR export controls. Local AI hardware keeps controlled data on servers under your physical security, within your accredited environment, off the internet entirely.</p>
+    </div>
+  </section>
+
+  <!-- The Compliance Problem -->
+  <section class="section section-first">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-badge">The Compliance Problem</span>
+        <h2>The Cloud AI Problem for Defense Contractors</h2>
+        <p>Compliance requirements in defense contracting are not suggestions. They are conditions of your contracts, and violations carry real consequences.</p>
+      </div>
+      <div class="fade-in" style="max-width:760px;margin:0 auto;">
+        <p style="font-size:1.05rem;line-height:1.9;">When a defense contractor uses a commercial cloud AI service to analyze a proposal, draft technical documentation, or review contract language that involves Controlled Unclassified Information, that data is transmitted to infrastructure the contractor does not control. Under DFARS 252.204-7012, CUI must be processed in environments meeting NIST SP 800-171 security requirements. Most commercial AI API endpoints do not operate on FedRAMP High authorized infrastructure and therefore do not meet this baseline.</p>
+        <p style="font-size:1.05rem;line-height:1.9;">The ITAR problem is more acute. ITAR restricts the export of defense articles and technical data to foreign persons and entities. If a cloud AI provider's infrastructure is accessible to foreign nationals -- which is the case for virtually all commercial cloud AI services -- processing ITAR-controlled technical data through that service may constitute an unauthorized export under 22 CFR 120-130. This is an enforcement risk, not a theoretical concern.</p>
+        <p style="font-size:1.05rem;line-height:1.9;">CMMC (Cybersecurity Maturity Model Certification) adds another layer. CMMC Level 2 and Level 3 assessments evaluate your organization's security practices across 110+ controls. Routing CUI-adjacent data through commercial cloud AI APIs introduces a processing path that your assessor will scrutinize closely -- and that may not survive that scrutiny.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- What Local AI Means for Defense -->
+  <section class="section section-dark">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-badge">How It Works</span>
+        <h2>What Local AI Actually Means for Your Facility</h2>
+        <p>Hardware you own, in a facility you control, on a network you secure, disconnectable from the internet entirely.</p>
+      </div>
+      <div class="card-grid card-grid-3 fade-in">
+        <div class="card">
+          <div class="card-icon card-icon-green">
+            <i class="ri-shield-check-line"></i>
+          </div>
+          <h3>Your Physical Security Controls</h3>
+          <p>The server sits in your facility, behind your physical access controls, within your security perimeter. Badge readers, locked rooms, visitor logs, security cameras -- your existing physical security infrastructure governs access to the AI hardware.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon card-icon-indigo">
+            <i class="ri-wifi-off-line"></i>
+          </div>
+          <h3>Air-Gap Capable</h3>
+          <p>After initial configuration, the system operates without internet connectivity. Models run locally from NVMe storage. The inference engine and user interface are self-contained. No external connections required for daily operations. Complete network isolation is achievable.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon card-icon-purple">
+            <i class="ri-lock-line"></i>
+          </div>
+          <h3>Network Segregation Ready</h3>
+          <p>The system can be placed on a segregated network segment within your CUI enclave. Linux-based operating system supports your existing access control, auditing, and monitoring requirements. Standard network security tools apply.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Defense Workflows -->
+  <section class="section section-darker">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-badge">Workflows</span>
+        <h2>Workflows Island Mountain Hardware Supports</h2>
+        <p>AI capabilities for defense contractor operational needs, processed entirely on hardware under your control.</p>
+      </div>
+      <div class="card-grid card-grid-3 fade-in">
+        <div class="card">
+          <div class="card-icon card-icon-green">
+            <i class="ri-file-search-line"></i>
+          </div>
+          <h3>CUI-Adjacent Document Analysis</h3>
+          <p>Analyze contract requirements, review solicitation documents, compare compliance language, and extract obligations from CUI-marked materials. All processing stays within your controlled environment.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon card-icon-indigo">
+            <i class="ri-draft-line"></i>
+          </div>
+          <h3>Proposal Drafting</h3>
+          <p>Generate first drafts of technical volumes, past performance narratives, management approaches, and staffing plans. Process proposal content that references controlled programs without transmitting it to cloud services.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon card-icon-purple">
+            <i class="ri-file-text-line"></i>
+          </div>
+          <h3>Technical Writing Support</h3>
+          <p>Draft technical documentation, engineering reports, test procedures, and program status updates. Llama 3.1 70B handles structured technical prose. DeepSeek V4-Flash handles complex analytical tasks and multi-document synthesis.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon card-icon-amber">
+            <i class="ri-search-eye-line"></i>
+          </div>
+          <h3>Contract Compliance Research</h3>
+          <p>Analyze FAR/DFARS clauses, compare contract modifications, review compliance requirements, and identify obligations across multiple contract vehicles. Process contract language locally without exposing program details.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon card-icon-green">
+            <i class="ri-shield-keyhole-line"></i>
+          </div>
+          <h3>Security Documentation</h3>
+          <p>Draft System Security Plans, Plan of Action and Milestones documents, incident response procedures, and security policy documentation. Process security-relevant content on segregated, controlled infrastructure.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon card-icon-indigo">
+            <i class="ri-mail-send-line"></i>
+          </div>
+          <h3>Internal Communications</h3>
+          <p>Draft program status briefings, internal memoranda, subcontractor correspondence, and team communications. Consistent formatting and professional language across all program communications.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CMMC and Compliance Context -->
+  <section class="section section-dark">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-badge">Compliance Context</span>
+        <h2>CMMC Level 2 and Level 3: Where Local AI Fits</h2>
+      </div>
+      <div class="fade-in" style="max-width:760px;margin:0 auto;">
+        <p style="font-size:1.05rem;line-height:1.9;">CMMC assessments evaluate your overall security posture across 110+ practices derived from NIST SP 800-171. Island Mountain hardware does not carry CMMC certification -- no hardware component does. What it provides is infrastructure that supports a cleaner compliance posture than routing CUI-adjacent data through commercial cloud AI APIs.</p>
+        <p style="font-size:1.05rem;line-height:1.9;">Access Control (AC): The hardware sits behind your physical and logical access controls. You determine who accesses it, through what authentication mechanisms, from which network segments. Media Protection (MP): AI processing data stays on hardware you own. No data replication to cloud provider infrastructure. System and Communications Protection (SC): Air-gap capability and network segregation prevent unauthorized data egress. Audit and Accountability (AU): Linux-based OS supports the logging and monitoring requirements your CMMC assessor expects.</p>
+        <p style="font-size:1.05rem;line-height:1.9;">The compliance advantage of local AI is not that it checks a box. It is that it removes a processing path -- cloud AI transmission of controlled data -- that creates compliance questions your assessor will ask about. Fewer questionable data flows means a cleaner assessment.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Comparison Table -->
+  <section class="section section-darker">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-badge">Comparison</span>
+        <h2>Cloud AI vs. Island Mountain for Defense Contractors</h2>
+        <p>Compliance risk is the cost you can't see on the invoice.</p>
+      </div>
+      <div class="table-wrapper fade-in">
+        <table>
+          <thead>
+            <tr>
+              <th></th>
+              <th>Commercial Cloud AI</th>
+              <th>Island Mountain Starter</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>CUI Processing</strong></td>
+              <td>Requires FedRAMP High (most APIs lack this)</td>
+              <td class="highlight-cell">On your hardware. Your controls.</td>
+            </tr>
+            <tr>
+              <td><strong>ITAR Export Risk</strong></td>
+              <td>Potential unauthorized export</td>
+              <td class="highlight-cell">Data never leaves your facility.</td>
+            </tr>
+            <tr>
+              <td><strong>CMMC Assessment Impact</strong></td>
+              <td>Introduces questionable data flow</td>
+              <td class="highlight-cell">Removes the cloud processing question.</td>
+            </tr>
+            <tr>
+              <td><strong>Air-Gap Capability</strong></td>
+              <td>Not possible -- requires internet</td>
+              <td class="highlight-cell">Fully air-gappable after setup.</td>
+            </tr>
+            <tr>
+              <td><strong>Physical Security</strong></td>
+              <td>Cloud provider's data center</td>
+              <td class="highlight-cell">Your facility. Your badge readers.</td>
+            </tr>
+            <tr>
+              <td><strong>Network Segregation</strong></td>
+              <td>Data traverses public internet</td>
+              <td class="highlight-cell">Internal network only. Segregation ready.</td>
+            </tr>
+            <tr>
+              <td><strong>Compliance Finding Risk</strong></td>
+              <td>High -- cloud AI path invites scrutiny</td>
+              <td class="highlight-cell">Lower -- data stays in controlled environment.</td>
+            </tr>
+            <tr>
+              <td><strong>Cost</strong></td>
+              <td>$2,400 - $24,000/yr + compliance risk</td>
+              <td class="highlight-cell">$75,000 - $85,000 one time</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="comparison-note fade-in" style="margin-top:20px;">
+        <i class="ri-information-line"></i>
+        The cost of a compliance finding, contract disqualification, or ITAR enforcement action dwarfs the cost of any hardware purchase. This comparison is not purely financial -- it is risk management.
+      </div>
+    </div>
+  </section>
+
+  <!-- What You Do Not Get -->
+  <section class="section section-dark">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-badge">Honest Limitations</span>
+        <h2>What You Do Not Get</h2>
+        <p>Compliance precision requires honesty about what this hardware is and is not.</p>
+      </div>
+      <div class="risk-grid fade-in">
+        <div class="risk-card">
+          <h4><i class="ri-award-line"></i> No CMMC Certification</h4>
+          <p>Island Mountain hardware does not carry CMMC certification. No hardware component does. CMMC evaluates your organizational security posture, not individual pieces of equipment. The hardware supports a compliant posture -- it does not certify one.</p>
+        </div>
+        <div class="risk-card">
+          <h4><i class="ri-lock-line"></i> No Classified Network Connectivity</h4>
+          <p>This is commercial off-the-shelf hardware. It is not designed for classified networks, SCIFs, or SIPRNet environments. It processes CUI and ITAR-controlled unclassified data on your commercial or CUI-enclave network. Classified processing requires government-furnished equipment and accredited facilities.</p>
+        </div>
+        <div class="risk-card">
+          <h4><i class="ri-government-line"></i> No GFE Integration</h4>
+          <p>Island Mountain hardware does not integrate with government-furnished equipment, government networks, or government information systems. It is a standalone commercial AI system for your internal use within your contractor facility.</p>
+        </div>
+        <div class="risk-card">
+          <h4><i class="ri-settings-3-line"></i> You Own the Security</h4>
+          <p>After the 30-day support period, your IT security team is responsible for system hardening, patching, monitoring, and incident response. The system runs Linux and responds to the same security management practices you apply to other systems in your CUI enclave.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Critical Disclaimer -->
+  <section class="section section-darker">
+    <div class="container">
+      <div class="fade-in" style="max-width:760px;margin:0 auto;padding:24px;border:1px solid rgba(239,68,68,0.3);border-radius:var(--border-radius);background:rgba(239,68,68,0.04);">
+        <p style="font-size:0.95rem;line-height:1.8;margin:0 0 12px;color:var(--text-light);"><strong>Important Compliance Notice</strong></p>
+        <p style="font-size:0.9rem;line-height:1.8;margin:0;color:var(--text-muted);">Island Mountain LLC is not a compliance attorney, CMMC assessor, or C3PAO. CUI handling requirements are complex and fact-specific. ITAR export control determinations depend on the specific data, the specific cloud infrastructure, and the specific contractual requirements involved. Do not make infrastructure decisions based solely on the information on this page. Consult your compliance officer, export control counsel, or a CMMC C3PAO before making changes to your data processing architecture based on compliance requirements.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- General Compliance Disclaimer -->
+  <section class="section section-dark">
+    <div class="container">
+      <div class="fade-in" style="max-width:760px;margin:0 auto;padding:24px;border:1px solid rgba(245,158,11,0.2);border-radius:var(--border-radius);background:rgba(245,158,11,0.04);">
+        <p style="font-size:0.9rem;line-height:1.8;margin:0;color:var(--text-muted);">Island Mountain LLC is a hardware company, not a compliance authority. References to ITAR, CUI, CMMC, DFARS, or NIST SP 800-171 on this page reflect factual descriptions of data handling mechanics -- not legal, regulatory, or compliance advice. Consult qualified counsel for compliance determinations specific to your organization and contract requirements.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Power Requirements -->
+  <section class="section section-darker">
+    <div class="container">
+      <div class="power-notice fade-in">
+        <i class="ri-flashlight-line"></i>
+        <p><strong>Power &amp; Installation:</strong> All Island Mountain systems require a dedicated 208V/30A power circuit (NEMA L6-30R). Defense contractor facilities with existing server rooms typically have this infrastructure. The system fits in a standard 4U rack space. Average power draw under typical inference loads is 1.5-2.5 kW. 30 days of remote setup support are included, and we coordinate with your IT security team for network segregation and access control configuration.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section section-dark">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-badge">Defense Contractor Questions</span>
+        <h2>Questions Defense Contractors Ask</h2>
+      </div>
+      <div class="risk-grid fade-in">
+        <div class="risk-card">
+          <h4><i class="ri-file-shield-2-line"></i> Can I process CUI through a commercial cloud AI API?</h4>
+          <p>Generally no. CUI must be processed in NIST SP 800-171 compliant environments. Most commercial AI API endpoints do not operate on FedRAMP High authorized infrastructure. Local hardware under your security controls provides a CUI processing path that avoids the cloud compliance question entirely. Consult your compliance officer for your specific contractual requirements.</p>
+        </div>
+        <div class="risk-card">
+          <h4><i class="ri-global-line"></i> Does cloud AI create ITAR export risk?</h4>
+          <p>Potentially yes. If cloud infrastructure is accessible to foreign nationals, processing ITAR-controlled technical data through it may constitute an unauthorized export under 22 CFR 120-130. Local hardware in your facility, under your access controls, eliminates this data transmission. This is a complex area -- consult your export control counsel.</p>
+        </div>
+        <div class="risk-card">
+          <h4><i class="ri-shield-check-line"></i> Does this hardware have CMMC certification?</h4>
+          <p>No. No hardware component carries CMMC certification. CMMC evaluates organizational security posture, not equipment. Local AI hardware supports a compliant posture by keeping data processing within your controlled environment, under your access controls, with air-gap capability -- but it does not certify compliance.</p>
+        </div>
+        <div class="risk-card">
+          <h4><i class="ri-wifi-off-line"></i> Can it operate air-gapped?</h4>
+          <p>Yes. After initial configuration and model installation, the system operates without internet connectivity. Models run locally from NVMe storage. The inference engine and user interface are self-contained. Model updates in air-gapped environments require manual transfer using approved removable media.</p>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:32px;">
+        <a href="faq.html" class="btn btn-secondary">See All FAQs</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section section-darker" style="text-align:center;">
+    <div class="container fade-in">
+      <h2>Ready to Talk About Compliant AI Infrastructure?</h2>
+      <p style="max-width:600px;margin:16px auto 32px;">One conversation. No sales pitch. Tell us about your compliance requirements and operational needs, and we will spec the right system for your facility.</p>
+      <div class="btn-group">
+        <a href="contact.html" class="btn btn-primary">Request a Quote</a>
+        <a href="products.html" class="btn btn-secondary">See Full Specs</a>
+      </div>
+      <p style="margin-top:24px;font-size:0.9rem;color:var(--text-muted);">See how other regulated sectors use local AI: <a href="law-firms.html">Law Firms</a> &middot; <a href="research-labs.html">Research Labs</a></p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-logo">Island Mountain</a>
+          <p>Local AI infrastructure for data-sovereign organizations. Colorado.</p>
+        </div>
+        <div>
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="technology.html">Technology</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <ul class="footer-links">
+            <li><a href="why-island-mountain.html">Why Local AI</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="investors.html">Investors</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <ul class="footer-links">
+            <li><a href="mailto:info@islandmountain.io">info@islandmountain.io</a></li>
+            <li>Island Mountain LLC</li>
+            <li>Est. 2026</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Island Mountain LLC. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
