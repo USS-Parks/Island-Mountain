@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Solutions for Regulated Industries | HIPAA, ITAR, Tribal Sovereignty | Island Mountain</title>
+  <meta name="description" content="On-premises AI inference hardware built for organizations where data sovereignty is non-negotiable. Law firms, medical practices, tribal nations, research labs, and defense contractors.">
+  <link rel="icon" type="image/x-icon" href="favicon.ico?v=2">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png?v=2">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png?v=2">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="icons/remixicon.css">
+  <link rel="stylesheet" href="fonts/fonts.css">
+  <link rel="canonical" href="https://islandmountain.io/solutions.html">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="AI Solutions for Regulated Industries | Island Mountain">
+  <meta property="og:description" content="On-premises AI inference hardware built for organizations where data sovereignty is non-negotiable. Law firms, medical practices, tribal nations, research labs, and defense contractors.">
+  <meta property="og:url" content="https://islandmountain.io/solutions.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Island Mountain">
+  <meta property="og:image" content="https://islandmountain.io/images/hero-mountain.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="AI Solutions for Regulated Industries | Island Mountain">
+  <meta name="twitter:description" content="On-premises AI inference hardware built for organizations where data sovereignty is non-negotiable. Law firms, medical practices, tribal nations, research labs, and defense contractors.">
+  <meta name="twitter:image" content="https://islandmountain.io/images/hero-mountain.png">
+
+  <!-- FAQPage Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What regulated industries does Island Mountain serve?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Island Mountain builds on-premises AI inference hardware for five primary regulated sectors: law firms protecting attorney-client privilege, medical practices meeting HIPAA technical safeguards, tribal nations maintaining data sovereignty under OCAP and CARE principles, research labs protecting unpublished data and meeting grant compliance requirements, and defense contractors satisfying ITAR export controls and CMMC requirements. Each industry page details the specific compliance framework and how local AI deployment addresses it."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why do regulated industries need on-premises AI instead of cloud AI?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Cloud AI requires transmitting data to third-party servers for processing. In regulated environments, that transmission creates compliance risk: potential privilege waiver for law firms, HIPAA violations for healthcare organizations, sovereignty breaches for tribal nations, export control violations for defense contractors, and data exposure risk for research labs handling unpublished findings. On-premises AI processes data on hardware you physically control, inside your own network perimeter, with no third-party data transmission."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does Island Mountain hardware work for organizations in multiple regulated categories?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Many organizations operate under overlapping compliance frameworks. A tribal health clinic may need both HIPAA compliance and tribal data sovereignty protections. A defense contractor working with controlled unclassified information may also handle ITAR-restricted technical data. Island Mountain systems are configured for the most restrictive compliance requirement in your environment, which inherently satisfies less restrictive requirements. Air-gap capability is available across all tiers for organizations requiring complete network isolation."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How much does on-premises AI hardware cost compared to cloud AI subscriptions?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Island Mountain systems range from $75,000 for the Starter tier with two NVIDIA H100 GPUs to $350,000 for the Premium tier with two H200 GPUs. These are one-time purchases with no per-token fees, no subscription costs, and no usage-based pricing. Ongoing costs are limited to electricity at approximately $100 to $200 per month. For organizations running 10 or more users on cloud AI subscriptions, the total cost of ownership typically reaches parity within two to three years, with the local system continuing to operate at near-zero marginal cost afterward."
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <!-- Full-page particle canvas -->
+  <canvas id="particles-canvas"></canvas>
+
+  <!-- Hero background photo -->
+  <div class="hero-photo">
+    <picture><source srcset="images/hero-mountain-mobile.webp 800w, images/hero-mountain.webp 1913w" type="image/webp" sizes="100vw"><img src="images/hero-mountain.png" alt="Island Mountain rising from the ocean at sunset" loading="lazy" width="1913" height="892"></picture>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="nav-logo">Island Mountain</a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="why-island-mountain.html">Why Local AI</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="technology.html">Technology</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li class="nav-dropdown">
+          <a href="solutions.html" class="nav-dropdown-toggle active">Solutions <i class="ri-arrow-down-s-line"></i></a>
+          <ul class="nav-dropdown-menu">
+            <li><a href="law-firms.html">Law Firms</a></li>
+            <li><a href="medical-practices.html">Medical Practices</a></li>
+            <li><a href="tribal-nations.html">Tribal Nations</a></li>
+            <li><a href="research-labs.html">Research Labs</a></li>
+            <li><a href="defense-contractors.html">Defense Contractors</a></li>
+          </ul>
+        </li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="contact.html" class="nav-cta">Request Quote</a></li>
+      </ul>
+      <button class="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="sidebar-overlay"></div>
+  <div class="mobile-sidebar">
+    <a href="index.html">Home</a>
+    <a href="why-island-mountain.html">Why Local AI</a>
+    <a href="products.html">Products</a>
+    <a href="technology.html">Technology</a>
+    <a href="pricing.html">Pricing</a>
+    <a href="solutions.html" class="mobile-solutions-toggle">Solutions <i class="ri-arrow-down-s-line"></i></a>
+    <div class="mobile-solutions-links">
+      <a href="law-firms.html">Law Firms</a>
+      <a href="medical-practices.html">Medical Practices</a>
+      <a href="tribal-nations.html">Tribal Nations</a>
+      <a href="research-labs.html">Research Labs</a>
+      <a href="defense-contractors.html">Defense Contractors</a>
+    </div>
+    <a href="faq.html">FAQ</a>
+    <a href="blog.html">Blog</a>
+    <a href="contact.html" class="nav-cta">Request Quote</a>
+  </div>
+
+  <!-- Hero -->
+  <section class="hero hero-page">
+    <div class="hero-inner">
+      <span class="hero-badge">Solutions by Industry</span>
+      <h1>AI Infrastructure for Organizations Where Data Leaves the Building Over Your Dead Body</h1>
+      <p>Five regulated industries. One structural reality: when compliance frameworks govern your data, the architecture running your AI isn't a vendor decision. It's a compliance posture. Island Mountain builds on-premises inference hardware for organizations that can't afford to get that wrong.</p>
+    </div>
+  </section>
+
+  <!-- Core Value Proposition -->
+  <section class="section section-first">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-badge">The Common Thread</span>
+        <h2>Every Regulated Industry Shares the Same AI Problem</h2>
+        <p>Cloud AI transmits your data to third-party servers. For regulated organizations, that transmission is the compliance risk.</p>
+      </div>
+      <div class="fade-in" style="max-width:760px;margin:0 auto;">
+        <p style="font-size:1.05rem;line-height:1.9;">The compliance frameworks differ. HIPAA technical safeguards, ABA Model Rule 1.6, ITAR export controls, OCAP principles, IRB data security protocols. But the structural problem is identical: cloud AI requires transmitting protected data to infrastructure you don't control, operated by a third party whose security posture you can't directly audit, governed by terms of service that reserve the right to change.</p>
+        <p style="font-size:1.05rem;line-height:1.9;">On-premises AI eliminates the transmission. Your data stays on your hardware, inside your network perimeter, under your physical and logical security controls. The compliance question shifts from "can we trust this vendor's infrastructure?" to "do we control our own?" That's a question every regulated organization can answer affirmatively.</p>
+        <p style="font-size:1.05rem;line-height:1.9;">Island Mountain builds the hardware that makes that answer possible. Pre-configured NVIDIA H100 and H200 inference servers, burn-tested, shipped with DeepSeek V4-Flash and Llama 3.1 70B pre-installed, running OpenWebUI as the browser-based interface. Air-gap capable across all tiers.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Industry Cards -->
+  <section class="section section-dark">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-badge">By Industry</span>
+        <h2>Choose Your Compliance Framework</h2>
+        <p>Each industry page details the specific regulatory requirements, how cloud AI creates risk, and how local deployment resolves it.</p>
+      </div>
+      <div class="card-grid card-grid-3 fade-in">
+
+        <!-- Law Firms -->
+        <div class="card">
+          <div class="card-icon card-icon-green">
+            <i class="ri-scales-3-line"></i>
+          </div>
+          <h3>Law Firms</h3>
+          <p>ABA Model Rule 1.6 requires attorneys to hold client information in confidence. Cloud AI transmits that information to a third party. Local inference eliminates the privilege waiver question entirely.</p>
+          <p style="font-size:0.9rem;color:var(--text-muted);margin-top:8px;"><strong>Key workflows:</strong> Contract review, discovery document analysis, brief drafting, deposition preparation, client intake summarization.</p>
+          <a href="law-firms.html" class="btn btn-secondary" style="margin-top:16px;">Attorney-Client Privilege &amp; AI &rarr;</a>
+        </div>
+
+        <!-- Medical Practices -->
+        <div class="card">
+          <div class="card-icon card-icon-green">
+            <i class="ri-heart-pulse-line"></i>
+          </div>
+          <h3>Medical Practices</h3>
+          <p>HIPAA's technical safeguards under 45 CFR &sect;164.312 require access controls, audit logging, encryption, and transmission security for ePHI. Local AI deployment satisfies every safeguard without a BAA dependency.</p>
+          <p style="font-size:0.9rem;color:var(--text-muted);margin-top:8px;"><strong>Key workflows:</strong> Clinical note drafting, prior authorization letters, patient record summarization, coding assistance, referral letter generation.</p>
+          <a href="medical-practices.html" class="btn btn-secondary" style="margin-top:16px;">HIPAA Compliance &amp; AI &rarr;</a>
+        </div>
+
+        <!-- Tribal Nations -->
+        <div class="card">
+          <div class="card-icon card-icon-green">
+            <i class="ri-earth-line"></i>
+          </div>
+          <h3>Tribal Nations</h3>
+          <p>OCAP and CARE principles establish that tribal data belongs under tribal jurisdiction. The CLOUD Act allows federal agencies to compel disclosure from U.S. cloud providers regardless of data location. Sovereign infrastructure is the only architecture that honors both frameworks.</p>
+          <p style="font-size:0.9rem;color:var(--text-muted);margin-top:8px;"><strong>Key workflows:</strong> Enrollment record management, health data processing, governance document analysis, grant reporting, cultural resource documentation.</p>
+          <a href="tribal-nations.html" class="btn btn-secondary" style="margin-top:16px;">Tribal Data Sovereignty &amp; AI &rarr;</a>
+        </div>
+
+        <!-- Research Labs -->
+        <div class="card">
+          <div class="card-icon card-icon-green">
+            <i class="ri-flask-line"></i>
+          </div>
+          <h3>Research Labs</h3>
+          <p>Pre-publication data, IRB-governed records, and grant-funded research carry compliance obligations that cloud AI complicates. 21 CFR Part 11 audit trail requirements and NSF/NIH data management plans demand infrastructure you control.</p>
+          <p style="font-size:0.9rem;color:var(--text-muted);margin-top:8px;"><strong>Key workflows:</strong> Literature synthesis, data analysis assistance, manuscript drafting, grant proposal support, clinical trial document review.</p>
+          <a href="research-labs.html" class="btn btn-secondary" style="margin-top:16px;">Research Data Protection &amp; AI &rarr;</a>
+        </div>
+
+        <!-- Defense Contractors -->
+        <div class="card">
+          <div class="card-icon card-icon-green">
+            <i class="ri-shield-star-line"></i>
+          </div>
+          <h3>Defense Contractors</h3>
+          <p>ITAR prohibits exposing controlled technical data to foreign persons. DFARS 252.204-7012 mandates CUI protection. CMMC Phase 2 enforcement begins November 2026. Cloud AI processing of defense-related data creates structural export control violations.</p>
+          <p style="font-size:0.9rem;color:var(--text-muted);margin-top:8px;"><strong>Key workflows:</strong> Technical documentation analysis, proposal drafting, compliance document review, supply chain data processing, after-action report generation.</p>
+          <a href="defense-contractors.html" class="btn btn-secondary" style="margin-top:16px;">ITAR &amp; CMMC Compliance &rarr;</a>
+        </div>
+
+        <!-- Cross-Industry -->
+        <div class="card" style="border:1px solid rgba(245,158,11,0.3);">
+          <div class="card-icon" style="background:rgba(245,158,11,0.15);">
+            <i class="ri-links-line" style="color:var(--copper);"></i>
+          </div>
+          <h3>Overlapping Frameworks</h3>
+          <p>Many organizations operate under multiple compliance regimes simultaneously. A tribal health clinic needs both HIPAA and OCAP protections. A university defense research lab faces both ITAR and IRB requirements. Island Mountain systems are configured for your most restrictive framework, which inherently satisfies less restrictive ones.</p>
+          <p style="font-size:0.9rem;color:var(--text-muted);margin-top:8px;"><strong>Air-gap capable</strong> across all tiers for organizations requiring complete network isolation.</p>
+          <a href="contact.html" class="btn btn-secondary" style="margin-top:16px;">Discuss Your Requirements &rarr;</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- What Every Solution Includes -->
+  <section class="section section-darker">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-badge">Every Build Includes</span>
+        <h2>Standard Across All Industry Configurations</h2>
+      </div>
+      <div class="card-grid card-grid-3 fade-in">
+        <div class="card">
+          <div class="card-icon card-icon-green">
+            <i class="ri-cpu-line"></i>
+          </div>
+          <h3>NVIDIA H100 or H200 GPUs</h3>
+          <p>Two-GPU inference configuration. 160GB VRAM on H100 systems, 282GB on H200. Enough to run DeepSeek V4-Flash, Llama 3.1 70B, and Mixtral 8x22B simultaneously.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon card-icon-green">
+            <i class="ri-window-line"></i>
+          </div>
+          <h3>OpenWebUI Interface</h3>
+          <p>Browser-based chat interface accessible from any device on your network. Multi-user with granular access controls. No client software installation required.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon card-icon-green">
+            <i class="ri-lock-line"></i>
+          </div>
+          <h3>Air-Gap Capable</h3>
+          <p>Every system can operate with zero internet connectivity. Models are pre-installed. Updates are delivered via secure transfer when needed. Complete network isolation for maximalist security postures.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon card-icon-green">
+            <i class="ri-settings-3-line"></i>
+          </div>
+          <h3>Pre-Configured and Burn-Tested</h3>
+          <p>Systems ship ready to deploy. Models loaded, inference engine tuned, interface configured. Rack it, plug it in, open a browser. 30 days of hands-on setup support included.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon card-icon-green">
+            <i class="ri-money-dollar-circle-line"></i>
+          </div>
+          <h3>One-Time Purchase, Zero Token Fees</h3>
+          <p>No per-query pricing. No subscription tiers. No usage-based billing. You own the hardware outright. Section 179 eligible for full first-year depreciation.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon card-icon-green">
+            <i class="ri-tools-line"></i>
+          </div>
+          <h3>Direct Builder Support</h3>
+          <p>Your questions go to the person who assembled and tested your system. No tiered support. No ticket queues. Direct line to the builder for the life of the hardware.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Blog Crosslinks -->
+  <section class="section section-dark">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-badge">Deep Dives</span>
+        <h2>Compliance Research by Industry</h2>
+        <p>Technical writing on the specific regulatory frameworks that govern AI deployment in each sector.</p>
+      </div>
+      <div class="card-grid card-grid-3 fade-in">
+        <div class="card">
+          <h4 style="margin-bottom:8px;"><a href="blog/attorney-client-privilege-cloud-ai.html" style="color:var(--copper);">Attorney-Client Privilege and Cloud AI</a></h4>
+          <p style="font-size:0.9rem;">The structural privilege waiver problem that NDAs cannot fix. ABA Model Rule 1.6, Formal Opinion 477R, and the case for local inference.</p>
+        </div>
+        <div class="card">
+          <h4 style="margin-bottom:8px;"><a href="blog/hipaa-technical-checklist.html" style="color:var(--copper);">HIPAA Technical Safeguards Checklist</a></h4>
+          <p style="font-size:0.9rem;">The 10-item checklist under 45 CFR &sect;164.312 for healthcare organizations deploying AI on controlled infrastructure.</p>
+        </div>
+        <div class="card">
+          <h4 style="margin-bottom:8px;"><a href="blog/ocap-cloud-act-guide.html" style="color:var(--copper);">OCAP, the CLOUD Act, and Tribal AI</a></h4>
+          <p style="font-size:0.9rem;">How the CLOUD Act collides with tribal data sovereignty and why sovereign infrastructure is the only architecture that honors OCAP principles.</p>
+        </div>
+        <div class="card">
+          <h4 style="margin-bottom:8px;"><a href="blog/itar-dfars-ai-self-assessment.html" style="color:var(--copper);">ITAR and DFARS AI Self-Assessment</a></h4>
+          <p style="font-size:0.9rem;">Can your AI infrastructure pass an audit? Self-assessment guide for CUI handling, CMMC alignment, and export control compliance.</p>
+        </div>
+        <div class="card">
+          <h4 style="margin-bottom:8px;"><a href="blog/on-prem-vs-colo-vs-cloud.html" style="color:var(--copper);">On-Prem vs. Colo vs. Cloud: Decision Framework</a></h4>
+          <p style="font-size:0.9rem;">A risk-based architecture decision framework for regulated pharma, biotech, and clinical research labs deploying AI.</p>
+        </div>
+        <div class="card">
+          <h4 style="margin-bottom:8px;"><a href="blog/openai-discovery-risk-law-firms.html" style="color:var(--copper);">OpenAI Preservation Orders and Discovery Risk</a></h4>
+          <p style="font-size:0.9rem;">The Heppner ruling, 20 million log entries, and what happens when your cloud AI conversations become discoverable.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AEO Summary -->
+  <div class="aeo-summary" style="background:var(--surface-alt,#1a1a2e);border-left:4px solid var(--copper,#f59e0b);padding:1.5rem;margin:2rem auto;max-width:800px;border-radius:4px;">
+    <p style="margin:0;font-weight:600;font-size:1.05rem;"><strong>Bottom line:</strong> Island Mountain builds on-premises AI inference hardware for five regulated industries: law firms, medical practices, tribal nations, research labs, and defense contractors. Each faces the same structural problem with cloud AI -- data transmitted to third-party servers creates compliance risk that contractual protections cannot fully resolve. Local deployment eliminates that transmission.</p>
+  </div>
+
+  <!-- CTA -->
+  <section class="section section-darker" style="text-align:center;">
+    <div class="container fade-in">
+      <h2>Which Compliance Framework Governs Your AI?</h2>
+      <p style="max-width:600px;margin:16px auto 32px;">Tell us about your regulatory environment and we'll spec the right system. One conversation. No sales pitch.</p>
+      <div class="btn-group">
+        <a href="contact.html" class="btn btn-primary">Request a Quote</a>
+        <a href="products.html" class="btn btn-secondary">See Full Specs</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-logo">Island Mountain</a>
+          <p>Local AI infrastructure for data-sovereign organizations. Colorado.</p>
+        </div>
+        <div>
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="technology.html">Technology</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="blog.html">Blog</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Solutions</h4>
+          <ul class="footer-links">
+            <li><a href="law-firms.html">Law Firms</a></li>
+            <li><a href="medical-practices.html">Medical Practices</a></li>
+            <li><a href="tribal-nations.html">Tribal Nations</a></li>
+            <li><a href="research-labs.html">Research Labs</a></li>
+            <li><a href="defense-contractors.html">Defense Contractors</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <ul class="footer-links">
+            <li><a href="why-island-mountain.html">Why Local AI</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="investors.html">Investors</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="terms.html">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Island Mountain LLC. All rights reserved. Founded by <a href="https://www.johndou.com" target="_blank" rel="noopener" style="color:var(--copper);">John Dougherty</a>.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
