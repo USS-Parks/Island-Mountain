@@ -97,8 +97,16 @@
   }
 
   // --- Intersection Observer for fade-in-on-scroll ---
+  // Content is visible by default in CSS. JS hides it first, then
+  // the observer reveals on scroll. If JS fails, content stays visible.
   var fadeElements = document.querySelectorAll('.fade-in');
+
   if ('IntersectionObserver' in window) {
+    // Hide elements so the scroll-reveal animation can play
+    fadeElements.forEach(function (el) {
+      el.classList.add('fade-hidden');
+    });
+
     var observer = new IntersectionObserver(
       function (entries) {
         entries.forEach(function (entry) {
@@ -117,20 +125,16 @@
     fadeElements.forEach(function (el) {
       observer.observe(el);
     });
-  } else {
-    fadeElements.forEach(function (el) {
-      el.classList.add('visible');
-    });
-  }
 
-  // Safety net: if any fade-in element is still invisible after 1.5s, force visible
-  setTimeout(function () {
-    fadeElements.forEach(function (el) {
-      if (!el.classList.contains('visible')) {
-        el.classList.add('visible');
-      }
-    });
-  }, 1500);
+    // Safety net: force visible after 2s if observer hasn't fired
+    setTimeout(function () {
+      fadeElements.forEach(function (el) {
+        if (!el.classList.contains('visible')) {
+          el.classList.add('visible');
+        }
+      });
+    }, 2000);
+  }
 
   // --- Lazy stars ---
   // Fixed canvas above all content. Stars drift slowly, twinkle,
