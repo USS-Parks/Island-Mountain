@@ -1,0 +1,107 @@
+<h2>Attorney-Client Privilege and Cloud AI: The Structural Problem Law Firms Can't Negotiate Away</h2>
+
+<p><em>Disclaimer: This article is not legal advice. Attorney-client privilege is a matter of jurisdiction-specific law and ethics rules. Consult your state bar association and your own counsel before making decisions about how to use AI tools with client information.</em></p>
+
+<p>The conversation starts the same way at every law firm we talk to: "Can we use cloud AI for this work if we have a non-disclosure agreement with the vendor?"</p>
+
+<p>The short answer is no. Not because NDAs are worthless, but because privilege isn't a contract. It's a rule of evidence. Breaking it doesn't violate a vendor's terms of service. It breaks the law.</p>
+
+<h2>ABA Model Rule 1.6 and the Third-Party Disclosure Rule</h2>
+
+<p>The American Bar Association's Model Rule of Professional Conduct 1.6 requires that lawyers maintain confidentiality of client information. The rule is strict and broad. It covers secrets, strategies, plans—everything the client tells you in confidence for the purpose of obtaining legal advice.</p>
+
+<p>But rule 1.6(a) has a carve-out: lawyers can disclose confidential information to the extent reasonably necessary to carry out the representation. You can use a billing service, a document management system, a paralegal. You can share work with other attorneys in your firm. The client's information leaves the strictest vault of privilege because it has to.</p>
+
+<p>The key word is "necessary." If you can do the work without sharing with a third party, you must. If you share unnecessarily, you've waived privilege.</p>
+
+<p>Here's where cloud AI providers become a problem: when you send client information to OpenAI, Claude, or any cloud service, you are disclosing that information to a third party. That third party isn't your employee. It isn't under your supervision. It isn't bound by your client retainer. The model itself is trained on data from millions of sources. Your specific question might be processed by systems in multiple countries.</p>
+
+<p>The question becomes: was this disclosure necessary? Most law firm workflows with cloud AI are not necessary. You could use local inference. The disclosure happens because cloud services are convenient and cheap, not because they're required.</p>
+
+<h2>ABA Formal Opinion 477R: The Landmark 2017 Ruling</h2>
+
+<p>In 2017, the ABA issued Formal Opinion 477R directly addressing cloud-based legal services. The opinion doesn't ban cloud services. Instead, it establishes conditions under which cloud use is permitted:</p>
+
+<p>A lawyer may use cloud services to store or process client data if: (1) the cloud provider is contractually bound by confidentiality and security obligations comparable to the lawyer's own, and (2) the lawyer exercises reasonable supervision and due diligence over the provider.</p>
+
+<p>That sounds workable on paper. But the opinion also notes that the lawyer remains responsible for any breach by the cloud provider. If the vendor leaks data, the lawyer's malpractice insurance covers it. The client has to sue the lawyer, not the vendor, because the lawyer made the choice to disclose.</p>
+
+<p>The opinion was issued in 2017, before large language models. Since then, no major state bar has clarified how 477R applies to AI systems that train on input data, that change models based on usage patterns, or that sit behind terms of service that reserve the right to use submissions for improvement. The legal terrain is not settled. It's actively moving.</p>
+
+<h2>The State Bar Trajectory</h2>
+
+<p>Individual state bars have been more cautious. California State Bar Opinion 2023-201, issued in June 2023, warns that lawyers should obtain informed consent before using generative AI with client information. "Informed consent" means the client must understand what the AI tool is, who operates it, where the data goes, and how it might be used. Most clients, when asked, say no.</p>
+
+<p>In 2024, several states—including New York—began to issue ethics opinions raising concerns about AI use with privileged information. The consensus is emerging: cloud AI use with client data is permitted only in narrow circumstances, with explicit client consent and demonstrable necessity.</p>
+
+<p>The trajectory is clear. Five years ago, cloud AI with client data was a gray area that most firms ignored. Now, it's moving toward prohibition unless you meet strict conditions. The trend will accelerate.</p>
+
+<h2>Why Terms of Service Don't Solve This</h2>
+
+<p>A vendor's NDA or terms of service is not a substitute for privilege protection. Here's why:</p>
+
+<p>Privilege is not a contract between you and the vendor. It's a rule that governs whether a court will compel you to disclose information. If you've disclosed client information to a third party, even under a confidentiality agreement, a court may hold that you've waived privilege. The information is no longer protected.</p>
+
+<p>A vendor's promise not to use your data doesn't restore privilege. It creates a breach-of-contract claim if they break the promise, but the evidence itself has already been disclosed. Once it's disclosed, a court can compel it as evidence in litigation.</p>
+
+<p>Consider a hypothetical: you send a client's sensitive tax strategy to Claude.ai under an NDA with the vendor. Two years later, your client is audited by the IRS. The IRS subpoenas the chat history from Anthropic. Anthropic deletes it daily (as Claude's policies state), so nothing comes back. But if anything did, you've arguably waived privilege by sharing with a third party, even under a confidentiality agreement.</p>
+
+<p>The NDA protects against data breach. It doesn't protect against disclosure. Those are different things.</p>
+
+<h2>The Practical Scenario: What Happens When You Slip</h2>
+
+<p>Most breaches of privilege in law firms are not intentional. They're casual. A partner wants to use Claude to draft a motion, so they copy the complaint into the chat. No one is thinking about privilege waiver. It's just faster than opening a local document editor.</p>
+
+<p>Later, opposing counsel requests all communications related to the motion. Your firm discloses the chat history. Opposing counsel subpoenas Claude's servers. Anthropic says they don't retain conversation data (which is true), but the motion itself is now on record as having been processed by a cloud system.</p>
+
+<p>A sophisticated opposing counsel argues that privilege was waived when you disclosed to a third party. A court might agree, especially in jurisdictions that read privilege narrowly. Now, internal attorney strategy—which was fully privileged before—is discoverable.</p>
+
+<p>The cost isn't just the lost motion draft. It's potentially every communication connected to it.</p>
+
+<h2>The Local AI Solution</h2>
+
+<p>This is where local inference changes the equation.</p>
+
+<p>When you run DeepSeek V4-Flash on <a href="../products.html">Island Mountain hardware</a>, the model runs on your server. Your data never leaves your premises. No third-party disclosure occurs. Privilege is not waived.</p>
+
+<p>This is not a theoretical advantage. It's structural. There's no confidentiality agreement to evaluate, no cloud vendor's terms of service to parse, no question about whether disclosure was "necessary." The information stays in your control.</p>
+
+<p>Local deployment doesn't eliminate the need to think about how you use AI with client data. You still need internal policies. You still need to train staff. You still need to manage access controls. But you eliminate the disclosure question entirely.</p>
+
+<h2>Building Internal Policies Around Local AI</h2>
+
+<p>Even with local inference, good practice requires policies.</p>
+
+<p>First, designate which matters can use AI assistance and which cannot. Some firms treat AI as internal support only—drafting, research, initial analysis—but exclude it from final client deliverables without explicit client consent. Other firms include AI assistance in client communications as long as the AI system is not cloud-based.</p>
+
+<p>Second, control access. Not every staff member should have access to sensitive client data. <a href="../faq.html">Island Mountain's OpenWebUI admin interface</a> allows you to create user accounts with granular permissions. You can restrict which staff can query which models, and you can audit queries.</p>
+
+<p>Third, establish retention policies. How long do you keep conversation histories? Do you archive them? Who can retrieve them? Local systems let you enforce this. Cloud systems leave the vendor in control.</p>
+
+<p>Fourth, document your choices. If you decide not to use AI for a particular matter, or if you use it only in limited ways, document that decision. If you encounter a question about privilege later, you want evidence that you thought about it.</p>
+
+<h2>Air-Gapping for Maximum Security</h2>
+
+<p>Some firms go further: they operate their local AI hardware completely offline. No internet connection. No external API calls. Nothing leaves the network except physical mail.</p>
+
+<p>Island Mountain systems can run on air-gapped networks. You use <a href="../technology.html">OpenWebUI</a> as your interface, all on internal hardware. This is maximalist privilege protection, and it's cost-effective because your hardware cost is fixed, with no per-query cloud fees.</p>
+
+<p>Air-gapping is probably overkill for most practices. But for firms handling M&A, CFIUS matters, or client information that is itself a trade secret, it's reasonable.</p>
+
+<h2>The Client Consent Conversation</h2>
+
+<p>Even with local AI, consider getting explicit client consent. It's not legally required in most jurisdictions, but it's good practice.</p>
+
+<p>The conversation is straightforward: "We use local AI systems to assist with research, drafting, and analysis. The systems run on our own hardware, not cloud services. Your information stays on our network. Do you consent to this use?"</p>
+
+<p>Most clients consent. It takes 30 seconds. The consent letter becomes part of your file and is good evidence that you were thoughtful about privilege.</p>
+
+<h2>What This Means for Your Practice</h2>
+
+<p>If you're a law firm using cloud AI with client information, stop. The legal risk isn't speculative anymore. State bars are issuing opinions. Courts are beginning to address privilege waiver in the context of AI use. The trend is moving toward strict liability for cloud disclosure.</p>
+
+<p>If you're considering cloud AI, don't. The convenience of cloud is real, but so is the privilege risk. Local AI is no longer a specialized solution. It's economically practical and legally safer.</p>
+
+<p>If you're running local AI already, document it. Make sure your staff understands the rules. Build audit trails. Be able to explain why you chose local systems and how you manage access.</p>
+
+<p>For questions about configuring Island Mountain hardware for a law firm environment, including OpenWebUI access control and air-gapping options, <a href="../contact.html">reach out to us.</a> We work with practices of every size and can help you build a compliance-first AI workflow.</p>  

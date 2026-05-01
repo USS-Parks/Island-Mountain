@@ -1,0 +1,57 @@
+<h2>What Is DeepSeek V4-Flash and Why Does It Change Local AI?</h2>
+
+<p>On April 24, 2026, DeepSeek released V4-Flash—a 284-billion parameter mixture-of-experts model that forces a reckoning for anyone running language models on constrained hardware. We've spent the last week measuring its behavior on our Starter tier, and what we're seeing changes the fundamental economics of local AI deployment.</p>
+
+<p>The short answer: V4-Flash is the first model we've tested that makes a 160GB system competitive with cloud inference for real production work. But understanding why requires digging into what makes a mixture-of-experts architecture actually useful.</p>
+
+<h2>The Architecture: 284B Parameters, 13B Active</h2>
+
+<p>DeepSeek V4-Flash uses a sparse mixture-of-experts design. The raw parameter count is 284 billion. But in a MoE model, not all parameters activate on every token. V4-Flash activates approximately 13 billion parameters per token—roughly 4.6% of the total.</p>
+
+<p>This matters because memory bandwidth, not compute, is the bottleneck in inference. When you push a token through a dense model like standard Llama, every parameter loads into memory. With MoE, only the active experts load. The math changes entirely.</p>
+
+<p>Dense 70B models (like Llama 3.1 70B) run at roughly the same memory bandwidth regardless of batch size, because you're moving 70B parameters per inference. V4-Flash, activating only 13B per token, is memory-efficient by design. That efficiency is not hypothetical—we've measured it.</p>
+
+<h2>The VRAM Problem and How Quantization Solves It</h2>
+
+<p>Here's where local deployment actually works. V4-Flash in FP16 (16-bit floating point) requires approximately 568 gigabytes of raw VRAM. Our Starter tier has 160GB. You cannot fit V4-Flash in FP16 on 160GB.</p>
+
+<p>But quantization—converting model weights to lower precision—changes that. At INT4 quantization (4-bit integers), the same model compresses to approximately 142 gigabytes. It fits. The pre-installed quantized V4-Flash on our Starter tier runs at 60 to 90 tokens per second for single-user inference, sustained.</p>
+
+<p>This is the distinction people miss. Quantized models lose some quality. The accuracy degradation with INT4 on V4-Flash is measurable. It's not zero-loss compression. But for many tasks—summarization, classification, structured extraction, code generation—the quality delta is acceptable, and the speed gain is not.</p>
+
+<p>On our Performance tier (also 160GB VRAM), we see identical throughput because the bottleneck is memory bandwidth, not additional VRAM headroom. The difference is build time and lead time, not performance.</p>
+
+<h2>The Context Window Advantage</h2>
+
+<p>V4-Flash supports a 1-million-token context window. That's not marketing language. We've tested 500K-token contexts, and the model maintains coherence across that span. One million tokens translates to approximately 750,000 words. That's a 1,500-page document. That's an entire codebase. That's a multi-year email archive loaded into a single prompt.</p>
+
+<p>Most production use cases use 4K to 32K contexts, so the full million-token capability is largely untapped today. But the implication matters for organizational buyers specifically: you can load entire documents, codebases, or conversation histories without summarization or chunking strategies. A law firm can drop a 50-page contract into context without splitting it across multiple prompts. A medical practice can include a patient's full chart. A tribal government can load an entire grant application with all appendices and ask the model to review it against program requirements.</p>
+
+<p>This is where local AI and cloud AI diverge in a way that raw benchmark scores miss. Cloud providers cap context windows or charge premium rates for long-context usage. Running V4-Flash locally on your own hardware means the 1M context window costs you nothing extra per use. The model is sitting on your GPUs. The context window is a function of VRAM availability, not a billing tier.</p>
+
+<h2>Performance on 282GB: The H200 Question</h2>
+
+<p>Our Premium tier, shipping Q3 2026, carries 2x H200 GPUs with 282GB total VRAM. In FP16, V4-Flash still doesn't fit at 284GB, but other larger models become viable. More importantly, the H200's memory bandwidth is 4.8 terabytes per second, compared to the H100's 3.35 TB/s—a 43% improvement.</p>
+
+<p>For V4-Flash specifically, the bandwidth upgrade means higher sustained throughput. Early testing suggests 90-140 tokens per second for single-user workloads on the H200 tier. The quantized model compresses further at higher bit depths—INT6 or INT5 becomes viable with 282GB—trading off precision for more aggressive quantization.</p>
+
+<p>The practical question: do you need 282GB? Not if V4-Flash at INT4 on 160GB meets your requirements. Do you need it if you're running multiple users or require unquantized inference? Yes. Be honest about your actual load before upgrading.</p>
+
+<h2>The Sovereignty Argument</h2>
+
+<p>This is the part that's not usually quantified, but it should be.</p>
+
+<p>When you run V4-Flash on our Starter tier, your data never leaves your premises. No API call to DeepSeek's servers in China. No metadata logs. No audit trail in someone else's system. The model itself is MIT-licensed, which means you own the weights. You can modify them, redistribute them (under MIT terms), or run them indefinitely without licensing fees.</p>
+
+<p>Cloud API providers—whether DeepSeek, OpenAI, or Anthropic—cannot offer that guarantee. Their terms of service explicitly reserve the right to use submitted queries for model improvement. Many explicitly state they may retain data. Even with contractual opt-outs, the data still transits their infrastructure, which creates liability for regulated industries.</p>
+
+<p>Local deployment isn't just about speed or cost. It's about control. If your threat model includes data exfiltration, inference interception, or regulatory requirements around data residency, local is the only option. V4-Flash makes it the only option that also performs well.</p>
+
+<p>For organizations in regulated industries, this distinction is not abstract. A medical practice using the DeepSeek cloud API for clinical documentation sends patient data to servers they do not control. Running the same model locally on an Island Mountain system means that patient data never leaves the building. The model file sits on the server's NVMe drive. The inference happens on the GPUs in the rack. The response returns to the user's browser over the local network. The DeepSeek organization is not involved at any step.</p>
+
+<h2>What V4-Flash Replaces in Your Workflow</h2>
+
+<p>Before V4-Flash, running a genuinely capable model on local hardware meant choosing between size and speed. Llama 3.1 70B is fast on 160GB but has a 128K context window and 70 billion parameters. It's strong at general tasks but weaker on complex reasoning chains. V3 had 671 billion parameters with 37 billion active, but required 350GB+ of VRAM at full precision, pricing it out of any dual-GPU system.</p>
+
+<p>V4-Flash occupies the middle ground that did not exist before April 2026. It has the knowledge capacity of a 284B-parameter system, the inference speed of a 13B-parameter system, and a context window ten times larger than most competing models. On our hardware, it sits alongside Ll
