@@ -1,0 +1,123 @@
+<h2>The H100 vs. H200: What the Hardware Specs Mean for Your Organization's AI Workload</h2>
+
+<p>When you're choosing between Island Mountain's Starter, Performance, and Premium tiers, the GPU decision is the decision. The rest is lead time and warranty. We should be direct about which tier you actually need, which means talking about what H100 and H200 GPUs actually do.</p>
+
+<h2>The Headline Numbers</h2>
+
+<p>Here's the spec comparison:</p>
+
+<table>
+<thead>
+<tr>
+<th>GPU</th>
+<th>Memory (per GPU)</th>
+<th>Total VRAM (2x)</th>
+<th>Memory Bandwidth</th>
+<th>FP16 TFLOPS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H100 80GB</td>
+<td>80GB HBM3</td>
+<td>160GB</td>
+<td>3.35 TB/s</td>
+<td>989</td>
+</tr>
+<tr>
+<td>H200 141GB</td>
+<td>141GB HBM3e</td>
+<td>282GB</td>
+<td>4.8 TB/s</td>
+<td>989</td>
+</tr>
+</tbody>
+</table>
+
+<p>The first thing to notice: both GPUs have identical compute performance (989 TFLOPS in FP16). The H200 is not faster at math. The differences are memory and bandwidth.</p>
+
+<p>The H200 has 76% more VRAM (141GB vs. 80GB per GPU). The bandwidth improvement is 43% (4.8 TB/s vs. 3.35 TB/s). Those numbers look good in a spec sheet. The question is whether they matter for your workload.</p>
+
+<h2>Why Bandwidth Matters More Than Compute for Inference</h2>
+
+<p>This is the critical concept that most people miss.</p>
+
+<p>In machine learning inference, you're not CPU-bound or compute-bound. You're memory-bandwidth-bound. Here's why: when a language model processes a token, it loads weights from VRAM into the GPU's caches, performs matrix multiplications, and writes results back. The multiplication itself is fast. The memory transfer is slow.</p>
+
+<p>Consider V4-Flash with 13B active parameters. When you run a single forward pass, you load 13B parameters from VRAM. On H100 bandwidth (3.35 TB/s), that transfer takes roughly 4 milliseconds. The actual compute takes a fraction of that time. The bottleneck is not the math. It's the memory bus.</p>
+
+<p>This is why larger batches don't help on constrained VRAM. A larger batch means more tokens, which means more independent inferences, which means you could parallelize them. But you can't use that parallelism because you still have to move all the model weights through the same memory bus. You're waiting on bandwidth, not compute.</p>
+
+<p>The H200's 43% bandwidth increase is significant for this reason. It's the difference between 4ms and 2.8ms per token. That's 30% faster inference, all from bandwidth improvement.</p>
+
+<h2>The VRAM Difference: What Fits and What Doesn't</h2>
+
+<p>The H100 tier gives you 160GB. The H200 tier gives you 282GB. The question is simple: what models fit, and what doesn't?</p>
+
+<p>V4-Flash at INT4 quantization fits on 160GB comfortably. So does Llama 3.1 70B in full precision (FP16). Mixtral 8x22B in quantization fits as well. You can load two models simultaneously on H100 if each is smaller than 80GB.</p>
+
+<p>At 282GB, you gain flexibility. You can run larger models in less aggressive quantization. You can load multiple large models simultaneously. You can hold larger working datasets in VRAM. But "can" is different from "should."</p>
+
+<p>The honest question: if your workload fits on 160GB, spending $275K more for 282GB VRAM is not a good investment. You're paying for capacity you won't use.</p>
+
+<h2>Who Should Buy H100 (Starter or Performance Tier)</h2>
+
+<p>Most organizations should buy H100.</p>
+
+<p>Your workload fits on H100 if: you have a defined set of models you're running (V4-Flash, Llama, Mixtral), you're not planning to load multiple large models simultaneously, your use case doesn't require unrequantized models in FP16, and you don't have bursty workloads that spike to unexpected sizes.</p>
+
+<p>For law firms running contract analysis with a single V4-Flash instance, H100 is sufficient. For medical practices analyzing notes with Mixtral, H100 is sufficient. For customer service teams running classification models, H100 is sufficient.</p>
+
+<p>The Starter tier ($75K-$85K) ships now with refurbished H100s. The Performance tier ($150K-$160K) is build-to-order with new H100s, with 4-6 week lead time. Performance tiers are for customers who want warranty coverage and just-in-time ordering.</p>
+
+<p>For most first deployments, Starter is the right choice. You get working hardware today. If you need to upgrade, you upgrade after you understand your actual load.</p>
+
+<h2>Who Should Buy H200 (Premium Tier)</h2>
+
+<p>H200 is for specific scenarios, and you should be honest about whether you have one.</p>
+
+<p>You need H200 if: you're running models larger than 160GB, you need multiple large models loaded simultaneously, you're doing multimodal workloads (vision plus language), you have concurrent user load that requires higher throughput, or your inference pipeline includes external retrieval augmented generation (RAG) that requires holding large embedding datasets in VRAM.</p>
+
+<p>Example: a large firm with 50 attorneys using the same system concurrently. You can't guarantee single-user performance. You need the bandwidth to serve multiple queries in parallel. The H200's 43% bandwidth advantage becomes material.</p>
+
+<p>Another example: an organization running both V4-Flash and a vision model (when DeepSeek releases multimodal variants). V4-Flash at INT4 is ~142GB. A vision model might be 40-50GB. You'd want both in VRAM simultaneously. 160GB is tight. 282GB is comfortable.</p>
+
+<p>But most organizations don't have these constraints. Most are running single models with predictable load. For those organizations, H200 is overprovisioning. The Premium tier ships Q3 2026 with $350K-$400K pricing. That's a premium you shouldn't pay unless you have a concrete reason.</p>
+
+<h2>The Cost-Per-Token Analysis</h2>
+
+<p>Here's the brutal math. Let's say you deploy Starter tier at $80K and run it for three years before replacement. That's about $27K per year. If you're running 1 billion tokens per year (reasonable for a medium-sized organization), that's $0.000027 per token in hardware cost.</p>
+
+<p>Cloud inference from major providers costs $0.003 to $0.01 per token. Even accounting for electricity, cooling, and staffing, local inference is cheaper by an order of magnitude. The capital cost is high, but the unit cost is low.</p>
+
+<p>Premium tier at $375K changes the math. At 1 billion tokens per year, you're at $0.000125 per token in hardware cost. That's still cheaper than cloud, but you need to justify the $295K difference. You need to be certain that you can't accomplish your workload on H100.</p>
+
+<h2>The Performance Ceiling on H100</h2>
+
+<p>Let's talk about what you actually get in throughput terms.</p>
+
+<p>On H100 with V4-Flash at INT4, you see 60-90 tokens per second for single-user inference (sustained). That's continuous inference without batching. If you batch multiple requests (accumulate several queries before processing), you can push 200+ tokens per second across all requests combined.</p>
+
+<p>For a law firm with 30 lawyers, if each lawyer generates 10 queries per day, you're processing ~300 queries daily. At 500 tokens per query average, that's 150K tokens per day. H100 processes that in under a second of wall-clock time. You have massive headroom.</p>
+
+<p>Even for 300 lawyers in a large firm, you're at 1.5M tokens per day. H100 processes that in 15-20 seconds. You don't need Premium tier for sequential workload.</p>
+
+<p>You need Premium tier if you have concurrent load that demands parallel inference at scale. If 50 lawyers are querying simultaneously and you need <100ms response times, you need the bandwidth. If queries are sequential or loosely concurrent, H100 is fine.</p>
+
+<h2>Build vs. Buy Economics</h2>
+
+<p>One question we hear: can't you build your own system cheaper using consumer GPUs or older enterprise hardware?</p>
+
+<p>You can. But you shouldn't. Here's why:</p>
+
+<p>Consumer GPUs (RTX 4090) have 24GB VRAM and cost $2K each. To get 160GB, you'd need 7 cards, which means 7 motherboards, 7 power supplies, 7 network connections, and 7 sets of drivers. The total hardware cost might be $30K, which sounds better than $75K. But you add cooling infrastructure, networking, system administration, warranty support, and time-to-deployment. By the time you've built and debugged it, you've spent more time than the capital savings justify.</p>
+
+<p>Island Mountain systems are purpose-built for this workload. The software stack is pre-installed. The firmware is tuned for inference. The support is included. Pay the premium for a system that works day one.</p>
+
+<h2>Honest Guidance</h2>
+
+<p>If you're starting with local inference, buy Starter tier. $80K is real money, but it's the price of admission. You get a working system today. You understand your actual usage patterns. If you need to upgrade in year two, you upgrade. Most organizations don't.</p>
+
+<p>If you have a specific architectural reason that you need 282GB VRAM, or if you're confident you have concurrent user load that demands bandwidth, buy Premium tier. But don't buy it because the spec sheet looks impressive. Buy it because your workload requires it.</p>
+
+<p>For more information on what each tier includes, <a href="../products.html">see our products page</a>. For technical specifications and performance benchmarks, <a href="../technology.html">check our technology overview</a>. For pricing and lead time information, <a href="../pricing.html">visit pricing</a>. If you want to discuss whether a specific tier is right for your workload, <a href="../contact.html">get in touc
