@@ -1,4 +1,4 @@
-/*
+﻿/*
 * Remix Icon v4.1.0
 * https://remixicon.com
 * https://github.com/Remix-Design/RemixIcon
@@ -11,8 +11,7 @@
 @font-face {
   font-family: "remixicon";
   src: url("remixicon.woff2") format("woff2");
-  font-display: swap;
-}
+  font-display: swap;}
 
 [class^="ri-"], [class*=" ri-"] {
   font-family: 'remixicon' !important;
@@ -2774,4 +2773,5 @@
 .ri-rewind-start-mini-line:before { content: "\f4ae"; }
 .ri-scroll-to-bottom-fill:before { content: "\f4af"; }
 .ri-scroll-to-bottom-line:before { content: "\f4b0"; }
+
 
