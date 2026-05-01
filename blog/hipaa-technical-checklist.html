@@ -444,7 +444,7 @@
         <div class="article-meta">
           <span class="article-date">February 19, 2026</span>
           <span class="article-tag tag-compliance">Compliance</span>
-          <span class="article-read-time">9 min read</span>
+          <span class="article-read-time">16 min read</span>
         </div>
         <h1 style="font-size:2.4rem;">HIPAA Technical Safeguards Checklist for Local AI Deployment</h1>
         <p class="article-author">Island Mountain</p>
@@ -452,120 +452,78 @@
 
       <article class="article-body">
 
-        <h2>HIPAA Technical Safeguards Checklist for Local AI Deployment</h2>
+        <h2>Why This Checklist Exists</h2>
 
-<p class="disclaimer">Disclaimer: This is not legal advice. Attorney-client privilege is jurisdiction-specific and governed by your state's ethics rules. Talk to your state bar and your own counsel before making decisions about AI tools and client information.</p>
+<p>If you run an independent medical practice and you've started using AI tools to handle documentation, streamline clinical workflows, assist with coding, or summarize patient records, you are already operating inside a compliance environment that most AI vendors have not designed their products to serve. That's not a scare tactic. That's the regulatory reality. The HIPAA Security Rule's administrative, physical, and technical safeguards apply in full to AI systems that process protected health information, requiring organizations to assess risks, implement appropriate controls, and ensure the confidentiality, integrity, and availability of PHI regardless of whether that information is processed by humans or algorithms. (<a href="https://www.hipaajournal.com/hipaa-healthcare-data-and-artificial-intelligence/" target="_blank" rel="noopener">HIPAA Journal</a>) The tools that work beautifully for a tech startup's internal operations can detonate a compliance crisis inside a medical practice. And the enforcement data is unambiguous: in 2025, 76% of all OCR enforcement actions included a penalty for a risk analysis failure, with fines ranging from $25,000 to $3 million, and OCR has confirmed its enforcement priorities in 2026 will be largely the same. (<a href="https://www.hipaajournal.com/2025-healthcare-data-breach-report/" target="_blank" rel="noopener">HIPAA Journal</a>) The practices getting hit aren't the ones who tried and failed. They're the ones who didn't know they needed to try.</p>
 
-<p>Every law firm conversation starts the same way. "Can we use cloud AI if we have an NDA with the vendor?"</p>
+<p>This checklist is for those practices, the ones still deciding which AI tools to deploy and which architecture to build them on. The argument you'll find woven through every item below is the same: local AI deployment, where your data never leaves your controlled environment, is not one option among many. For a practice bound by HIPAA's technical safeguards, it's the only architecture that meets the full standard without a dangerous stack of third-party dependencies, BAA paperwork, and contractual prayers.</p>
 
-<p>No. Not because NDAs are worthless. Because privilege isn't a contract. It's a rule of evidence. Breaking it doesn't violate a vendor's terms of service. It breaks the law.</p>
+<h2>The Proposed Rule That Changes Everything</h2>
 
-<h2>ABA Model Rule 1.6 and the Third-Party Disclosure Problem</h2>
+<p>Before we get to the checklist, one seismic shift deserves your attention. On December 27, 2024, HHS issued a Notice of Proposed Rulemaking proposing to remove the distinction between "required" and "addressable" implementation specifications and make all implementation specifications required with specific, limited exceptions, and to require encryption of ePHI at rest and in transit, multi-factor authentication, vulnerability scanning at least every six months, penetration testing at least annually, and network segmentation. (<a href="https://www.hhs.gov" target="_blank" rel="noopener">HHS.gov</a>) The final rule is expected sometime in 2026 with a six-month grace period for compliance to follow. (<a href="https://www.hipaajournal.com/hipaa-updates-hipaa-changes/" target="_blank" rel="noopener">HIPAA Journal</a>)</p>
 
-<p>Model Rule of Professional Conduct 1.6 requires lawyers to maintain confidentiality of client information. It's broad and it's strict. Secrets, strategies, plans, everything a client tells you in confidence for the purpose of obtaining legal advice. All of it.</p>
+<p>That proposed rule is the difference between a compliance environment where a small practice could document its way around encryption and MFA, and one where those controls are non-negotiable floor requirements. If you're deploying AI now, you are building into a regulatory future where everything in this checklist becomes mandatory. Local AI infrastructure, built right the first time, puts you ahead of that curve rather than scrambling to catch up to it.</p>
 
-<p>Rule 1.6(a) does carve out space for disclosure when it's reasonably necessary to carry out the representation. Billing services, document management systems, paralegals, co-counsel. Client information has to leave the strictest vault of privilege sometimes because the work demands it.</p>
+<h2>The Checklist: 45 CFR &sect;164.312</h2>
 
-<p>The operative word is "necessary." If you can do the work without the third-party disclosure, you must. Share unnecessarily, and you've waived privilege.</p>
+<h3>1. Unique User Identification (Required)</h3>
 
-<p>Cloud AI providers are where this breaks down. When you send client information to OpenAI, Claude, or any cloud service, you're disclosing that information to a third party that isn't your employee, isn't under your supervision, and isn't bound by your client retainer. The model processes data from millions of sources. Your specific query may touch systems in multiple countries.</p>
+<p>Assign a unique ID to every workforce member, contractor, and system process that interacts with ePHI. Shared or generic accounts are incompatible with audit trail requirements and undermine accountability. (<a href="https://www.accountablehq.com/post/hipaa-technical-safeguards-list-164-312-quick-reference-checklist-for-access-audit-integrity-authentication-amp-transmission-security" target="_blank" rel="noopener">AccountableHQ</a>) With local AI deployment, your authentication layer is yours to configure and enforce. Every physician, nurse, and administrator who queries the AI system gets their own credentials, logged against their user ID. No shared logins. No practice-wide passwords. Every interaction traceable to a specific human being. Cloud AI platforms with team accounts routinely blur this line, creating audit trail gaps that become very expensive to explain to an OCR investigator.</p>
 
-<p>Was that disclosure necessary? For most law firm cloud AI workflows, the honest answer is no. You could use local inference. The disclosure happens because cloud services are convenient and cheap, not because the work requires it.</p>
+<h3>2. Emergency Access Procedure (Required)</h3>
 
-<h2>ABA Formal Opinion 477R: The 2017 Ruling That Still Governs</h2>
+<p>Establish and implement as needed procedures for obtaining necessary electronic protected health information during an emergency. (<a href="https://www.ecfr.gov/current/title-45/subtitle-A/subchapter-C/part-164/subpart-C/section-164.312" target="_blank" rel="noopener">eCFR</a>) Local AI infrastructure must include a documented break-glass protocol: who can access the system when your primary authentication method is unavailable, under what conditions, and with what logging and post-incident review requirements. A cloud AI tool going offline during a mass casualty event is not your vendor's problem. It's your patient care problem. Local deployment means your emergency access procedures are entirely within your own operational control.</p>
 
-<p>In 2017, the ABA issued Formal Opinion 477R addressing cloud-based legal services directly. It doesn't ban cloud use. It establishes conditions: the cloud provider must be contractually bound by confidentiality and security obligations comparable to the lawyer's own, and the lawyer must exercise reasonable supervision and due diligence over the provider.</p>
+<h3>3. Automatic Logoff (Addressable, Trending Required)</h3>
 
-<p>That sounds workable. Here's the catch embedded in the same opinion: the lawyer remains responsible for any breach by the cloud provider. If the vendor leaks data, the client sues the lawyer, not the vendor, because the lawyer made the disclosure decision.</p>
+<p>Configure timeouts proportionate to risk and location. Set application and workstation inactivity timers; require re-authentication to resume access to ePHI. Shorten timers for public or shared workstations and kiosk-mode devices used in intake or exam areas. (<a href="https://www.accountablehq.com/post/hipaa-technical-safeguards-list-164-312-quick-reference-checklist-for-access-audit-integrity-authentication-amp-transmission-security" target="_blank" rel="noopener">AccountableHQ</a>) With the proposed rule change treating this as effectively required, local AI deployment lets you configure session timeouts at the application level, the operating system level, and the network level, without depending on a third-party vendor's product roadmap to implement a control your compliance program demands.</p>
 
-<p>477R was issued in 2017, before large language models existed. No major state bar has since clarified how it applies to AI systems that train on input data, that modify model behavior based on usage patterns, or that operate under terms of service explicitly reserving the right to use submissions for improvement. The legal terrain isn't settled. It's actively moving, and not in law firms' favor.</p>
+<h3>4. Encryption and Decryption (Addressable, Trending Required)</h3>
 
-<h2>Where State Bars Are Heading</h2>
+<p>The proposed 2025 rule requires encryption of ePHI at rest and in transit, with limited exceptions. (<a href="https://www.hhs.gov" target="_blank" rel="noopener">HHS.gov</a>) This is the item that should stop every managing physician cold when evaluating cloud AI tools. When patient data travels to an external AI server for processing, that transmission must be encrypted in transit. When it's stored on the vendor's infrastructure, it must be encrypted at rest. You are dependent on the vendor's key management, the vendor's encryption standards, and the vendor's continued BAA compliance to satisfy this control. With local AI deployment, your data at rest is encrypted on your own drives, under your own key management, auditable by you and your compliance officer. In transit means traffic between your workstations and your on-premises AI server, a route you own and control end to end.</p>
 
-<p>California State Bar Opinion 2023-201 warns that lawyers must obtain informed client consent before using generative AI with client information. Informed consent means the client understands what the tool is, who operates it, where the data goes, and how it might be used. Most clients, when actually asked, say no.</p>
+<h3>5. Audit Controls (Required)</h3>
 
-<p>Through 2024, New York and several other states issued ethics opinions raising explicit concerns about AI use with privileged information. The emerging consensus is narrow: cloud AI with client data is permitted only with explicit client consent and demonstrable necessity.</p>
+<p>Log all security-relevant events: authentication success and failure, access to patient records, create, update, delete operations, privilege changes, policy and configuration changes, and data exports. Preserve log integrity with time synchronization, tamper-evident storage, hashing, and restricted administrative access. (<a href="https://www.accountablehq.com/post/hipaa-security-rule-technical-safeguards-the-complete-requirements-list-45-cfr-164-312" target="_blank" rel="noopener">AccountableHQ</a>)</p>
 
-<p>Five years ago this was a gray area most firms quietly ignored. Now it's moving toward prohibition unless you meet strict conditions. That trajectory isn't reversing.</p>
+<p>This is where cloud AI becomes genuinely treacherous for small practices. When your physician queries a cloud AI with patient context, the log of that interaction lives on the vendor's infrastructure. Producing those logs in response to an OCR audit or a breach investigation requires the vendor's cooperation, the vendor's timeline, and the vendor's definition of what constitutes a complete log. Local deployment means your audit logs live in your system, backed up by you, retrievable by you, formatted for the HIPAA compliance purposes you define. In 2022, 55% of OCR's financial penalties were imposed on small medical practices. (<a href="https://sprinto.com/blog/healthcare-data-breach-statistics/" target="_blank" rel="noopener">Sprinto</a>) The practices that prevailed in those investigations were the ones that could produce clean, complete audit trails. The ones that couldn't faced corrective action plans on top of their fines.</p>
 
-<h2>Why Terms of Service Don't Fix This</h2>
+<h3>6. Integrity Controls (Addressable, Trending Required)</h3>
 
-<p>A vendor's NDA is not privilege protection. Here's the structural reason why.</p>
+<p>Use checksums, hashes, or digital signatures to detect unauthorized changes to files and records. Implement file integrity monitoring on servers holding ePHI; alert on unauthorized edits or permission changes. (<a href="https://www.accountablehq.com/post/hipaa-technical-safeguards-list-164-312-quick-reference-checklist-for-access-audit-integrity-authentication-amp-transmission-security" target="_blank" rel="noopener">AccountableHQ</a>) An AI system that modifies clinical documentation, generates summaries of patient records, or assists with coding decisions is touching data whose integrity is a patient safety issue, not just a compliance issue. Local deployment lets you implement write-protected logging for AI-generated outputs, version control for AI-assisted documentation edits, and integrity verification that you run on your own infrastructure without trusting a third party's attestation that your data hasn't been altered.</p>
 
-<p>Privilege governs whether a court will compel you to disclose information. If you've disclosed client information to a third party, even under a confidentiality agreement, a court may hold that privilege is waived. The information is no longer protected.</p>
+<h3>7. Person or Entity Authentication (Required)</h3>
 
-<p>A vendor's promise not to use your data doesn't restore privilege. It creates a breach-of-contract claim if they break the promise. But the evidence has already been disclosed. Once disclosed, a court can compel it.</p>
+<p>Implement procedures to verify that a person or entity seeking access to electronic protected health information is the one claimed. (<a href="https://www.ecfr.gov/current/title-45/subtitle-A/subchapter-C/part-164/subpart-C/section-164.312" target="_blank" rel="noopener">eCFR</a>) Under the proposed 2025 rule, regulated entities would be required to apply multi-factor authentication through verification of at least two of three categories of factors: something the user knows, something the user has, or something the user is. (<a href="https://duo.com/blog/security-updates-to-get-ahead-of-proposed-2025-hipaa-amendments" target="_blank" rel="noopener">Duo Security</a>) Local AI deployment supports MFA enforcement at the application level, the network level, and the physical workstation level, simultaneously and without carving out exceptions because a cloud platform doesn't support your authentication stack. You are not negotiating MFA implementation with a vendor. You are implementing it directly, on infrastructure you control, and documenting that implementation as direct evidence for your risk analysis.</p>
 
-<p>Walk through the hypothetical. You send a client's sensitive tax strategy to a cloud AI under an NDA with the vendor. Two years later, your client gets audited. The IRS subpoenas the chat history. The vendor deletes conversations daily, so nothing comes back. But if anything did, you've arguably waived privilege by sharing with a third party, NDA or not.</p>
+<h3>8. Transmission Security (Addressable, Trending Required)</h3>
 
-<p>The NDA protects against data breach. It does not protect against disclosure. Those are fundamentally different things.</p>
+<p>Apply encryption at rest to endpoints, servers, databases, backups, and cloud storage, and use strong, validated cryptography with sound key management. (<a href="https://www.accountablehq.com/post/hipaa-security-rule-technical-safeguards-the-complete-requirements-list-45-cfr-164-312" target="_blank" rel="noopener">AccountableHQ</a>) For local AI deployment, transmission security means encrypting the network segment between your clinical workstations and your on-premises AI server. It means TLS for any internal API calls. It means ensuring that PHI processed by your AI system never traverses an unencrypted channel between any two points inside your facility. This is far simpler to implement, verify, and document when the entire transmission path is within your four walls than when it involves internet routing to a third-party data center, HTTPS configurations you didn't set up, and key management you can't directly inspect.</p>
 
-<h2>How Privilege Breaks in Practice</h2>
+<h3>9. Business Associate Agreement (Required for Any Vendor Touching PHI)</h3>
 
-<p>Most privilege failures in law firms aren't intentional. They're casual. A partner wants to draft a motion faster, copies the complaint into a cloud chat, and nobody's thinking about waiver. It's just convenient.</p>
+<p>A Business Associate Agreement is required whenever a vendor creates, receives, maintains, or transmits PHI on behalf of a covered entity, including when the vendor uses AI to perform regulated functions. The BAA must describe permitted and required uses of PHI, require the vendor to maintain safeguards, and establish a timeline for notifying the covered entity of unlawful exposure or a data breach. (<a href="https://www.texmed.org/Template.aspx?id=67060" target="_blank" rel="noopener">Texas Medical Association</a>) The most critical provision when contracting with AI providers is a prohibition on the use of patient data for training or retraining models without patient authorization. (<a href="https://www.mcneeslaw.com/ai-hipaa-compliance-risks/" target="_blank" rel="noopener">Mcneeslaw</a>) Cloud AI tools that lack a signed BAA, or that offer BAAs with carve-outs permitting model training on your patient data, expose your practice to direct HIPAA liability the moment any PHI touches their system. Local AI deployment removes the BAA question from the equation entirely for on-premises inference. Your patient data never reaches an external vendor. There is no third party to execute a BAA with for the AI processing itself, because there is no third party in the loop.</p>
 
-<p>Then opposing counsel requests all communications related to the motion. Your firm discloses the chat history. Opposing counsel subpoenas the vendor's servers. The vendor says they don't retain conversation data, which may be true, but the motion is now on record as having been processed by a cloud system.</p>
+<h3>10. Organization-Wide Risk Analysis (Required)</h3>
 
-<p>A sophisticated opposing counsel argues privilege was waived the moment you disclosed to a third party. Some courts will agree, particularly in jurisdictions that read privilege narrowly. Internal attorney strategy that was fully privileged before is now potentially discoverable.</p>
+<p>A comprehensive, organization-wide risk analysis is vital for security. OCR launched a risk analysis enforcement initiative in 2025, and its enforcement priorities in 2026 will continue that focus and evolve to cover risk management as well. (<a href="https://ogletree.com/insights-resources/blog-posts/2025-enforcement-trends-risk-analysis-failures-at-the-center-of-hhss-multimillion-dollar-hipaa-penalties/" target="_blank" rel="noopener">Ogletree</a>) Your AI deployment is a new system that processes ePHI, which means it triggers a mandatory risk analysis update. That analysis must document the threats and vulnerabilities specific to the AI system: model poisoning, prompt injection, unauthorized access to query logs, data exfiltration through API endpoints, and inference attacks that could reconstruct patient data from model outputs. Local AI deployment dramatically narrows the threat surface for that analysis. You are not assessing the risks of a multi-tenant cloud platform serving millions of customers with a security posture you cannot directly audit. You are assessing a system on your own hardware, inside your own network perimeter, under your own physical and logical security controls.</p>
 
-<p>The cost isn't just that one motion draft. It's potentially every communication connected to it.</p>
+<h2>Architecture Over Convenience</h2>
 
-<h2>What Local Inference Actually Changes</h2>
+<p>The hard truth that this checklist is building toward is this: HIPAA's technical safeguards were written for a world where healthcare organizations controlled their own infrastructure, and they remain most cleanly satisfiable in a world where healthcare organizations still do. For anything that could touch PHI, the recommendation from technical compliance experts is to deploy an isolated model and keep raw data inside your boundary. Public, multi-tenant LLMs are not recommended for healthcare workloads. (<a href="https://edenlab.io/blog/hipaa-compliant-ai-best-practices" target="_blank" rel="noopener">Edenlab</a>)</p>
 
-<p>When V4-Flash runs on your own hardware, the model runs on your server. Your data never leaves your premises. No third-party disclosure occurs. Privilege isn't waived.</p>
-
-<p>This isn't a theoretical advantage. It's structural. There's no confidentiality agreement to parse, no vendor terms of service to audit, no question about whether the disclosure was "necessary." The information stays in your control, full stop.</p>
-
-<p>Local deployment doesn't eliminate the need to think carefully about how you use AI with client data. You still need internal policies. You still need staff training. You still need access controls. But you eliminate the disclosure question entirely, and that's the question that kills you in court.</p>
-
-<h2>Building Internal Policies Around Local AI</h2>
-
-<p>Even running locally, good practice requires structure.</p>
-
-<p>Designate which matters can use AI assistance and which cannot. Some firms treat AI as internal support only covering drafting, research, and initial analysis, but exclude it from final client deliverables without explicit consent. Others permit AI assistance in client communications as long as the system isn't cloud-based.</p>
-
-<p>Control access. Not every staff member should touch sensitive client data. OpenWebUI's admin interface allows granular user permissions. Restrict which staff query which models. Build an audit trail.</p>
-
-<p>Establish retention policies. How long do conversation histories live? Who can retrieve them? Local systems let you enforce this. Cloud systems leave the vendor in control of the answer.</p>
-
-<p>Document your decisions. If you restrict AI use on a particular matter, record why. If you use it only in limited ways, record how. When a privilege question surfaces later, you want evidence that you thought it through.</p>
-
-<h2>Air-Gapping: When Maximalist Makes Sense</h2>
-
-<p>Some firms go further and operate local AI hardware completely offline. No internet connection. No external API calls. Nothing leaves the network except physical mail.</p>
-
-<p>Island Mountain systems run on air-gapped networks. OpenWebUI as your interface, everything on internal hardware, fixed cost with no per-query cloud fees.</p>
-
-<p>This is overkill for most practices. For firms handling M&A, CFIUS matters, or client information that is itself a trade secret, it's entirely reasonable.</p>
-
-<h2>The Client Consent Conversation</h2>
-
-<p>Even with local AI, consider getting explicit client consent. Most jurisdictions don't legally require it, but it's sound practice and takes thirty seconds.</p>
-
-<p>"We use local AI systems to assist with research, drafting, and analysis. The systems run on our own hardware, not cloud services. Your information stays on our network. Do you consent to this use?"</p>
-
-<p>Most clients say yes. The consent letter goes in the file and becomes evidence of thoughtful practice.</p>
-
-<h2>What You Should Do Right Now</h2>
-
-<p>If your firm is using cloud AI with client information, stop. The risk isn't speculative anymore. State bars are issuing opinions. Courts are beginning to address privilege waiver in the context of AI use. The trend is moving toward strict liability for cloud disclosure.</p>
-
-<p>If you're considering it, don't. The convenience is real. So is the privilege exposure. Local AI is no longer a specialized or expensive solution. It's economically practical and structurally safer.</p>
-
-<p>If you're already running local AI, document it. Train your staff. Build audit trails. Be able to explain exactly why you chose local systems and how you manage access.</p>
-
-<p>For questions about configuring Island Mountain hardware for a law firm environment, including OpenWebUI access control and air-gapping, <a href="../contact.html">reach out</a>. We work with practices of every size and can help you build a compliance-first AI workflow.</p>
+<p>Every item on this list, every audit log, every encryption key, every access control, every session timeout, every integrity check, every authentication mechanism, sits entirely within your operational authority when your AI runs locally. When it runs in someone else's cloud, you are contractually dependent on that vendor's compliance posture to satisfy requirements that belong to you and only you to meet. A reported 302.71% jump in patient data affected by breaches occurred from May to June 2025 alone, with analysts estimating that around 88% of organizations are adopting some form of cloud-based generative AI. (<a href="https://hipaauniversity.com/blog/hipaa-violation-fines-and-penalties/" target="_blank" rel="noopener">HIPAA University</a>) The correlation between those two statistics isn't coincidental. Cloud AI adoption without local sovereignty over ePHI is expanding the attack surface of the healthcare sector at a rate the enforcement system has barely begun to reckon with. The practices that will be standing clean on the other side of this regulatory cycle are the ones that chose architecture over convenience, and sovereignty over speed.</p>
 
         <div class="aeo-summary" style="background:var(--surface-alt,#1a1a2e);border-left:4px solid var(--copper,#f59e0b);padding:1.5rem;margin:2rem 0;border-radius:4px;">
-          <p style="margin:0;font-weight:600;font-size:1.05rem;"><strong>Bottom line:</strong> Cloud AI creates structural privilege waiver risk that no NDA resolves because disclosure to a third party can destroy confidentiality regardless of contractual protections.</p>
+          <p style="margin:0;font-weight:600;font-size:1.05rem;"><strong>Bottom line:</strong> HIPAA's technical safeguards under 45 CFR &sect;164.312 are most cleanly satisfied when your AI infrastructure never sends ePHI to a third party. The proposed 2026 rule eliminates the "addressable" loopholes that let small practices defer encryption and MFA. Local deployment puts you ahead of that curve instead of behind it.</p>
         </div>
       </article>
 
       <!-- CTA -->
       <div class="article-cta">
-        <h3>Ready to Stop Paying Per Token?</h3>
-        <p>One conversation. No sales pitch. Just straight talk about what local AI hardware can do for your organization.</p>
-        <a href="../contact.html" class="btn btn-primary">Start a Conversation</a>
+        <h3>Your Patients' Data Deserves Your Infrastructure</h3>
+        <p>One conversation about deploying HIPAA-compliant local AI for your practice. No sales pitch. Just the technical architecture that satisfies every safeguard on this checklist.</p>
+        <a href="../contact.html" class="btn btn-primary">Talk to Us About Healthcare AI</a>
       </div>
 
       <!-- Related Articles -->
@@ -573,16 +531,16 @@
         <h3>Related Articles</h3>
         <div class="related-grid">
           <div class="related-card">
+            <h4><a href="itar-dfars-ai-self-assessment.html">ITAR, DFARS, and CMMC: The AI Self-Assessment Your Contractor Status Demands</a></h4>
+            <p>Another compliance framework where cloud AI creates structural violations. The parallels to HIPAA are striking.</p>
+          </div>
+          <div class="related-card">
             <h4><a href="cloud-ai-vs-local-hardware-tco.html">Cloud AI vs. Local Hardware: The Honest 5-Year TCO</a></h4>
             <p>The full cost comparison including compliance overhead, financing, and tax advantages.</p>
           </div>
           <div class="related-card">
             <h4><a href="openwebui-admin-setup-guide.html">OpenWebUI for Administrators: Multi-User Access and Permissions</a></h4>
-            <p>Setting up user accounts, model access, conversation retention, and backups.</p>
-          </div>
-          <div class="related-card">
-            <h4><a href="deepseek-v4-flash-local-deployment.html">DeepSeek V4-Flash Just Changed the Game for Local AI</a></h4>
-            <p>284 billion parameters, 13B active per token, and what it means for local deployment.</p>
+            <p>Setting up user accounts, model access, conversation retention, and backups for your local deployment.</p>
           </div>
         </div>
       </div>
