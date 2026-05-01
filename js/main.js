@@ -57,6 +57,25 @@
     link.addEventListener('click', closeMenu);
   });
 
+  // --- Mobile Solutions accordion ---
+  var solToggle = document.querySelector('.mobile-solutions-toggle');
+  if (solToggle) {
+    solToggle.addEventListener('click', function (e) {
+      e.preventDefault();
+      this.classList.toggle('open');
+      var links = document.querySelector('.mobile-solutions-links');
+      if (links) links.classList.toggle('open');
+    });
+  }
+
+  // --- Prevent default on desktop dropdown toggle ---
+  var dropdownToggle = document.querySelector('.nav-dropdown-toggle');
+  if (dropdownToggle) {
+    dropdownToggle.addEventListener('click', function (e) {
+      e.preventDefault();
+    });
+  }
+
   // --- Active nav link highlighting ---
   var currentPage = window.location.pathname.split('/').pop() || 'index.html';
   var navAllLinks = document.querySelectorAll('.nav-links a, .mobile-sidebar a');
@@ -66,6 +85,16 @@
       link.classList.add('active');
     }
   });
+
+  // Highlight Solutions toggle when a dropdown child is active
+  var dropdownActiveItem = document.querySelector('.nav-dropdown-menu a.active');
+  if (dropdownActiveItem) {
+    var parentDropdown = dropdownActiveItem.closest('.nav-dropdown');
+    if (parentDropdown) {
+      var toggle = parentDropdown.querySelector('.nav-dropdown-toggle');
+      if (toggle) toggle.classList.add('active');
+    }
+  }
 
   // --- Intersection Observer for fade-in-on-scroll ---
   var fadeElements = document.querySelectorAll('.fade-in');

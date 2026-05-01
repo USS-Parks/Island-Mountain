@@ -372,6 +372,118 @@ p {
   border-bottom: none;
 }
 
+/* --- Nav Dropdown (Solutions) --- */
+.nav-dropdown {
+  position: relative;
+}
+
+.nav-dropdown-toggle {
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.nav-dropdown-toggle i {
+  font-size: 0.8rem;
+  transition: transform var(--transition-speed);
+}
+
+.nav-dropdown:hover .nav-dropdown-toggle i {
+  transform: rotate(180deg);
+}
+
+.nav-dropdown-menu {
+  position: absolute;
+  top: calc(100% + 12px);
+  left: 50%;
+  transform: translateX(-50%) translateY(8px);
+  min-width: 210px;
+  background: rgba(15, 23, 42, 0.96);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--card-border);
+  border-radius: var(--border-radius-sm);
+  padding: 8px 0;
+  list-style: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--transition-speed), visibility var(--transition-speed), transform var(--transition-speed);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  z-index: 1100;
+}
+
+.nav-dropdown:hover .nav-dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+.nav-dropdown-menu li {
+  list-style: none;
+}
+
+.nav-dropdown-menu a {
+  display: block;
+  padding: 10px 20px;
+  font-size: 0.85rem;
+  color: var(--text-muted) !important;
+  transition: color var(--transition-speed), background var(--transition-speed);
+  white-space: nowrap;
+}
+
+.nav-dropdown-menu a:hover {
+  color: var(--copper) !important;
+  background: rgba(245, 158, 11, 0.06);
+}
+
+.nav-dropdown-menu a.active {
+  color: var(--copper) !important;
+}
+
+.nav-dropdown-menu a.active::after {
+  display: none;
+}
+
+/* Mobile Solutions Accordion */
+.mobile-solutions-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.mobile-solutions-toggle i {
+  font-size: 0.9rem;
+  transition: transform var(--transition-speed);
+}
+
+.mobile-solutions-toggle.open i {
+  transform: rotate(180deg);
+}
+
+.mobile-solutions-links {
+  display: none;
+  flex-direction: column;
+  padding-left: 16px;
+}
+
+.mobile-solutions-links.open {
+  display: flex;
+}
+
+.mobile-solutions-links a {
+  font-size: 0.95rem !important;
+  padding: 8px 0 !important;
+  border-bottom: none !important;
+  color: var(--text-muted) !important;
+}
+
+.mobile-solutions-links a:hover,
+.mobile-solutions-links a.active {
+  color: var(--copper) !important;
+}
+
 .sidebar-overlay {
   position: fixed;
   top: 0;
