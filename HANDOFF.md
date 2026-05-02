@@ -33,7 +33,7 @@ done
 echo "Verification complete."
 ```
 
-Files still at risk (over 400 lines): contact.html (928), faq.html (855), law-firms.html (541), tribal-nations.html (534), products.html (522), defense-contractors.html (512), medical-practices.html (508), pricing.html (507), research-labs.html (502). Use sed via bash for these.
+Files still at risk (over 400 lines): contact.html (928), faq.html (860), law-firms.html (542), tribal-nations.html (535), products.html (527), defense-contractors.html (513), pricing.html (512), medical-practices.html (509), research-labs.html (503), why-island-mountain.html (456), technology.html (456), blog.html (433), index.html (408). Use sed via bash for these.
 
 ---
 
@@ -95,22 +95,22 @@ No analytics. No cookies. No tracking scripts.
 
 ### Root Pages (18 files)
 
-index.html (403 lines): Homepage. Hero, product comparison, trust stats, testimonials. Schema: Organization, WebSite.
-products.html (522 lines): Three product tiers with full specs. Schema: Product (x3), FAQPage.
-pricing.html (507 lines): Pricing table, financing, TCO comparison. Schema: Product, FAQPage.
-why-island-mountain.html (451 lines): Value proposition. Links to all 5 verticals. Schema: FAQPage.
-technology.html (451 lines): Software stack: Ollama, vLLM, Open WebUI, Ubuntu. Schema: SoftwareApplication, FAQPage.
+index.html (408 lines): Homepage. Hero, product comparison, trust stats, testimonials. Schema: Organization, WebSite.
+products.html (527 lines): Three product tiers with full specs. Schema: Product (x3), FAQPage.
+pricing.html (512 lines): Pricing table, financing, TCO comparison. Schema: Product, FAQPage.
+why-island-mountain.html (456 lines): Value proposition. Links to all 5 verticals. Schema: FAQPage.
+technology.html (456 lines): Software stack: Ollama, vLLM, Open WebUI, Ubuntu. Schema: SoftwareApplication, FAQPage.
 solutions.html (396 lines): Hub page linking all 5 industry verticals + blog crosslinks. Schema: FAQPage.
-faq.html (855 lines): 25 Q&A pairs. Schema: FAQPage (25 Q&A), SpeakableSpecification.
+faq.html (860 lines): 25 Q&A pairs. Schema: FAQPage (25 Q&A), SpeakableSpecification.
 contact.html (928 lines): Contact form (FormSubmit.co), embedded Google Map. Schema: LocalBusiness.
 blog.html (433 lines): Blog index listing all posts. Schema: Blog.
 investors.html (294 lines): Investor pitch with Chart.js graphs. Schema: Organization.
 about.html (269 lines): Company story, founder bio. Schema: AboutPage, Organization.
-law-firms.html (541 lines): Vertical landing page. Attorney-client privilege, discovery risk. Schema: FAQPage. Has AEO block.
-medical-practices.html (508 lines): Vertical. HIPAA, ePHI, BAA. Schema: FAQPage. Has AEO block.
-tribal-nations.html (534 lines): Vertical. OCAP, CLOUD Act, sovereignty. Schema: FAQPage, GovOrg. Has AEO block.
-research-labs.html (502 lines): Vertical. FERPA, IRB, GxP, 21 CFR Part 11. Schema: FAQPage. Has AEO block.
-defense-contractors.html (512 lines): Vertical. ITAR, DFARS 252.204-7012, CMMC, CUI. Schema: FAQPage. Has AEO block.
+law-firms.html (542 lines): Vertical landing page. Attorney-client privilege, discovery risk. Schema: FAQPage. Has AEO block.
+medical-practices.html (509 lines): Vertical. HIPAA, ePHI, BAA. Schema: FAQPage. Has AEO block.
+tribal-nations.html (535 lines): Vertical. OCAP, CLOUD Act, sovereignty. Schema: FAQPage, GovOrg. Has AEO block.
+research-labs.html (503 lines): Vertical. FERPA, IRB, GxP, 21 CFR Part 11. Schema: FAQPage. Has AEO block.
+defense-contractors.html (513 lines): Vertical. ITAR, DFARS 252.204-7012, CMMC, CUI. Schema: FAQPage. Has AEO block.
 privacy.html (198 lines): Privacy policy. Schema: WebPage.
 terms.html (208 lines): Terms of service. Schema: WebPage.
 
@@ -199,6 +199,9 @@ Contains bold "Summary:" followed by 2-3 sentence direct answer.
 Meta descriptions, canonical tags, OG + Twitter Card tags, JSON-LD structured data on all 29 pages.
 XML sitemap with 29 URLs. robots.txt allowing all crawlers. llms.txt for AI engines.
 AEO blocks on all 11 blog posts (standardized to Summary: format with copper border styling).
+AEO blocks on 6 vertical/hub pages standardized from old "Bottom line:" dark-bg format to standard "Summary:" copper-border format (2026-05-01): law-firms, medical-practices, tribal-nations, research-labs, defense-contractors, solutions.
+AEO blocks created and inserted on 6 root pages (2026-05-01): index, products, pricing, why-island-mountain, technology, faq.
+Root pages intentionally without AEO blocks: about, contact, investors, privacy, terms.
 Self-hosted fonts and icons (zero CDN dependencies).
 WebP hero images with picture element fallback.
 LinkedIn company page linked in footer of all 29 pages.
@@ -212,9 +215,6 @@ Favicons (favicon.ico, favicon-32.png, apple-touch-icon.png, icon-192.png) regen
 
 ### Not Yet Done
 
-AEO blocks on 6 root pages need standardization (old "Bottom line:" format with dark background): law-firms, medical-practices, tribal-nations, research-labs, defense-contractors, solutions. Must convert to standard Summary: format with copper border styling.
-AEO blocks missing entirely from root pages: index, products, pricing, why-island-mountain, technology, faq. Need new blocks written and inserted.
-Root pages that don't need AEO blocks: about, contact, investors, privacy, terms.
 Google Search Console: verify sitemap, monitor indexing.
 
 ---
