@@ -68,6 +68,19 @@
     ]
   }
   </script>
+
+  <!-- BreadcrumbList Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://islandmountain.io/"},
+      {"@type": "ListItem", "position": 2, "name": "Solutions", "item": "https://islandmountain.io/solutions.html"},
+      {"@type": "ListItem", "position": 3, "name": "Research Labs", "item": "https://islandmountain.io/research-labs.html"}
+    ]
+  }
+  </script>
 </head>
 <body>
 
@@ -138,6 +151,11 @@
     </div>
   </section>
 
+  <!-- Breadcrumb -->
+  <nav class="breadcrumb">
+    <a href="index.html">Home</a><span>&rsaquo;</span><a href="solutions.html">Solutions</a><span>&rsaquo;</span>Research Labs
+  </nav>
+
   <!-- The Cloud AI Problem for Research -->
   <section class="section section-first">
     <div class="container">
@@ -148,7 +166,7 @@
       </div>
       <div class="fade-in" style="max-width:760px;margin:0 auto;">
         <p style="font-size:1.05rem;line-height:1.9;">When a researcher submits unpublished data to a cloud AI service for analysis, summarization, or writing assistance, that data leaves the institutional network. It is transmitted to a third-party data center, processed on shared infrastructure, and handled according to the provider's data policies -- not your institution's. For research teams working toward publication, patent filing, or grant deliverables, this creates multiple risks.</p>
-        <p style="font-size:1.05rem;line-height:1.9;">First, intellectual property exposure. Even if a cloud provider's policy states they won't use your data for training, the data has still been processed on their infrastructure. If a competing lab later publishes similar findings, questions about data leakage become harder to dismiss when your data was processed through a shared service.</p>
+        <p style="font-size:1.05rem;line-height:1.9;">First, intellectual property exposure. Even if a cloud provider's policy states they won't use your data for training, the data has still been processed on their infrastructure. If a competing lab later publishes similar findings, questions about data leakage become harder to dismiss when your data was processed through a shared service. This IP exposure risk is why research labs join <a href="solutions.html">law firms, medical practices, and defense contractors</a> in moving AI inference on-premises.</p>
         <p style="font-size:1.05rem;line-height:1.9;">Second, grant compliance. Federal agencies including NIH, NSF, and DoD are tightening data management requirements. Data management plans increasingly require documenting where and how research data is processed. Cloud AI processing adds a third-party data handler to your compliance documentation.</p>
         <p style="font-size:1.05rem;line-height:1.9;">Third, operational dependency. Cloud API rate limits, outages, and model deprecations can disrupt research workflows at critical moments. When you're running a week-long analysis pipeline or processing a dataset under deadline, your work depends on a service you don't control.</p>
       </div>
@@ -446,7 +464,7 @@
         <a href="contact.html" class="btn btn-primary">Request a Quote</a>
         <a href="products.html" class="btn btn-secondary">See Full Specs</a>
       </div>
-      <p style="margin-top:24px;font-size:0.9rem;color:var(--text-muted);">See how other sectors use local AI: <a href="tribal-nations.html">Tribal Nations</a> &middot; <a href="defense-contractors.html">Defense Contractors</a></p>
+      <p style="margin-top:24px;font-size:0.9rem;color:var(--text-muted);"><a href="solutions.html">See all five industries we serve</a> or explore: <a href="tribal-nations.html">Tribal Nations</a> &middot; <a href="defense-contractors.html">Defense Contractors</a></p>
     </div>
   </section>
 

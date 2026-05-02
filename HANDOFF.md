@@ -33,7 +33,7 @@ done
 echo "Verification complete."
 ```
 
-Files still at risk (over 400 lines): contact.html (928), faq.html (860), law-firms.html (542), tribal-nations.html (535), products.html (527), defense-contractors.html (513), pricing.html (512), medical-practices.html (509), research-labs.html (503), why-island-mountain.html (456), technology.html (456), blog.html (433), index.html (408). Use sed via bash for these.
+Files still at risk (over 400 lines): contact.html (928), faq.html (860), law-firms.html (560), tribal-nations.html (553), defense-contractors.html (531), products.html (527), medical-practices.html (527), research-labs.html (521), pricing.html (512), why-island-mountain.html (456), technology.html (456), blog.html (433), index.html (409). Use sed via bash for these.
 
 ---
 
@@ -71,8 +71,8 @@ Form handler: FormSubmit.co (posts to basho@islandmountain.io)
 
 Static HTML/CSS/JS. Every page is hand-written HTML. No templating engine.
 
-css/style.css (1528 lines): Single global stylesheet. CSS custom properties for theming.
-css/blog.css (306 lines): Blog post styles (breadcrumb, article layout, tags, related cards, share links). Loaded by all 11 blog posts via link tag.
+css/style.css (1555 lines): Single global stylesheet. CSS custom properties for theming. Includes breadcrumb styles (added 2026-05-01 for vertical page breadcrumbs).
+css/blog.css (306 lines): Blog post styles (article layout, tags, related cards, share links). Loaded by all 11 blog posts via link tag. Blog breadcrumb styles duplicated in style.css for vertical pages.
 js/main.js (257 lines): Navigation, hamburger menu, mobile sidebar, scroll animations, fade-in observers.
 js/charts.js (335 lines): Chart.js graphs. Only loaded on investors.html.
 js/vendor/chart.umd.min.js: Chart.js library. Only used by investors.html.
@@ -95,7 +95,7 @@ No analytics. No cookies. No tracking scripts.
 
 ### Root Pages (18 files)
 
-index.html (408 lines): Homepage. Hero, product comparison, trust stats, testimonials. Schema: Organization, WebSite.
+index.html (409 lines): Homepage. Hero, product comparison, trust stats, testimonials. Schema: Organization, WebSite. Body links to solutions.html and vertical pages via testimonial citations.
 products.html (527 lines): Three product tiers with full specs. Schema: Product (x3), FAQPage.
 pricing.html (512 lines): Pricing table, financing, TCO comparison. Schema: Product, FAQPage.
 why-island-mountain.html (456 lines): Value proposition. Links to all 5 verticals. Schema: FAQPage.
@@ -106,11 +106,11 @@ contact.html (928 lines): Contact form (FormSubmit.co), embedded Google Map. Sch
 blog.html (433 lines): Blog index listing all posts. Schema: Blog.
 investors.html (294 lines): Investor pitch with Chart.js graphs. Schema: Organization.
 about.html (269 lines): Company story, founder bio. Schema: AboutPage, Organization.
-law-firms.html (542 lines): Vertical landing page. Attorney-client privilege, discovery risk. Schema: FAQPage. Has AEO block.
-medical-practices.html (509 lines): Vertical. HIPAA, ePHI, BAA. Schema: FAQPage. Has AEO block.
-tribal-nations.html (535 lines): Vertical. OCAP, CLOUD Act, sovereignty. Schema: FAQPage, GovOrg. Has AEO block.
-research-labs.html (503 lines): Vertical. FERPA, IRB, GxP, 21 CFR Part 11. Schema: FAQPage. Has AEO block.
-defense-contractors.html (513 lines): Vertical. ITAR, DFARS 252.204-7012, CMMC, CUI. Schema: FAQPage. Has AEO block.
+law-firms.html (560 lines): Vertical landing page. Attorney-client privilege, discovery risk. Schema: FAQPage, BreadcrumbList. Has AEO block. Breadcrumb, contextual body link to solutions.html.
+medical-practices.html (527 lines): Vertical. HIPAA, ePHI, BAA. Schema: FAQPage, BreadcrumbList. Has AEO block. Breadcrumb, contextual body link to solutions.html.
+tribal-nations.html (553 lines): Vertical. OCAP, CLOUD Act, sovereignty. Schema: FAQPage, BreadcrumbList, GovOrg. Has AEO block. Breadcrumb, contextual body link to solutions.html.
+research-labs.html (521 lines): Vertical. FERPA, IRB, GxP, 21 CFR Part 11. Schema: FAQPage, BreadcrumbList. Has AEO block. Breadcrumb, contextual body link to solutions.html.
+defense-contractors.html (531 lines): Vertical. ITAR, DFARS 252.204-7012, CMMC, CUI. Schema: FAQPage, BreadcrumbList. Has AEO block. Breadcrumb, contextual body link to solutions.html.
 privacy.html (198 lines): Privacy policy. Schema: WebPage.
 terms.html (208 lines): Terms of service. Schema: WebPage.
 
@@ -210,6 +210,7 @@ Founding date consistent at 2026 across all schemas.
 FormSubmit.co contact form configured.
 Blog inline CSS extracted to css/blog.css (all 11 posts now under 400 lines).
 Blog index (blog.html) has cards for all 11 posts.
+Hub-and-spoke internal linking completed (2026-05-01): solutions.html established as topical authority hub for 5 vertical industry pages. Added: (1) visual breadcrumbs (Home > Solutions > Industry) on all 5 verticals after hero section, (2) BreadcrumbList JSON-LD schema on all 5 verticals, (3) contextual in-body links from each vertical back to solutions.html, (4) upgraded cross-link lines at bottom of each vertical CTA to include primary solutions.html link, (5) homepage body links to solutions.html ("five regulated industries" paragraph in Value Proposition section), (6) homepage testimonial citations linked to relevant vertical pages. Breadcrumb CSS added to style.css (not blog.css) since verticals don't load blog.css.
 Deleted legacy images: logo.png, Island Mountain Logo 1.png.
 Favicons (favicon.ico, favicon-32.png, apple-touch-icon.png, icon-192.png) regenerated from logo-transparent.png.
 

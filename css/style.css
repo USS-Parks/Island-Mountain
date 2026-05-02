@@ -1526,3 +1526,30 @@ table tbody tr:last-child td {
     font-size: 0.85rem;
   }
 }
+
+/* Breadcrumbs (used on vertical pages and blog posts) */
+.breadcrumb {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 0;
+  padding: 16px 0 0;
+  max-width: var(--max-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.breadcrumb a {
+  color: var(--text-muted);
+  transition: color var(--transition-speed);
+}
+
+.breadcrumb a:hover {
+  color: var(--copper);
+}
+
+.breadcrumb span {
+  margin: 0 8px;
+  color: var(--slate-500);
+}

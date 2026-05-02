@@ -73,6 +73,19 @@
     ]
   }
   </script>
+
+  <!-- BreadcrumbList Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://islandmountain.io/"},
+      {"@type": "ListItem", "position": 2, "name": "Solutions", "item": "https://islandmountain.io/solutions.html"},
+      {"@type": "ListItem", "position": 3, "name": "Defense Contractors", "item": "https://islandmountain.io/defense-contractors.html"}
+    ]
+  }
+  </script>
 </head>
 <body>
 
@@ -143,6 +156,11 @@
     </div>
   </section>
 
+  <!-- Breadcrumb -->
+  <nav class="breadcrumb">
+    <a href="index.html">Home</a><span>&rsaquo;</span><a href="solutions.html">Solutions</a><span>&rsaquo;</span>Defense Contractors
+  </nav>
+
   <!-- The Compliance Problem -->
   <section class="section section-first">
     <div class="container">
@@ -154,7 +172,7 @@
       <div class="fade-in" style="max-width:760px;margin:0 auto;">
         <p style="font-size:1.05rem;line-height:1.9;">When a defense contractor uses a commercial cloud AI service to analyze a proposal, draft technical documentation, or review contract language that involves Controlled Unclassified Information, that data is transmitted to infrastructure the contractor does not control. Under DFARS 252.204-7012, CUI must be processed in environments meeting NIST SP 800-171 security requirements. Most commercial AI API endpoints do not operate on FedRAMP High authorized infrastructure and therefore do not meet this baseline.</p>
         <p style="font-size:1.05rem;line-height:1.9;">The ITAR problem is more acute. ITAR restricts the export of defense articles and technical data to foreign persons and entities. If a cloud AI provider's infrastructure is accessible to foreign nationals -- which is the case for virtually all commercial cloud AI services -- processing ITAR-controlled technical data through that service may constitute an unauthorized export under 22 CFR 120-130. This is an enforcement risk, not a theoretical concern.</p>
-        <p style="font-size:1.05rem;line-height:1.9;">CMMC (Cybersecurity Maturity Model Certification) adds another layer. CMMC Level 2 and Level 3 assessments evaluate your organization's security practices across 110+ controls. Routing CUI-adjacent data through commercial cloud AI APIs introduces a processing path that your assessor will scrutinize closely -- and that may not survive that scrutiny.</p>
+        <p style="font-size:1.05rem;line-height:1.9;">CMMC (Cybersecurity Maturity Model Certification) adds another layer. CMMC Level 2 and Level 3 assessments evaluate your organization's security practices across 110+ controls. Routing CUI-adjacent data through commercial cloud AI APIs introduces a processing path that your assessor will scrutinize closely -- and that may not survive that scrutiny. Defense contractors face the strictest version of a problem common to <a href="solutions.html">all five industries we build for</a> -- data that cannot leave the building needs AI infrastructure that never asks it to.</p>
       </div>
     </div>
   </section>
@@ -456,7 +474,7 @@
         <a href="contact.html" class="btn btn-primary">Request a Quote</a>
         <a href="products.html" class="btn btn-secondary">See Full Specs</a>
       </div>
-      <p style="margin-top:24px;font-size:0.9rem;color:var(--text-muted);">See how other regulated sectors use local AI: <a href="law-firms.html">Law Firms</a> &middot; <a href="research-labs.html">Research Labs</a></p>
+      <p style="margin-top:24px;font-size:0.9rem;color:var(--text-muted);"><a href="solutions.html">See all five industries we serve</a> or explore: <a href="law-firms.html">Law Firms</a> &middot; <a href="research-labs.html">Research Labs</a></p>
     </div>
   </section>
 
