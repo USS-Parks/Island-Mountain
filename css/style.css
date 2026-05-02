@@ -30,7 +30,7 @@
   --card-border: rgba(148, 163, 184, 0.12);
   --glass-blur: 16px;
   --white: #ffffff;
-  --nav-height: 144px;
+  --nav-height: 80px;
   --max-width: 1200px;
   --transition-speed: 0.3s;
   --border-radius: 12px;
@@ -221,6 +221,7 @@ p {
   align-items: center;
   transition: background var(--transition-speed), box-shadow var(--transition-speed);
   background: transparent;
+  overflow: visible;
 }
 
 .navbar.scrolled {
@@ -240,6 +241,7 @@ p {
 .nav-logo {
   display: inline-flex;
   align-items: center;
+  transform: translateY(8px);
 }
 
 .nav-logo:hover {
