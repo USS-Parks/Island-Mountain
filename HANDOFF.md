@@ -1,239 +1,241 @@
-# Island Mountain Website -- Session Handoff
+# Island Mountain Website -- Project Context
 
-Date: 2026-05-01
-Repo: GitHub Pages static site at `C:\Users\17076\Documents\Claude\Island Mountain`
+Last updated: 2026-05-01
 Live URL: https://islandmountain.io
-Stack: Static HTML/CSS/JS. No frameworks, no build step, no SSG. Deployed via GitHub Pages.
+GitHub Pages static site. No frameworks, no build step, no SSG.
+Workspace: `C:\Users\17076\Documents\Claude\Island Mountain`
 
 ---
 
-## CRITICAL SAFETY RULE
+## FILE TRUNCATION PREVENTION
 
-The Edit tool has repeatedly truncated HTML files in this project. Files get silently chopped during edits -- the closing `</script>` or `</html>` tags vanish and the page breaks.
+This project previously had a file truncation issue caused by sync conflicts between the Cowork bash sandbox and the host filesystem. Files over ~500 lines could get silently chopped during writes. The root cause (308 lines of duplicated inline CSS in every blog post) has been fixed by extracting to css/blog.css. All blog posts are now under 400 lines.
 
-**After EVERY edit to an HTML file, you MUST:**
+Rules for every session:
 
-1. Run `tail -5 <filename>` (via bash) and confirm the file ends with `</html>`
-2. Check line count hasn't dropped unexpectedly
+1. NEVER use the Edit tool on any file over 400 lines. Use sed via bash instead.
+2. After EVERY file modification, verify the file ends correctly by running tail -3 filename in bash.
+3. Before declaring any task complete, run the verification script below.
+4. If a file IS truncated, recover from git: git show HEAD:filename > recovered.html, apply changes to the recovered copy, then overwrite the original.
 
-**Before committing, run this verification script:**
+Verification script (update the session path for your session):
 
-```bash
-cd "/sessions/serene-hopeful-albattani/mnt/Island Mountain/"
+```
+cd "/sessions/SESSION-SLUG/mnt/Island Mountain"
 for f in *.html blog/*.html; do
-  last=$(tail -1 "$f" | tr -d '[:space:]')
-  if [ "$last" != "</html>" ] && [ "$f" != "googlecff518dc414acaa3.html" ]; then
-    echo "TRUNCATED: $f"
+  [ "$f" = "googlecff518dc414acaa3.html" ] && continue
+  lines=$(wc -l < "$f")
+  has_close=$(grep -c '</html>' "$f")
+  if [ "$has_close" -eq 0 ]; then
+    echo "TRUNCATED: $f ($lines lines, no closing tag)"
   fi
 done
 echo "Verification complete."
 ```
 
-If a file gets truncated: Recover via `git show HEAD:<filename> > /tmp/recovered.html`, apply changes to the recovered copy via `sed`, then copy back. Do NOT attempt to re-edit the truncated file.
-
-**Preferred editing method:** Use `sed` commands via bash instead of the Edit tool for high-risk changes (especially changes that touch `<head>` or `<script>` blocks). This avoids the truncation bug entirely.
+Files still at risk (over 400 lines): contact.html (928), faq.html (855), law-firms.html (541), tribal-nations.html (534), products.html (522), defense-contractors.html (512), medical-practices.html (508), pricing.html (507), research-labs.html (502). Use sed via bash for these.
 
 ---
 
-## PATH MAPPING (File Tools vs. Bash Sandbox)
+## PATH MAPPING
 
-| Context | Path |
-|---------|------|
-| File tools (Read/Write/Edit) | `C:\Users\17076\Documents\Claude\Island Mountain\` |
-| Bash sandbox | `/sessions/serene-hopeful-albattani/mnt/Island Mountain/` |
+The bash sandbox and file tools (Read/Write/Edit/Grep) use different path schemes for the same files. The session slug changes every session.
 
-Always use the correct path for the correct tool. They are NOT interchangeable.
+Tool: Read, Write, Edit, Grep
+Path: C:\Users\17076\Documents\Claude\Island Mountain\filename
 
----
+Tool: Bash sandbox
+Path: /sessions/SESSION-SLUG/mnt/Island Mountain/filename
 
-## SITE ARCHITECTURE
+To find your bash session path, run: ls /sessions/*/mnt/
 
-### Stack
-- HTML/CSS/JS only. No build process.
-- `css/style.css` -- single stylesheet, CSS custom properties for theming (`--copper: #f59e0b`, etc.)
-- `js/main.js` -- navigation, animations, fade-in observers, mobile sidebar
-- `js/charts.js` -- Chart.js graphs for investors.html only
-- External CDNs: Google Fonts (Inter), Remixicon (jsDelivr), Chart.js (cdnjs, investors page only)
-- Hosting: GitHub Pages
-- Form processing: FormSubmit.co (posts to basho@islandmountain.io)
-- No analytics. No cookies. No tracking scripts.
-
-### Navigation Structure
-Every page shares identical nav and mobile sidebar markup:
-
-**Desktop nav:** Home | Why Local AI | Products | Technology | Pricing | Solutions (dropdown: Law Firms, Medical Practices, Tribal Nations, Research Labs, Defense Contractors) | FAQ | Blog | [Request Quote CTA]
-
-**Footer (4 columns):**
-- Brand: "Island Mountain" + tagline
-- Quick Links: Home, Products, Technology, Pricing, FAQ, Blog
-- Solutions: Law Firms, Medical Practices, Tribal Nations, Research Labs, Defense Contractors
-- Company: Why Local AI, Contact, Investors, About, Privacy Policy, Terms of Service
-
-**Blog posts use `../` relative paths** for all nav and footer links since they live in `blog/` subdirectory. Root pages use direct relative paths.
+Git operations must be run by the user in PowerShell on the host machine. Bash sandbox cannot push to GitHub.
 
 ---
 
-## COMPLETE FILE INVENTORY (Verified 2026-05-01)
+## WHAT THIS SITE IS
 
-### HTML Files (23 pages + 1 verification file)
+Island Mountain LLC sells pre-built, burn-tested on-premises AI inference servers with NVIDIA H100 and H200 GPUs. Price range $75K-$400K. Three product tiers: Starter (single H100 80GB, $75K), Professional (dual H100 NVLink, $185K), Enterprise (dual H200 141GB, $395K). Founded 2026, Colorado. Founder is John Dougherty.
 
-| File | Lines | Meta Desc | Canonical | OG | Twitter | JSON-LD | AEO Block | Ends `</html>` |
-|------|-------|-----------|-----------|----|---------|---------|-----------|----|
-| index.html | 373 | Yes | Yes | Yes | Yes | Organization + WebSite | No | Yes |
-| products.html | 521 | Yes | Yes | Yes | Yes | Product (3 tiers) + FAQPage | No | Yes |
-| pricing.html | 506 | Yes | Yes | Yes | Yes | Product + FAQPage | No | Yes |
-| why-island-mountain.html | 450 | Yes | Yes | Yes | Yes | FAQPage | No | Yes |
-| technology.html | 450 | Yes | Yes | Yes | Yes | SoftwareApplication + FAQPage | No | Yes |
-| faq.html | 842 | Yes | Yes | Yes | Yes | FAQPage (25 Q&A) | No | Yes |
-| blog.html | 377 | Yes | Yes | Yes | Yes | Blog | No | Yes |
-| contact.html | 927 | Yes | Yes | Yes | Yes | LocalBusiness | No | Yes |
-| investors.html | 292 | Yes | Yes | Yes | Yes | Organization | No | Yes |
-| law-firms.html | 518 | Yes | Yes | Yes | Yes | FAQPage | Yes | Yes |
-| medical-practices.html | 485 | Yes | Yes | Yes | Yes | FAQPage | Yes | Yes |
-| tribal-nations.html | 511 | Yes | Yes | Yes | Yes | FAQPage + GovOrg | Yes | Yes |
-| research-labs.html | 479 | Yes | Yes | Yes | Yes | FAQPage | Yes | Yes |
-| defense-contractors.html | 489 | Yes | Yes | Yes | Yes | FAQPage | Yes | Yes |
-| about.html | 252 | Yes | Yes | Yes | Yes | AboutPage + Organization | No | Yes |
-| privacy.html | 197 | Yes | Yes | Yes | Yes | WebPage | No | Yes |
-| terms.html | 207 | Yes | Yes | Yes | Yes | WebPage | No | Yes |
-| blog/deepseek-v4-flash-local-deployment.html | 606 | Yes | Yes | Yes | Yes | BlogPosting | Yes | Yes |
-| blog/attorney-client-privilege-cloud-ai.html | 652 | Yes | Yes | Yes | Yes | BlogPosting | Yes | Yes |
-| blog/h100-vs-h200-inference-comparison.html | 662 | Yes | Yes | Yes | Yes | BlogPosting | Yes | Yes |
-| blog/cloud-ai-vs-local-hardware-tco.html | 666 | Yes | Yes | Yes | Yes | BlogPosting | Yes | Yes |
-| blog/openwebui-admin-setup-guide.html | 644 | Yes | Yes | Yes | Yes | BlogPosting | Yes | Yes |
-| blog/tribal-data-sovereignty-ai-infrastructure.html | 630 | Yes | Yes | Yes | Yes | BlogPosting | Yes | Yes |
-| googlecff518dc414acaa3.html | 0 | N/A | N/A | N/A | N/A | N/A | N/A | N/A (GSC verification) |
+Target markets (each has a dedicated landing page): Law Firms, Medical Practices, Tribal Nations, Research Labs, Defense Contractors.
+
+Core value proposition: organizations with data that cannot leave the building (HIPAA, ITAR/DFARS, attorney-client privilege, tribal sovereignty/OCAP, FERPA) need AI infrastructure they own outright. No cloud dependency, no token fees, no third-party data exposure.
+
+Contact: basho@islandmountain.io
+LinkedIn: https://www.linkedin.com/company/island-mountain-llc/
+Form handler: FormSubmit.co (posts to basho@islandmountain.io)
+
+---
+
+## TECH STACK
+
+Static HTML/CSS/JS. Every page is hand-written HTML. No templating engine.
+
+css/style.css (1528 lines): Single global stylesheet. CSS custom properties for theming.
+css/blog.css (306 lines): Blog post styles (breadcrumb, article layout, tags, related cards, share links). Loaded by all 11 blog posts via link tag.
+js/main.js (257 lines): Navigation, hamburger menu, mobile sidebar, scroll animations, fade-in observers.
+js/charts.js (335 lines): Chart.js graphs. Only loaded on investors.html.
+js/vendor/chart.umd.min.js: Chart.js library. Only used by investors.html.
+fonts/fonts.css + fonts/inter-latin.woff2: Self-hosted Inter variable font (latin subset). No Google CDN.
+icons/remixicon.css + icons/remixicon.woff2: Self-hosted Remixicon icons. No jsDelivr CDN.
+
+Brand colors (CSS custom properties):
+--copper: #f59e0b (primary accent, amber/copper)
+--copper-light: #fbbf24, --copper-deep: #d97706, --copper-darker: #b45309
+--primary-dark: #0f172a (deep navy background)
+--secondary-dark: #1e293b, --tertiary-dark: #334155
+--text-light: #f1f5f9 (headings), --text-muted: #94a3b8 (body text)
+--nav-height: 72px, --max-width: 1200px
+
+No analytics. No cookies. No tracking scripts.
+
+---
+
+## FILE INVENTORY (29 content pages)
+
+### Root Pages (18 files)
+
+index.html (403 lines): Homepage. Hero, product comparison, trust stats, testimonials. Schema: Organization, WebSite.
+products.html (522 lines): Three product tiers with full specs. Schema: Product (x3), FAQPage.
+pricing.html (507 lines): Pricing table, financing, TCO comparison. Schema: Product, FAQPage.
+why-island-mountain.html (451 lines): Value proposition. Links to all 5 verticals. Schema: FAQPage.
+technology.html (451 lines): Software stack: Ollama, vLLM, Open WebUI, Ubuntu. Schema: SoftwareApplication, FAQPage.
+solutions.html (396 lines): Hub page linking all 5 industry verticals + blog crosslinks. Schema: FAQPage.
+faq.html (855 lines): 25 Q&A pairs. Schema: FAQPage (25 Q&A), SpeakableSpecification.
+contact.html (928 lines): Contact form (FormSubmit.co), embedded Google Map. Schema: LocalBusiness.
+blog.html (433 lines): Blog index listing all posts. Schema: Blog.
+investors.html (294 lines): Investor pitch with Chart.js graphs. Schema: Organization.
+about.html (269 lines): Company story, founder bio. Schema: AboutPage, Organization.
+law-firms.html (541 lines): Vertical landing page. Attorney-client privilege, discovery risk. Schema: FAQPage. Has AEO block.
+medical-practices.html (508 lines): Vertical. HIPAA, ePHI, BAA. Schema: FAQPage. Has AEO block.
+tribal-nations.html (534 lines): Vertical. OCAP, CLOUD Act, sovereignty. Schema: FAQPage, GovOrg. Has AEO block.
+research-labs.html (502 lines): Vertical. FERPA, IRB, GxP, 21 CFR Part 11. Schema: FAQPage. Has AEO block.
+defense-contractors.html (512 lines): Vertical. ITAR, DFARS 252.204-7012, CMMC, CUI. Schema: FAQPage. Has AEO block.
+privacy.html (198 lines): Privacy policy. Schema: WebPage.
+terms.html (208 lines): Terms of service. Schema: WebPage.
+
+### Blog Posts (11 files in blog/ subdirectory)
+
+All use ../ prefix for root-level links. All load css/blog.css via external link tag (inline CSS extracted 2026-05-01). All have: BlogPosting schema, breadcrumb, article-meta, AEO summary, CTA, 3 related article cards, share links (LinkedIn + X).
+
+Blog tag CSS classes: tag-technical, tag-compliance, tag-financial, tag-how-to, tag-industry.
+
+deepseek-v4-flash-local-deployment.html (299 lines, 2026-04-30, technical, 7 min)
+attorney-client-privilege-cloud-ai.html (345 lines, 2026-04-23, compliance, 9 min)
+h100-vs-h200-inference-comparison.html (355 lines, 2026-04-16, technical, 8 min)
+cloud-ai-vs-local-hardware-tco.html (359 lines, 2026-04-09, financial, 9 min)
+openwebui-admin-setup-guide.html (388 lines, 2026-04-02, how-to, 9 min)
+tribal-data-sovereignty-ai-infrastructure.html (323 lines, 2026-03-26, industry, 10 min)
+ocap-cloud-act-guide.html (273 lines, 2026-03-12, industry, 12 min)
+itar-dfars-ai-self-assessment.html (265 lines, 2026-03-05, compliance, 14 min)
+openai-discovery-risk-law-firms.html (263 lines, 2026-02-26, compliance, 13 min)
+on-prem-vs-colo-vs-cloud.html (293 lines, 2026-02-12, industry, 15 min)
+hipaa-technical-checklist.html (307 lines, 2026-02-19, compliance, 16 min)
+
+### Images
+
+hero-mountain.png (2.7MB): Full-size hero background 1913x892. Used on every page via picture element.
+hero-mountain.webp (137KB): WebP hero (full size). hero-mountain-mobile.webp (28KB): WebP hero (800px mobile).
+logo-transparent.png (174KB): Full logo, transparent background, 578x466.
+logo-nav.png (1.4KB): Navbar logo 24x24 padded square transparent.
+logo-footer.png (37KB): Footer logo 210x210 padded square transparent.
+logo.png (192KB): Legacy logo with navy background. Not referenced in HTML.
+Island Mountain Logo 1.png (4.9MB): Source upload. Can be deleted.
+favicon-32.png, apple-touch-icon.png, icon-192.png, favicon.ico: Standard favicon set.
 
 ### Other Files
 
-| File | Size/Lines | Purpose |
-|------|-----------|---------|
-| `robots.txt` | 37 lines | Allows all crawlers including GPTBot, ClaudeBot, PerplexityBot. Points to sitemap. |
-| `sitemap.xml` | 166 lines, 23 URLs | All pages including about, privacy, terms. |
-| `llms.txt` | 37 lines | AI answer engine optimization file. Company summary, products, audience, key URLs. |
-| `css/style.css` | ~26KB | Main stylesheet. CSS custom properties. |
-| `js/main.js` | ~7KB | Nav, animations, mobile sidebar. |
-| `js/charts.js` | ~10KB | Chart.js config for investors.html. |
-| `favicon.ico` | -- | Favicon |
-| `images/hero-mountain.png` | 2.7MB | Hero background image (used on every page). |
-| `images/logo.png` | 192KB | Logo |
-| `images/favicon-32.png` | ~2KB | 32px favicon |
-| `images/apple-touch-icon.png` | ~35KB | Apple touch icon |
-| `images/icon-192.png` | ~39KB | PWA icon |
+sitemap.xml: 29 URLs covering all pages.
+robots.txt: Allows all crawlers including GPTBot, ClaudeBot, PerplexityBot.
+llms.txt: AI answer engine optimization file.
+CNAME: islandmountain.io (GitHub Pages custom domain).
+.nojekyll: Disables Jekyll processing.
+monitoring-setup.md, offpage-checklist.md: Internal planning docs.
 
 ---
 
-## SEO STATUS (As of 2026-05-01)
+## HTML PATTERNS
+
+### Page Structure (every page)
+
+Head: charset, viewport, title, meta description, favicon links, stylesheet links (style.css, remixicon.css, fonts.css, [blog: blog.css]), canonical, OG tags, Twitter Card tags, JSON-LD scripts.
+Body: [index only: particles canvas + hero photo], navbar, mobile sidebar, page content, footer, main.js script.
+
+### Navbar Logo
+
+Root pages: img src="images/logo-nav.png" width="24" height="24"
+Blog pages: img src="../images/logo-nav.png" width="24" height="24"
+The logo sits inline beside the text "Island Mountain" inside the nav-logo anchor.
+
+### Footer Logo
+
+Root pages: img src="images/logo-footer.png" width="210" height="210" inside footer-brand div, above the nav-logo text link.
+Blog pages: img src="../images/logo-footer.png" width="210" height="210"
+
+### Blog Citation Format
+
+Inline parenthetical links: (Source Name) where Source Name is a link with target="_blank" rel="noopener".
+
+### AEO Summary Block
+
+Copper left border, subtle amber background. Used on vertical pages and some blog posts:
+div with style="border-left:3px solid var(--copper);padding:16px 20px;margin:32px 0;background:rgba(217,119,6,0.05);border-radius:0 8px 8px 0;"
+Contains bold "Summary:" followed by 2-3 sentence direct answer.
+
+### Blog Post Sections (in order)
+
+1. Breadcrumb: Home > Blog > Post Title
+2. Article header: date, tag badge, read time, h1, author
+3. Article body: h2/h3 sections with cited paragraphs
+4. AEO summary block
+5. CTA: centered heading + subtext + Request a Quote button
+6. Related articles: 3 cards in related-grid
+7. Article nav: back link + LinkedIn/X share buttons
+
+---
+
+## SEO STATUS
 
 ### Completed
 
-- **Meta descriptions** on all 23 pages
-- **Self-referencing canonical tags** on all 23 pages
-- **OG + Twitter Card tags** on all 23 pages (title, description, image, url, type)
-- **JSON-LD structured data** on all 23 pages (see inventory table for types per page)
-- **XML sitemap** with 23 URLs covering all pages
-- **robots.txt** allowing all crawlers including AI answer engines
-- **llms.txt** for AI answer engine optimization
-- **AEO "Bottom line" summary blocks** on 11 pages (5 vertical + 6 blog posts)
-- **Keyword-rich anchor text** on why-island-mountain.html vertical links (replaced generic "Learn more")
-- **Title tag optimization** on 5 high-priority pages (index, products, faq, contact, pricing) -- title + og:title + twitter:title kept in sync
-- **Trust pages** created: about.html, privacy.html, terms.html
-- **Email standardized** to basho@islandmountain.io across all schemas and contact references
-- **Footer navigation** includes About, Privacy Policy, Terms of Service on all pages
-- **Footer email removed** -- contact form is the sole public communication channel
-- **A100 reference removed** from contact.html schema (Island Mountain sells H100 and H200 only)
+Meta descriptions, canonical tags, OG + Twitter Card tags, JSON-LD structured data on all 29 pages.
+XML sitemap with 29 URLs. robots.txt allowing all crawlers. llms.txt for AI engines.
+AEO blocks on 5 vertical pages + 2 blog posts (hipaa, on-prem).
+Self-hosted fonts and icons (zero CDN dependencies).
+WebP hero images with picture element fallback.
+LinkedIn company page linked in footer of all 29 pages.
+Logo in navbar (24x24) and footer (210x210) on all 29 pages.
+Founding date consistent at 2026 across all schemas.
+FormSubmit.co contact form configured.
+Blog inline CSS extracted to css/blog.css (all 11 posts now under 400 lines).
 
-### Known Issue: Founding Date Inconsistency
+### Not Yet Done
 
-`index.html` says `foundingDate: "2026"`. `investors.html` and `about.html` say `foundingDate: "2025"`. Pick one and make it consistent. Fix with:
-
-```bash
-# If 2025 is correct:
-cd "/sessions/serene-hopeful-albattani/mnt/Island Mountain/"
-sed -i 's/"foundingDate": "2026"/"foundingDate": "2025"/' index.html
-
-# If 2026 is correct:
-sed -i 's/"foundingDate": "2025"/"foundingDate": "2026"/' investors.html about.html
-```
-
----
-
-## FORMSUBMIT.CO VERIFICATION STATUS
-
-The contact form action points to `https://formsubmit.co/basho@islandmountain.io`. FormSubmit.co requires email verification on first submission. **Required steps:**
-
-1. Submit a test form on the live site (https://islandmountain.io/contact.html)
-2. Check basho@islandmountain.io for a verification email from FormSubmit.co
-3. Click the verification link
-
-Until this is done, form submissions will NOT be forwarded.
-
----
-
-## OFF-PAGE WORK (Not Code -- Site Owner Action Required)
-
-1. **Google Search Console:** Verify domain property is active. Submit sitemap URL. Use URL Inspection tool to request indexing on homepage, products, FAQ, pricing, all vertical pages, and the three new trust pages.
-2. **Press release:** Distribute via PRNewswire or BusinessWire.
-3. **LinkedIn articles:** Publish excerpts of the attorney-client privilege and tribal data sovereignty blog posts.
-4. **Directory listings:** Submit to AI hardware directories and compliance technology marketplaces.
-5. **Podcast appearances:** Legal tech, healthcare IT, tribal governance, defense procurement podcasts.
-6. **Monitor GSC:** Watch for indexing and rank signals over the following 2-4 weeks.
-
----
-
-## IMAGE OPTIMIZATION (Not Yet Addressed)
-
-`hero-mountain.png` is 2.7MB. This is loaded on every single page. Recommended actions:
-
-- Convert to WebP (typically 60-80% size reduction)
-- Create responsive sizes (e.g., 1200px, 800px, 400px widths)
-- Add `loading="lazy"` to non-above-fold images
-- Consider using `<picture>` element with WebP + PNG fallback
-
-`logo.png` at 192KB could also be compressed or converted.
+AEO blocks missing from most root pages and 9 of 11 blog posts.
+Blog index (blog.html) missing cards for 5 newer posts: hipaa, itar, ocap, on-prem, openai.
+Delete images/Island Mountain Logo 1.png (4.9MB source file).
+Delete images/logo.png (legacy, replaced by logo-transparent.png).
+Google Search Console: verify sitemap, monitor indexing.
 
 ---
 
 ## GIT WORKFLOW
 
-**Stale lock file:** A `.git/index.lock` file may exist on the host filesystem. If git commands fail, delete it first:
+Push from PowerShell only (bash sandbox cannot push):
 
-```powershell
-cd "C:\Users\17076\Documents\Claude\Island Mountain"
-Remove-Item ".git\index.lock" -Force -ErrorAction SilentlyContinue
 ```
-
-**Commit and push from PowerShell:**
-
-```powershell
 cd "C:\Users\17076\Documents\Claude\Island Mountain"
 Remove-Item ".git\index.lock" -Force -ErrorAction SilentlyContinue
 git add -A
 git status
-git commit -m "description of changes"
-git push
-```
-
-If git push fails from the bash sandbox (common due to mount behavior), always provide a PowerShell block instead.
-
-**Recent git history:**
-
-```
-2dddbb3 SEO implementation: email updates, anchor text, llms.txt, trust pages, AEO blocks, title optimization, remove footer email
-43f3ba4 SEO implementation: email updates, anchor text, llms.txt, trust pages, AEO blocks, title optimization
-7ff06cd Remove public handoff files, update contact form email to basho@islandmountain.io
-6c4ae0d cleanup: delete truncated backups, remove internal blog docs, fix contact form endpoint
-bf31b5d fix: restore all truncated HTML files from git history, preserve SEO changes
+git commit -m "description"
+git push origin main
 ```
 
 ---
 
-## PROMPT FOR NEW SESSION
+## SESSION PROMPT
 
-Copy and paste this into a new Claude session after connecting the folder:
+Paste this when starting a new Cowork project session:
 
-> You are working on the Island Mountain website (islandmountain.io), a static HTML/CSS/JS site on GitHub Pages selling on-premises AI inference hardware ($75K-$400K). Read the HANDOFF.md file in the repo root first. It contains the complete site inventory, verified file states, architecture notes, and safety protocols.
->
-> CRITICAL: The Edit tool has a documented history of truncating HTML files in this project. After EVERY edit to an HTML file, run `tail -5 <filename>` via bash and confirm the file ends with `</html>`. Prefer sed commands over the Edit tool for all HTML modifications. If a file gets truncated, recover via `git show HEAD:<filename>`.
->
-> Here is the folder I want you to work in: C:\Users\17076\Documents\Claude\Island Mountain
+You are working on islandmountain.io, a static HTML/CSS/JS site on GitHub Pages selling on-premises AI inference servers. Read HANDOFF.md first. It has the full site inventory, HTML patterns, and known issues. Files over 400 lines can get truncated during sync -- use sed via bash for those, never the Edit tool. After every edit, run tail -3 filename and confirm it ends with the closing html tag. Blog post styles live in css/blog.css (shared across all 11 posts).
