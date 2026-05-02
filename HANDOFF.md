@@ -61,7 +61,7 @@ Target markets (each has a dedicated landing page): Law Firms, Medical Practices
 
 Core value proposition: organizations with data that cannot leave the building (HIPAA, ITAR/DFARS, attorney-client privilege, tribal sovereignty/OCAP, FERPA) need AI infrastructure they own outright. No cloud dependency, no token fees, no third-party data exposure.
 
-Contact: basho@islandmountain.io
+Contact: basho@islandmountain.io (displayed as info@islandmountain.io on site, mailto routes to basho@)
 LinkedIn: https://www.linkedin.com/company/island-mountain-llc/
 Form handler: FormSubmit.co (posts to basho@islandmountain.io)
 
@@ -85,7 +85,7 @@ Brand colors (CSS custom properties):
 --primary-dark: #0f172a (deep navy background)
 --secondary-dark: #1e293b, --tertiary-dark: #334155
 --text-light: #f1f5f9 (headings), --text-muted: #94a3b8 (body text)
---nav-height: 72px, --max-width: 1200px
+--nav-height: 80px, --max-width: 1200px
 
 No analytics. No cookies. No tracking scripts.
 
@@ -137,7 +137,10 @@ hipaa-technical-checklist.html (307 lines, 2026-02-19, compliance, 16 min)
 hero-mountain.png (2.7MB): Full-size hero background 1913x892. Used on every page via picture element.
 hero-mountain.webp (137KB): WebP hero (full size). hero-mountain-mobile.webp (28KB): WebP hero (800px mobile).
 logo-transparent.png (174KB): Full logo, transparent background, 578x466.
-logo-nav.png (1.4KB): Navbar logo 24x24 padded square transparent.
+logo-nav.png (1.4KB): Legacy navbar logo 24x24 (replaced by logo-nav-new).
+logo-nav-new.png (39.2KB): Navbar wordmark 392x259 retina (196x129 display), flood-fill transparency.
+logo-nav-new.webp (12.8KB): WebP version of navbar wordmark.
+IM-transparent-logo-2.png (632x223): Source wordmark file.
 logo-footer.png (37KB): Footer logo 210x210 padded square transparent.
 favicon-32.png, apple-touch-icon.png, icon-192.png, favicon.ico: Standard favicon set.
 
@@ -161,9 +164,11 @@ Body: [index only: particles canvas + hero photo], navbar, mobile sidebar, page 
 
 ### Navbar Logo
 
-Root pages: img src="images/logo-nav.png" width="24" height="24"
-Blog pages: img src="../images/logo-nav.png" width="24" height="24"
-The logo sits inline beside the text "Island Mountain" inside the nav-logo anchor.
+Wordmark image replaces old icon+text. Uses picture element for WebP/PNG fallback.
+Root pages: `<a href="index.html" class="nav-logo"><picture><source srcset="images/logo-nav-new.webp" type="image/webp"><img src="images/logo-nav-new.png" alt="Island Mountain" width="196" height="129"></picture></a>`
+Blog pages: same with `../images/` prefix.
+Source files: logo-nav-new.png (392x259 retina, 39.2KB), logo-nav-new.webp (12.8KB). Custom flood-fill transparency from IM-transparent-logo-2.png.
+CSS: `.nav-logo` uses `display:inline-flex; align-items:center; transform:translateY(-2px);` -- navbar `overflow:visible`.
 
 ### Footer Logo
 
@@ -205,7 +210,7 @@ Root pages intentionally without AEO blocks: about, contact, investors, privacy,
 Self-hosted fonts and icons (zero CDN dependencies).
 WebP hero images with picture element fallback.
 LinkedIn company page linked in footer of all 29 pages.
-Logo in navbar (24x24) and footer (210x210) on all 29 pages.
+Navbar wordmark logo (196x129 display, picture element WebP/PNG) on all 29 pages. Footer logo (210x210) on all 29 pages.
 Founding date consistent at 2026 across all schemas.
 FormSubmit.co contact form configured.
 Blog inline CSS extracted to css/blog.css (all 11 posts now under 400 lines).
@@ -213,6 +218,8 @@ Blog index (blog.html) has cards for all 11 posts.
 Hub-and-spoke internal linking completed (2026-05-01): solutions.html established as topical authority hub for 5 vertical industry pages. Added: (1) visual breadcrumbs (Home > Solutions > Industry) on all 5 verticals after hero section, (2) BreadcrumbList JSON-LD schema on all 5 verticals, (3) contextual in-body links from each vertical back to solutions.html, (4) upgraded cross-link lines at bottom of each vertical CTA to include primary solutions.html link, (5) homepage body links to solutions.html ("five regulated industries" paragraph in Value Proposition section), (6) homepage testimonial citations linked to relevant vertical pages. Breadcrumb CSS added to style.css (not blog.css) since verticals don't load blog.css.
 Deleted legacy images: logo.png, Island Mountain Logo 1.png.
 Favicons (favicon.ico, favicon-32.png, apple-touch-icon.png, icon-192.png) regenerated from logo-transparent.png.
+Navbar logo replaced with wordmark (logo-nav-new.png/webp, 196x129 display) on all 29 pages. --nav-height increased to 80px.
+Email display changed to info@islandmountain.io on contact.html (2 instances), privacy.html (2 instances), terms.html (1 instance). mailto: hrefs still route to basho@islandmountain.io. Schema email fields unchanged.
 
 ### Not Yet Done
 
