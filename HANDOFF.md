@@ -139,8 +139,6 @@ hero-mountain.webp (137KB): WebP hero (full size). hero-mountain-mobile.webp (28
 logo-transparent.png (174KB): Full logo, transparent background, 578x466.
 logo-nav.png (1.4KB): Navbar logo 24x24 padded square transparent.
 logo-footer.png (37KB): Footer logo 210x210 padded square transparent.
-logo.png (192KB): Legacy logo with navy background. Not referenced in HTML.
-Island Mountain Logo 1.png (4.9MB): Source upload. Can be deleted.
 favicon-32.png, apple-touch-icon.png, icon-192.png, favicon.ico: Standard favicon set.
 
 ### Other Files
@@ -208,13 +206,13 @@ Logo in navbar (24x24) and footer (210x210) on all 29 pages.
 Founding date consistent at 2026 across all schemas.
 FormSubmit.co contact form configured.
 Blog inline CSS extracted to css/blog.css (all 11 posts now under 400 lines).
+Blog index (blog.html) has cards for all 11 posts.
+Deleted legacy images: logo.png, Island Mountain Logo 1.png.
+Favicons (favicon.ico, favicon-32.png, apple-touch-icon.png, icon-192.png) regenerated from logo-transparent.png.
 
 ### Not Yet Done
 
 AEO blocks missing from most root pages and 9 of 11 blog posts.
-Blog index (blog.html) missing cards for 5 newer posts: hipaa, itar, ocap, on-prem, openai.
-Delete images/Island Mountain Logo 1.png (4.9MB source file).
-Delete images/logo.png (legacy, replaced by logo-transparent.png).
 Google Search Console: verify sitemap, monitor indexing.
 
 ---
@@ -234,8 +232,6 @@ git push origin main
 
 ---
 
-## SESSION PROMPT
 
-Paste this when starting a new Cowork project session:
 
-You are working on islandmountain.io, a static HTML/CSS/JS site on GitHub Pages selling on-premises AI inference servers. Read HANDOFF.md first. It has the full site inventory, HTML patterns, and known issues. Files over 400 lines can get truncated during sync -- use sed via bash for those, never the Edit tool. After every edit, run tail -3 filename and confirm it ends with the closing html tag. Blog post styles live in css/blog.css (shared across all 11 posts).
+
