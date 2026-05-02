@@ -198,7 +198,7 @@ Contains bold "Summary:" followed by 2-3 sentence direct answer.
 
 Meta descriptions, canonical tags, OG + Twitter Card tags, JSON-LD structured data on all 29 pages.
 XML sitemap with 29 URLs. robots.txt allowing all crawlers. llms.txt for AI engines.
-AEO blocks on 5 vertical pages + 2 blog posts (hipaa, on-prem).
+AEO blocks on all 11 blog posts (standardized to Summary: format with copper border styling).
 Self-hosted fonts and icons (zero CDN dependencies).
 WebP hero images with picture element fallback.
 LinkedIn company page linked in footer of all 29 pages.
@@ -212,7 +212,9 @@ Favicons (favicon.ico, favicon-32.png, apple-touch-icon.png, icon-192.png) regen
 
 ### Not Yet Done
 
-AEO blocks missing from most root pages and 9 of 11 blog posts.
+AEO blocks on 6 root pages need standardization (old "Bottom line:" format with dark background): law-firms, medical-practices, tribal-nations, research-labs, defense-contractors, solutions. Must convert to standard Summary: format with copper border styling.
+AEO blocks missing entirely from root pages: index, products, pricing, why-island-mountain, technology, faq. Need new blocks written and inserted.
+Root pages that don't need AEO blocks: about, contact, investors, privacy, terms.
 Google Search Console: verify sitemap, monitor indexing.
 
 ---
