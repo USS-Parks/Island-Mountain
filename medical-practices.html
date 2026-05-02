@@ -68,6 +68,19 @@
     ]
   }
   </script>
+
+  <!-- BreadcrumbList Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://islandmountain.io/"},
+      {"@type": "ListItem", "position": 2, "name": "Solutions", "item": "https://islandmountain.io/solutions.html"},
+      {"@type": "ListItem", "position": 3, "name": "Medical Practices", "item": "https://islandmountain.io/medical-practices.html"}
+    ]
+  }
+  </script>
 </head>
 <body>
 
@@ -138,6 +151,11 @@
     </div>
   </section>
 
+  <!-- Breadcrumb -->
+  <nav class="breadcrumb">
+    <a href="index.html">Home</a><span>&rsaquo;</span><a href="solutions.html">Solutions</a><span>&rsaquo;</span>Medical Practices
+  </nav>
+
   <!-- The Cloud AI Problem for Medical Practices -->
   <section class="section section-first">
     <div class="container">
@@ -149,7 +167,7 @@
       <div class="fade-in" style="max-width:760px;margin:0 auto;">
         <p style="font-size:1.05rem;line-height:1.9;">When a provider uses a cloud AI service to draft a clinical note, summarize a patient encounter, or write a prior authorization letter, the Protected Health Information in that prompt leaves the practice's network. It is transmitted to a cloud data center, processed on shared infrastructure, and returned over the public internet. Under HIPAA, this transmission makes the cloud AI provider a business associate. A Business Associate Agreement (BAA) is required. The provider's data handling practices become your compliance responsibility.</p>
         <p style="font-size:1.05rem;line-height:1.9;">Some cloud AI providers now offer "HIPAA-eligible" tiers with BAA support. This addresses the contractual requirement -- but it does not eliminate the structural risk. PHI is still transmitted to, and processed on, infrastructure you do not control. A breach at the cloud provider is a breach of your patient data. Under the HIPAA Breach Notification Rule (45 CFR 164.402), that disclosure may be reportable.</p>
-        <p style="font-size:1.05rem;line-height:1.9;">The distinction matters: "HIPAA-eligible" means a cloud provider has agreed to certain contractual obligations. "HIPAA-simpler" means the data never left your building in the first place, and the entire third-party compliance layer does not apply.</p>
+        <p style="font-size:1.05rem;line-height:1.9;">The distinction matters: "HIPAA-eligible" means a cloud provider has agreed to certain contractual obligations. "HIPAA-simpler" means the data never left your building in the first place, and the entire third-party compliance layer does not apply. Medical practices share this challenge with <a href="solutions.html">every data-sovereign industry we serve</a> -- the solution is the same infrastructure, applied to different compliance frameworks.</p>
       </div>
     </div>
   </section>
@@ -452,7 +470,7 @@
         <a href="contact.html" class="btn btn-primary">Request a Quote</a>
         <a href="products.html" class="btn btn-secondary">See Full Specs</a>
       </div>
-      <p style="margin-top:24px;font-size:0.9rem;color:var(--text-muted);">See how other regulated sectors use local AI: <a href="law-firms.html">Law Firms</a> &middot; <a href="tribal-nations.html">Tribal Nations</a></p>
+      <p style="margin-top:24px;font-size:0.9rem;color:var(--text-muted);"><a href="solutions.html">See all five industries we serve</a> or explore: <a href="law-firms.html">Law Firms</a> &middot; <a href="tribal-nations.html">Tribal Nations</a></p>
     </div>
   </section>
 

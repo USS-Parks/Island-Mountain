@@ -68,6 +68,19 @@
     ]
   }
   </script>
+
+  <!-- BreadcrumbList Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://islandmountain.io/"},
+      {"@type": "ListItem", "position": 2, "name": "Solutions", "item": "https://islandmountain.io/solutions.html"},
+      {"@type": "ListItem", "position": 3, "name": "Law Firms", "item": "https://islandmountain.io/law-firms.html"}
+    ]
+  }
+  </script>
 </head>
 <body>
 
@@ -138,6 +151,11 @@
     </div>
   </section>
 
+  <!-- Breadcrumb -->
+  <nav class="breadcrumb">
+    <a href="index.html">Home</a><span>&rsaquo;</span><a href="solutions.html">Solutions</a><span>&rsaquo;</span>Law Firms
+  </nav>
+
   <!-- The Cloud AI Problem for Law Firms -->
   <section class="section section-first">
     <div class="container">
@@ -147,7 +165,7 @@
         <p>Cloud AI creates a structural conflict with the most fundamental obligation in legal practice: confidentiality.</p>
       </div>
       <div class="fade-in" style="max-width:760px;margin:0 auto;">
-        <p style="font-size:1.05rem;line-height:1.9;">When an attorney pastes a client contract into ChatGPT, Claude, or any cloud-based AI service, that document leaves the firm's network. It travels across the public internet to a data center owned by a third party. It is processed on shared infrastructure alongside data from thousands of other organizations. The cloud provider's terms of service -- not your engagement letter -- govern what happens to that data.</p>
+        <p style="font-size:1.05rem;line-height:1.9;">When an attorney pastes a client contract into ChatGPT, Claude, or any cloud-based AI service, that document leaves the firm's network. It travels across the public internet to a data center owned by a third party. It is processed on shared infrastructure alongside data from thousands of other organizations. Law firms are one of <a href="solutions.html">five regulated industries</a> where this structural conflict between cloud AI and data confidentiality is most acute. The cloud provider's terms of service -- not your engagement letter -- govern what happens to that data.</p>
         <p style="font-size:1.05rem;line-height:1.9;">ABA Model Rule 1.6(a) requires attorneys to hold client information in confidence. Rule 1.6(c) requires "reasonable efforts to prevent the inadvertent or unauthorized disclosure" of that information. Multiple state bar ethics opinions have addressed whether transmitting client data to cloud AI providers satisfies this standard. The recurring concern: once data leaves the firm's infrastructure, the attorney's ability to control its handling depends entirely on a vendor's privacy policy and contractual commitments -- not on the firm's own security measures.</p>
         <p style="font-size:1.05rem;line-height:1.9;">This is not a theoretical risk. It is the mechanical reality of how cloud AI works. Every API call is a data transmission. Every data transmission is a potential privilege question.</p>
       </div>
@@ -484,7 +502,7 @@
         <a href="contact.html" class="btn btn-primary">Request a Quote</a>
         <a href="products.html" class="btn btn-secondary">See Full Specs</a>
       </div>
-      <p style="margin-top:24px;font-size:0.9rem;color:var(--text-muted);">See how other regulated industries use local AI: <a href="medical-practices.html">Medical Practices</a> &middot; <a href="defense-contractors.html">Defense Contractors</a></p>
+      <p style="margin-top:24px;font-size:0.9rem;color:var(--text-muted);"><a href="solutions.html">See all five industries we serve</a> or explore: <a href="medical-practices.html">Medical Practices</a> &middot; <a href="defense-contractors.html">Defense Contractors</a></p>
     </div>
   </section>
 
