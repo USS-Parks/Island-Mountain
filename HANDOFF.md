@@ -55,7 +55,7 @@ Git operations must be run by the user in PowerShell on the host machine. Bash s
 
 ## WHAT THIS SITE IS
 
-Island Mountain LLC sells pre-built, burn-tested on-premises AI inference servers with NVIDIA H100 and H200 GPUs. Price range $75K-$400K. Three product tiers: Starter (single H100 80GB, $75K), Professional (dual H100 NVLink, $185K), Enterprise (dual H200 141GB, $395K). Founded 2026, Colorado. Founder is John Dougherty.
+Island Mountain LLC sells pre-built, burn-tested on-premises AI inference servers with NVIDIA H100 and H200 GPUs. Price range $75K-$400K. Three product tiers: Starter (2x H100 80GB PCIe refurbished, $75-85K), Performance (build-to-order, $150-160K), Premium (2x H200 141GB, $350-400K, coming Q3 2026). Founded 2026, Colorado. Founder is John Dougherty.
 
 Target markets (each has a dedicated landing page): Law Firms, Medical Practices, Tribal Nations, Research Labs, Defense Contractors.
 
@@ -221,9 +221,10 @@ Favicons (favicon.ico, favicon-32.png, apple-touch-icon.png, icon-192.png) regen
 Navbar logo replaced with wordmark (logo-nav-new.png/webp, 196x129 display) on all 29 pages. --nav-height increased to 80px.
 Email display changed to info@islandmountain.io on contact.html (2 instances), privacy.html (2 instances), terms.html (1 instance). mailto: hrefs still route to basho@islandmountain.io. Schema email fields unchanged.
 
-### Not Yet Done
+### In Progress
 
-Google Search Console: verify sitemap, monitor indexing.
+Google Search Console: sitemap submitted 2026-05-02, processing. Check back for indexing confirmation.
+Google Business Profile: verification proof submitted 2026-05-02, awaiting approval.
 
 ---
 
