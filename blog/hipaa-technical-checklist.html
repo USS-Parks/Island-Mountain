@@ -382,7 +382,7 @@
   <!-- Navbar -->
   <nav class="navbar">
     <div class="container">
-      <a href="../index.html" class="nav-logo">Island Mountain</a>
+      <a href="../index.html" class="nav-logo"><img src="../images/logo-nav.png" alt="Island Mountain logo" width="34" height="28" style="vertical-align:middle;margin-right:8px;">Island Mountain</a>
       <ul class="nav-links">
         <li><a href="../index.html">Home</a></li>
         <li><a href="../why-island-mountain.html">Why Local AI</a></li>
@@ -510,37 +510,33 @@
 
 <h2>Architecture Over Convenience</h2>
 
-<p>The hard truth that this checklist is building toward is this: HIPAA's technical safeguards were written for a world where healthcare organizations controlled their own infrastructure, and they remain most cleanly satisfiable in a world where healthcare organizations still do.</p>
+<p>The hard truth that this checklist is building toward is this: HIPAA's technical safeguards were written for a world where healthcare organizations control their own systems. Every single one of the ten items on this checklist is more completely, more verifiably, and more defensibly satisfied when your AI infrastructure sits inside your own facility, on your own hardware, under your own administrative control. That's not an ideological position. It's a structural observation about how compliance works when auditors start asking questions.</p>
 
-<p>Every requirement in this checklist can be implemented in a cloud environment. Encryption at rest, encryption in transit, access control, audit logging, intrusion detection, risk analysis, all of it is available as cloud service offerings. But "available" is not the same as "implemented," and that distinction is where the compliance theater stops and the real work begins. A cloud-hosted EHR provider can offer BAA-protected services. But that BAA is a contract with the vendor, not evidence that your specific data is in compliance. The guarantee extends to the vendor's security posture, not to the integrity of your staff's actual behavior. A vendor can promise encryption in transit. But TLS encryption happens at the edge of your network, not inside your firewall, and the last person in the chain who has to maintain that promise is someone you've never met, in a data center you've never seen, under labor laws and security obligations you didn't negotiate.</p>
+<p>Cloud AI platforms can satisfy some of these requirements, some of the time, under some configurations, if you read the BAA carefully, if you monitor the vendor's compliance certifications continuously, and if you accept the inherent risk that a third party's security posture is outside your direct control. Local AI deployment satisfies all of these requirements, all of the time, under your direct authority, documented by logs you own and controls you configured.</p>
 
-<p>Local AI deployment inverts that equation. The checklist items in this guide stop becoming aspirational and start becoming observable facts. You can walk a compliance officer through your data flows. You can show them the server. You can demonstrate that PHI exists in encrypted form at rest, lives inside your firewall during transit, and exits the facility only when it is supposed to. You can produce audit logs for every access. You can document every administrator. You can implement the full technical safeguards checklist not as a collection of vendor promises, but as physical reality under your direct control.</p>
+<p>The proposed 2025 HIPAA Security Rule amendments are making the distinction between "addressable" and "required" increasingly moot. The regulatory trajectory is clear: what was optional is becoming mandatory, and the enforcement posture is intensifying. Building your AI infrastructure on a foundation you fully control isn't just the safest path through the current regulatory environment. It's the only architecture that positions your practice to absorb whatever OCR mandates next without scrambling to renegotiate vendor agreements or re-architect your entire AI deployment.</p>
 
-<p>Consider the case of <a href="https://edenlab.io/" target="_blank" rel="noopener">Edenlab</a>, which built a local AI deployment specifically to satisfy HIPAA's technical safeguards without the cloud transmission overhead. Their architecture places the AI inference engine inside the healthcare provider's own network perimeter, with no data leaving the facility, no cross-border transmission, no third-party SaaS infrastructure. The resulting system is simultaneously more privacy-preserving and more audit-friendly than a cloud-based alternative. It's a model that other healthcare organizations have been studying as they attempt to square the circle between AI capability and regulatory clarity.</p>
+<!-- AEO Summary -->
+<div style="border-left:3px solid var(--copper);padding:16px 20px;margin:32px 0;background:rgba(217,119,6,0.05);border-radius:0 8px 8px 0;">
+<strong>Summary:</strong> HIPAA's technical safeguards under 45 CFR &sect;164.312 are most cleanly satisfied when your AI infrastructure never sends ePHI to a third party. Local deployment gives you direct control over unique user IDs, emergency access, auto-logoff, encryption, audit controls, integrity monitoring, authentication, transmission security, and risk analysis, without depending on a vendor's BAA or compliance certifications.
+</div>
 
-<p>The numbers back this up. HIPAA University reports that healthcare data breaches jumped 302.71% in 2025 compared to 2024, with the vast majority involving cloud infrastructure or third-party vendors. The underlying pattern is straightforward: data that lives in multiple places, touches multiple hands, and passes through multiple security boundaries has more ways to escape. Data that stays on-premises, under your direct technical control, has fewer.</p>
+<!-- CTA -->
+<div style="text-align:center;margin:48px 0 32px;">
+<h2>Your Patients' Data Deserves Your Infrastructure</h2>
+<p style="max-width:540px;margin:12px auto 24px;">One conversation about what HIPAA-compliant local AI deployment looks like for your practice.</p>
+<a href="../contact.html" class="btn btn-primary">Request a Quote</a>
+</div>
 
-<p>This checklist is not an argument against cloud infrastructure. It's an argument for matching your AI deployment model to your technical safeguards obligations. If you are going to run AI in a healthcare context, you need to be able to document, with specificity and confidence, that every item on this checklist is satisfied. The cleanest path to that confidence is one where your infrastructure is yours, your data stays yours, and your compliance posture is not dependent on a vendor's goodwill or contractual obligations you can't independently verify.</p>
-
-        <div class="aeo-summary" style="background:var(--surface-alt,#1a1a2e);border-left:4px solid var(--copper,#f59e0b);padding:1.5rem;margin:2rem 0;border-radius:4px;">
-          <p style="margin:0;font-weight:600;font-size:1.05rem;"><strong>Bottom line:</strong> HIPAA's technical safeguards are clearest when the AI infrastructure you deploy lives under your direct control, on your own hardware, inside your own security boundary.</p>
-        </div>
       </article>
-
-      <!-- CTA -->
-      <div class="article-cta">
-        <h3>Your Patients' Data Deserves Your Infrastructure</h3>
-        <p>One conversation about building the AI system that satisfies your technical safeguards obligations without the complexity of a cloud architecture you can't fully audit.</p>
-        <a href="../contact.html" class="btn btn-primary">Start a Conversation</a>
-      </div>
 
       <!-- Related Articles -->
       <div class="related-articles">
         <h3>Related Articles</h3>
         <div class="related-grid">
           <div class="related-card">
-            <h4><a href="itar-dfars-ai-self-assessment.html">ITAR and DFARS AI Self-Assessment: Can Your AI Infrastructure Pass an Audit?</a></h4>
-            <p>Self-assessment guide for ITAR and DFARS compliance when using AI for defense-related work.</p>
+            <h4><a href="itar-dfars-ai-self-assessment.html">ITAR &amp; DFARS AI Self-Assessment</a></h4>
+            <p>Can your AI infrastructure pass an ITAR/DFARS audit? A practical compliance checklist for defense contractors.</p>
           </div>
           <div class="related-card">
             <h4><a href="cloud-ai-vs-local-hardware-tco.html">Cloud AI vs. Local Hardware: The Honest 5-Year TCO</a></h4>
@@ -559,7 +555,7 @@
         <div class="share-links">
           <span>Share:</span>
           <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://islandmountain.io/blog/hipaa-technical-checklist.html" target="_blank" rel="noopener" aria-label="Share on LinkedIn"><i class="ri-linkedin-fill"></i></a>
-          <a href="https://twitter.com/intent/tweet?url=https://islandmountain.io/blog/hipaa-technical-checklist.html&text=The HIPAA Technical Safeguards Checklist: A Practical Guide to ePHI Security and Local AI" target="_blank" rel="noopener" aria-label="Share on X"><i class="ri-twitter-x-fill"></i></a>
+          <a href="https://twitter.com/intent/tweet?url=https://islandmountain.io/blog/hipaa-technical-checklist.html&text=The HIPAA Technical Safeguards Checklist Your AI Vendor Hopes You Never Read" target="_blank" rel="noopener" aria-label="Share on X"><i class="ri-twitter-x-fill"></i></a>
         </div>
       </div>
     </div>
@@ -570,6 +566,7 @@
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
+          <img src="../images/logo-footer.png" alt="Island Mountain logo" width="300" height="300" style="display:block;margin-bottom:16px;">
           <a href="../index.html" class="nav-logo">Island Mountain</a>
           <p>Local AI infrastructure for data-sovereign organizations. Colorado.</p>
         </div>
