@@ -1,0 +1,121 @@
+============================================================
+SESSION 4: Hub-and-Spoke Internal Linking for solutions.html
+============================================================
+Paste the THINKING BLOCK into your thinking before starting.
+Paste the PROMPT as your first message.
+============================================================
+
+
+========================
+THINKING BLOCK
+========================
+
+This session is about establishing solutions.html as a proper topical authority hub page with the five vertical industry pages (law-firms.html, medical-practices.html, tribal-nations.html, research-labs.html, defense-contractors.html) as its spokes. This is for islandmountain.io, a static HTML/CSS/JS site on GitHub Pages selling on-premises AI inference servers with NVIDIA H100/H200 GPUs.
+
+HANDOFF.md has the full site inventory, HTML patterns, and known issues. Read it first.
+
+CURRENT STATE (as of Session 3):
+- solutions.html (396 lines) functions as a hub visually -- it has 5 industry cards linking to each vertical, a "Common Thread" section, a features grid, and blog crosslinks. But it is NOT treated as a hub by search engines because the relationship is one-directional.
+- The five vertical pages link to solutions.html ONLY through global nav and footer (every page has these -- they don't signal hub-spoke relationship).
+- Each vertical has a small cross-link line at the very bottom of its CTA section linking to 2 other verticals. Example from law-firms.html: "See how other regulated industries use local AI: Medical Practices . Defense Contractors". These do NOT link to solutions.html.
+- The homepage (index.html) body content has ZERO links to solutions.html or any vertical page. All vertical links on the homepage are in nav/footer only.
+- No vertical page has breadcrumbs.
+- No vertical page has contextual body links back to solutions.html.
+
+WHAT NEEDS TO HAPPEN (4 jobs):
+
+JOB 1 -- BREADCRUMBS ON EACH VERTICAL PAGE (5 files, all over 400 lines, use sed):
+Add a breadcrumb trail immediately after the hero section on each vertical page.
+Format: Home > Solutions > [Industry Name]
+Where "Home" links to index.html, "Solutions" links to solutions.html, and the current page name is unlinked.
+Insert right after the closing </section> of the hero section, before the first content section.
+
+Blog posts already have breadcrumbs styled with existing CSS. Check blog post HTML for the breadcrumb pattern and CSS class names. Reuse that pattern for consistency, but adjust the trail (blog posts use Home > Blog > Post Title; verticals should use Home > Solutions > Industry).
+
+Hero section locations:
+- law-firms.html: hero at lines 132-138, first content section starts at line 140 (section-first)
+- medical-practices.html: hero at lines 132-138, first content starts at line 140
+- tribal-nations.html: hero at lines 137-143, first content starts at line 145
+- research-labs.html: hero at lines 132-138, first content starts at line 140
+- defense-contractors.html: hero at lines 137-143, first content starts at line 145
+
+Check exact line numbers by reading each file -- they may have shifted by 1 line from the Session 3 AEO edits.
+
+JOB 2 -- CONTEXTUAL BODY LINKS FROM VERTICALS BACK TO SOLUTIONS.HTML (5 files, all over 400 lines, use sed):
+Two changes per vertical page:
+
+(a) Upgrade the existing cross-link line at the bottom of each CTA section. Currently each page has a line like:
+  "See how other regulated industries use local AI: [Vertical A] . [Vertical B]"
+Change this to include solutions.html as the primary link:
+  "See all five regulated industries we serve or explore: [Vertical A] . [Vertical B]"
+Where "all five regulated industries we serve" links to solutions.html.
+
+Current cross-link pairings:
+- law-firms.html links to: medical-practices, defense-contractors
+- medical-practices.html links to: law-firms, tribal-nations
+- tribal-nations.html links to: medical-practices, research-labs
+- research-labs.html links to: tribal-nations, defense-contractors
+- defense-contractors.html links to: law-firms, research-labs
+
+(b) Add one natural contextual link to solutions.html somewhere in the body content of each vertical page. This should feel organic, not forced. Look for a sentence that mentions "regulated industries" or "other organizations" or similar and add a link there. If no natural opportunity exists, add a short sentence that works.
+
+JOB 3 -- HOMEPAGE BODY CONTENT LINKS TO SOLUTIONS.HTML (index.html, 408 lines, use sed):
+The homepage has a section with the heading "Built for Organizations That Can't Afford Data Exposure" (around line 268). This section has 4 generic value-prop cards (Data Never Leaves, Zero Token Fees, Pre-Configured, Personal Service).
+
+Below that is a "Product Preview" section. Between these two sections or within the "Built for" section, add a contextual link to solutions.html. Something like:
+  "We build for five regulated industries where data sovereignty is non-negotiable. See how each uses local AI."
+Where "five regulated industries" links to solutions.html.
+
+Also: the homepage has a testimonials section with quotes from a law firm, tribal health dept, defense contractor, and research university. None of these quotes link to the relevant vertical pages. Adding links from each testimonial cite to the appropriate vertical (through solutions.html or directly) would strengthen the hub-spoke signal.
+
+JOB 4 -- ADD BreadcrumbList SCHEMA TO VERTICALS (5 files, all over 400 lines, use sed):
+Each vertical page already has JSON-LD schema in the head. Add a BreadcrumbList schema to each vertical page to match the visual breadcrumb added in Job 1. This tells search engines explicitly about the hub-spoke hierarchy.
+
+Format:
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://islandmountain.io/"},
+    {"@type": "ListItem", "position": 2, "name": "Solutions", "item": "https://islandmountain.io/solutions.html"},
+    {"@type": "ListItem", "position": 3, "name": "[Industry Name]", "item": "https://islandmountain.io/[filename]"}
+  ]
+}
+
+Add this as a second <script type="application/ld+json"> block in the <head> of each vertical page, after the existing FAQPage schema.
+
+CRITICAL RULES:
+- Files over 400 lines: NEVER use the Edit tool. Use sed via bash.
+- After EVERY edit: run tail -3 filename to confirm file ends with </html>.
+- After all edits: run the HANDOFF.md verification script.
+- Update HANDOFF.md when complete.
+
+FILE LINE COUNTS (post-Session 3):
+- law-firms.html: 542 lines (sed only)
+- medical-practices.html: 509 lines (sed only)
+- tribal-nations.html: 535 lines (sed only)
+- research-labs.html: 503 lines (sed only)
+- defense-contractors.html: 513 lines (sed only)
+- solutions.html: 396 lines (Edit tool OK)
+- index.html: 408 lines (sed only)
+
+
+========================
+PROMPT
+========================
+
+You are working on islandmountain.io, a static HTML/CSS/JS site on GitHub Pages selling on-premises AI inference servers. Read HANDOFF.md first. It has the full site inventory, HTML patterns, and known issues. Files over 400 lines can get truncated during sync -- use sed via bash for those, never the Edit tool. After every edit, run tail -3 filename and confirm it ends with the closing html tag. Blog post styles live in css/blog.css (shared across all 11 posts).
+
+Task: Establish solutions.html as a proper hub-and-spoke topical authority page for the five vertical industry pages (law-firms, medical-practices, tribal-nations, research-labs, defense-contractors). Currently the hub-spoke relationship is only expressed through global navigation that every page shares. Search engines and AI answer engines cannot distinguish this from any other site-wide nav link.
+
+Four jobs:
+
+1. BREADCRUMBS on each of the 5 vertical pages. Add a visual breadcrumb trail (Home > Solutions > Industry Name) right after the hero section, before first content section. Reuse the breadcrumb CSS pattern already used on blog posts. All 5 files are over 400 lines -- use sed via bash.
+
+2. CONTEXTUAL BODY LINKS from each vertical back to solutions.html. Two changes per page: (a) upgrade the existing cross-link line at the bottom of each CTA to include a primary link to solutions.html, and (b) add one natural in-body contextual link to solutions.html somewhere in the page content. All 5 files are over 400 lines -- use sed via bash.
+
+3. HOMEPAGE BODY LINKS from index.html to solutions.html. The homepage body currently has zero links to solutions.html or any vertical page (all existing links are in nav/footer). Add contextual links in the "Built for Organizations" section and consider linking testimonial citations to relevant verticals through the hub. index.html is 408 lines -- use sed via bash.
+
+4. BreadcrumbList SCHEMA on each vertical page. Add JSON-LD BreadcrumbList structured data in the head matching the visual breadcrumbs (Home > Solutions > Industry). Insert as a second script block after the existing FAQPage schema. All 5 files are over 400 lines -- use sed via bash.
+
+After all edits, run the HANDOFF.md verification script and update HANDOFF.md to reflect completion.
