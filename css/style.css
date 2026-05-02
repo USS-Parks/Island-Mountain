@@ -241,7 +241,7 @@ p {
 .nav-logo {
   display: inline-flex;
   align-items: center;
-  transform: translateY(8px);
+  transform: translateY(-8px);
 }
 
 .nav-logo:hover {
