@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
+  <!-- Homepage -->
   <url>
     <loc>https://islandmountain.io/</loc>
-    <lastmod>2026-04-30</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
 
+  <!-- Core Pages -->
   <url>
     <loc>https://islandmountain.io/products.html</loc>
     <lastmod>2026-04-30</lastmod>
@@ -51,6 +53,13 @@
   </url>
 
   <url>
+    <loc>https://islandmountain.io/about.html</loc>
+    <lastmod>2026-05-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
     <loc>https://islandmountain.io/investors.html</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
@@ -68,40 +77,40 @@
   <!-- Vertical Landing Pages -->
   <url>
     <loc>https://islandmountain.io/law-firms.html</loc>
-    <lastmod>2026-04-30</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://islandmountain.io/medical-practices.html</loc>
-    <lastmod>2026-04-30</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://islandmountain.io/tribal-nations.html</loc>
-    <lastmod>2026-04-30</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://islandmountain.io/research-labs.html</loc>
-    <lastmod>2026-04-30</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://islandmountain.io/defense-contractors.html</loc>
-    <lastmod>2026-04-30</lastmod>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
-  <!-- Blog -->
+  <!-- Blog Index -->
   <url>
     <loc>https://islandmountain.io/blog.html</loc>
     <lastmod>2026-04-30</lastmod>
@@ -109,6 +118,7 @@
     <priority>0.8</priority>
   </url>
 
+  <!-- Blog Posts (newest first) -->
   <url>
     <loc>https://islandmountain.io/blog/deepseek-v4-flash-local-deployment.html</loc>
     <lastmod>2026-04-30</lastmod>
@@ -152,12 +162,41 @@
   </url>
 
   <url>
-    <loc>https://islandmountain.io/about.html</loc>
-    <lastmod>2026-05-01</lastmod>
+    <loc>https://islandmountain.io/blog/ocap-cloud-act-guide.html</loc>
+    <lastmod>2026-03-12</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.7</priority>
   </url>
 
+  <url>
+    <loc>https://islandmountain.io/blog/itar-dfars-ai-self-assessment.html</loc>
+    <lastmod>2026-03-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://islandmountain.io/blog/openai-discovery-risk-law-firms.html</loc>
+    <lastmod>2026-02-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://islandmountain.io/blog/hipaa-technical-checklist.html</loc>
+    <lastmod>2026-02-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://islandmountain.io/blog/on-prem-vs-colo-vs-cloud.html</loc>
+    <lastmod>2026-02-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Legal -->
   <url>
     <loc>https://islandmountain.io/privacy.html</loc>
     <lastmod>2026-05-01</lastmod>
@@ -172,39 +211,4 @@
     <priority>0.3</priority>
   </url>
 
-
-  <url>
-    <loc>https://islandmountain.io/blog/hipaa-technical-checklist.html</loc>
-    <lastmod>2026-05-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://islandmountain.io/blog/openai-discovery-risk-law-firms.html</loc>
-    <lastmod>2026-05-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://islandmountain.io/blog/itar-dfars-ai-self-assessment.html</loc>
-    <lastmod>2026-05-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://islandmountain.io/blog/ocap-cloud-act-guide.html</loc>
-    <lastmod>2026-05-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://islandmountain.io/blog/on-prem-vs-colo-vs-cloud.html</loc>
-    <lastmod>2026-05-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
 </urlset>
