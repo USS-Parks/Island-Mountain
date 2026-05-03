@@ -1,6 +1,6 @@
 # Island Mountain Website -- Project Context
 
-Last updated: 2026-05-01
+Last updated: 2026-05-03
 Live URL: https://islandmountain.io
 GitHub Pages static site. No frameworks, no build step, no SSG.
 Workspace: `C:\Users\17076\Documents\Claude\Island Mountain`
@@ -33,7 +33,7 @@ done
 echo "Verification complete."
 ```
 
-Files still at risk (over 400 lines): contact.html (928), faq.html (860), law-firms.html (560), tribal-nations.html (553), defense-contractors.html (531), products.html (527), medical-practices.html (527), research-labs.html (521), pricing.html (512), why-island-mountain.html (456), technology.html (456), blog.html (433), index.html (409). Use sed via bash for these.
+Files still at risk (over 400 lines): contact.html (928), faq.html (860), investors.html (615), law-firms.html (560), tribal-nations.html (553), defense-contractors.html (531), products.html (527), medical-practices.html (527), research-labs.html (521), pricing.html (512), why-island-mountain.html (456), technology.html (456), blog.html (433), index.html (409). Use sed via bash for these.
 
 ---
 
@@ -74,7 +74,7 @@ Static HTML/CSS/JS. Every page is hand-written HTML. No templating engine.
 css/style.css (1555 lines): Single global stylesheet. CSS custom properties for theming. Includes breadcrumb styles (added 2026-05-01 for vertical page breadcrumbs).
 css/blog.css (306 lines): Blog post styles (article layout, tags, related cards, share links). Loaded by all 11 blog posts via link tag. Blog breadcrumb styles duplicated in style.css for vertical pages.
 js/main.js (257 lines): Navigation, hamburger menu, mobile sidebar, scroll animations, fade-in observers.
-js/charts.js (335 lines): Chart.js graphs. Only loaded on investors.html.
+js/charts.js (374 lines): Chart.js graphs for investor page. COGS donut, margin sensitivity line, use of funds bar, revenue projections grouped bar. All data from Island-Mountain-Financial-Model.xlsx (May 2026). Only loaded on investors.html.
 js/vendor/chart.umd.min.js: Chart.js library. Only used by investors.html.
 fonts/fonts.css + fonts/inter-latin.woff2: Self-hosted Inter variable font (latin subset). No Google CDN.
 icons/remixicon.css + icons/remixicon.woff2: Self-hosted Remixicon icons. No jsDelivr CDN.
@@ -104,7 +104,7 @@ solutions.html (396 lines): Hub page linking all 5 industry verticals + blog cro
 faq.html (860 lines): 25 Q&A pairs. Schema: FAQPage (25 Q&A), SpeakableSpecification.
 contact.html (928 lines): Contact form (FormSubmit.co), embedded Google Map. Schema: LocalBusiness.
 blog.html (433 lines): Blog index listing all posts. Schema: Blog.
-investors.html (294 lines): Investor pitch with Chart.js graphs. Schema: Organization.
+investors.html (615 lines): Full investor page overhaul (2026-05-03). 11 sections: hero with $500K ask, market thesis, product tiers, unit economics (BOM table + COGS donut), margin sensitivity chart, financial projections (3 scenarios x 2 years), SAFE deal terms with use-of-funds chart, milestone roadmap, timing thesis, team, risk disclosure (6 cards with mitigations), dual CTAs. All numbers sourced from Island-Mountain-Financial-Model.xlsx. Inline CSS for investor-specific components. Schema: Organization.
 about.html (269 lines): Company story, founder bio. Schema: AboutPage, Organization.
 law-firms.html (560 lines): Vertical landing page. Attorney-client privilege, discovery risk. Schema: FAQPage, BreadcrumbList. Has AEO block. Breadcrumb, contextual body link to solutions.html.
 medical-practices.html (527 lines): Vertical. HIPAA, ePHI, BAA. Schema: FAQPage, BreadcrumbList. Has AEO block. Breadcrumb, contextual body link to solutions.html.
@@ -220,6 +220,8 @@ Deleted legacy images: logo.png, Island Mountain Logo 1.png.
 Favicons (favicon.ico, favicon-32.png, apple-touch-icon.png, icon-192.png) regenerated from logo-transparent.png.
 Navbar logo replaced with wordmark (logo-nav-new.png/webp, 196x129 display) on all 29 pages. --nav-height increased to 80px.
 Email display changed to info@islandmountain.io on contact.html (2 instances), privacy.html (2 instances), terms.html (1 instance). mailto: hrefs still route to basho@islandmountain.io. Schema email fields unchanged.
+
+Investor page completely rewritten (2026-05-03): replaced false 36% margin / $65K pricing / "cash-flow positive from unit one" narrative with honest numbers from financial model. Now shows: negative margin at mid-market GPU prices, 24-33% at aggressive sourcing, negative Year 1 NOI across all scenarios, $500K SAFE raise at $2.5M cap. Updated meta description and OG tags to reflect seed round positioning.
 
 ### In Progress
 
