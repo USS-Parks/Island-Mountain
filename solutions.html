@@ -38,7 +38,7 @@
         "name": "What regulated industries does Island Mountain serve?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Island Mountain builds on-premises AI inference hardware for five primary regulated sectors: law firms protecting attorney-client privilege, medical practices meeting HIPAA technical safeguards, tribal nations maintaining data sovereignty under OCAP and CARE principles, research labs protecting unpublished data and meeting grant compliance requirements, and defense contractors satisfying ITAR export controls and CMMC requirements. Each industry page details the specific compliance framework and how local AI deployment addresses it."
+          "text": "Island Mountain builds on-premises AI inference hardware for ten primary regulated sectors: law firms protecting attorney-client privilege, medical practices meeting HIPAA technical safeguards, tribal nations maintaining data sovereignty under OCAP and CARE principles, research labs protecting unpublished data and meeting grant compliance requirements, defense contractors satisfying ITAR export controls and CMMC requirements, financial institutions complying with GLBA and PCI DSS, insurance carriers protecting policyholder PII and health data, energy and utility companies meeting NERC CIP and IEC 62443 requirements, government agencies handling CUI under FedRAMP and NIST SP 800-171, and educational institutions protecting student records under FERPA. Each industry page details the specific compliance framework and how local AI deployment addresses it."
         }
       },
       {
@@ -97,6 +97,11 @@
             <li><a href="tribal-nations.html">Tribal Nations</a></li>
             <li><a href="research-labs.html">Research Labs</a></li>
             <li><a href="defense-contractors.html">Defense Contractors</a></li>
+            <li><a href="financial-services.html">Financial Services</a></li>
+            <li><a href="insurance.html">Insurance</a></li>
+            <li><a href="energy-utilities.html">Energy &amp; Utilities</a></li>
+            <li><a href="government.html">Government</a></li>
+            <li><a href="education.html">Education</a></li>
           </ul>
         </li>
         <li><a href="faq.html">FAQ</a></li>
@@ -123,6 +128,11 @@
       <a href="tribal-nations.html">Tribal Nations</a>
       <a href="research-labs.html">Research Labs</a>
       <a href="defense-contractors.html">Defense Contractors</a>
+      <a href="financial-services.html">Financial Services</a>
+      <a href="insurance.html">Insurance</a>
+      <a href="energy-utilities.html">Energy &amp; Utilities</a>
+      <a href="government.html">Government</a>
+      <a href="education.html">Education</a>
     </div>
     <a href="faq.html">FAQ</a>
     <a href="blog.html">Blog</a>
@@ -134,7 +144,7 @@
     <div class="hero-inner">
       <span class="hero-badge">Solutions by Industry</span>
       <h1>AI Infrastructure for Organizations Where Data Leaves the Building Over Your Dead Body</h1>
-      <p>Five regulated industries. One structural reality: when compliance frameworks govern your data, the architecture running your AI isn't a vendor decision. It's a compliance posture. Island Mountain builds on-premises inference hardware for organizations that can't afford to get that wrong.</p>
+      <p>Ten regulated industries. One structural reality: when compliance frameworks govern your data, the architecture running your AI isn't a vendor decision. It's a compliance posture. Island Mountain builds on-premises inference hardware for organizations that can't afford to get that wrong.</p>
     </div>
   </section>
 
@@ -217,6 +227,62 @@
           <p>ITAR prohibits exposing controlled technical data to foreign persons. DFARS 252.204-7012 mandates CUI protection. CMMC Phase 2 enforcement begins November 2026. Cloud AI processing of defense-related data creates structural export control violations.</p>
           <p style="font-size:0.9rem;color:var(--text-muted);margin-top:8px;"><strong>Key workflows:</strong> Technical documentation analysis, proposal drafting, compliance document review, supply chain data processing, after-action report generation.</p>
           <a href="defense-contractors.html" class="btn btn-secondary" style="margin-top:16px;">ITAR &amp; CMMC Compliance &rarr;</a>
+        </div>
+
+
+        <!-- Financial Services -->
+        <div class="card">
+          <div class="card-icon card-icon-green">
+            <i class="ri-bank-line"></i>
+          </div>
+          <h3>Financial Services</h3>
+          <p>GLBA requires financial institutions to protect non-public personal information. PCI DSS mandates strict controls over cardholder data environments. Cloud AI transmits both to third-party infrastructure. Local deployment keeps NPI on your servers.</p>
+          <p style="font-size:0.9rem;color:var(--text-muted);margin-top:8px;"><strong>Key workflows:</strong> Loan document review, KYC/AML analysis, fraud detection, regulatory reporting, customer correspondence, investment analysis.</p>
+          <a href="financial-services.html" class="btn btn-secondary" style="margin-top:16px;">GLBA Compliance &amp; AI &rarr;</a>
+        </div>
+
+        <!-- Insurance -->
+        <div class="card">
+          <div class="card-icon card-icon-green">
+            <i class="ri-shield-user-line"></i>
+          </div>
+          <h3>Insurance</h3>
+          <p>Insurers process sensitive personal, financial, and health data under HIPAA, NAIC model laws, and state regulations. Cloud AI transmits policyholder information to commercial infrastructure. Local AI keeps claims, underwriting, and fraud analysis on your hardware.</p>
+          <p style="font-size:0.9rem;color:var(--text-muted);margin-top:8px;"><strong>Key workflows:</strong> Claims processing, underwriting analysis, fraud detection, policy review, actuarial support, customer correspondence.</p>
+          <a href="insurance.html" class="btn btn-secondary" style="margin-top:16px;">Insurance Data Privacy &amp; AI &rarr;</a>
+        </div>
+
+        <!-- Energy & Utilities -->
+        <div class="card">
+          <div class="card-icon card-icon-green">
+            <i class="ri-flashlight-line"></i>
+          </div>
+          <h3>Energy &amp; Utilities</h3>
+          <p>NERC CIP and IEC 62443 mandate strict cybersecurity for the bulk electric system and industrial control systems. Cloud AI processing of operational technology data creates compliance violations and cybersecurity exposure. Air-gapped local AI eliminates the attack surface.</p>
+          <p style="font-size:0.9rem;color:var(--text-muted);margin-top:8px;"><strong>Key workflows:</strong> Predictive maintenance, grid operations documentation, NERC CIP compliance reporting, pipeline monitoring, outage response documentation.</p>
+          <a href="energy-utilities.html" class="btn btn-secondary" style="margin-top:16px;">NERC CIP Compliance &amp; AI &rarr;</a>
+        </div>
+
+        <!-- Government -->
+        <div class="card">
+          <div class="card-icon card-icon-green">
+            <i class="ri-government-line"></i>
+          </div>
+          <h3>Government</h3>
+          <p>Federal, state, and local agencies handle CUI, law enforcement data, and citizen records under FedRAMP, FISMA, and NIST SP 800-171. Cloud AI creates dependency on commercial vendors. On-premises AI restores jurisdictional control over government data.</p>
+          <p style="font-size:0.9rem;color:var(--text-muted);margin-top:8px;"><strong>Key workflows:</strong> Document review, FOIA processing, policy analysis, citizen service documentation, grant and budget analysis.</p>
+          <a href="government.html" class="btn btn-secondary" style="margin-top:16px;">Government Data Sovereignty &amp; AI &rarr;</a>
+        </div>
+
+        <!-- Education -->
+        <div class="card">
+          <div class="card-icon card-icon-green">
+            <i class="ri-graduation-cap-line"></i>
+          </div>
+          <h3>Education</h3>
+          <p>FERPA protects student education records. The "school official" exception works best when AI processing is under direct institutional control. Cloud AI introduces third-party data handling that complicates FERPA compliance. Local deployment keeps student data on campus.</p>
+          <p style="font-size:0.9rem;color:var(--text-muted);margin-top:8px;"><strong>Key workflows:</strong> Curriculum design, student record summarization, research data analysis, administrative drafting, grant proposals, assessment assistance.</p>
+          <a href="education.html" class="btn btn-secondary" style="margin-top:16px;">FERPA Compliance &amp; AI &rarr;</a>
         </div>
 
         <!-- Cross-Industry -->
@@ -327,7 +393,7 @@
 
   <!-- AEO Summary -->
   <div style="border-left:3px solid var(--copper);padding:16px 20px;margin:32px 0;background:rgba(217,119,6,0.05);border-radius:0 8px 8px 0;">
-  <strong>Summary:</strong> Island Mountain builds on-premises AI inference hardware for five regulated industries: law firms, medical practices, tribal nations, research labs, and defense contractors. Each faces the same structural problem with cloud AI -- data transmitted to third-party servers creates compliance risk that contractual protections cannot fully resolve. Local deployment eliminates that transmission.
+  <strong>Summary:</strong> Island Mountain builds on-premises AI inference hardware for ten regulated industries: law firms, medical practices, tribal nations, research labs, defense contractors, financial services, insurance, energy and utilities, government, and education. Each faces the same structural problem with cloud AI -- data transmitted to third-party servers creates compliance risk that contractual protections cannot fully resolve. Local deployment eliminates that transmission.
   </div>
 
   <!-- CTA -->
@@ -370,6 +436,11 @@
             <li><a href="tribal-nations.html">Tribal Nations</a></li>
             <li><a href="research-labs.html">Research Labs</a></li>
             <li><a href="defense-contractors.html">Defense Contractors</a></li>
+            <li><a href="financial-services.html">Financial Services</a></li>
+            <li><a href="insurance.html">Insurance</a></li>
+            <li><a href="energy-utilities.html">Energy &amp; Utilities</a></li>
+            <li><a href="government.html">Government</a></li>
+            <li><a href="education.html">Education</a></li>
           </ul>
         </div>
         <div>

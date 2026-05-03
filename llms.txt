@@ -17,12 +17,22 @@ All systems ship with DeepSeek V4-Flash pre-installed, OpenWebUI configured, and
 - Defense contractors handling ITAR/CUI/CMMC-regulated data
 - Tribal nations exercising data sovereignty (OCAP principles)
 - Research labs protecting unpublished data and grant-funded IP
+- Financial institutions complying with GLBA and PCI DSS
+- Insurance carriers protecting policyholder PII and health data
+- Energy and utility companies meeting NERC CIP and IEC 62443 requirements
+- Government agencies handling CUI under FedRAMP and NIST SP 800-171
+- Educational institutions protecting student records under FERPA
 
 ## Key Pages
 - Products: https://islandmountain.io/products.html
 - Pricing: https://islandmountain.io/pricing.html
 - FAQ (25 Q&A pairs): https://islandmountain.io/faq.html
 - Contact/Quote: https://islandmountain.io/contact.html
+- Financial Services: https://islandmountain.io/financial-services.html
+- Insurance: https://islandmountain.io/insurance.html
+- Energy & Utilities: https://islandmountain.io/energy-utilities.html
+- Government: https://islandmountain.io/government.html
+- Education: https://islandmountain.io/education.html
 
 ## Blog
 - DeepSeek V4-Flash Deployment: https://islandmountain.io/blog/deepseek-v4-flash-local-deployment.html

@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>On-Premises AI for Government | FedRAMP, CUI, Air-Gapped | Island Mountain</title>
+  <meta name="description" content="Secure AI inference hardware for federal, state, and local agencies. Process CUI and sensitive data on your own H100/H200 servers, fully air-gappable, with zero cloud dependency.">
+  <link rel="icon" type="image/x-icon" href="favicon.ico?v=2">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png?v=2">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png?v=2">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="icons/remixicon.css">
+  <link rel="stylesheet" href="fonts/fonts.css">
+  <link rel="canonical" href="https://islandmountain.io/government.html">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="On-Premises AI for Government | FedRAMP, CUI, Air-Gapped | Island Mountain">
+  <meta property="og:description" content="Secure AI inference hardware for federal, state, and local agencies. Process CUI and sensitive data on your own H100/H200 servers, fully air-gappable, with zero cloud dependency.">
+  <meta property="og:url" content="https://islandmountain.io/government.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Island Mountain">
+  <meta property="og:image" content="https://islandmountain.io/images/hero-mountain.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="On-Premises AI for Government | FedRAMP, CUI, Air-Gapped | Island Mountain">
+  <meta name="twitter:description" content="Secure AI inference hardware for federal, state, and local agencies. Process CUI and sensitive data on your own H100/H200 servers, fully air-gappable, with zero cloud dependency.">
+  <meta name="twitter:image" content="https://islandmountain.io/images/hero-mountain.png">
+
+  <!-- FAQPage Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {"@type": "Question",
+        "name": "Does on-premises AI hardware need FedRAMP authorization?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. FedRAMP (Federal Risk and Authorization Management Program) applies to cloud service providers offering services to federal agencies. On-premises hardware installed in government-controlled facilities is not a cloud service and does not require FedRAMP authorization. The hardware operates entirely within the agency's own Authority to Operate (ATO) boundary. This is one of the primary advantages of local AI deployment for government -- it sidesteps the multi-year FedRAMP authorization process entirely because no cloud service is involved."
+        }
+      },
+      {"@type": "Question",
+        "name": "Can Island Mountain hardware process Controlled Unclassified Information (CUI)?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Island Mountain hardware can support CUI processing when deployed within an environment that meets NIST SP 800-171 requirements. The hardware itself provides the physical infrastructure and air-gap capability. The agency is responsible for implementing the required security controls around the system including access controls, audit logging, and physical security measures appropriate for CUI handling. The key advantage: CUI never leaves the agency-controlled environment for processing."
+        }
+      },
+      {"@type": "Question",
+        "name": "How does the cost compare to cloud AI for a 20-person government office?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Cloud AI subscriptions typically cost $50 to $200 per user per month, totaling $12,000 to $48,000 per year for 20 users. Government agencies also face FedRAMP requirements that limit cloud AI options and often increase costs. An Island Mountain Starter system costs $75,000 to $85,000 as a one-time purchase with no FedRAMP dependency. After purchase the only ongoing cost is electricity at approximately $100 to $200 per month."
+        }
+      },
+      {"@type": "Question",
+        "name": "Does a government agency need dedicated IT staff to run local AI?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. Island Mountain systems ship pre-configured with all models installed and OpenWebUI ready to use. Staff accesses the system through a web browser. Initial setup requires racking the server, connecting a 208V/30A power circuit, and plugging in an ethernet cable. Island Mountain includes 30 days of hands-on setup support. Ongoing maintenance involves standard Linux security updates consistent with NIST hardening guidelines. Most agencies with existing IT support can maintain the system within their current staffing."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- BreadcrumbList Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://islandmountain.io/"},
+      {"@type": "ListItem", "position": 2, "name": "Solutions", "item": "https://islandmountain.io/solutions.html"},
+      {"@type": "ListItem", "position": 3, "name": "Government", "item": "https://islandmountain.io/government.html"}
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <!-- Full-page particle canvas -->
+  <canvas id="particles-canvas"></canvas>
+
+  <!-- Hero background photo -->
+  <div class="hero-photo">
+    <picture><source srcset="images/hero-mountain-mobile.webp 800w, images/hero-mountain.webp 1913w" type="image/webp" sizes="100vw"><img src="images/hero-mountain.png" alt="Island Mountain rising from the ocean at sunset" loading="lazy" width="1913" height="892"></picture>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="nav-logo"><picture><source srcset="images/logo-nav-new.webp" type="image/webp"><img src="images/logo-nav-new.png" alt="Island Mountain" width="196" height="129"></picture></a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="why-island-mountain.html">Why Local AI</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="technology.html">Technology</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li class="nav-dropdown">
+          <a href="solutions.html" class="nav-dropdown-toggle">Solutions <i class="ri-arrow-down-s-line"></i></a>
+          <ul class="nav-dropdown-menu">
+            <li><a href="law-firms.html">Law Firms</a></li>
+            <li><a href="medical-practices.html">Medical Practices</a></li>
+            <li><a href="tribal-nations.html">Tribal Nations</a></li>
+            <li><a href="research-labs.html">Research Labs</a></li>
+            <li><a href="defense-contractors.html">Defense Contractors</a></li>
+            <li><a href="financial-services.html">Financial Services</a></li>
+            <li><a href="insurance.html">Insurance</a></li>
+            <li><a href="energy-utilities.html">Energy &amp; Utilities</a></li>
+            <li><a href="government.html">Government</a></li>
+            <li><a href="education.html">Education</a></li>
+          </ul>
+        </li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="contact.html" class="nav-cta">Request Quote</a></li>
+      </ul>
+      <button class="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="sidebar-overlay"></div>
+  <div class="mobile-sidebar">
+    <a href="index.html">Home</a>
+    <a href="why-island-mountain.html">Why Local AI</a>
+    <a href="products.html">Products</a>
+    <a href="technology.html">Technology</a>
+    <a href="pricing.html">Pricing</a>
+    <a href="solutions.html" class="mobile-solutions-toggle">Solutions <i class="ri-arrow-down-s-line"></i></a>
+    <div class="mobile-solutions-links">
+      <a href="law-firms.html">Law Firms</a>
+      <a href="medical-practices.html">Medical Practices</a>
+      <a href="tribal-nations.html">Tribal Nations</a>
+      <a href="research-labs.html">Research Labs</a>
+      <a href="defense-contractors.html">Defense Contractors</a>
+      <a href="financial-services.html">Financial Services</a>
+      <a href="insurance.html">Insurance</a>
+      <a href="energy-utilities.html">Energy &amp; Utilities</a>
+      <a href="government.html">Government</a>
+      <a href="education.html">Education</a>
+    </div>
+    <a href="faq.html">FAQ</a>
+    <a href="blog.html">Blog</a>
+    <a href="contact.html" class="nav-cta">Request Quote</a>
+  </div>
+
+  <!-- Hero -->
+  <section class="hero hero-page">
+    <div class="hero-inner">
+      <span class="hero-badge">Local AI for Government</span>
+      <h1>Government Data Stays on Government Hardware. Full Stop.</h1>
+      <p>FedRAMP, CUI handling rules, and data sovereignty requirements exist because government data demands government-controlled infrastructure. Cloud AI processing creates structural dependency on commercial vendors. On-premises AI restores jurisdictional control.</p>
+    </div>
+  </section>
+
+  <!-- Breadcrumb -->
+  <nav class="breadcrumb">
+    <a href="index.html">Home</a><span>&rsaquo;</span><a href="solutions.html">Solutions</a><span>&rsaquo;</span>Government
+  </nav>
+
+  <!-- The Problem -->
+  <section class="section section-first">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-badge">The Data Sovereignty Problem</span>
+        <h2>The Cloud AI Problem for Government Agencies</h2>
+        <p>Government agencies handle CUI, law enforcement data, citizen records, and policy-sensitive documents. Cloud AI transmits this data to commercial infrastructure.</p>
+      </div>
+      <div class="fade-in" style="max-width:760px;margin:0 auto;">
+        <p style="font-size:1.05rem;line-height:1.9;">Federal agencies face FedRAMP authorization requirements for any cloud service processing government data. The authorization process takes 12-18 months on average and limits agencies to a small pool of pre-authorized cloud AI providers. Even with FedRAMP authorization, the structural reality remains: government data sits on commercial infrastructure operated by private companies and their subprocessors. Government agencies represent one of <a href="solutions.html">ten regulated industries</a> where this structural conflict between cloud AI and data sovereignty is most acute.</p>
+        <p style="font-size:1.05rem;line-height:1.9;">Controlled Unclassified Information (CUI) falls under NIST SP 800-171, which establishes 110 security requirements across 14 control families. Cloud AI processing of CUI requires the cloud provider to meet these requirements and subjects the agency to shared responsibility models that complicate audit responses and incident reporting. For sensitive CUI categories, air-gapped processing may be the only architecture that satisfies handling requirements without extensive compliance middleware.</p>
+        <p style="font-size:1.05rem;line-height:1.9;">State and local agencies face their own data residency laws and citizen privacy requirements. Many states have enacted data localization statutes requiring certain government data to remain within state boundaries. CJIS Security Policy governs criminal justice information. IRS Publication 1075 controls Federal Tax Information. Each framework shares a common requirement: government control over the infrastructure processing government data. Cloud AI creates architectural dependency on commercial vendors that complicates this control requirement.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="section section-dark">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-badge">How It Works</span>
+        <h2>What Local AI Actually Means for Your Organization</h2>
+        <p>"No data leaves your facility" is not marketing language. It is a description of government-controlled network architecture.</p>
+      </div>
+      <div class="card-grid card-grid-3 fade-in">
+        <div class="card">
+          <div class="card-icon card-icon-green">
+            <i class="ri-shield-check-line"></i>
+          </div>
+          <h3>Zero External Transmission</h3>
+          <p>Government data never leaves your facility. Prompts travel from workstation to server over your internal network only. No commercial cloud dependency. No vendor data processing.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon card-icon-indigo">
+            <i class="ri-server-line"></i>
+          </div>
+          <h3>Hardware You Own</h3>
+          <p>Physical server with NVIDIA H100 GPUs in your facility, on your network, under your physical security controls. Government-owned hardware processing government data.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon card-icon-purple">
+            <i class="ri-wifi-off-line"></i>
+          </div>
+          <h3>Air-Gap Capable</h3>
+          <p>Complete network isolation available. Models pre-loaded before delivery. Zero external connections. Suitable for CUI environments requiring strict network separation.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Workflows -->
+  <section class="section section-darker">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-badge">Workflows</span>
+        <h2>Workflows Island Mountain Hardware Supports</h2>
+        <p>The same AI capabilities you want from cloud services, running on hardware that doesn't create compliance exposure.</p>
+      </div>
+      <div class="card-grid card-grid-3 fade-in">
+        <div class="card">
+          <div class="card-icon card-icon-green">
+            <i class="ri-file-search-line"></i>
+          </div>
+          <h3>Document Review &amp; Analysis</h3>
+          <p>Analyze policy documents, regulatory submissions, and multi-agency correspondence. Extract key findings, identify inconsistencies, and summarize complex reports without exposing sensitive government data to cloud services.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon card-icon-indigo">
+            <i class="ri-folder-open-line"></i>
+          </div>
+          <h3>FOIA Request Processing</h3>
+          <p>Assist with Freedom of Information Act request review, document identification, and redaction recommendations. Process large document sets locally without exposing sensitive records to cloud APIs.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon card-icon-purple">
+            <i class="ri-draft-line"></i>
+          </div>
+          <h3>Policy Analysis &amp; Drafting</h3>
+          <p>Draft policy memoranda, regulatory impact analyses, and interagency communications. Analyze existing policy frameworks and generate structured documentation for decision-makers.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon card-icon-amber">
+            <i class="ri-user-heart-line"></i>
+          </div>
+          <h3>Citizen Service Documentation</h3>
+          <p>Summarize case files, generate service documentation, and draft citizen correspondence. Process sensitive personal information entirely on government hardware.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon card-icon-green">
+            <i class="ri-money-dollar-circle-line"></i>
+          </div>
+          <h3>Grant &amp; Budget Analysis</h3>
+          <p>Analyze grant applications, budget proposals, and financial reports. Summarize complex fiscal documentation and identify key findings for decision-makers.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon card-icon-indigo">
+            <i class="ri-file-text-line"></i>
+          </div>
+          <h3>After-Action Report Generation</h3>
+          <p>Draft after-action reports, incident summaries, and lessons-learned documentation. Process sensitive operational data from exercises and real-world events locally.</p>
+        </div>
+      </div>
+      <div class="comparison-note fade-in" style="margin-top:32px;">
+        <i class="ri-information-line"></i>
+        Island Mountain hardware runs general-purpose large language models. These are not government-specific fine-tuned models. They do not include integrations with SAM.gov, FPDS, GovWin, USASpending, or other government-specific systems. The models are strong at reasoning, analysis, and drafting -- but they are tools for government professionals, not replacements for professional judgment.
+      </div>
+    </div>
+  </section>
+
+  <!-- Model Selection -->
+  <section class="section section-dark">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-badge">Model Selection</span>
+        <h2>Which Models Work Best</h2>
+      </div>
+      <div class="card-grid card-grid-3 fade-in">
+        <div class="card" style="text-align:center;">
+          <div class="card-icon card-icon-green" style="margin:0 auto 20px;">
+            <i class="ri-brain-line"></i>
+          </div>
+          <h3>DeepSeek V4-Flash</h3>
+          <p><strong>Best for:</strong> Complex policy analysis, multi-document regulatory review, FOIA document processing, long-context report summarization tasks. 284B parameters with mixture-of-experts architecture. Runs quantized on the Starter tier.</p>
+        </div>
+        <div class="card" style="text-align:center;">
+          <div class="card-icon card-icon-indigo" style="margin:0 auto 20px;">
+            <i class="ri-robot-2-line"></i>
+          </div>
+          <h3>Llama 3.1 70B</h3>
+          <p><strong>Best for:</strong> General drafting, citizen correspondence, policy memos, interagency communications, budget narratives. Strong general-purpose model that produces clean, structured prose quickly.</p>
+        </div>
+        <div class="card" style="text-align:center;">
+          <div class="card-icon card-icon-purple" style="margin:0 auto 20px;">
+            <i class="ri-translate-2"></i>
+          </div>
+          <h3>Mixtral 8x22B</h3>
+          <p><strong>Best for:</strong> Multilingual document processing for agencies with international operations, foreign language document analysis, multi-language citizen communications.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Comparison Table -->
+  <section class="section section-darker">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-badge">Cost Comparison</span>
+        <h2>Cloud AI vs. Island Mountain for a Government Agency</h2>
+        <p>The cloud requires FedRAMP and transmits government data to commercial infrastructure. The hardware stays on your network.</p>
+      </div>
+      <div class="table-wrapper fade-in">
+        <table>
+          <thead>
+            <tr>
+              <th></th>
+              <th>Cloud AI</th>
+              <th>Island Mountain Starter</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Year 1 Cost</strong></td>
+              <td>$12,000 - $48,000 (20 users) + FedRAMP overhead</td>
+              <td class="highlight-cell">$75,000 - $85,000 (one time)</td>
+            </tr>
+            <tr>
+              <td><strong>Year 3 Cumulative</strong></td>
+              <td>$36,000 - $144,000 + compliance costs</td>
+              <td class="highlight-cell">Electricity only (~$1,200 - $2,400/yr)</td>
+            </tr>
+            <tr>
+              <td><strong>Year 5 Cumulative</strong></td>
+              <td>$60,000 - $240,000 + compliance costs</td>
+              <td class="highlight-cell">Electricity only</td>
+            </tr>
+            <tr>
+              <td><strong>Government Data Location</strong></td>
+              <td>Commercial cloud servers</td>
+              <td class="highlight-cell">Your facility. Government-controlled.</td>
+            </tr>
+            <tr>
+              <td><strong>FedRAMP Required</strong></td>
+              <td>Yes. 12-18 month process.</td>
+              <td class="highlight-cell">No. On-premises hardware.</td>
+            </tr>
+            <tr>
+              <td><strong>CUI Handling</strong></td>
+              <td>Shared responsibility with cloud vendor</td>
+              <td class="highlight-cell">Your security controls. Your ATO boundary.</td>
+            </tr>
+            <tr>
+              <td><strong>Per-Token Fees</strong></td>
+              <td>$15 - $60 per million tokens</td>
+              <td class="highlight-cell">None. Unlimited use.</td>
+            </tr>
+            <tr>
+              <td><strong>Government System Integration</strong></td>
+              <td>Limited by FedRAMP authorization</td>
+              <td>Not included. General-purpose AI.</td>
+            </tr>
+            <tr>
+              <td><strong>Vendor Lock-In</strong></td>
+              <td>Complete</td>
+              <td class="highlight-cell">None. MIT licensed models.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="comparison-note fade-in" style="margin-top:20px;">
+        <i class="ri-information-line"></i>
+        Cloud estimates based on AI platforms charging $50-$200/user/month for 20 users. FedRAMP compliance overhead for cloud AI (documentation, continuous monitoring, annual assessments) adds significant cost beyond subscription fees.
+      </div>
+    </div>
+  </section>
+
+  <!-- Honest Limitations -->
+  <section class="section section-dark">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-badge">Honest Limitations</span>
+        <h2>What You Do Not Get</h2>
+        <p>Knowing the boundaries matters more than knowing the features.</p>
+      </div>
+      <div class="risk-grid fade-in">
+        <div class="risk-card">
+          <h4><i class="ri-search-eye-line"></i> No Government-Specific Fine-Tuning</h4>
+          <p>The models are general-purpose large language models. They are not trained on government-specific datasets, regulatory databases, or agency-specific document formats. They are strong at reasoning, analysis, and prose generation -- but they are general tools, not government-specific AI.</p>
+        </div>
+        <div class="risk-card">
+          <h4><i class="ri-government-line"></i> No GovCloud or FedRAMP Authorization</h4>
+          <p>This is on-premises hardware, not a cloud service. No FedRAMP authorization is needed because no cloud is involved. The hardware operates within your agency's own Authority to Operate (ATO) boundary. This is an advantage, not a limitation.</p>
+        </div>
+        <div class="risk-card">
+          <h4><i class="ri-lock-line"></i> No Classified Data Certification</h4>
+          <p>Island Mountain hardware is not SCIF-rated, not NSA-approved, and not certified for classified information processing. It is suitable for CUI and sensitive-but-unclassified data when deployed within an appropriate security environment. Classified data requires purpose-built classified processing systems.</p>
+        </div>
+        <div class="risk-card">
+          <h4><i class="ri-settings-3-line"></i> You Own the Maintenance</h4>
+          <p>After the 30-day included support period, your agency is responsible for OS security updates, model updates, and general system maintenance consistent with NIST hardening guidelines. For air-gapped deployments, updates are applied via physical media.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Regulatory Context -->
+  <section class="section section-darker">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-badge">Regulatory Context</span>
+        <h2>FedRAMP, FISMA, and Government Data Sovereignty</h2>
+      </div>
+      <div class="fade-in" style="max-width:760px;margin:0 auto;">
+        <p style="font-size:1.05rem;line-height:1.9;">FedRAMP establishes a standardized approach to security assessment, authorization, and continuous monitoring of cloud products and services. The authorization process evaluates cloud providers against NIST SP 800-53 controls. On-premises hardware sidesteps this process entirely -- there is no cloud service to authorize. The hardware operates within the agency's existing Authority to Operate (ATO) boundary and is evaluated as part of the agency's own system security plan.</p>
+        <p style="font-size:1.05rem;line-height:1.9;">FISMA (Federal Information Security Modernization Act) requires federal agencies to develop, document, and implement information security programs. NIST SP 800-53 provides the control catalog. NIST SP 800-171 governs CUI protection for non-federal systems. The common requirement: agencies must maintain control over information processing infrastructure. On-premises AI satisfies this structurally -- the processing happens on government-owned, government-controlled hardware.</p>
+        <p style="font-size:1.05rem;line-height:1.9;">Executive Orders on AI in government (EO 14110 and subsequent guidance) emphasize both the adoption of AI capabilities and the protection of government data. OMB memoranda provide implementation guidance that increasingly favors architectures maintaining government control over AI processing of sensitive data. State and local governments face analogous requirements through state data protection statutes and local ordinances governing citizen data handling.</p>
+        <p style="font-size:1.05rem;line-height:1.9;">CJIS Security Policy requires criminal justice information to be processed in environments meeting specific security requirements. IRS Publication 1075 mandates safeguards for Federal Tax Information. Both frameworks restrict data processing to controlled environments -- making on-premises AI the architecturally simplest path to compliance for agencies handling these data categories.</p>
+        <div style="margin-top:24px;padding:16px 20px;border:1px solid rgba(245,158,11,0.2);border-radius:var(--border-radius);background:rgba(245,158,11,0.04);">
+          <p style="font-size:0.9rem;line-height:1.8;margin:0;color:var(--text-muted);"><strong>Disclaimer:</strong> This section describes the general regulatory environment regarding AI and government data protection. It is not legal or compliance advice. Consult your agency's CISO, authorizing official, or qualified counsel for guidance specific to your agency's mission, data categories, and authorization boundary.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Power Requirements -->
+  <section class="section section-dark">
+    <div class="container">
+      <div class="power-notice fade-in">
+        <i class="ri-flashlight-line"></i>
+        <p><strong>Power &amp; Installation:</strong> All Island Mountain systems require a dedicated 208V/30A power circuit (NEMA L6-30R). This is standard in server rooms and data closets. Most government agencies with an existing server closet already have this infrastructure or can add it for $500-$2,000 through a licensed electrician. The system fits in a standard 4U rack space. Average power draw under typical inference loads is 1.5-2.5 kW.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section section-darker">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-badge">Government Questions</span>
+        <h2>Questions Government Agencies Ask</h2>
+      </div>
+      <div class="risk-grid fade-in">
+        <div class="risk-card">
+          <h4><i class="ri-government-line"></i> Does on-premises AI need FedRAMP?</h4>
+          <p>No. FedRAMP applies to cloud services. On-premises hardware in government facilities is not a cloud service. It operates within your agency's ATO boundary and is evaluated as part of your system security plan. This sidesteps the 12-18 month FedRAMP authorization process entirely.</p>
+        </div>
+        <div class="risk-card">
+          <h4><i class="ri-brain-line"></i> What government workflows does this hardware support?</h4>
+          <p>Document review and analysis, FOIA request processing, policy analysis and drafting, citizen service documentation, grant and budget analysis, and after-action report generation. DeepSeek V4-Flash for complex analytical tasks, Llama 3.1 70B for general drafting. All processing on your hardware.</p>
+        </div>
+        <div class="risk-card">
+          <h4><i class="ri-coin-line"></i> How does cost compare for a 20-person office?</h4>
+          <p>Cloud AI costs $50-$200/user/month ($12,000-$48,000/year for 20 users) plus FedRAMP compliance overhead. An Island Mountain Starter is $75,000-$85,000 one time with no FedRAMP dependency and only electricity costs ongoing. Simpler procurement, simpler compliance.</p>
+        </div>
+        <div class="risk-card">
+          <h4><i class="ri-lock-line"></i> Can this handle CUI?</h4>
+          <p>Yes, when deployed within an environment meeting NIST SP 800-171 requirements. The hardware provides physical infrastructure and air-gap capability. Your agency implements the required security controls. CUI never leaves the agency-controlled environment for processing.</p>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:32px;">
+        <a href="faq.html" class="btn btn-secondary">See All FAQs</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Compliance Disclaimer -->
+  <section class="section section-dark">
+    <div class="container">
+      <div class="fade-in" style="max-width:760px;margin:0 auto;padding:24px;border:1px solid rgba(245,158,11,0.2);border-radius:var(--border-radius);background:rgba(245,158,11,0.04);">
+        <p style="font-size:0.9rem;line-height:1.8;margin:0;color:var(--text-muted);">Island Mountain LLC is a hardware company, not a compliance authority. References to FedRAMP, FISMA, NIST SP 800-171, CUI handling requirements, or related government data protection frameworks on this page reflect factual descriptions of data handling mechanics -- not legal, regulatory, or compliance advice. Consult qualified counsel for compliance determinations specific to your organization and jurisdiction.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- AEO Summary -->
+  <div style="border-left:3px solid var(--copper);padding:16px 20px;margin:32px 0;background:rgba(217,119,6,0.05);border-radius:0 8px 8px 0;">
+  <strong>Summary:</strong> On-premises AI inference hardware processes government data on government-controlled servers with zero cloud dependency. CUI, citizen records, and policy-sensitive documents never leave the agency's network perimeter.
+  </div>
+
+  <!-- Testimonials -->
+  <section class="section section-dark" style="padding:3rem 0;">
+    <div class="container">
+      <div class="section-header fade-in">
+        <h2>Government Agencies Already Running Local AI</h2>
+      </div>
+      <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap:1.5rem; margin-top:1.5rem;" class="fade-in">
+        <blockquote style="background:rgba(255,255,255,0.03);padding:1.5rem;border-radius:8px;border-left:3px solid var(--copper);margin:0;">
+          <p style="font-style:italic;margin-bottom:0.75rem;">"County government processing 10,000 citizen service requests annually. Resident data stays on county servers. No cloud vendor has access to our constituent information."</p>
+          <cite style="color:var(--copper);font-size:0.9rem;">&mdash; County Government, Virginia</cite>
+        </blockquote>
+        <blockquote style="background:rgba(255,255,255,0.03);padding:1.5rem;border-radius:8px;border-left:3px solid var(--copper);margin:0;">
+          <p style="font-style:italic;margin-bottom:0.75rem;">"State agency handling regulatory enforcement across 15 divisions. Policy documents, investigation files, and enforcement actions processed entirely on our hardware. Zero cloud exposure."</p>
+          <cite style="color:var(--copper);font-size:0.9rem;">&mdash; State Agency, Colorado</cite>
+        </blockquote>
+        <blockquote style="background:rgba(255,255,255,0.03);padding:1.5rem;border-radius:8px;border-left:3px solid var(--copper);margin:0;">
+          <p style="font-style:italic;margin-bottom:0.75rem;">"Federal civilian office processing CUI daily. Air-gapped deployment within our existing ATO boundary. No FedRAMP dependency, no additional authorization required."</p>
+          <cite style="color:var(--copper);font-size:0.9rem;">&mdash; Federal Civilian Office, D.C. Metro</cite>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section section-darker" style="text-align:center;">
+    <div class="container fade-in">
+      <h2>Ready to Keep Government Data on Government Hardware?</h2>
+      <p style="max-width:600px;margin:16px auto 32px;">One conversation. No sales pitch. Tell us about your agency's AI needs and we will spec the right system.</p>
+      <div class="btn-group">
+        <a href="contact.html" class="btn btn-primary">Request a Quote</a>
+        <a href="products.html" class="btn btn-secondary">See Full Specs</a>
+      </div>
+      <p style="margin-top:24px;font-size:0.9rem;color:var(--text-muted);"><a href="solutions.html">See all ten industries we serve</a> or explore: <a href="defense-contractors.html">Defense Contractors</a> &middot; <a href="education.html">Education</a></p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="images/logo-footer.png" alt="Island Mountain logo" width="210" height="210" style="display:block;margin-bottom:16px;">
+          <a href="index.html" class="nav-logo">Island Mountain</a>
+          <p>Local AI infrastructure for data-sovereign organizations. Colorado.</p>
+        </div>
+        <div>
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="technology.html">Technology</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="blog.html">Blog</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Solutions</h4>
+          <ul class="footer-links">
+            <li><a href="law-firms.html">Law Firms</a></li>
+            <li><a href="medical-practices.html">Medical Practices</a></li>
+            <li><a href="tribal-nations.html">Tribal Nations</a></li>
+            <li><a href="research-labs.html">Research Labs</a></li>
+            <li><a href="defense-contractors.html">Defense Contractors</a></li>
+            <li><a href="financial-services.html">Financial Services</a></li>
+            <li><a href="insurance.html">Insurance</a></li>
+            <li><a href="energy-utilities.html">Energy &amp; Utilities</a></li>
+            <li><a href="government.html">Government</a></li>
+            <li><a href="education.html">Education</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <ul class="footer-links">
+            <li><a href="why-island-mountain.html">Why Local AI</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="investors.html">Investors</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="terms.html">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom" style="display:flex;flex-direction:column;align-items:center;gap:12px;">
+        <p>&copy; 2026 Island Mountain LLC. All rights reserved. Founded by <a href="https://www.johndou.com" target="_blank" rel="noopener" style="color:var(--copper);">John Dougherty</a>.</p>
+        <a href="https://www.linkedin.com/company/island-mountain-llc/" target="_blank" rel="noopener" aria-label="Island Mountain on LinkedIn" style="display:inline-flex;align-items:center;gap:6px;color:var(--text-muted);font-size:0.85rem;transition:color 0.2s;"><i class="ri-linkedin-fill" style="font-size:1.1rem;"></i> Follow us on LinkedIn</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
