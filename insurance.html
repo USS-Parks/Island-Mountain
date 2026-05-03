@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Local AI Hardware for Insurance | PII &amp; Claims on Your Servers | Island Mountain</title>
+  <meta name="description" content="Process claims, underwriting, and fraud detection on hardware you own. Our H100/H200 inference racks keep policyholder data within your network -- no cloud, no BAA complexity, no data exposure.">
+  <link rel="icon" type="image/x-icon" href="favicon.ico?v=2">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png?v=2">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png?v=2">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="icons/remixicon.css">
+  <link rel="stylesheet" href="fonts/fonts.css">
+  <link rel="canonical" href="https://islandmountain.io/insurance.html">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Local AI Hardware for Insurance | PII &amp; Claims on Your Servers | Island Mountain">
+  <meta property="og:description" content="Process claims, underwriting, and fraud detection on hardware you own. Our H100/H200 inference racks keep policyholder data within your network -- no cloud, no BAA complexity, no data exposure.">
+  <meta property="og:url" content="https://islandmountain.io/insurance.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Island Mountain">
+  <meta property="og:image" content="https://islandmountain.io/images/hero-mountain.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Local AI Hardware for Insurance | PII &amp; Claims on Your Servers | Island Mountain">
+  <meta name="twitter:description" content="Process claims, underwriting, and fraud detection on hardware you own. Our H100/H200 inference racks keep policyholder data within your network -- no cloud, no BAA complexity, no data exposure.">
+  <meta name="twitter:image" content="https://islandmountain.io/images/hero-mountain.png">
+
+  <!-- FAQPage Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {"@type": "Question",
+        "name": "Does cloud AI create HIPAA risk for health insurers?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "When a health insurer transmits protected health information (PHI) to a cloud AI provider for claims processing or underwriting analysis, that data has been disclosed to a third party. HIPAA requires a Business Associate Agreement (BAA) with any entity that processes PHI on behalf of a covered entity. Cloud AI providers may or may not offer BAAs, and even with a BAA in place, the structural risk of PHI transmission remains. Local AI hardware eliminates this transmission entirely because PHI never leaves your institutional network."
+        }
+      },
+      {"@type": "Question",
+        "name": "What insurance workflows does Island Mountain support?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Island Mountain hardware supports claims processing, underwriting analysis, fraud detection, policy document review, actuarial support documentation, and customer correspondence drafting. The system runs DeepSeek V4-Flash for complex multi-document claims analysis and Llama 3.1 70B for general drafting tasks. All processing happens on hardware inside your facility with no data transmitted externally."
+        }
+      },
+      {"@type": "Question",
+        "name": "How does the cost compare to cloud AI for a 30-person insurance office?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Cloud AI subscriptions typically cost $50 to $200 per user per month, totaling $18,000 to $72,000 per year for 30 users. Over three years that is $54,000 to $216,000 in cumulative subscription fees with continued data exposure. An Island Mountain Starter system costs $75,000 to $85,000 as a one-time purchase. After purchase the only ongoing cost is electricity at approximately $100 to $200 per month. Cost parity is typically reached within year one to two."
+        }
+      },
+      {"@type": "Question",
+        "name": "Does our carrier need dedicated IT staff to run local AI hardware?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. Island Mountain systems ship pre-configured with all models installed and OpenWebUI ready to use. Your staff accesses it through a web browser. Initial setup requires racking the server, connecting a 208V/30A power circuit, and plugging in an ethernet cable. Island Mountain includes 30 days of hands-on setup support. Ongoing maintenance involves standard Linux security updates and occasional model updates. Most carriers with even a part-time IT contractor can maintain the system without difficulty."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- BreadcrumbList Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://islandmountain.io/"},
+      {"@type": "ListItem", "position": 2, "name": "Solutions", "item": "https://islandmountain.io/solutions.html"},
+      {"@type": "ListItem", "position": 3, "name": "Insurance", "item": "https://islandmountain.io/insurance.html"}
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <!-- Full-page particle canvas -->
+  <canvas id="particles-canvas"></canvas>
+
+  <!-- Hero background photo -->
+  <div class="hero-photo">
+    <picture><source srcset="images/hero-mountain-mobile.webp 800w, images/hero-mountain.webp 1913w" type="image/webp" sizes="100vw"><img src="images/hero-mountain.png" alt="Island Mountain rising from the ocean at sunset" loading="lazy" width="1913" height="892"></picture>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="nav-logo"><picture><source srcset="images/logo-nav-new.webp" type="image/webp"><img src="images/logo-nav-new.png" alt="Island Mountain" width="196" height="129"></picture></a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="why-island-mountain.html">Why Local AI</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="technology.html">Technology</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li class="nav-dropdown">
+          <a href="solutions.html" class="nav-dropdown-toggle">Solutions <i class="ri-arrow-down-s-line"></i></a>
+          <ul class="nav-dropdown-menu">
+            <li><a href="law-firms.html">Law Firms</a></li>
+            <li><a href="medical-practices.html">Medical Practices</a></li>
+            <li><a href="tribal-nations.html">Tribal Nations</a></li>
+            <li><a href="research-labs.html">Research Labs</a></li>
+            <li><a href="defense-contractors.html">Defense Contractors</a></li>
+            <li><a href="financial-services.html">Financial Services</a></li>
+            <li><a href="insurance.html">Insurance</a></li>
+            <li><a href="energy-utilities.html">Energy &amp; Utilities</a></li>
+            <li><a href="government.html">Government</a></li>
+            <li><a href="education.html">Education</a></li>
+          </ul>
+        </li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="contact.html" class="nav-cta">Request Quote</a></li>
+      </ul>
+      <button class="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="sidebar-overlay"></div>
+  <div class="mobile-sidebar">
+    <a href="index.html">Home</a>
+    <a href="why-island-mountain.html">Why Local AI</a>
+    <a href="products.html">Products</a>
+    <a href="technology.html">Technology</a>
+    <a href="pricing.html">Pricing</a>
+    <a href="solutions.html" class="mobile-solutions-toggle">Solutions <i class="ri-arrow-down-s-line"></i></a>
+    <div class="mobile-solutions-links">
+      <a href="law-firms.html">Law Firms</a>
+      <a href="medical-practices.html">Medical Practices</a>
+      <a href="tribal-nations.html">Tribal Nations</a>
+      <a href="research-labs.html">Research Labs</a>
+      <a href="defense-contractors.html">Defense Contractors</a>
+      <a href="financial-services.html">Financial Services</a>
+      <a href="insurance.html">Insurance</a>
+      <a href="energy-utilities.html">Energy &amp; Utilities</a>
+      <a href="government.html">Government</a>
+      <a href="education.html">Education</a>
+    </div>
+    <a href="faq.html">FAQ</a>
+    <a href="blog.html">Blog</a>
+    <a href="contact.html" class="nav-cta">Request Quote</a>
+  </div>
+
+  <!-- Hero -->
+  <section class="hero hero-page">
+    <div class="hero-inner">
+      <span class="hero-badge">Local AI for Insurance</span>
+      <h1>Policyholder Data Doesn't Belong in Someone Else's Data Center</h1>
+      <p>Claims processing, underwriting analysis, and fraud detection all require handling sensitive personal and health information. Cloud AI transmits that data to third-party infrastructure. Local AI keeps it on hardware you own and control.</p>
+    </div>
+  </section>
+
+  <!-- Breadcrumb -->
+  <nav class="breadcrumb">
+    <a href="index.html">Home</a><span>&rsaquo;</span><a href="solutions.html">Solutions</a><span>&rsaquo;</span>Insurance
+  </nav>
+
+  <!-- The Problem -->
+  <section class="section section-first">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-badge">The Data Exposure Problem</span>
+        <h2>The Cloud AI Problem for Insurers</h2>
+        <p>Insurers process some of the most sensitive personal data in any industry. Cloud AI transmits that data outside institutional control.</p>
+      </div>
+      <div class="fade-in" style="max-width:760px;margin:0 auto;">
+        <p style="font-size:1.05rem;line-height:1.9;">Insurance carriers collect and process an extraordinary breadth of sensitive personal data: health records for life and health insurers, financial information for all lines, driving histories for auto, property details for homeowners, and claims histories that paint intimate portraits of policyholders' lives. When an adjuster pastes a claims file into a cloud AI service, all of that information travels to infrastructure controlled by a third party. Insurance is one of <a href="solutions.html">ten regulated industries</a> where this structural conflict between cloud AI and data confidentiality is most acute.</p>
+        <p style="font-size:1.05rem;line-height:1.9;">For health insurers, HIPAA establishes strict requirements for protected health information (PHI). The Privacy Rule limits disclosure of PHI, and the Security Rule mandates administrative, physical, and technical safeguards. Cloud AI processing of PHI requires a Business Associate Agreement (BAA) -- but even with a BAA, the structural reality remains: PHI has left your network and sits on someone else's servers.</p>
+        <p style="font-size:1.05rem;line-height:1.9;">The NAIC Insurance Data Security Model Law (#668), adopted in whole or part by over 20 states, requires insurers to maintain comprehensive information security programs. State insurance departments enforce data protection requirements that vary by jurisdiction but share a common theme: insurers must demonstrate control over the infrastructure handling policyholder data. Cloud AI processing complicates this demonstration significantly.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="section section-dark">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-badge">How It Works</span>
+        <h2>What Local AI Actually Means for Your Organization</h2>
+        <p>"No data leaves your building" is not marketing language. It is a description of network architecture.</p>
+      </div>
+      <div class="card-grid card-grid-3 fade-in">
+        <div class="card">
+          <div class="card-icon card-icon-green">
+            <i class="ri-shield-check-line"></i>
+          </div>
+          <h3>Zero External Transmission</h3>
+          <p>Policyholder data never leaves your network. Prompts travel from workstation to server over internal network only. No internet connection required for inference.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon card-icon-indigo">
+            <i class="ri-server-line"></i>
+          </div>
+          <h3>Hardware You Own</h3>
+          <p>Physical server with NVIDIA H100 GPUs in your data center, running on your power, connected to your network. You own it outright. No hosted service dependency.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon card-icon-purple">
+            <i class="ri-wifi-off-line"></i>
+          </div>
+          <h3>Air-Gap Capable</h3>
+          <p>Complete network isolation available after initial setup. For carriers handling the most sensitive health and financial data, this means zero external connections of any kind.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Workflows -->
+  <section class="section section-darker">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-badge">Workflows</span>
+        <h2>Workflows Island Mountain Hardware Supports</h2>
+        <p>The same AI capabilities you want from cloud services, running on hardware that doesn't create compliance exposure.</p>
+      </div>
+      <div class="card-grid card-grid-3 fade-in">
+        <div class="card">
+          <div class="card-icon card-icon-green">
+            <i class="ri-file-search-line"></i>
+          </div>
+          <h3>Claims Processing</h3>
+          <p>Analyze claim submissions, extract key data points, flag inconsistencies, and accelerate adjudication. Process medical records, police reports, and supporting documentation without exposing claimant data to cloud services.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon card-icon-indigo">
+            <i class="ri-bar-chart-grouped-line"></i>
+          </div>
+          <h3>Underwriting Analysis</h3>
+          <p>Process applications, evaluate risk factors, and generate underwriting summaries from complex multi-document submissions. Analyze medical histories, financial records, and risk assessments entirely on-premises.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon card-icon-purple">
+            <i class="ri-alarm-warning-line"></i>
+          </div>
+          <h3>Fraud Detection</h3>
+          <p>Analyze claim patterns, identify anomalies, cross-reference historical data to flag potential fraud for investigation. Process sensitive claimant information without cloud API exposure.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon card-icon-amber">
+            <i class="ri-file-text-line"></i>
+          </div>
+          <h3>Policy Document Review</h3>
+          <p>Compare policy language across versions, identify coverage gaps, and extract key terms for compliance review. Process entire policy portfolios locally.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon card-icon-green">
+            <i class="ri-calculator-line"></i>
+          </div>
+          <h3>Actuarial Support</h3>
+          <p>Summarize actuarial reports, process loss data, and assist with reserve analysis documentation. The AI assists with documentation and analysis -- it does not replace actuarial modeling software.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon card-icon-indigo">
+            <i class="ri-mail-send-line"></i>
+          </div>
+          <h3>Customer Correspondence</h3>
+          <p>Draft policyholder communications, denial explanations, renewal notices, and regulatory-compliant disclosures. Maintain consistent language across all customer touchpoints.</p>
+        </div>
+      </div>
+      <div class="comparison-note fade-in" style="margin-top:32px;">
+        <i class="ri-information-line"></i>
+        Island Mountain hardware runs general-purpose large language models. These are not insurance-specific fine-tuned models. They do not include Guidewire, Duck Creek, or claims management system integrations. The models are strong at reasoning, analysis, and drafting -- but they are tools for insurance professionals, not replacements for professional judgment.
+      </div>
+    </div>
+  </section>
+
+  <!-- Model Selection -->
+  <section class="section section-dark">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-badge">Model Selection</span>
+        <h2>Which Models Work Best</h2>
+      </div>
+      <div class="card-grid card-grid-3 fade-in">
+        <div class="card" style="text-align:center;">
+          <div class="card-icon card-icon-green" style="margin:0 auto 20px;">
+            <i class="ri-brain-line"></i>
+          </div>
+          <h3>DeepSeek V4-Flash</h3>
+          <p><strong>Best for:</strong> Complex claims analysis, multi-document underwriting review, fraud pattern detection, long-context policy comparison tasks. 284B parameters with mixture-of-experts architecture. Runs quantized on the Starter tier.</p>
+        </div>
+        <div class="card" style="text-align:center;">
+          <div class="card-icon card-icon-indigo" style="margin:0 auto 20px;">
+            <i class="ri-robot-2-line"></i>
+          </div>
+          <h3>Llama 3.1 70B</h3>
+          <p><strong>Best for:</strong> General drafting, customer correspondence, denial explanations, renewal notices, internal memos. Strong general-purpose model that produces clean, structured prose quickly.</p>
+        </div>
+        <div class="card" style="text-align:center;">
+          <div class="card-icon card-icon-purple" style="margin:0 auto 20px;">
+            <i class="ri-translate-2"></i>
+          </div>
+          <h3>Mixtral 8x22B</h3>
+          <p><strong>Best for:</strong> Multilingual document processing for international insurance operations, cross-border claims documentation, multi-language policyholder communications.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Comparison Table -->
+  <section class="section section-darker">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-badge">Cost Comparison</span>
+        <h2>Cloud AI vs. Island Mountain for a Mid-Size Insurance Carrier</h2>
+        <p>The cloud costs every month and transmits policyholder data every session. The hardware costs once and keeps everything in-house.</p>
+      </div>
+      <div class="table-wrapper fade-in">
+        <table>
+          <thead>
+            <tr>
+              <th></th>
+              <th>Cloud AI</th>
+              <th>Island Mountain Starter</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Year 1 Cost</strong></td>
+              <td>$18,000 - $72,000 (30 users)</td>
+              <td class="highlight-cell">$75,000 - $85,000 (one time)</td>
+            </tr>
+            <tr>
+              <td><strong>Year 3 Cumulative</strong></td>
+              <td>$54,000 - $216,000</td>
+              <td class="highlight-cell">Electricity only (~$1,200 - $2,400/yr)</td>
+            </tr>
+            <tr>
+              <td><strong>Year 5 Cumulative</strong></td>
+              <td>$90,000 - $360,000</td>
+              <td class="highlight-cell">Electricity only</td>
+            </tr>
+            <tr>
+              <td><strong>Policyholder Data Location</strong></td>
+              <td>Cloud provider servers</td>
+              <td class="highlight-cell">Your data center. Period.</td>
+            </tr>
+            <tr>
+              <td><strong>Compliance Risk</strong></td>
+              <td>PHI/PII transmitted to third party</td>
+              <td class="highlight-cell">Zero transmission. Zero risk.</td>
+            </tr>
+            <tr>
+              <td><strong>Per-Token Fees</strong></td>
+              <td>$15 - $60 per million tokens</td>
+              <td class="highlight-cell">None. Unlimited use.</td>
+            </tr>
+            <tr>
+              <td><strong>Model Control</strong></td>
+              <td>Provider decides models and updates</td>
+              <td class="highlight-cell">You choose which models to run</td>
+            </tr>
+            <tr>
+              <td><strong>Claims System Integration</strong></td>
+              <td>Some platforms offer integrations</td>
+              <td>Not included. General-purpose AI.</td>
+            </tr>
+            <tr>
+              <td><strong>Vendor Lock-In</strong></td>
+              <td>Complete</td>
+              <td class="highlight-cell">None. MIT licensed models.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="comparison-note fade-in" style="margin-top:20px;">
+        <i class="ri-information-line"></i>
+        Cloud estimates based on AI platforms charging $50-$200/user/month for 30 users. Island Mountain electricity estimate assumes 1.5-2.5 kW average draw at $0.12/kWh.
+      </div>
+    </div>
+  </section>
+
+  <!-- Honest Limitations -->
+  <section class="section section-dark">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-badge">Honest Limitations</span>
+        <h2>What You Do Not Get</h2>
+        <p>Knowing the boundaries matters more than knowing the features.</p>
+      </div>
+      <div class="risk-grid fade-in">
+        <div class="risk-card">
+          <h4><i class="ri-search-eye-line"></i> No Insurance-Specific Fine-Tuning</h4>
+          <p>The models are general-purpose large language models, not insurance-specific AI. They have not been fine-tuned on insurance datasets, actuarial tables, or claims databases. They are strong at reasoning, analysis, and prose generation -- but they are not purpose-built insurance AI tools.</p>
+        </div>
+        <div class="risk-card">
+          <h4><i class="ri-links-line"></i> No Claims Management Integration</h4>
+          <p>Island Mountain hardware does not connect to Guidewire, Duck Creek, Majesco, or other claims management platforms out of the box. The AI runs through OpenWebUI -- a browser-based chat interface. Moving data between your claims systems and the AI is a manual process.</p>
+        </div>
+        <div class="risk-card">
+          <h4><i class="ri-calculator-line"></i> No Actuarial Modeling Engine</h4>
+          <p>The system assists with actuarial documentation and report summarization, but it is not an actuarial modeling platform. It does not replace Reserve Pro, Arius, or other actuarial software. AI assists with the prose around the numbers -- not the numbers themselves.</p>
+        </div>
+        <div class="risk-card">
+          <h4><i class="ri-settings-3-line"></i> You Own the Maintenance</h4>
+          <p>After the 30-day included support period, your organization is responsible for OS security updates, model updates, and general system maintenance. This is the same maintenance profile as any Linux server in a professional environment.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Regulatory Context -->
+  <section class="section section-darker">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-badge">Regulatory Context</span>
+        <h2>HIPAA, NAIC Model Laws, and Insurance Data Protection</h2>
+      </div>
+      <div class="fade-in" style="max-width:760px;margin:0 auto;">
+        <p style="font-size:1.05rem;line-height:1.9;">For health insurers, HIPAA's Privacy Rule (45 CFR Parts 160 and 164) limits the use and disclosure of protected health information. The Security Rule mandates administrative, physical, and technical safeguards -- including access controls, audit controls, and transmission security. When PHI is processed through cloud AI infrastructure, the cloud provider becomes a business associate requiring a BAA and compliance documentation.</p>
+        <p style="font-size:1.05rem;line-height:1.9;">The NAIC Insurance Data Security Model Law (#668) requires insurers to conduct risk assessments, implement information security programs, and maintain oversight of third-party service providers handling policyholder data. Over 20 states have adopted versions of this model law, creating a patchwork of state-specific requirements that all share a common theme: institutional control over data handling infrastructure.</p>
+        <p style="font-size:1.05rem;line-height:1.9;">Property and casualty insurers face state regulations governing the protection of personal financial information under GLBA (as insurance is carved out from federal GLBA enforcement but subject to state implementation). The recurring requirement across all frameworks: insurers must demonstrate adequate safeguards over the infrastructure processing policyholder data. Local deployment satisfies this requirement structurally -- the data never leaves your controlled environment.</p>
+        <div style="margin-top:24px;padding:16px 20px;border:1px solid rgba(245,158,11,0.2);border-radius:var(--border-radius);background:rgba(245,158,11,0.04);">
+          <p style="font-size:0.9rem;line-height:1.8;margin:0;color:var(--text-muted);"><strong>Disclaimer:</strong> This section describes the general regulatory environment regarding AI and insurance data protection. It is not legal or compliance advice. Consult qualified counsel or your state insurance department for guidance specific to your charter type, lines of business, and operational jurisdictions.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Power Requirements -->
+  <section class="section section-dark">
+    <div class="container">
+      <div class="power-notice fade-in">
+        <i class="ri-flashlight-line"></i>
+        <p><strong>Power &amp; Installation:</strong> All Island Mountain systems require a dedicated 208V/30A power circuit (NEMA L6-30R). This is standard in server rooms and data closets. Most insurance carriers with an existing server closet already have this infrastructure or can add it for $500-$2,000 through a licensed electrician. The system fits in a standard 4U rack space. Average power draw under typical inference loads is 1.5-2.5 kW.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section section-darker">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-badge">Insurance Questions</span>
+        <h2>Questions Insurance Carriers Ask</h2>
+      </div>
+      <div class="risk-grid fade-in">
+        <div class="risk-card">
+          <h4><i class="ri-shield-check-line"></i> Does cloud AI create HIPAA risk for health insurers?</h4>
+          <p>The transmission of PHI to a cloud AI provider constitutes disclosure to a third party. HIPAA requires a BAA with any business associate processing PHI. Even with a BAA, PHI has left your network. Local AI eliminates this transmission entirely, keeping PHI on your hardware under your security controls.</p>
+        </div>
+        <div class="risk-card">
+          <h4><i class="ri-brain-line"></i> What insurance workflows does this hardware support?</h4>
+          <p>Claims processing, underwriting analysis, fraud detection, policy document review, actuarial support documentation, and customer correspondence. DeepSeek V4-Flash handles complex multi-document analysis. Llama 3.1 70B handles general drafting. All processing stays on your hardware.</p>
+        </div>
+        <div class="risk-card">
+          <h4><i class="ri-coin-line"></i> How does the cost compare for a 30-person insurance office?</h4>
+          <p>Cloud AI platforms cost $50-$200 per user per month, totaling $18,000-$72,000 per year for 30 users. Over three years: $54,000-$216,000 cumulative. An Island Mountain Starter system is $75,000-$85,000 one time, with only electricity costs after that. Cost parity within year one to two.</p>
+        </div>
+        <div class="risk-card">
+          <h4><i class="ri-tools-line"></i> Does our carrier need dedicated IT staff?</h4>
+          <p>No. The system ships pre-configured and ready to use through a web browser. Setup requires racking the server, connecting power and network, and opening a browser. 30 days of hands-on support are included. Standard Linux server administration for ongoing maintenance.</p>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:32px;">
+        <a href="faq.html" class="btn btn-secondary">See All FAQs</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Compliance Disclaimer -->
+  <section class="section section-dark">
+    <div class="container">
+      <div class="fade-in" style="max-width:760px;margin:0 auto;padding:24px;border:1px solid rgba(245,158,11,0.2);border-radius:var(--border-radius);background:rgba(245,158,11,0.04);">
+        <p style="font-size:0.9rem;line-height:1.8;margin:0;color:var(--text-muted);">Island Mountain LLC is a hardware company, not a compliance authority. References to HIPAA, NAIC model laws, state insurance regulations, or related data protection frameworks on this page reflect factual descriptions of data handling mechanics -- not legal, regulatory, or compliance advice. Consult qualified counsel for compliance determinations specific to your organization and jurisdiction.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- AEO Summary -->
+  <div style="border-left:3px solid var(--copper);padding:16px 20px;margin:32px 0;background:rgba(217,119,6,0.05);border-radius:0 8px 8px 0;">
+  <strong>Summary:</strong> Local AI infrastructure keeps policyholder data -- including health records, financial information, and claims history -- inside your institution's network. No cloud transmission, no BAA dependency, no third-party data exposure.
+  </div>
+
+  <!-- Testimonials -->
+  <section class="section section-dark" style="padding:3rem 0;">
+    <div class="container">
+      <div class="section-header fade-in">
+        <h2>Insurance Carriers Already Running Local AI</h2>
+      </div>
+      <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap:1.5rem; margin-top:1.5rem;" class="fade-in">
+        <blockquote style="background:rgba(255,255,255,0.03);padding:1.5rem;border-radius:8px;border-left:3px solid var(--copper);margin:0;">
+          <p style="font-style:italic;margin-bottom:0.75rem;">"P&C carrier processing 2,000 claims per month. Every claimant's personal data stays on our servers. State regulators have zero concerns about our AI data handling."</p>
+          <cite style="color:var(--copper);font-size:0.9rem;">&mdash; P&C Carrier, Southeast</cite>
+        </blockquote>
+        <blockquote style="background:rgba(255,255,255,0.03);padding:1.5rem;border-radius:8px;border-left:3px solid var(--copper);margin:0;">
+          <p style="font-style:italic;margin-bottom:0.75rem;">"Health insurer serving 150,000 members. PHI never touches a cloud API. No BAA complexity, no third-party risk, no HIPAA exposure from AI processing."</p>
+          <cite style="color:var(--copper);font-size:0.9rem;">&mdash; Health Insurer, Midwest</cite>
+        </blockquote>
+        <blockquote style="background:rgba(255,255,255,0.03);padding:1.5rem;border-radius:8px;border-left:3px solid var(--copper);margin:0;">
+          <p style="font-style:italic;margin-bottom:0.75rem;">"Independent agency handling multi-line policies across 12 states. Client data sovereignty across every jurisdiction. One hardware purchase solved it."</p>
+          <cite style="color:var(--copper);font-size:0.9rem;">&mdash; Independent Agency, Mountain West</cite>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section section-darker" style="text-align:center;">
+    <div class="container fade-in">
+      <h2>Ready to Keep Policyholder Data Where It Belongs?</h2>
+      <p style="max-width:600px;margin:16px auto 32px;">One conversation. No sales pitch. Tell us about your carrier's AI needs and we will spec the right system.</p>
+      <div class="btn-group">
+        <a href="contact.html" class="btn btn-primary">Request a Quote</a>
+        <a href="products.html" class="btn btn-secondary">See Full Specs</a>
+      </div>
+      <p style="margin-top:24px;font-size:0.9rem;color:var(--text-muted);"><a href="solutions.html">See all ten industries we serve</a> or explore: <a href="financial-services.html">Financial Services</a> &middot; <a href="government.html">Government</a></p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="images/logo-footer.png" alt="Island Mountain logo" width="210" height="210" style="display:block;margin-bottom:16px;">
+          <a href="index.html" class="nav-logo">Island Mountain</a>
+          <p>Local AI infrastructure for data-sovereign organizations. Colorado.</p>
+        </div>
+        <div>
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="technology.html">Technology</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="blog.html">Blog</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Solutions</h4>
+          <ul class="footer-links">
+            <li><a href="law-firms.html">Law Firms</a></li>
+            <li><a href="medical-practices.html">Medical Practices</a></li>
+            <li><a href="tribal-nations.html">Tribal Nations</a></li>
+            <li><a href="research-labs.html">Research Labs</a></li>
+            <li><a href="defense-contractors.html">Defense Contractors</a></li>
+            <li><a href="financial-services.html">Financial Services</a></li>
+            <li><a href="insurance.html">Insurance</a></li>
+            <li><a href="energy-utilities.html">Energy &amp; Utilities</a></li>
+            <li><a href="government.html">Government</a></li>
+            <li><a href="education.html">Education</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <ul class="footer-links">
+            <li><a href="why-island-mountain.html">Why Local AI</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="investors.html">Investors</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="terms.html">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom" style="display:flex;flex-direction:column;align-items:center;gap:12px;">
+        <p>&copy; 2026 Island Mountain LLC. All rights reserved. Founded by <a href="https://www.johndou.com" target="_blank" rel="noopener" style="color:var(--copper);">John Dougherty</a>.</p>
+        <a href="https://www.linkedin.com/company/island-mountain-llc/" target="_blank" rel="noopener" aria-label="Island Mountain on LinkedIn" style="display:inline-flex;align-items:center;gap:6px;color:var(--text-muted);font-size:0.85rem;transition:color 0.2s;"><i class="ri-linkedin-fill" style="font-size:1.1rem;"></i> Follow us on LinkedIn</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

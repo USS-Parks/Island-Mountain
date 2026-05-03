@@ -33,7 +33,7 @@ done
 echo "Verification complete."
 ```
 
-Files still at risk (over 400 lines): contact.html (928), faq.html (860), investors.html (615), law-firms.html (560), tribal-nations.html (553), defense-contractors.html (531), products.html (527), medical-practices.html (527), research-labs.html (521), pricing.html (512), why-island-mountain.html (456), technology.html (456), blog.html (433), index.html (409). Use sed via bash for these.
+Files still at risk (over 400 lines): financial-services.html (574), insurance.html (574), energy-utilities.html (575), government.html (575), education.html (575), contact.html (928), faq.html (860), investors.html (615), law-firms.html (560), tribal-nations.html (553), defense-contractors.html (531), products.html (527), medical-practices.html (527), research-labs.html (521), pricing.html (512), why-island-mountain.html (456), technology.html (456), blog.html (433), index.html (409). Use sed via bash for these.
 
 ---
 
@@ -57,7 +57,7 @@ Git operations must be run by the user in PowerShell on the host machine. Bash s
 
 Island Mountain LLC sells pre-built, burn-tested on-premises AI inference servers with NVIDIA H100 and H200 GPUs. Price range $75K-$400K. Three product tiers: Starter (2x H100 80GB PCIe refurbished, $75-85K), Performance (build-to-order, $150-160K), Premium (2x H200 141GB, $350-400K, coming Q3 2026). Founded 2026, Colorado. Founder is John Dougherty.
 
-Target markets (each has a dedicated landing page): Law Firms, Medical Practices, Tribal Nations, Research Labs, Defense Contractors.
+Target markets (each has a dedicated landing page): Law Firms, Medical Practices, Tribal Nations, Research Labs, Defense Contractors, Financial Services, Insurance, Energy & Utilities, Government, Education.
 
 Core value proposition: organizations with data that cannot leave the building (HIPAA, ITAR/DFARS, attorney-client privilege, tribal sovereignty/OCAP, FERPA) need AI infrastructure they own outright. No cloud dependency, no token fees, no third-party data exposure.
 
@@ -91,7 +91,7 @@ No analytics. No cookies. No tracking scripts.
 
 ---
 
-## FILE INVENTORY (29 content pages)
+## FILE INVENTORY (34 content pages)
 
 ### Root Pages (18 files)
 
@@ -100,7 +100,7 @@ products.html (527 lines): Three product tiers with full specs. Schema: Product 
 pricing.html (512 lines): Pricing table, financing, TCO comparison. Schema: Product, FAQPage.
 why-island-mountain.html (456 lines): Value proposition. Links to all 5 verticals. Schema: FAQPage.
 technology.html (456 lines): Software stack: Ollama, vLLM, Open WebUI, Ubuntu. Schema: SoftwareApplication, FAQPage.
-solutions.html (396 lines): Hub page linking all 5 industry verticals + blog crosslinks. Schema: FAQPage.
+solutions.html (468 lines): Hub page linking all 10 industry verticals + blog crosslinks. Schema: FAQPage.
 faq.html (860 lines): 25 Q&A pairs. Schema: FAQPage (25 Q&A), SpeakableSpecification.
 contact.html (928 lines): Contact form (FormSubmit.co), embedded Google Map. Schema: LocalBusiness.
 blog.html (433 lines): Blog index listing all posts. Schema: Blog.
@@ -111,6 +111,11 @@ medical-practices.html (527 lines): Vertical. HIPAA, ePHI, BAA. Schema: FAQPage,
 tribal-nations.html (553 lines): Vertical. OCAP, CLOUD Act, sovereignty. Schema: FAQPage, BreadcrumbList, GovOrg. Has AEO block. Breadcrumb, contextual body link to solutions.html.
 research-labs.html (521 lines): Vertical. FERPA, IRB, GxP, 21 CFR Part 11. Schema: FAQPage, BreadcrumbList. Has AEO block. Breadcrumb, contextual body link to solutions.html.
 defense-contractors.html (531 lines): Vertical. ITAR, DFARS 252.204-7012, CMMC, CUI. Schema: FAQPage, BreadcrumbList. Has AEO block. Breadcrumb, contextual body link to solutions.html.
+financial-services.html (574 lines): Vertical. GLBA, PCI DSS, SEC Reg S-P. Schema: FAQPage, BreadcrumbList. Has AEO block. Breadcrumb, contextual body link to solutions.html.
+insurance.html (574 lines): Vertical. HIPAA (health insurers), NAIC Model Law #668, state regs. Schema: FAQPage, BreadcrumbList. Has AEO block. Breadcrumb, contextual body link to solutions.html.
+energy-utilities.html (575 lines): Vertical. NERC CIP, IEC 62443, FERC, TSA Pipeline Security. Schema: FAQPage, BreadcrumbList. Has AEO block. Breadcrumb, contextual body link to solutions.html.
+government.html (575 lines): Vertical. FedRAMP, FISMA, NIST SP 800-171, CUI. Schema: FAQPage, BreadcrumbList. Has AEO block. Breadcrumb, contextual body link to solutions.html.
+education.html (575 lines): Vertical. FERPA, COPPA, state student privacy laws. Schema: FAQPage, BreadcrumbList. Has AEO block. Breadcrumb, contextual body link to solutions.html.
 privacy.html (198 lines): Privacy policy. Schema: WebPage.
 terms.html (208 lines): Terms of service. Schema: WebPage.
 
@@ -204,47 +209,14 @@ Contains bold "Summary:" followed by 2-3 sentence direct answer.
 Meta descriptions, canonical tags, OG + Twitter Card tags, JSON-LD structured data on all 29 pages.
 XML sitemap with 29 URLs. robots.txt allowing all crawlers. llms.txt for AI engines.
 AEO blocks on all 11 blog posts (standardized to Summary: format with copper border styling).
-AEO blocks on 6 vertical/hub pages standardized from old "Bottom line:" dark-bg format to standard "Summary:" copper-border format (2026-05-01): law-firms, medical-practices, tribal-nations, research-labs, defense-contractors, solutions.
-AEO blocks created and inserted on 6 root pages (2026-05-01): index, products, pricing, why-island-mountain, technology, faq.
-Root pages intentionally without AEO blocks: about, contact, investors, privacy, terms.
-Self-hosted fonts and icons (zero CDN dependencies).
-WebP hero images with picture element fallback.
-LinkedIn company page linked in footer of all 29 pages.
-Navbar wordmark logo (196x129 display, picture element WebP/PNG) on all 29 pages. Footer logo (210x210) on all 29 pages.
-Founding date consistent at 2026 across all schemas.
-FormSubmit.co contact form configured.
-Blog inline CSS extracted to css/blog.css (all 11 posts now under 400 lines).
-Blog index (blog.html) has cards for all 11 posts.
-Hub-and-spoke internal linking completed (2026-05-01): solutions.html established as topical authority hub for 5 vertical industry pages. Added: (1) visual breadcrumbs (Home > Solutions > Industry) on all 5 verticals after hero section, (2) BreadcrumbList JSON-LD schema on all 5 verticals, (3) contextual in-body links from each vertical back to solutions.html, (4) upgraded cross-link lines at bottom of each vertical CTA to include primary solutions.html link, (5) homepage body links to solutions.html ("five regulated industries" paragraph in Value Proposition section), (6) homepage testimonial citations linked to relevant vertical pages. Breadcrumb CSS added to style.css (not blog.css) since verticals don't load blog.css.
-Deleted legacy images: logo.png, Island Mountain Logo 1.png.
-Favicons (favicon.ico, favicon-32.png, apple-touch-icon.png, icon-192.png) regenerated from logo-transparent.png.
-Navbar logo replaced with wordmark (logo-nav-new.png/webp, 196x129 display) on all 29 pages. --nav-height increased to 80px.
-Email display changed to info@islandmountain.io on contact.html (2 instances), privacy.html (2 instances), terms.html (1 instance). mailto: hrefs still route to basho@islandmountain.io. Schema email fields unchanged.
-
-Investor page completely rewritten (2026-05-03): replaced false 36% margin / $65K pricing / "cash-flow positive from unit one" narrative with honest numbers from financial model. Now shows: negative margin at mid-market GPU prices, 24-33% at aggressive sourcing, negative Year 1 NOI across all scenarios, $500K SAFE raise at $2.5M cap. Updated meta description and OG tags to reflect seed round positioning.
-
-### In Progress
-
-Google Search Console: sitemap submitted 2026-05-02, processing. Check back for indexing confirmation.
-Google Business Profile: verification proof submitted 2026-05-02, awaiting approval.
-
+5 new vertical landing pages (financial-services, insurance, energy-utilities, government, education) created 2026-05-03. Navbar, mobile sidebar, and footer updated across all 34 HTML files. Sitemap updated to 34 URLs. llms.txt updated with 10 verticals. All "five industries" references updated to "ten industries" site-wide.
+AEO blocks on 6 vertical/hub pages standar
 ---
 
-## GIT WORKFLOW
+## GIT PUSH COMMAND (PowerShell)
 
-Push from PowerShell only (bash sandbox cannot push):
+After every session, copy-paste this into PowerShell (update the commit message to reflect what changed):
 
+```powershell
+cd "C:\Users\17076\Documents\Claude\Island Mountain"; git add -A; git commit -m "DESCRIBE CHANGES HERE"; git push origin main
 ```
-cd "C:\Users\17076\Documents\Claude\Island Mountain"
-Remove-Item ".git\index.lock" -Force -ErrorAction SilentlyContinue
-git add -A
-git status
-git commit -m "description"
-git push origin main
-```
-
----
-
-
-
-

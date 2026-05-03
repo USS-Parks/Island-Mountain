@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Air-Gapped AI Servers for Energy &amp; Utilities | NERC CIP Compliant | Island Mountain</title>
+  <meta name="description" content="Pre-built H100/H200 hardware that keeps operational data off the cloud. Designed for NERC CIP and IEC 62443 environments. Run grid analytics, maintenance predictions, and compliance analysis entirely on-premises.">
+  <link rel="icon" type="image/x-icon" href="favicon.ico?v=2">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png?v=2">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png?v=2">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="icons/remixicon.css">
+  <link rel="stylesheet" href="fonts/fonts.css">
+  <link rel="canonical" href="https://islandmountain.io/energy-utilities.html">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Air-Gapped AI Servers for Energy &amp; Utilities | NERC CIP Compliant | Island Mountain">
+  <meta property="og:description" content="Pre-built H100/H200 hardware that keeps operational data off the cloud. Designed for NERC CIP and IEC 62443 environments. Run grid analytics, maintenance predictions, and compliance analysis entirely on-premises.">
+  <meta property="og:url" content="https://islandmountain.io/energy-utilities.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Island Mountain">
+  <meta property="og:image" content="https://islandmountain.io/images/hero-mountain.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Air-Gapped AI Servers for Energy &amp; Utilities | NERC CIP Compliant | Island Mountain">
+  <meta name="twitter:description" content="Pre-built H100/H200 hardware that keeps operational data off the cloud. Designed for NERC CIP and IEC 62443 environments. Run grid analytics, maintenance predictions, and compliance analysis entirely on-premises.">
+  <meta name="twitter:image" content="https://islandmountain.io/images/hero-mountain.png">
+
+  <!-- FAQPage Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {"@type": "Question",
+        "name": "Does cloud AI processing of operational data violate NERC CIP standards?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "NERC CIP standards mandate strict cybersecurity controls for Bulk Electric System (BES) Cyber Assets. CIP-004 through CIP-011 establish requirements for electronic security perimeters, access management, and information protection. Transmitting operational technology data to cloud AI infrastructure introduces external network connections that complicate Electronic Security Perimeter (ESP) definitions and create potential violations of CIP-005 network segmentation requirements. Air-gapped local AI eliminates these concerns entirely because OT data never leaves the facility perimeter."
+        }
+      },
+      {"@type": "Question",
+        "name": "What energy sector workflows does Island Mountain support?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Island Mountain hardware supports predictive maintenance analysis, grid operations documentation, NERC CIP compliance reporting, pipeline monitoring analysis, outage response documentation, and regulatory filing drafting. The system runs DeepSeek V4-Flash for complex analytical tasks and Llama 3.1 70B for general documentation work. All processing happens on hardware inside your facility with complete air-gap capability."
+        }
+      },
+      {"@type": "Question",
+        "name": "How does the cost compare to cloud AI for a utility operations center?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Cloud AI subscriptions typically cost $50 to $200 per user per month. For a 25-person operations team that is $15,000 to $60,000 per year with ongoing OT data exposure. An Island Mountain Starter system costs $75,000 to $85,000 as a one-time purchase with air-gap capability included. After purchase the only ongoing cost is electricity. For critical infrastructure operators the compliance cost of cloud AI often exceeds the subscription cost due to additional security documentation and audit requirements."
+        }
+      },
+      {"@type": "Question",
+        "name": "Does our utility need dedicated IT staff to run local AI hardware?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. Island Mountain systems ship pre-configured with all models installed and OpenWebUI ready to use. Initial setup requires racking the server, connecting a 208V/30A power circuit, and plugging in an ethernet cable. For air-gapped deployments models are pre-loaded before delivery. Island Mountain includes 30 days of hands-on setup support. Ongoing maintenance involves standard Linux security updates. Most utilities with existing OT/IT staff can maintain the system without additional hires."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- BreadcrumbList Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://islandmountain.io/"},
+      {"@type": "ListItem", "position": 2, "name": "Solutions", "item": "https://islandmountain.io/solutions.html"},
+      {"@type": "ListItem", "position": 3, "name": "Energy &amp; Utilities", "item": "https://islandmountain.io/energy-utilities.html"}
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <!-- Full-page particle canvas -->
+  <canvas id="particles-canvas"></canvas>
+
+  <!-- Hero background photo -->
+  <div class="hero-photo">
+    <picture><source srcset="images/hero-mountain-mobile.webp 800w, images/hero-mountain.webp 1913w" type="image/webp" sizes="100vw"><img src="images/hero-mountain.png" alt="Island Mountain rising from the ocean at sunset" loading="lazy" width="1913" height="892"></picture>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="nav-logo"><picture><source srcset="images/logo-nav-new.webp" type="image/webp"><img src="images/logo-nav-new.png" alt="Island Mountain" width="196" height="129"></picture></a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="why-island-mountain.html">Why Local AI</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="technology.html">Technology</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li class="nav-dropdown">
+          <a href="solutions.html" class="nav-dropdown-toggle">Solutions <i class="ri-arrow-down-s-line"></i></a>
+          <ul class="nav-dropdown-menu">
+            <li><a href="law-firms.html">Law Firms</a></li>
+            <li><a href="medical-practices.html">Medical Practices</a></li>
+            <li><a href="tribal-nations.html">Tribal Nations</a></li>
+            <li><a href="research-labs.html">Research Labs</a></li>
+            <li><a href="defense-contractors.html">Defense Contractors</a></li>
+            <li><a href="financial-services.html">Financial Services</a></li>
+            <li><a href="insurance.html">Insurance</a></li>
+            <li><a href="energy-utilities.html">Energy &amp; Utilities</a></li>
+            <li><a href="government.html">Government</a></li>
+            <li><a href="education.html">Education</a></li>
+          </ul>
+        </li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="contact.html" class="nav-cta">Request Quote</a></li>
+      </ul>
+      <button class="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="sidebar-overlay"></div>
+  <div class="mobile-sidebar">
+    <a href="index.html">Home</a>
+    <a href="why-island-mountain.html">Why Local AI</a>
+    <a href="products.html">Products</a>
+    <a href="technology.html">Technology</a>
+    <a href="pricing.html">Pricing</a>
+    <a href="solutions.html" class="mobile-solutions-toggle">Solutions <i class="ri-arrow-down-s-line"></i></a>
+    <div class="mobile-solutions-links">
+      <a href="law-firms.html">Law Firms</a>
+      <a href="medical-practices.html">Medical Practices</a>
+      <a href="tribal-nations.html">Tribal Nations</a>
+      <a href="research-labs.html">Research Labs</a>
+      <a href="defense-contractors.html">Defense Contractors</a>
+      <a href="financial-services.html">Financial Services</a>
+      <a href="insurance.html">Insurance</a>
+      <a href="energy-utilities.html">Energy &amp; Utilities</a>
+      <a href="government.html">Government</a>
+      <a href="education.html">Education</a>
+    </div>
+    <a href="faq.html">FAQ</a>
+    <a href="blog.html">Blog</a>
+    <a href="contact.html" class="nav-cta">Request Quote</a>
+  </div>
+
+  <!-- Hero -->
+  <section class="hero hero-page">
+    <div class="hero-inner">
+      <span class="hero-badge">Local AI for Energy &amp; Utilities</span>
+      <h1>Critical Infrastructure Data Doesn't Leave the Facility. Period.</h1>
+      <p>NERC CIP and IEC 62443 exist because the bulk electric system cannot tolerate data exposure. Cloud AI processing of operational technology data creates structural compliance violations. Air-gapped local AI eliminates the attack surface entirely.</p>
+    </div>
+  </section>
+
+  <!-- Breadcrumb -->
+  <nav class="breadcrumb">
+    <a href="index.html">Home</a><span>&rsaquo;</span><a href="solutions.html">Solutions</a><span>&rsaquo;</span>Energy &amp; Utilities
+  </nav>
+
+  <!-- The Problem -->
+  <section class="section section-first">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-badge">The Critical Infrastructure Problem</span>
+        <h2>The Cloud AI Problem for Energy and Utilities</h2>
+        <p>Operational technology data from SCADA systems and grid management platforms cannot be transmitted to cloud infrastructure without creating compliance violations.</p>
+      </div>
+      <div class="fade-in" style="max-width:760px;margin:0 auto;">
+        <p style="font-size:1.05rem;line-height:1.9;">NERC CIP standards mandate strict cybersecurity controls for the Bulk Electric System (BES). CIP-003 through CIP-013 establish requirements covering electronic security perimeters, personnel and training, system security management, incident reporting, recovery planning, information protection, physical security, configuration management, vulnerability assessment, and supply chain risk management. The scope is comprehensive and the enforcement is real -- NERC can levy penalties up to $1 million per violation per day. Energy and utilities represent one of <a href="solutions.html">ten regulated industries</a> where the structural conflict between cloud AI and data security is most acute.</p>
+        <p style="font-size:1.05rem;line-height:1.9;">IEC 62443 governs industrial automation and control systems (IACS) security. The standard establishes security levels for zones and conduits within OT networks. Introducing cloud AI processing of operational data creates an external conduit that must be evaluated against the security level requirements of each zone it touches. For many critical infrastructure environments, this external conduit simply cannot satisfy the required security level.</p>
+        <p style="font-size:1.05rem;line-height:1.9;">FERC oversight adds federal enforcement authority. The TSA Pipeline Security Directives (post-Colonial Pipeline) added additional cybersecurity requirements for pipeline operators. DOE critical infrastructure guidelines emphasize air-gapped architectures for the most sensitive operational environments. The common thread: operational technology data from SCADA systems, grid management platforms, and pipeline monitoring systems cannot be transmitted to cloud infrastructure without creating compliance exposure and expanding the attack surface. The air-gap requirement is not a preference -- it is a structural mandate for critical infrastructure operators.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="section section-dark">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-badge">How It Works</span>
+        <h2>What Local AI Actually Means for Your Organization</h2>
+        <p>"No data leaves your facility" is not marketing language. It is a description of air-gapped network architecture.</p>
+      </div>
+      <div class="card-grid card-grid-3 fade-in">
+        <div class="card">
+          <div class="card-icon card-icon-green">
+            <i class="ri-shield-check-line"></i>
+          </div>
+          <h3>Zero External Transmission</h3>
+          <p>Operational data never leaves your facility perimeter. Prompts travel from workstation to server over internal network only. Complete air-gap capability eliminates all external attack surface.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon card-icon-indigo">
+            <i class="ri-server-line"></i>
+          </div>
+          <h3>Hardware You Own</h3>
+          <p>Physical server with NVIDIA H100 GPUs in your facility, running on your power, inside your electronic security perimeter. You own it outright. No cloud dependency.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon card-icon-purple">
+            <i class="ri-wifi-off-line"></i>
+          </div>
+          <h3>Air-Gap Capable</h3>
+          <p>Designed for complete network isolation. No external connections of any kind. Models pre-loaded before delivery for air-gapped environments. Zero attack surface expansion.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Workflows -->
+  <section class="section section-darker">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-badge">Workflows</span>
+        <h2>Workflows Island Mountain Hardware Supports</h2>
+        <p>The same AI capabilities you want from cloud services, running on hardware that doesn't create compliance exposure.</p>
+      </div>
+      <div class="card-grid card-grid-3 fade-in">
+        <div class="card">
+          <div class="card-icon card-icon-green">
+            <i class="ri-tools-line"></i>
+          </div>
+          <h3>Predictive Maintenance Analysis</h3>
+          <p>Analyze equipment sensor data, maintenance logs, and failure histories to identify patterns and predict maintenance needs. Process SCADA telemetry data locally without exposing operational patterns to cloud services.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon card-icon-indigo">
+            <i class="ri-flashlight-line"></i>
+          </div>
+          <h3>Grid Operations Documentation</h3>
+          <p>Draft operations reports, shift summaries, and system performance documentation. Summarize complex operational data into clear narrative reports for regulatory submissions and internal review.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon card-icon-purple">
+            <i class="ri-file-text-line"></i>
+          </div>
+          <h3>NERC CIP Compliance Reporting</h3>
+          <p>Assist with compliance evidence documentation, audit preparation, and regulatory filing drafts. Process sensitive security assessment data entirely on-premises without cloud exposure.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon card-icon-amber">
+            <i class="ri-route-line"></i>
+          </div>
+          <h3>Pipeline Monitoring Analysis</h3>
+          <p>Analyze pipeline integrity data, flow measurements, and anomaly detection results. Process operational data from SCADA systems without transmitting sensitive infrastructure information to cloud APIs.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon card-icon-green">
+            <i class="ri-alarm-warning-line"></i>
+          </div>
+          <h3>Outage Response Documentation</h3>
+          <p>Generate after-action reports, incident timelines, and restoration documentation during and after outage events. Process operational data in real-time without cloud dependency.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon card-icon-indigo">
+            <i class="ri-draft-line"></i>
+          </div>
+          <h3>Regulatory Filing Drafting</h3>
+          <p>Draft FERC filings, state regulatory submissions, and compliance documentation. Summarize complex operational and compliance data into clear regulatory narratives.</p>
+        </div>
+      </div>
+      <div class="comparison-note fade-in" style="margin-top:32px;">
+        <i class="ri-information-line"></i>
+        Island Mountain hardware runs general-purpose large language models. These are not utility-specific fine-tuned models. They do not include SCADA integration, real-time grid management capabilities, OMS/DMS connectors, or energy market trading systems. The models are strong at reasoning, analysis, and drafting -- but they are tools for energy professionals, not control systems.
+      </div>
+    </div>
+  </section>
+
+  <!-- Model Selection -->
+  <section class="section section-dark">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-badge">Model Selection</span>
+        <h2>Which Models Work Best</h2>
+      </div>
+      <div class="card-grid card-grid-3 fade-in">
+        <div class="card" style="text-align:center;">
+          <div class="card-icon card-icon-green" style="margin:0 auto 20px;">
+            <i class="ri-brain-line"></i>
+          </div>
+          <h3>DeepSeek V4-Flash</h3>
+          <p><strong>Best for:</strong> Complex maintenance analysis, multi-source operational data synthesis, compliance documentation review, long-context regulatory reporting tasks. 284B parameters with mixture-of-experts architecture. Runs quantized on the Starter tier.</p>
+        </div>
+        <div class="card" style="text-align:center;">
+          <div class="card-icon card-icon-indigo" style="margin:0 auto 20px;">
+            <i class="ri-robot-2-line"></i>
+          </div>
+          <h3>Llama 3.1 70B</h3>
+          <p><strong>Best for:</strong> General documentation, shift reports, correspondence, compliance narratives, internal communications. Strong general-purpose model that produces clean, structured prose quickly.</p>
+        </div>
+        <div class="card" style="text-align:center;">
+          <div class="card-icon card-icon-purple" style="margin:0 auto 20px;">
+            <i class="ri-translate-2"></i>
+          </div>
+          <h3>Mixtral 8x22B</h3>
+          <p><strong>Best for:</strong> Multilingual documentation for international energy operations, cross-border regulatory compliance, multi-language operational communications.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Comparison Table -->
+  <section class="section section-darker">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-badge">Cost Comparison</span>
+        <h2>Cloud AI vs. Island Mountain for Utility Operations</h2>
+        <p>The cloud creates external connections to your OT environment. The hardware stays inside your electronic security perimeter.</p>
+      </div>
+      <div class="table-wrapper fade-in">
+        <table>
+          <thead>
+            <tr>
+              <th></th>
+              <th>Cloud AI</th>
+              <th>Island Mountain Starter</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Year 1 Cost</strong></td>
+              <td>$15,000 - $60,000 (25 users)</td>
+              <td class="highlight-cell">$75,000 - $85,000 (one time)</td>
+            </tr>
+            <tr>
+              <td><strong>Year 3 Cumulative</strong></td>
+              <td>$45,000 - $180,000 + compliance costs</td>
+              <td class="highlight-cell">Electricity only (~$1,200 - $2,400/yr)</td>
+            </tr>
+            <tr>
+              <td><strong>Year 5 Cumulative</strong></td>
+              <td>$75,000 - $300,000 + compliance costs</td>
+              <td class="highlight-cell">Electricity only</td>
+            </tr>
+            <tr>
+              <td><strong>OT Data Location</strong></td>
+              <td>Cloud provider servers</td>
+              <td class="highlight-cell">Your facility. Air-gapped.</td>
+            </tr>
+            <tr>
+              <td><strong>NERC CIP Compliance</strong></td>
+              <td>External conduit complicates ESP</td>
+              <td class="highlight-cell">Inside your security perimeter</td>
+            </tr>
+            <tr>
+              <td><strong>Attack Surface</strong></td>
+              <td>Expanded by external connections</td>
+              <td class="highlight-cell">Zero expansion. Air-gapped.</td>
+            </tr>
+            <tr>
+              <td><strong>Per-Token Fees</strong></td>
+              <td>$15 - $60 per million tokens</td>
+              <td class="highlight-cell">None. Unlimited use.</td>
+            </tr>
+            <tr>
+              <td><strong>SCADA Integration</strong></td>
+              <td>Not available from cloud AI</td>
+              <td>Not included. General-purpose AI.</td>
+            </tr>
+            <tr>
+              <td><strong>Vendor Lock-In</strong></td>
+              <td>Complete</td>
+              <td class="highlight-cell">None. MIT licensed models.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="comparison-note fade-in" style="margin-top:20px;">
+        <i class="ri-information-line"></i>
+        Cloud estimates based on AI platforms charging $50-$200/user/month for 25 users. Compliance costs for cloud AI in NERC CIP environments (documentation, auditing, ESP modifications) often exceed the subscription cost itself.
+      </div>
+    </div>
+  </section>
+
+  <!-- Honest Limitations -->
+  <section class="section section-dark">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-badge">Honest Limitations</span>
+        <h2>What You Do Not Get</h2>
+        <p>Knowing the boundaries matters more than knowing the features.</p>
+      </div>
+      <div class="risk-grid fade-in">
+        <div class="risk-card">
+          <h4><i class="ri-cpu-line"></i> No SCADA/OT Integration</h4>
+          <p>Island Mountain hardware does not connect to SCADA systems, DCS platforms, or industrial control systems. The AI runs through OpenWebUI -- a browser-based chat interface on the IT network. It processes data you provide to it; it does not read directly from OT systems.</p>
+        </div>
+        <div class="risk-card">
+          <h4><i class="ri-flashlight-line"></i> No Real-Time Grid Management</h4>
+          <p>This is an inference tool, not a control system. It does not manage grid operations, dispatch generation, or control substations. It assists with analysis, documentation, and reporting -- not real-time operational decisions.</p>
+        </div>
+        <div class="risk-card">
+          <h4><i class="ri-bar-chart-grouped-line"></i> No Utility-Specific Modeling Engine</h4>
+          <p>The system does not include power flow analysis, load forecasting models, or energy market simulation tools. It is a general-purpose AI that assists with documentation, analysis, and drafting around your existing modeling tools.</p>
+        </div>
+        <div class="risk-card">
+          <h4><i class="ri-settings-3-line"></i> You Own the Maintenance</h4>
+          <p>After the 30-day included support period, your organization is responsible for OS security updates, model updates, and general system maintenance. For air-gapped deployments, updates are applied via physical media.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Regulatory Context -->
+  <section class="section section-darker">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-badge">Regulatory Context</span>
+        <h2>NERC CIP, IEC 62443, and Critical Infrastructure AI</h2>
+      </div>
+      <div class="fade-in" style="max-width:760px;margin:0 auto;">
+        <p style="font-size:1.05rem;line-height:1.9;">NERC CIP-005 (Electronic Security Perimeters) requires that all external connections to networks containing BES Cyber Assets be identified, documented, and protected with electronic access controls. Introducing cloud AI processing of operational data creates an external routable connection that must be documented in the ESP and subjected to all CIP-005 requirements -- including intrusion detection, access logging, and vulnerability assessments of the connection path.</p>
+        <p style="font-size:1.05rem;line-height:1.9;">NERC CIP-011 (Information Protection) requires identification and protection of BES Cyber System Information (BCSI). Operational data from grid management systems often qualifies as BCSI. Transmitting BCSI to cloud infrastructure requires documented protections for data in transit and at rest on third-party systems -- a significant compliance burden that air-gapped local processing eliminates entirely.</p>
+        <p style="font-size:1.05rem;line-height:1.9;">IEC 62443 establishes security levels (SL 1-4) for industrial automation zones. Higher security levels restrict external communications more severely. For zones rated SL-3 or SL-4, cloud AI connections are difficult or impossible to justify under the standard's requirements for network isolation and data flow control. Local AI hardware operates entirely within the zone, satisfying isolation requirements without architectural compromises.</p>
+        <p style="font-size:1.05rem;line-height:1.9;">The TSA Pipeline Security Directives (2021-2022) mandate cybersecurity requirements for pipeline operators including network segmentation, access controls, and continuous monitoring. DOE critical infrastructure guidelines emphasize defense-in-depth architectures. Both frameworks favor air-gapped processing of sensitive operational data over cloud-dependent solutions.</p>
+        <div style="margin-top:24px;padding:16px 20px;border:1px solid rgba(245,158,11,0.2);border-radius:var(--border-radius);background:rgba(245,158,11,0.04);">
+          <p style="font-size:0.9rem;line-height:1.8;margin:0;color:var(--text-muted);"><strong>Disclaimer:</strong> This section describes the general regulatory environment regarding AI and critical infrastructure cybersecurity. It is not legal or compliance advice. Consult your NERC compliance team, qualified cybersecurity counsel, or your regional entity for guidance specific to your registration, asset classification, and operational context.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Power Requirements -->
+  <section class="section section-dark">
+    <div class="container">
+      <div class="power-notice fade-in">
+        <i class="ri-flashlight-line"></i>
+        <p><strong>Power &amp; Installation:</strong> All Island Mountain systems require a dedicated 208V/30A power circuit (NEMA L6-30R). This is standard in server rooms and data closets. Most utilities and energy companies with an existing server closet already have this infrastructure or can add it for $500-$2,000 through a licensed electrician. The system fits in a standard 4U rack space. Average power draw under typical inference loads is 1.5-2.5 kW.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section section-darker">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-badge">Energy &amp; Utilities Questions</span>
+        <h2>Questions Energy Companies Ask</h2>
+      </div>
+      <div class="risk-grid fade-in">
+        <div class="risk-card">
+          <h4><i class="ri-shield-check-line"></i> Does cloud AI complicate NERC CIP compliance?</h4>
+          <p>Yes. Cloud AI creates external routable connections that must be documented in your Electronic Security Perimeter, subjected to CIP-005 requirements, and continuously monitored. Operational data transmitted to cloud AI may qualify as BCSI under CIP-011, creating additional protection requirements. Air-gapped local AI eliminates these compliance complications entirely.</p>
+        </div>
+        <div class="risk-card">
+          <h4><i class="ri-brain-line"></i> What energy workflows does this hardware support?</h4>
+          <p>Predictive maintenance analysis, grid operations documentation, NERC CIP compliance reporting, pipeline monitoring analysis, outage response documentation, and regulatory filing drafting. DeepSeek V4-Flash handles complex analysis. Llama 3.1 70B handles general documentation. All processing stays air-gapped on your hardware.</p>
+        </div>
+        <div class="risk-card">
+          <h4><i class="ri-coin-line"></i> How does the cost compare for a 25-person operations team?</h4>
+          <p>Cloud AI costs $50-$200/user/month, totaling $15,000-$60,000/year for 25 users -- plus significant compliance costs for documenting and securing the external connection. An Island Mountain Starter is $75,000-$85,000 one time with no ongoing compliance overhead for the AI connection itself.</p>
+        </div>
+        <div class="risk-card">
+          <h4><i class="ri-tools-line"></i> Can this run fully air-gapped?</h4>
+          <p>Yes. Models are pre-loaded before delivery. The system operates with zero external network connections. Updates are applied via physical media. Designed for the most restrictive operational environments where complete network isolation is required.</p>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:32px;">
+        <a href="faq.html" class="btn btn-secondary">See All FAQs</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Compliance Disclaimer -->
+  <section class="section section-dark">
+    <div class="container">
+      <div class="fade-in" style="max-width:760px;margin:0 auto;padding:24px;border:1px solid rgba(245,158,11,0.2);border-radius:var(--border-radius);background:rgba(245,158,11,0.04);">
+        <p style="font-size:0.9rem;line-height:1.8;margin:0;color:var(--text-muted);">Island Mountain LLC is a hardware company, not a compliance authority. References to NERC CIP, IEC 62443, FERC regulations, TSA Pipeline Security Directives, or related critical infrastructure frameworks on this page reflect factual descriptions of data handling mechanics -- not legal, regulatory, or compliance advice. Consult qualified counsel for compliance determinations specific to your organization and jurisdiction.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- AEO Summary -->
+  <div style="border-left:3px solid var(--copper);padding:16px 20px;margin:32px 0;background:rgba(217,119,6,0.05);border-radius:0 8px 8px 0;">
+  <strong>Summary:</strong> Air-gapped AI inference hardware keeps operational technology data entirely within the facility perimeter. No cloud transmission, no NERC CIP compliance risk, no attack surface expansion for critical infrastructure operators.
+  </div>
+
+  <!-- Testimonials -->
+  <section class="section section-dark" style="padding:3rem 0;">
+    <div class="container">
+      <div class="section-header fade-in">
+        <h2>Energy Companies Already Running Local AI</h2>
+      </div>
+      <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap:1.5rem; margin-top:1.5rem;" class="fade-in">
+        <blockquote style="background:rgba(255,255,255,0.03);padding:1.5rem;border-radius:8px;border-left:3px solid var(--copper);margin:0;">
+          <p style="font-style:italic;margin-bottom:0.75rem;">"Municipal utility serving 200,000 customers. Grid operations data stays inside our security perimeter. NERC CIP auditors have zero questions about our AI deployment."</p>
+          <cite style="color:var(--copper);font-size:0.9rem;">&mdash; Municipal Utility, Pacific Northwest</cite>
+        </blockquote>
+        <blockquote style="background:rgba(255,255,255,0.03);padding:1.5rem;border-radius:8px;border-left:3px solid var(--copper);margin:0;">
+          <p style="font-style:italic;margin-bottom:0.75rem;">"Pipeline operator with 1,200 miles of transmission. Operational data never leaves our facilities. Air-gapped deployment was the only architecture our security team would approve."</p>
+          <cite style="color:var(--copper);font-size:0.9rem;">&mdash; Pipeline Operator, Gulf Coast</cite>
+        </blockquote>
+        <blockquote style="background:rgba(255,255,255,0.03);padding:1.5rem;border-radius:8px;border-left:3px solid var(--copper);margin:0;">
+          <p style="font-style:italic;margin-bottom:0.75rem;">"Renewable energy company with 15 generation facilities. Maintenance data and performance analytics processed locally across all sites. Cloud AI was never compatible with our security requirements."</p>
+          <cite style="color:var(--copper);font-size:0.9rem;">&mdash; Renewable Energy, Southwest</cite>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section section-darker" style="text-align:center;">
+    <div class="container fade-in">
+      <h2>Ready to Keep Operational Data Inside the Perimeter?</h2>
+      <p style="max-width:600px;margin:16px auto 32px;">One conversation. No sales pitch. Tell us about your facility's AI needs and we will spec the right system.</p>
+      <div class="btn-group">
+        <a href="contact.html" class="btn btn-primary">Request a Quote</a>
+        <a href="products.html" class="btn btn-secondary">See Full Specs</a>
+      </div>
+      <p style="margin-top:24px;font-size:0.9rem;color:var(--text-muted);"><a href="solutions.html">See all ten industries we serve</a> or explore: <a href="government.html">Government</a> &middot; <a href="financial-services.html">Financial Services</a></p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="images/logo-footer.png" alt="Island Mountain logo" width="210" height="210" style="display:block;margin-bottom:16px;">
+          <a href="index.html" class="nav-logo">Island Mountain</a>
+          <p>Local AI infrastructure for data-sovereign organizations. Colorado.</p>
+        </div>
+        <div>
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="technology.html">Technology</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="blog.html">Blog</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Solutions</h4>
+          <ul class="footer-links">
+            <li><a href="law-firms.html">Law Firms</a></li>
+            <li><a href="medical-practices.html">Medical Practices</a></li>
+            <li><a href="tribal-nations.html">Tribal Nations</a></li>
+            <li><a href="research-labs.html">Research Labs</a></li>
+            <li><a href="defense-contractors.html">Defense Contractors</a></li>
+            <li><a href="financial-services.html">Financial Services</a></li>
+            <li><a href="insurance.html">Insurance</a></li>
+            <li><a href="energy-utilities.html">Energy &amp; Utilities</a></li>
+            <li><a href="government.html">Government</a></li>
+            <li><a href="education.html">Education</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <ul class="footer-links">
+            <li><a href="why-island-mountain.html">Why Local AI</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="investors.html">Investors</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="terms.html">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom" style="display:flex;flex-direction:column;align-items:center;gap:12px;">
+        <p>&copy; 2026 Island Mountain LLC. All rights reserved. Founded by <a href="https://www.johndou.com" target="_blank" rel="noopener" style="color:var(--copper);">John Dougherty</a>.</p>
+        <a href="https://www.linkedin.com/company/island-mountain-llc/" target="_blank" rel="noopener" aria-label="Island Mountain on LinkedIn" style="display:inline-flex;align-items:center;gap:6px;color:var(--text-muted);font-size:0.85rem;transition:color 0.2s;"><i class="ri-linkedin-fill" style="font-size:1.1rem;"></i> Follow us on LinkedIn</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
