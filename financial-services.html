@@ -38,7 +38,7 @@
         "name": "Does using cloud AI for banking operations create GLBA compliance risk?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "When a financial institution transmits non-public personal information (NPI) to a cloud AI provider for processing, that data leaves the institution's security perimeter and enters third-party infrastructure. The Gramm-Leach-Bliley Act Safeguards Rule (16 CFR Part 314) requires financial institutions to develop, implement, and maintain a comprehensive information security program that protects customer NPI. Cloud AI processing creates a structural dependency on the vendor's security posture for GLBA compliance. PCI DSS v4.0 adds further requirements for cardholder data environments. On-premises AI hardware from Island Mountain eliminates this transmission entirely. NPI stays on servers inside your facility, under your physical and logical security controls, with no third-party data handling dependency. The GLBA compliance question shifts from evaluating a vendor's security program to controlling your own."
+          "text": "Yes. Cloud AI transmits non-public personal information (NPI) to third-party infrastructure, creating structural GLBA Safeguards Rule (16 CFR Part 314) compliance risk. The rule requires financial institutions to maintain comprehensive security programs protecting customer NPI -- cloud processing introduces vendor dependency that undermines this control. PCI DSS v4.0 compounds this with cardholder data environment requirements. On-premises AI hardware from Island Mountain eliminates third-party transmission entirely. NPI stays on NVIDIA H100 or H200 servers inside your facility, under your physical and logical security controls, with no vendor dependency or shared responsibility model."
         }
       },
       {
@@ -46,7 +46,7 @@
         "name": "What AI workflows can a bank or credit union run on Island Mountain hardware?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Island Mountain hardware supports loan document review and risk assessment, KYC and AML compliance analysis, fraud detection and investigation support, regulatory reporting and compliance drafting, customer communication and disclosure generation, and investment analysis and portfolio documentation. The system runs DeepSeek V4-Flash for complex analytical tasks like multi-document regulatory review and loan portfolio assessment, and Llama 3.1 70B for general drafting including customer correspondence and compliance memoranda. All processing happens on NVIDIA H100 or H200 GPUs inside your facility with no data transmitted to external servers."
+          "text": "Island Mountain hardware supports loan document review, KYC/AML analysis, regulatory reporting, fraud detection, customer correspondence drafting, and investment analysis. The system runs DeepSeek V4-Flash for complex multi-document analysis and regulatory synthesis, and Llama 3.1 70B for general drafting tasks including correspondence and compliance documentation. All processing occurs on NVIDIA H100 or H200 GPUs inside your facility with zero data transmitted to external servers."
         }
       },
       {
@@ -54,7 +54,7 @@
         "name": "How does the cost of on-premises AI compare to cloud AI for a financial institution with 50 users?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Cloud AI subscriptions for financial services platforms typically cost $50 to $200 per user per month. For 50 users, that totals $30,000 to $120,000 per year. Over three years, cumulative cloud costs reach $90,000 to $360,000 with no ownership and continued NPI exposure on every query. An Island Mountain Starter system with two NVIDIA H100 GPUs costs $75,000 to $85,000 as a one-time purchase. Ongoing costs are limited to electricity at approximately $100 to $200 per month. For institutions with 50 or more users, the local system reaches cost parity with mid-tier cloud subscriptions within the first year while eliminating GLBA and PCI DSS compliance risk from AI operations entirely. The system is Section 179 eligible for full first-year depreciation."
+          "text": "Cloud AI subscriptions for financial services platforms typically cost $50 to $200 per user per month. For 50 users, that totals $30,000 to $120,000 per year. Over three years, cumulative cloud costs reach $90,000 to $360,000 with no ownership and continued NPI exposure on every query. An Island Mountain Starter system with two NVIDIA H100 GPUs costs $75,000 to $85,000 as a one-time purchase. Ongoing costs are limited to electricity at approximately $100 to $200 per month. Cost parity typically reached within year one while eliminating GLBA and PCI DSS compliance risk entirely. Section 179 eligible for full first-year depreciation."
         }
       },
       {
@@ -62,7 +62,7 @@
         "name": "Does a bank need dedicated IT staff to run on-premises AI hardware?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "No. Island Mountain systems ship pre-configured with all models installed and the OpenWebUI browser-based interface ready to use. Your staff accesses it through a web browser on your internal network, the same way they would access any internal application. Initial setup requires racking the server in your data center or server closet, connecting a 208V 30A power circuit, and plugging in an ethernet cable. Island Mountain includes 30 days of hands-on setup support. Ongoing maintenance involves standard Linux security updates and occasional model updates. Most financial institutions with existing IT staff or a managed service provider can maintain the system alongside their other infrastructure without dedicated AI personnel."
+          "text": "No. The system ships pre-configured with all models installed and the OpenWebUI browser-based interface ready for immediate use. Setup requires racking the server, connecting a 208V 30A power circuit, and plugging in ethernet. Island Mountain provides 30 days of hands-on setup support. Ongoing maintenance is standard Linux server administration -- most financial institutions with existing IT staff can incorporate it into their current server management workflow without additional hiring."
         }
       }
     ]
@@ -470,15 +470,15 @@
       <div class="risk-grid fade-in">
         <div class="risk-card">
           <h4><i class="ri-scales-3-line"></i> Does cloud AI create GLBA compliance risk?</h4>
-          <p>The transmission of customer NPI to a cloud AI provider constitutes disclosure to a third party. The GLBA Safeguards Rule requires financial institutions to protect NPI through comprehensive information security programs. Cloud AI processing creates structural dependency on vendor infrastructure for NPI handling. GLBA compliant local AI eliminates this transmission entirely, removing the third-party disclosure from the compliance analysis.</p>
+          <p>Yes. Cloud AI transmits non-public personal information (NPI) to third-party infrastructure, creating structural GLBA Safeguards Rule (16 CFR Part 314) compliance risk. The rule requires financial institutions to maintain comprehensive security programs protecting customer NPI -- cloud processing introduces vendor dependency that undermines this control. On-premises AI hardware from Island Mountain eliminates third-party transmission entirely.</p>
         </div>
         <div class="risk-card">
           <h4><i class="ri-brain-line"></i> What financial workflows does this hardware support?</h4>
-          <p>Local LLM for financial workflows including loan document review, KYC/AML analysis, regulatory reporting, fraud detection support, customer communication drafting, and investment analysis. DeepSeek V4-Flash handles complex multi-document analysis. Llama 3.1 70B handles general drafting. All processing stays on your hardware.</p>
+          <p>Island Mountain hardware supports loan document review, KYC/AML analysis, regulatory reporting, fraud detection, customer correspondence drafting, and investment analysis. The system runs DeepSeek V4-Flash for complex multi-document analysis and regulatory synthesis, and Llama 3.1 70B for general drafting tasks. All processing occurs on NVIDIA H100 or H200 GPUs inside your facility.</p>
         </div>
         <div class="risk-card">
           <h4><i class="ri-coin-line"></i> How does the cost compare for a 50-person institution?</h4>
-          <p>Cloud AI platforms cost $50-$200 per user per month, totaling $30,000-$120,000 per year for 50 users. Over three years: $90,000-$360,000 cumulative. An Island Mountain Starter system is $75,000-$85,000 one time, with only electricity costs after that (~$100-$200/month). Cost parity typically reached within year one to two.</p>
+          <p>Cloud AI subscriptions for financial services platforms typically cost $50 to $200 per user per month. For 50 users, that totals $30,000 to $120,000 per year. Over three years: $90,000 to $360,000 cumulative with no ownership and continued NPI exposure. An Island Mountain Starter system with two NVIDIA H100 GPUs costs $75,000 to $85,000 as a one-time purchase. Cost parity typically reached within year one.</p>
         </div>
         <div class="risk-card">
           <h4><i class="ri-tools-line"></i> Does our institution need dedicated IT staff?</h4>

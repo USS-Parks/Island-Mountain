@@ -43,7 +43,7 @@
         "name": "Can I process CUI through a commercial cloud AI API?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Processing Controlled Unclassified Information through a commercial cloud AI API is generally incompatible with CUI handling requirements under DFARS 252.204-7012. CUI must be processed in environments that meet NIST SP 800-171 security requirements. Most commercial AI APIs do not operate on FedRAMP High authorized infrastructure, which means they do not meet the minimum security baseline for CUI processing. Some cloud providers offer GovCloud or FedRAMP authorized tiers, but commercial AI API endpoints typically do not carry these authorizations. Local AI hardware, properly network-segregated and physically secured within your facility, enables you to process CUI-adjacent documents and analysis tasks under your own security controls without introducing a non-compliant cloud processing path."
+          "text": "No. Commercial cloud AI APIs are generally incompatible with CUI handling requirements under DFARS 252.204-7012. CUI must be processed in environments meeting NIST SP 800-171 security requirements -- most commercial AI endpoints do not operate on FedRAMP High authorized infrastructure. On-premises AI hardware from Island Mountain, properly network-segregated and physically secured within your facility, processes CUI-adjacent documents under your own security controls. NVIDIA H100 or H200 servers operate air-gapped inside your facility with no non-compliant cloud processing path."
         }
       },
       {
@@ -51,7 +51,7 @@
         "name": "Does processing ITAR-controlled technical data through cloud AI constitute an unauthorized export?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "ITAR restricts the export of defense articles and technical data to foreign persons and entities. If a cloud AI provider's infrastructure is accessible to foreign nationals or located outside the United States, processing ITAR-controlled technical data through that infrastructure may constitute an unauthorized export under 22 CFR 120-130. This is not a theoretical risk; ITAR enforcement actions have addressed unauthorized data transfers through commercial technology services. Local AI hardware located in your facility, under your physical access controls, with network segregation preventing external data transmission, eliminates this export control concern because the data never leaves your controlled environment. This is a complex regulatory area and you should consult your export compliance officer or counsel for fact-specific guidance."
+          "text": "Yes. If a cloud AI provider's infrastructure is accessible to foreign nationals or located outside the United States, processing ITAR-controlled technical data constitutes potential unauthorized export under 22 CFR 120-130. ITAR enforcement actions have addressed unauthorized data transfers through commercial technology services -- this is not theoretical risk. On-premises Island Mountain hardware under your physical access controls, with network segregation preventing external transmission, eliminates this export control concern entirely. Data never leaves your controlled environment. Consult your export compliance officer for fact-specific guidance."
         }
       },
       {
@@ -59,7 +59,7 @@
         "name": "How does Island Mountain hardware support CMMC compliance?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Island Mountain hardware is commercial off-the-shelf AI infrastructure. It does not carry CMMC certification and is not a compliance product. However, local AI hardware that is properly network-segregated and physically secured within your facility supports several CMMC Level 2 and Level 3 practices. Access control practices benefit from hardware under your physical and logical access controls. Media protection practices are simplified when AI processing data stays on hardware you own. System and communications protection practices are supported by air-gap capability and network segregation. The system runs on Linux, which supports the audit and accountability logging practices required by CMMC. Your CMMC assessor evaluates your overall security posture, not individual components. Local AI hardware gives you a cleaner compliance story than routing CUI-adjacent data through commercial cloud APIs."
+          "text": "Island Mountain hardware is commercial off-the-shelf AI infrastructure -- it does not carry CMMC certification itself. However, on-premises hardware under your physical and logical access controls directly supports CMMC Level 2 practices for access control, media protection, and system/communications protection. Air-gap capability and network segregation satisfy the most restrictive NIST SP 800-171 controls. The system runs on Linux with full audit logging capability. Local AI hardware gives your CMMC assessor a cleaner compliance story than routing CUI-adjacent data through commercial cloud APIs."
         }
       },
       {
@@ -67,7 +67,7 @@
         "name": "Can the system operate in an air-gapped or restricted network environment?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes. After initial configuration, model installation, and testing, Island Mountain hardware can operate entirely disconnected from the internet. The AI models are stored locally on the system's NVMe drives. The inference engine and user interface run locally. No external network connectivity is required for day-to-day AI operations. For environments requiring air-gapped or restricted-network operation, the system can be configured during the 30-day setup support period to operate without any external connections. Model updates in air-gapped environments require a manual transfer process using approved removable media."
+          "text": "Yes. All models are pre-loaded on local NVMe drives before delivery. The inference engine and OpenWebUI interface run entirely locally -- zero external network connectivity required for daily operations. Island Mountain configures air-gapped operation during the 30-day setup support period. Model updates in air-gapped environments use approved removable media transfer. Designed for environments where DFARS 252.204-7012, CMMC, and ITAR require complete network isolation from external infrastructure."
         }
       }
     ]

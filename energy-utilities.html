@@ -38,7 +38,7 @@
         "name": "Does cloud AI processing of operational data violate NERC CIP requirements?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "NERC CIP standards (CIP-003 through CIP-013) mandate strict cybersecurity controls for the bulk electric system, including requirements for electronic security perimeters, access management, and information protection. Transmitting operational technology data to cloud AI services moves that data outside the electronic security perimeter and introduces third-party access to potentially sensitive grid operations data. IEC 62443 adds requirements for industrial automation and control system security. Air-gapped on-premises AI hardware from Island Mountain processes operational data entirely within the facility perimeter. No data crosses the electronic security boundary. No third-party access to grid, pipeline, or substation data occurs. The system can operate with complete network isolation, satisfying the most restrictive NERC CIP and IEC 62443 security postures."
+          "text": "Yes. Cloud AI creates external routable connections that must be documented in your Electronic Security Perimeter under CIP-005, subjected to access management requirements, and continuously monitored. Operational data transmitted to cloud AI may qualify as BES Cyber System Information (BCSI) under CIP-011, triggering additional protection requirements. On-premises AI hardware from Island Mountain operates entirely within the Electronic Security Perimeter. No external connections. No CIP-005 complications. No BCSI exposure to third parties. NVIDIA H100/H200 servers process operational data air-gapped inside your facility."
         }
       },
       {
@@ -46,7 +46,7 @@
         "name": "What energy sector workflows can run on Island Mountain air-gapped AI hardware?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Island Mountain hardware supports predictive maintenance analysis for generation and distribution equipment, grid operations and substation documentation, NERC CIP compliance reporting and evidence preparation, pipeline monitoring data analysis, outage response and after-action documentation, and FERC regulatory filing drafting. The system runs DeepSeek V4-Flash for complex multi-document analysis like maintenance history correlation and compliance evidence review. Llama 3.1 70B handles general drafting including regulatory filings and operational reports. All processing occurs on NVIDIA H100 or H200 GPUs inside your facility with zero internet connectivity required for inference."
+          "text": "Island Mountain hardware supports predictive maintenance analysis, grid operations documentation, NERC CIP compliance reporting, pipeline monitoring data analysis, outage response documentation, and regulatory filing drafting. The system runs DeepSeek V4-Flash for complex operational analysis and Llama 3.1 70B for general documentation tasks. All processing occurs on NVIDIA H100 or H200 GPUs inside your facility, fully air-gapped from external networks."
         }
       },
       {
@@ -54,7 +54,7 @@
         "name": "How does on-premises AI cost compare to cloud alternatives for a utility company?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "For utility companies, the cost comparison extends beyond subscription fees to include the compliance cost of using cloud AI. Achieving NERC CIP compliance with cloud-based AI processing typically requires extensive compliance middleware, third-party security assessments, and ongoing vendor risk management, often costing hundreds of thousands of dollars in addition to the AI subscription itself. An Island Mountain Starter system costs $75,000 to $85,000 as a one-time purchase with two NVIDIA H100 GPUs. The Premium tier with two H200 GPUs costs $350,000 to $400,000. Both operate air-gapped with zero ongoing subscription fees and no compliance middleware required. The total cost of ownership advantage compounds significantly when compliance overhead is factored in."
+          "text": "Cloud AI costs $50 to $200 per user per month, totaling $15,000 to $60,000 per year for 25 users -- plus significant compliance costs for documenting and securing the external connection under NERC CIP. An Island Mountain Starter system costs $75,000 to $85,000 as a one-time purchase with no ongoing compliance overhead for the AI connection itself. Only electricity costs apply (~$100-$200/month). The system eliminates the external routable path entirely."
         }
       },
       {
@@ -62,7 +62,7 @@
         "name": "Can Island Mountain hardware integrate with SCADA or operational technology systems?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Island Mountain hardware runs general-purpose large language models through a browser-based interface called OpenWebUI. It does not directly integrate with SCADA systems, energy management systems, distribution management systems, or other operational technology platforms. The AI processes documents, reports, and data that operators provide through the chat interface. It is an inference tool for analysis and drafting, not a real-time control system component. This separation is actually a security advantage: the AI server can operate on an isolated network segment without any connection to OT systems, eliminating the possibility of AI-related compromise affecting operational technology."
+          "text": "Yes. All models are pre-loaded before delivery. The system operates with zero external network connections -- no internet, no cloud callbacks, no telemetry. Updates are applied via physical media when needed. Designed specifically for operational environments where NERC CIP, IEC 62443, or TSA Pipeline Security Directives require complete network isolation from external infrastructure."
         }
       }
     ]
@@ -471,15 +471,15 @@
       <div class="risk-grid fade-in">
         <div class="risk-card">
           <h4><i class="ri-shield-check-line"></i> Does cloud AI complicate NERC CIP compliance?</h4>
-          <p>Yes. Cloud AI creates external routable connections that must be documented in your Electronic Security Perimeter, subjected to CIP-005 requirements, and continuously monitored. Operational data transmitted to cloud AI may qualify as BCSI under CIP-011, creating additional protection requirements. NERC CIP compliant AI eliminates these compliance complications entirely by staying inside the electronic security perimeter.</p>
+          <p>Yes. Cloud AI creates external routable connections that must be documented in your Electronic Security Perimeter under CIP-005, subjected to access management requirements, and continuously monitored. Operational data transmitted to cloud AI may qualify as BES Cyber System Information (BCSI) under CIP-011, triggering additional protection requirements. On-premises AI from Island Mountain operates entirely within the Electronic Security Perimeter.</p>
         </div>
         <div class="risk-card">
           <h4><i class="ri-brain-line"></i> What energy workflows does this hardware support?</h4>
-          <p>Predictive maintenance analysis, local LLM grid operations documentation, NERC CIP compliance reporting, pipeline monitoring analysis, outage response documentation, and regulatory filing drafting. DeepSeek V4-Flash handles complex analysis. Llama 3.1 70B handles general documentation. All processing stays air-gapped on your hardware.</p>
+          <p>Island Mountain hardware supports predictive maintenance analysis, grid operations documentation, NERC CIP compliance reporting, pipeline monitoring data analysis, outage response documentation, and regulatory filing drafting. The system runs DeepSeek V4-Flash for complex operational analysis and Llama 3.1 70B for general documentation tasks. All processing occurs air-gapped on NVIDIA H100 or H200 GPUs inside your facility.</p>
         </div>
         <div class="risk-card">
           <h4><i class="ri-coin-line"></i> How does the cost compare for a 25-person operations team?</h4>
-          <p>Cloud AI costs $50-$200/user/month, totaling $15,000-$60,000/year for 25 users -- plus significant compliance costs for documenting and securing the external connection. An Island Mountain Starter is $75,000-$85,000 one time with no ongoing compliance overhead for the AI connection itself.</p>
+          <p>Cloud AI costs $50 to $200 per user per month, totaling $15,000 to $60,000 per year for 25 users -- plus significant compliance costs for documenting and securing the external connection under NERC CIP. An Island Mountain Starter system costs $75,000 to $85,000 as a one-time purchase with no ongoing compliance overhead. The system eliminates the external routable path entirely.</p>
         </div>
         <div class="risk-card">
           <h4><i class="ri-tools-line"></i> Can this run fully air-gapped?</h4>
