@@ -179,7 +179,7 @@
     <div class="hero-inner">
       <span class="hero-badge">Local AI for Insurance</span>
       <h1>Policyholder Data Doesn't Belong in Someone Else's Data Center</h1>
-      <p>Claims processing, underwriting analysis, and fraud detection all require handling sensitive personal and health information. Cloud AI transmits that data to third-party infrastructure. Local AI keeps it on hardware you own and control.</p>
+      <p>Claims processing, underwriting analysis, and fraud detection all require handling sensitive personal and health information. Cloud AI transmits that data to third-party infrastructure. On-premises AI for insurance keeps it on hardware you own and control.</p>
     </div>
   </section>
 
@@ -198,7 +198,7 @@
       </div>
       <div class="fade-in" style="max-width:760px;margin:0 auto;">
         <p style="font-size:1.05rem;line-height:1.9;">Insurance carriers collect and process an extraordinary breadth of sensitive personal data: health records for life and health insurers, financial information for all lines, driving histories for auto, property details for homeowners, and claims histories that paint intimate portraits of policyholders' lives. When an adjuster pastes a claims file into a cloud AI service, all of that information travels to infrastructure controlled by a third party. Insurance is one of <a href="solutions.html">ten regulated industries</a> where this structural conflict between cloud AI and data confidentiality is most acute.</p>
-        <p style="font-size:1.05rem;line-height:1.9;">For health insurers, HIPAA establishes strict requirements for protected health information (PHI). The Privacy Rule limits disclosure of PHI, and the Security Rule mandates administrative, physical, and technical safeguards. Cloud AI processing of PHI requires a Business Associate Agreement (BAA) -- but even with a BAA, the structural reality remains: PHI has left your network and sits on someone else's servers.</p>
+        <p style="font-size:1.05rem;line-height:1.9;">For health insurers, HIPAA establishes strict requirements for protected health information (PHI) -- the same framework governing <a href="medical-practices.html">medical practices</a>. The Privacy Rule limits disclosure of PHI, and the Security Rule mandates administrative, physical, and technical safeguards. Cloud AI processing of PHI requires a Business Associate Agreement (BAA) -- but even with a BAA, the structural reality remains: PHI has left your network and sits on someone else's servers.</p>
         <p style="font-size:1.05rem;line-height:1.9;">The NAIC Insurance Data Security Model Law (#668), adopted in whole or part by over 20 states, requires insurers to maintain comprehensive information security programs. State insurance departments enforce data protection requirements that vary by jurisdiction but share a common theme: insurers must demonstrate control over the infrastructure handling policyholder data. Cloud AI processing complicates this demonstration significantly.</p>
       </div>
     </div>
@@ -232,7 +232,7 @@
             <i class="ri-wifi-off-line"></i>
           </div>
           <h3>Air-Gap Capable</h3>
-          <p>Complete network isolation available after initial setup. For carriers handling the most sensitive health and financial data, this means zero external connections of any kind.</p>
+          <p>Air-gapped AI claims processing with complete network isolation available after initial setup. For carriers handling the most sensitive health and financial data, this means zero external connections of any kind.</p>
         </div>
       </div>
     </div>
@@ -442,7 +442,7 @@
       <div class="fade-in" style="max-width:760px;margin:0 auto;">
         <p style="font-size:1.05rem;line-height:1.9;">For health insurers, HIPAA's Privacy Rule (45 CFR Parts 160 and 164) limits the use and disclosure of protected health information. The Security Rule mandates administrative, physical, and technical safeguards -- including access controls, audit controls, and transmission security. When PHI is processed through cloud AI infrastructure, the cloud provider becomes a business associate requiring a BAA and compliance documentation.</p>
         <p style="font-size:1.05rem;line-height:1.9;">The NAIC Insurance Data Security Model Law (#668) requires insurers to conduct risk assessments, implement information security programs, and maintain oversight of third-party service providers handling policyholder data. Over 20 states have adopted versions of this model law, creating a patchwork of state-specific requirements that all share a common theme: institutional control over data handling infrastructure.</p>
-        <p style="font-size:1.05rem;line-height:1.9;">Property and casualty insurers face state regulations governing the protection of personal financial information under GLBA (as insurance is carved out from federal GLBA enforcement but subject to state implementation). The recurring requirement across all frameworks: insurers must demonstrate adequate safeguards over the infrastructure processing policyholder data. Local deployment satisfies this requirement structurally -- the data never leaves your controlled environment.</p>
+        <p style="font-size:1.05rem;line-height:1.9;">Property and casualty insurers face state regulations governing the protection of personal financial information under GLBA -- a framework shared with <a href="financial-services.html">banks and credit unions</a> (though insurance is carved out from federal enforcement and subject to state implementation). The recurring requirement across all frameworks: insurers must demonstrate adequate safeguards over the infrastructure processing policyholder data. Local deployment satisfies this requirement structurally -- the data never leaves your controlled environment.</p>
         <div style="margin-top:24px;padding:16px 20px;border:1px solid rgba(245,158,11,0.2);border-radius:var(--border-radius);background:rgba(245,158,11,0.04);">
           <p style="font-size:0.9rem;line-height:1.8;margin:0;color:var(--text-muted);"><strong>Disclaimer:</strong> This section describes the general regulatory environment regarding AI and insurance data protection. It is not legal or compliance advice. Consult qualified counsel or your state insurance department for guidance specific to your charter type, lines of business, and operational jurisdictions.</p>
         </div>
@@ -470,11 +470,11 @@
       <div class="risk-grid fade-in">
         <div class="risk-card">
           <h4><i class="ri-shield-check-line"></i> Does cloud AI create HIPAA risk for health insurers?</h4>
-          <p>The transmission of PHI to a cloud AI provider constitutes disclosure to a third party. HIPAA requires a BAA with any business associate processing PHI. Even with a BAA, PHI has left your network. Local AI eliminates this transmission entirely, keeping PHI on your hardware under your security controls.</p>
+          <p>The transmission of PHI to a cloud AI provider constitutes disclosure to a third party. HIPAA requires a BAA with any business associate processing PHI. Even with a BAA, PHI has left your network. HIPAA compliant AI eliminates this transmission entirely, keeping PHI on your hardware under your security controls.</p>
         </div>
         <div class="risk-card">
           <h4><i class="ri-brain-line"></i> What insurance workflows does this hardware support?</h4>
-          <p>Claims processing, underwriting analysis, fraud detection, policy document review, actuarial support documentation, and customer correspondence. DeepSeek V4-Flash handles complex multi-document analysis. Llama 3.1 70B handles general drafting. All processing stays on your hardware.</p>
+          <p>Local LLM underwriting analysis, claims processing, fraud detection, policy document review, actuarial support documentation, and customer correspondence. DeepSeek V4-Flash handles complex multi-document analysis. Llama 3.1 70B handles general drafting. All processing stays on your hardware.</p>
         </div>
         <div class="risk-card">
           <h4><i class="ri-coin-line"></i> How does the cost compare for a 30-person insurance office?</h4>
@@ -502,7 +502,7 @@
 
   <!-- AEO Summary -->
   <div style="border-left:3px solid var(--copper);padding:16px 20px;margin:32px 0;background:rgba(217,119,6,0.05);border-radius:0 8px 8px 0;">
-  <strong>Summary:</strong> Island Mountain builds on-premises AI inference hardware for insurance carriers. Process claims, underwriting, and fraud detection on NVIDIA H100/H200 servers you own. Policyholder PII and protected health information stay inside your network -- no cloud transmission, no BAA dependency, no third-party data exposure. Systems start at $75,000 with air-gap capability and unlimited inference.
+  <strong>Summary:</strong> Island Mountain builds on-premises AI inference hardware for insurance carriers. Process claims, underwriting, and fraud detection on NVIDIA H100/H200 servers you own. Policyholder PII and protected health information stay inside your network -- no cloud transmission, no BAA dependency, no third-party data exposure. Private AI for health insurance carriers starts at $75,000 with air-gap capability and unlimited inference.
   </div>
 
   <!-- Testimonials -->
@@ -537,7 +537,7 @@
         <a href="contact.html" class="btn btn-primary">Request a Quote</a>
         <a href="products.html" class="btn btn-secondary">See Full Specs</a>
       </div>
-      <p style="margin-top:24px;font-size:0.9rem;color:var(--text-muted);"><a href="solutions.html">See all ten industries we serve</a> or explore: <a href="financial-services.html">Financial Services</a> &middot; <a href="government.html">Government</a></p>
+      <p style="margin-top:24px;font-size:0.9rem;color:var(--text-muted);"><a href="solutions.html">See all ten industries we serve</a> or explore: <a href="medical-practices.html">Medical Practices</a> &middot; <a href="financial-services.html">Financial Services</a></p>
     </div>
   </section>
 
