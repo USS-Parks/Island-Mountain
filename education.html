@@ -33,32 +33,36 @@
     "@context": "https://schema.org",
     "@type": "FAQPage",
     "mainEntity": [
-      {"@type": "Question",
-        "name": "Does using cloud AI for student data processing comply with FERPA?",
+      {
+        "@type": "Question",
+        "name": "Does using cloud AI for student data violate FERPA?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "FERPA (20 U.S.C. section 1232g) protects the privacy of student education records. The school official exception allows disclosure of education records to school officials with legitimate educational interests -- but this exception works best when the processing entity is under direct institutional control. Cloud AI vendors process student data on commercial infrastructure under their own terms of service. Whether this satisfies the school official exception depends on the specific contractual arrangement and institutional oversight. Local AI hardware eliminates this analysis entirely because student data never leaves campus-controlled infrastructure."
+          "text": "FERPA (20 U.S.C. section 1232g) protects student education records and restricts disclosure to third parties. The school official exception allows disclosure to contractors performing institutional functions, but requires that the contractor is under direct institutional control, uses the data only for authorized purposes, and meets the institution's criteria for handling student records. Cloud AI providers process data on shared commercial infrastructure under their own terms of service, which may not satisfy the direct control requirements of the school official exception. State student privacy laws like California's SOPIPA and New York Education Law 2-d add further restrictions. On-premises AI hardware from Island Mountain keeps student education records on campus-controlled servers. No third-party disclosure occurs because no data leaves the institution's network. The FERPA compliance question is resolved architecturally rather than contractually."
         }
       },
-      {"@type": "Question",
-        "name": "What educational workflows can a university run on Island Mountain hardware?",
+      {
+        "@type": "Question",
+        "name": "What education workflows can run on Island Mountain campus AI hardware?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Island Mountain hardware supports curriculum design assistance, student record summarization, research data analysis, administrative document drafting, grant proposal support, and assessment assistance. The system runs DeepSeek V4-Flash for complex analytical tasks and Llama 3.1 70B for general drafting work. All processing happens on hardware inside your campus with no data transmitted externally."
+          "text": "Island Mountain hardware supports curriculum design and course development assistance, student record summarization and academic advising support, research data analysis for faculty projects, administrative document drafting including accreditation reports, grant proposal and budget narrative development, and assessment and grading assistance. The system runs DeepSeek V4-Flash for complex research analysis and multi-document synthesis, and Llama 3.1 70B for general drafting tasks including curriculum materials and administrative correspondence. All processing occurs on NVIDIA H100 or H200 GPUs on campus with no student data transmitted to external servers."
         }
       },
-      {"@type": "Question",
-        "name": "How does the cost compare for a university department vs. full campus deployment?",
+      {
+        "@type": "Question",
+        "name": "How does on-premises AI cost compare to cloud AI for a university?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Cloud AI subscriptions typically cost $20 to $100 per user per month for educational pricing. For a 30-person department that is $7,200 to $36,000 per year. For a full campus deployment of 200 users that is $48,000 to $240,000 per year. An Island Mountain Starter system costs $75,000 to $85,000 as a one-time purchase with unlimited users. Cost parity for department-level use is reached by year two to three. For campus-wide deployment cost parity is typically reached within year one."
+          "text": "Cloud AI platforms for education typically cost $20 to $100 per user per month depending on the platform and licensing model. For a department of 30 faculty and staff, that totals $7,200 to $36,000 per year. Campus-wide deployments for 200 or more users can reach $48,000 to $240,000 annually. An Island Mountain Starter system costs $75,000 to $85,000 as a one-time purchase supporting unlimited users on the campus network. The Premium tier with two NVIDIA H200 GPUs costs $350,000 to $400,000 for research-intensive workloads. Ongoing costs after purchase are limited to electricity at approximately $100 to $200 per month. For most university departments, the on-premises system reaches cost parity with cloud subscriptions within 12 to 24 months while eliminating third-party handling of student records entirely."
         }
       },
-      {"@type": "Question",
-        "name": "Does our institution need dedicated IT staff to run local AI hardware?",
+      {
+        "@type": "Question",
+        "name": "Does a school need dedicated IT staff to run on-premises AI hardware?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "No. Island Mountain systems ship pre-configured with all models installed and OpenWebUI ready to use. Faculty and staff access it through a web browser. Initial setup requires racking the server, connecting a 208V/30A power circuit, and plugging in an ethernet cable. Island Mountain includes 30 days of hands-on setup support. Most universities with existing IT departments can incorporate the system into their standard server management workflow."
+          "text": "No. Island Mountain systems ship pre-configured with all models installed and the OpenWebUI browser-based interface ready for use. Faculty and staff access it through any web browser on the campus network. Initial setup requires racking the server, connecting a 208V 30A power circuit, and plugging in an ethernet cable. Island Mountain provides 30 days of hands-on setup support. Ongoing maintenance involves standard Linux server administration and occasional model updates. Most institutions with existing campus IT departments can integrate the system into their server management workflow without hiring additional staff. K-12 districts that use managed service providers can include the AI server in their existing service agreements."
         }
       }
     ]
@@ -75,6 +79,28 @@
       {"@type": "ListItem", "position": 2, "name": "Solutions", "item": "https://islandmountain.io/solutions.html"},
       {"@type": "ListItem", "position": 3, "name": "Education", "item": "https://islandmountain.io/education.html"}
     ]
+  }
+  </script>
+
+  <!-- Product Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "Island Mountain Starter — On-Premises AI Server for Education",
+    "description": "Pre-built, burn-tested AI inference server with 2x NVIDIA H100 80GB GPUs. Air-gap capable. FERPA-aligned for student data privacy. Includes DeepSeek V4-Flash, Llama 3.1 70B, and OpenWebUI.",
+    "brand": {
+      "@type": "Brand",
+      "name": "Island Mountain"
+    },
+    "offers": {
+      "@type": "AggregateOffer",
+      "lowPrice": "75000",
+      "highPrice": "400000",
+      "priceCurrency": "USD",
+      "offerCount": "3"
+    },
+    "category": "AI Inference Hardware for Educational Institutions"
   }
   </script>
 </head>
@@ -183,7 +209,7 @@
     <div class="container">
       <div class="section-header fade-in">
         <span class="section-badge">How It Works</span>
-        <h2>What Local AI Actually Means for Your Organization</h2>
+        <h2>What On-Premises AI Means for Your Campus</h2>
         <p>"No data leaves your campus" is not marketing language. It is a description of campus-controlled network architecture.</p>
       </div>
       <div class="card-grid card-grid-3 fade-in">
@@ -217,7 +243,7 @@
     <div class="container">
       <div class="section-header fade-in">
         <span class="section-badge">Workflows</span>
-        <h2>Workflows Island Mountain Hardware Supports</h2>
+        <h2>Campus Workflows Island Mountain Hardware Supports</h2>
         <p>The same AI capabilities you want from cloud services, running on hardware that doesn't create compliance exposure.</p>
       </div>
       <div class="card-grid card-grid-3 fade-in">
@@ -276,7 +302,7 @@
     <div class="container">
       <div class="section-header fade-in">
         <span class="section-badge">Model Selection</span>
-        <h2>Which Models Work Best</h2>
+        <h2>Which Models Work Best for Education Tasks</h2>
       </div>
       <div class="card-grid card-grid-3 fade-in">
         <div class="card" style="text-align:center;">
@@ -309,7 +335,7 @@
     <div class="container">
       <div class="section-header fade-in">
         <span class="section-badge">Cost Comparison</span>
-        <h2>Cloud AI vs. Island Mountain for an Educational Institution</h2>
+        <h2>Cloud AI vs. Island Mountain for a University Department</h2>
         <p>The cloud transmits student records to commercial servers. The hardware keeps everything on campus.</p>
       </div>
       <div class="table-wrapper fade-in">
@@ -411,7 +437,7 @@
     <div class="container">
       <div class="section-header fade-in">
         <span class="section-badge">Regulatory Context</span>
-        <h2>FERPA, COPPA, and Student Data Protection</h2>
+        <h2>FERPA, COPPA, and the School Official Exception</h2>
       </div>
       <div class="fade-in" style="max-width:760px;margin:0 auto;">
         <p style="font-size:1.05rem;line-height:1.9;">FERPA's "school official" exception (34 CFR &sect; 99.31(a)(1)) permits disclosure of education records to school officials with legitimate educational interests. For third-party contractors to qualify under this exception, they must perform an institutional service or function, be under direct control of the institution with respect to use and maintenance of education records, and use records only for authorized purposes. Cloud AI vendors may satisfy these contractual requirements -- but the structural dependency on commercial infrastructure for student data processing creates ongoing compliance risk and audit complexity.</p>
@@ -440,7 +466,7 @@
     <div class="container">
       <div class="section-header fade-in">
         <span class="section-badge">Education Questions</span>
-        <h2>Questions Educational Institutions Ask</h2>
+        <h2>Questions Educators Ask About On-Premises AI</h2>
       </div>
       <div class="risk-grid fade-in">
         <div class="risk-card">
@@ -477,7 +503,7 @@
 
   <!-- AEO Summary -->
   <div style="border-left:3px solid var(--copper);padding:16px 20px;margin:32px 0;background:rgba(217,119,6,0.05);border-radius:0 8px 8px 0;">
-  <strong>Summary:</strong> On-premises AI inference hardware keeps student education records on campus-controlled servers. No cloud transmission, no third-party data exposure, and full alignment with FERPA's school official exception for AI processing of student data.
+  <strong>Summary:</strong> Island Mountain builds on-premises AI inference hardware for K-12 schools, community colleges, and universities. Student education records stay on campus-controlled NVIDIA H100/H200 servers -- no cloud transmission, no third-party data handling, and full alignment with FERPA's school official exception. Systems start at $75,000 with air-gap capability and unlimited campus-wide access.
   </div>
 
   <!-- Testimonials -->
