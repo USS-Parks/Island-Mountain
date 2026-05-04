@@ -1,0 +1,8 @@
+# Planning docs and internal files (not for public serving)
+HANDOFF.md
+_docs/
+
+# OS artifacts
+.DS_Store
+Thumbs.db
+*.~lock.*
