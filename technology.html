@@ -330,6 +330,33 @@
       </div>
     </div>
   </section>
+  <!-- Air-Gap Configuration -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-badge">Security</span>
+        <h2>Air-Gap Configuration: What We Disable and How You Verify It</h2>
+      </div>
+      <div class="fade-in" style="max-width:760px;margin:0 auto;">
+        <p style="font-size:1.05rem;line-height:1.9;">OpenWebUI is a self-hosted web application. The "web" refers to the browser-based interface, not internet dependency. It runs on the server, serves its UI over your local network, and users access it from any device on the LAN. No cloud account. No external API calls for inference.</p>
+        <p style="font-size:1.05rem;line-height:1.9;">But OpenWebUI ships with features that reach outbound by default. Island Mountain disables every one of them before your system leaves our facility.</p>
+        <h3 style="color:var(--copper);margin-top:2rem;">What Gets Disabled Before Delivery</h3>
+        <ul style="font-size:1.02rem;line-height:2;list-style:none;padding:0;">
+          <li style="margin-bottom:1rem;"><code style="background:var(--secondary-dark);padding:2px 8px;border-radius:4px;color:var(--copper-light);">OFFLINE_MODE=True</code> — Master switch. Disables all outbound network calls including version checks and remote resource fetching. This is the primary air-gap control.</li>
+          <li style="margin-bottom:1rem;"><code style="background:var(--secondary-dark);padding:2px 8px;border-radius:4px;color:var(--copper-light);">HF_HUB_OFFLINE=1</code> — Prevents the HuggingFace Hub library from attempting to download embedding models or tokenizers. All required models are pre-loaded on local NVMe storage during our build process.</li>
+          <li style="margin-bottom:1rem;"><code style="background:var(--secondary-dark);padding:2px 8px;border-radius:4px;color:var(--copper-light);">ENABLE_COMMUNITY_SHARING=False</code> — Removes the ability to share prompts, configurations, or presets with the OpenWebUI community platform. No data leaves the system through this channel.</li>
+          <li style="margin-bottom:1rem;"><code style="background:var(--secondary-dark);padding:2px 8px;border-radius:4px;color:var(--copper-light);">ANONYMIZED_TELEMETRY=False</code> — Disables all telemetry collection. No usage data, anonymized or otherwise, is transmitted to any external endpoint.</li>
+          <li style="margin-bottom:1rem;"><code style="background:var(--secondary-dark);padding:2px 8px;border-radius:4px;color:var(--copper-light);">ENABLE_RAG_WEB_SEARCH=False</code> — Disables web search integration in the document retrieval pipeline. RAG operates entirely against locally stored documents.</li>
+          <li style="margin-bottom:1rem;"><code style="background:var(--secondary-dark);padding:2px 8px;border-radius:4px;color:var(--copper-light);">SAFE_MODE=True</code> — Disables community-contributed tools and functions that might contain network calls. Only pre-audited, locally installed tools are available.</li>
+          <li style="margin-bottom:1rem;"><code style="background:var(--secondary-dark);padding:2px 8px;border-radius:4px;color:var(--copper-light);">ENABLE_SIGNUP=False</code> — Locks user registration after initial admin account creation during setup. New users are added only by the administrator.</li>
+        </ul>
+        <h3 style="color:var(--copper);margin-top:2rem;">How Your IT Team Verifies It</h3>
+        <p style="font-size:1.05rem;line-height:1.9;">Every environment variable is set in a single configuration file on the system. Your network security team can inspect it directly. Run <code style="background:var(--secondary-dark);padding:2px 8px;border-radius:4px;">docker inspect [container_name]</code> to view all active environment variables. Or check the <code style="background:var(--secondary-dark);padding:2px 8px;border-radius:4px;">.env</code> file in the OpenWebUI deployment directory.</p>
+        <p style="font-size:1.05rem;line-height:1.9;">For complete verification: connect the system to a monitored network segment and run inference queries for 24 hours. Monitor outbound traffic. There should be zero outbound connections initiated by the server. If your security policy requires it, configure host-level firewall rules (iptables/nftables) to block all outbound traffic as a belt-and-suspenders measure.</p>
+        <p style="font-size:1.05rem;line-height:1.9;">Island Mountain configures these settings during the 72-hour burn-in process. The system is tested in its air-gapped configuration before delivery, not just in its connected configuration.</p>
+      </div>
+    </div>
+  </section>
   <!-- Build & Test Process -->
   <section class="section section-dark">
     <div class="container">
