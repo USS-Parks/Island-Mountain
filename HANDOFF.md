@@ -33,7 +33,7 @@ done
 echo "Verification complete."
 ```
 
-Files still at risk (over 400 lines): financial-services.html (574), insurance.html (574), energy-utilities.html (575), government.html (575), education.html (575), contact.html (928), faq.html (860), investors.html (615), law-firms.html (560), tribal-nations.html (553), defense-contractors.html (531), products.html (527), medical-practices.html (527), research-labs.html (521), pricing.html (512), why-island-mountain.html (456), technology.html (456), blog.html (433), index.html (409). Use sed via bash for these.
+Files still at risk (over 400 lines): contact.html (943), faq.html (875), investors.html (641), government.html (611), energy-utilities.html (610), education.html (610), financial-services.html (609), insurance.html (609), law-firms.html (585), tribal-nations.html (578), defense-contractors.html (556), medical-practices.html (552), research-labs.html (546), products.html (542), pricing.html (527), why-island-mountain.html (472), technology.html (471), solutions.html (467), blog.html (459), index.html (424). Use sed via bash for these.
 
 ---
 
@@ -95,27 +95,27 @@ No analytics. No cookies. No tracking scripts.
 
 ### Root Pages (23 files)
 
-index.html (409 lines): Homepage. Hero, product comparison, trust stats, testimonials. Schema: Organization, WebSite. Body links to solutions.html and vertical pages via testimonial citations.
-products.html (527 lines): Three product tiers with full specs. Schema: Product (x3), FAQPage.
-pricing.html (512 lines): Pricing table, financing, TCO comparison. Schema: Product, FAQPage.
-why-island-mountain.html (456 lines): Value proposition. Links to all 10 verticals. Schema: FAQPage.
-technology.html (456 lines): Software stack: Ollama, vLLM, Open WebUI, Ubuntu. Schema: SoftwareApplication, FAQPage.
-solutions.html (468 lines): Hub page linking all 10 industry verticals + blog crosslinks. Schema: FAQPage.
-faq.html (860 lines): 25 Q&A pairs. Schema: FAQPage (25 Q&A), SpeakableSpecification.
-contact.html (928 lines): Contact form (FormSubmit.co), embedded Google Map. Schema: LocalBusiness.
-blog.html (433 lines): Blog index listing all posts. Schema: Blog.
-investors.html (615 lines): Full investor page overhaul (2026-05-03). 11 sections: hero with $500K ask, market thesis, product tiers, unit economics (BOM table + COGS donut), margin sensitivity chart, financial projections (3 scenarios x 2 years), SAFE deal terms with use-of-funds chart, milestone roadmap, timing thesis, team, risk disclosure (6 cards with mitigations), dual CTAs. All numbers sourced from Island-Mountain-Financial-Model.xlsx. Inline CSS for investor-specific components. Schema: Organization.
+index.html (424 lines): Homepage. Hero, product comparison, trust stats, testimonials. Schema: Organization, WebSite. Body links to solutions.html and vertical pages via testimonial citations.
+products.html (542 lines): Three product tiers with full specs. Schema: Product (x3), FAQPage.
+pricing.html (527 lines): Pricing table, financing, TCO comparison. Schema: Product, FAQPage.
+why-island-mountain.html (472 lines): Value proposition. Links to all 10 verticals. Schema: FAQPage.
+technology.html (471 lines): Software stack: Ollama, vLLM, Open WebUI, Ubuntu. Schema: SoftwareApplication, FAQPage.
+solutions.html (467 lines): Hub page linking all 10 industry verticals + blog crosslinks. Schema: FAQPage.
+faq.html (875 lines): 25 Q&A pairs. Schema: FAQPage (25 Q&A), SpeakableSpecification.
+contact.html (943 lines): Contact form (FormSubmit.co), embedded Google Map. Schema: LocalBusiness.
+blog.html (459 lines): Blog index listing all posts. Schema: Blog.
+investors.html (641 lines): Full investor page overhaul (2026-05-03). 11 sections: hero with $500K ask, market thesis, product tiers, unit economics (BOM table + COGS donut), margin sensitivity chart, financial projections (3 scenarios x 2 years), SAFE deal terms with use-of-funds chart, milestone roadmap, timing thesis, team, risk disclosure (6 cards with mitigations), dual CTAs. All numbers sourced from Island-Mountain-Financial-Model.xlsx. Inline CSS for investor-specific components. Schema: Organization.
 about.html (269 lines): Company story, founder bio. Schema: AboutPage, Organization.
-law-firms.html (560 lines): Vertical landing page. Attorney-client privilege, discovery risk. Schema: FAQPage, BreadcrumbList. Has AEO block. Breadcrumb, contextual body link to solutions.html.
-medical-practices.html (527 lines): Vertical. HIPAA, ePHI, BAA. Schema: FAQPage, BreadcrumbList. Has AEO block. Breadcrumb, contextual body link to solutions.html.
-tribal-nations.html (553 lines): Vertical. OCAP, CLOUD Act, sovereignty. Schema: FAQPage, BreadcrumbList, GovOrg. Has AEO block. Breadcrumb, contextual body link to solutions.html.
-research-labs.html (521 lines): Vertical. FERPA, IRB, GxP, 21 CFR Part 11. Schema: FAQPage, BreadcrumbList. Has AEO block. Breadcrumb, contextual body link to solutions.html.
-defense-contractors.html (531 lines): Vertical. ITAR, DFARS 252.204-7012, CMMC, CUI. Schema: FAQPage, BreadcrumbList. Has AEO block. Breadcrumb, contextual body link to solutions.html.
-financial-services.html (574 lines): Vertical. GLBA, PCI DSS, SEC Reg S-P. Schema: FAQPage, BreadcrumbList. Has AEO block. Breadcrumb, contextual body link to solutions.html.
-insurance.html (574 lines): Vertical. HIPAA (health insurers), NAIC Model Law #668, state regs. Schema: FAQPage, BreadcrumbList. Has AEO block. Breadcrumb, contextual body link to solutions.html.
-energy-utilities.html (575 lines): Vertical. NERC CIP, IEC 62443, FERC, TSA Pipeline Security. Schema: FAQPage, BreadcrumbList. Has AEO block. Breadcrumb, contextual body link to solutions.html.
-government.html (575 lines): Vertical. FedRAMP, FISMA, NIST SP 800-171, CUI. Schema: FAQPage, BreadcrumbList. Has AEO block. Breadcrumb, contextual body link to solutions.html.
-education.html (575 lines): Vertical. FERPA, COPPA, state student privacy laws. Schema: FAQPage, BreadcrumbList. Has AEO block. Breadcrumb, contextual body link to solutions.html.
+law-firms.html (585 lines): Vertical landing page. Attorney-client privilege, discovery risk. Schema: FAQPage, BreadcrumbList. Has AEO block. Breadcrumb, contextual body link to solutions.html.
+medical-practices.html (552 lines): Vertical. HIPAA, ePHI, BAA. Schema: FAQPage, BreadcrumbList. Has AEO block. Breadcrumb, contextual body link to solutions.html.
+tribal-nations.html (578 lines): Vertical. OCAP, CLOUD Act, sovereignty. Schema: FAQPage, BreadcrumbList, GovOrg. Has AEO block. Breadcrumb, contextual body link to solutions.html.
+research-labs.html (546 lines): Vertical. FERPA, IRB, GxP, 21 CFR Part 11. Schema: FAQPage, BreadcrumbList. Has AEO block. Breadcrumb, contextual body link to solutions.html.
+defense-contractors.html (556 lines): Vertical. ITAR, DFARS 252.204-7012, CMMC, CUI. Schema: FAQPage, BreadcrumbList. Has AEO block. Breadcrumb, contextual body link to solutions.html.
+financial-services.html (609 lines): Vertical. GLBA, PCI DSS, SEC Reg S-P. Schema: FAQPage, BreadcrumbList. Has AEO block. Breadcrumb, contextual body link to solutions.html.
+insurance.html (609 lines): Vertical. HIPAA (health insurers), NAIC Model Law #668, state regs. Schema: FAQPage, BreadcrumbList. Has AEO block. Breadcrumb, contextual body link to solutions.html.
+energy-utilities.html (610 lines): Vertical. NERC CIP, IEC 62443, FERC, TSA Pipeline Security. Schema: FAQPage, BreadcrumbList. Has AEO block. Breadcrumb, contextual body link to solutions.html.
+government.html (611 lines): Vertical. FedRAMP, FISMA, NIST SP 800-171, CUI. Schema: FAQPage, BreadcrumbList. Has AEO block. Breadcrumb, contextual body link to solutions.html.
+education.html (610 lines): Vertical. FERPA, COPPA, state student privacy laws. Schema: FAQPage, BreadcrumbList. Has AEO block. Breadcrumb, contextual body link to solutions.html.
 privacy.html (198 lines): Privacy policy. Schema: WebPage.
 terms.html (208 lines): Terms of service. Schema: WebPage.
 
@@ -229,39 +229,11 @@ Keyword-to-section placement: COMPLETE (Session 4). Top 5 long-tail keywords per
 
 Internal cross-linking: COMPLETE (Session 4). Contextual body links added: insurance↔medical-practices (HIPAA), insurance↔financial-services (GLBA), energy↔defense-contractors (air-gap), energy↔government (FERC), government↔defense-contractors (CUI/NIST), government↔tribal-nations (sovereignty), government↔education (FERPA), education↔research-labs (IRB), education↔medical-practices (campus health), education↔government (public funding). CTA cross-links also updated.
 
-### Pending: Session 5 (FAQ Refinement + Authority Avatars)
+### SEO/AEO Revisions Status (Session 5 Complete)
 
-**Task 1: FAQ Answer Snippet Optimization (All 10 Verticals)**
+FAQ answer snippet optimization: COMPLETE (Session 5). All 40 JSON-LD FAQPage schema answers across 10 verticals rewritten to lead with direct yes/no/declarative answer in first sentence (under 30 words), followed by regulatory citation, then brand/GPU/pricing expansion. On-page FAQ cards updated to match (first 2-3 sentences of schema answer).
 
-Current FAQ answers (both in JSON-LD schema and on-page FAQ cards) are enriched but lengthy. Featured snippets and AI answer engines prefer a crisp 2-3 sentence direct answer FIRST, with expansion after. Rewrite pattern:
-
-- Lead with a direct yes/no or declarative answer (1 sentence)
-- Follow with the mechanism/how (1-2 sentences)
-- Then expand with details (remaining content)
-
-Target pages: law-firms.html, medical-practices.html, tribal-nations.html, research-labs.html, defense-contractors.html, financial-services.html, insurance.html, energy-utilities.html, government.html, education.html
-
-Applies to: on-page FAQ card answers (in body HTML) AND JSON-LD FAQPage schema "text" fields. Both must match.
-
-**Task 2: Authority Avatar Badges (All 10 Verticals)**
-
-Add a static "Compliance Frameworks We Address" section to each vertical page showing styled text badges with Remixicon shield/lock icons paired with framework names. NOT actual organization logos (trademark issues). Visual trust signal that communicates compliance fluency.
-
-Implementation: Horizontal row of bordered boxes, each containing a Remixicon icon + framework name. Uses existing CSS custom properties. Placed after the hero/intro section, before "How It Works."
-
-Badge map per page:
-- law-firms: Attorney-Client Privilege, ABA Model Rules, Federal Rules of Civil Procedure
-- medical-practices: HIPAA Security Rule, 45 CFR 164, HITECH Act
-- tribal-nations: OCAP Principles, CLOUD Act, Tribal Sovereignty
-- research-labs: 21 CFR Part 11, IRB Requirements, GxP Compliance
-- defense-contractors: DFARS 252.204-7012, CMMC Level 2, NIST SP 800-171
-- financial-services: GLBA Safeguards Rule, PCI DSS v4.0, SEC Reg S-P
-- insurance: HIPAA Security Rule, NAIC Model Law #668, State Insurance Regs
-- energy-utilities: NERC CIP-003-013, IEC 62443, TSA Pipeline Security
-- government: FedRAMP, NIST SP 800-171, FISMA, CJIS Security Policy
-- education: FERPA (34 CFR 99), COPPA, State Student Privacy Laws
-
-Prompt file: SEO-SESSION-5-FAQ-AVATARS.md
+Authority Avatar compliance badges: COMPLETE (Session 5). Inline-styled flex badge sections inserted before "How It Works" on all 10 vertical pages. Each badge contains Remixicon icon + framework name text. Badge map: law-firms (3: Attorney-Client Privilege, ABA Model Rules, FRCP Discovery Rules), medical-practices (3: HIPAA Security Rule, 45 CFR Part 164, HITECH Act), tribal-nations (3: OCAP Principles, CLOUD Act, Tribal Sovereignty), research-labs (3: 21 CFR Part 11, IRB Requirements, GxP Compliance), defense-contractors (3: DFARS 252.204-7012, CMMC Level 2, NIST SP 800-171), financial-services (3: GLBA Safeguards Rule, PCI DSS v4.0, SEC Reg S-P), insurance (3: HIPAA Security Rule, NAIC Model Law #668, State Insurance Regs), energy-utilities (3: NERC CIP-003 to CIP-013, IEC 62443, TSA Pipeline Security), government (4: FedRAMP, NIST SP 800-171, FISMA, CJIS Security Policy), education (3: FERPA (34 CFR 99), COPPA, State Student Privacy Laws).
 
 ### Execution Files
 
