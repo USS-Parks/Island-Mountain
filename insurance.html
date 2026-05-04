@@ -33,32 +33,36 @@
     "@context": "https://schema.org",
     "@type": "FAQPage",
     "mainEntity": [
-      {"@type": "Question",
-        "name": "Does cloud AI create HIPAA risk for health insurers?",
+      {
+        "@type": "Question",
+        "name": "Does using cloud AI create HIPAA risk for health insurance carriers?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "When a health insurer transmits protected health information (PHI) to a cloud AI provider for claims processing or underwriting analysis, that data has been disclosed to a third party. HIPAA requires a Business Associate Agreement (BAA) with any entity that processes PHI on behalf of a covered entity. Cloud AI providers may or may not offer BAAs, and even with a BAA in place, the structural risk of PHI transmission remains. Local AI hardware eliminates this transmission entirely because PHI never leaves your institutional network."
+          "text": "Health insurers process protected health information (PHI) subject to HIPAA's Security Rule. When PHI is transmitted to a cloud AI provider for processing, that provider becomes a business associate requiring a Business Associate Agreement (BAA). Even with a BAA, the structural risk remains: PHI is processed on third-party infrastructure outside the insurer's direct security controls. Not all AI providers offer BAAs, and those that do still process data on shared commercial infrastructure. The NAIC Insurance Data Security Model Law adds state-level requirements for information security programs. On-premises AI hardware from Island Mountain eliminates the business associate dependency entirely. PHI and policyholder PII stay on servers inside your facility under your security program. No BAA required because no third-party data handling occurs."
         }
       },
-      {"@type": "Question",
-        "name": "What insurance workflows does Island Mountain support?",
+      {
+        "@type": "Question",
+        "name": "What insurance workflows can run on Island Mountain on-premises AI hardware?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Island Mountain hardware supports claims processing, underwriting analysis, fraud detection, policy document review, actuarial support documentation, and customer correspondence drafting. The system runs DeepSeek V4-Flash for complex multi-document claims analysis and Llama 3.1 70B for general drafting tasks. All processing happens on hardware inside your facility with no data transmitted externally."
+          "text": "Island Mountain hardware supports claims processing and adjudication assistance, underwriting analysis and risk assessment, fraud detection and investigation support, policy document review and comparison, actuarial analysis documentation, and policyholder correspondence drafting. The system runs DeepSeek V4-Flash for complex multi-document analysis like claims investigation and underwriting assessment, and Llama 3.1 70B for general drafting tasks including policyholder communications and compliance memos. All data processing occurs on NVIDIA H100 or H200 GPUs inside your facility. No policyholder information is transmitted to external servers."
         }
       },
-      {"@type": "Question",
-        "name": "How does the cost compare to cloud AI for a 30-person insurance office?",
+      {
+        "@type": "Question",
+        "name": "How does on-premises AI cost compare to cloud AI for a 30-person insurance office?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Cloud AI subscriptions typically cost $50 to $200 per user per month, totaling $18,000 to $72,000 per year for 30 users. Over three years that is $54,000 to $216,000 in cumulative subscription fees with continued data exposure. An Island Mountain Starter system costs $75,000 to $85,000 as a one-time purchase. After purchase the only ongoing cost is electricity at approximately $100 to $200 per month. Cost parity is typically reached within year one to two."
+          "text": "Cloud AI platforms for insurance typically cost $50 to $200 per user per month. For 30 users, that is $18,000 to $72,000 per year in subscription fees with no ownership and continued data exposure on every query. Over three years, cumulative cloud costs reach $54,000 to $216,000. An Island Mountain Starter system costs $75,000 to $85,000 as a one-time purchase with two NVIDIA H100 GPUs. After purchase, the only ongoing cost is electricity at approximately $100 to $200 per month. For a 30-person office, the on-premises system reaches cost parity with mid-tier cloud subscriptions within 18 to 24 months while eliminating all third-party data handling of policyholder information. The hardware is Section 179 eligible for full first-year depreciation."
         }
       },
-      {"@type": "Question",
-        "name": "Does our carrier need dedicated IT staff to run local AI hardware?",
+      {
+        "@type": "Question",
+        "name": "Does an insurance carrier need dedicated IT staff to operate on-premises AI?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "No. Island Mountain systems ship pre-configured with all models installed and OpenWebUI ready to use. Your staff accesses it through a web browser. Initial setup requires racking the server, connecting a 208V/30A power circuit, and plugging in an ethernet cable. Island Mountain includes 30 days of hands-on setup support. Ongoing maintenance involves standard Linux security updates and occasional model updates. Most carriers with even a part-time IT contractor can maintain the system without difficulty."
+          "text": "No. Island Mountain systems are pre-configured and burn-tested before shipping. Staff access the AI through a web browser on your internal network using the OpenWebUI interface. No specialized AI knowledge is required. Setup requires placing the server in your data center, connecting 208V 30A power and ethernet, and opening a browser. Island Mountain provides 30 days of hands-on setup support. Ongoing maintenance involves standard Linux server administration and occasional model updates through the web interface. Most insurance carriers with existing IT staff or a managed service provider handle this alongside their other infrastructure without dedicated AI personnel."
         }
       }
     ]
@@ -75,6 +79,28 @@
       {"@type": "ListItem", "position": 2, "name": "Solutions", "item": "https://islandmountain.io/solutions.html"},
       {"@type": "ListItem", "position": 3, "name": "Insurance", "item": "https://islandmountain.io/insurance.html"}
     ]
+  }
+  </script>
+
+  <!-- Product Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "Island Mountain Starter — On-Premises AI Server for Insurance",
+    "description": "Pre-built, burn-tested AI inference server with 2x NVIDIA H100 80GB GPUs. Air-gap capable. HIPAA and NAIC compliance-ready. Includes DeepSeek V4-Flash, Llama 3.1 70B, and OpenWebUI.",
+    "brand": {
+      "@type": "Brand",
+      "name": "Island Mountain"
+    },
+    "offers": {
+      "@type": "AggregateOffer",
+      "lowPrice": "75000",
+      "highPrice": "400000",
+      "priceCurrency": "USD",
+      "offerCount": "3"
+    },
+    "category": "AI Inference Hardware for Insurance"
   }
   </script>
 </head>
@@ -167,7 +193,7 @@
     <div class="container">
       <div class="section-header fade-in">
         <span class="section-badge">The Data Exposure Problem</span>
-        <h2>The Cloud AI Problem for Insurers</h2>
+        <h2>The Cloud AI Problem for Insurance Carriers</h2>
         <p>Insurers process some of the most sensitive personal data in any industry. Cloud AI transmits that data outside institutional control.</p>
       </div>
       <div class="fade-in" style="max-width:760px;margin:0 auto;">
@@ -183,7 +209,7 @@
     <div class="container">
       <div class="section-header fade-in">
         <span class="section-badge">How It Works</span>
-        <h2>What Local AI Actually Means for Your Organization</h2>
+        <h2>What On-Premises AI Means for Your Organization</h2>
         <p>"No data leaves your building" is not marketing language. It is a description of network architecture.</p>
       </div>
       <div class="card-grid card-grid-3 fade-in">
@@ -217,7 +243,7 @@
     <div class="container">
       <div class="section-header fade-in">
         <span class="section-badge">Workflows</span>
-        <h2>Workflows Island Mountain Hardware Supports</h2>
+        <h2>Insurance Workflows Island Mountain Hardware Supports</h2>
         <p>The same AI capabilities you want from cloud services, running on hardware that doesn't create compliance exposure.</p>
       </div>
       <div class="card-grid card-grid-3 fade-in">
@@ -276,7 +302,7 @@
     <div class="container">
       <div class="section-header fade-in">
         <span class="section-badge">Model Selection</span>
-        <h2>Which Models Work Best</h2>
+        <h2>Which Models Work Best for Insurance Tasks</h2>
       </div>
       <div class="card-grid card-grid-3 fade-in">
         <div class="card" style="text-align:center;">
@@ -411,7 +437,7 @@
     <div class="container">
       <div class="section-header fade-in">
         <span class="section-badge">Regulatory Context</span>
-        <h2>HIPAA, NAIC Model Laws, and Insurance Data Protection</h2>
+        <h2>HIPAA, NAIC Model Laws, and the Case for Local AI</h2>
       </div>
       <div class="fade-in" style="max-width:760px;margin:0 auto;">
         <p style="font-size:1.05rem;line-height:1.9;">For health insurers, HIPAA's Privacy Rule (45 CFR Parts 160 and 164) limits the use and disclosure of protected health information. The Security Rule mandates administrative, physical, and technical safeguards -- including access controls, audit controls, and transmission security. When PHI is processed through cloud AI infrastructure, the cloud provider becomes a business associate requiring a BAA and compliance documentation.</p>
@@ -439,7 +465,7 @@
     <div class="container">
       <div class="section-header fade-in">
         <span class="section-badge">Insurance Questions</span>
-        <h2>Questions Insurance Carriers Ask</h2>
+        <h2>Questions Insurance Organizations Ask About Local AI</h2>
       </div>
       <div class="risk-grid fade-in">
         <div class="risk-card">
@@ -476,7 +502,7 @@
 
   <!-- AEO Summary -->
   <div style="border-left:3px solid var(--copper);padding:16px 20px;margin:32px 0;background:rgba(217,119,6,0.05);border-radius:0 8px 8px 0;">
-  <strong>Summary:</strong> Local AI infrastructure keeps policyholder data -- including health records, financial information, and claims history -- inside your institution's network. No cloud transmission, no BAA dependency, no third-party data exposure.
+  <strong>Summary:</strong> Island Mountain builds on-premises AI inference hardware for insurance carriers. Process claims, underwriting, and fraud detection on NVIDIA H100/H200 servers you own. Policyholder PII and protected health information stay inside your network -- no cloud transmission, no BAA dependency, no third-party data exposure. Systems start at $75,000 with air-gap capability and unlimited inference.
   </div>
 
   <!-- Testimonials -->

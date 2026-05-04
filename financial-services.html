@@ -33,32 +33,36 @@
     "@context": "https://schema.org",
     "@type": "FAQPage",
     "mainEntity": [
-      {"@type": "Question",
-        "name": "Does using cloud AI for financial document processing violate GLBA?",
+      {
+        "@type": "Question",
+        "name": "Does using cloud AI for banking operations create GLBA compliance risk?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "When customer non-public personal information (NPI) is transmitted to a cloud AI provider for processing, that data has been disclosed to a third party. The GLBA Safeguards Rule (16 CFR Part 314) requires financial institutions to develop and maintain a comprehensive information security program that protects customer information. Cloud AI processing creates a structural dependency on vendor infrastructure for NPI handling. Local AI hardware eliminates this transmission entirely because NPI never leaves your institutional network."
+          "text": "When a financial institution transmits non-public personal information (NPI) to a cloud AI provider for processing, that data leaves the institution's security perimeter and enters third-party infrastructure. The Gramm-Leach-Bliley Act Safeguards Rule (16 CFR Part 314) requires financial institutions to develop, implement, and maintain a comprehensive information security program that protects customer NPI. Cloud AI processing creates a structural dependency on the vendor's security posture for GLBA compliance. PCI DSS v4.0 adds further requirements for cardholder data environments. On-premises AI hardware from Island Mountain eliminates this transmission entirely. NPI stays on servers inside your facility, under your physical and logical security controls, with no third-party data handling dependency. The GLBA compliance question shifts from evaluating a vendor's security program to controlling your own."
         }
       },
-      {"@type": "Question",
-        "name": "What financial workflows can a bank run on Island Mountain hardware?",
+      {
+        "@type": "Question",
+        "name": "What AI workflows can a bank or credit union run on Island Mountain hardware?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Island Mountain hardware supports loan document review, KYC and AML analysis, regulatory reporting, fraud detection support, customer communication drafting, and investment analysis. The system runs DeepSeek V4-Flash for complex multi-document analysis and Llama 3.1 70B for general drafting tasks. All processing happens on hardware inside your facility with no data transmitted externally."
+          "text": "Island Mountain hardware supports loan document review and risk assessment, KYC and AML compliance analysis, fraud detection and investigation support, regulatory reporting and compliance drafting, customer communication and disclosure generation, and investment analysis and portfolio documentation. The system runs DeepSeek V4-Flash for complex analytical tasks like multi-document regulatory review and loan portfolio assessment, and Llama 3.1 70B for general drafting including customer correspondence and compliance memoranda. All processing happens on NVIDIA H100 or H200 GPUs inside your facility with no data transmitted to external servers."
         }
       },
-      {"@type": "Question",
-        "name": "How does the cost compare to cloud AI for a 50-person financial institution?",
+      {
+        "@type": "Question",
+        "name": "How does the cost of on-premises AI compare to cloud AI for a financial institution with 50 users?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Cloud AI subscriptions for financial services typically cost $50 to $200 per user per month, totaling $30,000 to $120,000 per year for 50 users. Over three years that is $90,000 to $360,000 in cumulative subscription fees with continued NPI exposure. An Island Mountain Starter system costs $75,000 to $85,000 as a one-time purchase. After purchase the only ongoing cost is electricity at approximately $100 to $200 per month. Cost parity is typically reached within year one to two depending on user count."
+          "text": "Cloud AI subscriptions for financial services platforms typically cost $50 to $200 per user per month. For 50 users, that totals $30,000 to $120,000 per year. Over three years, cumulative cloud costs reach $90,000 to $360,000 with no ownership and continued NPI exposure on every query. An Island Mountain Starter system with two NVIDIA H100 GPUs costs $75,000 to $85,000 as a one-time purchase. Ongoing costs are limited to electricity at approximately $100 to $200 per month. For institutions with 50 or more users, the local system reaches cost parity with mid-tier cloud subscriptions within the first year while eliminating GLBA and PCI DSS compliance risk from AI operations entirely. The system is Section 179 eligible for full first-year depreciation."
         }
       },
-      {"@type": "Question",
-        "name": "Does our institution need dedicated IT staff to run local AI hardware?",
+      {
+        "@type": "Question",
+        "name": "Does a bank need dedicated IT staff to run on-premises AI hardware?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "No. Island Mountain systems ship pre-configured with all models installed and OpenWebUI ready to use. Your staff accesses it through a web browser. Initial setup requires racking the server, connecting a 208V/30A power circuit, and plugging in an ethernet cable. Island Mountain includes 30 days of hands-on setup support. Ongoing maintenance involves standard Linux security updates and occasional model updates. Most institutions with even a part-time IT contractor or managed service provider can maintain the system without difficulty."
+          "text": "No. Island Mountain systems ship pre-configured with all models installed and the OpenWebUI browser-based interface ready to use. Your staff accesses it through a web browser on your internal network, the same way they would access any internal application. Initial setup requires racking the server in your data center or server closet, connecting a 208V 30A power circuit, and plugging in an ethernet cable. Island Mountain includes 30 days of hands-on setup support. Ongoing maintenance involves standard Linux security updates and occasional model updates. Most financial institutions with existing IT staff or a managed service provider can maintain the system alongside their other infrastructure without dedicated AI personnel."
         }
       }
     ]
@@ -75,6 +79,28 @@
       {"@type": "ListItem", "position": 2, "name": "Solutions", "item": "https://islandmountain.io/solutions.html"},
       {"@type": "ListItem", "position": 3, "name": "Financial Services", "item": "https://islandmountain.io/financial-services.html"}
     ]
+  }
+  </script>
+
+  <!-- Product Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "Island Mountain Starter — On-Premises AI Server for Financial Services",
+    "description": "Pre-built, burn-tested AI inference server with 2x NVIDIA H100 80GB GPUs. Air-gap capable. GLBA and PCI DSS compliance-ready. Includes DeepSeek V4-Flash, Llama 3.1 70B, and OpenWebUI.",
+    "brand": {
+      "@type": "Brand",
+      "name": "Island Mountain"
+    },
+    "offers": {
+      "@type": "AggregateOffer",
+      "lowPrice": "75000",
+      "highPrice": "400000",
+      "priceCurrency": "USD",
+      "offerCount": "3"
+    },
+    "category": "AI Inference Hardware for Financial Services"
   }
   </script>
 </head>
@@ -183,7 +209,7 @@
     <div class="container">
       <div class="section-header fade-in">
         <span class="section-badge">How It Works</span>
-        <h2>What Local AI Actually Means for Your Organization</h2>
+        <h2>What On-Premises AI Actually Means for Your Institution</h2>
         <p>"No data leaves your building" is not marketing language. It is a description of network architecture.</p>
       </div>
       <div class="card-grid card-grid-3 fade-in">
@@ -217,7 +243,7 @@
     <div class="container">
       <div class="section-header fade-in">
         <span class="section-badge">Workflows</span>
-        <h2>Workflows Island Mountain Hardware Supports</h2>
+        <h2>AI Workflows Island Mountain Hardware Supports</h2>
         <p>The same AI capabilities you want from cloud services, running on hardware that doesn't create compliance exposure.</p>
       </div>
       <div class="card-grid card-grid-3 fade-in">
@@ -276,7 +302,7 @@
     <div class="container">
       <div class="section-header fade-in">
         <span class="section-badge">Model Selection</span>
-        <h2>Which Models Work Best</h2>
+        <h2>Which Models Work Best for Financial Tasks</h2>
       </div>
       <div class="card-grid card-grid-3 fade-in">
         <div class="card" style="text-align:center;">
@@ -439,7 +465,7 @@
     <div class="container">
       <div class="section-header fade-in">
         <span class="section-badge">Financial Services Questions</span>
-        <h2>Questions Financial Institutions Ask</h2>
+        <h2>Questions Financial Institutions Ask About Local AI</h2>
       </div>
       <div class="risk-grid fade-in">
         <div class="risk-card">
@@ -476,7 +502,7 @@
 
   <!-- AEO Summary -->
   <div style="border-left:3px solid var(--copper);padding:16px 20px;margin:32px 0;background:rgba(217,119,6,0.05);border-radius:0 8px 8px 0;">
-  <strong>Summary:</strong> Local AI infrastructure keeps non-public personal information inside your institution's network, eliminating the third-party data transmission that creates GLBA and PCI DSS compliance risk when using cloud AI services.
+  <strong>Summary:</strong> Island Mountain builds on-premises AI inference hardware for banks, credit unions, and investment firms. Local deployment keeps non-public personal information inside your institution's network, eliminating the third-party data transmission that creates GLBA and PCI DSS compliance risk when using cloud AI services. Systems start at $75,000 with NVIDIA H100 GPUs, air-gap capability, and zero per-token fees.
   </div>
 
   <!-- Testimonials -->
