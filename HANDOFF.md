@@ -229,6 +229,40 @@ Keyword-to-section placement: COMPLETE (Session 4). Top 5 long-tail keywords per
 
 Internal cross-linking: COMPLETE (Session 4). Contextual body links added: insurance↔medical-practices (HIPAA), insurance↔financial-services (GLBA), energy↔defense-contractors (air-gap), energy↔government (FERC), government↔defense-contractors (CUI/NIST), government↔tribal-nations (sovereignty), government↔education (FERPA), education↔research-labs (IRB), education↔medical-practices (campus health), education↔government (public funding). CTA cross-links also updated.
 
+### Pending: Session 5 (FAQ Refinement + Authority Avatars)
+
+**Task 1: FAQ Answer Snippet Optimization (All 10 Verticals)**
+
+Current FAQ answers (both in JSON-LD schema and on-page FAQ cards) are enriched but lengthy. Featured snippets and AI answer engines prefer a crisp 2-3 sentence direct answer FIRST, with expansion after. Rewrite pattern:
+
+- Lead with a direct yes/no or declarative answer (1 sentence)
+- Follow with the mechanism/how (1-2 sentences)
+- Then expand with details (remaining content)
+
+Target pages: law-firms.html, medical-practices.html, tribal-nations.html, research-labs.html, defense-contractors.html, financial-services.html, insurance.html, energy-utilities.html, government.html, education.html
+
+Applies to: on-page FAQ card answers (in body HTML) AND JSON-LD FAQPage schema "text" fields. Both must match.
+
+**Task 2: Authority Avatar Badges (All 10 Verticals)**
+
+Add a static "Compliance Frameworks We Address" section to each vertical page showing styled text badges with Remixicon shield/lock icons paired with framework names. NOT actual organization logos (trademark issues). Visual trust signal that communicates compliance fluency.
+
+Implementation: Horizontal row of bordered boxes, each containing a Remixicon icon + framework name. Uses existing CSS custom properties. Placed after the hero/intro section, before "How It Works."
+
+Badge map per page:
+- law-firms: Attorney-Client Privilege, ABA Model Rules, Federal Rules of Civil Procedure
+- medical-practices: HIPAA Security Rule, 45 CFR 164, HITECH Act
+- tribal-nations: OCAP Principles, CLOUD Act, Tribal Sovereignty
+- research-labs: 21 CFR Part 11, IRB Requirements, GxP Compliance
+- defense-contractors: DFARS 252.204-7012, CMMC Level 2, NIST SP 800-171
+- financial-services: GLBA Safeguards Rule, PCI DSS v4.0, SEC Reg S-P
+- insurance: HIPAA Security Rule, NAIC Model Law #668, State Insurance Regs
+- energy-utilities: NERC CIP-003-013, IEC 62443, TSA Pipeline Security
+- government: FedRAMP, NIST SP 800-171, FISMA, CJIS Security Policy
+- education: FERPA (34 CFR 99), COPPA, State Student Privacy Laws
+
+Prompt file: SEO-SESSION-5-FAQ-AVATARS.md
+
 ### Execution Files
 
 VERTICAL-EXPANSION-SEO-AEO.md (1007 lines): Full SEO/AEO revision spec with JSON-LD schemas, keyword-to-section maps, optimized headings, enriched FAQ answers, and enhanced AEO blocks for all 5 new verticals plus solutions hub updates.
@@ -238,6 +272,10 @@ Prompt files (in workspace root):
 - SEO-SESSION-2-ENERGY-GOVERNMENT.md: Same scope for energy-utilities.html and government.html.
 - SEO-SESSION-3-EDUCATION-SOLUTIONS.md: Same scope for education.html plus solutions.html meta/schema/AEO updates.
 - SEO-SESSION-4-CROSSLINKS-VERIFY.md: Internal cross-linking, keyword placement audit, entity reinforcement verification across all pages.
+- SEO-SESSION-5-FAQ-AVATARS.md: FAQ answer snippet optimization (all 10 verticals) + Authority Avatar badge implementation.
+- SEO-SESSION-6-KEYWORD-DEPTH.md: Remaining 75 long-tail keywords (keywords 6-20) placed across 5 new verticals per VERTICAL-EXPANSION-SEO-AEO.md maps.
+- SEO-SESSION-7-ORIGINAL-SCHEMAS.md: Product JSON-LD schemas for original 5 verticals (law-firms, medical-practices, tribal-nations, research-labs, defense-contractors).
+- SEO-SESSION-8-OFFPAGE.md: Off-page SEO execution package (GSC, directories, press release, LinkedIn articles, podcast pitches).
 
 ---
 

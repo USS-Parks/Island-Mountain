@@ -38,7 +38,7 @@
         "name": "Does using cloud AI for legal research violate attorney-client privilege?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "When client data is transmitted to a cloud AI provider for processing, that data has been disclosed to a third party. Under ABA Model Rule 1.6, attorneys have a duty to make reasonable efforts to prevent unauthorized disclosure of client information. Multiple state bar ethics opinions have addressed this issue, and the consensus is that attorneys must evaluate whether cloud AI providers offer adequate confidentiality protections. The structural problem is that cloud processing inherently involves transmitting confidential data outside the firm's control. Local AI hardware eliminates this transmission entirely because the data never leaves your premises."
+          "text": "Yes. Cloud AI transmits client data to third-party infrastructure, constituting disclosure that risks waiving attorney-client privilege. ABA Model Rule 1.6 requires reasonable efforts to prevent unauthorized disclosure of client information -- cloud processing moves confidential data outside the firm's control by design. Multiple state bar ethics opinions confirm that attorneys must evaluate whether cloud AI providers offer adequate confidentiality protections. On-premises AI hardware from Island Mountain eliminates this transmission entirely. Client data stays on NVIDIA H100 or H200 servers inside your office. No third-party disclosure. No privilege risk from the AI infrastructure itself."
         }
       },
       {
@@ -46,7 +46,7 @@
         "name": "What AI workflows can a law firm run on Island Mountain hardware?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Island Mountain hardware supports contract review and clause analysis, legal research synthesis across case law and statutes, first-draft generation for briefs and motions and correspondence, deposition preparation including witness statement analysis, document comparison and redlining support, client intake summarization, and billing narrative drafting. The system runs DeepSeek V4-Flash for complex analytical tasks and Llama 3.1 70B for general drafting work. All processing happens on hardware inside your office with no data transmitted externally."
+          "text": "Island Mountain hardware supports contract review and clause analysis, legal research synthesis, brief and motion drafting, deposition preparation, document comparison, client intake summarization, and billing narrative drafting. The system runs DeepSeek V4-Flash for complex analytical tasks like multi-document case law synthesis, and Llama 3.1 70B for general drafting work. All processing occurs on NVIDIA H100 or H200 GPUs inside your office with zero data transmitted to external servers."
         }
       },
       {
@@ -54,7 +54,7 @@
         "name": "How does the cost of local AI compare to cloud AI subscriptions for a 10-attorney firm?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Cloud AI subscriptions for legal-specific platforms typically cost $50 to $200 per user per month, which totals $6,000 to $24,000 per year for 10 attorneys. Over three years, that is $18,000 to $72,000 in cumulative subscription fees with no ownership and continued data exposure. An Island Mountain Starter system costs $75,000 to $85,000 as a one-time purchase. After purchase, the only ongoing cost is electricity at approximately $100 to $200 per month. By year three, the local system has typically reached cost parity with mid-tier cloud subscriptions while eliminating privilege risk entirely."
+          "text": "Cloud AI subscriptions for legal platforms typically cost $50 to $200 per user per month, totaling $6,000 to $24,000 per year for 10 attorneys. Over three years: $18,000 to $72,000 cumulative with no ownership and continued privilege exposure on every query. An Island Mountain Starter system with two NVIDIA H100 GPUs costs $75,000 to $85,000 as a one-time purchase. Ongoing costs limited to electricity (~$100-$200/month). Cost parity typically reached by year two to three while eliminating privilege risk entirely. Section 179 eligible for full first-year depreciation."
         }
       },
       {
@@ -62,7 +62,7 @@
         "name": "Does our firm need dedicated IT staff to run local AI hardware?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "No. Island Mountain systems ship pre-configured with all models installed and OpenWebUI ready to use. Your staff accesses it through a web browser, the same way they would use any cloud AI service. Initial setup requires racking the server, connecting a 208V/30A power circuit, and plugging in an ethernet cable. Island Mountain includes 30 days of hands-on setup support. Ongoing maintenance involves standard Linux security updates and occasional model updates through the OpenWebUI interface. Most firms with even a part-time IT contractor or managed service provider can maintain the system without difficulty."
+          "text": "No. The system ships pre-configured with all models installed and OpenWebUI ready for browser-based access. Setup requires racking the server, connecting a 208V 30A power circuit, and plugging in ethernet. Island Mountain provides 30 days of hands-on setup support. Ongoing maintenance is standard Linux server administration -- most firms with even a part-time IT contractor or managed service provider can maintain the system without additional hiring."
         }
       }
     ]

@@ -38,7 +38,7 @@
         "name": "Do I need a Business Associate Agreement to use local AI with patient data?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "No. A BAA is required under HIPAA when you share Protected Health Information with a third-party service provider (a business associate). When you run AI on hardware you own, on your own network, with no data transmitted to any external service, there is no business associate relationship. The data never leaves your infrastructure, so the BAA requirement does not apply. This is the core advantage of local AI for medical practices: it removes the cloud provider from the compliance equation entirely."
+          "text": "No. A Business Associate Agreement is only required under HIPAA when Protected Health Information (PHI) is shared with a third-party service provider. On-premises AI hardware processes PHI entirely within your facility -- no data transmitted to any external service means no business associate relationship exists. The BAA requirement under 45 CFR Part 164 does not apply because no third-party handling occurs. Island Mountain hardware with NVIDIA H100 or H200 GPUs keeps ePHI on servers you own, inside your network, under your HIPAA Security Rule controls. The HITECH Act's breach notification requirements become far simpler when PHI never leaves the building."
         }
       },
       {
@@ -46,7 +46,7 @@
         "name": "Is Island Mountain hardware a medical device or clinical decision support tool?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "No. Island Mountain hardware is general-purpose AI inference infrastructure. It is not a medical device. It is not classified under FDA regulations. It does not provide clinical decision support, diagnostic assistance, or treatment recommendations. It does not integrate with EHR systems. It is the same type of AI capability your staff currently accesses through cloud services like ChatGPT, now running on hardware you physically control. Any use of AI output in clinical contexts requires the same professional judgment and oversight that applies to any other information source."
+          "text": "No. Island Mountain hardware is general-purpose AI inference infrastructure, not a medical device or clinical decision support tool. It is not classified under FDA regulations and does not provide diagnostic assistance or treatment recommendations. The system runs the same type of large language models available through cloud services, but on NVIDIA H100 or H200 GPUs inside your facility under your direct control. Any use of AI output in clinical contexts requires the same professional judgment that applies to any information source."
         }
       },
       {
@@ -54,7 +54,7 @@
         "name": "Can non-technical medical staff use the system without IT training?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes. The system runs OpenWebUI, a browser-based chat interface. Staff open a web browser on any device connected to your office network, log in with their credentials, and start typing prompts. The interface looks and works like ChatGPT. No command line, no technical configuration, no special software installation. Administrative staff, billing specialists, and clinical support staff who can use a web browser can use the system on day one."
+          "text": "Yes. The system runs OpenWebUI, a browser-based interface that works like ChatGPT. Staff open any web browser on the office network, log in, and start typing. No command line, no technical configuration, no software installation. Administrative staff, billing specialists, and clinical support staff who can use a web browser can use the system on day one. Island Mountain provides 30 days of hands-on setup support included with purchase."
         }
       },
       {
@@ -62,7 +62,7 @@
         "name": "How does the cost compare to cloud AI for a 15-provider medical practice?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Cloud AI subscriptions for healthcare-adjacent platforms typically cost $30 to $150 per user per month. For 15 providers plus 10 administrative staff (25 total users), that is $9,000 to $45,000 per year. Over three years, cumulative cloud costs reach $27,000 to $135,000 with ongoing BAA management overhead and breach exposure at every session. An Island Mountain Starter system costs $75,000 to $85,000 one time. After purchase, the only ongoing cost is electricity at approximately $100 to $200 per month. No per-user fees. No per-token charges. No BAA required."
+          "text": "Cloud AI subscriptions for healthcare platforms typically cost $30 to $150 per user per month. For 25 users (15 providers plus 10 staff), that totals $9,000 to $45,000 per year with ongoing BAA management overhead and breach exposure on every query. An Island Mountain Starter system with two NVIDIA H100 GPUs costs $75,000 to $85,000 as a one-time purchase. Ongoing costs limited to electricity (~$100-$200/month). No per-user fees. No per-token charges. No BAA required. Cost parity typically reached within two years while eliminating HIPAA compliance risk from AI operations entirely."
         }
       }
     ]
