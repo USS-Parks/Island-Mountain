@@ -187,6 +187,16 @@
     </div>
   </section>
 
+  
+  <section style="padding:32px 0 0;">
+    <div class="container">
+      <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:16px;max-width:800px;margin:0 auto;">
+      <div style="display:flex;align-items:center;gap:8px;padding:10px 18px;border:1px solid rgba(245,158,11,0.3);border-radius:6px;background:rgba(245,158,11,0.04);"><i class="ri-shield-check-line" style="color:var(--copper);font-size:1.1rem;"></i><span style="font-size:0.85rem;font-weight:600;color:var(--text-light);">DFARS 252.204-7012</span></div>
+      <div style="display:flex;align-items:center;gap:8px;padding:10px 18px;border:1px solid rgba(245,158,11,0.3);border-radius:6px;background:rgba(245,158,11,0.04);"><i class="ri-lock-line" style="color:var(--copper);font-size:1.1rem;"></i><span style="font-size:0.85rem;font-weight:600;color:var(--text-light);">CMMC Level 2</span></div>
+      <div style="display:flex;align-items:center;gap:8px;padding:10px 18px;border:1px solid rgba(245,158,11,0.3);border-radius:6px;background:rgba(245,158,11,0.04);"><i class="ri-file-shield-2-line" style="color:var(--copper);font-size:1.1rem;"></i><span style="font-size:0.85rem;font-weight:600;color:var(--text-light);">NIST SP 800-171</span></div>
+      </div>
+    </div>
+  </section>
   <!-- What Local AI Means for Defense -->
   <section class="section section-dark">
     <div class="container">
@@ -427,19 +437,19 @@
       <div class="risk-grid fade-in">
         <div class="risk-card">
           <h4><i class="ri-file-shield-2-line"></i> Can I process CUI through a commercial cloud AI API?</h4>
-          <p>Generally no. CUI must be processed in NIST SP 800-171 compliant environments. Most commercial AI API endpoints do not operate on FedRAMP High authorized infrastructure. Local hardware under your security controls provides a CUI processing path that avoids the cloud compliance question entirely. Consult your compliance officer for your specific contractual requirements.</p>
+          <p>No. Commercial cloud AI APIs are generally incompatible with CUI handling requirements under DFARS 252.204-7012. CUI must be processed in environments meeting NIST SP 800-171 security requirements -- most commercial AI endpoints do not operate on FedRAMP High authorized infrastructure. On-premises AI hardware from Island Mountain processes CUI-adjacent documents under your own security controls.</p>
         </div>
         <div class="risk-card">
           <h4><i class="ri-global-line"></i> Does cloud AI create ITAR export risk?</h4>
-          <p>Potentially yes. If cloud infrastructure is accessible to foreign nationals, processing ITAR-controlled technical data through it may constitute an unauthorized export under 22 CFR 120-130. Local hardware in your facility, under your access controls, eliminates this data transmission. This is a complex area -- consult your export control counsel.</p>
+          <p>Yes. If a cloud AI provider's infrastructure is accessible to foreign nationals or located outside the United States, processing ITAR-controlled technical data constitutes potential unauthorized export under 22 CFR 120-130. On-premises Island Mountain hardware under your physical access controls eliminates this export control concern entirely. Consult your export compliance officer for fact-specific guidance.</p>
         </div>
         <div class="risk-card">
           <h4><i class="ri-shield-check-line"></i> Does this hardware have CMMC certification?</h4>
-          <p>No. No hardware component carries CMMC certification. CMMC evaluates organizational security posture, not equipment. Local AI hardware supports a compliant posture by keeping data processing within your controlled environment, under your access controls, with air-gap capability -- but it does not certify compliance.</p>
+          <p>Island Mountain hardware is commercial off-the-shelf AI infrastructure -- it does not carry CMMC certification itself. However, on-premises hardware under your physical and logical access controls directly supports CMMC Level 2 practices for access control, media protection, and system/communications protection. Air-gap capability and network segregation satisfy the most restrictive NIST SP 800-171 controls.</p>
         </div>
         <div class="risk-card">
           <h4><i class="ri-wifi-off-line"></i> Can it operate air-gapped?</h4>
-          <p>Yes. After initial configuration and model installation, the system operates without internet connectivity. Models run locally from NVMe storage. The inference engine and user interface are self-contained. Model updates in air-gapped environments require manual transfer using approved removable media.</p>
+          <p>Yes. All models are pre-loaded on local NVMe drives before delivery. The inference engine and OpenWebUI interface run entirely locally -- zero external network connectivity required for daily operations. Model updates in air-gapped environments use approved removable media transfer. Designed for environments where DFARS, CMMC, and ITAR require complete network isolation.</p>
         </div>
       </div>
       <div style="text-align:center;margin-top:32px;">
