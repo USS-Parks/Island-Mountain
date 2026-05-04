@@ -68,10 +68,10 @@
       },
       {
         "@type": "Question",
-        "name": "Can I run DeepSeek V4-Flash on the Starter or Performance tier?",
+        "name": "Can I run DeepSeek V4-Flash on the Summit Base or Summit Ridge tier?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes, with quantization. DeepSeek V4-Flash is a 284B-parameter model that requires approximately 282GB of VRAM at full FP16 quality. The Starter tier (2x H100, 160GB total VRAM) runs V4-Flash quantized at 80-100GB, preserving reasoning capability while enabling efficient inference. The Performance tier (H100 + H200, 160GB VRAM) can also run the quantized version. For full FP16 quality V4-Flash, the Premium tier with 2x H200 141GB GPUs (282GB total VRAM) is the minimum configuration. The Premium tier is expected to ship Q3 2026."
+          "text": "Yes, with quantization. DeepSeek V4-Flash is a 284B-parameter model that requires approximately 282GB of VRAM at full FP16 quality. The Summit Base tier (2x H100, 160GB total VRAM) runs V4-Flash quantized at 80-100GB, preserving reasoning capability while enabling efficient inference. The Summit Ridge tier (H100 + H200, 160GB VRAM) can also run the quantized version. For full FP16 quality V4-Flash, the Summit Pinnacle tier with 2x H200 141GB GPUs (282GB total VRAM) is the minimum configuration. The Summit Pinnacle tier is expected to ship Q3 2026."
         }
       },
       {
@@ -79,7 +79,7 @@
         "name": "How does OpenWebUI handle multiple users accessing the system at the same time?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "OpenWebUI manages concurrent users through a request queue. vLLM's continuous batching groups compatible requests to maximize GPU throughput. Each user sees their own conversation interface and history with no cross-user data leakage. On the Starter tier (2x H100, 160GB VRAM), expect response time increases when more than 5-8 users are prompting simultaneously. The Performance tier ($150K-$160K, custom H100 config) comfortably serves 10-15 simultaneous users for typical business tasks."
+          "text": "OpenWebUI manages concurrent users through a request queue. vLLM's continuous batching groups compatible requests to maximize GPU throughput. Each user sees their own conversation interface and history with no cross-user data leakage. On the Summit Base tier (2x H100, 160GB VRAM), expect response time increases when more than 5-8 users are prompting simultaneously. The Summit Ridge tier ($150K-$160K, custom H100 config) comfortably serves 10-15 simultaneous users for typical business tasks."
         }
       }
     ]
@@ -222,7 +222,7 @@
       <div class="section-header fade-in">
         <span class="section-badge">Pre-Installed</span>
         <h2>Pre-Installed Models: DeepSeek V4-Flash, Llama 3.1 70B, Mixtral 8x22B</h2>
-        <p>Every Island Mountain Starter and Performance system ships with these models installed, configured, and tested.</p>
+        <p>Every Island Mountain Summit Base and Summit Ridge system ships with these models installed, configured, and tested.</p>
       </div>
       <div class="card-grid card-grid-3 fade-in">
         <div class="card">
@@ -231,7 +231,7 @@
           </div>
           <h3>DeepSeek V4-Flash</h3>
           <p><strong>~80-100GB VRAM (Quantized)</strong></p>
-          <p>284B parameter mixture-of-experts model with 1M token context window. Runs quantized on Starter tier for efficient local inference. Exceptional at code analysis, long-document processing, and complex reasoning tasks. Full-quality version available on Premium tier.</p>
+          <p>284B parameter mixture-of-experts model with 1M token context window. Runs quantized on Summit Base tier for efficient local inference. Exceptional at code analysis, long-document processing, and complex reasoning tasks. Full-quality version available on Summit Pinnacle tier.</p>
         </div>
         <div class="card">
           <div class="card-icon card-icon-indigo">
@@ -304,7 +304,7 @@
       <div class="fade-in" style="max-width:760px;margin:0 auto;">
         <p style="font-size:1.05rem;line-height:1.9;">A single Island Mountain server supports multiple simultaneous users. This is not a theoretical claim -- it is how the vLLM inference engine operates at the architecture level.</p>
         <p style="font-size:1.05rem;line-height:1.9;">vLLM uses tensor parallelism to distribute model weights across both GPUs in the system. On a dual-A100 or dual-H100 configuration, a 70-billion-parameter model like DeepSeek V4-Flash splits its attention layers and feed-forward blocks across both cards. Each inference request is processed using the combined memory and compute of both GPUs, not queued behind the previous request.</p>
-        <p style="font-size:1.05rem;line-height:1.9;">In practice, a Starter-tier system comfortably handles 5-8 concurrent users running inference queries through the Open WebUI interface, depending on model size, context length, and response length. The Performance tier serves 10-15 simultaneous users. Throughput scales with GPU memory bandwidth -- the H100's 3.35 TB/s HBM3 bandwidth delivers roughly 2x the concurrent throughput of the A100's 2.0 TB/s HBM2e.</p>
+        <p style="font-size:1.05rem;line-height:1.9;">In practice, a Summit Base-tier system comfortably handles 5-8 concurrent users running inference queries through the Open WebUI interface, depending on model size, context length, and response length. The Summit Ridge tier serves 10-15 simultaneous users. Throughput scales with GPU memory bandwidth -- the H100's 3.35 TB/s HBM3 bandwidth delivers roughly 2x the concurrent throughput of the A100's 2.0 TB/s HBM2e.</p>
         <p style="font-size:1.05rem;line-height:1.9;">For organizations running department-wide AI access -- a law firm's attorneys, a tribal government's planning team, a medical practice's clinicians -- this is not a shared-terminal bottleneck. It is genuine concurrent access with response times measured in seconds, not minutes.</p>
       </div>
     </div>
@@ -388,12 +388,12 @@
           <p>Tensor parallelism splits a model across multiple GPUs so they process different parts of each computation simultaneously. Without it, one GPU works while the other sits idle. With vLLM's tensor parallelism, model layers are distributed across both GPUs, cutting inference latency roughly in half. On Island Mountain systems, the H100's 3.35 TB/s memory bandwidth between GPUs enables near-linear scaling. Pre-configured on all Island Mountain systems.</p>
         </div>
         <div class="risk-card">
-          <h4><i class="ri-brain-line"></i> Can I run DeepSeek V4-Flash on the Starter or Performance tier?</h4>
-          <p>The Starter tier runs V4-Flash quantized (80-100GB VRAM), which gives you the 284B parameter model in a more efficient form. For the full FP16 quality version (282GB VRAM), you need the Premium tier (2x H200 141GB GPUs, 282GB total), launching Q3 2026. Quantization preserves reasoning capability while reducing model size significantly.</p>
+          <h4><i class="ri-brain-line"></i> Can I run DeepSeek V4-Flash on the Summit Base or Summit Ridge tier?</h4>
+          <p>The Summit Base tier runs V4-Flash quantized (80-100GB VRAM), which gives you the 284B parameter model in a more efficient form. For the full FP16 quality version (282GB VRAM), you need the Summit Pinnacle tier (2x H200 141GB GPUs, 282GB total), launching Q3 2026. Quantization preserves reasoning capability while reducing model size significantly.</p>
         </div>
         <div class="risk-card">
           <h4><i class="ri-group-line"></i> How does OpenWebUI handle multiple users at once?</h4>
-          <p>OpenWebUI manages concurrent users through a request queue. vLLM's continuous batching groups compatible requests to maximize GPU throughput. Each user sees their own conversation interface -- no cross-user data leakage. The Starter tier (2x H100) handles 5-8 simultaneous users comfortably. The Performance tier handles 10-15 simultaneous users for typical business tasks.</p>
+          <p>OpenWebUI manages concurrent users through a request queue. vLLM's continuous batching groups compatible requests to maximize GPU throughput. Each user sees their own conversation interface -- no cross-user data leakage. The Summit Base tier (2x H100) handles 5-8 simultaneous users comfortably. The Summit Ridge tier handles 10-15 simultaneous users for typical business tasks.</p>
         </div>
       </div>
       <div style="text-align:center;margin-top:32px;">
@@ -411,12 +411,12 @@
       </div>
       <div class="fade-in" style="max-width:760px;margin:0 auto;">
         <p style="font-size:1.05rem;line-height:1.9;">DeepSeek V4-Flash (284B parameters, 13B active via mixture-of-experts) represents the next generation of efficient large-scale inference. With a 1M token context window, it's built for tasks that current models can't handle: full-codebase analysis, book-length document processing, and extended research sessions.</p>
-        <p style="font-size:1.05rem;line-height:1.9;"><strong>Starter Tier (2x H100, $75K-$85K):</strong> V4-Flash runs quantized. This preserves reasoning capability while reducing memory footprint to 80-100GB, enabling efficient local inference on consumer-grade hardware. Ideal for organizations that need V4-Flash capability without the Premium tier investment.</p>
-        <p style="font-size:1.05rem;line-height:1.9;"><strong>Premium Tier ($350K-$400K, Q3 2026):</strong> V4-Flash at full FP16 quality requires approximately 282GB of VRAM -- dual H200 141GB GPUs provide exactly this. This configuration unlocks V4-Flash's maximum reasoning and long-context capabilities for enterprise workloads.</p>
-        <p style="font-size:1.05rem;line-height:1.9;">We validate quantization carefully before shipping. When the Premium tier launches, full-quality V4-Flash support will be real, tested, and documented -- not aspirational.</p>
+        <p style="font-size:1.05rem;line-height:1.9;"><strong>Summit Base Tier (2x H100, $75K-$85K):</strong> V4-Flash runs quantized. This preserves reasoning capability while reducing memory footprint to 80-100GB, enabling efficient local inference on consumer-grade hardware. Ideal for organizations that need V4-Flash capability without the Summit Pinnacle tier investment.</p>
+        <p style="font-size:1.05rem;line-height:1.9;"><strong>Summit Pinnacle Tier ($350K-$400K, Q3 2026):</strong> V4-Flash at full FP16 quality requires approximately 282GB of VRAM -- dual H200 141GB GPUs provide exactly this. This configuration unlocks V4-Flash's maximum reasoning and long-context capabilities for enterprise workloads.</p>
+        <p style="font-size:1.05rem;line-height:1.9;">We validate quantization carefully before shipping. When the Summit Pinnacle tier launches, full-quality V4-Flash support will be real, tested, and documented -- not aspirational.</p>
         <div style="text-align:center;margin-top:40px;">
           <div class="btn-group">
-            <a href="contact.html" class="btn btn-primary">Join the Premium Tier Waitlist</a>
+            <a href="contact.html" class="btn btn-primary">Join the Summit Pinnacle Tier Waitlist</a>
             <a href="products.html" class="btn btn-secondary">See All Product Tiers</a>
           </div>
         </div>
