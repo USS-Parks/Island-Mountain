@@ -1,0 +1,345 @@
+# Island Mountain Website -- Project Context
+
+Last updated: 2026-05-04 (Session 14)
+Live URL: https://islandmountain.io
+GitHub Pages static site. No frameworks, no build step, no SSG.
+Workspace: `C:\Users\17076\Documents\Claude\Island Mountain`
+
+---
+
+## FILE TRUNCATION PREVENTION
+
+This project previously had a file truncation issue caused by sync conflicts between the Cowork bash sandbox and the host filesystem. Files over ~500 lines could get silently chopped during writes. The root cause (308 lines of duplicated inline CSS in every blog post) has been fixed by extracting to css/blog.css. All blog posts are now under 400 lines.
+
+**No file may be left in a truncated state. Ever. No exceptions.**
+
+If a file write or edit results in a truncated file (missing closing tags, mid-sentence breaks, reduced line count from pre-edit baseline), the session is in a failed state until the file is recovered and the edit re-applied cleanly.
+
+Rules for every session:
+
+1. NEVER use the Edit tool on any file over 400 lines. Use sed via bash instead.
+2. After EVERY file modification, verify the file ends correctly by running `tail -5 filename` in bash.
+3. Before declaring any task complete, run the verification script below.
+4. If a file IS truncated, recover from git: `git show HEAD:filename > recovered.html`, apply changes to the recovered copy, then overwrite the original.
+5. For HANDOFF.md itself: before writing, capture the existing content to a .tmp file, append new content, verify the .tmp file, then overwrite the original. Never write HANDOFF.md in a single pass if it exceeds 300 lines.
+6. When appending content to any file, use `cat >> file << 'HEREDOC'` blocks capped at 80 lines per block. Multiple sequential appends are safer than one massive write.
+7. After every write operation, compare actual line count against expected line count. If they diverge, stop and diagnose before proceeding.
+
+Verification script (update the session path for your session):
+
+```
+cd "/sessions/SESSION-SLUG/mnt/Island Mountain"
+for f in *.html blog/*.html; do
+  [ "$f" = "googlecff518dc414acaa3.html" ] && continue
+  lines=$(wc -l < "$f")
+  has_close=$(grep -c '</html>' "$f")
+  if [ "$has_close" -eq 0 ]; then
+    echo "TRUNCATED: $f ($lines lines, no closing tag)"
+  fi
+done
+echo "Verification complete."
+```
+
+Files still at risk (over 400 lines): contact.html (966), faq.html (938), investors.html (676), government.html (641), insurance.html (640), energy-utilities.html (640), education.html (640), financial-services.html (639), law-firms.html (633), tribal-nations.html (626), products.html (619), pricing.html (610), defense-contractors.html (606), medical-practices.html (600), research-labs.html (594), technology.html (536), why-island-mountain.html (495), solutions.html (490), blog.html (482), index.html (530), blog/openwebui-admin-setup-guide.html (433), blog/cloud-ai-vs-local-hardware-tco.html (404), blog/h100-vs-h200-inference-comparison.html (400). Use sed via bash for all files over 400 lines.
+
+---
+
+## PATH MAPPING
+
+The bash sandbox and file tools (Read/Write/Edit/Grep) use different path schemes for the same files. The session slug changes every session.
+
+Tool: Read, Write, Edit, Grep
+Path: C:\Users\17076\Documents\Claude\Island Mountain\filename
+
+Tool: Bash sandbox
+Path: /sessions/SESSION-SLUG/mnt/Island Mountain/filename
+
+To find your bash session path, run: ls /sessions/*/mnt/
+
+Git operations must be run by the user in PowerShell on the host machine. Bash sandbox cannot push to GitHub.
+
+---
+
+## WHAT THIS SITE IS
+
+Island Mountain LLC sells pre-built, burn-tested on-premises AI inference servers with NVIDIA H100 and H200 GPUs. Price range $75K-$400K+. Summit Series product tiers: Summit Base (2x H100 80GB PCIe refurbished, $75-85K), Summit Ridge (build-to-order, $150-160K), Summit Pinnacle (2x H200 141GB, $350-400K, coming Q3 2026). Landfall Series (prosumer, $4,500-$14,000) in development. Citadel Series (multi-rack SCIF systems, $400K+) future tier. Founded 2026, Colorado. Founder is John Dougherty.
+
+Target markets (each has a dedicated landing page): Law Firms, Medical Practices, Tribal Nations, Research Labs, Defense Contractors, Financial Services, Insurance, Energy & Utilities, Government, Education.
+
+Core value proposition: organizations with data that cannot leave the building (HIPAA, ITAR/DFARS, attorney-client privilege, tribal sovereignty/OCAP, FERPA) need AI infrastructure they own outright. No cloud dependency, no token fees, no third-party data exposure.
+
+Contact: basho@islandmountain.io (displayed as info@islandmountain.io on site, mailto routes to basho@)
+LinkedIn: https://www.linkedin.com/company/island-mountain-llc/
+Form handler: FormSubmit.co (posts to basho@islandmountain.io)
+
+---
+
+## TECH STACK
+
+Static HTML/CSS/JS. Every page is hand-written HTML. No templating engine.
+
+css/style.css (1555 lines): Single global stylesheet. CSS custom properties for theming. Includes breadcrumb styles (added 2026-05-01 for vertical page breadcrumbs).
+css/blog.css (306 lines): Blog post styles (article layout, tags, related cards, share links). Loaded by all 11 blog posts via link tag. Blog breadcrumb styles duplicated in style.css for vertical pages.
+js/main.js (257 lines): Navigation, hamburger menu, mobile sidebar, scroll animations, fade-in observers.
+js/charts.js (374 lines): Chart.js graphs for investor page. COGS donut, margin sensitivity line, use of funds bar, revenue projections grouped bar. All data from Island-Mountain-Financial-Model.xlsx (May 2026). Only loaded on investors.html.
+js/vendor/chart.umd.min.js: Chart.js library. Only used by investors.html.
+fonts/fonts.css + fonts/inter-latin.woff2: Self-hosted Inter variable font (latin subset). No Google CDN.
+icons/remixicon.css + icons/remixicon.woff2: Self-hosted Remixicon icons. No jsDelivr CDN.
+
+Brand colors (CSS custom properties):
+--copper: #f59e0b (primary accent, amber/copper)
+--copper-light: #fbbf24, --copper-deep: #d97706, --copper-darker: #b45309
+--primary-dark: #0f172a (deep navy background)
+--secondary-dark: #1e293b, --tertiary-dark: #334155
+--text-light: #f1f5f9 (headings), --text-muted: #94a3b8 (body text)
+--nav-height: 80px, --max-width: 1200px
+
+No analytics. No cookies. No tracking scripts.
+
+---
+
+## FILE INVENTORY (35 content pages)
+
+### Root Pages (23 files)
+
+index.html (530 lines): Homepage. Hero, Summit Series product comparison, Landfall Series teaser, trust stats, deployment scenarios, founder bio. Schema: Organization, WebSite, Product (x3).
+products.html (619 lines): Summit Series product tiers (Base/Ridge/Pinnacle) with GPU provenance section, Landfall Series teaser section, full specs. Schema: Product (x3), FAQPage, BreadcrumbList.
+pricing.html (610 lines): Pricing table, financing, TCO comparison. Schema: Product (x3), FAQPage, BreadcrumbList.
+why-island-mountain.html (495 lines): Value proposition. Links to all 10 verticals. Schema: FAQPage, BreadcrumbList.
+technology.html (536 lines): Software stack with multi-user concurrency section, air-gap configuration reference. Ollama, vLLM, Open WebUI, Ubuntu. Schema: SoftwareApplication, FAQPage, BreadcrumbList.
+solutions.html (490 lines): Hub page linking all 10 industry verticals + blog crosslinks. Schema: FAQPage, BreadcrumbList.
+faq.html (938 lines): 27 Q&A pairs. Schema: FAQPage, WebPage, BreadcrumbList.
+contact.html (966 lines): Contact form (FormSubmit.co), embedded Google Map. Schema: LocalBusiness, BreadcrumbList.
+blog.html (482 lines): Blog index listing all posts. Schema: Blog, BreadcrumbList.
+investors.html (676 lines): Full investor page. 11 sections. Charts powered by js/charts.js. Landfall Series and Citadel Series product roadmap expansion in Milestones section. Schema: Organization, BreadcrumbList.
+about.html (320 lines): Company story, founder bio. Schema: AboutPage, Person, BreadcrumbList.
+law-firms.html (633 lines): Vertical. Attorney-client privilege, discovery risk. Schema: FAQPage, BreadcrumbList, Product. AEO block. Founder bio. Deployment scenarios. 20 long-tail keywords.
+medical-practices.html (600 lines): Vertical. HIPAA, ePHI, BAA. Schema: FAQPage, BreadcrumbList, Product. AEO block. Founder bio. Deployment scenarios. 20 long-tail keywords.
+tribal-nations.html (626 lines): Vertical. OCAP, CLOUD Act, sovereignty. Schema: FAQPage, BreadcrumbList, Product, GovOrg. AEO block. Founder bio. Deployment scenarios. 20 long-tail keywords.
+research-labs.html (594 lines): Vertical. FERPA, IRB, GxP, 21 CFR Part 11. Schema: FAQPage, BreadcrumbList, Product. AEO block. Founder bio. Deployment scenarios. 20 long-tail keywords.
+defense-contractors.html (606 lines): Vertical. ITAR, DFARS 252.204-7012, CMMC, CUI. Schema: FAQPage, BreadcrumbList, Product. AEO block. Founder bio. Deployment scenarios. 20 long-tail keywords.
+financial-services.html (639 lines): Vertical. GLBA, PCI DSS, SEC Reg S-P. Schema: FAQPage, BreadcrumbList, Product. AEO block. Authority Avatar badges. Founder bio. Deployment scenarios. 20 long-tail keywords.
+insurance.html (640 lines): Vertical. HIPAA (health insurers), NAIC Model Law #668, state regs. Schema: FAQPage, BreadcrumbList, Product. AEO block. Authority Avatar badges. Founder bio. Deployment scenarios. 20 long-tail keywords.
+energy-utilities.html (640 lines): Vertical. NERC CIP, IEC 62443, FERC, TSA Pipeline Security. Schema: FAQPage, BreadcrumbList, Product. AEO block. Authority Avatar badges. Founder bio. Deployment scenarios. 20 long-tail keywords.
+government.html (641 lines): Vertical. FedRAMP, FISMA, NIST SP 800-171, CUI. Schema: FAQPage, BreadcrumbList, Product. AEO block. Authority Avatar badges. Founder bio. Deployment scenarios. 20 long-tail keywords.
+education.html (640 lines): Vertical. FERPA, COPPA, state student privacy laws. Schema: FAQPage, BreadcrumbList, Product. AEO block. Authority Avatar badges. Founder bio. Deployment scenarios. 20 long-tail keywords.
+privacy.html (235 lines): Privacy policy. Schema: WebPage, BreadcrumbList.
+terms.html (246 lines): Terms of service. Schema: WebPage, BreadcrumbList.
+
+### Blog Posts (12 files in blog/ subdirectory)
+
+All use ../ prefix for root-level links. All load css/blog.css via external link tag (inline CSS extracted 2026-05-01). All have: BlogPosting schema, BreadcrumbList schema, breadcrumb, article-meta, AEO summary, CTA, 3 related article cards, share links (LinkedIn + X).
+
+Blog tag CSS classes: tag-technical, tag-compliance, tag-financial, tag-how-to, tag-industry.
+
+deepseek-v4-flash-local-deployment.html (344 lines, 2026-04-30, technical, 7 min)
+attorney-client-privilege-cloud-ai.html (390 lines, 2026-04-23, compliance, 9 min)
+h100-vs-h200-inference-comparison.html (400 lines, 2026-04-16, technical, 8 min)
+cloud-ai-vs-local-hardware-tco.html (404 lines, 2026-04-09, financial, 9 min)
+openwebui-admin-setup-guide.html (433 lines, 2026-04-02, how-to, 9 min)
+tribal-data-sovereignty-ai-infrastructure.html (368 lines, 2026-03-26, industry, 10 min)
+ocap-cloud-act-guide.html (318 lines, 2026-03-12, industry, 12 min)
+itar-dfars-ai-self-assessment.html (310 lines, 2026-03-05, compliance, 14 min)
+openai-discovery-risk-law-firms.html (308 lines, 2026-02-26, compliance, 13 min)
+on-prem-vs-colo-vs-cloud.html (337 lines, 2026-02-12, industry, 15 min)
+hipaa-technical-checklist.html (351 lines, 2026-02-19, compliance, 16 min)
+msp-model-accountability-ticket-queue.html (307 lines, in blog/, date TBD)
+
+### Images (all in images/ subdirectory)
+
+hero-mountain.png (2.7MB): Full-size hero background 1913x892. Used on every page via picture element.
+hero-mountain.webp (137KB): WebP hero (full size). hero-mountain-mobile.webp (28KB): WebP hero (800px mobile).
+logo-transparent.png (174KB): Full logo, transparent background, 578x466.
+logo-nav.png (1.4KB): Legacy navbar logo 24x24 (replaced by logo-nav-new).
+logo-nav-new.png (39.2KB): Navbar wordmark 392x259 retina (196x129 display), flood-fill transparency.
+logo-nav-new.webp (12.8KB): WebP version of navbar wordmark.
+IM-transparent-logo-2.png (632x223): Source wordmark file.
+logo-footer.png (37KB): Footer logo 210x210 padded square transparent.
+favicon-32.png, apple-touch-icon.png, icon-192.png, favicon.ico: Standard favicon set.
+island_mountain_logo.webp, island_mountain_logo_1.webp: Brand logos (WebP).
+islandmtn_cover_2_final.png, islandmtn_cover_2_tagline.png, islandmtn_cover_final_text.png: LinkedIn cover images.
+
+### Other Files
+
+sitemap.xml: 34 URLs covering all pages.
+robots.txt: Allows all crawlers including GPTBot, ClaudeBot, PerplexityBot.
+llms.txt: AI answer engine optimization file listing all 10 verticals.
+CNAME: islandmountain.io (GitHub Pages custom domain).
+.nojekyll: Disables Jekyll processing.
+.gitignore: Excludes HANDOFF.md and _docs/ from git tracking (keeps them local, not publicly served).
+
+### Internal Docs (_docs/ subdirectory, gitignored)
+
+All planning docs, SEO session prompts, the financial model, and the offpage execution package live in _docs/. This directory is NOT tracked by git and NOT served publicly. It exists only on the local machine.
+
+Contents: INVESTOR-PAGE-OVERHAUL-PROMPT.md, Island-Mountain-Financial-Model.xlsx, Island-Mountain-Website-Changes-72hr-Summary.docx, SEO-SESSION-1 through SEO-SESSION-8 prompt files, SESSION-9-CRITICAL-FIXES.md, SESSION-10-COMPETITIVE-POSITIONING.md, SESSION-11-REBRAND-STRATEGY.md, SESSION-12-SCHEMA-CONSISTENCY.md, SESSION-13-AIR-GAP-HARDENING.md, VERTICAL-EXPANSION-PROMPT.md, VERTICAL-EXPANSION-SEO-AEO.md, monitoring-setup.md, offpage-checklist.md, next-session-prompt.md, offpage-execution/ (GSC guide, directory submissions, press release, podcast pitches, 5 LinkedIn articles, execution calendar).
+
+---
+
+## HTML PATTERNS
+
+### Page Structure (every page)
+
+Head: charset, viewport, title, meta description, favicon links, stylesheet links (style.css, remixicon.css, fonts.css, [blog: blog.css]), canonical, OG tags, Twitter Card tags, JSON-LD scripts.
+Body: [index only: particles canvas + hero photo], navbar, mobile sidebar, page content, footer, main.js script.
+
+### Navbar Logo
+
+Wordmark image replaces old icon+text. Uses picture element for WebP/PNG fallback.
+Root pages: `<a href="index.html" class="nav-logo"><picture><source srcset="images/logo-nav-new.webp" type="image/webp"><img src="images/logo-nav-new.png" alt="Island Mountain" width="196" height="129"></picture></a>`
+Blog pages: same with `../images/` prefix.
+Source files: logo-nav-new.png (392x259 retina, 39.2KB), logo-nav-new.webp (12.8KB). Custom flood-fill transparency from IM-transparent-logo-2.png.
+CSS: `.nav-logo` uses `display:inline-flex; align-items:center; transform:translateY(-2px);` -- navbar `overflow:visible`.
+
+### Footer Logo
+
+Root pages: img src="images/logo-footer.png" width="210" height="210" inside footer-brand div, above the nav-logo text link.
+Blog pages: img src="../images/logo-footer.png" width="210" height="210"
+
+### Blog Citation Format
+
+Inline parenthetical links: (Source Name) where Source Name is a link with target="_blank" rel="noopener".
+
+### AEO Summary Block
+
+Copper left border, subtle amber background. Used on vertical pages and some blog posts:
+div with style="border-left:3px solid var(--copper);padding:16px 20px;margin:32px 0;background:rgba(217,119,6,0.05);border-radius:0 8px 8px 0;"
+Contains bold "Summary:" followed by 2-3 sentence direct answer.
+
+### Blog Post Sections (in order)
+
+1. Breadcrumb: Home > Blog > Post Title
+2. Article header: date, tag badge, read time, h1, author
+3. Article body: h2/h3 sections with cited paragraphs
+4. AEO summary block
+5. CTA: centered heading + subtext + Request a Quote button
+6. Related articles: 3 cards in related-grid
+7. Article nav: back link + LinkedIn/X share buttons
+
+---
+
+## SEO STATUS
+
+### Completed
+
+Meta descriptions, canonical tags, OG + Twitter Card tags, JSON-LD structured data on all 34 pages.
+XML sitemap with 34 URLs. robots.txt allowing all crawlers including GPTBot, ClaudeBot, PerplexityBot. llms.txt listing all 10 verticals.
+AEO blocks on all 11 blog posts (standardized to Summary: format with copper border styling).
+AEO blocks on all 10 vertical landing pages and solutions hub.
+5 new vertical landing pages (financial-services, insurance, energy-utilities, government, education) created 2026-05-03. Navbar, mobile sidebar, and footer updated across all 34 HTML files. Sitemap updated to 34 URLs. llms.txt updated with 10 verticals. All "five industries" references updated to "ten industries" site-wide.
+FAQPage + BreadcrumbList JSON-LD schemas on all 10 vertical pages.
+
+### SEO/AEO Revisions Status (Sessions 1-4 Complete)
+
+Product JSON-LD schema: COMPLETE on all 5 new verticals. Each page has FAQPage + BreadcrumbList + Product schemas.
+
+FAQ answer enrichment: COMPLETE. All FAQ answers enriched with regulatory citations, brand mentions, GPU references, and pricing anchors.
+
+AEO summary block enhancement: COMPLETE. All AEO blocks include pricing ($75,000), GPU models (H100/H200), and product tier references.
+
+H2/H3 heading keyword optimization: COMPLETE. Headings optimized with keyword integration.
+
+solutions.html meta description: COMPLETE. References "ten regulated industries" in meta, OG, and page content.
+
+Keyword-to-section placement: COMPLETE (Session 4). Top 5 long-tail keywords per vertical woven into body copy, FAQ answers, hero subtitles, and AEO blocks.
+
+Internal cross-linking: COMPLETE (Session 4). Contextual body links added: insurance↔medical-practices (HIPAA), insurance↔financial-services (GLBA), energy↔defense-contractors (air-gap), energy↔government (FERC), government↔defense-contractors (CUI/NIST), government↔tribal-nations (sovereignty), government↔education (FERPA), education↔research-labs (IRB), education↔medical-practices (campus health), education↔government (public funding). CTA cross-links also updated.
+
+### SEO/AEO Revisions Status (Session 5 Complete)
+
+FAQ answer snippet optimization: COMPLETE (Session 5). All 40 JSON-LD FAQPage schema answers across 10 verticals rewritten to lead with direct yes/no/declarative answer in first sentence (under 30 words), followed by regulatory citation, then brand/GPU/pricing expansion. On-page FAQ cards updated to match (first 2-3 sentences of schema answer).
+
+Authority Avatar compliance badges: COMPLETE (Session 5). Inline-styled flex badge sections inserted before "How It Works" on all 10 vertical pages. Each badge contains Remixicon icon + framework name text. Badge map: law-firms (3: Attorney-Client Privilege, ABA Model Rules, FRCP Discovery Rules), medical-practices (3: HIPAA Security Rule, 45 CFR Part 164, HITECH Act), tribal-nations (3: OCAP Principles, CLOUD Act, Tribal Sovereignty), research-labs (3: 21 CFR Part 11, IRB Requirements, GxP Compliance), defense-contractors (3: DFARS 252.204-7012, CMMC Level 2, NIST SP 800-171), financial-services (3: GLBA Safeguards Rule, PCI DSS v4.0, SEC Reg S-P), insurance (3: HIPAA Security Rule, NAIC Model Law #668, State Insurance Regs), energy-utilities (3: NERC CIP-003 to CIP-013, IEC 62443, TSA Pipeline Security), government (4: FedRAMP, NIST SP 800-171, FISMA, CJIS Security Policy), education (3: FERPA (34 CFR 99), COPPA, State Student Privacy Laws).
+
+### SEO/AEO Revisions Status (Session 6 Complete)
+
+Long-tail keyword depth placement: COMPLETE (Session 6). All 75 remaining long-tail keywords (keywords 6-20, 15 per vertical) placed across financial-services.html, insurance.html, energy-utilities.html, government.html, and education.html. Keywords distributed across 6-7 section types per page: Problem, How It Works, Workflows, Model Selection, Regulatory Context, Limitations, Testimonials. Each keyword appears exactly once (no over-optimization). Additionally repaired 8 missing Session 4 keywords (keywords 2-4 on financial-services, insurance; keyword 3 on energy, government, education; keyword 5 on energy, government, education). Final audit: all 5 pages at 20/20 keyword coverage. Zero file truncation verified site-wide.
+
+### SEO/AEO Revisions Status (Sessions 7+8 Complete)
+
+Product JSON-LD schemas for original 5 verticals: COMPLETE (Session 7). Product schema blocks added to law-firms.html, medical-practices.html, tribal-nations.html, research-labs.html, defense-contractors.html. All 10 verticals now carry FAQPage + BreadcrumbList + Product schemas.
+
+Off-page SEO execution package: COMPLETE (Session 8). Deliverables in _docs/offpage-execution/: GSC setup guide, directory submission list, press release draft, 5 LinkedIn article drafts (attorney privilege, HIPAA audit, H100 vs H200, TCO comparison, tribal sovereignty), podcast pitch templates, and a 90-day execution calendar.
+
+### ALL 8 SEO SESSIONS COMPLETE
+
+No remaining SEO/AEO work from the VERTICAL-EXPANSION-SEO-AEO.md spec. The full scope is executed.
+
+### Post-Launch Assessment Sessions (Sessions 9-11) -- QUEUED
+
+Based on a comprehensive 96-hour post-launch site assessment covering full page-by-page review, competitive landscape analysis, product line strategy, brand language recommendations, and a prioritized fix list. Session prompt files are in _docs/.
+
+**Session 9: Critical Fixes** (_docs/SESSION-9-CRITICAL-FIXES.md) -- COMPLETE (2026-05-03)
+Pricing reconciliation: The $60K-$70K Starter price conflict flagged in the spec had already been fixed in prior sessions. One remaining inconsistency found and fixed: pricing.html AEO summary said "$395,000" instead of "$400,000". All JSON-LD Product schema prices verified correct. Testimonial reformat: All 34 fictional blockquote testimonials (4 on index.html, 3 each on 10 verticals) converted to deployment scenario divs. Quotation marks stripped, italic styling removed, geographic attributions replaced with sector-only "Scenario:" labels, section headers changed from "Already Running Local AI" to "Deploying Local AI", blockquote tags replaced with div tags, cite tags replaced with span tags. Founder bio: Medium version inserted on index.html before AEO summary. Short version inserted on all 10 vertical pages below breadcrumb nav. about.html already had full team section, no changes needed.
+
+**Session 10: Competitive Positioning** (_docs/SESSION-10-COMPETITIVE-POSITIONING.md) -- COMPLETE (2026-05-03)
+DIY rebuttal FAQ: New FAQ entry "Why should I pay $75,000+ when I can build a similar AI server for $5,000-$10,000?" added to faq.html visible page and JSON-LD schema (now 26 Q&A pairs). Also fixed pre-existing JSON-LD parse error (unescaped HTML in trust question schema text). GPU provenance section: New "Why Enterprise GPUs, Not Consumer Cards" section added to products.html between GPU specs table and Upgrade Path sections. Covers procurement documentation, RMA chains, compliance architecture argument. vLLM concurrency section: New "How Multi-User Concurrency Works" section added to technology.html between OpenWebUI Platform and Build & Test Process sections. Covers tensor parallelism, concurrent user counts by tier, HBM3 bandwidth scaling. Hero tagline: Homepage subtitle changed from "Pre-built inference racks for organizations that cannot use the cloud." to "Sovereign ground for sovereign data." Meta tags: Added meta name="author" content="Basho Parks" and meta name="date" content="2026-05-01" to all 35 HTML pages.
+
+**Session 11: Product Line Rebrand** (_docs/SESSION-11-REBRAND-STRATEGY.md) -- COMPLETE (2026-05-03)
+Product tier rename: All three tiers renamed site-wide from Starter/Performance/Premium to Summit Base/Summit Ridge/Summit Pinnacle. Prices unchanged ($75-85K / $150-160K / $350-400K). 82 "Starter" references, 31 product-context "Performance" references, and 23 "Premium" references replaced across 26 HTML files (including all 10 verticals, 4 blog posts, and all core pages). Two non-product "Performance" references preserved ("FP16 Performance" on products.html, "Not Cloud-Scale Performance" on why-island-mountain.html). All JSON-LD Product schemas updated and validated (zero parse errors). Contact form option values updated. HTML comments updated. Landfall Series teaser: New "Coming Soon: The Landfall Series" section added to products.html (Landfall Solo $4,500-$7,500 and Landfall Crew $9,000-$14,000) with CTA. Brief mention added to index.html below product tier cards. AEO summary on products.html updated to mention Landfall. Citadel Series: Product roadmap expansion added to investors.html Milestones section with Landfall and Citadel cards. Citadel described as multi-rack SCIF systems at $400K+, scoped after first Summit-tier defense deployment. Landfall investor mention frames Solo buyer as warm referral path to Summit Base institutional sale.
+
+### Session 12: Schema Consistency - COMPLETE
+
+**Session 12: Schema Consistency** (_docs/SESSION-12-SCHEMA-CONSISTENCY.md) - COMPLETE (2026-05-03)
+BreadcrumbList JSON-LD: Added to 24 pages (12 root pages excluding index.html + 12 blog posts). All 10 verticals already had BreadcrumbList. 34 of 35 pages now have BreadcrumbList schema (index.html excluded as homepage). Product schema normalization: All 16 Product schemas across 14 pages normalized to uniform field set. Added category to products.html (3 schemas). Added category, additionalProperty, offers.url, offers.priceValidUntil to pricing.html (3 schemas). Added additionalProperty, offers.availability, offers.url, offers.priceValidUntil to 10 vertical pages. Fixed brand @type from Organization to Brand on products.html (3 schemas). Fixed availability values on pricing.html to match products.html (Summit Ridge: PreOrder, Summit Pinnacle: PreSale). Total JSON-LD blocks site-wide: 88, all valid. Post-schema work: Replaced all 208 instances of " -- " (double hyphen) with " - " (single hyphen) across 21 HTML files. CSS custom properties (var(--name)) and HTML comments preserved. JSON-LD schema text content updated alongside visible page content.
+
+### Session 13: Air-Gap Hardening Documentation - COMPLETE
+
+**Session 13: Air-Gap Hardening Documentation** (_docs/SESSION-13-AIR-GAP-HARDENING.md) - COMPLETE (2026-05-03)
+Air-gap configuration section: New "Air-Gap Configuration: What We Disable and How You Verify It" section added to technology.html (509->536 lines). Lists all OpenWebUI environment variables disabled for air-gapped operation (OFFLINE_MODE, HF_HUB_OFFLINE, ENABLE_COMMUNITY_SHARING, ANONYMIZED_TELEMETRY, ENABLE_RAG_WEB_SEARCH, SAFE_MODE, ENABLE_SIGNUP) with verification instructions for buyer IT teams. Defense contractors hardening: Expanded "Air-Gap Capable" section on defense-contractors.html (604->606 lines) with specific hardening configuration details and CMMC assessor verification language. New FAQ entry: "How can OpenWebUI be air-gapped if it is a web application?" added to faq.html visible page and JSON-LD schema (now 27 Q\&A pairs, 919->938 lines). Existing air-gap FAQ answer strengthened with environment variable references in both visible content and JSON-LD.
+
+### ALL 13 SESSIONS COMPLETE
+
+SEO (Sessions 1-8), post-launch fixes (Sessions 9-11), schema infrastructure (Session 12), and air-gap hardening documentation (Session 13) are all executed.
+
+### Execution Files (all in _docs/, gitignored)
+
+All prompt files, the master spec (VERTICAL-EXPANSION-SEO-AEO.md), the offpage execution package, and the session prompts (Sessions 9-13) are in _docs/. See the _docs/ inventory in the File Inventory section above.
+
+### Session 14: Homepage SEO/AEO Entity Optimization - COMPLETE
+
+**Session 14: Homepage SEO/AEO Entity Optimization** - COMPLETE (2026-05-04)
+Organization schema sameAs: Populated empty sameAs array with LinkedIn company page (https://www.linkedin.com/company/island-mountain-llc/) and founder site (https://www.johndou.com). No GitHub added (no confirmed public org repo). Product schemas on homepage: Added 3 Product JSON-LD blocks for Summit Base (InStock, $75-85K), Summit Ridge (PreOrder, $150-160K), and Summit Pinnacle (PreSale, $350-400K). All match field structure from products.html (brand, category, additionalProperty for GPU specs, AggregateOffer). Total JSON-LD blocks on index.html: 5 (Organization, WebSite, 3x Product). Hero alt text: Changed from "Island Mountain rising from the ocean at sunset" to "Island Mountain brand hero - on-premises AI infrastructure, built in Colorado" (honest brand context without fabricating product imagery). dateModified: Added to WebSite schema, set to 2026-05-01 matching meta date tag. AEO summary block: Updated to reference all 10 industries instead of original 5. Value prop paragraph: Updated industry list to match 10-vertical scope. BreadcrumbList and FAQPage on homepage: Intentionally skipped. Single-item BreadcrumbList on root page adds zero value. FAQPage requires actual Q&A format content that does not exist on this page. index.html grew from 434 to 530 lines. Total JSON-LD blocks site-wide: 93, all valid (was 88 after Session 12, +5 on index.html). Zero truncation verified site-wide.
+
+### ALL 14 SESSIONS COMPLETE
+
+SEO (Sessions 1-8), post-launch fixes (Sessions 9-11), schema infrastructure (Session 12), air-gap hardening (Session 13), and homepage entity optimization (Session 14) are all executed.
+
+### Execution Files (all in _docs/, gitignored)
+
+All prompt files, the master spec (VERTICAL-EXPANSION-SEO-AEO.md), the offpage execution package, and the session prompts (Sessions 9-13) are in _docs/. See the _docs/ inventory in the File Inventory section above.
+
+## SESSION PROTOCOL
+
+How to run a productive session on this project:
+
+### Opening Steps (do these every time)
+
+1. Read HANDOFF.md first. Do not begin work until you have read and confirmed the full contents.
+2. State your task clearly. If you have a prompt file in _docs/, say: "Read _docs/FILENAME.md for the execution spec."
+3. Find the bash session path: `ls /sessions/*/mnt/` and set the SITE variable.
+
+### During the Session
+
+4. Use sed via bash for ALL edits to files over 400 lines. Never the Edit tool on large files.
+5. Run `tail -5 filename` after every file modification. No exceptions.
+6. Run the site-wide truncation verification script before declaring any task complete.
+7. Validate all JSON-LD blocks with a Python parse check after schema changes.
+8. Update HANDOFF.md at the end of every session with: what changed, which files were modified, updated line counts for any files that grew or shrank.
+
+### Closing Steps
+
+9. Run final site-wide verification.
+10. Provide the user with a git commit command summarizing all changes.
+11. Update HANDOFF.md session count and "ALL N SESSIONS COMPLETE" line.
+12. Verify HANDOFF.md itself is not truncated (`tail -5 HANDOFF.md`).
+
+---
+
+## GIT PUSH COMMAND (PowerShell)
+
+After every session, copy-paste this into PowerShell (update the commit message to reflect what changed):
+
+```powershell
+cd "C:\Users\17076\Documents\Claude\Island Mountain"; git add -A; git commit -m "DESCRIBE CHANGES HERE"; git push origin main
+```
