@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Basho Parks">
+  <meta name="date" content="2026-05-01">
   <title>Technology Stack: DeepSeek V4-Flash, vLLM, OpenWebUI on Local Hardware | Island Mountain</title>
   <meta name="description" content="How Island Mountain runs DeepSeek V4-Flash (284B params), Llama 3.1 70B, and Mixtral 8x22B locally via vLLM inference engine and OpenWebUI interface. Full stack breakdown.">
   <link rel="icon" type="image/x-icon" href="favicon.ico?v=2">
@@ -292,6 +294,21 @@
     </div>
   </section>
 
+  <!-- Multi-User Concurrency -->
+  <section class="section section-dark">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-badge">Concurrency</span>
+        <h2>How Multi-User Concurrency Works</h2>
+      </div>
+      <div class="fade-in" style="max-width:760px;margin:0 auto;">
+        <p style="font-size:1.05rem;line-height:1.9;">A single Island Mountain server supports multiple simultaneous users. This is not a theoretical claim -- it is how the vLLM inference engine operates at the architecture level.</p>
+        <p style="font-size:1.05rem;line-height:1.9;">vLLM uses tensor parallelism to distribute model weights across both GPUs in the system. On a dual-A100 or dual-H100 configuration, a 70-billion-parameter model like DeepSeek V4-Flash splits its attention layers and feed-forward blocks across both cards. Each inference request is processed using the combined memory and compute of both GPUs, not queued behind the previous request.</p>
+        <p style="font-size:1.05rem;line-height:1.9;">In practice, a Starter-tier system comfortably handles 5-8 concurrent users running inference queries through the Open WebUI interface, depending on model size, context length, and response length. The Performance tier serves 10-15 simultaneous users. Throughput scales with GPU memory bandwidth -- the H100's 3.35 TB/s HBM3 bandwidth delivers roughly 2x the concurrent throughput of the A100's 2.0 TB/s HBM2e.</p>
+        <p style="font-size:1.05rem;line-height:1.9;">For organizations running department-wide AI access -- a law firm's attorneys, a tribal government's planning team, a medical practice's clinicians -- this is not a shared-terminal bottleneck. It is genuine concurrent access with response times measured in seconds, not minutes.</p>
+      </div>
+    </div>
+  </section>
   <!-- Build & Test Process -->
   <section class="section section-dark">
     <div class="container">
