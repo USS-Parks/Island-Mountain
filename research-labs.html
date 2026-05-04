@@ -38,7 +38,7 @@
         "name": "Does processing research data through cloud AI risk intellectual property exposure?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes. When unpublished research data is submitted to a cloud AI API, it is transmitted to and processed on third-party infrastructure. Cloud providers' data handling policies vary, and some reserve rights to use submitted data for model improvement. Even where policies prohibit this, the data has still left your institutional network and been processed on shared infrastructure. For research teams working on patentable discoveries, pre-publication findings, or proprietary datasets, this creates a provenance liability. If your IP was processed through a third party's system before publication or patent filing, questions about data integrity and prior disclosure become more complex. Local AI eliminates this risk entirely because the data never leaves your lab's infrastructure."
+          "text": "Yes. Cloud AI transmits unpublished research data to third-party infrastructure, creating IP exposure and provenance liability for patentable discoveries. Some providers reserve rights to use submitted data for model training, and even where prohibited, data has left your institutional network. For labs handling data subject to 21 CFR Part 11, IRB protocols, or GxP compliance requirements, third-party processing introduces regulatory complications. On-premises AI from Island Mountain eliminates this risk -- data stays on NVIDIA H100 or H200 GPUs inside your facility. No third-party transmission. No provenance questions at patent filing or publication."
         }
       },
       {
@@ -46,7 +46,7 @@
         "name": "How does local AI help with federal grant data residency requirements?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Federal granting agencies including NIH, NSF, and DoD are increasingly requiring data management plans that specify where and how grant-funded research data is processed and stored. Cloud AI processing introduces a third-party data handler into your data governance documentation. Local AI hardware simplifies this: you document that AI-assisted analysis was performed on institution-owned hardware within your facility, with no external data transmission. This straightforward data residency posture satisfies the data handling documentation requirements of most federal grant programs."
+          "text": "Local AI satisfies data residency requirements with a simple documentation posture. NIH, NSF, and DoD increasingly require data management plans specifying where grant-funded data is processed and stored. Cloud AI introduces a third-party handler into your governance documentation. With Island Mountain hardware, you document that AI-assisted analysis occurred on institution-owned NVIDIA H100 or H200 servers within your facility, with no external data transmission. This straightforward residency posture satisfies most federal grant data handling requirements."
         }
       },
       {
@@ -54,7 +54,7 @@
         "name": "Can researchers inspect or modify the AI models running on Island Mountain hardware?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes. All models pre-installed on Island Mountain hardware are MIT licensed with fully open weights. Researchers can inspect model architectures, examine weight distributions, and modify models for their specific use cases. This is fundamentally different from closed commercial APIs where the model is a black box. For research requiring methodological transparency and reproducibility, open-weight models provide the ability to document exactly what model was used, in what configuration, producing full reproducibility of AI-assisted analysis."
+          "text": "Yes. All models pre-installed on Island Mountain hardware are open-weight and MIT licensed. Researchers can inspect architectures, examine weight distributions, and modify models for specific use cases. This satisfies IRB requirements for methodological transparency and GxP compliance requirements for process documentation. Unlike closed commercial APIs, open-weight models allow full reproducibility -- you document exactly which model version, configuration, and parameters produced each result."
         }
       },
       {
@@ -62,7 +62,7 @@
         "name": "How does per-token cloud cost compare to local hardware for a research lab running extended sessions?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Cloud AI APIs charge $15 to $60 per million tokens. A three-researcher lab running 40-hour research weeks with heavy AI usage can process 50 to 200 million tokens per month, costing $750 to $12,000 per month in cloud inference fees. Over two years, that totals $18,000 to $288,000. An Island Mountain Starter system costs $75,000 to $85,000 one time with unlimited inference and no per-token charges. After purchase, the only cost is electricity at approximately $100 to $200 per month. For labs with sustained, heavy inference workloads, local hardware typically reaches cost parity within 12 to 18 months."
+          "text": "Cloud AI APIs charge $15 to $60 per million tokens. A three-researcher lab with heavy usage processes 50 to 200 million tokens per month, costing $750 to $12,000 monthly. Over two years: $18,000 to $288,000 cumulative with ongoing IP exposure. An Island Mountain Starter system with two NVIDIA H100 GPUs costs $75,000 to $85,000 as a one-time purchase with unlimited inference and zero per-token charges. Ongoing costs limited to electricity (~$100-$200/month). Cost parity typically reached within 12 to 18 months for sustained research workloads."
         }
       }
     ]

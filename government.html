@@ -38,7 +38,7 @@
         "name": "Do government agencies need FedRAMP-authorized AI to process CUI?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "FedRAMP authorization applies to cloud service providers that process government data on shared commercial infrastructure. Island Mountain hardware is not a cloud service -- it is physical AI inference hardware that agencies own and operate on-premises. No FedRAMP authorization is needed because no cloud service is involved. For CUI handling, NIST SP 800-171 provides the security requirements, and agencies implement those controls on their own infrastructure. On-premises AI hardware simplifies CUI compliance because data processing stays within the agency's security boundary. No third-party access occurs, no data leaves the agency's network, and the full complement of NIST 800-171 controls can be applied directly to hardware under agency control."
+          "text": "No. FedRAMP authorization applies to cloud service providers processing government data on shared commercial infrastructure. Island Mountain hardware is not a cloud service -- it is physical AI inference hardware that agencies own and operate on-premises. No FedRAMP authorization required because no cloud service is involved. For CUI handling, NIST SP 800-171 provides the security requirements, and agencies implement those controls on their own infrastructure. On-premises AI simplifies CUI compliance because data processing stays within the agency's security boundary with no third-party access."
         }
       },
       {
@@ -46,7 +46,7 @@
         "name": "What government workflows can run on Island Mountain on-premises AI hardware?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Island Mountain hardware supports document review and CUI analysis, FOIA request processing and response drafting, policy analysis and legislative drafting, citizen service documentation and correspondence, grant and budget analysis, and after-action report generation. The system runs DeepSeek V4-Flash for complex multi-document analysis and policy synthesis, and Llama 3.1 70B for general drafting tasks including correspondence and reporting. All processing occurs on NVIDIA H100 or H200 GPUs inside agency-controlled facilities with zero data transmitted to external servers."
+          "text": "Island Mountain hardware supports document review and CUI analysis, FOIA request processing and response drafting, policy analysis and legislative drafting, citizen service documentation, grant and budget analysis, and after-action report generation. The system runs DeepSeek V4-Flash for complex multi-document analysis and policy synthesis, and Llama 3.1 70B for general drafting tasks. All processing occurs on NVIDIA H100 or H200 GPUs inside agency-controlled facilities with zero data transmitted to external servers."
         }
       },
       {
@@ -54,7 +54,7 @@
         "name": "How does on-premises AI cost compare to cloud AI for a 20-person government office?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Government cloud AI solutions typically require FedRAMP-authorized platforms costing $75 to $300 per user per month, plus compliance overhead for ATO documentation and continuous monitoring. For 20 users, annual cloud costs range from $18,000 to $72,000 in subscription fees alone, with compliance documentation and vendor risk management adding significant additional cost. An Island Mountain Starter system costs $75,000 to $85,000 as a one-time purchase. After purchase, ongoing costs are limited to electricity at approximately $100 to $200 per month. No FedRAMP ATO required because no cloud service is involved. Total cost of ownership typically reaches parity within 18 months while eliminating third-party data handling of government information entirely."
+          "text": "Cloud AI costs $50 to $200 per user per month ($12,000 to $48,000 per year for 20 users) plus FedRAMP compliance overhead and ATO documentation burden. An Island Mountain Starter system costs $75,000 to $85,000 as a one-time purchase with no FedRAMP dependency, no ATO process, and only electricity costs ongoing (~$100-$200/month). Simpler procurement. Simpler compliance. Full agency ownership."
         }
       },
       {
@@ -62,7 +62,7 @@
         "name": "Is Island Mountain hardware rated for classified data processing?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "No. Island Mountain hardware is suitable for Controlled Unclassified Information (CUI), sensitive but unclassified (SBU) data, and law enforcement sensitive data. It is not SCIF-rated and has not been certified by NSA or any intelligence community authority for classified data processing. The system is designed for civilian government agencies, state and local governments, and federal offices handling CUI and sensitive administrative data. For agencies requiring classified data processing capability, different procurement channels and certification requirements apply. Island Mountain systems do support complete air-gap operation and can be configured for network isolation, which satisfies many CUI handling requirements under NIST SP 800-171."
+          "text": "No. Island Mountain hardware is designed for Controlled Unclassified Information (CUI), sensitive but unclassified (SBU) data, law enforcement sensitive data, and CJIS-governed criminal justice information. It is not SCIF-rated and has not been certified for classified data processing. The system does support complete air-gap operation and can satisfy many CUI handling requirements under NIST SP 800-171. For agencies requiring classified processing, different procurement channels and certification requirements apply."
         }
       }
     ]
@@ -471,19 +471,19 @@
       <div class="risk-grid fade-in">
         <div class="risk-card">
           <h4><i class="ri-government-line"></i> Does on-premises AI need FedRAMP?</h4>
-          <p>No. FedRAMP applies to cloud services. On-premises hardware in government facilities is not a cloud service. It operates within your agency's ATO boundary and is evaluated as part of your system security plan. This sidesteps the 12-18 month FedRAMP authorization process entirely.</p>
+          <p>No. FedRAMP authorization applies to cloud service providers processing government data on shared commercial infrastructure. Island Mountain hardware is not a cloud service -- it is physical AI inference hardware that agencies own and operate on-premises. No FedRAMP authorization required because no cloud service is involved. For CUI handling, NIST SP 800-171 provides the security requirements.</p>
         </div>
         <div class="risk-card">
           <h4><i class="ri-brain-line"></i> What government workflows does this hardware support?</h4>
-          <p>Document review and analysis, FOIA request processing, policy analysis and drafting, citizen service documentation, grant and budget analysis, and after-action report generation. DeepSeek V4-Flash for complex analytical tasks, Llama 3.1 70B for general drafting. All processing on your hardware.</p>
+          <p>Island Mountain hardware supports document review and CUI analysis, FOIA request processing and response drafting, policy analysis and legislative drafting, citizen service documentation, grant and budget analysis, and after-action report generation. The system runs DeepSeek V4-Flash for complex multi-document analysis and Llama 3.1 70B for general drafting tasks.</p>
         </div>
         <div class="risk-card">
           <h4><i class="ri-coin-line"></i> How does cost compare for a 20-person office?</h4>
-          <p>Cloud AI costs $50-$200/user/month ($12,000-$48,000/year for 20 users) plus FedRAMP compliance overhead. An Island Mountain Starter is $75,000-$85,000 one time with no FedRAMP dependency and only electricity costs ongoing. Simpler procurement, simpler compliance.</p>
+          <p>Cloud AI costs $50 to $200 per user per month ($12,000 to $48,000 per year for 20 users) plus FedRAMP compliance overhead and ATO documentation burden. An Island Mountain Starter system costs $75,000 to $85,000 as a one-time purchase with no FedRAMP dependency, no ATO process, and only electricity costs ongoing. Simpler procurement. Simpler compliance.</p>
         </div>
         <div class="risk-card">
           <h4><i class="ri-lock-line"></i> Can this handle CUI?</h4>
-          <p>Yes, when deployed within an environment meeting NIST SP 800-171 requirements. The hardware provides physical infrastructure and air-gap capability. Your agency implements the required security controls. Local LLM CUI processing means data never leaves the agency-controlled environment.</p>
+          <p>No. Island Mountain hardware is designed for Controlled Unclassified Information (CUI), sensitive but unclassified (SBU) data, law enforcement sensitive data, and CJIS-governed criminal justice information. It is not SCIF-rated and has not been certified for classified data processing. The system does support complete air-gap operation and can satisfy many CUI handling requirements under NIST SP 800-171.</p>
         </div>
       </div>
       <div style="text-align:center;margin-top:32px;">
