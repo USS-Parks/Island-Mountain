@@ -48,7 +48,7 @@
         "name": "Does local AI hardware work without an internet connection?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes. Every Island Mountain system is designed to operate completely air-gapped. The models, the inference engine (vLLM and Ollama), and the interface (OpenWebUI) all run locally. Once the system is set up and models are loaded, you can disconnect the ethernet cable entirely and everything still works. Users access the system through a web browser on your local network. As long as the device and the server are on the same network, even an isolated non-internet-connected network, inference runs normally. No phone-home. No license checks. No cloud dependencies. The only things that require internet access are downloading new models and applying OS security updates. Both are optional and can be done on a schedule that fits your security posture. Some organizations in high-security environments load models via physical media and apply security patches through an isolated update process."
+          "text": "Yes. Every Island Mountain system is designed to operate completely air-gapped. The models, the inference engine (vLLM and Ollama), and the interface (OpenWebUI) all run locally. Once the system is set up and models are loaded, you can disconnect the ethernet cable entirely and everything still works. Users access the system through a web browser on your local network. As long as the device and the server are on the same network, even an isolated non-internet-connected network, inference runs normally. No phone-home. No license checks. No cloud dependencies. The only things that require internet access are downloading new models and applying OS security updates. Both are optional and can be done on a schedule that fits your security posture. Some organizations in high-security environments load models via physical media and apply security patches through an isolated update process. Island Mountain applies a documented air-gap configuration before delivery, disabling all outbound features at the environment variable level: OFFLINE_MODE, telemetry, community sharing, and web search are all turned off during the 72-hour burn-in. Your IT team can independently verify every setting on the delivered system."
         }
       },
       {
@@ -241,6 +241,14 @@
         "acceptedAnswer": {
           "@type": "Answer",
           "text": "You can. The guides exist, and the software stack is the same: Ollama, vLLM, Open WebUI, and open-weight models like DeepSeek V4-Flash and Llama 3.1 70B. If you have the technical staff to build, configure, test, and maintain it, a DIY system running consumer RTX 4090s will run inference. Here is what that build does not include: Enterprise GPU provenance documentation. Every A100 and H100 in an Island Mountain system has a documented procurement chain - purchase receipts from authorized NVIDIA channels, serial number registry, and RMA history. Consumer GPUs purchased from Amazon or Newegg do not carry it. 72-hour continuous burn-in testing. Island Mountain tests whether the system sustains full-load inference for 72 continuous hours without thermal throttling, memory errors, or performance degradation. NVIDIA enterprise RMA chains. When an A100 or H100 fails, the replacement GPU enters the same provenance documentation chain, which matters for HIPAA, ITAR/DFARS, and CMMC audit trails. Direct builder support - you talk to the person who built your system. The honest answer: if you are a developer running experiments, build your own. If you are a regulated organization putting AI into production workflows where compliance documentation and hardware provenance matter, that is what the price delta covers."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How can OpenWebUI be air-gapped if it is a web application?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The 'web' in OpenWebUI refers to the browser-based interface, not internet dependency. OpenWebUI is a self-hosted application that runs entirely on the server hardware. Users access it through a web browser pointed at the server's local network address. No cloud account required. No external API calls for inference. Out of the box, OpenWebUI includes features that make outbound network connections: model downloads, version update checks, HuggingFace Hub access for embedding models, optional community sharing, web search integration for RAG, and anonymized telemetry. None of these are required for AI inference. Island Mountain disables every outbound feature before shipping. The key environment variables - OFFLINE_MODE, HF_HUB_OFFLINE, ENABLE_COMMUNITY_SHARING, ANONYMIZED_TELEMETRY, ENABLE_RAG_WEB_SEARCH, and SAFE_MODE - are all set to their air-gapped states during the build process. The system is tested in this configuration during the 72-hour burn-in. Your IT team can verify it independently by inspecting the container environment variables on the delivered system, or by connecting it to a monitored network segment and confirming zero outbound connections during operation."
         }
       }
     ]
@@ -537,9 +545,9 @@
             <p><strong>Yes. Every Island Mountain system is designed to operate completely air-gapped.</strong> The models, the inference engine (vLLM/Ollama), and the interface (OpenWebUI) all run locally. Once the system is set up and models are loaded, you can disconnect the ethernet cable entirely and everything still works.</p>
             <p>Users access the system through a web browser on your local network. As long as the device and the server are on the same network (even an isolated, non-internet-connected network), inference runs normally. No phone-home. No license checks. No cloud dependencies.</p>
             <p>The only things that require internet access are downloading new models and applying OS security updates. Both are optional and can be done on a schedule that fits your security posture. Some organizations in high-security environments load models via physical media and apply security patches through an isolated update process. The system supports that workflow. For more on the technology stack, see our <a href="technology.html">Technology</a> page.</p>
+            <p>Island Mountain applies a documented air-gap configuration before delivery, disabling all outbound features at the environment variable level: OFFLINE_MODE, telemetry, community sharing, and web search are all turned off during the 72-hour burn-in. Your IT team can independently verify every setting on the delivered system. See our <a href="technology.html">Technology page</a> for the full configuration reference.</p>
           </div>
         </div>
-
         <div class="faq-item">
           <h3>Who should NOT buy local AI hardware?</h3>
           <div class="faq-answer">
@@ -677,6 +685,17 @@
           </div>
         </div>
       </div>
+
+        <div class="faq-item">
+          <h3>How can OpenWebUI be air-gapped if it is a web application?</h3>
+          <div class="faq-answer">
+            <p><strong>The "web" in OpenWebUI refers to the browser-based interface, not internet dependency.</strong></p>
+            <p>OpenWebUI is a self-hosted application that runs entirely on the server hardware. Users access it through a web browser pointed at the server's local network address, the same way you access a router's admin panel. No cloud account required. No external API calls for inference.</p>
+            <p>Out of the box, OpenWebUI does include features that make outbound network connections: model downloads, version update checks, HuggingFace Hub access for embedding models, optional community sharing, web search integration for RAG, and anonymized telemetry. None of these are required for AI inference.</p>
+            <p>Island Mountain disables every outbound feature before shipping. The key environment variables (OFFLINE_MODE, HF_HUB_OFFLINE, ENABLE_COMMUNITY_SHARING, ANONYMIZED_TELEMETRY, ENABLE_RAG_WEB_SEARCH, and SAFE_MODE) are all set to their air-gapped states during the build process. The system is tested in this configuration during the 72-hour burn-in.</p>
+            <p>Your IT team can verify it independently. Inspect the container environment variables on the delivered system. Or connect it to a monitored network segment and confirm zero outbound connections during operation. If your security policy requires belt-and-suspenders, configure host-level firewall rules to block all outbound traffic. The system continues to operate normally. See our <a href="technology.html">Technology</a> page for the full air-gap configuration reference.</p>
+          </div>
+        </div>
 
       <!-- Category D: Cost -->
       <div class="faq-category fade-in" id="cost">
