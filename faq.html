@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Basho Parks">
+  <meta name="date" content="2026-05-01">
   <title>Local AI Hardware FAQ -- Honest Answers on Cost, Compliance & Data Sovereignty</title>
   <meta name="description" content="25 straight answers: Does local AI comply with HIPAA? Can law firms use AI without privilege risk? How much VRAM for DeepSeek V4-Flash? What does on-premises AI cost over 5 years?">
   <link rel="icon" type="image/x-icon" href="favicon.ico?v=2">
@@ -214,7 +216,7 @@
         "name": "Island Mountain is a new company with no shipped units. Why should I trust a first purchase?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "This is a fair question and you should ask it. Island Mountain is a Colorado LLC co-founded by <a href="https://www.johndou.com" target="_blank" rel="noopener">John Dougherty</a> (hardware engineer, 25-year technology veteran) and Basho Parks (marketing and sales, with direct relationships across tribal, defense, and research verticals). The company is new. The team is not. Every system is built, tested, and delivered by people with decades of combined experience deploying technology infrastructure in demanding environments. The specific protections built into the purchase process exist because trust has to be earned: the 14-day price lock lets you cancel if GPU prices spike above 10%. The 50% deposit and 50% on delivery structure means you do not pay in full until you have a working, tested system. The 1-year hardware warranty is backed by a 20% warranty reserve per unit. The hardware is standard enterprise components (NVIDIA GPUs, AMD EPYC CPUs, Supermicro chassis) with established supplier RMA agreements. The software is open-source. Nothing is proprietary and nothing is locked."
+          "text": "This is a fair question and you should ask it. Island Mountain is a Colorado LLC co-founded by John Dougherty (hardware engineer, 25-year technology veteran) and Basho Parks (marketing and sales, with direct relationships across tribal, defense, and research verticals). The company is new. The team is not. Every system is built, tested, and delivered by people with decades of combined experience deploying technology infrastructure in demanding environments. The specific protections built into the purchase process exist because trust has to be earned: the 14-day price lock lets you cancel if GPU prices spike above 10%. The 50% deposit and 50% on delivery structure means you do not pay in full until you have a working, tested system. The 1-year hardware warranty is backed by a 20% warranty reserve per unit. The hardware is standard enterprise components (NVIDIA GPUs, AMD EPYC CPUs, Supermicro chassis) with established supplier RMA agreements. The software is open-source. Nothing is proprietary and nothing is locked."
         }
       },
       {
@@ -231,6 +233,14 @@
         "acceptedAnswer": {
           "@type": "Answer",
           "text": "Not on day one. But within weeks or months, yes. Cloud providers release proprietary models immediately because they control the infrastructure. Open-source models lag that release cycle. When OpenAI ships a new flagship, you will not have an equivalent open-source model on your local hardware that afternoon. What has consistently happened over the past two years is that open-source models close the gap rapidly. DeepSeek V4-Flash, Llama 3.1, and Mixtral all reached or exceeded the performance of the proprietary models they followed within weeks to months of release. Your Island Mountain system can run any new open-source model that fits within its VRAM. When a new model releases, you download it through Ollama or the OpenWebUI interface. No hardware swap needed unless the new model exceeds your VRAM capacity. The risk is that a future model generation requires significantly more VRAM than your system has. That is why we offer a GPU upgrade path where existing GPUs are credited at secondary market value toward next-generation cards."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why should I pay $75,000+ when I can build a similar AI server for $5,000-$10,000?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "You can. The guides exist, and the software stack is the same: Ollama, vLLM, Open WebUI, and open-weight models like DeepSeek V4-Flash and Llama 3.1 70B. If you have the technical staff to build, configure, test, and maintain it, a DIY system running consumer RTX 4090s will run inference. Here is what that build does not include: Enterprise GPU provenance documentation. Every A100 and H100 in an Island Mountain system has a documented procurement chain -- purchase receipts from authorized NVIDIA channels, serial number registry, and RMA history. Consumer GPUs purchased from Amazon or Newegg do not carry it. 72-hour continuous burn-in testing. Island Mountain tests whether the system sustains full-load inference for 72 continuous hours without thermal throttling, memory errors, or performance degradation. NVIDIA enterprise RMA chains. When an A100 or H100 fails, the replacement GPU enters the same provenance documentation chain, which matters for HIPAA, ITAR/DFARS, and CMMC audit trails. Direct builder support -- you talk to the person who built your system. The honest answer: if you are a developer running experiments, build your own. If you are a regulated organization putting AI into production workflows where compliance documentation and hardware provenance matter, that is what the price delta covers."
         }
       }
     ]
@@ -679,6 +689,19 @@
             <p>There are no software licensing fees. The models (DeepSeek V4-Flash quantized, Llama 3.1 70B, Mixtral 8x22B) are MIT licensed. OpenWebUI is open-source. The operating system is Ubuntu Server LTS, also free.</p>
             <p>After the included 30-day support period, ongoing support is available on a per-incident basis or through an annual retainer. This covers model configuration, performance tuning, troubleshooting, and remote diagnostics.</p>
             <p>The only additional cost you might encounter is if you want a GPU upgrade in the future. GPU upgrades are a hardware swap where your existing cards are credited at secondary market value toward the replacement. This is not an annual cost; it is a one-time decision you make if and when you need more capability. See our <a href="pricing.html">Pricing</a> page for the full cost breakdown.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <h3>Why should I pay $75,000+ when I can build a similar AI server for $5,000-$10,000?</h3>
+          <div class="faq-answer">
+            <p><strong>You can. The guides exist, and the software stack is the same.</strong> Ollama, vLLM, Open WebUI, and open-weight models like DeepSeek V4-Flash and Llama 3.1 70B. If you have the technical staff to build, configure, test, and maintain it, a DIY system running consumer RTX 4090s will run inference.</p>
+            <p>Here is what that build does not include:</p>
+            <p><strong>Enterprise GPU provenance documentation.</strong> Every A100 and H100 in an Island Mountain system has a documented procurement chain: purchase receipts from authorized NVIDIA channels, serial number registry, and RMA history. If your compliance officer, auditor, or contracting officer asks where your GPU hardware came from and who has touched it, you need that paper trail. Consumer GPUs purchased from Amazon or Newegg do not carry it.</p>
+            <p><strong>72-hour continuous burn-in testing.</strong> DIY guides test whether the system boots. Island Mountain tests whether it sustains full-load inference for 72 continuous hours without thermal throttling, memory errors, or performance degradation. That is the difference between a personal project and production infrastructure that your organization depends on.</p>
+            <p><strong>NVIDIA enterprise RMA chains.</strong> When an A100 or H100 fails, the replacement GPU enters the same provenance documentation chain. Consumer GPU RMAs do not maintain that continuity, which matters for HIPAA, ITAR/DFARS, and CMMC audit trails.</p>
+            <p><strong>Direct builder support.</strong> You talk to the person who built your system. Not a tier-1 support ticket queue, not a chatbot, not a forum post. The person who assembled it and ran the burn-in.</p>
+            <p>The honest answer: if you are a developer running experiments, build your own. If you are a regulated organization putting AI into production workflows where compliance documentation and hardware provenance matter, that is what the price delta covers. See our <a href="products.html">Products</a> page for full system specifications.</p>
           </div>
         </div>
       </div>
