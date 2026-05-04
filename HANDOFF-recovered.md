@@ -93,12 +93,12 @@ No analytics. No cookies. No tracking scripts.
 
 ## FILE INVENTORY (34 content pages)
 
-### Root Pages (23 files)
+### Root Pages (18 files)
 
 index.html (409 lines): Homepage. Hero, product comparison, trust stats, testimonials. Schema: Organization, WebSite. Body links to solutions.html and vertical pages via testimonial citations.
 products.html (527 lines): Three product tiers with full specs. Schema: Product (x3), FAQPage.
 pricing.html (512 lines): Pricing table, financing, TCO comparison. Schema: Product, FAQPage.
-why-island-mountain.html (456 lines): Value proposition. Links to all 10 verticals. Schema: FAQPage.
+why-island-mountain.html (456 lines): Value proposition. Links to all 5 verticals. Schema: FAQPage.
 technology.html (456 lines): Software stack: Ollama, vLLM, Open WebUI, Ubuntu. Schema: SoftwareApplication, FAQPage.
 solutions.html (468 lines): Hub page linking all 10 industry verticals + blog crosslinks. Schema: FAQPage.
 faq.html (860 lines): 25 Q&A pairs. Schema: FAQPage (25 Q&A), SpeakableSpecification.
@@ -206,39 +206,11 @@ Contains bold "Summary:" followed by 2-3 sentence direct answer.
 
 ### Completed
 
-Meta descriptions, canonical tags, OG + Twitter Card tags, JSON-LD structured data on all 34 pages.
-XML sitemap with 34 URLs. robots.txt allowing all crawlers including GPTBot, ClaudeBot, PerplexityBot. llms.txt listing all 10 verticals.
+Meta descriptions, canonical tags, OG + Twitter Card tags, JSON-LD structured data on all 29 pages.
+XML sitemap with 29 URLs. robots.txt allowing all crawlers. llms.txt for AI engines.
 AEO blocks on all 11 blog posts (standardized to Summary: format with copper border styling).
-AEO blocks on all 10 vertical landing pages and solutions hub.
 5 new vertical landing pages (financial-services, insurance, energy-utilities, government, education) created 2026-05-03. Navbar, mobile sidebar, and footer updated across all 34 HTML files. Sitemap updated to 34 URLs. llms.txt updated with 10 verticals. All "five industries" references updated to "ten industries" site-wide.
-FAQPage + BreadcrumbList JSON-LD schemas on all 10 vertical pages.
-
-### Pending SEO/AEO Revisions (5 new vertical pages)
-
-Product JSON-LD schema: MISSING on all 5 new verticals (financial-services, insurance, energy-utilities, government, education). Original 5 verticals also lack Product schema. Each page needs a Product schema block linking Island Mountain hardware to the vertical's compliance framework.
-
-FAQ answer enrichment: Live FAQ answers on 5 new verticals average ~500 chars. Target spec calls for ~800-900 chars with explicit regulatory citations (CFR numbers, specific rule names), brand mentions ("Island Mountain"), GPU references (H100/H200), and pricing anchors ($75,000-$85,000 Starter).
-
-AEO summary block enhancement: Live AEO blocks on 5 new verticals state the compliance benefit but omit pricing, GPU model names, and product tier references. Target spec adds "Systems start at $75,000 with NVIDIA H100 GPUs, air-gap capability, and zero per-token fees" or equivalent.
-
-H2/H3 heading keyword optimization: Live headings are close to target but miss keyword integration opportunities. Example: live "Workflows Island Mountain Hardware Supports" vs target "AI Workflows Island Mountain Hardware Supports" (adding "AI" captures the keyword phrase).
-
-solutions.html meta description: Still references only 5 original verticals ("Law firms, medical practices, tribal nations, research labs, and defense contractors"). Needs update to list all 10 or use "ten regulated industries" language. FAQPage schema answer on solutions.html also needs updating from "five" to "ten."
-
-Keyword-to-section placement: 100 long-tail keywords (20 per new vertical) mapped in VERTICAL-EXPANSION-SEO-AEO.md have not been woven into page body copy.
-
-Internal cross-linking: New vertical pages link to solutions.html, products.html, and contact.html but need cross-links to related verticals (e.g., insurance -> medical-practices for HIPAA overlap, government -> defense-contractors for CUI overlap).
-
-### Execution Files
-
-VERTICAL-EXPANSION-SEO-AEO.md (1007 lines): Full SEO/AEO revision spec with JSON-LD schemas, keyword-to-section maps, optimized headings, enriched FAQ answers, and enhanced AEO blocks for all 5 new verticals plus solutions hub updates.
-
-Prompt files (in workspace root):
-- SEO-SESSION-1-FINANCIAL-INSURANCE.md: Product schemas + FAQ enrichment + AEO enhancement + heading optimization for financial-services.html and insurance.html.
-- SEO-SESSION-2-ENERGY-GOVERNMENT.md: Same scope for energy-utilities.html and government.html.
-- SEO-SESSION-3-EDUCATION-SOLUTIONS.md: Same scope for education.html plus solutions.html meta/schema/AEO updates.
-- SEO-SESSION-4-CROSSLINKS-VERIFY.md: Internal cross-linking, keyword placement audit, entity reinforcement verification across all pages.
-
+AEO blocks on 6 vertical/hub pages standar
 ---
 
 ## GIT PUSH COMMAND (PowerShell)
