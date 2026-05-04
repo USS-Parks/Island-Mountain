@@ -158,7 +158,7 @@
 
         <h2>DeepSeek V4-Flash Just Changed the Game for Local AI</h2>
 
-<p>April 24, 2026. DeepSeek drops V4-Flash, a 284-billion parameter mixture-of-experts model, and anybody running language models on constrained hardware needs to pay attention. We've spent a week running it hard on our Starter tier. What we're seeing rewrites the economics of local AI deployment entirely.</p>
+<p>April 24, 2026. DeepSeek drops V4-Flash, a 284-billion parameter mixture-of-experts model, and anybody running language models on constrained hardware needs to pay attention. We've spent a week running it hard on our Summit Base tier. What we're seeing rewrites the economics of local AI deployment entirely.</p>
 
 <p>Bottom line up front: V4-Flash is the first model we've tested that makes a 160GB system genuinely competitive with cloud inference for real production work. But that claim only lands if you understand what a mixture-of-experts architecture actually does.</p>
 
@@ -170,13 +170,13 @@
 
 <h2>The VRAM Reality and What Quantization Does</h2>
 
-<p>V4-Flash in FP16 needs approximately 568 gigabytes of VRAM. Our Starter tier carries 160GB. It doesn't fit. Not even close.</p>
+<p>V4-Flash in FP16 needs approximately 568 gigabytes of VRAM. Our Summit Base tier carries 160GB. It doesn't fit. Not even close.</p>
 
-<p>Quantization solves this. Converting model weights to lower precision, specifically INT4, compresses V4-Flash to roughly 142 gigabytes. It fits. The pre-installed quantized V4-Flash on our Starter tier runs 60 to 90 tokens per second for single-user inference, sustained.</p>
+<p>Quantization solves this. Converting model weights to lower precision, specifically INT4, compresses V4-Flash to roughly 142 gigabytes. It fits. The pre-installed quantized V4-Flash on our Summit Base tier runs 60 to 90 tokens per second for single-user inference, sustained.</p>
 
 <p>Here's what people miss: quantized models lose some quality. INT4 degradation on V4-Flash is real and measurable. But for summarization, classification, structured extraction, code generation? The quality delta is acceptable. The speed gain absolutely is not negligible.</p>
 
-<p>Our Performance tier carries the same 160GB VRAM and sees identical throughput, because the bottleneck is memory bandwidth. The difference between tiers is build time and lead time, full stop.</p>
+<p>Our Summit Ridge tier carries the same 160GB VRAM and sees identical throughput, because the bottleneck is memory bandwidth. The difference between tiers is build time and lead time, full stop.</p>
 
 <h2>One Million Tokens. That's Not Marketing Language.</h2>
 
@@ -188,7 +188,7 @@
 
 <h2>The H200 Question</h2>
 
-<p>Our Premium tier ships Q3 2026 with dual H200 GPUs carrying 282GB total VRAM. V4-Flash in FP16 still won't fit at 284B, but other larger models open up. More importantly, the H200 hits 4.8 terabytes per second of memory bandwidth versus the H100's 3.35 TB/s. That's a 43% improvement that shows up directly in sustained throughput.</p>
+<p>Our Summit Pinnacle tier ships Q3 2026 with dual H200 GPUs carrying 282GB total VRAM. V4-Flash in FP16 still won't fit at 284B, but other larger models open up. More importantly, the H200 hits 4.8 terabytes per second of memory bandwidth versus the H100's 3.35 TB/s. That's a 43% improvement that shows up directly in sustained throughput.</p>
 
 <p>Early testing puts V4-Flash at 90 to 140 tokens per second for single-user workloads on the H200 tier. The additional headroom also makes INT6 and INT5 quantization viable, trading more favorable precision for a more aggressively compressed footprint.</p>
 
@@ -198,7 +198,7 @@
 
 <p>This part rarely gets quantified. It should.</p>
 
-<p>When V4-Flash runs on your Starter tier, your data never leaves your premises. No API call to DeepSeek's servers. No metadata logs. No audit trail living in someone else's system. The model is MIT-licensed, meaning you own the weights outright. Modify them, redistribute them under MIT terms, run them indefinitely without licensing fees. That's yours.</p>
+<p>When V4-Flash runs on your Summit Base tier, your data never leaves your premises. No API call to DeepSeek's servers. No metadata logs. No audit trail living in someone else's system. The model is MIT-licensed, meaning you own the weights outright. Modify them, redistribute them under MIT terms, run them indefinitely without licensing fees. That's yours.</p>
 
 <p>Cloud API providers can't offer that guarantee. OpenAI, Anthropic, DeepSeek's cloud product, all of them reserve the right to use submitted queries for model improvement in their terms of service. Many explicitly retain data. Even contractual opt-outs don't change the fact that your data transited their infrastructure, and that creates real liability for regulated industries.</p>
 
