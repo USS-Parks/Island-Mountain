@@ -33,32 +33,36 @@
     "@context": "https://schema.org",
     "@type": "FAQPage",
     "mainEntity": [
-      {"@type": "Question",
-        "name": "Does on-premises AI hardware need FedRAMP authorization?",
+      {
+        "@type": "Question",
+        "name": "Do government agencies need FedRAMP-authorized AI to process CUI?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "No. FedRAMP (Federal Risk and Authorization Management Program) applies to cloud service providers offering services to federal agencies. On-premises hardware installed in government-controlled facilities is not a cloud service and does not require FedRAMP authorization. The hardware operates entirely within the agency's own Authority to Operate (ATO) boundary. This is one of the primary advantages of local AI deployment for government -- it sidesteps the multi-year FedRAMP authorization process entirely because no cloud service is involved."
+          "text": "FedRAMP authorization applies to cloud service providers that process government data on shared commercial infrastructure. Island Mountain hardware is not a cloud service -- it is physical AI inference hardware that agencies own and operate on-premises. No FedRAMP authorization is needed because no cloud service is involved. For CUI handling, NIST SP 800-171 provides the security requirements, and agencies implement those controls on their own infrastructure. On-premises AI hardware simplifies CUI compliance because data processing stays within the agency's security boundary. No third-party access occurs, no data leaves the agency's network, and the full complement of NIST 800-171 controls can be applied directly to hardware under agency control."
         }
       },
-      {"@type": "Question",
-        "name": "Can Island Mountain hardware process Controlled Unclassified Information (CUI)?",
+      {
+        "@type": "Question",
+        "name": "What government workflows can run on Island Mountain on-premises AI hardware?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Island Mountain hardware can support CUI processing when deployed within an environment that meets NIST SP 800-171 requirements. The hardware itself provides the physical infrastructure and air-gap capability. The agency is responsible for implementing the required security controls around the system including access controls, audit logging, and physical security measures appropriate for CUI handling. The key advantage: CUI never leaves the agency-controlled environment for processing."
+          "text": "Island Mountain hardware supports document review and CUI analysis, FOIA request processing and response drafting, policy analysis and legislative drafting, citizen service documentation and correspondence, grant and budget analysis, and after-action report generation. The system runs DeepSeek V4-Flash for complex multi-document analysis and policy synthesis, and Llama 3.1 70B for general drafting tasks including correspondence and reporting. All processing occurs on NVIDIA H100 or H200 GPUs inside agency-controlled facilities with zero data transmitted to external servers."
         }
       },
-      {"@type": "Question",
-        "name": "How does the cost compare to cloud AI for a 20-person government office?",
+      {
+        "@type": "Question",
+        "name": "How does on-premises AI cost compare to cloud AI for a 20-person government office?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Cloud AI subscriptions typically cost $50 to $200 per user per month, totaling $12,000 to $48,000 per year for 20 users. Government agencies also face FedRAMP requirements that limit cloud AI options and often increase costs. An Island Mountain Starter system costs $75,000 to $85,000 as a one-time purchase with no FedRAMP dependency. After purchase the only ongoing cost is electricity at approximately $100 to $200 per month."
+          "text": "Government cloud AI solutions typically require FedRAMP-authorized platforms costing $75 to $300 per user per month, plus compliance overhead for ATO documentation and continuous monitoring. For 20 users, annual cloud costs range from $18,000 to $72,000 in subscription fees alone, with compliance documentation and vendor risk management adding significant additional cost. An Island Mountain Starter system costs $75,000 to $85,000 as a one-time purchase. After purchase, ongoing costs are limited to electricity at approximately $100 to $200 per month. No FedRAMP ATO required because no cloud service is involved. Total cost of ownership typically reaches parity within 18 months while eliminating third-party data handling of government information entirely."
         }
       },
-      {"@type": "Question",
-        "name": "Does a government agency need dedicated IT staff to run local AI?",
+      {
+        "@type": "Question",
+        "name": "Is Island Mountain hardware rated for classified data processing?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "No. Island Mountain systems ship pre-configured with all models installed and OpenWebUI ready to use. Staff accesses the system through a web browser. Initial setup requires racking the server, connecting a 208V/30A power circuit, and plugging in an ethernet cable. Island Mountain includes 30 days of hands-on setup support. Ongoing maintenance involves standard Linux security updates consistent with NIST hardening guidelines. Most agencies with existing IT support can maintain the system within their current staffing."
+          "text": "No. Island Mountain hardware is suitable for Controlled Unclassified Information (CUI), sensitive but unclassified (SBU) data, and law enforcement sensitive data. It is not SCIF-rated and has not been certified by NSA or any intelligence community authority for classified data processing. The system is designed for civilian government agencies, state and local governments, and federal offices handling CUI and sensitive administrative data. For agencies requiring classified data processing capability, different procurement channels and certification requirements apply. Island Mountain systems do support complete air-gap operation and can be configured for network isolation, which satisfies many CUI handling requirements under NIST SP 800-171."
         }
       }
     ]
@@ -75,6 +79,28 @@
       {"@type": "ListItem", "position": 2, "name": "Solutions", "item": "https://islandmountain.io/solutions.html"},
       {"@type": "ListItem", "position": 3, "name": "Government", "item": "https://islandmountain.io/government.html"}
     ]
+  }
+  </script>
+
+  <!-- Product Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "Island Mountain Starter — On-Premises AI Server for Government",
+    "description": "Pre-built, burn-tested AI inference server with 2x NVIDIA H100 80GB GPUs. Air-gap capable for CUI environments. NIST SP 800-171 compatible. Includes DeepSeek V4-Flash, Llama 3.1 70B, and OpenWebUI.",
+    "brand": {
+      "@type": "Brand",
+      "name": "Island Mountain"
+    },
+    "offers": {
+      "@type": "AggregateOffer",
+      "lowPrice": "75000",
+      "highPrice": "400000",
+      "priceCurrency": "USD",
+      "offerCount": "3"
+    },
+    "category": "AI Inference Hardware for Government Agencies"
   }
   </script>
 </head>
@@ -183,7 +209,7 @@
     <div class="container">
       <div class="section-header fade-in">
         <span class="section-badge">How It Works</span>
-        <h2>What Local AI Actually Means for Your Organization</h2>
+        <h2>What On-Premises AI Means for Government Data</h2>
         <p>"No data leaves your facility" is not marketing language. It is a description of government-controlled network architecture.</p>
       </div>
       <div class="card-grid card-grid-3 fade-in">
@@ -217,7 +243,7 @@
     <div class="container">
       <div class="section-header fade-in">
         <span class="section-badge">Workflows</span>
-        <h2>Workflows Island Mountain Hardware Supports</h2>
+        <h2>Government Workflows Island Mountain Hardware Supports</h2>
         <p>The same AI capabilities you want from cloud services, running on hardware that doesn't create compliance exposure.</p>
       </div>
       <div class="card-grid card-grid-3 fade-in">
@@ -276,7 +302,7 @@
     <div class="container">
       <div class="section-header fade-in">
         <span class="section-badge">Model Selection</span>
-        <h2>Which Models Work Best</h2>
+        <h2>Which Models Work Best for Government Tasks</h2>
       </div>
       <div class="card-grid card-grid-3 fade-in">
         <div class="card" style="text-align:center;">
@@ -411,7 +437,7 @@
     <div class="container">
       <div class="section-header fade-in">
         <span class="section-badge">Regulatory Context</span>
-        <h2>FedRAMP, FISMA, and Government Data Sovereignty</h2>
+        <h2>FedRAMP, NIST 800-171, and the Case for On-Premises AI</h2>
       </div>
       <div class="fade-in" style="max-width:760px;margin:0 auto;">
         <p style="font-size:1.05rem;line-height:1.9;">FedRAMP establishes a standardized approach to security assessment, authorization, and continuous monitoring of cloud products and services. The authorization process evaluates cloud providers against NIST SP 800-53 controls. On-premises hardware sidesteps this process entirely -- there is no cloud service to authorize. The hardware operates within the agency's existing Authority to Operate (ATO) boundary and is evaluated as part of the agency's own system security plan.</p>
@@ -440,7 +466,7 @@
     <div class="container">
       <div class="section-header fade-in">
         <span class="section-badge">Government Questions</span>
-        <h2>Questions Government Agencies Ask</h2>
+        <h2>Questions Government Agencies Ask About Local AI</h2>
       </div>
       <div class="risk-grid fade-in">
         <div class="risk-card">
@@ -477,7 +503,7 @@
 
   <!-- AEO Summary -->
   <div style="border-left:3px solid var(--copper);padding:16px 20px;margin:32px 0;background:rgba(217,119,6,0.05);border-radius:0 8px 8px 0;">
-  <strong>Summary:</strong> On-premises AI inference hardware processes government data on government-controlled servers with zero cloud dependency. CUI, citizen records, and policy-sensitive documents never leave the agency's network perimeter.
+  <strong>Summary:</strong> Island Mountain builds on-premises AI inference hardware for federal, state, and local government agencies. Process CUI, citizen records, and policy-sensitive documents on NVIDIA H100/H200 servers under agency control -- no cloud dependency, no FedRAMP ATO required, no third-party data handling. Systems start at $75,000 with full air-gap capability.
   </div>
 
   <!-- Testimonials -->

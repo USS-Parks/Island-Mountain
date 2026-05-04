@@ -33,32 +33,36 @@
     "@context": "https://schema.org",
     "@type": "FAQPage",
     "mainEntity": [
-      {"@type": "Question",
-        "name": "Does cloud AI processing of operational data violate NERC CIP standards?",
+      {
+        "@type": "Question",
+        "name": "Does cloud AI processing of operational data violate NERC CIP requirements?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "NERC CIP standards mandate strict cybersecurity controls for Bulk Electric System (BES) Cyber Assets. CIP-004 through CIP-011 establish requirements for electronic security perimeters, access management, and information protection. Transmitting operational technology data to cloud AI infrastructure introduces external network connections that complicate Electronic Security Perimeter (ESP) definitions and create potential violations of CIP-005 network segmentation requirements. Air-gapped local AI eliminates these concerns entirely because OT data never leaves the facility perimeter."
+          "text": "NERC CIP standards (CIP-003 through CIP-013) mandate strict cybersecurity controls for the bulk electric system, including requirements for electronic security perimeters, access management, and information protection. Transmitting operational technology data to cloud AI services moves that data outside the electronic security perimeter and introduces third-party access to potentially sensitive grid operations data. IEC 62443 adds requirements for industrial automation and control system security. Air-gapped on-premises AI hardware from Island Mountain processes operational data entirely within the facility perimeter. No data crosses the electronic security boundary. No third-party access to grid, pipeline, or substation data occurs. The system can operate with complete network isolation, satisfying the most restrictive NERC CIP and IEC 62443 security postures."
         }
       },
-      {"@type": "Question",
-        "name": "What energy sector workflows does Island Mountain support?",
+      {
+        "@type": "Question",
+        "name": "What energy sector workflows can run on Island Mountain air-gapped AI hardware?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Island Mountain hardware supports predictive maintenance analysis, grid operations documentation, NERC CIP compliance reporting, pipeline monitoring analysis, outage response documentation, and regulatory filing drafting. The system runs DeepSeek V4-Flash for complex analytical tasks and Llama 3.1 70B for general documentation work. All processing happens on hardware inside your facility with complete air-gap capability."
+          "text": "Island Mountain hardware supports predictive maintenance analysis for generation and distribution equipment, grid operations and substation documentation, NERC CIP compliance reporting and evidence preparation, pipeline monitoring data analysis, outage response and after-action documentation, and FERC regulatory filing drafting. The system runs DeepSeek V4-Flash for complex multi-document analysis like maintenance history correlation and compliance evidence review. Llama 3.1 70B handles general drafting including regulatory filings and operational reports. All processing occurs on NVIDIA H100 or H200 GPUs inside your facility with zero internet connectivity required for inference."
         }
       },
-      {"@type": "Question",
-        "name": "How does the cost compare to cloud AI for a utility operations center?",
+      {
+        "@type": "Question",
+        "name": "How does on-premises AI cost compare to cloud alternatives for a utility company?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Cloud AI subscriptions typically cost $50 to $200 per user per month. For a 25-person operations team that is $15,000 to $60,000 per year with ongoing OT data exposure. An Island Mountain Starter system costs $75,000 to $85,000 as a one-time purchase with air-gap capability included. After purchase the only ongoing cost is electricity. For critical infrastructure operators the compliance cost of cloud AI often exceeds the subscription cost due to additional security documentation and audit requirements."
+          "text": "For utility companies, the cost comparison extends beyond subscription fees to include the compliance cost of using cloud AI. Achieving NERC CIP compliance with cloud-based AI processing typically requires extensive compliance middleware, third-party security assessments, and ongoing vendor risk management, often costing hundreds of thousands of dollars in addition to the AI subscription itself. An Island Mountain Starter system costs $75,000 to $85,000 as a one-time purchase with two NVIDIA H100 GPUs. The Premium tier with two H200 GPUs costs $350,000 to $400,000. Both operate air-gapped with zero ongoing subscription fees and no compliance middleware required. The total cost of ownership advantage compounds significantly when compliance overhead is factored in."
         }
       },
-      {"@type": "Question",
-        "name": "Does our utility need dedicated IT staff to run local AI hardware?",
+      {
+        "@type": "Question",
+        "name": "Can Island Mountain hardware integrate with SCADA or operational technology systems?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "No. Island Mountain systems ship pre-configured with all models installed and OpenWebUI ready to use. Initial setup requires racking the server, connecting a 208V/30A power circuit, and plugging in an ethernet cable. For air-gapped deployments models are pre-loaded before delivery. Island Mountain includes 30 days of hands-on setup support. Ongoing maintenance involves standard Linux security updates. Most utilities with existing OT/IT staff can maintain the system without additional hires."
+          "text": "Island Mountain hardware runs general-purpose large language models through a browser-based interface called OpenWebUI. It does not directly integrate with SCADA systems, energy management systems, distribution management systems, or other operational technology platforms. The AI processes documents, reports, and data that operators provide through the chat interface. It is an inference tool for analysis and drafting, not a real-time control system component. This separation is actually a security advantage: the AI server can operate on an isolated network segment without any connection to OT systems, eliminating the possibility of AI-related compromise affecting operational technology."
         }
       }
     ]
@@ -75,6 +79,28 @@
       {"@type": "ListItem", "position": 2, "name": "Solutions", "item": "https://islandmountain.io/solutions.html"},
       {"@type": "ListItem", "position": 3, "name": "Energy &amp; Utilities", "item": "https://islandmountain.io/energy-utilities.html"}
     ]
+  }
+  </script>
+
+  <!-- Product Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "Island Mountain Premium — Air-Gapped AI Server for Energy & Utilities",
+    "description": "Pre-built, burn-tested AI inference server with 2x NVIDIA H200 141GB GPUs. Air-gap capable for NERC CIP and IEC 62443 environments. Includes DeepSeek V4-Flash, Llama 3.1 70B, and OpenWebUI.",
+    "brand": {
+      "@type": "Brand",
+      "name": "Island Mountain"
+    },
+    "offers": {
+      "@type": "AggregateOffer",
+      "lowPrice": "75000",
+      "highPrice": "400000",
+      "priceCurrency": "USD",
+      "offerCount": "3"
+    },
+    "category": "Air-Gapped AI Inference Hardware for Critical Infrastructure"
   }
   </script>
 </head>
@@ -167,7 +193,7 @@
     <div class="container">
       <div class="section-header fade-in">
         <span class="section-badge">The Critical Infrastructure Problem</span>
-        <h2>The Cloud AI Problem for Energy and Utilities</h2>
+        <h2>The Cloud AI Problem for Critical Infrastructure Operators</h2>
         <p>Operational technology data from SCADA systems and grid management platforms cannot be transmitted to cloud infrastructure without creating compliance violations.</p>
       </div>
       <div class="fade-in" style="max-width:760px;margin:0 auto;">
@@ -183,7 +209,7 @@
     <div class="container">
       <div class="section-header fade-in">
         <span class="section-badge">How It Works</span>
-        <h2>What Local AI Actually Means for Your Organization</h2>
+        <h2>What Air-Gapped AI Means for Energy Operations</h2>
         <p>"No data leaves your facility" is not marketing language. It is a description of air-gapped network architecture.</p>
       </div>
       <div class="card-grid card-grid-3 fade-in">
@@ -217,7 +243,7 @@
     <div class="container">
       <div class="section-header fade-in">
         <span class="section-badge">Workflows</span>
-        <h2>Workflows Island Mountain Hardware Supports</h2>
+        <h2>Operational Workflows Island Mountain Hardware Supports</h2>
         <p>The same AI capabilities you want from cloud services, running on hardware that doesn't create compliance exposure.</p>
       </div>
       <div class="card-grid card-grid-3 fade-in">
@@ -276,7 +302,7 @@
     <div class="container">
       <div class="section-header fade-in">
         <span class="section-badge">Model Selection</span>
-        <h2>Which Models Work Best</h2>
+        <h2>Which Models Work Best for Energy Sector Tasks</h2>
       </div>
       <div class="card-grid card-grid-3 fade-in">
         <div class="card" style="text-align:center;">
@@ -411,7 +437,7 @@
     <div class="container">
       <div class="section-header fade-in">
         <span class="section-badge">Regulatory Context</span>
-        <h2>NERC CIP, IEC 62443, and Critical Infrastructure AI</h2>
+        <h2>NERC CIP, IEC 62443, and the Case for Air-Gapped AI</h2>
       </div>
       <div class="fade-in" style="max-width:760px;margin:0 auto;">
         <p style="font-size:1.05rem;line-height:1.9;">NERC CIP-005 (Electronic Security Perimeters) requires that all external connections to networks containing BES Cyber Assets be identified, documented, and protected with electronic access controls. Introducing cloud AI processing of operational data creates an external routable connection that must be documented in the ESP and subjected to all CIP-005 requirements -- including intrusion detection, access logging, and vulnerability assessments of the connection path.</p>
@@ -440,7 +466,7 @@
     <div class="container">
       <div class="section-header fade-in">
         <span class="section-badge">Energy &amp; Utilities Questions</span>
-        <h2>Questions Energy Companies Ask</h2>
+        <h2>Questions Energy Companies Ask About On-Premises AI</h2>
       </div>
       <div class="risk-grid fade-in">
         <div class="risk-card">
@@ -477,7 +503,7 @@
 
   <!-- AEO Summary -->
   <div style="border-left:3px solid var(--copper);padding:16px 20px;margin:32px 0;background:rgba(217,119,6,0.05);border-radius:0 8px 8px 0;">
-  <strong>Summary:</strong> Air-gapped AI inference hardware keeps operational technology data entirely within the facility perimeter. No cloud transmission, no NERC CIP compliance risk, no attack surface expansion for critical infrastructure operators.
+  <strong>Summary:</strong> Island Mountain builds air-gapped AI inference hardware for energy companies and utilities operating under NERC CIP and IEC 62443 requirements. NVIDIA H100/H200 servers process operational data entirely within the facility perimeter -- no cloud transmission, no electronic security perimeter breach, no third-party access to critical infrastructure data. Systems start at $75,000 with complete network isolation capability.
   </div>
 
   <!-- Testimonials -->
