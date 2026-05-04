@@ -549,15 +549,15 @@
                 <label for="system_interest">System Interest *</label>
                 <select id="system_interest" name="system_interest" required aria-required="true">
                   <option value="">Select a tier</option>
-                  <option value="Starter Tier ($75K-$85K)">Starter Tier ($75K-$85K &middot; ships now)</option>
-                  <option value="Performance Tier ($150K-$160K)">Performance Tier ($150K-$160K &middot; build-to-order)</option>
-                  <option value="Premium Tier Waitlist ($350K-$400K)">Premium Tier Waitlist ($350K-$400K &middot; Q3 2026)</option>
+                  <option value="Summit Base Tier ($75K-$85K)">Summit Base Tier ($75K-$85K &middot; ships now)</option>
+                  <option value="Summit Ridge Tier ($150K-$160K)">Summit Ridge Tier ($150K-$160K &middot; build-to-order)</option>
+                  <option value="Summit Pinnacle Tier Waitlist ($350K-$400K)">Summit Pinnacle Tier Waitlist ($350K-$400K &middot; Q3 2026)</option>
                   <option value="Custom / Scoping Call Needed">Custom / Scoping Call Needed</option>
                   <option value="Just researching / need documentation">Just researching / need documentation</option>
                 </select>
                 <div class="form-error" aria-live="polite">Please select a system tier.</div>
                 <div id="notice-scoping" class="conditional-notice">
-                  <i class="ri-phone-line"></i>Custom and Premium builds begin with a 15-minute scoping call. We'll reach out to schedule after you submit.
+                  <i class="ri-phone-line"></i>Custom and Summit Pinnacle builds begin with a 15-minute scoping call. We'll reach out to schedule after you submit.
                 </div>
                 <div id="notice-research" class="conditional-notice">
                   <i class="ri-file-text-line"></i>No problem. We'll send documentation to help your evaluation.
@@ -930,7 +930,7 @@
       noticeScoping.classList.remove('visible');
       noticeResearch.classList.remove('visible');
 
-      if (val === 'Custom / Scoping Call Needed' || val === 'Premium Tier Waitlist ($350K-$400K)') {
+      if (val === 'Custom / Scoping Call Needed' || val === 'Summit Pinnacle Tier Waitlist ($350K-$400K)') {
         noticeScoping.classList.add('visible');
       } else if (val === 'Just researching / need documentation') {
         noticeResearch.classList.add('visible');

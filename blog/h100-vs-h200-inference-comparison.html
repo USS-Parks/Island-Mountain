@@ -158,7 +158,7 @@
 
         <h2>The H100 vs. H200: What the Hardware Specs Actually Mean for Your Workload</h2>
 
-<p>When you're choosing between Island Mountain's Starter, Performance, and Premium tiers, the GPU decision is the decision. Everything else is lead time and warranty. So let's talk about which tier you actually need, which means taking an honest look at what these GPUs do.</p>
+<p>When you're choosing between Island Mountain's Summit Base, Summit Ridge, and Summit Pinnacle tiers, the GPU decision is the decision. Everything else is lead time and warranty. So let's talk about which tier you actually need, which means taking an honest look at what these GPUs do.</p>
 
 <h2>The Headline Numbers</h2>
 
@@ -222,9 +222,9 @@
 
 <p>A law firm running contract analysis on a single V4-Flash instance. A medical practice analyzing notes with Mixtral. A customer service team running classification models. H100 handles all of it.</p>
 
-<p>The Starter tier runs $75K to $85K and ships now on refurbished H100s. The Performance tier runs $150K to $160K, built to order on new H100s with a four to six week lead time. Performance tier is for buyers who want warranty coverage and just-in-time delivery.</p>
+<p>The Summit Base tier runs $75K to $85K and ships now on refurbished H100s. The Summit Ridge tier runs $150K to $160K, built to order on new H100s with a four to six week lead time. Summit Ridge tier is for buyers who want warranty coverage and just-in-time delivery.</p>
 
-<p>For most first deployments, Starter is the right call. You get working hardware today. If you need to upgrade after understanding your actual load, you upgrade then.</p>
+<p>For most first deployments, Summit Base is the right call. You get working hardware today. If you need to upgrade after understanding your actual load, you upgrade then.</p>
 
 <h2>Who Should Buy H200</h2>
 
@@ -236,15 +236,15 @@
 
 <p>Another example: running both V4-Flash and a vision model simultaneously. V4-Flash at INT4 is roughly 142GB. A vision model might run 40 to 50GB. You want both in VRAM. 160GB is tight. 282GB is comfortable.</p>
 
-<p>But most organizations don't face these constraints. Most run single models with predictable load. For those organizations, H200 is overprovisioning. Premium tier ships Q3 2026 at $350K to $400K. Don't pay that premium unless your workload concretely demands it.</p>
+<p>But most organizations don't face these constraints. Most run single models with predictable load. For those organizations, H200 is overprovisioning. Summit Pinnacle tier ships Q3 2026 at $350K to $400K. Don't pay that premium unless your workload concretely demands it.</p>
 
 <h2>The Cost-Per-Token Math</h2>
 
-<p>Here's the brutal version. Starter tier at $80K depreciated over three years is roughly $27K per year. At one billion tokens annually, a reasonable figure for a medium-sized organization, that's $0.000027 per token in hardware cost.</p>
+<p>Here's the brutal version. Summit Base tier at $80K depreciated over three years is roughly $27K per year. At one billion tokens annually, a reasonable figure for a medium-sized organization, that's $0.000027 per token in hardware cost.</p>
 
 <p>Cloud inference from major providers runs $0.003 to $0.01 per token. Even factoring in electricity, cooling, and staffing, local inference is cheaper by an order of magnitude. The capital cost is front-loaded. The unit cost is low and stays low.</p>
 
-<p>Premium tier at $375K changes the math. One billion tokens annually puts you at $0.000125 per token in hardware cost. Still cheaper than cloud, but you need to justify the $295K delta over Starter. That justification has to come from your workload, not from a spec sheet.</p>
+<p>Summit Pinnacle tier at $375K changes the math. One billion tokens annually puts you at $0.000125 per token in hardware cost. Still cheaper than cloud, but you need to justify the $295K delta over Summit Base. That justification has to come from your workload, not from a spec sheet.</p>
 
 <h2>What H100 Actually Delivers in Practice</h2>
 
@@ -252,9 +252,9 @@
 
 <p>A law firm with 30 lawyers generating 10 queries each per day is processing roughly 300 queries daily. At 500 tokens per query average, that's 150,000 tokens. H100 processes that in under a second of wall-clock time. You have enormous headroom.</p>
 
-<p>Scale it to 300 lawyers. 1.5 million tokens per day. H100 handles that in 15 to 20 seconds of processing time. Sequential workload doesn't need Premium tier.</p>
+<p>Scale it to 300 lawyers. 1.5 million tokens per day. H100 handles that in 15 to 20 seconds of processing time. Sequential workload doesn't need Summit Pinnacle tier.</p>
 
-<p>You need Premium tier when you have concurrent load demanding parallel inference at scale. If 50 lawyers query simultaneously and you need sub-100ms response times, bandwidth becomes the deciding factor. If queries are sequential or loosely concurrent, H100 is fine.</p>
+<p>You need Summit Pinnacle tier when you have concurrent load demanding parallel inference at scale. If 50 lawyers query simultaneously and you need sub-100ms response times, bandwidth becomes the deciding factor. If queries are sequential or loosely concurrent, H100 is fine.</p>
 
 <h2>Build vs. Buy</h2>
 
@@ -266,9 +266,9 @@
 
 <h2>The Honest Guidance</h2>
 
-<p>Start with the Starter tier. $80K is real money and it's the price of admission to working local inference today. You learn your actual usage patterns. If year two demands an upgrade, you upgrade then. Most organizations don't reach that point.</p>
+<p>Start with the Summit Base tier. $80K is real money and it's the price of admission to working local inference today. You learn your actual usage patterns. If year two demands an upgrade, you upgrade then. Most organizations don't reach that point.</p>
 
-<p>If you have a concrete architectural reason you need 282GB of VRAM, or you're confident your concurrent user load demands the bandwidth, buy Premium tier. But don't buy it because the spec sheet looks impressive. Buy it because your workload requires it. Those are completely different reasons and only one of them is worth $375K.</p>
+<p>If you have a concrete architectural reason you need 282GB of VRAM, or you're confident your concurrent user load demands the bandwidth, buy Summit Pinnacle tier. But don't buy it because the spec sheet looks impressive. Buy it because your workload requires it. Those are completely different reasons and only one of them is worth $375K.</p>
 
 <!-- AEO Summary -->
 <div style="border-left:3px solid var(--copper);padding:16px 20px;margin:32px 0;background:rgba(217,119,6,0.05);border-radius:0 8px 8px 0;">
