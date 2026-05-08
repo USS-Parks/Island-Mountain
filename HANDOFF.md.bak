@@ -1,6 +1,6 @@
 # Island Mountain Website -- Project Context
 
-Last updated: 2026-05-05 (Session 16)
+Last updated: 2026-05-07 (Session 17a)
 Live URL: https://islandmountain.io
 GitHub Pages static site. No frameworks, no build step, no SSG.
 Workspace: `C:\Users\17076\Documents\Claude\Island Mountain`
@@ -40,7 +40,7 @@ done
 echo "Verification complete."
 ```
 
-Files still at risk (over 400 lines): contact.html (966), faq.html (938), investors.html (676), government.html (641), insurance.html (640), energy-utilities.html (640), education.html (640), financial-services.html (639), law-firms.html (633), tribal-nations.html (626), products.html (619), pricing.html (610), defense-contractors.html (606), medical-practices.html (600), research-labs.html (594), technology.html (536), why-island-mountain.html (495), solutions.html (490), blog.html (482), index.html (530), blog/openwebui-admin-setup-guide.html (433), blog/cloud-ai-vs-local-hardware-tco.html (404), blog/h100-vs-h200-inference-comparison.html (400). Use sed via bash for all files over 400 lines.
+Files still at risk (over 400 lines): contact.html (966), faq.html (938), investors.html (676), government.html (642), insurance.html (641), energy-utilities.html (641), education.html (641), financial-services.html (640), law-firms.html (634), tribal-nations.html (627), products.html (622), pricing.html (616), defense-contractors.html (607), medical-practices.html (601), research-labs.html (595), technology.html (536), index.html (565), why-island-mountain.html (495), solutions.html (490), blog.html (482), blog/openwebui-admin-setup-guide.html (433), blog/cloud-ai-vs-local-hardware-tco.html (404), blog/h100-vs-h200-inference-comparison.html (400). Use sed via bash for all files over 400 lines.
 
 ---
 
@@ -102,9 +102,9 @@ No analytics. No cookies. No tracking scripts.
 
 ### Root Pages (24 files)
 
-index.html (530 lines): Homepage. Hero, Summit Series product comparison, Landfall Series teaser, trust stats, deployment scenarios, founder bio. Schema: Organization, WebSite, Product (x3).
-products.html (619 lines): Summit Series product tiers (Base/Ridge/Pinnacle) with GPU provenance section, Landfall Series teaser section, full specs. Schema: Product (x3), FAQPage, BreadcrumbList.
-pricing.html (610 lines): Pricing table, financing, TCO comparison. Schema: Product (x3), FAQPage, BreadcrumbList.
+index.html (565 lines): Homepage. Hero, Summit Series product comparison, Landfall Series teaser, trust stats, deployment scenarios, founder bio. Schema: Organization, WebSite, Product (x3), LocalBusiness.
+products.html (622 lines): Summit Series product tiers (Base/Ridge/Pinnacle) with GPU provenance section, Landfall Series teaser section, full specs. Schema: Product (x3), FAQPage, BreadcrumbList.
+pricing.html (616 lines): Pricing table, financing, TCO comparison. Schema: Product (x3), FAQPage, BreadcrumbList.
 why-island-mountain.html (495 lines): Value proposition. Links to all 10 verticals. Schema: FAQPage, BreadcrumbList.
 technology.html (536 lines): Software stack with multi-user concurrency section, air-gap configuration reference. Ollama, vLLM, Open WebUI, Ubuntu. Schema: SoftwareApplication, FAQPage, BreadcrumbList.
 solutions.html (490 lines): Hub page linking all 10 industry verticals + blog crosslinks. Schema: FAQPage, BreadcrumbList.
@@ -113,16 +113,16 @@ contact.html (966 lines): Contact form (FormSubmit.co), embedded Google Map. Sch
 blog.html (482 lines): Blog index listing all posts. Schema: Blog, BreadcrumbList.
 investors.html (676 lines): Full investor page. 11 sections. Charts powered by js/charts.js. Landfall Series and Citadel Series product roadmap expansion in Milestones section. Schema: Organization, BreadcrumbList.
 about.html (320 lines): Company story, founder bio. Schema: AboutPage, Person, BreadcrumbList.
-law-firms.html (633 lines): Vertical. Attorney-client privilege, discovery risk. Schema: FAQPage, BreadcrumbList, Product. AEO block. Founder bio. Deployment scenarios. 20 long-tail keywords.
-medical-practices.html (600 lines): Vertical. HIPAA, ePHI, BAA. Schema: FAQPage, BreadcrumbList, Product. AEO block. Founder bio. Deployment scenarios. 20 long-tail keywords.
-tribal-nations.html (626 lines): Vertical. OCAP, CLOUD Act, sovereignty. Schema: FAQPage, BreadcrumbList, Product, GovOrg. AEO block. Founder bio. Deployment scenarios. 20 long-tail keywords.
-research-labs.html (594 lines): Vertical. FERPA, IRB, GxP, 21 CFR Part 11. Schema: FAQPage, BreadcrumbList, Product. AEO block. Founder bio. Deployment scenarios. 20 long-tail keywords.
-defense-contractors.html (606 lines): Vertical. ITAR, DFARS 252.204-7012, CMMC, CUI. Schema: FAQPage, BreadcrumbList, Product. AEO block. Founder bio. Deployment scenarios. 20 long-tail keywords.
-financial-services.html (639 lines): Vertical. GLBA, PCI DSS, SEC Reg S-P. Schema: FAQPage, BreadcrumbList, Product. AEO block. Authority Avatar badges. Founder bio. Deployment scenarios. 20 long-tail keywords.
-insurance.html (640 lines): Vertical. HIPAA (health insurers), NAIC Model Law #668, state regs. Schema: FAQPage, BreadcrumbList, Product. AEO block. Authority Avatar badges. Founder bio. Deployment scenarios. 20 long-tail keywords.
-energy-utilities.html (640 lines): Vertical. NERC CIP, IEC 62443, FERC, TSA Pipeline Security. Schema: FAQPage, BreadcrumbList, Product. AEO block. Authority Avatar badges. Founder bio. Deployment scenarios. 20 long-tail keywords.
-government.html (641 lines): Vertical. FedRAMP, FISMA, NIST SP 800-171, CUI. Schema: FAQPage, BreadcrumbList, Product. AEO block. Authority Avatar badges. Founder bio. Deployment scenarios. 20 long-tail keywords.
-education.html (640 lines): Vertical. FERPA, COPPA, state student privacy laws. Schema: FAQPage, BreadcrumbList, Product. AEO block. Authority Avatar badges. Founder bio. Deployment scenarios. 20 long-tail keywords.
+law-firms.html (634 lines): Vertical. Attorney-client privilege, discovery risk. Schema: FAQPage, BreadcrumbList, Product. AEO block. Founder bio. Deployment scenarios. 20 long-tail keywords.
+medical-practices.html (601 lines): Vertical. HIPAA, ePHI, BAA. Schema: FAQPage, BreadcrumbList, Product. AEO block. Founder bio. Deployment scenarios. 20 long-tail keywords.
+tribal-nations.html (627 lines): Vertical. OCAP, CLOUD Act, sovereignty. Schema: FAQPage, BreadcrumbList, Product, GovOrg. AEO block. Founder bio. Deployment scenarios. 20 long-tail keywords.
+research-labs.html (595 lines): Vertical. FERPA, IRB, GxP, 21 CFR Part 11. Schema: FAQPage, BreadcrumbList, Product. AEO block. Founder bio. Deployment scenarios. 20 long-tail keywords.
+defense-contractors.html (607 lines): Vertical. ITAR, DFARS 252.204-7012, CMMC, CUI. Schema: FAQPage, BreadcrumbList, Product. AEO block. Founder bio. Deployment scenarios. 20 long-tail keywords.
+financial-services.html (640 lines): Vertical. GLBA, PCI DSS, SEC Reg S-P. Schema: FAQPage, BreadcrumbList, Product. AEO block. Authority Avatar badges. Founder bio. Deployment scenarios. 20 long-tail keywords.
+insurance.html (641 lines): Vertical. HIPAA (health insurers), NAIC Model Law #668, state regs. Schema: FAQPage, BreadcrumbList, Product. AEO block. Authority Avatar badges. Founder bio. Deployment scenarios. 20 long-tail keywords.
+energy-utilities.html (641 lines): Vertical. NERC CIP, IEC 62443, FERC, TSA Pipeline Security. Schema: FAQPage, BreadcrumbList, Product. AEO block. Authority Avatar badges. Founder bio. Deployment scenarios. 20 long-tail keywords.
+government.html (642 lines): Vertical. FedRAMP, FISMA, NIST SP 800-171, CUI. Schema: FAQPage, BreadcrumbList, Product. AEO block. Authority Avatar badges. Founder bio. Deployment scenarios. 20 long-tail keywords.
+education.html (641 lines): Vertical. FERPA, COPPA, state student privacy laws. Schema: FAQPage, BreadcrumbList, Product. AEO block. Authority Avatar badges. Founder bio. Deployment scenarios. 20 long-tail keywords.
 privacy.html (235 lines): Privacy policy. Schema: WebPage, BreadcrumbList.
 terms.html (246 lines): Terms of service. Schema: WebPage, BreadcrumbList.
 404.html (204 lines): Custom 404 error page. Meta robots noindex. Schema: BreadcrumbList. Not in sitemap.
@@ -173,7 +173,7 @@ CNAME: islandmountain.io (GitHub Pages custom domain).
 
 All planning docs, SEO session prompts, the financial model, and the offpage execution package live in _docs/. This directory is NOT tracked by git and NOT served publicly. It exists only on the local machine.
 
-Contents: INVESTOR-PAGE-OVERHAUL-PROMPT.md, Island-Mountain-Financial-Model.xlsx, Island-Mountain-Website-Changes-72hr-Summary.docx, SEO-SESSION-1 through SEO-SESSION-8 prompt files, SESSION-9-CRITICAL-FIXES.md, SESSION-10-COMPETITIVE-POSITIONING.md, SESSION-11-REBRAND-STRATEGY.md, SESSION-12-SCHEMA-CONSISTENCY.md, SESSION-13-AIR-GAP-HARDENING.md, SESSION-16-GSC-INDEXING-FIXES.md, VERTICAL-EXPANSION-PROMPT.md, VERTICAL-EXPANSION-SEO-AEO.md, monitoring-setup.md, offpage-checklist.md, next-session-prompt.md, offpage-execution/ (GSC guide, directory submissions, press release, podcast pitches, 5 LinkedIn articles, execution calendar).
+Contents: INVESTOR-PAGE-OVERHAUL-PROMPT.md, Island-Mountain-Financial-Model.xlsx, Island-Mountain-Website-Changes-72hr-Summary.docx, SEO-SESSION-1 through SEO-SESSION-8 prompt files, SESSION-9-CRITICAL-FIXES.md, SESSION-10-COMPETITIVE-POSITIONING.md, SESSION-11-REBRAND-STRATEGY.md, SESSION-12-SCHEMA-CONSISTENCY.md, SESSION-13-AIR-GAP-HARDENING.md, SESSION-16-GSC-INDEXING-FIXES.md, SESSION-17-SEO-AUDIT-RESPONSE.docx, VERTICAL-EXPANSION-PROMPT.md, VERTICAL-EXPANSION-SEO-AEO.md, monitoring-setup.md, offpage-checklist.md, next-session-prompt.md, offpage-execution/ (GSC guide, directory submissions, press release, podcast pitches, 5 LinkedIn articles, execution calendar).
 
 ---
 
@@ -308,13 +308,24 @@ energy-utilities.html Product JSON-LD: Fixed copy-paste error. Product name chan
 **Session 16: GSC Indexing Fixes** - COMPLETE (2026-05-05)
 NUL byte corruption: Stripped 280 trailing NUL bytes from privacy.html and 107 trailing NUL bytes from solutions.html. Both files were serving malformed binary-flagged content to crawlers. Line counts preserved (235 and 490 respectively). Post-strip binary sweep confirmed zero NUL bytes across all 37 HTML files site-wide. Custom 404 page: Created 404.html (204 lines) with standard navbar, mobile sidebar, footer, breadcrumb, BreadcrumbList JSON-LD, meta robots noindex, and navigation links to homepage/products/solutions/blog/contact. Not added to sitemap.xml. GitHub Pages .html extension stripping: No action taken. Canonical tags on all pages already point to .html versions. Google is correctly selecting canonicals and marking extensionless alternates as excluded. This is informational, not an error. Documentation corrections: JSON-LD block count corrected from 93 to 92 (91 pre-session + 1 from 404.html). Sitemap URL count corrected from 34 to 35. File inventory updated from 35 to 36 content pages. openwebui-admin-setup-guide.html 3rd schema block identified as HowTo (intentional). Total JSON-LD blocks site-wide: 92, all valid.
 
-### ALL 16 SESSIONS COMPLETE
 
-SEO (Sessions 1-8), post-launch fixes (Sessions 9-11), schema infrastructure (Session 12), air-gap hardening (Session 13), homepage entity optimization (Session 14), schema bug fix (Session 15), and GSC indexing fixes (Session 16) are all executed.
+### Session 17a: JSON-LD Schema Fixes - COMPLETE
+
+**Session 17a: JSON-LD Schema Fixes** - COMPLETE (2026-05-07)
+Source: Google Search Console "Unparsable structured data" errors (duplicate unique property, parsing errors). Audit found 3 confirmed issues across 92 JSON-LD blocks site-wide. Fix 1: about.html Person schema had duplicate "url" key (johndou.com and islandmountain.io/about.html). Changed second "url" to "sameAs". Fix 2: energy-utilities.html BreadcrumbList had HTML entity "&amp;" instead of "&" in JSON-LD string "Energy & Utilities". Replaced with literal ampersand. Fix 3: pricing.html Product array had @context repeated inside each of 3 array items. Restructured to use @graph wrapper with single @context at root. Added @id (URL#fragment) and sku (IM-SUMMIT-BASE/RIDGE/PINNACLE) to all 3 Products. Fix 4: Added @id and sku to all 19 Product schemas across 15 files (index.html 3, products.html 3, pricing.html 3, and 1 each on 10 verticals). All 19 Product schemas now carry unique @id and sku. Files modified (14): about.html (320), pricing.html (616), index.html (536), products.html (622), law-firms.html (634), medical-practices.html (601), tribal-nations.html (627), research-labs.html (595), defense-contractors.html (607), financial-services.html (640), insurance.html (641), energy-utilities.html (641), government.html (642), education.html (641). Total JSON-LD blocks site-wide: 92, all valid, zero parse errors, zero duplicate keys. Zero file truncations.
+
+### Session 17b: Homepage On-Page SEO Fixes - COMPLETE
+
+**Session 17b: Homepage On-Page SEO Fixes** - COMPLETE (2026-05-07)
+Source: Rank 1 SEO Packages (eForceWeb.com) website audit report, received 2026-05-07. Execution prompt in _docs/SESSION-17-SEO-AUDIT-RESPONSE.docx. Fix 1: Title tag shortened from 73 to 55 chars. Old: "On-Premise AI Servers | Air-Gapped H100 & H200 Hardware - Island Mountain". New: "Local AI Servers | NVIDIA H100 & H200 - Island Mountain". Updated in title, og:title, twitter:title. Fix 2: Meta description trimmed from 180 to 127 chars. Old: listed industries. New: "Pre-built, air-gapped local AI inference servers with NVIDIA H100/H200 GPUs. Zero token fees. Full data sovereignty. From $75K." Updated in meta description, og:description, twitter:description. Fix 3: H2 keyword consistency. Changed "Built for Organizations That Can't Afford Data Exposure" to "Built for Data Sovereignty, Not Data Exposure" to place "data sovereignty" in a heading tag. H1 "Local AI Hardware" unchanged. Fix 4: LocalBusiness JSON-LD schema added to index.html modeled on contact.html version. Includes name, URL, email, CO address, priceRange, image, description, openingHours, sameAs (LinkedIn + johndou.com). No street address or phone (owner follow-up item). File modified: index.html (536->565 lines, +29 from LocalBusiness schema). Total JSON-LD blocks on index.html: 6 (Organization, WebSite, 3x Product, LocalBusiness). Total JSON-LD blocks site-wide: 93. Zero file truncations.
+
+### ALL 17 SESSIONS COMPLETE (17a + 17b)
+
+SEO (Sessions 1-8), post-launch fixes (Sessions 9-11), schema infrastructure (Session 12), air-gap hardening (Session 13), homepage entity optimization (Session 14), schema bug fix (Session 15), GSC indexing fixes (Session 16), JSON-LD schema fixes (Session 17a), and homepage on-page SEO fixes (Session 17b) are all executed.
 
 ### Execution Files (all in _docs/, gitignored)
 
-All prompt files, the master spec (VERTICAL-EXPANSION-SEO-AEO.md), the offpage execution package, and the session prompts (Sessions 9-16) are in _docs/. See the _docs/ inventory in the File Inventory section above.
+All prompt files, the master spec (VERTICAL-EXPANSION-SEO-AEO.md), the offpage execution package, and the session prompts (Sessions 9-17) are in _docs/. Session 17 prompt is SESSION-17-SEO-AUDIT-RESPONSE.docx. See the _docs/ inventory in the File Inventory section above.
 
 ## SESSION PROTOCOL
 
@@ -332,21 +343,4 @@ How to run a productive session on this project:
 5. Run `tail -5 filename` after every file modification. No exceptions.
 6. Run the site-wide truncation verification script before declaring any task complete.
 7. Validate all JSON-LD blocks with a Python parse check after schema changes.
-8. Update HANDOFF.md at the end of every session with: what changed, which files were modified, updated line counts for any files that grew or shrank.
-
-### Closing Steps
-
-9. Run final site-wide verification.
-10. Provide the user with a git commit command summarizing all changes.
-11. Update HANDOFF.md session count and "ALL N SESSIONS COMPLETE" line.
-12. Verify HANDOFF.md itself is not truncated (`tail -5 HANDOFF.md`).
-
----
-
-## GIT PUSH COMMAND (PowerShell)
-
-After every session, copy-paste this into PowerShell (update the commit message to reflect what changed):
-
-```powershell
-cd "C:\Users\17076\Documents\Claude\Island Mountain"; git add -A; git commit -m "DESCRIBE CHANGES HERE"; git push origin main
-```
+8. Update HAND
