@@ -31,122 +31,128 @@
 
   <!-- Product Schema -->
   <script type="application/ld+json">
-  [
-    {
-      "@context": "https://schema.org",
-      "@type": "Product",
-      "name": "Island Mountain Summit Base - Local AI Inference Server",
-      "description": "Pre-built AI inference server with 2x NVIDIA H100 80GB GPUs, 160GB total VRAM. DeepSeek V4-Flash, Llama 3.1 70B, and Mixtral 8x22B pre-installed. 72-hour burn-in tested. Ships in 2-3 weeks.",
-      "brand": {
-        "@type": "Brand",
-        "name": "Island Mountain"
-      },
-      "offers": {
-        "@type": "AggregateOffer",
-        "priceCurrency": "USD",
-        "lowPrice": "75000",
-        "highPrice": "85000",
-        "offerCount": "1",
-        "availability": "https://schema.org/InStock",
-        "url": "https://islandmountain.io/products.html",
-        "priceValidUntil": "2027-04-30"
-      },
-      "category": "On-Premises AI Inference Hardware",
-      "additionalProperty": [
+  {
+    "@context": "https://schema.org",
+    "@graph": [
         {
-          "@type": "PropertyValue",
-          "name": "GPU Model",
-          "value": "2x NVIDIA H100 80GB PCIe"
+            "@type": "Product",
+            "@id": "https://islandmountain.io/products.html#summit-base",
+            "name": "Island Mountain Summit Base - Local AI Inference Server",
+            "sku": "IM-SUMMIT-BASE",
+            "description": "Pre-built AI inference server with 2x NVIDIA H100 80GB GPUs, 160GB total VRAM. DeepSeek V4-Flash, Llama 3.1 70B, and Mixtral 8x22B pre-installed. 72-hour burn-in tested. Ships in 2-3 weeks.",
+            "brand": {
+                "@type": "Brand",
+                "name": "Island Mountain"
+            },
+            "offers": {
+                "@type": "AggregateOffer",
+                "priceCurrency": "USD",
+                "lowPrice": "75000",
+                "highPrice": "85000",
+                "offerCount": "1",
+                "availability": "https://schema.org/InStock",
+                "url": "https://islandmountain.io/products.html",
+                "priceValidUntil": "2027-04-30"
+            },
+            "category": "On-Premises AI Inference Hardware",
+            "additionalProperty": [
+                {
+                    "@type": "PropertyValue",
+                    "name": "GPU Model",
+                    "value": "2x NVIDIA H100 80GB PCIe"
+                },
+                {
+                    "@type": "PropertyValue",
+                    "name": "Total VRAM",
+                    "value": "160GB HBM3"
+                },
+                {
+                    "@type": "PropertyValue",
+                    "name": "Pre-Installed Models",
+                    "value": "DeepSeek V4-Flash (quantized), Llama 3.1 70B, Mixtral 8x22B"
+                }
+            ]
         },
         {
-          "@type": "PropertyValue",
-          "name": "Total VRAM",
-          "value": "160GB HBM3"
+            "@type": "Product",
+            "@id": "https://islandmountain.io/products.html#summit-ridge",
+            "name": "Island Mountain Summit Ridge - Build-to-Order AI Server",
+            "sku": "IM-SUMMIT-RIDGE",
+            "description": "Build-to-order AI inference server with 2x NVIDIA H100 80GB GPUs, 160GB total VRAM. Custom configuration with standard support. 4-6 week lead time.",
+            "brand": {
+                "@type": "Brand",
+                "name": "Island Mountain"
+            },
+            "offers": {
+                "@type": "AggregateOffer",
+                "priceCurrency": "USD",
+                "lowPrice": "150000",
+                "highPrice": "160000",
+                "offerCount": "1",
+                "availability": "https://schema.org/PreOrder",
+                "url": "https://islandmountain.io/products.html",
+                "priceValidUntil": "2027-04-30"
+            },
+            "category": "On-Premises AI Inference Hardware",
+            "additionalProperty": [
+                {
+                    "@type": "PropertyValue",
+                    "name": "GPU Model",
+                    "value": "2x NVIDIA H100 80GB (build-to-order)"
+                },
+                {
+                    "@type": "PropertyValue",
+                    "name": "Total VRAM",
+                    "value": "160GB HBM3"
+                },
+                {
+                    "@type": "PropertyValue",
+                    "name": "Pre-Installed Models",
+                    "value": "DeepSeek V4-Flash (quantized), Llama 3.1 70B, Mixtral 8x22B"
+                }
+            ]
         },
         {
-          "@type": "PropertyValue",
-          "name": "Pre-Installed Models",
-          "value": "DeepSeek V4-Flash (quantized), Llama 3.1 70B, Mixtral 8x22B"
+            "@type": "Product",
+            "@id": "https://islandmountain.io/products.html#summit-pinnacle",
+            "name": "Island Mountain Summit Pinnacle - H200 AI Inference Server",
+            "sku": "IM-SUMMIT-PINNACLE",
+            "description": "High-performance AI inference server with 2x NVIDIA H200 141GB GPUs, 282GB total VRAM. 4.8 TB/s memory bandwidth. Coming Q3 2026.",
+            "brand": {
+                "@type": "Brand",
+                "name": "Island Mountain"
+            },
+            "offers": {
+                "@type": "AggregateOffer",
+                "priceCurrency": "USD",
+                "lowPrice": "350000",
+                "highPrice": "400000",
+                "offerCount": "1",
+                "availability": "https://schema.org/PreSale",
+                "url": "https://islandmountain.io/products.html",
+                "priceValidUntil": "2027-04-30"
+            },
+            "category": "On-Premises AI Inference Hardware",
+            "additionalProperty": [
+                {
+                    "@type": "PropertyValue",
+                    "name": "GPU Model",
+                    "value": "2x NVIDIA H200 141GB"
+                },
+                {
+                    "@type": "PropertyValue",
+                    "name": "Total VRAM",
+                    "value": "282GB HBM3e"
+                },
+                {
+                    "@type": "PropertyValue",
+                    "name": "Pre-Installed Models",
+                    "value": "DeepSeek V4-Flash (full FP16), Llama 3.1 70B, Mixtral 8x22B"
+                }
+            ]
         }
-      ]
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Product",
-      "name": "Island Mountain Summit Ridge - Build-to-Order AI Server",
-      "description": "Build-to-order AI inference server with 2x NVIDIA H100 80GB GPUs, 160GB total VRAM. Custom configuration with standard support. 4-6 week lead time.",
-      "brand": {
-        "@type": "Brand",
-        "name": "Island Mountain"
-      },
-      "offers": {
-        "@type": "AggregateOffer",
-        "priceCurrency": "USD",
-        "lowPrice": "150000",
-        "highPrice": "160000",
-        "offerCount": "1",
-        "availability": "https://schema.org/PreOrder",
-        "url": "https://islandmountain.io/products.html",
-        "priceValidUntil": "2027-04-30"
-      },
-      "category": "On-Premises AI Inference Hardware",
-      "additionalProperty": [
-        {
-          "@type": "PropertyValue",
-          "name": "GPU Model",
-          "value": "2x NVIDIA H100 80GB (build-to-order)"
-        },
-        {
-          "@type": "PropertyValue",
-          "name": "Total VRAM",
-          "value": "160GB HBM3"
-        },
-        {
-          "@type": "PropertyValue",
-          "name": "Pre-Installed Models",
-          "value": "DeepSeek V4-Flash (quantized), Llama 3.1 70B, Mixtral 8x22B"
-        }
-      ]
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Product",
-      "name": "Island Mountain Summit Pinnacle - H200 AI Inference Server",
-      "description": "High-performance AI inference server with 2x NVIDIA H200 141GB GPUs, 282GB total VRAM. 4.8 TB/s memory bandwidth. Coming Q3 2026.",
-      "brand": {
-        "@type": "Brand",
-        "name": "Island Mountain"
-      },
-      "offers": {
-        "@type": "AggregateOffer",
-        "priceCurrency": "USD",
-        "lowPrice": "350000",
-        "highPrice": "400000",
-        "offerCount": "1",
-        "availability": "https://schema.org/PreSale",
-        "url": "https://islandmountain.io/products.html",
-        "priceValidUntil": "2027-04-30"
-      },
-      "category": "On-Premises AI Inference Hardware",
-      "additionalProperty": [
-        {
-          "@type": "PropertyValue",
-          "name": "GPU Model",
-          "value": "2x NVIDIA H200 141GB"
-        },
-        {
-          "@type": "PropertyValue",
-          "name": "Total VRAM",
-          "value": "282GB HBM3e"
-        },
-        {
-          "@type": "PropertyValue",
-          "name": "Pre-Installed Models",
-          "value": "DeepSeek V4-Flash (full FP16), Llama 3.1 70B, Mixtral 8x22B"
-        }
-      ]
-    }
-  ]
+    ]
+}
   </script>
 
   <!-- FAQPage Schema -->
