@@ -330,11 +330,11 @@
         <span class="section-badge">Concurrency</span>
         <h2>How Multi-User Concurrency Works</h2>
       </div>
-      <div class="fade-in" style="max-width:760px;margin:0 auto;">
-        <p style="font-size:1.05rem;line-height:1.9;">A single Island Mountain server supports multiple simultaneous users. This is not a theoretical claim - it is how the vLLM inference engine operates at the architecture level.</p>
-        <p style="font-size:1.05rem;line-height:1.9;">vLLM uses tensor parallelism to distribute model weights across both GPUs in the system. On a dual-A100 or dual-H100 configuration, a 70-billion-parameter model like DeepSeek V4-Flash splits its attention layers and feed-forward blocks across both cards. Each inference request is processed using the combined memory and compute of both GPUs, not queued behind the previous request.</p>
-        <p style="font-size:1.05rem;line-height:1.9;">In practice, a Summit Base-tier system comfortably handles 5-8 concurrent users running inference queries through the Open WebUI interface, depending on model size, context length, and response length. The Summit Ridge tier serves 10-15 simultaneous users. Throughput scales with GPU memory bandwidth - the H100's 3.35 TB/s HBM3 bandwidth delivers roughly 2x the concurrent throughput of the A100's 2.0 TB/s HBM2e.</p>
-        <p style="font-size:1.05rem;line-height:1.9;">For organizations running department-wide AI access - a law firm's attorneys, a tribal government's planning team, a medical practice's clinicians - this is not a shared-terminal bottleneck. It is genuine concurrent access with response times measured in seconds, not minutes.</p>
+      <div class="fade-in content-narrow">
+        <p class="body-lg">A single Island Mountain server supports multiple simultaneous users. This is not a theoretical claim - it is how the vLLM inference engine operates at the architecture level.</p>
+        <p class="body-lg">vLLM uses tensor parallelism to distribute model weights across both GPUs in the system. On a dual-A100 or dual-H100 configuration, a 70-billion-parameter model like DeepSeek V4-Flash splits its attention layers and feed-forward blocks across both cards. Each inference request is processed using the combined memory and compute of both GPUs, not queued behind the previous request.</p>
+        <p class="body-lg">In practice, a Summit Base-tier system comfortably handles 5-8 concurrent users running inference queries through the Open WebUI interface, depending on model size, context length, and response length. The Summit Ridge tier serves 10-15 simultaneous users. Throughput scales with GPU memory bandwidth - the H100's 3.35 TB/s HBM3 bandwidth delivers roughly 2x the concurrent throughput of the A100's 2.0 TB/s HBM2e.</p>
+        <p class="body-lg">For organizations running department-wide AI access - a law firm's attorneys, a tribal government's planning team, a medical practice's clinicians - this is not a shared-terminal bottleneck. It is genuine concurrent access with response times measured in seconds, not minutes.</p>
       </div>
     </div>
   </section>
@@ -345,23 +345,23 @@
         <span class="section-badge">Security</span>
         <h2>Air-Gap Configuration: What We Disable and How You Verify It</h2>
       </div>
-      <div class="fade-in" style="max-width:760px;margin:0 auto;">
-        <p style="font-size:1.05rem;line-height:1.9;">OpenWebUI is a self-hosted web application. The "web" refers to the browser-based interface, not internet dependency. It runs on the server, serves its UI over your local network, and users access it from any device on the LAN. No cloud account. No external API calls for inference.</p>
-        <p style="font-size:1.05rem;line-height:1.9;">But OpenWebUI ships with features that reach outbound by default. Island Mountain disables every one of them before your system leaves our facility.</p>
+      <div class="fade-in content-narrow">
+        <p class="body-lg">OpenWebUI is a self-hosted web application. The "web" refers to the browser-based interface, not internet dependency. It runs on the server, serves its UI over your local network, and users access it from any device on the LAN. No cloud account. No external API calls for inference.</p>
+        <p class="body-lg">But OpenWebUI ships with features that reach outbound by default. Island Mountain disables every one of them before your system leaves our facility.</p>
         <h3 style="color:var(--copper);margin-top:2rem;">What Gets Disabled Before Delivery</h3>
         <ul style="font-size:1.02rem;line-height:2;list-style:none;padding:0;">
-          <li style="margin-bottom:1rem;"><code style="background:var(--secondary-dark);padding:2px 8px;border-radius:4px;color:var(--copper-light);">OFFLINE_MODE=True</code> — Master switch. Disables all outbound network calls including version checks and remote resource fetching. This is the primary air-gap control.</li>
-          <li style="margin-bottom:1rem;"><code style="background:var(--secondary-dark);padding:2px 8px;border-radius:4px;color:var(--copper-light);">HF_HUB_OFFLINE=1</code> — Prevents the HuggingFace Hub library from attempting to download embedding models or tokenizers. All required models are pre-loaded on local NVMe storage during our build process.</li>
-          <li style="margin-bottom:1rem;"><code style="background:var(--secondary-dark);padding:2px 8px;border-radius:4px;color:var(--copper-light);">ENABLE_COMMUNITY_SHARING=False</code> — Removes the ability to share prompts, configurations, or presets with the OpenWebUI community platform. No data leaves the system through this channel.</li>
-          <li style="margin-bottom:1rem;"><code style="background:var(--secondary-dark);padding:2px 8px;border-radius:4px;color:var(--copper-light);">ANONYMIZED_TELEMETRY=False</code> — Disables all telemetry collection. No usage data, anonymized or otherwise, is transmitted to any external endpoint.</li>
-          <li style="margin-bottom:1rem;"><code style="background:var(--secondary-dark);padding:2px 8px;border-radius:4px;color:var(--copper-light);">ENABLE_RAG_WEB_SEARCH=False</code> — Disables web search integration in the document retrieval pipeline. RAG operates entirely against locally stored documents.</li>
-          <li style="margin-bottom:1rem;"><code style="background:var(--secondary-dark);padding:2px 8px;border-radius:4px;color:var(--copper-light);">SAFE_MODE=True</code> — Disables community-contributed tools and functions that might contain network calls. Only pre-audited, locally installed tools are available.</li>
-          <li style="margin-bottom:1rem;"><code style="background:var(--secondary-dark);padding:2px 8px;border-radius:4px;color:var(--copper-light);">ENABLE_SIGNUP=False</code> — Locks user registration after initial admin account creation during setup. New users are added only by the administrator.</li>
+          <li class="mb-1"><code class="code-badge">OFFLINE_MODE=True</code> — Master switch. Disables all outbound network calls including version checks and remote resource fetching. This is the primary air-gap control.</li>
+          <li class="mb-1"><code class="code-badge">HF_HUB_OFFLINE=1</code> — Prevents the HuggingFace Hub library from attempting to download embedding models or tokenizers. All required models are pre-loaded on local NVMe storage during our build process.</li>
+          <li class="mb-1"><code class="code-badge">ENABLE_COMMUNITY_SHARING=False</code> — Removes the ability to share prompts, configurations, or presets with the OpenWebUI community platform. No data leaves the system through this channel.</li>
+          <li class="mb-1"><code class="code-badge">ANONYMIZED_TELEMETRY=False</code> — Disables all telemetry collection. No usage data, anonymized or otherwise, is transmitted to any external endpoint.</li>
+          <li class="mb-1"><code class="code-badge">ENABLE_RAG_WEB_SEARCH=False</code> — Disables web search integration in the document retrieval pipeline. RAG operates entirely against locally stored documents.</li>
+          <li class="mb-1"><code class="code-badge">SAFE_MODE=True</code> — Disables community-contributed tools and functions that might contain network calls. Only pre-audited, locally installed tools are available.</li>
+          <li class="mb-1"><code class="code-badge">ENABLE_SIGNUP=False</code> — Locks user registration after initial admin account creation during setup. New users are added only by the administrator.</li>
         </ul>
         <h3 style="color:var(--copper);margin-top:2rem;">How Your IT Team Verifies It</h3>
-        <p style="font-size:1.05rem;line-height:1.9;">Every environment variable is set in a single configuration file on the system. Your network security team can inspect it directly. Run <code style="background:var(--secondary-dark);padding:2px 8px;border-radius:4px;">docker inspect [container_name]</code> to view all active environment variables. Or check the <code style="background:var(--secondary-dark);padding:2px 8px;border-radius:4px;">.env</code> file in the OpenWebUI deployment directory.</p>
-        <p style="font-size:1.05rem;line-height:1.9;">For complete verification: connect the system to a monitored network segment and run inference queries for 24 hours. Monitor outbound traffic. There should be zero outbound connections initiated by the server. If your security policy requires it, configure host-level firewall rules (iptables/nftables) to block all outbound traffic as a belt-and-suspenders measure.</p>
-        <p style="font-size:1.05rem;line-height:1.9;">Island Mountain configures these settings during the 72-hour burn-in process. The system is tested in its air-gapped configuration before delivery, not just in its connected configuration.</p>
+        <p class="body-lg">Every environment variable is set in a single configuration file on the system. Your network security team can inspect it directly. Run <code style="background:var(--secondary-dark);padding:2px 8px;border-radius:4px;">docker inspect [container_name]</code> to view all active environment variables. Or check the <code style="background:var(--secondary-dark);padding:2px 8px;border-radius:4px;">.env</code> file in the OpenWebUI deployment directory.</p>
+        <p class="body-lg">For complete verification: connect the system to a monitored network segment and run inference queries for 24 hours. Monitor outbound traffic. There should be zero outbound connections initiated by the server. If your security policy requires it, configure host-level firewall rules (iptables/nftables) to block all outbound traffic as a belt-and-suspenders measure.</p>
+        <p class="body-lg">Island Mountain configures these settings during the 72-hour burn-in process. The system is tested in its air-gapped configuration before delivery, not just in its connected configuration.</p>
       </div>
     </div>
   </section>
@@ -452,7 +452,7 @@
           <p>OpenWebUI manages concurrent users through a request queue. vLLM's continuous batching groups compatible requests to maximize GPU throughput. Each user sees their own conversation interface - no cross-user data leakage. The Summit Base tier (2x H100) handles 5-8 simultaneous users comfortably. The Summit Ridge tier handles 10-15 simultaneous users for typical business tasks.</p>
         </div>
       </div>
-      <div style="text-align:center;margin-top:32px;">
+      <div class="text-center-mt-32">
         <a href="faq.html" class="btn btn-secondary">See All FAQs</a>
       </div>
     </div>
@@ -465,18 +465,18 @@
         <span class="section-badge">Roadmap</span>
         <h2>V4-Flash: What's Coming</h2>
       </div>
-      <div class="fade-in" style="max-width:760px;margin:0 auto;">
-        <p style="font-size:1.05rem;line-height:1.9;">DeepSeek V4-Flash (284B parameters, 13B active via mixture-of-experts) represents the next generation of efficient large-scale inference. With a 1M token context window, it's built for tasks that current models can't handle: full-codebase analysis, book-length document processing, and extended research sessions.</p>
-        <p style="font-size:1.05rem;line-height:1.9;"><strong>Summit Base Tier (2x H100, $75K-$85K):</strong> V4-Flash runs quantized. This preserves reasoning capability while reducing memory footprint to 80-100GB, enabling efficient local inference on consumer-grade hardware. Ideal for organizations that need V4-Flash capability without the Summit Pinnacle tier investment.</p>
-        <p style="font-size:1.05rem;line-height:1.9;"><strong>Summit Pinnacle Tier ($350K-$400K, Q3 2026):</strong> V4-Flash at full FP16 quality requires approximately 282GB of VRAM - dual H200 141GB GPUs provide exactly this. This configuration unlocks V4-Flash's maximum reasoning and long-context capabilities for enterprise workloads.</p>
-        <p style="font-size:1.05rem;line-height:1.9;">We validate quantization carefully before shipping. When the Summit Pinnacle tier launches, full-quality V4-Flash support will be real, tested, and documented - not aspirational.</p>
+      <div class="fade-in content-narrow">
+        <p class="body-lg">DeepSeek V4-Flash (284B parameters, 13B active via mixture-of-experts) represents the next generation of efficient large-scale inference. With a 1M token context window, it's built for tasks that current models can't handle: full-codebase analysis, book-length document processing, and extended research sessions.</p>
+        <p class="body-lg"><strong>Summit Base Tier (2x H100, $75K-$85K):</strong> V4-Flash runs quantized. This preserves reasoning capability while reducing memory footprint to 80-100GB, enabling efficient local inference on consumer-grade hardware. Ideal for organizations that need V4-Flash capability without the Summit Pinnacle tier investment.</p>
+        <p class="body-lg"><strong>Summit Pinnacle Tier ($350K-$400K, Q3 2026):</strong> V4-Flash at full FP16 quality requires approximately 282GB of VRAM - dual H200 141GB GPUs provide exactly this. This configuration unlocks V4-Flash's maximum reasoning and long-context capabilities for enterprise workloads.</p>
+        <p class="body-lg">We validate quantization carefully before shipping. When the Summit Pinnacle tier launches, full-quality V4-Flash support will be real, tested, and documented - not aspirational.</p>
         <div style="text-align:center;margin-top:40px;">
           <div class="btn-group">
             <a href="contact.html" class="btn btn-primary">Join the Summit Pinnacle Tier Waitlist</a>
             <a href="products.html" class="btn btn-secondary">See All Product Tiers</a>
           </div>
         </div>
-      <p style="margin-top:16px;font-size:0.95rem;color:var(--text-muted);"><i class="ri-phone-line" style="color:var(--copper);margin-right:4px;"></i>Or call directly: <a href="tel:+18016091130" style="color:var(--copper);font-weight:600;">1-801-609-1130</a></p>
+      <p class="cta-subtitle"><i class="ri-phone-line icon-copper-mr-sm"></i>Or call directly: <a href="tel:+18016091130" class="copper-semibold">1-801-609-1130</a></p>
       </div>
     </div>
   </section>
@@ -491,10 +491,10 @@
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <img src="images/logo-footer.png" alt="Island Mountain logo" width="210" height="210" style="display:block;margin-bottom:16px;">
+          <img src="images/logo-footer.png" alt="Island Mountain logo" width="210" height="210" class="d-block-mb">
           <a href="index.html" class="nav-logo">Island Mountain</a>
           <p>Local AI infrastructure for data-sovereign organizations. Colorado.</p>
-          <p style="margin-top:8px;"><i class="ri-phone-line" style="color:var(--copper);margin-right:6px;"></i><a href="tel:+18016091130" style="color:var(--text-muted);">1-801-609-1130</a></p>
+          <p class="mt-8"><i class="ri-phone-line icon-copper-mr"></i><a href="tel:+18016091130" class="clr-muted">1-801-609-1130</a></p>
         </div>
         <div>
           <h4>Quick Links</h4>
@@ -534,10 +534,10 @@
           </ul>
         </div>
       </div>
-      <div class="footer-bottom" style="display:flex;flex-direction:column;align-items:center;gap:12px;">
-        <p>&copy; 2026 Island Mountain. All rights reserved. Founded by <a href="https://www.johndou.com" target="_blank" rel="noopener" style="color:var(--copper);">John Dougherty</a>.</p>
-        <a href="tel:+18016091130" style="display:inline-flex;align-items:center;gap:6px;color:var(--text-muted);font-size:0.85rem;transition:color 0.2s;"><i class="ri-phone-line" style="font-size:1.1rem;"></i> 1-801-609-1130</a>
-        <a href="https://www.linkedin.com/company/island-mountain-llc/" target="_blank" rel="noopener" aria-label="Island Mountain on LinkedIn" style="display:inline-flex;align-items:center;gap:6px;color:var(--text-muted);font-size:0.85rem;transition:color 0.2s;"><i class="ri-linkedin-fill" style="font-size:1.1rem;"></i> Follow us on LinkedIn</a>
+      <div class="footer-bottom flex-col-center-gap">
+        <p>&copy; 2026 Island Mountain. All rights reserved. Founded by <a href="https://www.johndou.com" target="_blank" rel="noopener" class="clr-copper">John Dougherty</a>.</p>
+        <a href="tel:+18016091130" class="phone-link"><i class="ri-phone-line text-lg"></i> 1-801-609-1130</a>
+        <a href="https://www.linkedin.com/company/island-mountain-llc/" target="_blank" rel="noopener" aria-label="Island Mountain on LinkedIn" class="phone-link"><i class="ri-linkedin-fill text-lg"></i> Follow us on LinkedIn</a>
       </div>
     </div>
   </footer>
