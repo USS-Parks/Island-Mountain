@@ -221,7 +221,7 @@
   <nav class="breadcrumb">
     <a href="index.html">Home</a><span>&rsaquo;</span><a href="solutions.html">Solutions</a><span>&rsaquo;</span>Research Labs
   </nav>
-  <div style="max-width:800px;margin:16px auto 0;padding:0 20px;text-align:center;"><p style="font-size:0.92rem;color:var(--text-muted);line-height:1.7;">Built by <a href="https://www.johndou.com" target="_blank" rel="noopener" style="color:var(--copper);">John Dougherty</a>, 25-year enterprise security and technology veteran. Every system is personally assembled, burn-tested for 72 hours, and delivered direct.</p></div>
+  <div class="cta-hero-wrap"><p class="detail-text">Built by <a href="https://www.johndou.com" target="_blank" rel="noopener" class="clr-copper">John Dougherty</a>, 25-year enterprise security and technology veteran. Every system is personally assembled, burn-tested for 72 hours, and delivered direct.</p></div>
 
   <!-- The Cloud AI Problem for Research -->
   <section class="section section-first">
@@ -231,22 +231,22 @@
         <h2>The Cloud AI Problem for Research Institutions</h2>
         <p>Publication priority, data provenance, and grant compliance all depend on controlling where your research data is processed.</p>
       </div>
-      <div class="fade-in" style="max-width:760px;margin:0 auto;">
-        <p style="font-size:1.05rem;line-height:1.9;">When a researcher submits unpublished data to a cloud AI service for analysis, summarization, or writing assistance, that data leaves the institutional network. It is transmitted to a third-party data center, processed on shared infrastructure, and handled according to the provider's data policies - not your institution's. For research teams working toward publication, patent filing, or grant deliverables, this creates multiple risks.</p>
-        <p style="font-size:1.05rem;line-height:1.9;">First, intellectual property exposure. Even if a cloud provider's policy states they won't use your data for training, the data has still been processed on their infrastructure. If a competing lab later publishes similar findings, questions about data leakage become harder to dismiss when your data was processed through a shared service. This IP exposure risk is why research labs join <a href="solutions.html">law firms, medical practices, and defense contractors</a> in moving AI inference on-premises.</p>
-        <p style="font-size:1.05rem;line-height:1.9;">Second, grant compliance. Federal agencies including NIH, NSF, and DoD are tightening data management requirements. Data management plans increasingly require documenting where and how research data is processed. Cloud AI processing adds a third-party data handler to your compliance documentation.</p>
-        <p style="font-size:1.05rem;line-height:1.9;">Third, operational dependency. Cloud API rate limits, outages, and model deprecations can disrupt research workflows at critical moments. When you're running a week-long analysis pipeline or processing a dataset under deadline, your work depends on a service you don't control.</p>
+      <div class="fade-in content-narrow">
+        <p class="body-lg">When a researcher submits unpublished data to a cloud AI service for analysis, summarization, or writing assistance, that data leaves the institutional network. It is transmitted to a third-party data center, processed on shared infrastructure, and handled according to the provider's data policies - not your institution's. For research teams working toward publication, patent filing, or grant deliverables, this creates multiple risks.</p>
+        <p class="body-lg">First, intellectual property exposure. Even if a cloud provider's policy states they won't use your data for training, the data has still been processed on their infrastructure. If a competing lab later publishes similar findings, questions about data leakage become harder to dismiss when your data was processed through a shared service. This IP exposure risk is why research labs join <a href="solutions.html">law firms, medical practices, and defense contractors</a> in moving AI inference on-premises.</p>
+        <p class="body-lg">Second, grant compliance. Federal agencies including NIH, NSF, and DoD are tightening data management requirements. Data management plans increasingly require documenting where and how research data is processed. Cloud AI processing adds a third-party data handler to your compliance documentation.</p>
+        <p class="body-lg">Third, operational dependency. Cloud API rate limits, outages, and model deprecations can disrupt research workflows at critical moments. When you're running a week-long analysis pipeline or processing a dataset under deadline, your work depends on a service you don't control.</p>
       </div>
     </div>
   </section>
 
   
-  <section style="padding:32px 0 0;">
+  <section class="section-pt-32">
     <div class="container">
-      <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:16px;max-width:800px;margin:0 auto;">
-      <div style="display:flex;align-items:center;gap:8px;padding:10px 18px;border:1px solid rgba(245,158,11,0.3);border-radius:6px;background:rgba(245,158,11,0.04);"><i class="ri-shield-check-line" style="color:var(--copper);font-size:1.1rem;"></i><span style="font-size:0.85rem;font-weight:600;color:var(--text-light);">21 CFR Part 11</span></div>
-      <div style="display:flex;align-items:center;gap:8px;padding:10px 18px;border:1px solid rgba(245,158,11,0.3);border-radius:6px;background:rgba(245,158,11,0.04);"><i class="ri-file-list-3-line" style="color:var(--copper);font-size:1.1rem;"></i><span style="font-size:0.85rem;font-weight:600;color:var(--text-light);">IRB Requirements</span></div>
-      <div style="display:flex;align-items:center;gap:8px;padding:10px 18px;border:1px solid rgba(245,158,11,0.3);border-radius:6px;background:rgba(245,158,11,0.04);"><i class="ri-flask-line" style="color:var(--copper);font-size:1.1rem;"></i><span style="font-size:0.85rem;font-weight:600;color:var(--text-light);">GxP Compliance</span></div>
+      <div class="badge-wrap">
+      <div class="authority-badge"><i class="ri-shield-check-line authority-badge-icon"></i><span class="authority-badge-label">21 CFR Part 11</span></div>
+      <div class="authority-badge"><i class="ri-file-list-3-line authority-badge-icon"></i><span class="authority-badge-label">IRB Requirements</span></div>
+      <div class="authority-badge"><i class="ri-flask-line authority-badge-icon"></i><span class="authority-badge-label">GxP Compliance</span></div>
       </div>
     </div>
   </section>
@@ -428,7 +428,7 @@
           </tbody>
         </table>
       </div>
-      <div class="comparison-note fade-in" style="margin-top:20px;">
+      <div class="comparison-note fade-in mt-20">
         <i class="ri-information-line"></i>
         Cloud estimates assume 50-200M tokens/month at $15-$60 per million tokens. Actual usage varies by research domain and workflow intensity. Island Mountain electricity estimate assumes 1.5-2.5 kW average draw at $0.12/kWh.
       </div>
@@ -499,7 +499,7 @@
           <p>Cloud AI APIs charge $15 to $60 per million tokens. A three-researcher lab with heavy usage processes 50 to 200 million tokens per month, costing $750 to $12,000 monthly. An Island Mountain Summit Base system with two NVIDIA H100 GPUs costs $75,000 to $85,000 as a one-time purchase with unlimited inference. Cost parity typically reached within 12 to 18 months.</p>
         </div>
       </div>
-      <div style="text-align:center;margin-top:32px;">
+      <div class="text-center-mt-32">
         <a href="faq.html" class="btn btn-secondary">See All FAQs</a>
       </div>
     </div>
@@ -512,37 +512,37 @@
 
   <!-- CTA -->
 
-  <section class="section section-dark" style="padding:3rem 0;">
+  <section class="section section-dark section-py-3">
     <div class="container">
       <div class="section-header fade-in">
         <h2>Research Labs Deploying Local AI</h2>
       </div>
-      <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap:1.5rem; margin-top:1.5rem;" class="fade-in">
-        <div style="background:rgba(255,255,255,0.03);padding:1.5rem;border-radius:8px;border-left:3px solid var(--copper);margin:0;">
-          <p style="margin-bottom:0.75rem;">University research lab protecting unpublished grant-funded IP. Pre-publication analysis stays on our hardware, not cloud servers.</p>
-          <span style="color:var(--copper);font-size:0.9rem;">Scenario: Research University</span>
+      <div class="scenario-grid" class="fade-in">
+        <div class="accent-blockquote">
+          <p class="mb-075">University research lab protecting unpublished grant-funded IP. Pre-publication analysis stays on our hardware, not cloud servers.</p>
+          <span class="copper-sm">Scenario: Research University</span>
         </div>
-        <div style="background:rgba(255,255,255,0.03);padding:1.5rem;border-radius:8px;border-left:3px solid var(--copper);margin:0;">
-          <p style="margin-bottom:0.75rem;">Genomics lab running sequence analysis with LLM-assisted annotation. IRB requires all patient-derived data stays on institutional infrastructure.</p>
-          <span style="color:var(--copper);font-size:0.9rem;">Scenario: Biomedical Research Lab</span>
+        <div class="accent-blockquote">
+          <p class="mb-075">Genomics lab running sequence analysis with LLM-assisted annotation. IRB requires all patient-derived data stays on institutional infrastructure.</p>
+          <span class="copper-sm">Scenario: Biomedical Research Lab</span>
         </div>
-        <div style="background:rgba(255,255,255,0.03);padding:1.5rem;border-radius:8px;border-left:3px solid var(--copper);margin:0;">
-          <p style="margin-bottom:0.75rem;">Materials science team processing proprietary compound data. Corporate sponsor IP agreements prohibit cloud AI. Local inference solved it.</p>
-          <span style="color:var(--copper);font-size:0.9rem;">Scenario: Materials Science Lab</span>
+        <div class="accent-blockquote">
+          <p class="mb-075">Materials science team processing proprietary compound data. Corporate sponsor IP agreements prohibit cloud AI. Local inference solved it.</p>
+          <span class="copper-sm">Scenario: Materials Science Lab</span>
         </div>
       </div>
     </div>
   </section>
-  <section class="section section-darker" style="text-align:center;">
+  <section class="section section-darker text-center">
     <div class="container fade-in">
       <h2>Ready to Keep Your Research Data In-House?</h2>
-      <p style="max-width:600px;margin:16px auto 32px;">One conversation. No sales pitch. Tell us about your lab's AI workload and data requirements, and we will spec the right system.</p>
+      <p class="cta-sub-wrap">One conversation. No sales pitch. Tell us about your lab's AI workload and data requirements, and we will spec the right system.</p>
       <div class="btn-group">
         <a href="contact.html" class="btn btn-primary">Request a Quote</a>
         <a href="products.html" class="btn btn-secondary">See Full Specs</a>
       </div>
-      <p style="margin-top:16px;font-size:0.95rem;color:var(--text-muted);"><i class="ri-phone-line" style="color:var(--copper);margin-right:4px;"></i>Or call directly: <a href="tel:+18016091130" style="color:var(--copper);font-weight:600;">1-801-609-1130</a></p>
-      <p style="margin-top:24px;font-size:0.9rem;color:var(--text-muted);"><a href="solutions.html">See all ten industries we serve</a> or explore: <a href="tribal-nations.html">Tribal Nations</a> &middot; <a href="defense-contractors.html">Defense Contractors</a></p>
+      <p class="cta-subtitle"><i class="ri-phone-line icon-copper-mr-sm"></i>Or call directly: <a href="tel:+18016091130" class="copper-semibold">1-801-609-1130</a></p>
+      <p class="bio-note"><a href="solutions.html">See all ten industries we serve</a> or explore: <a href="tribal-nations.html">Tribal Nations</a> &middot; <a href="defense-contractors.html">Defense Contractors</a></p>
     </div>
   </section>
 
@@ -551,10 +551,10 @@
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <img src="images/logo-footer.png" alt="Island Mountain logo" width="210" height="210" style="display:block;margin-bottom:16px;">
+          <img src="images/logo-footer.png" alt="Island Mountain logo" width="210" height="210" class="d-block-mb">
           <a href="index.html" class="nav-logo">Island Mountain</a>
           <p>Local AI infrastructure for data-sovereign organizations. Colorado.</p>
-          <p style="margin-top:8px;"><i class="ri-phone-line" style="color:var(--copper);margin-right:6px;"></i><a href="tel:+18016091130" style="color:var(--text-muted);">1-801-609-1130</a></p>
+          <p class="mt-8"><i class="ri-phone-line icon-copper-mr"></i><a href="tel:+18016091130" class="clr-muted">1-801-609-1130</a></p>
         </div>
         <div>
           <h4>Quick Links</h4>
@@ -594,10 +594,10 @@
           </ul>
         </div>
       </div>
-      <div class="footer-bottom" style="display:flex;flex-direction:column;align-items:center;gap:12px;">
-        <p>&copy; 2026 Island Mountain. All rights reserved. Founded by <a href="https://www.johndou.com" target="_blank" rel="noopener" style="color:var(--copper);">John Dougherty</a>.</p>
-        <a href="tel:+18016091130" style="display:inline-flex;align-items:center;gap:6px;color:var(--text-muted);font-size:0.85rem;transition:color 0.2s;"><i class="ri-phone-line" style="font-size:1.1rem;"></i> 1-801-609-1130</a>
-        <a href="https://www.linkedin.com/company/island-mountain-llc/" target="_blank" rel="noopener" aria-label="Island Mountain on LinkedIn" style="display:inline-flex;align-items:center;gap:6px;color:var(--text-muted);font-size:0.85rem;transition:color 0.2s;"><i class="ri-linkedin-fill" style="font-size:1.1rem;"></i> Follow us on LinkedIn</a>
+      <div class="footer-bottom flex-col-center-gap">
+        <p>&copy; 2026 Island Mountain. All rights reserved. Founded by <a href="https://www.johndou.com" target="_blank" rel="noopener" class="clr-copper">John Dougherty</a>.</p>
+        <a href="tel:+18016091130" class="phone-link"><i class="ri-phone-line text-lg"></i> 1-801-609-1130</a>
+        <a href="https://www.linkedin.com/company/island-mountain-llc/" target="_blank" rel="noopener" aria-label="Island Mountain on LinkedIn" class="phone-link"><i class="ri-linkedin-fill text-lg"></i> Follow us on LinkedIn</a>
       </div>
     </div>
   </footer>
