@@ -247,7 +247,7 @@
 
 <p>The H100 tier gives you 160GB. The H200 tier gives you 282GB. What fits and what doesn't is mostly a function of model size and quantization.</p>
 
-<p>V4-Flash at INT4 quantization fits on 160GB comfortably. Llama 3.1 70B in full FP16 precision fits. Mixtral 8x22B in quantization fits. You can load two models simultaneously on H100 if each stays under 80GB.</p>
+<p>V4-Flash at INT4 quantization fits on 160GB comfortably. Llama 3.3 70B in full FP16 precision fits. DeepSeek R1 70B Distill in full FP16 fits. You can load two models simultaneously on H100 if each stays under 80GB.</p>
 
 <p>At 282GB you gain flexibility. Less aggressive quantization. Multiple large models loaded simultaneously. Larger working datasets in VRAM. But "can" and "should" are different words. If your workload fits on 160GB, spending an additional $275K for 282GB of VRAM is not a good investment. You're paying for capacity that sits idle.</p>
 
@@ -257,7 +257,7 @@
 
 <p>Your workload fits on H100 if you have a defined set of models you're running, you're not planning to load multiple large models simultaneously, your use case doesn't require unquantized FP16 inference, and your load is predictable rather than spiky.</p>
 
-<p>A law firm running contract analysis on a single V4-Flash instance. A medical practice analyzing notes with Mixtral. A customer service team running classification models. H100 handles all of it.</p>
+<p>A law firm running contract analysis on a single V4-Flash instance. A medical practice analyzing notes with Llama 3.3 70B. A customer service team running classification models. H100 handles all of it.</p>
 
 <p>The Summit Base tier runs $75K to $85K and ships now on refurbished H100s. The Summit Ridge tier runs $150K to $160K, built to order on new H100s with a four to six week lead time. Summit Ridge tier is for buyers who want warranty coverage and just-in-time delivery.</p>
 
