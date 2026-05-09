@@ -64,7 +64,9 @@
 
   var sidebarLinks = document.querySelectorAll('.mobile-sidebar a');
   sidebarLinks.forEach(function (link) {
-    link.addEventListener('click', closeMenu);
+    if (!link.classList.contains('mobile-solutions-toggle')) {
+      link.addEventListener('click', closeMenu);
+    }
   });
 
   // --- Mobile Solutions accordion ---
