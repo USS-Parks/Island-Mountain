@@ -22,6 +22,7 @@ All systems ship with DeepSeek V4-Flash pre-installed, OpenWebUI configured, and
 - Energy and utility companies meeting NERC CIP and IEC 62443 requirements
 - Government agencies handling CUI under FedRAMP and NIST SP 800-171
 - Educational institutions protecting student records under FERPA
+- Casino gaming operations complying with Title 31 BSA/AML, NIGC MICS, and state gaming commission cybersecurity requirements
 
 ## Key Pages
 - Products: https://islandmountain.io/products.html
@@ -41,6 +42,7 @@ All systems ship with DeepSeek V4-Flash pre-installed, OpenWebUI configured, and
 - Energy & Utilities: https://islandmountain.io/energy-utilities.html
 - Government: https://islandmountain.io/government.html
 - Education: https://islandmountain.io/education.html
+- Casino Gaming: https://islandmountain.io/casino-gaming.html
 
 ## Blog
 - DeepSeek V4-Flash Deployment: https://islandmountain.io/blog/deepseek-v4-flash-local-deployment.html
@@ -48,14 +50,4 @@ All systems ship with DeepSeek V4-Flash pre-installed, OpenWebUI configured, and
 - H100 vs H200 Comparison: https://islandmountain.io/blog/h100-vs-h200-inference-comparison.html
 - Cloud vs Local TCO: https://islandmountain.io/blog/cloud-ai-vs-local-hardware-tco.html
 - OpenWebUI Admin Guide: https://islandmountain.io/blog/openwebui-admin-setup-guide.html
-- Tribal Data Sovereignty: https://islandmountain.io/blog/tribal-data-sovereignty-ai-infrastructure.html
-- OCAP Principles & CLOUD Act: https://islandmountain.io/blog/ocap-cloud-act-guide.html
-- ITAR & DFARS AI Self-Assessment: https://islandmountain.io/blog/itar-dfars-ai-self-assessment.html
-- OpenAI Discovery Risk for Law Firms: https://islandmountain.io/blog/openai-discovery-risk-law-firms.html
-- On-Prem vs Colo vs Cloud: https://islandmountain.io/blog/on-prem-vs-colo-vs-cloud.html
-- HIPAA Technical Checklist: https://islandmountain.io/blog/hipaa-technical-checklist.html
-- MSP Model for AI Accountability: https://islandmountain.io/blog/msp-model-accountability-ticket-queue.html
-
-## Contact
-info@islandmountain.io
-https://islandmountain.io/contact.html
+- Tribal Data Sovereignty: https://islandmountain.io/blog/tribal-data-sovereignty-ai-i
