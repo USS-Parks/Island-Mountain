@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-R674E394D4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-R674E394D4');
+</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Basho Parks">
+  <meta name="date" content="2026-05-01">
+  <title>Privacy Policy | Island Mountain</title>
+  <meta name="description" content="Island Mountain privacy policy. How we handle contact form submissions, analytics data, cookies, and our commitment to data minimization.">
+  <link rel="icon" type="image/x-icon" href="favicon.ico?v=2">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png?v=2">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png?v=2">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="icons/remixicon.css">
+  <link rel="stylesheet" href="fonts/fonts.css">
+  <link rel="canonical" href="https://islandmountain.io/privacy.html">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Privacy Policy | Island Mountain">
+  <meta property="og:description" content="Island Mountain privacy policy. How we handle contact form submissions, analytics data, cookies, and our commitment to data minimization.">
+  <meta property="og:url" content="https://islandmountain.io/privacy.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Island Mountain">
+  <meta property="og:image" content="https://islandmountain.io/images/hero-mountain.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Privacy Policy | Island Mountain">
+  <meta name="twitter:description" content="Island Mountain privacy policy. How we handle contact form submissions, analytics data, cookies, and our commitment to data minimization.">
+  <meta name="twitter:image" content="https://islandmountain.io/images/hero-mountain.png">
+
+  <!-- WebPage Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Privacy Policy",
+    "url": "https://islandmountain.io/privacy.html",
+    "description": "Island Mountain privacy policy covering data collection, contact form processing, and third-party services.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Island Mountain",
+      "url": "https://islandmountain.io"
+    }
+  }
+  </script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://islandmountain.io/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Privacy Policy",
+      "item": "https://islandmountain.io/privacy.html"
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+  <canvas id="particles-canvas"></canvas>
+
+  <div class="hero-photo">
+    <picture><source srcset="images/hero-mountain-mobile.webp 800w, images/hero-mountain.webp 1913w" type="image/webp" sizes="100vw"><img src="images/hero-mountain.png" alt="Island Mountain rising from the ocean at sunset" loading="lazy" width="1913" height="892"></picture>
+  </div>
+
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="nav-logo"><picture><source srcset="images/logo-nav-new.webp" type="image/webp"><img src="images/logo-nav-new.png" alt="Island Mountain" width="196" height="129"></picture></a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="why-island-mountain.html">Why Local AI</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="technology.html">Technology</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li class="nav-dropdown">
+          <a href="solutions.html" class="nav-dropdown-toggle">Solutions <i class="ri-arrow-down-s-line"></i></a>
+          <ul class="nav-dropdown-menu">
+            <li><a href="law-firms.html">Law Firms</a></li>
+            <li><a href="medical-practices.html">Medical Practices</a></li>
+            <li><a href="tribal-nations.html">Tribal Nations</a></li>
+            <li><a href="research-labs.html">Research Labs</a></li>
+            <li><a href="defense-contractors.html">Defense Contractors</a></li>
+            <li><a href="financial-services.html">Financial Services</a></li>
+            <li><a href="insurance.html">Insurance</a></li>
+            <li><a href="energy-utilities.html">Energy &amp; Utilities</a></li>
+            <li><a href="government.html">Government</a></li>
+            <li><a href="education.html">Education</a></li>
+            <li><a href="casino-gaming.html">Casino Gaming</a></li>
+          </ul>
+        </li>
+        <li><a href="resources.html">Resources</a></li>
+              <li><a href="faq.html">FAQ</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="contact.html" class="nav-cta">Request Quote</a></li>
+      </ul>
+      <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <div class="sidebar-overlay"></div>
+  <div class="mobile-sidebar">
+    <a href="index.html">Home</a>
+    <a href="why-island-mountain.html">Why Local AI</a>
+    <a href="products.html">Products</a>
+    <a href="technology.html">Technology</a>
+    <a href="pricing.html">Pricing</a>
+    <a href="solutions.html" class="mobile-solutions-toggle">Solutions <i class="ri-arrow-down-s-line"></i></a>
+    <div class="mobile-solutions-links">
+      <a href="law-firms.html">Law Firms</a>
+      <a href="medical-practices.html">Medical Practices</a>
+      <a href="tribal-nations.html">Tribal Nations</a>
+      <a href="research-labs.html">Research Labs</a>
+      <a href="defense-contractors.html">Defense Contractors</a>
+      <a href="financial-services.html">Financial Services</a>
+      <a href="insurance.html">Insurance</a>
+      <a href="energy-utilities.html">Energy &amp; Utilities</a>
+      <a href="government.html">Government</a>
+      <a href="education.html">Education</a>
+      <a href="casino-gaming.html">Casino Gaming</a>
+    </div>
+    <a href="resources.html">Resources</a>
+            <a href="faq.html">FAQ</a>
+    <a href="blog.html">Blog</a>
+    <a href="contact.html" class="nav-cta">Request Quote</a>
+  </div>
+
+  <section class="hero hero-page">
+    <div class="hero-inner">
+      <span class="hero-badge">Legal</span>
+      <h1>Privacy Policy</h1>
+      <p>Last updated: May 7, 2026</p>
+    </div>
+  </section>
+
+  <section class="section section-dark">
+    <div class="container">
+      <div class="content-block fade-in content-max-800">
+
+        <h2 class="mb-1">Our Position on Data Collection</h2>
+        <p class="body-md">Island Mountain sells data sovereignty hardware. It would be contradictory to surveil the people visiting our website. This privacy policy reflects that principle: we collect the minimum data necessary to respond to your inquiries and to understand how visitors use this site, and nothing more.</p>
+
+        <h2 class="mb-1">What We Collect</h2>
+        <p class="body-md-tight"><strong>Contact form submissions.</strong> When you submit the form on our <a href="contact.html" class="clr-copper">Contact page</a>, you provide your name, email address, organization name, and message. This information is processed by FormSubmit.co (a third-party form handling service) and delivered to us via email at info@islandmountain.io. We use this information solely to respond to your inquiry.</p>
+        <p class="body-md-tight"><strong>Website analytics.</strong> We use Google Analytics 4 (GA4) to understand how visitors use this site - which pages are visited, how long sessions last, and what devices and browsers are used. GA4 collects this data through cookies it sets on your browser (see the Cookies section below). Google processes this data on our behalf. We do not enable Google's advertising features, and we do not link analytics data to any personally identifiable information you provide through our contact form.</p>
+        <p class="body-md">We do not run retargeting pixels. We do not collect behavioral data beyond the analytics described above. We do not sell, share, or trade any information you provide.</p>
+
+        <h2 class="mb-1">Third-Party Services</h2>
+        <p class="body-md-tight">This website uses the following third-party services:</p>
+        <p class="body-md-snug"><strong>FormSubmit.co</strong> processes contact form submissions. When you submit a form, your data passes through their servers before being emailed to us. FormSubmit.co's privacy practices are governed by their own privacy policy.</p>
+        <p class="body-md-snug"><strong>Fonts and icons</strong> (Inter typeface and Remixicon icons) are self-hosted on this domain. No requests are made to Google, jsDelivr, or any other CDN to load these assets. Your browser downloads them directly from islandmountain.io.</p>
+        <p class="body-md-snug"><strong>GitHub Pages</strong> hosts this website. GitHub may collect server logs including IP addresses as part of their standard hosting operations. See GitHub's privacy statement for details.</p>
+        <p class="body-md-snug"><strong>Google Analytics 4</strong> (measurement ID: G-R674E394D4) collects aggregated usage data including pages visited, session duration, approximate geographic region, device type, and browser type. GA4 sets cookies on your browser to distinguish unique visitors and sessions. Google processes this data on servers in the United States. For details on how Google handles analytics data, see <a href="https://policies.google.com/privacy" target="_blank" rel="noopener" class="clr-copper">Google's Privacy Policy</a> and <a href="https://support.google.com/analytics/answer/6004245" target="_blank" rel="noopener" class="clr-copper">Google Analytics data practices</a>. You can opt out of Google Analytics by installing the <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener" class="clr-copper">Google Analytics Opt-out Browser Add-on</a>.</p>
+        <p class="body-md"><strong>Google Search Console</strong> is used to monitor how the site appears in search results. This does not involve any tracking code on the website itself - it operates through a verification file and Google's own search index data.</p>
+
+        <h2 class="mb-1">Cookies</h2>
+        <p class="body-md-tight">This website sets cookies through Google Analytics 4. The following cookies may be placed on your browser:</p>
+        <p class="body-md-snug"><strong>_ga</strong> - Distinguishes unique visitors. Expires after 2 years.</p>
+        <p class="body-md-snug"><strong>_ga_R674E394D4</strong> - Maintains session state. Expires after 2 years.</p>
+        <p class="body-md">Beyond these analytics cookies, we do not set any additional cookies. We self-host all fonts and icons, so no external CDN requests are made that could set cookies on your behalf. You can block these cookies through your browser settings or by installing the <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener" class="clr-copper">Google Analytics Opt-out Add-on</a>.</p>
+
+        <h2 class="mb-1">Data Retention</h2>
+        <p class="body-md">Contact form submissions are retained in our email system for the purpose of responding to inquiries and maintaining a record of business communications. We do not maintain a separate database of form submissions.</p>
+
+        <h2 class="mb-1">Your Rights</h2>
+        <p class="body-md">If you have submitted a contact form and want your information deleted, email <a href="mailto:basho@islandmountain.io" class="clr-copper">info@islandmountain.io</a> and we will remove your data from our email records.</p>
+
+        <h2 class="mb-1">Children's Privacy</h2>
+        <p class="body-md">This website is directed at business purchasers of enterprise AI hardware. We do not knowingly collect information from anyone under the age of 18.</p>
+
+        <h2 class="mb-1">Changes to This Policy</h2>
+        <p class="body-md">If we change this privacy policy, we will update the "Last updated" date at the top of this page. Material changes will be noted on the page itself.</p>
+
+        <h2 class="mb-1">Contact</h2>
+        <p class="body-md">Questions about this privacy policy: <a href="mailto:basho@islandmountain.io" class="clr-copper">info@islandmountain.io</a></p>
+
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="images/logo-footer.png" alt="Island Mountain logo" width="210" height="210" class="d-block-mb">
+          <a href="index.html" class="nav-logo">Island Mountain</a>
+          <p>Local AI infrastructure for data-sovereign organizations. Colorado.</p>
+          <p class="mt-8"><i class="ri-phone-line icon-copper-mr"></i><a href="tel:+18016091130" class="clr-muted">1-801-609-1130</a></p>
+        </div>
+        <div>
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="technology.html">Technology</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="resources.html">Resources</a></li>
+              <li><a href="faq.html">FAQ</a></li>
+            <li><a href="blog.html">Blog</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Solutions</h4>
+          <ul class="footer-links">
+            <li><a href="law-firms.html">Law Firms</a></li>
+            <li><a href="medical-practices.html">Medical Practices</a></li>
+            <li><a href="tribal-nations.html">Tribal Nations</a></li>
+            <li><a href="research-labs.html">Research Labs</a></li>
+            <li><a href="defense-contractors.html">Defense Contractors</a></li>
+            <li><a href="financial-services.html">Financial Services</a></li>
+            <li><a href="insurance.html">Insurance</a></li>
+            <li><a href="energy-utilities.html">Energy &amp; Utilities</a></li>
+            <li><a href="government.html">Government</a></li>
+            <li><a href="education.html">Education</a></li>
+            <li><a href="casino-gaming.html">Casino Gaming</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <ul class="footer-links">
+            <li><a href="why-island-mountain.html">Why Local AI</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="investors.html">Investors</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="terms.html">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom flex-col-center-gap"><p>&copy; 2026 Island Mountain. All rights reserved. Founded by <a href="https://www.johndou.com" target="_blank" rel="noopener" class="clr-copper">John Dougherty</a>.</p>
+        <a href="tel:+18016091130" class="phone-link"><i class="ri-phone-line text-lg"></i> 1-801-609-1130</a>
+        <a href="https://www.linkedin.com/company/island-mountain-llc/" target="_blank" rel="noopener" aria-label="Island Mountain on LinkedIn" class="phone-link"><i class="ri-linkedin-fill text-lg"></i> Follow us on LinkedIn</a>
+        <a href="https://x.com/IslandMountain_" target="_blank" rel="noopener" aria-label="Island Mountain on X" class="phone-link"><i class="ri-twitter-x-fill text-lg"></i> Follow us on X</a></div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

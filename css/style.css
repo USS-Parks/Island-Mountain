@@ -242,6 +242,7 @@ p {
   display: inline-flex;
   align-items: center;
   transform: translateY(-5px);
+  margin-right: auto;
 }
 
 .nav-logo:hover {
@@ -251,13 +252,13 @@ p {
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 32px;
+  gap: 22px;
   list-style: none;
 }
 
 .nav-links a {
   color: #ffffff;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   font-weight: 500;
   position: relative;
   transition: color var(--transition-speed);

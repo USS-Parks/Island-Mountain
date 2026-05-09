@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-R674E394D4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-R674E394D4');
+</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Basho Parks">
+  <meta name="date" content="2026-05-01">
+  <title>Investor Overview | $500K Seed Round | Island Mountain</title>
+  <meta name="description" content="Island Mountain is raising $500K to build AI inference servers for regulated industries. SAFE at $2.5M cap. GPU sourcing is the margin thesis.">
+  <link rel="icon" type="image/x-icon" href="favicon.ico?v=2">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png?v=2">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png?v=2">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="icons/remixicon.css">
+  <link rel="stylesheet" href="fonts/fonts.css">
+  <link rel="canonical" href="https://islandmountain.io/investors.html">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Investor Overview | $500K Seed Round | Island Mountain">
+  <meta property="og:description" content="Island Mountain is raising $500K to build AI inference servers for regulated industries. SAFE at $2.5M cap. GPU sourcing is the margin thesis.">
+  <meta property="og:url" content="https://islandmountain.io/investors.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Island Mountain">
+  <meta property="og:image" content="https://islandmountain.io/images/hero-mountain.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Investor Overview | $500K Seed Round | Island Mountain">
+  <meta name="twitter:description" content="Island Mountain is raising $500K to build AI inference servers for regulated industries. SAFE at $2.5M cap. GPU sourcing is the margin thesis.">
+  <meta name="twitter:image" content="https://islandmountain.io/images/hero-mountain.png">
+
+  <!-- Organization Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Island Mountain",
+    "url": "https://islandmountain.io",
+    "description": "Pre-built local AI inference hardware for data-sovereign organizations. NVIDIA H100 and H200 GPU servers built and burn-tested in Colorado.",
+    "address": {
+      "@type": "PostalAddress",
+      "addressRegion": "CO",
+      "addressCountry": "US"
+    },
+    "foundingDate": "2026",
+    "founder": {
+      "@type": "Person",
+      "name": "John Dougherty",
+      "url": "https://www.johndou.com"
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "sales",
+      "email": "basho@islandmountain.io",
+      "url": "https://islandmountain.io/contact.html"
+    },
+    "sameAs": []
+  }
+  </script>
+
+  <style>
+    .investor-metric { display:flex; flex-direction:column; align-items:center; text-align:center; padding:24px 16px; background:var(--secondary-dark); border-radius:12px; border:1px solid rgba(148,163,184,0.1); }
+    .investor-metric .metric-value { font-size:2rem; font-weight:700; color:var(--copper); margin-bottom:4px; }
+    .investor-metric .metric-label { font-size:0.85rem; color:var(--text-muted); }
+    .metrics-row { display:grid; grid-template-columns:repeat(auto-fit, minmax(180px, 1fr)); gap:16px; margin:32px 0; }
+    .bom-table { width:100%; border-collapse:collapse; margin:24px 0; font-size:0.9rem; }
+    .bom-table th, .bom-table td { padding:10px 14px; text-align:left; border-bottom:1px solid rgba(148,163,184,0.12); }
+    .bom-table th { color:var(--text-light); font-weight:600; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.5px; }
+    .bom-table td { color:var(--text-muted); }
+    .bom-table tr:last-child td { border-bottom:none; font-weight:700; color:var(--text-light); }
+    .bom-table .gpu-row td { color:var(--copper); font-weight:600; }
+    .use-of-funds-list { list-style:none; padding:0; margin:24px 0; }
+    .use-of-funds-list li { display:flex; justify-content:space-between; padding:12px 0; border-bottom:1px solid rgba(148,163,184,0.1); color:var(--text-muted); }
+    .use-of-funds-list li:last-child { border-bottom:none; color:var(--text-light); font-weight:700; }
+    .use-of-funds-list .fund-amount { color:var(--text-light); font-weight:600; }
+    .timeline-track { position:relative; padding:32px 0; margin:32px 0; }
+    .timeline-track::before { content:''; position:absolute; top:50%; left:0; right:0; height:2px; background:var(--tertiary-dark); }
+    .timeline-items { display:flex; justify-content:space-between; position:relative; flex-wrap:wrap; gap:16px; }
+    .timeline-item { display:flex; flex-direction:column; align-items:center; text-align:center; flex:1; min-width:120px; position:relative; }
+    .timeline-dot { width:14px; height:14px; border-radius:50%; background:var(--copper); border:3px solid var(--primary-dark); margin-bottom:12px; z-index:1; }
+    .timeline-dot.pending { background:var(--tertiary-dark); border-color:var(--text-muted); }
+    .timeline-item .tl-date { font-size:0.75rem; color:var(--copper); font-weight:600; margin-bottom:4px; }
+    .timeline-item .tl-label { font-size:0.8rem; color:var(--text-muted); max-width:120px; }
+    .scenario-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:24px; margin:32px 0; }
+    .scenario-card { background:var(--secondary-dark); border-radius:12px; padding:24px; border:1px solid rgba(148,163,184,0.1); }
+    .scenario-card h4 { color:var(--text-light); margin-bottom:16px; font-size:1.1rem; }
+    .scenario-card .scenario-row { display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid rgba(148,163,184,0.08); color:var(--text-muted); font-size:0.9rem; }
+    .scenario-card .scenario-row:last-child { border-bottom:none; }
+    .scenario-card .scenario-row .val { color:var(--text-light); font-weight:600; }
+    .scenario-card .scenario-row .val.negative { color:#ef4444; }
+    .cta-inline { text-align:center; padding:48px 24px; margin:48px 0; border:1px solid rgba(245,158,11,0.2); border-radius:16px; background:rgba(245,158,11,0.03); }
+    .cta-inline h3 { color:var(--text-light); margin-bottom:12px; }
+    .cta-inline p { color:var(--text-muted); margin-bottom:24px; max-width:500px; margin-left:auto; margin-right:auto; }
+    .two-col { display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:start; }
+    @media (max-width:768px) { .two-col { grid-template-columns:1fr; } }
+  </style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://islandmountain.io/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Investors",
+      "item": "https://islandmountain.io/investors.html"
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+  <canvas id="particles-canvas"></canvas>
+
+  <!-- Hero background photo -->
+  <div class="hero-photo">
+    <picture><source srcset="images/hero-mountain-mobile.webp 800w, images/hero-mountain.webp 1913w" type="image/webp" sizes="100vw"><img src="images/hero-mountain.png" alt="Island Mountain rising from the ocean at sunset" loading="lazy" width="1913" height="892"></picture>
+  </div>
+
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="nav-logo"><picture><source srcset="images/logo-nav-new.webp" type="image/webp"><img src="images/logo-nav-new.png" alt="Island Mountain" width="205" height="65"></picture></a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="why-island-mountain.html">Why Local AI</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="technology.html">Technology</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li class="nav-dropdown">
+          <a href="solutions.html" class="nav-dropdown-toggle">Solutions <i class="ri-arrow-down-s-line"></i></a>
+          <ul class="nav-dropdown-menu">
+            <li><a href="law-firms.html">Law Firms</a></li>
+            <li><a href="medical-practices.html">Medical Practices</a></li>
+            <li><a href="tribal-nations.html">Tribal Nations</a></li>
+            <li><a href="research-labs.html">Research Labs</a></li>
+            <li><a href="defense-contractors.html">Defense Contractors</a></li>
+            <li><a href="financial-services.html">Financial Services</a></li>
+            <li><a href="insurance.html">Insurance</a></li>
+            <li><a href="energy-utilities.html">Energy &amp; Utilities</a></li>
+            <li><a href="government.html">Government</a></li>
+            <li><a href="education.html">Education</a></li>
+            <li><a href="casino-gaming.html">Casino Gaming</a></li>
+          </ul>
+        </li>
+        <li><a href="resources.html">Resources</a></li>
+              <li><a href="faq.html">FAQ</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="contact.html" class="nav-cta">Request Quote</a></li>
+      </ul>
+      <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <div class="sidebar-overlay"></div>
+  <div class="mobile-sidebar">
+    <a href="index.html">Home</a>
+    <a href="why-island-mountain.html">Why Local AI</a>
+    <a href="products.html">Products</a>
+    <a href="technology.html">Technology</a>
+    <a href="pricing.html">Pricing</a>
+    <a href="solutions.html" class="mobile-solutions-toggle">Solutions <i class="ri-arrow-down-s-line"></i></a>
+    <div class="mobile-solutions-links">
+      <a href="law-firms.html">Law Firms</a>
+      <a href="medical-practices.html">Medical Practices</a>
+      <a href="tribal-nations.html">Tribal Nations</a>
+      <a href="research-labs.html">Research Labs</a>
+      <a href="defense-contractors.html">Defense Contractors</a>
+      <a href="financial-services.html">Financial Services</a>
+      <a href="insurance.html">Insurance</a>
+      <a href="energy-utilities.html">Energy &amp; Utilities</a>
+      <a href="government.html">Government</a>
+      <a href="education.html">Education</a>
+      <a href="casino-gaming.html">Casino Gaming</a>
+    </div>
+    <a href="resources.html">Resources</a>
+            <a href="faq.html">FAQ</a>
+    <a href="blog.html">Blog</a>
+    <a href="contact.html" class="nav-cta">Request Quote</a>
+  </div>
+
+  <!-- ============================================================
+       SECTION 1: HERO
+       ============================================================ -->
+  <section class="hero hero-page">
+    <div class="hero-inner">
+      <span class="hero-badge">Seed Round Open</span>
+      <h1>Regulated industries must own their AI infrastructure. We build it for them.</h1>
+      <p>The regulated AI infrastructure market is mandatory spend, not discretionary. The margin thesis depends entirely on GPU sourcing - and used H100 prices are falling as hyperscalers upgrade to Blackwell. We need $500K to build the first three racks, prove the unit economics, and lock in supplier relationships before competitors figure out this gap exists.</p>
+      <a href="contact.html" class="btn btn-primary mt-16">Schedule a Conversation</a>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECTION 2: THE MARKET
+       ============================================================ -->
+  <section class="section section-dark">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-badge">The Market</span>
+        <h2>Regulated Data Cannot Touch the Cloud</h2>
+      </div>
+      <div class="fade-in content-max-800">
+        <p>HIPAA. ITAR. Attorney-client privilege. Tribal data sovereignty. FERPA. These aren't preferences; they're legal requirements with criminal penalties for non-compliance. Organizations in these verticals need AI capability but cannot use OpenAI, Claude, or any cloud inference provider for sensitive workloads. The data cannot leave the building. Period.</p>
+        <p class="mt-16">Enterprise vendors sell $1M+ GPU clusters. DIY builders offer no warranty, no burn-in, no pre-configured software stack. Nobody is building turnkey, rack-ready AI servers in the $75K-$400K range for the mid-market. That's the gap.</p>
+        <p class="mt-16">The other incumbent is the managed services provider. Regulated organizations currently pay $100-150K per year to MSPs for the privilege of having "one voice to talk to" on IT. The actual service is standardized, sub-par by default, and structured as an a la carte upsell pyramid; real competence costs extra. Island Mountain replaces that model entirely: you own the hardware, and the people who built it answer when you call. No ticket queue. No tier system. No subscription to unlock basic accountability.</p>
+        <div class="metrics-row">
+          <div class="investor-metric">
+            <span class="metric-value">5</span>
+            <span class="metric-label">Regulated verticals researched</span>
+          </div>
+          <div class="investor-metric">
+            <span class="metric-value">$75K-$400K</span>
+            <span class="metric-label">Price range (no competitor)</span>
+          </div>
+          <div class="investor-metric">
+            <span class="metric-value">Zero</span>
+            <span class="metric-label">Cloud alternatives for sovereign data</span>
+          </div>
+        </div>
+        <p class="note-muted">Market research depth: <a href="law-firms.html" class="clr-copper">Law Firms</a> &middot; <a href="medical-practices.html" class="clr-copper">Medical Practices</a> &middot; <a href="tribal-nations.html" class="clr-copper">Tribal Nations</a> &middot; <a href="research-labs.html" class="clr-copper">Research Labs</a> &middot; <a href="defense-contractors.html" class="clr-copper">Defense Contractors</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECTION 3: THE PRODUCT
+       ============================================================ -->
+  <section class="section section-darker">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-badge">The Product</span>
+        <h2>What We Sell</h2>
+      </div>
+      <div class="fade-in content-max-800">
+        <p>The buyer is not a Reddit hobbyist running Ollama on a weekend workstation. The buyer is a compliance officer at a law firm, a CTO at a tribal enterprise, a practice administrator at a medical group - people with budget, regulatory mandates, and zero interest in configuring Linux. They need a rack that arrives tested, certified, documented, and ready to run. That's what we build.</p>
+        <p style="margin-top:12px;color:var(--text-muted);font-size:0.9rem;">Why build in-house instead of reselling? Control over burn-in testing, software configuration, compliance documentation, and warranty terms. The margin is in the assembly, testing, and certification - not in being a hardware middleman.</p>
+        <div class="metrics-row mt-24">
+          <div class="investor-metric">
+            <span class="metric-value">$75-85K</span>
+            <span class="metric-label">Summit Base &middot; 2x H100 80GB PCIe</span>
+          </div>
+          <div class="investor-metric">
+            <span class="metric-value">$150-160K</span>
+            <span class="metric-label">Summit Ridge &middot; Build-to-Order</span>
+          </div>
+          <div class="investor-metric">
+            <span class="metric-value">$350-400K</span>
+            <span class="metric-label">Summit Pinnacle &middot; 2x H200 141GB (Q3 2026)</span>
+          </div>
+        </div>
+        <p class="mt-16">Every unit ships with Ubuntu Server, vLLM inference engine, Open WebUI interface, and frontier open-weight models pre-loaded. 72-hour burn-in testing. 1-year hardware warranty. <a href="products.html" class="clr-copper">Full specifications &rarr;</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECTION 4: UNIT ECONOMICS
+       ============================================================ -->
+  <section class="section section-dark">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-badge">Unit Economics</span>
+        <h2>The Real Numbers</h2>
+        <p>Every figure below comes from actual supplier quotes sourced May 2026. We're not hiding behind rosy projections. Here's what a rack costs to build, what it sells for, and exactly where the margin comes from.</p>
+      </div>
+
+      <div class="two-col fade-in">
+        <div>
+          <h3 class="heading-light-mb">Bill of Materials: Summit Base Rack (2x H100 80GB PCIe)</h3>
+          <table class="bom-table">
+            <thead><tr><th>Component</th><th>Mid-Market Cost</th><th>% of COGS</th></tr></thead>
+            <tbody>
+              <tr class="gpu-row"><td>2x NVIDIA H100 80GB PCIe (refurb)</td><td>$66,000</td><td>78.3%</td></tr>
+              <tr><td>Supermicro 4U GPU Chassis</td><td>$7,987</td><td>9.5%</td></tr>
+              <tr><td>512GB DDR4-3200 ECC (8x64GB)</td><td>$4,000</td><td>4.7%</td></tr>
+              <tr><td>AMD EPYC 7413 24c/48t</td><td>$1,375</td><td>1.6%</td></tr>
+              <tr><td>Enterprise NVMe Storage (5.76TB)</td><td>$1,391</td><td>1.7%</td></tr>
+              <tr><td>Redundant 2000W PSU</td><td>$475</td><td>0.6%</td></tr>
+              <tr><td>Cables, rails, misc</td><td>$300</td><td>0.4%</td></tr>
+              <tr><td>Assembly + Configuration</td><td>$1,500</td><td>1.8%</td></tr>
+              <tr><td>72-hour Burn-in Testing</td><td>$500</td><td>0.6%</td></tr>
+              <tr><td>Packaging + Freight</td><td>$750</td><td>0.9%</td></tr>
+              <tr><td><strong>TOTAL COGS</strong></td><td><strong>$84,278</strong></td><td><strong>100%</strong></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div>
+          <h3 class="heading-light-mb">COGS Breakdown</h3>
+          <p style="color:var(--text-muted);font-size:0.9rem;margin-bottom:16px;">GPUs are 78.3% of total cost. A $5,000 reduction in per-GPU sourcing cost equals $10,000 more margin per rack. This single line item determines whether the business makes money or loses it.</p>
+          <div class="chart-wrapper" style="max-width:360px;"><canvas id="cogsDonut"></canvas></div>
+        </div>
+      </div>
+
+      <div class="fade-in" style="margin-top:48px;">
+        <h3 class="heading-light-mb">The Margin Problem - and Opportunity</h3>
+        <div class="metrics-row">
+          <div class="investor-metric">
+            <span class="metric-value" style="color:#ef4444;">-5.3%</span>
+            <span class="metric-label">Gross margin at mid-market GPU prices ($33K/card)</span>
+          </div>
+          <div class="investor-metric">
+            <span class="metric-value" style="color:#22c55e;">24-33%</span>
+            <span class="metric-label">Gross margin at aggressive sourcing ($24-27K/card)</span>
+          </div>
+          <div class="investor-metric">
+            <span class="metric-value">$80,000</span>
+            <span class="metric-label">Mid-range selling price (Summit Base tier)</span>
+          </div>
+        </div>
+        <p style="margin-top:16px;color:var(--text-muted);">At current market average prices, the unit economics are negative. At bulk/relationship pricing through enterprise refurbishment channels, margin is 24-33%. The entire business model lives and dies on GPU sourcing. This isn't a weakness to hide; it's the competitive moat to build. The company that locks in sub-$27K H100 supply first wins.</p>
+        <div class="chart-wrapper chart-wrapper-wide" style="max-width:700px;margin:32px auto;"><canvas id="marginSensitivity"></canvas></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mid-page CTA -->
+  <section class="section section-darker">
+    <div class="container">
+      <div class="cta-inline fade-in">
+        <h3>Want to see the full financial model?</h3>
+        <p>We'll walk you through the spreadsheet, supplier quotes, and sourcing strategy in a 30-minute call.</p>
+        <a href="contact.html" class="btn btn-primary">Schedule a Conversation</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECTION 5: FINANCIAL PROJECTIONS
+       ============================================================ -->
+  <section class="section section-dark">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-badge">Financial Projections</span>
+        <h2>Three Scenarios, Two Years</h2>
+        <p>All three scenarios show negative Year 1 NOI. This is normal for a hardware startup building infrastructure. The $500K raise is primarily runway, not growth capital. Year 2 is where unit economics prove out at aggressive sourcing.</p>
+      </div>
+
+      <div class="scenario-grid fade-in">
+        <div class="scenario-card">
+          <h4><i class="ri-shield-line" style="color:var(--text-muted);margin-right:8px;"></i>Conservative</h4>
+          <div class="scenario-row"><span>Units (Y1 / Y2)</span><span class="val">3 / 8</span></div>
+          <div class="scenario-row"><span>Avg Selling Price</span><span class="val">$75K / $78K</span></div>
+          <div class="scenario-row"><span>Revenue (Y1)</span><span class="val">$225,000</span></div>
+          <div class="scenario-row"><span>Revenue (Y2)</span><span class="val">$624,000</span></div>
+          <div class="scenario-row"><span>Gross Margin</span><span class="val negative">-12.4%</span></div>
+          <div class="scenario-row"><span>NOI (Y1)</span><span class="val negative">-$394,584</span></div>
+          <div class="scenario-row"><span>NOI (Y2)</span><span class="val negative">-$378,720</span></div>
+        </div>
+        <div class="scenario-card" style="border-color:rgba(245,158,11,0.3);">
+          <h4><i class="ri-scales-line icon-copper-mr-lg"></i>Moderate</h4>
+          <div class="scenario-row"><span>Units (Y1 / Y2)</span><span class="val">6 / 15</span></div>
+          <div class="scenario-row"><span>Avg Selling Price</span><span class="val">$80K / $80K</span></div>
+          <div class="scenario-row"><span>Revenue (Y1)</span><span class="val">$480,000</span></div>
+          <div class="scenario-row"><span>Revenue (Y2)</span><span class="val">$1,200,000</span></div>
+          <div class="scenario-row"><span>Gross Margin</span><span class="val">2.5% / 10%</span></div>
+          <div class="scenario-row"><span>NOI (Y1)</span><span class="val negative">-$362,400</span></div>
+          <div class="scenario-row"><span>NOI (Y2)</span><span class="val negative">-$276,000</span></div>
+        </div>
+        <div class="scenario-card">
+          <h4><i class="ri-rocket-line icon-copper-mr-lg"></i>Aggressive</h4>
+          <div class="scenario-row"><span>Units (Y1 / Y2)</span><span class="val">10 / 24</span></div>
+          <div class="scenario-row"><span>Avg Selling Price</span><span class="val">$82K / $82K</span></div>
+          <div class="scenario-row"><span>Revenue (Y1)</span><span class="val">$820,000</span></div>
+          <div class="scenario-row"><span>Revenue (Y2)</span><span class="val">$1,968,000</span></div>
+          <div class="scenario-row"><span>Gross Margin</span><span class="val">12.2% / 19.5%</span></div>
+          <div class="scenario-row"><span>NOI (Y1)</span><span class="val negative">-$284,600</span></div>
+          <div class="scenario-row"><span>NOI (Y2)</span><span class="val negative">-$35,040</span></div>
+        </div>
+      </div>
+
+      <div class="fade-in mt-32">
+        <div class="chart-wrapper chart-wrapper-wide content-max-800"><canvas id="revenueProjections"></canvas></div>
+      </div>
+
+      <div class="fade-in" style="margin-top:32px;max-width:700px;margin-left:auto;margin-right:auto;">
+        <h3 style="color:var(--text-light);margin-bottom:12px;">Break-Even Analysis</h3>
+        <p class="clr-muted">Annual fixed costs: $360,000. At moderate margins ($2K contribution/unit), break-even requires 180 units/year - unrealistic. At aggressive margins ($10K contribution/unit), break-even is 36 units/year. This reinforces: aggressive GPU sourcing is not optional, it's existential.</p>
+        <p style="color:var(--text-muted);margin-top:16px;"><strong style="color:var(--text-light);">Beyond hardware margin:</strong> Year 2 introduces managed service contracts - model updates, security patching, performance monitoring, and compliance documentation - as recurring monthly revenue. The installation creates the relationship. The maintenance contract is where the business compounds. This is the ADT model: the hardware sale gets you in the door, the service retainer is where margin lives long-term.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECTION 6: THE ASK
+       ============================================================ -->
+  <section class="section section-darker">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-badge">The Ask</span>
+        <h2>$500,000 SAFE &middot; $2.5M Cap &middot; 20% Discount</h2>
+      </div>
+
+      <div class="two-col fade-in">
+        <div>
+          <h3 class="heading-light-mb">Use of Funds</h3>
+          <ul class="use-of-funds-list">
+            <li><span>GPU Inventory (6x H100 80GB PCIe)</span><span class="fund-amount">$198,000</span></li>
+            <li><span>Non-GPU Components (3 builds)</span><span class="fund-amount">$45,000</span></li>
+            <li><span>Assembly Facility Setup</span><span class="fund-amount">$25,000</span></li>
+            <li><span>Operating Runway (6 months)</span><span class="fund-amount">$180,000</span></li>
+            <li><span>Marketing &amp; Sales Launch</span><span class="fund-amount">$20,000</span></li>
+            <li><span>Legal &amp; Incorporation</span><span class="fund-amount">$10,000</span></li>
+            <li><span>Working Capital Reserve</span><span class="fund-amount">$22,000</span></li>
+            <li><span><strong>Total Raise</strong></span><span class="fund-amount"><strong>$500,000</strong></span></li>
+          </ul>
+          <p class="note-muted">$243K (48.6%) goes directly into hard assets - GPUs and server components. Your money buys inventory with active secondary-market resale value, not salaries and overhead.</p>
+        </div>
+        <div>
+          <h3 class="heading-light-mb">Where Every Dollar Goes</h3>
+          <div class="chart-wrapper" style="max-width:500px;"><canvas id="useOfFunds"></canvas></div>
+          <div style="margin-top:24px;padding:16px;background:var(--secondary-dark);border-radius:8px;border:1px solid rgba(148,163,184,0.1);">
+            <h4 style="color:var(--text-light);margin-bottom:8px;font-size:0.95rem;">Deal Terms</h4>
+            <p style="color:var(--text-muted);font-size:0.85rem;line-height:1.6;margin:0;">
+              Instrument: SAFE (Simple Agreement for Future Equity)<br>
+              Valuation Cap: $2,500,000 pre-money<br>
+              Discount: 20% to next priced round<br>
+              Minimum Check: $25,000<br>
+              Pro-forma Seed Ownership: 16.7%<br>
+              MOIC at $5M Series A: 2.0x<br>
+              MOIC at $10M Series A: 4.0x
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECTION 7: MILESTONE ROADMAP
+       ============================================================ -->
+  <section class="section section-dark">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-badge">Milestones</span>
+        <h2>Capital &rarr; Revenue</h2>
+        <p>Concrete dates, not vague quarters. Left side: already done. Right side: what your capital unlocks.</p>
+      </div>
+
+      <div class="fade-in" style="max-width:900px;margin:0 auto;">
+        <h3 style="color:var(--copper);margin-bottom:16px;font-size:1rem;">&#10003; Already Completed</h3>
+        <p style="color:var(--text-muted);margin-bottom:32px;">Website live &middot; Brand established &middot; Market research complete across 5 verticals &middot; BOM specced with real supplier quotes &middot; Supplier channels identified &middot; Financial model built &middot; Company formed &middot; Insurance secured</p>
+
+        <h3 style="color:var(--text-light);margin-bottom:16px;font-size:1rem;">Capital Unlocks</h3>
+        <div class="timeline-track">
+          <div class="timeline-items">
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <span class="tl-date">Q3 2026</span>
+              <span class="tl-label">Seed round closes. Accounts funded.</span>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot pending"></div>
+              <span class="tl-date">+4 weeks</span>
+              <span class="tl-label">Facility operational. ESD stations, burn-in power.</span>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot pending"></div>
+              <span class="tl-date">+6 weeks</span>
+              <span class="tl-label">First GPU procurement. 6x H100 received.</span>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot pending"></div>
+              <span class="tl-date">+10 weeks</span>
+              <span class="tl-label">First Summit Base rack built and burn-in started.</span>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot pending"></div>
+              <span class="tl-date">Q4 2026</span>
+              <span class="tl-label">First unit ships to paying customer.</span>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot pending"></div>
+              <span class="tl-date">Q1 2027</span>
+              <span class="tl-label">3 units shipped. Revenue validates model.</span>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot pending"></div>
+              <span class="tl-date">Q2 2027</span>
+              <span class="tl-label">Break-even month (at aggressive margins).</span>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot pending"></div>
+              <span class="tl-date">Q4 2027</span>
+              <span class="tl-label">Series A readiness. 10+ units, customer refs.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+        <h3 style="color:var(--text-light);margin-bottom:16px;margin-top:40px;font-size:1rem;">Product Line Expansion</h3>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;">
+          <div class="card-panel">
+            <h4 class="copper-mb-8"><i class="ri-home-line"></i> Landfall Series</h4>
+            <p class="muted-body">Personal and small-team AI servers for individual professionals. Anticipated pricing: $4,500-$14,000. Consumer-tier GPUs with the same build quality and software stack. The Landfall Solo buyer at $7,500 is the warm referral path to a Summit Base sale at $75K for their organization. Hardware sourcing and margin analysis underway.</p>
+          </div>
+          <div class="card-panel">
+            <h4 class="copper-mb-8"><i class="ri-shield-keyhole-line"></i> Citadel Series</h4>
+            <p class="muted-body">Multi-rack, custom-configured air-gapped systems designed for SCIF environments, classified-adjacent defense contractors, and national government deployments. Project-based pricing starting at $400,000. The Citadel Series will be scoped after the first Summit-tier defense contractor deployment provides a reference architecture and case study. Naming and positioning it now signals to defense buyers that Island Mountain's product architecture scales beyond single-server deployments.</p>
+          </div>
+        </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECTION 8: WHY NOW
+       ============================================================ -->
+  <section class="section section-darker">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-badge">Timing</span>
+        <h2>Why Now</h2>
+      </div>
+      <div class="fade-in content-max-800">
+        <div class="risk-grid">
+          <div class="risk-card">
+            <h4><i class="ri-arrow-down-line"></i> H100 Prices Are Falling</h4>
+            <p>Hyperscalers are upgrading from H100 to Blackwell (B200/B300). This is flooding the secondary market with used H100 cards. Refurbished average: $30,548 today. Bulk channel pricing: $24-27K. The window is open now; it closes when competitors recognize this supply dynamic.</p>
+          </div>
+          <div class="risk-card">
+            <h4><i class="ri-line-chart-line"></i> Regulated AI Demand Is Surging</h4>
+            <p>Every regulated organization is watching their competitors deploy AI and asking "how do we do this without violating our compliance obligations?" The demand signal is everywhere. The supply of compliant infrastructure is nowhere.</p>
+          </div>
+          <div class="risk-card">
+            <h4><i class="ri-ghost-line"></i> No Competitor in This Range</h4>
+            <p>Enterprise vendors (Dell, HPE) sell $1M+ clusters to Fortune 500. DIY builders offer no warranty, no software, no support. Nobody is building turnkey, burn-tested, pre-configured racks for the $75-400K mid-market. First mover with supplier relationships wins.</p>
+          </div>
+          <div class="risk-card">
+            <h4><i class="ri-timer-line"></i> Capital-Efficient Model</h4>
+            <p>One-time hardware sale. No recurring revenue dependency. No SaaS churn. No cloud compute burn rate. Customer pays once, owns the hardware outright. Simple economics: buy GPUs, build rack, sell rack, repeat.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECTION 9: THE TEAM
+       ============================================================ -->
+  <section class="section section-dark">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-badge">Team</span>
+        <h2>Who's Building This</h2>
+      </div>
+      <div class="fade-in" style="max-width:700px;margin:0 auto;">
+        <div class="info-panel">
+          <h3 class="heading-light-mb-sm">John Dougherty - Co-founder | Hardware Engineer</h3>
+          <p style="color:var(--text-muted);margin-bottom:16px;"><a href="https://www.johndou.com" target="_blank" rel="noopener" class="clr-copper">johndou.com</a></p>
+          <p class="muted-relaxed">25 years knowledge and experience with GPU hardware markets, enterprise server architectures, and the regulatory compliance landscape driving demand for on-premises AI. Built the Island Mountain product line, financial model, and supplier network from scratch.</p>
+        </div>
+        <div style="padding:24px;background:var(--secondary-dark);border-radius:12px;border:1px solid rgba(148,163,184,0.1);margin-top:16px;">
+          <h3 class="heading-light-mb-sm">Basho Parks - Co-founder | Marketing &amp; Sales Manager</h3>
+          <p class="muted-relaxed">Proven project manager and technical writer with direct relationships across tribal governments, defense contractors, and research institutions. Brings the procurement fluency and operational depth to move from interest to signed contract. Intimate knowledge of the compliance, connectivity, and sovereignty pressures driving demand for on-premises AI.</p>
+        </div>
+        <p style="margin-top:16px;color:var(--text-muted);font-size:0.9rem;">Two-person founding team. Capital funds the first full-time technical hire (assembly technician) and operating runway. Next hire is a second technician - funded by revenue, not the seed round.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECTION 10: RISK DISCLOSURE
+       ============================================================ -->
+  <section class="section section-darker">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-badge">Risk Disclosure</span>
+        <h2>What Could Go Wrong</h2>
+        <p>Investors deserve founders who name their own risks. Here they are.</p>
+      </div>
+      <div class="risk-grid fade-in">
+        <div class="risk-card">
+          <h4><i class="ri-funds-line"></i> GPU Price Volatility</h4>
+          <p>If H100 prices rise instead of fall, margins compress or go negative. <strong>Mitigation:</strong> Price-lock clauses with buyers, 14-day quote windows, working capital reserve for opportunistic purchasing when prices dip.</p>
+        </div>
+        <div class="risk-card">
+          <h4><i class="ri-box-3-line"></i> Single-Product Concentration</h4>
+          <p>Revenue depends on one product category (GPU inference servers). <strong>Mitigation:</strong> Three tiers serve different budgets. Summit Ridge and Summit Pinnacle tiers launching Q3 2026. Managed services and maintenance contracts planned for Year 2.</p>
+        </div>
+        <div class="risk-card">
+          <h4><i class="ri-error-warning-line"></i> Pre-Revenue Status</h4>
+          <p>No shipped unit. No customer reference. No benchmark from a real deployment. <strong>Mitigation:</strong> First unit target is 10 weeks post-close. Customer pipeline being built now through vertical content marketing and direct outreach.</p>
+        </div>
+        <div class="risk-card">
+          <h4><i class="ri-building-4-line"></i> Competitive Entry</h4>
+          <p>Dell, HPE, or a well-funded startup could enter this exact market segment. <strong>Mitigation:</strong> Speed to market. Supplier relationships are the moat. First-mover advantage in a niche where customer trust and delivery track record matter more than brand.</p>
+        </div>
+        <div class="risk-card">
+          <h4><i class="ri-cpu-line"></i> Technology Obsolescence</h4>
+          <p>Next-gen GPUs (Blackwell, beyond) could make H100 servers less attractive. <strong>Mitigation:</strong> GPU upgrade program already designed. Transparent disclosure on product pages. Regulated buyers need inference today, not the best GPU tomorrow.</p>
+        </div>
+        <div class="risk-card">
+          <h4><i class="ri-user-line"></i> Early-Stage Team Risk</h4>
+          <p>Two co-founders, no deep bench yet. Hardware builds depend on John; sales pipeline depends on Basho. <strong>Mitigation:</strong> First hire is a technician who can build independently. SOPs and build documentation being written alongside first units. Cross-training between founders on critical processes. Neither founder is a single point of failure for the company surviving.</p>
+        </div>
+        <div class="risk-card">
+          <h4><i class="ri-price-tag-3-line"></i> Commoditization Cliff</h4>
+          <p>Hardware costs drop roughly 40% every 2-3 years. Plug-and-play AI appliances from consumer electronics companies may appear within 18-24 months. <strong>Mitigation:</strong> Regulated buyers don't need a box, they need documented compliance certification, burn-in testing, warranty-backed hardware, and a vendor who understands their specific regulatory obligations. The appliance market will serve hobbyists. Island Mountain serves organizations that need an audit trail.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECTION 11: CTA
+       ============================================================ -->
+  <section class="section section-dark text-center">
+    <div class="container fade-in">
+      <h2>Ready to Talk?</h2>
+      <p style="max-width:600px;margin:16px auto 32px;color:var(--text-muted);">This is a real conversation, not a sales pitch. We'll share the full financial model, answer hard questions, and discuss whether this fits your investment thesis.</p>
+      <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+        <a href="contact.html" class="btn btn-primary">Schedule a Conversation</a>
+        <a href="contact.html" class="btn" style="border:1px solid var(--copper);color:var(--copper);padding:12px 24px;border-radius:8px;text-decoration:none;">Request the Pitch Deck</a>
+      </div>
+      <p class="cta-subtitle"><i class="ri-phone-line icon-copper-mr-sm"></i>Or call directly: <a href="tel:+18016091130" class="copper-semibold">1-801-609-1130</a></p>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="images/logo-footer.png" alt="Island Mountain logo" width="210" height="210" class="d-block-mb">
+          <a href="index.html" class="nav-logo">Island Mountain</a>
+          <p>Local AI infrastructure for data-sovereign organizations. Colorado.</p>
+          <p class="mt-8"><i class="ri-phone-line icon-copper-mr"></i><a href="tel:+18016091130" class="clr-muted">1-801-609-1130</a></p>
+        </div>
+        <div>
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="technology.html">Technology</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="resources.html">Resources</a></li>
+              <li><a href="faq.html">FAQ</a></li>
+            <li><a href="blog.html">Blog</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Solutions</h4>
+          <ul class="footer-links">
+            <li><a href="law-firms.html">Law Firms</a></li>
+            <li><a href="medical-practices.html">Medical Practices</a></li>
+            <li><a href="tribal-nations.html">Tribal Nations</a></li>
+            <li><a href="research-labs.html">Research Labs</a></li>
+            <li><a href="defense-contractors.html">Defense Contractors</a></li>
+            <li><a href="financial-services.html">Financial Services</a></li>
+            <li><a href="insurance.html">Insurance</a></li>
+            <li><a href="energy-utilities.html">Energy &amp; Utilities</a></li>
+            <li><a href="government.html">Government</a></li>
+            <li><a href="education.html">Education</a></li>
+            <li><a href="casino-gaming.html">Casino Gaming</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <ul class="footer-links">
+            <li><a href="why-island-mountain.html">Why Local AI</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="investors.html">Investors</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="terms.html">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom flex-col-center-gap"><p>&copy; 2026 Island Mountain. All rights reserved. Founded by <a href="https://www.johndou.com" target="_blank" rel="noopener" class="clr-copper">John Dougherty</a>.</p>
+        <a href="tel:+18016091130" class="phone-link"><i class="ri-phone-line text-lg"></i> 1-801-609-1130</a>
+        <a href="https://www.linkedin.com/company/island-mountain-llc/" target="_blank" rel="noopener" aria-label="Island Mountain on LinkedIn" class="phone-link"><i class="ri-linkedin-fill text-lg"></i> Follow us on LinkedIn</a>
+        <a href="https://x.com/IslandMountain_" target="_blank" rel="noopener" aria-label="Island Mountain on X" class="phone-link"><i class="ri-twitter-x-fill text-lg"></i> Follow us on X</a></div>
+    </div>
+  </footer>
+
+  <script src="js/vendor/chart.umd.min.js"></script>
+  <script src="js/charts.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

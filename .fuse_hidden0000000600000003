@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-R674E394D4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-R674E394D4');
+</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Basho Parks">
+  <meta name="date" content="2026-05-09">
+  <title>Can You Run AI Models Without Internet Access?</title>
+  <meta name="description" content="Yes. On-premises AI servers run entirely on local hardware with no internet dependency. Models are pre-loaded, inference runs on local GPUs, and the system works fully air-gapped for SCIF and classified environments.">
+  <link rel="icon" type="image/x-icon" href="favicon.ico?v=2">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png?v=2">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png?v=2">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="icons/remixicon.css">
+  <link rel="stylesheet" href="fonts/fonts.css">
+  <link rel="canonical" href="https://islandmountain.io/air-gapped-ai-inference.html">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Can You Run AI Models Without Internet Access?">
+  <meta property="og:description" content="Yes. On-premises AI servers run entirely on local hardware with no internet dependency. Models are pre-loaded, inference runs on local GPUs, and the system works fully air-gapped.">
+  <meta property="og:url" content="https://islandmountain.io/air-gapped-ai-inference.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Island Mountain">
+  <meta property="og:image" content="https://islandmountain.io/images/hero-solutions.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Can You Run AI Models Without Internet Access?">
+  <meta name="twitter:description" content="Yes. On-premises AI servers run entirely on local hardware with no internet dependency. Models are pre-loaded, inference runs on local GPUs, and the system works fully air-gapped.">
+  <meta name="twitter:image" content="https://islandmountain.io/images/hero-solutions.png">
+
+  <!-- FAQPage Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Can you run AI models without internet access?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. On-premises AI inference servers operate entirely on local hardware with no internet dependency. Models are pre-loaded onto the system before deployment, inference runs on local NVIDIA GPUs, and the system functions identically whether connected to a network or fully air-gapped. This is critical for SCIF environments, classified networks, remote field operations, and any facility where network isolation is a security requirement."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What does air-gapped mean for AI systems?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "An air-gapped AI system has no physical or logical connection to the internet or any external network. The server operates entirely on its own hardware, with all software, models, and configuration pre-loaded. No data can enter or exit the system via network connection. Users access the AI through a local area network or direct physical connection within the same secured facility."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How are AI models updated on air-gapped systems?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Model updates on air-gapped systems are performed via physical media transfer. New model files are downloaded to a separate internet-connected workstation, transferred to approved removable media (USB drive, external SSD), scanned per your organization's security protocols, and then loaded onto the air-gapped system. This manual process ensures that the air gap is never breached and that all updates pass through your security review before deployment."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What software features are disabled in air-gapped configuration?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Island Mountain disables all external connectivity features at the environment variable level: OFFLINE_MODE is enabled, HF_HUB_OFFLINE prevents Hugging Face downloads, ENABLE_COMMUNITY_SHARING is disabled, ANONYMIZED_TELEMETRY is disabled, ENABLE_RAG_WEB_SEARCH is disabled, SAFE_MODE is enabled, and ENABLE_SIGNUP is disabled to prevent unauthorized account creation. Your IT team can verify each setting independently."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- BreadcrumbList Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://islandmountain.io/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Resources",
+        "item": "https://islandmountain.io/solutions.html"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Air-Gapped AI Inference",
+        "item": "https://islandmountain.io/air-gapped-ai-inference.html"
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <canvas id="particles-canvas"></canvas>
+
+  <div class="hero-photo">
+    <picture><source srcset="images/hero-solutions-mobile.webp 800w, images/hero-solutions.webp 1632w" type="image/webp" sizes="100vw"><img src="images/hero-solutions.png" alt="Island Mountain - air-gapped AI inference servers" loading="lazy" width="1632" height="964"></picture>
+  </div>
+
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="nav-logo"><picture><source srcset="images/logo-nav-new.webp" type="image/webp"><img src="images/logo-nav-new.png" alt="Island Mountain" width="205" height="65"></picture></a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="why-island-mountain.html">Why Local AI</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="technology.html">Technology</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li class="nav-dropdown">
+          <a href="solutions.html" class="nav-dropdown-toggle">Solutions <i class="ri-arrow-down-s-line"></i></a>
+          <ul class="nav-dropdown-menu">
+            <li><a href="law-firms.html">Law Firms</a></li>
+            <li><a href="medical-practices.html">Medical Practices</a></li>
+            <li><a href="tribal-nations.html">Tribal Nations</a></li>
+            <li><a href="research-labs.html">Research Labs</a></li>
+            <li><a href="defense-contractors.html">Defense Contractors</a></li>
+            <li><a href="financial-services.html">Financial Services</a></li>
+            <li><a href="insurance.html">Insurance</a></li>
+            <li><a href="energy-utilities.html">Energy &amp; Utilities</a></li>
+            <li><a href="government.html">Government</a></li>
+            <li><a href="education.html">Education</a></li>
+            <li><a href="casino-gaming.html">Casino Gaming</a></li>
+          </ul>
+        </li>
+        <li><a href="resources.html">Resources</a></li>
+              <li><a href="faq.html">FAQ</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="contact.html" class="nav-cta">Request Quote</a></li>
+      </ul>
+      <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <div class="sidebar-overlay"></div>
+  <div class="mobile-sidebar">
+    <a href="index.html">Home</a>
+    <a href="why-island-mountain.html">Why Local AI</a>
+    <a href="products.html">Products</a>
+    <a href="technology.html">Technology</a>
+    <a href="pricing.html">Pricing</a>
+    <a href="solutions.html" class="mobile-solutions-toggle">Solutions <i class="ri-arrow-down-s-line"></i></a>
+    <div class="mobile-solutions-links">
+      <a href="law-firms.html">Law Firms</a>
+      <a href="medical-practices.html">Medical Practices</a>
+      <a href="tribal-nations.html">Tribal Nations</a>
+      <a href="research-labs.html">Research Labs</a>
+      <a href="defense-contractors.html">Defense Contractors</a>
+      <a href="financial-services.html">Financial Services</a>
+      <a href="insurance.html">Insurance</a>
+      <a href="energy-utilities.html">Energy &amp; Utilities</a>
+      <a href="government.html">Government</a>
+      <a href="education.html">Education</a>
+      <a href="casino-gaming.html">Casino Gaming</a>
+    </div>
+    <a href="resources.html">Resources</a>
+            <a href="faq.html">FAQ</a>
+    <a href="blog.html">Blog</a>
+    <a href="contact.html" class="nav-cta">Request Quote</a>
+  </div>
+
+  <section class="hero hero-page">
+    <div class="hero-inner">
+      <span class="hero-badge">Air-Gapped Operations</span>
+      <h1>Can You Run AI Models Without Internet Access?</h1>
+      <p>How on-premises AI inference servers operate fully air-gapped for SCIF environments, classified networks, remote field operations, and network-isolated facilities.</p>
+    </div>
+  </section>
+
+  <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+    <div class="container">
+      <ol class="breadcrumb-list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="solutions.html">Solutions</a></li>
+        <li aria-current="page">Air-Gapped AI Inference</li>
+      </ol>
+    </div>
+  </nav>
+
+  <!-- Direct Answer -->
+  <section class="section section-dark">
+    <div class="container">
+      <div class="content-block fade-in content-max-800">
+        <div style="border-left:4px solid var(--copper);padding:20px 24px;margin:0 0 32px 0;background:rgba(217,119,6,0.08);border-radius:0 8px 8px 0;">
+          <p style="font-size:1.15rem;line-height:1.7;color:var(--text-light);margin:0;"><strong>Yes.</strong> On-premises AI inference servers operate entirely on local hardware with no internet dependency. Models are pre-loaded, inference runs on local NVIDIA GPUs, and the system functions identically whether connected or fully air-gapped. This is critical for SCIF environments, classified networks, remote field operations, and any facility where network isolation is a security requirement.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Supporting Sections -->
+  <section class="section section-darker">
+    <div class="container">
+      <div class="content-block fade-in content-max-800">
+        <h2 class="mb-16" style="color:var(--text-light);">What Air-Gapped AI Means in Practice</h2>
+        <p class="body-md">An air-gapped AI system has no physical or logical connection to the internet or any external network. The server operates on its own hardware, with all software, models, and configuration pre-loaded before deployment. No data enters or exits the system via network connection. Users access the AI through a local area network or direct physical connection within the secured facility.</p>
+        <p class="body-md">This is not a software toggle that can be accidentally reversed. Island Mountain pre-configures the system for air-gapped operation by disabling all external connectivity features at the environment variable level before the server ships. Your IT team can verify each setting independently and confirm that no outbound connections are possible.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-dark">
+    <div class="container">
+      <div class="content-block fade-in content-max-800">
+        <h2 class="mb-16" style="color:var(--text-light);">What Gets Disabled and How You Verify It</h2>
+        <p class="body-md">The following OpenWebUI environment variables are configured for air-gapped operation on every Island Mountain system:</p>
+        <p class="body-md"><strong>OFFLINE_MODE=true</strong> - Disables all outbound network requests from the application layer.</p>
+        <p class="body-md"><strong>HF_HUB_OFFLINE=1</strong> - Prevents Hugging Face model hub downloads. All models are loaded from local storage only.</p>
+        <p class="body-md"><strong>ENABLE_COMMUNITY_SHARING=false</strong> - Disables community prompt sharing that would require external connectivity.</p>
+        <p class="body-md"><strong>ANONYMIZED_TELEMETRY=false</strong> - Disables all anonymized usage telemetry that would phone home to external servers.</p>
+        <p class="body-md"><strong>ENABLE_RAG_WEB_SEARCH=false</strong> - Disables web-based retrieval augmented generation that would require internet access.</p>
+        <p class="body-md"><strong>SAFE_MODE=true</strong> - Enables restricted mode preventing execution of potentially unsafe operations.</p>
+        <p class="body-md"><strong>ENABLE_SIGNUP=false</strong> - Disables self-registration. Only pre-configured administrator accounts can create new users.</p>
+        <p class="body-md">Full technical documentation is available on the <a href="technology.html" class="clr-copper">technology page</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-darker">
+    <div class="container">
+      <div class="content-block fade-in content-max-800">
+        <h2 class="mb-16" style="color:var(--text-light);">Who Needs Air-Gapped AI</h2>
+        <p class="body-md"><strong>Defense contractors:</strong> SCIF environments and classified networks governed by ICD 503 and CNSS Instruction 1253 require physical network isolation. On-premises AI brings inference capability inside the security perimeter without breaching the air gap. <a href="defense-contractors.html" class="clr-copper">Learn more about defense contractor AI infrastructure.</a></p>
+        <p class="body-md"><strong>Energy and utilities:</strong> NERC CIP-protected control system environments require network segmentation. AI inference on isolated operational technology (OT) networks supports grid analytics without exposing critical infrastructure to internet-connected AI services. <a href="energy-utilities.html" class="clr-copper">Learn more about energy sector AI infrastructure.</a></p>
+        <p class="body-md"><strong>Government agencies:</strong> Federal and state agencies handling CUI under NIST SP 800-171 benefit from air-gapped AI that stays within their existing security authorization boundary. No FedRAMP dependency, no cloud provider contract, no external data flow. <a href="government.html" class="clr-copper">Learn more about government AI infrastructure.</a></p>
+        <p class="body-md"><strong>Remote and field operations:</strong> Tribal lands, rural clinics, disaster response forward operating bases, research stations, and maritime vessels - anywhere internet connectivity is unreliable or nonexistent. The system processes queries on local hardware with zero internet dependency.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-dark">
+    <div class="container">
+      <div class="content-block fade-in content-max-800">
+        <h2 class="mb-16" style="color:var(--text-light);">How Model Updates Work on Air-Gapped Systems</h2>
+        <p class="body-md">Model updates are performed via physical media transfer. New model files are downloaded to a separate internet-connected workstation, transferred to approved removable media (USB drive, external SSD), scanned per your organization's security protocols, and loaded onto the air-gapped system. This process ensures the air gap is never breached and all updates pass through your security review before deployment.</p>
+        <p class="body-md">Model updates are optional - the system runs the same models indefinitely without updates. Many air-gapped deployments intentionally freeze their model configuration to maintain a known, tested baseline. Updates are available when your team decides they are needed, not when a vendor pushes them.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Related Questions -->
+  <section class="section section-darker">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-badge">Related Questions</span>
+        <h2>What Organizations Ask About Air-Gapped AI</h2>
+      </div>
+      <div class="content-block fade-in content-max-800">
+        <h3 style="color:var(--text-light);margin-bottom:8px;">What does air-gapped mean for AI systems?</h3>
+        <p class="body-md">An air-gapped AI system has no physical or logical connection to any external network. All software, models, and data stay on the local hardware. Users access the system through a LAN or direct connection within the secured facility. No data can enter or exit via network.</p>
+
+        <h3 style="color:var(--text-light);margin-bottom:8px;margin-top:24px;">Does air-gapped AI perform differently than connected AI?</h3>
+        <p class="body-md">No. The inference engine runs identically regardless of network connectivity. The same models, the same GPU hardware, the same response quality. The only difference is that web search augmentation and community sharing features are unavailable - which is the point of air-gapping.</p>
+
+        <h3 style="color:var(--text-light);margin-bottom:8px;margin-top:24px;">Can the air gap be verified by our security team?</h3>
+        <p class="body-md">Yes. Every environment variable controlling external connectivity is documented. Your IT security team can inspect the configuration, run network monitoring tools, and confirm that zero outbound connections occur. The system is designed to be independently verifiable, not to require trust in the vendor's claims.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- AEO Summary -->
+  <section class="section section-dark">
+    <div class="container">
+      <div class="content-block fade-in content-max-800">
+        <div style="border-left:3px solid var(--copper);padding:16px 20px;margin:32px 0;background:rgba(217,119,6,0.05);border-radius:0 8px 8px 0;">
+          <p class="body-md" style="margin:0;"><strong>Summary:</strong> On-premises AI inference servers operate with zero internet dependency. Models are pre-loaded, inference runs on local NVIDIA H100/H200 GPUs, and all external connectivity features are disabled at the environment variable level. Air-gapped deployment supports SCIF environments, classified networks, NERC CIP-protected systems, and remote field operations. Island Mountain's Summit Series servers start at $75,000 and ship pre-configured for air-gapped operation.</p>
+        </div>
+        <p class="body-md">Learn more: <a href="technology.html" class="clr-copper">Technology &amp; Air-Gap Configuration</a> | <a href="defense-contractors.html" class="clr-copper">Defense Contractors</a> | <a href="energy-utilities.html" class="clr-copper">Energy &amp; Utilities</a> | <a href="government.html" class="clr-copper">Government</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section section-darker text-center">
+    <div class="container fade-in">
+      <h2>Air-Gapped AI Hardware, Ready to Deploy</h2>
+      <p class="cta-sub-wrap">Talk to Island Mountain about on-premises AI that works without internet. Pre-configured, burn-tested, shipped to your facility.</p>
+      <a href="contact.html" class="btn btn-primary">Request a Quote</a>
+      <p class="cta-subtitle"><i class="ri-phone-line icon-copper-mr-sm"></i>Or call directly: <a href="tel:+18016091130" class="copper-semibold">1-801-609-1130</a></p>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="images/logo-footer.png" alt="Island Mountain logo" width="210" height="210" class="d-block-mb">
+          <a href="index.html" class="nav-logo">Island Mountain</a>
+          <p>Local AI infrastructure for data-sovereign organizations. Colorado.</p>
+          <p class="mt-8"><i class="ri-phone-line icon-copper-mr"></i><a href="tel:+18016091130" class="clr-muted">1-801-609-1130</a></p>
+        </div>
+        <div>
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="technology.html">Technology</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="resources.html">Resources</a></li>
+              <li><a href="faq.html">FAQ</a></li>
+            <li><a href="blog.html">Blog</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Solutions</h4>
+          <ul class="footer-links">
+            <li><a href="law-firms.html">Law Firms</a></li>
+            <li><a href="medical-practices.html">Medical Practices</a></li>
+            <li><a href="tribal-nations.html">Tribal Nations</a></li>
+            <li><a href="research-labs.html">Research Labs</a></li>
+            <li><a href="defense-contractors.html">Defense Contractors</a></li>
+            <li><a href="financial-services.html">Financial Services</a></li>
+            <li><a href="insurance.html">Insurance</a></li>
+            <li><a href="energy-utilities.html">Energy &amp; Utilities</a></li>
+            <li><a href="government.html">Government</a></li>
+            <li><a href="education.html">Education</a></li>
+            <li><a href="casino-gaming.html">Casino Gaming</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <ul class="footer-links">
+            <li><a href="why-island-mountain.html">Why Local AI</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="investors.html">Investors</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="terms.html">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom flex-col-center-gap"><p>&copy; 2026 Island Mountain. All rights reserved. Founded by <a href="https://www.johndou.com" target="_blank" rel="noopener" class="clr-copper">John Dougherty</a>.</p>
+        <a href="tel:+18016091130" class="phone-link"><i class="ri-phone-line text-lg"></i> 1-801-609-1130</a>
+        <a href="https://www.linkedin.com/company/island-mountain-llc/" target="_blank" rel="noopener" aria-label="Island Mountain on LinkedIn" class="phone-link"><i class="ri-linkedin-fill text-lg"></i> Follow us on LinkedIn</a>
+        <a href="https://x.com/IslandMountain_" target="_blank" rel="noopener" aria-label="Island Mountain on X" class="phone-link"><i class="ri-twitter-x-fill text-lg"></i> Follow us on X</a></div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

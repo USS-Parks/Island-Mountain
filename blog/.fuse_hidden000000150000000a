@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-R674E394D4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-R674E394D4');
+</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Basho Parks">
+  <meta name="date" content="2026-05-01">
+  <title>OCAP Principles &amp; the CLOUD Act: Local AI for Tribes</title>
+  <meta name="description" content="How the CLOUD Act undermines tribal data sovereignty and why OCAP-compliant AI requires on-premise hardware. Ownership, Control, Access, Possession.">
+  <link rel="icon" type="image/x-icon" href="../favicon.ico?v=2">
+  <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon-32.png?v=2">
+  <link rel="apple-touch-icon" sizes="180x180" href="../images/apple-touch-icon.png?v=2">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../icons/remixicon.css">
+  <link rel="stylesheet" href="../fonts/fonts.css">
+  <link rel="canonical" href="https://islandmountain.io/blog/ocap-cloud-act-guide.html">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="OCAP Principles &amp; the CLOUD Act: Local AI for Tribes">
+  <meta property="og:description" content="How the CLOUD Act undermines tribal data sovereignty and why OCAP-compliant AI requires on-premise hardware. Ownership, Control, Access, Possession.">
+  <meta property="og:url" content="https://islandmountain.io/blog/ocap-cloud-act-guide.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Island Mountain">
+  <meta property="og:image" content="https://islandmountain.io/images/hero-mountain.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="OCAP Principles &amp; the CLOUD Act: Local AI for Tribes">
+  <meta name="twitter:description" content="How the CLOUD Act undermines tribal data sovereignty and why OCAP-compliant AI requires on-premise hardware. Ownership, Control, Access, Possession.">
+  <meta name="twitter:image" content="https://islandmountain.io/images/hero-mountain.png">
+
+  <!-- Article Schema -->
+  <script type="application/ld+json">
+  {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "OCAP Principles and the CLOUD Act: Why Tribal Data Requires Local AI Infrastructure",
+  "description": "How the CLOUD Act undermines tribal data sovereignty and why OCAP-compliant AI requires on-premise hardware. Ownership, Control, Access, and Possession in the age of AI.",
+  "url": "https://islandmountain.io/blog/ocap-cloud-act-guide.html",
+  "datePublished": "2026-03-12",
+  "dateModified": "2026-03-12",
+  "author": {
+    "@type": "Organization",
+    "name": "Island Mountain",
+    "url": "https://islandmountain.io"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Island Mountain",
+    "url": "https://islandmountain.io",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://islandmountain.io/images/hero-mountain.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://islandmountain.io/blog/ocap-cloud-act-guide.html"
+  },
+  "image": "https://islandmountain.io/images/hero-mountain.png"
+}
+  </script>
+
+  <link rel="stylesheet" href="../css/blog.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://islandmountain.io/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Blog",
+      "item": "https://islandmountain.io/blog.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "OCAP Principles and the CLOUD Act",
+      "item": "https://islandmountain.io/blog/ocap-cloud-act-guide.html"
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+  <!-- Full-page particle canvas -->
+  <canvas id="particles-canvas"></canvas>
+
+  <!-- Hero background photo -->
+  <div class="hero-photo">
+    <picture><source srcset="../images/hero-mountain-mobile.webp 800w, ../images/hero-mountain.webp 1913w" type="image/webp" sizes="100vw"><img src="../images/hero-mountain.png" alt="Island Mountain rising from the ocean at sunset" loading="lazy" width="1913" height="892"></picture>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="../index.html" class="nav-logo"><picture><source srcset="../images/logo-nav-new.webp" type="image/webp"><img src="../images/logo-nav-new.png" alt="Island Mountain" width="205" height="65"></picture></a>
+      <ul class="nav-links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../why-island-mountain.html">Why Local AI</a></li>
+        <li><a href="../products.html">Products</a></li>
+        <li><a href="../technology.html">Technology</a></li>
+        <li><a href="../pricing.html">Pricing</a></li>
+        <li class="nav-dropdown">
+          <a href="../solutions.html" class="nav-dropdown-toggle">Solutions <i class="ri-arrow-down-s-line"></i></a>
+          <ul class="nav-dropdown-menu">
+            <li><a href="../law-firms.html">Law Firms</a></li>
+            <li><a href="../medical-practices.html">Medical Practices</a></li>
+            <li><a href="../tribal-nations.html">Tribal Nations</a></li>
+            <li><a href="../research-labs.html">Research Labs</a></li>
+            <li><a href="../defense-contractors.html">Defense Contractors</a></li>
+            <li><a href="../financial-services.html">Financial Services</a></li>
+            <li><a href="../insurance.html">Insurance</a></li>
+            <li><a href="../energy-utilities.html">Energy &amp; Utilities</a></li>
+            <li><a href="../government.html">Government</a></li>
+            <li><a href="../education.html">Education</a></li>
+            <li><a href="../casino-gaming.html">Casino Gaming</a></li>
+          </ul>
+        </li>
+        <li><a href="../resources.html">Resources</a></li>
+              <li><a href="../faq.html">FAQ</a></li>
+        <li><a href="../blog.html" class="active">Blog</a></li>
+        <li><a href="../contact.html" class="nav-cta">Request Quote</a></li>
+      </ul>
+      <button class="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Sidebar -->
+  <div class="sidebar-overlay"></div>
+  <div class="mobile-sidebar">
+    <a href="../index.html">Home</a>
+    <a href="../why-island-mountain.html">Why Local AI</a>
+    <a href="../products.html">Products</a>
+    <a href="../technology.html">Technology</a>
+    <a href="../pricing.html">Pricing</a>
+    <a href="../solutions.html" class="mobile-solutions-toggle">Solutions <i class="ri-arrow-down-s-line"></i></a>
+    <div class="mobile-solutions-links">
+      <a href="../law-firms.html">Law Firms</a>
+      <a href="../medical-practices.html">Medical Practices</a>
+      <a href="../tribal-nations.html">Tribal Nations</a>
+      <a href="../research-labs.html">Research Labs</a>
+      <a href="../defense-contractors.html">Defense Contractors</a>
+      <a href="../financial-services.html">Financial Services</a>
+      <a href="../insurance.html">Insurance</a>
+      <a href="../energy-utilities.html">Energy &amp; Utilities</a>
+      <a href="../government.html">Government</a>
+      <a href="../education.html">Education</a>
+      <a href="../casino-gaming.html">Casino Gaming</a>
+    </div>
+    <a href="../resources.html">Resources</a>
+            <a href="../faq.html">FAQ</a>
+    <a href="../blog.html">Blog</a>
+    <a href="../contact.html" class="nav-cta">Request Quote</a>
+  </div>
+
+  <!-- Article -->
+  <section class="section section-first hero-spacer">
+    <div class="container content-max-840">
+
+      <!-- Breadcrumb -->
+      <nav class="breadcrumb">
+        <a href="../index.html">Home</a><span>&rsaquo;</span><a href="../blog.html">Blog</a><span>&rsaquo;</span>OCAP Principles and the CLOUD Act: Why Tribal Data Requires Local AI Infrastructure
+      </nav>
+
+      <!-- Article Header -->
+      <div class="article-header">
+        <div class="article-meta">
+          <span class="article-date">March 12, 2026</span>
+          <span class="article-tag tag-industry">Industry</span>
+          <span class="article-read-time">12 min read</span>
+        </div>
+        <h1 class="text-2xl">OCAP Principles and the CLOUD Act: Why Tribal Data Requires Local AI Infrastructure</h1>
+        <p class="article-author">Island Mountain</p>
+      </div>
+
+      <article class="article-body">
+
+<p>Here's what most people outside Indian Country don't know: when a tribal nation feeds its health data, emergency management records, cultural knowledge, or environmental monitoring into a cloud-based AI platform, that data doesn't just go somewhere. It goes somewhere outside the reach of tribal sovereignty, into the hands of a U.S.-incorporated technology company, where a federal warrant can touch it at any time, for any investigation, without the tribe ever being told it happened. That's not a hypothetical threat. That's the law. And understanding why tribal data demands a fundamentally different approach to AI infrastructure starts with two things: a framework called OCAP and a federal statute called the CLOUD Act.</p>
+
+<h2>What OCAP Means and Why It Matters</h2>
+
+<p>OCAP stands for Ownership, Control, Access, and Possession. Established in 1998, it is a set of standards for First Nations' information governance designed to support the path to data sovereignty. (<a href="https://en.wikipedia.org/wiki/First_Nations_principles_of_OCAP" target="_blank" rel="noopener">Wikipedia</a>) The principles assert that a community owns its information collectively, the way an individual owns their personal information, that it controls how research and information processes are managed at every stage, that it retains the right to access data about itself, and that it physically possesses its own data rather than surrendering custody to outside entities. Data sovereignty is understood as an important component of First Nations' inherent constitutional and treaty rights to self-government and self-determination. (<a href="https://link.springer.com/chapter/10.1007/978-3-031-56806-0_8" target="_blank" rel="noopener">Springer</a>) Critically, OCAP isn't just a policy preference. It's a sovereignty assertion. It's one Nation saying to the world: this information about our people, our land, our resources, belongs to us, and we decide what happens to it. Full stop.</p>
+
+<h2>The CLOUD Act: Where Federal Law Collides with Tribal Sovereignty</h2>
+
+<p>The problem is that the U.S. legal system has a very different view of data ownership, and it codified that view in 2018. The Clarifying Lawful Overseas Use of Data Act, or CLOUD Act, primarily amends the Stored Communications Act of 1986 to allow federal law enforcement to compel U.S.-based technology companies via warrant or subpoena to provide requested data stored on servers regardless of whether the data are stored in the U.S. or on foreign soil. (<a href="https://en.wikipedia.org/wiki/CLOUD_Act" target="_blank" rel="noopener">Wikipedia</a>) Read that again slowly. It doesn't matter where the data physically lives. It doesn't matter if it's stored in Ireland, Canada, or on servers a company markets as "tribal cloud." If a U.S.-incorporated technology company has possession, custody, or control of the data, federal law enforcement can compel its production. The CLOUD Act establishes a framework in which data access follows corporate control, not information location. (<a href="https://www.archtis.com/understanding-the-us-cloud-act/" target="_blank" rel="noopener">archTIS</a>) For tribal nations that believe OCAP protects them when they hand data to a Silicon Valley AI platform, this is where the framework collides with hard legal reality.</p>
+
+<h2>What Tribes Aren't Being Told</h2>
+
+<p>The risk of putting tribal data into the cloud is compounded by concerns around the protection of tribal sovereignty from state and federal agencies. If a tribe's data is held by a third party and then seized by outside government entities, the tribe will not be informed that its data is under investigation because it is no longer within its control. (<a href="https://tgandh.com/articles/data-analytics/tribal-sovereignty-over-data-and-core-system-rights/" target="_blank" rel="noopener">Tgandh</a>) That sentence deserves to land. A tribe could be conducting business with its own citizens, managing its own lands, running its own health programs, while a federal investigation is actively combing through tribal records stored on a third-party cloud platform, and nobody is legally required to tell that tribe a thing about it. The CLOUD Act's reach extends even to data that tribes might assume is protected by sovereign immunity, because the legal hook isn't the tribe itself. It's the technology company, which is not a sovereign nation and has no treaty relationship with the United States.</p>
+
+<h2>How AI Intensifies the Threat</h2>
+
+<p>This is precisely where artificial intelligence intensifies an already dangerous situation. When tribes use cloud-based AI tools, they don't just upload a document and retrieve a document. Without the right controls in place, tribal data could be used to train external AI models. (<a href="https://www.wipfli.com/insights/articles/ai-for-tribes-managing-risk-and-maximizing-impact" target="_blank" rel="noopener">Wipfli LLP</a>) Health records become training data. Emergency management plans become training data. Enrollment information, cultural protocols, land use histories, traditional ecological knowledge: all of it becomes raw material for someone else's model. AI systems increasingly include Indigenous languages, traditional knowledge, and oral histories, sometimes collected without consent, stored in centralized databases, and used to train commercial algorithms that offer little or no benefit to the Indigenous communities. (<a href="https://policyoptions.irpp.org/2025/05/ai-indigenous-data/" target="_blank" rel="noopener">Policy Options</a>) The extraction economy that displaced tribes from their physical lands is now running the same playbook in the digital space. Data colonialism isn't a metaphor. It's a business model. As one speaker at TribalNet 2024 put it bluntly: "Data is the new land. We have to own it, we have to protect it, we have to grow it, we have to take care of it." (<a href="https://fedtechmagazine.com/article/2024/09/tribalnet-2024-artificial-intelligence-and-data-sovereignty-take-center-stage" target="_blank" rel="noopener">FedTech Magazine</a>)</p>
+
+<h2>Digital Sovereignty: From Resolution to Infrastructure</h2>
+
+<p>The National Congress of American Indians has passed resolution NC-24-008 defining digital sovereignty as "the exercise of sovereign authority over physical and virtual network infrastructure and the intangible virtual digital jurisdictional aspects of the acquisition, storage, transmission, access and use of data." (<a href="https://www.gricnews.org/index.php/grin-articles/2025-articles/tribal-nations-and-the-rise-of-ai" target="_blank" rel="noopener">Gricnews</a>) That resolution describes an aspiration. The gap between that aspiration and current reality is measured in servers. Specifically, in who owns them. In June 2024, NCAI and Arizona State University's American Indian Policy Institute launched the Center for Tribal Digital Sovereignty, the first institution of its kind in the nation dedicated to supporting tribes in developing personalized digital sovereignty plans. (<a href="https://www.ncai.org/news/american-indian-policy-institute-and-national-congress-of-american-indians-launch-the-center-for-tribal-digital-sovereignty" target="_blank" rel="noopener">NCAI</a>) The Center's founding executive director Dr. Traci Morris has been direct about what digital sovereignty means in practice: it is governance, it is economic, it is self-determination, it is both the information and the physical means by which it transfers. You can't have the first without building the second. And the physical means are the part that most conversations about tribal AI politely skip.</p>
+
+<h2>Owning the Infrastructure That Runs Your AI</h2>
+
+<p>The answer isn't refusing AI. The answer is owning the infrastructure that runs it. While it requires a hefty up-front investment, on-premises solutions that feature local servers can be erected on tribal lands and managed directly by a tribal nation or tribally owned entity, a solution that reflects fundamental digital sovereignty principles. (<a href="https://www.brookings.edu/articles/avoiding-the-next-digital-divide-defining-digital-sovereignty-for-tribal-nations-in-the-ai-age/" target="_blank" rel="noopener">Brookings</a>) Small, locally deployed AI models, what the industry calls local inference, can run on sovereign land, process tribal data without transmitting it to corporate servers, and operate completely outside the reach of the CLOUD Act because no U.S.-incorporated technology company ever takes custody of the information. Tribal sovereign LLMs, meaning small, on-premises language models, can help tribes use AI while keeping their data secure, and they let AI draw on tribal data for an experience tailored to a specific tribe's history and needs. (<a href="https://www.wipfli.com/insights/articles/ai-for-tribes-managing-risk-and-maximizing-impact" target="_blank" rel="noopener">Wipfli LLP</a>) This isn't theoretical. The Cherokee Nation has been quietly building toward exactly this model: their communications department spent a year working with a secure, closed-source AI model to build its own knowledge base and cultural branding voice, while keeping tribal values at the center of every implementation decision. (<a href="https://www.anadisgoi.com/index.php/government-stories/cherokee-nation-signs-first-ai-policy-vows-to-protect-language-culture-while-exploring-work-efficiency" target="_blank" rel="noopener">Anadisgoi</a>) Cherokee Nation Chief Information Officer Paula Starr has stated plainly that AI must serve the collective good and uphold Cherokee values, and if a tool compromises that, it doesn't belong in their Nation's systems.</p>
+
+<h2>Data Is Kin</h2>
+
+<p>One participant at the AI in Indian Country Conference observed that "data is kin" because it represents people, as well as individual and shared histories, and reflects a community's unique institutional, cultural, and economic priorities. (<a href="https://www.brookings.edu/articles/avoiding-the-next-digital-divide-defining-digital-sovereignty-for-tribal-nations-in-the-ai-age/" target="_blank" rel="noopener">Brookings</a>) That concept cuts to the bone of why this matters beyond legal compliance or policy debate. Tribal data isn't an abstract resource. It carries ancestors in it. It carries language. It carries the knowledge of when the salmon run and where the fire moved and what the water said in a dry year. Feeding that into a corporate AI platform that a federal warrant can access, that can ingest it into training data without notification or consent, isn't just a data governance failure. It's a continuation of the dispossession that tribes have been fighting for generations. The infrastructure we build for AI in Indian Country is either an act of sovereignty or an act of surrender. There is no neutral choice. Local AI infrastructure, tribally owned and tribally controlled, is the only architecture that makes OCAP more than aspirational, that keeps the CLOUD Act from becoming the digital equivalent of an allotment act, and that gives the next seven generations something their ancestors never had: a digital future they own.</p>
+
+<p>Island Mountain is committed to building tools and infrastructure rooted in community ownership, data sovereignty, and the principle that the people most affected by technology should be the ones who control it. If your tribal nation is exploring local AI infrastructure, <a href="../contact.html">we want that conversation</a>.</p>
+
+<!-- AEO Summary -->
+<div style="border-left:3px solid var(--copper);padding:16px 20px;margin:32px 0;background:rgba(217,119,6,0.05);border-radius:0 8px 8px 0;">
+<strong>Summary:</strong> The CLOUD Act lets federal law enforcement compel any U.S. technology company to produce tribal data without notifying the tribe. OCAP principles demand physical possession of data. The only AI architecture that satisfies both is local inference on tribally owned hardware.
+</div>
+      </article>
+
+      <!-- CTA -->
+      <div class="article-cta">
+        <h3>Build Sovereign AI Infrastructure</h3>
+        <p>One conversation. No sales pitch. Just straight talk about what tribally owned local AI hardware can do for your nation's data sovereignty.</p>
+        <a href="../contact.html" class="btn btn-primary">Start a Conversation</a>
+        <p class="bio-note-sm"><i class="ri-phone-line icon-copper-mr-sm"></i>Or call directly: <a href="tel:+18016091130" class="copper-semibold">1-801-609-1130</a></p>
+      </div>
+
+      <!-- Related Articles -->
+      <div class="related-articles">
+        <h3>Related Articles</h3>
+        <div class="related-grid">
+          <div class="related-card">
+            <h4><a href="tribal-data-sovereignty-ai-infrastructure.html">Tribal Data Sovereignty and the Cloud AI Problem</a></h4>
+            <p>Why sovereign jurisdictions need sovereign infrastructure and what that looks like in practice.</p>
+          </div>
+          <div class="related-card">
+            <h4><a href="on-prem-vs-colo-vs-cloud.html">On-Premise vs. Colocation vs. Cloud: A Decision Framework</a></h4>
+            <p>Comparing deployment models for organizations with compliance and sovereignty requirements.</p>
+          </div>
+          <div class="related-card">
+            <h4><a href="cloud-ai-vs-local-hardware-tco.html">Cloud AI vs. Local Hardware: The Honest 5-Year TCO</a></h4>
+            <p>The full cost comparison including compliance overhead, financing, and tax advantages.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Navigation -->
+      <div class="article-nav">
+        <a href="../blog.html" class="article-back">&larr; All articles</a>
+        <div class="share-links">
+          <span>Share:</span>
+          <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://islandmountain.io/blog/ocap-cloud-act-guide.html" target="_blank" rel="noopener" aria-label="Share on LinkedIn"><i class="ri-linkedin-fill"></i></a>
+          <a href="https://x.com/intent/tweet?url=https://islandmountain.io/blog/ocap-cloud-act-guide.html&text=OCAP Principles and the CLOUD Act: Why Tribal Data Requires Local AI Infrastructure" target="_blank" rel="noopener" aria-label="Share on X"><i class="ri-twitter-x-fill"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="../images/logo-footer.png" alt="Island Mountain logo" width="210" height="210" class="d-block-mb">
+          <a href="../index.html" class="nav-logo">Island Mountain</a>
+          <p>Local AI infrastructure for data-sovereign organizations. Colorado.</p>
+          <p class="mt-8"><i class="ri-phone-line icon-copper-mr"></i><a href="tel:+18016091130" class="clr-muted">1-801-609-1130</a></p>
+        </div>
+        <div>
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../products.html">Products</a></li>
+            <li><a href="../technology.html">Technology</a></li>
+            <li><a href="../pricing.html">Pricing</a></li>
+            <li><a href="../resources.html">Resources</a></li>
+              <li><a href="../faq.html">FAQ</a></li>
+            <li><a href="../blog.html">Blog</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Solutions</h4>
+          <ul class="footer-links">
+            <li><a href="../law-firms.html">Law Firms</a></li>
+            <li><a href="../medical-practices.html">Medical Practices</a></li>
+            <li><a href="../tribal-nations.html">Tribal Nations</a></li>
+            <li><a href="../research-labs.html">Research Labs</a></li>
+            <li><a href="../defense-contractors.html">Defense Contractors</a></li>
+            <li><a href="../financial-services.html">Financial Services</a></li>
+            <li><a href="../insurance.html">Insurance</a></li>
+            <li><a href="../energy-utilities.html">Energy &amp; Utilities</a></li>
+            <li><a href="../government.html">Government</a></li>
+            <li><a href="../education.html">Education</a></li>
+            <li><a href="../casino-gaming.html">Casino Gaming</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <ul class="footer-links">
+            <li><a href="../why-island-mountain.html">Why Local AI</a></li>
+            <li><a href="../contact.html">Contact</a></li>
+            <li><a href="../investors.html">Investors</a></li>
+            <li><a href="../about.html">About</a></li>
+            <li><a href="../privacy.html">Privacy Policy</a></li>
+            <li><a href="../terms.html">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom flex-col-center-gap">
+        <p>&copy; 2026 Island Mountain. All rights reserved. Founded by <a href="https://www.johndou.com" target="_blank" rel="noopener" class="clr-copper">John Dougherty</a>.</p>
+        <a href="tel:+18016091130" class="phone-link"><i class="ri-phone-line text-lg"></i> 1-801-609-1130</a>
+        <a href="https://www.linkedin.com/company/island-mountain-llc/" target="_blank" rel="noopener" aria-label="Island Mountain on LinkedIn" class="phone-link"><i class="ri-linkedin-fill text-lg"></i> Follow us on LinkedIn</a>
+        <a href="https://x.com/IslandMountain_" target="_blank" rel="noopener" aria-label="Island Mountain on X" class="phone-link"><i class="ri-twitter-x-fill text-lg"></i> Follow us on X</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

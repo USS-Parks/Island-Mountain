@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-R674E394D4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-R674E394D4');
+</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Basho Parks">
+  <meta name="date" content="2026-05-01">
+  <title>GLBA-Compliant AI Inference for Financial Services</title>
+  <meta name="description" content="Air-gap-capable AI hardware for financial institutions. Keep NPI inside your network, satisfy GLBA and PCI DSS, run unlimited H100/H200 inference.">
+  <link rel="icon" type="image/x-icon" href="favicon.ico?v=2">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png?v=2">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png?v=2">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="icons/remixicon.css">
+  <link rel="stylesheet" href="fonts/fonts.css">
+  <link rel="canonical" href="https://islandmountain.io/financial-services.html">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="GLBA-Compliant AI Inference for Financial Services">
+  <meta property="og:description" content="Air-gap-capable AI hardware for financial institutions. Keep NPI inside your network, satisfy GLBA and PCI DSS, run unlimited H100/H200 inference.">
+  <meta property="og:url" content="https://islandmountain.io/financial-services.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Island Mountain">
+  <meta property="og:image" content="https://islandmountain.io/images/hero-financial-services.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="GLBA-Compliant AI Inference for Financial Services">
+  <meta name="twitter:description" content="Air-gap-capable AI hardware for financial institutions. Keep NPI inside your network, satisfy GLBA and PCI DSS, run unlimited H100/H200 inference.">
+  <meta name="twitter:image" content="https://islandmountain.io/images/hero-financial-services.png">
+
+  <!-- FAQPage Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Does using cloud AI for banking operations create GLBA compliance risk?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Cloud AI transmits non-public personal information (NPI) to third-party infrastructure, creating structural GLBA Safeguards Rule (16 CFR Part 314) compliance risk. The rule requires financial institutions to maintain comprehensive security programs protecting customer NPI - cloud processing introduces vendor dependency that undermines this control. PCI DSS v4.0 compounds this with cardholder data environment requirements. On-premises AI hardware from Island Mountain eliminates third-party transmission entirely. NPI stays on NVIDIA H100 or H200 servers inside your facility, under your physical and logical security controls, with no vendor dependency or shared responsibility model."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What AI workflows can a bank or credit union run on Island Mountain hardware?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Island Mountain hardware supports loan document review, KYC/AML analysis, regulatory reporting, fraud detection, customer correspondence drafting, and investment analysis. The system runs DeepSeek V4-Flash for complex multi-document analysis and regulatory synthesis, and Llama 3.3 70B for general drafting tasks including correspondence and compliance documentation. All processing occurs on NVIDIA H100 or H200 GPUs inside your facility with zero data transmitted to external servers."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does the cost of on-premises AI compare to cloud AI for a financial institution with 50 users?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Cloud AI subscriptions for financial services platforms typically cost $50 to $200 per user per month. For 50 users, that totals $30,000 to $120,000 per year. Over three years, cumulative cloud costs reach $90,000 to $360,000 with no ownership and continued NPI exposure on every query. An Island Mountain Summit Base system with two NVIDIA H100 GPUs costs $75,000 to $85,000 as a one-time purchase. Ongoing costs are limited to electricity at approximately $100 to $200 per month. Cost parity typically reached within year one while eliminating GLBA and PCI DSS compliance risk entirely. Section 179 eligible for full first-year depreciation."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does a bank need dedicated IT staff to run on-premises AI hardware?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. The system ships pre-configured with all models installed and the OpenWebUI browser-based interface ready for immediate use. Setup requires racking the server, connecting a 208V 30A power circuit, and plugging in ethernet. Island Mountain provides 30 days of hands-on setup support. Ongoing maintenance is standard Linux server administration - most financial institutions with existing IT staff can incorporate it into their current server management workflow without additional hiring."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- BreadcrumbList Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://islandmountain.io/"},
+      {"@type": "ListItem", "position": 2, "name": "Solutions", "item": "https://islandmountain.io/solutions.html"},
+      {"@type": "ListItem", "position": 3, "name": "Financial Services", "item": "https://islandmountain.io/financial-services.html"}
+    ]
+  }
+  </script>
+
+  <!-- Product Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "@id": "https://islandmountain.io/products.html#summit-base",
+    "name": "Island Mountain Summit Base \u2014 On-Premises AI Server for Financial Services",
+    "description": "Pre-built, burn-tested AI inference server with 2x NVIDIA H100 80GB GPUs. Air-gap capable. GLBA and PCI DSS compliance-ready. Includes DeepSeek V4-Flash, Llama 3.3 70B, and OpenWebUI.",
+    "brand": {
+      "@type": "Brand",
+      "name": "Island Mountain"
+    },
+    "offers": {
+      "@type": "AggregateOffer",
+      "lowPrice": "75000",
+      "highPrice": "400000",
+      "priceCurrency": "USD",
+      "offerCount": "3",
+      "availability": "https://schema.org/InStock",
+      "url": "https://islandmountain.io/products.html",
+      "priceValidUntil": "2027-04-30"
+    },
+    "category": "AI Inference Hardware for Financial Services",
+    "additionalProperty": [
+      {
+        "@type": "PropertyValue",
+        "name": "GPU Model",
+        "value": "2x NVIDIA H100 80GB PCIe (Summit Base) / H200 141GB (Summit Pinnacle)"
+      },
+      {
+        "@type": "PropertyValue",
+        "name": "Total VRAM",
+        "value": "160GB-282GB"
+      },
+      {
+        "@type": "PropertyValue",
+        "name": "Pre-Installed Models",
+        "value": "DeepSeek V4-Flash (quantized), Llama 3.3 70B, DeepSeek R1 70B Distill or Qwen 2.5 72B (buyer selects)"
+      },
+      {
+        "@type": "PropertyValue",
+        "name": "Interface",
+        "value": "OpenWebUI (browser-based)"
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <!-- Full-page particle canvas -->
+  <canvas id="particles-canvas"></canvas>
+
+  <!-- Hero background photo -->
+  <div class="hero-photo">
+    <picture><source srcset="images/hero-financial-services-mobile.webp 800w, images/hero-financial-services.webp 1672w" type="image/webp" sizes="100vw"><img src="images/hero-financial-services.png" alt="Secure AI server for financial services data processing" loading="lazy" width="1672" height="941"></picture>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="nav-logo"><picture><source srcset="images/logo-nav-new.webp" type="image/webp"><img src="images/logo-nav-new.png" alt="Island Mountain" width="205" height="65"></picture></a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="why-island-mountain.html">Why Local AI</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="technology.html">Technology</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li class="nav-dropdown">
+          <a href="solutions.html" class="nav-dropdown-toggle">Solutions <i class="ri-arrow-down-s-line"></i></a>
+          <ul class="nav-dropdown-menu">
+            <li><a href="law-firms.html">Law Firms</a></li>
+            <li><a href="medical-practices.html">Medical Practices</a></li>
+            <li><a href="tribal-nations.html">Tribal Nations</a></li>
+            <li><a href="research-labs.html">Research Labs</a></li>
+            <li><a href="defense-contractors.html">Defense Contractors</a></li>
+            <li><a href="financial-services.html">Financial Services</a></li>
+            <li><a href="insurance.html">Insurance</a></li>
+            <li><a href="energy-utilities.html">Energy &amp; Utilities</a></li>
+            <li><a href="government.html">Government</a></li>
+            <li><a href="education.html">Education</a></li>
+            <li><a href="casino-gaming.html">Casino Gaming</a></li>
+          </ul>
+        </li>
+        <li><a href="resources.html">Resources</a></li>
+              <li><a href="faq.html">FAQ</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="contact.html" class="nav-cta">Request Quote</a></li>
+      </ul>
+      <button class="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="sidebar-overlay"></div>
+  <div class="mobile-sidebar">
+    <a href="index.html">Home</a>
+    <a href="why-island-mountain.html">Why Local AI</a>
+    <a href="products.html">Products</a>
+    <a href="technology.html">Technology</a>
+    <a href="pricing.html">Pricing</a>
+    <a href="solutions.html" class="mobile-solutions-toggle">Solutions <i class="ri-arrow-down-s-line"></i></a>
+    <div class="mobile-solutions-links">
+      <a href="law-firms.html">Law Firms</a>
+      <a href="medical-practices.html">Medical Practices</a>
+      <a href="tribal-nations.html">Tribal Nations</a>
+      <a href="research-labs.html">Research Labs</a>
+      <a href="defense-contractors.html">Defense Contractors</a>
+      <a href="financial-services.html">Financial Services</a>
+      <a href="insurance.html">Insurance</a>
+      <a href="energy-utilities.html">Energy &amp; Utilities</a>
+      <a href="government.html">Government</a>
+      <a href="education.html">Education</a>
+      <a href="casino-gaming.html">Casino Gaming</a>
+    </div>
+    <a href="resources.html">Resources</a>
+            <a href="faq.html">FAQ</a>
+    <a href="blog.html">Blog</a>
+    <a href="contact.html" class="nav-cta">Request Quote</a>
+  </div>
+
+  <!-- Hero -->
+  <section class="hero hero-page">
+    <div class="hero-inner">
+      <span class="hero-badge">Local AI for Financial Services</span>
+      <h1>Your Customers' Financial Data Doesn't Belong on Someone Else's Server</h1>
+      <p>Every prompt sent to a cloud AI service transmits non-public personal information to third-party infrastructure. GLBA requires financial institutions to protect NPI. On-premises AI for banks and credit unions eliminates the transmission entirely - your data stays in your vault, not theirs.</p>
+    </div>
+  </section>
+
+  <!-- Breadcrumb -->
+  <nav class="breadcrumb">
+    <a href="index.html">Home</a><span>&rsaquo;</span><a href="solutions.html">Solutions</a><span>&rsaquo;</span>Financial Services
+  </nav>
+  <div class="cta-hero-wrap"><p class="detail-text">Built by <a href="https://www.johndou.com" target="_blank" rel="noopener" class="clr-copper">John Dougherty</a>, 25-year enterprise security and technology veteran. Every system is personally assembled, burn-tested for 72 hours, and delivered direct.</p></div>
+
+  <!-- The Problem -->
+  <section class="section section-first">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-badge">The Compliance Risk</span>
+        <h2>The Cloud AI Problem for Financial Institutions</h2>
+        <p>Air-gapped AI banking infrastructure eliminates the structural conflict cloud AI creates with the Gramm-Leach-Bliley Act's safeguards for non-public personal information.</p>
+      </div>
+      <div class="fade-in content-narrow">
+        <p class="body-lg">The GLBA Safeguards Rule (16 CFR Part 314) requires financial institutions to develop, implement, and maintain a comprehensive information security program. The core mandate: protect customer non-public personal information from unauthorized access and disclosure - making financial data privacy AI architecture a core compliance decision. When a bank employee pastes loan documents, account details, or customer communications into a cloud AI service, that NPI travels across the internet to infrastructure controlled by a third party. Financial institutions are one of <a href="solutions.html">eleven regulated industries</a> where this structural conflict between cloud AI and data confidentiality is most acute.</p>
+        <p class="body-lg">PCI DSS v4.0 adds a second layer of compliance requirements for any institution handling cardholder data. The standard mandates strict controls over cardholder data environments, including network segmentation, access controls, and monitoring. Cloud AI processing introduces third-party infrastructure into the cardholder data flow, complicating scope assessments and creating additional compliance documentation requirements.</p>
+        <p class="body-lg">SEC Regulation S-P requires broker-dealers and investment advisers to protect customer records and information. <a href="insurance.html">Insurance carriers</a> face parallel requirements under state GLBA implementations and NAIC Model Laws. The common thread across GLBA, PCI DSS, and SEC oversight: these frameworks require institutional control over data handling infrastructure. Cloud AI processing creates a dependency on vendor infrastructure that complicates compliance across all three frameworks. The vendor's privacy policy - not your compliance program - controls what happens to that data once transmitted. Banking AI without cloud dependency is not a preference - it is the structural requirement these frameworks impose.</p>
+      </div>
+    </div>
+  </section>
+
+  
+  <section class="section-pt-32">
+    <div class="container">
+      <div class="badge-wrap">
+      <div class="authority-badge"><i class="ri-shield-check-line authority-badge-icon"></i><span class="authority-badge-label">GLBA Safeguards Rule</span></div>
+      <div class="authority-badge"><i class="ri-bank-card-line authority-badge-icon"></i><span class="authority-badge-label">PCI DSS v4.0</span></div>
+      <div class="authority-badge"><i class="ri-scales-3-line authority-badge-icon"></i><span class="authority-badge-label">SEC Reg S-P</span></div>
+      </div>
+    </div>
+  </section>
+  <!-- How It Works -->
+  <section class="section section-dark">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-badge">How It Works</span>
+        <h2>What On-Premises AI Actually Means for Your Institution</h2>
+        <p>"No data leaves your building" is not marketing language. It is a description of network architecture.</p>
+      </div>
+      <div class="card-grid card-grid-3 fade-in">
+        <div class="card">
+          <div class="card-icon card-icon-green">
+            <i class="ri-shield-check-line"></i>
+          </div>
+          <h3>Zero External Transmission</h3>
+          <p>NPI never leaves your network. Prompts travel from workstation to server over internal network only. No internet connection is required for inference. No data packets leave your building. This is data-sovereign AI finance - complete institutional control over every inference operation.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon card-icon-indigo">
+            <i class="ri-server-line"></i>
+          </div>
+          <h3>Hardware You Own</h3>
+          <p>This is not a hosted service. It is a physical server with NVIDIA H100 GPUs in your data center, running on your power, connected to your network. You own it outright.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon card-icon-purple">
+            <i class="ri-wifi-off-line"></i>
+          </div>
+          <h3>Air-Gap Capable</h3>
+          <p>After initial setup and model installation, the system can operate entirely disconnected from the internet. An air-gap GPU server banking configuration provides complete network isolation for maximum security posture.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Workflows -->
+  <section class="section section-darker">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-badge">Workflows</span>
+        <h2>AI Workflows Island Mountain Hardware Supports</h2>
+        <p>The same AI capabilities you want from cloud services, running on hardware that doesn't create compliance exposure.</p>
+      </div>
+      <div class="card-grid card-grid-3 fade-in">
+        <div class="card">
+          <div class="card-icon card-icon-green">
+            <i class="ri-file-search-line"></i>
+          </div>
+          <h3>Loan Document Review</h3>
+          <p>Local AI loan document review: analyze loan applications, underwriting documents, and credit assessments. Flag risk factors, extract key terms, compare against lending criteria. Local AI for mortgage processing and portfolio analysis keeps customer financial data off cloud services entirely.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon card-icon-indigo">
+            <i class="ri-user-search-line"></i>
+          </div>
+          <h3>KYC/AML Analysis</h3>
+          <p>Run an on-prem LLM for KYC/AML workflows: process Know Your Customer documentation and Anti-Money Laundering screening. Analyze transaction patterns and flag suspicious activity without exposing customer data to cloud APIs.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon card-icon-purple">
+            <i class="ri-file-text-line"></i>
+          </div>
+          <h3>Regulatory Reporting</h3>
+          <p>Draft regulatory filings, compliance reports, and audit responses. Summarize complex regulatory requirements and map them to institutional practices. Process sensitive examination data entirely on-premises.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon card-icon-amber">
+            <i class="ri-alarm-warning-line"></i>
+          </div>
+          <h3>Fraud Detection Support</h3>
+          <p>Analyze transaction patterns, flag anomalies, and generate fraud investigation summaries. On-prem AI for fraud detection means sensitive financial data stays entirely on-premises without cloud API exposure.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon card-icon-green">
+            <i class="ri-mail-send-line"></i>
+          </div>
+          <h3>Customer Communication Drafting</h3>
+          <p>Generate compliant customer correspondence, disclosure documents, and advisory communications. Maintain consistent regulatory language across all client touchpoints.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon card-icon-indigo">
+            <i class="ri-line-chart-line"></i>
+          </div>
+          <h3>Investment Analysis</h3>
+          <p>On-premise AI for investment firms: summarize market research, analyze portfolio documentation, and draft investment memoranda. Proprietary trading strategies and client financial data stay local.</p>
+        </div>
+      </div>
+      <div class="comparison-note fade-in mt-32">
+        <i class="ri-information-line"></i>
+        Island Mountain hardware runs general-purpose large language models. These are not financial-specific fine-tuned models. They do not include Bloomberg terminal integrations, real-time market data feeds, or regulatory filing system connectors. The models are strong at reasoning, analysis, and drafting - but they are tools for financial professionals, not replacements for professional judgment.
+      </div>
+    </div>
+  </section>
+
+  <!-- Model Selection -->
+  <section class="section section-dark">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-badge">Model Selection</span>
+        <h2>Which Models Work Best for Financial Tasks</h2>
+        <p>NVIDIA H100 bank AI infrastructure running fully open-source models under your institutional control. A local LLM for financial services workflows means zero cloud dependency for any AI operation.</p>
+      </div>
+      <div class="card-grid card-grid-3 fade-in">
+        <div class="card text-center">
+          <div class="card-icon card-icon-green mx-auto-mb-20">
+            <i class="ri-brain-line"></i>
+          </div>
+          <h3>DeepSeek V4-Flash</h3>
+          <p><strong>Best for:</strong> Complex document analysis, multi-document regulatory review, loan portfolio assessment, long-context financial reporting tasks. 284B parameters with mixture-of-experts architecture. Local DeepSeek for banks runs quantized on the Summit Base tier.</p>
+        </div>
+        <div class="card text-center">
+          <div class="card-icon card-icon-indigo mx-auto-mb-20">
+            <i class="ri-robot-2-line"></i>
+          </div>
+          <h3>Llama 3.3 70B</h3>
+          <p><strong>Best for:</strong> General drafting, customer correspondence, compliance memos, internal communications, regulatory narrative writing. Strong general-purpose model that produces clean, structured prose quickly.</p>
+        </div>
+        <div class="card text-center">
+          <div class="card-icon card-icon-purple mx-auto-mb-20">
+            <i class="ri-scales-3-line"></i>
+          </div>
+          <h3>R1 70B Distill or Qwen 2.5 72B</h3>
+          <p><strong>Best for:</strong> Chain-of-thought compliance reasoning (R1 Distill) or high-throughput enterprise drafting (Qwen 2.5). Buyer selects at order based on primary workload. Both run on the same VRAM budget.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Comparison Table -->
+  <section class="section section-darker">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-badge">Cost Comparison</span>
+        <h2>Cloud AI vs. Island Mountain for a Mid-Size Financial Institution</h2>
+        <p>The cloud costs every month and transmits NPI every session. The hardware costs once and keeps everything in-house.</p>
+      </div>
+      <div class="table-wrapper fade-in">
+        <table>
+          <thead>
+            <tr>
+              <th></th>
+              <th>Cloud AI</th>
+              <th>Island Mountain Summit Base</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Year 1 Cost</strong></td>
+              <td>$30,000 - $120,000 (50 users)</td>
+              <td class="highlight-cell">$75,000 - $85,000 (one time)</td>
+            </tr>
+            <tr>
+              <td><strong>Year 3 Cumulative</strong></td>
+              <td>$90,000 - $360,000</td>
+              <td class="highlight-cell">Electricity only (~$1,200 - $2,400/yr)</td>
+            </tr>
+            <tr>
+              <td><strong>Year 5 Cumulative</strong></td>
+              <td>$150,000 - $600,000</td>
+              <td class="highlight-cell">Electricity only</td>
+            </tr>
+            <tr>
+              <td><strong>Customer Data Location</strong></td>
+              <td>Cloud provider servers</td>
+              <td class="highlight-cell">Your data center. Period.</td>
+            </tr>
+            <tr>
+              <td><strong>Compliance Risk</strong></td>
+              <td>NPI transmitted to third party</td>
+              <td class="highlight-cell">Zero transmission. Zero risk.</td>
+            </tr>
+            <tr>
+              <td><strong>Per-Token Fees</strong></td>
+              <td>$15 - $60 per million tokens</td>
+              <td class="highlight-cell">None. Unlimited use.</td>
+            </tr>
+            <tr>
+              <td><strong>Model Control</strong></td>
+              <td>Provider decides models and updates</td>
+              <td class="highlight-cell">You choose which models to run</td>
+            </tr>
+            <tr>
+              <td><strong>Banking System Integration</strong></td>
+              <td>Some platforms offer integrations</td>
+              <td>Not included. General-purpose AI.</td>
+            </tr>
+            <tr>
+              <td><strong>Vendor Lock-In</strong></td>
+              <td>Complete</td>
+              <td class="highlight-cell">None. Permissive open-source licenses.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="comparison-note fade-in mt-20">
+        <i class="ri-information-line"></i>
+        Cloud estimates based on AI platforms charging $50-$200/user/month for 50 users. Island Mountain electricity estimate assumes 1.5-2.5 kW average draw at $0.12/kWh. For higher-throughput requirements, the NVIDIA H200 for finance tier offers 141GB HBM3e memory per GPU at $350,000-$400,000.
+      </div>
+    </div>
+  </section>
+
+  <!-- Honest Limitations -->
+  <section class="section section-dark">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-badge">Honest Limitations</span>
+        <h2>What You Do Not Get</h2>
+        <p>Knowing the boundaries matters more than knowing the features.</p>
+      </div>
+      <div class="risk-grid fade-in">
+        <div class="risk-card">
+          <h4><i class="ri-search-eye-line"></i> No Financial-Specific Fine-Tuning</h4>
+          <p>The models are general-purpose large language models, not financial-specific AI. They have not been fine-tuned on financial datasets and do not include Bloomberg integration or real-time market data feeds. They are strong at reasoning, analysis, and prose generation - but they are not purpose-built financial AI tools.</p>
+        </div>
+        <div class="risk-card">
+          <h4><i class="ri-links-line"></i> No Banking System Integration</h4>
+          <p>Island Mountain hardware does not connect to core banking platforms, loan origination systems, or CRM tools out of the box. The AI runs through OpenWebUI - a browser-based chat interface. Moving data between your banking systems and the AI is a manual process.</p>
+        </div>
+        <div class="risk-card">
+          <h4><i class="ri-book-2-line"></i> No Regulatory Filing Connectors</h4>
+          <p>The system does not submit to EDGAR, FFIEC, or state regulatory portals. The AI assists with drafting regulatory filings and compliance documentation - but filing is a manual process through your existing regulatory submission systems.</p>
+        </div>
+        <div class="risk-card">
+          <h4><i class="ri-settings-3-line"></i> You Own the Maintenance</h4>
+          <p>After the 30-day included support period, your institution is responsible for OS security updates, model updates, and general system maintenance. This is the same maintenance profile as any Linux server in a professional environment. Most managed service providers can handle it.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Regulatory Context -->
+  <section class="section section-darker">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-badge">Regulatory Context</span>
+        <h2>GLBA, PCI DSS, and the Case for Local AI</h2>
+        <p>A GLBA compliant AI server keeps NPI processing under institutional control from day one.</p>
+      </div>
+      <div class="fade-in content-narrow">
+        <p class="body-lg">The GLBA Safeguards Rule (16 CFR Part 314) requires financial institutions to develop, implement, and maintain a comprehensive information security program. The FTC's 2023 amendments strengthened these requirements, mandating encryption of customer information in transit and at rest, access controls, and continuous monitoring. Cloud AI processing introduces external infrastructure into the NPI handling chain, creating additional compliance documentation requirements and vendor management obligations.</p>
+        <p class="body-lg">PCI DSS v4.0 mandates strict controls over cardholder data environments. Any system that stores, processes, or transmits cardholder data falls within PCI scope. When cloud AI processes prompts containing card numbers, transaction details, or customer payment information, that cloud infrastructure enters PCI scope - making PCI DSS AI compliance dependent on the vendor's own certification and creating shared responsibility models that complicate audit responses.</p>
+        <p class="body-lg">SEC Regulation S-P requires broker-dealers and investment advisers to adopt policies and procedures that address administrative, technical, and physical safeguards for customer records and information. The common thread across all three frameworks: institutional control over data handling infrastructure. Local deployment returns that control entirely to the institution - providing secure AI for SOX compliance, GLBA obligations, and PCI audit requirements simultaneously. No vendor dependency. No shared responsibility models. No third-party data transmission to document and justify.</p>
+        <div class="highlight-box">
+          <p class="scenario-text"><strong>Disclaimer:</strong> This section describes the general regulatory environment regarding AI and financial data protection. It is not legal or compliance advice and should not be relied upon for compliance decisions. Consult qualified compliance counsel or your institution's regulatory advisors for guidance specific to your charter type, jurisdiction, and operational context.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Power Requirements -->
+  <section class="section section-dark">
+    <div class="container">
+      <div class="power-notice fade-in">
+        <i class="ri-flashlight-line"></i>
+        <p><strong>Power &amp; Installation:</strong> All Island Mountain systems require a dedicated 208V/30A power circuit (NEMA L6-30R). This is standard in server rooms and data closets. Most financial institutions with an existing server closet already have this infrastructure or can add it for $500-$2,000 through a licensed electrician. The system fits in a standard 4U rack space. Average power draw under typical inference loads is 1.5-2.5 kW.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section section-darker">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-badge">Financial Services Questions</span>
+        <h2>Questions Financial Institutions Ask About Local AI</h2>
+      </div>
+      <div class="risk-grid fade-in">
+        <div class="risk-card">
+          <h4><i class="ri-scales-3-line"></i> Does cloud AI create GLBA compliance risk?</h4>
+          <p>Yes. Cloud AI transmits non-public personal information (NPI) to third-party infrastructure, creating structural GLBA Safeguards Rule (16 CFR Part 314) compliance risk. The rule requires financial institutions to maintain comprehensive security programs protecting customer NPI - cloud processing introduces vendor dependency that undermines this control. On-premises AI hardware from Island Mountain eliminates third-party transmission entirely.</p>
+        </div>
+        <div class="risk-card">
+          <h4><i class="ri-brain-line"></i> What financial workflows does this hardware support?</h4>
+          <p>Island Mountain hardware supports loan document review, KYC/AML analysis, regulatory reporting, fraud detection, customer correspondence drafting, and investment analysis. The system runs DeepSeek V4-Flash for complex multi-document analysis and regulatory synthesis, and Llama 3.3 70B for general drafting tasks. All processing occurs on NVIDIA H100 or H200 GPUs inside your facility.</p>
+        </div>
+        <div class="risk-card">
+          <h4><i class="ri-coin-line"></i> How does the cost compare for a 50-person institution?</h4>
+          <p>Cloud AI subscriptions for financial services platforms typically cost $50 to $200 per user per month. For 50 users, that totals $30,000 to $120,000 per year. Over three years: $90,000 to $360,000 cumulative with no ownership and continued NPI exposure. An Island Mountain Summit Base system with two NVIDIA H100 GPUs costs $75,000 to $85,000 as a one-time purchase. Cost parity typically reached within year one.</p>
+        </div>
+        <div class="risk-card">
+          <h4><i class="ri-tools-line"></i> Does our institution need dedicated IT staff?</h4>
+          <p>No. The system ships pre-configured and ready to use through a web browser. Setup requires racking the server, connecting power and network, and opening a browser. 30 days of hands-on support are included. Ongoing maintenance is standard Linux server administration.</p>
+        </div>
+      </div>
+      <div class="text-center-mt-32">
+        <a href="faq.html" class="btn btn-secondary">See All FAQs</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Compliance Disclaimer -->
+  <section class="section section-dark">
+    <div class="container">
+      <div class="fade-in founder-box">
+        <p class="scenario-text">Island Mountain is a hardware company, not a compliance authority. References to GLBA, PCI DSS, SEC regulations, or related financial compliance frameworks on this page reflect factual descriptions of data handling mechanics - not legal, regulatory, or compliance advice. Consult qualified counsel for compliance determinations specific to your organization and jurisdiction.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- AEO Summary -->
+  <div style="border-left:3px solid var(--copper);padding:16px 20px;margin:32px 0;background:rgba(217,119,6,0.05);border-radius:0 8px 8px 0;">
+  <strong>Summary:</strong> Island Mountain builds on-premises AI inference hardware for banks, credit unions, and investment firms. Local deployment keeps non-public personal information inside your institution's network, eliminating the third-party data transmission that creates GLBA and PCI DSS compliance risk when using cloud AI services. Private AI for credit unions, banks, and investment firms starts at $75,000 with NVIDIA H100 GPUs, air-gap capability, and zero per-token fees.
+  </div>
+
+  <!-- Deployment Scenarios -->
+  <section class="section section-dark section-py-3">
+    <div class="container">
+      <div class="section-header fade-in">
+        <h2>Financial Institutions Deploying Local AI</h2>
+      </div>
+      <div class="scenario-grid" class="fade-in">
+        <div class="accent-blockquote">
+          <p class="mb-075">Regional bank processing 500 loan applications per month. Every document stays on our servers. GLBA compliance is no longer a question mark.</p>
+          <span class="copper-sm">Scenario: Community Bank</span>
+        </div>
+        <div class="accent-blockquote">
+          <p class="mb-075">Air-gapped inference credit union serving 40,000 members. Our members' financial data never touches a cloud API. That's the standard our board demanded.</p>
+          <span class="copper-sm">Scenario: Credit Union</span>
+        </div>
+        <div class="accent-blockquote">
+          <p class="mb-075">Investment advisory firm handling $2B AUM. Proprietary research and client portfolio data stay in-house. Cloud AI was never on the table.</p>
+          <span class="copper-sm">Scenario: Investment Advisory Firm</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section section-darker text-center">
+    <div class="container fade-in">
+      <h2>Ready to Keep Customer Data Where It Belongs?</h2>
+      <p class="cta-sub-wrap">One conversation. No sales pitch. Tell us about your institution's AI needs and we will spec the right system.</p>
+      <div class="btn-group">
+        <a href="contact.html" class="btn btn-primary">Request a Quote</a>
+        <a href="products.html" class="btn btn-secondary">See Full Specs</a>
+      </div>
+      <p class="cta-subtitle"><i class="ri-phone-line icon-copper-mr-sm"></i>Or call directly: <a href="tel:+18016091130" class="copper-semibold">1-801-609-1130</a></p>
+      <p class="bio-note"><a href="solutions.html">See all eleven industries we serve</a> or explore: <a href="insurance.html">Insurance</a> &middot; <a href="energy-utilities.html">Energy &amp; Utilities</a></p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="images/logo-footer.png" alt="Island Mountain logo" width="210" height="210" class="d-block-mb">
+          <a href="index.html" class="nav-logo">Island Mountain</a>
+          <p>Local AI infrastructure for data-sovereign organizations. Colorado.</p>
+          <p class="mt-8"><i class="ri-phone-line icon-copper-mr"></i><a href="tel:+18016091130" class="clr-muted">1-801-609-1130</a></p>
+        </div>
+        <div>
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="technology.html">Technology</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="resources.html">Resources</a></li>
+              <li><a href="faq.html">FAQ</a></li>
+            <li><a href="blog.html">Blog</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Solutions</h4>
+          <ul class="footer-links">
+            <li><a href="law-firms.html">Law Firms</a></li>
+            <li><a href="medical-practices.html">Medical Practices</a></li>
+            <li><a href="tribal-nations.html">Tribal Nations</a></li>
+            <li><a href="research-labs.html">Research Labs</a></li>
+            <li><a href="defense-contractors.html">Defense Contractors</a></li>
+            <li><a href="financial-services.html">Financial Services</a></li>
+            <li><a href="insurance.html">Insurance</a></li>
+            <li><a href="energy-utilities.html">Energy &amp; Utilities</a></li>
+            <li><a href="government.html">Government</a></li>
+            <li><a href="education.html">Education</a></li>
+            <li><a href="casino-gaming.html">Casino Gaming</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <ul class="footer-links">
+            <li><a href="why-island-mountain.html">Why Local AI</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="investors.html">Investors</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="terms.html">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom flex-col-center-gap">
+        <p>&copy; 2026 Island Mountain. All rights reserved. Founded by <a href="https://www.johndou.com" target="_blank" rel="noopener" class="clr-copper">John Dougherty</a>.</p>
+        <a href="tel:+18016091130" class="phone-link"><i class="ri-phone-line text-lg"></i> 1-801-609-1130</a>
+        <a href="https://www.linkedin.com/company/island-mountain-llc/" target="_blank" rel="noopener" aria-label="Island Mountain on LinkedIn" class="phone-link"><i class="ri-linkedin-fill text-lg"></i> Follow us on LinkedIn</a>
+        <a href="https://x.com/IslandMountain_" target="_blank" rel="noopener" aria-label="Island Mountain on X" class="phone-link"><i class="ri-twitter-x-fill text-lg"></i> Follow us on X</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-R674E394D4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-R674E394D4');
+</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Basho Parks">
+  <meta name="date" content="2026-05-01">
+  <title>Local AI Servers for Education | FERPA &amp; COPPA Ready</title>
+  <meta name="description" content="Local AI servers for education. H100/H200 inference racks align with FERPA's school official exception. Air-gappable. No cloud required.">
+  <link rel="icon" type="image/x-icon" href="favicon.ico?v=2">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png?v=2">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png?v=2">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="icons/remixicon.css">
+  <link rel="stylesheet" href="fonts/fonts.css">
+  <link rel="canonical" href="https://islandmountain.io/education.html">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Local AI Servers for Education | FERPA &amp; COPPA Ready">
+  <meta property="og:description" content="Local AI servers for education. H100/H200 inference racks align with FERPA's school official exception. Air-gappable. No cloud required.">
+  <meta property="og:url" content="https://islandmountain.io/education.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Island Mountain">
+  <meta property="og:image" content="https://islandmountain.io/images/hero-education.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Local AI Servers for Education | FERPA &amp; COPPA Ready">
+  <meta name="twitter:description" content="Local AI servers for education. H100/H200 inference racks align with FERPA's school official exception. Air-gappable. No cloud required.">
+  <meta name="twitter:image" content="https://islandmountain.io/images/hero-education.png">
+
+  <!-- FAQPage Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Does using cloud AI for student data violate FERPA?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Cloud AI processing of student education records constitutes disclosure to a third party under FERPA (20 U.S.C. section 1232g). Whether this satisfies the school official exception depends on contractual arrangements and direct institutional control requirements that cloud vendors may not meet. State student privacy laws (California SOPIPA, New York Ed Law 2-d, Illinois SOPPA, and 40+ others) add further third-party disclosure restrictions. On-premises AI from Island Mountain eliminates this analysis entirely - student data never leaves campus infrastructure, so no third-party disclosure occurs."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What education workflows can run on Island Mountain campus AI hardware?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Island Mountain hardware supports curriculum design assistance, student record summarization and academic advising, research data analysis for faculty, administrative document drafting including accreditation reports, grant proposal development, and assessment assistance. The system runs DeepSeek V4-Flash for complex research analysis and Llama 3.3 70B for general drafting. All processing occurs on NVIDIA H100 or H200 GPUs on campus with no student data transmitted to external servers."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does on-premises AI cost compare to cloud AI for a university?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Cloud AI at education pricing ($20 to $100 per user per month) for 200 campus users costs $48,000 to $240,000 annually with ongoing student data exposure. An Island Mountain Summit Base system costs $75,000 to $85,000 as a one-time purchase supporting unlimited users on the campus network. The Summit Pinnacle tier with NVIDIA H200 GPUs costs $350,000 to $400,000 for research-intensive workloads. Ongoing costs limited to electricity (~$100-$200/month). Cost parity within 12 to 24 months for most deployments."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does a school need dedicated IT staff to run on-premises AI hardware?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. The system ships pre-configured with all models installed and OpenWebUI ready for browser-based access. Faculty and staff connect through any web browser on the campus network. Setup requires racking the server, connecting 208V 30A power, and plugging in ethernet. Island Mountain provides 30 days of hands-on support. Most university IT departments incorporate it into existing server management workflows without additional hiring. K-12 districts can include it in existing managed service agreements."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- BreadcrumbList Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://islandmountain.io/"},
+      {"@type": "ListItem", "position": 2, "name": "Solutions", "item": "https://islandmountain.io/solutions.html"},
+      {"@type": "ListItem", "position": 3, "name": "Education", "item": "https://islandmountain.io/education.html"}
+    ]
+  }
+  </script>
+
+  <!-- Product Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "@id": "https://islandmountain.io/products.html#summit-base",
+    "name": "Island Mountain Summit Base \u2014 On-Premises AI Server for Education",
+    "description": "Pre-built, burn-tested AI inference server with 2x NVIDIA H100 80GB GPUs. Air-gap capable. FERPA-aligned for student data privacy. Includes DeepSeek V4-Flash, Llama 3.3 70B, and OpenWebUI.",
+    "brand": {
+      "@type": "Brand",
+      "name": "Island Mountain"
+    },
+    "offers": {
+      "@type": "AggregateOffer",
+      "lowPrice": "75000",
+      "highPrice": "400000",
+      "priceCurrency": "USD",
+      "offerCount": "3",
+      "availability": "https://schema.org/InStock",
+      "url": "https://islandmountain.io/products.html",
+      "priceValidUntil": "2027-04-30"
+    },
+    "category": "AI Inference Hardware for Educational Institutions",
+    "additionalProperty": [
+      {
+        "@type": "PropertyValue",
+        "name": "GPU Model",
+        "value": "2x NVIDIA H100 80GB PCIe (Summit Base) / H200 141GB (Summit Pinnacle)"
+      },
+      {
+        "@type": "PropertyValue",
+        "name": "Total VRAM",
+        "value": "160GB-282GB"
+      },
+      {
+        "@type": "PropertyValue",
+        "name": "Pre-Installed Models",
+        "value": "DeepSeek V4-Flash (quantized), Llama 3.3 70B, DeepSeek R1 70B Distill or Qwen 2.5 72B (buyer selects)"
+      },
+      {
+        "@type": "PropertyValue",
+        "name": "Interface",
+        "value": "OpenWebUI (browser-based)"
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <!-- Full-page particle canvas -->
+  <canvas id="particles-canvas"></canvas>
+
+  <!-- Hero background photo -->
+  <div class="hero-photo">
+    <picture><source srcset="images/hero-education-mobile.webp 800w, images/hero-education.webp 1684w" type="image/webp" sizes="100vw"><img src="images/hero-education.png" alt="FERPA-compliant AI infrastructure for educational institutions" loading="lazy" width="1684" height="934"></picture>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="nav-logo"><picture><source srcset="images/logo-nav-new.webp" type="image/webp"><img src="images/logo-nav-new.png" alt="Island Mountain" width="205" height="65"></picture></a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="why-island-mountain.html">Why Local AI</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="technology.html">Technology</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li class="nav-dropdown">
+          <a href="solutions.html" class="nav-dropdown-toggle">Solutions <i class="ri-arrow-down-s-line"></i></a>
+          <ul class="nav-dropdown-menu">
+            <li><a href="law-firms.html">Law Firms</a></li>
+            <li><a href="medical-practices.html">Medical Practices</a></li>
+            <li><a href="tribal-nations.html">Tribal Nations</a></li>
+            <li><a href="research-labs.html">Research Labs</a></li>
+            <li><a href="defense-contractors.html">Defense Contractors</a></li>
+            <li><a href="financial-services.html">Financial Services</a></li>
+            <li><a href="insurance.html">Insurance</a></li>
+            <li><a href="energy-utilities.html">Energy &amp; Utilities</a></li>
+            <li><a href="government.html">Government</a></li>
+            <li><a href="education.html">Education</a></li>
+            <li><a href="casino-gaming.html">Casino Gaming</a></li>
+          </ul>
+        </li>
+        <li><a href="resources.html">Resources</a></li>
+              <li><a href="faq.html">FAQ</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="contact.html" class="nav-cta">Request Quote</a></li>
+      </ul>
+      <button class="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="sidebar-overlay"></div>
+  <div class="mobile-sidebar">
+    <a href="index.html">Home</a>
+    <a href="why-island-mountain.html">Why Local AI</a>
+    <a href="products.html">Products</a>
+    <a href="technology.html">Technology</a>
+    <a href="pricing.html">Pricing</a>
+    <a href="solutions.html" class="mobile-solutions-toggle">Solutions <i class="ri-arrow-down-s-line"></i></a>
+    <div class="mobile-solutions-links">
+      <a href="law-firms.html">Law Firms</a>
+      <a href="medical-practices.html">Medical Practices</a>
+      <a href="tribal-nations.html">Tribal Nations</a>
+      <a href="research-labs.html">Research Labs</a>
+      <a href="defense-contractors.html">Defense Contractors</a>
+      <a href="financial-services.html">Financial Services</a>
+      <a href="insurance.html">Insurance</a>
+      <a href="energy-utilities.html">Energy &amp; Utilities</a>
+      <a href="government.html">Government</a>
+      <a href="education.html">Education</a>
+      <a href="casino-gaming.html">Casino Gaming</a>
+    </div>
+    <a href="resources.html">Resources</a>
+            <a href="faq.html">FAQ</a>
+    <a href="blog.html">Blog</a>
+    <a href="contact.html" class="nav-cta">Request Quote</a>
+  </div>
+
+  <!-- Hero -->
+  <section class="hero hero-page">
+    <div class="hero-inner">
+      <span class="hero-badge">Local AI for Education</span>
+      <h1>Student Data Privacy Isn't Optional. Your AI Architecture Shouldn't Treat It That Way.</h1>
+      <p>FERPA protects student education records. The "school official" exception works best when the AI processing those records is under direct institutional control - not a cloud vendor's terms of service. On-premises AI for schools and universities keeps student data on campus hardware.</p>
+    </div>
+  </section>
+
+  <!-- Breadcrumb -->
+  <nav class="breadcrumb">
+    <a href="index.html">Home</a><span>&rsaquo;</span><a href="solutions.html">Solutions</a><span>&rsaquo;</span>Education
+  </nav>
+  <div class="cta-hero-wrap"><p class="detail-text">Built by <a href="https://www.johndou.com" target="_blank" rel="noopener" class="clr-copper">John Dougherty</a>, 25-year enterprise security and technology veteran. Every system is personally assembled, burn-tested for 72 hours, and delivered direct.</p></div>
+
+  <!-- The Problem -->
+  <section class="section section-first">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-badge">The Student Privacy Problem</span>
+        <h2>The Cloud AI Problem for Educational Institutions</h2>
+        <p>Air-gapped AI education infrastructure keeps student records on campus. FERPA requires institutional control over student education records - cloud AI transmits those records to commercial infrastructure.</p>
+      </div>
+      <div class="fade-in content-narrow">
+        <p class="body-lg">FERPA (20 U.S.C. &sect; 1232g) establishes that educational institutions receiving federal funding must protect the privacy of student education records. The "school official" exception permits disclosure of education records to school officials with legitimate educational interests - but the exception was designed for employees and contractors under direct institutional control. Cloud AI vendors operate commercial infrastructure under their own terms of service, privacy policies, and data handling practices. Educational institutions are one of <a href="solutions.html">eleven regulated industries</a> where this structural conflict between cloud AI and data privacy requirements is most acute.</p>
+        <p class="body-lg">For K-12 institutions, COPPA (Children's Online Privacy Protection Act) adds requirements for children under 13. State student privacy laws - California's SOPIPA (Student Online Personal Information Protection Act), New York Education Law 2-d, Illinois SOPPA, and similar statutes in over 40 states - impose additional restrictions on how student data can be collected, used, and disclosed to third parties. Cloud AI processing triggers many of these disclosure provisions.</p>
+        <p class="body-lg">Universities face additional complexity: IRB requirements for student research data (requirements shared with <a href="research-labs.html">dedicated research labs</a>), Title IV data protection obligations, and institutional review of data sharing agreements for any technology processing student records. On-premise AI for edtech resolves the structural problem that is consistent across all levels of education: cloud AI vendors process student education records on commercial infrastructure, creating a data handling dependency that complicates FERPA compliance and exposes institutions to enforcement risk from the Department of Education. Public institutions face additional <a href="government.html">government data handling requirements</a> as recipients of state and federal funding.</p>
+      </div>
+    </div>
+  </section>
+
+  
+  <section class="section-pt-32">
+    <div class="container">
+      <div class="badge-wrap">
+      <div class="authority-badge"><i class="ri-shield-check-line authority-badge-icon"></i><span class="authority-badge-label">FERPA (34 CFR 99)</span></div>
+      <div class="authority-badge"><i class="ri-parent-line authority-badge-icon"></i><span class="authority-badge-label">COPPA</span></div>
+      <div class="authority-badge"><i class="ri-government-line authority-badge-icon"></i><span class="authority-badge-label">State Student Privacy Laws</span></div>
+      </div>
+    </div>
+  </section>
+  <!-- How It Works -->
+  <section class="section section-dark">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-badge">How It Works</span>
+        <h2>What On-Premises AI Means for Your Campus</h2>
+        <p>Air-gapped inference university IT departments can trust. "No data leaves your campus" is not marketing language - it is a description of campus-controlled network architecture.</p>
+      </div>
+      <div class="card-grid card-grid-3 fade-in">
+        <div class="card">
+          <div class="card-icon card-icon-green">
+            <i class="ri-shield-check-line"></i>
+          </div>
+          <h3>Zero External Transmission</h3>
+          <p>Student data never leaves your campus network. Prompts travel from workstation to server over internal network only. No cloud vendor processes student records.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon card-icon-indigo">
+            <i class="ri-server-line"></i>
+          </div>
+          <h3>Hardware You Own</h3>
+          <p>Physical server with NVIDIA H100 GPUs in your campus data center, on your network, under your IT department's control. Institutional ownership of AI infrastructure.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon card-icon-purple">
+            <i class="ri-wifi-off-line"></i>
+          </div>
+          <h3>Air-Gap Capable</h3>
+          <p>Air-gap GPU server college and university deployments with complete network isolation available after initial setup. For institutions with the most stringent data handling requirements, the system operates with zero external connections.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Workflows -->
+  <section class="section section-darker">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-badge">Workflows</span>
+        <h2>Campus Workflows Island Mountain Hardware Supports</h2>
+        <p>The same AI capabilities you want from cloud services, running on hardware that doesn't create compliance exposure.</p>
+      </div>
+      <div class="card-grid card-grid-3 fade-in">
+        <div class="card">
+          <div class="card-icon card-icon-green">
+            <i class="ri-book-open-line"></i>
+          </div>
+          <h3>Curriculum Design Assistance</h3>
+          <p>Local AI for curriculum design: analyze learning objectives, generate course outlines, develop assessment rubrics, and create supplementary materials. Support faculty in curriculum development without exposing proprietary course materials to cloud services.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon card-icon-indigo">
+            <i class="ri-user-search-line"></i>
+          </div>
+          <h3>Student Record Summarization</h3>
+          <p>Secure AI for student records: process enrollment records, academic transcripts, and advising notes to generate student summaries for advisors and administrators. Keep personally identifiable student information entirely on campus hardware.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon card-icon-purple">
+            <i class="ri-flask-line"></i>
+          </div>
+          <h3>Research Data Analysis</h3>
+          <p>On-prem AI for research: support faculty with AI-assisted data analysis, literature review synthesis, and methodology documentation. Keep unpublished findings and grant-funded research data on institutional hardware.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon card-icon-amber">
+            <i class="ri-draft-line"></i>
+          </div>
+          <h3>Administrative Document Drafting</h3>
+          <p>Draft accreditation reports, institutional effectiveness documentation, board presentations, and administrative correspondence. Run an on-prem LLM for admissions communications, enrollment management, and institutional reporting. Process sensitive institutional data locally.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon card-icon-green">
+            <i class="ri-money-dollar-circle-line"></i>
+          </div>
+          <h3>Grant Proposal Support</h3>
+          <p>Assist with grant narrative development, budget justification drafting, and proposal editing. Process preliminary research data and institutional information without cloud exposure.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon card-icon-indigo">
+            <i class="ri-checkbox-circle-line"></i>
+          </div>
+          <h3>Assessment &amp; Grading Assistance</h3>
+          <p>Local AI for grading support: develop rubrics, draft feedback, and analyze assessment data. The AI assists with documentation and drafting - educators make all evaluation decisions.</p>
+        </div>
+      </div>
+      <div class="comparison-note fade-in mt-32">
+        <i class="ri-information-line"></i>
+        Island Mountain hardware runs general-purpose large language models. These are not education-specific fine-tuned models. They do not include LMS integration (Canvas, Blackboard, Moodle), SIS connectors (Banner, PowerSchool, Ellucian), or automated grading capabilities. The models assist with drafting and analysis - educators make all educational judgments.
+      </div>
+    </div>
+  </section>
+
+  <!-- Model Selection -->
+  <section class="section section-dark">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-badge">Model Selection</span>
+        <h2>Which Models Work Best for Education Tasks</h2>
+        <p>NVIDIA H100 campus AI infrastructure running open-source models under institutional control. A local LLM for universities and K-12 districts with zero cloud dependency. Private AI for K-12 and higher education under institutional control.</p>
+      </div>
+      <div class="card-grid card-grid-3 fade-in">
+        <div class="card text-center">
+          <div class="card-icon card-icon-green mx-auto-mb-20">
+            <i class="ri-brain-line"></i>
+          </div>
+          <h3>DeepSeek V4-Flash</h3>
+          <p><strong>Best for:</strong> Complex research analysis, multi-document literature review, accreditation documentation, long-context institutional reporting tasks. 284B parameters with mixture-of-experts architecture. Local DeepSeek for higher ed runs quantized on the Summit Base tier.</p>
+        </div>
+        <div class="card text-center">
+          <div class="card-icon card-icon-indigo mx-auto-mb-20">
+            <i class="ri-robot-2-line"></i>
+          </div>
+          <h3>Llama 3.3 70B</h3>
+          <p><strong>Best for:</strong> General drafting, correspondence, grant narratives, curriculum descriptions, administrative communications. Strong general-purpose model that produces clean, structured prose quickly.</p>
+        </div>
+        <div class="card text-center">
+          <div class="card-icon card-icon-purple mx-auto-mb-20">
+            <i class="ri-scales-3-line"></i>
+          </div>
+          <h3>R1 70B Distill or Qwen 2.5 72B</h3>
+          <p><strong>Best for:</strong> Chain-of-thought academic reasoning (R1 Distill) or high-throughput institutional drafting (Qwen 2.5). Buyer selects at order. Both run on the same VRAM budget.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Comparison Table -->
+  <section class="section section-darker">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-badge">Cost Comparison</span>
+        <h2>Cloud AI vs. Island Mountain for a University Department</h2>
+        <p>The cloud transmits student records to commercial servers. The hardware keeps everything on campus.</p>
+      </div>
+      <div class="table-wrapper fade-in">
+        <table>
+          <thead>
+            <tr>
+              <th></th>
+              <th>Cloud AI</th>
+              <th>Island Mountain Summit Base</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Year 1 Cost (30 users)</strong></td>
+              <td>$7,200 - $36,000 (edu pricing)</td>
+              <td class="highlight-cell">$75,000 - $85,000 (one time, unlimited users)</td>
+            </tr>
+            <tr>
+              <td><strong>Year 1 Cost (200 users)</strong></td>
+              <td>$48,000 - $240,000</td>
+              <td class="highlight-cell">$75,000 - $85,000 (same hardware)</td>
+            </tr>
+            <tr>
+              <td><strong>Year 3 Cumulative (200 users)</strong></td>
+              <td>$144,000 - $720,000</td>
+              <td class="highlight-cell">Electricity only (~$1,200 - $2,400/yr)</td>
+            </tr>
+            <tr>
+              <td><strong>Student Data Location</strong></td>
+              <td>Commercial cloud servers</td>
+              <td class="highlight-cell">Your campus data center.</td>
+            </tr>
+            <tr>
+              <td><strong>FERPA Compliance</strong></td>
+              <td>Depends on vendor contract terms</td>
+              <td class="highlight-cell">Student data never leaves campus.</td>
+            </tr>
+            <tr>
+              <td><strong>Per-Token Fees</strong></td>
+              <td>$10 - $40 per million tokens (edu)</td>
+              <td class="highlight-cell">None. Unlimited use.</td>
+            </tr>
+            <tr>
+              <td><strong>Model Control</strong></td>
+              <td>Provider decides models and updates</td>
+              <td class="highlight-cell">You choose which models to run</td>
+            </tr>
+            <tr>
+              <td><strong>LMS Integration</strong></td>
+              <td>Some platforms offer integrations</td>
+              <td>Not included. General-purpose AI.</td>
+            </tr>
+            <tr>
+              <td><strong>Vendor Lock-In</strong></td>
+              <td>Complete</td>
+              <td class="highlight-cell">None. Permissive open-source licenses.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="comparison-note fade-in mt-20">
+        <i class="ri-information-line"></i>
+        Cloud estimates based on educational pricing of $20-$100/user/month. Many cloud AI platforms offer educational discounts but still process student data on commercial infrastructure. Island Mountain electricity estimate assumes 1.5-2.5 kW average draw at $0.12/kWh. For research-intensive workloads, the NVIDIA H200 for research tier offers 141GB HBM3e memory per GPU at $350,000-$400,000.
+      </div>
+    </div>
+  </section>
+
+  <!-- Honest Limitations -->
+  <section class="section section-dark">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-badge">Honest Limitations</span>
+        <h2>What You Do Not Get</h2>
+        <p>Knowing the boundaries matters more than knowing the features.</p>
+      </div>
+      <div class="risk-grid fade-in">
+        <div class="risk-card">
+          <h4><i class="ri-search-eye-line"></i> No Education-Specific Fine-Tuning</h4>
+          <p>The models are general-purpose large language models. They are not trained on educational datasets, pedagogical frameworks, or discipline-specific knowledge bases. They are strong at reasoning, analysis, and prose generation - but they are general tools, not purpose-built educational AI.</p>
+        </div>
+        <div class="risk-card">
+          <h4><i class="ri-links-line"></i> No LMS/SIS Integration</h4>
+          <p>Island Mountain hardware does not connect to Canvas, Blackboard, Moodle, Banner, PowerSchool, Ellucian, or other educational technology platforms. The AI runs through OpenWebUI - a browser-based chat interface. Moving data between your educational systems and the AI is a manual process.</p>
+        </div>
+        <div class="risk-card">
+          <h4><i class="ri-checkbox-circle-line"></i> No Automated Grading or Assessment Scoring</h4>
+          <p>The system provides drafting assistance for feedback and rubric development, but it does not automatically grade student work or generate scores. Local AI for campus security documentation is possible through the chat interface, but the system has no direct integration with campus safety systems. AI assists with the prose around assessment - educators make all evaluation decisions and exercise professional judgment.</p>
+        </div>
+        <div class="risk-card">
+          <h4><i class="ri-settings-3-line"></i> You Own the Maintenance</h4>
+          <p>After the 30-day included support period, your institution is responsible for OS security updates, model updates, and general system maintenance. Most university IT departments can incorporate this into their standard server management workflow.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Regulatory Context -->
+  <section class="section section-darker">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-badge">Regulatory Context</span>
+        <h2>FERPA, COPPA, and the School Official Exception</h2>
+        <p>A FERPA compliant AI server keeps student education records under institutional control from day one.</p>
+      </div>
+      <div class="fade-in content-narrow">
+        <p class="body-lg">FERPA's "school official" exception (34 CFR &sect; 99.31(a)(1)) permits disclosure of education records to school officials with legitimate educational interests. For third-party contractors to qualify under this exception, they must perform an institutional service or function, be under direct control of the institution with respect to use and maintenance of education records, and use records only for authorized purposes. FERPA school official AI designations through cloud vendors may satisfy these contractual requirements - but the structural dependency on commercial infrastructure for student data processing creates ongoing compliance risk and audit complexity.</p>
+        <p class="body-lg">COPPA (15 U.S.C. &sect;&sect; 6501-6506) requires verifiable parental consent before collecting personal information from children under 13. K-12 institutions using cloud AI for student data create disclosure scenarios that may trigger COPPA requirements beyond what the school consent exception covers. Local processing eliminates the third-party collection that triggers COPPA's disclosure provisions.</p>
+        <p class="body-lg">State student privacy laws add jurisdiction-specific requirements. California's SOPIPA prohibits operators of educational technology services from using student data for non-educational purposes. New York Education Law 2-d requires data privacy and security plans from third-party contractors. Illinois SOPPA mandates transparency in data collection by educational technology operators. Over 40 states have enacted similar legislation. The common thread: restrictions on third-party access to student data that cloud AI processing inherently involves. Education AI without cloud dependency resolves these restrictions architecturally.</p>
+        <p class="body-lg">For research universities, IRB requirements govern the handling of student research data. Campus health centers face <a href="medical-practices.html">HIPAA obligations identical to medical practices</a>. Title IV data protection obligations apply to financial aid information. Institutional review of data sharing agreements adds administrative overhead for any technology processing student records. Local AI deployment simplifies this entire analysis: when student data never leaves campus infrastructure, the third-party disclosure and data sharing questions do not arise.</p>
+        <div class="highlight-box">
+          <p class="scenario-text"><strong>Disclaimer:</strong> This section describes the general regulatory environment regarding AI and student data protection. It is not legal or compliance advice. Consult your institution's general counsel, FERPA officer, or qualified education law attorney for guidance specific to your institution type, student population, and operational context.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Power Requirements -->
+  <section class="section section-dark">
+    <div class="container">
+      <div class="power-notice fade-in">
+        <i class="ri-flashlight-line"></i>
+        <p><strong>Power &amp; Installation:</strong> All Island Mountain systems require a dedicated 208V/30A power circuit (NEMA L6-30R). This is standard in server rooms and data closets. Most educational institutions with an existing server closet already have this infrastructure or can add it for $500-$2,000 through a licensed electrician. The system fits in a standard 4U rack space. Average power draw under typical inference loads is 1.5-2.5 kW.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section section-darker">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-badge">Education Questions</span>
+        <h2>Questions Educators Ask About On-Premises AI</h2>
+      </div>
+      <div class="risk-grid fade-in">
+        <div class="risk-card">
+          <h4><i class="ri-graduation-cap-line"></i> Does cloud AI create FERPA compliance risk?</h4>
+          <p>Yes. Cloud AI processing of student education records constitutes disclosure to a third party under FERPA (20 U.S.C. section 1232g). Whether this satisfies the school official exception depends on contractual arrangements and direct institutional control requirements that cloud vendors may not meet. On-premises AI from Island Mountain eliminates this analysis entirely - student data never leaves campus infrastructure.</p>
+        </div>
+        <div class="risk-card">
+          <h4><i class="ri-brain-line"></i> What educational workflows does this hardware support?</h4>
+          <p>Island Mountain hardware supports curriculum design assistance, student record summarization and academic advising, research data analysis for faculty, administrative document drafting including accreditation reports, grant proposal development, and assessment assistance. The system runs DeepSeek V4-Flash for complex research analysis and Llama 3.3 70B for general drafting.</p>
+        </div>
+        <div class="risk-card">
+          <h4><i class="ri-coin-line"></i> How does cost compare for campus-wide deployment?</h4>
+          <p>Cloud AI at education pricing ($20 to $100 per user per month) for 200 campus users costs $48,000 to $240,000 annually with ongoing student data exposure. An Island Mountain Summit Base system costs $75,000 to $85,000 as a one-time purchase supporting unlimited users on the campus network. Cost parity within 12 to 24 months for most deployments.</p>
+        </div>
+        <div class="risk-card">
+          <h4><i class="ri-tools-line"></i> Does our institution need additional IT staff?</h4>
+          <p>No. The system ships pre-configured and ready to use through a web browser. 30 days of setup support included. Standard Linux server administration for ongoing maintenance. Most university IT departments incorporate it into existing server management workflows.</p>
+        </div>
+      </div>
+      <div class="text-center-mt-32">
+        <a href="faq.html" class="btn btn-secondary">See All FAQs</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Compliance Disclaimer -->
+  <section class="section section-dark">
+    <div class="container">
+      <div class="fade-in founder-box">
+        <p class="scenario-text">Island Mountain is a hardware company, not a compliance authority. References to FERPA, COPPA, state student privacy laws, or related educational data protection frameworks on this page reflect factual descriptions of data handling mechanics - not legal, regulatory, or compliance advice. Consult qualified counsel for compliance determinations specific to your organization and jurisdiction.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- AEO Summary -->
+  <div style="border-left:3px solid var(--copper);padding:16px 20px;margin:32px 0;background:rgba(217,119,6,0.05);border-radius:0 8px 8px 0;">
+  <strong>Summary:</strong> Island Mountain builds on-premises AI inference hardware for K-12 schools, community colleges, and universities. Student education records stay on campus-controlled NVIDIA H100/H200 servers - no cloud transmission, no third-party data handling, and full alignment with FERPA's school official exception. Student data privacy AI systems start at $75,000 with air-gap capability and unlimited campus-wide access.
+  </div>
+
+  <!-- Deployment Scenarios -->
+  <section class="section section-dark section-py-3">
+    <div class="container">
+      <div class="section-header fade-in">
+        <h2>Educational Institutions Deploying Local AI</h2>
+      </div>
+      <div class="scenario-grid" class="fade-in">
+        <div class="accent-blockquote">
+          <p class="mb-075">Community college serving 8,000 students. Student advising records, enrollment data, and institutional research all processed on our servers. FERPA compliance is straightforward when data never leaves campus.</p>
+          <span class="copper-sm">Scenario: Community College</span>
+        </div>
+        <div class="accent-blockquote">
+          <p class="mb-075">K-12 district with 12,000 students across 18 schools. Student records stay on district servers. Parents trust that their children's data isn't being processed by commercial AI companies.</p>
+          <span class="copper-sm">Scenario: K-12 School District</span>
+        </div>
+        <div class="accent-blockquote">
+          <p class="mb-075">Research university with $50M in annual grant funding. Unpublished research data and student records processed locally. IRB requirements are simpler when no third-party data sharing is involved.</p>
+          <span class="copper-sm">Scenario: Research University</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section section-darker text-center">
+    <div class="container fade-in">
+      <h2>Ready to Keep Student Data on Campus?</h2>
+      <p class="cta-sub-wrap">One conversation. No sales pitch. Tell us about your institution's AI needs and we will spec the right system.</p>
+      <div class="btn-group">
+        <a href="contact.html" class="btn btn-primary">Request a Quote</a>
+        <a href="products.html" class="btn btn-secondary">See Full Specs</a>
+      </div>
+      <p class="cta-subtitle"><i class="ri-phone-line icon-copper-mr-sm"></i>Or call directly: <a href="tel:+18016091130" class="copper-semibold">1-801-609-1130</a></p>
+      <p class="bio-note"><a href="solutions.html">See all eleven industries we serve</a> or explore: <a href="government.html">Government</a> &middot; <a href="research-labs.html">Research Labs</a></p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="images/logo-footer.png" alt="Island Mountain logo" width="210" height="210" class="d-block-mb">
+          <a href="index.html" class="nav-logo">Island Mountain</a>
+          <p>Local AI infrastructure for data-sovereign organizations. Colorado.</p>
+          <p class="mt-8"><i class="ri-phone-line icon-copper-mr"></i><a href="tel:+18016091130" class="clr-muted">1-801-609-1130</a></p>
+        </div>
+        <div>
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="technology.html">Technology</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="resources.html">Resources</a></li>
+              <li><a href="faq.html">FAQ</a></li>
+            <li><a href="blog.html">Blog</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Solutions</h4>
+          <ul class="footer-links">
+            <li><a href="law-firms.html">Law Firms</a></li>
+            <li><a href="medical-practices.html">Medical Practices</a></li>
+            <li><a href="tribal-nations.html">Tribal Nations</a></li>
+            <li><a href="research-labs.html">Research Labs</a></li>
+            <li><a href="defense-contractors.html">Defense Contractors</a></li>
+            <li><a href="financial-services.html">Financial Services</a></li>
+            <li><a href="insurance.html">Insurance</a></li>
+            <li><a href="energy-utilities.html">Energy &amp; Utilities</a></li>
+            <li><a href="government.html">Government</a></li>
+            <li><a href="education.html">Education</a></li>
+            <li><a href="casino-gaming.html">Casino Gaming</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <ul class="footer-links">
+            <li><a href="why-island-mountain.html">Why Local AI</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="investors.html">Investors</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="terms.html">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom flex-col-center-gap">
+        <p>&copy; 2026 Island Mountain. All rights reserved. Founded by <a href="https://www.johndou.com" target="_blank" rel="noopener" class="clr-copper">John Dougherty</a>.</p>
+        <a href="tel:+18016091130" class="phone-link"><i class="ri-phone-line text-lg"></i> 1-801-609-1130</a>
+        <a href="https://www.linkedin.com/company/island-mountain-llc/" target="_blank" rel="noopener" aria-label="Island Mountain on LinkedIn" class="phone-link"><i class="ri-linkedin-fill text-lg"></i> Follow us on LinkedIn</a>
+        <a href="https://x.com/IslandMountain_" target="_blank" rel="noopener" aria-label="Island Mountain on X" class="phone-link"><i class="ri-twitter-x-fill text-lg"></i> Follow us on X</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
