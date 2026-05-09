@@ -14,7 +14,7 @@
   <meta name="author" content="Basho Parks">
   <meta name="date" content="2026-05-01">
   <title>Local AI Stack: DeepSeek V4-Flash, vLLM, OpenWebUI</title>
-  <meta name="description" content="DeepSeek V4-Flash (284B params), Llama 3.1 70B, and Mixtral 8x22B via vLLM engine and OpenWebUI interface. Full local AI stack breakdown.">
+  <meta name="description" content="DeepSeek V4-Flash, Llama 3.3 70B, and R1 70B Distill via vLLM engine and OpenWebUI interface. Full local AI stack breakdown.">
   <link rel="icon" type="image/x-icon" href="favicon.ico?v=2">
   <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png?v=2">
   <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png?v=2">
@@ -25,7 +25,7 @@
 
   <!-- Open Graph -->
   <meta property="og:title" content="Local AI Stack: DeepSeek V4-Flash, vLLM, OpenWebUI">
-  <meta property="og:description" content="DeepSeek V4-Flash (284B params), Llama 3.1 70B, and Mixtral 8x22B via vLLM engine and OpenWebUI interface. Full local AI stack breakdown.">
+  <meta property="og:description" content="DeepSeek V4-Flash, Llama 3.3 70B, and R1 70B Distill via vLLM engine and OpenWebUI interface. Full local AI stack breakdown.">
   <meta property="og:url" content="https://islandmountain.io/technology.html">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Island Mountain">
@@ -34,7 +34,7 @@
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Local AI Stack: DeepSeek V4-Flash, vLLM, OpenWebUI">
-  <meta name="twitter:description" content="DeepSeek V4-Flash (284B params), Llama 3.1 70B, and Mixtral 8x22B via vLLM engine and OpenWebUI interface. Full local AI stack breakdown.">
+  <meta name="twitter:description" content="DeepSeek V4-Flash, Llama 3.3 70B, and R1 70B Distill via vLLM engine and OpenWebUI interface. Full local AI stack breakdown.">
   <meta name="twitter:image" content="https://islandmountain.io/images/hero-technology.png">
 
   <!-- SoftwareApplication Schema -->
@@ -252,7 +252,7 @@
     <div class="container">
       <div class="section-header fade-in">
         <span class="section-badge">Pre-Installed</span>
-        <h2>Pre-Installed Models: DeepSeek V4-Flash, Llama 3.1 70B, Mixtral 8x22B</h2>
+        <h2>Pre-Installed Models: DeepSeek V4-Flash, Llama 3.3 70B, R1 70B Distill or Qwen 2.5 72B</h2>
         <p>Every Island Mountain Summit Base and Summit Ridge system ships with these models installed, configured, and tested.</p>
       </div>
       <div class="card-grid card-grid-3 fade-in">
@@ -268,18 +268,34 @@
           <div class="card-icon card-icon-indigo">
             <i class="ri-robot-2-line"></i>
           </div>
-          <h3>Llama 3.1 70B</h3>
+          <h3>Llama 3.3 70B</h3>
           <p><strong>40-48GB VRAM</strong></p>
-          <p>Meta's general-purpose workhorse. Strong across writing, summarization, question answering, and conversational tasks. The most capable general-purpose model in the stack.</p>
+          <p>Meta's general-purpose workhorse. Replaces Llama 3.1 with meaningfully better benchmark performance on the same VRAM footprint. Strong across writing, summarization, question answering, and conversational tasks.</p>
         </div>
         <div class="card">
           <div class="card-icon card-icon-purple">
-            <i class="ri-translate-2"></i>
+            <i class="ri-scales-3-line"></i>
           </div>
-          <h3>Mixtral 8x22B</h3>
-          <p><strong>~80GB VRAM</strong></p>
-          <p>Mistral's mixture-of-experts model with strong multilingual capability. Excellent for organizations that work across languages or need efficient multi-task inference.</p>
+          <h3>DeepSeek R1 70B Distill or Qwen 2.5 72B</h3>
+          <p><strong>40-48GB VRAM (70B-class)</strong></p>
+          <p>Buyer selects at order. R1 70B Distill (MIT licensed) provides explicit chain-of-thought reasoning for legal, financial, and compliance work. Qwen 2.5 72B (Apache 2.0) delivers top-tier enterprise general performance. Both run on the same VRAM budget as the model they replace.</p>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Model Ecosystem -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-badge">Model Ecosystem</span>
+        <h2>Beyond the Pre-Installed Stack: Models You Can Run</h2>
+        <p>Your system is not limited to what ships pre-installed. The open-weight model ecosystem is deep and growing.</p>
+      </div>
+      <div class="fade-in content-narrow">
+        <p class="body-lg">Island Mountain systems run any open-weight model that fits within your VRAM. The pre-installed stack is the starting point. Beyond it, the current frontier includes Llama 4 Scout (109B MoE, 10M token context, multimodal), GPT-OSS 120B (Apache 2.0, top 2026 health and compliance benchmarks), Phi-4 14B (fast lightweight reasoning at just 8GB VRAM), and dozens of other models purpose-built for specific industries and workloads.</p>
+        <p class="body-lg">We configure industry-specific model recommendations for each deployment. A law firm gets a different stack than a medical practice or a defense contractor. <a href="solutions.html" class="clr-copper">See our industry pages</a> for vertical-specific recommendations.</p>
+        <p class="body-lg" style="border-left:3px solid var(--copper);padding:12px 20px;background:rgba(217,119,6,0.05);border-radius:0 8px 8px 0;margin-top:24px;">For organizations with policy constraints on model origin, including defense contractors, federal and state government agencies, and federally regulated institutions, Island Mountain offers fully Western-origin model stacks using models from Meta, OpenAI, Microsoft, and Mistral AI. No compromise on capability. <a href="contact.html" class="clr-copper">Contact us</a> to discuss your requirements.</p>
       </div>
     </div>
   </section>
@@ -305,7 +321,7 @@
             <i class="ri-stack-line"></i>
           </div>
           <h3>Multi-Model Selector</h3>
-          <p>Switch between DeepSeek V4-Flash, Llama 3.1, Mixtral, or any model with a dropdown. No config files.</p>
+          <p>Switch between DeepSeek V4-Flash, Llama 3.3, R1 70B Distill, or any model with a dropdown. No config files.</p>
         </div>
         <div class="card">
           <div class="card-icon card-icon-amber">
@@ -485,7 +501,7 @@
 
   <!-- AEO Summary -->
   <div style="border-left:3px solid var(--copper);padding:16px 20px;margin:32px 0;background:rgba(217,119,6,0.05);border-radius:0 8px 8px 0;">
-  <strong>Summary:</strong> Island Mountain servers run an open-source software stack: Ubuntu Linux, vLLM inference engine, and Open WebUI as the browser-based interface. Pre-installed models include DeepSeek V4-Flash (284B parameters), Llama 3.1 70B, and Mixtral 8x22B, all running locally with no external API calls or cloud dependencies.
+  <strong>Summary:</strong> Island Mountain servers run an open-source software stack: Ubuntu Linux, vLLM inference engine, and Open WebUI as the browser-based interface. Pre-installed models include DeepSeek V4-Flash (284B parameters), Llama 3.3 70B, and your choice of DeepSeek R1 70B Distill or Qwen 2.5 72B, all running locally with no external API calls or cloud dependencies.
   </div>
 
   <!-- Footer -->
