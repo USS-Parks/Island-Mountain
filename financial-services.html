@@ -56,7 +56,7 @@
         "name": "What AI workflows can a bank or credit union run on Island Mountain hardware?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Island Mountain hardware supports loan document review, KYC/AML analysis, regulatory reporting, fraud detection, customer correspondence drafting, and investment analysis. The system runs DeepSeek V4-Flash for complex multi-document analysis and regulatory synthesis, and Llama 3.1 70B for general drafting tasks including correspondence and compliance documentation. All processing occurs on NVIDIA H100 or H200 GPUs inside your facility with zero data transmitted to external servers."
+          "text": "Island Mountain hardware supports loan document review, KYC/AML analysis, regulatory reporting, fraud detection, customer correspondence drafting, and investment analysis. The system runs DeepSeek V4-Flash for complex multi-document analysis and regulatory synthesis, and Llama 3.3 70B for general drafting tasks including correspondence and compliance documentation. All processing occurs on NVIDIA H100 or H200 GPUs inside your facility with zero data transmitted to external servers."
         }
       },
       {
@@ -99,7 +99,7 @@
     "@type": "Product",
     "@id": "https://islandmountain.io/products.html#summit-base",
     "name": "Island Mountain Summit Base \u2014 On-Premises AI Server for Financial Services",
-    "description": "Pre-built, burn-tested AI inference server with 2x NVIDIA H100 80GB GPUs. Air-gap capable. GLBA and PCI DSS compliance-ready. Includes DeepSeek V4-Flash, Llama 3.1 70B, and OpenWebUI.",
+    "description": "Pre-built, burn-tested AI inference server with 2x NVIDIA H100 80GB GPUs. Air-gap capable. GLBA and PCI DSS compliance-ready. Includes DeepSeek V4-Flash, Llama 3.3 70B, and OpenWebUI.",
     "brand": {
       "@type": "Brand",
       "name": "Island Mountain"
@@ -129,7 +129,7 @@
       {
         "@type": "PropertyValue",
         "name": "Pre-Installed Models",
-        "value": "DeepSeek V4-Flash, Llama 3.1 70B, Mixtral 8x22B"
+        "value": "DeepSeek V4-Flash (quantized), Llama 3.3 70B, DeepSeek R1 70B Distill or Qwen 2.5 72B (buyer selects)"
       },
       {
         "@type": "PropertyValue",
@@ -366,15 +366,15 @@
           <div class="card-icon card-icon-indigo mx-auto-mb-20">
             <i class="ri-robot-2-line"></i>
           </div>
-          <h3>Llama 3.1 70B</h3>
+          <h3>Llama 3.3 70B</h3>
           <p><strong>Best for:</strong> General drafting, customer correspondence, compliance memos, internal communications, regulatory narrative writing. Strong general-purpose model that produces clean, structured prose quickly.</p>
         </div>
         <div class="card text-center">
           <div class="card-icon card-icon-purple mx-auto-mb-20">
-            <i class="ri-translate-2"></i>
+            <i class="ri-scales-3-line"></i>
           </div>
-          <h3>Mixtral 8x22B</h3>
-          <p><strong>Best for:</strong> Multilingual document processing for international banking operations, cross-border compliance documentation, multi-language customer communications.</p>
+          <h3>R1 70B Distill or Qwen 2.5 72B</h3>
+          <p><strong>Best for:</strong> Chain-of-thought compliance reasoning (R1 Distill) or high-throughput enterprise drafting (Qwen 2.5). Buyer selects at order based on primary workload. Both run on the same VRAM budget.</p>
         </div>
       </div>
     </div>
@@ -441,7 +441,7 @@
             <tr>
               <td><strong>Vendor Lock-In</strong></td>
               <td>Complete</td>
-              <td class="highlight-cell">None. MIT licensed models.</td>
+              <td class="highlight-cell">None. Permissive open-source licenses.</td>
             </tr>
           </tbody>
         </table>
@@ -525,7 +525,7 @@
         </div>
         <div class="risk-card">
           <h4><i class="ri-brain-line"></i> What financial workflows does this hardware support?</h4>
-          <p>Island Mountain hardware supports loan document review, KYC/AML analysis, regulatory reporting, fraud detection, customer correspondence drafting, and investment analysis. The system runs DeepSeek V4-Flash for complex multi-document analysis and regulatory synthesis, and Llama 3.1 70B for general drafting tasks. All processing occurs on NVIDIA H100 or H200 GPUs inside your facility.</p>
+          <p>Island Mountain hardware supports loan document review, KYC/AML analysis, regulatory reporting, fraud detection, customer correspondence drafting, and investment analysis. The system runs DeepSeek V4-Flash for complex multi-document analysis and regulatory synthesis, and Llama 3.3 70B for general drafting tasks. All processing occurs on NVIDIA H100 or H200 GPUs inside your facility.</p>
         </div>
         <div class="risk-card">
           <h4><i class="ri-coin-line"></i> How does the cost compare for a 50-person institution?</h4>

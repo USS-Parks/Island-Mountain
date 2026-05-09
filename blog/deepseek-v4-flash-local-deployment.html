@@ -203,7 +203,7 @@
 
 <p>V4-Flash is sparse by design. The raw parameter count hits 284 billion, but in a MoE model, not every parameter fires on every token. V4-Flash activates roughly 13 billion parameters per token, about 4.6% of its total weight.</p>
 
-<p>Memory bandwidth is the actual bottleneck in inference, not raw compute. Dense models like Llama 3.1 70B move all 70 billion parameters into memory every single inference pass. V4-Flash only loads its active experts. The math changes completely, and we've measured it, not theorized it.</p>
+<p>Memory bandwidth is the actual bottleneck in inference, not raw compute. Dense models like Llama 3.3 70B move all 70 billion parameters into memory every single inference pass. V4-Flash only loads its active experts. The math changes completely, and we've measured it, not theorized it.</p>
 
 <h2>The VRAM Reality and What Quantization Does</h2>
 
@@ -245,7 +245,7 @@
 
 <h2>What V4-Flash Replaces</h2>
 
-<p>Before April 2026, local deployment meant choosing between size and speed. Llama 3.1 70B is fast on 160GB but caps at a 128K context window and doesn't carry the reasoning capacity of a 284B-parameter system. V3 had 671 billion parameters with 37 billion active, but needed 350GB or more of VRAM at full precision, pricing it out of any dual-GPU build.</p>
+<p>Before April 2026, local deployment meant choosing between size and speed. Llama 3.3 70B is fast on 160GB but caps at a 128K context window and doesn't carry the reasoning capacity of a 284B-parameter system. V3 had 671 billion parameters with 37 billion active, but needed 350GB or more of VRAM at full precision, pricing it out of any dual-GPU build.</p>
 
 <p>V4-Flash fills the gap that didn't exist until now. The knowledge capacity of a 284B-parameter system. The inference speed of a 13B-parameter system. A context window ten times larger than most competing models. On our hardware, it sits alongside Llama as a genuinely different capability class, not a marginal upgrade.</p>
 
