@@ -24,11 +24,17 @@
   var sidebar = document.querySelector('.mobile-sidebar');
   var overlay = document.querySelector('.sidebar-overlay');
 
+  var scrollLockY = 0;
+
   function openMenu() {
     hamburger.classList.add('active');
     sidebar.classList.add('open');
     overlay.classList.add('active');
+    scrollLockY = window.scrollY;
     document.body.style.overflow = 'hidden';
+    document.body.style.position = 'fixed';
+    document.body.style.top = '-' + scrollLockY + 'px';
+    document.body.style.width = '100%';
   }
 
   function closeMenu() {
@@ -36,6 +42,10 @@
     sidebar.classList.remove('open');
     overlay.classList.remove('active');
     document.body.style.overflow = '';
+    document.body.style.position = '';
+    document.body.style.top = '';
+    document.body.style.width = '';
+    window.scrollTo(0, scrollLockY);
   }
 
   if (hamburger) {
