@@ -66,6 +66,13 @@
     <priority>0.5</priority>
   </url>
 
+  <url>
+    <loc>https://islandmountain.io/resources.html</loc>
+    <lastmod>2026-05-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
   <!-- Solutions Hub -->
   <url>
     <loc>https://islandmountain.io/solutions.html</loc>

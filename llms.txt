@@ -43,6 +43,7 @@ All systems ship with DeepSeek V4-Flash pre-installed, OpenWebUI configured, and
 - Government: https://islandmountain.io/government.html
 - Education: https://islandmountain.io/education.html
 - Casino Gaming: https://islandmountain.io/casino-gaming.html
+- Resources (Direct-Answer Hub): https://islandmountain.io/resources.html
 
 ## Direct-Answer Reference Pages
 - CLOUD Act & Tribal Data: https://islandmountain.io/cloud-act-tribal-data.html
