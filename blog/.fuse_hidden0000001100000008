@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-R674E394D4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-R674E394D4');
+</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Basho Parks">
+  <meta name="date" content="2026-05-01">
+  <title>ITAR &amp; DFARS AI Self-Assessment for Infrastructure</title>
+  <meta name="description" content="ITAR and DFARS compliance self-assessment for AI infrastructure. CUI handling, CMMC alignment, and air-gapped local AI for export control.">
+  <link rel="icon" type="image/x-icon" href="../favicon.ico?v=2">
+  <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon-32.png?v=2">
+  <link rel="apple-touch-icon" sizes="180x180" href="../images/apple-touch-icon.png?v=2">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../icons/remixicon.css">
+  <link rel="stylesheet" href="../fonts/fonts.css">
+  <link rel="canonical" href="https://islandmountain.io/blog/itar-dfars-ai-self-assessment.html">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="ITAR &amp; DFARS AI Self-Assessment for Infrastructure">
+  <meta property="og:description" content="ITAR and DFARS compliance self-assessment for AI infrastructure. CUI handling, CMMC alignment, and air-gapped local AI for export control.">
+  <meta property="og:url" content="https://islandmountain.io/blog/itar-dfars-ai-self-assessment.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Island Mountain">
+  <meta property="og:image" content="https://islandmountain.io/images/hero-mountain.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="ITAR &amp; DFARS AI Self-Assessment for Infrastructure">
+  <meta name="twitter:description" content="ITAR and DFARS compliance self-assessment for AI infrastructure. CUI handling, CMMC alignment, and air-gapped local AI for export control.">
+  <meta name="twitter:image" content="https://islandmountain.io/images/hero-mountain.png">
+
+  <!-- Article Schema -->
+  <script type="application/ld+json">
+  {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "ITAR and DFARS AI Self-Assessment: Can Your AI Infrastructure Pass an Audit?",
+  "description": "Self-assessment guide for ITAR and DFARS compliance when using AI for defense-related work. CUI handling, CMMC alignment, and why air-gapped local AI satisfies export control requirements.",
+  "url": "https://islandmountain.io/blog/itar-dfars-ai-self-assessment.html",
+  "datePublished": "2026-03-05",
+  "dateModified": "2026-03-05",
+  "author": {
+    "@type": "Organization",
+    "name": "Island Mountain",
+    "url": "https://islandmountain.io"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Island Mountain",
+    "url": "https://islandmountain.io",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://islandmountain.io/images/hero-mountain.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://islandmountain.io/blog/itar-dfars-ai-self-assessment.html"
+  },
+  "image": "https://islandmountain.io/images/hero-mountain.png"
+}
+  </script>
+
+  <link rel="stylesheet" href="../css/blog.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://islandmountain.io/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Blog",
+      "item": "https://islandmountain.io/blog.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "ITAR and DFARS AI Self-Assessment",
+      "item": "https://islandmountain.io/blog/itar-dfars-ai-self-assessment.html"
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+  <!-- Full-page particle canvas -->
+  <canvas id="particles-canvas"></canvas>
+
+  <!-- Hero background photo -->
+  <div class="hero-photo">
+    <picture><source srcset="../images/hero-mountain-mobile.webp 800w, ../images/hero-mountain.webp 1913w" type="image/webp" sizes="100vw"><img src="../images/hero-mountain.png" alt="Island Mountain rising from the ocean at sunset" loading="lazy" width="1913" height="892"></picture>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="../index.html" class="nav-logo"><picture><source srcset="../images/logo-nav-new.webp" type="image/webp"><img src="../images/logo-nav-new.png" alt="Island Mountain" width="205" height="65"></picture></a>
+      <ul class="nav-links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../why-island-mountain.html">Why Local AI</a></li>
+        <li><a href="../products.html">Products</a></li>
+        <li><a href="../technology.html">Technology</a></li>
+        <li><a href="../pricing.html">Pricing</a></li>
+        <li class="nav-dropdown">
+          <a href="../solutions.html" class="nav-dropdown-toggle">Solutions <i class="ri-arrow-down-s-line"></i></a>
+          <ul class="nav-dropdown-menu">
+            <li><a href="../law-firms.html">Law Firms</a></li>
+            <li><a href="../medical-practices.html">Medical Practices</a></li>
+            <li><a href="../tribal-nations.html">Tribal Nations</a></li>
+            <li><a href="../research-labs.html">Research Labs</a></li>
+            <li><a href="../defense-contractors.html">Defense Contractors</a></li>
+            <li><a href="../financial-services.html">Financial Services</a></li>
+            <li><a href="../insurance.html">Insurance</a></li>
+            <li><a href="../energy-utilities.html">Energy &amp; Utilities</a></li>
+            <li><a href="../government.html">Government</a></li>
+            <li><a href="../education.html">Education</a></li>
+            <li><a href="../casino-gaming.html">Casino Gaming</a></li>
+          </ul>
+        </li>
+        <li><a href="../resources.html">Resources</a></li>
+              <li><a href="../faq.html">FAQ</a></li>
+        <li><a href="../blog.html" class="active">Blog</a></li>
+        <li><a href="../contact.html" class="nav-cta">Request Quote</a></li>
+      </ul>
+      <button class="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Sidebar -->
+  <div class="sidebar-overlay"></div>
+  <div class="mobile-sidebar">
+    <a href="../index.html">Home</a>
+    <a href="../why-island-mountain.html">Why Local AI</a>
+    <a href="../products.html">Products</a>
+    <a href="../technology.html">Technology</a>
+    <a href="../pricing.html">Pricing</a>
+    <a href="../solutions.html" class="mobile-solutions-toggle">Solutions <i class="ri-arrow-down-s-line"></i></a>
+    <div class="mobile-solutions-links">
+      <a href="../law-firms.html">Law Firms</a>
+      <a href="../medical-practices.html">Medical Practices</a>
+      <a href="../tribal-nations.html">Tribal Nations</a>
+      <a href="../research-labs.html">Research Labs</a>
+      <a href="../defense-contractors.html">Defense Contractors</a>
+      <a href="../financial-services.html">Financial Services</a>
+      <a href="../insurance.html">Insurance</a>
+      <a href="../energy-utilities.html">Energy &amp; Utilities</a>
+      <a href="../government.html">Government</a>
+      <a href="../education.html">Education</a>
+      <a href="../casino-gaming.html">Casino Gaming</a>
+    </div>
+    <a href="../resources.html">Resources</a>
+            <a href="../faq.html">FAQ</a>
+    <a href="../blog.html">Blog</a>
+    <a href="../contact.html" class="nav-cta">Request Quote</a>
+  </div>
+
+  <!-- Article -->
+  <section class="section section-first hero-spacer">
+    <div class="container content-max-840">
+
+      <!-- Breadcrumb -->
+      <nav class="breadcrumb">
+        <a href="../index.html">Home</a><span>&rsaquo;</span><a href="../blog.html">Blog</a><span>&rsaquo;</span>ITAR and DFARS AI Self-Assessment: Can Your AI Infrastructure Pass an Audit?
+      </nav>
+
+      <!-- Article Header -->
+      <div class="article-header">
+        <div class="article-meta">
+          <span class="article-date">March 5, 2026</span>
+          <span class="article-tag tag-compliance">Compliance</span>
+          <span class="article-read-time">14 min read</span>
+        </div>
+        <h1 class="text-2xl">ITAR and DFARS AI Self-Assessment: Can Your AI Infrastructure Pass an Audit?</h1>
+        <p class="article-author">Island Mountain</p>
+      </div>
+
+      <article class="article-body">
+
+<p>Your team is using AI. That's not a guess. Someone is pasting contract language into ChatGPT to get a quick summary. Someone else is letting an AI assistant draft a proposal that pulls context from files saved on their desktop. And somewhere in that workflow, Controlled Unclassified Information just left the building, quietly, invisibly, without a single security alert firing. (<a href="https://greypike.com/ai-tools-cui-data-spillage-government-contractors" target="_blank" rel="noopener">Greypike</a>) This isn't a hypothetical scenario whispered about in compliance circles. It's the documented daily reality of the Defense Industrial Base in 2025, and the contractors it's happening to don't know they have a problem until they're sitting across from a C3PAO assessor who asks them to walk through their data handling procedures. AI tools are genuinely productive. Nobody's arguing otherwise. But "productive" and "compliant" are not the same word, and in the defense contracting world, confusing them can cost you your contracts, your certifications, your security clearances, and under the False Claims Act, potentially a whole lot more than that.</p>
+
+<h2>What ITAR and DFARS Require</h2>
+
+<p>Here's what ITAR and DFARS require, stated plainly. The International Traffic in Arms Regulations, enforced by the State Department's Directorate of Defense Trade Controls, govern the manufacture, sale, distribution, and export of any item on the United States Munitions List. Civil penalties run up to $1,271,078 per violation or twice the value of the transaction, whichever is greater, and criminal penalties can reach $1 million per violation with up to twenty years imprisonment. (<a href="https://www.preveil.com/blog/itar-compliance/" target="_blank" rel="noopener">PreVeil</a>) DFARS, the Defense Federal Acquisition Regulation Supplement, adds the cybersecurity layer. The CMMC 2.0 program, which became effective December 16, 2024, established three tiers of cybersecurity requirements requiring Defense Industrial Base contractors to do more than simply self-attest to compliance with long-established cybersecurity requirements. (<a href="https://www.goodwinlaw.com/en/insights/publications/2025/09/alerts-otherindustries-dod-final-rule-incorporates-cmmc-20-into-dfars" target="_blank" rel="noopener">Goodwin</a>) Phase 1 of contractual enforcement began November 10, 2025. Phase 2, requiring third-party CMMC Level 2 certification for most contractors handling CUI, kicks in November 10, 2026. (<a href="https://www.pivotpointsecurity.com/cmmc-2-0-rollout-update-the-wait-is-over/" target="_blank" rel="noopener">Pivot Point Security</a>) That clock is ticking. And every day your team uses an unapproved AI tool to touch defense-related work is a day you're accumulating potential exposure.</p>
+
+<h2>Where AI Creates ITAR and CMMC Violations</h2>
+
+<p>The intersection of AI and these frameworks is where most companies are getting themselves into trouble right now, and it happens in the most ordinary, banal ways imaginable. An employee is working on a bid response, in a hurry, opens ChatGPT, pastes in a section of a contract document asking it to clean up the language, and hits enter. That document contains Controlled Unclassified Information. In less than five seconds, CUI has been transmitted to a commercial cloud environment that is almost certainly not authorized under the company's CMMC boundary. (<a href="https://openapproach.com/learn/is-your-teams-ai-use-putting-your-defense-contracts-at-risk/" target="_blank" rel="noopener">Openapproach</a>) Compliance with ITAR in a cloud-first, AI-driven world is evolving. Shared files, cloud storage access, collaboration tools, and AI prompts can all trigger unauthorized exports of controlled technical data. (<a href="https://concentric.ai/itar-compliance-what-every-cio-and-cso-needs-to-know/" target="_blank" rel="noopener">Concentric AI</a>) Cloud AI providers with international data centers or foreign national employees may create ITAR compliance risks directly, because ITAR doesn't just regulate what your people do with data. It regulates who can touch it at all. (<a href="https://iternal.ai/ai-for-government-contractors" target="_blank" rel="noopener">Iternal Technologies</a>) The AI platform you're using almost certainly has employees somewhere outside the United States with access to the infrastructure that processes your prompts. That's a deemed export problem. That's an ITAR problem. And most small and mid-sized defense contractors haven't thought about it once.</p>
+
+<h2>The Enforcement Environment</h2>
+
+<p>The enforcement environment will not be forgiving of that oversight. In October 2024, DOJ and SEC announced settlements with Raytheon Company over AECA and ITAR violations, totaling more than $950 million, one of the largest joint settlements in recent years. (<a href="https://www.venable.com/insights/publications/2025/01/defense-contractor-resolves-doj-and-sec-fcpa" target="_blank" rel="noopener">Venable LLP</a>) That's Raytheon, a prime with armies of compliance officers and decades of institutional experience navigating these frameworks. The agency doesn't grade on a curve for smaller companies, either. On May 1, 2025, Raytheon and related companies agreed to pay an additional $8.4 million to resolve False Claims Act allegations that they submitted claims falsely certifying compliance with cybersecurity requirements in contracts and subcontracts with DoD, specifically because the company failed to implement required controls on an internal development system used to perform unclassified work. (<a href="https://www.consensusdocs.org/news/the-department-of-justice-prioritizes-federal-cont/" target="_blank" rel="noopener">ConsensusDocs</a>) In December 2025, the DOJ announced its first settlement targeting the defense supply chain when a precision machining subcontractor agreed to pay approximately $421,000 to resolve allegations that it failed to provide adequate cybersecurity protections for technical drawings supplied to prime contractors. The case originated as a qui tam action filed by a former quality control manager. (<a href="https://www.hklaw.com/en/insights/publications/2026/01/cmmc-affirmation-trap-fca-exposure" target="_blank" rel="noopener">Holland &amp; Knight</a>) That last one is the one that should keep you up at night. A precision machining shop. A former employee with inside knowledge. A whistleblower statute that pays out handsomely. This is the environment you're operating in.</p>
+
+<h2>What an Honest AI Self-Assessment Looks Like</h2>
+
+<p>So what does an honest AI self-assessment look like? It doesn't start with AI. It starts with your data. Contractors must first identify every AI tool in their environment, including commercial AI assistants used by employees on work devices, and categorize them by whether they are deployed on-premise, in a private cloud, or in a commercial cloud. They must then determine whether the tools can access, process, or store CUI. If the answer is yes, they have to look at whether the tool's backend is authorized by the FedRAMP program to process CUI. (<a href="https://www.washingtontechnology.com/opinion/2026/04/ai-and-cmmc-double-edge-sword-defense-contractors/412981/" target="_blank" rel="noopener">Washington Technology</a>) One instance of CUI entering a non-compliant system creates a CUI spillage requiring immediate incident response. Once CUI enters a non-compliant system, you cannot undo the exposure. (<a href="https://vso-inc.com/how-to-use-ai-without-breaking-cmmc-compliance-a-defense-contractors-guide/" target="_blank" rel="noopener">VSO</a>) From there, your System Security Plan must document every AI tool identified as an in-scope asset. Your acceptable use policy for AI must define which tools are authorized, which categories of information are forbidden from entering any AI tool at all, and what the approval process looks like for adding new tools. Then you have to train your people, because abstract policy without context doesn't change behavior. The NDAA directs the DoD to incorporate an AI/ML security framework into DFARS and CMMC to ensure that contractors developing, deploying, storing, or hosting AI for DoD comply. The framework will apply to "covered" AI/ML, defined as AI acquired by DoD and all associated components, including source code, model weights, and the methods, algorithms, data, and software used to develop it. (<a href="https://www.governmentcontractslegalforum.com/2026/01/articles/ai/cmmc-for-ai-defense-policy-law-imposes-ai-security-framework-and-requirements-on-contractors/" target="_blank" rel="noopener">Governmentcontractslegalforum</a>) That definition is broad. It's intentionally broad. If your company is building any AI capability for a DoD customer, you are already inside this regulatory perimeter whether your compliance program reflects that or not.</p>
+
+<h2>The Only Architecture That Clears These Frameworks</h2>
+
+<p>The only AI architecture that clears these frameworks cleanly is one you control, physically, on infrastructure you own or operate within a properly bounded environment. Public AI platforms do not provide the data handling, logging, or contractual protections required under DFARS and CMMC when handling CUI or export-controlled information. (<a href="https://www.hdtech.com/blog/how-defense-contractors-can-use-ai-in-a-cmmc-compliant-environment" target="_blank" rel="noopener">Hdtech</a>) On-premises, locally deployed AI, running on sovereign infrastructure within your facility, eliminates the cloud transmission problem entirely. It eliminates the deemed export problem. It eliminates the training data ingestion problem. It eliminates the FedRAMP authorization chase. A contractor that signs an annual CMMC affirmation without verifying the accuracy of its compliance status, or that ignores known gaps, may be accused of acting with reckless disregard sufficient to establish False Claims Act liability. (<a href="https://www.hklaw.com/en/insights/publications/2026/01/cmmc-affirmation-trap-fca-exposure" target="_blank" rel="noopener">Holland &amp; Knight</a>) You can't affirmatively certify compliance with a straight face while your engineers are prompting ChatGPT with design specifications. And increasingly, you can't hide that practice from a motivated whistleblower, either.</p>
+
+<p>Island Mountain builds AI infrastructure designed for exactly this environment: locally deployed, air-gapped where required, auditable end-to-end, with no data leaving your boundary. It's not a workaround. It's the architecture these frameworks are demanding. The window before Phase 2 enforcement closes in November 2026 is narrower than most people realize. The standard is no longer good faith effort. It is provable accuracy. (<a href="https://www.mayerbrown.com/en/insights/publications/2026/03/false-claims-act-enforcement-record-breaking-year-signals-continued-attention-to-cybersecurity" target="_blank" rel="noopener">Mayer Brown</a>) If you can't walk an assessor through your AI data flows, document your controls, and demonstrate that CUI never touched an unauthorized system, you don't pass. And failing that audit doesn't just cost you a certification. It costs you the contract, and potentially a whole lot more.</p>
+
+<!-- AEO Summary -->
+<div style="border-left:3px solid var(--copper);padding:16px 20px;margin:32px 0;background:rgba(217,119,6,0.05);border-radius:0 8px 8px 0;">
+<strong>Summary:</strong> CMMC Phase 2 enforcement begins November 2026. Every AI tool that touches CUI must be documented, authorized, and within your security boundary. Cloud AI platforms don't meet that standard. On-premises local AI does.
+</div>
+      </article>
+
+      <!-- CTA -->
+      <div class="article-cta">
+        <h3>November 2026 Is Closer Than You Think</h3>
+        <p>One conversation about getting your AI infrastructure inside your CMMC boundary before the Phase 2 deadline. No sales pitch. Just the architecture.</p>
+        <a href="../contact.html" class="btn btn-primary">Start a Conversation</a>
+        <p class="bio-note-sm"><i class="ri-phone-line icon-copper-mr-sm"></i>Or call directly: <a href="tel:+18016091130" class="copper-semibold">1-801-609-1130</a></p>
+      </div>
+
+      <!-- Related Articles -->
+      <div class="related-articles">
+        <h3>Related Articles</h3>
+        <div class="related-grid">
+          <div class="related-card">
+            <h4><a href="on-prem-vs-colo-vs-cloud.html">On-Premise vs. Colocation vs. Cloud: A Decision Framework</a></h4>
+            <p>Comparing deployment models for organizations with compliance and security boundary requirements.</p>
+          </div>
+          <div class="related-card">
+            <h4><a href="cloud-ai-vs-local-hardware-tco.html">Cloud AI vs. Local Hardware: The Honest 5-Year TCO</a></h4>
+            <p>The full cost comparison including compliance overhead, financing, and tax advantages.</p>
+          </div>
+          <div class="related-card">
+            <h4><a href="openwebui-admin-setup-guide.html">OpenWebUI for Administrators: Multi-User Access and Permissions</a></h4>
+            <p>Setting up user accounts, model access, conversation retention, and backups.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Navigation -->
+      <div class="article-nav">
+        <a href="../blog.html" class="article-back">&larr; All articles</a>
+        <div class="share-links">
+          <span>Share:</span>
+          <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://islandmountain.io/blog/itar-dfars-ai-self-assessment.html" target="_blank" rel="noopener" aria-label="Share on LinkedIn"><i class="ri-linkedin-fill"></i></a>
+          <a href="https://x.com/intent/tweet?url=https://islandmountain.io/blog/itar-dfars-ai-self-assessment.html&text=ITAR and DFARS AI Self-Assessment: Can Your AI Infrastructure Pass an Audit?" target="_blank" rel="noopener" aria-label="Share on X"><i class="ri-twitter-x-fill"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="../images/logo-footer.png" alt="Island Mountain logo" width="210" height="210" class="d-block-mb">
+          <a href="../index.html" class="nav-logo">Island Mountain</a>
+          <p>Local AI infrastructure for data-sovereign organizations. Colorado.</p>
+          <p class="mt-8"><i class="ri-phone-line icon-copper-mr"></i><a href="tel:+18016091130" class="clr-muted">1-801-609-1130</a></p>
+        </div>
+        <div>
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../products.html">Products</a></li>
+            <li><a href="../technology.html">Technology</a></li>
+            <li><a href="../pricing.html">Pricing</a></li>
+            <li><a href="../resources.html">Resources</a></li>
+              <li><a href="../faq.html">FAQ</a></li>
+            <li><a href="../blog.html">Blog</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Solutions</h4>
+          <ul class="footer-links">
+            <li><a href="../law-firms.html">Law Firms</a></li>
+            <li><a href="../medical-practices.html">Medical Practices</a></li>
+            <li><a href="../tribal-nations.html">Tribal Nations</a></li>
+            <li><a href="../research-labs.html">Research Labs</a></li>
+            <li><a href="../defense-contractors.html">Defense Contractors</a></li>
+            <li><a href="../financial-services.html">Financial Services</a></li>
+            <li><a href="../insurance.html">Insurance</a></li>
+            <li><a href="../energy-utilities.html">Energy &amp; Utilities</a></li>
+            <li><a href="../government.html">Government</a></li>
+            <li><a href="../education.html">Education</a></li>
+            <li><a href="../casino-gaming.html">Casino Gaming</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <ul class="footer-links">
+            <li><a href="../why-island-mountain.html">Why Local AI</a></li>
+            <li><a href="../contact.html">Contact</a></li>
+            <li><a href="../investors.html">Investors</a></li>
+            <li><a href="../about.html">About</a></li>
+            <li><a href="../privacy.html">Privacy Policy</a></li>
+            <li><a href="../terms.html">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom flex-col-center-gap">
+        <p>&copy; 2026 Island Mountain. All rights reserved. Founded by <a href="https://www.johndou.com" target="_blank" rel="noopener" class="clr-copper">John Dougherty</a>.</p>
+        <a href="tel:+18016091130" class="phone-link"><i class="ri-phone-line text-lg"></i> 1-801-609-1130</a>
+        <a href="https://www.linkedin.com/company/island-mountain-llc/" target="_blank" rel="noopener" aria-label="Island Mountain on LinkedIn" class="phone-link"><i class="ri-linkedin-fill text-lg"></i> Follow us on LinkedIn</a>
+        <a href="https://x.com/IslandMountain_" target="_blank" rel="noopener" aria-label="Island Mountain on X" class="phone-link"><i class="ri-twitter-x-fill text-lg"></i> Follow us on X</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

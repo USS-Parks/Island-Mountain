@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-R674E394D4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-R674E394D4');
+</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Basho Parks">
+  <meta name="date" content="2026-05-01">
+  <title>OpenWebUI Admin Guide: Users, Permissions &amp; Access</title>
+  <meta name="description" content="Complete admin guide for OpenWebUI on local AI hardware. User management, model access control, conversation retention, VPN configuration, and backup strategy.">
+  <link rel="icon" type="image/x-icon" href="../favicon.ico?v=2">
+  <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon-32.png?v=2">
+  <link rel="apple-touch-icon" sizes="180x180" href="../images/apple-touch-icon.png?v=2">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../icons/remixicon.css">
+  <link rel="stylesheet" href="../fonts/fonts.css">
+  <link rel="canonical" href="https://islandmountain.io/blog/openwebui-admin-setup-guide.html">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="OpenWebUI Admin Guide: Users, Permissions &amp; Access">
+  <meta property="og:description" content="Complete admin guide for OpenWebUI on local AI hardware. User management, model access control, conversation retention, VPN configuration, and backup strategy.">
+  <meta property="og:url" content="https://islandmountain.io/blog/openwebui-admin-setup-guide.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Island Mountain">
+  <meta property="og:image" content="https://islandmountain.io/images/hero-mountain.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="OpenWebUI Admin Guide: Users, Permissions &amp; Access">
+  <meta name="twitter:description" content="Complete admin guide for OpenWebUI on local AI hardware. User management, model access control, conversation retention, VPN configuration, and backup strategy.">
+  <meta name="twitter:image" content="https://islandmountain.io/images/hero-mountain.png">
+
+  <!-- Article Schema -->
+  <script type="application/ld+json">
+  {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "OpenWebUI for Administrators: Multi-User Access, Permissions, and Conversation Controls",
+  "description": "Complete admin guide for OpenWebUI on local AI hardware. User management, model access control, conversation retention, VPN configuration, and backup strategy.",
+  "url": "https://islandmountain.io/blog/openwebui-admin-setup-guide.html",
+  "datePublished": "2026-04-02",
+  "dateModified": "2026-04-02",
+  "author": {
+    "@type": "Organization",
+    "name": "Island Mountain",
+    "url": "https://islandmountain.io"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Island Mountain",
+    "url": "https://islandmountain.io",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://islandmountain.io/images/hero-mountain.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://islandmountain.io/blog/openwebui-admin-setup-guide.html"
+  },
+  "image": "https://islandmountain.io/images/hero-mountain.png"
+}
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "How to Set Up OpenWebUI Admin for Local AI Hardware",
+    "description": "Step-by-step guide for configuring OpenWebUI on Island Mountain local AI servers, covering user management, model access control, compliance, monitoring, and security.",
+    "totalTime": "PT2H",
+    "step": [
+      {
+        "@type": "HowToStep",
+        "name": "Initial Setup and Admin Login",
+        "text": "OpenWebUI runs in Docker on your local network. After deploying the container, the first user created becomes the admin. Access it at http://your-server-ip:3000 and create the admin account with a strong password."
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Create User Accounts and Assign Roles",
+        "text": "OpenWebUI separates users into three roles: Admin, User, and Moderator. Create accounts for each team member and assign appropriate roles. Admins can modify settings; Users access models and create conversations only."
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Configure Model Access Control by Role",
+        "text": "Restrict which AI models each user role can access. For example, in a law firm: attorneys get all models including DeepSeek V4-Flash; paralegals get Llama 3.3 70B and R1 70B Distill; administrative staff get Llama 3.3 70B for document summarization only."
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Set Up Conversation History and Retention Policies",
+        "text": "OpenWebUI stores all conversations locally on your server. Configure retention policies, manage backup schedules, and control access to conversation data for compliance requirements."
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Enable Usage Monitoring and Analytics",
+        "text": "Enable analytics in the admin panel to track per-user token counts, model usage over time, and flag unusual activity such as programmatic API use."
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Configure Network: Static IP and Hostname",
+        "text": "Assign your Island Mountain server a stable network location with a static IP and internal hostname so users access it via a memorable URL rather than an IP address."
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Secure with VPN and Network Isolation",
+        "text": "Keep the server accessible only from your internal network. Never expose it directly to the internet. Deploy a VPN for remote staff access."
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Implement Backup Strategy",
+        "text": "Run a daily backup of the OpenWebUI database to a local NAS or external drive using a cron job. Test restoration regularly."
+      }
+    ]
+  }
+  </script>
+
+  <link rel="stylesheet" href="../css/blog.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://islandmountain.io/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Blog",
+      "item": "https://islandmountain.io/blog.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "OpenWebUI Admin Setup Guide",
+      "item": "https://islandmountain.io/blog/openwebui-admin-setup-guide.html"
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+  <!-- Full-page particle canvas -->
+  <canvas id="particles-canvas"></canvas>
+
+  <!-- Hero background photo -->
+  <div class="hero-photo">
+    <picture><source srcset="../images/hero-mountain-mobile.webp 800w, ../images/hero-mountain.webp 1913w" type="image/webp" sizes="100vw"><img src="../images/hero-mountain.png" alt="Island Mountain rising from the ocean at sunset" loading="lazy" width="1913" height="892"></picture>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="../index.html" class="nav-logo"><picture><source srcset="../images/logo-nav-new.webp" type="image/webp"><img src="../images/logo-nav-new.png" alt="Island Mountain" width="205" height="65"></picture></a>
+      <ul class="nav-links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../why-island-mountain.html">Why Local AI</a></li>
+        <li><a href="../products.html">Products</a></li>
+        <li><a href="../technology.html">Technology</a></li>
+        <li><a href="../pricing.html">Pricing</a></li>
+        <li class="nav-dropdown">
+          <a href="../solutions.html" class="nav-dropdown-toggle">Solutions <i class="ri-arrow-down-s-line"></i></a>
+          <ul class="nav-dropdown-menu">
+            <li><a href="../law-firms.html">Law Firms</a></li>
+            <li><a href="../medical-practices.html">Medical Practices</a></li>
+            <li><a href="../tribal-nations.html">Tribal Nations</a></li>
+            <li><a href="../research-labs.html">Research Labs</a></li>
+            <li><a href="../defense-contractors.html">Defense Contractors</a></li>
+            <li><a href="../financial-services.html">Financial Services</a></li>
+            <li><a href="../insurance.html">Insurance</a></li>
+            <li><a href="../energy-utilities.html">Energy &amp; Utilities</a></li>
+            <li><a href="../government.html">Government</a></li>
+            <li><a href="../education.html">Education</a></li>
+            <li><a href="../casino-gaming.html">Casino Gaming</a></li>
+          </ul>
+        </li>
+        <li><a href="../resources.html">Resources</a></li>
+              <li><a href="../faq.html">FAQ</a></li>
+        <li><a href="../blog.html" class="active">Blog</a></li>
+        <li><a href="../contact.html" class="nav-cta">Request Quote</a></li>
+      </ul>
+      <button class="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Sidebar -->
+  <div class="sidebar-overlay"></div>
+  <div class="mobile-sidebar">
+    <a href="../index.html">Home</a>
+    <a href="../why-island-mountain.html">Why Local AI</a>
+    <a href="../products.html">Products</a>
+    <a href="../technology.html">Technology</a>
+    <a href="../pricing.html">Pricing</a>
+    <a href="../solutions.html" class="mobile-solutions-toggle">Solutions <i class="ri-arrow-down-s-line"></i></a>
+    <div class="mobile-solutions-links">
+      <a href="../law-firms.html">Law Firms</a>
+      <a href="../medical-practices.html">Medical Practices</a>
+      <a href="../tribal-nations.html">Tribal Nations</a>
+      <a href="../research-labs.html">Research Labs</a>
+      <a href="../defense-contractors.html">Defense Contractors</a>
+      <a href="../financial-services.html">Financial Services</a>
+      <a href="../insurance.html">Insurance</a>
+      <a href="../energy-utilities.html">Energy &amp; Utilities</a>
+      <a href="../government.html">Government</a>
+      <a href="../education.html">Education</a>
+      <a href="../casino-gaming.html">Casino Gaming</a>
+    </div>
+    <a href="../resources.html">Resources</a>
+            <a href="../faq.html">FAQ</a>
+    <a href="../blog.html">Blog</a>
+    <a href="../contact.html" class="nav-cta">Request Quote</a>
+  </div>
+
+  <!-- Article -->
+  <section class="section section-first hero-spacer">
+    <div class="container content-max-840">
+
+      <!-- Breadcrumb -->
+      <nav class="breadcrumb">
+        <a href="../index.html">Home</a><span>&rsaquo;</span><a href="../blog.html">Blog</a><span>&rsaquo;</span>OpenWebUI for Administrators: Multi-User Access, Permissions, and Conversation Controls
+      </nav>
+
+      <!-- Article Header -->
+      <div class="article-header">
+        <div class="article-meta">
+          <span class="article-date">April 2, 2026</span>
+          <span class="article-tag tag-how-to">How-To</span>
+          <span class="article-read-time">9 min read</span>
+        </div>
+        <h1 class="text-2xl">OpenWebUI for Administrators: Multi-User Access, Permissions, and Conversation Controls</h1>
+        <p class="article-author">Island Mountain</p>
+      </div>
+
+      <article class="article-body">
+
+        <h2>OpenWebUI for Administrators: Multi-User Access, Permissions, and Conversation Controls</h2>
+
+<p>If you've deployed Island Mountain hardware, you need a clean way to manage who accesses the AI models, what they can do with them, and how to maintain records for compliance. OpenWebUI is the standard open-source interface for running multiple language models locally. It handles user permissions, conversation history, and usage logging without sending anything to a cloud platform.</p>
+
+<p>This guide covers the essential admin tasks: initial setup, user account management, role-based access to models, conversation history and retention, and network configuration for teams. We're assuming you've already deployed the hardware and have Ubuntu Server LTS running.</p>
+
+<h2>Initial Setup and Admin Login</h2>
+
+<p>OpenWebUI runs in Docker on your local network. After deploying the container through our deployment automation, the first user created becomes the admin. You'll access it at <code>http://ai.yourfirm.local:8080</code> or <code>http://192.168.x.x:8080</code> depending on your network configuration.</p>
+
+<p>On first login you set an admin password. This is a critical security boundary. Use a strong password, 20-plus characters, mixed case, numbers, symbols, and store it in your password manager. Bitwarden, 1Password, or your firm's existing vault all work. This password controls access to user management, model configuration, and conversation history exports.</p>
+
+<p>From the admin panel in the top-right menu, navigate to Settings and configure three things immediately. Disable public registration so you control who gets accounts. Confirm authentication is required for all access. Set your conversation retention window, which we'll cover in detail below.</p>
+
+<h2>Creating User Accounts and Role Assignment</h2>
+
+<p>OpenWebUI separates users into three roles: Admin, User, and Moderator. For most organizations you'll only use Admin and User. Admins see the admin panel and can modify settings. Users access models and create conversations but can't touch global configuration.</p>
+
+<p>To create a user account, go to Admin Settings, then User Management, then Add User. Set the username, typically firstname.lastname or email, then set a password and role. You can make the password temporary and let users reset it on first login if you enable that option.</p>
+
+<p>A law firm might think in terms of Attorney, Paralegal, and Staff roles. OpenWebUI doesn't enforce role-based permissions at the model level natively, but we'll address that below. Start by creating accounts for your team, then work on restricting model access.</p>
+
+<h2>Model Access Control by Role</h2>
+
+<p>Here's where it gets specific to your workflow. Say you've deployed DeepSeek V4-Flash quantized, Llama 3.3 70B, and R1 70B Distill. In a law firm you might structure access like this: attorneys and senior paralegals get all models including V4-Flash for fast draft analysis; junior paralegals get Llama 3.3 70B and R1 70B Distill but not V4-Flash; administrative staff get Llama 3.3 70B for document summarization only.</p>
+
+<p>OpenWebUI handles this through the Models section in Admin Settings. Each model carries an Allow list where you restrict which users can access it. Currently OpenWebUI doesn't have built-in group management, so you're managing access per user. For a 50-person organization that means individual management.</p>
+
+<p>A practical workaround: maintain a simple spreadsheet tracking which users should access which models, then batch-update OpenWebUI settings monthly. It's more manual than enterprise IAM, but it works reliably for organizations under 200 users and requires no additional software.</p>
+
+<h2>Conversation History, Retention, and Compliance</h2>
+
+<p>OpenWebUI stores all conversations locally on your server. That's the major compliance advantage: your conversation data never leaves your network. It's also a responsibility. You need to manage retention, backup, and access deliberately.</p>
+
+<p>All conversation data lives in a SQLite database on your server, typically at <code>/root/ollama/web/conversations.db</code> depending on your deployment. It's local to your server, not cloud storage.</p>
+
+<p>As admin you have full visibility. The Conversations tab in Admin Settings lets you see all conversations across all users, search by date or content, and export them. If you're subject to discovery requests in litigation or a regulatory audit, you have complete access to all model interactions.</p>
+
+<p>Set a retention window. Most organizations delete conversations older than 12 months automatically. Go to Admin Settings, then System, then Conversation Retention, and set the number of days. Common settings: 365 days for law firms to maintain litigation hold capability, 90 days for IT support teams, 180 days for medical practices.</p>
+
+<p>You can also export conversations as JSON for archival. The export includes timestamps, model used, user, and full conversation text. Useful for migrations, full backups, or moving to a different system.</p>
+
+<p>For HIPAA-regulated organizations, remember that conversations may contain protected health information. Your retention policy, backup procedure, and access controls all need to satisfy HIPAA requirements. Encrypt the database file at rest and ensure only authorized personnel can reach the admin panel.</p>
+
+<h2>Usage Monitoring and Analytics</h2>
+
+<p>OpenWebUI logs basic usage: which user ran which model and when. That data is stored locally and accessible from the admin panel under Analytics if enabled. You can see per-user token counts, model usage over time, and flag unusual activity, like a user suddenly running hundreds of queries per day, which might indicate programmatic API use.</p>
+
+<p>It's not enterprise-grade AI audit logging, but it's sufficient to track adoption, identify training needs, and monitor for anomalies. Some firms use this data to bill AI usage back to practice areas based on which teams are driving the most volume.</p>
+
+<h2>Network Configuration: Static IP and Hostname</h2>
+
+<p>Your Island Mountain server needs a stable network location. Users shouldn't have to remember an IP address.</p>
+
+<p>Assign a static IP on your network router or DHCP server. Something like <code>192.168.1.50</code> prevents the server from pulling a new IP on reboot. Then give the server a meaningful hostname like <code>ai.yourfirm.local</code> or <code>gpt-local.yourfirm.local</code> and point it to that static IP in your internal DNS or hosts file. Now users reach OpenWebUI at <code>http://ai.yourfirm.local:8080</code> instead of memorizing an address.</p>
+
+<p>Windows domain with Active Directory lets you register the hostname automatically. Without a domain, add it to the hosts file on each user machine or configure it in your router's DNS settings.</p>
+
+<h2>Security: VPN and Network Isolation</h2>
+
+<p>Your Island Mountain server should not be directly exposed to the internet. Keep it accessible only from your internal network. For remote staff, use a VPN.</p>
+
+<p>Tailscale is the easiest path. Install it on your server and all user machines and it creates an encrypted mesh network where only devices in your Tailscale account can reach each other. Remote staff access OpenWebUI exactly like on-site staff. Tailscale is free for personal use and runs about $10 per user per month for business accounts.</p>
+
+<p>If you prefer open-source and self-hosted, deploy WireGuard. It's lighter than traditional VPN protocols, handles remote access without cloud intermediaries, and gives you complete control. It requires more configuration than Tailscale but nothing unreasonable.</p>
+
+<p>Either way, no direct internet exposure. All remote access goes through the VPN tunnel.</p>
+
+<h2>Backup Strategy</h2>
+
+<p>Run a daily backup of the OpenWebUI database to a local NAS or external drive. A simple cron job handles it:</p>
+
+<p><code>sqlite3 /root/ollama/web/conversations.db ".backup /mnt/nas/backup/conversations-$(date +\%Y\%m\%d).db"</code></p>
+
+<p>Schedule that at 3 AM and you're covered.</p>
+
+<p>Store backups on local network-attached storage, a Synology or Buffalo box works well, and do not sync these backups to AWS S3, Google Drive, or Dropbox. You deployed on-premises hardware specifically to keep data off cloud platforms. Syncing backups defeats the entire point.</p>
+
+<p>Keep 30 days of daily backups then delete older files. That balances recovery capability against storage cost. If your NAS supports encrypted shares, enable it. OpenWebUI database files may contain sensitive information and should be encrypted at rest.</p>
+
+<h2>Common Admin Tasks</h2>
+
+<p><strong>Adding a new model:</strong> After adding it to your Ollama installation, go to Admin Settings, then Models, and refresh the model list. The new model appears. Set permissions as needed.</p>
+
+<p><strong>Resetting a user password:</strong> Hit User Management in the admin panel, find the user, and reset. They'll be logged out and prompted to set a new password on next login.</p>
+
+<p><strong>Viewing a specific conversation:</strong> Go to Admin Settings, then Conversations, search by user or date, and click through. Full audit access, exactly what compliance requires.</p>
+
+<p><strong>Exporting all conversations:</strong> Some organizations do quarterly exports to a long-term archive. The export option in Admin Settings generates a JSON file with all conversations and metadata.</p>
+
+<h2>Getting Started</h2>
+
+<p>If you've deployed Island Mountain hardware and need to configure OpenWebUI for your team, here's your checklist: create the admin password, disable registration, add users with appropriate roles, restrict models by user, set conversation retention, configure static IP and hostname, deploy VPN access, and set up database backups.</p>
+
+<p>For specific compliance requirements including HIPAA, FERPA, or SOC 2, <a href="../contact.html">reach out for a consultation</a> on configuring OpenWebUI to meet your audit and retention obligations. OpenWebUI is built for exactly this: local, controlled, auditable AI without cloud overhead. With proper admin setup it scales cleanly to organizations with dozens of users and the compliance posture to match.</p>
+
+<!-- AEO Summary -->
+<div style="border-left:3px solid var(--copper);padding:16px 20px;margin:32px 0;background:rgba(217,119,6,0.05);border-radius:0 8px 8px 0;">
+<strong>Summary:</strong> OpenWebUI provides local user management, conversation history, role-based model access, and audit logging without requiring users to send data to cloud platforms.
+</div>
+      </article>
+
+      <!-- CTA -->
+      <div class="article-cta">
+        <h3>Ready to Stop Paying Per Token?</h3>
+        <p>One conversation. No sales pitch. Just straight talk about what local AI hardware can do for your organization.</p>
+        <a href="../contact.html" class="btn btn-primary">Start a Conversation</a>
+        <p class="bio-note-sm"><i class="ri-phone-line icon-copper-mr-sm"></i>Or call directly: <a href="tel:+18016091130" class="copper-semibold">1-801-609-1130</a></p>
+      </div>
+
+      <!-- Related Articles -->
+      <div class="related-articles">
+        <h3>Related Articles</h3>
+        <div class="related-grid">
+          <div class="related-card">
+            <h4><a href="deepseek-v4-flash-local-deployment.html">DeepSeek V4-Flash Just Changed the Game for Local AI</a></h4>
+            <p>284 billion parameters, 13B active per token, and what it means for local deployment.</p>
+          </div>
+          <div class="related-card">
+            <h4><a href="h100-vs-h200-inference-comparison.html">The H100 vs. H200: What the Hardware Specs Actually Mean for Your Workload</a></h4>
+            <p>Bandwidth, VRAM, and the real performance difference between GPU tiers.</p>
+          </div>
+          <div class="related-card">
+            <h4><a href="tribal-data-sovereignty-ai-infrastructure.html">Tribal Data Sovereignty and the Cloud AI Problem</a></h4>
+            <p>Why sovereign nations need sovereign infrastructure for AI workloads.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Navigation -->
+      <div class="article-nav">
+        <a href="../blog.html" class="article-back">&larr; All articles</a>
+        <div class="share-links">
+          <span>Share:</span>
+          <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://islandmountain.io/blog/openwebui-admin-setup-guide.html" target="_blank" rel="noopener" aria-label="Share on LinkedIn"><i class="ri-linkedin-fill"></i></a>
+          <a href="https://x.com/intent/tweet?url=https://islandmountain.io/blog/openwebui-admin-setup-guide.html&text=OpenWebUI for Administrators: Multi-User Access, Permissions, and Conversation Controls" target="_blank" rel="noopener" aria-label="Share on X"><i class="ri-twitter-x-fill"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="../images/logo-footer.png" alt="Island Mountain logo" width="210" height="210" class="d-block-mb">
+          <a href="../index.html" class="nav-logo">Island Mountain</a>
+          <p>Local AI infrastructure for data-sovereign organizations. Colorado.</p>
+          <p class="mt-8"><i class="ri-phone-line icon-copper-mr"></i><a href="tel:+18016091130" class="clr-muted">1-801-609-1130</a></p>
+        </div>
+        <div>
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../products.html">Products</a></li>
+            <li><a href="../technology.html">Technology</a></li>
+            <li><a href="../pricing.html">Pricing</a></li>
+            <li><a href="../resources.html">Resources</a></li>
+              <li><a href="../faq.html">FAQ</a></li>
+            <li><a href="../blog.html">Blog</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Solutions</h4>
+          <ul class="footer-links">
+            <li><a href="../law-firms.html">Law Firms</a></li>
+            <li><a href="../medical-practices.html">Medical Practices</a></li>
+            <li><a href="../tribal-nations.html">Tribal Nations</a></li>
+            <li><a href="../research-labs.html">Research Labs</a></li>
+            <li><a href="../defense-contractors.html">Defense Contractors</a></li>
+            <li><a href="../financial-services.html">Financial Services</a></li>
+            <li><a href="../insurance.html">Insurance</a></li>
+            <li><a href="../energy-utilities.html">Energy &amp; Utilities</a></li>
+            <li><a href="../government.html">Government</a></li>
+            <li><a href="../education.html">Education</a></li>
+            <li><a href="../casino-gaming.html">Casino Gaming</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <ul class="footer-links">
+            <li><a href="../why-island-mountain.html">Why Local AI</a></li>
+            <li><a href="../contact.html">Contact</a></li>
+            <li><a href="../investors.html">Investors</a></li>
+            <li><a href="../about.html">About</a></li>
+            <li><a href="../privacy.html">Privacy Policy</a></li>
+            <li><a href="../terms.html">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom flex-col-center-gap">
+        <p>&copy; 2026 Island Mountain. All rights reserved. Founded by <a href="https://www.johndou.com" target="_blank" rel="noopener" class="clr-copper">John Dougherty</a>.</p>
+        <a href="tel:+18016091130" class="phone-link"><i class="ri-phone-line text-lg"></i> 1-801-609-1130</a>
+        <a href="https://www.linkedin.com/company/island-mountain-llc/" target="_blank" rel="noopener" aria-label="Island Mountain on LinkedIn" class="phone-link"><i class="ri-linkedin-fill text-lg"></i> Follow us on LinkedIn</a>
+        <a href="https://x.com/IslandMountain_" target="_blank" rel="noopener" aria-label="Island Mountain on X" class="phone-link"><i class="ri-twitter-x-fill text-lg"></i> Follow us on X</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>
