@@ -2,6 +2,7 @@
 HANDOFF.md
 SESSION-LOG.md
 _docs/
+.claude/
 
 # OS artifacts
 .DS_Store
