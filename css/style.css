@@ -344,6 +344,9 @@ p {
   display: flex;
   flex-direction: column;
   gap: 8px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
 }
 
 .mobile-sidebar.open {
