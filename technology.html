@@ -352,13 +352,13 @@
         <p class="body-lg">But OpenWebUI ships with features that reach outbound by default. Island Mountain disables every one of them before your system leaves our facility.</p>
         <h3 style="color:var(--copper);margin-top:2rem;">What Gets Disabled Before Delivery</h3>
         <ul style="font-size:1.02rem;line-height:2;list-style:none;padding:0;">
-          <li class="mb-1"><code class="code-badge">OFFLINE_MODE=True</code> — Master switch. Disables all outbound network calls including version checks and remote resource fetching. This is the primary air-gap control.</li>
-          <li class="mb-1"><code class="code-badge">HF_HUB_OFFLINE=1</code> — Prevents the HuggingFace Hub library from attempting to download embedding models or tokenizers. All required models are pre-loaded on local NVMe storage during our build process.</li>
-          <li class="mb-1"><code class="code-badge">ENABLE_COMMUNITY_SHARING=False</code> — Removes the ability to share prompts, configurations, or presets with the OpenWebUI community platform. No data leaves the system through this channel.</li>
-          <li class="mb-1"><code class="code-badge">ANONYMIZED_TELEMETRY=False</code> — Disables all telemetry collection. No usage data, anonymized or otherwise, is transmitted to any external endpoint.</li>
-          <li class="mb-1"><code class="code-badge">ENABLE_RAG_WEB_SEARCH=False</code> — Disables web search integration in the document retrieval pipeline. RAG operates entirely against locally stored documents.</li>
-          <li class="mb-1"><code class="code-badge">SAFE_MODE=True</code> — Disables community-contributed tools and functions that might contain network calls. Only pre-audited, locally installed tools are available.</li>
-          <li class="mb-1"><code class="code-badge">ENABLE_SIGNUP=False</code> — Locks user registration after initial admin account creation during setup. New users are added only by the administrator.</li>
+          <li class="mb-1"><code class="code-badge">OFFLINE_MODE=True</code> - Master switch. Disables all outbound network calls including version checks and remote resource fetching. This is the primary air-gap control.</li>
+          <li class="mb-1"><code class="code-badge">HF_HUB_OFFLINE=1</code> - Prevents the HuggingFace Hub library from attempting to download embedding models or tokenizers. All required models are pre-loaded on local NVMe storage during our build process.</li>
+          <li class="mb-1"><code class="code-badge">ENABLE_COMMUNITY_SHARING=False</code> - Removes the ability to share prompts, configurations, or presets with the OpenWebUI community platform. No data leaves the system through this channel.</li>
+          <li class="mb-1"><code class="code-badge">ANONYMIZED_TELEMETRY=False</code> - Disables all telemetry collection. No usage data, anonymized or otherwise, is transmitted to any external endpoint.</li>
+          <li class="mb-1"><code class="code-badge">ENABLE_RAG_WEB_SEARCH=False</code> - Disables web search integration in the document retrieval pipeline. RAG operates entirely against locally stored documents.</li>
+          <li class="mb-1"><code class="code-badge">SAFE_MODE=True</code> - Disables community-contributed tools and functions that might contain network calls. Only pre-audited, locally installed tools are available.</li>
+          <li class="mb-1"><code class="code-badge">ENABLE_SIGNUP=False</code> - Locks user registration after initial admin account creation during setup. New users are added only by the administrator.</li>
         </ul>
         <h3 style="color:var(--copper);margin-top:2rem;">How Your IT Team Verifies It</h3>
         <p class="body-lg">Every environment variable is set in a single configuration file on the system. Your network security team can inspect it directly. Run <code style="background:var(--secondary-dark);padding:2px 8px;border-radius:4px;">docker inspect [container_name]</code> to view all active environment variables. Or check the <code style="background:var(--secondary-dark);padding:2px 8px;border-radius:4px;">.env</code> file in the OpenWebUI deployment directory.</p>
