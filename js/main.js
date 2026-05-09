@@ -80,14 +80,6 @@
     });
   }
 
-  // --- Prevent default on desktop dropdown toggle ---
-  var dropdownToggle = document.querySelector('.nav-dropdown-toggle');
-  if (dropdownToggle) {
-    dropdownToggle.addEventListener('click', function (e) {
-      e.preventDefault();
-    });
-  }
-
   // --- Active nav link highlighting ---
   var currentPage = window.location.pathname.split('/').pop() || 'index.html';
   var navAllLinks = document.querySelectorAll('.nav-links a, .mobile-sidebar a');
