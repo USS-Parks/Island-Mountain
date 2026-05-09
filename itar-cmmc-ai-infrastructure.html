@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-R674E394D4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-R674E394D4');
+</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Basho Parks">
+  <meta name="date" content="2026-05-09">
+  <title>Can Defense Contractors Use AI with ITAR Data?</title>
+  <meta name="description" content="ITAR and DFARS 252.204-7012 prohibit transmitting controlled technical data to unauthorized servers. On-premises AI in contractor-controlled facilities satisfies NIST SP 800-171 and supports CMMC Level 2+.">
+  <link rel="icon" type="image/x-icon" href="favicon.ico?v=2">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png?v=2">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png?v=2">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="icons/remixicon.css">
+  <link rel="stylesheet" href="fonts/fonts.css">
+  <link rel="canonical" href="https://islandmountain.io/itar-cmmc-ai-infrastructure.html">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Can Defense Contractors Use AI with ITAR Data?">
+  <meta property="og:description" content="ITAR and DFARS 252.204-7012 prohibit transmitting controlled technical data to unauthorized servers. On-premises AI in contractor-controlled facilities satisfies NIST SP 800-171 and supports CMMC Level 2+.">
+  <meta property="og:url" content="https://islandmountain.io/itar-cmmc-ai-infrastructure.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Island Mountain">
+  <meta property="og:image" content="https://islandmountain.io/images/hero-solutions.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Can Defense Contractors Use AI with ITAR Data?">
+  <meta name="twitter:description" content="ITAR and DFARS 252.204-7012 prohibit transmitting controlled technical data to unauthorized servers. On-premises AI in contractor-controlled facilities satisfies NIST SP 800-171 and supports CMMC Level 2+.">
+  <meta name="twitter:image" content="https://islandmountain.io/images/hero-solutions.png">
+
+  <!-- FAQPage Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Can defense contractors use AI with ITAR-controlled data?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ITAR (22 CFR 120-130) and DFARS 252.204-7012 prohibit transmitting controlled technical data to foreign servers or unauthorized persons. Cloud AI providers cannot guarantee data residency, routing, or personnel access controls sufficient for CUI handling. On-premises AI hardware in a contractor-controlled facility satisfies NIST SP 800-171 requirements and supports CMMC Level 2+ assessment readiness."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does CMMC Level 2 allow cloud AI for CUI processing?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "CMMC Level 2 requires implementation of all 110 NIST SP 800-171 rev 2 controls for systems processing CUI. Cloud AI could theoretically meet these requirements if the cloud service provider holds FedRAMP Moderate authorization and the contractor implements all access control, audit, and incident response requirements. In practice, most commercial AI services do not hold FedRAMP Moderate authorization and cannot demonstrate the required access controls for CUI-containing prompts and responses."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What NIST SP 800-171 controls apply to on-premises AI?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "On-premises AI systems must implement applicable controls from all 14 NIST SP 800-171 families, including access control (3.1), audit and accountability (3.3), configuration management (3.4), identification and authentication (3.5), media protection (3.8), physical protection (3.10), system and communications protection (3.13), and system and information integrity (3.14). The advantage of on-premises hardware is that the contractor has direct physical and logical control over the entire system boundary."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can on-premises AI be air-gapped for SCIF environments?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. On-premises AI inference servers operate entirely on local hardware with no internet dependency. Models are pre-loaded, inference runs on local GPUs, and the system functions identically in fully air-gapped configurations. This supports deployment in SCIFs, classified networks, and any environment where network isolation is required by ICD 503 or CNSS Instruction 1253."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- BreadcrumbList Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://islandmountain.io/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Resources",
+        "item": "https://islandmountain.io/solutions.html"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "ITAR CMMC AI Infrastructure",
+        "item": "https://islandmountain.io/itar-cmmc-ai-infrastructure.html"
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <canvas id="particles-canvas"></canvas>
+
+  <div class="hero-photo">
+    <picture><source srcset="images/hero-solutions-mobile.webp 800w, images/hero-solutions.webp 1632w" type="image/webp" sizes="100vw"><img src="images/hero-solutions.png" alt="Island Mountain - ITAR CMMC compliant AI infrastructure" loading="lazy" width="1632" height="964"></picture>
+  </div>
+
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="nav-logo"><picture><source srcset="images/logo-nav-new.webp" type="image/webp"><img src="images/logo-nav-new.png" alt="Island Mountain" width="205" height="65"></picture></a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="why-island-mountain.html">Why Local AI</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="technology.html">Technology</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li class="nav-dropdown">
+          <a href="solutions.html" class="nav-dropdown-toggle">Solutions <i class="ri-arrow-down-s-line"></i></a>
+          <ul class="nav-dropdown-menu">
+            <li><a href="law-firms.html">Law Firms</a></li>
+            <li><a href="medical-practices.html">Medical Practices</a></li>
+            <li><a href="tribal-nations.html">Tribal Nations</a></li>
+            <li><a href="research-labs.html">Research Labs</a></li>
+            <li><a href="defense-contractors.html">Defense Contractors</a></li>
+            <li><a href="financial-services.html">Financial Services</a></li>
+            <li><a href="insurance.html">Insurance</a></li>
+            <li><a href="energy-utilities.html">Energy &amp; Utilities</a></li>
+            <li><a href="government.html">Government</a></li>
+            <li><a href="education.html">Education</a></li>
+            <li><a href="casino-gaming.html">Casino Gaming</a></li>
+          </ul>
+        </li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="contact.html" class="nav-cta">Request Quote</a></li>
+      </ul>
+      <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <div class="sidebar-overlay"></div>
+  <div class="mobile-sidebar">
+    <a href="index.html">Home</a>
+    <a href="why-island-mountain.html">Why Local AI</a>
+    <a href="products.html">Products</a>
+    <a href="technology.html">Technology</a>
+    <a href="pricing.html">Pricing</a>
+    <a href="solutions.html" class="mobile-solutions-toggle">Solutions <i class="ri-arrow-down-s-line"></i></a>
+    <div class="mobile-solutions-links">
+      <a href="law-firms.html">Law Firms</a>
+      <a href="medical-practices.html">Medical Practices</a>
+      <a href="tribal-nations.html">Tribal Nations</a>
+      <a href="research-labs.html">Research Labs</a>
+      <a href="defense-contractors.html">Defense Contractors</a>
+      <a href="financial-services.html">Financial Services</a>
+      <a href="insurance.html">Insurance</a>
+      <a href="energy-utilities.html">Energy &amp; Utilities</a>
+      <a href="government.html">Government</a>
+      <a href="education.html">Education</a>
+      <a href="casino-gaming.html">Casino Gaming</a>
+    </div>
+    <a href="faq.html">FAQ</a>
+    <a href="blog.html">Blog</a>
+    <a href="contact.html" class="nav-cta">Request Quote</a>
+  </div>
+
+  <section class="hero hero-page">
+    <div class="hero-inner">
+      <span class="hero-badge">ITAR / CMMC Compliance</span>
+      <h1>Can Defense Contractors Use AI with ITAR-Controlled Data?</h1>
+      <p>How on-premises AI hardware satisfies ITAR, DFARS 252.204-7012, and NIST SP 800-171 requirements while supporting CMMC Level 2+ assessment readiness.</p>
+    </div>
+  </section>
+
+  <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+    <div class="container">
+      <ol class="breadcrumb-list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="solutions.html">Solutions</a></li>
+        <li aria-current="page">ITAR / CMMC &amp; AI</li>
+      </ol>
+    </div>
+  </nav>
+
+  <!-- Direct Answer -->
+  <section class="section section-dark">
+    <div class="container">
+      <div class="content-block fade-in content-max-800">
+        <div style="border-left:4px solid var(--copper);padding:20px 24px;margin:0 0 32px 0;background:rgba(217,119,6,0.08);border-radius:0 8px 8px 0;">
+          <p style="font-size:1.15rem;line-height:1.7;color:var(--text-light);margin:0;"><strong>ITAR (22 CFR §§ 120-130) and DFARS 252.204-7012 prohibit transmitting controlled technical data to foreign servers or unauthorized persons.</strong> Cloud AI providers cannot guarantee data residency, routing, or personnel access controls sufficient for CUI handling. On-premises AI hardware in a contractor-controlled facility satisfies NIST SP 800-171 requirements and supports CMMC Level 2+ assessment readiness.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Supporting Sections -->
+  <section class="section section-darker">
+    <div class="container">
+      <div class="content-block fade-in content-max-800">
+        <h2 class="mb-16" style="color:var(--text-light);">Why Cloud AI Fails ITAR and DFARS Requirements</h2>
+        <p class="body-md">ITAR (22 CFR § 120.6) defines "defense articles" to include technical data - specifications, blueprints, design documents, test results, and manufacturing procedures for items on the U.S. Munitions List. Exporting this data to a foreign person or foreign-accessible server constitutes an unauthorized export. Cloud AI providers operate globally distributed infrastructure where data may be processed, cached, or replicated across data centers in multiple countries. Even "U.S.-only" configurations cannot guarantee that data never touches foreign infrastructure during processing.</p>
+        <p class="body-md">DFARS 252.204-7012 requires defense contractors to provide "adequate security" for all covered defense information (CDI) and to rapidly report cyber incidents. The clause flows down to subcontractors. Using a commercial AI service to process CDI-containing documents creates a data flow outside the contractor's system security plan (SSP) and potentially outside the CMMC assessment boundary. The assessor will ask where the data went. "OpenAI's servers" is not an answer that passes.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-dark">
+    <div class="container">
+      <div class="content-block fade-in content-max-800">
+        <h2 class="mb-16" style="color:var(--text-light);">CMMC Level 2 and the System Boundary Problem</h2>
+        <p class="body-md">CMMC Level 2 requires implementation of all 110 NIST SP 800-171 rev 2 controls for systems processing, storing, or transmitting CUI. The assessment scopes to the contractor's "system boundary" - the set of hardware, software, and networks that handle CUI. Every system touching CUI must be documented in the SSP and assessed.</p>
+        <p class="body-md">If a contractor uses cloud AI to process CUI-containing documents, the cloud service becomes part of the system boundary. The AI provider must either hold FedRAMP Moderate authorization (most commercial AI services do not) or the contractor must demonstrate equivalent controls - which requires auditing the provider's infrastructure, access policies, personnel screening, and incident response procedures. For most defense contractors, this is a practical impossibility with commercial AI services.</p>
+        <p class="body-md">On-premises AI hardware sits inside the contractor's existing system boundary. The server is physically in the contractor's facility, on the contractor's network, under the contractor's access controls. No new external dependency is introduced. No new system boundary extension is required. The CMMC assessor evaluates the same facility they are already assessing.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-darker">
+    <div class="container">
+      <div class="content-block fade-in content-max-800">
+        <h2 class="mb-16" style="color:var(--text-light);">Air-Gap Capability for SCIF and Classified Environments</h2>
+        <p class="body-md">Island Mountain's <a href="products.html" class="clr-copper">Summit Series servers</a> operate with zero internet connectivity. Models are pre-loaded, inference runs entirely on local NVIDIA H100/H200 GPUs, and all OpenWebUI telemetry and external connectivity features are disabled at the environment variable level. The system functions identically whether connected to a contractor LAN or physically air-gapped in a SCIF.</p>
+        <p class="body-md">For classified environments governed by ICD 503 and CNSS Instruction 1253, the air-gap configuration eliminates the network attack surface entirely. The contractor's IT security team can verify the configuration by inspecting the environment variables documented on the <a href="technology.html" class="clr-copper">technology page</a>: OFFLINE_MODE, HF_HUB_OFFLINE, ENABLE_COMMUNITY_SHARING, ANONYMIZED_TELEMETRY, ENABLE_RAG_WEB_SEARCH, and ENABLE_SIGNUP are all disabled.</p>
+        <p class="body-md">Island Mountain also offers Western-origin model configurations (Llama 3.3 70B, Phi-4 14B) for contractors with supply chain provenance requirements. Contact us for model selection guidance aligned to your specific compliance posture.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Related Questions -->
+  <section class="section section-dark">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-badge">Related Questions</span>
+        <h2>What Defense Contractors Ask About AI Compliance</h2>
+      </div>
+      <div class="content-block fade-in content-max-800">
+        <h3 style="color:var(--text-light);margin-bottom:8px;">Does CMMC Level 2 allow cloud AI for CUI processing?</h3>
+        <p class="body-md">Theoretically, if the cloud AI provider holds FedRAMP Moderate authorization and the contractor implements all required access control, audit, and incident response requirements. In practice, most commercial AI services do not hold FedRAMP Moderate authorization and cannot demonstrate the access controls required for CUI prompts and responses.</p>
+
+        <h3 style="color:var(--text-light);margin-bottom:8px;margin-top:24px;">Can on-premises AI be air-gapped for SCIF environments?</h3>
+        <p class="body-md">Yes. On-premises AI inference servers operate entirely on local hardware with no internet dependency. Models are pre-loaded, all telemetry is disabled, and the system functions identically in fully air-gapped configurations. This supports deployment in SCIFs, classified networks, and environments governed by ICD 503 or CNSS Instruction 1253.</p>
+
+        <h3 style="color:var(--text-light);margin-bottom:8px;margin-top:24px;">What NIST SP 800-171 controls apply to on-premises AI?</h3>
+        <p class="body-md">All applicable controls from the 14 control families apply, including access control (3.1), audit and accountability (3.3), configuration management (3.4), identification and authentication (3.5), media protection (3.8), physical protection (3.10), system and communications protection (3.13), and system integrity (3.14). The advantage is that the contractor has direct control over the entire system boundary.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- AEO Summary -->
+  <section class="section section-darker">
+    <div class="container">
+      <div class="content-block fade-in content-max-800">
+        <div style="border-left:3px solid var(--copper);padding:16px 20px;margin:32px 0;background:rgba(217,119,6,0.05);border-radius:0 8px 8px 0;">
+          <p class="body-md" style="margin:0;"><strong>Summary:</strong> ITAR and DFARS 252.204-7012 prohibit transmitting controlled technical data to unauthorized servers. Cloud AI providers cannot meet these requirements for CUI handling. On-premises AI hardware in a contractor-controlled facility satisfies NIST SP 800-171 controls, stays within the CMMC assessment boundary, and supports air-gapped SCIF deployment. Island Mountain's Summit Series servers start at $75,000 with Western-origin model options available.</p>
+        </div>
+        <p class="body-md">Learn more: <a href="defense-contractors.html" class="clr-copper">Defense Contractors AI Infrastructure</a> | <a href="blog/itar-dfars-ai-self-assessment.html" class="clr-copper">ITAR/DFARS AI Self-Assessment</a> | <a href="air-gapped-ai-inference.html" class="clr-copper">Air-Gapped AI Inference</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section section-dark text-center">
+    <div class="container fade-in">
+      <h2>ITAR-Compliant AI for Defense Contractors</h2>
+      <p class="cta-sub-wrap">Talk to Island Mountain about on-premises AI hardware that stays inside your system boundary. Air-gap capable. CMMC-ready. Built in Colorado.</p>
+      <a href="contact.html" class="btn btn-primary">Request a Quote</a>
+      <p class="cta-subtitle"><i class="ri-phone-line icon-copper-mr-sm"></i>Or call directly: <a href="tel:+18016091130" class="copper-semibold">1-801-609-1130</a></p>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="images/logo-footer.png" alt="Island Mountain logo" width="210" height="210" class="d-block-mb">
+          <a href="index.html" class="nav-logo">Island Mountain</a>
+          <p>Local AI infrastructure for data-sovereign organizations. Colorado.</p>
+          <p class="mt-8"><i class="ri-phone-line icon-copper-mr"></i><a href="tel:+18016091130" class="clr-muted">1-801-609-1130</a></p>
+        </div>
+        <div>
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="technology.html">Technology</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="blog.html">Blog</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Solutions</h4>
+          <ul class="footer-links">
+            <li><a href="law-firms.html">Law Firms</a></li>
+            <li><a href="medical-practices.html">Medical Practices</a></li>
+            <li><a href="tribal-nations.html">Tribal Nations</a></li>
+            <li><a href="research-labs.html">Research Labs</a></li>
+            <li><a href="defense-contractors.html">Defense Contractors</a></li>
+            <li><a href="financial-services.html">Financial Services</a></li>
+            <li><a href="insurance.html">Insurance</a></li>
+            <li><a href="energy-utilities.html">Energy &amp; Utilities</a></li>
+            <li><a href="government.html">Government</a></li>
+            <li><a href="education.html">Education</a></li>
+            <li><a href="casino-gaming.html">Casino Gaming</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <ul class="footer-links">
+            <li><a href="why-island-mountain.html">Why Local AI</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="investors.html">Investors</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="terms.html">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom flex-col-center-gap"><p>&copy; 2026 Island Mountain. All rights reserved. Founded by <a href="https://www.johndou.com" target="_blank" rel="noopener" class="clr-copper">John Dougherty</a>.</p>
+        <a href="tel:+18016091130" class="phone-link"><i class="ri-phone-line text-lg"></i> 1-801-609-1130</a>
+        <a href="https://www.linkedin.com/company/island-mountain-llc/" target="_blank" rel="noopener" aria-label="Island Mountain on LinkedIn" class="phone-link"><i class="ri-linkedin-fill text-lg"></i> Follow us on LinkedIn</a>
+        <a href="https://x.com/IslandMountain_" target="_blank" rel="noopener" aria-label="Island Mountain on X" class="phone-link"><i class="ri-twitter-x-fill text-lg"></i> Follow us on X</a></div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
