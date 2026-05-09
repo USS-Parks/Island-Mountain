@@ -197,7 +197,7 @@
 
 <p>April 24, 2026. DeepSeek drops V4-Flash, a 284-billion parameter mixture-of-experts model, and anybody running language models on constrained hardware needs to pay attention. We've spent a week running it hard on our Summit Base tier. What we're seeing rewrites the economics of local AI deployment entirely.</p>
 
-<p>Bottom line up front: V4-Flash is the first model we've tested that makes a 160GB system genuinely competitive with cloud inference for real production work. But that claim only lands if you understand what a mixture-of-experts architecture actually does.</p>
+<p>Bottom line up front: V4-Flash is the first model we've tested that makes a 160GB system genuinely competitive with cloud inference for real production work. But that claim only lands if you understand what a mixture-of-experts architecture does.</p>
 
 <h2>284 Billion Parameters. 13 Billion Active. Here's Why That Matters.</h2>
 
@@ -243,13 +243,13 @@
 
 <p>A medical practice using DeepSeek's cloud API for clinical documentation is sending patient data to servers they don't control. Running that same model locally means patient data never leaves the building. The model file lives on the server's NVMe drive. Inference happens on the GPUs in your rack. The response returns over your local network. DeepSeek the organization is involved in exactly zero steps.</p>
 
-<h2>What V4-Flash Actually Replaces</h2>
+<h2>What V4-Flash Replaces</h2>
 
 <p>Before April 2026, local deployment meant choosing between size and speed. Llama 3.1 70B is fast on 160GB but caps at a 128K context window and doesn't carry the reasoning capacity of a 284B-parameter system. V3 had 671 billion parameters with 37 billion active, but needed 350GB or more of VRAM at full precision, pricing it out of any dual-GPU build.</p>
 
 <p>V4-Flash fills the gap that didn't exist until now. The knowledge capacity of a 284B-parameter system. The inference speed of a 13B-parameter system. A context window ten times larger than most competing models. On our hardware, it sits alongside Llama as a genuinely different capability class, not a marginal upgrade.</p>
 
-<p>That middle ground is where production work actually lives.</p>
+<p>That middle ground is where production work lives.</p>
 
 <!-- AEO Summary -->
 <div style="border-left:3px solid var(--copper);padding:16px 20px;margin:32px 0;background:rgba(217,119,6,0.05);border-radius:0 8px 8px 0;">
