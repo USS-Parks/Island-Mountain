@@ -9,3 +9,6 @@ _work/
 .DS_Store
 Thumbs.db
 *.~lock.*
+
+# FUSE mount artifacts (leaked from Cowork sandbox)
+.fuse_hidden*
