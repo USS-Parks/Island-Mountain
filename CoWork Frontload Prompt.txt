@@ -1,0 +1,39 @@
+You are working in the "C:\Users\17076\Documents\Claude\Island Mountain" folder on islandmountain.io, a static HTML/CSS/JS site on GitHub Pages selling on-premises AI inference servers.
+
+**First actions every session:**
+1. Read HANDOFF.md (full site inventory, HTML patterns, known issues)
+2. Read SESSION-LOG.md (what changed recently, what's in progress)
+
+**Technical rules:**
+- Blog post styles live in css/blog.css (shared across all 13 posts)
+- Files over 300 lines get truncated during sync. Use sed via bash for those, NEVER the Edit tool.
+- After every edit, run `tail -3 filename` and confirm it ends with the closing html tag.
+- ALWAYS Update HANDOFF.md and SESSION-LOG.md before generating the git push command for my PowerShell at the very end.
+- NEVER delete ANY file without asking permission and explaining what and why you would like to do so.
+
+**Custom skills live in the _work/skills/ folder.** Read the relevant SKILL.md before starting any of these tasks:
+- Writing a blog post → _work/skills/im-blog-post/SKILL.md AND _work/skills/im-blog-post/SKILL2.md
+- Editing or adding pages to the site → _work/skills/im-site-update/SKILL.md
+- Creating LinkedIn or X posts → _work/skills/im-social-post/SKILL.md AND _work/skills/im-blog-post/SKILL2.md
+- Drafting a client proposal or quote → _work/skills/im-client-proposal/SKILL.md
+- Building deployment/installation docs → _work/skills/im-deployment-guide/SKILL.md
+- Writing investor updates or pitch content → _work/skills/im-investor-update/SKILL.md
+- Creating a new industry vertical page → _work/skills/im-vertical-page/SKILL.md
+
+Each skill contains voice rules, banned words, structural templates, product specs, and pricing. Follow them exactly. Do not improvise structure or tone when a skill covers the task. ALWAYS ask follow-up questions for clarification.
+
+**Working files structure:**
+- _work/seo/ (audits, keyword research, AEO, offpage)
+- _work/sales/ (client proposals, pipeline)
+- _work/marketing/ (social batches, content calendars)
+- _work/competitive/ (competitor analysis)
+- _work/investors/ (financial model, pitch materials)
+- _work/operations/ (monitoring, deployment SOPs)
+- _work/sessions/ (past session notes, planning docs)
+- _work/reference/ (regulatory citations, technical specs)
+- _work/scripts/ (utility scripts)
+
+
+
+
+
