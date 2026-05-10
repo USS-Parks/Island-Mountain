@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-R674E394D4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-R674E394D4');
+</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Basho Parks">
+  <meta name="date" content="2026-05-10">
+  <title>The Second Revolution of AI: Local Inference Changes Everything</title>
+  <meta name="description" content="The CEO of Hugging Face just ran a 27B model on a laptop in airplane mode. The second revolution of AI is local inference, and it changes the calculus for every regulated industry.">
+  <link rel="icon" type="image/x-icon" href="../favicon.ico?v=2">
+  <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon-32.png?v=2">
+  <link rel="apple-touch-icon" sizes="180x180" href="../images/apple-touch-icon.png?v=2">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../icons/remixicon.css">
+  <link rel="stylesheet" href="../fonts/fonts.css">
+  <link rel="canonical" href="https://islandmountain.io/blog/second-revolution-local-ai.html">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="The Second Revolution of AI: Local Inference Changes Everything">
+  <meta property="og:description" content="The CEO of Hugging Face just ran a 27B model on a laptop in airplane mode. The second revolution of AI is local inference, and it changes the calculus for every regulated industry.">
+  <meta property="og:url" content="https://islandmountain.io/blog/second-revolution-local-ai.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Island Mountain">
+  <meta property="og:image" content="https://islandmountain.io/images/hero-mountain.webp">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="The Second Revolution of AI: Local Inference Changes Everything">
+  <meta name="twitter:description" content="The CEO of Hugging Face just ran a 27B model on a laptop in airplane mode. The second revolution of AI is local inference, and it changes the calculus for every regulated industry.">
+  <meta name="twitter:image" content="https://islandmountain.io/images/hero-mountain.webp">
+
+  <!-- Article Schema -->
+  <script type="application/ld+json">
+  {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "The Second Revolution of AI: Local Inference Changes Everything",
+  "description": "The CEO of Hugging Face called local AI inference 'the second revolution of AI.' For regulated industries paying per-token fees to process sensitive data on someone else's servers, this revolution has been a long time coming.",
+  "url": "https://islandmountain.io/blog/second-revolution-local-ai.html",
+  "datePublished": "2026-05-10",
+  "dateModified": "2026-05-10",
+  "author": {
+    "@type": "Organization",
+    "name": "Island Mountain",
+    "url": "https://islandmountain.io"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Island Mountain",
+    "url": "https://islandmountain.io",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://islandmountain.io/images/hero-mountain.webp"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://islandmountain.io/blog/second-revolution-local-ai.html"
+  },
+  "image": "https://islandmountain.io/images/hero-mountain.webp"
+}
+  </script>
+
+  <link rel="stylesheet" href="../css/blog.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://islandmountain.io/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Blog",
+      "item": "https://islandmountain.io/blog.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "The Second Revolution of AI",
+      "item": "https://islandmountain.io/blog/second-revolution-local-ai.html"
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+  <!-- Full-page particle canvas -->
+  <canvas id="particles-canvas"></canvas>
+
+  <!-- Hero background photo -->
+  <div class="hero-photo">
+    <img srcset="../images/hero-mountain-mobile.webp 800w, ../images/hero-mountain.webp 1913w" sizes="100vw" src="../images/hero-mountain.webp" alt="Island Mountain rising from the ocean at sunset" loading="lazy" width="1913" height="892">
+  </div>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="../index.html" class="nav-logo"><picture><source srcset="../images/logo-nav-new.webp" type="image/webp"><img src="../images/logo-nav-new.png" alt="Island Mountain" width="205" height="65"></picture></a>
+      <ul class="nav-links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../why-island-mountain.html">Why Local AI</a></li>
+        <li><a href="../products.html">Products</a></li>
+        <li><a href="../technology.html">Technology</a></li>
+        <li><a href="../pricing.html">Pricing</a></li>
+        <li class="nav-dropdown">
+          <a href="../solutions.html" class="nav-dropdown-toggle">Solutions <i class="ri-arrow-down-s-line"></i></a>
+          <ul class="nav-dropdown-menu">
+            <li><a href="../law-firms.html">Law Firms</a></li>
+            <li><a href="../medical-practices.html">Medical Practices</a></li>
+            <li><a href="../tribal-nations.html">Tribal Nations</a></li>
+            <li><a href="../research-labs.html">Research Labs</a></li>
+            <li><a href="../defense-contractors.html">Defense Contractors</a></li>
+            <li><a href="../financial-services.html">Financial Services</a></li>
+            <li><a href="../insurance.html">Insurance</a></li>
+            <li><a href="../energy-utilities.html">Energy &amp; Utilities</a></li>
+            <li><a href="../government.html">Government</a></li>
+            <li><a href="../education.html">Education</a></li>
+            <li><a href="../casino-gaming.html">Casino Gaming</a></li>
+          </ul>
+        </li>
+              <li><a href="../faq.html">FAQ</a></li>
+        <li><a href="../blog.html" class="active">Blog</a></li>
+        <li><a href="../resources.html">Resources</a></li>
+        <li><a href="../contact.html" class="nav-cta">Request Quote</a></li>
+      </ul>
+      <button class="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Sidebar -->
+  <div class="sidebar-overlay"></div>
+  <div class="mobile-sidebar">
+    <a href="../index.html">Home</a>
+    <a href="../why-island-mountain.html">Why Local AI</a>
+    <a href="../products.html">Products</a>
+    <a href="../technology.html">Technology</a>
+    <a href="../pricing.html">Pricing</a>
+    <a href="../solutions.html" class="mobile-solutions-toggle">Solutions <i class="ri-arrow-down-s-line"></i></a>
+    <div class="mobile-solutions-links">
+      <a href="../law-firms.html">Law Firms</a>
+      <a href="../medical-practices.html">Medical Practices</a>
+      <a href="../tribal-nations.html">Tribal Nations</a>
+      <a href="../research-labs.html">Research Labs</a>
+      <a href="../defense-contractors.html">Defense Contractors</a>
+      <a href="../financial-services.html">Financial Services</a>
+      <a href="../insurance.html">Insurance</a>
+      <a href="../energy-utilities.html">Energy &amp; Utilities</a>
+      <a href="../government.html">Government</a>
+      <a href="../education.html">Education</a>
+      <a href="../casino-gaming.html">Casino Gaming</a>
+    </div>
+            <a href="../faq.html">FAQ</a>
+    <a href="../blog.html">Blog</a>
+    <a href="../resources.html">Resources</a>
+    <a href="../contact.html" class="nav-cta">Request Quote</a>
+  </div>
+
+  <!-- Article -->
+  <section class="section section-first hero-spacer">
+    <div class="container content-max-840">
+
+      <!-- Breadcrumb -->
+      <nav class="breadcrumb">
+        <a href="../index.html">Home</a><span>&rsaquo;</span><a href="../blog.html">Blog</a><span>&rsaquo;</span>The Second Revolution of AI
+      </nav>
+
+      <!-- Article Header -->
+      <div class="article-header">
+        <div class="article-meta">
+          <span class="article-date">May 10, 2026</span>
+          <span class="article-tag tag-industry">Industry</span>
+          <span class="article-read-time">8 min read</span>
+        </div>
+        <h1 class="text-2xl">The Second Revolution of AI Is Local. The Industry Just Admitted It.</h1>
+        <p class="article-author">Island Mountain</p>
+      </div>
+
+      <article class="article-body">
+
+<p>On April 24, 2026, Julien Chaumond, the CEO of Hugging Face, the largest open-source AI platform on the planet, posted a photo from an airplane seat. His MacBook Pro was running Qwen3.6 27B through Llama.cpp. Full inference. No internet connection. No API key. No cloud endpoint. Airplane mode. He called it "the second revolution of AI" and said most people haven't realized it yet.</p>
+
+<p>He's right. And the organizations that figure this out first will be the ones that stop bleeding money and risk into infrastructure they don't own.</p>
+
+<h2>What the First Revolution Got Wrong</h2>
+
+<p>The first wave of AI adoption was a cloud land grab. OpenAI, Anthropic, Google, Amazon, Microsoft, every major player shipped the same basic proposition: send us your data, rent our compute, pay per token, and trust that we'll handle it responsibly. For consumer applications, that model works fine. For regulated industries, it was always a structural compromise dressed up as convenience.</p>
+
+<p>A <a href="../law-firms.html">law firm</a> sending client communications through a cloud AI API is routing attorney-client privileged material through third-party infrastructure governed by terms of service that explicitly reserve the right to process that data for model training, safety review, or legal compliance. A <a href="../medical-practices.html">medical practice</a> using a cloud-hosted AI assistant for clinical documentation is creating copies of protected health information on servers it cannot audit, in jurisdictions it didn't choose, under a Business Associate Agreement that shifts liability without shifting control. A <a href="../tribal-nations.html">tribal government</a> feeding community health data or cultural knowledge into a cloud platform is placing sovereign information inside infrastructure governed by the <a href="https://www.congress.gov/bill/115th-congress/house-bill/4943" target="_blank" rel="noopener">CLOUD Act</a>, which grants the U.S. government compulsory access regardless of where that data physically sits.</p>
+
+<p>None of this was secret. The trade-off was always visible. But for years the counterargument was simple: there's no practical alternative. The models worth using required data center-scale compute. Running them locally meant buying millions of dollars in hardware and hiring a team to manage it. For most organizations, that wasn't a real option. It was a theoretical one.</p>
+
+<p>That argument just died on a commercial flight at 35,000 feet.</p>
+
+<h2>What Changed: Open-Source Models Closed the Gap</h2>
+
+<p>The distance between the best closed-source API models and the best open-source local models has collapsed. Chaumond's specific claim is worth reading carefully: for non-trivial coding tasks on the Hugging Face codebases, Qwen3.6 27B running locally through Llama.cpp felt "very, very close to hitting the latest Opus in Claude Code." That's the CEO of the company that hosts more open-source AI models than anyone else on Earth, comparing a 27-billion-parameter model running on a laptop to one of the most capable closed-source models available through any API.</p>
+
+<p>He's not alone in this assessment. The open-source model ecosystem has been moving at a pace that the cloud providers don't want you to notice. DeepSeek V4-Flash, Llama 3.3 70B, Qwen 2.5 72B, Mistral Large, these models handle document analysis, contract review, code generation, summarization, and structured data extraction at quality levels that were exclusive to cloud APIs eighteen months ago. The performance ceiling on local inference isn't theoretical anymore. It's been measured, benchmarked, and <a href="deepseek-v4-flash-local-deployment.html">deployed in production environments</a>.</p>
+
+<p>And these models don't phone home.</p>
+
+<h2>The Hardware Arithmetic Has Shifted</h2>
+
+<p>Here's the part the cloud vendors really don't want you to do: the math.</p>
+
+<p>Chaumond ran a 27B model on a MacBook Pro. Consumer hardware. Now consider what happens when you put that same class of model on purpose-built inference hardware. An Island Mountain Performance tier server, two NVIDIA H100 80GB GPUs with 160GB of combined VRAM, runs 70B-parameter models at production speed. Not demo speed. Not "works for a proof of concept" speed. Full multi-user inference through <a href="openwebui-admin-setup-guide.html">OpenWebUI</a>, with 20+ concurrent users prompting simultaneously, getting responses in seconds.</p>
+
+<p>That server costs between $85,000 and $95,000. Once. No subscription. No per-token billing. No annual renewal negotiation where the price goes up 15% because your usage grew.</p>
+
+<p>Compare that to what a 50-person <a href="../defense-contractors.html">defense contracting</a> firm or a mid-size <a href="../financial-services.html">financial services</a> company spends on cloud AI APIs in a year. At enterprise pricing tiers, heavy API usage runs $80,000 to $200,000 annually, depending on model selection and volume. By year two, you've paid more than the cost of owning the hardware outright. By year five, you've spent three to five times the purchase price, and you still don't own anything. You're renting inference from someone else's data center, and every prompt your team sends is another data point on someone else's servers.</p>
+
+<p>The <a href="cloud-ai-vs-local-hardware-tco.html">five-year total cost of ownership comparison</a> isn't close. It hasn't been close for a while. What's new is that the quality gap has closed too. The last argument for cloud was that the models were better. That argument is evaporating in real time.</p>
+
+<h2>Airplane Mode Is the Compliance Test</h2>
+
+<p>Here's what Chaumond's airplane photo actually demonstrates, beyond the technical capability: the model runs with zero network dependency. No handshake with an authentication server. No telemetry. No usage logging to a third-party endpoint. No data leaving the device.</p>
+
+<p>That's not a feature. For regulated industries, it's the requirement.</p>
+
+<p>ITAR-controlled environments under <a href="https://www.ecfr.gov/current/title-22/chapter-I/subchapter-M/part-120" target="_blank" rel="noopener">22 CFR Part 120</a> prohibit the transfer of controlled technical data to foreign persons or foreign-accessible infrastructure. Cloud AI services operated by multinational corporations, staffed by globally distributed engineering teams, processing data in geographically distributed data centers, present a structural ITAR exposure that no contractual clause can fully mitigate. An <a href="itar-dfars-ai-self-assessment.html">air-gapped inference server</a> eliminates that exposure by design.</p>
+
+<p>HIPAA's Technical Safeguard requirements under <a href="https://www.ecfr.gov/current/title-45/subtitle-A/subchapter-C/part-164/subpart-C" target="_blank" rel="noopener">45 CFR 164.312</a> require access controls, audit controls, integrity controls, and transmission security for electronic protected health information. A local server behind the organization's own firewall satisfies every one of those controls with infrastructure the covered entity directly manages. A cloud API introduces a chain of subprocessors, data transfer agreements, and BAA provisions that create compliance surface area without providing compliance certainty. The <a href="hipaa-technical-checklist.html">HIPAA technical checklist</a> for local AI is shorter, cleaner, and more defensible.</p>
+
+<p>The <a href="ocap-cloud-act-guide.html">OCAP Principles</a> (Ownership, Control, Access, Possession) require that First Nations communities maintain physical possession and jurisdictional control over their data. Cloud infrastructure, by definition, violates the Possession principle. <a href="tribal-data-sovereignty-ai-infrastructure.html">Local AI infrastructure</a> running on tribal lands, behind the tribal firewall, satisfies all four principles simultaneously.</p>
+
+<p><a href="../law-firms.html">ABA Model Rule 1.6</a> requires lawyers to make reasonable efforts to prevent unauthorized disclosure of client information. When a lawyer uses a cloud AI service, the analysis of whether that constitutes "reasonable efforts" depends on the vendor's security posture, data handling practices, subprocessor agreements, and jurisdiction, none of which the lawyer directly controls. When the AI runs on a server in the firm's own office, the <a href="attorney-client-privilege-cloud-ai.html">privilege analysis collapses to a simple question</a>: is the building secure?</p>
+
+<p>Airplane mode isn't a gimmick. It's the architecture that compliance frameworks have been demanding all along.</p>
+
+<h2>What "The Second Revolution" Actually Means</h2>
+
+<p>Chaumond framed the shift around four words: efficiency, security, privacy, sovereignty. That framing is precise, and it maps directly onto the concerns that every regulated industry has been trying to negotiate around since the first cloud AI APIs launched.</p>
+
+<p><strong>Efficiency:</strong> No per-token cost. No metered usage. Flat cost of ownership after the initial purchase. Your team runs as many prompts as they want, as often as they want, without anyone tracking usage or sending you a bill at the end of the month.</p>
+
+<p><strong>Security:</strong> No attack surface beyond your own network perimeter. No API keys to rotate. No shared infrastructure to trust. No third-party breach notifications to worry about.</p>
+
+<p><strong>Privacy:</strong> No data leaves the building. No conversation logs on someone else's server. No training data contributions you didn't consent to. No subpoena risk from a jurisdiction you didn't choose.</p>
+
+<p><strong>Sovereignty:</strong> The data stays where the organization's legal authority says it must stay. For <a href="../tribal-nations.html">tribal nations</a>, that's on tribal land under tribal jurisdiction. For <a href="../government.html">government agencies</a>, that's within the agency's own infrastructure boundary. For <a href="../defense-contractors.html">defense contractors</a>, that's inside a controlled environment that meets CMMC requirements. For every organization, it means the data governance decision belongs to you, not to the vendor whose terms of service you clicked through.</p>
+
+<h2>The Gap Between a Laptop and a Server</h2>
+
+<p>Chaumond's demonstration ran on a MacBook Pro. That's impressive, and it proves the concept. But a laptop running a 27B model through Llama.cpp is a single-user tool with constrained VRAM, limited context windows, and no multi-user access layer. It's a proof of concept, not a production deployment.</p>
+
+<p>The gap between a laptop demo and an organizational deployment is the gap Island Mountain fills. A purpose-built inference server with dual H100 GPUs provides 160GB of VRAM, enough to run 70B+ parameter models at full precision with context windows that handle long documents, complex contracts, and multi-turn research conversations. OpenWebUI provides the multi-user interface, role-based access control, conversation history, and admin oversight that organizations need. The hardware arrives burn-tested for 72 hours, pre-loaded with production-ready models, configured and ready to deploy.</p>
+
+<p>If a 27B model on a laptop in airplane mode impressed the CEO of Hugging Face, consider what a 70B model on dedicated H100 hardware does for a <a href="../research-labs.html">research lab</a> protecting pre-publication data, or an <a href="../insurance.html">insurance company</a> processing claims without exposing claimant information to a third party, or a <a href="../casino-gaming.html">tribal gaming operation</a> analyzing patron data under gaming commission sovereignty requirements.</p>
+
+<h2>What You Don't Get</h2>
+
+<p>Local AI infrastructure is not a replacement for every cloud service. It's worth being specific about what it doesn't include. You don't get access to the largest frontier models (GPT-5, Claude Opus 4.6) locally. Those models require more compute than any single server provides and are only available through their respective APIs. You don't get automatic model updates; when a new open-source model releases, someone needs to download, test, and deploy it. You don't get a 24/7 NOC watching your hardware; if a drive fails at 2 AM, that's your team's problem or your IT contractor's problem. And you don't get the elastic scaling of cloud compute; your inference capacity is fixed by the hardware you purchased.</p>
+
+<p>For many organizations, those limitations are acceptable trade-offs against the compliance certainty, cost predictability, and data sovereignty that local infrastructure provides. For some organizations, particularly those with massive, variable inference workloads and minimal regulatory exposure, cloud remains the better fit. Knowing which category your organization falls into is the first honest step.</p>
+
+<div style="border-left:3px solid var(--copper);padding:16px 20px;margin:32px 0;background:rgba(217,119,6,0.05);border-radius:0 8px 8px 0;">
+<strong>Summary:</strong> The CEO of the world's largest open-source AI platform called local inference "the second revolution of AI." Open-source models now match cloud API quality for most enterprise tasks. The cost, compliance, and sovereignty arguments for local AI infrastructure have never been stronger. For regulated industries paying per-token fees to process sensitive data on someone else's servers, the question is no longer whether local inference works. It's how long you keep paying for someone else's infrastructure when you don't have to.
+</div>
+      </article>
+
+      <!-- CTA -->
+      <div class="article-cta">
+        <h3>Ready to Stop Paying Per Token?</h3>
+        <p>One conversation. No sales pitch. Just straight talk about what local AI hardware can do for your organization.</p>
+        <a href="../contact.html" class="btn btn-primary">Start a Conversation</a>
+        <p class="bio-note-sm"><i class="ri-phone-line icon-copper-mr-sm"></i>Or call directly: <a href="tel:+18016091130" class="copper-semibold">1-801-609-1130</a></p>
+      </div>
+
+      <!-- Related Articles -->
+      <div class="related-articles">
+        <h3>Related Articles</h3>
+        <div class="related-grid">
+          <div class="related-card">
+            <h4><a href="cloud-ai-vs-local-hardware-tco.html">Cloud AI vs. Local Hardware: Building the Honest Five-Year TCO</a></h4>
+            <p>Five-year total cost of ownership comparison including compliance overhead and residual value.</p>
+          </div>
+          <div class="related-card">
+            <h4><a href="deepseek-v4-flash-local-deployment.html">DeepSeek V4-Flash Local Deployment: What to Expect from Open-Source Inference</a></h4>
+            <p>Benchmarks, configuration, and real-world performance for local open-source model deployment.</p>
+          </div>
+          <div class="related-card">
+            <h4><a href="on-prem-vs-colo-vs-cloud.html">On-Prem vs. Colo vs. Cloud: Choosing Your AI Deployment Model</a></h4>
+            <p>The three deployment architectures for local AI, with honest tradeoffs for each.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Navigation -->
+      <div class="article-nav">
+        <a href="../blog.html" class="article-back">&larr; All articles</a>
+        <div class="share-links">
+          <span>Share:</span>
+          <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://islandmountain.io/blog/second-revolution-local-ai.html" target="_blank" rel="noopener" aria-label="Share on LinkedIn"><i class="ri-linkedin-fill"></i></a>
+          <a href="https://x.com/intent/tweet?url=https://islandmountain.io/blog/second-revolution-local-ai.html&text=The Second Revolution of AI Is Local. The Industry Just Admitted It." target="_blank" rel="noopener" aria-label="Share on X"><i class="ri-twitter-x-fill"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="../images/logo-footer.png" alt="Island Mountain logo" width="210" height="210" class="d-block-mb">
+          <a href="../index.html" class="nav-logo">Island Mountain</a>
+          <p>Local AI infrastructure for data-sovereign organizations. Colorado.</p>
+          <p class="mt-8"><i class="ri-phone-line icon-copper-mr"></i><a href="tel:+18016091130" class="clr-muted">1-801-609-1130</a></p>
+        </div>
+        <div>
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../products.html">Products</a></li>
+            <li><a href="../technology.html">Technology</a></li>
+            <li><a href="../pricing.html">Pricing</a></li>
+            <li><a href="../resources.html">Resources</a></li>
+              <li><a href="../faq.html">FAQ</a></li>
+            <li><a href="../blog.html">Blog</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Solutions</h4>
+          <ul class="footer-links">
+            <li><a href="../law-firms.html">Law Firms</a></li>
+            <li><a href="../medical-practices.html">Medical Practices</a></li>
+            <li><a href="../tribal-nations.html">Tribal Nations</a></li>
+            <li><a href="../research-labs.html">Research Labs</a></li>
+            <li><a href="../defense-contractors.html">Defense Contractors</a></li>
+            <li><a href="../financial-services.html">Financial Services</a></li>
+            <li><a href="../insurance.html">Insurance</a></li>
+            <li><a href="../energy-utilities.html">Energy &amp; Utilities</a></li>
+            <li><a href="../government.html">Government</a></li>
+            <li><a href="../education.html">Education</a></li>
+            <li><a href="../casino-gaming.html">Casino Gaming</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <ul class="footer-links">
+            <li><a href="../why-island-mountain.html">Why Local AI</a></li>
+            <li><a href="../contact.html">Contact</a></li>
+            <li><a href="../investors.html">Investors</a></li>
+            <li><a href="../about.html">About</a></li>
+            <li><a href="../privacy.html">Privacy Policy</a></li>
+            <li><a href="../terms.html">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom flex-col-center-gap">
+        <p>&copy; 2026 Island Mountain. All rights reserved. Founded by <a href="https://www.johndou.com" target="_blank" rel="noopener" class="clr-copper">John Dougherty</a>.</p>
+        <a href="tel:+18016091130" class="phone-link"><i class="ri-phone-line text-lg"></i> 1-801-609-1130</a>
+        <a href="https://www.linkedin.com/company/island-mountain-llc/" target="_blank" rel="noopener" aria-label="Island Mountain on LinkedIn" class="phone-link"><i class="ri-linkedin-fill text-lg"></i> Follow us on LinkedIn</a>
+        <a href="https://x.com/IslandMountain_" target="_blank" rel="noopener" aria-label="Island Mountain on X" class="phone-link"><i class="ri-twitter-x-fill text-lg"></i> Follow us on X</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>
