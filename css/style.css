@@ -562,6 +562,10 @@ p {
   text-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
 }
 
+.hero-subheading-sm {
+  font-size: 1.28rem;
+}
+
 .hero p {
   font-size: 1.15rem;
   color: rgba(255, 255, 255, 0.88);
@@ -1387,6 +1391,21 @@ table tbody tr:last-child td {
 .risk-card p {
   margin: 0;
   font-size: 0.9rem;
+}
+
+.risk-card p strong {
+  color: var(--copper);
+}
+
+.info-panel h4 {
+  color: var(--text-light);
+  margin-bottom: 4px;
+}
+
+.info-panel .role-label {
+  color: var(--copper);
+  font-size: 0.85rem;
+  margin-bottom: 12px;
 }
 
 /* --- Comparison Note --- */
