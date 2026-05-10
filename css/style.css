@@ -1397,6 +1397,18 @@ table tbody tr:last-child td {
   color: var(--copper);
 }
 
+a.risk-card--link {
+  text-decoration: none;
+  cursor: pointer;
+  color: inherit;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+a.risk-card--link:hover {
+  border-color: var(--copper);
+  transform: translateY(-2px);
+}
+
 .info-panel h4 {
   color: var(--text-light);
   margin-bottom: 4px;
