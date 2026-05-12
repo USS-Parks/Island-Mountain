@@ -17,7 +17,7 @@
     }
   }
   window.addEventListener('scroll', handleNavScroll, { passive: true });
-  handleNavScroll();
+  requestAnimationFrame(handleNavScroll);
 
   // --- Mobile menu toggle ---
   var hamburger = document.querySelector('.hamburger');
@@ -187,7 +187,7 @@
       scrollRatio = maxScroll > 0 ? Math.min(window.scrollY / maxScroll, 1) : 0;
     }
     window.addEventListener('scroll', updateScrollRatio, { passive: true });
-    updateScrollRatio();
+    requestAnimationFrame(updateScrollRatio);
 
     function draw(time) {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -237,9 +237,11 @@
       requestAnimationFrame(draw);
     }
 
-    resize();
-    createParticles();
-    requestAnimationFrame(draw);
+    requestAnimationFrame(function() {
+      resize();
+      createParticles();
+      requestAnimationFrame(draw);
+    });
 
     window.addEventListener('resize', function () {
       resize();
