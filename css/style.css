@@ -830,7 +830,7 @@ p {
   display: block;
 }
 
-.stat-card h4 {
+.stat-card h2 {
   font-size: 1rem;
   color: #ffffff;
   margin-bottom: 4px;
@@ -1155,7 +1155,7 @@ table tbody tr:last-child td {
   margin-top: 12px;
 }
 
-.footer h4 {
+.footer h3 {
   color: var(--text-light);
   font-size: 0.85rem;
   text-transform: uppercase;
