@@ -701,6 +701,73 @@
     margin-top: 16px;
     text-align: center;
   }
+
+  /* MASTHEAD GRID */
+  .masthead-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: center;
+  }
+
+  .masthead-image {
+    position: relative;
+  }
+
+  .masthead-image img {
+    width: 100%;
+    height: auto;
+    border: 1px solid rgba(184,115,51,0.2);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+  }
+
+  .masthead-image .img-caption {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--stone);
+    margin-top: 12px;
+    text-align: center;
+  }
+
+  /* ROOM GALLERY */
+  .room-gallery {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    margin: 40px 0;
+  }
+
+  .room-card {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .room-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+
+  .room-card:hover img {
+    transform: scale(1.03);
+  }
+
+  .room-card .room-label {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 16px 20px;
+    background: linear-gradient(transparent, rgba(13,15,14,0.85));
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--copper-pale);
+  }
   @media (max-width: 900px) {
     section, .masthead { padding: 48px 28px; }
     .product-card { grid-template-columns: 1fr; }
@@ -708,6 +775,8 @@
     .env-strip { grid-template-columns: 1fr; }
     .tco-grid { grid-template-columns: 1fr; }
     footer { flex-direction: column; gap: 24px; }
+    .masthead-grid { grid-template-columns: 1fr; gap: 32px; }
+    .room-gallery { grid-template-columns: 1fr; }
     .footer-meta { text-align: left; }
   }
 </style>
@@ -716,11 +785,20 @@
 
 <!-- MASTHEAD -->
 <header class="masthead">
-  <div class="brand-tag">Island Mountain AI &nbsp;//&nbsp; Internal Strategy Document &nbsp;//&nbsp; May 2026</div>
-  <h1>The <em>Landfall</em> Series</h1>
-  <h1>Family Sovereign AI</h1>
-  <span class="copper-rule"></span>
-  <p class="sub">A complete product line architecture for household-scale, air-gapped AI and data sovereignty &mdash; Scout / Ranger / Pack Leader</p>
+  <div class="masthead-grid">
+    <div class="masthead-text">
+      <div class="brand-tag">Island Mountain AI &nbsp;//&nbsp; Internal Strategy Document &nbsp;//&nbsp; May 2026</div>
+      <h1>The <em>Landfall</em> Series</h1>
+      <h1>Family Sovereign AI</h1>
+      <span class="copper-rule"></span>
+      <p class="sub">A complete product line architecture for household-scale, air-gapped AI and data sovereignty &mdash; Scout / Ranger / Pack Leader</p>
+    </div>
+    <div class="masthead-image">
+      <img src="images/landfall-kitchen.webp" alt="Landfall Series in a kitchen and family hub setting — managing schedules, meals, smart devices" width="1402" height="1122" loading="eager">
+      <div class="img-caption">Kitchen / Family Hub — the heart of your home</div>
+    </div>
+  </div>
+
 </header>
 
 <!-- MARKET CONTEXT -->
@@ -1072,17 +1150,43 @@
       <div class="sw-desc">Secure health record storage and AI-assisted comprehension. Lab results, discharge summaries, prescription history, specialist notes — all indexed, all private, all answerable by your local AI. (Ranger and Pack Leader)</div>
     </div>
   </div>
+
+  <div class="landfall-visual" style="margin-top: 48px;">
+    <img src="images/landfall-study-library.webp" alt="Landfall Series in a study and library setting — powering productivity, secure documents, personal knowledge" width="1402" height="1122" loading="lazy">
+    <div class="visual-caption">Study / Library — power your productivity, protect your knowledge</div>
+  </div>
 </section>
 
 <!-- LANDFALL ROOM PLACEMENTS -->
 <section style="padding: 72px 60px; border-bottom: 1px solid rgba(255,255,255,0.04);">
   <div class="section-label">Where Landfall Lives</div>
-  <div class="landfall-visual">
-    <img src="images/landfall-room-placements.webp" alt="Landfall Series room placement scenarios: living room, study, kitchen family hub, and home office" width="1536" height="1024" loading="lazy">
+  <h2>Every Room. One Sovereign Brain.</h2>
+  <p>The Landfall Series belongs wherever your family works, gathers, creates, and connects.</p>
+
+  <div class="room-gallery">
+    <div class="room-card">
+      <img src="images/landfall-living-room-standalone.webp" alt="Landfall Series in a living room — family photos, streaming, AI assistant" width="1402" height="1122" loading="lazy">
+      <div class="room-label">Living Room</div>
+    </div>
+    <div class="room-card">
+      <img src="images/landfall-study-library.webp" alt="Landfall Series in a study — secure documents, research, knowledge library" width="1402" height="1122" loading="lazy">
+      <div class="room-label">Study / Library</div>
+    </div>
+    <div class="room-card">
+      <img src="images/landfall-kitchen.webp" alt="Landfall Series in a kitchen — schedules, meals, smart home, family hub" width="1402" height="1122" loading="lazy">
+      <div class="room-label">Kitchen / Family Hub</div>
+    </div>
+    <div class="room-card">
+      <img src="images/landfall-home-office.webp" alt="Landfall Series in a home office — client files, contracts, business tools" width="1402" height="1122" loading="lazy">
+      <div class="room-label">Home Office</div>
+    </div>
+  </div>
+
+  <div class="landfall-visual" style="margin-top: 32px;">
+    <img src="images/landfall-room-placements.webp" alt="Landfall Series four-room overview: living room, study, kitchen, home office" width="1536" height="1024" loading="lazy">
     <div class="visual-caption">Four rooms. One sovereign brain. Every family member served.</div>
   </div>
 </section>
-
 <!-- ENVIRONMENTAL CASE -->
 <section id="environment">
   <div class="section-label">05 — The Environmental Case</div>
@@ -1355,6 +1459,11 @@
   <p>Healthcare clients using Summit Series for HIPAA-compliant inference will have physicians who want Landfall Pack Leaders at home for their family medical records. Defense contractors using Summit nodes at work will want Landfall for their ITAR-sensitive home offices. The verticals reinforce each other.</p>
 
   <p><strong>Build the Summit customer base. The Landfall customers emerge from that universe organically.</strong></p>
+
+  <div class="landfall-visual">
+    <img src="images/landfall-home-office.webp" alt="Landfall Series in a home office — your business, your data, your rules" width="1402" height="1122" loading="lazy">
+    <div class="visual-caption">Home Office — your business runs on your terms</div>
+  </div>
 </section>
 
 <footer>
