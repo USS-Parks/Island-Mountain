@@ -1997,3 +1997,93 @@ a.risk-card--link:hover {
     padding: 24px 20px;
   }
 }
+
+/* ============================
+   Product Imagery (Session 63)
+   ============================ */
+
+/* Full-width showcase on vertical + product pages */
+.product-showcase {
+  padding: 40px 0;
+}
+.product-showcase .container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 20px;
+  text-align: center;
+}
+.product-showcase-img {
+  width: 100%;
+  max-width: 900px;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+}
+.product-showcase-caption {
+  margin-top: 16px;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  font-style: italic;
+}
+
+/* Inline product image for blog posts and secondary pages */
+.product-inline {
+  margin: 32px 0;
+  text-align: center;
+}
+.product-inline-img {
+  width: 100%;
+  max-width: 720px;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.35);
+}
+.product-inline-caption {
+  margin-top: 12px;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  font-style: italic;
+}
+
+/* Product image grid for pages showing multiple images */
+.product-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  margin-top: 24px;
+}
+.product-gallery-item {
+  text-align: center;
+}
+.product-gallery-img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.35);
+  transition: transform 0.3s ease;
+}
+.product-gallery-img:hover {
+  transform: scale(1.02);
+}
+.product-gallery-label {
+  margin-top: 10px;
+  color: var(--copper);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+@media (max-width: 768px) {
+  .product-showcase-img {
+    max-width: 100%;
+    border-radius: 8px;
+  }
+  .product-gallery {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .product-inline-img {
+    max-width: 100%;
+    border-radius: 8px;
+  }
+}
