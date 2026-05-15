@@ -1728,3 +1728,109 @@ a.risk-card--link:hover {
   .tier-specs li { font-size:0.82rem; }
   .recommend-badge { font-size:0.65rem;padding:5px 12px; }
 }
+
+/* ═══ Walkthrough Steps (Session 59) ═══ */
+.walkthrough-steps {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:2rem;
+  margin-top:2rem;
+}
+.walkthrough-step {
+  text-align:center;
+  padding:2rem 1.5rem;
+  background:var(--secondary-dark);
+  border-radius:12px;
+  border:1px solid var(--tertiary-dark);
+}
+.step-number {
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:40px;
+  height:40px;
+  border-radius:50%;
+  background:var(--copper);
+  color:var(--primary-dark);
+  font-weight:700;
+  font-size:1.1rem;
+  margin-bottom:1rem;
+}
+.step-icon {
+  font-size:2rem;
+  color:var(--copper);
+  margin-bottom:0.75rem;
+}
+.walkthrough-step h3 {
+  color:var(--text-light);
+  margin-bottom:0.75rem;
+  font-size:1.15rem;
+}
+.walkthrough-step p {
+  color:var(--text-muted);
+  font-size:0.95rem;
+  line-height:1.7;
+}
+
+/* ═══ Lead Capture Form (Session 59) ═══ */
+.lead-form-wrapper {
+  max-width:700px;
+  margin:0 auto;
+  text-align:center;
+}
+.lead-form-sub {
+  color:var(--text-muted);
+  font-size:1.1rem;
+  margin-bottom:2rem;
+}
+.lead-form-grid {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:1rem;
+  text-align:left;
+  margin-bottom:1.5rem;
+}
+.lead-form-grid .form-group label {
+  display:block;
+  color:var(--text-muted);
+  font-size:0.85rem;
+  margin-bottom:0.4rem;
+}
+.lead-form-grid .form-group input,
+.lead-form-grid .form-group select {
+  width:100%;
+  padding:0.75rem 1rem;
+  background:var(--secondary-dark);
+  border:1px solid var(--tertiary-dark);
+  border-radius:8px;
+  color:var(--text-light);
+  font-size:0.95rem;
+  font-family:inherit;
+  transition:border-color 0.2s;
+  box-sizing:border-box;
+}
+.lead-form-grid .form-group input:focus,
+.lead-form-grid .form-group select:focus {
+  outline:none;
+  border-color:var(--copper);
+}
+.lead-form-grid .form-group input::placeholder {
+  color:var(--text-muted);
+  opacity:0.6;
+}
+.lead-form-grid .form-group select option {
+  background:var(--primary-dark);
+  color:var(--text-light);
+}
+.lead-form-submit {
+  margin-bottom:1rem;
+}
+.lead-form-submit .btn {
+  padding:0.85rem 2.5rem;
+}
+
+/* ═══ Responsive: Walkthrough + Lead Form (Session 59) ═══ */
+@media (max-width:768px) {
+  .walkthrough-steps { grid-template-columns:1fr; }
+  .lead-form-grid { grid-template-columns:1fr; }
+}
