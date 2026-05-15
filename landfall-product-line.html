@@ -1,0 +1,1323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Island Mountain — Landfall Series Product Line Strategy</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;700;900&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --obsidian: #0d0f0e;
+    --forge: #141714;
+    --ridge: #1e2320;
+    --copper: #b87333;
+    --copper-light: #d4934a;
+    --copper-pale: #e8b47a;
+    --stone: #8a8f88;
+    --mist: #c8cfc7;
+    --snow: #f0f2ef;
+    --rust: #8b3a2a;
+    --river: #2a4a5e;
+    --pine: #2d4a35;
+    --gold: #c9a84c;
+    --gold-pale: #e8d5a0;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--obsidian);
+    color: var(--mist);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* GRAIN OVERLAY */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.4;
+  }
+
+  /* HEADER */
+  .masthead {
+    padding: 80px 60px 60px;
+    border-bottom: 1px solid rgba(184, 115, 51, 0.2);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .masthead::before {
+    content: '';
+    position: absolute;
+    top: -200px;
+    right: -200px;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(184,115,51,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .brand-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 4px;
+    color: var(--copper);
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+
+  .masthead h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(48px, 7vw, 88px);
+    font-weight: 300;
+    line-height: 1.0;
+    color: var(--snow);
+    margin-bottom: 16px;
+  }
+
+  .masthead h1 em {
+    font-style: italic;
+    color: var(--copper-light);
+  }
+
+  .masthead .sub {
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 2px;
+    color: var(--stone);
+    text-transform: uppercase;
+    max-width: 600px;
+    margin-top: 20px;
+  }
+
+  .copper-rule {
+    display: block;
+    width: 80px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--copper), transparent);
+    margin: 24px 0;
+  }
+
+  /* SECTION STRUCTURE */
+  section {
+    padding: 72px 60px;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--copper);
+    margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: rgba(184, 115, 51, 0.2);
+  }
+
+  h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(30px, 4vw, 48px);
+    font-weight: 300;
+    color: var(--snow);
+    line-height: 1.2;
+    margin-bottom: 24px;
+  }
+
+  h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(22px, 3vw, 32px);
+    font-weight: 400;
+    color: var(--copper-light);
+    margin-bottom: 16px;
+  }
+
+  p {
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--mist);
+    max-width: 760px;
+    margin-bottom: 16px;
+    line-height: 1.85;
+  }
+
+  strong {
+    color: var(--snow);
+    font-weight: 500;
+  }
+
+  /* CONTEXT BLOCK */
+  .context-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1px;
+    background: rgba(184,115,51,0.15);
+    border: 1px solid rgba(184,115,51,0.15);
+    margin: 40px 0;
+  }
+
+  .context-cell {
+    background: var(--forge);
+    padding: 32px;
+  }
+
+  .context-cell .label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--copper);
+    margin-bottom: 12px;
+  }
+
+  .context-cell .value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    color: var(--snow);
+    font-weight: 300;
+    line-height: 1.2;
+  }
+
+  .context-cell .caption {
+    font-size: 12px;
+    color: var(--stone);
+    margin-top: 8px;
+    line-height: 1.6;
+  }
+
+  /* PRODUCT CARDS */
+  .product-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin: 40px 0;
+  }
+
+  .product-card {
+    background: var(--forge);
+    border-left: 3px solid var(--copper);
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    min-height: 280px;
+    transition: border-color 0.3s;
+  }
+
+  .product-card:hover {
+    border-left-color: var(--copper-light);
+  }
+
+  .product-card.tier-2 {
+    border-left-color: var(--gold);
+  }
+
+  .product-card.tier-2:hover { border-left-color: var(--gold-pale); }
+
+  .product-card.tier-3 {
+    border-left-color: var(--snow);
+  }
+
+  .product-card.tier-3:hover { border-left-color: #fff; }
+
+  .card-identity {
+    padding: 40px 36px;
+    border-right: 1px solid rgba(255,255,255,0.05);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .tier-badge {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--stone);
+    margin-bottom: 16px;
+  }
+
+  .tier-1 .tier-badge { color: var(--copper); }
+  .tier-2 .tier-badge { color: var(--gold); }
+  .tier-3 .tier-badge { color: var(--mist); }
+
+  .product-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 42px;
+    font-weight: 300;
+    color: var(--snow);
+    line-height: 1.0;
+  }
+
+  .product-subtitle {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--stone);
+    margin-top: 8px;
+  }
+
+  .product-price {
+    margin-top: auto;
+    padding-top: 20px;
+  }
+
+  .price-main {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 36px;
+    color: var(--copper-light);
+    font-weight: 400;
+  }
+
+  .tier-2 .price-main { color: var(--gold-pale); }
+  .tier-3 .price-main { color: var(--mist); }
+
+  .price-sub {
+    font-size: 11px;
+    color: var(--stone);
+    letter-spacing: 1px;
+    margin-top: 4px;
+  }
+
+  .card-body {
+    padding: 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+
+  .card-section-title {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--stone);
+    margin-bottom: 14px;
+  }
+
+  .spec-list {
+    list-style: none;
+  }
+
+  .spec-list li {
+    font-size: 13px;
+    color: var(--mist);
+    font-weight: 300;
+    padding: 6px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    line-height: 1.5;
+  }
+
+  .spec-list li::before {
+    content: '—';
+    color: var(--copper);
+    font-size: 10px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .tier-2 .spec-list li::before { color: var(--gold); }
+  .tier-3 .spec-list li::before { color: var(--stone); }
+
+  .tagline-block {
+    grid-column: 1 / -1;
+    background: rgba(184,115,51,0.06);
+    border-left: 2px solid rgba(184,115,51,0.3);
+    padding: 20px 24px;
+    margin-top: 8px;
+  }
+
+  .tier-2 .tagline-block {
+    background: rgba(201,168,76,0.06);
+    border-left-color: rgba(201,168,76,0.3);
+  }
+
+  .tier-3 .tagline-block {
+    background: rgba(240,242,239,0.04);
+    border-left-color: rgba(240,242,239,0.2);
+  }
+
+  .tagline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-style: italic;
+    color: var(--snow);
+    font-weight: 300;
+    line-height: 1.5;
+  }
+
+  /* MARKET CONTEXT */
+  .intel-block {
+    background: var(--ridge);
+    padding: 32px;
+    border-top: 1px solid rgba(184,115,51,0.2);
+    margin: 48px 0 0;
+  }
+
+  .intel-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 32px;
+    margin-top: 24px;
+  }
+
+  .intel-item .number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 44px;
+    color: var(--copper-light);
+    font-weight: 300;
+    line-height: 1;
+  }
+
+  .intel-item .number-unit {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    color: var(--stone);
+    display: block;
+    margin-top: 6px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  .intel-item .intel-desc {
+    font-size: 12px;
+    color: var(--stone);
+    margin-top: 8px;
+    line-height: 1.6;
+  }
+
+  /* POSITIONING TABLE */
+  .comp-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 32px 0;
+    font-size: 13px;
+  }
+
+  .comp-table th {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--copper);
+    padding: 16px 20px;
+    text-align: left;
+    border-bottom: 1px solid rgba(184,115,51,0.3);
+    font-weight: 400;
+  }
+
+  .comp-table td {
+    padding: 14px 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    color: var(--mist);
+    vertical-align: top;
+    line-height: 1.6;
+  }
+
+  .comp-table tr:hover td {
+    background: rgba(255,255,255,0.015);
+  }
+
+  .comp-table td:first-child {
+    color: var(--snow);
+    font-weight: 500;
+  }
+
+  .win { color: #7ab87a; }
+  .lose { color: #b87a7a; }
+  .neutral { color: var(--stone); }
+
+  /* SOFTWARE MODULE */
+  .software-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.05);
+    margin: 32px 0;
+  }
+
+  .sw-module {
+    background: var(--forge);
+    padding: 28px 28px 32px;
+  }
+
+  .sw-icon {
+    width: 40px;
+    height: 40px;
+    border: 1px solid rgba(184,115,51,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+    font-size: 18px;
+  }
+
+  .sw-name {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: var(--snow);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+  }
+
+  .sw-desc {
+    font-size: 12px;
+    color: var(--stone);
+    line-height: 1.7;
+    font-weight: 300;
+  }
+
+  /* ENVIRONMENTAL */
+  .env-strip {
+    background: linear-gradient(135deg, var(--pine) 0%, var(--ridge) 100%);
+    border: 1px solid rgba(45,74,53,0.8);
+    padding: 40px;
+    margin: 32px 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 32px;
+  }
+
+  .env-stat {
+    text-align: center;
+  }
+
+  .env-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 48px;
+    color: #b8d4b8;
+    font-weight: 300;
+    line-height: 1;
+  }
+
+  .env-label {
+    font-size: 11px;
+    color: #7aab7a;
+    margin-top: 8px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-family: 'DM Mono', monospace;
+  }
+
+  .env-desc {
+    font-size: 12px;
+    color: rgba(184,212,184,0.7);
+    margin-top: 6px;
+  }
+
+  /* RISK SECTION */
+  .risk-item {
+    background: var(--forge);
+    border-left: 3px solid var(--rust);
+    padding: 24px 28px;
+    margin-bottom: 2px;
+  }
+
+  .risk-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: #d47a6a;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .risk-desc {
+    font-size: 13px;
+    color: var(--stone);
+    line-height: 1.7;
+    max-width: 800px;
+  }
+
+  .risk-counter {
+    font-size: 12px;
+    color: var(--copper);
+    margin-top: 10px;
+    font-style: italic;
+  }
+
+  /* ROADMAP */
+  .roadmap-row {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: 32px;
+    padding: 24px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    align-items: start;
+  }
+
+  .roadmap-time {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--copper);
+    padding-top: 2px;
+  }
+
+  .roadmap-items {
+    font-size: 13px;
+    color: var(--mist);
+    line-height: 1.8;
+  }
+
+  /* FOOTER */
+  footer {
+    padding: 60px 60px 40px;
+    border-top: 1px solid rgba(184,115,51,0.2);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  .footer-brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    color: var(--copper);
+    font-weight: 300;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+  }
+
+  .footer-meta {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--stone);
+    letter-spacing: 2px;
+    text-align: right;
+    line-height: 1.8;
+  }
+
+  /* PULL QUOTES */
+  blockquote {
+    border-left: 3px solid var(--copper);
+    padding: 20px 28px;
+    margin: 32px 0;
+    background: rgba(184,115,51,0.04);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-style: italic;
+    color: var(--snow);
+    font-weight: 300;
+    line-height: 1.5;
+    max-width: 720px;
+  }
+
+  /* TCO TABLE */
+  .tco-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.06);
+    margin: 32px 0;
+  }
+
+  .tco-col {
+    background: var(--forge);
+    padding: 32px;
+  }
+
+  .tco-col.highlight {
+    background: rgba(184,115,51,0.08);
+  }
+
+  .tco-header {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--stone);
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .tco-col.highlight .tco-header { color: var(--copper); }
+
+  .tco-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.03);
+    font-size: 12px;
+  }
+
+  .tco-row .label { color: var(--stone); }
+  .tco-row .val { color: var(--mist); font-family: 'DM Mono', monospace; }
+  .tco-row.total { 
+    margin-top: 8px; 
+    padding-top: 16px;
+    border-top: 1px solid rgba(184,115,51,0.2);
+    border-bottom: none;
+  }
+  .tco-row.total .label { color: var(--snow); font-weight: 500; }
+  .tco-row.total .val { color: var(--copper-light); font-size: 18px; }
+
+  @media (max-width: 900px) {
+    section, .masthead { padding: 48px 28px; }
+    .product-card { grid-template-columns: 1fr; }
+    .card-body { grid-template-columns: 1fr; }
+    .env-strip { grid-template-columns: 1fr; }
+    .tco-grid { grid-template-columns: 1fr; }
+    footer { flex-direction: column; gap: 24px; }
+    .footer-meta { text-align: left; }
+  }
+</style>
+</head>
+<body>
+
+<!-- MASTHEAD -->
+<header class="masthead">
+  <div class="brand-tag">Island Mountain AI &nbsp;//&nbsp; Internal Strategy Document &nbsp;//&nbsp; May 2026</div>
+  <h1>The <em>Landfall</em> Series</h1>
+  <h1>Family Sovereign AI</h1>
+  <span class="copper-rule"></span>
+  <p class="sub">A complete product line architecture for household-scale, air-gapped AI and data sovereignty &mdash; Scout / Ranger / Pack Leader</p>
+</header>
+
+<!-- MARKET CONTEXT -->
+<section id="context">
+  <div class="section-label">01 — Market Intelligence</div>
+  <h2>The World Your Customer Is Living In</h2>
+  <p>You identified the right instinct. Here's the data behind it.</p>
+
+  <div class="context-grid">
+    <div class="context-cell">
+      <div class="label">AI Subscription Fatigue</div>
+      <div class="value">$240+</div>
+      <div class="caption">Average annual household spend on AI subscriptions in 2026, with power users hitting $1,200&ndash;$2,400/year across ChatGPT Pro, Claude Max, Adobe AI Pro, Google AI Ultra, and copilot tools. Prices are <em>rising</em>, not stabilizing.</div>
+    </div>
+    <div class="context-cell">
+      <div class="label">Home AI Server Market</div>
+      <div class="value">$879M</div>
+      <div class="caption">Projected global home AI server market by 2032, CAGR 9.32% from $471M in 2025. This is the floor. It doesn't count the prosumer household segment Island Mountain is targeting.</div>
+    </div>
+    <div class="context-cell">
+      <div class="label">Data Center Water Burn</div>
+      <div class="value">5M gal/day</div>
+      <div class="caption">A single hyperscale AI data center consumes up to 5 million gallons of drinking water daily. Texas data centers alone will use 399 billion gallons annually by 2030. This is a story consumers are ready to hear.</div>
+    </div>
+    <div class="context-cell">
+      <div class="label">Nearest Competitor</div>
+      <div class="value">$3,999</div>
+      <div class="caption">NVIDIA DGX Spark &mdash; a developer-first personal AI supercomputer. Launched October 2025. 128GB unified memory, 1 petaFLOP. It's aimed at developers, not families. There is no true family-market competitor in the $8,500&ndash;$15,000 sovereign data space.</div>
+    </div>
+    <div class="context-cell">
+      <div class="label">AI Price Hike Pressure</div>
+      <div class="value">108%</div>
+      <div class="caption">Year-over-year increase in organizational AI-native app spending in 2026 (Zylo). 78% of IT leaders report unexpected AI charges. 66% of Americans who canceled a subscription did so because it was too expensive. The window for Island Mountain's pitch is wide open.</div>
+    </div>
+    <div class="context-cell">
+      <div class="label">The Great Wealth Transfer</div>
+      <div class="value">$84T</div>
+      <div class="caption">Set to transfer from Baby Boomers to heirs by 2045. Families are actively rethinking legacy, digital asset preservation, and generational data stewardship. FOREVER.com has proven there is deep consumer appetite for "I own this. It's mine."</div>
+    </div>
+  </div>
+
+  <div class="intel-block">
+    <div class="section-label">Competitive Landscape at a Glance</div>
+    <div class="intel-grid">
+      <div class="intel-item">
+        <div class="number">$3,999</div>
+        <span class="number-unit">NVIDIA DGX Spark</span>
+        <div class="intel-desc">Developer-focused, not family-oriented. No media vault. No consumer UI. No sovereignty narrative. Requires Linux fluency.</div>
+      </div>
+      <div class="intel-item">
+        <div class="number">$700</div>
+        <span class="number-unit">Synology DS1522+</span>
+        <div class="intel-desc">Excellent NAS. No AI inference engine. No LLM. No conversational interface. Needs technical assembly. Family-hostile setup.</div>
+      </div>
+      <div class="intel-item">
+        <div class="number">$20/mo</div>
+        <span class="number-unit">ChatGPT Plus / Claude Pro</span>
+        <div class="intel-desc">Zero ownership. All data transmitted externally. Prices actively rising. Usage caps. No family vault. Your data builds their product.</div>
+      </div>
+      <div class="intel-item">
+        <div class="number">Zero</div>
+        <span class="number-unit">True Family Sovereign AI</span>
+        <div class="intel-desc">No one is selling a plug-and-play, living-room-ready, AI-powered, air-gapped family data fortress with a consumer experience. Island Mountain owns this lane.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STRATEGIC PREMISE -->
+<section id="premise">
+  <div class="section-label">02 — Strategic Premise</div>
+  <h2>The Genie Belongs in Your Home</h2>
+
+  <blockquote>"You've been renting intelligence for five years. Every prompt you've typed — your medical questions, your legal concerns, your family arguments you needed to process, your kids' homework — all of it lives on someone else's server. The Landfall Series ends that."</blockquote>
+
+  <p>The Landfall Series is Island Mountain's consumer-facing hardware line. Where the Summit Series serves regulated institutions &mdash; tribal governments, healthcare systems, law firms &mdash; the Landfall Series serves the <strong>household as a sovereign institution</strong>. The family as its own nation-state. The home as its own data jurisdiction.</p>
+
+  <p>The core insight driving FOREVER.com's success applies here in spades: <strong>families will pay a meaningful sum to own their memories, their data, and their AI outright, rather than rent access indefinitely from a corporation whose interests do not align with theirs.</strong> What FOREVER did for photo preservation, Landfall does for the entire family intelligence layer.</p>
+
+  <p>This is not a NAS. This is not a hobbyist homelab server. This is not a developer workstation. This is a <strong>home AI appliance</strong> — as expected and unremarkable in a family home as a router, a NAS drive, or a smart TV. Sleek enough for a bookshelf. Powerful enough to run capable open-weight models. Private enough to be genuinely air-gapped. Simple enough that your partner can use it without asking you how.</p>
+
+  <p>The aesthetic target: the warmth and confidence of a high-end turntable or a NAD amplifier. Something that signals intelligence without demanding it.</p>
+</section>
+
+<!-- PRODUCT LINE -->
+<section id="products">
+  <div class="section-label">03 — The Landfall Product Line</div>
+  <h2>Scout &nbsp;&bull;&nbsp; Ranger &nbsp;&bull;&nbsp; Pack Leader</h2>
+  <p>Three tiers. One lineage. All air-gapped. All yours.</p>
+
+  <div class="product-stack">
+
+    <!-- SCOUT -->
+    <div class="product-card tier-1">
+      <div class="card-identity">
+        <div>
+          <div class="tier-badge">Landfall &mdash; Tier I</div>
+          <div class="product-name">Scout</div>
+          <div class="product-subtitle">Entry Sovereign Node</div>
+        </div>
+        <div class="product-price">
+          <div class="price-main">$8,500 &ndash; $9,500</div>
+          <div class="price-sub">One-time. No subscriptions. No token fees. Ever.</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div>
+          <div class="card-section-title">Hardware Spec</div>
+          <ul class="spec-list">
+            <li>NVIDIA RTX 5090 (32GB GDDR7) or equivalent GPU — capable of running quantized 70B models</li>
+            <li>AMD Ryzen 9 or Intel Core Ultra — 16-core base, 32 threads</li>
+            <li>64GB DDR5 ECC RAM</li>
+            <li>4TB NVMe Gen5 SSD (primary) + 8TB HDD family vault storage</li>
+            <li>Wi-Fi 7 + 2.5GbE wired (air-gap switch configurable)</li>
+            <li>Living room form factor: ~25cm × 25cm × 12cm, anodized aluminum chassis, silent under load</li>
+            <li>40W idle draw / 350W peak — quieter than a gaming console</li>
+          </ul>
+        </div>
+        <div>
+          <div class="card-section-title">Pre-Loaded Software Stack</div>
+          <ul class="spec-list">
+            <li>Island Mountain OS (IM-OS) — custom consumer-facing Landfall interface</li>
+            <li>Qwen3 14B + Gemma 4 26B pre-loaded and benchmarked</li>
+            <li>Ollama inference engine, Open WebUI front-end (family-styled)</li>
+            <li>FamilyVault — Island Mountain's photo/video/doc AI organization module</li>
+            <li>Air-gap config wizard — one-button network isolation</li>
+            <li>72-hour burn-in quality check at IM facility</li>
+            <li>1-year white-glove remote support included</li>
+          </ul>
+        </div>
+        <div class="tagline-block" style="grid-column:1/-1">
+          <div class="tagline">"Scout is the beachhead. It's the family's first act of data independence — capable, quiet, and completely theirs."</div>
+        </div>
+        <div>
+          <div class="card-section-title">Target Buyer</div>
+          <ul class="spec-list">
+            <li>Dual-income households earning $120K–$250K/year</li>
+            <li>Tech-literate parent, 35–55, tired of subscription creep</li>
+            <li>Family with active photo/video archive they want to own</li>
+            <li>Privacy-concerned professional: attorney, physician, therapist, financial advisor working from home</li>
+          </ul>
+        </div>
+        <div>
+          <div class="card-section-title">Subscription Alternatives It Replaces</div>
+          <ul class="spec-list">
+            <li>ChatGPT Pro ($200/mo) — break-even in ~4 years, infinite savings thereafter</li>
+            <li>Google Photos storage + AI ($30/mo)</li>
+            <li>Adobe Creative AI ($70/mo)</li>
+            <li>FOREVER.com permanent storage ($300+ one-time + add-ons)</li>
+            <li>Microsoft Copilot Pro ($30/mo)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- RANGER -->
+    <div class="product-card tier-2">
+      <div class="card-identity">
+        <div>
+          <div class="tier-badge">Landfall &mdash; Tier II</div>
+          <div class="product-name">Ranger</div>
+          <div class="product-subtitle">Family Command Node</div>
+        </div>
+        <div class="product-price">
+          <div class="price-main">$12,000 &ndash; $14,000</div>
+          <div class="price-sub">Build-to-order. 3-week lead time.</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div>
+          <div class="card-section-title">Hardware Spec</div>
+          <ul class="spec-list">
+            <li>Dual NVIDIA RTX 5090 (64GB combined VRAM) — runs unquantized 70B models cleanly</li>
+            <li>AMD Threadripper Pro or Intel Xeon — 24-core baseline</li>
+            <li>128GB DDR5 ECC RAM</li>
+            <li>8TB NVMe RAID (primary) + 32TB HDD family vault (expandable)</li>
+            <li>10GbE wired + Wi-Fi 7 — whole-home AI mesh capable</li>
+            <li>Rack-mountable OR freestanding tower with premium matte finish, copper accent trim (Landfall aesthetic language)</li>
+            <li>Active liquid-cooled GPU loop, whisper-quiet under sustained load</li>
+          </ul>
+        </div>
+        <div>
+          <div class="card-section-title">Pre-Loaded Software Stack</div>
+          <ul class="spec-list">
+            <li>Everything in Scout, plus:</li>
+            <li>Qwen3 70B full-precision capable — meaningful reasoning, not just chat</li>
+            <li>Multi-user family profiles with separate AI memory contexts</li>
+            <li>FamilyVault Pro — AI-powered facial recognition, event clustering, fully offline</li>
+            <li>HomeBase: smart home AI hub integrating Landfall node as the brain</li>
+            <li>Landfall Scribe: private document drafting, summarization, legal/medical context</li>
+            <li>2-year white-glove support + annual model update package</li>
+          </ul>
+        </div>
+        <div class="tagline-block" style="grid-column:1/-1">
+          <div class="tagline">"Ranger is where the family goes from curious to committed. It's the whole home working from a single sovereign brain."</div>
+        </div>
+        <div>
+          <div class="card-section-title">Target Buyer</div>
+          <ul class="spec-list">
+            <li>High-income households: $250K–$600K/year</li>
+            <li>Multi-generational families wanting shared AI memory across parents and adult children</li>
+            <li>Home office professionals with active client confidentiality concerns</li>
+            <li>Landfall Scout owners who upgrade after 12–18 months</li>
+            <li>Privacy-first buyers who've read the data center water/energy stories</li>
+          </ul>
+        </div>
+        <div>
+          <div class="card-section-title">Differentiators vs. Scout</div>
+          <ul class="spec-list">
+            <li>Full-precision 70B model capability — substantively smarter AI</li>
+            <li>Multi-user profiles — every family member gets their own AI memory</li>
+            <li>Whole-home mesh: Ranger serves every device in the house simultaneously</li>
+            <li>32TB family vault — decades of 4K family video, medical records, documents</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- PACK LEADER -->
+    <div class="product-card tier-3">
+      <div class="card-identity">
+        <div>
+          <div class="tier-badge">Landfall &mdash; Tier III</div>
+          <div class="product-name">Pack<br>Leader</div>
+          <div class="product-subtitle">Generational Legacy Node</div>
+        </div>
+        <div class="product-price">
+          <div class="price-main">Contact for Pricing</div>
+          <div class="price-sub">~$18,000–$28,000 configured. Fully custom. White-glove install.</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div>
+          <div class="card-section-title">Hardware Spec</div>
+          <ul class="spec-list">
+            <li>4× NVIDIA RTX 5090 or equivalent (128GB combined VRAM) — frontier open-weight model territory</li>
+            <li>Server-grade CPU, 32–64 cores, ECC memory architecture</li>
+            <li>256GB–512GB DDR5 ECC RAM</li>
+            <li>NVMe RAID array + 80TB–160TB archival vault (fully redundant)</li>
+            <li>Dedicated network switch with hardware air-gap capability</li>
+            <li>UPS battery backup included — always-on family intelligence, no downtime</li>
+            <li>Custom chassis: Island Mountain Summit aesthetic at Landfall scale — premium anodized steel, copper-accented panels, silent rack enclosure</li>
+          </ul>
+        </div>
+        <div>
+          <div class="card-section-title">Pre-Loaded Software Stack</div>
+          <ul class="spec-list">
+            <li>Everything in Ranger, plus:</li>
+            <li>Landfall Legacy Engine — structured generational memory: oral history capture, document lineage, family knowledge graph</li>
+            <li>Estate AI module — document organization, digital asset cataloging, beneficiary-access controls</li>
+            <li>Landfall Council — multi-family-member collaborative AI workspace</li>
+            <li>MedRecord Vault — private health record storage and AI-assisted comprehension</li>
+            <li>Custom model fine-tuning on family data (opt-in, fully local, never leaves the node)</li>
+            <li>Lifetime white-glove support + perpetual model update subscription</li>
+          </ul>
+        </div>
+        <div class="tagline-block" style="grid-column:1/-1">
+          <div class="tagline">"Pack Leader is the family's permanent AI institution — a generational asset as real as the house it lives in. Your grandchildren will use it."</div>
+        </div>
+        <div>
+          <div class="card-section-title">Target Buyer</div>
+          <ul class="spec-list">
+            <li>Affluent families: $600K+ household income or significant net worth</li>
+            <li>Multi-generational households managing family wealth, legacy documents, estate planning</li>
+            <li>Physicians, attorneys, executives with active confidentiality obligations at home</li>
+            <li>Families with tribal, indigenous, or cultural heritage to preserve and protect</li>
+            <li>Buyers already using Island Mountain Summit Series at their business</li>
+          </ul>
+        </div>
+        <div>
+          <div class="card-section-title">The Legacy Pitch</div>
+          <ul class="spec-list">
+            <li>$84 trillion Great Wealth Transfer underway — families are actively thinking about legacy</li>
+            <li>Digital estate planning is now a mainstream conversation</li>
+            <li>FOREVER.com proved families will pay for permanence. Pack Leader is permanence with intelligence.</li>
+            <li>The node is a physical family asset — insurable, transferable, inheritable</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ISLAND MOUNTAIN OS -->
+<section id="software">
+  <div class="section-label">04 — IM-OS: The Landfall Software Layer</div>
+  <h2>Island Mountain OS — Landfall Edition</h2>
+  <p>The hardware is the body. IM-OS is the brain that makes it usable by a family, not just a developer. This is the moat. Anyone can assemble hardware. No one else is building this software experience.</p>
+
+  <div class="software-grid">
+    <div class="sw-module">
+      <div class="sw-icon">🏔</div>
+      <div class="sw-name">Landfall Home</div>
+      <div class="sw-desc">The main family dashboard. Clean, warm, un-technical. Family profiles, recent conversations, vault snapshots, system health at a glance. Designed to feel more like a Sonos app than a Linux terminal.</div>
+    </div>
+    <div class="sw-module">
+      <div class="sw-icon">🧠</div>
+      <div class="sw-name">Summit Chat</div>
+      <div class="sw-desc">The local AI assistant interface. Pre-loaded with Qwen3 and Gemma 4. Family-member profiles with persistent, private memory contexts. Chat, voice, and document upload. 100% offline. Zero telemetry.</div>
+    </div>
+    <div class="sw-module">
+      <div class="sw-icon">📸</div>
+      <div class="sw-name">FamilyVault</div>
+      <div class="sw-desc">AI-organized photo, video, and document archive. Facial recognition, event clustering, date/location tagging — all processed locally. Never uploads. Never shares. The anti-Google-Photos.</div>
+    </div>
+    <div class="sw-module">
+      <div class="sw-icon">📜</div>
+      <div class="sw-name">Landfall Scribe</div>
+      <div class="sw-desc">Private document drafting assistant. Wills, letters, medical summaries, tax prep context, home school curricula, legal correspondence. Your AI lawyer-adjacent, physician-adjacent, CFO-adjacent writing partner. Fully offline.</div>
+    </div>
+    <div class="sw-module">
+      <div class="sw-icon">🏡</div>
+      <div class="sw-name">HomeBase</div>
+      <div class="sw-desc">Smart home integration hub. The Landfall node becomes the brain of your Matter/Thread ecosystem — not a cloud server in Virginia. Local automations, local voice, local decisions. No Amazon, no Google, no Apple required.</div>
+    </div>
+    <div class="sw-module">
+      <div class="sw-icon">🌲</div>
+      <div class="sw-name">Legacy Engine</div>
+      <div class="sw-desc">Generational memory capture. Oral history transcription and indexing. Family knowledge graph. Document lineage mapping. The answer to "What happens to all of this when we're gone?" (Pack Leader only)</div>
+    </div>
+    <div class="sw-module">
+      <div class="sw-icon">🔒</div>
+      <div class="sw-name">Air-Gap Shield</div>
+      <div class="sw-desc">One-button hardware network isolation. Disables Wi-Fi and WAN routing, leaving LAN access only. Visual indicator (LED ring on chassis). The node goes fully dark from the outside world on command.</div>
+    </div>
+    <div class="sw-module">
+      <div class="sw-icon">📡</div>
+      <div class="sw-name">Model Updater</div>
+      <div class="sw-desc">Secure, periodic model update delivery via encrypted USB drive (mailed annually) or verified local download. Keeps Landfall current with open-weight model advances without requiring internet connectivity during operation.</div>
+    </div>
+    <div class="sw-module">
+      <div class="sw-icon">💊</div>
+      <div class="sw-name">MedRecord Vault</div>
+      <div class="sw-desc">Secure health record storage and AI-assisted comprehension. Lab results, discharge summaries, prescription history, specialist notes — all indexed, all private, all answerable by your local AI. (Ranger and Pack Leader)</div>
+    </div>
+  </div>
+</section>
+
+<!-- ENVIRONMENTAL CASE -->
+<section id="environment">
+  <div class="section-label">05 — The Environmental Case</div>
+  <h2>Your AI Doesn't Have to Burn the World</h2>
+  <p>This is a genuine differentiator that no cloud AI company can honestly counter. The data is damning.</p>
+
+  <div class="env-strip">
+    <div class="env-stat">
+      <div class="env-num">5M</div>
+      <div class="env-label">Gallons / Day</div>
+      <div class="env-desc">What a single hyperscale AI data center drinks from local water supplies every single day</div>
+    </div>
+    <div class="env-stat">
+      <div class="env-num">399B</div>
+      <div class="env-label">Gallons by 2030</div>
+      <div class="env-desc">Projected Texas data center water consumption by 2030 — enough to drain Lake Mead 16 feet in a year</div>
+    </div>
+    <div class="env-stat">
+      <div class="env-num">~40W</div>
+      <div class="env-label">Landfall Scout Idle</div>
+      <div class="env-desc">What your Landfall Scout draws at rest — comparable to a gaming console, a fraction of a data center rack</div>
+    </div>
+  </div>
+
+  <p>The carbon footprint of cloud AI systems is projected at 32.6 to 79.7 million tons of CO2 in 2025 alone. Meanwhile, AI electricity demand could nearly double by 2030 to 945 TWh globally. A Landfall node running locally, serving one family, burns approximately the same electricity as a gaming console and zero gallons of municipal drinking water per day of inference. That's a story. Tell it.</p>
+
+  <blockquote>"When you ask ChatGPT a question, a data center somewhere drinks a teaspoon of water. Do it 10,000 times a year, and you've donated a bathtub to Google's cooling towers. Ask your Landfall the same questions. The water stays in your pipes."</blockquote>
+</section>
+
+<!-- TCO ANALYSIS -->
+<section id="tco">
+  <div class="section-label">06 — Total Cost of Ownership</div>
+  <h2>The Math Is the Message</h2>
+  <p>Your buyer does not see the Landfall Scout as $8,500. They see it as $8,500 versus the alternative. Show them the alternative honestly.</p>
+
+  <div class="tco-grid">
+    <div class="tco-col">
+      <div class="tco-header">Cloud AI Stack (Annual)</div>
+      <div class="tco-row"><span class="label">ChatGPT Plus</span><span class="val">$240/yr</span></div>
+      <div class="tco-row"><span class="label">Claude Pro</span><span class="val">$204/yr</span></div>
+      <div class="tco-row"><span class="label">Adobe Creative AI</span><span class="val">$840/yr</span></div>
+      <div class="tco-row"><span class="label">Google AI Pro</span><span class="val">$240/yr</span></div>
+      <div class="tco-row"><span class="label">Microsoft Copilot Pro</span><span class="val">$360/yr</span></div>
+      <div class="tco-row"><span class="label">Photo storage (Google/iCloud)</span><span class="val">$120/yr</span></div>
+      <div class="tco-row total"><span class="label">Annual Total</span><span class="val">$2,004/yr</span></div>
+    </div>
+    <div class="tco-col highlight">
+      <div class="tco-header">Landfall Scout — 5-Year Ownership</div>
+      <div class="tco-row"><span class="label">Hardware (one-time)</span><span class="val">$8,500</span></div>
+      <div class="tco-row"><span class="label">Electricity (5 years)</span><span class="val">~$350</span></div>
+      <div class="tco-row"><span class="label">Model updates (annual)</span><span class="val">$200/yr</span></div>
+      <div class="tco-row"><span class="label">Support (Year 1 included)</span><span class="val">$0–$400/yr</span></div>
+      <div class="tco-row"><span class="label">Token fees</span><span class="val">$0</span></div>
+      <div class="tco-row"><span class="label">Subscription creep</span><span class="val">$0</span></div>
+      <div class="tco-row total"><span class="label">5-Year Total</span><span class="val">~$10,850</span></div>
+    </div>
+    <div class="tco-col">
+      <div class="tco-header">Cloud AI Stack (5-Year Projection)</div>
+      <div class="tco-row"><span class="label">Year 1 (current)</span><span class="val">$2,004</span></div>
+      <div class="tco-row"><span class="label">Year 2 (+15% price hike)</span><span class="val">~$2,305</span></div>
+      <div class="tco-row"><span class="label">Year 3 (+15%)</span><span class="val">~$2,651</span></div>
+      <div class="tco-row"><span class="label">Year 4 (+15%)</span><span class="val">~$3,049</span></div>
+      <div class="tco-row"><span class="label">Year 5 (+15%)</span><span class="val">~$3,506</span></div>
+      <div class="tco-row total"><span class="label">5-Year Total</span><span class="val">~$13,515</span></div>
+    </div>
+  </div>
+
+  <p>The 15% annual price hike assumption is conservative. Adobe already hiked 17% in 2025. Microsoft Copilot added $3/user/month to Workspace. OpenAI's flat-rate model is cracking under load costs. The Landfall Scout becomes <strong>cheaper than cloud subscriptions by Year 5</strong>, and after that, it's free money every year — compounding indefinitely.</p>
+</section>
+
+<!-- COMPETITIVE LANDSCAPE TABLE -->
+<section id="competitive">
+  <div class="section-label">07 — Competitive Differentiation</div>
+  <h2>Where Landfall Wins Outright</h2>
+
+  <table class="comp-table">
+    <thead>
+      <tr>
+        <th>Capability</th>
+        <th>Landfall Scout</th>
+        <th>NVIDIA DGX Spark</th>
+        <th>Synology NAS</th>
+        <th>ChatGPT / Claude</th>
+        <th>FOREVER.com</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Truly air-gapped, no cloud required</td>
+        <td class="win">✓ Hardware switch</td>
+        <td class="neutral">Partial (Wi-Fi default)</td>
+        <td class="neutral">LAN only (no AI)</td>
+        <td class="lose">✗ Cloud-dependent</td>
+        <td class="lose">✗ Cloud-only</td>
+      </tr>
+      <tr>
+        <td>Capable local LLM (70B class)</td>
+        <td class="win">✓ Pre-loaded, tuned</td>
+        <td class="win">✓ Developer config req'd</td>
+        <td class="lose">✗ No LLM</td>
+        <td class="lose">✗ Not local</td>
+        <td class="lose">✗ No AI inference</td>
+      </tr>
+      <tr>
+        <td>Family-oriented consumer UX</td>
+        <td class="win">✓ IM-OS Landfall UI</td>
+        <td class="lose">✗ Developer only</td>
+        <td class="neutral">Partial (DSM)</td>
+        <td class="neutral">Partial (web app)</td>
+        <td class="win">✓ Consumer focus</td>
+      </tr>
+      <tr>
+        <td>Sovereign family media vault</td>
+        <td class="win">✓ FamilyVault module</td>
+        <td class="lose">✗ Not included</td>
+        <td class="neutral">Partial (Photos app)</td>
+        <td class="lose">✗ Cloud-stored</td>
+        <td class="win">✓ Core product</td>
+      </tr>
+      <tr>
+        <td>Zero recurring subscription required</td>
+        <td class="win">✓ One-time purchase</td>
+        <td class="neutral">Hardware only; software varies</td>
+        <td class="win">✓ One-time (mostly)</td>
+        <td class="lose">✗ Subscription forever</td>
+        <td class="neutral">One-time storage, add-ons extra</td>
+      </tr>
+      <tr>
+        <td>Environmental footprint transparency</td>
+        <td class="win">✓ Knowable, local, tiny</td>
+        <td class="win">✓ Low-power design</td>
+        <td class="win">✓ Low power</td>
+        <td class="lose">✗ Opaque, enormous</td>
+        <td class="lose">✗ Cloud-stored, hidden cost</td>
+      </tr>
+      <tr>
+        <td>Smart home local AI integration</td>
+        <td class="win">✓ HomeBase module</td>
+        <td class="neutral">Possible with setup</td>
+        <td class="neutral">Limited</td>
+        <td class="lose">✗ Voice assistants are cloud</td>
+        <td class="lose">✗ Not applicable</td>
+      </tr>
+      <tr>
+        <td>Generational legacy / estate tools</td>
+        <td class="neutral">Basic (Scout)</td>
+        <td class="lose">✗ Not applicable</td>
+        <td class="lose">✗ Not applicable</td>
+        <td class="lose">✗ Data not yours</td>
+        <td class="neutral">Partial (storage only)</td>
+      </tr>
+      <tr>
+        <td>Medical / legal document vault</td>
+        <td class="win">✓ Landfall Scribe + MedVault</td>
+        <td class="lose">✗ Not included</td>
+        <td class="lose">✗ Not applicable</td>
+        <td class="lose">✗ HIPAA-incompatible by nature</td>
+        <td class="lose">✗ Not applicable</td>
+      </tr>
+      <tr>
+        <td>Living room form factor</td>
+        <td class="win">✓ Consumer aesthetic</td>
+        <td class="win">✓ Compact</td>
+        <td class="neutral">Functional, not beautiful</td>
+        <td class="neutral">App only</td>
+        <td class="neutral">App only</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- RISKS -->
+<section id="risks">
+  <div class="section-label">08 — Brutal Risk Assessment</div>
+  <h2>What Could Kill This</h2>
+  <p>You asked for honesty. Here it is, unvarnished.</p>
+
+  <div class="risk-item">
+    <div class="risk-title">Price Ceiling Reality Check</div>
+    <div class="risk-desc">$8,500–$9,500 is a serious ask for a consumer product. NVIDIA's DGX Spark at $3,999 is the nearest brand-name comparison. Island Mountain is selling 2x that entry point without NVIDIA's marketing budget. The buyer needs to feel — viscerally — that this is not a computer purchase but a declaration of family sovereignty. The entire go-to-market must earn that premium.</div>
+    <div class="risk-counter">Counter: Frame it as a 5-year financial decision. The TCO math works. Make it visual, concrete, and personal. "You'll spend $13,500 on subscriptions either way."</div>
+  </div>
+
+  <div class="risk-item">
+    <div class="risk-title">Open-Weight Model Quality Gap (Narrowing, But Real)</div>
+    <div class="risk-desc">Qwen3 70B and Gemma 4 31B are excellent by 2026 standards. They are not GPT-5 or Claude Opus. A power-user who depends on frontier model capabilities will notice the gap. The Landfall line should not promise what it can't deliver. Marketing must be honest about where local models excel (privacy, availability, speed for common tasks) and where they lag (deepest reasoning on esoteric queries).</div>
+    <div class="risk-counter">Counter: The gap is closing every six months. Pre-load the best available models at launch. Annual model update packages keep Landfall current. Frame it as a hedge: "The models you own will keep getting better."</div>
+  </div>
+
+  <div class="risk-item">
+    <div class="risk-title">Consumer UX Complexity — Setup and Maintenance</div>
+    <div class="risk-desc">The Synology community is full of horror stories from non-technical buyers who bought a NAS, struggled for three weekends, and gave up. If IM-OS isn't genuinely plug-and-play, the Landfall line will be returned, reviewed badly, and word-of-mouth will crater. The 72-hour burn-in helps. But first-run experience must be obsessively tested. The partner who didn't want the device must be able to use it within 10 minutes of unboxing.</div>
+    <div class="risk-counter">Counter: White-glove remote setup support included in Year 1. IM-OS Landfall UI must be consumer-tested, not developer-tested. Invest in onboarding. This is the moat.</div>
+  </div>
+
+  <div class="risk-item">
+    <div class="risk-title">NVIDIA / Apple Counter-Move</div>
+    <div class="risk-desc">NVIDIA has the DGX Spark and is clearly interested in the personal AI space. Apple's M-series chips run competitive local models and Apple has 2 billion devices in the ecosystem. If Apple launches a "Mac AI Vault" product with Siri's cloud back-end made local, it will have distribution advantages Island Mountain can't match. The risk is real.</div>
+    <div class="risk-counter">Counter: Apple will not go fully air-gapped. Their services revenue requires cloud connectivity. NVIDIA's DGX line targets developers, not families. The sovereign household space is genuinely unclaimed. Move fast.</div>
+  </div>
+
+  <div class="risk-item">
+    <div class="risk-title">Tariff and Supply Chain Pressure</div>
+    <div class="risk-desc">2025 tariff frameworks on semiconductor supply chains are real and ongoing. NVIDIA GPU pricing has been volatile. A Scout priced at $8,500 today could require $9,500 pricing in six months based purely on component costs. This disrupts messaging and erodes margin.</div>
+    <div class="risk-counter">Counter: Build-to-order for Ranger and Pack Leader limits inventory risk. Scout can use RTX 5090 or equivalent AMD/Intel GPU alternatives depending on availability. Maintain hardware agnosticism at the OS layer.</div>
+  </div>
+
+  <div class="risk-item">
+    <div class="risk-title">Channel and Reach — Who Sells This?</div>
+    <div class="risk-desc">Island Mountain doesn't have a retail channel. The Summit Series sells B2B through relationships and vertical-specific pitches. Landfall needs a different motion: D2C web, referral networks, privacy-conscious influencer outreach, home theater/AV installer channel, financial advisor referrals. None of these exist yet.</div>
+    <div class="risk-counter">Counter: The privacy and sovereignty audience has clear gathering points: r/selfhosted, r/privacy, FOSS communities, home automation forums, estate planning networks, tribal community channels. Start there. Build the community before the channel.</div>
+  </div>
+</section>
+
+<!-- GO-TO-MARKET ROADMAP -->
+<section id="roadmap">
+  <div class="section-label">09 — Go-to-Market Roadmap</div>
+  <h2>Sequencing the Landfall Launch</h2>
+
+  <div class="roadmap-row">
+    <div class="roadmap-time">Q3 2026</div>
+    <div class="roadmap-items"><strong>Scout prototype and internal testing.</strong> IM-OS Landfall UI MVP. FamilyVault and Summit Chat functional. 72-hour burn-in protocol adapted from Summit Series. Ten beta units placed with privacy-community households for 60-day live testing. Landing page live at islandmountain.io/landfall. Waitlist captures email.</div>
+  </div>
+  <div class="roadmap-row">
+    <div class="roadmap-time">Q4 2026</div>
+    <div class="roadmap-items"><strong>Scout general availability.</strong> Direct-to-consumer web order. White-glove remote setup included. Ranger build-to-order opens. Content marketing: TCO calculator live, environmental comparison articles, "Your Family Has a Data Problem" campaign launch. Target: 50 Scout units in first 90 days.</div>
+  </div>
+  <div class="roadmap-row">
+    <div class="roadmap-time">Q1 2027</div>
+    <div class="roadmap-items"><strong>Ranger availability + Pack Leader pre-orders.</strong> Annual model update packages begin shipping. Affiliate channel: home theater installers, estate planning attorneys, privacy-conscious financial advisors. First customer case studies published. Community forum launched at islandmountain.io/community.</div>
+  </div>
+  <div class="roadmap-row">
+    <div class="roadmap-time">Q2–Q3 2027</div>
+    <div class="roadmap-items"><strong>Pack Leader first deliveries.</strong> Legacy Engine module complete. MedRecord Vault adds telehealth integration. Island Mountain Certified Installer program launches for white-glove physical setup in-home. First Landfall family testimonials: multi-generational households using Scout + Ranger together.</div>
+  </div>
+  <div class="roadmap-row">
+    <div class="roadmap-time">2028+</div>
+    <div class="roadmap-items"><strong>Landfall Network.</strong> Scout-to-Scout encrypted family mesh (grandparents to adult children, geographically distributed). The family's AI becomes the family's network. Franchise the sovereignty concept to small communities: neighborhood-level Landfall nodes. Island Mountain transitions from hardware company to sovereignty infrastructure company.</div>
+  </div>
+</section>
+
+<!-- NAMING & BRAND LANGUAGE -->
+<section id="brand">
+  <div class="section-label">10 — Brand Language & Naming Architecture</div>
+  <h2>Why Scout, Ranger, Pack Leader Work</h2>
+
+  <p>The Summit Series names (Base, Ridge, Pinnacle) map to vertical conquest — appropriate for enterprise clients who are climbing toward capability. The Landfall Series names need different logic. The buyer isn't climbing. They're <strong>landing</strong>. Coming home. Claiming territory. The naming system should reflect that instinct.</p>
+
+  <p><strong>Scout</strong> — Goes ahead of the family. Tests the terrain. Brave, capable, proven. The first foothold. The name signals courage without demanding expertise. A Scout doesn't need instructions. It reads the situation.</p>
+
+  <p><strong>Ranger</strong> — Knows the land. Protects the whole family. The Ranger doesn't just scout; it commands the territory. Multi-user, whole-home, serious. The name says "we're committed to this place." It carries authority without arrogance.</p>
+
+  <p><strong>Pack Leader</strong> — The name is the pitch. The family unit has a leader, and the leader's AI is the most powerful in the room. Pack Leader implies permanence, legacy, generational trust. It's the name you give something that will outlast you.</p>
+
+  <p>All three names hold the <strong>Landfall</strong> brand umbrella with integrity. They're outdoor, grounded, earned. They contrast sharply against the cloud AI world's vocabulary: "spark," "gemini," "copilot," "aura." That world floats. Landfall <em>lands</em>.</p>
+
+  <blockquote>"The cloud asked you to float. Island Mountain brought you home."</blockquote>
+</section>
+
+<!-- CONNECTION TO SUMMIT SERIES -->
+<section id="bridge">
+  <div class="section-label">11 — The Landfall ↔ Summit Bridge</div>
+  <h2>One Ecosystem. Two Markets.</h2>
+  <p>This is where Island Mountain's long-term moat lives. Summit and Landfall are not separate product lines. They're the same sovereignty philosophy at different scales.</p>
+
+  <p>A Yurok tribal council buying Summit Pinnacle for their administrative AI is the same customer archetype as a Yurok family buying a Landfall Ranger for their home — they both want AI that belongs to them, that the federal government or Google or Microsoft can't reach. <strong>The institutional sovereignty customer and the household sovereignty customer speak the same language.</strong> Island Mountain is the only company telling both of them the same true story.</p>
+
+  <p>Curtis Davis — your attorney, your warm prospect — is a perfect example. His law firm is a Summit Pinnacle buyer. His home is a Landfall Ranger buyer. One relationship, two product lines. The referral economics are natural: <em>"We serve your firm's data. We can also serve your family's."</em></p>
+
+  <p>Healthcare clients using Summit Series for HIPAA-compliant inference will have physicians who want Landfall Pack Leaders at home for their family medical records. Defense contractors using Summit nodes at work will want Landfall for their ITAR-sensitive home offices. The verticals reinforce each other.</p>
+
+  <p><strong>Build the Summit customer base. The Landfall customers emerge from that universe organically.</strong></p>
+</section>
+
+<footer>
+  <div class="footer-brand">Island Mountain AI</div>
+  <div class="footer-meta">
+    Landfall Series Strategy Document<br>
+    Prepared: May 2026<br>
+    Contact: basho@islandmountain.io<br>
+    islandmountain.io
+  </div>
+</footer>
+
+</body>
+</html>
