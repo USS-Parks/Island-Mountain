@@ -1834,3 +1834,49 @@ a.risk-card--link:hover {
   .walkthrough-steps { grid-template-columns:1fr; }
   .lead-form-grid { grid-template-columns:1fr; }
 }
+
+/* ═══ Warning Callout Component (Session 60) ═══ */
+.warning-callout {
+  position:relative;
+  padding:20px 24px 20px 56px;
+  margin:32px 0;
+  border-radius:0 8px 8px 0;
+  line-height:1.6;
+}
+.warning-callout::before {
+  content:"\eca1";
+  font-family:"remixicon";
+  position:absolute;
+  left:20px;
+  top:22px;
+  font-size:1.25rem;
+}
+.warning-callout p {
+  margin:0 0 8px;
+  color:var(--text-light);
+}
+.warning-callout p:last-child {
+  margin-bottom:0;
+}
+.warning-callout .callout-source {
+  font-size:0.8rem;
+  color:var(--text-muted);
+  margin-top:8px;
+}
+.warning-callout .callout-source a {
+  color:var(--copper);
+}
+.warning-callout--amber {
+  border-left:3px solid #f59e0b;
+  background:rgba(245,158,11,0.06);
+}
+.warning-callout--amber::before {
+  color:#f59e0b;
+}
+.warning-callout--red {
+  border-left:3px solid #ef4444;
+  background:rgba(239,68,68,0.06);
+}
+.warning-callout--red::before {
+  color:#ef4444;
+}
