@@ -539,6 +539,36 @@
     </div>
   </section>
 
+
+  <!-- How It Works -->
+  <section class="section section-dark">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-badge">How It Works</span>
+        <h2>Three Steps From Conversation to Inference</h2>
+      </div>
+      <div class="walkthrough-steps fade-in">
+        <div class="walkthrough-step">
+          <div class="step-number">1</div>
+          <div class="step-icon"><i class="ri-chat-3-line"></i></div>
+          <h3>Tell Us What You Need</h3>
+          <p>Describe your use case, your compliance requirements, and how many people will use the system. We spec the build around your workload.</p>
+        </div>
+        <div class="walkthrough-step">
+          <div class="step-number">2</div>
+          <div class="step-icon"><i class="ri-tools-line"></i></div>
+          <h3>We Build and Burn-Test</h3>
+          <p>Your server is assembled by hand in Colorado. Models pre-loaded, software configured, and the system runs 72 hours of continuous testing before it ships.</p>
+        </div>
+        <div class="walkthrough-step">
+          <div class="step-number">3</div>
+          <div class="step-icon"><i class="ri-terminal-box-line"></i></div>
+          <h3>Open Your Browser and Prompt</h3>
+          <p>The server arrives at your facility. Plug in power and ethernet. Open your browser to the local address. Start prompting. That is it.</p>
+        </div>
+      </div>
+    </div>
+  </section>
   <!-- Product Preview -->
   <section class="section section-dark">
     <div class="container">
@@ -624,15 +654,54 @@
     </div>
   </section>
 
-  <section class="section section-darker text-center">
+  <section class="section section-darker">
     <div class="container fade-in">
-      <h2>Ready to Own Your AI Infrastructure?</h2>
-      <p class="cta-sub-wrap">One conversation. No sales pitch. Just straight talk about what local AI hardware can do for your organization.</p>
-      <div class="btn-group">
-        <a href="contact.html" class="btn btn-primary">Talk to the Builder</a>
-        <a href="products.html" class="btn btn-secondary">See Full Specs</a>
+      <div class="lead-form-wrapper">
+        <h2>Start a Conversation</h2>
+        <p class="lead-form-sub">No sales pitch. Tell us what you need and we will tell you if we can build it.</p>
+        <form id="homepage-lead-form" action="https://formsubmit.co/basho@islandmountain.io" method="POST">
+          <input type="hidden" name="_subject" value="Homepage Lead - Island Mountain">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_next" value="https://islandmountain.io/index.html?submitted=true">
+          <input type="text" name="_honey" style="display:none">
+          <div class="lead-form-grid">
+            <div class="form-group">
+              <label for="hp-name">Name *</label>
+              <input type="text" id="hp-name" name="name" required placeholder="Your full name">
+            </div>
+            <div class="form-group">
+              <label for="hp-email">Work Email *</label>
+              <input type="email" id="hp-email" name="email" required placeholder="you@organization.com">
+            </div>
+            <div class="form-group">
+              <label for="hp-org">Organization *</label>
+              <input type="text" id="hp-org" name="organization" required placeholder="Company or organization name">
+            </div>
+            <div class="form-group">
+              <label for="hp-industry">Industry</label>
+              <select id="hp-industry" name="industry">
+                <option value="">Select your industry</option>
+                <option value="Legal">Legal / Law Firm</option>
+                <option value="Healthcare">Healthcare / Medical</option>
+                <option value="Tribal Government">Tribal Government</option>
+                <option value="Defense &amp; Aerospace">Defense and Aerospace</option>
+                <option value="Financial Services">Financial Services</option>
+                <option value="Insurance">Insurance</option>
+                <option value="Energy &amp; Utilities">Energy and Utilities</option>
+                <option value="Government">Government</option>
+                <option value="Education">Education / Research</option>
+                <option value="Casino Gaming">Casino Gaming</option>
+                <option value="Technology">Technology</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+          </div>
+          <div class="lead-form-submit">
+            <button type="submit" class="btn btn-primary">Talk to the Builder</button>
+          </div>
+        </form>
+        <p class="cta-subtitle"><i class="ri-phone-line icon-copper-mr-sm"></i>Or call directly: <a href="tel:+18016091130" class="copper-semibold">1-801-609-1130</a></p>
       </div>
-      <p class="cta-subtitle"><i class="ri-phone-line icon-copper-mr-sm"></i>Or call directly: <a href="tel:+18016091130" class="copper-semibold">1-801-609-1130</a></p>
     </div>
   </section>
 
