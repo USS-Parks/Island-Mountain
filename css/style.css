@@ -1700,3 +1700,31 @@ a.risk-card--link:hover {
   .feature-tag-bar { gap:8px; }
   .feature-tag { font-size:0.75rem;padding:5px 12px; }
 }
+
+/* Homepage Tier Card Enhancements (Session 58) */
+.tier-card--recommended { border-color:var(--copper);box-shadow:0 0 30px rgba(245,158,11,0.1); }
+.tier-card--recommended:hover { box-shadow:0 16px 48px rgba(245,158,11,0.15); }
+
+.recommend-badge { display:inline-block;background:var(--copper);color:var(--primary-dark);font-size:0.7rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:6px 16px;border-radius:20px;margin-bottom:20px; }
+
+.tier-specs { margin:20px 0 24px;padding:0;list-style:none; }
+.tier-specs li { display:flex;justify-content:space-between;align-items:baseline;padding:8px 0;border-bottom:1px solid rgba(148,163,184,0.1);font-size:0.9rem; }
+.tier-specs li:last-child { border-bottom:none; }
+.tier-specs .spec-label { color:var(--text-muted);font-weight:400; }
+.tier-specs .spec-value { color:var(--text-light);font-weight:600;text-align:right; }
+
+.tier-availability { display:inline-flex;align-items:center;gap:6px;font-size:0.8rem;font-weight:600;letter-spacing:0.5px;text-transform:uppercase;margin-bottom:16px; }
+.tier-availability .status-dot { width:8px;height:8px;border-radius:50%;display:inline-block; }
+.tier-availability--instock .status-dot { background:#22c55e; }
+.tier-availability--instock { color:#22c55e; }
+.tier-availability--preorder .status-dot { background:var(--copper); }
+.tier-availability--preorder { color:var(--copper); }
+.tier-availability--coming .status-dot { background:var(--text-muted); }
+.tier-availability--coming { color:var(--text-muted); }
+
+.tier-card .tier-cta { margin-top:auto;padding-top:16px; }
+
+@media (max-width:768px) {
+  .tier-specs li { font-size:0.82rem; }
+  .recommend-badge { font-size:0.65rem;padding:5px 12px; }
+}
