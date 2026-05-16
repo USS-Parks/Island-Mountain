@@ -2086,61 +2086,78 @@ a.risk-card--link:hover {
   font-weight: 600;
   letter-spacing: 0.02em;
 }
-/* Industry Scroll Strip */
-.industry-scroll-strip {
-  background: var(--bg-dark);
-  padding: 32px 0;
-  overflow: hidden;
+/* Industry Showcase Panels */
+.industry-panels {
+  background: var(--primary-dark);
+  padding: 64px 0;
 }
-.scroll-track {
-  display: flex;
-  gap: 24px;
+.industry-panels .container {
+  max-width: var(--max-width);
+  margin: 0 auto;
   padding: 0 24px;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: thin;
-  scrollbar-color: var(--copper) var(--bg-darker);
 }
-.scroll-track::-webkit-scrollbar {
-  height: 6px;
-}
-.scroll-track::-webkit-scrollbar-track {
-  background: var(--bg-darker);
-  border-radius: 3px;
-}
-.scroll-track::-webkit-scrollbar-thumb {
-  background: var(--copper);
-  border-radius: 3px;
-}
-.scroll-item {
-  flex: 0 0 320px;
-  scroll-snap-align: start;
+.industry-panels .section-header {
   text-align: center;
+  margin-bottom: 40px;
 }
-.scroll-item img {
+.industry-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+.industry-card {
+  position: relative;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  aspect-ratio: 3 / 2;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.industry-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.5);
+}
+.industry-card img {
   width: 100%;
-  height: auto;
-  border-radius: 10px;
-  box-shadow: 0 6px 24px rgba(0,0,0,0.35);
-  transition: transform 0.3s ease;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
-.scroll-item img:hover {
-  transform: scale(1.03);
+.industry-card-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 24px;
+  background: linear-gradient(to top, rgba(15,23,42,0.92) 0%, rgba(15,23,42,0.7) 60%, transparent 100%);
 }
-.scroll-label {
-  margin-top: 10px;
+.industry-card-overlay h3 {
   color: var(--copper);
-  font-size: 0.85rem;
-  font-weight: 600;
-  letter-spacing: 0.02em;
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin: 0 0 6px 0;
+  letter-spacing: 0.01em;
 }
-@media (min-width: 1200px) {
-  .scroll-track {
-    justify-content: center;
+.industry-card-overlay p {
+  color: var(--text-light);
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin: 0;
+  opacity: 0.92;
+}
+@media (max-width: 768px) {
+  .industry-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
   }
-  .scroll-item {
-    flex: 0 0 280px;
+  .industry-panels {
+    padding: 40px 0;
+  }
+  .industry-card-overlay h3 {
+    font-size: 1.1rem;
+  }
+  .industry-card-overlay p {
+    font-size: 0.85rem;
   }
 }
 
