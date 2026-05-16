@@ -12,3 +12,7 @@ Thumbs.db
 
 # FUSE mount artifacts (leaked from Cowork sandbox)
 .fuse_hidden*
+
+# Original Landfall PNGs (converted to WebP, kept locally only)
+images/LandFall*.png
+images/IM LandFall*.png
