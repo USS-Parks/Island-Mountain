@@ -492,7 +492,8 @@
       <ul class="nav-links">
         <li><a href="index.html">Home</a></li>
         <li><a href="why-island-mountain.html">Why Local AI</a></li>
-        <li><a href="products.html">Products</a></li>
+        <li><a href="products.html">Products</a>
+        <li><a href="landfall-preorder.html">Landfall</a></li>
         <li><a href="technology.html">Technology</a></li>
         <li><a href="pricing.html">Pricing</a></li>
         <li class="nav-dropdown">
@@ -528,6 +529,7 @@
     <a href="index.html">Home</a>
     <a href="why-island-mountain.html">Why Local AI</a>
     <a href="products.html">Products</a>
+    <a href="landfall-preorder.html">Landfall</a>
     <a href="technology.html">Technology</a>
     <a href="pricing.html">Pricing</a>
     <a href="solutions.html" class="mobile-solutions-toggle">Solutions <i class="ri-arrow-down-s-line"></i></a>
@@ -675,7 +677,7 @@
           <div class="faq-answer">
             <p><strong>DeepSeek V4-Flash (284B parameters) requires approximately 160GB of VRAM to run quantized or 282GB VRAM to run at full FP16 precision.</strong> Running it across two GPUs using tensor parallelism delivers faster inference because the model layers are split and processed in parallel.</p>
             <p>All Island Mountain systems ship with at least 160GB of combined VRAM (two GPUs). On our Summit Base tier (2x H100 80GB refurbished, pre-made), you can run DeepSeek V4-Flash in quantized form with approximately 60-90 tokens per second for single-user inference thanks to the H100's 3.35 TB/s memory bandwidth. On the Summit Ridge tier (2x H100 80GB, build-to-order), performance is similar with the same quantized version.</p>
-            <p>If you need to run DeepSeek V4-Flash at full FP16 quality with maximum fidelity, you will need our Summit Pinnacle tier with dual H200 141GB GPUs (282GB VRAM), coming Q3 2026. The Summit Base and Summit Ridge tiers can run quantized versions, but not full FP16. See our full GPU comparison on the <a href="products.html">Products</a> page.</p>
+            <p>If you need to run DeepSeek V4-Flash at full FP16 quality with maximum fidelity, you will need our Summit Pinnacle tier with dual H200 141GB GPUs (282GB VRAM), coming Q3 2026. The Summit Base and Summit Ridge tiers can run quantized versions, but not full FP16. See our full GPU comparison on the <a href="products.html">Products</a>
           </div>
         </div>
 
@@ -706,7 +708,7 @@
             <p><strong>The two GPUs differ in VRAM capacity, memory bandwidth, and compute performance.</strong> Here is the comparison:</p>
             <p>The <strong>NVIDIA H100 80GB</strong> (PCIe, refurbished on Summit Base tier) uses HBM3 memory with 3.35 TB/s bandwidth and delivers 989 TFLOPS of FP16 compute. Two H100s give you 160GB of total VRAM. The Summit Base tier (pre-made) costs $75,000-$85,000. The Summit Ridge tier (build-to-order H100) costs $150,000-$160,000 and offers comparable performance with new units and custom configuration.</p>
             <p>The <strong>NVIDIA H200 141GB</strong> uses HBM3e memory with 4.8 TB/s bandwidth. Two H200s give you 282GB of total VRAM, which is the minimum required to run DeepSeek V4-Flash at full FP16 quality with its 1M token context window. This is our Summit Pinnacle tier ($350,000-$400,000), coming Q3 2026.</p>
-            <p>The H100 Summit Base tier is the best value for most organizations needing good performance at lower cost. The H100 Summit Ridge tier (build-to-order) offers custom configuration and new units. The H200 Summit Pinnacle tier is for organizations that need the largest models at full quality. See our <a href="products.html">Products</a> page for the complete specification table.</p>
+            <p>The H100 Summit Base tier is the best value for most organizations needing good performance at lower cost. The H100 Summit Ridge tier (build-to-order) offers custom configuration and new units. The H200 Summit Pinnacle tier is for organizations that need the largest models at full quality. See our <a href="products.html">Products</a>
           </div>
         </div>
 
@@ -716,7 +718,7 @@
             <p><strong>A dual-GPU Island Mountain system comfortably serves a team of 5-15 simultaneous users</strong> for typical business inference tasks like document drafting, research queries, contract review, and summarization.</p>
             <p>The exact number depends on the model being used, prompt complexity, and how long responses need to be. Simple queries return fast and queue efficiently. Long-form document generation with high token counts takes more time per request, which means fewer concurrent users before response times stretch.</p>
             <p>The Summit Ridge tier (H100 GPUs, build-to-order) handles concurrent workloads with full new hardware. The Summit Base tier (H100 GPUs refurbished, pre-made) handles concurrent workloads well, with the H100's 3.35 TB/s memory bandwidth allowing fast processing of queued requests across vLLM tensor parallelism.</p>
-            <p>This system is not designed to serve 50 or 100 simultaneous heavy users. If your organization has that kind of demand, you either need multiple systems or enterprise cloud infrastructure is the better fit. Island Mountain is built for the team of 5-15 who need data sovereignty and personal service, not for mass-scale deployment. See our <a href="products.html">Products</a> page for a full comparison of how each tier handles concurrency.</p>
+            <p>This system is not designed to serve 50 or 100 simultaneous heavy users. If your organization has that kind of demand, you either need multiple systems or enterprise cloud infrastructure is the better fit. Island Mountain is built for the team of 5-15 who need data sovereignty and personal service, not for mass-scale deployment. See our <a href="products.html">Products</a>
           </div>
         </div>
 
@@ -725,7 +727,7 @@
           <div class="faq-answer">
             <p><strong>All Island Mountain systems require a dedicated 208V/30A power circuit with a NEMA L6-30R outlet.</strong> This is the same kind of circuit found in server rooms, data closets, and commercial facilities. The power supply operates at 200-240V only. It will not run on a standard 120V wall outlet.</p>
             <p>If your facility does not already have this circuit, a licensed electrician can install one. Typical installation cost ranges from $500-$2,000 depending on your building's electrical infrastructure and how far the new circuit needs to run from the panel.</p>
-            <p>Average power draw under typical inference loads is 1.5-2.5 kW. At $0.12/kWh, that translates to roughly $100-$200 per month in electricity. The system runs at standard server room temperatures (64-80&deg;F / 18-27&deg;C) and does not require specialized cooling beyond normal HVAC. The chassis includes redundant 2000W power supplies for reliability. See our <a href="products.html">Products</a> page for complete hardware specifications.</p>
+            <p>Average power draw under typical inference loads is 1.5-2.5 kW. At $0.12/kWh, that translates to roughly $100-$200 per month in electricity. The system runs at standard server room temperatures (64-80&deg;F / 18-27&deg;C) and does not require specialized cooling beyond normal HVAC. The chassis includes redundant 2000W power supplies for reliability. See our <a href="products.html">Products</a>
           </div>
         </div>
 
@@ -795,7 +797,7 @@
             <p><strong>72-hour continuous burn-in testing.</strong> DIY guides test whether the system boots. Island Mountain tests whether it sustains full-load inference for 72 continuous hours without thermal throttling, memory errors, or performance degradation. That is the difference between a personal project and production infrastructure that your organization depends on.</p>
             <p><strong>NVIDIA enterprise RMA chains.</strong> When an A100 or H100 fails, the replacement GPU enters the same provenance documentation chain. Consumer GPU RMAs do not maintain that continuity, which matters for HIPAA, ITAR/DFARS, and CMMC audit trails.</p>
             <p><strong>Direct builder support.</strong> You talk to the person who built your system. Not a tier-1 support ticket queue, not a chatbot, not a forum post. The person who assembled it and ran the burn-in.</p>
-            <p>The honest answer: if you are a developer running experiments, build your own. If you are a regulated organization putting AI into production workflows where compliance documentation and hardware provenance matter, that is what the price delta covers. See our <a href="products.html">Products</a> page for full system specifications.</p>
+            <p>The honest answer: if you are a developer running experiments, build your own. If you are a regulated organization putting AI into production workflows where compliance documentation and hardware provenance matter, that is what the price delta covers. See our <a href="products.html">Products</a>
           </div>
         </div>
       </div>
@@ -916,7 +918,7 @@
           <h3>Quick Links</h3>
           <ul class="footer-links">
             <li><a href="index.html">Home</a></li>
-            <li><a href="products.html">Products</a></li>
+            <li><a href="products.html">Products</a>
             <li><a href="technology.html">Technology</a></li>
             <li><a href="pricing.html">Pricing</a></li>
         <li><a href="resources.html">Resources</a></li>
