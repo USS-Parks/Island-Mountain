@@ -9,6 +9,13 @@ Three tiers of local AI inference hardware:
 - Summit Ridge: Build-to-order configuration. $150K-$160K.
 - Summit Pinnacle: 2x NVIDIA H200 141GB SXM, 282GB VRAM. $350K-$400K. Coming Q3 2026.
 
+
+Landfall Series (Home AI):
+- Landfall Scout: Home AI server for personal use. $8,500-$9,500.
+- Landfall Ranger: Family and small business AI server. $12,000-$14,000.
+- Landfall Pack Leader: Professional home AI server with maximum capability. $18,000-$28,000.
+
+All Landfall systems are air-gapped by design. One-time purchase. No subscriptions.
 All systems ship with DeepSeek V4-Flash pre-installed, OpenWebUI configured, and 72 hours of burn-in testing completed.
 
 ## Who This Is For
@@ -26,6 +33,7 @@ All systems ship with DeepSeek V4-Flash pre-installed, OpenWebUI configured, and
 
 ## Key Pages
 - Products: https://islandmountain.io/products.html
+- Landfall Series Pre-Order: https://islandmountain.io/landfall-preorder.html
 - Pricing: https://islandmountain.io/pricing.html
 - FAQ (27 Q&A pairs): https://islandmountain.io/faq.html
 - Contact/Quote: https://islandmountain.io/contact.html
