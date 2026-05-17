@@ -2300,10 +2300,11 @@ a.risk-card--link:hover {
 .lf-success p { color: var(--text-muted); line-height: 1.7; max-width: 480px; margin: 0 auto; }
 
 /* Landfall hero kitchen inset */
-.lf-hero-inset { position: absolute; bottom: 40px; left: 32px; z-index: 2; width: 260px; border-radius: 10px; border: 2px solid var(--copper); overflow: hidden; box-shadow: 0 8px 32px rgba(0,0,0,0.5); transition: transform 0.3s ease; }
-.lf-hero-inset:hover { transform: scale(1.03); }
+.lf-hero-inset { position: absolute; top: 50%; left: 32px; z-index: 2; width: 325px; transform: translateY(-50%); border-radius: 10px; border: 2px solid var(--copper); overflow: hidden; box-shadow: 0 8px 32px rgba(0,0,0,0.5); transition: transform 0.3s ease; }
+.lf-hero-inset:hover { transform: translateY(-50%) scale(1.03); }
 .lf-hero-inset img { width: 100%; height: auto; display: block; }
 .lf-hero-inset-label { position: absolute; bottom: 0; left: 0; right: 0; padding: 8px 12px; background: linear-gradient(transparent, rgba(15,23,42,0.9)); font-size: 0.75rem; color: var(--copper); font-weight: 600; letter-spacing: 0.5px; }
+.lf-hero-inset-right { left: auto; right: 32px; }
 
 /* Landfall vertical room showcase */
 .lf-room-showcase { max-width: 1000px; margin: 0 auto; display: flex; flex-direction: column; gap: 24px; padding: 0 24px; }
@@ -2311,18 +2312,23 @@ a.risk-card--link:hover {
 .lf-room-showcase .lf-room-panel img { width: 100%; height: auto; display: block; }
 
 /* Landfall responsive */
+@media (max-width: 1280px) {
+  .lf-hero-inset { width: 260px; }
+  .lf-hero-inset-right { display: none; }
+}
 @media (max-width: 960px) {
   .lf-rooms-grid { grid-template-columns: repeat(2, 1fr); }
   .lf-tiers-grid { grid-template-columns: 1fr; max-width: 500px; margin-left: auto; margin-right: auto; }
   .lf-tco-grid { grid-template-columns: 1fr; }
   .lf-env-grid { grid-template-columns: 1fr; gap: 36px; }
-  .lf-hero-inset { width: 200px; bottom: 30px; left: 20px; }
+  .lf-hero-inset { width: 250px; left: 20px; }
+  .lf-hero-inset-right { display: none; }
 }
 @media (max-width: 640px) {
   .lf-hero-section { padding: 120px 20px 70px; }
   .lf-rooms-grid { grid-template-columns: 1fr 1fr; }
   .lf-tier-selector { grid-template-columns: 1fr; }
   .lf-form-row { grid-template-columns: 1fr; }
-  .lf-hero-inset { width: 160px; bottom: 20px; left: 16px; }
+  .lf-hero-inset { display: none; }
   .lf-room-showcase { padding: 0 16px; gap: 16px; }
 }
