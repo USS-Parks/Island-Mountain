@@ -250,17 +250,18 @@
       type: 'bar',
       data: {
         labels: [
-          'GPU Inventory',
           'Operating Runway',
+          'GPU Inventory',
+          'Marketing & Sales',
+          'Working Capital',
+          'Lamprey MAI Eng.',
           'Non-GPU Components',
           'Facility Setup',
-          'Working Capital',
-          'Marketing & Sales',
           'Legal & Incorp.'
         ],
         datasets: [{
-          data: [198000, 180000, 45000, 25000, 22000, 20000, 10000],
-          backgroundColor: [copper, slateDark, copperDeep, slate, '#475569', '#334155', '#1e293b'],
+          data: [280000, 198000, 80000, 62000, 50000, 45000, 25000, 10000],
+          backgroundColor: [slateDark, copper, '#334155', '#475569', copperDeep, slate, copperDark, '#1e293b'],
           borderRadius: 4,
           barPercentage: 0.7
         }]
@@ -276,7 +277,7 @@
               callback: function (val) { return '$' + (val / 1000) + 'K'; },
               font: { size: 11 }
             },
-            max: 220000
+            max: 300000
           },
           y: {
             grid: { display: false },
@@ -288,7 +289,7 @@
           tooltip: Object.assign({}, tooltipDefaults, {
             callbacks: {
               label: function (ctx) {
-                var pct = ((ctx.raw / 500000) * 100).toFixed(1);
+                var pct = ((ctx.raw / 750000) * 100).toFixed(1);
                 return ' $' + ctx.raw.toLocaleString() + ' (' + pct + '%)';
               }
             }
