@@ -166,7 +166,7 @@
     .milestone-done ul, .milestone-ahead ul { padding-left:20px; margin:0; }
     .milestone-done li, .milestone-ahead li { color:var(--text-muted); font-size:0.9rem; margin-bottom:8px; line-height:1.5; }
     .milestone-ahead li strong { color:var(--text-light); }
-    .lamprey-logo-inline { display:block; max-width:200px; margin:0 auto 24px; border-radius:12px; }
+    /* lamprey-logo-inline removed - using inline product showcase */
     .margin-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin:24px 0; }
     .margin-block { padding:20px; border-radius:12px; text-align:center; }
     .margin-neg { background:rgba(239,68,68,0.08); border:1px solid rgba(239,68,68,0.2); }
@@ -322,13 +322,6 @@
     </div>
   </section>
 
-  <!-- Summit Product Showcase -->
-  <section class="product-showcase section-darker fade-in">
-    <div class="container">
-      <img src="images/hero-products.webp" alt="Island Mountain Summit Series AI inference server hardware" style="width:100%;max-width:900px;display:block;margin:0 auto;border-radius:12px;box-shadow:0 8px 32px rgba(0,0,0,0.4);" width="1536" height="1024" loading="lazy">
-      <p style="text-align:center;color:var(--text-muted);font-size:0.85rem;margin-top:16px;">Summit Series - Enterprise AI inference racks, $75,000 to $400,000. Every unit burn-tested 72 hours before shipment.</p>
-    </div>
-  </section>
 
   <!-- ============================================================
        SECTION 3: THE MARKET THESIS
@@ -376,7 +369,7 @@
         <h2>Lamprey MAI: The Platform Thesis</h2>
       </div>
       <div class="fade-in content-max-800">
-        <img src="images/lamprey-mai-logo.webp" alt="Lamprey MAI - Intelligent Adaptation Layer" class="lamprey-logo-inline" width="1536" height="1024" loading="lazy">
+        <img src="images/lamprey-mai-product-1.webp" alt="Lamprey MAI - Software Platform Product" style="width:100%;max-width:720px;display:block;margin:0 auto 24px;border-radius:12px;box-shadow:0 8px 32px rgba(0,0,0,0.4);" width="1536" height="1024" loading="lazy">
         <p>Hardware is the entry point. Lamprey MAI is the reason this company compounds.</p>
         <p class="mt-16">Every Island Mountain unit - Summit enterprise rack and Landfall household server - ships with Lamprey MAI, our proprietary local interface layer. In its current form, Lamprey MAI is a localized AI operating environment: curated system prompts, private model management, a clean family- and organization-grade interface running entirely on hardware you own. No data leaves the machine. No query is logged externally. No third party ever processes what runs through it.</p>
         <p class="mt-16">That's the foundation. What it's becoming is larger.</p>
@@ -418,20 +411,12 @@
   <!-- Lamprey MAI Product Imagery -->
   <section class="product-showcase section-dark fade-in">
     <div class="container">
-      <div class="product-gallery">
-        <div class="product-gallery-item">
-          <img src="images/lamprey-mai-product-1.webp" alt="Lamprey MAI software product - Intelligent Adaptation Layer for Island Mountain servers" class="product-gallery-img" width="1536" height="1024" loading="lazy">
-          <p class="product-gallery-label">Lamprey MAI - Software Platform</p>
-        </div>
-        <div class="product-gallery-item">
-          <img src="images/lamprey-mai-product-2.webp" alt="Lamprey MAI product packaging - Adapt Connect Persist" class="product-gallery-img" width="1254" height="1254" loading="lazy">
-          <p class="product-gallery-label">Adapt. Connect. Persist.</p>
-        </div>
-      </div>
+      <img src="images/lamprey-logo-standalone.webp" alt="Lamprey MAI - Local AI Operating System branding" style="width:100%;max-width:900px;display:block;margin:0 auto 32px;border-radius:12px;box-shadow:0 8px 32px rgba(0,0,0,0.4);" width="1536" height="1024" loading="lazy">
+      <p style="text-align:center;color:var(--copper);font-size:0.85rem;margin-bottom:48px;">Lamprey MAI - Software Platform</p>
+      <img src="images/lamprey-mai-product-2.webp" alt="Lamprey MAI product packaging - Adapt Connect Persist" style="width:100%;max-width:900px;display:block;margin:0 auto;border-radius:12px;box-shadow:0 8px 32px rgba(0,0,0,0.4);" width="1254" height="1254" loading="lazy">
+      <p style="text-align:center;color:var(--copper);font-size:0.85rem;margin-top:16px;">Adapt. Connect. Persist.</p>
     </div>
   </section>
-
-  <!-- ============================================================
        SECTION 5: PRODUCT ARCHITECTURE
        ============================================================ -->
   <section class="section section-darker">
@@ -481,19 +466,12 @@
   <!-- Landfall Product Imagery -->
   <section class="product-showcase section-dark fade-in">
     <div class="container">
-      <div class="product-gallery">
-        <div class="product-gallery-item">
-          <img src="images/landfall-kitchen.webp" alt="Landfall Ranger in a kitchen family hub - schedules, homeschool, recipes, smart home" class="product-gallery-img" width="1536" height="1024" loading="lazy">
-          <p class="product-gallery-label">Ranger - Kitchen / Family Hub</p>
-        </div>
-        <div class="product-gallery-item">
-          <img src="images/landfall-home-office-2.webp" alt="Landfall Pack Leader in a home office - client files, offline backups, small business hub" class="product-gallery-img" width="1536" height="1024" loading="lazy">
-          <p class="product-gallery-label">Pack Leader - Home Office</p>
-        </div>
-      </div>
+      <img src="images/landfall-kitchen.webp" alt="Landfall Ranger in a kitchen family hub" style="width:100%;max-width:900px;display:block;margin:0 auto 32px;border-radius:12px;box-shadow:0 8px 32px rgba(0,0,0,0.4);" width="1536" height="1024" loading="lazy">
+      <p style="text-align:center;color:var(--copper);font-size:0.85rem;margin-bottom:48px;">Ranger - Kitchen / Family Hub</p>
+      <img src="images/landfall-home-office-2.webp" alt="Landfall Pack Leader in a home office" style="width:100%;max-width:900px;display:block;margin:0 auto;border-radius:12px;box-shadow:0 8px 32px rgba(0,0,0,0.4);" width="1536" height="1024" loading="lazy">
+      <p style="text-align:center;color:var(--copper);font-size:0.85rem;margin-top:16px;">Pack Leader - Home Office</p>
     </div>
   </section>
-
   <!-- ============================================================
        SECTION 6: UNIT ECONOMICS
        ============================================================ -->
@@ -554,18 +532,10 @@
   <!-- Summit Deployment Imagery -->
   <section class="product-showcase section-darker fade-in">
     <div class="container">
-      <div class="product-gallery">
-        <div class="product-gallery-item">
-          <img src="images/product-summit-law-firm.webp" alt="Summit Series deployed in a law firm environment" class="product-gallery-img" width="1536" height="1024" loading="lazy">
-          <p class="product-gallery-label">Legal Practice Deployment</p>
-        </div>
-        <div class="product-gallery-item">
-          <img src="images/product-summit-tribal-government.webp" alt="Summit Series deployed in a tribal government office" class="product-gallery-img" width="1536" height="1024" loading="lazy">
-          <p class="product-gallery-label">Tribal Government Deployment</p>
-        </div>
-      </div>
-    </div>
-  </section>
+      <img src="images/product-summit-law-firm.webp" alt="Summit Series deployed in a law firm environment" style="width:100%;max-width:900px;display:block;margin:0 auto 32px;border-radius:12px;box-shadow:0 8px 32px rgba(0,0,0,0.4);" width="1536" height="1024" loading="lazy">
+      <p style="text-align:center;color:var(--copper);font-size:0.85rem;margin-bottom:48px;">Legal Practice Deployment</p>
+      <img src="images/product-summit-tribal-government.webp" alt="Summit Series deployed in a tribal government office" style="width:100%;max-width:900px;display:block;margin:0 auto;border-radius:12px;box-shadow:0 8px 32px rgba(0,0,0,0.4);" width="1536" height="1024" loading="lazy">
+      <p style="text-align:center;color:var(--copper);font-size:0.85rem;margin-top:16px;">Tribal Government Deployment</p>
 
   <!-- ============================================================
        SECTION 7: USE OF CAPITAL
@@ -723,18 +693,10 @@
   <!-- Additional Product Imagery -->
   <section class="product-showcase section-darker fade-in">
     <div class="container">
-      <div class="product-gallery">
-        <div class="product-gallery-item">
-          <img src="images/product-summit-healthcare.webp" alt="Summit Series deployed in a clinical healthcare setting" class="product-gallery-img" width="1536" height="1024" loading="lazy">
-          <p class="product-gallery-label">Healthcare Deployment</p>
-        </div>
-        <div class="product-gallery-item">
-          <img src="images/product-summit-education.webp" alt="Summit Series deployed in an education district office" class="product-gallery-img" width="1536" height="1024" loading="lazy">
-          <p class="product-gallery-label">Education Deployment</p>
-        </div>
-      </div>
-    </div>
-  </section>
+      <img src="images/product-summit-healthcare.webp" alt="Summit Series deployed in a clinical healthcare setting" style="width:100%;max-width:900px;display:block;margin:0 auto 32px;border-radius:12px;box-shadow:0 8px 32px rgba(0,0,0,0.4);" width="1536" height="1024" loading="lazy">
+      <p style="text-align:center;color:var(--copper);font-size:0.85rem;margin-bottom:48px;">Healthcare Deployment</p>
+      <img src="images/product-summit-education.webp" alt="Summit Series deployed in an education district office" style="width:100%;max-width:900px;display:block;margin:0 auto;border-radius:12px;box-shadow:0 8px 32px rgba(0,0,0,0.4);" width="1536" height="1024" loading="lazy">
+      <p style="text-align:center;color:var(--copper);font-size:0.85rem;margin-top:16px;">Education Deployment</p>
 
   <!-- ============================================================
        SECTION 10: RISK DISCLOSURE
