@@ -28,9 +28,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="author" content="Basho Parks">
-  <meta name="date" content="2026-05-01">
-  <title>Investor Overview | $500K Seed Round | Island Mountain</title>
-  <meta name="description" content="Island Mountain is raising $500K to build AI inference servers for regulated industries. SAFE at $2.5M cap. GPU sourcing is the margin thesis.">
+  <meta name="date" content="2026-05-17">
+  <title>Investor Overview | $750K Seed Round | Island Mountain</title>
+  <meta name="description" content="Island Mountain is raising $750K to build sovereign AI hardware and seed the distribution of Lamprey MAI - a local AI operating system for regulated industries and private households. SAFE at $5M cap.">
   <link rel="icon" type="image/x-icon" href="favicon.ico?v=2">
   <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png?v=2">
   <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png?v=2">
@@ -60,8 +60,8 @@
   <link rel="canonical" href="https://islandmountain.io/investors.html">
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Investor Overview | $500K Seed Round | Island Mountain">
-  <meta property="og:description" content="Island Mountain is raising $500K to build AI inference servers for regulated industries. SAFE at $2.5M cap. GPU sourcing is the margin thesis.">
+  <meta property="og:title" content="Investor Overview | $750K Seed Round | Island Mountain">
+  <meta property="og:description" content="Island Mountain is raising $750K to build sovereign AI hardware and seed the distribution of Lamprey MAI - a local AI operating system for regulated industries and private households. SAFE at $5M cap.">
   <meta property="og:url" content="https://islandmountain.io/investors.html">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Island Mountain">
@@ -69,8 +69,8 @@
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Investor Overview | $500K Seed Round | Island Mountain">
-  <meta name="twitter:description" content="Island Mountain is raising $500K to build AI inference servers for regulated industries. SAFE at $2.5M cap. GPU sourcing is the margin thesis.">
+  <meta name="twitter:title" content="Investor Overview | $750K Seed Round | Island Mountain">
+  <meta name="twitter:description" content="Island Mountain is raising $750K to build sovereign AI hardware and seed Lamprey MAI distribution. SAFE at $5M cap.">
   <meta name="twitter:image" content="https://islandmountain.io/images/hero-mountain.webp">
 
   <!-- Organization Schema -->
@@ -80,7 +80,7 @@
     "@type": "Organization",
     "name": "Island Mountain",
     "url": "https://islandmountain.io",
-    "description": "Pre-built local AI inference hardware for data-sovereign organizations. NVIDIA H100 and H200 GPU servers built and burn-tested in Colorado.",
+    "description": "Pre-built local AI inference hardware and the Lamprey MAI operating system for data-sovereign organizations and families. NVIDIA H100 and H200 GPU servers built and burn-tested in Colorado.",
     "address": {
       "@type": "PostalAddress",
       "addressRegion": "CO",
@@ -142,8 +142,40 @@
     .cta-inline { text-align:center; padding:48px 24px; margin:48px 0; border:1px solid rgba(245,158,11,0.2); border-radius:16px; background:rgba(245,158,11,0.03); }
     .cta-inline h3 { color:var(--text-light); margin-bottom:12px; }
     .cta-inline p { color:var(--text-muted); margin-bottom:24px; max-width:500px; margin-left:auto; margin-right:auto; }
-    .two-col { display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:start; }
-    @media (max-width:768px) { .two-col { grid-template-columns:1fr; } }
+    .terms-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(160px, 1fr)); gap:16px; margin:32px 0; }
+    .term-block { text-align:center; padding:20px 12px; background:var(--secondary-dark); border-radius:12px; border:1px solid rgba(148,163,184,0.1); }
+    .term-block .term-label { display:block; font-size:0.75rem; text-transform:uppercase; letter-spacing:0.5px; color:var(--text-muted); margin-bottom:8px; }
+    .term-block .term-value { display:block; font-size:1.5rem; font-weight:700; color:var(--copper); }
+    .arch-diagram { display:flex; flex-direction:column; align-items:center; gap:0; margin:40px auto; max-width:700px; }
+    .arch-top { background:rgba(245,158,11,0.08); border:2px solid var(--copper); border-radius:16px; padding:24px 40px; text-align:center; position:relative; z-index:2; }
+    .arch-top h3 { color:var(--copper); margin:0 0 4px; font-size:1.2rem; }
+    .arch-top p { color:var(--text-muted); margin:0; font-size:0.85rem; }
+    .arch-connector { width:2px; height:40px; background:var(--copper); }
+    .arch-split { display:flex; justify-content:center; gap:0; align-items:flex-start; width:100%; }
+    .arch-branch { width:2px; height:30px; background:var(--copper); }
+    .arch-horiz { height:2px; background:var(--copper); flex:1; max-width:200px; margin-top:0; align-self:flex-start; }
+    .arch-bottom { display:flex; gap:24px; justify-content:center; width:100%; }
+    .arch-node { background:var(--secondary-dark); border:1px solid rgba(148,163,184,0.15); border-radius:12px; padding:20px 24px; text-align:center; flex:1; max-width:280px; }
+    .arch-node h4 { color:var(--text-light); margin:0 0 4px; font-size:1rem; }
+    .arch-node p { color:var(--text-muted); margin:0; font-size:0.8rem; }
+    .arch-node .arch-price { color:var(--copper); font-weight:600; font-size:0.85rem; margin-top:8px; display:block; }
+    .milestone-grid { display:grid; grid-template-columns:1fr 1fr; gap:32px; margin:32px 0; }
+    .milestone-done, .milestone-ahead { background:var(--secondary-dark); border-radius:12px; padding:24px; border:1px solid rgba(148,163,184,0.1); }
+    .milestone-done h3 { color:var(--copper); margin-bottom:16px; }
+    .milestone-ahead h3 { color:var(--text-light); margin-bottom:16px; }
+    .milestone-done ul, .milestone-ahead ul { padding-left:20px; margin:0; }
+    .milestone-done li, .milestone-ahead li { color:var(--text-muted); font-size:0.9rem; margin-bottom:8px; line-height:1.5; }
+    .milestone-ahead li strong { color:var(--text-light); }
+    .lamprey-logo-inline { display:block; max-width:200px; margin:0 auto 24px; border-radius:12px; }
+    .margin-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin:24px 0; }
+    .margin-block { padding:20px; border-radius:12px; text-align:center; }
+    .margin-neg { background:rgba(239,68,68,0.08); border:1px solid rgba(239,68,68,0.2); }
+    .margin-pos { background:rgba(34,197,94,0.08); border:1px solid rgba(34,197,94,0.2); }
+    .margin-label { display:block; font-size:0.8rem; color:var(--text-muted); margin-bottom:8px; }
+    .margin-value { display:block; font-size:1.5rem; font-weight:700; }
+    .margin-neg .margin-value { color:#ef4444; }
+    .margin-pos .margin-value { color:#22c55e; }
+    @media (max-width:768px) { .terms-grid { grid-template-columns:repeat(2, 1fr); } .milestone-grid { grid-template-columns:1fr; } .arch-bottom { flex-direction:column; align-items:center; } .margin-grid { grid-template-columns:1fr; } }
   </style>
 
 <script type="application/ld+json">
@@ -202,7 +234,7 @@
             <li><a href="casino-gaming.html">Casino Gaming</a></li>
           </ul>
         </li>
-              <li><a href="faq.html">FAQ</a></li>
+        <li><a href="faq.html">FAQ</a></li>
         <li><a href="blog.html">Blog</a></li>
         <li><a href="resources.html">Resources</a></li>
         <li><a href="contact.html" class="nav-cta">Request Quote</a></li>
@@ -233,7 +265,7 @@
       <a href="education.html">Education</a>
       <a href="casino-gaming.html">Casino Gaming</a>
     </div>
-            <a href="faq.html">FAQ</a>
+    <a href="faq.html">FAQ</a>
     <a href="blog.html">Blog</a>
     <a href="resources.html">Resources</a>
     <a href="contact.html" class="nav-cta">Request Quote</a>
@@ -244,29 +276,77 @@
        ============================================================ -->
   <section class="hero hero-page">
     <div class="hero-inner">
-      <span class="hero-badge">Seed Round Open</span>
-      <h1>Regulated industries must own their AI infrastructure. We build it for them.</h1>
-      <p>The regulated AI infrastructure market is mandatory spend, not discretionary. The margin thesis depends entirely on GPU sourcing - and used H100 prices are falling as hyperscalers upgrade to Blackwell. We need $500K to build the first three racks, prove the unit economics, and lock in supplier relationships before competitors figure out this gap exists.</p>
+      <span class="hero-badge">Seed Round Now Open</span>
+      <h1>The sovereign AI platform starts with hardware. It doesn't end there.</h1>
+      <p>Island Mountain builds on-premise AI inference hardware for regulated industries and private households. Every unit ships with <strong>Lamprey MAI</strong> - our proprietary local interface layer, built from the ground up as a permanent, subscription-free AI operating system. Hardware gets us into buildings and homes. Lamprey MAI is what stays.</p>
       <a href="contact.html" class="btn btn-primary mt-16">Schedule a Conversation</a>
     </div>
   </section>
 
   <!-- ============================================================
-       SECTION 2: THE MARKET
+       SECTION 2: DEAL TERMS
+       ============================================================ -->
+  <section class="section section-dark">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-badge">The Offering</span>
+        <h2>$750,000 SAFE &middot; $5M Cap &middot; 20% Discount</h2>
+      </div>
+      <div class="terms-grid fade-in">
+        <div class="term-block">
+          <span class="term-label">Raise</span>
+          <span class="term-value">$750,000</span>
+        </div>
+        <div class="term-block">
+          <span class="term-label">Instrument</span>
+          <span class="term-value">SAFE</span>
+        </div>
+        <div class="term-block">
+          <span class="term-label">Valuation Cap</span>
+          <span class="term-value">$5,000,000</span>
+        </div>
+        <div class="term-block">
+          <span class="term-label">Discount Rate</span>
+          <span class="term-value">20%</span>
+        </div>
+        <div class="term-block">
+          <span class="term-label">Minimum Check</span>
+          <span class="term-value">$25,000</span>
+        </div>
+        <div class="term-block">
+          <span class="term-label">MOIC at $10M Series A</span>
+          <span class="term-value">4.0x</span>
+        </div>
+      </div>
+      <p class="fade-in" style="text-align:center;color:var(--text-muted);margin-top:16px;font-size:0.9rem;">48.6% of raise goes directly into GPU inventory - hard assets with active secondary market resale value. Not salaries. Not overhead.</p>
+    </div>
+  </section>
+
+  <!-- Summit Product Showcase -->
+  <section class="product-showcase section-darker fade-in">
+    <div class="container">
+      <img src="images/hero-products.webp" alt="Island Mountain Summit Series AI inference server hardware" style="width:100%;max-width:900px;display:block;margin:0 auto;border-radius:12px;box-shadow:0 8px 32px rgba(0,0,0,0.4);" width="1536" height="1024" loading="lazy">
+      <p style="text-align:center;color:var(--text-muted);font-size:0.85rem;margin-top:16px;">Summit Series - Enterprise AI inference racks, $75,000 to $400,000. Every unit burn-tested 72 hours before shipment.</p>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECTION 3: THE MARKET THESIS
        ============================================================ -->
   <section class="section section-dark">
     <div class="container">
       <div class="section-header fade-in">
         <span class="section-badge">The Market</span>
-        <h2>Regulated Data Cannot Touch the Cloud</h2>
+        <h2>The Market Nobody Is Serving</h2>
       </div>
       <div class="fade-in content-max-800">
-        <p>HIPAA. ITAR. Attorney-client privilege. Tribal data sovereignty. FERPA. These aren't preferences; they're legal requirements with criminal penalties for non-compliance. Organizations in these verticals need AI capability but cannot use OpenAI, Claude, or any cloud inference provider for sensitive workloads. The data cannot leave the building. Period.</p>
-        <p class="mt-16">Enterprise vendors sell $1M+ GPU clusters. DIY builders offer no warranty, no burn-in, no pre-configured software stack. Nobody is building turnkey, rack-ready AI servers in the $75K-$400K range for the mid-market. That's the gap.</p>
-        <p class="mt-16">The other incumbent is the managed services provider. Regulated organizations currently pay $100-150K per year to MSPs for the privilege of having "one voice to talk to" on IT. The actual service is standardized, sub-par by default, and structured as an a la carte upsell pyramid; real competence costs extra. Island Mountain replaces that model entirely: you own the hardware, and the people who built it answer when you call. No ticket queue. No tier system. No subscription to unlock basic accountability.</p>
+        <p>Cloud AI has a hard legal wall problem. HIPAA. ITAR. Attorney-client privilege. Tribal data sovereignty frameworks - OCAP principles, tribal gaming compact restrictions, sovereign government data governance mandates. These aren't preferences an organization can waive. They're legal prohibitions with criminal penalties for non-compliance. Every query sent to OpenAI, Claude, Gemini, or any cloud inference provider by an entity in these verticals is a compliance event waiting to become a liability.</p>
+        <p class="mt-16">The organizations that need AI most are the ones the cloud AI market cannot legally serve.</p>
+        <p class="mt-16">Enterprise vendors solve this for Fortune 500 companies at $1M and up. DIY builders offer no warranty, no burn-in, no compliance documentation, no support. The $75K to $400K mid-market - tribal governments, regional law firms, independent medical groups, mid-tier defense contractors - has no turnkey solution. That's the gap Island Mountain was built to occupy, and it's not a small gap. There are 574 federally recognized tribal nations in the United States alone. There are over 400,000 law firms. There are 6,100 hospitals and tens of thousands of independent medical practices. Every single one of them is watching their competitors deploy AI and asking the same question: how do we do this without violating our compliance obligations?</p>
+        <p class="mt-16">The answer they need is a rack in their building. We build that rack.</p>
         <div class="metrics-row">
           <div class="investor-metric">
-            <span class="metric-value">5</span>
+            <span class="metric-value">11</span>
             <span class="metric-label">Regulated verticals researched</span>
           </div>
           <div class="investor-metric">
@@ -274,27 +354,95 @@
             <span class="metric-label">Price range (no competitor)</span>
           </div>
           <div class="investor-metric">
-            <span class="metric-value">Zero</span>
-            <span class="metric-label">Cloud alternatives for sovereign data</span>
+            <span class="metric-value">574</span>
+            <span class="metric-label">Federally recognized tribal nations</span>
+          </div>
+          <div class="investor-metric">
+            <span class="metric-value">400,000+</span>
+            <span class="metric-label">U.S. law firms</span>
           </div>
         </div>
-        <p class="note-muted">Market research depth: <a href="law-firms.html" class="clr-copper">Law Firms</a> &middot; <a href="medical-practices.html" class="clr-copper">Medical Practices</a> &middot; <a href="tribal-nations.html" class="clr-copper">Tribal Nations</a> &middot; <a href="research-labs.html" class="clr-copper">Research Labs</a> &middot; <a href="defense-contractors.html" class="clr-copper">Defense Contractors</a></p>
       </div>
     </div>
   </section>
 
   <!-- ============================================================
-       SECTION 3: THE PRODUCT
+       SECTION 4: LAMPREY MAI
        ============================================================ -->
   <section class="section section-darker">
     <div class="container">
       <div class="section-header fade-in">
-        <span class="section-badge">The Product</span>
-        <h2>What We Sell</h2>
+        <span class="section-badge">The Platform</span>
+        <h2>Lamprey MAI: The Platform Thesis</h2>
       </div>
       <div class="fade-in content-max-800">
-        <p>The buyer is not a Reddit hobbyist running Ollama on a weekend workstation. The buyer is a compliance officer at a law firm, a CTO at a tribal enterprise, a practice administrator at a medical group - people with budget, regulatory mandates, and zero interest in configuring Linux. They need a rack that arrives tested, certified, documented, and ready to run. That's what we build.</p>
-        <p style="margin-top:12px;color:var(--text-muted);font-size:0.9rem;">Why build in-house instead of reselling? Control over burn-in testing, software configuration, compliance documentation, and warranty terms. The margin is in the assembly, testing, and certification - not in being a hardware middleman.</p>
+        <img src="images/lamprey-mai-logo.webp" alt="Lamprey MAI - Intelligent Adaptation Layer" class="lamprey-logo-inline" width="1536" height="1024" loading="lazy">
+        <p>Hardware is the entry point. Lamprey MAI is the reason this company compounds.</p>
+        <p class="mt-16">Every Island Mountain unit - Summit enterprise rack and Landfall household server - ships with Lamprey MAI, our proprietary local interface layer. In its current form, Lamprey MAI is a localized AI operating environment: curated system prompts, private model management, a clean family- and organization-grade interface running entirely on hardware you own. No data leaves the machine. No query is logged externally. No third party ever processes what runs through it.</p>
+        <p class="mt-16">That's the foundation. What it's becoming is larger.</p>
+        <p class="mt-16">Lamprey MAI is being built as the iOS of sovereign AI - a local operating system that sits between the user and the model, manages the full stack of AI interactions across an organization or household, and evolves through local update packages rather than cloud dependency. The hardware sale seeds the distribution. Lamprey MAI is what deepens the relationship, generates recurring update revenue, and builds the defensible platform moat that pure hardware companies never achieve.</p>
+        <p class="mt-16">When Apple sold the first iPhone, they were selling hardware. What they were building was a platform that would define a trillion-dollar ecosystem for the next two decades. Island Mountain's hardware is the device. Lamprey MAI is the operating system. The regulated industry and consumer privacy markets are the ecosystem.</p>
+      </div>
+
+      <!-- Architecture Diagram -->
+      <div class="arch-diagram fade-in">
+        <div class="arch-top">
+          <h3>LAMPREY MAI</h3>
+          <p>Local AI Operating System Layer</p>
+        </div>
+        <div class="arch-connector"></div>
+        <div style="display:flex;align-items:center;width:100%;max-width:560px;">
+          <div style="flex:1;height:2px;background:var(--copper);"></div>
+          <div style="width:2px;height:30px;background:var(--copper);"></div>
+          <div style="flex:1;height:2px;background:transparent;"></div>
+          <div style="flex:1;height:2px;background:transparent;"></div>
+          <div style="width:2px;height:30px;background:var(--copper);"></div>
+          <div style="flex:1;height:2px;background:var(--copper);"></div>
+        </div>
+        <div class="arch-bottom">
+          <div class="arch-node">
+            <h4>SUMMIT SERIES</h4>
+            <p>Enterprise Racks</p>
+            <span class="arch-price">$75,000 - $400,000</span>
+          </div>
+          <div class="arch-node">
+            <h4>LANDFALL SERIES</h4>
+            <p>Household Servers</p>
+            <span class="arch-price">$8,500 - $18,000</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lamprey MAI Product Imagery -->
+  <section class="product-showcase section-dark fade-in">
+    <div class="container">
+      <div class="product-gallery">
+        <div class="product-gallery-item">
+          <img src="images/lamprey-mai-product-1.webp" alt="Lamprey MAI software product - Intelligent Adaptation Layer for Island Mountain servers" class="product-gallery-img" width="1536" height="1024" loading="lazy">
+          <p class="product-gallery-label">Lamprey MAI - Software Platform</p>
+        </div>
+        <div class="product-gallery-item">
+          <img src="images/lamprey-mai-product-2.webp" alt="Lamprey MAI product packaging - Adapt Connect Persist" class="product-gallery-img" width="1254" height="1254" loading="lazy">
+          <p class="product-gallery-label">Adapt. Connect. Persist.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECTION 5: PRODUCT ARCHITECTURE
+       ============================================================ -->
+  <section class="section section-darker">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-badge">Product Lines</span>
+        <h2>Two Product Lines. One Platform.</h2>
+      </div>
+      <div class="fade-in content-max-800">
+        <h3 class="heading-light-mb">Summit Series - Enterprise and Government</h3>
+        <p>Turnkey, rack-ready AI inference servers for organizations with hard compliance mandates and institutional budgets. Three tiers span the regulated mid-market from law firm to defense contractor to tribal government. Every Summit unit ships with Ubuntu Server, vLLM inference engine, Open WebUI, and frontier open-weight models pre-loaded. 72-hour burn-in tested. 1-year hardware warranty. Full GPU provenance documentation for compliance and audit purposes.</p>
         <div class="metrics-row mt-24">
           <div class="investor-metric">
             <span class="metric-value">$75-85K</span>
@@ -309,43 +457,59 @@
             <span class="metric-label">Summit Pinnacle &middot; 2x H200 141GB (Q3 2026)</span>
           </div>
         </div>
-        <p class="mt-16">Every unit ships with Ubuntu Server, vLLM inference engine, Open WebUI interface, and frontier open-weight models pre-loaded. 72-hour burn-in testing. 1-year hardware warranty. <a href="products.html" class="clr-copper">Full specifications &rarr;</a></p>
+        <h3 class="heading-light-mb" style="margin-top:40px;">Landfall Series - Consumer and Family Sovereignty</h3>
+        <p>The Landfall Series brings Island Mountain's build quality, burn-testing, and Lamprey MAI software stack to individual professionals, privacy-focused families, and high-net-worth households who refuse to rent their intelligence from a cloud subscription. Three tiers. One-time purchase. No token fees. No subscription price hikes. No third party ever reads what your family asks.</p>
+        <div class="metrics-row mt-24">
+          <div class="investor-metric">
+            <span class="metric-value">$8,500-9,500</span>
+            <span class="metric-label">Scout &middot; NVIDIA RTX 5090</span>
+          </div>
+          <div class="investor-metric">
+            <span class="metric-value">$12-14K</span>
+            <span class="metric-label">Ranger &middot; Dual RTX 5090</span>
+          </div>
+          <div class="investor-metric">
+            <span class="metric-value">From $18K</span>
+            <span class="metric-label">Pack Leader &middot; 4x RTX 5090</span>
+          </div>
+        </div>
+        <p class="mt-16" style="font-size:0.9rem;color:var(--text-muted);">Pre-orders are live now at <a href="landfall-preorder.html" class="clr-copper">islandmountain.io/landfall-preorder.html</a>. No payment collected at reservation. 20% deposit secures build slot.</p>
       </div>
     </div>
   </section>
 
-  <!-- Product Imagery -->
+  <!-- Landfall Product Imagery -->
   <section class="product-showcase section-dark fade-in">
     <div class="container">
       <div class="product-gallery">
         <div class="product-gallery-item">
-          <img src="images/product-summit-law-firm.webp" alt="Summit Series deployed in a law firm environment" class="product-gallery-img" width="1536" height="1024" loading="lazy">
-          <p class="product-gallery-label">Legal Practice Deployment</p>
+          <img src="images/landfall-kitchen.webp" alt="Landfall Ranger in a kitchen family hub - schedules, homeschool, recipes, smart home" class="product-gallery-img" width="1536" height="1024" loading="lazy">
+          <p class="product-gallery-label">Ranger - Kitchen / Family Hub</p>
         </div>
         <div class="product-gallery-item">
-          <img src="images/product-summit-tribal-government.webp" alt="Summit Series deployed in a tribal government office" class="product-gallery-img" width="1536" height="1024" loading="lazy">
-          <p class="product-gallery-label">Tribal Government Deployment</p>
+          <img src="images/landfall-home-office-2.webp" alt="Landfall Pack Leader in a home office - client files, offline backups, small business hub" class="product-gallery-img" width="1536" height="1024" loading="lazy">
+          <p class="product-gallery-label">Pack Leader - Home Office</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ============================================================
-       SECTION 4: UNIT ECONOMICS
+       SECTION 6: UNIT ECONOMICS
        ============================================================ -->
   <section class="section section-dark">
     <div class="container">
       <div class="section-header fade-in">
         <span class="section-badge">Unit Economics</span>
         <h2>The Real Numbers</h2>
-        <p>Every figure below comes from actual supplier quotes sourced May 2026. We're not hiding behind rosy projections. Here's what a rack costs to build, what it sells for, and exactly where the margin comes from.</p>
+        <p>Every figure below comes from actual supplier quotes sourced May 2026. We don't hide behind projections.</p>
       </div>
 
       <div class="two-col fade-in">
         <div>
-          <h3 class="heading-light-mb">Bill of Materials: Summit Base Rack (2x H100 80GB PCIe)</h3>
+          <h3 class="heading-light-mb">Summit Base Bill of Materials</h3>
           <table class="bom-table">
-            <thead><tr><th>Component</th><th>Mid-Market Cost</th><th>% of COGS</th></tr></thead>
+            <thead><tr><th>Component</th><th>Cost</th><th>% of COGS</th></tr></thead>
             <tbody>
               <tr class="gpu-row"><td>2x NVIDIA H100 80GB PCIe (refurb)</td><td>$66,000</td><td>78.3%</td></tr>
               <tr><td>Supermicro 4U GPU Chassis</td><td>$7,987</td><td>9.5%</td></tr>
@@ -369,47 +533,148 @@
       </div>
 
       <div class="fade-in" style="margin-top:48px;">
-        <h3 class="heading-light-mb">The Margin Problem - and Opportunity</h3>
-        <div class="metrics-row">
-          <div class="investor-metric">
-            <span class="metric-value" style="color:#ef4444;">-5.3%</span>
-            <span class="metric-label">Gross margin at mid-market GPU prices ($33K/card)</span>
+        <h3 class="heading-light-mb">The Margin Thesis</h3>
+        <p style="color:var(--text-muted);margin-bottom:24px;">GPUs are 78.3% of total cost. A $5,000 reduction in per-GPU sourcing equals $10,000 more margin per rack. This single line item is the entire business model. It's also the competitive moat: the company that locks sub-$27K H100 supply from enterprise refurb channels first wins.</p>
+        <div class="margin-grid">
+          <div class="margin-block margin-neg">
+            <span class="margin-label">Mid-market GPU pricing ($33K/card)</span>
+            <span class="margin-value">-5.3%</span>
           </div>
-          <div class="investor-metric">
-            <span class="metric-value" style="color:#22c55e;">24-33%</span>
-            <span class="metric-label">Gross margin at aggressive sourcing ($24-27K/card)</span>
-          </div>
-          <div class="investor-metric">
-            <span class="metric-value">$80,000</span>
-            <span class="metric-label">Mid-range selling price (Summit Base tier)</span>
+          <div class="margin-block margin-pos">
+            <span class="margin-label">Aggressive sourcing ($24-27K/card)</span>
+            <span class="margin-value">24-33%</span>
           </div>
         </div>
-        <p style="margin-top:16px;color:var(--text-muted);">At current market average prices, the unit economics are negative. At bulk/relationship pricing through enterprise refurbishment channels, margin is 24-33%. The entire business model lives and dies on GPU sourcing. This isn't a weakness to hide; it's the competitive moat to build. The company that locks in sub-$27K H100 supply first wins.</p>
         <div class="chart-wrapper chart-wrapper-wide" style="max-width:700px;margin:32px auto;"><canvas id="marginSensitivity"></canvas></div>
+        <p style="margin-top:16px;color:var(--text-muted);">At current average secondary market prices, unit economics are negative. At bulk relationship pricing through enterprise refurb channels - which the seed capital enables us to access - margin is 24 to 33%. The raise exists to capitalize on a supply window that's open right now and won't stay open. Hyperscalers are upgrading from H100 to Blackwell. That migration is flooding the refurb market. We need to be there buying before competitors figure out this gap exists.</p>
       </div>
     </div>
   </section>
 
-  <!-- Mid-page CTA -->
-  <section class="section section-darker">
+  <!-- Summit Deployment Imagery -->
+  <section class="product-showcase section-darker fade-in">
     <div class="container">
-      <div class="cta-inline fade-in">
-        <h3>Want to see the full financial model?</h3>
-        <p>We'll walk you through the spreadsheet, supplier quotes, and sourcing strategy in a 30-minute call.</p>
-        <a href="contact.html" class="btn btn-primary">Schedule a Conversation</a>
+      <div class="product-gallery">
+        <div class="product-gallery-item">
+          <img src="images/product-summit-law-firm.webp" alt="Summit Series deployed in a law firm environment" class="product-gallery-img" width="1536" height="1024" loading="lazy">
+          <p class="product-gallery-label">Legal Practice Deployment</p>
+        </div>
+        <div class="product-gallery-item">
+          <img src="images/product-summit-tribal-government.webp" alt="Summit Series deployed in a tribal government office" class="product-gallery-img" width="1536" height="1024" loading="lazy">
+          <p class="product-gallery-label">Tribal Government Deployment</p>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- ============================================================
-       SECTION 5: FINANCIAL PROJECTIONS
+       SECTION 7: USE OF CAPITAL
+       ============================================================ -->
+  <section class="section section-dark">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-badge">Capital Allocation</span>
+        <h2>Use of Capital</h2>
+        <p>$750,000 raised. Here's where every dollar goes.</p>
+      </div>
+
+      <div class="two-col fade-in">
+        <div>
+          <table class="bom-table">
+            <thead><tr><th>Allocation</th><th>Amount</th><th>%</th></tr></thead>
+            <tbody>
+              <tr class="gpu-row"><td>GPU Inventory (6x H100 80GB PCIe)</td><td>$198,000</td><td>26.4%</td></tr>
+              <tr><td>Non-GPU Components (3 builds)</td><td>$45,000</td><td>6.0%</td></tr>
+              <tr><td>Assembly Facility Setup</td><td>$25,000</td><td>3.3%</td></tr>
+              <tr><td>Lamprey MAI Engineering Validation</td><td>$50,000</td><td>6.7%</td></tr>
+              <tr><td>Operating Runway (8 months)</td><td>$280,000</td><td>37.3%</td></tr>
+              <tr><td>Marketing and Sales Launch</td><td>$80,000</td><td>10.7%</td></tr>
+              <tr><td>Legal and Incorporation</td><td>$10,000</td><td>1.3%</td></tr>
+              <tr><td>Working Capital Reserve</td><td>$62,000</td><td>8.3%</td></tr>
+              <tr><td><strong>Total</strong></td><td><strong>$750,000</strong></td><td><strong>100%</strong></td></tr>
+            </tbody>
+          </table>
+          <p style="margin-top:16px;padding:16px;background:rgba(245,158,11,0.05);border-left:3px solid var(--copper);border-radius:0 8px 8px 0;color:var(--text-muted);font-size:0.9rem;">$243,000 - 32.4% of the raise - converts directly into GPU inventory. Hard assets. Active secondary market. Real resale value. Your capital doesn't evaporate into overhead.</p>
+        </div>
+        <div>
+          <h3 class="heading-light-mb">Where Every Dollar Goes</h3>
+          <div class="chart-wrapper" style="max-width:500px;"><canvas id="useOfFunds"></canvas></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECTION 8: MILESTONES
+       ============================================================ -->
+  <section class="section section-darker">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-badge">Milestones</span>
+        <h2>Capital to Revenue: The 12-Month Roadmap</h2>
+      </div>
+
+      <div class="milestone-grid fade-in">
+        <div class="milestone-done">
+          <h3><i class="ri-checkbox-circle-line" style="margin-right:8px;"></i>Already Completed</h3>
+          <ul>
+            <li>Website live and indexed across 48 pages</li>
+            <li>Brand established across both product lines</li>
+            <li>Market research complete across eleven regulated verticals</li>
+            <li>BOM built with verified May 2026 supplier quotes</li>
+            <li>Supplier channels identified and relationships opened</li>
+            <li>Financial model built - conservative, moderate, and aggressive scenarios</li>
+            <li>Company formed and insured</li>
+            <li>Landfall Series pre-orders live</li>
+            <li>Lamprey MAI interface layer in final build and validation</li>
+            <li>16 blog posts published, full SEO program operational</li>
+          </ul>
+        </div>
+        <div class="milestone-ahead">
+          <h3>Capital Unlocks</h3>
+          <ul>
+            <li><strong>Week 1-2:</strong> Lamprey MAI validation testing complete</li>
+            <li><strong>Week 4:</strong> Assembly facility operational</li>
+            <li><strong>Week 6:</strong> First GPU procurement - 6x H100 received and documented</li>
+            <li><strong>Week 10:</strong> First Summit Base rack assembled and burn-in started</li>
+            <li><strong>Q4 2026:</strong> First unit ships to paying customer</li>
+            <li><strong>Q1 2027:</strong> Three units shipped - unit economics proven in the field</li>
+            <li><strong>Q2 2027:</strong> Landfall deposits convert to first consumer shipments</li>
+            <li><strong>Q4 2027:</strong> Series A readiness - 10+ units shipped, customer references established, Lamprey MAI in active deployment</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="fade-in" style="margin-top:32px;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;">
+        <div class="card-panel">
+          <h4 class="copper-mb-8"><i class="ri-home-line"></i> Landfall Series</h4>
+          <p class="muted-body">Home AI servers for individuals and families. Three tiers: Scout (from $8,500), Ranger (from $12,000), Pack Leader (from $18,000). Same build quality and Lamprey MAI software stack as Summit Series. Air-gapped by design. The Scout buyer at $8,500 is the warm referral path to a Summit Base sale at $75K for their organization. Pre-orders now open.</p>
+        </div>
+        <div class="card-panel">
+          <h4 class="copper-mb-8"><i class="ri-shield-keyhole-line"></i> Citadel Series</h4>
+          <p class="muted-body">Multi-rack, custom-configured air-gapped systems designed for SCIF environments, classified-adjacent defense contractors, and national government deployments. Project-based pricing starting at $400,000. Scoped after first Summit-tier defense deployment provides reference architecture and case study.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Landfall Living Room Imagery -->
+  <section class="product-showcase section-dark fade-in">
+    <div class="container">
+      <img src="images/landfall-living-room.webp" alt="Landfall Ranger in a living room - family photos, AI assistant, smart home" style="width:100%;max-width:900px;display:block;margin:0 auto;border-radius:12px;box-shadow:0 8px 32px rgba(0,0,0,0.4);" width="1536" height="1024" loading="lazy">
+      <p style="text-align:center;color:var(--text-muted);font-size:0.85rem;margin-top:16px;">Landfall Ranger - Living Room. Family photos, AI assistant, smart home. Zero cloud dependency. Zero water waste. Roughly 40 watts idle.</p>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECTION 9: FINANCIAL PROJECTIONS
        ============================================================ -->
   <section class="section section-dark">
     <div class="container">
       <div class="section-header fade-in">
         <span class="section-badge">Financial Projections</span>
-        <h2>Three Scenarios, Two Years</h2>
-        <p>All three scenarios show negative Year 1 NOI. This is normal for a hardware startup building infrastructure. The $500K raise is primarily runway, not growth capital. Year 2 is where unit economics prove out at aggressive sourcing.</p>
+        <h2>Three Scenarios. Two Years. No Spin.</h2>
+        <p>All three scenarios show negative Year 1 NOI. This is normal for a hardware startup funding its first production run. Year 2 is where unit economics prove out - and where Lamprey MAI begins generating recurring update revenue alongside hardware margin.</p>
       </div>
 
       <div class="scenario-grid fade-in">
@@ -450,168 +715,76 @@
       </div>
 
       <div class="fade-in" style="margin-top:32px;max-width:700px;margin-left:auto;margin-right:auto;">
-        <h3 style="color:var(--text-light);margin-bottom:12px;">Break-Even Analysis</h3>
-        <p class="clr-muted">Annual fixed costs: $360,000. At moderate margins ($2K contribution/unit), break-even requires 180 units/year - unrealistic. At aggressive margins ($10K contribution/unit), break-even is 36 units/year. This reinforces: aggressive GPU sourcing is not optional, it's existential.</p>
-        <p style="color:var(--text-muted);margin-top:16px;"><strong style="color:var(--text-light);">Beyond hardware margin:</strong> Year 2 introduces managed service contracts - model updates, security patching, performance monitoring, and compliance documentation - as recurring monthly revenue. The installation creates the relationship. The maintenance contract is where the business compounds. This is the ADT model: the hardware sale gets you in the door, the service retainer is where margin lives long-term.</p>
+        <p style="color:var(--text-muted);">Beyond hardware margin: Year 2 introduces Lamprey MAI update subscriptions, managed service contracts - model updates, security patching, performance monitoring, compliance documentation - as recurring monthly revenue. The hardware sale creates the relationship. The platform is where the business compounds. This is the ADT model applied to sovereign AI: the rack gets you in the door; Lamprey MAI is what keeps the relationship alive and growing.</p>
       </div>
     </div>
   </section>
 
-  <!-- ============================================================
-       SECTION 6: THE ASK
-       ============================================================ -->
-  <section class="section section-darker">
+  <!-- Additional Product Imagery -->
+  <section class="product-showcase section-darker fade-in">
     <div class="container">
-      <div class="section-header fade-in">
-        <span class="section-badge">The Ask</span>
-        <h2>$500,000 SAFE &middot; $2.5M Cap &middot; 20% Discount</h2>
-      </div>
-
-      <div class="two-col fade-in">
-        <div>
-          <h3 class="heading-light-mb">Use of Funds</h3>
-          <ul class="use-of-funds-list">
-            <li><span>GPU Inventory (6x H100 80GB PCIe)</span><span class="fund-amount">$198,000</span></li>
-            <li><span>Non-GPU Components (3 builds)</span><span class="fund-amount">$45,000</span></li>
-            <li><span>Assembly Facility Setup</span><span class="fund-amount">$25,000</span></li>
-            <li><span>Operating Runway (6 months)</span><span class="fund-amount">$180,000</span></li>
-            <li><span>Marketing &amp; Sales Launch</span><span class="fund-amount">$20,000</span></li>
-            <li><span>Legal &amp; Incorporation</span><span class="fund-amount">$10,000</span></li>
-            <li><span>Working Capital Reserve</span><span class="fund-amount">$22,000</span></li>
-            <li><span><strong>Total Raise</strong></span><span class="fund-amount"><strong>$500,000</strong></span></li>
-          </ul>
-          <p class="note-muted">$243K (48.6%) goes directly into hard assets - GPUs and server components. Your money buys inventory with active secondary-market resale value, not salaries and overhead.</p>
+      <div class="product-gallery">
+        <div class="product-gallery-item">
+          <img src="images/product-summit-healthcare.webp" alt="Summit Series deployed in a clinical healthcare setting" class="product-gallery-img" width="1536" height="1024" loading="lazy">
+          <p class="product-gallery-label">Healthcare Deployment</p>
         </div>
-        <div>
-          <h3 class="heading-light-mb">Where Every Dollar Goes</h3>
-          <div class="chart-wrapper" style="max-width:500px;"><canvas id="useOfFunds"></canvas></div>
-          <div style="margin-top:24px;padding:16px;background:var(--secondary-dark);border-radius:8px;border:1px solid rgba(148,163,184,0.1);">
-            <h4 style="color:var(--text-light);margin-bottom:8px;font-size:0.95rem;">Deal Terms</h4>
-            <p style="color:var(--text-muted);font-size:0.85rem;line-height:1.6;margin:0;">
-              Instrument: SAFE (Simple Agreement for Future Equity)<br>
-              Valuation Cap: $2,500,000 pre-money<br>
-              Discount: 20% to next priced round<br>
-              Minimum Check: $25,000<br>
-              Pro-forma Seed Ownership: 16.7%<br>
-              MOIC at $5M Series A: 2.0x<br>
-              MOIC at $10M Series A: 4.0x
-            </p>
-          </div>
+        <div class="product-gallery-item">
+          <img src="images/product-summit-education.webp" alt="Summit Series deployed in an education district office" class="product-gallery-img" width="1536" height="1024" loading="lazy">
+          <p class="product-gallery-label">Education Deployment</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ============================================================
-       SECTION 7: MILESTONE ROADMAP
+       SECTION 10: RISK DISCLOSURE
        ============================================================ -->
   <section class="section section-dark">
     <div class="container">
       <div class="section-header fade-in">
-        <span class="section-badge">Milestones</span>
-        <h2>Capital &rarr; Revenue</h2>
-        <p>Concrete dates, not vague quarters. Left side: already done. Right side: what your capital unlocks.</p>
+        <span class="section-badge">Risk Disclosure</span>
+        <h2>What Could Go Wrong</h2>
+        <p>Investors deserve founders who name their own risks. Here are ours.</p>
       </div>
-
-      <div class="fade-in" style="max-width:900px;margin:0 auto;">
-        <h3 style="color:var(--copper);margin-bottom:16px;font-size:1rem;">&#10003; Already Completed</h3>
-        <p style="color:var(--text-muted);margin-bottom:32px;">Website live &middot; Brand established &middot; Market research complete across 5 verticals &middot; BOM specced with real supplier quotes &middot; Supplier channels identified &middot; Financial model built &middot; Company formed &middot; Insurance secured</p>
-
-        <h3 style="color:var(--text-light);margin-bottom:16px;font-size:1rem;">Capital Unlocks</h3>
-        <div class="timeline-track">
-          <div class="timeline-items">
-            <div class="timeline-item">
-              <div class="timeline-dot"></div>
-              <span class="tl-date">Q3 2026</span>
-              <span class="tl-label">Seed round closes. Accounts funded.</span>
-            </div>
-            <div class="timeline-item">
-              <div class="timeline-dot pending"></div>
-              <span class="tl-date">+4 weeks</span>
-              <span class="tl-label">Facility operational. ESD stations, burn-in power.</span>
-            </div>
-            <div class="timeline-item">
-              <div class="timeline-dot pending"></div>
-              <span class="tl-date">+6 weeks</span>
-              <span class="tl-label">First GPU procurement. 6x H100 received.</span>
-            </div>
-            <div class="timeline-item">
-              <div class="timeline-dot pending"></div>
-              <span class="tl-date">+10 weeks</span>
-              <span class="tl-label">First Summit Base rack built and burn-in started.</span>
-            </div>
-            <div class="timeline-item">
-              <div class="timeline-dot pending"></div>
-              <span class="tl-date">Q4 2026</span>
-              <span class="tl-label">First unit ships to paying customer.</span>
-            </div>
-            <div class="timeline-item">
-              <div class="timeline-dot pending"></div>
-              <span class="tl-date">Q1 2027</span>
-              <span class="tl-label">3 units shipped. Revenue validates model.</span>
-            </div>
-            <div class="timeline-item">
-              <div class="timeline-dot pending"></div>
-              <span class="tl-date">Q2 2027</span>
-              <span class="tl-label">Break-even month (at aggressive margins).</span>
-            </div>
-            <div class="timeline-item">
-              <div class="timeline-dot pending"></div>
-              <span class="tl-date">Q4 2027</span>
-              <span class="tl-label">Series A readiness. 10+ units, customer refs.</span>
-            </div>
-          </div>
+      <div class="risk-grid fade-in">
+        <div class="risk-card">
+          <h4><i class="ri-error-warning-line"></i> Pre-Revenue Status</h4>
+          <p>Zero revenue. No shipped units. This round funds the transition from development to market delivery. First unit target is 10 weeks post-close.</p>
+        </div>
+        <div class="risk-card">
+          <h4><i class="ri-funds-line"></i> GPU Price Volatility</h4>
+          <p>If H100 secondary market prices rise instead of fall, margins compress or go negative. <strong>Mitigation:</strong> Price-lock clauses with buyers, 14-day quote windows, working capital reserve for opportunistic purchasing when prices dip.</p>
+        </div>
+        <div class="risk-card">
+          <h4><i class="ri-git-branch-line"></i> Dual-Track Execution</h4>
+          <p>Running Summit enterprise and Landfall consumer simultaneously requires rigid operational focus to prevent resource fragmentation. <strong>Mitigation:</strong> Summit is the revenue priority. Landfall operates on pre-order deposits that fund their own build queue.</p>
+        </div>
+        <div class="risk-card">
+          <h4><i class="ri-cpu-line"></i> Lamprey MAI Development Risk</h4>
+          <p>Software is in final validation. Interface layer and system prompt architecture in testing now. <strong>Mitigation:</strong> Hardware ships with Lamprey MAI at current capability; the platform evolves in parallel with commercial operations, not as a prerequisite to them.</p>
+        </div>
+        <div class="risk-card">
+          <h4><i class="ri-user-line"></i> Early-Stage Team</h4>
+          <p>Two co-founders. Hardware builds depend on John; sales pipeline depends on Basho. <strong>Mitigation:</strong> First hire is an assembly technician. SOPs documented alongside first builds. Neither founder is a single point of failure for survival.</p>
+        </div>
+        <div class="risk-card">
+          <h4><i class="ri-building-4-line"></i> Competitive Entry</h4>
+          <p>Dell, HPE, or a funded startup could enter this exact price range. <strong>Mitigation:</strong> Speed to market. Supplier relationships are the moat. In regulated verticals, customer trust and compliance documentation track record matter more than brand recognition.</p>
         </div>
       </div>
-
-        <h3 style="color:var(--text-light);margin-bottom:16px;margin-top:40px;font-size:1rem;">Product Line Expansion</h3>
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;">
-          <div class="card-panel">
-            <h4 class="copper-mb-8"><i class="ri-home-line"></i> Landfall Series</h4>
-            <p class="muted-body">Home AI servers for individuals and families. Three tiers: Scout (from $8,500), Ranger (from $12,000), Pack Leader (from $18,000). Same build quality and software stack as Summit Series. Air-gapped by design. The Scout buyer at $8,500 is the warm referral path to a Summit Base sale at $75K for their organization. Pre-orders now open.</p>
-          </div>
-          <div class="card-panel">
-            <h4 class="copper-mb-8"><i class="ri-shield-keyhole-line"></i> Citadel Series</h4>
-            <p class="muted-body">Multi-rack, custom-configured air-gapped systems designed for SCIF environments, classified-adjacent defense contractors, and national government deployments. Project-based pricing starting at $400,000. The Citadel Series will be scoped after the first Summit-tier defense contractor deployment provides a reference architecture and case study. Naming and positioning it now signals to defense buyers that Island Mountain's product architecture scales beyond single-server deployments.</p>
-          </div>
-        </div>
     </div>
   </section>
 
-  <!-- ============================================================
-       SECTION 8: WHY NOW
-       ============================================================ -->
-  <section class="section section-darker">
+  <!-- Landfall Study/Library -->
+  <section class="product-showcase section-darker fade-in">
     <div class="container">
-      <div class="section-header fade-in">
-        <span class="section-badge">Timing</span>
-        <h2>Why Now</h2>
-      </div>
-      <div class="fade-in content-max-800">
-        <div class="risk-grid">
-          <div class="risk-card">
-            <h4><i class="ri-arrow-down-line"></i> H100 Prices Are Falling</h4>
-            <p>Hyperscalers are upgrading from H100 to Blackwell (B200/B300). This is flooding the secondary market with used H100 cards. Refurbished average: $30,548 today. Bulk channel pricing: $24-27K. The window is open now; it closes when competitors recognize this supply dynamic.</p>
-          </div>
-          <div class="risk-card">
-            <h4><i class="ri-line-chart-line"></i> Regulated AI Demand Is Surging</h4>
-            <p>Every regulated organization is watching their competitors deploy AI and asking "how do we do this without violating our compliance obligations?" The demand signal is everywhere. The supply of compliant infrastructure is nowhere.</p>
-          </div>
-          <div class="risk-card">
-            <h4><i class="ri-ghost-line"></i> No Competitor in This Range</h4>
-            <p>Enterprise vendors (Dell, HPE) sell $1M+ clusters to Fortune 500. DIY builders offer no warranty, no software, no support. Nobody is building turnkey, burn-tested, pre-configured racks for the $75-400K mid-market. First mover with supplier relationships wins.</p>
-          </div>
-          <div class="risk-card">
-            <h4><i class="ri-timer-line"></i> Capital-Efficient Model</h4>
-            <p>One-time hardware sale. No recurring revenue dependency. No SaaS churn. No cloud compute burn rate. Customer pays once, owns the hardware outright. Simple economics: buy GPUs, build rack, sell rack, repeat.</p>
-          </div>
-        </div>
-      </div>
+      <img src="images/landfall-study-library.webp" alt="Landfall Ranger in a study and library - secure documents, private research, financial planning" style="width:100%;max-width:900px;display:block;margin:0 auto;border-radius:12px;box-shadow:0 8px 32px rgba(0,0,0,0.4);" width="1536" height="1024" loading="lazy">
+      <p style="text-align:center;color:var(--text-muted);font-size:0.85rem;margin-top:16px;">Landfall Ranger - Study and Library. Secure documents, private research, financial planning. No cloud. No uploads. No third-party access.</p>
     </div>
   </section>
 
   <!-- ============================================================
-       SECTION 9: THE TEAM
+       SECTION 11: TEAM
        ============================================================ -->
   <section class="section section-dark">
     <div class="container">
@@ -623,70 +796,27 @@
         <div class="info-panel">
           <h3 class="heading-light-mb-sm">John Dougherty - Co-founder | Hardware Engineer</h3>
           <p style="color:var(--text-muted);margin-bottom:16px;"><a href="https://www.johndou.com" target="_blank" rel="noopener" class="clr-copper">johndou.com</a></p>
-          <p class="muted-relaxed">25 years knowledge and experience with GPU hardware markets, enterprise server architectures, and the regulatory compliance landscape driving demand for on-premises AI. Built the Island Mountain product line, financial model, and supplier network from scratch.</p>
+          <p class="muted-relaxed">25 years of knowledge and experience with GPU hardware markets, enterprise server architectures, and the regulatory compliance landscape driving demand for on-premise AI. Built the Island Mountain product line, financial model, and supplier network from scratch.</p>
         </div>
         <div style="padding:24px;background:var(--secondary-dark);border-radius:12px;border:1px solid rgba(148,163,184,0.1);margin-top:16px;">
-          <h3 class="heading-light-mb-sm">Basho Parks - Co-founder | Marketing &amp; Sales Manager</h3>
-          <p class="muted-relaxed">Proven project manager and technical writer with direct relationships across tribal governments, defense contractors, and research institutions. Brings the procurement fluency and operational depth to move from interest to signed contract. Intimate knowledge of the compliance, connectivity, and sovereignty pressures driving demand for on-premises AI.</p>
+          <h3 class="heading-light-mb-sm">Basho Parks - Co-founder | Marketing and Sales</h3>
+          <p class="muted-relaxed">Proven project manager and technical writer with direct relationships across tribal governments, defense contractors, and research institutions in the Pacific Northwest. Brings procurement fluency, operational depth, and intimate knowledge of the compliance, connectivity, and sovereignty pressures driving demand for on-premise AI. Architect of the Lamprey MAI interface layer and platform vision.</p>
         </div>
-        <p style="margin-top:16px;color:var(--text-muted);font-size:0.9rem;">Two-person founding team. Capital funds the first full-time technical hire (assembly technician) and operating runway. Next hire is a second technician - funded by revenue, not the seed round.</p>
+        <p style="margin-top:16px;color:var(--text-muted);font-size:0.9rem;">Two-person founding team. Capital funds the first full-time technical hire - an assembly technician - and operating runway. Second technician hired from revenue, not from the seed round.</p>
       </div>
     </div>
   </section>
 
   <!-- ============================================================
-       SECTION 10: RISK DISCLOSURE
+       SECTION 12: CTA
        ============================================================ -->
-  <section class="section section-darker">
-    <div class="container">
-      <div class="section-header fade-in">
-        <span class="section-badge">Risk Disclosure</span>
-        <h2>What Could Go Wrong</h2>
-        <p>Investors deserve founders who name their own risks. Here they are.</p>
-      </div>
-      <div class="risk-grid fade-in">
-        <div class="risk-card">
-          <h4><i class="ri-funds-line"></i> GPU Price Volatility</h4>
-          <p>If H100 prices rise instead of fall, margins compress or go negative. <strong>Mitigation:</strong> Price-lock clauses with buyers, 14-day quote windows, working capital reserve for opportunistic purchasing when prices dip.</p>
-        </div>
-        <div class="risk-card">
-          <h4><i class="ri-box-3-line"></i> Single-Product Concentration</h4>
-          <p>Revenue depends on one product category (GPU inference servers). <strong>Mitigation:</strong> Three tiers serve different budgets. Summit Ridge and Summit Pinnacle tiers launching Q3 2026. Managed services and maintenance contracts planned for Year 2.</p>
-        </div>
-        <div class="risk-card">
-          <h4><i class="ri-error-warning-line"></i> Pre-Revenue Status</h4>
-          <p>No shipped unit. No customer reference. No benchmark from a real deployment. <strong>Mitigation:</strong> First unit target is 10 weeks post-close. Customer pipeline being built now through vertical content marketing and direct outreach.</p>
-        </div>
-        <div class="risk-card">
-          <h4><i class="ri-building-4-line"></i> Competitive Entry</h4>
-          <p>Dell, HPE, or a well-funded startup could enter this exact market segment. <strong>Mitigation:</strong> Speed to market. Supplier relationships are the moat. First-mover advantage in a niche where customer trust and delivery track record matter more than brand.</p>
-        </div>
-        <div class="risk-card">
-          <h4><i class="ri-cpu-line"></i> Technology Obsolescence</h4>
-          <p>Next-gen GPUs (Blackwell, beyond) could make H100 servers less attractive. <strong>Mitigation:</strong> GPU upgrade program already designed. Transparent disclosure on product pages. Regulated buyers need inference today, not the best GPU tomorrow.</p>
-        </div>
-        <div class="risk-card">
-          <h4><i class="ri-user-line"></i> Early-Stage Team Risk</h4>
-          <p>Two co-founders, no deep bench yet. Hardware builds depend on John; sales pipeline depends on Basho. <strong>Mitigation:</strong> First hire is a technician who can build independently. SOPs and build documentation being written alongside first units. Cross-training between founders on critical processes. Neither founder is a single point of failure for the company surviving.</p>
-        </div>
-        <div class="risk-card">
-          <h4><i class="ri-price-tag-3-line"></i> Commoditization Cliff</h4>
-          <p>Hardware costs drop roughly 40% every 2-3 years. Plug-and-play AI appliances from consumer electronics companies may appear within 18-24 months. <strong>Mitigation:</strong> Regulated buyers don't need a box, they need documented compliance certification, burn-in testing, warranty-backed hardware, and a vendor who understands their specific regulatory obligations. The appliance market will serve hobbyists. Island Mountain serves organizations that need an audit trail.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================================
-       SECTION 11: CTA
-       ============================================================ -->
-  <section class="section section-dark text-center">
+  <section class="section section-darker text-center">
     <div class="container fade-in">
       <h2>Ready to Talk?</h2>
-      <p style="max-width:600px;margin:16px auto 32px;color:var(--text-muted);">This is a real conversation, not a sales pitch. We'll share the full financial model, answer hard questions, and discuss whether this fits your investment thesis.</p>
+      <p style="max-width:600px;margin:16px auto 32px;color:var(--text-muted);">This is a real conversation, not a pitch deck exercise. We'll share the full financial model, walk through supplier quotes, answer hard questions, and discuss whether this fits your thesis. The full BOM, data governance architecture, and Lamprey MAI technical overview are ready to share under NDA or on an open call - your preference.</p>
       <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
         <a href="contact.html" class="btn btn-primary">Schedule a Conversation</a>
-        <a href="contact.html" class="btn" style="border:1px solid var(--copper);color:var(--copper);padding:12px 24px;border-radius:8px;text-decoration:none;">Request the Pitch Deck</a>
+        <a href="contact.html" class="btn" style="border:1px solid var(--copper);color:var(--copper);padding:12px 24px;border-radius:8px;text-decoration:none;">Request the Full Financial Model</a>
       </div>
       <p class="cta-subtitle"><i class="ri-phone-line icon-copper-mr-sm"></i>Or call directly: <a href="tel:+18016091130" class="copper-semibold">1-801-609-1130</a></p>
     </div>
@@ -698,18 +828,19 @@
         <div class="footer-brand">
           <img src="images/logo-footer.webp" alt="Island Mountain logo" width="210" height="210" class="d-block-mb">
           <a href="index.html" class="nav-logo">Island Mountain</a>
-          <p>Local AI infrastructure for data-sovereign organizations. Colorado.</p>
+          <p>Local AI infrastructure for data-sovereign organizations and families. Colorado.</p>
           <p class="mt-8"><i class="ri-phone-line icon-copper-mr"></i><a href="tel:+18016091130" class="clr-muted">1-801-609-1130</a></p>
         </div>
         <div>
           <h3>Quick Links</h3>
           <ul class="footer-links">
             <li><a href="index.html">Home</a></li>
-            <li><a href="products.html">Summit</a>
+            <li><a href="products.html">Summit</a></li>
+            <li><a href="landfall-preorder.html">Landfall</a></li>
             <li><a href="technology.html">Technology</a></li>
             <li><a href="pricing.html">Pricing</a></li>
             <li><a href="resources.html">Resources</a></li>
-              <li><a href="faq.html">FAQ</a></li>
+            <li><a href="faq.html">FAQ</a></li>
             <li><a href="blog.html">Blog</a></li>
           </ul>
         </div>
