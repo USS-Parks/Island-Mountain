@@ -85,6 +85,7 @@
   </script>
 
   <!-- Product Schema -->
+  <!-- Product Schema (3 Landfall tiers with additionalProperty) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -97,13 +98,25 @@
         "sku": "IM-LANDFALL-SCOUT",
         "brand": { "@type": "Brand", "name": "Island Mountain" },
         "category": "Home AI Server",
+        "image": "https://islandmountain.io/images/hero-landfall-4.webp",
+        "additionalProperty": [
+          { "@type": "PropertyValue", "name": "GPU Model", "value": "NVIDIA RTX 5090 32GB GDDR7" },
+          { "@type": "PropertyValue", "name": "Total VRAM", "value": "32GB GDDR7" },
+          { "@type": "PropertyValue", "name": "System RAM", "value": "64GB DDR5 ECC" },
+          { "@type": "PropertyValue", "name": "Storage", "value": "4TB NVMe Gen5 SSD + 8TB family vault" },
+          { "@type": "PropertyValue", "name": "Pre-Installed Models", "value": "Qwen3 14B, Gemma 4 26B (pre-loaded and benchmarked)" },
+          { "@type": "PropertyValue", "name": "Connectivity", "value": "Wi-Fi 7 + 2.5GbE, air-gap switch configurable" },
+          { "@type": "PropertyValue", "name": "Power Draw", "value": "~40W idle" },
+          { "@type": "PropertyValue", "name": "Interface", "value": "Island Mountain OS (IM-OS)" }
+        ],
         "offers": {
           "@type": "AggregateOffer",
           "lowPrice": "8500",
           "highPrice": "9500",
           "priceCurrency": "USD",
           "availability": "https://schema.org/PreOrder",
-          "url": "https://islandmountain.io/landfall-preorder.html#reserve"
+          "url": "https://islandmountain.io/landfall-preorder.html#reserve",
+          "priceValidUntil": "2027-04-30"
         }
       },
       {
@@ -114,13 +127,25 @@
         "sku": "IM-LANDFALL-RANGER",
         "brand": { "@type": "Brand", "name": "Island Mountain" },
         "category": "Home AI Server",
+        "image": "https://islandmountain.io/images/hero-landfall-4.webp",
+        "additionalProperty": [
+          { "@type": "PropertyValue", "name": "GPU Model", "value": "Dual NVIDIA RTX 5090 (64GB combined VRAM)" },
+          { "@type": "PropertyValue", "name": "Total VRAM", "value": "64GB GDDR7" },
+          { "@type": "PropertyValue", "name": "System RAM", "value": "128GB DDR5 ECC" },
+          { "@type": "PropertyValue", "name": "Storage", "value": "8TB NVMe RAID + 32TB family vault (expandable)" },
+          { "@type": "PropertyValue", "name": "Pre-Installed Models", "value": "Qwen3 70B full-precision" },
+          { "@type": "PropertyValue", "name": "Connectivity", "value": "10GbE wired + Wi-Fi 7, whole-home AI mesh capable" },
+          { "@type": "PropertyValue", "name": "Interface", "value": "Island Mountain OS (IM-OS)" },
+          { "@type": "PropertyValue", "name": "Included Modules", "value": "FamilyVault Pro, HomeBase smart home AI, Landfall Scribe, MedRecord Vault" }
+        ],
         "offers": {
           "@type": "AggregateOffer",
           "lowPrice": "12000",
           "highPrice": "14000",
           "priceCurrency": "USD",
           "availability": "https://schema.org/PreOrder",
-          "url": "https://islandmountain.io/landfall-preorder.html#reserve"
+          "url": "https://islandmountain.io/landfall-preorder.html#reserve",
+          "priceValidUntil": "2027-04-30"
         }
       },
       {
@@ -131,13 +156,67 @@
         "sku": "IM-LANDFALL-PACK-LEADER",
         "brand": { "@type": "Brand", "name": "Island Mountain" },
         "category": "Home AI Server",
+        "image": "https://islandmountain.io/images/hero-landfall-4.webp",
+        "additionalProperty": [
+          { "@type": "PropertyValue", "name": "GPU Model", "value": "4x NVIDIA RTX 5090 (128GB combined VRAM)" },
+          { "@type": "PropertyValue", "name": "Total VRAM", "value": "128GB GDDR7" },
+          { "@type": "PropertyValue", "name": "System RAM", "value": "256GB-512GB DDR5 ECC" },
+          { "@type": "PropertyValue", "name": "Storage", "value": "NVMe RAID + 80TB-160TB archival vault, fully redundant" },
+          { "@type": "PropertyValue", "name": "Pre-Installed Models", "value": "Frontier open-weight models, custom fine-tuning capable" },
+          { "@type": "PropertyValue", "name": "Power Protection", "value": "UPS battery backup, always-on family intelligence" },
+          { "@type": "PropertyValue", "name": "Interface", "value": "Island Mountain OS (IM-OS)" },
+          { "@type": "PropertyValue", "name": "Included Modules", "value": "All Ranger modules plus Legacy Engine, Council workspace, custom model fine-tuning" }
+        ],
         "offers": {
           "@type": "AggregateOffer",
           "lowPrice": "18000",
           "highPrice": "28000",
           "priceCurrency": "USD",
           "availability": "https://schema.org/PreOrder",
-          "url": "https://islandmountain.io/landfall-preorder.html#reserve"
+          "url": "https://islandmountain.io/landfall-preorder.html#reserve",
+          "priceValidUntil": "2027-04-30"
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- FAQPage Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is the Island Mountain Landfall Series?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The Landfall Series is Island Mountain's consumer product line of air-gapped home AI servers. Three tiers are available: Scout ($8,500-$9,500) for entry-level data sovereignty, Ranger ($12,000-$14,000) for whole-home AI with multi-user profiles, and Pack Leader ($18,000-$28,000) for generational legacy computing. All tiers run entirely offline with no cloud dependency, no subscriptions, and no per-query fees. Hardware air-gap switches isolate the node from the internet on command while full AI capability continues locally."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does the cost of a Landfall compare to cloud AI subscriptions over five years?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A typical household spending on cloud AI subscriptions (ChatGPT Plus, Claude Pro, Adobe Creative AI, Google AI Pro, Microsoft Copilot Pro, and cloud storage) accumulates roughly $13,300 or more over five years, assuming conservative 15% annual price increases. A Landfall Scout costs $8,500 one-time plus approximately $350 in electricity and $1,000 in optional model updates over the same period, totaling around $10,850. After year five, the Landfall costs nothing per query while cloud subscriptions keep compounding."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is the Landfall pre-order free and what happens after I reserve?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, the pre-order reservation is completely free with no payment collected at the time of submission. After you submit your reservation, an Island Mountain team member contacts you within 48 hours to confirm your build specification and answer questions. A 20% deposit then secures your production slot and locks your position in the build queue. The remaining balance is due before shipment. You can reach the team directly at 1-801-609-1130."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What AI models can the Landfall run and does it need internet access?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The Landfall Scout ships with Qwen3 14B and Gemma 4 26B pre-loaded and benchmarked, running quantized 70B models on its NVIDIA RTX 5090 32GB GPU. The Ranger runs Qwen3 70B at full precision on dual RTX 5090 GPUs with 64GB combined VRAM. The Pack Leader enters frontier open-weight territory with 4x RTX 5090 GPUs and 128GB combined VRAM, supporting custom model fine-tuning. No internet access is required. The hardware air-gap switch can completely isolate the unit from any network while all AI capabilities continue running locally."
         }
       }
     ]
@@ -582,6 +661,11 @@
     </div>
   </section>
 
+
+  <!-- AEO Summary -->
+  <div style="border-left:3px solid var(--copper);padding:16px 20px;margin:32px 0;background:rgba(217,119,6,0.05);border-radius:0 8px 8px 0;">
+  <strong>Summary:</strong> The Island Mountain Landfall Series is a consumer product line of air-gapped home AI servers sold as a one-time purchase with no subscriptions or per-query fees. Three tiers are available: Scout ($8,500-$9,500, NVIDIA RTX 5090 32GB, 64GB DDR5 ECC), Ranger ($12,000-$14,000, dual RTX 5090 64GB combined, 128GB ECC), and Pack Leader ($18,000-$28,000, 4x RTX 5090 128GB combined, up to 512GB ECC). All systems include hardware air-gap switches, run entirely offline, and ship with pre-loaded open-weight AI models benchmarked and ready to use. Pre-orders are open now at no charge. Contact Island Mountain at 1-801-609-1130.
+  </div>
   <!-- CTA -->
   <section class="section section-darker">
     <div class="container" style="text-align:center;max-width:700px;">
@@ -607,9 +691,8 @@
           <h3>Quick Links</h3>
           <ul class="footer-links">
             <li><a href="index.html">Home</a></li>
-            <li><a href="products.html">Summit</a>
-    <a href="landfall-preorder.html">Landfall</a></li>
-        <li><a href="landfall-preorder.html">Landfall</a></li>
+            <li><a href="products.html">Summit</a></li>
+            <li><a href="landfall-preorder.html">Landfall</a></li>
             <li><a href="technology.html">Technology</a></li>
             <li><a href="pricing.html">Pricing</a></li>
             <li><a href="resources.html">Resources</a></li>
