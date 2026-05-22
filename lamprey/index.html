@@ -114,6 +114,78 @@
       gap: 10px;
     }
 
+    .action-grid {
+      display: grid;
+      gap: 12px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      margin-top: 14px;
+    }
+
+    .action-card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 16px;
+      min-height: 150px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .button-row {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 36px;
+      padding: 8px 12px;
+      border-radius: 6px;
+      border: 1px solid var(--teal);
+      color: #ffffff;
+      background: var(--teal);
+      font-size: 13px;
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    .button.secondary {
+      color: var(--teal);
+      background: #ffffff;
+    }
+
+    .run-panel {
+      display: grid;
+      gap: 12px;
+      grid-template-columns: 1fr 1fr;
+      margin-top: 14px;
+    }
+
+    .run-box {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 16px;
+    }
+
+    .run-list {
+      display: grid;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .run-item {
+      display: grid;
+      gap: 4px;
+      border-top: 1px solid var(--line);
+      padding-top: 10px;
+    }
+
     .status-row {
       display: grid;
       grid-template-columns: 170px 120px 1fr 170px;
@@ -237,7 +309,7 @@
     }
 
     @media (max-width: 900px) {
-      .summary-grid, .split { grid-template-columns: 1fr 1fr; }
+      .summary-grid, .split, .action-grid, .run-panel { grid-template-columns: 1fr 1fr; }
       .status-row, .matrix-row {
         grid-template-columns: 1fr;
       }
@@ -246,7 +318,7 @@
     @media (max-width: 560px) {
       header { padding: 24px 18px 18px; }
       main { padding: 16px; }
-      .summary-grid, .split { grid-template-columns: 1fr; }
+      .summary-grid, .split, .action-grid, .run-panel { grid-template-columns: 1fr; }
       .bar { grid-template-columns: 1fr; }
     }
   </style>
@@ -279,6 +351,52 @@
         <h3>Blocked Locally</h3>
         <span class="value">10</span>
         <p class="label">trace/simulator pytest fixtures blocked by temp ACL</p>
+      </div>
+    </section>
+
+    <h2>Run Lamprey Validation</h2>
+    <section class="action-grid" aria-label="Run validation controls">
+      <div class="action-card">
+        <div>
+          <h3>GitHub-hosted checks</h3>
+          <p class="muted">Run router, Rust workspace, Python IPC, or trace/simulator validation on GitHub-hosted Windows runners.</p>
+        </div>
+        <div class="button-row">
+          <a class="button" href="https://github.com/USS-Parks/im-mighty-eel-mai/actions/workflows/lamprey-validation.yml" target="_blank" rel="noopener">Run workflow</a>
+          <a class="button secondary" href="https://github.com/USS-Parks/im-mighty-eel-mai/actions/workflows/lamprey-validation.yml?query=branch%3Amain" target="_blank" rel="noopener">View runs</a>
+        </div>
+      </div>
+      <div class="action-card">
+        <div>
+          <h3>Self-hosted hardware lane</h3>
+          <p class="muted">Select runner <strong>self-hosted-lamprey</strong> in the workflow to run against a trusted local runner labeled <code>self-hosted</code>, <code>Windows</code>, and <code>lamprey</code>.</p>
+        </div>
+        <div class="button-row">
+          <a class="button" href="https://github.com/USS-Parks/im-mighty-eel-mai/settings/actions/runners/new?arch=x64&os=win" target="_blank" rel="noopener">Add runner</a>
+        </div>
+      </div>
+      <div class="action-card">
+        <div>
+          <h3>Local command fallback</h3>
+          <p class="muted">From the MAI workspace, run the same driver used by GitHub Actions.</p>
+        </div>
+        <code class="command">scripts\lamprey-validation.ps1 -Suite all</code>
+      </div>
+    </section>
+
+    <section class="run-panel" aria-label="GitHub Actions live status">
+      <div class="run-box">
+        <h3>Latest GitHub Actions runs</h3>
+        <p class="muted" id="actions-status">Loading latest Lamprey validation runs...</p>
+        <div class="run-list" id="actions-runs"></div>
+      </div>
+      <div class="run-box">
+        <h3>How execution works</h3>
+        <div class="timeline">
+          <div class="event"><strong>1</strong><p class="muted">The page opens GitHub's secure workflow screen. No token is stored in this browser page.</p></div>
+          <div class="event"><strong>2</strong><p class="muted">Choose suite and runner lane. GitHub-hosted is for CI-safe checks; self-hosted-lamprey is for local hardware.</p></div>
+          <div class="event"><strong>3</strong><p class="muted">The workflow uploads logs, JSON, and Markdown summaries as artifacts for review.</p></div>
+        </div>
       </div>
     </section>
 
@@ -378,5 +496,57 @@
 
     <p class="footer">Static dashboard artifact. Update the counts after each validation run and publish this file at <code>https://islandmountain.io/lamprey</code> or link it from the production homepage.</p>
   </main>
+  <script>
+    (function () {
+      var statusEl = document.getElementById('actions-status');
+      var runsEl = document.getElementById('actions-runs');
+      if (!statusEl || !runsEl) return;
+
+      var api = 'https://api.github.com/repos/USS-Parks/im-mighty-eel-mai/actions/workflows/lamprey-validation.yml/runs?branch=main&per_page=5';
+      var workflowUrl = 'https://github.com/USS-Parks/im-mighty-eel-mai/actions/workflows/lamprey-validation.yml';
+
+      function badgeClass(conclusion, status) {
+        if (status !== 'completed') return 'warn';
+        if (conclusion === 'success') return 'pass';
+        return 'fail';
+      }
+
+      function label(conclusion, status) {
+        if (status !== 'completed') return status || 'running';
+        return conclusion || 'completed';
+      }
+
+      fetch(api, { headers: { 'Accept': 'application/vnd.github+json' } })
+        .then(function (response) {
+          if (!response.ok) throw new Error('GitHub API returned ' + response.status);
+          return response.json();
+        })
+        .then(function (data) {
+          var runs = data.workflow_runs || [];
+          if (!runs.length) {
+            statusEl.textContent = 'No Lamprey validation runs found yet. Use Run workflow to start the first one.';
+            return;
+          }
+          statusEl.textContent = 'Showing the five most recent Lamprey validation workflow runs on main.';
+          runsEl.innerHTML = '';
+          runs.forEach(function (run) {
+            var row = document.createElement('div');
+            row.className = 'run-item';
+            var when = new Date(run.created_at).toLocaleString();
+            row.innerHTML =
+              '<div class="button-row">' +
+              '<span class="badge ' + badgeClass(run.conclusion, run.status) + '">' + label(run.conclusion, run.status) + '</span>' +
+              '<a class="button secondary" href="' + run.html_url + '" target="_blank" rel="noopener">Open run</a>' +
+              '</div>' +
+              '<strong>' + (run.display_title || run.name || 'Lamprey validation') + '</strong>' +
+              '<p class="muted">' + when + ' · #' + run.run_number + ' · ' + (run.event || 'workflow_dispatch') + '</p>';
+            runsEl.appendChild(row);
+          });
+        })
+        .catch(function () {
+          statusEl.innerHTML = 'Could not load live run status from GitHub. <a href="' + workflowUrl + '" target="_blank" rel="noopener">Open the workflow page</a>.';
+        });
+    }());
+  </script>
 </body>
 </html>
