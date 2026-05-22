@@ -1,0 +1,382 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MAI Test Validation Dashboard</title>
+  <style>
+    :root {
+      --bg: #f7f8f6;
+      --ink: #1d2320;
+      --muted: #69736d;
+      --line: #d8ddd7;
+      --panel: #ffffff;
+      --green: #177245;
+      --green-soft: #dff1e7;
+      --amber: #a86400;
+      --amber-soft: #fff0d6;
+      --red: #aa2f2f;
+      --red-soft: #f8dddd;
+      --teal: #1d6f73;
+      --plum: #6e4d7f;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.45;
+    }
+
+    header {
+      padding: 32px 28px 24px;
+      border-bottom: 1px solid var(--line);
+      background: #ffffff;
+    }
+
+    main {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 24px;
+    }
+
+    h1, h2, h3, p { margin: 0; }
+
+    h1 {
+      font-size: clamp(28px, 4vw, 44px);
+      line-height: 1.05;
+      letter-spacing: 0;
+      max-width: 980px;
+    }
+
+    h2 {
+      font-size: 21px;
+      margin: 34px 0 14px;
+    }
+
+    h3 { font-size: 15px; }
+
+    .eyebrow {
+      color: var(--teal);
+      font-size: 13px;
+      font-weight: 750;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+    }
+
+    .subhead {
+      color: var(--muted);
+      margin-top: 12px;
+      max-width: 880px;
+      font-size: 16px;
+    }
+
+    .summary-grid {
+      display: grid;
+      gap: 12px;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      margin-top: 20px;
+    }
+
+    .metric, .panel, .status-row, .matrix-row {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+    }
+
+    .metric {
+      padding: 16px;
+      min-height: 118px;
+    }
+
+    .metric .value {
+      display: block;
+      font-size: 32px;
+      font-weight: 800;
+      margin: 8px 0 4px;
+    }
+
+    .metric .label {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .metric.pass { border-left: 5px solid var(--green); }
+    .metric.warn { border-left: 5px solid var(--amber); }
+    .metric.info { border-left: 5px solid var(--teal); }
+    .metric.router { border-left: 5px solid var(--plum); }
+
+    .status-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .status-row {
+      display: grid;
+      grid-template-columns: 170px 120px 1fr 170px;
+      gap: 12px;
+      align-items: center;
+      padding: 14px 16px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      min-height: 28px;
+      padding: 4px 10px;
+      font-size: 12px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .badge.pass {
+      color: var(--green);
+      background: var(--green-soft);
+    }
+
+    .badge.warn {
+      color: var(--amber);
+      background: var(--amber-soft);
+    }
+
+    .badge.fail {
+      color: var(--red);
+      background: var(--red-soft);
+    }
+
+    .muted {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .command {
+      color: #26302b;
+      font: 12px ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace;
+      overflow-wrap: anywhere;
+    }
+
+    .panel {
+      padding: 18px;
+    }
+
+    .split {
+      display: grid;
+      gap: 16px;
+      grid-template-columns: 1.1fr 0.9fr;
+    }
+
+    .bar-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .bar {
+      display: grid;
+      grid-template-columns: 145px 1fr 64px;
+      gap: 12px;
+      align-items: center;
+      font-size: 13px;
+    }
+
+    .track {
+      height: 12px;
+      background: #ecefeb;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--green), var(--teal));
+      border-radius: 999px;
+    }
+
+    .matrix {
+      display: grid;
+      gap: 10px;
+    }
+
+    .matrix-row {
+      display: grid;
+      grid-template-columns: 210px 1fr 1fr;
+      gap: 12px;
+      padding: 14px 16px;
+    }
+
+    .matrix-row strong { display: block; }
+
+    .timeline {
+      display: grid;
+      gap: 12px;
+      margin-top: 8px;
+    }
+
+    .event {
+      display: grid;
+      grid-template-columns: 92px 1fr;
+      gap: 12px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .event:last-child {
+      border-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .footer {
+      margin: 30px 0 12px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    @media (max-width: 900px) {
+      .summary-grid, .split { grid-template-columns: 1fr 1fr; }
+      .status-row, .matrix-row {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 560px) {
+      header { padding: 24px 18px 18px; }
+      main { padding: 16px; }
+      .summary-grid, .split { grid-template-columns: 1fr; }
+      .bar { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <p class="eyebrow">Island Mountain MAI · Session 36 Validation</p>
+    <h1>Test validation dashboard for the MAI router, scheduler, API, core, adapters, and governance stack</h1>
+    <p class="subhead">Snapshot generated May 22, 2026 from the local MAI workspace. The dashboard separates verified green tests from environment-blocked suites so release decisions can see both confidence and remaining risk.</p>
+  </header>
+
+  <main>
+    <section class="summary-grid" aria-label="Validation summary">
+      <div class="metric pass">
+        <h3>Rust Workspace</h3>
+        <span class="value">905</span>
+        <p class="label">enumerated Rust tests, full workspace run passed</p>
+      </div>
+      <div class="metric router">
+        <h3>Session 36 Router</h3>
+        <span class="value">40/40</span>
+        <p class="label">router unit + latency-budget tests passed</p>
+      </div>
+      <div class="metric info">
+        <h3>Python IPC</h3>
+        <span class="value">30/30</span>
+        <p class="label">NDJSON adapter protocol tests passed</p>
+      </div>
+      <div class="metric warn">
+        <h3>Blocked Locally</h3>
+        <span class="value">10</span>
+        <p class="label">trace/simulator pytest fixtures blocked by temp ACL</p>
+      </div>
+    </section>
+
+    <h2>Live Validation Runs</h2>
+    <section class="status-list" aria-label="Live test runs">
+      <div class="status-row">
+        <strong>Rust workspace</strong>
+        <span class="badge pass">Passed</span>
+        <p class="muted">All crates, including Session 36 router, compiled and passed after fixing router defaults and float equality derive.</p>
+        <code class="command">cargo test --workspace</code>
+      </div>
+      <div class="status-row">
+        <strong>Router engine</strong>
+        <span class="badge pass">Passed</span>
+        <p class="muted">Classifier, entity detection, budget tracking, route decisions, fallback chain, and p99 latency budget.</p>
+        <code class="command">cargo test -p mai-router</code>
+      </div>
+      <div class="status-row">
+        <strong>Python IPC</strong>
+        <span class="badge pass">Passed</span>
+        <p class="muted">Adapter wire protocol events, ordering, error codes, startup, inference, heartbeat, and shutdown.</p>
+        <code class="command">python -m pytest adapters/tests/test_ipc_protocol.py -q</code>
+      </div>
+      <div class="status-row">
+        <strong>Trace + simulator pytest</strong>
+        <span class="badge warn">Env blocked</span>
+        <p class="muted">38 tests completed in the combined run; 10 tmp_path fixtures failed with Windows access-denied on pytest temp directories.</p>
+        <code class="command">python -m pytest tools/trace-tools/tests tools/simulator/tests ...</code>
+      </div>
+      <div class="status-row">
+        <strong>Clippy strict gate</strong>
+        <span class="badge warn">Tool blocked</span>
+        <p class="muted">Workspace clippy reached `mai-api` build script and stopped because `protoc` is not installed or visible in PATH.</p>
+        <code class="command">cargo clippy --workspace -- -D warnings -A clippy::pedantic</code>
+      </div>
+    </section>
+
+    <h2>Coverage By System Area</h2>
+    <section class="split">
+      <div class="panel">
+        <h3>Rust suite distribution</h3>
+        <div class="bar-list">
+          <div class="bar"><span>Scheduler</span><div class="track"><div class="fill" style="width: 100%"></div></div><strong>324</strong></div>
+          <div class="bar"><span>Core</span><div class="track"><div class="fill" style="width: 57%"></div></div><strong>186</strong></div>
+          <div class="bar"><span>API</span><div class="track"><div class="fill" style="width: 37%"></div></div><strong>121</strong></div>
+          <div class="bar"><span>Agent</span><div class="track"><div class="fill" style="width: 25%"></div></div><strong>81</strong></div>
+          <div class="bar"><span>Vault</span><div class="track"><div class="fill" style="width: 14%"></div></div><strong>46</strong></div>
+          <div class="bar"><span>Router</span><div class="track"><div class="fill" style="width: 12%"></div></div><strong>40</strong></div>
+          <div class="bar"><span>Adapters</span><div class="track"><div class="fill" style="width: 10%"></div></div><strong>32</strong></div>
+          <div class="bar"><span>SDK + HIL</span><div class="track"><div class="fill" style="width: 9%"></div></div><strong>29</strong></div>
+        </div>
+      </div>
+      <div class="panel">
+        <h3>Validation posture</h3>
+        <div class="timeline">
+          <div class="event"><strong>Green</strong><p class="muted">Core inference plumbing, scheduler intelligence, API auth, streaming, vault, router, and model lifecycle tests pass locally.</p></div>
+          <div class="event"><strong>Watch</strong><p class="muted">Two API integration test files still carry unused-import warnings; not failing, but easy cleanup.</p></div>
+          <div class="event"><strong>Blocked</strong><p class="muted">Python tmp_path and `protoc` are environment issues in this workstation, not behavioral failures in the asserted logic.</p></div>
+          <div class="event"><strong>Deferred</strong><p class="muted">Live model server, hardware GPU, Scout/Ranger boot timings, and 72-hour burn-in remain hardware validation work.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <h2>Data, Inputs, Behavior</h2>
+    <section class="matrix" aria-label="Data and behavior matrix">
+      <div class="matrix-row">
+        <strong>Router classification</strong>
+        <p class="muted">Inputs: public text, email, SSN, PHI terms, classified markers, upstream flags.</p>
+        <p class="muted">Behavior: highest sensitivity wins; critical denies; regulated content stays local; public queries can route to cloud.</p>
+      </div>
+      <div class="matrix-row">
+        <strong>Entity detection</strong>
+        <p class="muted">Inputs: medical terms, tribal sovereignty terms, ITAR/EAR phrases, unrelated text.</p>
+        <p class="muted">Behavior: raw matched text is never emitted; only hashed spans and entity kinds are available for audit/routing.</p>
+      </div>
+      <div class="matrix-row">
+        <strong>Cost controls</strong>
+        <p class="muted">Inputs: estimated tokens, profile role, current usage, zero-token requests, cloud failures.</p>
+        <p class="muted">Behavior: hard caps force local or block, soft caps warn at 80%, failed cloud calls do not burn budget.</p>
+      </div>
+      <div class="matrix-row">
+        <strong>Scheduler + KV</strong>
+        <p class="muted">Inputs: topology fixtures, queue depth, VRAM pressure, priority, KV candidates, batch membership.</p>
+        <p class="muted">Behavior: placement scores explain latency/memory/topology/eviction/batch factors; system priority and warm continuations are protected.</p>
+      </div>
+      <div class="matrix-row">
+        <strong>API + auth</strong>
+        <p class="muted">Inputs: API keys, profile roles, missing/invalid tokens, rate-limit bursts, health exceptions.</p>
+        <p class="muted">Behavior: strict auth blocks spoofing, health remains exempt, MAI error codes and retry headers are stable.</p>
+      </div>
+      <div class="matrix-row">
+        <strong>Trace privacy</strong>
+        <p class="muted">Inputs: NDJSON trace events, session IDs, prompt-like fields, replay policies.</p>
+        <p class="muted">Behavior: allowlisted fields only, salted session hashes, deterministic replay comparisons when pytest temp access is available.</p>
+      </div>
+    </section>
+
+    <p class="footer">Static dashboard artifact. Update the counts after each validation run and publish this file at <code>https://islandmountain.io/lamprey</code> or link it from the production homepage.</p>
+  </main>
+</body>
+</html>
