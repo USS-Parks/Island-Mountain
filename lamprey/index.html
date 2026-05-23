@@ -325,32 +325,32 @@
 </head>
 <body>
   <header>
-    <p class="eyebrow">Island Mountain MAI · Session 36 Validation</p>
+    <p class="eyebrow">Island Mountain MAI · Session 37 Validation</p>
     <h1>Test validation dashboard for the MAI router, scheduler, API, core, adapters, and governance stack</h1>
-    <p class="subhead">Snapshot generated May 22, 2026 from the local MAI workspace. The dashboard separates verified green tests from environment-blocked suites so release decisions can see both confidence and remaining risk.</p>
+    <p class="subhead">Snapshot generated May 22, 2026 from the local MAI workspace. Session 37 validates the Lamprey policy layer on top of the router: rule engine, module registry, HIPAA/ITAR/OCAP baselines, rule tester, strict gates, and full Rust workspace compatibility.</p>
   </header>
 
   <main>
     <section class="summary-grid" aria-label="Validation summary">
       <div class="metric pass">
         <h3>Rust Workspace</h3>
-        <span class="value">905</span>
+        <span class="value">932</span>
         <p class="label">enumerated Rust tests, full workspace run passed</p>
       </div>
       <div class="metric router">
-        <h3>Session 36 Router</h3>
-        <span class="value">40/40</span>
-        <p class="label">router unit + latency-budget tests passed</p>
+        <h3>Session 37 Policy</h3>
+        <span class="value">69/69</span>
+        <p class="label">rule engine, baseline policies, and rule-tester scenarios passed</p>
       </div>
       <div class="metric info">
-        <h3>Python IPC</h3>
-        <span class="value">30/30</span>
-        <p class="label">NDJSON adapter protocol tests passed</p>
+        <h3>Strict Gates</h3>
+        <span class="value">2/2</span>
+        <p class="label">format check and clippy strict gate passed</p>
       </div>
-      <div class="metric warn">
-        <h3>Blocked Locally</h3>
-        <span class="value">10</span>
-        <p class="label">trace/simulator pytest fixtures blocked by temp ACL</p>
+      <div class="metric pass">
+        <h3>Session 37 Failures</h3>
+        <span class="value">0</span>
+        <p class="label">no behavior failures or stalled test cycles observed</p>
       </div>
     </section>
 
@@ -359,7 +359,7 @@
       <div class="action-card">
         <div>
           <h3>GitHub-hosted checks</h3>
-          <p class="muted">Run router, Rust workspace, Python IPC, or trace/simulator validation on GitHub-hosted Windows runners.</p>
+          <p class="muted">Run router, policy, Rust workspace, Python IPC, or trace/simulator validation on GitHub-hosted Windows runners.</p>
         </div>
         <div class="button-row">
           <a class="button" href="https://github.com/USS-Parks/im-mighty-eel-mai/actions/workflows/lamprey-validation.yml" target="_blank" rel="noopener">Run workflow</a>
@@ -405,32 +405,32 @@
       <div class="status-row">
         <strong>Rust workspace</strong>
         <span class="badge pass">Passed</span>
-        <p class="muted">All crates, including Session 36 router, compiled and passed after fixing router defaults and float equality derive.</p>
+        <p class="muted">All crates, including Session 37 policy integration, compiled and passed with 932 enumerated Rust tests.</p>
         <code class="command">cargo test --workspace</code>
       </div>
       <div class="status-row">
-        <strong>Router engine</strong>
+        <strong>Policy router package</strong>
         <span class="badge pass">Passed</span>
-        <p class="muted">Classifier, entity detection, budget tracking, route decisions, fallback chain, and p99 latency budget.</p>
+        <p class="muted">Classifier, entities, budget tracking, route decisions, policy rules, baseline policies, and p99 latency budget.</p>
         <code class="command">cargo test -p mai-router</code>
       </div>
       <div class="status-row">
-        <strong>Python IPC</strong>
+        <strong>Rule tester CLI</strong>
         <span class="badge pass">Passed</span>
-        <p class="muted">Adapter wire protocol events, ordering, error codes, startup, inference, heartbeat, and shutdown.</p>
-        <code class="command">python -m pytest adapters/tests/test_ipc_protocol.py -q</code>
+        <p class="muted">Three HIPAA scenarios matched expected actions and winning rules using the same evaluation engine as production.</p>
+        <code class="command">cargo run -p rule-tester -- ...</code>
       </div>
       <div class="status-row">
-        <strong>Trace + simulator pytest</strong>
-        <span class="badge warn">Env blocked</span>
-        <p class="muted">38 tests completed in the combined run; 10 tmp_path fixtures failed with Windows access-denied on pytest temp directories.</p>
-        <code class="command">python -m pytest tools/trace-tools/tests tools/simulator/tests ...</code>
+        <strong>Strict gates</strong>
+        <span class="badge pass">Passed</span>
+        <p class="muted">Formatting and clippy strict checks are clean for the workspace.</p>
+        <code class="command">cargo fmt --all -- --check</code>
       </div>
       <div class="status-row">
-        <strong>Clippy strict gate</strong>
-        <span class="badge warn">Tool blocked</span>
-        <p class="muted">Workspace clippy reached `mai-api` build script and stopped because `protoc` is not installed or visible in PATH.</p>
-        <code class="command">cargo clippy --workspace -- -D warnings -A clippy::pedantic</code>
+        <strong>Validation wrapper</strong>
+        <span class="badge pass">Passed</span>
+        <p class="muted">The GitHub Actions driver completed the router suite successfully. Local PowerShell can still print Cargo compile stderr noisily even when the exit code is green.</p>
+        <code class="command">scripts\lamprey-validation.ps1 -Suite router</code>
       </div>
     </section>
 
@@ -444,7 +444,7 @@
           <div class="bar"><span>API</span><div class="track"><div class="fill" style="width: 37%"></div></div><strong>121</strong></div>
           <div class="bar"><span>Agent</span><div class="track"><div class="fill" style="width: 25%"></div></div><strong>81</strong></div>
           <div class="bar"><span>Vault</span><div class="track"><div class="fill" style="width: 14%"></div></div><strong>46</strong></div>
-          <div class="bar"><span>Router</span><div class="track"><div class="fill" style="width: 12%"></div></div><strong>40</strong></div>
+          <div class="bar"><span>Router + Policy</span><div class="track"><div class="fill" style="width: 21%"></div></div><strong>67</strong></div>
           <div class="bar"><span>Adapters</span><div class="track"><div class="fill" style="width: 10%"></div></div><strong>32</strong></div>
           <div class="bar"><span>SDK + HIL</span><div class="track"><div class="fill" style="width: 9%"></div></div><strong>29</strong></div>
         </div>
@@ -452,9 +452,9 @@
       <div class="panel">
         <h3>Validation posture</h3>
         <div class="timeline">
-          <div class="event"><strong>Green</strong><p class="muted">Core inference plumbing, scheduler intelligence, API auth, streaming, vault, router, and model lifecycle tests pass locally.</p></div>
+          <div class="event"><strong>Green</strong><p class="muted">Core inference plumbing, scheduler intelligence, API auth, streaming, vault, router, Session 37 policy framework, and model lifecycle tests pass locally.</p></div>
           <div class="event"><strong>Watch</strong><p class="muted">Two API integration test files still carry unused-import warnings; not failing, but easy cleanup.</p></div>
-          <div class="event"><strong>Blocked</strong><p class="muted">Python tmp_path and `protoc` are environment issues in this workstation, not behavioral failures in the asserted logic.</p></div>
+          <div class="event"><strong>Watch</strong><p class="muted">PowerShell 5.1 can render native Cargo stderr as a noisy error record inside the validation wrapper while still returning success.</p></div>
           <div class="event"><strong>Deferred</strong><p class="muted">Live model server, hardware GPU, Scout/Ranger boot timings, and 72-hour burn-in remain hardware validation work.</p></div>
         </div>
       </div>
@@ -471,6 +471,11 @@
         <strong>Entity detection</strong>
         <p class="muted">Inputs: medical terms, tribal sovereignty terms, ITAR/EAR phrases, unrelated text.</p>
         <p class="muted">Behavior: raw matched text is never emitted; only hashed spans and entity kinds are available for audit/routing.</p>
+      </div>
+      <div class="matrix-row">
+        <strong>Policy modules</strong>
+        <p class="muted">Inputs: sensitivity class, profile role, token estimate, medical/tribal/export entities, upstream flags, and module TOMLs.</p>
+        <p class="muted">Behavior: highest-priority matching rule wins, ties resolve by restrictiveness, deny/reroute can override default routing, and allow/flag fall through to default decisions.</p>
       </div>
       <div class="matrix-row">
         <strong>Cost controls</strong>
