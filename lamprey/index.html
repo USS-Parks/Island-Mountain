@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -342,7 +342,7 @@
   <header>
     <p class="eyebrow">Island Mountain MAI - Pressure Validation</p>
     <h1>Test validation dashboard for the MAI router, scheduler, API, core, adapters, and governance stack</h1>
-    <p class="subhead">Snapshot generated May 23, 2026 from the local MAI workspace. This pressure pass covers the S43/S44 additions, Lamprey router, compliance reports, trust gate, audit chain, policy runtime, full Rust workspace, Python IPC, trace replay, simulator tooling, and strict lint gates.</p>
+    <p class="subhead">Snapshot refreshed May 23, 2026 from the local MAI workspace. This pressure pass covers the S43/S44 additions, Lamprey router, compliance reports, trust gate, audit chain, policy runtime, full Rust workspace, Python IPC, trace replay, simulator tooling, and strict lint gates.</p>
   </header>
 
   <main>
@@ -350,12 +350,12 @@
       <div class="summary-grid">
         <div class="metric pass">
           <h3>Rust Workspace</h3>
-          <span class="value">1,307</span>
+          <span class="value">1,430</span>
           <p class="label">enumerated Rust tests in the full workspace run passed</p>
         </div>
         <div class="metric router">
           <h3>Lamprey Core</h3>
-          <span class="value">394</span>
+          <span class="value">408</span>
           <p class="label">router and compliance package tests passed, including audit, report, policy, trust, HIPAA, ITAR, EAR, and OCAP paths</p>
         </div>
         <div class="metric info">
@@ -420,7 +420,7 @@
       <div class="status-row">
         <strong>Rust workspace</strong>
         <span class="badge pass">Passed</span>
-        <p class="muted">All crates compiled and passed with 1,307 enumerated Rust tests, including S44 API compliance integration, report generation, trust status, audit query, and token exchange coverage.</p>
+        <p class="muted">All crates compiled and passed with 1,430 enumerated Rust tests, including S44 API compliance integration, report generation, trust status, audit query, and token exchange coverage.</p>
         <code class="command">cargo test --workspace</code>
       </div>
       <div class="status-row">
@@ -438,7 +438,7 @@
       <div class="status-row">
         <strong>Python tools</strong>
         <span class="badge pass">Passed</span>
-        <p class="muted">Adapters, IPC, trace anonymization/replay, and simulator comparison suites passed. Python SDK ran 91 tests before a local Windows temp-permission fixture blocked 3 config tests from completing cleanly.</p>
+        <p class="muted">Adapters, IPC, trace anonymization/replay, and simulator comparison suites passed. Python validation passed cleanly: 96 adapter tests, 30 IPC tests, and 18 trace/simulator tests.</p>
         <code class="command">python -m pytest adapters tools/trace-tools/tests tools/simulator/tests -q</code>
       </div>
       <div class="status-row">
@@ -585,3 +585,4 @@
   </script>
 </body>
 </html>
+
