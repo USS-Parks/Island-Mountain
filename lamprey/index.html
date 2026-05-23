@@ -325,32 +325,32 @@
 </head>
 <body>
   <header>
-    <p class="eyebrow">Island Mountain MAI · Session 37 Validation</p>
+    <p class="eyebrow">Island Mountain MAI · Pressure Validation</p>
     <h1>Test validation dashboard for the MAI router, scheduler, API, core, adapters, and governance stack</h1>
-    <p class="subhead">Snapshot generated May 22, 2026 from the local MAI workspace. Session 37 validates the Lamprey policy layer on top of the router: rule engine, module registry, HIPAA/ITAR/OCAP baselines, rule tester, strict gates, and full Rust workspace compatibility.</p>
+    <p class="subhead">Snapshot generated May 22, 2026 from the local MAI workspace. This pressure pass covers the Lamprey router, HIPAA compliance engine, rule modules, full Rust workspace, Python IPC, trace replay, simulator tooling, and stricter lint gates.</p>
   </header>
 
   <main>
     <section class="summary-grid" aria-label="Validation summary">
       <div class="metric pass">
         <h3>Rust Workspace</h3>
-        <span class="value">932</span>
-        <p class="label">enumerated Rust tests, full workspace run passed</p>
+        <span class="value">973</span>
+        <p class="label">enumerated Rust all-target tests, full workspace run passed</p>
       </div>
       <div class="metric router">
-        <h3>Session 37 Policy</h3>
-        <span class="value">69/69</span>
-        <p class="label">rule engine, baseline policies, and rule-tester scenarios passed</p>
+        <h3>Lamprey L1/L2</h3>
+        <span class="value">110/110</span>
+        <p class="label">router, policy, HIPAA compliance, and PHI perf tests passed</p>
       </div>
       <div class="metric info">
-        <h3>Strict Gates</h3>
-        <span class="value">2/2</span>
-        <p class="label">format check and clippy strict gate passed</p>
+        <h3>Python Tools</h3>
+        <span class="value">114/114</span>
+        <p class="label">adapter IPC, trace tools, and simulator tests passed</p>
       </div>
       <div class="metric pass">
-        <h3>Session 37 Failures</h3>
+        <h3>Open Failures</h3>
         <span class="value">0</span>
-        <p class="label">no behavior failures or stalled test cycles observed</p>
+        <p class="label">no behavior failures or stalled test cycles observed in the pressure pass</p>
       </div>
     </section>
 
@@ -405,32 +405,32 @@
       <div class="status-row">
         <strong>Rust workspace</strong>
         <span class="badge pass">Passed</span>
-        <p class="muted">All crates, including Session 37 policy integration, compiled and passed with 932 enumerated Rust tests.</p>
-        <code class="command">cargo test --workspace</code>
+        <p class="muted">All crates, including router and HIPAA compliance, compiled and passed with 973 enumerated all-target Rust tests.</p>
+        <code class="command">cargo test --workspace --all-targets</code>
       </div>
       <div class="status-row">
         <strong>Policy router package</strong>
         <span class="badge pass">Passed</span>
-        <p class="muted">Classifier, entities, budget tracking, route decisions, policy rules, baseline policies, and p99 latency budget.</p>
+        <p class="muted">Classifier, entities, budget tracking, route decisions, policy rules, baseline policies, and p99 routing latency.</p>
         <code class="command">cargo test -p mai-router</code>
       </div>
       <div class="status-row">
-        <strong>Rule tester CLI</strong>
+        <strong>HIPAA compliance</strong>
         <span class="badge pass">Passed</span>
-        <p class="muted">Three HIPAA scenarios matched expected actions and winning rules using the same evaluation engine as production.</p>
-        <code class="command">cargo run -p rule-tester -- ...</code>
+        <p class="muted">PHI detector, BAA enforcement, de-identification, medical entities, and p99 PHI scan latency passed.</p>
+        <code class="command">cargo test -p mai-compliance</code>
       </div>
       <div class="status-row">
-        <strong>Strict gates</strong>
+        <strong>Python tools</strong>
         <span class="badge pass">Passed</span>
-        <p class="muted">Formatting and clippy strict checks are clean for the workspace.</p>
-        <code class="command">cargo fmt --all -- --check</code>
+        <p class="muted">Adapter IPC, trace anonymization/replay, and simulator comparison suites passed after fixing Windows temp handling.</p>
+        <code class="command">python -m pytest tools/ adapters/ -q</code>
       </div>
       <div class="status-row">
         <strong>Validation wrapper</strong>
         <span class="badge pass">Passed</span>
-        <p class="muted">The GitHub Actions driver completed the router suite successfully. Local PowerShell can still print Cargo compile stderr noisily even when the exit code is green.</p>
-        <code class="command">scripts\lamprey-validation.ps1 -Suite router</code>
+        <p class="muted">The GitHub Actions driver completed router, compliance, Rust workspace, Python IPC, and trace/simulator suites successfully.</p>
+        <code class="command">scripts\lamprey-validation.ps1 -Suite all</code>
       </div>
     </section>
 
@@ -452,8 +452,8 @@
       <div class="panel">
         <h3>Validation posture</h3>
         <div class="timeline">
-          <div class="event"><strong>Green</strong><p class="muted">Core inference plumbing, scheduler intelligence, API auth, streaming, vault, router, Session 37 policy framework, and model lifecycle tests pass locally.</p></div>
-          <div class="event"><strong>Watch</strong><p class="muted">Two API integration test files still carry unused-import warnings; not failing, but easy cleanup.</p></div>
+          <div class="event"><strong>Green</strong><p class="muted">Core inference plumbing, scheduler intelligence, API auth, streaming, vault, router, policy framework, HIPAA compliance, and model lifecycle tests pass locally.</p></div>
+          <div class="event"><strong>Hardened</strong><p class="muted">Strict all-target linting removed weak test assertions, noisy imports, and Windows temp fixture fragility.</p></div>
           <div class="event"><strong>Watch</strong><p class="muted">PowerShell 5.1 can render native Cargo stderr as a noisy error record inside the validation wrapper while still returning success.</p></div>
           <div class="event"><strong>Deferred</strong><p class="muted">Live model server, hardware GPU, Scout/Ranger boot timings, and 72-hour burn-in remain hardware validation work.</p></div>
         </div>
@@ -478,6 +478,11 @@
         <p class="muted">Behavior: highest-priority matching rule wins, ties resolve by restrictiveness, deny/reroute can override default routing, and allow/flag fall through to default decisions.</p>
       </div>
       <div class="matrix-row">
+        <strong>HIPAA compliance</strong>
+        <p class="muted">Inputs: SSNs, emails, phone numbers, URLs, IPs, MRNs, dates, ZIPs, VINs, clinical names, medications, ICD-10 codes, lab values, and BAA modes.</p>
+        <p class="muted">Behavior: PHI is hashed or redacted before audit/cloud paths, BAA rules force local when required, and PHI scanning stays under the latency budget.</p>
+      </div>
+      <div class="matrix-row">
         <strong>Cost controls</strong>
         <p class="muted">Inputs: estimated tokens, profile role, current usage, zero-token requests, cloud failures.</p>
         <p class="muted">Behavior: hard caps force local or block, soft caps warn at 80%, failed cloud calls do not burn budget.</p>
@@ -495,7 +500,7 @@
       <div class="matrix-row">
         <strong>Trace privacy</strong>
         <p class="muted">Inputs: NDJSON trace events, session IDs, prompt-like fields, replay policies.</p>
-        <p class="muted">Behavior: allowlisted fields only, salted session hashes, deterministic replay comparisons when pytest temp access is available.</p>
+        <p class="muted">Behavior: allowlisted fields only, salted session hashes, deterministic replay comparisons, and simulator policy reports pass on Windows.</p>
       </div>
     </section>
 
