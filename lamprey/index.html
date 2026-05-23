@@ -74,11 +74,24 @@
       font-size: 16px;
     }
 
+    .summary-hero {
+      position: relative;
+      margin-top: 20px;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+      background:
+        linear-gradient(90deg, rgba(247, 248, 246, 0.92), rgba(247, 248, 246, 0.74)),
+        url("../images/hero-resources.webp") center / cover no-repeat;
+    }
+
     .summary-grid {
+      position: relative;
+      z-index: 1;
       display: grid;
       gap: 12px;
       grid-template-columns: repeat(4, minmax(0, 1fr));
-      margin-top: 20px;
     }
 
     .metric, .panel, .status-row, .matrix-row {
@@ -88,6 +101,8 @@
     }
 
     .metric {
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(4px);
       padding: 16px;
       min-height: 118px;
     }
@@ -331,26 +346,28 @@
   </header>
 
   <main>
-    <section class="summary-grid" aria-label="Validation summary">
-      <div class="metric pass">
-        <h3>Rust Workspace</h3>
-        <span class="value">1,307</span>
-        <p class="label">enumerated Rust tests in the full workspace run passed</p>
-      </div>
-      <div class="metric router">
-        <h3>Lamprey Core</h3>
-        <span class="value">394</span>
-        <p class="label">router and compliance package tests passed, including audit, report, policy, trust, HIPAA, ITAR, EAR, and OCAP paths</p>
-      </div>
-      <div class="metric info">
-        <h3>Python Tools</h3>
-        <span class="value">144</span>
-        <p class="label">adapter, IPC, trace tool, and simulator tests passed</p>
-      </div>
-      <div class="metric pass">
-        <h3>Code Failures</h3>
-        <span class="value">0</span>
-        <p class="label">no behavior failures or stalled test cycles observed after formatting and lint cleanup</p>
+    <section class="summary-hero" aria-label="Validation summary">
+      <div class="summary-grid">
+        <div class="metric pass">
+          <h3>Rust Workspace</h3>
+          <span class="value">1,307</span>
+          <p class="label">enumerated Rust tests in the full workspace run passed</p>
+        </div>
+        <div class="metric router">
+          <h3>Lamprey Core</h3>
+          <span class="value">394</span>
+          <p class="label">router and compliance package tests passed, including audit, report, policy, trust, HIPAA, ITAR, EAR, and OCAP paths</p>
+        </div>
+        <div class="metric info">
+          <h3>Python Tools</h3>
+          <span class="value">144</span>
+          <p class="label">adapter, IPC, trace tool, and simulator tests passed</p>
+        </div>
+        <div class="metric pass">
+          <h3>Code Failures</h3>
+          <span class="value">0</span>
+          <p class="label">no behavior failures or stalled test cycles observed after formatting and lint cleanup</p>
+        </div>
       </div>
     </section>
 
