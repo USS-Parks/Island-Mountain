@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) - deferred until user interaction -->
+<link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
+<script>
+  (function(){
+    var loaded = false;
+    function loadGA(){
+      if(loaded) return;
+      loaded = true;
+      var s = document.createElement('script');
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=G-R674E394D4';
+      s.async = true;
+      document.head.appendChild(s);
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      window.gtag = gtag;
+      gtag('js', new Date());
+      gtag('config', 'G-R674E394D4');
+    }
+    ['scroll','click','touchstart','keydown'].forEach(function(e){
+      document.addEventListener(e, loadGA, {once:true, passive:true});
+    });
+    setTimeout(loadGA, 3000);
+  })();
+</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Basho Parks">
+  <meta name="date" content="2026-05-24">
+  <title>MAI Compliance Dashboard - Real-Time Audit, Policy, and Monitoring</title>
+  <meta name="description" content="Interactive preview of the Lamprey MAI Compliance Dashboard. Seven operator views covering audit trails, policy templates, runtime monitoring, trust verification, and air-gap status for regulated AI infrastructure.">
+  <link rel="icon" type="image/x-icon" href="favicon.ico?v=2">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png?v=2">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png?v=2">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="icons/remixicon.css" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="icons/remixicon.css"></noscript>
+  <link rel="preload" href="fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <style>
+  @font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400 800;
+    font-display: swap;
+    src: url('fonts/inter-latin.woff2') format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+  @font-face {
+    font-family: 'Space Grotesk';
+    font-style: normal;
+    font-weight: 300 700;
+    font-display: swap;
+    src: url('fonts/space-grotesk-latin.woff2') format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+  </style>
+  <link rel="canonical" href="https://islandmountain.io/compliance-dashboard.html">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="MAI Compliance Dashboard - Real-Time Audit, Policy, and Monitoring">
+  <meta property="og:description" content="Interactive preview of the Lamprey MAI Compliance Dashboard. Seven operator views for regulated AI infrastructure.">
+  <meta property="og:url" content="https://islandmountain.io/compliance-dashboard.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Island Mountain">
+  <meta property="og:image" content="https://islandmountain.io/images/hero-technology.webp">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="MAI Compliance Dashboard - Real-Time Audit, Policy, and Monitoring">
+  <meta name="twitter:description" content="Interactive preview of the Lamprey MAI Compliance Dashboard. Seven operator views for regulated AI infrastructure.">
+  <meta name="twitter:image" content="https://islandmountain.io/images/hero-technology.webp">
+
+  <!-- SoftwareApplication Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Lamprey MAI Compliance Dashboard",
+    "applicationCategory": "BusinessApplication",
+    "description": "Operator console for compliance monitoring on Island Mountain AI servers. Provides real-time audit trails, configurable policy templates for healthcare, defense, and tribal government, runtime monitoring with air-gap verification, trust manifold status, and automated compliance reporting. Included with all Island Mountain hardware. Currently in active development with core views functional.",
+    "operatingSystem": "Linux (Ubuntu Server LTS)",
+    "isPartOf": {
+      "@type": "SoftwareApplication",
+      "name": "Lamprey MAI",
+      "description": "Model Abstraction Interface - middleware orchestration layer for Island Mountain AI servers",
+      "url": "https://islandmountain.io/technology.html"
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD",
+      "description": "Included with all Island Mountain hardware systems"
+    },
+    "author": {
+      "@type": "Organization",
+      "name": "Island Mountain",
+      "url": "https://islandmountain.io"
+    }
+  }
+  </script>
+
+  <!-- BreadcrumbList Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://islandmountain.io/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Technology",
+        "item": "https://islandmountain.io/technology.html"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Compliance Dashboard",
+        "item": "https://islandmountain.io/compliance-dashboard.html"
+      }
+    ]
+  }
+  </script>
+
+  <!-- Dashboard mockup styles -->
+  <style>
+  .dash-wrap{max-width:1100px;margin:0 auto 2rem;padding:0 1rem;}
+  .dash-tabs{display:flex;flex-wrap:wrap;gap:0.4rem;margin-bottom:1.2rem;}
+  .dash-tab{background:var(--secondary-dark);color:var(--text-muted);border:1px solid var(--tertiary-dark);
+    padding:0.5rem 1rem;border-radius:6px;cursor:pointer;font-size:0.88rem;font-weight:600;
+    transition:background 0.15s,color 0.15s,border-color 0.15s;}
+  .dash-tab:hover{background:var(--tertiary-dark);color:var(--text-light);}
+  .dash-tab.active{background:var(--copper);color:#0f172a;border-color:var(--copper);}
+  .dash-view{display:none;animation:dashFadeIn 0.25s ease;}
+  .dash-view.active{display:block;}
+  @keyframes dashFadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+  .dash-card{background:var(--secondary-dark);border:1px solid var(--tertiary-dark);
+    border-radius:8px;padding:1.1rem;margin-bottom:1rem;}
+  .dash-card h3{margin:0 0 0.5rem;font-size:1.05rem;color:var(--text-light);}
+  .dash-card p{margin:0.3rem 0;color:var(--text-muted);font-size:0.9rem;}
+  .dash-tbl{width:100%;border-collapse:collapse;margin-top:0.7rem;font-size:0.85rem;}
+  .dash-tbl th,.dash-tbl td{border:1px solid var(--tertiary-dark);padding:7px 10px;text-align:left;
+    vertical-align:top;color:var(--text-muted);}
+  .dash-tbl th{background:rgba(255,255,255,0.04);color:var(--text-light);font-weight:600;}
+  .dash-badge{display:inline-block;padding:2px 8px;border-radius:4px;font-size:0.78rem;font-weight:700;}
+  .dash-ok{background:rgba(16,185,129,0.15);color:#34d399;}
+  .dash-warn{background:rgba(245,158,11,0.15);color:#fbbf24;}
+  .dash-crit{background:rgba(239,68,68,0.15);color:#f87171;}
+  .dash-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:0.9rem;}
+  .dash-panel{background:var(--secondary-dark);border:1px solid var(--tertiary-dark);
+    border-radius:8px;padding:1rem;min-height:200px;}
+  .dash-panel h3{margin:0 0 0.3rem;font-size:1rem;color:var(--text-light);}
+  .dash-panel .dash-summary{margin:0.2rem 0 0.7rem;color:var(--text-muted);font-size:0.85rem;}
+  .dash-dl{display:grid;grid-template-columns:minmax(100px,40%) 1fr;gap:0.35rem 0.6rem;font-size:0.85rem;}
+  .dash-dl dt{color:var(--text-muted);}
+  .dash-dl dd{margin:0;color:var(--text-light);overflow-wrap:anywhere;}
+  .dash-form{display:flex;flex-wrap:wrap;gap:0.6rem;align-items:end;margin-bottom:0.8rem;}
+  .dash-form label{font-size:0.82rem;color:var(--text-muted);display:flex;flex-direction:column;gap:3px;}
+  .dash-form input,.dash-form select{background:var(--primary-dark);color:var(--text-light);
+    border:1px solid var(--tertiary-dark);padding:5px 8px;border-radius:4px;font-size:0.85rem;}
+  .dash-form button{background:var(--copper);color:#0f172a;border:none;padding:6px 14px;
+    border-radius:4px;font-weight:600;font-size:0.85rem;cursor:pointer;}
+  .dash-form button:hover{background:var(--copper-light);}
+  .dash-status-note{font-size:0.78rem;color:var(--text-muted);font-style:italic;margin-top:0.5rem;}
+  .dash-json{background:var(--primary-dark);border:1px solid var(--tertiary-dark);border-radius:6px;
+    padding:1rem;font-family:monospace;font-size:0.82rem;color:#34d399;overflow-x:auto;
+    white-space:pre;line-height:1.5;}
+  .dash-label{font-size:0.7rem;text-transform:uppercase;letter-spacing:0.05em;
+    padding:2px 6px;border-radius:3px;margin-left:0.4rem;font-weight:700;}
+  .dash-live{background:rgba(16,185,129,0.15);color:#34d399;}
+  .dash-dev{background:rgba(139,92,246,0.15);color:#a78bfa;}
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="nav-logo"><img src="images/logo-nav-new.webp" alt="Island Mountain" width="205" height="65"></a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="why-island-mountain.html">Why Local AI</a></li>
+        <li><a href="products.html">Summit</a>
+        <li><a href="landfall-preorder.html">Landfall</a></li>
+        <li><a href="technology.html">Technology</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li class="nav-dropdown">
+          <a href="solutions.html" class="nav-dropdown-toggle">Solutions <i class="ri-arrow-down-s-line"></i></a>
+          <ul class="nav-dropdown-menu">
+            <li><a href="law-firms.html">Law Firms</a></li>
+            <li><a href="medical-practices.html">Medical Practices</a></li>
+            <li><a href="tribal-nations.html">Tribal Nations</a></li>
+            <li><a href="research-labs.html">Research Labs</a></li>
+            <li><a href="defense-contractors.html">Defense Contractors</a></li>
+            <li><a href="financial-services.html">Financial Services</a></li>
+            <li><a href="insurance.html">Insurance</a></li>
+            <li><a href="energy-utilities.html">Energy &amp; Utilities</a></li>
+            <li><a href="government.html">Government</a></li>
+            <li><a href="education.html">Education</a></li>
+            <li><a href="casino-gaming.html">Casino Gaming</a></li>
+          </ul>
+        </li>
+              <li><a href="faq.html">FAQ</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="resources.html">Resources</a></li>
+        <li><a href="contact.html" class="nav-cta">Request Quote</a></li>
+      </ul>
+      <button class="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="sidebar-overlay"></div>
+  <div class="mobile-sidebar">
+    <a href="index.html">Home</a>
+    <a href="why-island-mountain.html">Why Local AI</a>
+    <a href="products.html">Summit</a>
+    <a href="landfall-preorder.html">Landfall</a>
+    <a href="technology.html">Technology</a>
+    <a href="pricing.html">Pricing</a>
+    <a href="solutions.html" class="mobile-solutions-toggle">Solutions <i class="ri-arrow-down-s-line"></i></a>
+    <div class="mobile-solutions-links">
+      <a href="law-firms.html">Law Firms</a>
+      <a href="medical-practices.html">Medical Practices</a>
+      <a href="tribal-nations.html">Tribal Nations</a>
+      <a href="research-labs.html">Research Labs</a>
+      <a href="defense-contractors.html">Defense Contractors</a>
+      <a href="financial-services.html">Financial Services</a>
+      <a href="insurance.html">Insurance</a>
+      <a href="energy-utilities.html">Energy &amp; Utilities</a>
+      <a href="government.html">Government</a>
+      <a href="education.html">Education</a>
+      <a href="casino-gaming.html">Casino Gaming</a>
+    </div>
+            <a href="faq.html">FAQ</a>
+    <a href="blog.html">Blog</a>
+    <a href="resources.html">Resources</a>
+    <a href="contact.html" class="nav-cta">Request Quote</a>
+  </div>
+
+  <!-- Breadcrumb -->
+  <section class="section section-first" style="padding-bottom:0;">
+    <div class="container">
+      <nav class="breadcrumb fade-in" aria-label="Breadcrumb">
+        <a href="index.html">Home</a> <span>/</span>
+        <a href="technology.html">Technology</a> <span>/</span>
+        <span>Compliance Dashboard</span>
+      </nav>
+    </div>
+  </section>
+
+  <!-- Hero -->
+  <section class="hero hero-page">
+    <div class="hero-inner">
+      <span class="hero-badge">Lamprey MAI</span>
+      <h1>Compliance Dashboard</h1>
+      <p>Seven operator views. Audit trails, policy enforcement, runtime monitoring, air-gap verification, and trust manifold status - all in one console. No data leaves your hardware.</p>
+    </div>
+  </section>
+
+  <!-- Intro -->
+  <section class="section section-first">
+    <div class="container">
+      <div class="content-block fade-in content-max-800">
+        <p class="body-lg">The Lamprey MAI Compliance Dashboard is an operator console that ships with every Island Mountain server. It reads live data from the MAI compliance and trust APIs - the dashboard itself stores nothing. What you see below is an interactive preview showing the seven views your compliance team will use to monitor, audit, and enforce policy on your local AI infrastructure.</p>
+        <p class="body-lg">Core views (Overview, Audit, Reports, Alerts, Health) are functional in the current build. The Monitoring and Policy views are in active development, with additional panels and industry-specific templates expanding through Q3 2026.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Dashboard Mockup -->
+  <section class="section section-dark">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-badge">Interactive Preview</span>
+        <h2>Explore the Dashboard</h2>
+      </div>
+    </div>
+    <div class="dash-wrap" id="dashboard-mockup">
+      <!-- Tabs -->
+      <div class="dash-tabs" role="tablist">
+        <button class="dash-tab active" data-view="overview" role="tab" aria-selected="true">Overview</button>
+        <button class="dash-tab" data-view="audit" role="tab" aria-selected="false">Audit</button>
+        <button class="dash-tab" data-view="reports" role="tab" aria-selected="false">Reports</button>
+        <button class="dash-tab" data-view="policy" role="tab" aria-selected="false">Policy</button>
+        <button class="dash-tab" data-view="alerts" role="tab" aria-selected="false">Alerts</button>
+        <button class="dash-tab" data-view="monitoring" role="tab" aria-selected="false">Monitoring</button>
+        <button class="dash-tab" data-view="health" role="tab" aria-selected="false">Health</button>
+      </div>
+
+      <!-- Overview View -->
+      <div class="dash-view active" id="view-overview" role="tabpanel">
+        <div class="dash-card">
+          <h3>Trust Manifold <span class="dash-label dash-live">LIVE</span></h3>
+          <p>Mode: <span class="dash-badge dash-ok">enforcing</span></p>
+          <p>Bundle: <strong style="color:var(--text-light);">v2.1.4-stable</strong> | Claims: <strong style="color:var(--text-light);">47</strong></p>
+        </div>
+        <div class="dash-card">
+          <h3>Compliance Modules</h3>
+          <table class="dash-tbl">
+            <tr><th>Module</th><th>State</th><th>Priority</th></tr>
+            <tr><td>audit_trail</td><td><span class="dash-badge dash-ok">enabled</span></td><td>1</td></tr>
+            <tr><td>data_residency</td><td><span class="dash-badge dash-ok">enabled</span></td><td>2</td></tr>
+            <tr><td>access_control</td><td><span class="dash-badge dash-ok">enabled</span></td><td>3</td></tr>
+            <tr><td>model_provenance</td><td><span class="dash-badge dash-ok">enabled</span></td><td>4</td></tr>
+            <tr><td>encryption_at_rest</td><td><span class="dash-badge dash-ok">enabled</span></td><td>5</td></tr>
+            <tr><td>network_isolation</td><td><span class="dash-badge dash-ok">enabled</span></td><td>6</td></tr>
+            <tr><td>telemetry_block</td><td><span class="dash-badge dash-ok">enabled</span></td><td>7</td></tr>
+            <tr><td>external_api_gate</td><td><span class="dash-badge dash-warn">disabled</span></td><td>-</td></tr>
+          </table>
+        </div>
+        <div class="dash-card">
+          <h3>Audit Chain</h3>
+          <p>Entries: <strong style="color:var(--text-light);">12,847</strong> | Last verify: <span class="dash-badge dash-ok">verified</span></p>
+          <p class="dash-status-note">Audit chain integrity is cryptographically verified on each read. Tamper-evident by design.</p>
+        </div>
+      </div>
+
+      <!-- Audit View -->
+      <div class="dash-view" id="view-audit" role="tabpanel">
+        <div class="dash-card">
+          <h3>Search Audit Log <span class="dash-label dash-live">LIVE</span></h3>
+          <div class="dash-form">
+            <label>Module <input type="text" value="" placeholder="e.g. audit_trail" disabled></label>
+            <label>Decision <input type="text" value="" placeholder="e.g. allow" disabled></label>
+            <label>Tenant <input type="text" value="" placeholder="e.g. radiology" disabled></label>
+            <label>Limit <input type="number" value="50" disabled></label>
+            <button disabled title="Preview only">Search</button>
+          </div>
+          <p class="dash-status-note">Search controls are disabled in this preview. The live dashboard queries the MAI audit API in real time.</p>
+        </div>
+        <div class="dash-card">
+          <h3>Results (showing 8 of 12,847)</h3>
+          <table class="dash-tbl">
+            <tr><th>ID</th><th>Timestamp</th><th>Decision</th><th>Tenant</th><th>Modules</th><th>Verify</th></tr>
+            <tr><td>12847</td><td>2026-05-24 09:14:02</td><td>allow</td><td>radiology</td><td>audit_trail, access_control</td><td><span class="dash-badge dash-ok">Verified</span></td></tr>
+            <tr><td>12846</td><td>2026-05-24 09:13:58</td><td>allow</td><td>legal-ops</td><td>audit_trail, data_residency</td><td><span class="dash-badge dash-ok">Verified</span></td></tr>
+            <tr><td>12845</td><td>2026-05-24 09:12:41</td><td>deny</td><td>external-api</td><td>external_api_gate, network_isolation</td><td><span class="dash-badge dash-ok">Verified</span></td></tr>
+            <tr><td>12844</td><td>2026-05-24 09:11:33</td><td>allow</td><td>hr-dept</td><td>audit_trail, encryption_at_rest</td><td><span class="dash-badge dash-ok">Verified</span></td></tr>
+            <tr><td>12843</td><td>2026-05-24 09:10:17</td><td>allow</td><td>radiology</td><td>audit_trail, model_provenance</td><td><span class="dash-badge dash-ok">Verified</span></td></tr>
+            <tr><td>12842</td><td>2026-05-24 09:08:55</td><td>deny</td><td>research</td><td>telemetry_block</td><td><span class="dash-badge dash-ok">Verified</span></td></tr>
+            <tr><td>12841</td><td>2026-05-24 09:07:29</td><td>allow</td><td>legal-ops</td><td>audit_trail, access_control</td><td><span class="dash-badge dash-ok">Verified</span></td></tr>
+            <tr><td>12840</td><td>2026-05-24 09:05:44</td><td>allow</td><td>admin</td><td>audit_trail</td><td><span class="dash-badge dash-warn">Pending</span></td></tr>
+          </table>
+        </div>
+      </div>
+
+      <!-- Reports View -->
+      <div class="dash-view" id="view-reports" role="tabpanel">
+        <div class="dash-card">
+          <h3>Report Summary <span class="dash-label dash-live">LIVE</span></h3>
+          <p>Total: <strong style="color:var(--text-light);">24</strong> | Complete: <strong style="color:#34d399;">19</strong> | Pending: <strong style="color:#fbbf24;">3</strong> | Failed: <strong style="color:#f87171;">2</strong></p>
+        </div>
+        <div class="dash-card">
+          <h3>Generate Report</h3>
+          <div class="dash-form">
+            <label>Type <select disabled>
+              <option>System Activity</option>
+              <option>Compliance Summary</option>
+              <option>Audit Trail Export</option>
+              <option>Policy Snapshot</option>
+            </select></label>
+            <label>Format <select disabled>
+              <option>JSON</option>
+              <option>HTML</option>
+              <option>CSV</option>
+              <option>Plain Text</option>
+            </select></label>
+            <label>Tenant <input type="text" value="" placeholder="(all)" disabled></label>
+            <button disabled title="Preview only">Generate</button>
+          </div>
+          <p class="dash-status-note">Reports are generated server-side via the MAI compliance API. Output formats include JSON, HTML, CSV, and plain text.</p>
+        </div>
+        <div class="dash-card">
+          <h3>Recent Reports</h3>
+          <table class="dash-tbl">
+            <tr><th>ID</th><th>Type</th><th>Status</th><th>Format</th><th>Tenant</th></tr>
+            <tr><td>rpt-0024</td><td>System Activity</td><td><span class="dash-badge dash-ok">complete</span></td><td>JSON</td><td>-</td></tr>
+            <tr><td>rpt-0023</td><td>Compliance Summary</td><td><span class="dash-badge dash-ok">complete</span></td><td>HTML</td><td>radiology</td></tr>
+            <tr><td>rpt-0022</td><td>Audit Trail Export</td><td><span class="dash-badge dash-warn">pending</span></td><td>CSV</td><td>-</td></tr>
+            <tr><td>rpt-0021</td><td>Policy Snapshot</td><td><span class="dash-badge dash-ok">complete</span></td><td>JSON</td><td>legal-ops</td></tr>
+            <tr><td>rpt-0020</td><td>System Activity</td><td><span class="dash-badge dash-crit">failed</span></td><td>HTML</td><td>research</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <!-- Policy View -->
+      <div class="dash-view" id="view-policy" role="tabpanel">
+        <div class="dash-card">
+          <h3>Policy Templates <span class="dash-label dash-dev">EXPANDING</span></h3>
+          <div class="dash-form">
+            <label>Template <select disabled>
+              <option>Standard</option>
+              <option>Healthcare</option>
+              <option>Defense</option>
+              <option>Tribal Government</option>
+            </select></label>
+            <button disabled title="Preview only">Apply</button>
+          </div>
+          <p class="dash-status-note">Policy templates configure compliance modules for industry-specific regulatory requirements. Healthcare enables HIPAA audit controls. Defense activates ITAR/CMMC data residency enforcement. Tribal Government applies OCAP data sovereignty rules. Additional templates are in development for financial services and energy/utilities sectors.</p>
+        </div>
+        <div class="dash-card">
+          <h3>Module Controls</h3>
+          <table class="dash-tbl">
+            <tr><th>Module</th><th>State</th><th>Priority</th><th>Action</th></tr>
+            <tr><td>audit_trail</td><td><span class="dash-badge dash-ok">on</span></td><td>1</td><td><button class="dash-form" style="margin:0;display:inline;" disabled>Flip</button></td></tr>
+            <tr><td>data_residency</td><td><span class="dash-badge dash-ok">on</span></td><td>2</td><td><button class="dash-form" style="margin:0;display:inline;" disabled>Flip</button></td></tr>
+            <tr><td>access_control</td><td><span class="dash-badge dash-ok">on</span></td><td>3</td><td><button class="dash-form" style="margin:0;display:inline;" disabled>Flip</button></td></tr>
+            <tr><td>model_provenance</td><td><span class="dash-badge dash-ok">on</span></td><td>4</td><td><button class="dash-form" style="margin:0;display:inline;" disabled>Flip</button></td></tr>
+            <tr><td>encryption_at_rest</td><td><span class="dash-badge dash-ok">on</span></td><td>5</td><td><button class="dash-form" style="margin:0;display:inline;" disabled>Flip</button></td></tr>
+            <tr><td>network_isolation</td><td><span class="dash-badge dash-ok">on</span></td><td>6</td><td><button class="dash-form" style="margin:0;display:inline;" disabled>Flip</button></td></tr>
+            <tr><td>telemetry_block</td><td><span class="dash-badge dash-ok">on</span></td><td>7</td><td><button class="dash-form" style="margin:0;display:inline;" disabled>Flip</button></td></tr>
+            <tr><td>external_api_gate</td><td><span class="dash-badge dash-warn">off</span></td><td>-</td><td><button class="dash-form" style="margin:0;display:inline;" disabled>Flip</button></td></tr>
+          </table>
+          <p class="dash-status-note">Module toggles require admin authentication via the MAI API. Each toggle generates an audit log entry.</p>
+        </div>
+      </div>
+
+      <!-- Alerts View -->
+      <div class="dash-view" id="view-alerts" role="tabpanel">
+        <div class="dash-card">
+          <h3>Alert Feed <span class="dash-label dash-live">LIVE</span></h3>
+          <p>Real-time event stream via Server-Sent Events (SSE). The dashboard subscribes to the MAI compliance feed endpoint and renders events as they arrive. No polling, no state - pure push.</p>
+          <table class="dash-tbl">
+            <tr><th>Event Type</th><th>Severity</th><th>Description</th></tr>
+            <tr><td>decision_made</td><td><span class="dash-badge dash-ok">info</span></td><td>A compliance decision was evaluated and recorded. Normal operational flow.</td></tr>
+            <tr><td>policy_changed</td><td><span class="dash-badge dash-ok">info</span></td><td>A compliance module was toggled or a policy template was applied.</td></tr>
+            <tr><td>module_state_changed</td><td><span class="dash-badge dash-warn">warning</span></td><td>A compliance module changed state unexpectedly. May indicate configuration drift.</td></tr>
+            <tr><td>violation_detected</td><td><span class="dash-badge dash-crit">critical</span></td><td>A compliance rule was violated. Requires immediate operator review.</td></tr>
+          </table>
+        </div>
+        <div class="dash-card">
+          <h3>Recent Events (simulated)</h3>
+          <table class="dash-tbl">
+            <tr><th>Time</th><th>Event</th><th>Severity</th><th>Detail</th></tr>
+            <tr><td>09:14:02</td><td>decision_made</td><td><span class="dash-badge dash-ok">info</span></td><td>allow - radiology - audit_trail, access_control</td></tr>
+            <tr><td>09:12:41</td><td>decision_made</td><td><span class="dash-badge dash-ok">info</span></td><td>deny - external-api - external_api_gate, network_isolation</td></tr>
+            <tr><td>09:08:55</td><td>decision_made</td><td><span class="dash-badge dash-ok">info</span></td><td>deny - research - telemetry_block</td></tr>
+            <tr><td>08:45:12</td><td>policy_changed</td><td><span class="dash-badge dash-ok">info</span></td><td>Healthcare template applied by admin</td></tr>
+            <tr><td>08:22:07</td><td>module_state_changed</td><td><span class="dash-badge dash-warn">warning</span></td><td>external_api_gate toggled off - verify intentional</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <!-- Monitoring View -->
+      <div class="dash-view" id="view-monitoring" role="tabpanel">
+        <div class="dash-grid">
+
+          <div class="dash-panel">
+            <h3>Health Probes <span class="dash-badge dash-ok">OK</span></h3>
+            <p class="dash-summary">all probes passing</p>
+            <dl class="dash-dl">
+              <dt>live</dt><dd>HTTP 200 / healthy</dd>
+              <dt>ready</dt><dd>HTTP 200 / ready</dd>
+              <dt>production</dt><dd>HTTP 200 / nominal</dd>
+            </dl>
+          </div>
+
+          <div class="dash-panel">
+            <h3>Runtime <span class="dash-badge dash-ok">OK</span></h3>
+            <p class="dash-summary">healthy</p>
+            <dl class="dash-dl">
+              <dt>alert</dt><dd>nominal</dd>
+              <dt>adapters</dt><dd>3</dd>
+              <dt>air gap</dt><dd>verified</dd>
+              <dt>cpu</dt><dd>23.4%</dd>
+              <dt>ram</dt><dd>61.8%</dd>
+              <dt>disk</dt><dd>34.2%</dd>
+            </dl>
+          </div>
+
+          <div class="dash-panel">
+            <h3>Scheduler <span class="dash-badge dash-ok">OK</span></h3>
+            <p class="dash-summary">queue=0 active=2</p>
+            <dl class="dash-dl">
+              <dt>queue depth</dt><dd>0</dd>
+              <dt>active requests</dt><dd>2</dd>
+              <dt>scheduled total</dt><dd>8,491</dd>
+              <dt>rejected total</dt><dd>12</dd>
+              <dt>p95 wait</dt><dd>14.3 ms</dd>
+              <dt>recent anomalies</dt><dd>0</dd>
+            </dl>
+          </div>
+
+          <div class="dash-panel">
+            <h3>Power and Air-Gap <span class="dash-badge dash-ok">OK</span></h3>
+            <p class="dash-summary">air-gapped</p>
+            <dl class="dash-dl">
+              <dt>power state</dt><dd>active</dd>
+              <dt>estimated watts</dt><dd>847</dd>
+              <dt>connectivity</dt><dd>air-gapped</dd>
+              <dt>local only</dt><dd>true</dd>
+              <dt>cloud route</dt><dd>false</dd>
+            </dl>
+          </div>
+
+          <div class="dash-panel">
+            <h3>Trust and Audit <span class="dash-badge dash-ok">OK</span></h3>
+            <p class="dash-summary">enforcing / verified</p>
+            <dl class="dash-dl">
+              <dt>trust mode</dt><dd>enforcing</dd>
+              <dt>bundle</dt><dd>v2.1.4-stable</dd>
+              <dt>claims</dt><dd>47</dd>
+              <dt>offline backlog</dt><dd>0</dd>
+              <dt>audit entries</dt><dd>12,847</dd>
+              <dt>audit verify</dt><dd>verified</dd>
+            </dl>
+          </div>
+
+          <div class="dash-panel">
+            <h3>Metrics <span class="dash-badge dash-ok">OK</span></h3>
+            <p class="dash-summary">HTTP 200, 14 families</p>
+            <dl class="dash-dl">
+              <dt>families</dt><dd>14</dd>
+              <dt>metric</dt><dd>mai_requests_total</dd>
+              <dt>metric</dt><dd>mai_inference_duration_seconds</dd>
+              <dt>metric</dt><dd>mai_gpu_utilization_percent</dd>
+              <dt>metric</dt><dd>mai_compliance_decisions_total</dd>
+              <dt>metric</dt><dd>mai_audit_entries_total</dd>
+              <dt>metric</dt><dd>mai_scheduler_queue_depth</dd>
+              <dt>metric</dt><dd>mai_trust_claims_active</dd>
+            </dl>
+          </div>
+
+        </div>
+        <p class="dash-status-note" style="max-width:1100px;margin:0 auto;">Monitoring panels read live data from MAI health, scheduler, power, trust, and Prometheus endpoints. The six-panel layout mirrors the operator console exactly. Additional panels for GPU temperature and inference latency histograms are in development.</p>
+      </div>
+
+      <!-- Health View -->
+      <div class="dash-view" id="view-health" role="tabpanel">
+        <div class="dash-card">
+          <h3>Health Snapshot (JSON) <span class="dash-label dash-live">LIVE</span></h3>
+          <p>The <code>/health</code> endpoint returns a machine-readable compliance status snapshot. Integration tools, monitoring systems, and automated alerting consume this endpoint directly.</p>
+          <div class="dash-json">{
+  "healthy": true,
+  "modules": [
+    {"module": "audit_trail", "enabled": true, "priority": 1},
+    {"module": "data_residency", "enabled": true, "priority": 2},
+    {"module": "access_control", "enabled": true, "priority": 3},
+    {"module": "model_provenance", "enabled": true, "priority": 4},
+    {"module": "encryption_at_rest", "enabled": true, "priority": 5},
+    {"module": "network_isolation", "enabled": true, "priority": 6},
+    {"module": "telemetry_block", "enabled": true, "priority": 7},
+    {"module": "external_api_gate", "enabled": false, "priority": null}
+  ],
+  "audit_integrity": {
+    "entry_count": 12847,
+    "last_verify": "verified",
+    "last_verify_error": null
+  },
+  "subscribers": 2,
+  "reload_count": 0
+}</div>
+          <p class="dash-status-note">This is the same JSON structure returned by the live MAI compliance health endpoint. Fields map directly to the Overview and Trust panels.</p>
+        </div>
+      </div>
+
+    </div><!-- end dash-wrap -->
+  </section>
+
+  <!-- Tab switching script -->
+  <script>
+  (function(){
+    var tabs = document.querySelectorAll('.dash-tab');
+    var views = document.querySelectorAll('.dash-view');
+    tabs.forEach(function(tab){
+      tab.addEventListener('click', function(){
+        tabs.forEach(function(t){ t.classList.remove('active'); t.setAttribute('aria-selected','false'); });
+        views.forEach(function(v){ v.classList.remove('active'); });
+        tab.classList.add('active');
+        tab.setAttribute('aria-selected','true');
+        var target = document.getElementById('view-' + tab.getAttribute('data-view'));
+        if(target) target.classList.add('active');
+      });
+    });
+  })();
+  </script>
+
+  <!-- Feature Summary -->
+  <section class="section section-darker">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-badge">Capabilities</span>
+        <h2>What the Compliance Dashboard Covers</h2>
+      </div>
+      <div class="fade-in content-narrow">
+        <p class="body-lg"><strong>Tamper-evident audit trails.</strong> Every compliance decision - allow, deny, or flag - is recorded with cryptographic verification. The audit chain is append-only and verifiable on every read. Search by module, decision type, tenant, or time range.</p>
+        <p class="body-lg"><strong>Industry-specific policy templates.</strong> Apply pre-configured compliance profiles for healthcare (HIPAA audit controls), defense (ITAR/CMMC data residency), or tribal government (OCAP data sovereignty). Each template activates the right modules at the right priority. Financial services and energy/utilities templates are in development.</p>
+        <p class="body-lg"><strong>Air-gap verification.</strong> The monitoring console confirms your server's network isolation status in real time. Power state, connectivity posture, cloud route blocking, and local-only enforcement are all visible in a single panel. If your air gap breaks, the dashboard shows it before anything leaks.</p>
+        <p class="body-lg"><strong>Stateless architecture.</strong> The dashboard stores nothing locally. It reads from the MAI compliance and trust APIs on every page load. This means your compliance data has exactly one source of truth: the server itself. No sync issues, no stale caches, no data living where it shouldn't.</p>
+        <p class="body-lg"><strong>Prometheus-compatible metrics.</strong> Fourteen metric families are exposed for integration with existing monitoring infrastructure. GPU utilization, inference latency, scheduler queue depth, compliance decision counts, and trust claim status are all available as standard Prometheus exposition format.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section section-dark">
+    <div class="container" style="text-align:center;">
+      <div class="fade-in">
+        <h2>See the Dashboard Running on Real Hardware</h2>
+        <p class="body-lg" style="max-width:680px;margin:0 auto 1.5rem;">The compliance dashboard ships pre-installed on every Summit Series server. Request a quote and we will walk you through a live demonstration on production hardware.</p>
+        <div class="btn-group">
+          <a href="contact.html" class="btn btn-primary">Request a Quote</a>
+          <a href="technology.html" class="btn btn-secondary">View Full Tech Stack</a>
+        </div>
+        <p class="cta-subtitle"><i class="ri-phone-line icon-copper-mr-sm"></i>Or call directly: <a href="tel:+18016091130" class="copper-semibold">1-801-609-1130</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- AEO Summary -->
+  <div style="border-left:3px solid var(--copper);padding:16px 20px;margin:32px 0;background:rgba(217,119,6,0.05);border-radius:0 8px 8px 0;">
+  <strong>Summary:</strong> The Lamprey MAI Compliance Dashboard is an operator console included with all Island Mountain servers. It provides seven views: system overview with trust manifold status, searchable audit logs with cryptographic verification, compliance report generation in multiple formats, industry-specific policy templates (healthcare, defense, tribal government), real-time alert feeds, six-panel runtime monitoring covering health probes, scheduler, power, air-gap, trust, and Prometheus metrics, and a machine-readable health endpoint. The dashboard is stateless and reads all data from the MAI compliance API. Core views are functional; monitoring and policy features are expanding through Q3 2026. Pricing starts at $75,000 for the Summit Base tier, which includes the full software stack. Call 1-801-609-1130.
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="images/logo-footer.webp" alt="Island Mountain logo" width="210" height="210" class="d-block-mb">
+          <a href="index.html" class="nav-logo">Island Mountain</a>
+          <p>Local AI infrastructure for data-sovereign organizations. Colorado.</p>
+          <p class="mt-8"><i class="ri-phone-line icon-copper-mr"></i><a href="tel:+18016091130" class="clr-muted">1-801-609-1130</a></p>
+        </div>
+        <div>
+          <h3>Quick Links</h3>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Summit</a>
+            <li><a href="technology.html">Technology</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="resources.html">Resources</a></li>
+              <li><a href="faq.html">FAQ</a></li>
+            <li><a href="blog.html">Blog</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Solutions</h3>
+          <ul class="footer-links">
+            <li><a href="law-firms.html">Law Firms</a></li>
+            <li><a href="medical-practices.html">Medical Practices</a></li>
+            <li><a href="tribal-nations.html">Tribal Nations</a></li>
+            <li><a href="research-labs.html">Research Labs</a></li>
+            <li><a href="defense-contractors.html">Defense Contractors</a></li>
+            <li><a href="financial-services.html">Financial Services</a></li>
+            <li><a href="insurance.html">Insurance</a></li>
+            <li><a href="energy-utilities.html">Energy &amp; Utilities</a></li>
+            <li><a href="government.html">Government</a></li>
+            <li><a href="education.html">Education</a></li>
+            <li><a href="casino-gaming.html">Casino Gaming</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Company</h3>
+          <ul class="footer-links">
+            <li><a href="why-island-mountain.html">Why Local AI</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="investors.html">Investors</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="terms.html">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-newsletter">
+        <form action="https://formsubmit.co/basho@islandmountain.io" method="POST" class="newsletter-form">
+          <input type="hidden" name="_subject" value="Newsletter Signup - Island Mountain">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="text" name="_honey" style="display:none">
+          <label>Get updates on local AI infrastructure</label>
+          <div class="newsletter-input-group">
+            <input type="email" name="email" required placeholder="Your email address">
+            <button type="submit" class="btn btn-primary">Subscribe</button>
+          </div>
+        </form>
+      </div>
+      <div class="footer-bottom flex-col-center-gap">
+        <p>&copy; 2026 Island Mountain. All rights reserved. Founded by <a href="https://www.johndou.com" target="_blank" rel="noopener" class="clr-copper">John Dougherty</a> and <span class="clr-copper">Basho Parks</span>.</p>
+        <a href="tel:+18016091130" class="phone-link"><i class="ri-phone-line text-lg"></i> 1-801-609-1130</a>
+        <a href="https://www.linkedin.com/company/island-mountain-llc/" target="_blank" rel="noopener" aria-label="Island Mountain on LinkedIn" class="phone-link"><i class="ri-linkedin-fill text-lg"></i> Follow us on LinkedIn</a>
+        <a href="https://x.com/IslandMountain_" target="_blank" rel="noopener" aria-label="Island Mountain on X" class="phone-link"><i class="ri-twitter-x-fill text-lg"></i> Follow us on X</a>
+      </div>
+    </div>
+  </footer>
+
+  <script defer src="js/main.js"></script>
+</body>
+</html>
