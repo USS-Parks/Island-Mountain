@@ -383,18 +383,18 @@
       <div class="summary-grid">
         <div class="metric pass">
           <h3>Mapped Score</h3>
-          <span class="value">55</span>
+          <span class="value">59</span>
           <p class="label">out of 100 across 58 local GitDoctor-style checks</p>
         </div>
         <div class="metric router">
           <h3>Mapped Checks</h3>
-          <span class="value">32/58</span>
-          <p class="label">passed; 26 remain open for remediation evidence</p>
+          <span class="value">34/58</span>
+          <p class="label">passed; 24 remain open for remediation evidence</p>
         </div>
         <div class="metric info">
           <h3>Independent Tools</h3>
-          <span class="value">8/15</span>
-          <p class="label">passed; 6 failed and 1 was skipped because hadolint is not installed locally</p>
+          <span class="value">10/15</span>
+          <p class="label">passed; 4 failed and 1 was skipped because hadolint is not installed locally</p>
         </div>
         <div class="metric pass">
           <h3>Fixtures</h3>
@@ -437,13 +437,13 @@
         <div class="run-list">
           <div class="run-item">
             <span class="badge warn">Open Findings</span>
-            <strong>Mapped checks: 32 passed, 26 failed</strong>
-            <p class="muted">Overall mapped score is 55/100 across 58 checks. High-priority work remains in placeholders, adapter completion, silent defaults, weak tests, security-sensitive randomness, and lock-file evidence.</p>
+            <strong>Mapped checks: 34 passed, 24 failed</strong>
+            <p class="muted">Overall mapped score is 59/100 across 58 checks after excluding adversarial fixtures from normal repository scoring. High-priority work remains in placeholders, adapter completion, silent defaults, weak tests, and lock-file evidence.</p>
           </div>
           <div class="run-item">
             <span class="badge fail">Independent Failures</span>
             <strong>Dependency, repository test, and secret probes failed</strong>
-            <p class="muted">cargo audit, cargo deny, pytest, pip-audit, gitleaks, and detect-secrets remain failing independent probes. Ruff, bandit, complexity, and Rust workspace probes passed.</p>
+            <p class="muted">cargo audit, pytest, pip-audit, and detect-secrets remain failing independent probes. Cargo deny, gitleaks, ruff, bandit, complexity, and Rust workspace probes passed.</p>
           </div>
         </div>
       </div>
@@ -461,8 +461,8 @@
     <section class="status-list" aria-label="Three-layer audit result">
       <div class="status-row">
         <strong>Layer 1: mapped checks</strong>
-        <span class="badge warn">26 Open</span>
-        <p class="muted">The local scanner mirrors the Dougherty/GitDoctor categories and reports 32 passing checks, 26 failing checks, and a 55/100 mapped score.</p>
+        <span class="badge warn">24 Open</span>
+        <p class="muted">The local scanner mirrors the Dougherty/GitDoctor categories and reports 34 passing checks, 24 failing checks, and a 59/100 mapped score.</p>
         <code class="command">LOCAL-GITDOCTOR-REPORT.md</code>
       </div>
       <div class="status-row">
@@ -496,21 +496,21 @@
       <div class="panel">
         <h3>Local GitDoctor-style scorecard</h3>
         <div class="bar-list">
-          <div class="bar"><span>Security</span><div class="track"><div class="fill" style="width: 75%"></div></div><strong>75</strong></div>
+          <div class="bar"><span>Security</span><div class="track"><div class="fill" style="width: 81%"></div></div><strong>81</strong></div>
           <div class="bar"><span>Testing</span><div class="track"><div class="fill" style="width: 67%"></div></div><strong>67</strong></div>
           <div class="bar"><span>Project Hygiene</span><div class="track"><div class="fill" style="width: 80%"></div></div><strong>80</strong></div>
           <div class="bar"><span>Configuration</span><div class="track"><div class="fill" style="width: 71%"></div></div><strong>71</strong></div>
           <div class="bar"><span>Performance</span><div class="track"><div class="fill" style="width: 50%"></div></div><strong>50</strong></div>
           <div class="bar"><span>Review Integrity</span><div class="track"><div class="fill" style="width: 25%"></div></div><strong>25</strong></div>
-          <div class="bar"><span>Code Quality</span><div class="track"><div class="fill" style="width: 20%"></div></div><strong>20</strong></div>
+          <div class="bar"><span>Code Quality</span><div class="track"><div class="fill" style="width: 30%"></div></div><strong>30</strong></div>
         </div>
       </div>
       <div class="panel">
         <h3>Evidence posture</h3>
         <div class="timeline">
-          <div class="event"><strong>Strong</strong><p class="muted">cargo check, cargo clippy, cargo test, ruff, bandit, tokei, scc, and radon pass as independent implementation evidence.</p></div>
+          <div class="event"><strong>Strong</strong><p class="muted">cargo check, cargo clippy, cargo test, cargo deny, ruff, bandit, gitleaks, tokei, scc, and radon pass as independent implementation evidence.</p></div>
           <div class="event"><strong>Open</strong><p class="muted">Code quality and review-integrity scores remain low because placeholders, duplicated boilerplate, silent defaults, and thin tests are still visible.</p></div>
-          <div class="event"><strong>Failed</strong><p class="muted">cargo audit, cargo deny, pytest, pip-audit, gitleaks, and detect-secrets are now active failures rather than skipped placeholders.</p></div>
+          <div class="event"><strong>Failed</strong><p class="muted">cargo audit, pytest, pip-audit, and detect-secrets are active failures rather than skipped placeholders.</p></div>
           <div class="event"><strong>Install</strong><p class="muted">hadolint remains the only missing independent tool needed to complete Dockerfile lint coverage.</p></div>
         </div>
       </div>
@@ -535,8 +535,8 @@
       </div>
       <div class="matrix-row">
         <strong>Security</strong>
-        <p class="muted">Signal: 12 of 16 mapped security checks pass.</p>
-        <p class="muted">Result: high-priority findings still include string-interpolation injection signals, hardcoded secret patterns, and Math.random-style insecure randomness.</p>
+        <p class="muted">Signal: 13 of 16 mapped security checks pass.</p>
+        <p class="muted">Result: high-priority findings still include string-interpolation injection signals and hardcoded secret patterns. The prior Math.random signal came from adversarial fixtures and is no longer counted against repository scoring.</p>
       </div>
       <div class="matrix-row">
         <strong>Python tests</strong>
@@ -545,7 +545,7 @@
       </div>
       <div class="matrix-row">
         <strong>Independent audit failures</strong>
-        <p class="muted">Signal: cargo audit, cargo deny, pip-audit, gitleaks, and detect-secrets failed.</p>
+        <p class="muted">Signal: cargo audit, pip-audit, and detect-secrets failed.</p>
         <p class="muted">Result: dependency, policy, and secret-scanning findings are now concrete remediation inputs for J-10b and the J-series closure lane.</p>
       </div>
       <div class="matrix-row">
@@ -560,8 +560,8 @@
       </div>
       <div class="matrix-row">
         <strong>Passed proof</strong>
-        <p class="muted">Signal: independent pass count improved to 8 of 15, with fixtures at 1 of 1.</p>
-        <p class="muted">Result: cargo check, cargo clippy, cargo test, ruff, bandit, tokei, scc, radon, and the adversarial scanner fixture suite pass.</p>
+        <p class="muted">Signal: independent pass count improved to 10 of 15, with fixtures at 1 of 1.</p>
+        <p class="muted">Result: cargo check, cargo clippy, cargo test, cargo deny, ruff, bandit, gitleaks, tokei, scc, radon, and the adversarial scanner fixture suite pass.</p>
       </div>
       <div class="matrix-row">
         <strong>Publication note</strong>
