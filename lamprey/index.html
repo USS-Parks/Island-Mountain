@@ -383,18 +383,18 @@
       <div class="summary-grid">
         <div class="metric pass">
           <h3>Mapped Score</h3>
-          <span class="value">53</span>
+          <span class="value">55</span>
           <p class="label">out of 100 across 58 local GitDoctor-style checks</p>
         </div>
         <div class="metric router">
           <h3>Mapped Checks</h3>
-          <span class="value">31/58</span>
-          <p class="label">passed; 27 remain open for remediation evidence</p>
+          <span class="value">32/58</span>
+          <p class="label">passed; 26 remain open for remediation evidence</p>
         </div>
         <div class="metric info">
           <h3>Independent Tools</h3>
-          <span class="value">3/14</span>
-          <p class="label">passed; 2 failed and 9 were skipped because tools are not installed locally</p>
+          <span class="value">8/15</span>
+          <p class="label">passed; 6 failed and 1 was skipped because hadolint is not installed locally</p>
         </div>
         <div class="metric pass">
           <h3>Fixtures</h3>
@@ -437,13 +437,13 @@
         <div class="run-list">
           <div class="run-item">
             <span class="badge warn">Open Findings</span>
-            <strong>Mapped checks: 31 passed, 27 failed</strong>
-            <p class="muted">Overall mapped score is 53/100 across 58 checks. High-priority work remains in placeholders, adapter completion, silent defaults, weak tests, security-sensitive randomness, and lock-file evidence.</p>
+            <strong>Mapped checks: 32 passed, 26 failed</strong>
+            <p class="muted">Overall mapped score is 55/100 across 58 checks. High-priority work remains in placeholders, adapter completion, silent defaults, weak tests, security-sensitive randomness, and lock-file evidence.</p>
           </div>
           <div class="run-item">
             <span class="badge fail">Independent Failures</span>
-            <strong>Python pytest and ruff failed</strong>
-            <p class="muted">Repository-wide pytest reports 20 collection/import errors. Ruff reports 401 lint findings.</p>
+            <strong>Dependency, repository test, and secret probes failed</strong>
+            <p class="muted">cargo audit, cargo deny, pytest, pip-audit, gitleaks, and detect-secrets remain failing independent probes. Ruff, bandit, complexity, and Rust workspace probes passed.</p>
           </div>
         </div>
       </div>
@@ -461,8 +461,8 @@
     <section class="status-list" aria-label="Three-layer audit result">
       <div class="status-row">
         <strong>Layer 1: mapped checks</strong>
-        <span class="badge warn">27 Open</span>
-        <p class="muted">The local scanner mirrors the Dougherty/GitDoctor categories and reports 31 passing checks, 27 failing checks, and a 53/100 mapped score.</p>
+        <span class="badge warn">26 Open</span>
+        <p class="muted">The local scanner mirrors the Dougherty/GitDoctor categories and reports 32 passing checks, 26 failing checks, and a 55/100 mapped score.</p>
         <code class="command">LOCAL-GITDOCTOR-REPORT.md</code>
       </div>
       <div class="status-row">
@@ -474,14 +474,14 @@
       <div class="status-row">
         <strong>Layer 2: Python probes</strong>
         <span class="badge fail">Failed</span>
-        <p class="muted">Repository-wide pytest failed during collection with 20 import errors. Ruff failed with 401 lint findings.</p>
-        <code class="command">pytest / ruff</code>
+        <p class="muted">Repository-wide pytest still fails. Ruff and bandit now pass, giving the Python lane a cleaner lint/security baseline than the prior snapshot.</p>
+        <code class="command">pytest / ruff / bandit</code>
       </div>
       <div class="status-row">
-        <strong>Layer 2: missing tools</strong>
+        <strong>Layer 2: missing tool</strong>
         <span class="badge warn">Skipped</span>
-        <p class="muted">Cargo audit, cargo deny, bandit, pip-audit, gitleaks, detect-secrets, tokei, scc, and radon were not available locally and are recorded as skipped, not passed.</p>
-        <code class="command">9 skipped probes</code>
+        <p class="muted">hadolint was not available locally and is recorded as skipped, not passed. The other independent tools are now producing real pass/fail evidence.</p>
+        <code class="command">1 skipped probe</code>
       </div>
       <div class="status-row">
         <strong>Layer 3: adversarial fixtures</strong>
@@ -499,7 +499,7 @@
           <div class="bar"><span>Security</span><div class="track"><div class="fill" style="width: 75%"></div></div><strong>75</strong></div>
           <div class="bar"><span>Testing</span><div class="track"><div class="fill" style="width: 67%"></div></div><strong>67</strong></div>
           <div class="bar"><span>Project Hygiene</span><div class="track"><div class="fill" style="width: 80%"></div></div><strong>80</strong></div>
-          <div class="bar"><span>Configuration</span><div class="track"><div class="fill" style="width: 57%"></div></div><strong>57</strong></div>
+          <div class="bar"><span>Configuration</span><div class="track"><div class="fill" style="width: 71%"></div></div><strong>71</strong></div>
           <div class="bar"><span>Performance</span><div class="track"><div class="fill" style="width: 50%"></div></div><strong>50</strong></div>
           <div class="bar"><span>Review Integrity</span><div class="track"><div class="fill" style="width: 25%"></div></div><strong>25</strong></div>
           <div class="bar"><span>Code Quality</span><div class="track"><div class="fill" style="width: 20%"></div></div><strong>20</strong></div>
@@ -508,10 +508,10 @@
       <div class="panel">
         <h3>Evidence posture</h3>
         <div class="timeline">
-          <div class="event"><strong>Strong</strong><p class="muted">Rust workspace checks, clippy, and tests pass as independent implementation evidence.</p></div>
+          <div class="event"><strong>Strong</strong><p class="muted">cargo check, cargo clippy, cargo test, ruff, bandit, tokei, scc, and radon pass as independent implementation evidence.</p></div>
           <div class="event"><strong>Open</strong><p class="muted">Code quality and review-integrity scores remain low because placeholders, duplicated boilerplate, silent defaults, and thin tests are still visible.</p></div>
-          <div class="event"><strong>Blocked</strong><p class="muted">The Python test surface needs import/package cleanup before repository-wide pytest can serve as a clean independent proof source.</p></div>
-          <div class="event"><strong>Install</strong><p class="muted">Security, dependency, Docker, and complexity probes need their mature tools installed to convert skipped checks into real passes or failures.</p></div>
+          <div class="event"><strong>Failed</strong><p class="muted">cargo audit, cargo deny, pytest, pip-audit, gitleaks, and detect-secrets are now active failures rather than skipped placeholders.</p></div>
+          <div class="event"><strong>Install</strong><p class="muted">hadolint remains the only missing independent tool needed to complete Dockerfile lint coverage.</p></div>
         </div>
       </div>
     </section>
@@ -541,12 +541,12 @@
       <div class="matrix-row">
         <strong>Python tests</strong>
         <p class="muted">Signal: independent pytest probe failed.</p>
-        <p class="muted">Result: repository-wide collection reports 20 import errors, mostly around app smoke/integration tests and Python SDK test package resolution.</p>
+        <p class="muted">Result: repository-wide pytest remains an active independent failure and needs cleanup before it can serve as release evidence.</p>
       </div>
       <div class="matrix-row">
-        <strong>Python lint</strong>
-        <p class="muted">Signal: independent ruff probe failed.</p>
-        <p class="muted">Result: ruff reports 401 findings, including unnecessary assignments, broad pytest raises, annotation gaps, and loop-variable overwrites.</p>
+        <strong>Independent audit failures</strong>
+        <p class="muted">Signal: cargo audit, cargo deny, pip-audit, gitleaks, and detect-secrets failed.</p>
+        <p class="muted">Result: dependency, policy, and secret-scanning findings are now concrete remediation inputs for J-10b and the J-series closure lane.</p>
       </div>
       <div class="matrix-row">
         <strong>External gate</strong>
@@ -555,13 +555,13 @@
       </div>
       <div class="matrix-row">
         <strong>Tooling gap</strong>
-        <p class="muted">Signal: 9 independent probes skipped.</p>
-        <p class="muted">Result: cargo audit, cargo deny, bandit, pip-audit, gitleaks, detect-secrets, tokei, scc, and radon need local installation before they can produce independent evidence.</p>
+        <p class="muted">Signal: 1 independent probe skipped.</p>
+        <p class="muted">Result: hadolint needs local installation before Dockerfile lint can move from skipped to real pass/fail evidence.</p>
       </div>
       <div class="matrix-row">
         <strong>Passed proof</strong>
-        <p class="muted">Signal: Rust and fixture layers are currently reliable.</p>
-        <p class="muted">Result: cargo check, cargo clippy, cargo test, and the adversarial scanner fixture suite pass.</p>
+        <p class="muted">Signal: independent pass count improved to 8 of 15, with fixtures at 1 of 1.</p>
+        <p class="muted">Result: cargo check, cargo clippy, cargo test, ruff, bandit, tokei, scc, radon, and the adversarial scanner fixture suite pass.</p>
       </div>
       <div class="matrix-row">
         <strong>Publication note</strong>
