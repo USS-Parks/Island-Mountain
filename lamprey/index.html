@@ -6,35 +6,63 @@
   <title>MAI Test Validation Dashboard</title>
   <style>
     :root {
-      --bg: #f7f8f6;
-      --ink: #1d2320;
-      --muted: #69736d;
-      --line: #d8ddd7;
-      --panel: #ffffff;
-      --green: #177245;
-      --green-soft: #dff1e7;
-      --amber: #a86400;
-      --amber-soft: #fff0d6;
-      --red: #aa2f2f;
-      --red-soft: #f8dddd;
-      --teal: #1d6f73;
-      --plum: #6e4d7f;
+      --bg: #040504;
+      --ink: #f7f4ea;
+      --muted: #c8c4b8;
+      --line: rgba(255, 255, 255, 0.18);
+      --panel: rgba(8, 10, 10, 0.76);
+      --panel-strong: rgba(5, 7, 7, 0.9);
+      --green: #44d07d;
+      --green-soft: rgba(68, 208, 125, 0.18);
+      --amber: #f4b84f;
+      --amber-soft: rgba(244, 184, 79, 0.18);
+      --red: #ff6b66;
+      --red-soft: rgba(255, 107, 102, 0.18);
+      --teal: #47d4d0;
+      --teal-soft: rgba(71, 212, 208, 0.18);
+      --plum: #a78bfa;
+      --gold: #f0a814;
     }
 
     * { box-sizing: border-box; }
 
     body {
       margin: 0;
+      min-height: 100vh;
       background: var(--bg);
       color: var(--ink);
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       line-height: 1.45;
     }
 
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      background:
+        linear-gradient(90deg, rgba(0, 0, 0, 0.88), rgba(0, 0, 0, 0.35) 48%, rgba(0, 0, 0, 0.82)),
+        linear-gradient(180deg, rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.88)),
+        url("../images/lamprey-mai-stack-graphic.png") center top / min(76vw, 980px) auto no-repeat,
+        #020302;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      background: rgba(0, 0, 0, 0.28);
+      pointer-events: none;
+    }
+
     header {
-      padding: 32px 28px 24px;
+      min-height: 78vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 52px 28px 42px;
       border-bottom: 1px solid var(--line);
-      background: #ffffff;
     }
 
     main {
@@ -49,7 +77,8 @@
       font-size: clamp(28px, 4vw, 44px);
       line-height: 1.05;
       letter-spacing: 0;
-      max-width: 980px;
+      max-width: 920px;
+      text-shadow: 0 2px 18px rgba(0, 0, 0, 0.8);
     }
 
     h2 {
@@ -60,11 +89,12 @@
     h3 { font-size: 15px; }
 
     .eyebrow {
-      color: var(--teal);
+      color: var(--gold);
       font-size: 13px;
       font-weight: 750;
       margin-bottom: 10px;
       text-transform: uppercase;
+      text-shadow: 0 2px 14px rgba(0, 0, 0, 0.8);
     }
 
     .subhead {
@@ -72,6 +102,7 @@
       margin-top: 12px;
       max-width: 880px;
       font-size: 16px;
+      text-shadow: 0 2px 14px rgba(0, 0, 0, 0.8);
     }
 
     .summary-hero {
@@ -81,9 +112,8 @@
       border: 1px solid var(--line);
       border-radius: 8px;
       overflow: hidden;
-      background:
-        linear-gradient(90deg, rgba(247, 248, 246, 0.92), rgba(247, 248, 246, 0.74)),
-        url("../images/hero-resources.webp") center / cover no-repeat;
+      background: rgba(5, 7, 7, 0.56);
+      backdrop-filter: blur(10px);
     }
 
     .summary-grid {
@@ -98,11 +128,12 @@
       background: var(--panel);
       border: 1px solid var(--line);
       border-radius: 8px;
+      box-shadow: 0 18px 52px rgba(0, 0, 0, 0.24);
     }
 
     .metric {
-      background: rgba(255, 255, 255, 0.9);
-      backdrop-filter: blur(4px);
+      background: rgba(7, 9, 9, 0.72);
+      backdrop-filter: blur(10px);
       padding: 16px;
       min-height: 118px;
     }
@@ -146,6 +177,7 @@
       flex-direction: column;
       justify-content: space-between;
       gap: 14px;
+      backdrop-filter: blur(10px);
     }
 
     .button-row {
@@ -170,8 +202,8 @@
     }
 
     .button.secondary {
-      color: var(--teal);
-      background: #ffffff;
+      color: var(--ink);
+      background: rgba(255, 255, 255, 0.12);
     }
 
     .run-panel {
@@ -186,6 +218,7 @@
       border: 1px solid var(--line);
       border-radius: 8px;
       padding: 16px;
+      backdrop-filter: blur(10px);
     }
 
     .run-list {
@@ -242,7 +275,7 @@
     }
 
     .command {
-      color: #26302b;
+      color: #f7f4ea;
       font: 12px ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace;
       overflow-wrap: anywhere;
     }
@@ -273,14 +306,14 @@
 
     .track {
       height: 12px;
-      background: #ecefeb;
+      background: rgba(255, 255, 255, 0.12);
       border-radius: 999px;
       overflow: hidden;
     }
 
     .fill {
       height: 100%;
-      background: linear-gradient(90deg, var(--green), var(--teal));
+      background: linear-gradient(90deg, var(--gold), var(--teal));
       border-radius: 999px;
     }
 
@@ -340,249 +373,205 @@
 </head>
 <body>
   <header>
-    <p class="eyebrow">Island Mountain MAI - Pressure Validation</p>
-    <h1>Test validation dashboard for the MAI router, scheduler, API, core, adapters, and governance stack</h1>
-    <p class="subhead">Snapshot refreshed May 23, 2026 from the local MAI workspace. This pressure pass covers the S43/S44 additions, Lamprey router, compliance reports, trust gate, audit chain, policy runtime, full Rust workspace, Python IPC, trace replay, simulator tooling, and strict lint gates.</p>
+    <p class="eyebrow">Island Mountain MAI - Local Audit Evidence</p>
+    <h1>Lamprey MAI validation now tracks mapped GitDoctor findings, independent tool probes, and adversarial scanner fixtures.</h1>
+    <p class="subhead">Snapshot refreshed May 24, 2026 from the local MAI workspace. The new evidence package separates mirrored Dougherty/GitDoctor checks from independent Rust, Python, security, Docker, complexity, and fixture-based verification so the team can tell regression coverage from external-quality proof.</p>
   </header>
 
   <main>
     <section class="summary-hero" aria-label="Validation summary">
       <div class="summary-grid">
         <div class="metric pass">
-          <h3>Rust Workspace</h3>
-          <span class="value">1,430</span>
-          <p class="label">enumerated Rust tests in the full workspace run passed</p>
+          <h3>Mapped Score</h3>
+          <span class="value">53</span>
+          <p class="label">out of 100 across 58 local GitDoctor-style checks</p>
         </div>
         <div class="metric router">
-          <h3>Lamprey Core</h3>
-          <span class="value">408</span>
-          <p class="label">router and compliance package tests passed, including audit, report, policy, trust, HIPAA, ITAR, EAR, and OCAP paths</p>
+          <h3>Mapped Checks</h3>
+          <span class="value">31/58</span>
+          <p class="label">passed; 27 remain open for remediation evidence</p>
         </div>
         <div class="metric info">
-          <h3>Python Tools</h3>
-          <span class="value">144</span>
-          <p class="label">adapter, IPC, trace tool, and simulator tests passed</p>
+          <h3>Independent Tools</h3>
+          <span class="value">3/14</span>
+          <p class="label">passed; 2 failed and 9 were skipped because tools are not installed locally</p>
         </div>
         <div class="metric pass">
-          <h3>Code Failures</h3>
-          <span class="value">0</span>
-          <p class="label">no behavior failures or stalled test cycles observed after formatting and lint cleanup</p>
+          <h3>Fixtures</h3>
+          <span class="value">1/1</span>
+          <p class="label">known-bad and known-clean adversarial scanner fixtures passed</p>
         </div>
       </div>
     </section>
 
-    <h2>Run Lamprey Validation</h2>
-    <section class="action-grid" aria-label="Run validation controls">
+    <h2>Run The Evidence Package</h2>
+    <section class="action-grid" aria-label="Run local audit controls">
       <div class="action-card">
         <div>
-          <h3>GitHub-hosted checks</h3>
-          <p class="muted">Run router, policy, Rust workspace, Python IPC, or trace/simulator validation on GitHub-hosted Windows runners.</p>
+          <h3>Mapped GitDoctor-style scan</h3>
+          <p class="muted">Runs the local scanner against the MAI tree and writes Markdown plus JSON reports for the Dougherty remediation lane.</p>
         </div>
         <div class="button-row">
-          <a class="button" href="https://github.com/USS-Parks/im-mighty-eel-mai/actions/workflows/lamprey-validation.yml" target="_blank" rel="noopener">Run workflow</a>
-          <a class="button secondary" href="https://github.com/USS-Parks/im-mighty-eel-mai/actions/workflows/lamprey-validation.yml?query=branch%3Amain" target="_blank" rel="noopener">View runs</a>
+          <code class="command">python tools\local_gitdoctor_scan.py --root . --output docs\LOCAL-GITDOCTOR-REPORT.md</code>
         </div>
       </div>
       <div class="action-card">
         <div>
-          <h3>Public repo safety</h3>
-          <p class="muted">The public GitHub workflow is GitHub-hosted only. Hardware pressure tests should stay local or run from a private validation mirror.</p>
+          <h3>Three-layer evidence</h3>
+          <p class="muted">Builds the full evidence package: mapped checks, independent tool probes, and adversarial scanner fixtures.</p>
         </div>
-        <code class="command">runs-on: windows-latest</code>
+        <code class="command">python tools\local_gitdoctor_evidence.py --root .</code>
       </div>
       <div class="action-card">
         <div>
-          <h3>Local command fallback</h3>
-          <p class="muted">From the MAI workspace, run the same driver used by GitHub Actions.</p>
+          <h3>External acceptance gate</h3>
+          <p class="muted">The local package is a regression and evidence harness. The J-14 external GitDoctor rescan remains the acceptance checkpoint.</p>
         </div>
-        <code class="command">scripts\lamprey-validation.ps1 -Suite all</code>
+        <code class="command">J-14 external GitDoctor rescan</code>
       </div>
     </section>
 
-    <section class="run-panel" aria-label="GitHub Actions live status">
+    <section class="run-panel" aria-label="Evidence layer status">
       <div class="run-box">
-        <h3>Latest GitHub Actions runs</h3>
-        <p class="muted" id="actions-status">Loading latest Lamprey validation runs...</p>
-        <div class="run-list" id="actions-runs"></div>
+        <h3>Latest full scan result</h3>
+        <div class="run-list">
+          <div class="run-item">
+            <span class="badge warn">Open Findings</span>
+            <strong>Mapped checks: 31 passed, 27 failed</strong>
+            <p class="muted">Overall mapped score is 53/100 across 58 checks. High-priority work remains in placeholders, adapter completion, silent defaults, weak tests, security-sensitive randomness, and lock-file evidence.</p>
+          </div>
+          <div class="run-item">
+            <span class="badge fail">Independent Failures</span>
+            <strong>Python pytest and ruff failed</strong>
+            <p class="muted">Repository-wide pytest reports 20 collection/import errors. Ruff reports 401 lint findings.</p>
+          </div>
+        </div>
       </div>
       <div class="run-box">
-        <h3>How execution works</h3>
+        <h3>Why this is not just mimicry</h3>
         <div class="timeline">
-          <div class="event"><strong>1</strong><p class="muted">The page opens GitHub's secure workflow screen. No token is stored in this browser page.</p></div>
-          <div class="event"><strong>2</strong><p class="muted">Choose a suite. GitHub-hosted checks are CI-safe for the public repository.</p></div>
-          <div class="event"><strong>3</strong><p class="muted">The workflow uploads logs, JSON, and Markdown summaries as artifacts for review.</p></div>
+          <div class="event"><strong>Mapped</strong><p class="muted">Rules intentionally mirror John Dougherty's GitDoctor finding families so remediation cannot drift away from the original complaint.</p></div>
+          <div class="event"><strong>Independent</strong><p class="muted">Rust, Python, security, Docker, dependency, and complexity probes run mature tools when they are installed locally.</p></div>
+          <div class="event"><strong>Fixtures</strong><p class="muted">Known-bad and known-clean samples prove the scanner catches behaviors, not only current MAI filenames.</p></div>
         </div>
       </div>
     </section>
 
-    <h2>Live Validation Runs</h2>
-    <section class="status-list" aria-label="Live test runs">
+    <h2>Three-Layer Audit Result</h2>
+    <section class="status-list" aria-label="Three-layer audit result">
       <div class="status-row">
-        <strong>Rust workspace</strong>
-        <span class="badge pass">Passed</span>
-        <p class="muted">All crates compiled and passed with 1,430 enumerated Rust tests, including S44 API compliance integration, report generation, trust status, audit query, and token exchange coverage.</p>
-        <code class="command">cargo test --workspace</code>
+        <strong>Layer 1: mapped checks</strong>
+        <span class="badge warn">27 Open</span>
+        <p class="muted">The local scanner mirrors the Dougherty/GitDoctor categories and reports 31 passing checks, 27 failing checks, and a 53/100 mapped score.</p>
+        <code class="command">LOCAL-GITDOCTOR-REPORT.md</code>
       </div>
       <div class="status-row">
-        <strong>Policy router package</strong>
+        <strong>Layer 2: Rust probes</strong>
         <span class="badge pass">Passed</span>
-        <p class="muted">Classifier, entities, budget tracking, route decisions, policy rules, baseline policies, and p99 routing latency.</p>
-        <code class="command">cargo test -p mai-router</code>
+        <p class="muted">Independent Rust validation passed through cargo check, cargo clippy, and cargo test on the workspace.</p>
+        <code class="command">cargo check / clippy / test</code>
       </div>
       <div class="status-row">
-        <strong>HIPAA compliance</strong>
-        <span class="badge pass">Passed</span>
-        <p class="muted">Audit chain, policy runtime, report manager, PHI detector, BAA enforcement, de-identification, medical entities, OCAP, ITAR, EAR, and p99 PHI scan latency passed.</p>
-        <code class="command">cargo test -p mai-compliance</code>
+        <strong>Layer 2: Python probes</strong>
+        <span class="badge fail">Failed</span>
+        <p class="muted">Repository-wide pytest failed during collection with 20 import errors. Ruff failed with 401 lint findings.</p>
+        <code class="command">pytest / ruff</code>
       </div>
       <div class="status-row">
-        <strong>Python tools</strong>
-        <span class="badge pass">Passed</span>
-        <p class="muted">Adapters, IPC, trace anonymization/replay, and simulator comparison suites passed. Python validation passed cleanly: 96 adapter tests, 30 IPC tests, and 18 trace/simulator tests.</p>
-        <code class="command">python -m pytest adapters tools/trace-tools/tests tools/simulator/tests -q</code>
+        <strong>Layer 2: missing tools</strong>
+        <span class="badge warn">Skipped</span>
+        <p class="muted">Cargo audit, cargo deny, bandit, pip-audit, gitleaks, detect-secrets, tokei, scc, and radon were not available locally and are recorded as skipped, not passed.</p>
+        <code class="command">9 skipped probes</code>
       </div>
       <div class="status-row">
-        <strong>Validation wrapper</strong>
+        <strong>Layer 3: adversarial fixtures</strong>
         <span class="badge pass">Passed</span>
-        <p class="muted">The GitHub Actions driver completed format, workspace check, compliance lint, router, compliance, policy/audit stress, release policy/audit, Rust workspace, Python IPC, trace/simulator, and config-parse suites successfully.</p>
-        <code class="command">scripts\lamprey-validation.ps1 -Suite all</code>
+        <p class="muted">Known-bad and known-clean fixtures passed, proving the scanner detects the behavior classes rather than only echoing current MAI filenames.</p>
+        <code class="command">tools\local_gitdoctor_tests</code>
       </div>
     </section>
 
-    <h2>Coverage By System Area</h2>
+    <h2>Mapped Scanner Category Scores</h2>
     <section class="split">
       <div class="panel">
-        <h3>Rust suite distribution</h3>
+        <h3>Local GitDoctor-style scorecard</h3>
         <div class="bar-list">
-          <div class="bar"><span>Scheduler</span><div class="track"><div class="fill" style="width: 100%"></div></div><strong>324</strong></div>
-          <div class="bar"><span>Core</span><div class="track"><div class="fill" style="width: 59%"></div></div><strong>192</strong></div>
-          <div class="bar"><span>API</span><div class="track"><div class="fill" style="width: 54%"></div></div><strong>176</strong></div>
-          <div class="bar"><span>Agent</span><div class="track"><div class="fill" style="width: 25%"></div></div><strong>81</strong></div>
-          <div class="bar"><span>Vault</span><div class="track"><div class="fill" style="width: 17%"></div></div><strong>55</strong></div>
-          <div class="bar"><span>Router + Policy</span><div class="track"><div class="fill" style="width: 21%"></div></div><strong>67</strong></div>
-          <div class="bar"><span>Adapters</span><div class="track"><div class="fill" style="width: 10%"></div></div><strong>32</strong></div>
-          <div class="bar"><span>SDK + HIL</span><div class="track"><div class="fill" style="width: 10%"></div></div><strong>32</strong></div>
+          <div class="bar"><span>Security</span><div class="track"><div class="fill" style="width: 75%"></div></div><strong>75</strong></div>
+          <div class="bar"><span>Testing</span><div class="track"><div class="fill" style="width: 67%"></div></div><strong>67</strong></div>
+          <div class="bar"><span>Project Hygiene</span><div class="track"><div class="fill" style="width: 80%"></div></div><strong>80</strong></div>
+          <div class="bar"><span>Configuration</span><div class="track"><div class="fill" style="width: 57%"></div></div><strong>57</strong></div>
+          <div class="bar"><span>Performance</span><div class="track"><div class="fill" style="width: 50%"></div></div><strong>50</strong></div>
+          <div class="bar"><span>Review Integrity</span><div class="track"><div class="fill" style="width: 25%"></div></div><strong>25</strong></div>
+          <div class="bar"><span>Code Quality</span><div class="track"><div class="fill" style="width: 20%"></div></div><strong>20</strong></div>
         </div>
       </div>
       <div class="panel">
-        <h3>Validation posture</h3>
+        <h3>Evidence posture</h3>
         <div class="timeline">
-          <div class="event"><strong>Green</strong><p class="muted">Core inference plumbing, scheduler intelligence, API auth, streaming, vault, router, policy framework, audit chain, reports, trust gate, and model lifecycle tests pass locally.</p></div>
-          <div class="event"><strong>Hardened</strong><p class="muted">Workspace formatting and full workspace linting are clean after correcting the S44 API state verifier construction.</p></div>
-          <div class="event"><strong>Watch</strong><p class="muted">System Python SDK tests are blocked by a local Windows temp directory permission issue on 3 config-fixture tests; 91 SDK tests ran before that environment stop.</p></div>
-          <div class="event"><strong>Deferred</strong><p class="muted">Live model server, hardware GPU, Scout/Ranger boot timings, and 72-hour burn-in remain hardware validation work.</p></div>
+          <div class="event"><strong>Strong</strong><p class="muted">Rust workspace checks, clippy, and tests pass as independent implementation evidence.</p></div>
+          <div class="event"><strong>Open</strong><p class="muted">Code quality and review-integrity scores remain low because placeholders, duplicated boilerplate, silent defaults, and thin tests are still visible.</p></div>
+          <div class="event"><strong>Blocked</strong><p class="muted">The Python test surface needs import/package cleanup before repository-wide pytest can serve as a clean independent proof source.</p></div>
+          <div class="event"><strong>Install</strong><p class="muted">Security, dependency, Docker, and complexity probes need their mature tools installed to convert skipped checks into real passes or failures.</p></div>
         </div>
       </div>
     </section>
 
-    <h2>Data, Inputs, Behavior</h2>
-    <section class="matrix" aria-label="Data and behavior matrix">
+    <h2>Open Remediation Signals</h2>
+    <section class="matrix" aria-label="Open remediation signal matrix">
       <div class="matrix-row">
-        <strong>Router classification</strong>
-        <p class="muted">Inputs: public text, email, SSN, PHI terms, classified markers, upstream flags.</p>
-        <p class="muted">Behavior: highest sensitivity wins; critical denies; regulated content stays local; public queries can route to cloud.</p>
+        <strong>Lock files</strong>
+        <p class="muted">Signal: PRJ-004 remains high priority.</p>
+        <p class="muted">Result: missing tracked lock files for Cargo, Node, and Python. Untracked lock artifacts are recorded but do not satisfy the repository audit.</p>
       </div>
       <div class="matrix-row">
-        <strong>Entity detection</strong>
-        <p class="muted">Inputs: medical terms, tribal sovereignty terms, ITAR/EAR phrases, unrelated text.</p>
-        <p class="muted">Behavior: raw matched text is never emitted; only hashed spans and entity kinds are available for audit/routing.</p>
+        <strong>Placeholders</strong>
+        <p class="muted">Signal: QUA-003, REV-001, and REV-002 remain high priority.</p>
+        <p class="muted">Result: documented surfaces, adapters, clients, and backend areas still show stub or placeholder evidence.</p>
       </div>
       <div class="matrix-row">
-        <strong>Policy modules</strong>
-        <p class="muted">Inputs: sensitivity class, profile role, token estimate, medical/tribal/export entities, upstream flags, and module TOMLs.</p>
-        <p class="muted">Behavior: highest-priority matching rule wins, ties resolve by restrictiveness, deny/reroute can override default routing, and allow/flag fall through to default decisions.</p>
+        <strong>Review integrity</strong>
+        <p class="muted">Signal: REV category score is 25/100.</p>
+        <p class="muted">Result: completion claims, duplicate boilerplate, silent defaults, and thin assertions need evidence-backed cleanup.</p>
       </div>
       <div class="matrix-row">
-        <strong>Compliance reports</strong>
-        <p class="muted">Inputs: audit log records, module filters, routing decisions, report type, output format, and requested time window.</p>
-        <p class="muted">Behavior: inverted date ranges are rejected, generated reports round-trip through the API, and list/query responses expose report metadata without leaking raw subject identifiers.</p>
+        <strong>Security</strong>
+        <p class="muted">Signal: 12 of 16 mapped security checks pass.</p>
+        <p class="muted">Result: high-priority findings still include string-interpolation injection signals, hardcoded secret patterns, and Math.random-style insecure randomness.</p>
       </div>
       <div class="matrix-row">
-        <strong>Trust gate</strong>
-        <p class="muted">Inputs: tenant, subject, claim ID, scopes, revocation status, local-dev token exchange, and trust snapshots.</p>
-        <p class="muted">Behavior: revoked or missing trust blocks protected paths, trust status reports air-gapped defaults, and local-dev exchanges produce scoped test tokens for integration workflows.</p>
+        <strong>Python tests</strong>
+        <p class="muted">Signal: independent pytest probe failed.</p>
+        <p class="muted">Result: repository-wide collection reports 20 import errors, mostly around app smoke/integration tests and Python SDK test package resolution.</p>
       </div>
       <div class="matrix-row">
-        <strong>HIPAA compliance</strong>
-        <p class="muted">Inputs: SSNs, emails, phone numbers, URLs, IPs, MRNs, dates, ZIPs, VINs, clinical names, medications, ICD-10 codes, lab values, and BAA modes.</p>
-        <p class="muted">Behavior: PHI is hashed or redacted before audit/cloud paths, BAA rules force local when required, and PHI scanning stays under the latency budget.</p>
+        <strong>Python lint</strong>
+        <p class="muted">Signal: independent ruff probe failed.</p>
+        <p class="muted">Result: ruff reports 401 findings, including unnecessary assignments, broad pytest raises, annotation gaps, and loop-variable overwrites.</p>
       </div>
       <div class="matrix-row">
-        <strong>Cost controls</strong>
-        <p class="muted">Inputs: estimated tokens, profile role, current usage, zero-token requests, cloud failures.</p>
-        <p class="muted">Behavior: hard caps force local or block, soft caps warn at 80%, failed cloud calls do not burn budget.</p>
+        <strong>External gate</strong>
+        <p class="muted">Signal: local evidence is not a substitute for GitDoctor.</p>
+        <p class="muted">Result: the J-14 external GitDoctor rescan remains the release-facing acceptance point after J-13 remediation.</p>
       </div>
       <div class="matrix-row">
-        <strong>Scheduler + KV</strong>
-        <p class="muted">Inputs: topology fixtures, queue depth, VRAM pressure, priority, KV candidates, batch membership.</p>
-        <p class="muted">Behavior: placement scores explain latency/memory/topology/eviction/batch factors; system priority and warm continuations are protected.</p>
+        <strong>Tooling gap</strong>
+        <p class="muted">Signal: 9 independent probes skipped.</p>
+        <p class="muted">Result: cargo audit, cargo deny, bandit, pip-audit, gitleaks, detect-secrets, tokei, scc, and radon need local installation before they can produce independent evidence.</p>
       </div>
       <div class="matrix-row">
-        <strong>API + auth</strong>
-        <p class="muted">Inputs: API keys, profile roles, missing/invalid tokens, rate-limit bursts, health exceptions.</p>
-        <p class="muted">Behavior: strict auth blocks spoofing, health remains exempt, MAI error codes and retry headers are stable.</p>
+        <strong>Passed proof</strong>
+        <p class="muted">Signal: Rust and fixture layers are currently reliable.</p>
+        <p class="muted">Result: cargo check, cargo clippy, cargo test, and the adversarial scanner fixture suite pass.</p>
       </div>
       <div class="matrix-row">
-        <strong>Trace privacy</strong>
-        <p class="muted">Inputs: NDJSON trace events, session IDs, prompt-like fields, replay policies.</p>
-        <p class="muted">Behavior: allowlisted fields only, salted session hashes, deterministic replay comparisons, and simulator policy reports pass on Windows.</p>
+        <strong>Publication note</strong>
+        <p class="muted">Signal: results are a live remediation baseline.</p>
+        <p class="muted">Result: the page should be refreshed after each J-lane repair session and again after the J-14 external scan.</p>
       </div>
     </section>
 
-    <p class="footer">Static dashboard artifact. Update the counts after each validation run and publish this file at <code>https://islandmountain.io/lamprey</code> or link it from the production homepage.</p>
+    <p class="footer">Static dashboard artifact refreshed May 24, 2026. The local evidence package is a regression and review-integrity harness; external GitDoctor results should be posted here after J-14.</p>
   </main>
-  <script>
-    (function () {
-      var statusEl = document.getElementById('actions-status');
-      var runsEl = document.getElementById('actions-runs');
-      if (!statusEl || !runsEl) return;
-
-      var api = 'https://api.github.com/repos/USS-Parks/im-mighty-eel-mai/actions/workflows/lamprey-validation.yml/runs?branch=main&per_page=5';
-      var workflowUrl = 'https://github.com/USS-Parks/im-mighty-eel-mai/actions/workflows/lamprey-validation.yml';
-
-      function badgeClass(conclusion, status) {
-        if (status !== 'completed') return 'warn';
-        if (conclusion === 'success') return 'pass';
-        return 'fail';
-      }
-
-      function label(conclusion, status) {
-        if (status !== 'completed') return status || 'running';
-        return conclusion || 'completed';
-      }
-
-      fetch(api, { headers: { 'Accept': 'application/vnd.github+json' } })
-        .then(function (response) {
-          if (!response.ok) throw new Error('GitHub API returned ' + response.status);
-          return response.json();
-        })
-        .then(function (data) {
-          var runs = data.workflow_runs || [];
-          if (!runs.length) {
-            statusEl.textContent = 'No Lamprey validation runs found yet. Use Run workflow to start the first one.';
-            return;
-          }
-          statusEl.textContent = 'Showing the five most recent Lamprey validation workflow runs on main.';
-          runsEl.innerHTML = '';
-          runs.forEach(function (run) {
-            var row = document.createElement('div');
-            row.className = 'run-item';
-            var when = new Date(run.created_at).toLocaleString();
-            row.innerHTML =
-              '<div class="button-row">' +
-              '<span class="badge ' + badgeClass(run.conclusion, run.status) + '">' + label(run.conclusion, run.status) + '</span>' +
-              '<a class="button secondary" href="' + run.html_url + '" target="_blank" rel="noopener">Open run</a>' +
-              '</div>' +
-              '<strong>' + (run.display_title || run.name || 'Lamprey validation') + '</strong>' +
-              '<p class="muted">' + when + ' - #' + run.run_number + ' - ' + (run.event || 'workflow_dispatch') + '</p>';
-            runsEl.appendChild(row);
-          });
-        })
-        .catch(function () {
-          statusEl.innerHTML = 'Could not load live run status from GitHub. <a href="' + workflowUrl + '" target="_blank" rel="noopener">Open the workflow page</a>.';
-        });
-    }());
-  </script>
 </body>
 </html>
 
