@@ -1,577 +1,476 @@
-﻿<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>MAI Test Validation Dashboard</title>
-  <style>
-    :root {
-      --bg: #040504;
-      --ink: #f7f4ea;
-      --muted: #c8c4b8;
-      --line: rgba(255, 255, 255, 0.18);
-      --panel: rgba(8, 10, 10, 0.76);
-      --panel-strong: rgba(5, 7, 7, 0.9);
-      --green: #44d07d;
-      --green-soft: rgba(68, 208, 125, 0.18);
-      --amber: #f4b84f;
-      --amber-soft: rgba(244, 184, 79, 0.18);
-      --red: #ff6b66;
-      --red-soft: rgba(255, 107, 102, 0.18);
-      --teal: #47d4d0;
-      --teal-soft: rgba(71, 212, 208, 0.18);
-      --plum: #a78bfa;
-      --gold: #f0a814;
-    }
-
-    * { box-sizing: border-box; }
-
-    body {
-      margin: 0;
-      min-height: 100vh;
-      background: var(--bg);
-      color: var(--ink);
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      line-height: 1.45;
-    }
-
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      z-index: -2;
-      background:
-        linear-gradient(90deg, rgba(0, 0, 0, 0.88), rgba(0, 0, 0, 0.35) 48%, rgba(0, 0, 0, 0.82)),
-        linear-gradient(180deg, rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.88)),
-        url("../images/lamprey-mai-stack-graphic.png") center top / min(76vw, 980px) auto no-repeat,
-        #020302;
-    }
-
-    body::after {
-      content: "";
-      position: fixed;
-      inset: 0;
-      z-index: -1;
-      background: rgba(0, 0, 0, 0.28);
-      pointer-events: none;
-    }
-
-    header {
-      min-height: 78vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      padding: 52px 28px 42px;
-      border-bottom: 1px solid var(--line);
-    }
-
-    main {
-      max-width: 1240px;
-      margin: 0 auto;
-      padding: 24px;
-    }
-
-    h1, h2, h3, p { margin: 0; }
-
-    h1 {
-      font-size: clamp(28px, 4vw, 44px);
-      line-height: 1.05;
-      letter-spacing: 0;
-      max-width: 920px;
-      text-shadow: 0 2px 18px rgba(0, 0, 0, 0.8);
-    }
-
-    h2 {
-      font-size: 21px;
-      margin: 34px 0 14px;
-    }
-
-    h3 { font-size: 15px; }
-
-    .eyebrow {
-      color: var(--gold);
-      font-size: 13px;
-      font-weight: 750;
-      margin-bottom: 10px;
-      text-transform: uppercase;
-      text-shadow: 0 2px 14px rgba(0, 0, 0, 0.8);
-    }
-
-    .subhead {
-      color: var(--muted);
-      margin-top: 12px;
-      max-width: 880px;
-      font-size: 16px;
-      text-shadow: 0 2px 14px rgba(0, 0, 0, 0.8);
-    }
-
-    .summary-hero {
-      position: relative;
-      margin-top: 20px;
-      padding: 18px;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      overflow: hidden;
-      background: rgba(5, 7, 7, 0.56);
-      backdrop-filter: blur(10px);
-    }
-
-    .summary-grid {
-      position: relative;
-      z-index: 1;
-      display: grid;
-      gap: 12px;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-    }
-
-    .metric, .panel, .status-row, .matrix-row {
-      background: var(--panel);
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      box-shadow: 0 18px 52px rgba(0, 0, 0, 0.24);
-    }
-
-    .metric {
-      background: rgba(7, 9, 9, 0.72);
-      backdrop-filter: blur(10px);
-      padding: 16px;
-      min-height: 118px;
-    }
-
-    .metric .value {
-      display: block;
-      font-size: 32px;
-      font-weight: 800;
-      margin: 8px 0 4px;
-    }
-
-    .metric .label {
-      color: var(--muted);
-      font-size: 13px;
-    }
-
-    .metric.pass { border-left: 5px solid var(--green); }
-    .metric.warn { border-left: 5px solid var(--amber); }
-    .metric.info { border-left: 5px solid var(--teal); }
-    .metric.router { border-left: 5px solid var(--plum); }
-
-    .status-list {
-      display: grid;
-      gap: 10px;
-    }
-
-    .action-grid {
-      display: grid;
-      gap: 12px;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      margin-top: 14px;
-    }
-
-    .action-card {
-      background: var(--panel);
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      padding: 16px;
-      min-height: 150px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      gap: 14px;
-      backdrop-filter: blur(10px);
-    }
-
-    .button-row {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
-
-    .button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 36px;
-      padding: 8px 12px;
-      border-radius: 6px;
-      border: 1px solid var(--teal);
-      color: #ffffff;
-      background: var(--teal);
-      font-size: 13px;
-      font-weight: 800;
-      text-decoration: none;
-    }
-
-    .button.secondary {
-      color: var(--ink);
-      background: rgba(255, 255, 255, 0.12);
-    }
-
-    .run-panel {
-      display: grid;
-      gap: 12px;
-      grid-template-columns: 1fr 1fr;
-      margin-top: 14px;
-    }
-
-    .run-box {
-      background: var(--panel);
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      padding: 16px;
-      backdrop-filter: blur(10px);
-    }
-
-    .run-list {
-      display: grid;
-      gap: 8px;
-      margin-top: 12px;
-    }
-
-    .run-item {
-      display: grid;
-      gap: 4px;
-      border-top: 1px solid var(--line);
-      padding-top: 10px;
-    }
-
-    .status-row {
-      display: grid;
-      grid-template-columns: 170px 120px 1fr 170px;
-      gap: 12px;
-      align-items: center;
-      padding: 14px 16px;
-    }
-
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 999px;
-      min-height: 28px;
-      padding: 4px 10px;
-      font-size: 12px;
-      font-weight: 800;
-      white-space: nowrap;
-    }
-
-    .badge.pass {
-      color: var(--green);
-      background: var(--green-soft);
-    }
-
-    .badge.warn {
-      color: var(--amber);
-      background: var(--amber-soft);
-    }
-
-    .badge.fail {
-      color: var(--red);
-      background: var(--red-soft);
-    }
-
-    .muted {
-      color: var(--muted);
-      font-size: 13px;
-    }
-
-    .command {
-      color: #f7f4ea;
-      font: 12px ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace;
-      overflow-wrap: anywhere;
-    }
-
-    .panel {
-      padding: 18px;
-    }
-
-    .split {
-      display: grid;
-      gap: 16px;
-      grid-template-columns: 1.1fr 0.9fr;
-    }
-
-    .bar-list {
-      display: grid;
-      gap: 12px;
-      margin-top: 14px;
-    }
-
-    .bar {
-      display: grid;
-      grid-template-columns: 145px 1fr 64px;
-      gap: 12px;
-      align-items: center;
-      font-size: 13px;
-    }
-
-    .track {
-      height: 12px;
-      background: rgba(255, 255, 255, 0.12);
-      border-radius: 999px;
-      overflow: hidden;
-    }
-
-    .fill {
-      height: 100%;
-      background: linear-gradient(90deg, var(--gold), var(--teal));
-      border-radius: 999px;
-    }
-
-    .matrix {
-      display: grid;
-      gap: 10px;
-    }
-
-    .matrix-row {
-      display: grid;
-      grid-template-columns: 210px 1fr 1fr;
-      gap: 12px;
-      padding: 14px 16px;
-    }
-
-    .matrix-row strong { display: block; }
-
-    .timeline {
-      display: grid;
-      gap: 12px;
-      margin-top: 8px;
-    }
-
-    .event {
-      display: grid;
-      grid-template-columns: 92px 1fr;
-      gap: 12px;
-      padding-bottom: 12px;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .event:last-child {
-      border-bottom: 0;
-      padding-bottom: 0;
-    }
-
-    .footer {
-      margin: 30px 0 12px;
-      color: var(--muted);
-      font-size: 13px;
-    }
-
-    @media (max-width: 900px) {
-      .summary-grid, .split, .action-grid, .run-panel { grid-template-columns: 1fr 1fr; }
-      .status-row, .matrix-row {
-        grid-template-columns: 1fr;
+  <!-- Google tag (gtag.js) - deferred until user interaction -->
+  <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
+  <script>
+    (function(){
+      var loaded = false;
+      function loadGA(){
+        if(loaded) return;
+        loaded = true;
+        var s = document.createElement('script');
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-R674E394D4';
+        s.async = true;
+        document.head.appendChild(s);
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        window.gtag = gtag;
+        gtag('js', new Date());
+        gtag('config', 'G-R674E394D4');
       }
-    }
+      ['scroll','click','touchstart','keydown'].forEach(function(e){
+        document.addEventListener(e, loadGA, {once:true, passive:true});
+      });
+      setTimeout(loadGA, 3000);
+    })();
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Basho Parks">
+  <meta name="date" content="2026-05-25">
+  <title>Download Lamprey MAI - Air-Gapped Local AI Inference + Compliance Governance</title>
+  <meta name="description" content="Download Lamprey MAI for Windows. Air-gapped local AI inference with HIPAA, ITAR, OCAP compliance governance. One-time install. No cloud. No telemetry. SHA256-verifiable.">
+  <link rel="icon" type="image/x-icon" href="../favicon.ico?v=2">
+  <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon-32.png?v=2">
+  <link rel="apple-touch-icon" sizes="180x180" href="../images/apple-touch-icon.png?v=2">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../icons/remixicon.css" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="../icons/remixicon.css"></noscript>
+  <link rel="preload" href="../fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <style>
+  @font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400 800;
+    font-display: swap;
+    src: url('../fonts/inter-latin.woff2') format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+  @font-face {
+    font-family: 'Space Grotesk';
+    font-style: normal;
+    font-weight: 300 700;
+    font-display: swap;
+    src: url('../fonts/space-grotesk-latin.woff2') format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+  </style>
+  <link rel="canonical" href="https://islandmountain.io/lamprey/">
 
-    @media (max-width: 560px) {
-      header { padding: 24px 18px 18px; }
-      main { padding: 16px; }
-      .summary-grid, .split, .action-grid, .run-panel { grid-template-columns: 1fr; }
-      .bar { grid-template-columns: 1fr; }
+  <!-- Open Graph -->
+  <meta property="og:title" content="Download Lamprey MAI - Air-Gapped Local AI Inference">
+  <meta property="og:description" content="Download Lamprey MAI for Windows. Air-gapped local AI inference with HIPAA, ITAR, OCAP compliance governance. One-time install. No cloud. No telemetry.">
+  <meta property="og:url" content="https://islandmountain.io/lamprey/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Island Mountain">
+  <meta property="og:image" content="https://islandmountain.io/images/lamprey-mai-stack-graphic.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Download Lamprey MAI - Air-Gapped Local AI Inference">
+  <meta name="twitter:description" content="Download Lamprey MAI for Windows. Air-gapped local AI inference with HIPAA, ITAR, OCAP compliance governance.">
+  <meta name="twitter:image" content="https://islandmountain.io/images/lamprey-mai-stack-graphic.png">
+
+  <!-- SoftwareApplication schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Lamprey MAI",
+    "operatingSystem": "Windows 10, Windows 11",
+    "applicationCategory": "BusinessApplication",
+    "softwareVersion": "1.1.1",
+    "fileSize": "11.22 MB",
+    "downloadUrl": "https://islandmountain.io/lamprey/downloads/v1.1.1/lamprey-mai-setup-1.1.1.exe",
+    "publisher": { "@type": "Organization", "name": "Island Mountain (USS-Parks LLC)", "url": "https://islandmountain.io" },
+    "description": "Air-gapped local AI inference engine with built-in HIPAA, ITAR, and OCAP compliance governance. Runs entirely offline. No telemetry, no phone-home, no cloud dependency.",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  }
+  </script>
+
+  <!-- BreadcrumbList Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://islandmountain.io/" },
+      { "@type": "ListItem", "position": 2, "name": "Lamprey MAI Download", "item": "https://islandmountain.io/lamprey/" }
+    ]
+  }
+  </script>
+
+  <style>
+    /* Page-local styles. Marketing palette (style.css) for everything
+       else; this block is just the download-portal-specific layout. */
+    .lamprey-hero {
+      padding: 120px 24px 60px;
+      text-align: center;
+      position: relative;
+      z-index: 2;
     }
+    .lamprey-hero h1 {
+      font-size: clamp(2rem, 4.5vw, 3.2rem);
+      margin-bottom: 18px;
+    }
+    .lamprey-hero .subline {
+      color: var(--text-muted);
+      font-size: 1.15rem;
+      max-width: 720px;
+      margin: 0 auto 28px;
+    }
+    .lamprey-stack-img {
+      max-width: min(78vw, 360px);
+      margin: 0 auto 28px;
+      filter: drop-shadow(0 18px 40px rgba(0,0,0,0.55));
+    }
+    .download-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 28px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--copper) 0%, var(--copper-deep) 100%);
+      color: #1a1006;
+      font-weight: 700;
+      font-size: 1.05rem;
+      text-decoration: none;
+      box-shadow: 0 14px 36px rgba(245, 158, 11, 0.32);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .download-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 44px rgba(245, 158, 11, 0.42);
+      color: #1a1006;
+    }
+    .download-meta {
+      margin-top: 14px;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+    .verify-card, .first-run-card, .what-card, .faq-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(var(--glass-blur));
+      border: 1px solid var(--card-border);
+      border-radius: var(--border-radius);
+      padding: 28px;
+      margin-bottom: 22px;
+    }
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 22px;
+      margin-top: 18px;
+    }
+    .sha-box {
+      font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace;
+      font-size: 0.78rem;
+      color: var(--copper-light);
+      background: rgba(0,0,0,0.45);
+      border: 1px solid var(--card-border);
+      border-radius: var(--border-radius-sm);
+      padding: 12px 14px;
+      word-break: break-all;
+      user-select: all;
+    }
+    .cmd-box {
+      font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace;
+      font-size: 0.85rem;
+      color: var(--text-light);
+      background: rgba(0,0,0,0.55);
+      border: 1px solid var(--card-border);
+      border-radius: var(--border-radius-sm);
+      padding: 14px 16px;
+      margin-top: 12px;
+      overflow-x: auto;
+      white-space: pre;
+    }
+    .step {
+      display: grid;
+      grid-template-columns: 32px 1fr;
+      gap: 14px;
+      margin-bottom: 18px;
+      align-items: start;
+    }
+    .step-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--copper);
+      color: #1a1006;
+      font-weight: 800;
+      font-size: 0.95rem;
+    }
+    .step-body strong { display: block; color: var(--text-light); margin-bottom: 4px; }
+    .step-body p { margin: 0; }
+    .warn-banner {
+      border-left: 4px solid var(--copper);
+      background: rgba(245, 158, 11, 0.08);
+      padding: 14px 18px;
+      border-radius: var(--border-radius-sm);
+      margin-bottom: 18px;
+      color: var(--text-light);
+      font-size: 0.95rem;
+    }
+    .warn-banner strong { color: var(--copper-light); }
+    .faq-q { color: var(--text-light); font-weight: 700; margin-bottom: 8px; }
+    .faq-a { color: var(--text-muted); margin: 0; }
+    .faq-item { padding: 18px 0; border-bottom: 1px solid var(--card-border); }
+    .faq-item:last-child { border-bottom: 0; }
   </style>
 </head>
 <body>
-  <header>
-    <p class="eyebrow">Island Mountain MAI - Local Audit Evidence</p>
-    <h1>Lamprey MAI validation now tracks mapped GitDoctor findings, independent tool probes, and adversarial scanner fixtures.</h1>
-    <p class="subhead">Snapshot refreshed May 24, 2026 from the local MAI workspace. The new evidence package separates mirrored Dougherty/GitDoctor checks from independent Rust, Python, security, Docker, complexity, and fixture-based verification so the team can tell regression coverage from external-quality proof.</p>
-  </header>
 
-  <main>
-    <section class="summary-hero" aria-label="Validation summary">
-      <div class="summary-grid">
-        <div class="metric pass">
-          <h3>Mapped Score</h3>
-          <span class="value">59</span>
-          <p class="label">out of 100 across 58 local GitDoctor-style checks</p>
-        </div>
-        <div class="metric router">
-          <h3>Mapped Checks</h3>
-          <span class="value">34/58</span>
-          <p class="label">passed; 24 remain open for remediation evidence</p>
-        </div>
-        <div class="metric info">
-          <h3>Independent Tools</h3>
-          <span class="value">10/15</span>
-          <p class="label">passed; 4 failed and 1 was skipped because hadolint is not installed locally</p>
-        </div>
-        <div class="metric pass">
-          <h3>Fixtures</h3>
-          <span class="value">1/1</span>
-          <p class="label">known-bad and known-clean adversarial scanner fixtures passed</p>
-        </div>
-      </div>
-    </section>
+  <canvas id="particles-canvas"></canvas>
 
-    <h2>Run The Evidence Package</h2>
-    <section class="action-grid" aria-label="Run local audit controls">
-      <div class="action-card">
-        <div>
-          <h3>Mapped GitDoctor-style scan</h3>
-          <p class="muted">Runs the local scanner against the MAI tree and writes Markdown plus JSON reports for the Dougherty remediation lane.</p>
-        </div>
-        <div class="button-row">
-          <code class="command">python tools\local_gitdoctor_scan.py --root . --output docs\LOCAL-GITDOCTOR-REPORT.md</code>
-        </div>
-      </div>
-      <div class="action-card">
-        <div>
-          <h3>Three-layer evidence</h3>
-          <p class="muted">Builds the full evidence package: mapped checks, independent tool probes, and adversarial scanner fixtures.</p>
-        </div>
-        <code class="command">python tools\local_gitdoctor_evidence.py --root .</code>
-      </div>
-      <div class="action-card">
-        <div>
-          <h3>External acceptance gate</h3>
-          <p class="muted">The local package is a regression and evidence harness. The J-14 external GitDoctor rescan remains the acceptance checkpoint.</p>
-        </div>
-        <code class="command">J-14 external GitDoctor rescan</code>
-      </div>
-    </section>
+  <nav class="navbar">
+    <div class="container">
+      <a href="../index.html" class="nav-logo"><img src="../images/logo-nav-new.webp" alt="Island Mountain" width="205" height="65"></a>
+      <ul class="nav-links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../why-island-mountain.html">Why Local AI</a></li>
+        <li><a href="../products.html">Summit</a></li>
+        <li><a href="../landfall-preorder.html">Landfall</a></li>
+        <li><a href="../technology.html">Technology</a></li>
+        <li><a href="../pricing.html">Pricing</a></li>
+        <li class="nav-dropdown">
+          <a href="../solutions.html" class="nav-dropdown-toggle">Solutions <i class="ri-arrow-down-s-line"></i></a>
+          <ul class="nav-dropdown-menu">
+            <li><a href="../law-firms.html">Law Firms</a></li>
+            <li><a href="../medical-practices.html">Medical Practices</a></li>
+            <li><a href="../tribal-nations.html">Tribal Nations</a></li>
+            <li><a href="../research-labs.html">Research Labs</a></li>
+            <li><a href="../defense-contractors.html">Defense Contractors</a></li>
+            <li><a href="../financial-services.html">Financial Services</a></li>
+            <li><a href="../insurance.html">Insurance</a></li>
+            <li><a href="../energy-utilities.html">Energy &amp; Utilities</a></li>
+            <li><a href="../government.html">Government</a></li>
+            <li><a href="../education.html">Education</a></li>
+            <li><a href="../casino-gaming.html">Casino Gaming</a></li>
+          </ul>
+        </li>
+        <li><a href="../faq.html">FAQ</a></li>
+        <li><a href="../blog.html">Blog</a></li>
+        <li><a href="../resources.html">Resources</a></li>
+        <li><a href="../contact.html" class="nav-cta">Request Quote</a></li>
+      </ul>
+      <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
 
-    <section class="run-panel" aria-label="Evidence layer status">
-      <div class="run-box">
-        <h3>Latest full scan result</h3>
-        <div class="run-list">
-          <div class="run-item">
-            <span class="badge warn">Open Findings</span>
-            <strong>Mapped checks: 34 passed, 24 failed</strong>
-            <p class="muted">Overall mapped score is 59/100 across 58 checks after excluding adversarial fixtures from normal repository scoring. High-priority work remains in placeholders, adapter completion, silent defaults, weak tests, and lock-file evidence.</p>
+  <div class="sidebar-overlay"></div>
+  <div class="mobile-sidebar">
+    <a href="../index.html">Home</a>
+    <a href="../why-island-mountain.html">Why Local AI</a>
+    <a href="../products.html">Summit</a>
+    <a href="../landfall-preorder.html">Landfall</a>
+    <a href="../technology.html">Technology</a>
+    <a href="../pricing.html">Pricing</a>
+    <a href="../solutions.html">Solutions</a>
+    <a href="../faq.html">FAQ</a>
+    <a href="../blog.html">Blog</a>
+    <a href="../resources.html">Resources</a>
+    <a href="../contact.html">Request Quote</a>
+  </div>
+
+  <section class="lamprey-hero">
+    <div class="container">
+      <img class="lamprey-stack-img" src="../images/lamprey-mai-stack-graphic.png" alt="Lamprey MAI architecture stack: dashboard, SDKs, governance, router, API server, adapters, scheduler, kernel, vault, hardware, deployment." width="280" height="395" fetchpriority="high">
+      <h1><span class="chrome-shimmer">Lamprey MAI</span></h1>
+      <p class="subline">Air-gapped local AI inference with built-in HIPAA, ITAR, and OCAP compliance governance. Runs entirely on your hardware. No cloud. No telemetry. No phone-home.</p>
+      <a class="download-cta" href="downloads/v1.1.1/lamprey-mai-setup-1.1.1.exe" download>
+        <i class="ri-download-line"></i>
+        Download Lamprey MAI 1.1.1 for Windows
+      </a>
+      <p class="download-meta">11.22 MB &middot; Windows 10/11 x64 &middot; Released May 25, 2026</p>
+    </div>
+  </section>
+
+  <section class="section section-first">
+    <div class="container">
+
+      <div class="warn-banner">
+        <strong>Before you install:</strong> this build is not yet code-signed. Windows SmartScreen will show an &ldquo;Unrecognized publisher&rdquo; warning the first time you run it. The walkthrough below tells you what to expect and how to verify the file is the one we published.
+      </div>
+
+      <div class="grid-2">
+        <div class="verify-card">
+          <h2 style="font-size:1.4rem;margin-bottom:14px;">Verify your download</h2>
+          <p style="color:var(--text-muted);margin-bottom:14px;">SHA-256 hash of <code>lamprey-mai-setup-1.1.1.exe</code>:</p>
+          <div class="sha-box">71E00D91897DF02A86A148B8858BB58A9580E0AA73B4D8B12817E41BB4BE4BEB</div>
+          <p style="color:var(--text-muted);margin:14px 0 8px;">Compute the hash locally to confirm it matches (PowerShell):</p>
+          <div class="cmd-box">Get-FileHash -Algorithm SHA256 lamprey-mai-setup-1.1.1.exe</div>
+          <p style="color:var(--text-muted);margin:14px 0 0;font-size:0.9rem;">Or download <a href="downloads/v1.1.1/SHA256SUMS" class="clr-copper">SHA256SUMS</a> and use <code>sha256sum -c</code> on Linux/macOS.</p>
+        </div>
+
+        <div class="verify-card">
+          <h2 style="font-size:1.4rem;margin-bottom:14px;">System requirements</h2>
+          <ul style="color:var(--text-muted);padding-left:18px;line-height:1.9;">
+            <li>Windows 10 or 11, 64-bit</li>
+            <li>Administrator rights for first install</li>
+            <li>~30 MB free disk for the application</li>
+            <li>Hardware AI inference is optional &mdash; the launcher and compliance demos run on any CPU</li>
+            <li>No network connection required</li>
+          </ul>
+          <p style="color:var(--text-muted);margin:16px 0 0;font-size:0.9rem;">For GPU-accelerated inference, see the <a href="../technology.html" class="clr-copper">Technology</a> page.</p>
+        </div>
+      </div>
+
+      <div class="first-run-card" style="margin-top:24px;">
+        <h2 style="font-size:1.6rem;margin-bottom:18px;">What to expect when you double-click the installer</h2>
+
+        <div class="step">
+          <span class="step-num">1</span>
+          <div class="step-body">
+            <strong>&ldquo;Windows protected your PC&rdquo; (blue screen)</strong>
+            <p>SmartScreen warns about unrecognized publishers. Click <strong>More info</strong>, then <strong>Run anyway</strong>. We&rsquo;re working on Authenticode code-signing; until that lands, this warning is expected for every fresh build.</p>
           </div>
-          <div class="run-item">
-            <span class="badge fail">Independent Failures</span>
-            <strong>Dependency, repository test, and secret probes failed</strong>
-            <p class="muted">cargo audit, pytest, pip-audit, and detect-secrets remain failing independent probes. Cargo deny, gitleaks, ruff, bandit, complexity, and Rust workspace probes passed.</p>
+        </div>
+
+        <div class="step">
+          <span class="step-num">2</span>
+          <div class="step-body">
+            <strong>User Account Control (UAC) prompt</strong>
+            <p>Windows asks for administrator rights because the installer writes into <code>Program Files</code>. Click <strong>Yes</strong>. Lamprey MAI itself runs as your normal user once installed.</p>
+          </div>
+        </div>
+
+        <div class="step">
+          <span class="step-num">3</span>
+          <div class="step-body">
+            <strong>Setup wizard with the gold Lamprey MAI splash</strong>
+            <p>Step through the wizard. On the last page, make sure <strong>Create a desktop icon</strong> is checked. Optionally leave <strong>Launch Lamprey MAI</strong> ticked to start it immediately after install.</p>
+          </div>
+        </div>
+
+        <div class="step">
+          <span class="step-num">4</span>
+          <div class="step-body">
+            <strong>Double-click the desktop icon</strong>
+            <p>A brief Win32 splash with the Lamprey silhouette appears for ~4 seconds, then a terminal opens with the ASCII Lamprey banner and an interactive <code>mai&gt;</code> prompt.</p>
+          </div>
+        </div>
+
+        <div class="step">
+          <span class="step-num">5</span>
+          <div class="step-body">
+            <strong>Try it</strong>
+            <p>At the <code>mai&gt;</code> prompt, type <code>demo</code> to see the six narrated compliance scenarios (HIPAA, ITAR, OCAP, multi-domain, tamper-evident audit, trust manifold) walk through their phases. Or type <code>start</code> to launch the headless inference daemon, <code>status</code> to check the install, <code>help</code> for the full command list.</p>
           </div>
         </div>
       </div>
-      <div class="run-box">
-        <h3>Why this is not just mimicry</h3>
-        <div class="timeline">
-          <div class="event"><strong>Mapped</strong><p class="muted">Rules intentionally mirror John Dougherty's GitDoctor finding families so remediation cannot drift away from the original complaint.</p></div>
-          <div class="event"><strong>Independent</strong><p class="muted">Rust, Python, security, Docker, dependency, and complexity probes run mature tools when they are installed locally.</p></div>
-          <div class="event"><strong>Fixtures</strong><p class="muted">Known-bad and known-clean samples prove the scanner catches behaviors, not only current MAI filenames.</p></div>
+
+      <div class="what-card">
+        <h2 style="font-size:1.6rem;margin-bottom:14px;">What you&rsquo;re installing</h2>
+        <p style="color:var(--text-muted);margin-bottom:14px;">Three executables under <code>C:\Program Files\Lamprey MAI\</code>:</p>
+        <ul style="color:var(--text-muted);padding-left:18px;line-height:1.9;">
+          <li><code>lamprey-mai.exe</code> &mdash; the front-door launcher with terminal UI</li>
+          <li><code>lamprey-mai-api.exe</code> &mdash; headless inference + compliance governance daemon (REST + gRPC)</li>
+          <li><code>lamprey-mai-admin.exe</code> &mdash; operator CLI: demos, audit, backup/restore, ops</li>
+        </ul>
+        <p style="color:var(--text-muted);margin-top:14px;">No background services are registered. No scheduled tasks. No system-tray app. Nothing runs unless you start it.</p>
+        <p style="color:var(--text-muted);margin-top:14px;font-size:0.95rem;">Data handling: Lamprey MAI is designed to operate fully air-gapped. The installer makes no network requests after install. The application does not send telemetry, crash reports, or usage data anywhere. Compliance audit logs, model outputs, and configuration all stay on the local machine. See the <a href="../privacy.html" class="clr-copper">Privacy Policy</a> for the full statement.</p>
+      </div>
+
+      <div class="faq-card">
+        <h2 style="font-size:1.6rem;margin-bottom:6px;">Frequently asked questions</h2>
+
+        <div class="faq-item">
+          <p class="faq-q">Why does Windows warn me when I run this?</p>
+          <p class="faq-a">The installer is not yet Authenticode code-signed. SmartScreen flags any binary from an &ldquo;unrecognized publisher&rdquo; until enough installs of the same SHA256 accumulate. We&rsquo;re in the process of getting an EV (Extended Validation) code-signing certificate; once it&rsquo;s issued, the warning will be gone immediately on future builds. In the meantime, the SHA256 above is the primary trust signal.</p>
+        </div>
+
+        <div class="faq-item">
+          <p class="faq-q">Can I send this installer over email?</p>
+          <p class="faq-a">No. Gmail, Outlook, and most corporate mail gateways block <code>.exe</code> attachments outright (even inside <code>.zip</code>). Send your recipient the link to this page instead &mdash; <code>https://islandmountain.io/lamprey/</code> &mdash; and they can download it and verify it themselves.</p>
+        </div>
+
+        <div class="faq-item">
+          <p class="faq-q">Does Lamprey MAI need an internet connection?</p>
+          <p class="faq-a">No. Everything runs locally on your hardware. The installer itself does not contact any server during install. The application does not phone home, check for updates, or transmit data after install. Air-gapping is a design constraint, not an opt-in.</p>
+        </div>
+
+        <div class="faq-item">
+          <p class="faq-q">How do I uninstall it?</p>
+          <p class="faq-a">Settings &rarr; Apps &rarr; Installed apps &rarr; search &ldquo;Lamprey MAI&rdquo; &rarr; Uninstall. Or run the uninstaller directly at <code>C:\Program Files\Lamprey MAI\unins000.exe</code>. The uninstaller removes everything under <code>Program Files\Lamprey MAI</code> and the desktop/Start Menu shortcuts.</p>
+        </div>
+
+        <div class="faq-item">
+          <p class="faq-q">Where can I file issues or ask questions?</p>
+          <p class="faq-a">Email <a href="mailto:basho@islandmountain.io" class="clr-copper">basho@islandmountain.io</a> or call <a href="tel:+18016091130" class="clr-copper">1-801-609-1130</a>. Include the version number (1.1.1) and the first few lines from <code>status</code> at the <code>mai&gt;</code> prompt.</p>
+        </div>
+
+        <div class="faq-item">
+          <p class="faq-q">What about Linux or macOS?</p>
+          <p class="faq-a">Linux support ships with the Landfall hardware appliances. macOS is not currently a primary target. For server / appliance deployment, see <a href="../technology.html" class="clr-copper">Technology</a> and <a href="../products.html" class="clr-copper">Summit</a>.</p>
         </div>
       </div>
-    </section>
 
-    <h2>Three-Layer Audit Result</h2>
-    <section class="status-list" aria-label="Three-layer audit result">
-      <div class="status-row">
-        <strong>Layer 1: mapped checks</strong>
-        <span class="badge warn">24 Open</span>
-        <p class="muted">The local scanner mirrors the Dougherty/GitDoctor categories and reports 34 passing checks, 24 failing checks, and a 59/100 mapped score.</p>
-        <code class="command">LOCAL-GITDOCTOR-REPORT.md</code>
-      </div>
-      <div class="status-row">
-        <strong>Layer 2: Rust probes</strong>
-        <span class="badge pass">Passed</span>
-        <p class="muted">Independent Rust validation passed through cargo check, cargo clippy, and cargo test on the workspace.</p>
-        <code class="command">cargo check / clippy / test</code>
-      </div>
-      <div class="status-row">
-        <strong>Layer 2: Python probes</strong>
-        <span class="badge fail">Failed</span>
-        <p class="muted">Repository-wide pytest still fails. Ruff and bandit now pass, giving the Python lane a cleaner lint/security baseline than the prior snapshot.</p>
-        <code class="command">pytest / ruff / bandit</code>
-      </div>
-      <div class="status-row">
-        <strong>Layer 2: missing tool</strong>
-        <span class="badge warn">Skipped</span>
-        <p class="muted">hadolint was not available locally and is recorded as skipped, not passed. The other independent tools are now producing real pass/fail evidence.</p>
-        <code class="command">1 skipped probe</code>
-      </div>
-      <div class="status-row">
-        <strong>Layer 3: adversarial fixtures</strong>
-        <span class="badge pass">Passed</span>
-        <p class="muted">Known-bad and known-clean fixtures passed, proving the scanner detects the behavior classes rather than only echoing current MAI filenames.</p>
-        <code class="command">tools\local_gitdoctor_tests</code>
-      </div>
-    </section>
+    </div>
+  </section>
 
-    <h2>Mapped Scanner Category Scores</h2>
-    <section class="split">
-      <div class="panel">
-        <h3>Local GitDoctor-style scorecard</h3>
-        <div class="bar-list">
-          <div class="bar"><span>Security</span><div class="track"><div class="fill" style="width: 81%"></div></div><strong>81</strong></div>
-          <div class="bar"><span>Testing</span><div class="track"><div class="fill" style="width: 67%"></div></div><strong>67</strong></div>
-          <div class="bar"><span>Project Hygiene</span><div class="track"><div class="fill" style="width: 80%"></div></div><strong>80</strong></div>
-          <div class="bar"><span>Configuration</span><div class="track"><div class="fill" style="width: 71%"></div></div><strong>71</strong></div>
-          <div class="bar"><span>Performance</span><div class="track"><div class="fill" style="width: 50%"></div></div><strong>50</strong></div>
-          <div class="bar"><span>Review Integrity</span><div class="track"><div class="fill" style="width: 25%"></div></div><strong>25</strong></div>
-          <div class="bar"><span>Code Quality</span><div class="track"><div class="fill" style="width: 30%"></div></div><strong>30</strong></div>
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="../images/logo-footer.webp" alt="Island Mountain logo" width="210" height="210" class="d-block-mb">
+          <a href="../index.html" class="nav-logo">Island Mountain</a>
+          <p>Local AI infrastructure for data-sovereign families and organizations. Colorado.</p>
+          <p class="mt-8"><i class="ri-phone-line icon-copper-mr"></i><a href="tel:+18016091130" class="clr-muted">1-801-609-1130</a></p>
+        </div>
+        <div>
+          <h3>Quick Links</h3>
+          <ul class="footer-links">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../products.html">Summit</a></li>
+            <li><a href="../landfall-preorder.html">Landfall</a></li>
+            <li><a href="../technology.html">Technology</a></li>
+            <li><a href="../pricing.html">Pricing</a></li>
+            <li><a href="../resources.html">Resources</a></li>
+            <li><a href="../faq.html">FAQ</a></li>
+            <li><a href="../blog.html">Blog</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Solutions</h3>
+          <ul class="footer-links">
+            <li><a href="../law-firms.html">Law Firms</a></li>
+            <li><a href="../medical-practices.html">Medical Practices</a></li>
+            <li><a href="../tribal-nations.html">Tribal Nations</a></li>
+            <li><a href="../research-labs.html">Research Labs</a></li>
+            <li><a href="../defense-contractors.html">Defense Contractors</a></li>
+            <li><a href="../financial-services.html">Financial Services</a></li>
+            <li><a href="../insurance.html">Insurance</a></li>
+            <li><a href="../energy-utilities.html">Energy &amp; Utilities</a></li>
+            <li><a href="../government.html">Government</a></li>
+            <li><a href="../education.html">Education</a></li>
+            <li><a href="../casino-gaming.html">Casino Gaming</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Company</h3>
+          <ul class="footer-links">
+            <li><a href="../why-island-mountain.html">Why Local AI</a></li>
+            <li><a href="../contact.html">Contact</a></li>
+            <li><a href="../investors.html">Investors</a></li>
+            <li><a href="../about.html">About</a></li>
+            <li><a href="../privacy.html">Privacy Policy</a></li>
+            <li><a href="../terms.html">Terms of Service</a></li>
+          </ul>
         </div>
       </div>
-      <div class="panel">
-        <h3>Evidence posture</h3>
-        <div class="timeline">
-          <div class="event"><strong>Strong</strong><p class="muted">cargo check, cargo clippy, cargo test, cargo deny, ruff, bandit, gitleaks, tokei, scc, and radon pass as independent implementation evidence.</p></div>
-          <div class="event"><strong>Open</strong><p class="muted">Code quality and review-integrity scores remain low because placeholders, duplicated boilerplate, silent defaults, and thin tests are still visible.</p></div>
-          <div class="event"><strong>Failed</strong><p class="muted">cargo audit, pytest, pip-audit, and detect-secrets are active failures rather than skipped placeholders.</p></div>
-          <div class="event"><strong>Install</strong><p class="muted">hadolint remains the only missing independent tool needed to complete Dockerfile lint coverage.</p></div>
-        </div>
+      <div class="footer-bottom flex-col-center-gap">
+        <p>&copy; 2026 Island Mountain. All rights reserved. Founded by <a href="https://www.johndou.com" target="_blank" rel="noopener" class="clr-copper">John Dougherty</a> and <span class="clr-copper">Basho Parks</span>.</p>
+        <a href="tel:+18016091130" class="phone-link"><i class="ri-phone-line text-lg"></i> 1-801-609-1130</a>
+        <a href="https://www.linkedin.com/company/island-mountain-llc/" target="_blank" rel="noopener" aria-label="Island Mountain on LinkedIn" class="phone-link"><i class="ri-linkedin-fill text-lg"></i> Follow us on LinkedIn</a>
+        <a href="https://x.com/IslandMountain_" target="_blank" rel="noopener" aria-label="Island Mountain on X" class="phone-link"><i class="ri-twitter-x-fill text-lg"></i> Follow us on X</a>
       </div>
-    </section>
+    </div>
+  </footer>
 
-    <h2>Open Remediation Signals</h2>
-    <section class="matrix" aria-label="Open remediation signal matrix">
-      <div class="matrix-row">
-        <strong>Lock files</strong>
-        <p class="muted">Signal: PRJ-004 remains high priority.</p>
-        <p class="muted">Result: missing tracked lock files for Cargo, Node, and Python. Untracked lock artifacts are recorded but do not satisfy the repository audit.</p>
-      </div>
-      <div class="matrix-row">
-        <strong>Placeholders</strong>
-        <p class="muted">Signal: QUA-003, REV-001, and REV-002 remain high priority.</p>
-        <p class="muted">Result: documented surfaces, adapters, clients, and backend areas still show stub or placeholder evidence.</p>
-      </div>
-      <div class="matrix-row">
-        <strong>Review integrity</strong>
-        <p class="muted">Signal: REV category score is 25/100.</p>
-        <p class="muted">Result: completion claims, duplicate boilerplate, silent defaults, and thin assertions need evidence-backed cleanup.</p>
-      </div>
-      <div class="matrix-row">
-        <strong>Security</strong>
-        <p class="muted">Signal: 13 of 16 mapped security checks pass.</p>
-        <p class="muted">Result: high-priority findings still include string-interpolation injection signals and hardcoded secret patterns. The prior Math.random signal came from adversarial fixtures and is no longer counted against repository scoring.</p>
-      </div>
-      <div class="matrix-row">
-        <strong>Python tests</strong>
-        <p class="muted">Signal: independent pytest probe failed.</p>
-        <p class="muted">Result: repository-wide pytest remains an active independent failure and needs cleanup before it can serve as release evidence.</p>
-      </div>
-      <div class="matrix-row">
-        <strong>Independent audit failures</strong>
-        <p class="muted">Signal: cargo audit, pip-audit, and detect-secrets failed.</p>
-        <p class="muted">Result: dependency, policy, and secret-scanning findings are now concrete remediation inputs for J-10b and the J-series closure lane.</p>
-      </div>
-      <div class="matrix-row">
-        <strong>External gate</strong>
-        <p class="muted">Signal: local evidence is not a substitute for GitDoctor.</p>
-        <p class="muted">Result: the J-14 external GitDoctor rescan remains the release-facing acceptance point after J-13 remediation.</p>
-      </div>
-      <div class="matrix-row">
-        <strong>Tooling gap</strong>
-        <p class="muted">Signal: 1 independent probe skipped.</p>
-        <p class="muted">Result: hadolint needs local installation before Dockerfile lint can move from skipped to real pass/fail evidence.</p>
-      </div>
-      <div class="matrix-row">
-        <strong>Passed proof</strong>
-        <p class="muted">Signal: independent pass count improved to 10 of 15, with fixtures at 1 of 1.</p>
-        <p class="muted">Result: cargo check, cargo clippy, cargo test, cargo deny, ruff, bandit, gitleaks, tokei, scc, radon, and the adversarial scanner fixture suite pass.</p>
-      </div>
-      <div class="matrix-row">
-        <strong>Publication note</strong>
-        <p class="muted">Signal: results are a live remediation baseline.</p>
-        <p class="muted">Result: the page should be refreshed after each J-lane repair session and again after the J-14 external scan.</p>
-      </div>
-    </section>
-
-    <p class="footer">Static dashboard artifact refreshed May 24, 2026. The local evidence package is a regression and review-integrity harness; external GitDoctor results should be posted here after J-14.</p>
-  </main>
+  <script defer src="../js/main.js"></script>
 </body>
 </html>
-
