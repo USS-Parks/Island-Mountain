@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) - deferred until user interaction -->
+<link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
+<script>
+  (function(){
+    var loaded = false;
+    function loadGA(){
+      if(loaded) return;
+      loaded = true;
+      var s = document.createElement('script');
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=G-R674E394D4';
+      s.async = true;
+      document.head.appendChild(s);
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      window.gtag = gtag;
+      gtag('js', new Date());
+      gtag('config', 'G-R674E394D4');
+    }
+    ['scroll','click','touchstart','keydown'].forEach(function(e){
+      document.addEventListener(e, loadGA, {once:true, passive:true});
+    });
+    setTimeout(loadGA, 3000);
+  })();
+</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Basho Parks">
+  <meta name="date" content="2026-05-29">
+  <title>Tribal Sovereignty and Data Centers: Landlord or Owner?</title>
+  <meta name="description" content="Over 100 data center projects proposed on tribal lands. Tribal nations face a choice between landlord arrangements that replicate extraction and ownership models that build sovereign AI infrastructure.">
+  <link rel="icon" type="image/x-icon" href="../favicon.ico?v=2">
+  <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon-32.png?v=2">
+  <link rel="apple-touch-icon" sizes="180x180" href="../images/apple-touch-icon.png?v=2">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../icons/remixicon.css" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="../icons/remixicon.css"></noscript>
+  <link rel="preload" href="../fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <style>
+  @font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400 800;
+    font-display: swap;
+    src: url('../fonts/inter-latin.woff2') format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+  @font-face {
+    font-family: 'Space Grotesk';
+    font-style: normal;
+    font-weight: 300 700;
+    font-display: swap;
+    src: url('../fonts/space-grotesk-latin.woff2') format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+  </style>
+  <link rel="canonical" href="https://islandmountain.io/blog/tribal-sovereignty-data-centers-landlord-or-owner.html">
+  <!-- Open Graph -->
+  <meta property="og:title" content="Tribal Sovereignty and Data Centers: Landlord or Owner?">
+  <meta property="og:description" content="Over 100 data center projects proposed on tribal lands. Tribal nations face a choice between landlord arrangements that replicate extraction and ownership models that build sovereign AI infrastructure.">
+  <meta property="og:url" content="https://islandmountain.io/blog/tribal-sovereignty-data-centers-landlord-or-owner.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Island Mountain">
+  <meta property="og:image" content="https://islandmountain.io/images/hero-mountain.webp">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Tribal Sovereignty and Data Centers: Landlord or Owner?">
+  <meta name="twitter:description" content="Over 100 data center projects proposed on tribal lands. Tribal nations face a choice between landlord arrangements that replicate extraction and ownership models that build sovereign AI infrastructure.">
+  <meta name="twitter:image" content="https://islandmountain.io/images/hero-mountain.webp">
+  <!-- Article Schema -->
+  <script type="application/ld+json">
+  {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Landlord or Owner: Tribal Nations, Data Centers, and the Sovereignty Question Nobody's Asking",
+  "description": "Over 100 data center projects proposed on tribal lands. Tribal nations face a choice between landlord arrangements that replicate extraction and ownership models that build sovereign AI infrastructure.",
+  "url": "https://islandmountain.io/blog/tribal-sovereignty-data-centers-landlord-or-owner.html",
+  "datePublished": "2026-05-29",
+  "dateModified": "2026-05-29",
+  "author": {
+    "@type": "Organization",
+    "name": "Island Mountain",
+    "url": "https://islandmountain.io"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Island Mountain",
+    "url": "https://islandmountain.io",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://islandmountain.io/images/hero-mountain.webp"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://islandmountain.io/blog/tribal-sovereignty-data-centers-landlord-or-owner.html"
+  },
+  "image": "https://islandmountain.io/images/hero-mountain.webp"
+}
+  </script>
+  <link rel="stylesheet" href="../css/blog.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://islandmountain.io/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Blog",
+      "item": "https://islandmountain.io/blog.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Tribal Sovereignty and Data Centers",
+      "item": "https://islandmountain.io/blog/tribal-sovereignty-data-centers-landlord-or-owner.html"
+    }
+  ]
+}
+</script>
+</head>
+<body>
+  <!-- Full-page particle canvas -->
+  <canvas id="particles-canvas"></canvas>
+  <!-- Hero background photo -->
+  <div class="hero-photo">
+    <img srcset="../images/hero-mountain-mobile.webp 800w, ../images/hero-mountain.webp 1913w" sizes="100vw" src="../images/hero-mountain.webp" alt="Island Mountain AI infrastructure for tribal sovereignty" fetchpriority="high" decoding="async" width="1913" height="892">
+  </div>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="../index.html" class="nav-logo"><img src="../images/logo-nav-new.webp" alt="Island Mountain" width="205" height="65"></a>
+      <ul class="nav-links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../why-island-mountain.html">Why Local AI</a></li>
+        <li><a href="../products.html">Summit</a>
+        <li><a href="../landfall-preorder.html">Landfall</a></li>
+        <li><a href="../technology.html">Technology</a></li>
+        <li><a href="../pricing.html">Pricing</a></li>
+        <li class="nav-dropdown">
+          <a href="../solutions.html" class="nav-dropdown-toggle">Solutions <i class="ri-arrow-down-s-line"></i></a>
+          <ul class="nav-dropdown-menu">
+            <li><a href="../law-firms.html">Law Firms</a></li>
+            <li><a href="../medical-practices.html">Medical Practices</a></li>
+            <li><a href="../tribal-nations.html">Tribal Nations</a></li>
+            <li><a href="../research-labs.html">Research Labs</a></li>
+            <li><a href="../defense-contractors.html">Defense Contractors</a></li>
+            <li><a href="../financial-services.html">Financial Services</a></li>
+            <li><a href="../insurance.html">Insurance</a></li>
+            <li><a href="../energy-utilities.html">Energy &amp; Utilities</a></li>
+            <li><a href="../government.html">Government</a></li>
+            <li><a href="../education.html">Education</a></li>
+            <li><a href="../casino-gaming.html">Casino Gaming</a></li>
+          </ul>
+        </li>
+              <li><a href="../faq.html">FAQ</a></li>
+        <li><a href="../blog.html" class="active">Blog</a></li>
+        <li><a href="../resources.html">Resources</a></li>
+        <li><a href="../contact.html" class="nav-cta">Request Quote</a></li>
+      </ul>
+      <button class="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Sidebar -->
+  <div class="sidebar-overlay"></div>
+  <div class="mobile-sidebar">
+    <a href="../index.html">Home</a>
+    <a href="../why-island-mountain.html">Why Local AI</a>
+    <a href="../products.html">Summit</a>
+    <a href="../landfall-preorder.html">Landfall</a>
+    <a href="../technology.html">Technology</a>
+    <a href="../pricing.html">Pricing</a>
+    <a href="../solutions.html" class="mobile-solutions-toggle">Solutions <i class="ri-arrow-down-s-line"></i></a>
+    <div class="mobile-solutions-links">
+      <a href="../law-firms.html">Law Firms</a>
+      <a href="../medical-practices.html">Medical Practices</a>
+      <a href="../tribal-nations.html">Tribal Nations</a>
+      <a href="../research-labs.html">Research Labs</a>
+      <a href="../defense-contractors.html">Defense Contractors</a>
+      <a href="../financial-services.html">Financial Services</a>
+      <a href="../insurance.html">Insurance</a>
+      <a href="../energy-utilities.html">Energy &amp; Utilities</a>
+      <a href="../government.html">Government</a>
+      <a href="../education.html">Education</a>
+      <a href="../casino-gaming.html">Casino Gaming</a>
+    </div>
+            <a href="../faq.html">FAQ</a>
+    <a href="../blog.html">Blog</a>
+    <a href="../resources.html">Resources</a>
+    <a href="../contact.html" class="nav-cta">Request Quote</a>
+  </div>
+
+  <!-- Article -->
+  <section class="section section-first hero-spacer">
+    <div class="container content-max-840">
+
+      <!-- Breadcrumb -->
+      <nav class="breadcrumb">
+        <a href="../index.html">Home</a><span>&rsaquo;</span><a href="../blog.html">Blog</a><span>&rsaquo;</span>Tribal Sovereignty and Data Centers
+      </nav>
+
+      <!-- Article Header -->
+      <div class="article-header">
+        <div class="article-meta">
+          <span class="article-date">May 29, 2026</span>
+          <span class="article-tag tag-industry">Industry</span>
+          <span class="article-tag tag-compliance">Compliance</span>
+          <span class="article-read-time">11 min read</span>
+        </div>
+        <h1 class="text-2xl">Landlord or Owner: Tribal Nations, Data Centers, and the Sovereignty Question Nobody's Asking</h1>
+        <p class="article-author">Basho Parks</p>
+      </div>
+
+      <article class="article-body">
+
+        <h2>The Pitch That Keeps Arriving at Tribal Council</h2>
+
+<p>Over 100 hyperscale data center projects have been proposed on or adjacent to tribal lands in the past two years (<a href="https://www.honorearth.org/stopdatacolonialism" target="_blank" rel="noopener">Honor the Earth</a>). The pitches arrive through subsidiaries and intermediaries, often starting with conversations about solar panel development before pivoting to campus-scale server facilities that consume millions of gallons of water annually and draw enough power to light a small city. Microsoft, Google, Meta, Amazon, and their downstream partners are all in the game, and they're all looking at the same thing: large tracts of sovereign land with available water, available power, favorable tax treatment, and regulatory frameworks that haven't yet caught up to the scale of what's being proposed.</p>
+
+<p>This is the most consequential infrastructure decision most tribal governments will face in a generation, and it's arriving fast, wrapped in NDAs, economic development language, and the promise of jobs and revenue that may or may not survive contact with reality. The question tribal leaders need to answer before signing anything isn't whether data centers belong on tribal land. It's whether the tribe will be a landlord collecting rent on someone else's operation, or an owner building sovereign infrastructure that serves the nation's own interests for the next seven generations.</p>
+
+<p>The difference between those two positions is the difference between this era's version of the Dawes Act and an act of genuine self-determination.</p>
+
+<h2>What the Hyperscalers Want and Why They Want It from You</h2>
+
+<p>The appeal of tribal land to data center developers is structural, not sentimental. Tribal lands often sit in regions with abundant renewable energy potential, particularly wind and solar in the Great Plains, Southwest, and Pacific Northwest. Water resources on or adjacent to reservations provide the cooling capacity that hyperscale facilities demand, between 300,000 and 5 million gallons per day depending on facility size (<a href="https://futurism.com/artificial-intelligence/data-centers-tribal-communities" target="_blank" rel="noopener">Futurism</a>). Tribal sovereignty creates a regulatory environment distinct from state and county jurisdictions, which means permitting processes, environmental review requirements, and tax obligations can look very different from what a developer faces in a typical municipal negotiation. And many tribal nations lack the utility regulation codes that would govern a facility of this scale, meaning the developer faces fewer constraints on water withdrawal, power consumption, and environmental discharge than they would building the same facility in, say, suburban Virginia.</p>
+
+<p>These are not features the developer is offering the tribe. These are features the developer is extracting from the tribe's sovereign status. The distinction matters because it determines the entire power dynamic of the negotiation. When a corporation approaches a tribal council asking for land, water, and a favorable regulatory posture, and offers in return a lease payment and a promise of jobs, that's not a partnership. That's a tenancy arrangement where the tribe provides the most valuable inputs and receives the least valuable outputs.</p>
+
+<p>The companies approaching tribal councils know exactly what they're getting. The question is whether tribal councils know exactly what they're giving.</p>
+
+<h2>The Playbook: NDAs, Intermediaries, and the Solar-to-Server Pivot</h2>
+
+<p>The pattern has been documented across multiple tribal nations now, and it follows a consistent playbook (<a href="https://ictnews.org/news/in-indian-country-data-centers-come-with-a-familiar-threat-of-colonialism-these-organizers-are-fighting-back/" target="_blank" rel="noopener">ICT News</a>). A subsidiary or Native-owned energy company approaches tribal leadership about renewable energy development, which sounds benign and community-beneficial. Conversations begin about solar panel installations or wind farms. At some point, the scope shifts: the renewable energy infrastructure is reframed as the power source for a hyperscale data center campus that will sit on the same land.</p>
+
+<p>Before substantive details are shared, the corporation asks the tribal council to sign a non-disclosure agreement. This is the moment the power dynamic inverts. An NDA makes tribal leadership accountable to a corporation's confidentiality terms rather than to the tribal citizens whose land and water are under discussion. Community members can't evaluate what they can't see. Tribal council members who've signed an NDA are legally constrained from disclosing the terms of the deal to the people who will live with its consequences.</p>
+
+<p>The Seminole Nation of Oklahoma saw this playbook firsthand when a tech startup approached their Tribal Council with an NDA and a letter of intention to develop a data center on Seminole lands. The community response was unambiguous: an emergency town hall on March 3, 2026, followed by a 24-0 Tribal Council vote on March 7 to enact a permanent moratorium on hyperscale data center development within the Seminole Nation (<a href="https://nativenewsonline.net/sovereignty/seminole-nation-of-oklahoma-passes-moratorium-on-data-centers/" target="_blank" rel="noopener">Native News Online</a>). As Mekusukey Band Representative Glen Chebon Kernell put it at the vote: "Once we've used up and contaminated all of our water sources, this is it."</p>
+
+<p>The Muscogee Nation's National Council rejected a data center proposal by a 4-11 vote after citizens organized town halls exposing that the proposed facility would sit on a 5,570-acre plot used for the nation's food sovereignty initiative (<a href="https://www.momscleanairforce.org/data-centers-tribal-lands/" target="_blank" rel="noopener">Moms Clean Air Force</a>). A hyperscale data center on land dedicated to feeding Muscogee citizens. The irony writes itself.</p>
+
+
+<h2>Landlord vs. Owner: The Only Framework That Matters</h2>
+
+<p>The Department of Energy held a webinar in February 2026 titled "Beyond Land Leases: Harnessing Data Centers for Tribal Economic Development," and the title itself reveals the tension (<a href="https://www.energy.gov/indianenergy/articles/data-centers-exploring-opportunity-tribes" target="_blank" rel="noopener">DOE Indian Energy</a>). The framing acknowledges that a land lease is the default offer being made to tribes, and then tries to point toward something better without fully naming what that something is.</p>
+
+<p>Here's what it is. The spectrum of tribal engagement with data center development runs from pure extraction to full sovereignty, and every deal falls somewhere on that line.</p>
+
+<p><strong>The Landlord Position</strong> is where most proposals land. The tribe leases land, provides water access, and offers regulatory advantages. The corporation builds, owns, and operates the facility. The tribe receives lease payments and a handful of construction and maintenance jobs. The data processed in the facility belongs to the corporation's clients. The AI models trained on that data belong to the corporation. The economic value generated by the compute belongs to the corporation's shareholders. The tribe holds the lease, the water bill, and the environmental consequences.</p>
+
+<p>This is the Dawes Act in digital form. The tribal asset, land, is converted into a vehicle for non-tribal wealth accumulation through a legal mechanism that the tribe technically agreed to.</p>
+
+<p><strong>The Owner Position</strong> is the alternative that almost nobody is proposing to tribal councils because it's not in the developer's interest. In the owner position, the tribe builds or co-owns the infrastructure. The tribe controls what data is processed on its sovereign land. The tribe captures the economic value of the compute, not just the rent. The tribe can serve its own AI needs, processing <a href="../medical-practices.html">tribal health data</a>, <a href="../tribal-nations.html">emergency management operations</a>, governance documents, and grant administration on tribally owned hardware, within tribal jurisdiction, subject to no <a href="ocap-cloud-act-guide.html">CLOUD Act</a> warrant because no U.S.-incorporated technology company ever takes custody of the information.</p>
+
+<p>The Cherokee Nation is approaching this thoughtfully. Principal Chief Chuck Hoskin Jr. signed an executive order in February 2026 establishing a nine-member task force, led by Secretary of Natural Resources Christina Justice, to study the environmental and economic impacts of data centers on the 7,000-square-mile Cherokee Nation Reservation (<a href="https://www.cherokeephoenix.org/news/cherokee-nation-establishes-task-force-to-study-the-impact-of-data-centers/article_173a3f43-b44b-43f4-a373-4dfa9293e45e.html" target="_blank" rel="noopener">Cherokee Phoenix</a>). The task force report is due June 30, 2026. That's a sovereign government doing its due diligence before committing resources, not signing an NDA in a conference room and hoping the jobs materialize.</p>
+
+<h2>Where Local AI Fits: Sovereignty You Can Hold</h2>
+
+<p>The conversation about data centers on tribal land and the conversation about <a href="ai-sovereignty-framework-tribal-nations.html">local AI infrastructure</a> are the same conversation viewed from different ends of the telescope. Data centers are about processing someone else's data on your land. Local AI is about processing your own data on your own hardware.</p>
+
+<p>For a tribal nation evaluating whether to host a hyperscale facility, the first question should be: what are our own compute needs, and are we meeting them? If the answer is that tribal <a href="../hipaa-local-ai-compliance.html">health services</a> are sending PHI to cloud AI platforms, that the tribal <a href="tribal-data-sovereignty-ai-infrastructure.html">emergency operations center</a> is running incident analysis through commercial cloud infrastructure, that governance documents and grant narratives are being processed on servers the tribe doesn't own or control, then the tribe is already in the landlord position with respect to its own data. It's just paying a different corporation for the privilege.</p>
+
+<p>An <a href="../products.html">Island Mountain Summit Base</a> at $75,000 to $85,000 gives a tribal government its own AI inference capability: <a href="../air-gapped-ai-inference.html">air-gapped</a> if needed, running on sovereign land, processing tribal data under tribal jurisdiction, with no token fees, no CLOUD Act exposure, and no corporate intermediary between the tribe and its own information. That's the owner position applied to the tribe's own compute needs.</p>
+
+<p>The <a href="ocap-cloud-act-guide.html">OCAP Principles</a> demand physical possession of tribal data. NCAI Resolution NC-24-008 defines digital sovereignty as authority over both the data and the physical infrastructure through which it moves. A tribally owned AI server, connected to tribally owned broadband infrastructure, is the only configuration that satisfies both frameworks simultaneously.</p>
+
+
+<h2>The Strategic Framework: Five Questions Before Signing Anything</h2>
+
+<p>For tribal leaders evaluating any data center proposal, whether it's a hyperscale campus or a partnership offer, these are the questions that determine whether the deal serves the nation or extracts from it.</p>
+
+<p><strong>Who owns the infrastructure after construction?</strong> If the answer is the corporation, the tribe is a landlord. Ownership that reverts to the tribe after a defined period changes the economics fundamentally, but only if the terms survive the corporation's legal team.</p>
+
+<p><strong>What happens to the water?</strong> A single hyperscale facility can consume 5 million gallons per day. In the arid West, in drought-stressed watersheds, in communities already fighting over allocation, that's not an abstract resource question. It's an existential one. Every gallon consumed by a data center is a gallon that doesn't flow through the watershed, doesn't recharge the aquifer, and doesn't serve tribal citizens.</p>
+
+<p><strong>What data is being processed on your land, and who controls it?</strong> If the tribe has no visibility into what's running on the servers sitting on its sovereign territory, the tribe has traded land sovereignty for digital occupation. At minimum, tribes should demand <a href="../cloud-act-tribal-data.html">data governance provisions</a> that give the nation authority over what categories of data are processed within its jurisdiction.</p>
+
+<p><strong>Does the tribe get compute access for its own needs?</strong> Any partnership that doesn't include tribal compute capacity is a partnership that serves only the corporation. If servers are running on tribal land, tribal government operations should be running on some of those servers.</p>
+
+<p><strong>What's the exit clause?</strong> Lease terms of 20 to 30 years with no meaningful exit provisions lock the tribe into a relationship that outlasts most council terms, most economic cycles, and most corporate commitments. The facility may change ownership three times before the lease expires. Each transfer dilutes the original commitments.</p>
+
+<h2>The Real Choice</h2>
+
+<p>The Department of Energy calls data centers a "big economic opportunity" for tribes. That framing isn't wrong. But it's incomplete in a way that history should make tribal leaders deeply skeptical of.</p>
+
+<p>Every era of American expansion has offered tribal nations an "economic opportunity" that required handing over a sovereign asset in exchange for a revenue stream controlled by someone else. Land for annuities. Water rights for irrigation contracts. Mineral rights for royalty payments. The structure is always the same: the tribe provides the irreplaceable resource, the corporation captures the compounding value, and the tribe gets the residual.</p>
+
+<p>Data centers on tribal land follow this pattern unless the tribe breaks it. The way to break it is ownership, not tenancy. Own the compute. Own the data governance. Own the infrastructure. And for the tribe's own AI needs, own the server that processes your most sensitive information, because that server is the one piece of this equation where sovereignty isn't negotiable.</p>
+
+<p>That's what <a href="../products.html">Island Mountain builds</a>. Not data centers. Not hyperscale campuses. <a href="../tribal-nations.html">Tribally owned AI inference servers</a> that sit on sovereign land, process sovereign data, and answer to no one but the tribal government that bought them. The cost of that sovereignty is <a href="../pricing.html">$75,000 to $85,000</a>. The cost of surrendering it compounds forever.</p>
+
+<!-- AEO Summary -->
+<div style="border-left:3px solid var(--copper);padding:16px 20px;margin:32px 0;background:rgba(217,119,6,0.05);border-radius:0 8px 8px 0;">
+<strong>Summary:</strong> Over 100 hyperscale data center projects have been proposed on tribal lands, offering lease payments in exchange for land, water, and regulatory advantages. Tribal nations face a choice between landlord arrangements that replicate historical extraction patterns and ownership models that build sovereign infrastructure. For a tribe's own AI needs, on-premises inference hardware on sovereign land is the only architecture that satisfies OCAP Principles and NCAI's digital sovereignty framework.
+</div>
+
+      </article>
+
+      <!-- CTA -->
+      <div class="article-cta">
+        <h3>Build Sovereign AI Infrastructure</h3>
+        <p>One conversation. No sales pitch. Just straight talk about what tribally owned local AI hardware can do for your nation's data sovereignty.</p>
+        <a href="../contact.html" class="btn btn-primary">Start a Conversation</a>
+        <p class="bio-note-sm"><i class="ri-phone-line icon-copper-mr-sm"></i>Or call directly: <a href="tel:+18016091130" class="copper-semibold">1-801-609-1130</a></p>
+      </div>
+
+      <!-- Related Articles -->
+      <div class="related-articles">
+        <h3>Related Articles</h3>
+        <div class="related-grid">
+          <div class="related-card">
+            <h4><a href="ai-sovereignty-framework-tribal-nations.html">AI Sovereignty Framework for Tribal Nations</a></h4>
+            <p>The legal, operational, and strategic framework for on-premise AI as the only architecture satisfying OCAP, HIPAA, and the Stafford Act.</p>
+          </div>
+          <div class="related-card">
+            <h4><a href="ocap-cloud-act-guide.html">OCAP Principles and the CLOUD Act: Why Tribal Data Requires Local AI</a></h4>
+            <p>How the CLOUD Act undermines tribal data sovereignty and why OCAP-compliant AI requires on-premise hardware.</p>
+          </div>
+          <div class="related-card">
+            <h4><a href="tribal-data-sovereignty-ai-infrastructure.html">Tribal Data Sovereignty and the Cloud AI Problem</a></h4>
+            <p>Why sovereign jurisdictions need sovereign infrastructure and what that looks like in practice.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Navigation -->
+      <div class="article-nav">
+        <a href="../blog.html" class="article-back">&larr; All articles</a>
+        <div class="share-links">
+          <span>Share:</span>
+          <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://islandmountain.io/blog/tribal-sovereignty-data-centers-landlord-or-owner.html" target="_blank" rel="noopener" aria-label="Share on LinkedIn"><i class="ri-linkedin-fill"></i></a>
+          <a href="https://x.com/intent/tweet?url=https://islandmountain.io/blog/tribal-sovereignty-data-centers-landlord-or-owner.html&text=Landlord%20or%20Owner%3A%20Tribal%20Nations%20Data%20Centers%20and%20the%20Sovereignty%20Question" target="_blank" rel="noopener" aria-label="Share on X"><i class="ri-twitter-x-fill"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="../images/logo-footer.webp" alt="Island Mountain logo" width="210" height="210" class="d-block-mb">
+          <a href="../index.html" class="nav-logo">Island Mountain</a>
+          <p>Local AI infrastructure for data-sovereign organizations. Colorado.</p>
+          <p class="mt-8"><i class="ri-phone-line icon-copper-mr"></i><a href="tel:+18016091130" class="clr-muted">1-801-609-1130</a></p>
+        </div>
+        <div>
+          <h3>Quick Links</h3>
+          <ul class="footer-links">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../products.html">Summit</a>
+            <li><a href="../technology.html">Technology</a></li>
+            <li><a href="../pricing.html">Pricing</a></li>
+            <li><a href="../resources.html">Resources</a></li>
+              <li><a href="../faq.html">FAQ</a></li>
+            <li><a href="../blog.html">Blog</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Solutions</h3>
+          <ul class="footer-links">
+            <li><a href="../law-firms.html">Law Firms</a></li>
+            <li><a href="../medical-practices.html">Medical Practices</a></li>
+            <li><a href="../tribal-nations.html">Tribal Nations</a></li>
+            <li><a href="../research-labs.html">Research Labs</a></li>
+            <li><a href="../defense-contractors.html">Defense Contractors</a></li>
+            <li><a href="../financial-services.html">Financial Services</a></li>
+            <li><a href="../insurance.html">Insurance</a></li>
+            <li><a href="../energy-utilities.html">Energy &amp; Utilities</a></li>
+            <li><a href="../government.html">Government</a></li>
+            <li><a href="../education.html">Education</a></li>
+            <li><a href="../casino-gaming.html">Casino Gaming</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Company</h3>
+          <ul class="footer-links">
+            <li><a href="../why-island-mountain.html">Why Local AI</a></li>
+            <li><a href="../contact.html">Contact</a></li>
+            <li><a href="../investors.html">Investors</a></li>
+            <li><a href="../about.html">About</a></li>
+            <li><a href="../privacy.html">Privacy Policy</a></li>
+            <li><a href="../terms.html">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-newsletter">
+        <form action="https://formsubmit.co/basho@islandmountain.io" method="POST" class="newsletter-form">
+          <input type="hidden" name="_subject" value="Newsletter Signup - Island Mountain">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="text" name="_honey" style="display:none">
+          <label>Get updates on local AI infrastructure</label>
+          <div class="newsletter-input-group">
+            <input type="email" name="email" required placeholder="Your email address">
+            <button type="submit" class="btn btn-primary">Subscribe</button>
+          </div>
+        </form>
+      </div>
+      <div class="footer-bottom flex-col-center-gap">
+        <p>&copy; 2026 Island Mountain. All rights reserved. Founded by <a href="https://www.johndou.com" target="_blank" rel="noopener" class="clr-copper">John Dougherty</a> and <span class="clr-copper">Basho Parks</span>.</p>
+        <a href="tel:+18016091130" class="phone-link"><i class="ri-phone-line text-lg"></i> 1-801-609-1130</a>
+        <a href="https://www.linkedin.com/company/island-mountain-llc/" target="_blank" rel="noopener" aria-label="Island Mountain on LinkedIn" class="phone-link"><i class="ri-linkedin-fill text-lg"></i> Follow us on LinkedIn</a>
+        <a href="https://x.com/IslandMountain_" target="_blank" rel="noopener" aria-label="Island Mountain on X" class="phone-link"><i class="ri-twitter-x-fill text-lg"></i> Follow us on X</a>
+      </div>
+    </div>
+  </footer>
+
+  <script defer src="../js/main.js"></script>
+</body>
+</html>
