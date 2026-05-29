@@ -234,54 +234,52 @@
 
       <article class="article-body">
 
-        <h2>The $50K Question That Keeps Showing Up</h2>
+        <h2>The $50K Question That Keeps Landing in Our Inbox</h2>
 
-<p>A hundred people in a company using Claude daily. $50,000 a month in API tokens. The CEO wants it in-house. The IT team is Googling GPU specs. Somebody on Reddit is asking whether a couple of RTX PRO 6000 Blackwells can run GLM-5.1 in BF16.</p>
+<p>A hundred people in a company, all running Claude daily, and the monthly invoice just crossed $50,000 in API tokens. The CEO wants it in-house. The IT lead is browsing GPU benchmarks on lunch break. Somebody on a forum is asking whether a pair of RTX PRO 6000 Blackwells can run GLM-5.1 in BF16, and the replies are split between people who've never priced a data center GPU and people selling them.</p>
 
-<p>We see this exact scenario land in our inbox two or three times a week now. The question is always the same: can local LLM hardware replace our cloud AI spend? The answer is yes, and the math is not even close. But the path from $50K in monthly token fees to a box in your server room is more specific than most forum posts make it sound. Let's walk through it honestly.</p>
+<p>We see this exact scenario two or three times a week now, from <a href="../law-firms.html">law firms</a> watching their litigation support bills climb, from <a href="../financial-services.html">financial services teams</a> that can't justify sending proprietary models through third-party infrastructure, and from <a href="../research-labs.html">research labs</a> that realized their grant-funded data has been riding someone else's fiber for six months without anyone asking whether that was allowed. The question is always the same: can local LLM hardware replace our cloud AI spend? The answer is yes, and it's not a close call. But the path from $50K in monthly token fees to a box in your server room is more specific than most forum posts make it sound, so let's walk through what that path looks like without flinching from the numbers or the limitations.</p>
 
-<h2>What $50,000 a Month in Cloud AI Buys You</h2>
+<h2>What $50,000 a Month in Cloud AI Tokens Buys You</h2>
 
-<p>At current Anthropic pricing, Claude Sonnet 4.6 runs $3 per million input tokens and $15 per million output tokens. Enterprise Claude Code usage averages $150 to $250 per developer per month (<a href="https://platform.claude.com/docs/en/about-claude/pricing" target="_blank" rel="noopener">Anthropic Pricing</a>). A 100-person company with heavy daily usage hitting $50K a month is burning through roughly 2.5 to 4 billion output tokens monthly, depending on their mix of API calls, Code sessions, and prompt complexity.</p>
+<p>At current Anthropic pricing, Claude Sonnet 4.6 runs $3 per million input tokens and $15 per million output tokens (<a href="https://platform.claude.com/docs/en/about-claude/pricing" target="_blank" rel="noopener">Anthropic Pricing</a>). Enterprise Claude Code usage averages $150 to $250 per developer per month, and a 100-person company with heavy daily usage hitting $50K means the organization is burning through roughly 2.5 to 4 billion output tokens monthly, depending on the mix of API calls, Code sessions, and prompt complexity.</p>
 
-<p>That's $600,000 a year. $3 million over five years, assuming prices stay flat. They won't. Cloud AI pricing has historically climbed 10 to 15 percent annually as usage scales and providers adjust tier structures. A company spending $50K a month today is staring at $80K to $95K a month by year three without changing a single workflow.</p>
+<p>That's $600,000 a year. It's $3 million over five years if you assume prices stay flat, which they won't, because cloud AI pricing has historically climbed 10 to 15 percent annually as usage scales and providers adjust tier structures. A company spending $50K a month today is staring at $80K to $95K a month by year three without changing a single workflow.</p>
 
-<p>And every token that leaves your network carries your proprietary data with it. Your code, your client information, your internal strategy documents. That's not a footnote. For regulated industries, it's the entire argument.</p>
+<p>And every token that leaves your network carries proprietary data with it: your code, your client information, your internal strategy documents, your competitive positioning. For organizations operating under <a href="../hipaa-local-ai-compliance.html">HIPAA</a>, <a href="attorney-client-privilege-cloud-ai.html">attorney-client privilege</a>, <a href="itar-dfars-ai-self-assessment.html">ITAR</a>, or <a href="../cloud-act-tribal-data.html">tribal data sovereignty frameworks</a>, that's not a footnote buried in a risk register. That's the entire argument.</p>
 
 <h2>The Hardware Question Everyone Gets Wrong</h2>
 
-<p>The Reddit thread that inspired this post asked whether a couple of RTX PRO 6000 Blackwells could run GLM-5.1 in BF16. Let's address that directly.</p>
+<p>The forum thread that inspired this post asked whether a couple of RTX PRO 6000 Blackwells could handle GLM-5.1 in BF16, and it's worth addressing directly because the question reveals a misunderstanding that costs organizations real money when they try to solve it themselves.</p>
 
-<p>The RTX PRO 6000 Blackwell is an impressive card. 96GB GDDR7 ECC, 1,792 GB/s memory bandwidth, fifth-gen Tensor Cores with native FP4 support, $8,000 to $9,200 retail. For single-GPU inference on models up to 70B parameters, it's competitive with the H100 PCIe and costs a fraction of the price.</p>
+<p>The RTX PRO 6000 Blackwell is genuinely impressive hardware. It ships with 96GB of GDDR7 ECC memory running at 1,792 GB/s bandwidth, fifth-generation Tensor Cores with native FP4 support, and a retail price between $8,000 and $9,200. For single-GPU inference on models up to 70 billion parameters, it competes with the H100 PCIe and costs a fraction of the price (<a href="https://www.cloudrift.ai/blog/benchmarking-rtx6000-vs-datacenter-gpus" target="_blank" rel="noopener">CloudRift Benchmarks</a>).</p>
 
-<p>But GLM-5.1 is a 754-billion parameter MoE model with 40 billion active parameters per token. In BF16, that model needs north of 1.5 terabytes of VRAM to load. Two RTX PRO 6000s give you 192GB. You're off by roughly 8x.</p>
+<p>But GLM-5.1 is a 754-billion parameter mixture-of-experts model with 40 billion active parameters per token, and in BF16, that model needs north of 1.5 terabytes of VRAM to load. Two RTX PRO 6000s give you 192GB. You're off by roughly 8x. Even quantized down to 4-bit, GLM-5.1 demands roughly 400GB, which means five cards linked over PCIe, and here's where the real problem surfaces: PCIe Gen 5 tops out at 128 GB/s bidirectional bandwidth between GPUs, while the <a href="h100-vs-h200-inference-comparison.html">H100 SXM's NVLink</a> runs at 900 GB/s GPU-to-GPU. Tensor parallelism across five consumer-class cards over PCIe creates a communication bottleneck that destroys throughput the moment concurrent users start hitting the system.</p>
 
-<p>Even quantized down to 4-bit, GLM-5.1 demands roughly 400GB of VRAM. That's five RTX PRO 6000 cards linked over PCIe, and here's where the real problem hits: PCIe Gen 5 tops out at 128 GB/s bidirectional bandwidth between GPUs. Tensor parallelism across five cards over PCIe creates a communication bottleneck that destroys throughput under concurrent load. The H100 SXM's NVLink runs at 900 GB/s GPU-to-GPU, roughly 7x faster for the inter-GPU traffic that tensor parallelism demands (<a href="https://www.cloudrift.ai/blog/benchmarking-rtx6000-vs-datacenter-gpus" target="_blank" rel="noopener">CloudRift Benchmarks</a>).</p>
+<p>This is the mistake organizations make when they price out local AI by the GPU card instead of by the workload. The question isn't which GPU offers the cheapest price per gigabyte of VRAM. The question is what your organization needs to run, for how many people, at what quality level, and whether the infrastructure you're building can sustain that workload under real production conditions rather than a benchmark run at 2 AM with one user.</p>
 
-<p>This is the mistake people make when they price out local AI by the GPU card instead of by the workload. The question is not "which GPU is cheapest per GB of VRAM." The question is "what does my organization need to run, for how many people, at what quality level."</p>
+<h2>What the Workload Looks Like When You Size It Honestly</h2>
 
-<h2>What the Workload Looks Like</h2>
+<p>A company with 100 employees using AI daily doesn't need all 100 hammering the system simultaneously. Realistic concurrent usage for that headcount runs 15 to 30 simultaneous sessions during peak hours, with 50 to 100 sessions spread across a full workday. The original poster said speed isn't the priority; quality is. They're writing code, summarizing documents, drafting client communications, analyzing data, and reviewing contracts, not asking the model to solve PhD-level mathematics in real time.</p>
 
-<p>Let's recenter. A company with 100 employees using AI daily doesn't need all 100 hitting the system simultaneously. Realistic concurrent usage for that headcount is 15 to 30 simultaneous sessions during peak hours, with 50 to 100 sessions spread across a full workday. They need Sonnet-class output quality, not necessarily Sonnet-class speed. They're writing code, summarizing documents, drafting client communications, analyzing data.</p>
+<p>That workload doesn't require GLM-5.1 in BF16. It requires a well-tuned 70B-class model, quantized intelligently, running on inference hardware purpose-built for multi-user concurrency. DeepSeek V4-Flash, a 284-billion parameter MoE with roughly 37 billion active per token, fits on 160GB of VRAM quantized and delivers output quality that sits in the same competitive tier as Claude Sonnet for the categories of work most enterprise teams are doing daily. Llama 3.3 70B handles general-purpose workloads at high quality in quantized formats on the same hardware. Both ship pre-installed and burn-tested on the <a href="../products.html">Summit Base</a>.</p>
 
-<p>That workload doesn't require GLM-5.1 in BF16. It requires a well-tuned 70B class model, quantized intelligently, running on inference hardware purpose-built for multi-user concurrency. DeepSeek V4-Flash, a 284-billion parameter MoE with roughly 37B active per token, fits on 160GB of VRAM quantized and delivers output quality that sits in the same tier as Claude Sonnet for most enterprise tasks. Llama 3.3 70B handles general-purpose work at high quality in quantized formats on the same hardware.</p>
-
-<p>The original poster asked about quality, not speed. That's the right instinct. And for document drafting, code review, legal analysis, internal communications, and data synthesis, the current generation of open-weight 70B+ models delivers output that the end user cannot reliably distinguish from cloud frontier models. Where the gap persists is in the hardest reasoning tasks, multi-step agentic coding, and frontier-scale context windows. Those edge cases exist. They're not 80% of your daily workload.</p>
+<p>The quality question deserves a straight answer. For document drafting, code review, legal analysis, internal communications, and data synthesis, the current generation of open-weight 70B+ models delivers output that end users cannot reliably distinguish from cloud frontier models in blind evaluations. Where the gap persists is in the hardest reasoning tasks, multi-step agentic coding loops, and frontier-scale context windows exceeding 200K tokens. Those edge cases are real, they're documented in our <a href="local-llm-vs-cloud-ai-hardware-gap.html">honest limitations comparison</a>, and they represent something closer to 5 to 10 percent of daily enterprise workloads rather than the 80 percent that forum debates would have you believe.</p>
 
 
-<h2>The Serving Stack: Ollama Is Not the Answer at This Scale</h2>
+<h2>The Serving Stack: Ollama Can't Handle This</h2>
 
-<p>The thread mentioned Ollama and vLLM as options. At 50 to 100 users, this is not a debate. vLLM is the only serious choice.</p>
+<p>The forum thread mentioned Ollama and vLLM as options, and at 50 to 100 concurrent users, this isn't a matter of preference. vLLM is the only serious choice, and the performance gap under load is so wide that treating this as a two-horse race does a disservice to anyone making infrastructure decisions based on forum recommendations.</p>
 
-<p>Ollama is excellent for single-user and small-team inference. It's simple to install, simple to manage, and performs well for one to five concurrent sessions. But Ollama allocates GPU memory statically per model load. It doesn't do continuous batching. At 50 concurrent users, Ollama's time-to-first-response climbs to roughly 3,200 milliseconds as requests queue up. At 128 concurrent requests, it starts dropping connections entirely (<a href="https://www.sitepoint.com/ollama-vs-vllm-performance-benchmark-2026/" target="_blank" rel="noopener">SitePoint Benchmarks 2026</a>).</p>
+<p>Ollama is excellent software for single-user and small-team inference because it's simple to install, simple to manage, and delivers fast response times when one to five people are using it. But Ollama allocates GPU memory statically per model load and doesn't perform continuous batching, which means that at 50 concurrent users, time-to-first-response climbs to roughly 3,200 milliseconds as requests stack up in queue, and at 128 concurrent requests, Ollama starts dropping connections entirely (<a href="https://www.sitepoint.com/ollama-vs-vllm-performance-benchmark-2026/" target="_blank" rel="noopener">SitePoint Benchmarks 2026</a>).</p>
 
-<p>vLLM uses continuous batching and PagedAttention for dynamic memory allocation. At the same 50-user concurrency, time-to-first-response stays around 145 milliseconds. On NVIDIA hardware running a 70B model in FP8 quantization, vLLM delivers 8,033 tokens per second compared to Ollama's 484. That's a 16.6x throughput advantage.</p>
+<p>vLLM uses continuous batching and PagedAttention for dynamic memory allocation, which means that at the same 50-user concurrency, time-to-first-response holds at around 145 milliseconds. On NVIDIA hardware running a 70B model in FP8 quantization, vLLM delivers 8,033 tokens per second compared to Ollama's 484, a 16.6x throughput advantage that isn't a benchmark artifact but a direct consequence of architectural decisions about how memory and compute are scheduled.</p>
 
-<p>Island Mountain ships both. Ollama handles model management and single-user quick access. vLLM runs the inference engine for multi-user production serving. Open WebUI sits on top as the multi-user interface with role-based access controls, conversation logging, and admin permissions. The entire stack is pre-configured and burn-tested before it ships.</p>
+<p><a href="../index.html">Island Mountain</a> ships both. Ollama handles model management and quick single-user access for the IT admin who needs to test something at midnight. vLLM runs the production inference engine for multi-user serving. <a href="openwebui-admin-setup-guide.html">Open WebUI</a> sits on top as the multi-user interface with role-based access controls, conversation logging, and admin permissions. The entire stack ships pre-configured, burn-tested for 72 hours, and ready to serve users on day one.</p>
 
-<h2>The Math: Cloud AI vs. On-Premises Hardware</h2>
+<h2>The Five-Year Math: Cloud AI vs. On-Premises Hardware</h2>
 
-<p>Here's the five-year comparison for a company spending $50,000 a month on cloud AI tokens.</p>
+<p>Here's the comparison for a company spending $50,000 a month on cloud AI tokens, laid out across five years with conservative assumptions.</p>
 
 <table>
 <thead>
@@ -326,87 +324,82 @@
 </table>
 
 
-<p>The cloud column assumes a conservative 10% annual price escalation and flat usage. Real-world usage grows. The on-premises column includes the Summit Base hardware at the top of the price range ($85,000), first-year support, and ongoing electricity at roughly $200 a month for a system drawing 1.5 to 2.5 kilowatts. After the hardware purchase, your ongoing costs are electricity and periodic maintenance. There are no token fees. There are no API rate limits. There are no per-seat charges.</p>
+<p>The cloud column assumes a conservative 10 percent annual price escalation and flat usage, both assumptions that favor the cloud because real-world usage grows as teams discover what AI can do for them. The on-premises column includes the <a href="../products.html">Summit Base</a> at the top of the price range ($85,000), first-year warranty and setup support, and ongoing electricity at roughly $200 a month for a system drawing 1.5 to 2.5 kilowatts. After the hardware purchase, your ongoing costs are electricity and periodic maintenance. There are no token fees, no API rate limits, no per-seat charges, and no overage invoices that land on your CFO's desk because someone's team had a productive quarter.</p>
 
-<p>The break-even point is less than two months. Not two years. Two months. At $50K a month in cloud spend, the Summit Base pays for itself before the first quarterly review.</p>
+<p>The break-even point is less than two months. At $50K a month in cloud spend, the <a href="../on-premises-ai-cost-comparison.html">Summit Base pays for itself</a> before the first quarterly review. If your concurrency needs demand more headroom, the <a href="../pricing.html">Summit Ridge</a> at $150,000 to $160,000 is build-to-order with custom GPU, CPU, and RAM configurations matched to your workload, and even at the top of that price range, break-even still falls under four months against a $50K monthly cloud bill.</p>
 
-<p>If your concurrency needs demand more headroom, the Summit Ridge at $150,000 to $160,000 is build-to-order with custom GPU, CPU, and RAM configurations matched to your workload. Even at the top of that range, the break-even is still under four months against a $50K monthly cloud bill.</p>
+<p>For organizations that want to understand <a href="cloud-ai-vs-local-hardware-tco.html">how the full five-year TCO comparison works</a> including compliance overhead, equipment financing, and Section 179 deductions, we've written the full breakdown separately.</p>
 
-<h2>Why Not Just Buy Consumer GPUs?</h2>
+<h2>Why Not Consumer GPUs?</h2>
 
-<p>Someone will ask. The RTX 5090 runs $2,000 and has 32GB of GDDR7. Four of them gives you 128GB of VRAM for $8,000. Why not build a box with consumer cards?</p>
+<p>Someone will ask, and it deserves a direct answer rather than a dismissal. The RTX 5090 runs $2,000 and ships with 32GB of GDDR7, so four of them gives you 128GB of VRAM for $8,000. Why not build a box yourself?</p>
 
-<p>Three reasons. First, consumer GPUs don't have ECC memory. A single bit flip during a long inference run corrupts the output. In a coding or legal analysis context, silent corruption is worse than a crash because you don't know it happened. Second, consumer cards are not designed for 24/7 sustained operation under thermal load. Server-class GPUs ship with higher thermal tolerances, better VRM components, and longer duty cycle ratings. Third, enterprise GPU provenance matters for compliance. When an auditor asks about your AI infrastructure, "I built it from gaming cards" is not the answer that satisfies a HIPAA, ITAR, or SOX review.</p>
+<p>Consumer GPUs don't carry ECC memory, which means a single bit flip during a long inference run corrupts the output silently, and in a coding or <a href="../law-firms.html">legal analysis</a> context, silent corruption is worse than a crash because nobody knows it happened until the brief is filed or the code ships. Consumer cards aren't designed for 24/7 sustained operation under thermal load; server-class GPUs ship with higher thermal tolerances, better voltage regulator components, and longer duty cycle ratings because they're expected to run around the clock for years. And enterprise GPU provenance matters for compliance, because when an auditor from a <a href="../medical-practices.html">HIPAA-covered entity</a> or a <a href="../defense-contractors.html">defense subcontractor under CMMC review</a> asks about your AI infrastructure, "I built it from gaming cards off Amazon" is not the answer that satisfies the audit.</p>
 
-<p>Island Mountain's Summit Series uses NVIDIA H100 80GB PCIe GPUs with enterprise procurement documentation and RMA chains. That documentation exists because the organizations buying these systems have compliance obligations that require it.</p>
+<p>The <a href="../products.html">Summit Series</a> uses NVIDIA H100 80GB PCIe GPUs with enterprise procurement documentation and RMA chains maintained from purchase through deployment. That documentation exists because the organizations buying these systems have compliance obligations that require it.</p>
 
 <h2>What You Don't Get</h2>
 
-<p>Honesty about limitations is more useful than a sales pitch.</p>
+<p>Honesty about limitations is worth more than another sales pitch, and we'd rather lose a sale to the truth than win one on an omission.</p>
 
-<p>You don't get Claude Opus-level reasoning on the hardest 5% of tasks. Frontier reasoning models from Anthropic and OpenAI still hold an edge on multi-step logical chains, complex agentic workflows, and tasks requiring 200K+ token context windows. If your business depends specifically on that top-tier reasoning capability for the majority of its AI usage, local hardware is not a full replacement today. It's a complement.</p>
+<p>You don't get Claude Opus-level reasoning on the hardest 5 percent of tasks. Frontier reasoning models from Anthropic and OpenAI still hold an edge on multi-step logical chains, complex agentic workflows, and tasks requiring 200K+ token context windows. If your business depends specifically on that top-tier reasoning capability for the majority of its AI usage rather than the routine 90 percent, local hardware is a complement to a cloud subscription, not a full replacement. Yet.</p>
 
 
-<p>You don't get automatic model updates. When Anthropic ships a new Claude version, every API customer gets it instantly. With local hardware, you update models on your schedule, which is a feature for stability-focused organizations and a limitation for teams that want bleeding-edge capabilities the week they ship.</p>
+<p>You don't get automatic model updates, which means that when Anthropic ships a new Claude version, every API customer gets it instantly, while your local deployment updates on your schedule. For stability-focused organizations in <a href="../solutions.html">regulated industries</a>, that's a feature; for teams chasing bleeding-edge capabilities, it's a constraint worth knowing about upfront.</p>
 
-<p>You don't get someone else managing the infrastructure. You need an IT person who can monitor the system, manage user accounts, and handle the occasional restart. Open WebUI and vLLM reduce that burden significantly, but this is not a SaaS product you log into and forget. It's hardware you own and operate.</p>
+<p>You don't get someone else managing the infrastructure. You need an IT person who can monitor the system, manage user accounts through <a href="openwebui-admin-setup-guide.html">Open WebUI's admin panel</a>, and handle the occasional restart. The stack we ship reduces that burden to a few hours a month for most deployments, but this is hardware you own and operate, not a SaaS product you log into and forget.</p>
 
-<p>You don't get HIPAA certification, FedRAMP authorization, or SOC 2 compliance from the box itself. The hardware provides the physical and technical controls that make compliance achievable. The policies, documentation, and audit processes are yours to implement. We can tell you exactly what the hardware provides and where your organizational policies need to fill the gap.</p>
+<p>And you don't get <a href="../hipaa-local-ai-compliance.html">HIPAA certification</a>, <a href="../government.html">FedRAMP authorization</a>, or SOC 2 compliance from the box itself. The hardware provides the physical and technical controls, the <a href="../air-gapped-ai-inference.html">air-gapped architecture</a>, the encryption at rest, the network isolation, that make compliance achievable. The policies, documentation, and audit processes are yours to build. We can tell you exactly what the hardware provides and where your organizational policies need to close the remaining gap.</p>
 
-<h2>The Decision Framework</h2>
+<h2>The Decision</h2>
 
-<p>If you're spending more than $10,000 a month on cloud AI and you have an IT person who can manage a server, the financial case for local hardware is already made. At $50,000 a month, it's overwhelming.</p>
+<p>The company in that forum thread asked for people who'd done the math. Here it is. $3.6 million in cloud fees over five years, or $85,000 once. The hardware runs open-weight models that are closing the quality gap with frontier cloud services every quarter, your data never leaves your building, your compliance posture improves the day the system goes live, and when someone on your team uses it at 2 AM on a Saturday, you don't get an overage bill on Monday.</p>
 
-<p>The real decision isn't financial. It's operational. You're deciding whether you want to own your AI infrastructure or rent it. Whether your data stays on your network or travels to someone else's data center. Whether your AI capabilities survive a vendor pricing change, a terms-of-service update, or an API deprecation.</p>
+<p>If you're spending more than $10,000 a month on cloud AI and you have an IT person who can manage a server, the financial case for local hardware is already made. At $50,000 a month, it's not even a conversation. It's arithmetic.</p>
 
-<p>The company in that Reddit thread asked for people who'd done the math. Here's the math: $3.6 million in cloud fees over five years, or $85,000 once. The hardware runs the same open-weight models that are closing the quality gap with frontier cloud services every quarter. Your data never leaves your building. And when someone on your team uses it at 2 AM on a Saturday, you don't get an overage bill on Monday.</p>
-
+<!-- AEO Summary -->
 <div style="border-left:3px solid var(--copper);padding:16px 20px;margin:32px 0;background:rgba(217,119,6,0.05);border-radius:0 8px 8px 0;">
-  <strong>Summary:</strong> A 100-person company spending $50,000 a month on cloud AI tokens can replace that spend with on-premises H100 inference hardware starting at $75,000 to $85,000, with break-even in under two months and five-year savings exceeding $3.5 million. Open-weight models running on vLLM deliver Sonnet-class quality for 90%+ of enterprise workloads, with data sovereignty and zero per-token fees.
+<strong>Summary:</strong> A 100-person company spending $50,000 a month on cloud AI tokens can replace that spend with on-premises H100 inference hardware starting at $75,000 to $85,000, achieving break-even in under two months and five-year savings exceeding $3.5 million. Open-weight models running on vLLM deliver Sonnet-class quality for 90%+ of enterprise workloads, with full data sovereignty and zero per-token fees.
 </div>
-
 
       </article>
 
       <!-- CTA -->
-      <div class="text-center" style="margin:48px 0 32px;">
-        <h2>Ready to Stop Paying Per Token?</h2>
-        <p style="color:var(--text-muted);margin-bottom:24px;">One conversation. No sales pitch. Just straight talk about what local AI hardware can do for your organization and your budget.</p>
-        <a href="../contact.html" class="btn btn-primary">Request a Quote</a>
-        <p class="cta-subtitle" style="margin-top:16px;"><i class="ri-phone-line icon-copper-mr-sm"></i>Or call directly: <a href="tel:+18016091130" class="copper-semibold">1-801-609-1130</a></p>
+      <div class="article-cta">
+        <h3>Ready to Stop Paying Per Token?</h3>
+        <p>One conversation. No sales pitch. Just straight talk about what local AI hardware can do for your organization and your budget.</p>
+        <a href="../contact.html" class="btn btn-primary">Start a Conversation</a>
+        <p class="bio-note-sm"><i class="ri-phone-line icon-copper-mr-sm"></i>Or call directly: <a href="tel:+18016091130" class="copper-semibold">1-801-609-1130</a></p>
       </div>
 
       <!-- Related Articles -->
       <div class="related-articles">
         <h3>Related Articles</h3>
         <div class="related-grid">
-          <a href="cloud-ai-vs-local-hardware-tco.html" class="related-card">
-            <span class="related-tag tag-financial">Financial</span>
-            <h4>Cloud AI vs. Local Hardware: Building the Honest Five-Year TCO</h4>
+          <div class="related-card">
+            <h4><a href="cloud-ai-vs-local-hardware-tco.html">Cloud AI vs. Local Hardware: Building the Honest Five-Year TCO</a></h4>
             <p>The variables your cloud AI vendor's pricing page omits: compliance overhead, price escalation, vendor lock-in exit costs, and the crossover math.</p>
-          </a>
-          <a href="local-llm-vs-cloud-ai-hardware-gap.html" class="related-card">
-            <span class="related-tag tag-technical">Technical</span>
-            <h4>Local LLM vs Cloud AI: Every Con on the List Has a Hardware Fix</h4>
+          </div>
+          <div class="related-card">
+            <h4><a href="local-llm-vs-cloud-ai-hardware-gap.html">Local LLM vs Cloud AI: Every Con on the List Has a Hardware Fix</a></h4>
             <p>A developer ran Qwen3.6-35B on a MacBook Pro and documented every limitation honestly. Dedicated H100 GPU inference hardware solves each one today.</p>
-          </a>
-          <a href="second-revolution-local-ai.html" class="related-card">
-            <span class="related-tag tag-industry">Industry</span>
-            <h4>The Second Revolution of AI Is Local. The Industry Just Admitted It.</h4>
+          </div>
+          <div class="related-card">
+            <h4><a href="second-revolution-local-ai.html">The Second Revolution of AI Is Local. The Industry Just Admitted It.</a></h4>
             <p>The CEO of Hugging Face ran a 27B model on a laptop in airplane mode and called it the second revolution of AI.</p>
-          </a>
+          </div>
         </div>
       </div>
 
-      <!-- Article Nav -->
+      <!-- Navigation -->
       <div class="article-nav">
-        <a href="../blog.html" class="article-back">&larr; All Articles</a>
-        <div class="article-share">
-          <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://islandmountain.io/blog/50k-month-cloud-ai-local-llm-replacement.html" target="_blank" rel="noopener" class="share-btn" aria-label="Share on LinkedIn"><i class="ri-linkedin-fill"></i></a>
-          <a href="https://x.com/intent/tweet?url=https://islandmountain.io/blog/50k-month-cloud-ai-local-llm-replacement.html&text=$50K%20a%20Month%20on%20Cloud%20AI%20Is%20a%20Hardware%20Problem" target="_blank" rel="noopener" class="share-btn" aria-label="Share on X"><i class="ri-twitter-x-fill"></i></a>
+        <a href="../blog.html" class="article-back">&larr; All articles</a>
+        <div class="share-links">
+          <span>Share:</span>
+          <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://islandmountain.io/blog/50k-month-cloud-ai-local-llm-replacement.html" target="_blank" rel="noopener" aria-label="Share on LinkedIn"><i class="ri-linkedin-fill"></i></a>
+          <a href="https://x.com/intent/tweet?url=https://islandmountain.io/blog/50k-month-cloud-ai-local-llm-replacement.html&text=$50K%20a%20Month%20on%20Cloud%20AI%20Is%20a%20Hardware%20Problem" target="_blank" rel="noopener" aria-label="Share on X"><i class="ri-twitter-x-fill"></i></a>
         </div>
       </div>
-
     </div>
   </section>
 
