@@ -28,9 +28,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="author" content="Basho Parks">
-  <meta name="date" content="2026-05-01">
+  <meta name="date" content="2026-06-06">
   <title>Local AI Stack: DeepSeek V4-Flash, vLLM, OpenWebUI</title>
-  <meta name="description" content="DeepSeek V4-Flash, Llama 3.3 70B, and R1 70B Distill via vLLM engine and OpenWebUI interface. Full local AI stack breakdown.">
+  <meta name="description" content="DeepSeek V4-Flash, Llama 4 Scout, and R1 70B Distill via vLLM engine and OpenWebUI interface. Full local AI stack breakdown.">
   <link rel="icon" type="image/x-icon" href="favicon.ico?v=2">
   <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png?v=2">
   <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png?v=2">
@@ -61,7 +61,7 @@
 
   <!-- Open Graph -->
   <meta property="og:title" content="Local AI Stack: DeepSeek V4-Flash, vLLM, OpenWebUI">
-  <meta property="og:description" content="DeepSeek V4-Flash, Llama 3.3 70B, and R1 70B Distill via vLLM engine and OpenWebUI interface. Full local AI stack breakdown.">
+  <meta property="og:description" content="DeepSeek V4-Flash, Llama 4 Scout, and R1 70B Distill via vLLM engine and OpenWebUI interface. Full local AI stack breakdown.">
   <meta property="og:url" content="https://islandmountain.io/technology.html">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Island Mountain">
@@ -70,7 +70,7 @@
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Local AI Stack: DeepSeek V4-Flash, vLLM, OpenWebUI">
-  <meta name="twitter:description" content="DeepSeek V4-Flash, Llama 3.3 70B, and R1 70B Distill via vLLM engine and OpenWebUI interface. Full local AI stack breakdown.">
+  <meta name="twitter:description" content="DeepSeek V4-Flash, Llama 4 Scout, and R1 70B Distill via vLLM engine and OpenWebUI interface. Full local AI stack breakdown.">
   <meta name="twitter:image" content="https://islandmountain.io/images/hero-technology.webp">
 
   <!-- SoftwareApplication Schema -->
@@ -107,7 +107,7 @@
         "name": "What is tensor parallelism and why does it make local AI faster?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Tensor parallelism splits a single model across multiple GPUs so they process different parts of each computation simultaneously. Without it, a 284B-parameter model running on two H100 GPUs would load entirely onto one GPU while the other sits idle. With vLLM's tensor parallelism, the model layers are distributed across both H100 GPUs (3.35 TB/s memory bandwidth each), cutting inference latency roughly in half and enabling full tensor parallelization. On Island Mountain systems, vLLM tensor parallelism is pre-configured for all tiers."
+          "text": "Tensor parallelism splits a single model across multiple GPUs so they process different parts of each computation simultaneously. Without it, a 284B-parameter model running on two H100 GPUs would load entirely onto one GPU while the other sits idle. With vLLM's tensor parallelism, the model layers are distributed across both H100 GPUs (2.0 TB/s memory bandwidth each), cutting inference latency roughly in half and enabling full tensor parallelization. On Island Mountain systems, vLLM tensor parallelism is pre-configured for all tiers."
         }
       },
       {
@@ -115,7 +115,7 @@
         "name": "Can I run DeepSeek V4-Flash on the Summit Base or Summit Ridge tier?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes, with quantization. DeepSeek V4-Flash is a 284B-parameter model that requires approximately 282GB of VRAM at full FP16 quality. The Summit Base tier (2x H100, 160GB total VRAM) runs V4-Flash quantized at 80-100GB, preserving reasoning capability while enabling efficient inference. The Summit Ridge tier (H100 + H200, 160GB VRAM) can also run the quantized version. For full FP16 quality V4-Flash, the Summit Pinnacle tier with 2x H200 141GB GPUs (282GB total VRAM) is the minimum configuration. The Summit Pinnacle tier is expected to ship Q3 2026."
+          "text": "Yes, with quantization. DeepSeek V4-Flash is a 284B-parameter model that requires approximately 282GB of VRAM at full FP16 quality. The Summit Base tier (2x H100, 160GB total VRAM) runs V4-Flash quantized at 80-100GB, preserving reasoning capability while enabling efficient inference. The Summit Ridge tier (H100 + H200, 160GB VRAM) can also run the quantized version. For full FP16 quality V4-Flash, the Summit Pinnacle tier with 2x H200 141GB GPUs (282GB total VRAM) is the minimum configuration. The Summit Pinnacle tier is available for pre-order now, ships July 2026."
         }
       },
       {
@@ -292,7 +292,7 @@
     <div class="container">
       <div class="section-header fade-in">
         <span class="section-badge">Pre-Installed</span>
-        <h2>Pre-Installed Models: DeepSeek V4-Flash, Llama 3.3 70B, R1 70B Distill or Qwen 2.5 72B</h2>
+        <h2>Pre-Installed Models: DeepSeek V4-Flash, Llama 4 Scout, R1 70B Distill or Qwen 3 72B</h2>
         <p>Every Island Mountain Summit Base and Summit Ridge system ships with these models installed, configured, and tested.</p>
       </div>
       <div class="card-grid card-grid-3 fade-in">
@@ -308,7 +308,7 @@
           <div class="card-icon card-icon-indigo">
             <i class="ri-robot-2-line"></i>
           </div>
-          <h3>Llama 3.3 70B</h3>
+          <h3>Llama 4 Scout</h3>
           <p><strong>40-48GB VRAM</strong></p>
           <p>Meta's general-purpose workhorse. Replaces Llama 3.1 with meaningfully better benchmark performance on the same VRAM footprint. Strong across writing, summarization, question answering, and conversational tasks.</p>
         </div>
@@ -316,9 +316,9 @@
           <div class="card-icon card-icon-purple">
             <i class="ri-scales-3-line"></i>
           </div>
-          <h3>DeepSeek R1 70B Distill or Qwen 2.5 72B</h3>
+          <h3>DeepSeek R1 70B Distill or Qwen 3 72B</h3>
           <p><strong>40-48GB VRAM (70B-class)</strong></p>
-          <p>Buyer selects at order. R1 70B Distill (MIT licensed) provides explicit chain-of-thought reasoning for legal, financial, and compliance work. Qwen 2.5 72B (Apache 2.0) delivers top-tier enterprise general performance. Both run on the same VRAM budget as the model they replace.</p>
+          <p>Buyer selects at order. R1 70B Distill (MIT licensed) provides explicit chain-of-thought reasoning for legal, financial, and compliance work. Qwen 3 72B (Apache 2.0) delivers top-tier enterprise general performance. Both run on the same VRAM budget as the model they replace.</p>
         </div>
       </div>
     </div>
@@ -361,7 +361,7 @@
             <i class="ri-stack-line"></i>
           </div>
           <h3>Multi-Model Selector</h3>
-          <p>Switch between DeepSeek V4-Flash, Llama 3.3, R1 70B Distill, or any model with a dropdown. No config files.</p>
+          <p>Switch between DeepSeek V4-Flash, Llama 4 Scout, R1 70B Distill, or any model with a dropdown. No config files.</p>
         </div>
         <div class="card">
           <div class="card-icon card-icon-amber">
@@ -391,7 +391,7 @@
       <div class="fade-in content-narrow">
         <p class="body-lg">A single Island Mountain server supports multiple simultaneous users. This is not a theoretical claim - it is how the vLLM inference engine operates at the architecture level.</p>
         <p class="body-lg">vLLM uses tensor parallelism to distribute model weights across both GPUs in the system. On a dual-A100 or dual-H100 configuration, a 70-billion-parameter model like DeepSeek V4-Flash splits its attention layers and feed-forward blocks across both cards. Each inference request is processed using the combined memory and compute of both GPUs, not queued behind the previous request.</p>
-        <p class="body-lg">In practice, a Summit Base-tier system comfortably handles 5-8 concurrent users running inference queries through the Open WebUI interface, depending on model size, context length, and response length. The Summit Ridge tier serves 10-15 simultaneous users. Throughput scales with GPU memory bandwidth - the H100's 3.35 TB/s HBM3 bandwidth delivers roughly 2x the concurrent throughput of the A100's 2.0 TB/s HBM2e.</p>
+        <p class="body-lg">In practice, a Summit Base-tier system comfortably handles 5-8 concurrent users running inference queries through the Open WebUI interface, depending on model size, context length, and response length. The Summit Ridge tier serves 10-15 simultaneous users. Throughput scales with GPU memory bandwidth and architecture. The H100 PCIe delivers higher concurrent throughput than the A100 through improved compute efficiency, larger L2 cache, and superior transformer engine capabilities - not raw bandwidth alone.</p>
         <p class="body-lg">For organizations running department-wide AI access - a law firm's attorneys, a tribal government's planning team, a medical practice's clinicians - this is not a shared-terminal bottleneck. It is genuine concurrent access with response times measured in seconds, not minutes.</p>
       </div>
     </div>
@@ -499,11 +499,11 @@
       <div class="risk-grid fade-in">
         <div class="risk-card">
           <h4><i class="ri-speed-line"></i> What is tensor parallelism and why does it make local AI faster?</h4>
-          <p>Tensor parallelism splits a model across multiple GPUs so they process different parts of each computation simultaneously. Without it, one GPU works while the other sits idle. With vLLM's tensor parallelism, model layers are distributed across both GPUs, cutting inference latency roughly in half. On Island Mountain systems, the H100's 3.35 TB/s memory bandwidth between GPUs enables near-linear scaling. Pre-configured on all Island Mountain systems.</p>
+          <p>Tensor parallelism splits a model across multiple GPUs so they process different parts of each computation simultaneously. Without it, one GPU works while the other sits idle. With vLLM's tensor parallelism, model layers are distributed across both GPUs, cutting inference latency roughly in half. On Island Mountain systems, the H100's 2.0 TB/s memory bandwidth enables near-linear scaling. Pre-configured on all Island Mountain systems.</p>
         </div>
         <div class="risk-card">
           <h4><i class="ri-brain-line"></i> Can I run DeepSeek V4-Flash on the Summit Base or Summit Ridge tier?</h4>
-          <p>The Summit Base tier runs V4-Flash quantized (80-100GB VRAM), which gives you the 284B parameter model in a more efficient form. For the full FP16 quality version (282GB VRAM), you need the Summit Pinnacle tier (2x H200 141GB GPUs, 282GB total), launching Q3 2026. Quantization preserves reasoning capability while reducing model size significantly.</p>
+          <p>The Summit Base tier runs V4-Flash quantized (80-100GB VRAM), which gives you the 284B parameter model in a more efficient form. For the full FP16 quality version (282GB VRAM), you need the Summit Pinnacle tier (2x H200 141GB GPUs, 282GB total), pre-order now, ships July 2026. Quantization preserves reasoning capability while reducing model size significantly.</p>
         </div>
         <div class="risk-card">
           <h4><i class="ri-group-line"></i> How does OpenWebUI handle multiple users at once?</h4>
@@ -526,7 +526,7 @@
       <div class="fade-in content-narrow">
         <p class="body-lg">DeepSeek V4-Flash (284B parameters, 13B active via mixture-of-experts) represents the next generation of efficient large-scale inference. With a 1M token context window, it's built for tasks that current models can't handle: full-codebase analysis, book-length document processing, and extended research sessions.</p>
         <p class="body-lg"><strong>Summit Base Tier (2x H100, $75K-$85K):</strong> V4-Flash runs quantized. This preserves reasoning capability while reducing memory footprint to 80-100GB, enabling efficient local inference on consumer-grade hardware. Ideal for organizations that need V4-Flash capability without the Summit Pinnacle tier investment.</p>
-        <p class="body-lg"><strong>Summit Pinnacle Tier ($350K-$400K, Q3 2026):</strong> V4-Flash at full FP16 quality requires approximately 282GB of VRAM - dual H200 141GB GPUs provide exactly this. This configuration unlocks V4-Flash's maximum reasoning and long-context capabilities for enterprise workloads.</p>
+        <p class="body-lg"><strong>Summit Pinnacle Tier ($350K-$400K, pre-order now):</strong> V4-Flash at full FP16 quality requires approximately 282GB of VRAM - dual H200 141GB GPUs provide exactly this. This configuration unlocks V4-Flash's maximum reasoning and long-context capabilities for enterprise workloads.</p>
         <p class="body-lg">We validate quantization carefully before shipping. When the Summit Pinnacle tier launches, full-quality V4-Flash support will be real, tested, and documented - not aspirational.</p>
         <div style="text-align:center;margin-top:40px;">
           <div class="btn-group">
@@ -541,7 +541,7 @@
 
   <!-- AEO Summary -->
   <div style="border-left:3px solid var(--copper);padding:16px 20px;margin:32px 0;background:rgba(217,119,6,0.05);border-radius:0 8px 8px 0;">
-  <strong>Summary:</strong> Island Mountain servers run an open-source software stack: Ubuntu Linux, vLLM inference engine, and Open WebUI as the browser-based interface. Pre-installed models include DeepSeek V4-Flash (284B parameters), Llama 3.3 70B, and your choice of DeepSeek R1 70B Distill or Qwen 2.5 72B, all running locally with no external API calls or cloud dependencies.
+  <strong>Summary:</strong> Island Mountain servers run an open-source software stack: Ubuntu Linux, vLLM inference engine, and Open WebUI as the browser-based interface. Pre-installed models include DeepSeek V4-Flash (284B parameters), Llama 4 Scout, and your choice of DeepSeek R1 70B Distill or Qwen 3 72B, all running locally with no external API calls or cloud dependencies.
   </div>
 
   <!-- Footer -->
