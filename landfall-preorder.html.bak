@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) - deferred until user interaction -->
+<link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
+<script>
+  (function(){
+    var loaded = false;
+    function loadGA(){
+      if(loaded) return;
+      loaded = true;
+      var s = document.createElement('script');
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=G-R674E394D4';
+      s.async = true;
+      document.head.appendChild(s);
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      window.gtag = gtag;
+      gtag('js', new Date());
+      gtag('config', 'G-R674E394D4');
+    }
+    ['scroll','click','touchstart','keydown'].forEach(function(e){
+      document.addEventListener(e, loadGA, {once:true, passive:true});
+    });
+    setTimeout(loadGA, 3000);
+  })();
+</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Basho Parks">
+  <meta name="date" content="2026-05-15">
+  <title>Reserve Your Landfall: Island Mountain Home AI Series</title>
+  <meta name="description" content="Reserve your Island Mountain Landfall Series home AI server. Scout from $8,500. Ranger from $12,000. Pack Leader from $18,000. One-time purchase. No subscriptions. Air-gapped by design.">
+  <link rel="icon" type="image/x-icon" href="favicon.ico?v=2">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png?v=2">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png?v=2">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="icons/remixicon.css" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="icons/remixicon.css"></noscript>
+  <link rel="preload" href="fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <style>
+  @font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400 800;
+    font-display: swap;
+    src: url('fonts/inter-latin.woff2') format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+  @font-face {
+    font-family: 'Space Grotesk';
+    font-style: normal;
+    font-weight: 300 700;
+    font-display: swap;
+    src: url('fonts/space-grotesk-latin.woff2') format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+  </style>
+  <link rel="canonical" href="https://islandmountain.io/landfall-preorder.html">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Reserve Your Landfall: Island Mountain Home AI Series">
+  <meta property="og:description" content="Reserve your Island Mountain Landfall Series home AI server. Scout from $8,500. Ranger from $12,000. Pack Leader from $18,000. One-time purchase. No subscriptions. Air-gapped by design.">
+  <meta property="og:url" content="https://islandmountain.io/landfall-preorder.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Island Mountain">
+  <meta property="og:image" content="https://islandmountain.io/images/hero-landfall-4.webp">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Reserve Your Landfall: Island Mountain Home AI Series">
+  <meta name="twitter:description" content="Reserve your Island Mountain Landfall Series home AI server. Scout from $8,500. Ranger from $12,000. Pack Leader from $18,000. One-time purchase. No subscriptions. Air-gapped by design.">
+  <meta name="twitter:image" content="https://islandmountain.io/images/hero-landfall-4.webp">
+
+  <!-- BreadcrumbList Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://islandmountain.io/" },
+      { "@type": "ListItem", "position": 2, "name": "Landfall Series", "item": "https://islandmountain.io/landfall-product-line.html" },
+      { "@type": "ListItem", "position": 3, "name": "Reserve Your Landfall", "item": "https://islandmountain.io/landfall-preorder.html" }
+    ]
+  }
+  </script>
+
+  <!-- Product Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Product",
+        "@id": "https://islandmountain.io/landfall-preorder.html#scout",
+        "name": "Island Mountain Landfall Scout",
+        "description": "Entry sovereign home AI node. NVIDIA RTX 5090 32GB, 64GB DDR5 ECC, 4TB NVMe + 8TB vault. Air-gapped by design. One-time purchase.",
+        "sku": "IM-LANDFALL-SCOUT",
+        "brand": { "@type": "Brand", "name": "Island Mountain" },
+        "category": "Home AI Server",
+        "offers": {
+          "@type": "AggregateOffer",
+          "lowPrice": "8500",
+          "highPrice": "9500",
+          "priceCurrency": "USD",
+          "availability": "https://schema.org/PreOrder",
+          "url": "https://islandmountain.io/landfall-preorder.html#reserve"
+        }
+      },
+      {
+        "@type": "Product",
+        "@id": "https://islandmountain.io/landfall-preorder.html#ranger",
+        "name": "Island Mountain Landfall Ranger",
+        "description": "Family command home AI node. Dual NVIDIA RTX 5090 64GB combined, 128GB DDR5 ECC, 8TB NVMe RAID + 32TB vault. Multi-user profiles. Air-gapped by design.",
+        "sku": "IM-LANDFALL-RANGER",
+        "brand": { "@type": "Brand", "name": "Island Mountain" },
+        "category": "Home AI Server",
+        "offers": {
+          "@type": "AggregateOffer",
+          "lowPrice": "12000",
+          "highPrice": "14000",
+          "priceCurrency": "USD",
+          "availability": "https://schema.org/PreOrder",
+          "url": "https://islandmountain.io/landfall-preorder.html#reserve"
+        }
+      },
+      {
+        "@type": "Product",
+        "@id": "https://islandmountain.io/landfall-preorder.html#pack-leader",
+        "name": "Island Mountain Landfall Pack Leader",
+        "description": "Generational legacy home AI node. 4x NVIDIA RTX 5090 128GB combined, up to 512GB DDR5 ECC, NVMe RAID + 160TB archival vault. Custom chassis with lifetime support.",
+        "sku": "IM-LANDFALL-PACK-LEADER",
+        "brand": { "@type": "Brand", "name": "Island Mountain" },
+        "category": "Home AI Server",
+        "offers": {
+          "@type": "AggregateOffer",
+          "lowPrice": "18000",
+          "highPrice": "28000",
+          "priceCurrency": "USD",
+          "availability": "https://schema.org/PreOrder",
+          "url": "https://islandmountain.io/landfall-preorder.html#reserve"
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <canvas id="particles-canvas"></canvas>
+
+  <!-- Hero background photo -->
+  <div class="hero-photo">
+    <img srcset="images/hero-landfall-4-mobile.webp 800w, images/hero-landfall-4.webp 1836w" sizes="100vw" src="images/hero-landfall-4.webp" alt="Island Mountain Landfall Series" style="object-position:46% 30%" fetchpriority="high" decoding="async" width="1836" height="856">
+  </div>
+
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="nav-logo"><img src="images/logo-nav-new.webp" alt="Island Mountain" width="205" height="65"></a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="why-island-mountain.html">Why Local AI</a></li>
+        <li><a href="products.html">Summit</a></li>
+        <li><a href="landfall-preorder.html">Landfall</a></li>
+        <li><a href="technology.html">Technology</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li class="nav-dropdown">
+          <a href="solutions.html" class="nav-dropdown-toggle">Solutions <i class="ri-arrow-down-s-line"></i></a>
+          <ul class="nav-dropdown-menu">
+            <li><a href="law-firms.html">Law Firms</a></li>
+            <li><a href="medical-practices.html">Medical Practices</a></li>
+            <li><a href="tribal-nations.html">Tribal Nations</a></li>
+            <li><a href="research-labs.html">Research Labs</a></li>
+            <li><a href="defense-contractors.html">Defense Contractors</a></li>
+            <li><a href="financial-services.html">Financial Services</a></li>
+            <li><a href="insurance.html">Insurance</a></li>
+            <li><a href="energy-utilities.html">Energy &amp; Utilities</a></li>
+            <li><a href="government.html">Government</a></li>
+            <li><a href="education.html">Education</a></li>
+            <li><a href="casino-gaming.html">Casino Gaming</a></li>
+          </ul>
+        </li>
+              <li><a href="faq.html">FAQ</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="resources.html">Resources</a></li>
+        <li><a href="contact.html" class="nav-cta">Request Quote</a></li>
+      </ul>
+      <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <div class="sidebar-overlay"></div>
+  <div class="mobile-sidebar">
+    <a href="index.html">Home</a>
+    <a href="why-island-mountain.html">Why Local AI</a>
+    <a href="products.html">Summit</a>
+    <a href="landfall-preorder.html">Landfall</a>
+    <a href="technology.html">Technology</a>
+    <a href="pricing.html">Pricing</a>
+    <a href="solutions.html" class="mobile-solutions-toggle">Solutions <i class="ri-arrow-down-s-line"></i></a>
+    <div class="mobile-solutions-links">
+      <a href="law-firms.html">Law Firms</a>
+      <a href="medical-practices.html">Medical Practices</a>
+      <a href="tribal-nations.html">Tribal Nations</a>
+      <a href="research-labs.html">Research Labs</a>
+      <a href="defense-contractors.html">Defense Contractors</a>
+      <a href="financial-services.html">Financial Services</a>
+      <a href="insurance.html">Insurance</a>
+      <a href="energy-utilities.html">Energy &amp; Utilities</a>
+      <a href="government.html">Government</a>
+      <a href="education.html">Education</a>
+      <a href="casino-gaming.html">Casino Gaming</a>
+    </div>
+            <a href="faq.html">FAQ</a>
+    <a href="blog.html">Blog</a>
+    <a href="resources.html">Resources</a>
+    <a href="contact.html" class="nav-cta">Request Quote</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="lf-hero-section">
+    <div class="lf-hero-inset">
+      <img src="images/landfall-kitchen.webp" alt="Landfall Ranger in a kitchen family hub" loading="eager" width="1536" height="1024">
+      <span class="lf-hero-inset-label">Kitchen / Family Hub</span>
+    </div>
+    <div class="lf-hero-inner">
+      <span class="hero-badge">Now Open for Pre-Order</span>
+      <h1><span class="clr-copper">Landfall</span> Series</h1>
+      <h2 class="lf-series-label">Family Sovereign AI</h2>
+      <div class="lf-hero-rule"></div>
+      <h3 class="lf-hero-tagline">A complete product line architecture for household-scale, air-gapped AI and data sovereignty — Scout / Ranger / Pack Leader</h3>
+      <div class="lf-hero-ctas">
+        <a href="#reserve" class="btn btn-primary">Reserve Your Landfall</a>
+      </div>
+    </div>
+    <div class="lf-scroll-hint">
+      <span>Explore</span>
+      <div class="lf-scroll-line"></div>
+    </div>
+  </section>
+
+
+  <!-- MANIFESTO -->
+  <section class="lf-manifesto">
+    <div class="lf-manifesto-inner">
+      <blockquote>"You wouldn't give the keys to your castle to just anyone. So why is all of your family's data being sold to a litany of third-party buyers from the cloud subscription accounts you pay for every month?"</blockquote>
+      <p>Every prompt your family has typed into a cloud AI service - your medical questions, your legal concerns, your children's homework, the arguments you needed to process at 2 a.m. - lives on someone else's server. It's governed by terms of service written by lawyers working for the platform, not for you. It may be retained, analyzed, and used to train the next model you'll pay to access.</p>
+      <p><strong>Sovereign AI is about your family's digital heirloom remaining just that: yours, and no one else's.</strong> The Landfall Series is the first home appliance purpose-built to make that sovereignty real, permanent, and simple enough that your entire household can use it starting day one.</p>
+    </div>
+  </section>
+
+  <!-- PILLARS -->
+  <section class="section section-dark">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="hero-badge">What Landfall Delivers</span>
+        <h2>Four Things No Cloud AI Can Promise Your Family</h2>
+      </div>
+      <div class="lf-pillars-grid fade-in">
+        <div class="lf-pillar">
+          <div class="lf-pillar-num">01</div>
+          <h3>100% Local</h3>
+          <p>Fully air-gapped by default. No query leaves your home. No response is logged externally. No third-party ever processes your family's most private conversations.</p>
+        </div>
+        <div class="lf-pillar">
+          <div class="lf-pillar-num">02</div>
+          <h3>Private by Design</h3>
+          <p>No cloud. No uploads. No third-party access. Hardware air-gap switch isolates the node from the internet entirely on command, while full AI capability continues locally.</p>
+        </div>
+        <div class="lf-pillar">
+          <div class="lf-pillar-num">03</div>
+          <h3>Sustainable</h3>
+          <p>Low power. Zero water waste. The Landfall Scout draws roughly 40 watts idle, comparable to a gaming console, and consumes zero gallons of municipal water per day of inference.</p>
+        </div>
+        <div class="lf-pillar">
+          <div class="lf-pillar-num">04</div>
+          <h3>Built for Family</h3>
+          <p>Multi-user profiles. Family media vault. Local voice assistant. Home school suite. A consumer experience simple enough that every member of your household uses it confidently.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ROOMS -->
+  <section class="section section-dark" style="padding-bottom:60px;">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="hero-badge">Every Room. One Sovereign Brain.</span>
+        <h2>The Landfall Series Belongs Wherever Your Family Lives</h2>
+      </div>
+    </div>
+    <div class="lf-room-showcase fade-in">
+      <div class="lf-room-panel">
+        <img src="images/landfall-study-library.webp" alt="Landfall Ranger in a study and library — secure documents, research assistant, financial planning" loading="lazy" width="1536" height="1024">
+      </div>
+      <div class="lf-room-panel">
+        <img src="images/landfall-home-office-2.webp" alt="Landfall Pack Leader in a home office — client files, offline backups, small business hub" loading="lazy" width="1536" height="1024">
+      </div>
+      <div class="lf-room-panel">
+        <img src="images/landfall-kitchen.webp" alt="Landfall Ranger in a kitchen family hub — schedules, recipes, homeschool, smart home" loading="lazy" width="1536" height="1024">
+      </div>
+      <div class="lf-room-panel">
+        <img src="images/landfall-living-room.webp" alt="Landfall Ranger in a living room — family photos, streaming, AI assistant, smart home" loading="lazy" width="1536" height="1024">
+      </div>
+      <div class="lf-room-panel">
+        <img src="images/landfall-living-room-2.webp" alt="Landfall Ranger in a modern living space — media center, family memories, private by design" loading="lazy" width="1536" height="1024">
+      </div>
+    </div>
+  </section>
+  <!-- PRODUCT TIERS -->
+  <section class="section section-darker" id="tiers">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="hero-badge">Scout &middot; Ranger &middot; Pack Leader</span>
+        <h2>Three Tiers. One Lineage. All Air-Gapped. All Yours.</h2>
+        <p class="body-md" style="max-width:600px;margin:12px auto 0;">One-time purchase. No subscriptions. No token fees. Annual model update packages available. 72-hour burn-in quality check included on every unit.</p>
+      </div>
+      <div class="lf-tiers-grid fade-in">
+        <!-- SCOUT -->
+        <div class="lf-tier">
+          <div class="lf-tier-name">Scout</div>
+          <div class="lf-tier-headline">Entry Sovereign Node</div>
+          <div class="lf-tier-sub">Your first act of data independence. Brave, capable, and completely yours.</div>
+          <div class="lf-tier-price">$8,500</div>
+          <div class="lf-tier-price-note">to $9,500 &middot; One-time purchase &middot; Add-ons available</div>
+          <div class="lf-tier-rule"></div>
+          <ul class="lf-tier-features">
+            <li>NVIDIA RTX 5090 (32GB GDDR7), runs quantized 70B models</li>
+            <li>64GB DDR5 ECC RAM, 16-core CPU</li>
+            <li>4TB NVMe Gen5 SSD + 8TB family vault storage</li>
+            <li>Wi-Fi 7 + 2.5GbE, air-gap switch configurable</li>
+            <li>Qwen3 14B + Gemma 4 26B pre-loaded and benchmarked</li>
+            <li>FamilyVault media organization module</li>
+            <li>Island Mountain OS (IM-OS), family-grade interface</li>
+            <li>1-year white-glove remote support included</li>
+            <li>Living room form factor, ~25cm cube, silent under load</li>
+          </ul>
+          <a href="#reserve" class="btn btn-primary lf-tier-cta" onclick="selectTier('scout')">Reserve Scout</a>
+        </div>
+        <!-- RANGER -->
+        <div class="lf-tier lf-featured">
+          <div class="lf-tier-badge">Most Popular</div>
+          <div class="lf-tier-name">Ranger</div>
+          <div class="lf-tier-headline">Family Command Node</div>
+          <div class="lf-tier-sub">The whole home working from a single sovereign brain. Where families go from curious to committed.</div>
+          <div class="lf-tier-price">$12,000</div>
+          <div class="lf-tier-price-note">to $14,000 &middot; Build-to-order, 3-week lead &middot; Add-ons available</div>
+          <div class="lf-tier-rule"></div>
+          <ul class="lf-tier-features">
+            <li>Dual NVIDIA RTX 5090 (64GB combined VRAM), unquantized 70B models</li>
+            <li>128GB DDR5 ECC RAM, 24-core CPU</li>
+            <li>8TB NVMe RAID + 32TB family vault (expandable)</li>
+            <li>10GbE wired + Wi-Fi 7, whole-home AI mesh capable</li>
+            <li>Qwen3 70B full-precision, meaningful reasoning, not just chat</li>
+            <li>Multi-user family profiles with separate AI memory contexts</li>
+            <li>FamilyVault Pro, offline facial recognition, event clustering</li>
+            <li>HomeBase smart home AI integration module</li>
+            <li>Landfall Scribe: private document drafting and legal/medical context</li>
+            <li>MedRecord Vault, private health record storage</li>
+            <li>2-year white-glove support + annual model update package</li>
+          </ul>
+          <a href="#reserve" class="btn btn-primary lf-tier-cta" onclick="selectTier('ranger')">Reserve Ranger</a>
+        </div>
+        <!-- PACK LEADER -->
+        <div class="lf-tier">
+          <div class="lf-tier-name">Pack Leader</div>
+          <div class="lf-tier-headline">Generational Legacy Node</div>
+          <div class="lf-tier-sub">A permanent family AI institution. A generational asset as real as the house it lives in. Your grandchildren will use it.</div>
+          <div class="lf-tier-price">From $18,000</div>
+          <div class="lf-tier-price-note">to $28,000 configured &middot; Fully custom &middot; White-glove install</div>
+          <div class="lf-tier-rule"></div>
+          <ul class="lf-tier-features">
+            <li>4x NVIDIA RTX 5090 (128GB combined VRAM), frontier open-weight territory</li>
+            <li>256GB - 512GB DDR5 ECC RAM, server-grade CPU</li>
+            <li>NVMe RAID + 80TB - 160TB archival vault, fully redundant</li>
+            <li>UPS battery backup, always-on family intelligence, no downtime</li>
+            <li>Everything in Ranger, plus Legacy Engine and Estate AI module</li>
+            <li>Landfall Legacy Engine: oral history, document lineage, family knowledge graph</li>
+            <li>Landfall Council, multi-family-member collaborative AI workspace</li>
+            <li>Custom model fine-tuning on family data (opt-in, fully local)</li>
+            <li>Lifetime white-glove support + perpetual model update subscription</li>
+            <li>Custom chassis, premium anodized steel, copper-accented panels</li>
+          </ul>
+          <a href="#reserve" class="btn btn-primary lf-tier-cta" onclick="selectTier('pack-leader')">Reserve Pack Leader</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TCO COMPARISON -->
+  <section class="section section-dark">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="hero-badge">The Math Is the Message</span>
+        <h2>The 5-Year Cost of Renting vs. Owning</h2>
+        <p class="body-md" style="max-width:600px;margin:12px auto 0;">Your buyer doesn't see $8,500. They see $8,500 versus the alternative. Here's the alternative, honestly stated.</p>
+      </div>
+      <div class="lf-tco-grid fade-in">
+        <div class="lf-tco-card lf-cloud">
+          <h3>Cloud AI Stack (5-Year Cost)</h3>
+          <div class="lf-tco-rows">
+            <div class="lf-tco-row"><span>ChatGPT Plus ($240/yr, +15%/yr)</span><span>~$1,618</span></div>
+            <div class="lf-tco-row"><span>Claude Pro ($204/yr, +15%/yr)</span><span>~$1,376</span></div>
+            <div class="lf-tco-row"><span>Adobe Creative AI ($840/yr, +15%/yr)</span><span>~$5,661</span></div>
+            <div class="lf-tco-row"><span>Google AI Pro ($240/yr, +15%/yr)</span><span>~$1,618</span></div>
+            <div class="lf-tco-row"><span>Microsoft Copilot Pro ($360/yr, +15%/yr)</span><span>~$2,427</span></div>
+            <div class="lf-tco-row"><span>Cloud photo/doc storage ($120/yr)</span><span>~$600</span></div>
+            <div class="lf-tco-row lf-total"><span>5-Year Total</span><span>~$13,300+</span></div>
+          </div>
+        </div>
+        <div class="lf-tco-card lf-local">
+          <h3>Landfall Scout (5-Year Cost)</h3>
+          <div class="lf-tco-rows">
+            <div class="lf-tco-row"><span>Hardware (one-time)</span><span>$8,500</span></div>
+            <div class="lf-tco-row"><span>Electricity (5 years, ~40W idle)</span><span>~$350</span></div>
+            <div class="lf-tco-row"><span>Annual model updates (optional)</span><span>~$1,000</span></div>
+            <div class="lf-tco-row"><span>Support (Year 1 included)</span><span>$0 - $400/yr</span></div>
+            <div class="lf-tco-row"><span>Token fees</span><span>$0</span></div>
+            <div class="lf-tco-row"><span>Subscription price hikes</span><span>$0</span></div>
+            <div class="lf-tco-row lf-total"><span>5-Year Total</span><span>~$10,850</span></div>
+          </div>
+          <div class="lf-tco-note">
+            <strong>After Year 5, Landfall costs nothing per query. Cloud subscriptions keep compounding.</strong> The 15% annual hike assumption is conservative. Adobe hiked 17% in 2025. OpenAI's flat-rate model is under active cost pressure.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRE-ORDER FORM -->
+  <section class="section section-darker" id="reserve">
+    <div class="container">
+      <div style="max-width:820px;margin:0 auto;">
+        <div class="section-header fade-in" style="text-align:center;">
+          <span class="hero-badge">AI Ownership, Not AI Rental</span>
+          <h2>Reserve Your Landfall</h2>
+          <p class="body-md" style="max-width:560px;margin:12px auto 0;">Securing your place in the pre-order queue costs nothing today. Submit your reservation, select your tier, and an Island Mountain team member will contact you within 48 hours to confirm your build specification and walk you through the deposit and delivery process.</p>
+        </div>
+
+        <div class="lf-deposit-note fade-in">
+          <strong>How pre-order works:</strong> This form places your reservation at no charge. After we confirm your configuration and answer your questions, a 20% deposit secures your build slot and locks your position in the production queue. Remaining balance is due before shipment. Full details and timeline discussed on your confirmation call.
+        </div>
+
+        <div id="lf-form-wrap" class="fade-in">
+          <!-- Tier Selector -->
+          <div style="margin-bottom:24px;">
+            <div style="font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:12px;">Select Your Tier</div>
+            <div class="lf-tier-selector">
+              <div class="lf-tier-option">
+                <input type="radio" name="tier-visual" id="tier-scout" value="scout" checked>
+                <label for="tier-scout">
+                  <span class="lf-tier-opt-name">Scout</span>
+                  <span class="lf-tier-opt-price">$8,500 - $9,500</span>
+                  <span class="lf-tier-opt-sub">Entry Sovereign Node</span>
+                </label>
+              </div>
+              <div class="lf-tier-option">
+                <input type="radio" name="tier-visual" id="tier-ranger" value="ranger">
+                <label for="tier-ranger">
+                  <span class="lf-tier-opt-name">Ranger</span>
+                  <span class="lf-tier-opt-price">$12,000 - $14,000</span>
+                  <span class="lf-tier-opt-sub">Family Command Node</span>
+                </label>
+              </div>
+              <div class="lf-tier-option">
+                <input type="radio" name="tier-visual" id="tier-pack" value="pack-leader">
+                <label for="tier-pack">
+                  <span class="lf-tier-opt-name">Pack Leader</span>
+                  <span class="lf-tier-opt-price">From $18,000</span>
+                  <span class="lf-tier-opt-sub">Generational Legacy Node</span>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Form -->
+          <form class="lf-form" id="lf-reserve-form" action="https://formsubmit.co/basho@islandmountain.io" method="POST" novalidate>
+            <input type="hidden" name="_subject" value="Landfall Pre-Order Reservation - Island Mountain">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_next" value="https://islandmountain.io/landfall-preorder.html?submitted=true">
+            <input type="text" name="_honey" style="display:none">
+            <input type="hidden" name="form_source" value="landfall-preorder">
+            <input type="hidden" id="lf-tier-hidden" name="tier_from_cards" value="scout">
+
+            <div class="lf-form-row">
+              <div class="lf-field">
+                <label for="lf-first">First Name *</label>
+                <input type="text" id="lf-first" name="first_name" placeholder="First" required autocomplete="given-name">
+              </div>
+              <div class="lf-field">
+                <label for="lf-last">Last Name *</label>
+                <input type="text" id="lf-last" name="last_name" placeholder="Last" required autocomplete="family-name">
+              </div>
+            </div>
+            <div class="lf-field">
+              <label for="lf-email">Email Address *</label>
+              <input type="email" id="lf-email" name="email" placeholder="you@yourfamily.com" required autocomplete="email">
+            </div>
+            <div class="lf-form-row">
+              <div class="lf-field">
+                <label for="lf-phone">Phone Number</label>
+                <input type="tel" id="lf-phone" name="phone" placeholder="(555) 000-0000" autocomplete="tel">
+              </div>
+              <div class="lf-field">
+                <label for="lf-tier">Landfall Tier *</label>
+                <select id="lf-tier" name="tier" required>
+                  <option value="">Select a tier...</option>
+                  <option value="scout">Scout: $8,500 to $9,500</option>
+                  <option value="ranger">Ranger: $12,000 to $14,000</option>
+                  <option value="pack-leader">Pack Leader: From $18,000</option>
+                </select>
+              </div>
+            </div>
+            <div class="lf-field">
+              <label for="lf-finish">Preferred Finish</label>
+              <select id="lf-finish" name="finish">
+                <option value="">No preference / discuss on call</option>
+                <option value="obsidian">Obsidian Black: Matte black aluminum with copper accents</option>
+                <option value="polar">Polar White: Ceramic white with soft gold accents</option>
+                <option value="stone">Natural Stone: Stone gray with brushed metal base</option>
+              </select>
+            </div>
+            <div class="lf-field">
+              <label for="lf-usecase">Primary Use Case</label>
+              <select id="lf-usecase" name="use_case">
+                <option value="">Select what matters most to your family...</option>
+                <option value="privacy">Family data privacy and cloud independence</option>
+                <option value="media">Photo, video, and media vault</option>
+                <option value="homeschool">Home school and education suite</option>
+                <option value="smartHome">Smart home control without cloud dependency</option>
+                <option value="homeOffice">Home office and small business use</option>
+                <option value="legacy">Generational legacy and estate planning</option>
+                <option value="medical">Medical record and health data sovereignty</option>
+                <option value="all">All of the above</option>
+              </select>
+            </div>
+            <div class="lf-field">
+              <label for="lf-notes">Questions or Notes</label>
+              <textarea id="lf-notes" name="notes" placeholder="Tell us about your household, your privacy concerns, or anything you'd like to discuss on the confirmation call. No question is too basic."></textarea>
+            </div>
+            <div>
+              <button type="submit" class="btn btn-primary lf-submit-btn">Reserve My Landfall: No Charge Today</button>
+            </div>
+            <p class="lf-form-fine">Your reservation is free. No payment collected here. An Island Mountain team member contacts you within 48 hours to confirm your build, answer your questions, and walk you through the 20% deposit process that secures your production slot. Questions first: <a href="tel:+18016091130">1-801-609-1130</a></p>
+          </form>
+        </div>
+
+        <!-- Success State -->
+        <div class="lf-success" id="lf-success">
+          <div class="lf-success-icon">IM</div>
+          <h3>Your Reservation Is In.</h3>
+          <p>We'll reach out within 48 hours to confirm your build configuration and walk you through next steps. In the meantime, read the full <a href="landfall-product-line.html" class="clr-copper">Landfall strategy document</a> or reach us directly at <a href="tel:+18016091130" class="clr-copper">1-801-609-1130</a>.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ENVIRONMENTAL -->
+  <section class="section section-dark">
+    <div class="container">
+      <div class="lf-env-grid fade-in">
+        <div class="lf-env-text">
+          <h2>Your AI doesn't have to burn the world to answer a question.</h2>
+          <p>A single hyperscale AI data center consumes up to five million gallons of municipal drinking water every single day. Texas data centers alone are projected to consume 399 billion gallons annually by 2030. The carbon footprint of global cloud AI in 2025 runs between 32.6 and 79.7 million metric tons of CO2.</p>
+          <p>When you ask your Landfall the same questions you've been sending to the cloud, the water stays in your pipes. The electricity draw is comparable to a gaming console. And the inference never leaves your home.</p>
+          <p>This is not a marginal benefit. It's a structural one rooted in the difference between centralized hyperscale infrastructure and local dedicated hardware serving one family who owns it outright.</p>
+        </div>
+        <div class="lf-env-stats">
+          <div class="lf-env-stat">
+            <div class="lf-env-stat-num">5M</div>
+            <div class="lf-env-stat-label">Gallons of drinking water consumed per day by a single hyperscale AI data center</div>
+          </div>
+          <div class="lf-env-stat">
+            <div class="lf-env-stat-num">~40W</div>
+            <div class="lf-env-stat-label">What your Landfall Scout draws at idle, and zero gallons of water per day of inference</div>
+          </div>
+          <div class="lf-env-stat">
+            <div class="lf-env-stat-num">$0</div>
+            <div class="lf-env-stat-label">Per-token cost, per query, per month, per year. After the day your Landfall arrives, that number is zero.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section section-darker">
+    <div class="container" style="text-align:center;max-width:700px;">
+      <div class="fade-in">
+        <h2>Ready to Own Your Family's AI?</h2>
+        <p class="body-md" style="margin:12px auto 24px;">Reserve your Landfall today. No payment required. We'll call you within 48 hours to walk through your options.</p>
+        <a href="#reserve" class="btn btn-primary">Reserve Your Landfall</a>
+        <p style="margin-top:16px;font-size:0.9rem;">Or call directly: <a href="tel:+18016091130" class="clr-copper">1-801-609-1130</a></p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="images/logo-footer.webp" alt="Island Mountain logo" width="210" height="210" class="d-block-mb">
+          <a href="index.html" class="nav-logo">Island Mountain</a>
+          <p>Local AI infrastructure for data-sovereign families and organizations. Colorado.</p>
+          <p class="mt-8"><i class="ri-phone-line icon-copper-mr"></i><a href="tel:+18016091130" class="clr-muted">1-801-609-1130</a></p>
+        </div>
+        <div>
+          <h3>Quick Links</h3>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Summit</a>
+    <a href="landfall-preorder.html">Landfall</a></li>
+        <li><a href="landfall-preorder.html">Landfall</a></li>
+            <li><a href="technology.html">Technology</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="resources.html">Resources</a></li>
+              <li><a href="faq.html">FAQ</a></li>
+            <li><a href="blog.html">Blog</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Solutions</h3>
+          <ul class="footer-links">
+            <li><a href="law-firms.html">Law Firms</a></li>
+            <li><a href="medical-practices.html">Medical Practices</a></li>
+            <li><a href="tribal-nations.html">Tribal Nations</a></li>
+            <li><a href="research-labs.html">Research Labs</a></li>
+            <li><a href="defense-contractors.html">Defense Contractors</a></li>
+            <li><a href="financial-services.html">Financial Services</a></li>
+            <li><a href="insurance.html">Insurance</a></li>
+            <li><a href="energy-utilities.html">Energy &amp; Utilities</a></li>
+            <li><a href="government.html">Government</a></li>
+            <li><a href="education.html">Education</a></li>
+            <li><a href="casino-gaming.html">Casino Gaming</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Company</h3>
+          <ul class="footer-links">
+            <li><a href="why-island-mountain.html">Why Local AI</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="investors.html">Investors</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="terms.html">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-newsletter">
+        <form action="https://formsubmit.co/basho@islandmountain.io" method="POST" class="newsletter-form">
+          <input type="hidden" name="_subject" value="Newsletter Signup - Island Mountain">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="text" name="_honey" style="display:none">
+          <label>Get updates on local AI infrastructure</label>
+          <div class="newsletter-input-group">
+            <input type="email" name="email" required placeholder="Your email address">
+            <button type="submit" class="btn btn-primary">Subscribe</button>
+          </div>
+        </form>
+      </div>
+      <div class="footer-bottom flex-col-center-gap"><p>&copy; 2026 Island Mountain. All rights reserved. Founded by <a href="https://www.johndou.com" target="_blank" rel="noopener" class="clr-copper">John Dougherty</a> and <span class="clr-copper">Basho Parks</span>.</p>
+        <a href="tel:+18016091130" class="phone-link"><i class="ri-phone-line text-lg"></i> 1-801-609-1130</a>
+        <a href="https://www.linkedin.com/company/island-mountain-llc/" target="_blank" rel="noopener" aria-label="Island Mountain on LinkedIn" class="phone-link"><i class="ri-linkedin-fill text-lg"></i> Follow us on LinkedIn</a>
+        <a href="https://x.com/IslandMountain_" target="_blank" rel="noopener" aria-label="Island Mountain on X" class="phone-link"><i class="ri-twitter-x-fill text-lg"></i> Follow us on X</a></div>
+    </div>
+  </footer>
+
+  <script defer src="js/main.js"></script>
+  <script>
+  /* Tier card sync to form select */
+  function selectTier(tier) {
+    document.getElementById('lf-tier-hidden').value = tier;
+    var selectEl = document.getElementById('lf-tier');
+    if (selectEl) selectEl.value = tier;
+    var radios = document.querySelectorAll('input[name="tier-visual"]');
+    radios.forEach(function(r) {
+      if (r.value === tier) r.checked = true;
+    });
+    setTimeout(function() {
+      var formSection = document.getElementById('reserve');
+      if (formSection) formSection.scrollIntoView({ behavior: 'smooth' });
+    }, 80);
+  }
+  /* Sync visual tier selector to hidden field and select */
+  document.querySelectorAll('input[name="tier-visual"]').forEach(function(radio) {
+    radio.addEventListener('change', function() {
+      document.getElementById('lf-tier-hidden').value = this.value;
+      var selectEl = document.getElementById('lf-tier');
+      if (selectEl) selectEl.value = this.value;
+    });
+  });
+  /* Sync form select back to visual selector */
+  var tierSelect = document.getElementById('lf-tier');
+  if (tierSelect) {
+    tierSelect.addEventListener('change', function() {
+      document.getElementById('lf-tier-hidden').value = this.value;
+      var radios = document.querySelectorAll('input[name="tier-visual"]');
+      radios.forEach(function(r) {
+        if (r.value === tierSelect.value) r.checked = true;
+      });
+    });
+  }
+  /* Show success state if redirected back from formsubmit */
+  if (window.location.search.indexOf('submitted=true') !== -1) {
+    var formWrap = document.getElementById('lf-form-wrap');
+    var success = document.getElementById('lf-success');
+    if (formWrap) formWrap.style.display = 'none';
+    if (success) success.style.display = 'block';
+  }
+  </script>
+</body>
+</html>
