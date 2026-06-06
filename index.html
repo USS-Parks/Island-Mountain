@@ -28,7 +28,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="author" content="Basho Parks">
-  <meta name="date" content="2026-05-01">
+  <meta name="date" content="2026-06-06">
   <title>Local AI Servers | NVIDIA H100 & H200 - Island Mountain</title>
   <meta name="description" content="Pre-built, air-gapped local AI inference servers with NVIDIA H100/H200 GPUs. Zero token fees. Full data sovereignty. From $75K.">
   <link rel="icon" type="image/x-icon" href="favicon.ico?v=2">
@@ -119,7 +119,7 @@
       "GPU inference servers",
       "on-premises LLM deployment",
       "DeepSeek V4-Flash",
-      "Llama 3.3",
+      "Llama 4 Scout",
       "DeepSeek R1 70B Distill",
       "OpenWebUI",
       "vLLM",
@@ -149,7 +149,7 @@
     "@id": "https://islandmountain.io/products.html#summit-base",
     "name": "Island Mountain Summit Base - Local AI Inference Rack",
     "sku": "IM-SUMMIT-BASE",
-    "description": "Pre-built local AI inference rack with 2x NVIDIA H100 80GB PCIe GPUs, 160GB combined VRAM, AMD EPYC 7413 CPU, 512GB DDR4 ECC RAM, and 4TB NVMe model storage. Ships with DeepSeek V4-Flash, Llama 3.3 70B, and DeepSeek R1 70B Distill or Qwen 2.5 72B pre-installed. 72-hour burn-in tested.",
+    "description": "Pre-built local AI inference rack with 2x NVIDIA H100 80GB PCIe GPUs, 160GB combined VRAM, AMD EPYC 7413 CPU, 512GB DDR4 ECC RAM, and 4TB NVMe model storage. Ships with DeepSeek V4-Flash, Llama 4 Scout, and DeepSeek R1 70B Distill or Qwen 3 72B pre-installed. 72-hour burn-in tested.",
     "brand": {
       "@type": "Brand",
       "name": "Island Mountain"
@@ -162,7 +162,7 @@
       "highPrice": "85000",
       "availability": "https://schema.org/InStock",
       "url": "https://islandmountain.io/products.html",
-      "priceValidUntil": "2027-04-30"
+      "priceValidUntil": "2027-12-31"
     },
     "additionalProperty": [
       {
@@ -173,7 +173,7 @@
       {
         "@type": "PropertyValue",
         "name": "Total VRAM",
-        "value": "160GB HBM3"
+        "value": "160GB HBM2e"
       }
     ]
   }
@@ -198,7 +198,7 @@
       "highPrice": "160000",
       "availability": "https://schema.org/PreOrder",
       "url": "https://islandmountain.io/products.html",
-      "priceValidUntil": "2027-04-30"
+      "priceValidUntil": "2027-12-31"
     }
   }
   </script>
@@ -209,7 +209,7 @@
     "@id": "https://islandmountain.io/products.html#summit-pinnacle",
     "name": "Island Mountain Summit Pinnacle - Local AI Inference Rack",
     "sku": "IM-SUMMIT-PINNACLE",
-    "description": "2x NVIDIA H200 141GB GPUs with 282GB combined VRAM. Full native quality inference for DeepSeek V4-Flash and large language models. Coming Q3 2026.",
+    "description": "2x NVIDIA H200 141GB GPUs with 282GB combined VRAM. Full native quality inference for DeepSeek V4-Flash and large language models. Pre-order now. Ships July 2026.",
     "brand": {
       "@type": "Brand",
       "name": "Island Mountain"
@@ -222,7 +222,7 @@
       "highPrice": "400000",
       "availability": "https://schema.org/PreSale",
       "url": "https://islandmountain.io/products.html",
-      "priceValidUntil": "2027-04-30"
+      "priceValidUntil": "2027-12-31"
     },
     "additionalProperty": [
       {
@@ -381,7 +381,7 @@
         <div class="stat-card">
           <i class="ri-brain-line"></i>
           <h2>3+ Models Pre-Installed</h2>
-          <p>DeepSeek V4-Flash, Llama 3.3 70B, R1 70B Distill or Qwen 2.5 72B pre-installed.</p>
+          <p>DeepSeek V4-Flash, Llama 4 Scout, R1 70B Distill or Qwen 3 72B pre-installed.</p>
         </div>
         <div class="stat-card">
           <i class="ri-shield-check-line"></i>
@@ -624,7 +624,7 @@
           <div class="tier-availability tier-availability--instock"><span class="status-dot"></span> In Stock</div>
           <ul class="tier-specs">
             <li><span class="spec-label">GPU</span><span class="spec-value">2x NVIDIA H100 80GB</span></li>
-            <li><span class="spec-label">VRAM</span><span class="spec-value">160GB HBM3</span></li>
+            <li><span class="spec-label">VRAM</span><span class="spec-value">160GB HBM2e</span></li>
             <li><span class="spec-label">CPU</span><span class="spec-value">AMD EPYC 7413</span></li>
             <li><span class="spec-label">RAM</span><span class="spec-value">512GB DDR4 ECC</span></li>
             <li><span class="spec-label">Storage</span><span class="spec-value">4TB NVMe</span></li>
@@ -655,7 +655,7 @@
           <span class="tier-badge tier-badge-amber">Summit Pinnacle</span>
           <h3>Summit Pinnacle</h3>
           <div class="tier-price">$350,000 - $400,000</div>
-          <div class="tier-availability tier-availability--coming"><span class="status-dot"></span> Coming Q3 2026</div>
+          <div class="tier-availability tier-availability--coming"><span class="status-dot"></span> Pre-Order Now</div>
           <ul class="tier-specs">
             <li><span class="spec-label">GPU</span><span class="spec-value">2x NVIDIA H200 141GB</span></li>
             <li><span class="spec-label">VRAM</span><span class="spec-value">282GB HBM3e</span></li>
@@ -686,7 +686,7 @@
     <div class="container">
       <div class="content-block fade-in content-max-800">
         <div style="border-left:3px solid var(--copper);padding:16px 20px;margin:32px 0;background:rgba(217,119,6,0.05);border-radius:0 8px 8px 0;">
-          <p class="body-md" style="margin:0;"><strong>Summary:</strong> Island Mountain sells pre-built, burn-tested on-premises AI inference servers powered by NVIDIA H100 and H200 GPUs, starting at $75,000. Designed for eleven regulated industries - including law firms, medical practices, tribal nations, defense contractors, financial services, insurance, energy, government, education, and casino gaming - that cannot send sensitive data to cloud AI providers, each system ships ready to run with open-source models like DeepSeek V4-Flash and Llama 3.3 70B pre-installed.</p>
+          <p class="body-md" style="margin:0;"><strong>Summary:</strong> Island Mountain sells pre-built, burn-tested on-premises AI inference servers powered by NVIDIA H100 and H200 GPUs, starting at $75,000. Designed for eleven regulated industries - including law firms, medical practices, tribal nations, defense contractors, financial services, insurance, energy, government, education, and casino gaming - that cannot send sensitive data to cloud AI providers, each system ships ready to run with open-source models like DeepSeek V4-Flash and Llama 4 Scout pre-installed.</p>
         </div>
       </div>
     </div>

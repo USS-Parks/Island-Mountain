@@ -16,3 +16,9 @@ Thumbs.db
 # Original Landfall PNGs (converted to WebP, kept locally only)
 images/LandFall*.png
 images/IM LandFall*.png
+
+# Lamprey binary installers (too large for git - host elsewhere)
+lamprey/downloads/
+
+# Cloudflare Wrangler local dev cache
+.wrangler/
