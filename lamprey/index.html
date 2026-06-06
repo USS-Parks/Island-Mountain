@@ -28,9 +28,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="author" content="Basho Parks">
-  <meta name="date" content="2026-05-25">
-  <title>Download Lamprey MAI - Air-Gapped Local AI Inference + Compliance Governance</title>
-  <meta name="description" content="Download Lamprey MAI for Windows. Air-gapped local AI inference with HIPAA, ITAR, OCAP compliance governance. One-time install. No cloud. No telemetry. SHA256-verifiable.">
+  <meta name="date" content="2026-06-06">
+  <title>Download Lamprey v0.8.1 - Free Multi-Provider AI Coding IDE for Windows</title>
+  <meta name="description" content="Lamprey is a free, open-source AI coding IDE for Windows. Route prompts to DeepSeek, Gemma, Qwen, or OpenRouter. Multi-agent pipelines, built-in browser, git review, terminal. No telemetry. MIT license.">
   <link rel="icon" type="image/x-icon" href="../favicon.ico?v=2">
   <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon-32.png?v=2">
   <link rel="apple-touch-icon" sizes="180x180" href="../images/apple-touch-icon.png?v=2">
@@ -60,67 +60,153 @@
   <link rel="canonical" href="https://islandmountain.io/lamprey/">
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Download Lamprey MAI - Air-Gapped Local AI Inference">
-  <meta property="og:description" content="Download Lamprey MAI for Windows. Air-gapped local AI inference with HIPAA, ITAR, OCAP compliance governance. One-time install. No cloud. No telemetry.">
+  <meta property="og:title" content="Lamprey v0.8.1 - Free AI Coding IDE for Windows">
+  <meta property="og:description" content="Open-source desktop IDE routing AI chat to DeepSeek, Gemma, Qwen, and OpenRouter. Multi-agent pipelines, built-in browser, git review, terminal. No telemetry. MIT license.">
   <meta property="og:url" content="https://islandmountain.io/lamprey/">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Island Mountain">
-  <meta property="og:image" content="https://islandmountain.io/images/hero-resources.webp">
+  <meta property="og:image" content="https://islandmountain.io/images/lamprey-mai-product-1.webp">
+
+  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Download Lamprey MAI - Air-Gapped Local AI Inference">
-  <meta name="twitter:description" content="Download Lamprey MAI for Windows. Air-gapped local AI inference with HIPAA, ITAR, OCAP compliance governance.">
-  <meta name="twitter:image" content="https://islandmountain.io/images/hero-resources.webp">
+  <meta name="twitter:site" content="@IslandMountain_">
+  <meta name="twitter:creator" content="@IslandMountain_">
+  <meta name="twitter:title" content="Lamprey v0.8.1 - Free AI Coding IDE for Windows">
+  <meta name="twitter:description" content="Open-source desktop IDE with multi-provider AI routing, multi-agent pipelines, built-in browser, git review, and terminal. No telemetry. MIT license.">
+  <meta name="twitter:image" content="https://islandmountain.io/images/lamprey-mai-product-1.webp">
 
   <!-- SoftwareApplication schema -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
-    "name": "Lamprey MAI",
+    "@id": "https://islandmountain.io/lamprey/",
+    "name": "Lamprey",
+    "alternateName": "Lamprey AI Coding IDE",
+    "applicationCategory": "DeveloperApplication",
     "operatingSystem": "Windows 10, Windows 11",
-    "applicationCategory": "BusinessApplication",
-    "softwareVersion": "1.1.1",
-    "fileSize": "11.22 MB",
-    "downloadUrl": "https://islandmountain.io/lamprey/downloads/v1.1.1/lamprey-mai-setup-1.1.1.exe",
-    "publisher": { "@type": "Organization", "name": "Island Mountain (USS-Parks LLC)", "url": "https://islandmountain.io" },
-    "description": "Air-gapped local AI inference engine with built-in HIPAA, ITAR, and OCAP compliance governance. Runs entirely offline. No telemetry, no phone-home, no cloud dependency.",
-    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    "softwareVersion": "0.8.1",
+    "softwareRequirements": "Windows 10 or 11, 64-bit; Node.js not required for end users",
+    "downloadUrl": "https://github.com/USS-Parks/lamprey/releases/download/v0.8.1/Lamprey-0.8.1-x64.exe",
+    "releaseNotes": "https://github.com/USS-Parks/lamprey/releases/tag/v0.8.1",
+    "license": "https://opensource.org/licenses/MIT",
+    "url": "https://islandmountain.io/lamprey/",
+    "description": "Free, open-source Electron desktop IDE that routes AI chat to DeepSeek, Google Gemma, Alibaba Qwen, and OpenRouter. Includes Planner-Coder-Reviewer multi-agent pipeline, built-in Chromium browser, git diff review with Fix this seeding, integrated terminal, deep research with citation verification, and Snip shell-output token filter. API keys stored in OS keychain. No telemetry.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock"
+    },
+    "author": {
+      "@type": "Organization",
+      "name": "Island Mountain",
+      "url": "https://islandmountain.io"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Island Mountain",
+      "url": "https://islandmountain.io"
+    },
+    "image": "https://islandmountain.io/images/lamprey-mai-product-1.webp",
+    "screenshot": "https://islandmountain.io/images/lamprey-mai-product-1.webp"
   }
   </script>
 
-  <!-- BreadcrumbList Schema -->
+  <!-- BreadcrumbList schema -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     "itemListElement": [
       { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://islandmountain.io/" },
-      { "@type": "ListItem", "position": 2, "name": "Lamprey MAI Download", "item": "https://islandmountain.io/lamprey/" }
+      { "@type": "ListItem", "position": 2, "name": "Lamprey", "item": "https://islandmountain.io/lamprey/" }
+    ]
+  }
+  </script>
+
+  <!-- FAQPage schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is Lamprey?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Lamprey is a free, open-source Electron desktop app that combines multi-provider AI chat with a Codex-style coding IDE. It routes prompts to DeepSeek, Google Gemma, Alibaba Qwen, and OpenRouter. You bring your own API keys. MIT license. No telemetry."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does Lamprey cost anything?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. Lamprey is free and open source under the MIT license. You pay only for the AI provider API calls you make - DeepSeek offers a free tier to start. There is no Lamprey subscription, no seat license, and no cloud service."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Which AI providers does Lamprey support?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Lamprey routes per-model to DeepSeek (V4 Pro, V4 Flash, V3, R1), Google Gemma via AI Studio, Alibaba Qwen via DashScope, and any model available on OpenRouter. You can assign a different model to each agent role in the pipeline."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does Lamprey need an internet connection?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Lamprey itself runs locally with no telemetry or phone-home. It does need to reach whichever AI provider API you configure. If you pair it with a local Island Mountain inference server, you can route to local models and run fully air-gapped."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why does Windows warn me when I run the Lamprey installer?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The installer is not yet Authenticode code-signed. Windows SmartScreen flags any binary from an unrecognized publisher. Click More info, then Run anyway. Verify the SHA-256 hash on this page against the downloaded file before running."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between the installer and the portable ZIP?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The NSIS installer (Lamprey-0.8.1-x64.exe) writes to Program Files, creates Start Menu and desktop shortcuts, and adds an uninstaller. The portable ZIP (Lamprey-0.8.1-x64.zip) unpacks anywhere - no install required. Both run the same app."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I use Lamprey on Linux or macOS?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The pre-built download targets Windows 10/11 x64. Linux and macOS are buildable from source using npm run build:linux or npm run build:mac. See the GitHub repo at github.com/USS-Parks/lamprey for build instructions."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I use Lamprey with a local AI model instead of a cloud API?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Point Lamprey's OpenRouter-compatible endpoint at any local server that speaks the OpenAI chat completion API - including vLLM, Ollama, or an Island Mountain Summit inference server. No cloud keys required for local routing."
+        }
+      }
     ]
   }
   </script>
 
   <style>
-    /* Page-local styles. Marketing palette (style.css) for everything
-       else; this block is just the download-portal-specific layout. */
-    .hero-page .download-cta {
-      margin-top: 8px;
-    }
-    .hero-page .download-meta {
-      color: rgba(255, 255, 255, 0.78);
-      text-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
-    }
-    .lamprey-stack-img {
-      display: block;
-      max-width: min(74vw, 320px);
-      margin: 0 auto 32px;
-      filter: drop-shadow(0 22px 48px rgba(0, 0, 0, 0.6));
-    }
-    .stack-card {
-      text-align: center;
-    }
-    .stack-card h2 {
-      margin-top: 0;
+    /* Lamprey download page - local layout only. Global palette from style.css. */
+    .download-btn-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      justify-content: center;
+      margin-top: 24px;
     }
     .download-cta {
       display: inline-flex;
@@ -141,12 +227,32 @@
       box-shadow: 0 18px 44px rgba(245, 158, 11, 0.42);
       color: #1a1006;
     }
+    .download-cta-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 13px 26px;
+      border-radius: 999px;
+      background: transparent;
+      border: 2px solid var(--copper);
+      color: var(--copper-light);
+      font-weight: 700;
+      font-size: 1.05rem;
+      text-decoration: none;
+      transition: transform 0.2s, background 0.2s;
+    }
+    .download-cta-secondary:hover {
+      transform: translateY(-2px);
+      background: rgba(245, 158, 11, 0.08);
+      color: var(--copper-light);
+    }
     .download-meta {
       margin-top: 14px;
-      color: var(--text-muted);
+      color: rgba(255,255,255,0.72);
+      text-shadow: 0 1px 8px rgba(0,0,0,0.3);
       font-size: 0.9rem;
     }
-    .verify-card, .first-run-card, .what-card, .faq-card {
+    .lamprey-card {
       background: var(--card-bg);
       backdrop-filter: blur(var(--glass-blur));
       border: 1px solid var(--card-border);
@@ -160,6 +266,12 @@
       gap: 22px;
       margin-top: 18px;
     }
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 18px;
+      margin-top: 18px;
+    }
     .sha-box {
       font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace;
       font-size: 0.78rem;
@@ -170,6 +282,7 @@
       padding: 12px 14px;
       word-break: break-all;
       user-select: all;
+      margin-bottom: 12px;
     }
     .cmd-box {
       font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace;
@@ -179,54 +292,81 @@
       border: 1px solid var(--card-border);
       border-radius: var(--border-radius-sm);
       padding: 14px 16px;
-      margin-top: 12px;
+      margin-top: 10px;
       overflow-x: auto;
       white-space: pre;
     }
     .step {
       display: grid;
-      grid-template-columns: 32px 1fr;
+      grid-template-columns: 36px 1fr;
       gap: 14px;
-      margin-bottom: 18px;
+      margin-bottom: 20px;
       align-items: start;
     }
     .step-num {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: 32px;
-      height: 32px;
+      width: 36px;
+      height: 36px;
       border-radius: 50%;
       background: var(--copper);
       color: #1a1006;
       font-weight: 800;
       font-size: 0.95rem;
+      flex-shrink: 0;
     }
     .step-body strong { display: block; color: var(--text-light); margin-bottom: 4px; }
-    .step-body p { margin: 0; }
+    .step-body p { margin: 0; color: var(--text-muted); }
     .warn-banner {
       border-left: 4px solid var(--copper);
       background: rgba(245, 158, 11, 0.08);
       padding: 14px 18px;
       border-radius: var(--border-radius-sm);
-      margin-bottom: 18px;
+      margin-bottom: 22px;
       color: var(--text-light);
       font-size: 0.95rem;
     }
     .warn-banner strong { color: var(--copper-light); }
+    .feature-icon {
+      font-size: 1.6rem;
+      color: var(--copper);
+      margin-bottom: 10px;
+    }
+    .feature-card h3 { font-size: 1.05rem; color: var(--text-light); margin: 0 0 8px; }
+    .feature-card p { font-size: 0.92rem; color: var(--text-muted); margin: 0; }
+    .feature-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--border-radius);
+      padding: 22px;
+    }
     .faq-q { color: var(--text-light); font-weight: 700; margin-bottom: 8px; }
     .faq-a { color: var(--text-muted); margin: 0; }
     .faq-item { padding: 18px 0; border-bottom: 1px solid var(--card-border); }
     .faq-item:last-child { border-bottom: 0; }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
+    .badge { font-size: 0.78rem; font-weight: 600; padding: 4px 10px; border-radius: 999px; border: 1px solid var(--card-border); color: var(--text-muted); background: rgba(255,255,255,0.04); }
+    .badge-copper { border-color: var(--copper); color: var(--copper-light); }
+    .provider-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
+    .provider-chip {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 6px 14px; border-radius: 999px;
+      background: rgba(255,255,255,0.05); border: 1px solid var(--card-border);
+      font-size: 0.86rem; color: var(--text-light); font-weight: 600;
+    }
+    .lamp-logo { display: block; max-width: 180px; margin: 0 auto 24px; }
+    @media (max-width: 600px) {
+      .download-btn-group { flex-direction: column; align-items: center; }
+    }
   </style>
 </head>
 <body>
 
   <canvas id="particles-canvas"></canvas>
 
-  <!-- Hero background photo (same as Resources page) -->
   <div class="hero-photo">
-    <img srcset="../images/hero-resources-mobile.webp 800w, ../images/hero-resources.webp 1836w" sizes="100vw" src="../images/hero-resources.webp" alt="Island Mountain - air-gapped local AI infrastructure" fetchpriority="high" decoding="async" width="1836" height="856">
+    <img srcset="../images/hero-resources-mobile.webp 800w, ../images/hero-resources.webp 1836w" sizes="100vw" src="../images/hero-resources.webp" alt="Island Mountain - local AI infrastructure" fetchpriority="high" decoding="async" width="1836" height="856">
   </div>
 
   <nav class="navbar">
@@ -281,14 +421,18 @@
 
   <section class="hero hero-page">
     <div class="hero-inner">
-      <span class="hero-badge">Windows Download</span>
-      <h1><span class="chrome-shimmer">Lamprey MAI</span></h1>
-      <p>Air-gapped local AI inference with built-in HIPAA, ITAR, and OCAP compliance governance. Runs entirely on your hardware. No cloud. No telemetry. No phone-home.</p>
-      <a class="download-cta" href="downloads/v1.1.1/lamprey-mai-setup-1.1.1.exe" download>
-        <i class="ri-download-line"></i>
-        Download Lamprey MAI 1.1.1 for Windows
-      </a>
-      <p class="download-meta">11.22 MB &middot; Windows 10/11 x64 &middot; Released May 25, 2026</p>
+      <span class="hero-badge">Free Download &middot; v0.8.1 &middot; MIT License &middot; Windows 10/11</span>
+      <h1><span class="chrome-shimmer">Lamprey</span></h1>
+      <p>A multi-provider AI coding IDE. Route prompts to DeepSeek, Gemma, Qwen, or OpenRouter. Run a Planner &rarr; Coder &rarr; Reviewer pipeline. Git review, browser, terminal - all in one window. No telemetry. No subscription. Your API keys, your machine.</p>
+      <div class="download-btn-group">
+        <a class="download-cta" href="https://github.com/USS-Parks/lamprey/releases/download/v0.8.1/Lamprey-0.8.1-x64.exe" download>
+          <i class="ri-download-line"></i> Download v0.8.1 Installer (.exe)
+        </a>
+        <a class="download-cta-secondary" href="https://github.com/USS-Parks/lamprey/releases/download/v0.8.1/Lamprey-0.8.1-x64.zip" download>
+          <i class="ri-file-zip-line"></i> Portable ZIP (no install)
+        </a>
+      </div>
+      <p class="download-meta">v0.8.1 &middot; Windows 10/11 x64 &middot; Open source on <a href="https://github.com/USS-Parks/lamprey" target="_blank" rel="noopener" style="color:rgba(255,255,255,0.8);text-decoration:underline;">GitHub</a></p>
     </div>
   </section>
 
@@ -296,7 +440,7 @@
     <div class="container">
       <ol class="breadcrumb-list">
         <li><a href="../index.html">Home</a></li>
-        <li aria-current="page">Lamprey MAI Download</li>
+        <li aria-current="page">Lamprey</li>
       </ol>
     </div>
   </nav>
@@ -305,46 +449,185 @@
     <div class="container">
 
       <div class="warn-banner">
-        <strong>Before you install:</strong> this build is not yet code-signed. Windows SmartScreen will show an &ldquo;Unrecognized publisher&rdquo; warning the first time you run it. The walkthrough below tells you what to expect and how to verify the file is the one we published.
+        <strong>Before you run:</strong> this build is not yet Authenticode code-signed. Windows SmartScreen will show an &ldquo;Unrecognized publisher&rdquo; warning. Click <strong>More info</strong>, then <strong>Run anyway</strong>. Verify the SHA-256 hash below before running.
       </div>
 
-      <div class="what-card stack-card">
-        <img class="lamprey-stack-img" src="../images/lamprey-mai-stack-graphic.png" alt="Lamprey MAI architecture stack: dashboard, SDKs, governance, router, API server, adapters, scheduler, kernel, vault, hardware, deployment." width="280" height="395">
-        <h2 style="font-size:1.6rem;margin-bottom:10px;">The Lamprey MAI stack</h2>
-        <p style="color:var(--text-muted);max-width:620px;margin:0 auto;">Twelve layers from hardware foundation up through the operator dashboard. Every layer ships in this installer, runs locally on your machine, and stays inside your network boundary.</p>
+      <!-- What it is -->
+      <div class="lamprey-card" style="margin-bottom:30px;">
+        <img src="../images/lamprey-mai-logo.webp" alt="Lamprey logo" class="lamp-logo" width="180" height="180">
+        <h2 style="font-size:1.6rem;margin:0 0 12px;text-align:center;">What Lamprey is</h2>
+        <p style="color:var(--text-muted);max-width:680px;margin:0 auto 16px;">Lamprey turns a multi-provider AI backend into a working coding IDE. Think Claude Desktop quality UX combined with Codex-style developer panes, with the freedom to choose your own model and keep every prompt on your own machine.</p>
+        <p style="color:var(--text-muted);max-width:680px;margin:0 auto 16px;">It is an Electron app. It routes per-model to four providers. It runs a multi-agent pipeline if you want one. It ships full developer tooling around the chat. Everything persists locally in SQLite. No Lamprey cloud. No telemetry. Your prompts go to whichever provider's key you've added - nowhere else.</p>
+        <div class="badge-row" style="justify-content:center;margin-top:18px;">
+          <span class="badge badge-copper">Free</span>
+          <span class="badge badge-copper">MIT License</span>
+          <span class="badge badge-copper">Open Source</span>
+          <span class="badge">No telemetry</span>
+          <span class="badge">SQLite local storage</span>
+          <span class="badge">Air-gap capable</span>
+        </div>
+        <div class="provider-row" style="justify-content:center;">
+          <span class="provider-chip"><i class="ri-robot-line" style="color:var(--copper);"></i> DeepSeek</span>
+          <span class="provider-chip"><i class="ri-robot-line" style="color:var(--copper);"></i> Google Gemma</span>
+          <span class="provider-chip"><i class="ri-robot-line" style="color:var(--copper);"></i> Alibaba Qwen</span>
+          <span class="provider-chip"><i class="ri-robot-line" style="color:var(--copper);"></i> OpenRouter</span>
+        </div>
       </div>
 
-      <div class="grid-2">
-        <div class="verify-card">
+      <!-- Feature tour -->
+      <h2 style="font-size:1.5rem;margin-bottom:6px;">What ships in v0.8.1</h2>
+      <p style="color:var(--text-muted);margin-bottom:18px;">Every feature below runs on your machine. No cloud required.</p>
+      <div class="grid-3" style="margin-bottom:30px;">
+
+        <div class="feature-card">
+          <div class="feature-icon"><i class="ri-git-branch-line"></i></div>
+          <h3>Multi-agent pipeline</h3>
+          <p>Assign a different model to Planner, Coder, and Reviewer roles. Each stage gets its own model tier - cheap for boilerplate, smart for hard bugs. Chain-of-thought from every agent is persisted and surfaced in the UI.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon"><i class="ri-code-s-slash-line"></i></div>
+          <h3>Codex-style developer panes</h3>
+          <p>File tree with fuzzy quick-open (Ctrl+P), multi-tab Chromium browser, git diff review with a per-hunk "Fix this" button that seeds the diff into the chat, and an integrated xterm.js terminal.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon"><i class="ri-search-eye-line"></i></div>
+          <h3>Deep Research</h3>
+          <p>Twelve-prompt pipeline that fans out to DuckDuckGo, Brave, or SerpAPI, deduplicates by domain, corroborates claims across sources, and rejects fabricated citations before the report reaches you.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon"><i class="ri-scissors-line"></i></div>
+          <h3>Snip - token filter</h3>
+          <p>~120 built-in YAML filters strip verbose shell output down to signal before it reaches the model. Git, npm, docker, kubectl, terraform, and more. Hot-reloads from your userData folder in ~1 second. Tracks tokens saved.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon"><i class="ri-time-line"></i></div>
+          <h3>Automations and hooks</h3>
+          <p>Schedule prompts with a cron editor. Fire JavaScript hooks on session start, prompt submit, agent stop, or pre/post tool use. Hooks can block a tool by throwing. Everything runs locally.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon"><i class="ri-shield-check-line"></i></div>
+          <h3>Plan mode and permissions</h3>
+          <p>Shift+Tab gates mutating tools while read-only tools keep running. Persistent per-tool allow/deny policies survive restart. Destructive Chrome MCP actions require explicit approval with a 30-second timeout.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon"><i class="ri-key-2-line"></i></div>
+          <h3>OS keychain key storage</h3>
+          <p>API keys are encrypted via Electron safeStorage (the OS keychain). Keys never cross the IPC boundary and never touch disk in plaintext. A yellow banner warns you if safeStorage is unavailable before falling back.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon"><i class="ri-flow-chart"></i></div>
+          <h3>Skills and MCP servers</h3>
+          <p>Hot-reloading markdown system-prompt fragments (drop a .md in userData/skills/). Built-in MCP servers for Gmail, Drive, and Chrome via Playwright. SSE + stdio transports. URL import for skills.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon"><i class="ri-git-pull-request-line"></i></div>
+          <h3>Worktrees</h3>
+          <p>Create and manage git worktrees from inside the app. Each worktree seeds a new conversation tagged to that branch. Sidebar badges distinguish local, cloud, and worktree threads.</p>
+        </div>
+
+      </div>
+
+      <!-- Download + verify -->
+      <div class="grid-2" style="margin-bottom:30px;">
+
+        <div class="lamprey-card">
+          <h2 style="font-size:1.4rem;margin-bottom:14px;">Installer vs. portable</h2>
+          <p style="color:var(--text-muted);margin-bottom:16px;"><strong style="color:var(--text-light);">Lamprey-0.8.1-x64.exe</strong> - NSIS installer. Writes to Program Files, creates Start Menu and desktop shortcuts, adds an uninstaller. Best for everyday use.</p>
+          <a class="download-cta" href="https://github.com/USS-Parks/lamprey/releases/download/v0.8.1/Lamprey-0.8.1-x64.exe" download style="display:inline-flex;width:auto;margin-bottom:18px;">
+            <i class="ri-download-line"></i> Download Installer
+          </a>
+          <p style="color:var(--text-muted);margin-bottom:16px;"><strong style="color:var(--text-light);">Lamprey-0.8.1-x64.zip</strong> - Portable bundle. Unzip anywhere, run Lamprey.exe directly. No installation needed. Useful for restricted machines or quick evaluation.</p>
+          <a class="download-cta-secondary" href="https://github.com/USS-Parks/lamprey/releases/download/v0.8.1/Lamprey-0.8.1-x64.zip" download style="display:inline-flex;width:auto;">
+            <i class="ri-file-zip-line"></i> Download Portable ZIP
+          </a>
+        </div>
+
+        <div class="lamprey-card">
           <h2 style="font-size:1.4rem;margin-bottom:14px;">Verify your download</h2>
-          <p style="color:var(--text-muted);margin-bottom:14px;">SHA-256 hash of <code>lamprey-mai-setup-1.1.1.exe</code>:</p>
-          <div class="sha-box">71E00D91897DF02A86A148B8858BB58A9580E0AA73B4D8B12817E41BB4BE4BEB</div>
-          <p style="color:var(--text-muted);margin:14px 0 8px;">Compute the hash locally to confirm it matches (PowerShell):</p>
-          <div class="cmd-box">Get-FileHash -Algorithm SHA256 lamprey-mai-setup-1.1.1.exe</div>
-          <p style="color:var(--text-muted);margin:14px 0 0;font-size:0.9rem;">Or download <a href="downloads/v1.1.1/SHA256SUMS" class="clr-copper">SHA256SUMS</a> and use <code>sha256sum -c</code> on Linux/macOS.</p>
+          <p style="color:var(--text-muted);margin-bottom:6px;">SHA-256 of <code>Lamprey-0.8.1-x64.exe</code>:</p>
+          <div class="sha-box">BC5F504E867EB11B9DF6430A049B12B7C83D2B79805D257950DD44889ED401C3</div>
+          <p style="color:var(--text-muted);margin-bottom:6px;">SHA-256 of <code>Lamprey-0.8.1-x64.zip</code>:</p>
+          <div class="sha-box">ACC2FF97758F815F09ADBD6FEDDB6F7E88573C33A8A8B284B3456903D4B2A652</div>
+          <p style="color:var(--text-muted);margin:0 0 8px;font-size:0.9rem;">Compute locally (PowerShell):</p>
+          <div class="cmd-box">Get-FileHash -Algorithm SHA256 Lamprey-0.8.1-x64.exe</div>
+          <p style="color:var(--text-muted);margin:12px 0 0;font-size:0.9rem;">Or download <a href="downloads/v0.8.0/SHA256SUMS" class="clr-copper">SHA256SUMS</a> and use <code>sha256sum -c</code> on Linux/macOS.</p>
         </div>
 
-        <div class="verify-card">
-          <h2 style="font-size:1.4rem;margin-bottom:14px;">System requirements</h2>
-          <ul style="color:var(--text-muted);padding-left:18px;line-height:1.9;">
+      </div>
+
+      <!-- System requirements -->
+      <div class="lamprey-card" style="margin-bottom:30px;">
+        <h2 style="font-size:1.4rem;margin-bottom:14px;">System requirements</h2>
+        <div class="grid-2" style="margin-top:0;">
+          <ul style="color:var(--text-muted);padding-left:18px;line-height:2.0;margin:0;">
             <li>Windows 10 or 11, 64-bit</li>
-            <li>Administrator rights for first install</li>
-            <li>~30 MB free disk for the application</li>
-            <li>Hardware AI inference is optional &mdash; the launcher and compliance demos run on any CPU</li>
-            <li>No network connection required</li>
+            <li>Administrator rights for the installer (portable ZIP: not required)</li>
+            <li>~400 MB free disk space (Electron runtime included)</li>
+            <li>At least one AI provider API key to chat</li>
           </ul>
-          <p style="color:var(--text-muted);margin:16px 0 0;font-size:0.9rem;">For GPU-accelerated inference, see the <a href="../technology.html" class="clr-copper">Technology</a> page.</p>
+          <ul style="color:var(--text-muted);padding-left:18px;line-height:2.0;margin:0;">
+            <li>Internet access to reach your chosen AI provider</li>
+            <li>Node.js not required for end users</li>
+            <li>Linux and macOS: buildable from source (<a href="https://github.com/USS-Parks/lamprey" target="_blank" rel="noopener" class="clr-copper">GitHub</a>)</li>
+            <li>For local model inference: see <a href="../technology.html" class="clr-copper">Technology</a></li>
+          </ul>
         </div>
       </div>
 
-      <div class="first-run-card" style="margin-top:24px;">
-        <h2 style="font-size:1.6rem;margin-bottom:18px;">What to expect when you double-click the installer</h2>
+      <!-- Quick start -->
+      <div class="lamprey-card" style="margin-bottom:30px;">
+        <h2 style="font-size:1.6rem;margin-bottom:18px;">Quick start (four steps)</h2>
 
         <div class="step">
           <span class="step-num">1</span>
           <div class="step-body">
-            <strong>&ldquo;Windows protected your PC&rdquo; (blue screen)</strong>
-            <p>SmartScreen warns about unrecognized publishers. Click <strong>More info</strong>, then <strong>Run anyway</strong>. We&rsquo;re working on Authenticode code-signing; until that lands, this warning is expected for every fresh build.</p>
+            <strong>Download and run the installer</strong>
+            <p>Click <strong>More info</strong> then <strong>Run anyway</strong> on the SmartScreen prompt. Step through the NSIS wizard - the defaults are fine. Or unzip the portable ZIP anywhere and run <code>Lamprey.exe</code> directly.</p>
+          </div>
+        </div>
+
+        <div class="step">
+          <span class="step-num">2</span>
+          <div class="step-body">
+            <strong>Get an API key</strong>
+            <p>Easiest start: <a href="https://platform.deepseek.com" target="_blank" rel="noopener" class="clr-copper">platform.deepseek.com</a> - sign up, create a key, load $5. Lamprey also accepts Google AI Studio (Gemma), Alibaba DashScope (Qwen), and OpenRouter keys. Or point it at a local model server.</p>
+          </div>
+        </div>
+
+        <div class="step">
+          <span class="step-num">3</span>
+          <div class="step-body">
+            <strong>Paste your key in the first-run modal</strong>
+            <p>Lamprey encrypts it with <code>safeStorage</code> (the OS keychain). The key never leaves your machine in plaintext.</p>
+          </div>
+        </div>
+
+        <div class="step">
+          <span class="step-num">4</span>
+          <div class="step-body">
+            <strong>Type something</strong>
+            <p>That's it. Open the <code>+</code> menu to add a file tree, browser tab, terminal, or git review pane. Use <code>Shift+Tab</code> to engage plan mode. Type <code>/research</code> to kick off a deep research run.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Install walkthrough -->
+      <div class="lamprey-card" style="margin-bottom:30px;">
+        <h2 style="font-size:1.6rem;margin-bottom:18px;">What to expect during install</h2>
+
+        <div class="step">
+          <span class="step-num">1</span>
+          <div class="step-body">
+            <strong>"Windows protected your PC" (blue screen)</strong>
+            <p>SmartScreen flags unsigned binaries. Click <strong>More info</strong>, then <strong>Run anyway</strong>. We are working on an EV Authenticode certificate - once it ships, this warning disappears on future builds.</p>
           </div>
         </div>
 
@@ -352,79 +635,103 @@
           <span class="step-num">2</span>
           <div class="step-body">
             <strong>User Account Control (UAC) prompt</strong>
-            <p>Windows asks for administrator rights because the installer writes into <code>Program Files</code>. Click <strong>Yes</strong>. Lamprey MAI itself runs as your normal user once installed.</p>
+            <p>The installer writes into Program Files, so it requests administrator rights. Click <strong>Yes</strong>. Lamprey itself runs as your normal user after install. The portable ZIP skips UAC entirely.</p>
           </div>
         </div>
 
         <div class="step">
           <span class="step-num">3</span>
           <div class="step-body">
-            <strong>Setup wizard with the gold Lamprey MAI splash</strong>
-            <p>Step through the wizard. On the last page, make sure <strong>Create a desktop icon</strong> is checked. Optionally leave <strong>Launch Lamprey MAI</strong> ticked to start it immediately after install.</p>
+            <strong>NSIS setup wizard</strong>
+            <p>Step through the wizard and accept the defaults. On the final page, <strong>Create a desktop shortcut</strong> is checked by default - keep it. Lamprey installs to <code>C:\Users\[You]\AppData\Local\Programs\lamprey\</code>.</p>
           </div>
         </div>
 
         <div class="step">
           <span class="step-num">4</span>
           <div class="step-body">
-            <strong>Double-click the desktop icon</strong>
-            <p>A brief Win32 splash with the Lamprey silhouette appears for ~4 seconds, then a terminal opens with the ASCII Lamprey banner and an interactive <code>mai&gt;</code> prompt.</p>
-          </div>
-        </div>
-
-        <div class="step">
-          <span class="step-num">5</span>
-          <div class="step-body">
-            <strong>Try it</strong>
-            <p>At the <code>mai&gt;</code> prompt, type <code>demo</code> to see the six narrated compliance scenarios (HIPAA, ITAR, OCAP, multi-domain, tamper-evident audit, trust manifold) walk through their phases. Or type <code>start</code> to launch the headless inference daemon, <code>status</code> to check the install, <code>help</code> for the full command list.</p>
+            <strong>First launch</strong>
+            <p>Lamprey opens to a first-run modal asking for an API key. Paste your DeepSeek (or other) key, confirm, and the main chat window appears. Add <code>AGENTS.md</code> to your project root to give the model repo-specific context on every send.</p>
           </div>
         </div>
       </div>
 
-      <div class="what-card">
-        <h2 style="font-size:1.6rem;margin-bottom:14px;">What you&rsquo;re installing</h2>
-        <p style="color:var(--text-muted);margin-bottom:14px;">Three executables under <code>C:\Program Files\Lamprey MAI\</code>:</p>
-        <ul style="color:var(--text-muted);padding-left:18px;line-height:1.9;">
-          <li><code>lamprey-mai.exe</code> &mdash; the front-door launcher with terminal UI</li>
-          <li><code>lamprey-mai-api.exe</code> &mdash; headless inference + compliance governance daemon (REST + gRPC)</li>
-          <li><code>lamprey-mai-admin.exe</code> &mdash; operator CLI: demos, audit, backup/restore, ops</li>
+      <!-- What you're installing -->
+      <div class="lamprey-card" style="margin-bottom:30px;">
+        <h2 style="font-size:1.4rem;margin-bottom:14px;">What you're installing</h2>
+        <p style="color:var(--text-muted);margin-bottom:14px;">Lamprey is a single Electron application. The installer places it in <code>C:\Users\[You]\AppData\Local\Programs\lamprey\</code> and creates Start Menu and desktop shortcuts. Key facts:</p>
+        <ul style="color:var(--text-muted);padding-left:18px;line-height:2.0;">
+          <li>No background services. Nothing runs unless you launch Lamprey.</li>
+          <li>No scheduled tasks, no system-tray app, no startup entries.</li>
+          <li>All conversation data, API keys, and settings stay in your user's <code>AppData\Roaming\lamprey\</code> folder.</li>
+          <li>No telemetry, no crash reports, no usage data sent anywhere.</li>
+          <li>To uninstall: Settings &rarr; Apps &rarr; Installed apps &rarr; Lamprey &rarr; Uninstall.</li>
         </ul>
-        <p style="color:var(--text-muted);margin-top:14px;">No background services are registered. No scheduled tasks. No system-tray app. Nothing runs unless you start it.</p>
-        <p style="color:var(--text-muted);margin-top:14px;font-size:0.95rem;">Data handling: Lamprey MAI is designed to operate fully air-gapped. The installer makes no network requests after install. The application does not send telemetry, crash reports, or usage data anywhere. Compliance audit logs, model outputs, and configuration all stay on the local machine. See the <a href="../privacy.html" class="clr-copper">Privacy Policy</a> for the full statement.</p>
+        <p style="color:var(--text-muted);margin-top:14px;font-size:0.92rem;">See the <a href="../privacy.html" class="clr-copper">Privacy Policy</a> for the full data handling statement.</p>
       </div>
 
-      <div class="faq-card">
+      <!-- AEO summary -->
+      <div style="border-left:3px solid var(--copper);padding:16px 20px;margin:32px 0;background:rgba(217,119,6,0.05);border-radius:0 8px 8px 0;">
+        <strong>Summary:</strong> Lamprey is a free, open-source Electron desktop IDE for Windows that routes AI chat to DeepSeek, Google Gemma, Alibaba Qwen, or OpenRouter. It runs a configurable multi-agent pipeline, ships Codex-style developer panes (browser, terminal, git review, file tree), and keeps every prompt, key, and conversation on your local machine. No Lamprey cloud. No subscription. MIT license. Two downloads: an NSIS installer and a portable ZIP.
+      </div>
+
+      <!-- FAQ -->
+      <div class="lamprey-card">
         <h2 style="font-size:1.6rem;margin-bottom:6px;">Frequently asked questions</h2>
 
         <div class="faq-item">
+          <p class="faq-q">What is Lamprey?</p>
+          <p class="faq-a">Lamprey is a free, open-source Electron desktop app that combines multi-provider AI chat with a Codex-style coding IDE. It routes prompts to DeepSeek, Google Gemma, Alibaba Qwen, and OpenRouter. Bring your own API keys. MIT license. No telemetry.</p>
+        </div>
+
+        <div class="faq-item">
+          <p class="faq-q">Does it cost anything?</p>
+          <p class="faq-a">No. Lamprey is free and open source under the MIT license. You pay only for the AI provider API calls you make. DeepSeek offers a free tier to start. There is no Lamprey subscription, no seat license, and no cloud service to pay for.</p>
+        </div>
+
+        <div class="faq-item">
+          <p class="faq-q">Which AI providers does Lamprey support?</p>
+          <p class="faq-a">Lamprey routes per-model to DeepSeek (V4 Pro, V4 Flash, V3, R1), Google Gemma via AI Studio, Alibaba Qwen via DashScope, and any model on OpenRouter. You can assign a different model to each agent role - Planner, Coder, Reviewer - in the same pipeline run.</p>
+        </div>
+
+        <div class="faq-item">
+          <p class="faq-q">Does Lamprey need an internet connection?</p>
+          <p class="faq-a">Lamprey itself runs locally with no telemetry or phone-home. It does need to reach whichever AI provider API you configure to send prompts. If you pair it with a local Island Mountain inference server running vLLM or Ollama, you can route to local models and run fully air-gapped.</p>
+        </div>
+
+        <div class="faq-item">
           <p class="faq-q">Why does Windows warn me when I run this?</p>
-          <p class="faq-a">The installer is not yet Authenticode code-signed. SmartScreen flags any binary from an &ldquo;unrecognized publisher&rdquo; until enough installs of the same SHA256 accumulate. We&rsquo;re in the process of getting an EV (Extended Validation) code-signing certificate; once it&rsquo;s issued, the warning will be gone immediately on future builds. In the meantime, the SHA256 above is the primary trust signal.</p>
+          <p class="faq-a">The installer is not yet Authenticode code-signed. SmartScreen flags any binary from an unrecognized publisher. Click More info, then Run anyway. Verify the SHA-256 hash on this page against the file you downloaded before running - that is the primary trust signal until the EV certificate arrives.</p>
         </div>
 
         <div class="faq-item">
-          <p class="faq-q">Can I send this installer over email?</p>
-          <p class="faq-a">No. Gmail, Outlook, and most corporate mail gateways block <code>.exe</code> attachments outright (even inside <code>.zip</code>). Send your recipient the link to this page instead &mdash; <code>https://islandmountain.io/lamprey/</code> &mdash; and they can download it and verify it themselves.</p>
+          <p class="faq-q">What is the difference between the installer and the portable ZIP?</p>
+          <p class="faq-a">The NSIS installer (Lamprey-0.8.1-x64.exe) writes to Program Files, creates Start Menu and desktop shortcuts, and adds an uninstaller. No UAC is needed after first install. The portable ZIP (Lamprey-0.8.1-x64.zip) unpacks anywhere and runs Lamprey.exe directly - no install, no admin rights required. Both run the same app and the same version.</p>
         </div>
 
         <div class="faq-item">
-          <p class="faq-q">Does Lamprey MAI need an internet connection?</p>
-          <p class="faq-a">No. Everything runs locally on your hardware. The installer itself does not contact any server during install. The application does not phone home, check for updates, or transmit data after install. Air-gapping is a design constraint, not an opt-in.</p>
+          <p class="faq-q">Can I use Lamprey with a local model instead of a cloud API?</p>
+          <p class="faq-a">Yes. Point Lamprey's OpenRouter-compatible endpoint at any local server that speaks the OpenAI chat completion API - including vLLM, Ollama, or an Island Mountain Summit inference server. No cloud keys required for local routing. See the <a href="../technology.html" class="clr-copper">Technology page</a> for local inference options.</p>
         </div>
 
         <div class="faq-item">
-          <p class="faq-q">How do I uninstall it?</p>
-          <p class="faq-a">Settings &rarr; Apps &rarr; Installed apps &rarr; search &ldquo;Lamprey MAI&rdquo; &rarr; Uninstall. Or run the uninstaller directly at <code>C:\Program Files\Lamprey MAI\unins000.exe</code>. The uninstaller removes everything under <code>Program Files\Lamprey MAI</code> and the desktop/Start Menu shortcuts.</p>
+          <p class="faq-q">Can I use Lamprey on Linux or macOS?</p>
+          <p class="faq-a">The pre-built download targets Windows 10/11 x64. Linux and macOS are buildable from source using <code>npm run build:linux</code> or <code>npm run build:mac</code>. Requirements: Node.js 22+, npm 10+, git. See the <a href="https://github.com/USS-Parks/lamprey" target="_blank" rel="noopener" class="clr-copper">GitHub repo</a> for full build instructions.</p>
         </div>
 
         <div class="faq-item">
           <p class="faq-q">Where can I file issues or ask questions?</p>
-          <p class="faq-a">Email <a href="mailto:basho@islandmountain.io" class="clr-copper">basho@islandmountain.io</a> or call <a href="tel:+18016091130" class="clr-copper">1-801-609-1130</a>. Include the version number (1.1.1) and the first few lines from <code>status</code> at the <code>mai&gt;</code> prompt.</p>
+          <p class="faq-a">Open an issue on <a href="https://github.com/USS-Parks/lamprey/issues" target="_blank" rel="noopener" class="clr-copper">GitHub</a>, email <a href="mailto:basho@islandmountain.io" class="clr-copper">basho@islandmountain.io</a>, or call <a href="tel:+18016091130" class="clr-copper">1-801-609-1130</a>. Include the version number (0.8.1) and a description of what you expected vs. what happened.</p>
         </div>
+      </div>
 
-        <div class="faq-item">
-          <p class="faq-q">What about Linux or macOS?</p>
-          <p class="faq-a">Linux support ships with the Landfall hardware appliances. macOS is not currently a primary target. For server / appliance deployment, see <a href="../technology.html" class="clr-copper">Technology</a> and <a href="../products.html" class="clr-copper">Summit</a>.</p>
-        </div>
+      <!-- Hardware CTA -->
+      <div class="lamprey-card" style="margin-top:30px;text-align:center;">
+        <h2 style="font-size:1.4rem;margin-bottom:10px;">Want local inference without cloud API costs?</h2>
+        <p style="color:var(--text-muted);max-width:600px;margin:0 auto 20px;">Pair Lamprey with an Island Mountain Summit server and route to models running entirely on your own hardware. No API bills. No data leaving your network. One-time hardware purchase.</p>
+        <a href="../products.html" class="btn btn-primary" style="margin-right:12px;">See Summit Servers</a>
+        <a href="../contact.html" class="btn btn-outline">Request a Quote</a>
+        <p style="color:var(--text-muted);margin-top:14px;font-size:0.9rem;">Or call directly: 1-801-609-1130</p>
       </div>
 
     </div>
