@@ -1,0 +1,30 @@
+# Cloudflare Pages cache headers - Island Mountain
+# Added Session 72 (2026-06-14) to fix the PageSpeed "efficient cache lifetimes"
+# finding (assets were served at a 4h browser TTL).
+#
+# Tiering rule: cache HARD only what is renamed when its content changes.
+#   - /images and /fonts are renamed on change (or never change) -> 1 year immutable.
+#   - /css and /js are NOT fingerprinted and get edited often -> short TTL + background
+#     revalidation, so a returning visitor never gets stuck on stale code.
+#   - HTML is intentionally NOT listed here: it keeps the Pages default (revalidate),
+#     so content edits go live immediately.
+
+# Images: renamed when changed (logo-nav-new, hero variants, etc.). Biggest byte win.
+/images/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Self-hosted font subsets: stable woff2 files.
+/fonts/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Icon font + its CSS: rare changes, same filename. 30 days is the safe ceiling.
+/icons/*
+  Cache-Control: public, max-age=2592000
+
+# Stylesheets: unversioned, edited frequently. 1 day fresh + 1 week serve-stale-while-revalidate.
+/css/*
+  Cache-Control: public, max-age=86400, stale-while-revalidate=604800
+
+# Scripts: unversioned. Same policy as CSS.
+/js/*
+  Cache-Control: public, max-age=86400, stale-while-revalidate=604800
