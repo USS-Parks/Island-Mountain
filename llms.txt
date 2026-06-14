@@ -31,6 +31,10 @@ All systems ship with DeepSeek V4-Flash pre-installed, OpenWebUI configured, and
 - Educational institutions protecting student records under FERPA
 - Casino gaming operations complying with Title 31 BSA/AML, NIGC MICS, and state gaming commission cybersecurity requirements
 
+## Team
+- Basho Parks, Co-founder. AI systems, prompt engineering, forward deployment, business development, and content. Background in tribal emergency management with the Yurok Tribe. CV: https://islandmountain.io/basho-parks.html
+- John Dougherty, Co-founder. Hardware engineering and product. 25 years in enterprise security and GPU systems. https://www.johndou.com
+
 ## Key Pages
 - Products: https://islandmountain.io/products.html
 - Landfall Series Pre-Order: https://islandmountain.io/landfall-preorder.html
@@ -68,4 +72,4 @@ All systems ship with DeepSeek V4-Flash pre-installed, OpenWebUI configured, and
 - H100 vs H200 Comparison: https://islandmountain.io/blog/h100-vs-h200-inference-comparison.html
 - Cloud vs Local TCO: https://islandmountain.io/blog/cloud-ai-vs-local-hardware-tco.html
 - OpenWebUI Admin Guide: https://islandmountain.io/blog/openwebui-admin-setup-guide.html
-- Tribal Data Sovereignty: https://islandmountain.io/blog/tribal-data-sovereignty-ai-i
+- Tribal Data Sovereignty: https://islandmountain.io/blog/tribal-data-sovereignty-ai-infrastructure.html
