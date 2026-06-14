@@ -101,6 +101,11 @@
   .rc-gate-table td, .rc-gate-table th { text-align:left; padding:10px 12px; border-bottom:1px solid rgba(148,163,184,0.15); font-size:0.92rem; color:var(--text-muted); vertical-align:top; }
   .rc-gate-table th { color:var(--text-light); }
   .rc-faq-q { margin:22px 0 4px; }
+  /* Bibliography page: tool floats over the hero image (no shaded section panel) */
+  .section-first { background-color: transparent; padding-bottom: 24px; }
+  /* Header sits directly under the tool, not a full screen down */
+  .hero.hero-page { min-height: auto; padding: 4px 24px 8px; }
+  .hero.hero-page .hero-inner { max-width: 920px; }
   </style>
   <link rel="canonical" href="https://islandmountain.io/bibliography.html">
 
@@ -255,10 +260,6 @@
           </div>
           <div class="rc-results" id="rc-single-out"></div>
         </section>
-
-        <div class="rc-principle">
-          <strong>Retrieve-then-verify, never generate.</strong> No link on this page is produced by a language model. Every source is pulled from an authoritative index (OpenAlex, Crossref, arXiv, CourtListener, GDELT), fetched live, and title-matched before you see it. A citation that fails any gate is dropped, not flagged.
-        </div>
       </div>
     </div>
   </section>
@@ -269,6 +270,17 @@
       <span class="hero-badge">Verification-first citations</span>
       <h1>Bibliography: Real Citations</h1>
       <p>Verified, live, vetted sources, never AI-hallucinated. Build a bibliography from a topic, audit a paper's references, or check a single citation against authoritative indexes in real time.</p>
+    </div>
+  </section>
+
+  <!-- Principle -->
+  <section class="section" style="padding:8px 0 48px;">
+    <div class="container">
+      <div class="rc-wrap">
+        <div class="rc-principle" style="margin:0;">
+          <strong>Retrieve-then-verify, never generate.</strong> No link on this page is produced by a language model. Every source is pulled from an authoritative index (OpenAlex, Crossref, arXiv, CourtListener, GDELT), fetched live, and title-matched before you see it. A citation that fails any gate is dropped, not flagged.
+        </div>
+      </div>
     </div>
   </section>
 
