@@ -115,6 +115,13 @@
   @keyframes rc-fade-out { from { opacity:1; } to { opacity:0; transform:translateY(-8px); } }
   .rc-dropping { animation:rc-fade-out .25s ease-in forwards; pointer-events:none; }
   .rc-card.rc-flip { transition:transform .4s ease-out; }
+  .rc-status { animation:rc-pulse 1.8s ease-in-out infinite; }
+  @keyframes rc-pulse { 0%,100% { opacity:1; } 50% { opacity:0.5; } }
+  @media (max-width:600px) {
+    .rc-gate-strip { gap:4px; }
+    .rc-gate-pill { font-size:0.6rem; padding:1px 5px; gap:3px; }
+    .rc-gate-pill .rc-spin { width:8px; height:8px; }
+  }
   /* Bibliography page: tool floats over the hero image (no shaded section panel) */
   .section-first { background-color: transparent; padding-top: 100px; padding-bottom: 24px; }
   /* Header sits directly under the tool, not a full screen down */
@@ -455,6 +462,7 @@
 
     // tabs
     document.querySelectorAll('.rc-tab').forEach(b => b.onclick = () => {
+      if (bibAbort) { bibAbort.abort(); bibAbort = null; }
       document.querySelectorAll('.rc-tab').forEach(x => x.classList.remove('active'));
       b.classList.add('active');
       ['bib','audit','single'].forEach(id => { $('#rc-tab-' + id).hidden = (id !== b.dataset.tab); });
@@ -576,6 +584,23 @@
       }
       if (resp.status === 429) { handlers.onError("You're searching a bit fast — please wait a moment and try again."); return; }
       if (!resp.ok || !resp.body) { handlers.onError('The verification service returned an error (' + resp.status + ').'); return; }
+      // Batch fallback: if the backend returned JSON instead of SSE, synthesize events from it
+      var ct = (resp.headers.get('content-type') || '');
+      if (!ct.includes('text/event-stream')) {
+        try {
+          var data = await resp.json();
+          var v = data.verified || [];
+          for (var j = 0; j < v.length; j++) {
+            var fc = 'c' + j;
+            handlers.onCandidate({id:fc, title:v[j].title, authority:v[j].authority, source_type:v[j].source_type, url:v[j].url, year:v[j].year, authors:(v[j].authors||[]).slice(0,4)});
+            handlers.onGate({id:fc, gate:'standing', status:'passed'});
+            handlers.onGate({id:fc, gate:'live', status:'passed'});
+            handlers.onVerified({id:fc, source:v[j]});
+          }
+          handlers.onComplete({verified_count:v.length, rejected:data.rejected||0, ranking:v.map(function(_,k){return 'c'+k;}), notes:data.notes||[], formatted:data.formatted||{apa:[],bibtex:''}});
+        } catch (e) { handlers.onError('Unexpected response from the verification service.'); }
+        return;
+      }
       var reader = resp.body.getReader(), decoder = new TextDecoder(), buf = '', evtType = '';
       var EVT = {search_start:'onSearchStart', candidate:'onCandidate', gate:'onGate', verified:'onVerified', dropped:'onDropped', complete:'onComplete'};
       try {
