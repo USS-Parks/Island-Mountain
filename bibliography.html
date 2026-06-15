@@ -453,6 +453,7 @@
       } catch (e) {
         throw new Error('Could not reach the verification service. Please try again in a moment.');
       }
+      if (r.status === 429) throw new Error("You're searching a bit fast — please wait a moment and try again.");
       if (!r.ok) throw new Error('The verification service returned an error (' + r.status + '). Please try again shortly.');
       return r.json();
     }
