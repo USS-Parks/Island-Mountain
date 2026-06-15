@@ -102,11 +102,16 @@
   .rc-gate-table th { color:var(--text-light); }
   .rc-faq-q { margin:22px 0 4px; }
   /* Bibliography page: tool floats over the hero image (no shaded section panel) */
-  .section-first { background-color: transparent; padding-bottom: 24px; }
+  .section-first { background-color: transparent; padding-top: 100px; padding-bottom: 24px; }
   /* Header sits directly under the tool, not a full screen down */
   .hero.hero-page { min-height: auto; padding: 4px 24px 8px; }
   .hero.hero-page .hero-inner { max-width: 920px; }
   .rc-status { color: var(--copper-light); font-size: 0.9rem; margin-top: 14px; }
+  /* Mobile: keep the three tool tabs on one even row so they clear the fixed logo */
+  @media (max-width: 600px) {
+    .rc-tabs { flex-wrap: nowrap; gap: 6px; }
+    .rc-tab { flex: 1 1 0; min-width: 0; text-align: center; padding: 9px 6px; font-size: 0.78rem; line-height: 1.2; }
+  }
   </style>
   <link rel="canonical" href="https://islandmountain.io/bibliography.html">
 
@@ -116,13 +121,13 @@
   <meta property="og:url" content="https://islandmountain.io/bibliography.html">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Island Mountain">
-  <meta property="og:image" content="https://islandmountain.io/images/hero-research-labs.webp">
+  <meta property="og:image" content="https://islandmountain.io/images/hero-resources.webp">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Real Citations - Verified Sources, No Hallucinations">
   <meta name="twitter:description" content="Verification-first citations: every source is retrieved from a real index, checked live, and title-matched. Fabricated references are dropped, not shown.">
-  <meta name="twitter:image" content="https://islandmountain.io/images/hero-research-labs.webp">
+  <meta name="twitter:image" content="https://islandmountain.io/images/hero-resources.webp">
 
   <!-- WebApplication Schema -->
   <script type="application/ld+json">
@@ -195,7 +200,7 @@
 
   <!-- Hero background photo -->
   <div class="hero-photo">
-    <img srcset="images/hero-research-labs-mobile.webp 800w, images/hero-research-labs.webp 1672w" sizes="100vw" src="images/hero-research-labs.webp" alt="Real Citations verified source finder by Island Mountain" fetchpriority="high" decoding="async" width="1672" height="941">
+    <img srcset="images/hero-resources-mobile.webp 800w, images/hero-resources.webp 1836w" sizes="100vw" src="images/hero-resources.webp" alt="Real Citations verified source finder by Island Mountain" fetchpriority="high" decoding="async" width="1836" height="856">
   </div>
 
   <!-- Navbar -->
