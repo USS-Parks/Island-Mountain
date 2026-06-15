@@ -107,6 +107,12 @@
   .hero.hero-page { min-height: auto; padding: 4px 24px 8px; }
   .hero.hero-page .hero-inner { max-width: 920px; }
   .rc-status { color: var(--copper-light); font-size: 0.9rem; margin-top: 14px; }
+  .rc-results-head { font-family:'Space Grotesk',system-ui,sans-serif; font-size:1.1rem; font-weight:600; color:var(--text-light); margin:2px 0 16px; line-height:1.4; }
+  .rc-results-head span { color:var(--copper-light); }
+  .rc-copyrow { display:flex; gap:8px; flex-wrap:wrap; margin-top:18px; }
+  .rc-copybtn { background:var(--tertiary-dark); color:var(--text-light); border:1px solid var(--tertiary-dark); border-radius:8px; padding:9px 14px; font-size:0.85rem; font-family:inherit; cursor:pointer; transition:border-color .15s, color .15s; }
+  .rc-copybtn:hover { border-color:var(--copper); }
+  .rc-copybtn.copied { color:var(--copper-light); border-color:var(--copper); }
   /* Mobile: keep the three tool tabs on one even row so they clear the fixed logo */
   @media (max-width: 600px) {
     .rc-tabs { flex-wrap: nowrap; gap: 6px; }
@@ -493,17 +499,49 @@
     function fail(out, e) { out.innerHTML = ''; const c = el('div', 'rc-card'); c.append(el('span', 'rc-verdict rc-v-bad', 'Error')); c.append(el('div', 'rc-msg', esc(e.message))); out.append(c); }
 
     function mlaName(n){ var p=(n||'').trim().split(/\s+/); if(p.length<2) return n||''; var last=p.pop(); return last + ', ' + p.join(' '); }
+    function mlaDot(s){ s = (s||'').trim(); return (/[.!?]$/.test(s) ? s : s + '.') + ' '; }
     function toMLA(s){
       var a = s.authors || [];
       var auth = '';
-      if (a.length === 1) auth = mlaName(a[0]) + '. ';
-      else if (a.length === 2) auth = mlaName(a[0]) + ', and ' + a[1] + '. ';
-      else if (a.length >= 3) auth = mlaName(a[0]) + ', et al. ';
+      if (a.length === 1) auth = mlaDot(mlaName(a[0]));
+      else if (a.length === 2) auth = mlaDot(mlaName(a[0]) + ', and ' + a[1]);
+      else if (a.length >= 3) auth = mlaDot(mlaName(a[0]) + ', et al.');
       var m = auth + '"' + (s.title || '') + '."';
       if (s.venue) m += ' ' + s.venue + ',';
       if (s.year) m += ' ' + s.year + ',';
       if (s.url) m += ' ' + s.url;
       return (m + '.').replace(/\s+/g, ' ').trim();
+    }
+    // Build a clean, alphabetized MLA Works Cited list as plain text (no HTML).
+    function buildMLA(sources){
+      var entries = sources.map(toMLA).sort(function(a, b){
+        var ka = a.replace(/^[^A-Za-z0-9]+/, '').toLowerCase();
+        var kb = b.replace(/^[^A-Za-z0-9]+/, '').toLowerCase();
+        return ka < kb ? -1 : (ka > kb ? 1 : 0);
+      });
+      return 'Works Cited\n\n' + entries.join('\n');
+    }
+    // Copy plain text to the clipboard. Tries the async Clipboard API, then a
+    // legacy execCommand fallback, so it works across browsers and contexts.
+    async function copyText(text, btn){
+      var ok = false;
+      try { if (navigator.clipboard && window.isSecureContext) { await navigator.clipboard.writeText(text); ok = true; } } catch (e) {}
+      if (!ok) {
+        try {
+          var ta = document.createElement('textarea');
+          ta.value = text; ta.style.position = 'fixed'; ta.style.top = '0'; ta.style.opacity = '0';
+          document.body.appendChild(ta); ta.focus(); ta.select();
+          ok = document.execCommand('copy'); document.body.removeChild(ta);
+        } catch (e) { ok = false; }
+      }
+      if (btn){
+        var o = btn.dataset.label || btn.textContent; btn.dataset.label = o;
+        btn.textContent = ok ? 'Copied!' : 'Press Ctrl+C to copy'; btn.classList.add('copied');
+        setTimeout(function(){ btn.textContent = o; btn.classList.remove('copied'); }, 1600);
+      }
+    }
+    function searchHeading(topic){
+      return el('div', 'rc-results-head', 'Search results for &ldquo;<span>' + esc(topic) + '</span>&rdquo;');
     }
 
     // Single check
@@ -538,16 +576,19 @@
 
     // Bibliography
     $('#rc-bib-go').onclick = async () => {
-      const out = $('#rc-bib-out'); const topic = $('#rc-bib-topic').value.trim();
+      const out = $('#rc-bib-out'); const topicField = $('#rc-bib-topic');
+      const topic = topicField.value.trim();
       if (!topic) return;
       const types = [...document.querySelectorAll('#rc-tab-bib .rc-checks input:checked')].map(c => c.value);
       const st = $('#rc-bib-status');
+      topicField.value = '';   // reset the query field on submit
       out.innerHTML = '';
       st.textContent = 'Retrieving and verifying against live authorities...'; st.hidden = false;
       try {
         const data = await post('/api/bibliography', {topic, source_types: types, limit: +$('#rc-bib-limit').value});
         st.hidden = true;
         out.innerHTML = '';
+        out.append(searchHeading(topic));
         const sum = el('div', 'rc-summary');
         sum.append(el('span', 'rc-pill', '<b>' + data.verified.length + '</b> verified'));
         sum.append(el('span', 'rc-pill', '<b>' + data.rejected + '</b> dropped'));
@@ -560,14 +601,27 @@
           if (s.cited_by_count != null) card.append(el('div', 'rc-src-meta', 'Cited by ' + s.cited_by_count));
           out.append(card);
         });
-        if (data.verified.length && data.formatted) {
-          const d = el('details', 'rc-details');
-          d.append(el('summary', null, 'Copy all - MLA, APA, BibTeX'));
-          d.append(el('pre', 'rc-pre', 'MLA\n' + esc(data.verified.map(toMLA).join('\n')) + '\n\nAPA\n' + esc((data.formatted.apa || []).join('\n')) + '\n\nBibTeX\n' + esc(data.formatted.bibtex || '')));
-          out.append(d);
+        if (data.verified.length) {
+          const mla = buildMLA(data.verified);
+          const row = el('div', 'rc-copyrow');
+          const mlaBtn = el('button', 'rc-copybtn', 'Copy MLA bibliography');
+          mlaBtn.onclick = () => copyText(mla, mlaBtn);
+          row.append(mlaBtn);
+          if (data.formatted) {
+            const apaBtn = el('button', 'rc-copybtn', 'Copy APA');
+            apaBtn.onclick = () => copyText((data.formatted.apa || []).join('\n'), apaBtn);
+            row.append(apaBtn);
+            const bibBtn = el('button', 'rc-copybtn', 'Copy BibTeX');
+            bibBtn.onclick = () => copyText(data.formatted.bibtex || '', bibBtn);
+            row.append(bibBtn);
+          }
+          out.append(row);
         }
         if (data.notes && data.notes.length) out.append(el('div', 'rc-msg', esc(data.notes.join(' '))));
-      } catch (e) { st.hidden = true; fail(out, e); }
+      } catch (e) {
+        st.hidden = true; out.innerHTML = ''; out.append(searchHeading(topic));
+        const c = el('div', 'rc-card'); c.append(el('span', 'rc-verdict rc-v-bad', 'Error')); c.append(el('div', 'rc-msg', esc(e.message))); out.append(c);
+      }
     };
 
     // Desktop: Enter submits the topic (Shift+Enter inserts a newline).
