@@ -433,7 +433,7 @@
     // Real Citations talks to its verification API, a FastAPI service deployed
     // separately (it cannot run on static hosting). Point this at the deployed
     // backend. If the API subdomain changes, change this one line.
-    const API_BASE = "https://bibliography-ozvb.onrender.com";
+    const API_BASE = "https://api.islandmountain.io";
 
     const $ = s => document.querySelector(s);
     const el = (t, c, h) => { const e = document.createElement(t); if (c) e.className = c; if (h != null) e.innerHTML = h; return e; };
