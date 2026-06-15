@@ -109,6 +109,7 @@
   .rc-gate-pill.fail { color:#f85149; border-color:rgba(248,81,73,0.4); }
   .rc-gate-pill.checking { color:var(--copper-light); border-color:var(--copper); }
   .rc-gate-pill .rc-spin { display:inline-block; width:10px; height:10px; border:2px solid var(--copper-light); border-top-color:transparent; border-radius:50%; animation:rc-spinner-spin .6s linear infinite; }
+  .rc-gate-pill .rc-gate-icon { width:14px; height:14px; border-radius:3px; flex-shrink:0; }
   @keyframes rc-spinner-spin { to { transform:rotate(360deg); } }
   @keyframes rc-fade-in { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:translateY(0); } }
   .rc-entering { animation:rc-fade-in .3s ease-out both; }
@@ -121,6 +122,7 @@
     .rc-gate-strip { gap:4px; }
     .rc-gate-pill { font-size:0.6rem; padding:1px 5px; gap:3px; }
     .rc-gate-pill .rc-spin { width:8px; height:8px; }
+    .rc-gate-pill .rc-gate-icon { width:12px; height:12px; }
   }
   /* Bibliography page: tool floats over the hero image (no shaded section panel) */
   .section-first { background-color: transparent; padding-top: 100px; padding-bottom: 24px; }
@@ -684,9 +686,9 @@
           var card = el('div', 'rc-card rc-pending rc-entering');
           card.dataset.candidateId = d.id;
           var strip = el('div', 'rc-gate-strip');
-          strip.innerHTML = '<span class="rc-gate-pill pass">✓ Retrieved</span>'
-            + '<span class="rc-gate-pill" data-gate="standing">Standing</span>'
-            + '<span class="rc-gate-pill" data-gate="live">Live</span>';
+          strip.innerHTML = '<span class="rc-gate-pill pass"><img class="rc-gate-icon" src="images/gate-retrieved.webp" alt=""> Retrieved</span>'
+            + '<span class="rc-gate-pill" data-gate="standing"><img class="rc-gate-icon" src="images/gate-standing.webp" alt=""> Standing</span>'
+            + '<span class="rc-gate-pill" data-gate="live"><img class="rc-gate-icon" src="images/gate-live.webp" alt=""> Live</span>';
           card.append(strip);
           card.append(el('div', 'rc-src-title', esc(d.title)));
           var meta = [(d.authors || []).slice(0,3).join(', '), d.year].filter(Boolean).join(' · ');
@@ -699,15 +701,17 @@
           var card = cardMap[d.id]; if (!card) return;
           var pill = card.querySelector('[data-gate="' + d.gate + '"]'); if (!pill) return;
           var label = ucFirst(d.gate);
+          var iconSrc = d.gate === 'standing' ? 'images/gate-standing.webp' : 'images/gate-live.webp';
+          var iconTag = '<img class="rc-gate-icon" src="' + iconSrc + '" alt=""> ';
           if (d.status === 'checking') {
             pill.className = 'rc-gate-pill checking';
-            pill.innerHTML = '<span class="rc-spin"></span> ' + esc(label);
+            pill.innerHTML = iconTag + '<span class="rc-spin"></span> ' + esc(label);
           } else if (d.status === 'passed') {
             pill.className = 'rc-gate-pill pass';
-            pill.textContent = '✓ ' + label;
+            pill.innerHTML = iconTag + esc(label);
           } else {
             pill.className = 'rc-gate-pill fail';
-            pill.textContent = '✗ ' + label;
+            pill.innerHTML = iconTag + esc(label);
           }
         },
 
