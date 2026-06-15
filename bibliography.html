@@ -101,6 +101,20 @@
   .rc-gate-table td, .rc-gate-table th { text-align:left; padding:10px 12px; border-bottom:1px solid rgba(148,163,184,0.15); font-size:0.92rem; color:var(--text-muted); vertical-align:top; }
   .rc-gate-table th { color:var(--text-light); }
   .rc-faq-q { margin:22px 0 4px; }
+  /* Streaming progressive cards */
+  .rc-pending { opacity:0.85; border-left:3px solid var(--tertiary-dark); }
+  .rc-gate-strip { display:flex; gap:6px; margin-bottom:8px; }
+  .rc-gate-pill { font-size:0.7rem; padding:2px 8px; border-radius:6px; border:1px solid var(--tertiary-dark); font-family:ui-monospace,Menlo,monospace; color:var(--text-muted); display:inline-flex; align-items:center; gap:4px; transition:color .2s, border-color .2s; }
+  .rc-gate-pill.pass { color:#3fb950; border-color:rgba(63,185,80,0.4); }
+  .rc-gate-pill.fail { color:#f85149; border-color:rgba(248,81,73,0.4); }
+  .rc-gate-pill.checking { color:var(--copper-light); border-color:var(--copper); }
+  .rc-gate-pill .rc-spin { display:inline-block; width:10px; height:10px; border:2px solid var(--copper-light); border-top-color:transparent; border-radius:50%; animation:rc-spinner-spin .6s linear infinite; }
+  @keyframes rc-spinner-spin { to { transform:rotate(360deg); } }
+  @keyframes rc-fade-in { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:translateY(0); } }
+  .rc-entering { animation:rc-fade-in .3s ease-out both; }
+  @keyframes rc-fade-out { from { opacity:1; } to { opacity:0; transform:translateY(-8px); } }
+  .rc-dropping { animation:rc-fade-out .25s ease-in forwards; pointer-events:none; }
+  .rc-card.rc-flip { transition:transform .4s ease-out; }
   /* Bibliography page: tool floats over the hero image (no shaded section panel) */
   .section-first { background-color: transparent; padding-top: 100px; padding-bottom: 24px; }
   /* Header sits directly under the tool, not a full screen down */
@@ -617,54 +631,93 @@
       } catch (e) { fail(out, e); }
     };
 
-    // Bibliography
+    // Bibliography (streaming)
     $('#rc-bib-go').onclick = async () => {
-      const out = $('#rc-bib-out'); const topicField = $('#rc-bib-topic');
-      const topic = topicField.value.trim();
+      var out = $('#rc-bib-out'), topicField = $('#rc-bib-topic');
+      var topic = topicField.value.trim();
       if (!topic) return;
-      const types = [...document.querySelectorAll('#rc-tab-bib .rc-checks input:checked')].map(c => c.value);
-      const st = $('#rc-bib-status');
-      topicField.value = '';   // reset the query field on submit
+      var types = [...document.querySelectorAll('#rc-tab-bib .rc-checks input:checked')].map(c => c.value);
+      var limit = +$('#rc-bib-limit').value;
+      var st = $('#rc-bib-status');
+      topicField.value = '';
+      if (bibAbort) bibAbort.abort();
+      bibAbort = new AbortController();
       out.innerHTML = '';
+      out.append(searchHeading(topic));
       st.textContent = 'Retrieving and verifying against live authorities...'; st.hidden = false;
-      try {
-        const data = await post('/api/bibliography', {topic, source_types: types, limit: +$('#rc-bib-limit').value});
-        st.hidden = true;
-        out.innerHTML = '';
-        out.append(searchHeading(topic));
-        const sum = el('div', 'rc-summary');
-        sum.append(el('span', 'rc-pill', '<b>' + data.verified.length + '</b> verified'));
-        sum.append(el('span', 'rc-pill', '<b>' + data.rejected + '</b> dropped'));
-        out.append(sum);
-        if (!data.verified.length) out.append(el('div', 'rc-card', '<div class="rc-empty">No sources cleared every gate for this topic. Try broadening it.</div>'));
-        data.verified.forEach((s, i) => {
-          const card = el('div', 'rc-card');
-          card.append(el('span', 'rc-verdict rc-v-verified', 'Verified #' + (i + 1)));
-          card.append(sourceBlock(s));
-          if (s.cited_by_count != null) card.append(el('div', 'rc-src-meta', 'Cited by ' + s.cited_by_count));
+
+      var cardMap = {};
+      var sourceMap = {};
+
+      function ucFirst(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
+
+      await streamBib(topic, types, limit, {
+        onSearchStart: function() {},
+
+        onCandidate: function(d) {
+          st.hidden = true;
+          var card = el('div', 'rc-card rc-pending rc-entering');
+          card.dataset.candidateId = d.id;
+          var strip = el('div', 'rc-gate-strip');
+          strip.innerHTML = '<span class="rc-gate-pill pass">✓ Retrieved</span>'
+            + '<span class="rc-gate-pill" data-gate="standing">Standing</span>'
+            + '<span class="rc-gate-pill" data-gate="live">Live</span>';
+          card.append(strip);
+          card.append(el('div', 'rc-src-title', esc(d.title)));
+          var meta = [(d.authors || []).slice(0,3).join(', '), d.year].filter(Boolean).join(' · ');
+          card.append(el('div', 'rc-src-meta', (meta ? esc(meta) + ' · ' : '') + 'via ' + esc(d.authority)));
+          cardMap[d.id] = card;
           out.append(card);
-        });
-        if (data.verified.length) {
-          const mla = buildMLA(data.verified);
-          const row = el('div', 'rc-copyrow');
-          const mlaBtn = el('button', 'rc-copybtn', 'Copy MLA bibliography');
-          mlaBtn.onclick = () => copyText(mla, mlaBtn);
-          row.append(mlaBtn);
-          if (data.formatted) {
-            const apaBtn = el('button', 'rc-copybtn', 'Copy APA');
-            apaBtn.onclick = () => copyText((data.formatted.apa || []).join('\n'), apaBtn);
-            row.append(apaBtn);
-            const bibBtn = el('button', 'rc-copybtn', 'Copy BibTeX');
-            bibBtn.onclick = () => copyText(data.formatted.bibtex || '', bibBtn);
-            row.append(bibBtn);
+        },
+
+        onGate: function(d) {
+          var card = cardMap[d.id]; if (!card) return;
+          var pill = card.querySelector('[data-gate="' + d.gate + '"]'); if (!pill) return;
+          var label = ucFirst(d.gate);
+          if (d.status === 'checking') {
+            pill.className = 'rc-gate-pill checking';
+            pill.innerHTML = '<span class="rc-spin"></span> ' + esc(label);
+          } else if (d.status === 'passed') {
+            pill.className = 'rc-gate-pill pass';
+            pill.textContent = '✓ ' + label;
+          } else {
+            pill.className = 'rc-gate-pill fail';
+            pill.textContent = '✗ ' + label;
           }
-          out.append(row);
-        }
-        if (data.notes && data.notes.length) out.append(el('div', 'rc-msg', esc(data.notes.join(' '))));
-      } catch (e) {
-        st.hidden = true; out.innerHTML = ''; out.append(searchHeading(topic));
-        const c = el('div', 'rc-card'); c.append(el('span', 'rc-verdict rc-v-bad', 'Error')); c.append(el('div', 'rc-msg', esc(e.message))); out.append(c);
-      }
+        },
+
+        onVerified: function(d) {
+          sourceMap[d.id] = d.source;
+          var card = cardMap[d.id]; if (!card) return;
+          card.className = 'rc-card';
+          card.innerHTML = '';
+          card.append(el('span', 'rc-verdict rc-v-verified', 'Verified'));
+          card.append(sourceBlock(d.source));
+          if (d.source.cited_by_count != null) card.append(el('div', 'rc-src-meta', 'Cited by ' + d.source.cited_by_count));
+        },
+
+        onDropped: function(d) {
+          var card = cardMap[d.id];
+          if (card) {
+            card.classList.add('rc-dropping');
+            card.addEventListener('animationend', function() { card.remove(); });
+          }
+          delete cardMap[d.id];
+        },
+
+        onComplete: function(d) {
+          // S-5: FLIP reorder + summary + copy buttons (stub for now)
+        },
+
+        onError: function(msg) {
+          st.hidden = true;
+          var text = typeof msg === 'string' ? msg : (msg && msg.message) || 'Unknown error';
+          var c = el('div', 'rc-card');
+          c.append(el('span', 'rc-verdict rc-v-bad', 'Error'));
+          c.append(el('div', 'rc-msg', esc(text)));
+          out.append(c);
+        },
+      });
     };
 
     // Desktop: Enter submits the topic (Shift+Enter inserts a newline).
