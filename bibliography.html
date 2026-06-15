@@ -706,7 +706,62 @@
         },
 
         onComplete: function(d) {
-          // S-5: FLIP reorder + summary + copy buttons (stub for now)
+          var cards = d.ranking.map(function(cid) { return cardMap[cid]; }).filter(Boolean);
+
+          // FLIP animation: First — record current positions
+          var firstRects = {};
+          cards.forEach(function(card) { firstRects[card.dataset.candidateId] = card.getBoundingClientRect(); });
+
+          // Last — reorder DOM nodes + re-number badges
+          cards.forEach(function(card, i) {
+            out.append(card);
+            var badge = card.querySelector('.rc-verdict');
+            if (badge) badge.textContent = 'Verified #' + (i + 1);
+          });
+
+          // Invert + Play
+          cards.forEach(function(card) {
+            var cid = card.dataset.candidateId;
+            var first = firstRects[cid]; if (!first) return;
+            var last = card.getBoundingClientRect();
+            var dy = first.top - last.top;
+            if (Math.abs(dy) > 1) {
+              card.style.transform = 'translateY(' + dy + 'px)';
+              card.offsetHeight;
+              card.classList.add('rc-flip');
+              card.style.transform = '';
+              card.addEventListener('transitionend', function() { card.classList.remove('rc-flip'); }, {once: true});
+            }
+          });
+
+          // Summary pills
+          var sum = el('div', 'rc-summary');
+          sum.append(el('span', 'rc-pill', '<b>' + d.verified_count + '</b> verified'));
+          sum.append(el('span', 'rc-pill', '<b>' + d.rejected + '</b> dropped'));
+          out.append(sum);
+
+          // Copy buttons
+          if (d.verified_count > 0) {
+            var ranked = d.ranking.map(function(cid) { return sourceMap[cid]; }).filter(Boolean);
+            var mla = buildMLA(ranked);
+            var row = el('div', 'rc-copyrow');
+            var mlaBtn = el('button', 'rc-copybtn', 'Copy MLA bibliography');
+            mlaBtn.onclick = function() { copyText(mla, mlaBtn); };
+            row.append(mlaBtn);
+            if (d.formatted) {
+              var apaBtn = el('button', 'rc-copybtn', 'Copy APA');
+              apaBtn.onclick = function() { copyText((d.formatted.apa || []).join('\n'), apaBtn); };
+              row.append(apaBtn);
+              var bibBtn = el('button', 'rc-copybtn', 'Copy BibTeX');
+              bibBtn.onclick = function() { copyText(d.formatted.bibtex || '', bibBtn); };
+              row.append(bibBtn);
+            }
+            out.append(row);
+          } else {
+            out.append(el('div', 'rc-card', '<div class="rc-empty">No sources cleared every gate for this topic. Try broadening it.</div>'));
+          }
+
+          if (d.notes && d.notes.length) out.append(el('div', 'rc-msg', esc(d.notes.join(' '))));
         },
 
         onError: function(msg) {
