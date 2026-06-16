@@ -572,6 +572,8 @@
     // --- Streaming bibliography consumer ---
     var bibAbort = null;
     async function streamBib(topic, types, limit, handlers) {
+      var STAGGER = {candidate: 100, gate: 30, verified: 60, dropped: 60};
+      function wait(ms) { return new Promise(function(r) { setTimeout(r, ms); }); }
       var resp;
       try {
         resp = await fetch(API_BASE + '/api/bibliography/stream', {
@@ -595,9 +597,13 @@
           for (var j = 0; j < v.length; j++) {
             var fc = 'c' + j;
             handlers.onCandidate({id:fc, title:v[j].title, authority:v[j].authority, source_type:v[j].source_type, url:v[j].url, year:v[j].year, authors:(v[j].authors||[]).slice(0,4)});
+            await wait(30);
             handlers.onGate({id:fc, gate:'standing', status:'passed'});
+            await wait(30);
             handlers.onGate({id:fc, gate:'live', status:'passed'});
+            await wait(30);
             handlers.onVerified({id:fc, source:v[j]});
+            if (j < v.length - 1) await wait(80);
           }
           handlers.onComplete({verified_count:v.length, rejected:data.rejected||0, ranking:v.map(function(_,k){return 'c'+k;}), notes:data.notes||[], formatted:data.formatted||{apa:[],bibtex:''}});
         } catch (e) { handlers.onError('Unexpected response from the verification service.'); }
@@ -612,15 +618,20 @@
           buf += decoder.decode(chunk.value, {stream: true});
           var lines = buf.split('\n');
           buf = lines.pop();
+          var parsed = [];
           for (var i = 0; i < lines.length; i++) {
             var ln = lines[i];
             if (ln.startsWith('event: ')) { evtType = ln.slice(7).trim(); }
             else if (ln.startsWith('data: ') && evtType) {
-              var d = JSON.parse(ln.slice(6));
-              if (evtType === 'error') { handlers.onError(d.message || 'Verification error'); }
-              else { var fn = handlers[EVT[evtType]]; if (fn) fn(d); }
+              parsed.push({t: evtType, d: JSON.parse(ln.slice(6))});
               evtType = '';
             }
+          }
+          for (var p = 0; p < parsed.length; p++) {
+            var pe = parsed[p];
+            if (pe.t === 'error') { handlers.onError(pe.d.message || 'Verification error'); }
+            else { var fn = handlers[EVT[pe.t]]; if (fn) fn(pe.d); }
+            if (p < parsed.length - 1 && STAGGER[pe.t]) { await wait(STAGGER[pe.t]); }
           }
         }
       } catch (e) {
@@ -735,6 +746,13 @@
         },
 
         onComplete: function(d) {
+          // Remove cards not in the final ranking
+          var rankSet = {};
+          d.ranking.forEach(function(cid) { rankSet[cid] = true; });
+          Object.keys(cardMap).forEach(function(cid) {
+            if (!rankSet[cid] && cardMap[cid]) { cardMap[cid].remove(); delete cardMap[cid]; }
+          });
+
           var cards = d.ranking.map(function(cid) { return cardMap[cid]; }).filter(Boolean);
 
           // FLIP animation: First — record current positions
