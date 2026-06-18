@@ -33,5 +33,10 @@ Allow: /
 User-agent: CCBot
 Allow: /
 
+# Block Cloudflare internal paths from site audit crawlers
+# /cdn-cgi/ is injected by Cloudflare edge (email obfuscation, etc.) — not real pages
+User-agent: AhrefsSiteAudit
+Disallow: /cdn-cgi/
+
 # Sitemap location
 Sitemap: https://islandmountain.io/sitemap.xml
