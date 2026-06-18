@@ -22,7 +22,7 @@
     ['scroll','click','touchstart','keydown'].forEach(function(e){
       document.addEventListener(e, loadGA, {once:true, passive:true});
     });
-    setTimeout(loadGA, 3000);
+    if('requestIdleCallback' in window){requestIdleCallback(loadGA,{timeout:5000})}else{setTimeout(loadGA,5000)};
   })();
 </script>
   <meta charset="UTF-8">
