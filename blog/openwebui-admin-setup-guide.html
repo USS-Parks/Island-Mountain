@@ -308,7 +308,7 @@
 
 <h2>Model Access Control by Role</h2>
 
-<p>Here's where it gets specific to your workflow. Say you've deployed DeepSeek V4-Flash quantized, Llama 4 Scout, and R1 70B Distill. In a law firm you might structure access like this: attorneys and senior paralegals get all models including V4-Flash for fast draft analysis; junior paralegals get Llama 4 Scout and R1 70B Distill but not V4-Flash; administrative staff get Llama 4 Scout for document summarization only.</p>
+<p>Here's where it gets specific to your workflow. Say you've deployed DeepSeek V4-Flash (FP8), Llama 4 Scout, and R1 70B Distill. In a law firm you might structure access like this: attorneys and senior paralegals get all models including V4-Flash for fast draft analysis; junior paralegals get Llama 4 Scout and R1 70B Distill but not V4-Flash; administrative staff get Llama 4 Scout for document summarization only.</p>
 
 <p>OpenWebUI handles this through the Models section in Admin Settings. Each model carries an Allow list where you restrict which users can access it. Currently OpenWebUI doesn't have built-in group management, so you're managing access per user. For a 50-person organization that means individual management.</p>
 

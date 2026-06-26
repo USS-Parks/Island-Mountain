@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) - deferred until user interaction -->
+<link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
+<script>
+  (function(){
+    var loaded = false;
+    function loadGA(){
+      if(loaded) return;
+      loaded = true;
+      var s = document.createElement('script');
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=G-R674E394D4';
+      s.async = true;
+      document.head.appendChild(s);
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      window.gtag = gtag;
+      gtag('js', new Date());
+      gtag('config', 'G-R674E394D4');
+    }
+    ['scroll','click','touchstart','keydown'].forEach(function(e){
+      document.addEventListener(e, loadGA, {once:true, passive:true});
+    });
+    setTimeout(loadGA, 5000);
+  })();
+</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Basho Parks">
+  <meta name="date" content="2026-06-21">
+  <title>AI Search Visibility in 2026: What Three Years of Production AI Taught Me That Most Consultants Haven't Learned Yet</title>
+  <meta name="description" content="AI search visibility consultant with 3+ years production on-premises AI experience. If AI search summaries are eating your traffic, I can tell you why.">
+  <link rel="icon" type="image/x-icon" href="../favicon.ico?v=2">
+  <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon-32.png?v=2">
+  <link rel="apple-touch-icon" sizes="180x180" href="../images/apple-touch-icon.png?v=2">
+  <link rel="stylesheet" href="../css/style.min.css">
+  <link rel="stylesheet" href="../icons/remixicon.css" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="../icons/remixicon.css"></noscript>
+  <link rel="preload" href="../fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <style>
+  @font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400 800;
+    font-display: swap;
+    src: url('../fonts/inter-latin.woff2') format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+  @font-face {
+    font-family: 'Space Grotesk';
+    font-style: normal;
+    font-weight: 300 700;
+    font-display: swap;
+    src: url('../fonts/space-grotesk-latin.woff2') format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+  </style>
+  <link rel="canonical" href="https://islandmountain.io/blog/ai-search-visibility-consultant.html">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="AI Search Visibility in 2026: What Three Years of Production AI Taught Me That Most Consultants Haven't Learned Yet">
+  <meta property="og:description" content="AI search visibility consultant with 3+ years production on-premises AI experience. If AI search summaries are eating your traffic, I can tell you why.">
+  <meta property="og:url" content="https://islandmountain.io/blog/ai-search-visibility-consultant.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Island Mountain">
+  <meta property="og:image" content="https://islandmountain.io/images/hero-mountain.webp">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="AI Search Visibility in 2026: What Three Years of Production AI Taught Me That Most Consultants Haven't Learned Yet">
+  <meta name="twitter:description" content="AI search visibility consultant with 3+ years production on-premises AI experience. If AI search summaries are eating your traffic, I can tell you why.">
+  <meta name="twitter:image" content="https://islandmountain.io/images/hero-mountain.webp">
+
+  <!-- Article Schema -->
+  <script type="application/ld+json">
+  {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      "headline": "AI Search Visibility in 2026: What Three Years of Production AI Taught Me That Most Consultants Haven't Learned Yet",
+      "description": "AI search visibility consultant with 3+ years production on-premises AI experience across compliance-governed routing and regulated-industry deployments. Schema markup, AEO strategy, and infrastructure expertise for businesses losing traffic to AI-generated search summaries.",
+      "url": "https://islandmountain.io/blog/ai-search-visibility-consultant.html",
+      "datePublished": "2026-06-21",
+      "dateModified": "2026-06-21",
+      "author": {
+        "@type": "Person",
+        "name": "Basho Parks",
+        "jobTitle": "Co-Founder",
+        "worksFor": {
+          "@type": "Organization",
+          "name": "Island Mountain",
+          "url": "https://islandmountain.io"
+        }
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Island Mountain",
+        "url": "https://islandmountain.io",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://islandmountain.io/images/hero-mountain.webp"
+        }
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://islandmountain.io/blog/ai-search-visibility-consultant.html"
+      },
+      "image": "https://islandmountain.io/images/hero-mountain.webp",
+      "keywords": ["AI search visibility consultant", "AI search visibility", "generative engine optimization", "answer engine optimization", "on-premises AI", "schema markup strategy", "AI Overviews", "local AI infrastructure"]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://islandmountain.io/about.html#basho-parks",
+      "name": "Basho Parks",
+      "jobTitle": "Co-Founder",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Island Mountain",
+        "url": "https://islandmountain.io"
+      },
+      "knowsAbout": [
+        "AI search visibility strategy",
+        "On-premises AI inference infrastructure",
+        "Compliance-governed AI routing",
+        "Schema markup architecture",
+        "Generative engine optimization",
+        "Answer engine optimization",
+        "HIPAA compliance for AI systems",
+        "ITAR compliance for AI systems",
+        "Tribal data sovereignty",
+        "NVIDIA RTX PRO 6000 Blackwell GPU deployment"
+      ],
+      "hasCredential": [
+        {
+          "@type": "EducationalOccupationalCredential",
+          "name": "Anthropic Claude API Fundamentals Certification"
+        },
+        {
+          "@type": "EducationalOccupationalCredential",
+          "name": "Anthropic Claude Code Certification"
+        },
+        {
+          "@type": "EducationalOccupationalCredential",
+          "name": "Anthropic MCP Architecture Certification"
+        },
+        {
+          "@type": "EducationalOccupationalCredential",
+          "name": "Anthropic Subagents Certification"
+        },
+        {
+          "@type": "EducationalOccupationalCredential",
+          "name": "Anthropic Agent Skills Certification"
+        },
+        {
+          "@type": "EducationalOccupationalCredential",
+          "name": "Anthropic CoWork Certification"
+        },
+        {
+          "@type": "EducationalOccupationalCredential",
+          "name": "Go High Level Lead Generation Certification"
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://islandmountain.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Blog",
+          "item": "https://islandmountain.io/blog.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "AI Search Visibility Consultant",
+          "item": "https://islandmountain.io/blog/ai-search-visibility-consultant.html"
+        }
+      ]
+    }
+  ]
+  }
+  </script>
+
+  <link rel="stylesheet" href="../css/blog.css">
+</head>
+<body>
+
+  <!-- Full-page particle canvas -->
+  <canvas id="particles-canvas"></canvas>
+
+  <!-- Hero background photo -->
+  <div class="hero-photo">
+    <img srcset="../images/hero-mountain-mobile.webp 800w, ../images/hero-mountain.webp 1913w" sizes="100vw" src="../images/hero-mountain.webp" alt="Island Mountain rising from the ocean at sunset" fetchpriority="high" decoding="async" width="1913" height="892">
+  </div>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="../index.html" class="nav-logo"><img src="../images/logo-nav-new.webp" alt="Island Mountain" width="205" height="65"></a>
+      <ul class="nav-links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../why-island-mountain.html">Why Local AI</a></li>
+        <li><a href="../products.html">Summit</a>
+        <li><a href="../landfall-preorder.html">Landfall</a></li>
+        <li><a href="../technology.html">Technology</a></li>
+        <li><a href="../pricing.html">Pricing</a></li>
+        <li class="nav-dropdown">
+          <a href="../solutions.html" class="nav-dropdown-toggle">Solutions <i class="ri-arrow-down-s-line"></i></a>
+          <ul class="nav-dropdown-menu">
+            <li><a href="../law-firms.html">Law Firms</a></li>
+            <li><a href="../medical-practices.html">Medical Practices</a></li>
+            <li><a href="../tribal-nations.html">Tribal Nations</a></li>
+            <li><a href="../research-labs.html">Research Labs</a></li>
+            <li><a href="../defense-contractors.html">Defense Contractors</a></li>
+            <li><a href="../financial-services.html">Financial Services</a></li>
+            <li><a href="../insurance.html">Insurance</a></li>
+            <li><a href="../energy-utilities.html">Energy &amp; Utilities</a></li>
+            <li><a href="../government.html">Government</a></li>
+            <li><a href="../education.html">Education</a></li>
+            <li><a href="../casino-gaming.html">Casino Gaming</a></li>
+          </ul>
+        </li>
+              <li><a href="../faq.html">FAQ</a></li>
+        <li><a href="../blog.html" class="active">Blog</a></li>
+        <li><a href="../resources.html">Resources</a></li>
+        <li><a href="../contact.html" class="nav-cta">Request Quote</a></li>
+      </ul>
+      <button class="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Sidebar -->
+  <div class="sidebar-overlay"></div>
+  <div class="mobile-sidebar">
+    <a href="../index.html">Home</a>
+    <a href="../why-island-mountain.html">Why Local AI</a>
+    <a href="../products.html">Summit</a>
+    <a href="../landfall-preorder.html">Landfall</a>
+    <a href="../technology.html">Technology</a>
+    <a href="../pricing.html">Pricing</a>
+    <a href="../solutions.html" class="mobile-solutions-toggle">Solutions <i class="ri-arrow-down-s-line"></i></a>
+    <div class="mobile-solutions-links">
+      <a href="../law-firms.html">Law Firms</a>
+      <a href="../medical-practices.html">Medical Practices</a>
+      <a href="../tribal-nations.html">Tribal Nations</a>
+      <a href="../research-labs.html">Research Labs</a>
+      <a href="../defense-contractors.html">Defense Contractors</a>
+      <a href="../financial-services.html">Financial Services</a>
+      <a href="../insurance.html">Insurance</a>
+      <a href="../energy-utilities.html">Energy &amp; Utilities</a>
+      <a href="../government.html">Government</a>
+      <a href="../education.html">Education</a>
+      <a href="../casino-gaming.html">Casino Gaming</a>
+    </div>
+            <a href="../faq.html">FAQ</a>
+    <a href="../blog.html">Blog</a>
+    <a href="../resources.html">Resources</a>
+    <a href="../contact.html" class="nav-cta">Request Quote</a>
+  </div>
+
+  <!-- Article -->
+  <section class="section section-first hero-spacer">
+    <div class="container content-max-840">
+
+      <!-- Breadcrumb -->
+      <nav class="breadcrumb">
+        <a href="../index.html">Home</a><span>&rsaquo;</span><a href="../blog.html">Blog</a><span>&rsaquo;</span>AI Search Visibility Consultant
+      </nav>
+
+      <!-- Article Header -->
+      <div class="article-header">
+        <div class="article-meta">
+          <span class="article-date">June 21, 2026</span>
+          <span class="article-tag tag-strategy">Strategy</span>
+          <span class="article-read-time">9 min read</span>
+        </div>
+        <h1 class="text-2xl">AI Search Visibility in 2026: What Three Years of Production AI Taught Me That Most Consultants Haven't Learned Yet</h1>
+        <p class="article-author">Basho Parks</p>
+      </div>
+
+      <article class="article-body">
+
+<p>Most AI search visibility consultants have never touched a GPU. They've never racked a server, never written a compliance routing rule, never sat across from a CISO explaining why every cloud AI endpoint is a data governance exposure. They sell visibility into systems they've never built.</p>
+
+<p>I come at this from the other direction.</p>
+
+<p>Three-plus years of production AI experience across on-premises inference infrastructure, compliance-governed routing, and regulated-industry deployments. I don't consult on AI search visibility from a marketing desk. I consult on it from inside the stack, where models run, where tokens route, where compliance gates open or close based on data classification. Whether that looks like a hardware rack in a locked server room or a generative engine citation strategy for a business watching its organic traffic disappear, the work starts from the same place: understanding how AI systems process information, and what that means for the organizations that depend on being found.</p>
+
+<h2>The 2026 Search Reality Most Businesses Haven't Noticed</h2>
+
+<p>Here's what changed while most companies were still tuning title tags and building backlink profiles.</p>
+
+<p>Google's AI Overviews now appear on roughly 36% of informational queries. Fifty-eight percent of Google searches end without a click. Businesses cited inside an AI Overview earn approximately <a href="https://heroicrankings.com/seo/managed/google-ai-overview-statistics-2026/" target="_blank" rel="noopener">35% more organic clicks</a> than businesses that aren't, on the same results page. The gap between "visible in AI search" and "invisible in AI search" is not a marginal difference. It's a structural one.</p>
+
+<p>Bing's Copilot integration routes search queries through a generative layer before any traditional result renders. Perplexity, ChatGPT search, and Google's Gemini-powered summaries are pulling answer-engine traffic away from traditional SERPs at a rate that would have been unthinkable two years ago. Token rate usage inflation, the cost of running these generative search features at scale, is reshaping which queries get AI treatment and which don't.</p>
+
+<p>The businesses that still think of SEO as "rank for a keyword, get a click" are operating on a map drawn before the territory changed. Schema markup isn't optional decoration anymore. It's the machine-readable signal that determines whether your organization exists in an AI-generated summary or gets skipped entirely. Snippet architecture, structured data depth, entity authority, topical coverage breadth: these are the systems that drive visibility when AI is the de facto summarization header on every informational search result.</p>
+
+<p>Most businesses don't know these storms have hit them. Their traffic dashboards show a slow bleed. Their phones ring a little less. Their form submissions taper. They blame seasonality or budget or their last agency. They don't know that the search ecosystem underwent a structural overhaul and that the rules they were following no longer apply.</p>
+
+<p>I work with businesses and sole proprietors navigating this reality. Schema markup strategy, snippet architecture, AI search visibility planning, and the content and technical systems that determine whether you show up when an AI decides what to recommend.</p>
+
+<h2>What I Built</h2>
+
+<p>I'm co-founder of <a href="../index.html">Island Mountain</a>, a build-and-deploy company working with the latest production-ready inference servers for regulated vertical industries that can't send their data to the cloud. We ship air-gapped NVIDIA RTX PRO 6000 Blackwell GPU servers to <a href="../law-firms.html">law firms</a>, <a href="../medical-practices.html">medical practices</a>, <a href="../tribal-nations.html">tribal nations</a>, <a href="../defense-contractors.html">defense contractors</a>, <a href="../financial-services.html">financial institutions</a>, and every other industry where data sovereignty isn't a buzzword but a legal requirement. Eleven verticals. Real hardware. Burn-tested and configured before it ships.</p>
+
+<p>I built Lamprey Model Abstraction Interface, a Rust-based inference governance layer with OpenBao trust gating and compliance-enforced routing across HIPAA, ITAR, and OCAP regimes. When a prompt hits the system, MAI evaluates the data classification, checks it against the trust policy, and routes the inference call to the correct model on the correct hardware with the correct audit trail. No human in the loop for the routing decision. No opportunity for a misconfigured API key to send protected health information to a model endpoint that hasn't been cleared for PHI.</p>
+
+<p>I also built the Lamprey Harness, an open-source Electron LLM IDE that routes across DeepSeek, Qwen, Gemma, and ZAI models with a Planner-Coder-Reviewer pipeline, local SQLite persistence, and MCP support. Both tools were built to support Island Mountain's hardware deployments directly: the governance layer handles compliance routing, and the IDE gives teams a local inference environment that never touches the cloud.</p>
+
+<p>The regulated-industry AI stack is broken by design. Cloud providers built general-purpose inference platforms and then tried to bolt compliance onto them after the fact. BAAs, data processing agreements, regional data residency clauses, all of it is contractual mitigation for an architectural problem. I built from the infrastructure layer up because that's the only direction that produces a system you can defend in an audit. That's not a marketing position. It's the engineering decision that started this company.</p>
+
+<h2>Why Infrastructure Knowledge Changes the Visibility Equation</h2>
+
+<p>Here's the connection that most AI search visibility consultants miss entirely: if you don't understand how large language models consume, weight, and surface content, you're guessing at why your visibility strategy isn't working. You're applying SEO heuristics to a fundamentally different system.</p>
+
+<p>I've spent years working at the layer where models ingest text, parse structured data, and generate the summaries that now sit above organic results on every major search engine. That experience doesn't make me a better keyword researcher. It makes me someone who understands what the machine is doing with your schema markup after it reads it, how entity resolution works at inference time, and why a well-structured FAQ section gets cited while a wall of marketing copy gets ignored.</p>
+
+<p>The time to re-skill and invest in thorough comprehension of the new multi-agentic workflow world is now. Not next quarter. Not when your traffic drops far enough to trigger a board conversation. Now.</p>
+
+<h2>Certifications and Current Training</h2>
+
+<p>I hold Anthropic certifications across the full Claude stack: API fundamentals, Claude Code, MCP architecture, subagents, agent skills, and CoWork. These aren't decorative badges. Each certification required demonstrating working knowledge of how Claude's inference pipeline, tool routing, and multi-agent orchestration function at the implementation level. The same systems that power the AI search features reshaping how your customers find you.</p>
+
+<p>Amazon Bedrock and Google Vertex AI completions are in progress for Q3 2026. Both certifications cover model hosting, inference routing, and production deployment across the two largest cloud AI platforms, direct working knowledge of the infrastructure your competitors are using and that your visibility strategy needs to account for.</p>
+
+<p>I completed a Go High Level lead generation certification series covering full-funnel CRM automation, multi-channel campaign architecture, and pipeline management at the account level. Because visibility without conversion infrastructure is a reporting exercise, not a business strategy.</p>
+
+<h2>Two Problems. One Conversation.</h2>
+
+<p>If your business is losing ground to AI-generated search summaries and you don't know why, I can help. Schema markup architecture, entity authority development, AI citation strategy, and the technical content systems that determine whether AI search features include you or skip you.</p>
+
+<p>If your organization runs on sensitive data and you're still routing inference through a third-party cloud, I can help there too. Island Mountain ships production-ready <a href="../products.html">air-gapped inference servers</a> starting at $59,000, pre-loaded with open-source models, burn-tested, and configured for your team's use case before it arrives.</p>
+
+<p>If you need a four or eight-system hardware rack with adjacent data servers deployed on-site and air-gapped, I'm your guy.</p>
+
+<div style="border-left:3px solid var(--copper);padding:16px 20px;margin:32px 0;background:rgba(217,119,6,0.05);border-radius:0 8px 8px 0;">
+<strong>Summary:</strong> AI search visibility in 2026 requires understanding how AI systems consume and surface content, not just how search engines rank pages. Three-plus years building production inference infrastructure, compliance routing, and regulated-industry AI deployments gives me a vantage point most consultants don't have. If AI-generated summaries are eating your traffic or your sensitive data is still routing through someone else's cloud, the fix starts with the same conversation.
+</div>
+      </article>
+
+      <!-- CTA -->
+      <div class="article-cta">
+        <h3>Ready to Talk?</h3>
+        <p>One conversation. No sales pitch. Whether it's AI search visibility strategy or air-gapped inference hardware, I'll tell you what I see and what I'd do about it.</p>
+        <a href="../contact.html" class="btn btn-primary">Start a Conversation</a>
+        <p class="bio-note-sm"><i class="ri-phone-line icon-copper-mr-sm"></i>Or call directly: <a href="tel:+18016091130" class="copper-semibold">1-801-609-1130</a></p>
+      </div>
+
+      <!-- Related Articles -->
+      <div class="related-articles">
+        <h3>Related Articles</h3>
+        <div class="related-grid">
+          <div class="related-card">
+            <h4><a href="second-revolution-local-ai.html">The Second Revolution of AI: Local Inference Changes Everything</a></h4>
+            <p>The CEO of Hugging Face ran a 27B model on a laptop in airplane mode. What that means for regulated industries still paying per-token fees.</p>
+          </div>
+          <div class="related-card">
+            <h4><a href="msp-model-accountability.html">The MSP Model Sold You Accountability, Not Real Service</a></h4>
+            <p>What the managed service model promised versus what it delivered, and why local AI infrastructure changes the equation.</p>
+          </div>
+          <div class="related-card">
+            <h4><a href="cloud-ai-vs-local-hardware-tco.html">Cloud AI vs. Local Hardware: Building the Honest Five-Year TCO</a></h4>
+            <p>Five-year total cost of ownership comparison with transparent assumptions and honest numbers on both sides.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Navigation -->
+      <div class="article-nav">
+        <a href="../blog.html" class="article-back">&larr; All articles</a>
+        <div class="share-links">
+          <span>Share:</span>
+          <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://islandmountain.io/blog/ai-search-visibility-consultant.html" target="_blank" rel="noopener" aria-label="Share on LinkedIn"><i class="ri-linkedin-fill"></i></a>
+          <a href="https://x.com/intent/tweet?url=https://islandmountain.io/blog/ai-search-visibility-consultant.html&text=AI Search Visibility in 2026: What Three Years of Production AI Taught Me That Most Consultants Haven't Learned Yet" target="_blank" rel="noopener" aria-label="Share on X"><i class="ri-twitter-x-fill"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="../images/logo-footer.webp" alt="Island Mountain logo" width="210" height="210" class="d-block-mb">
+          <a href="../index.html" class="nav-logo">Island Mountain</a>
+          <p>Local AI infrastructure for data-sovereign organizations. Colorado.</p>
+          <p class="mt-8"><i class="ri-phone-line icon-copper-mr"></i><a href="tel:+18016091130" class="clr-muted">1-801-609-1130</a></p>
+        </div>
+        <div>
+          <h3>Quick Links</h3>
+          <ul class="footer-links">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../products.html">Summit</a>
+            <li><a href="../technology.html">Technology</a></li>
+            <li><a href="../pricing.html">Pricing</a></li>
+            <li><a href="../resources.html">Resources</a></li>
+              <li><a href="../faq.html">FAQ</a></li>
+            <li><a href="../blog.html">Blog</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Solutions</h3>
+          <ul class="footer-links">
+            <li><a href="../law-firms.html">Law Firms</a></li>
+            <li><a href="../medical-practices.html">Medical Practices</a></li>
+            <li><a href="../tribal-nations.html">Tribal Nations</a></li>
+            <li><a href="../research-labs.html">Research Labs</a></li>
+            <li><a href="../defense-contractors.html">Defense Contractors</a></li>
+            <li><a href="../financial-services.html">Financial Services</a></li>
+            <li><a href="../insurance.html">Insurance</a></li>
+            <li><a href="../energy-utilities.html">Energy &amp; Utilities</a></li>
+            <li><a href="../government.html">Government</a></li>
+            <li><a href="../education.html">Education</a></li>
+            <li><a href="../casino-gaming.html">Casino Gaming</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Company</h3>
+          <ul class="footer-links">
+            <li><a href="../why-island-mountain.html">Why Local AI</a></li>
+            <li><a href="../contact.html">Contact</a></li>
+            <li><a href="../investors.html">Investors</a></li>
+            <li><a href="../about.html">About</a></li>
+            <li><a href="../privacy.html">Privacy Policy</a></li>
+            <li><a href="../terms.html">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-newsletter">
+        <form action="https://formsubmit.co/basho@islandmountain.io" method="POST" class="newsletter-form">
+          <input type="hidden" name="_subject" value="Newsletter Signup - Island Mountain">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="text" name="_honey" style="display:none">
+          <label>Get updates on local AI infrastructure</label>
+          <div class="newsletter-input-group">
+            <input type="email" name="email" required placeholder="Your email address">
+            <button type="submit" class="btn btn-primary">Subscribe</button>
+          </div>
+        </form>
+      </div>
+      <div class="footer-bottom flex-col-center-gap">
+        <p>&copy; 2026 Island Mountain. All rights reserved. Founded by <a href="https://www.johndou.com" target="_blank" rel="noopener" class="clr-copper">John Dougherty</a> and <span class="clr-copper">Basho Parks</span>.</p>
+        <a href="tel:+18016091130" class="phone-link"><i class="ri-phone-line text-lg"></i> 1-801-609-1130</a>
+        <a href="https://www.linkedin.com/company/island-mountain-llc/" target="_blank" rel="noopener" aria-label="Island Mountain on LinkedIn" class="phone-link"><i class="ri-linkedin-fill text-lg"></i> Follow us on LinkedIn</a>
+        <a href="https://x.com/IslandMountain_" target="_blank" rel="noopener" aria-label="Island Mountain on X" class="phone-link"><i class="ri-twitter-x-fill text-lg"></i> Follow us on X</a>
+      </div>
+    </div>
+  </footer>
+
+  <script defer src="../js/main.js"></script>
+</body>
+</html>
