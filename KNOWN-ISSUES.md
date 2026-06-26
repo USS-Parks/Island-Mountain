@@ -17,8 +17,10 @@ All HTML files are at risk during sandbox writes, regardless of line count. See 
 ### css/style.css Size
 At 1686 lines, this is the largest single file in the project. Any edits require extreme caution with sed. Consider whether a future session should split it into modular partials (nav.css, footer.css, etc.) - but only if the complexity justifies the link-tag overhead on 46 pages with no build step.
 
-### H100 Bandwidth Claim
-faq.html references "3.35 TB/s memory bandwidth" for H100 GPUs. This is correct for H100 SXM5 only. Summit Base uses H100 PCIe with 2.0 TB/s HBM2e bandwidth. Flagged Session 44 for future fix.
+### Blackwell Overhaul Follow-Ups (Session 73)
+Two items from the H100/H200 -> RTX PRO 6000 Blackwell overhaul need owner review:
+1. **investors.html financials** were recalculated with new GPU cost (2x RTX PRO 6000 ~$18K vs 2x H100 refurb ~$66K): COGS $84,278 -> $36,278, gross margin break-even -> 38-47%, scenarios/NOI recomputed, and the freed GPU capital was reallocated from GPU inventory ($198K->$54K) into the working-capital reserve ($62K->$206K). These are coherent assumptions, not Basho's stated numbers - confirm they match intent. js/charts.js was updated to match (a deliberate deviation from the plan's "leave charts" note, to avoid a self-contradictory investor page).
+2. **blog/h100-vs-h200-inference-comparison.html** keeps its old filename/URL (to preserve inbound links + sitemap) though its content is now "RTX PRO 6000 Blackwell vs. H100." Future SEO cleanup: consider a new slug with a 301 redirect.
 
 ### install-skills.py
 Python installer script for persistent Cowork skill installation created Session 49. Not yet verified by user. Uses dynamic path discovery (glob pattern matching). May need updating if Cowork plugin architecture changes.
@@ -39,6 +41,8 @@ Python installer script for persistent Cowork skill installation created Session
 ---
 
 ## Resolved Issues (Sessions 1-50)
+
+- **Hardware Overhaul (Session 73, 73A-73G):** Discontinued H100/H200 across the entire site. Moved to NVIDIA RTX PRO 6000 Blackwell (96GB GDDR7 ECC, 1,597 GB/s). Summit Base 2x ($59-69K), Pinnacle 4x ($175-225K), Ridge BTO ($95-120K). Landfall renamed/repriced (Scout RTX 5080 $7-8K, Ranger RTX 5090 $9.5-11.5K, Pack Leader RTX PRO 4500 Blackwell $15-22K). Citadel -> DGX B200 $400-500K. V4-Flash reframed to FP8 on Base (192GB). "Why Enterprise GPUs" -> "Why Professional-Grade GPUs". 2 blog posts rewritten (h100-vs-h200, deepseek-v4-flash deployment). investors.html financials + js/charts.js recalculated. The old H100 SXM5 "3.35 TB/s" bandwidth bug is now moot (RESOLVED). All ~45 HTML files audited, JSON-LD valid, no truncation/NUL.
 
 - NUL byte corruption in privacy.html and solutions.html (fixed Session 16)
 - NUL byte corruption in resources.html (546 bytes, committed fix Session 48)
