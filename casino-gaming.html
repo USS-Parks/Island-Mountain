@@ -84,7 +84,7 @@
         "name": "Does using cloud AI in a casino create Title 31 BSA/AML compliance risk?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes. Cloud AI transmits patron transaction data, suspicious activity indicators, and currency transaction report details to third-party infrastructure. Title 31 of the Bank Secrecy Act (31 CFR Part 1021) requires casinos with gross annual gaming revenue exceeding $1 million to maintain comprehensive AML programs including internal controls, designated compliance officers, and detailed recordkeeping. Transmitting this data to cloud servers introduces third-party dependency into your BSA compliance chain. On-premises AI hardware from Island Mountain eliminates that transmission entirely. Patron data, transaction monitoring, and SAR drafting stay on NVIDIA H100 or H200 servers inside your facility under your physical and logical security controls."
+          "text": "Yes. Cloud AI transmits patron transaction data, suspicious activity indicators, and currency transaction report details to third-party infrastructure. Title 31 of the Bank Secrecy Act (31 CFR Part 1021) requires casinos with gross annual gaming revenue exceeding $1 million to maintain comprehensive AML programs including internal controls, designated compliance officers, and detailed recordkeeping. Transmitting this data to cloud servers introduces third-party dependency into your BSA compliance chain. On-premises AI hardware from Island Mountain eliminates that transmission entirely. Patron data, transaction monitoring, and SAR drafting stay on NVIDIA RTX PRO 6000 Blackwell servers inside your facility under your physical and logical security controls."
         }
       },
       {
@@ -92,7 +92,7 @@
         "name": "What AI workflows can a casino run on Island Mountain hardware?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Island Mountain hardware supports Title 31 compliance workflows including currency transaction report preparation, suspicious activity report drafting, and AML transaction pattern analysis. Operational workflows include patron loyalty analytics, revenue forecasting, marketing campaign drafting, workforce scheduling support, and food and beverage inventory analysis. The system runs DeepSeek V4-Flash for complex multi-document regulatory analysis and Llama 4 Scout for general drafting tasks. All processing occurs on NVIDIA H100 or H200 GPUs inside your facility with zero data transmitted to external servers."
+          "text": "Island Mountain hardware supports Title 31 compliance workflows including currency transaction report preparation, suspicious activity report drafting, and AML transaction pattern analysis. Operational workflows include patron loyalty analytics, revenue forecasting, marketing campaign drafting, workforce scheduling support, and food and beverage inventory analysis. The system runs DeepSeek V4-Flash for complex multi-document regulatory analysis and Llama 4 Scout for general drafting tasks. All processing occurs on NVIDIA RTX PRO 6000 Blackwell GPUs inside your facility with zero data transmitted to external servers."
         }
       },
       {
@@ -100,7 +100,7 @@
         "name": "How does on-premises AI cost compare to cloud AI for a casino with 50 users?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Cloud AI subscriptions for enterprise platforms typically cost $50 to $200 per user per month. For 50 users, that totals $30,000 to $120,000 per year. Over three years, cumulative cloud costs reach $90,000 to $360,000 with no ownership and continued patron data exposure on every query. An Island Mountain Summit Base system with two NVIDIA H100 GPUs costs $75,000 to $85,000 as a one-time purchase. Ongoing costs are limited to electricity at approximately $100 to $200 per month. Cost parity typically reached within year one while eliminating BSA compliance risk from third-party data transmission. Section 179 eligible for full first-year depreciation."
+          "text": "Cloud AI subscriptions for enterprise platforms typically cost $50 to $200 per user per month. For 50 users, that totals $30,000 to $120,000 per year. Over three years, cumulative cloud costs reach $90,000 to $360,000 with no ownership and continued patron data exposure on every query. An Island Mountain Summit Base system with two NVIDIA RTX PRO 6000 Blackwell GPUs costs $59,000 to $69,000 as a one-time purchase. Ongoing costs are limited to electricity at approximately $100 to $200 per month. Cost parity typically reached within year one while eliminating BSA compliance risk from third-party data transmission. Section 179 eligible for full first-year depreciation."
         }
       },
       {
@@ -135,7 +135,7 @@
     "@type": "Product",
     "@id": "https://islandmountain.io/products.html#summit-base",
     "name": "Island Mountain Summit Base - On-Premises AI Server for Casino Gaming",
-    "description": "Pre-built, burn-tested AI inference server with 2x NVIDIA H100 80GB GPUs. Air-gap capable. Title 31 BSA/AML and NIGC MICS compliance-ready. Includes DeepSeek V4-Flash, Llama 4 Scout, and OpenWebUI.",
+    "description": "Pre-built, burn-tested AI inference server with 2x NVIDIA RTX PRO 6000 Blackwell 96GB GPUs. Air-gap capable. Title 31 BSA/AML and NIGC MICS compliance-ready. Includes DeepSeek V4-Flash, Llama 4 Scout, and OpenWebUI.",
     "sku": "summit-base-casino",
     "brand": {
       "@type": "Brand",
@@ -143,8 +143,8 @@
     },
     "offers": {
       "@type": "AggregateOffer",
-      "lowPrice": "75000",
-      "highPrice": "400000",
+      "lowPrice": "59000",
+      "highPrice": "225000",
       "priceCurrency": "USD",
       "offerCount": "3",
       "availability": "https://schema.org/InStock",
@@ -156,17 +156,17 @@
       {
         "@type": "PropertyValue",
         "name": "GPU Model",
-        "value": "2x NVIDIA H100 80GB PCIe (Summit Base) / H200 141GB (Summit Pinnacle)"
+        "value": "NVIDIA RTX PRO 6000 Blackwell 96GB (2x Summit Base / 4x Summit Pinnacle)"
       },
       {
         "@type": "PropertyValue",
         "name": "Total VRAM",
-        "value": "160GB-282GB"
+        "value": "192GB-384GB"
       },
       {
         "@type": "PropertyValue",
         "name": "Pre-Installed Models",
-        "value": "DeepSeek V4-Flash (quantized), Llama 4 Scout, DeepSeek R1 70B Distill or Qwen 3 72B (buyer selects)"
+        "value": "DeepSeek V4-Flash (FP8), Llama 4 Scout, DeepSeek R1 70B Distill or Qwen 3 72B (buyer selects)"
       },
       {
         "@type": "PropertyValue",
@@ -316,7 +316,7 @@
             <i class="ri-server-line"></i>
           </div>
           <h3>Hardware You Own</h3>
-          <p>This is not a hosted service. It is a physical server with NVIDIA H100 GPUs in your server room, running on your power, connected to your network. You own it outright. No vendor has access to your data or your queries.</p>
+          <p>This is not a hosted service. It is a physical server with NVIDIA RTX PRO 6000 Blackwell GPUs in your server room, running on your power, connected to your network. You own it outright. No vendor has access to your data or your queries.</p>
         </div>
         <div class="card">
           <div class="card-icon card-icon-purple">
@@ -457,7 +457,7 @@
       <div class="section-header fade-in">
         <span class="section-badge">Model Selection</span>
         <h2>Which Models Work Best for Casino Operations</h2>
-        <p>NVIDIA H100 AI infrastructure running fully open-source models under your operational control. A local LLM for casino workflows means zero cloud dependency for any AI operation.</p>
+        <p>NVIDIA RTX PRO 6000 Blackwell AI infrastructure running fully open-source models under your operational control. A local LLM for casino workflows means zero cloud dependency for any AI operation.</p>
       </div>
       <div class="card-grid card-grid-3 fade-in">
         <div class="card text-center">
@@ -465,7 +465,7 @@
             <i class="ri-brain-line"></i>
           </div>
           <h3>DeepSeek V4-Flash</h3>
-          <p><strong>Best for:</strong> Complex regulatory analysis, multi-document SAR review, transaction pattern assessment, long-context compliance reporting tasks. 284B parameters with mixture-of-experts architecture. Runs quantized on the Summit Base tier.</p>
+          <p><strong>Best for:</strong> Complex regulatory analysis, multi-document SAR review, transaction pattern assessment, long-context compliance reporting tasks. 284B parameters with mixture-of-experts architecture. Runs at FP8 on the Summit Base tier.</p>
         </div>
         <div class="card text-center">
           <div class="card-icon card-icon-indigo mx-auto-mb-20">
@@ -506,7 +506,7 @@
             <tr>
               <td><strong>Year 1 Cost</strong></td>
               <td>$30,000 - $120,000 (50 users)</td>
-              <td class="highlight-cell">$75,000 - $85,000 (one time)</td>
+              <td class="highlight-cell">$59,000 - $69,000 (one time)</td>
             </tr>
             <tr>
               <td><strong>Year 3 Cumulative</strong></td>
@@ -553,7 +553,7 @@
       </div>
       <div class="comparison-note fade-in mt-20">
         <i class="ri-information-line"></i>
-        Cloud estimates based on AI platforms charging $50-$200/user/month for 50 users. Island Mountain electricity estimate assumes 1.5-2.5 kW average draw at $0.12/kWh. For higher-throughput requirements, the NVIDIA H200 tier offers 141GB HBM3e memory per GPU at $350,000-$400,000.
+        Cloud estimates based on AI platforms charging $50-$200/user/month for 50 users. Island Mountain electricity estimate assumes 1.5-2.5 kW average draw at $0.12/kWh. For higher-throughput requirements, the NVIDIA RTX PRO 6000 Blackwell tier offers 96GB GDDR7 ECC memory per GPU at $175,000-$225,000.
       </div>
     </div>
   </section>
@@ -630,11 +630,11 @@
         </div>
         <div class="risk-card">
           <h4><i class="ri-brain-line"></i> What casino workflows does this hardware support?</h4>
-          <p>Island Mountain hardware supports SAR drafting, CTR preparation, AML transaction analysis, internal audit documentation, patron loyalty analytics, revenue forecasting, marketing campaign drafting, workforce documentation, and F&amp;B analysis. The system runs DeepSeek V4-Flash for complex regulatory analysis and Llama 4 Scout for general drafting. All processing occurs on NVIDIA H100 or H200 GPUs inside your facility.</p>
+          <p>Island Mountain hardware supports SAR drafting, CTR preparation, AML transaction analysis, internal audit documentation, patron loyalty analytics, revenue forecasting, marketing campaign drafting, workforce documentation, and F&amp;B analysis. The system runs DeepSeek V4-Flash for complex regulatory analysis and Llama 4 Scout for general drafting. All processing occurs on NVIDIA RTX PRO 6000 Blackwell GPUs inside your facility.</p>
         </div>
         <div class="risk-card">
           <h4><i class="ri-coin-line"></i> How does the cost compare for a 50-person operation?</h4>
-          <p>Cloud AI subscriptions for enterprise platforms typically cost $50 to $200 per user per month. For 50 users, that totals $30,000 to $120,000 per year. Over three years: $90,000 to $360,000 cumulative with no ownership and continued patron data exposure. An Island Mountain Summit Base system with two NVIDIA H100 GPUs costs $75,000 to $85,000 as a one-time purchase. Cost parity typically reached within year one.</p>
+          <p>Cloud AI subscriptions for enterprise platforms typically cost $50 to $200 per user per month. For 50 users, that totals $30,000 to $120,000 per year. Over three years: $90,000 to $360,000 cumulative with no ownership and continued patron data exposure. An Island Mountain Summit Base system with two NVIDIA RTX PRO 6000 Blackwell GPUs costs $59,000 to $69,000 as a one-time purchase. Cost parity typically reached within year one.</p>
         </div>
         <div class="risk-card">
           <h4><i class="ri-tools-line"></i> Does our operation need dedicated IT staff?</h4>
@@ -658,7 +658,7 @@
 
   <!-- AEO Summary -->
   <div style="border-left:3px solid var(--copper);padding:16px 20px;margin:32px 0;background:rgba(217,119,6,0.05);border-radius:0 8px 8px 0;">
-  <strong>Summary:</strong> Island Mountain builds on-premises AI inference hardware for casinos and tribal gaming operations. Local deployment keeps patron transaction data, surveillance intelligence, and compliance documentation inside your facility's network, eliminating the third-party data transmission that creates Title 31 BSA/AML compliance risk when using cloud AI services. On-premises AI for casino gaming starts at $75,000 with NVIDIA H100 GPUs, air-gap capability, and zero per-token fees.
+  <strong>Summary:</strong> Island Mountain builds on-premises AI inference hardware for casinos and tribal gaming operations. Local deployment keeps patron transaction data, surveillance intelligence, and compliance documentation inside your facility's network, eliminating the third-party data transmission that creates Title 31 BSA/AML compliance risk when using cloud AI services. On-premises AI for casino gaming starts at $59,000 with NVIDIA RTX PRO 6000 Blackwell GPUs, air-gap capability, and zero per-token fees.
   </div>
 
   <!-- Deployment Scenarios -->
