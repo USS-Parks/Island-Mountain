@@ -51,7 +51,7 @@
         ctx.fillStyle = textLight;
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
-        ctx.fillText('$84,278', w / 2, h / 2 - 10);
+        ctx.fillText('$36,278', w / 2, h / 2 - 10);
         ctx.font = '12px Inter, sans-serif';
         ctx.fillStyle = textMuted;
         ctx.fillText('Total COGS', w / 2, h / 2 + 12);
@@ -63,7 +63,7 @@
       type: 'doughnut',
       data: {
         labels: [
-          'GPUs ($66,000)',
+          'GPUs ($18,000)',
           'Chassis ($7,987)',
           'RAM ($4,000)',
           'CPU ($1,375)',
@@ -73,7 +73,7 @@
           'Other ($1,050)'
         ],
         datasets: [{
-          data: [66000, 7987, 4000, 1375, 1391, 475, 2000, 1050],
+          data: [18000, 7987, 4000, 1375, 1391, 475, 2000, 1050],
           backgroundColor: [copper, slateDark, slate, '#475569', '#334155', copperDark, copperDeep, '#1e293b'],
           borderColor: '#0f172a',
           borderWidth: 2,
@@ -92,7 +92,7 @@
           tooltip: Object.assign({}, tooltipDefaults, {
             callbacks: {
               label: function (ctx) {
-                var pct = ((ctx.raw / 84278) * 100).toFixed(1);
+                var pct = ((ctx.raw / 36278) * 100).toFixed(1);
                 return ' ' + ctx.label + ' (' + pct + '%)';
               }
             }
@@ -105,18 +105,18 @@
 
   // ---------------------------------------------------------------
   // 2. Margin Sensitivity Line Chart
-  //    X: per-GPU cost from $35K down to $20K
-  //    Y: gross margin % at $80K selling price
+  //    X: per-GPU cost from $12K down to $7K
+  //    Y: gross margin % at $64K selling price
   //    COGS = (gpuCost * 2) + $18,278 non-GPU costs
   // ---------------------------------------------------------------
   var marginEl = document.getElementById('marginSensitivity');
   if (marginEl) {
     var mCtx = marginEl.getContext('2d');
-    var sellingPrice = 80000;
-    var nonGpuCogs = 18278; // $84,278 total - $66,000 GPUs
+    var sellingPrice = 64000;
+    var nonGpuCogs = 18278; // $36,278 total - $18,000 GPUs
     var gpuPrices = [];
     var margins = [];
-    for (var g = 35000; g >= 20000; g -= 1000) {
+    for (var g = 12000; g >= 7000; g -= 1000) {
       gpuPrices.push('$' + (g / 1000) + 'K');
       var totalCogs = (g * 2) + nonGpuCogs;
       var margin = ((sellingPrice - totalCogs) / sellingPrice) * 100;
@@ -177,7 +177,7 @@
               },
               afterLabel: function (ctx) {
                 var idx = ctx.dataIndex;
-                var gpuCost = 35000 - (idx * 1000);
+                var gpuCost = 12000 - (idx * 1000);
                 var totalCogs = (gpuCost * 2) + nonGpuCogs;
                 var profit = sellingPrice - totalCogs;
                 return ' COGS: $' + totalCogs.toLocaleString() + ' | Profit: $' + profit.toLocaleString();
@@ -260,7 +260,7 @@
           'Legal & Incorp.'
         ],
         datasets: [{
-          data: [280000, 198000, 80000, 62000, 50000, 45000, 25000, 10000],
+          data: [280000, 54000, 80000, 206000, 50000, 45000, 25000, 10000],
           backgroundColor: [slateDark, copper, '#334155', '#475569', copperDeep, slate, copperDark, '#1e293b'],
           borderRadius: 4,
           barPercentage: 0.7
@@ -314,14 +314,14 @@
         datasets: [
           {
             label: 'Year 1 Revenue',
-            data: [225000, 480000, 820000],
+            data: [180000, 384000, 660000],
             backgroundColor: copperDeep,
             borderRadius: 4,
             barPercentage: 0.7
           },
           {
             label: 'Year 2 Revenue',
-            data: [624000, 1200000, 1968000],
+            data: [496000, 960000, 1632000],
             backgroundColor: copper,
             borderRadius: 4,
             barPercentage: 0.7
