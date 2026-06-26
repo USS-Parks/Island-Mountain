@@ -158,7 +158,7 @@
       "name": "Can an on-device LLM replace a rack-scale inference server?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "No, not for heavy regulated workloads. A quantized 7B model on a phone handles routine tasks; large-context document review, multi-step legal analysis, and code generation against substantial codebases still need rack-mounted H100 or H200 hardware with the VRAM and memory bandwidth those jobs demand."
+        "text": "No, not for heavy regulated workloads. A quantized 7B model on a phone handles routine tasks; large-context document review, multi-step legal analysis, and code generation against substantial codebases still need rack-mounted RTX PRO 6000 Blackwell hardware with the VRAM and memory bandwidth those jobs demand."
       }
     },
     {
@@ -334,7 +334,7 @@
 
         <p>On-device LLM inference on your phone is that same argument, applied to the device in your pocket. When Apple's Foundation Models framework runs entirely on-chip and never touches a network, the attorney on a call cannot have their conversation summarized by a server in Dublin. The tribal health worker in a remote clinic without cell coverage gets AI-assisted documentation that does not require a satellite uplink. The field investigator in a SCIF works with an LLM that is physically air-gapped by virtue of being a phone in airplane mode.</p>
 
-        <p>This is not a different market from what Island Mountain serves. It is the same sovereignty principle at a different scale. A rack-mounted H100 server in your datacenter and a quantized 7B model running on an A18 chip in your pocket are solving the same problem: the data stays where you put it, and nobody else gets to see it.</p>
+        <p>This is not a different market from what Island Mountain serves. It is the same sovereignty principle at a different scale. A rack-mounted RTX PRO 6000 Blackwell server in your datacenter and a quantized 7B model running on an A18 chip in your pocket are solving the same problem: the data stays where you put it, and nobody else gets to see it.</p>
 
         <p>The sovereign inference stack is expanding. It used to live in server rooms. Now it fits in a jacket pocket. In five years, with memristors and further quantization improvements, it will fit in an ear canal.</p>
 
@@ -342,7 +342,7 @@
 
         <p>Honesty matters here.</p>
 
-        <p>A 7B model on a phone is not a 70B model in a datacenter. For 80 percent of routine daily AI tasks, the quality gap is already invisible. For complex legal analysis, multi-step technical reasoning, large-context document review, and code generation against substantial codebases, the gap is real and not closing as fast as the marketing suggests. The A18's Neural Engine at 35 trillion operations per second is impressive. It is still orders of magnitude below what an H100 at 3.35 quadrillion operations per second can do, and the memory bandwidth comparison is not close.</p>
+        <p>A 7B model on a phone is not a 70B model in a datacenter. For 80 percent of routine daily AI tasks, the quality gap is already invisible. For complex legal analysis, multi-step technical reasoning, large-context document review, and code generation against substantial codebases, the gap is real and not closing as fast as the marketing suggests. The A18's Neural Engine at 35 trillion operations per second is impressive. It is still orders of magnitude below what a rack-mounted RTX PRO 6000 Blackwell can do, and the memory bandwidth comparison is not close.</p>
 
         <p>On-device models are also constrained by context window. An iPhone with 8 gigabytes of RAM running a quantized 7B model has a practical context limit of a few thousand tokens before performance degrades. Rack-mounted inference hardware does not have this problem.</p>
 
@@ -365,7 +365,7 @@
         <h2>Frequently Asked Questions</h2>
 
         <h3>Can an on-device LLM replace a rack-scale inference server?</h3>
-        <p>No, not for heavy regulated workloads. A quantized 7B model on a phone handles routine tasks; large-context document review, multi-step legal analysis, and code generation against substantial codebases still need rack-mounted H100 or H200 hardware with the VRAM and memory bandwidth those jobs demand.</p>
+        <p>No, not for heavy regulated workloads. A quantized 7B model on a phone handles routine tasks; large-context document review, multi-step legal analysis, and code generation against substantial codebases still need rack-mounted RTX PRO 6000 Blackwell hardware with the VRAM and memory bandwidth those jobs demand.</p>
 
         <h3>What makes on-device AI inference sovereign?</h3>
         <p>The data never leaves the device. When inference runs entirely on-chip in airplane mode, no cloud provider, server, or network sees the input or the output. That is the same control principle Island Mountain builds at rack scale: the data stays where you put it.</p>
