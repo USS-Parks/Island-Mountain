@@ -84,7 +84,7 @@
         "name": "Do I need a Business Associate Agreement to use local AI with patient data?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "No. A Business Associate Agreement is only required under HIPAA when Protected Health Information (PHI) is shared with a third-party service provider. On-premises AI hardware processes PHI entirely within your facility - no data transmitted to any external service means no business associate relationship exists. The BAA requirement under 45 CFR Part 164 does not apply because no third-party handling occurs. Island Mountain hardware with NVIDIA H100 or H200 GPUs keeps ePHI on servers you own, inside your network, under your HIPAA Security Rule controls. The HITECH Act's breach notification requirements become far simpler when PHI never leaves the building."
+          "text": "No. A Business Associate Agreement is only required under HIPAA when Protected Health Information (PHI) is shared with a third-party service provider. On-premises AI hardware processes PHI entirely within your facility - no data transmitted to any external service means no business associate relationship exists. The BAA requirement under 45 CFR Part 164 does not apply because no third-party handling occurs. Island Mountain hardware with NVIDIA RTX PRO 6000 Blackwell GPUs keeps ePHI on servers you own, inside your network, under your HIPAA Security Rule controls. The HITECH Act's breach notification requirements become far simpler when PHI never leaves the building."
         }
       },
       {
@@ -92,7 +92,7 @@
         "name": "Is Island Mountain hardware a medical device or clinical decision support tool?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "No. Island Mountain hardware is general-purpose AI inference infrastructure, not a medical device or clinical decision support tool. It is not classified under FDA regulations and does not provide diagnostic assistance or treatment recommendations. The system runs the same type of large language models available through cloud services, but on NVIDIA H100 or H200 GPUs inside your facility under your direct control. Any use of AI output in clinical contexts requires the same professional judgment that applies to any information source."
+          "text": "No. Island Mountain hardware is general-purpose AI inference infrastructure, not a medical device or clinical decision support tool. It is not classified under FDA regulations and does not provide diagnostic assistance or treatment recommendations. The system runs the same type of large language models available through cloud services, but on NVIDIA RTX PRO 6000 Blackwell GPUs inside your facility under your direct control. Any use of AI output in clinical contexts requires the same professional judgment that applies to any information source."
         }
       },
       {
@@ -108,7 +108,7 @@
         "name": "How does the cost compare to cloud AI for a 15-provider medical practice?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Cloud AI subscriptions for healthcare platforms typically cost $30 to $150 per user per month. For 25 users (15 providers plus 10 staff), that totals $9,000 to $45,000 per year with ongoing BAA management overhead and breach exposure on every query. An Island Mountain Summit Base system with two NVIDIA H100 GPUs costs $75,000 to $85,000 as a one-time purchase. Ongoing costs limited to electricity (~$100-$200/month). No per-user fees. No per-token charges. No BAA required. Cost parity typically reached within two years while eliminating HIPAA compliance risk from AI operations entirely."
+          "text": "Cloud AI subscriptions for healthcare platforms typically cost $30 to $150 per user per month. For 25 users (15 providers plus 10 staff), that totals $9,000 to $45,000 per year with ongoing BAA management overhead and breach exposure on every query. An Island Mountain Summit Base system with two NVIDIA RTX PRO 6000 Blackwell GPUs costs $59,000 to $69,000 as a one-time purchase. Ongoing costs limited to electricity (~$100-$200/month). No per-user fees. No per-token charges. No BAA required. Cost parity typically reached within two years while eliminating HIPAA compliance risk from AI operations entirely."
         }
       }
     ]
@@ -133,15 +133,15 @@
     "@type": "Product",
     "@id": "https://islandmountain.io/products.html#summit-base",
     "name": "Island Mountain Summit Base \u2014 On-Premises AI Server for Medical Practices",
-    "description": "Pre-built, burn-tested AI inference server with 2x NVIDIA H100 80GB GPUs. Air-gap capable. HIPAA and HITECH compliance-ready. Includes DeepSeek V4-Flash, Llama 4 Scout, and OpenWebUI.",
+    "description": "Pre-built, burn-tested AI inference server with 2x NVIDIA RTX PRO 6000 Blackwell 96GB GPUs. Air-gap capable. HIPAA and HITECH compliance-ready. Includes DeepSeek V4-Flash, Llama 4 Scout, and OpenWebUI.",
     "brand": {
       "@type": "Brand",
       "name": "Island Mountain"
     },
     "offers": {
       "@type": "AggregateOffer",
-      "lowPrice": "75000",
-      "highPrice": "400000",
+      "lowPrice": "59000",
+      "highPrice": "225000",
       "priceCurrency": "USD",
       "offerCount": "3",
       "availability": "https://schema.org/InStock",
@@ -153,17 +153,17 @@
       {
         "@type": "PropertyValue",
         "name": "GPU Model",
-        "value": "2x NVIDIA H100 80GB PCIe (Summit Base) / H200 141GB (Summit Pinnacle)"
+        "value": "NVIDIA RTX PRO 6000 Blackwell 96GB (2x Summit Base / 4x Summit Pinnacle)"
       },
       {
         "@type": "PropertyValue",
         "name": "Total VRAM",
-        "value": "160GB-282GB"
+        "value": "192GB-384GB"
       },
       {
         "@type": "PropertyValue",
         "name": "Pre-Installed Models",
-        "value": "DeepSeek V4-Flash (quantized), Llama 4 Scout, DeepSeek R1 70B Distill or Qwen 3 72B (buyer selects)"
+        "value": "DeepSeek V4-Flash (FP8), Llama 4 Scout, DeepSeek R1 70B Distill or Qwen 3 72B (buyer selects)"
       },
       {
         "@type": "PropertyValue",
@@ -430,7 +430,7 @@
             <tr>
               <td><strong>Year 1 Cost</strong></td>
               <td>$9,000 - $45,000</td>
-              <td class="highlight-cell">$75,000 - $85,000 (one time)</td>
+              <td class="highlight-cell">$59,000 - $69,000 (one time)</td>
             </tr>
             <tr>
               <td><strong>Year 3 Cumulative</strong></td>
@@ -535,7 +535,7 @@
         </div>
         <div class="risk-card">
           <h4><i class="ri-error-warning-line"></i> Is this a medical device or clinical decision support tool?</h4>
-          <p>No. Island Mountain hardware is general-purpose AI inference infrastructure, not a medical device or clinical decision support tool. It is not classified under FDA regulations and does not provide diagnostic assistance or treatment recommendations. The system runs the same type of large language models available through cloud services, but on NVIDIA H100 or H200 GPUs inside your facility.</p>
+          <p>No. Island Mountain hardware is general-purpose AI inference infrastructure, not a medical device or clinical decision support tool. It is not classified under FDA regulations and does not provide diagnostic assistance or treatment recommendations. The system runs the same type of large language models available through cloud services, but on NVIDIA RTX PRO 6000 Blackwell GPUs inside your facility.</p>
         </div>
         <div class="risk-card">
           <h4><i class="ri-group-line"></i> Can non-technical staff use it without IT training?</h4>
@@ -543,7 +543,7 @@
         </div>
         <div class="risk-card">
           <h4><i class="ri-coin-line"></i> How does cost compare for a 15-provider practice?</h4>
-          <p>Cloud AI subscriptions for healthcare platforms typically cost $30 to $150 per user per month. For 25 users, that totals $9,000 to $45,000 per year with ongoing BAA management overhead and breach exposure on every query. An Island Mountain Summit Base system with two NVIDIA H100 GPUs costs $75,000 to $85,000 as a one-time purchase. No per-user fees. No BAA required.</p>
+          <p>Cloud AI subscriptions for healthcare platforms typically cost $30 to $150 per user per month. For 25 users, that totals $9,000 to $45,000 per year with ongoing BAA management overhead and breach exposure on every query. An Island Mountain Summit Base system with two NVIDIA RTX PRO 6000 Blackwell GPUs costs $59,000 to $69,000 as a one-time purchase. No per-user fees. No BAA required.</p>
         </div>
       </div>
       <div class="text-center-mt-32">
