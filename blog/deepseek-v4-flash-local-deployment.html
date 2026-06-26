@@ -30,7 +30,7 @@
   <meta name="author" content="Basho Parks">
   <meta name="date" content="2026-05-01">
   <title>DeepSeek V4-Flash: A Local AI Deployment Milestone</title>
-  <meta name="description" content="DeepSeek V4-Flash runs 284 billion parameters with only 13B active per token. Here is what that means for local AI inference on H100 and H200 hardware.">
+  <meta name="description" content="DeepSeek V4-Flash runs 284 billion parameters with only 13B active per token. Here is what that means for local AI inference on RTX PRO 6000 Blackwell hardware.">
   <link rel="icon" type="image/x-icon" href="../favicon.ico?v=2">
   <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon-32.png?v=2">
   <link rel="apple-touch-icon" sizes="180x180" href="../images/apple-touch-icon.png?v=2">
@@ -61,7 +61,7 @@
 
   <!-- Open Graph -->
   <meta property="og:title" content="DeepSeek V4-Flash: A Local AI Deployment Milestone">
-  <meta property="og:description" content="DeepSeek V4-Flash runs 284 billion parameters with only 13B active per token. Here is what that means for local AI inference on H100 and H200 hardware.">
+  <meta property="og:description" content="DeepSeek V4-Flash runs 284 billion parameters with only 13B active per token. Here is what that means for local AI inference on RTX PRO 6000 Blackwell hardware.">
   <meta property="og:url" content="https://islandmountain.io/blog/deepseek-v4-flash-local-deployment.html">
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="Island Mountain">
@@ -70,7 +70,7 @@
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="DeepSeek V4-Flash: A Local AI Deployment Milestone">
-  <meta name="twitter:description" content="DeepSeek V4-Flash runs 284 billion parameters with only 13B active per token. Here is what that means for local AI inference on H100 and H200 hardware.">
+  <meta name="twitter:description" content="DeepSeek V4-Flash runs 284 billion parameters with only 13B active per token. Here is what that means for local AI inference on RTX PRO 6000 Blackwell hardware.">
   <meta name="twitter:image" content="https://islandmountain.io/images/hero-mountain.webp">
 
   <!-- Article Schema -->
@@ -79,10 +79,10 @@
   "@context": "https://schema.org",
   "@type": "BlogPosting",
   "headline": "DeepSeek V4-Flash Just Changed the Game for Local AI",
-  "description": "DeepSeek V4-Flash runs 284 billion parameters with only 13B active per token. Here is what that means for local AI inference on H100 and H200 hardware.",
+  "description": "DeepSeek V4-Flash runs 284 billion parameters with only 13B active per token. Here is what that means for local AI inference on RTX PRO 6000 Blackwell hardware.",
   "url": "https://islandmountain.io/blog/deepseek-v4-flash-local-deployment.html",
   "datePublished": "2026-04-30",
-  "dateModified": "2026-04-30",
+  "dateModified": "2026-06-26",
   "author": {
     "@type": "Organization",
     "name": "Island Mountain",
@@ -237,7 +237,7 @@
 
 <p>April 24, 2026. DeepSeek drops V4-Flash, a 284-billion parameter mixture-of-experts model, and anybody running language models on constrained hardware needs to pay attention. We've spent a week running it hard on our Summit Base tier. What we're seeing rewrites the economics of local AI deployment entirely.</p>
 
-<p>Bottom line up front: V4-Flash is the first model we've tested that makes a 160GB system genuinely competitive with cloud inference for real production work. But that claim only lands if you understand what a mixture-of-experts architecture does.</p>
+<p>Bottom line up front: V4-Flash is the first model we've tested that makes a 192GB system genuinely competitive with cloud inference for real production work. But that claim only lands if you understand what a mixture-of-experts architecture does.</p>
 
 <h2>284 Billion Parameters. 13 Billion Active. Here's Why That Matters.</h2>
 
@@ -245,15 +245,17 @@
 
 <p>Memory bandwidth is the actual bottleneck in inference, not raw compute. Dense models like Llama 3.3 70B move all 70 billion parameters into memory every single inference pass. V4-Flash only loads its active experts. The math changes completely, and we've measured it, not theorized it.</p>
 
-<h2>The VRAM Reality and What Quantization Does</h2>
+<h2>The VRAM Reality and What FP8 Does</h2>
 
-<p>V4-Flash in FP16 needs approximately 568 gigabytes of VRAM. Our Summit Base tier carries 160GB. It doesn't fit. Not even close.</p>
+<p>V4-Flash at full FP16 precision needs roughly 282 gigabytes for the model weights alone. Our Summit Base tier carries 192GB total across two RTX PRO 6000 Blackwell cards. Full FP16 doesn't fit on Base. That part is real.</p>
 
-<p>Quantization solves this. Converting model weights to lower precision, specifically INT4, compresses V4-Flash to roughly 142 gigabytes. It fits. The pre-installed quantized V4-Flash on our Summit Base tier runs 60 to 90 tokens per second for single-user inference, sustained.</p>
+<p>FP8 closes the gap. At FP8 the V4-Flash weights land at approximately 170 gigabytes, which fits inside Summit Base's 192GB with about 22GB of headroom left for the KV cache. This is the part that changed: with 192GB on hand, you run the full FP8 model, not a heavily compressed INT4 build. The pre-installed FP8 V4-Flash on our Summit Base tier runs 60 to 90 tokens per second for single-user inference, sustained.</p>
 
-<p>Here's what people miss: quantized models lose some quality. INT4 degradation on V4-Flash is real and measurable. But for summarization, classification, structured extraction, code generation? The quality delta is acceptable. The speed gain absolutely is not negligible.</p>
+<p>Here's the math on that throughput. V4-Flash activates roughly 13 billion parameters per token, and at FP8 those active weights come to about 13GB. The RTX PRO 6000 Blackwell moves 1,597 GB/s of memory bandwidth, so the memory-bandwidth roofline sits near 1,597 / 13, about 123 tokens per second in theory. Real single-stream inference lands in the 60 to 90 tokens per second range once you account for the KV cache, attention overhead, and routing. These are estimates grounded in the bandwidth math, not vendor marketing.</p>
 
-<p>Our Summit Ridge tier carries the same 160GB VRAM and sees identical throughput, because the bottleneck is memory bandwidth. The difference between tiers is build time and lead time, full stop.</p>
+<p>FP8 is a precision step down from FP16, but it is a far lighter touch than the aggressive INT4 quantization a tighter-VRAM system used to force. For summarization, classification, structured extraction, and code generation, the quality holds. The speed gain is not negligible.</p>
+
+<p>Both cards in Summit Base carry the same 96GB of GDDR7 ECC, and throughput is governed by memory bandwidth, so the figures above are a property of the hardware tier, not the individual build.</p>
 
 <h2>One Million Tokens. That's Not Marketing Language.</h2>
 
@@ -263,13 +265,13 @@
 
 <p>This is where local and cloud AI diverge in ways raw benchmark scores never capture. Cloud providers cap context windows or charge premium rates for long-context use. Running V4-Flash locally means the one-million-token window costs you nothing extra per use. The model lives on your GPUs. Context is a function of your VRAM, not somebody else's billing tier.</p>
 
-<h2>The H200 Question</h2>
+<h2>The Summit Pinnacle Question</h2>
 
-<p>Our Summit Pinnacle tier is available for pre-order now, shipping July 2026 with dual H200 GPUs carrying 282GB total VRAM. V4-Flash in FP16 still won't fit at 284B, but other larger models open up. More importantly, the H200 hits 4.8 terabytes per second of memory bandwidth versus the H100's 3.35 TB/s. That's a 43% improvement that shows up directly in sustained throughput.</p>
+<p>Our Summit Pinnacle tier carries four RTX PRO 6000 Blackwell GPUs for 384GB of total VRAM. That headroom is what lets you run V4-Flash at full FP16 precision: the model's roughly 282GB of weights fit on Pinnacle with room left for the KV cache, where Summit Base runs the same model at FP8. Larger models open up on Pinnacle too. The four-card configuration also quadruples aggregate memory bandwidth, which shows up directly in sustained throughput and in concurrent-user capacity.</p>
 
-<p>Early testing puts V4-Flash at 90 to 140 tokens per second for single-user workloads on the H200 tier. The additional headroom also makes INT6 and INT5 quantization viable, trading more favorable precision for a more aggressively compressed footprint.</p>
+<p>Early testing puts V4-Flash at 90 to 140 tokens per second for single-user workloads on the Pinnacle tier. The additional VRAM also means you never trade precision for fit: you run the full FP16 weights rather than any quantized build.</p>
 
-<p>Honest question to ask yourself before upgrading: does V4-Flash at INT4 on 160GB already meet your requirements? If yes, you don't need 282GB. If you're running multi-user loads or need unquantized inference, you do. Know your actual load before you spend the money.</p>
+<p>Honest question to ask yourself before upgrading: does V4-Flash at FP8 on Summit Base already meet your requirements? If yes, you don't need 384GB. If you're running multi-user loads or need full-precision FP16 inference, you do. Know your actual load before you spend the money.</p>
 
 <h2>The Sovereignty Argument</h2>
 
@@ -285,7 +287,7 @@
 
 <h2>What V4-Flash Replaces</h2>
 
-<p>Before April 2026, local deployment meant choosing between size and speed. Llama 3.3 70B is fast on 160GB but caps at a 128K context window and doesn't carry the reasoning capacity of a 284B-parameter system. V3 had 671 billion parameters with 37 billion active, but needed 350GB or more of VRAM at full precision, pricing it out of any dual-GPU build.</p>
+<p>Before April 2026, local deployment meant choosing between size and speed. Llama 3.3 70B is fast on 192GB but caps at a 128K context window and doesn't carry the reasoning capacity of a 284B-parameter system. V3 had 671 billion parameters with 37 billion active, but needed 350GB or more of VRAM at full precision, pricing it out of any two-card build.</p>
 
 <p>V4-Flash fills the gap that didn't exist until now. The knowledge capacity of a 284B-parameter system. The inference speed of a 13B-parameter system. A context window ten times larger than most competing models. On our hardware, it sits alongside Llama as a genuinely different capability class, not a marginal upgrade.</p>
 
