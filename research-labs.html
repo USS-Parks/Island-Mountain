@@ -84,7 +84,7 @@
         "name": "Does processing research data through cloud AI risk intellectual property exposure?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes. Cloud AI transmits unpublished research data to third-party infrastructure, creating IP exposure and provenance liability for patentable discoveries. Some providers reserve rights to use submitted data for model training, and even where prohibited, data has left your institutional network. For labs handling data subject to 21 CFR Part 11, IRB protocols, or GxP compliance requirements, third-party processing introduces regulatory complications. On-premises AI from Island Mountain eliminates this risk - data stays on NVIDIA H100 or H200 GPUs inside your facility. No third-party transmission. No provenance questions at patent filing or publication."
+          "text": "Yes. Cloud AI transmits unpublished research data to third-party infrastructure, creating IP exposure and provenance liability for patentable discoveries. Some providers reserve rights to use submitted data for model training, and even where prohibited, data has left your institutional network. For labs handling data subject to 21 CFR Part 11, IRB protocols, or GxP compliance requirements, third-party processing introduces regulatory complications. On-premises AI from Island Mountain eliminates this risk - data stays on NVIDIA RTX PRO 6000 Blackwell GPUs inside your facility. No third-party transmission. No provenance questions at patent filing or publication."
         }
       },
       {
@@ -92,7 +92,7 @@
         "name": "How does local AI help with federal grant data residency requirements?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Local AI satisfies data residency requirements with a simple documentation posture. NIH, NSF, and DoD increasingly require data management plans specifying where grant-funded data is processed and stored. Cloud AI introduces a third-party handler into your governance documentation. With Island Mountain hardware, you document that AI-assisted analysis occurred on institution-owned NVIDIA H100 or H200 servers within your facility, with no external data transmission. This straightforward residency posture satisfies most federal grant data handling requirements."
+          "text": "Local AI satisfies data residency requirements with a simple documentation posture. NIH, NSF, and DoD increasingly require data management plans specifying where grant-funded data is processed and stored. Cloud AI introduces a third-party handler into your governance documentation. With Island Mountain hardware, you document that AI-assisted analysis occurred on institution-owned NVIDIA RTX PRO 6000 Blackwell servers within your facility, with no external data transmission. This straightforward residency posture satisfies most federal grant data handling requirements."
         }
       },
       {
@@ -108,7 +108,7 @@
         "name": "How does per-token cloud cost compare to local hardware for a research lab running extended sessions?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Cloud AI APIs charge $15 to $60 per million tokens. A three-researcher lab with heavy usage processes 50 to 200 million tokens per month, costing $750 to $12,000 monthly. Over two years: $18,000 to $288,000 cumulative with ongoing IP exposure. An Island Mountain Summit Base system with two NVIDIA H100 GPUs costs $75,000 to $85,000 as a one-time purchase with unlimited inference and zero per-token charges. Ongoing costs limited to electricity (~$100-$200/month). Cost parity typically reached within 12 to 18 months for sustained research workloads."
+          "text": "Cloud AI APIs charge $15 to $60 per million tokens. A three-researcher lab with heavy usage processes 50 to 200 million tokens per month, costing $750 to $12,000 monthly. Over two years: $18,000 to $288,000 cumulative with ongoing IP exposure. An Island Mountain Summit Base system with two NVIDIA RTX PRO 6000 Blackwell GPUs costs $59,000 to $69,000 as a one-time purchase with unlimited inference and zero per-token charges. Ongoing costs limited to electricity (~$100-$200/month). Cost parity typically reached within 12 to 18 months for sustained research workloads."
         }
       }
     ]
@@ -133,15 +133,15 @@
     "@type": "Product",
     "@id": "https://islandmountain.io/products.html#summit-base",
     "name": "Island Mountain Summit Base \u2014 On-Premises AI Server for Research Labs",
-    "description": "Pre-built, burn-tested AI inference server with 2x NVIDIA H100 80GB GPUs. Air-gap capable. 21 CFR Part 11 and IRB compliance-ready. Includes DeepSeek V4-Flash, Llama 4 Scout, and OpenWebUI.",
+    "description": "Pre-built, burn-tested AI inference server with 2x NVIDIA RTX PRO 6000 Blackwell 96GB GPUs. Air-gap capable. 21 CFR Part 11 and IRB compliance-ready. Includes DeepSeek V4-Flash, Llama 4 Scout, and OpenWebUI.",
     "brand": {
       "@type": "Brand",
       "name": "Island Mountain"
     },
     "offers": {
       "@type": "AggregateOffer",
-      "lowPrice": "75000",
-      "highPrice": "400000",
+      "lowPrice": "59000",
+      "highPrice": "225000",
       "priceCurrency": "USD",
       "offerCount": "3",
       "availability": "https://schema.org/InStock",
@@ -153,17 +153,17 @@
       {
         "@type": "PropertyValue",
         "name": "GPU Model",
-        "value": "2x NVIDIA H100 80GB PCIe (Summit Base) / H200 141GB (Summit Pinnacle)"
+        "value": "NVIDIA RTX PRO 6000 Blackwell 96GB (2x Summit Base / 4x Summit Pinnacle)"
       },
       {
         "@type": "PropertyValue",
         "name": "Total VRAM",
-        "value": "160GB-282GB"
+        "value": "192GB-384GB"
       },
       {
         "@type": "PropertyValue",
         "name": "Pre-Installed Models",
-        "value": "DeepSeek V4-Flash (quantized), Llama 4 Scout, DeepSeek R1 70B Distill or Qwen 3 72B (buyer selects)"
+        "value": "DeepSeek V4-Flash (FP8), Llama 4 Scout, DeepSeek R1 70B Distill or Qwen 3 72B (buyer selects)"
       },
       {
         "@type": "PropertyValue",
@@ -399,7 +399,7 @@
       <div class="risk-grid fade-in">
         <div class="risk-card">
           <h4><i class="ri-file-list-3-line"></i> 1M Token Context Window</h4>
-          <p>DeepSeek V4-Flash supports a 1M token context window on the Summit Pinnacle tier (pre-order now, ships July 2026). On the Summit Base tier, quantized V4-Flash still provides substantially longer context than most cloud APIs. This matters for full-dataset analysis, long-document synthesis, and research sessions that require maintaining context across extensive source material.</p>
+          <p>DeepSeek V4-Flash supports a 1M token context window on the Summit Pinnacle tier (pre-order now, ships July 2026). On the Summit Base tier, V4-Flash at FP8 still provides substantially longer context than most cloud APIs. This matters for full-dataset analysis, long-document synthesis, and research sessions that require maintaining context across extensive source material.</p>
         </div>
         <div class="risk-card">
           <h4><i class="ri-open-source-line"></i> MIT License: Inspect, Modify, Extend</h4>
@@ -443,7 +443,7 @@
             <tr>
               <td><strong>Year 1 Cost</strong></td>
               <td>$9,000 - $144,000</td>
-              <td class="highlight-cell">$75,000 - $85,000 (one time)</td>
+              <td class="highlight-cell">$59,000 - $69,000 (one time)</td>
             </tr>
             <tr>
               <td><strong>Year 2 Cumulative</strong></td>
@@ -538,7 +538,7 @@
         </div>
         <div class="risk-card">
           <h4><i class="ri-file-shield-2-line"></i> How does local AI help with grant data residency requirements?</h4>
-          <p>Local AI satisfies data residency requirements with a simple documentation posture. NIH, NSF, and DoD increasingly require data management plans specifying where grant-funded data is processed and stored. With Island Mountain hardware, you document that AI-assisted analysis occurred on institution-owned NVIDIA H100 or H200 servers within your facility, with no external data transmission.</p>
+          <p>Local AI satisfies data residency requirements with a simple documentation posture. NIH, NSF, and DoD increasingly require data management plans specifying where grant-funded data is processed and stored. With Island Mountain hardware, you document that AI-assisted analysis occurred on institution-owned NVIDIA RTX PRO 6000 Blackwell servers within your facility, with no external data transmission.</p>
         </div>
         <div class="risk-card">
           <h4><i class="ri-open-source-line"></i> Can researchers inspect and modify the models?</h4>
@@ -546,7 +546,7 @@
         </div>
         <div class="risk-card">
           <h4><i class="ri-coin-line"></i> How does cost compare for a heavy-usage research lab?</h4>
-          <p>Cloud AI APIs charge $15 to $60 per million tokens. A three-researcher lab with heavy usage processes 50 to 200 million tokens per month, costing $750 to $12,000 monthly. An Island Mountain Summit Base system with two NVIDIA H100 GPUs costs $75,000 to $85,000 as a one-time purchase with unlimited inference. Cost parity typically reached within 12 to 18 months.</p>
+          <p>Cloud AI APIs charge $15 to $60 per million tokens. A three-researcher lab with heavy usage processes 50 to 200 million tokens per month, costing $750 to $12,000 monthly. An Island Mountain Summit Base system with two NVIDIA RTX PRO 6000 Blackwell GPUs costs $59,000 to $69,000 as a one-time purchase with unlimited inference. Cost parity typically reached within 12 to 18 months.</p>
         </div>
       </div>
       <div class="text-center-mt-32">
