@@ -2,9 +2,17 @@
 
 Adapted from the Service Local Pro intake template. Paste the **System Prompt**
 into the Vapi assistant, set the **First Message**, add the **submit_lead tool**,
-and point the assistant's **Server URL** at `/api/voice-webhook` (secret = the
-`WEBHOOK_SECRET` already stored). The voice call then runs the *same*
-score → email → Sheet → GA4 → booking pipeline as the chat bot.
+and point the assistant's **Server URL** at `/api/voice-webhook` (secret sent as
+the `x-vapi-secret` header = the `WEBHOOK_SECRET`). The voice call then runs the
+*same* score → email → Sheet → GA4 pipeline as the chat bot.
+
+> **How capture actually works (reliable path):** Vapi + Anthropic "function"
+> tools don't reliably populate `submit_lead`'s arguments (often `{}`). So the
+> Worker's authoritative capture happens on the **`end-of-call-report`**: it runs
+> the full transcript through Claude to extract the lead fields, scores, and
+> routes them. The in-call `submit_lead` tool is a best-effort early path (used
+> only if it arrives with real data). **Therefore `end-of-call-report` MUST be
+> enabled** in the assistant's server messages — that's what makes voice work.
 
 ---
 

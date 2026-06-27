@@ -28,6 +28,8 @@ export interface AnthropicCallInput {
   system: string;
   messages: AnthropicMessage[];
   tools?: readonly ToolDef[];
+  /** Force a specific tool, e.g. { type: 'tool', name: 'submit_lead' }. */
+  toolChoice?: { type: string; name?: string };
 }
 
 export type AnthropicResult =
@@ -45,12 +47,13 @@ interface AnthropicResponseBody {
  * degrade gracefully.
  */
 export async function callMessages(input: AnthropicCallInput): Promise<AnthropicResult> {
-  const { env, model, system, messages, tools } = input;
+  const { env, model, system, messages, tools, toolChoice } = input;
   if (!env.ANTHROPIC_API_KEY) {
     return { ok: false, status: 503, error: 'ANTHROPIC_API_KEY not configured' };
   }
   const payload: Record<string, unknown> = { model, max_tokens: MAX_TOKENS, system, messages };
   if (tools && tools.length > 0) payload.tools = tools;
+  if (toolChoice) payload.tool_choice = toolChoice;
 
   let res: Response;
   try {
