@@ -77,6 +77,10 @@
     '.imchat-send:focus-visible{outline:3px solid #fff;outline-offset:1px;}',
     '.imchat-send svg{width:18px;height:18px;}',
     '.imchat-note{margin:8px 2px 0;font-size:11px;color:var(--mut);text-align:center;}',
+    '.imchat-voice{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;margin-bottom:8px;padding:9px 12px;border-radius:12px;cursor:pointer;font-weight:600;font-size:13px;color:var(--c);background:transparent;border:1px solid var(--bd);}',
+    '.imchat-voice:hover{border-color:var(--c);}',
+    '.imchat-voice:focus-visible{outline:2px solid var(--c);}',
+    '.imchat-voice[data-state="incall"]{color:#22c55e;border-color:#22c55e;}',
     '.imchat-book{align-self:flex-start;display:inline-flex;align-items:center;gap:8px;margin-top:2px;padding:10px 16px;border-radius:12px;text-decoration:none;font-weight:700;font-size:14px;color:#0f172a;background:linear-gradient(135deg,var(--c),var(--cd));box-shadow:0 4px 14px rgba(245,158,11,.3);}',
     '.imchat-book:hover{filter:brightness(1.05);}',
     '.imchat-book:focus-visible{outline:3px solid #fff;outline-offset:2px;}',
@@ -126,6 +130,7 @@
       '</div>' +
       '<div class="imchat-msgs" role="log" aria-live="polite" aria-atomic="false"></div>' +
       '<div class="imchat-foot">' +
+        voiceButtonHtml() +
         '<div class="imchat-inrow">' +
           '<textarea class="imchat-in" rows="1" placeholder="Ask about Summit servers, compliance, pricing…" aria-label="Type your message"></textarea>' +
           '<button class="imchat-send" type="button" aria-label="Send message">' + SEND_ICON + '</button>' +
@@ -136,6 +141,7 @@
     msgsEl = panel.querySelector('.imchat-msgs');
     inputEl = panel.querySelector('.imchat-in');
     sendBtn = panel.querySelector('.imchat-send');
+    wireVoiceButton(panel);
 
     panel.querySelector('.imchat-x').addEventListener('click', closePanel);
     sendBtn.addEventListener('click', send);
@@ -146,6 +152,39 @@
     panel.addEventListener('keydown', function (e) { if (e.key === 'Escape') closePanel(); });
 
     addBot('Hi — I’m the Island Mountain AI specialist. I can help you figure out whether an on-premises AI server fits your compliance and budget, and answer questions about the Summit lineup. What brings you in today?');
+  }
+
+  // --- Voice (Vapi) — optional, only when configured ------------------------
+  var VOICE = CFG.voice || null; // { phone?, vapiPublicKey?, vapiAssistantId? }
+  function voiceButtonHtml() {
+    if (!VOICE || (!VOICE.phone && !(VOICE.vapiPublicKey && VOICE.vapiAssistantId))) return '';
+    return '<button class="imchat-voice" type="button" aria-label="Talk to an AI specialist by voice">🎙️ Talk to an AI specialist</button>';
+  }
+  var vapi = null;
+  function wireVoiceButton(p) {
+    var btn = p.querySelector('.imchat-voice');
+    if (!btn) return;
+    btn.addEventListener('click', function () {
+      if (VOICE.vapiPublicKey && VOICE.vapiAssistantId) startWebCall(btn);
+      else if (VOICE.phone) { track('voice_call_click', { mode: 'tel' }); location.href = 'tel:' + VOICE.phone; }
+    });
+  }
+  function startWebCall(btn) {
+    if (vapi) { try { vapi.stop(); } catch (e) {} vapi = null; btn.textContent = '🎙️ Talk to an AI specialist'; btn.removeAttribute('data-state'); return; }
+    btn.textContent = 'Connecting…';
+    addBot('Connecting you to our AI voice specialist. This call is handled by an AI assistant — please don’t share anything you wouldn’t put in writing.');
+    track('voice_session', { mode: 'web' });
+    import('https://esm.sh/@vapi-ai/web@2').then(function (mod) {
+      var Vapi = mod.default || mod;
+      vapi = new Vapi(VOICE.vapiPublicKey);
+      vapi.on('call-start', function () { btn.textContent = '● In call — tap to end'; btn.setAttribute('data-state', 'incall'); });
+      vapi.on('call-end', function () { btn.textContent = '🎙️ Talk to an AI specialist'; btn.removeAttribute('data-state'); vapi = null; });
+      vapi.on('error', function () { btn.textContent = '🎙️ Talk to an AI specialist'; btn.removeAttribute('data-state'); addBot(fallbackText()); vapi = null; });
+      vapi.start(VOICE.vapiAssistantId);
+    }).catch(function () {
+      btn.textContent = '🎙️ Talk to an AI specialist';
+      addBot('I couldn’t start the voice call. Please call 1-801-609-1130 instead.');
+    });
   }
 
   function autoGrow() {
