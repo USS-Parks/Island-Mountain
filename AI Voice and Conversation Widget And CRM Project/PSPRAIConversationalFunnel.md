@@ -437,13 +437,25 @@ This P-SPR is COMPLETE when:
 
 ## 4. Approval State
 
-**Status:** DRAFT
+**Status:** COMPLETED (code) — pending Basho's live key/account wiring + deploy
 
-- [ ] Reviewed by Basho
-- [ ] Open decisions D1–D5 resolved (§0.6)
-- [ ] Approved for STS execution
-- [ ] STS execution commenced
-- [ ] STS execution completed
+- [x] Reviewed by Basho
+- [x] Open decisions D1–D5 resolved (§0.6): D1 = chat + voice · D2 = Email + Google
+      Sheet · D3 = Vapi · D4 = Sonnet routine + Opus escalation · D5 = Cal.com
+- [x] Approved for STS execution (2026-06-27)
+- [x] STS execution commenced (2026-06-27)
+- [x] STS execution completed (2026-06-27) — all 11 prompts built, verified, committed
+      on `claude/customer-form-ai-bot-x1cpi9`
 
-**Approval date:** _______________
-**Approved by:** _______________
+**Approval date:** 2026-06-27
+**Approved by:** Basho Parks
+
+### Completion notes
+All 11 prompts' **mechanical** verify gates pass (tsc, 7/7 scoring tests, local
+wrangler-dev smoke: health/CORS/chat/lead/booking/voice/stats/rate-limit, D1 persist +
+idempotency, widget render/stream/brand/a11y via Claude Preview, 58-page rollout,
+secrets audit clean). Gates that need **live keys/accounts** (real Anthropic replies,
+Resend/GA4/Sheet receipts, live Cal.com + Vapi calls, Turnstile) are flagged per prompt
+in `DEVLOG.md` and are Basho's step — see `DEPLOY.md`. Build with placeholder secret
+bindings per §0.4; no keys in the repo or client bundle. "BUCKET" (Cloudflare deploy)
+= `pwsh scripts/bucket.ps1` after one-time account wiring.

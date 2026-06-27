@@ -19,7 +19,9 @@ Target compliance frameworks: HIPAA, ITAR/DFARS, attorney-client privilege, trib
 - Phone: 1-801-609-1130 (tel:+18016091130, 118 occurrences site-wide)
 - LinkedIn: https://www.linkedin.com/company/island-mountain-llc/
 - X (Twitter): https://x.com/IslandMountain_
-- Form handler: FormSubmit.co (posts to basho@islandmountain.io)
+- Primary lead capture: AI chat + voice funnel (Cloudflare Worker in `/worker`); see
+  ARCHITECTURE.md "AI Conversational + Voice Funnel" and `DEPLOY.md`. Form handler:
+  FormSubmit.co (posts to basho@islandmountain.io) remains as the no-JS fallback.
 - Domain registrar: Squarespace Domains (Google nameservers ns-cloud-d1 through d4)
 
 ## DNS/Email Authentication

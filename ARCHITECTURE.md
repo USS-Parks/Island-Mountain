@@ -24,6 +24,29 @@
 |------|-------|-------|
 | js/main.js | 261 | Nav, hamburger, sidebar, scroll animations, fade-in observers. All pages. |
 | js/charts.js | 374 | Chart.js graphs for investors.html only. |
+| js/chat-widget.js | ~330 | AI chat/voice widget. Vanilla, self-injecting scoped styles, deferred idle boot. On all 58 content pages. Talks to the funnel Worker. |
+
+## AI Conversational + Voice Funnel (backend)
+
+A thin, self-owned serverless backend (NOT GoHighLevel/Salesforce) powers an AI
+chat + voice lead funnel. Source lives in `/worker` (TypeScript, Cloudflare Worker);
+it is the only part of the repo with a build/deploy step (`wrangler deploy`). The
+static site stays on GitHub Pages and never holds a secret key.
+
+- **Edge backend:** Cloudflare Worker — `POST /api/chat` (Claude proxy + KV session
+  memory), `POST /api/lead`, `POST /api/voice-webhook` (Vapi), `POST /api/booking-webhook`
+  (Cal.com), `GET /api/stats` (token-gated), `GET /api/health`.
+- **Brain:** Anthropic API (`claude-sonnet-4-6` routine / `claude-opus-4-8` escalation)
+  with a `submit_lead` tool; deterministic hot/warm/cold scoring (`worker/src/qualifier.ts`).
+- **State + store:** Workers KV (sessions + rate-limit counters), D1 (`leads` mirror),
+  Google Sheet (human-facing lead list).
+- **Routing:** hot → Resend email to Basho + Cal.com booking offer; researching → docs
+  email; all → GA4 Measurement Protocol (`generate_lead`/`qualify_started`/`schedule_call`)
+  + UTM attribution.
+- **Abuse protection:** per-IP/session/daily KV rate limits + circuit breaker, optional
+  Turnstile, prompt-injection-hardened persona, CORS locked to islandmountain.io.
+- **Docs:** `worker/README.md` (runbook), `DEPLOY.md` (one-time setup), `worker/vapi-setup.md`,
+  `worker/sheets-apps-script.gs`. Build log in `DEVLOG.md` (gitignored).
 
 ## Brand Colors (CSS Custom Properties)
 
