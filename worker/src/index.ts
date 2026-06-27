@@ -15,11 +15,12 @@ import { handleLead } from './routes/lead';
 import { handleVoiceWebhook } from './routes/voice';
 import { handleBookingWebhook } from './routes/booking';
 import { handleStats } from './routes/stats';
+import { handleHistory } from './routes/history';
 
 interface Route {
   method: string;
   path: string;
-  handler: (request: Request, env: Env) => Response | Promise<Response>;
+  handler: (request: Request, env: Env, ctx: ExecutionContext) => Response | Promise<Response>;
   /** Webhooks are called by third parties (no browser Origin) — skip origin gate. */
   publicWebhook?: boolean;
 }
@@ -27,6 +28,7 @@ interface Route {
 const ROUTES: Route[] = [
   { method: 'GET', path: '/api/health', handler: handleHealth },
   { method: 'GET', path: '/api/stats', handler: handleStats, publicWebhook: true },
+  { method: 'GET', path: '/api/history', handler: handleHistory },
   { method: 'POST', path: '/api/chat', handler: handleChat },
   { method: 'POST', path: '/api/lead', handler: handleLead },
   { method: 'POST', path: '/api/voice-webhook', handler: handleVoiceWebhook, publicWebhook: true },
@@ -34,7 +36,7 @@ const ROUTES: Route[] = [
 ];
 
 export default {
-  async fetch(request: Request, env: Env): Promise<Response> {
+  async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
     const url = new URL(request.url);
     const origin = request.headers.get('Origin');
 
@@ -68,7 +70,7 @@ export default {
     }
 
     try {
-      return await route.handler(request, env);
+      return await route.handler(request, env, ctx);
     } catch (err) {
       console.error('Unhandled error:', err);
       return jsonResponse(

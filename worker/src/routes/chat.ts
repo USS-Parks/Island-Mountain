@@ -36,7 +36,7 @@ function pickModel(env: Env, message: string, historyLen: number): string {
   return isComplex ? env.CHAT_MODEL_ESCALATION : env.CHAT_MODEL_ROUTINE;
 }
 
-export async function handleChat(request: Request, env: Env): Promise<Response> {
+export async function handleChat(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
   const origin = request.headers.get('Origin');
 
   let body: ChatRequestBody;
@@ -94,11 +94,18 @@ export async function handleChat(request: Request, env: Env): Promise<Response> 
     transcript: session.messages,
   };
 
-  const turn = await runTurn(env, model, system, contextMessages(session), leadCtx);
-
-  // Persist the visible assistant reply.
-  session.messages.push({ role: 'assistant', content: turn.finalText });
-  await saveSession(env, session);
+  // Run the turn + persist as one unit kept alive by waitUntil, so the reply
+  // finishes and is saved to KV even if the visitor navigates away mid-response.
+  // The next page then loads it via GET /api/history.
+  const sess = session;
+  const turnPromise = (async () => {
+    const t = await runTurn(env, model, system, contextMessages(sess), leadCtx);
+    sess.messages.push({ role: 'assistant', content: t.finalText });
+    await saveSession(env, sess);
+    return t;
+  })();
+  ctx.waitUntil(turnPromise);
+  const turn = await turnPromise;
 
   // Offer a booking when the qualifier recommends a scoping call.
   let booking: { url: string } | undefined;
