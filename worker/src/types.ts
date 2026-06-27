@@ -30,6 +30,11 @@ export interface Env {
   /** Bearer token gating GET /api/stats. */
   STATS_TOKEN?: string;
 
+  // --- Abuse-protection caps (vars; defaults applied if unset) ---
+  RATE_LIMIT_PER_MIN?: string;
+  SESSION_MSG_CAP?: string;
+  DAILY_MESSAGE_CAP?: string;
+
   // --- Vars (wrangler.toml [vars], public) ---
   GA4_MEASUREMENT_ID: string;
   ALERT_EMAIL: string;
