@@ -168,8 +168,13 @@
     addBot('Hi — I’m the Island Mountain AI specialist. I can help you figure out whether an on-premises AI server fits your compliance and budget, and answer questions about the Summit lineup. What brings you in today?');
   }
 
-  // --- Voice (Vapi) — optional, only when configured ------------------------
-  var VOICE = CFG.voice || null; // { phone?, vapiPublicKey?, vapiAssistantId? }
+  // --- Voice (Vapi) — in-page web call (no third-party tab) -----------------
+  // Defaults baked in for islandmountain.io; override via window.IM_CHAT_CONFIG.voice.
+  // vapiPublicKey is a public, client-safe key.
+  var VOICE = CFG.voice || {
+    vapiPublicKey: '89dd9bb1-c257-45e7-ad3a-5cef31a61e9c',
+    vapiAssistantId: '08eba87f-acff-4004-b44e-9860472475a9',
+  };
   function voiceButtonHtml() {
     if (!VOICE || (!VOICE.phone && !(VOICE.vapiPublicKey && VOICE.vapiAssistantId))) return '';
     return '<button class="imchat-voice" type="button" aria-label="Talk to an AI specialist by voice">🎙️ Talk to an AI specialist</button>';
