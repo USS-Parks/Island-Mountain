@@ -7,19 +7,10 @@ import {
   saveSession,
   contextMessages,
   MAX_MESSAGE_CHARS,
-  type SessionData,
   type SessionMeta,
 } from '../session';
-import {
-  callAnthropic,
-  streamAnthropic,
-  toAnthropicMessages,
-  parseTextDelta,
-} from '../anthropic';
-
-const FALLBACK_MESSAGE =
-  "I'm having a little trouble connecting right now. You can reach Basho directly " +
-  'at 1-801-609-1130 or basho@islandmountain.io and he’ll help you straight away.';
+import { runTurn } from '../agent';
+import type { LeadContext } from '../lead-processor';
 
 interface ChatRequestBody {
   sessionId?: string;
@@ -58,59 +49,66 @@ export async function handleChat(request: Request, env: Env): Promise<Response> 
   }
   const clipped = message.slice(0, MAX_MESSAGE_CHARS);
 
-  // Load or create session.
   const sessionId =
     typeof body.sessionId === 'string' && body.sessionId.length > 0
       ? body.sessionId
       : crypto.randomUUID();
   let session = await loadSession(env, sessionId);
-  if (!session) {
-    session = newSession(sessionId, body.meta ?? {});
-  }
+  if (!session) session = newSession(sessionId, body.meta ?? {});
   session.messages.push({ role: 'user', content: clipped });
 
   const model = pickModel(env, clipped, session.messages.length);
   const system = buildSystemPrompt();
-  const apiMessages = toAnthropicMessages(contextMessages(session));
+  const leadCtx: LeadContext = {
+    sessionId,
+    meta: session.meta,
+    source: 'chat',
+    transcript: session.messages,
+  };
+
+  const turn = await runTurn(env, model, system, contextMessages(session), leadCtx);
+
+  // Persist the visible assistant reply.
+  session.messages.push({ role: 'assistant', content: turn.finalText });
+  await saveSession(env, session);
 
   const wantsStream = (request.headers.get('Accept') || '').includes('text/event-stream');
   if (wantsStream) {
-    return streamReply(env, origin, session, { model, system, messages: apiMessages });
+    return streamReply(origin, env, sessionId, turn);
   }
 
-  const result = await callAnthropic({ env, model, system, messages: apiMessages });
-  if (!result.ok) {
-    console.error('Anthropic call failed:', result.status, result.error);
-    // Graceful: append fallback as the assistant turn, persist, return 200.
-    session.messages.push({ role: 'assistant', content: FALLBACK_MESSAGE });
-    await saveSession(env, session);
-    return jsonResponse(
-      { success: true, data: { sessionId, reply: FALLBACK_MESSAGE, fallback: true } },
-      200,
-      origin,
-      env,
-    );
-  }
-
-  session.messages.push({ role: 'assistant', content: result.text });
-  await saveSession(env, session);
   return jsonResponse(
-    { success: true, data: { sessionId, reply: result.text, model: result.model } },
+    {
+      success: true,
+      data: {
+        sessionId,
+        reply: turn.finalText,
+        model,
+        fallback: turn.fallback || undefined,
+        lead: turn.lead
+          ? { score: turn.lead.scored.score, action: turn.lead.scored.recommendedAction }
+          : undefined,
+      },
+    },
     200,
     origin,
     env,
   );
 }
 
-/** SSE streaming path. Re-emits a simplified event stream and persists on close. */
-async function streamReply(
-  env: Env,
+/**
+ * Server-streamed SSE. The tool-use agent loop runs to completion first (so
+ * qualification works identically to the JSON path), then the final reply is
+ * chunked to the widget for a progressive render. (Token-level model streaming
+ * is a future enhancement; this keeps a single, correct code path for v1.)
+ */
+function streamReply(
   origin: string | null,
-  session: SessionData,
-  call: { model: string; system: string; messages: { role: 'user' | 'assistant'; content: string }[] },
-): Promise<Response> {
-  const stream = await streamAnthropic({ env, ...call });
-
+  env: Env,
+  sessionId: string,
+  turn: Awaited<ReturnType<typeof runTurn>>,
+): Response {
+  const encoder = new TextEncoder();
   const sseHeaders = {
     'Content-Type': 'text/event-stream; charset=utf-8',
     'Cache-Control': 'no-cache',
@@ -118,51 +116,23 @@ async function streamReply(
     ...corsHeaders(origin, env),
   };
 
-  if (!stream.ok) {
-    console.error('Anthropic stream failed:', stream.status, stream.error);
-    session.messages.push({ role: 'assistant', content: FALLBACK_MESSAGE });
-    await saveSession(env, session);
-    const body =
-      `data: ${JSON.stringify({ type: 'meta', sessionId: session.id })}\n\n` +
-      `data: ${JSON.stringify({ type: 'text', text: FALLBACK_MESSAGE })}\n\n` +
-      `data: ${JSON.stringify({ type: 'done', fallback: true })}\n\n`;
-    return new Response(body, { status: 200, headers: sseHeaders });
-  }
-
-  const encoder = new TextEncoder();
-  const decoder = new TextDecoder();
-  const upstream = stream.response.body!.getReader();
-  let full = '';
-  let buffer = '';
-
   const out = new ReadableStream<Uint8Array>({
-    async start(controller) {
+    start(controller) {
       const send = (obj: unknown) =>
         controller.enqueue(encoder.encode(`data: ${JSON.stringify(obj)}\n\n`));
-      send({ type: 'meta', sessionId: session.id });
-      try {
-        for (;;) {
-          const { done, value } = await upstream.read();
-          if (done) break;
-          buffer += decoder.decode(value, { stream: true });
-          const lines = buffer.split('\n');
-          buffer = lines.pop() ?? '';
-          for (const line of lines) {
-            const delta = parseTextDelta(line);
-            if (delta) {
-              full += delta;
-              send({ type: 'text', text: delta });
-            }
-          }
-        }
-      } catch (err) {
-        console.error('stream read error:', err);
+      send({ type: 'meta', sessionId });
+      // Chunk by word so the widget renders progressively.
+      const words = turn.finalText.split(/(\s+)/);
+      for (const w of words) {
+        if (w.length) send({ type: 'text', text: w });
       }
-      // Persist whatever we got (fallback if empty).
-      const finalText = full.length > 0 ? full : FALLBACK_MESSAGE;
-      session.messages.push({ role: 'assistant', content: finalText });
-      await saveSession(env, session);
-      send({ type: 'done', fallback: full.length === 0 ? true : undefined });
+      send({
+        type: 'done',
+        fallback: turn.fallback || undefined,
+        lead: turn.lead
+          ? { score: turn.lead.scored.score, action: turn.lead.scored.recommendedAction }
+          : undefined,
+      });
       controller.close();
     },
   });
