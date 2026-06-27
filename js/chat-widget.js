@@ -287,9 +287,12 @@
     var bubble = null;
     function ensureBubble() { if (!bubble) { if (typing && typing.parentNode) typing.remove(); bubble = addBot(''); } return bubble; }
 
+    var headers = { 'Content-Type': 'application/json', Accept: 'text/event-stream' };
+    // Optional Cloudflare Turnstile: if the page sets a token, pass it through.
+    if (window.IM_TURNSTILE_TOKEN) headers['X-Turnstile-Token'] = window.IM_TURNSTILE_TOKEN;
     fetch(API_BASE + '/api/chat', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', Accept: 'text/event-stream' },
+      headers: headers,
       body: JSON.stringify(payload(text)),
     })
       .then(function (res) {

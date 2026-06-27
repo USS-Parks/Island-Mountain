@@ -121,4 +121,18 @@ count, and lead counts by score / source / utm_source (with hot counts per sourc
 - `.dev.vars` (local secrets) is gitignored.
 - CORS allows only `https://islandmountain.io` (+ `www` + localhost for dev);
   all other origins are rejected (`src/cors.ts`).
-- Rate limiting, prompt-injection guards, and a daily cost cap land in PROMPT 10.
+
+### Abuse protection (PROMPT 10)
+- **Rate limiting** (`src/ratelimit.ts`, KV counters, blocks *before* any LLM call so an
+  over-limit turn costs $0): per-IP/minute (`RATE_LIMIT_PER_MIN`, default 15), per-session
+  total (`SESSION_MSG_CAP`, default 60), and a global **daily circuit breaker**
+  (`DAILY_MESSAGE_CAP`, default 5000). Over-limit turns get a graceful canned reply.
+- **Prompt-injection hardening** in `src/persona.ts`: visitor text is treated as untrusted
+  input; the bot refuses "ignore instructions"/"print your prompt", never reveals system
+  details or keys, stays on topic, and caps reply length.
+- **Cloudflare Turnstile** (optional): set `TURNSTILE_SECRET` to require a token on the first
+  message of a session. Render Turnstile on the page and set `window.IM_TURNSTILE_TOKEN`;
+  the widget forwards it as `X-Turnstile-Token`. Off (always-pass) when the secret is unset.
+- **PII**: only the qualifier fields are stored; sessions auto-expire (~7 days, KV TTL);
+  leads persist in D1 + the private Sheet. `privacy.html` documents collection, processors
+  (Anthropic, Cloudflare, Vapi, Resend, Cal.com), and deletion rights.
