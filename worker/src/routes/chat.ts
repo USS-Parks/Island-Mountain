@@ -13,6 +13,7 @@ import { runTurn } from '../agent';
 import type { LeadContext } from '../lead-processor';
 import { buildBookingUrl } from '../booking';
 import { ga4Event, attributionParams } from '../integrations/ga4';
+import { enforceLimits, degradeMessage, verifyTurnstile } from '../ratelimit';
 
 interface ChatRequestBody {
   sessionId?: string;
@@ -55,9 +56,28 @@ export async function handleChat(request: Request, env: Env): Promise<Response> 
     typeof body.sessionId === 'string' && body.sessionId.length > 0
       ? body.sessionId
       : crypto.randomUUID();
+  const ip = request.headers.get('cf-connecting-ip') || 'local';
+
+  // Rate limit / circuit breaker BEFORE any LLM call (an over-limit turn costs $0).
+  const limit = await enforceLimits(env, ip, sessionId, new Date());
+  if (!limit.allowed) {
+    const reply = degradeMessage(limit.reason);
+    console.warn(`rate-limited (${limit.reason}) ip=${ip} session=${sessionId}`);
+    return degradeResponse(request, origin, env, sessionId, reply);
+  }
+
   let session = await loadSession(env, sessionId);
   const isNewSession = !session;
   if (!session) session = newSession(sessionId, body.meta ?? {});
+
+  // Turnstile (optional) gates the FIRST message of a session against bots.
+  if (isNewSession && env.TURNSTILE_SECRET) {
+    const token = request.headers.get('X-Turnstile-Token');
+    if (!(await verifyTurnstile(env, token, ip))) {
+      return jsonResponse({ success: false, error: 'Verification required.' }, 403, origin, env);
+    }
+  }
+
   session.messages.push({ role: 'user', content: clipped });
 
   // Funnel: a real conversation has begun (server-side, ad-blocker resilient).
@@ -145,4 +165,36 @@ function streamReply(
   });
 
   return new Response(out, { status: 200, headers: sseHeaders });
+}
+
+/** Graceful degrade (rate limit / circuit breaker) — canned reply, no LLM call. */
+function degradeResponse(
+  request: Request,
+  origin: string | null,
+  env: Env,
+  sessionId: string,
+  reply: string,
+): Response {
+  const wantsStream = (request.headers.get('Accept') || '').includes('text/event-stream');
+  if (!wantsStream) {
+    return jsonResponse(
+      { success: true, data: { sessionId, reply, rate_limited: true } },
+      200,
+      origin,
+      env,
+    );
+  }
+  const encoder = new TextEncoder();
+  const body =
+    `data: ${JSON.stringify({ type: 'meta', sessionId })}\n\n` +
+    `data: ${JSON.stringify({ type: 'text', text: reply })}\n\n` +
+    `data: ${JSON.stringify({ type: 'done', rate_limited: true })}\n\n`;
+  return new Response(encoder.encode(body), {
+    status: 200,
+    headers: {
+      'Content-Type': 'text/event-stream; charset=utf-8',
+      'Cache-Control': 'no-cache',
+      ...corsHeaders(origin, env),
+    },
+  });
 }
