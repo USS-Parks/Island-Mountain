@@ -1,6 +1,8 @@
 # Planning docs and internal files (not for public serving)
 HANDOFF.md
 SESSION-LOG.md
+DEVLOG.md
+PLANNING/
 _docs/
 _work/
 .claude/
