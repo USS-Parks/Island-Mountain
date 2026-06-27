@@ -70,6 +70,12 @@
   function logMsg(who, text) { chatLog.push({ who: who, text: text }); saveLog(); }
   var chatLog = loadLog();
 
+  var GREETING = 'Hi — I’m the Island Mountain AI specialist. I can help you figure out whether an on-premises AI server fits your compliance and budget, and answer questions about the Summit lineup. What brings you in today?';
+
+  // Remember whether the panel is open, so it stays open across page changes.
+  function setOpenFlag(v) { try { sessionStorage.setItem('im_chat_open', v ? '1' : '0'); } catch (e) {} }
+  function isOpenFlag() { try { return sessionStorage.getItem('im_chat_open') === '1'; } catch (e) { return false; } }
+
   // --- Styles (scoped under .imchat-root) -----------------------------------
   var CSS = [
     '.imchat-root{--c:var(--copper,#f59e0b);--cd:var(--copper-deep,#d97706);--bg:var(--primary-dark,#0f172a);--bg2:var(--secondary-dark,#1e293b);--bd:rgba(148,163,184,.18);--tx:var(--text-light,#f1f5f9);--mut:var(--text-muted,#94a3b8);font-family:inherit;}',
@@ -139,9 +145,11 @@
     launcher.type = 'button';
     launcher.setAttribute('aria-label', 'Chat with an Island Mountain AI specialist');
     launcher.innerHTML = CHAT_ICON + '<span>Chat with us</span>';
-    launcher.addEventListener('click', openPanel);
+    launcher.addEventListener('click', function () { openPanel(); });
     root.appendChild(launcher);
     document.body.appendChild(root);
+    // Stay open across page changes: if it was open on the previous page, reopen.
+    if (isOpenFlag()) openPanel(true);
   }
 
   function buildPanel() {
@@ -185,10 +193,38 @@
     if (chatLog.length) {
       chatLog.forEach(function (m) { addMsg(m.text, m.who); });
     } else {
-      var greeting = 'Hi — I’m the Island Mountain AI specialist. I can help you figure out whether an on-premises AI server fits your compliance and budget, and answer questions about the Summit lineup. What brings you in today?';
-      addMsg(greeting, 'bot');
-      logMsg('bot', greeting);
+      addMsg(GREETING, 'bot');
+      logMsg('bot', GREETING);
     }
+    // Reconcile with the server's stored conversation — this recovers a reply
+    // that finished server-side after the visitor changed pages mid-response.
+    syncHistory();
+  }
+
+  // Pull the authoritative conversation from the Worker and re-render it.
+  function renderConversation(serverMsgs) {
+    msgsEl.innerHTML = '';
+    addMsg(GREETING, 'bot');
+    chatLog = [{ who: 'bot', text: GREETING }];
+    serverMsgs.forEach(function (m) {
+      var who = m.role === 'user' ? 'user' : 'bot';
+      if (!m.content) return;
+      addMsg(m.content, who);
+      chatLog.push({ who: who, text: m.content });
+    });
+    saveLog();
+    scrollDown();
+  }
+  function syncHistory() {
+    var sid = getSessionId();
+    if (!sid) return;
+    fetch(API_BASE + '/api/history?sessionId=' + encodeURIComponent(sid))
+      .then(function (r) { return r.json(); })
+      .then(function (j) {
+        var msgs = (j && j.data && j.data.messages) || [];
+        if (msgs.length && !busy) renderConversation(msgs);
+      })
+      .catch(function () {});
   }
 
   // --- Voice (Vapi) — in-page web call (no third-party tab) -----------------
@@ -234,20 +270,19 @@
     inputEl.style.height = Math.min(inputEl.scrollHeight, 96) + 'px';
   }
 
-  function openPanel() {
+  function openPanel(auto) {
     buildPanel();
     launcher.classList.add('imchat-hidden');
     isOpen = true;
-    // Force a reflow from the hidden state, then add the class directly (not via
-    // rAF, which headless/background tabs throttle) so the panel always shows.
-    void panel.offsetWidth;
+    setOpenFlag(true);
     panel.classList.add('imchat-open');
     setTimeout(function () { try { inputEl.focus(); } catch (e) {} }, REDUCED ? 0 : 220);
-    track('chat_open', { page: location.pathname });
+    if (auto !== true) track('chat_open', { page: location.pathname });
   }
 
   function closePanel() {
     isOpen = false;
+    setOpenFlag(false);
     panel.classList.remove('imchat-open');
     var done = function () { launcher.classList.remove('imchat-hidden'); try { launcher.focus(); } catch (e) {} };
     if (REDUCED) done(); else setTimeout(done, 220);
