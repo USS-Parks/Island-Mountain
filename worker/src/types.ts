@@ -34,6 +34,10 @@ export interface Env {
   ALLOWED_ORIGIN: string;
   CHAT_MODEL_ROUTINE: string;
   CHAT_MODEL_ESCALATION: string;
+  /** From-address for outbound email (must be a verified Resend domain). */
+  LEAD_FROM_EMAIL?: string;
+  /** Cal.com scheduling link offered to hot leads (PROMPT 06). */
+  CALCOM_LINK?: string;
 }
 
 /** Standard JSON envelope returned by every endpoint. */

@@ -40,7 +40,23 @@ npx wrangler secret put TURNSTILE_SECRET      # bot challenge (PROMPT 10)
 ```
 
 Public (non-secret) config lives in the `[vars]` block of `wrangler.toml`:
-`GA4_MEASUREMENT_ID`, `ALERT_EMAIL`, `ALLOWED_ORIGIN`, and the two chat model ids.
+`GA4_MEASUREMENT_ID`, `ALERT_EMAIL`, `ALLOWED_ORIGIN`, `LEAD_FROM_EMAIL`,
+`CALCOM_LINK`, and the two chat model ids.
+
+### Google Sheet lead sink (D2)
+Deploy `sheets-apps-script.gs` as a Sheet-bound Apps Script web app (steps in that
+file), then `wrangler secret put SHEETS_WEBHOOK_URL` with its `…/exec` URL. Leads
+also persist to D1 as the self-owned mirror.
+
+### Email (Resend)
+`LEAD_FROM_EMAIL` must be a **verified Resend domain** (e.g. `leads@islandmountain.io`).
+Hot leads / scoping-tier → instant alert to `ALERT_EMAIL`; researching (cold) leads →
+an info-pack email to the visitor.
+
+### GA4 server events
+Create a Measurement Protocol API secret in GA4 (Admin → Data Streams → your stream →
+Measurement Protocol API secrets) and `wrangler secret put GA4_API_SECRET`. The Worker
+fires `generate_lead` with `lead_score`, `recommended_action`, `source`, and UTM params.
 
 ## Local development
 

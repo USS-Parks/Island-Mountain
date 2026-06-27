@@ -20,6 +20,10 @@ ALLOWED_ORIGIN = "https://islandmountain.io"
 # Chat model routing (D4: Sonnet routine + Opus escalation)
 CHAT_MODEL_ROUTINE = "claude-sonnet-4-6"
 CHAT_MODEL_ESCALATION = "claude-opus-4-8"
+# Outbound email from-address (must be a verified Resend domain).
+LEAD_FROM_EMAIL = "Island Mountain <leads@islandmountain.io>"
+# Cal.com scheduling link offered to hot leads (PROMPT 06). Set after Cal.com setup.
+CALCOM_LINK = "https://cal.com/islandmountain/scoping-call"
 
 # Session + short-term conversation memory.
 # Create:  npx wrangler kv namespace create SESSIONS
