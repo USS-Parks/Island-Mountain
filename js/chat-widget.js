@@ -149,7 +149,7 @@
           '<textarea class="imchat-in" rows="1" placeholder="Ask about Summit servers, compliance, pricing…" aria-label="Type your message"></textarea>' +
           '<button class="imchat-send" type="button" aria-label="Send message">' + SEND_ICON + '</button>' +
         '</div>' +
-        '<p class="imchat-note">Answers from Island Mountain’s AI. For anything urgent: 1-801-609-1130</p>' +
+        '<p class="imchat-note">Answers from Island Mountain’s AI. For anything urgent: 1-341-441-8740</p>' +
       '</div>';
     root.appendChild(panel);
     msgsEl = panel.querySelector('.imchat-msgs');
@@ -202,7 +202,7 @@
       vapi.start(VOICE.vapiAssistantId);
     }).catch(function () {
       btn.textContent = '🎙️ Talk to an AI specialist';
-      addBot('I couldn’t start the voice call. Please call 1-801-609-1130 instead.');
+      addBot('I couldn’t start the voice call. Please call 1-341-441-8740 instead.');
     });
   }
 
@@ -350,7 +350,7 @@
   }
 
   function fallbackText() {
-    return "I'm having a little trouble connecting right now. You can reach Basho directly at 1-801-609-1130 or basho@islandmountain.io.";
+    return "I'm having a little trouble connecting right now. You can reach Basho directly at 1-341-441-8740 or basho@islandmountain.io.";
   }
 
   // Public API: let on-page CTAs open the chat (e.g. contact.html bot-lead button).

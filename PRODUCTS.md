@@ -68,7 +68,7 @@ On-premises AI inference servers. Pre-built, burn-tested, ready to deploy.
 - Financing available
 - TCO comparison vs cloud: $64,000-$220,000+ cloud cost over 5 years (transparent range with May 2026 pricing, assumptions stated; Session 47 fix)
 - Break-even typically under 12 months (lower $59K-$69K Base entry vs prior $75K-$85K)
-- Warranty + direct phone support (1-801-609-1130)
+- Warranty + direct phone support (1-341-441-8740)
 
 ## Professional-Grade GPUs (Competitive Differentiator)
 

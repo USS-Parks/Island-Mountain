@@ -8,7 +8,7 @@
 - Blog citations: inline parenthetical links, not footnotes or endnotes.
 - AEO summaries: lead with direct answer (under 30 words), then regulatory citation, then brand/pricing expansion.
 - FAQ schema answers: first sentence is direct yes/no/declarative (under 30 words).
-- Phone number display format: "1-801-609-1130" (with leading 1). Tel links: "tel:+18016091130" (E.164).
+- Phone number display format: "1-341-441-8740" (with leading 1). Tel links: "tel:+13414418740" (E.164).
 - Email display: "info@islandmountain.io" in visible text. Mailto: "basho@islandmountain.io" in href.
 - Company name: "Island Mountain" (no LLC in display text). LLC only in terms.html and privacy.html.
 - Industry count: "eleven regulated industries" (updated Session 23 for casino gaming).
@@ -27,7 +27,7 @@
 - Navbar: Solutions dropdown includes all 11 verticals. Resources link after Blog. Mobile sidebar mirrors nav.
 - Footer: 4-column grid (Brand, Solutions, Resources, Company). Phone in footer-brand + footer-bottom.
 - Footer column headings use <h3> (Session 51, changed from h4 for WCAG heading order).
-- CTA sections include: "Or call directly: 1-801-609-1130" below button groups.
+- CTA sections include: "Or call directly: 1-341-441-8740" below button groups.
 - All pages carry canonical tag pointing to .html version.
 - Cross-links between related verticals (insurance<->medical, energy<->defense, etc.)
 - Hero images: WebP-only `<img srcset>` (no <picture> fallbacks). Nav logo still uses <picture>.

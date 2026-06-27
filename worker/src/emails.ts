@@ -67,7 +67,7 @@ export function docsEmail(fields: LeadFields): { subject: string; html: string }
         <li><a href="https://islandmountain.io/faq.html">Frequently asked questions</a></li>
       </ul>
       <p>When you're ready to talk specifics, just reply to this email or call
-      <strong>1-801-609-1130</strong> and Basho will help directly.</p>
+      <strong>1-341-441-8740</strong> and Basho will help directly.</p>
       <p style="color:#64748b;font-size:13px">— Island Mountain</p>
     </div>`;
   return { subject, html };

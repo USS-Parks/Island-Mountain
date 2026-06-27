@@ -16,7 +16,7 @@ Target compliance frameworks: HIPAA, ITAR/DFARS, attorney-client privilege, trib
 ## Contact Information
 
 - Email: basho@islandmountain.io (displayed as info@islandmountain.io, mailto routes to basho@)
-- Phone: 1-801-609-1130 (tel:+18016091130, 118 occurrences site-wide)
+- Phone: 1-341-441-8740 (tel:+13414418740, 118 occurrences site-wide)
 - LinkedIn: https://www.linkedin.com/company/island-mountain-llc/
 - X (Twitter): https://x.com/IslandMountain_
 - Primary lead capture: AI chat + voice funnel (Cloudflare Worker in `/worker`); see
