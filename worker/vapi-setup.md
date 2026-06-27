@@ -32,7 +32,7 @@ once you have at least their name and email plus what they've shared."
 - Provision/import a number in Vapi and attach this assistant. It answers **24/7**,
   so "after hours" is simply the AI taking the call; hot leads still email Basho
   instantly and persist to the store. Optionally set a transfer/voicemail fallback
-  to 1-801-609-1130 for callers who ask for a human.
+  to 1-341-441-8740 for callers who ask for a human.
 
 ## 5. Website affordance (optional web call)
 The chat widget shows a "🎙️ Talk to an AI specialist" button when configured. On a
@@ -43,7 +43,7 @@ page (or the global include), set before `chat-widget.js` loads:
   window.IM_CHAT_CONFIG = {
     apiBase: "https://<your-worker>.workers.dev",
     voice: {
-      phone: "+18016091130",                 // click-to-call fallback
+      phone: "+13414418740",                 // click-to-call fallback
       vapiPublicKey: "<vapi-public-key>",     // enables in-browser web call
       vapiAssistantId: "<assistant-id>"
     }

@@ -14,7 +14,7 @@ const MAX_TOOL_HOPS = 3;
 
 export const AGENT_FALLBACK =
   "I'm having a little trouble connecting right now. You can reach Basho directly " +
-  'at 1-801-609-1130 or basho@islandmountain.io and he’ll help you straight away.';
+  'at 1-341-441-8740 or basho@islandmountain.io and he’ll help you straight away.';
 
 export interface TurnResult {
   finalText: string;
