@@ -23,7 +23,7 @@ CHAT_MODEL_ESCALATION = "claude-opus-4-8"
 # Outbound email from-address (must be a verified Resend domain).
 LEAD_FROM_EMAIL = "Island Mountain <leads@islandmountain.io>"
 # Cal.com scheduling link offered to hot leads (PROMPT 06). Set after Cal.com setup.
-CALCOM_LINK = "https://cal.com/islandmountain/scoping-call"
+CALCOM_LINK = "https://cal.com/basho-parks-3yuylm/30min"
 # Abuse-protection caps (PROMPT 10). 0/unset → built-in defaults.
 RATE_LIMIT_PER_MIN = "15"
 SESSION_MSG_CAP = "60"
