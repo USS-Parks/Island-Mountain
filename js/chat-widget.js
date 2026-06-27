@@ -56,6 +56,20 @@
   function getSessionId() { try { return sessionStorage.getItem('im_chat_sid') || ''; } catch (e) { return ''; } }
   function setSessionId(id) { try { sessionStorage.setItem('im_chat_sid', id); } catch (e) {} }
 
+  // --- Visible conversation log (persists across same-tab page navigations) --
+  var MAX_LOG = 60;
+  function loadLog() {
+    try { return JSON.parse(sessionStorage.getItem('im_chat_log') || '[]') || []; } catch (e) { return []; }
+  }
+  function saveLog() {
+    try {
+      if (chatLog.length > MAX_LOG) chatLog = chatLog.slice(-MAX_LOG);
+      sessionStorage.setItem('im_chat_log', JSON.stringify(chatLog));
+    } catch (e) {}
+  }
+  function logMsg(who, text) { chatLog.push({ who: who, text: text }); saveLog(); }
+  var chatLog = loadLog();
+
   // --- Styles (scoped under .imchat-root) -----------------------------------
   var CSS = [
     '.imchat-root{--c:var(--copper,#f59e0b);--cd:var(--copper-deep,#d97706);--bg:var(--primary-dark,#0f172a);--bg2:var(--secondary-dark,#1e293b);--bd:rgba(148,163,184,.18);--tx:var(--text-light,#f1f5f9);--mut:var(--text-muted,#94a3b8);font-family:inherit;}',
@@ -63,9 +77,10 @@
     '.imchat-launch:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(245,158,11,.45);}',
     '.imchat-launch:focus-visible{outline:3px solid #fff;outline-offset:2px;}',
     '.imchat-launch svg{width:20px;height:20px;}',
-    '.imchat-panel{position:fixed;right:20px;bottom:20px;z-index:2147483001;width:380px;max-width:calc(100vw - 32px);height:560px;max-height:calc(100vh - 40px);display:flex;flex-direction:column;background:var(--bg);color:var(--tx);border:1px solid var(--bd);border-radius:16px;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,.5);transform:translateY(8px);transition:transform .2s ease;}',
-    '.imchat-panel.imchat-open{transform:translateY(0);}',
-    '.imchat-reduced .imchat-panel,.imchat-reduced .imchat-launch{transition:none;}',
+    '.imchat-panel{position:fixed;right:20px;bottom:20px;z-index:2147483001;width:380px;max-width:calc(100vw - 32px);height:560px;max-height:calc(100vh - 40px);display:none;flex-direction:column;background:var(--bg);color:var(--tx);border:1px solid var(--bd);border-radius:16px;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,.5);}',
+    '.imchat-panel.imchat-open{display:flex;animation:imchat-pop .18s ease;}',
+    '@keyframes imchat-pop{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:none;}}',
+    '.imchat-reduced .imchat-panel.imchat-open{animation:none;}',
     '.imchat-head{display:flex;align-items:center;gap:10px;padding:14px 16px;background:linear-gradient(135deg,rgba(245,158,11,.16),rgba(217,119,6,.06));border-bottom:1px solid var(--bd);}',
     '.imchat-head .imchat-dot{width:9px;height:9px;border-radius:50%;background:#22c55e;box-shadow:0 0 8px #22c55e;}',
     '.imchat-head h3{margin:0;font-size:15px;font-weight:700;color:var(--tx);}',
@@ -165,7 +180,15 @@
     inputEl.addEventListener('input', autoGrow);
     panel.addEventListener('keydown', function (e) { if (e.key === 'Escape') closePanel(); });
 
-    addBot('Hi — I’m the Island Mountain AI specialist. I can help you figure out whether an on-premises AI server fits your compliance and budget, and answer questions about the Summit lineup. What brings you in today?');
+    // Re-draw the prior conversation (carries across same-tab page navigations),
+    // or show the greeting on a fresh session.
+    if (chatLog.length) {
+      chatLog.forEach(function (m) { addMsg(m.text, m.who); });
+    } else {
+      var greeting = 'Hi — I’m the Island Mountain AI specialist. I can help you figure out whether an on-premises AI server fits your compliance and budget, and answer questions about the Summit lineup. What brings you in today?';
+      addMsg(greeting, 'bot');
+      logMsg('bot', greeting);
+    }
   }
 
   // --- Voice (Vapi) — in-page web call (no third-party tab) -----------------
@@ -274,6 +297,7 @@
     inputEl.value = '';
     autoGrow();
     addMsg(text, 'user');
+    logMsg('user', text);
     if (!firstMessageSent) { firstMessageSent = true; track('chat_first_message', { page: location.pathname }); }
     streamReply(text);
   }
@@ -319,6 +343,7 @@
       })
       .finally(function () {
         if (typing && typing.parentNode) typing.remove();
+        if (bubble && bubble.textContent) logMsg('bot', bubble.textContent);
         busy = false; sendBtn.disabled = false;
         try { inputEl.focus(); } catch (e) {}
       });
