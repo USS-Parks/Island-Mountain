@@ -1,4 +1,16 @@
 import type { Env } from '../types';
+import type { SessionMeta } from '../session';
+
+/** Standard attribution params attached to every server-side event. */
+export function attributionParams(meta: SessionMeta): Record<string, string> {
+  return {
+    utm_source: meta.utm_source ?? '',
+    utm_medium: meta.utm_medium ?? '',
+    utm_campaign: meta.utm_campaign ?? '',
+    landing_page: meta.landing_page ?? '',
+    referrer: meta.referrer ?? '',
+  };
+}
 
 /**
  * GA4 Measurement Protocol — server-side events (resilient to ad-blockers).
