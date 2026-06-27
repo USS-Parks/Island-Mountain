@@ -1,9 +1,16 @@
 # Planning docs and internal files (not for public serving)
 HANDOFF.md
 SESSION-LOG.md
+DEVLOG.md
 _docs/
 _work/
 .claude/
+
+# Funnel Worker — local secrets + dependencies (never serve from Pages)
+worker/.dev.vars
+worker/.dev.vars.*
+worker/node_modules/
+worker/dist/
 
 # OS artifacts
 .DS_Store
