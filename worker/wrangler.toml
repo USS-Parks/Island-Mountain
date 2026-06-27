@@ -1,0 +1,36 @@
+# Island Mountain — AI conversational + voice lead funnel Worker
+# Deploy:  npx wrangler deploy
+# Secrets: see worker/README.md (set via `wrangler secret put <NAME>`)
+#
+# The KV id and D1 database_id below are PLACEHOLDERS. Create the real
+# resources once and paste their ids here (steps in README.md). Local
+# `wrangler dev` simulates both, so smoke-testing works before they exist.
+
+name = "island-mountain-funnel"
+main = "src/index.ts"
+compatibility_date = "2025-06-01"
+workers_dev = true
+
+# Non-secret runtime config. Secrets are NEVER placed here — use
+# `wrangler secret put`. These vars are safe to be public.
+[vars]
+GA4_MEASUREMENT_ID = "G-R674E394D4"
+ALERT_EMAIL = "basho@islandmountain.io"
+ALLOWED_ORIGIN = "https://islandmountain.io"
+# Chat model routing (D4: Sonnet routine + Opus escalation)
+CHAT_MODEL_ROUTINE = "claude-sonnet-4-6"
+CHAT_MODEL_ESCALATION = "claude-opus-4-8"
+
+# Session + short-term conversation memory.
+# Create:  npx wrangler kv namespace create SESSIONS
+[[kv_namespaces]]
+binding = "SESSIONS"
+id = "PLACEHOLDER_RUN_wrangler_kv_namespace_create_SESSIONS"
+
+# Durable lead store (D2 keeps Google Sheet as the primary destination;
+# D1 is provisioned in parallel as the self-owned mirror / future CRM source).
+# Create:  npx wrangler d1 create island-mountain-leads
+[[d1_databases]]
+binding = "DB"
+database_name = "island-mountain-leads"
+database_id = "PLACEHOLDER_RUN_wrangler_d1_create_island-mountain-leads"
