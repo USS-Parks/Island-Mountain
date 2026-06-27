@@ -54,14 +54,14 @@ export async function enforceLimits(
 export function degradeMessage(reason: RateResult['reason']): string {
   if (reason === 'per_minute') {
     return "You're sending messages quickly — give me a few seconds, then try again. " +
-      'If it’s urgent, call 1-801-609-1130.';
+      'If it’s urgent, call 1-341-441-8740.';
   }
   if (reason === 'session') {
     return "We’ve covered a lot here. To go further, the best next step is a quick call " +
-      'with Basho — 1-801-609-1130 — or email basho@islandmountain.io.';
+      'with Basho — 1-341-441-8740 — or email basho@islandmountain.io.';
   }
   return "We’re seeing unusually high demand right now. Please reach us directly at " +
-    '1-801-609-1130 or basho@islandmountain.io and we’ll help straight away.';
+    '1-341-441-8740 or basho@islandmountain.io and we’ll help straight away.';
 }
 
 /**

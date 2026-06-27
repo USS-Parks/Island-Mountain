@@ -55,7 +55,7 @@ Economics: no token fees, no subscription, hardware ownership, financing availab
 break-even typically under 12 months; 5-year cloud TCO often $64K–$220K+.
 Industries: healthcare (HIPAA), legal (attorney-client privilege), defense (ITAR/CMMC),
 government (FedRAMP), tribal (sovereignty), research/education (FERPA), finance (GLBA), and more.
-Founder: Basho Parks. Phone: 1-801-609-1130.
+Founder: Basho Parks. Phone: 1-341-441-8740.
 
 You may share the published price RANGES above. For a firm or custom quote, say:
 "Exact pricing depends on your configuration and use case — Basho will go over the
