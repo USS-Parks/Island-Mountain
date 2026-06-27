@@ -11,6 +11,7 @@ import {
 } from '../session';
 import { runTurn } from '../agent';
 import type { LeadContext } from '../lead-processor';
+import { buildBookingUrl } from '../booking';
 
 interface ChatRequestBody {
   sessionId?: string;
@@ -72,23 +73,26 @@ export async function handleChat(request: Request, env: Env): Promise<Response> 
   session.messages.push({ role: 'assistant', content: turn.finalText });
   await saveSession(env, session);
 
+  // Offer a booking when the qualifier recommends a scoping call.
+  let booking: { url: string } | undefined;
+  if (turn.lead && turn.lead.scored.recommendedAction === 'scoping_call') {
+    const url = buildBookingUrl(env, turn.lead.fields, sessionId, turn.lead.processed.id);
+    if (url) booking = { url };
+  }
+
+  const lead = turn.lead
+    ? { score: turn.lead.scored.score, action: turn.lead.scored.recommendedAction }
+    : undefined;
+
   const wantsStream = (request.headers.get('Accept') || '').includes('text/event-stream');
   if (wantsStream) {
-    return streamReply(origin, env, sessionId, turn);
+    return streamReply(origin, env, sessionId, turn, lead, booking);
   }
 
   return jsonResponse(
     {
       success: true,
-      data: {
-        sessionId,
-        reply: turn.finalText,
-        model,
-        fallback: turn.fallback || undefined,
-        lead: turn.lead
-          ? { score: turn.lead.scored.score, action: turn.lead.scored.recommendedAction }
-          : undefined,
-      },
+      data: { sessionId, reply: turn.finalText, model, fallback: turn.fallback || undefined, lead, booking },
     },
     200,
     origin,
@@ -107,6 +111,8 @@ function streamReply(
   env: Env,
   sessionId: string,
   turn: Awaited<ReturnType<typeof runTurn>>,
+  lead: { score: string; action: string } | undefined,
+  booking: { url: string } | undefined,
 ): Response {
   const encoder = new TextEncoder();
   const sseHeaders = {
@@ -126,13 +132,7 @@ function streamReply(
       for (const w of words) {
         if (w.length) send({ type: 'text', text: w });
       }
-      send({
-        type: 'done',
-        fallback: turn.fallback || undefined,
-        lead: turn.lead
-          ? { score: turn.lead.scored.score, action: turn.lead.scored.recommendedAction }
-          : undefined,
-      });
+      send({ type: 'done', fallback: turn.fallback || undefined, lead, booking });
       controller.close();
     },
   });

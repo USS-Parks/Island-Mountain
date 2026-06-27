@@ -13,6 +13,7 @@ import { handleHealth } from './routes/health';
 import { handleChat } from './routes/chat';
 import { handleLead } from './routes/lead';
 import { handleVoiceWebhook } from './routes/voice';
+import { handleBookingWebhook } from './routes/booking';
 
 interface Route {
   method: string;
@@ -27,6 +28,7 @@ const ROUTES: Route[] = [
   { method: 'POST', path: '/api/chat', handler: handleChat },
   { method: 'POST', path: '/api/lead', handler: handleLead },
   { method: 'POST', path: '/api/voice-webhook', handler: handleVoiceWebhook, publicWebhook: true },
+  { method: 'POST', path: '/api/booking-webhook', handler: handleBookingWebhook, publicWebhook: true },
 ];
 
 export default {
