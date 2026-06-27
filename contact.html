@@ -486,6 +486,14 @@
       <div class="contact-grid fade-in">
         <div>
           <h2 class="mb-8">Request a Quote</h2>
+
+          <!-- Bot-lead: conversational path is primary; form below is the fallback -->
+          <div class="bot-lead" style="margin-bottom:28px;padding:20px 22px;border:1px solid var(--card-border);border-radius:var(--border-radius);background:linear-gradient(135deg,rgba(245,158,11,.10),rgba(217,119,6,.04));">
+            <p style="margin:0 0 14px;font-size:1.05rem;color:var(--text-light);"><strong>Talk to us now.</strong> Our AI specialist can answer questions about the Summit lineup, compliance fit, and pricing — and help scope a quote in a couple of minutes. No pressure, no spam.</p>
+            <button type="button" onclick="if(window.imChatOpen)window.imChatOpen();return false;" style="display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border:none;border-radius:999px;cursor:pointer;color:#0f172a;font-weight:700;font-size:15px;background:linear-gradient(135deg,var(--copper),var(--copper-deep));box-shadow:0 4px 16px var(--copper-glow);">💬 Start a conversation</button>
+            <p style="margin:12px 0 0;font-size:0.85rem;color:var(--text-muted);">Prefer to write it out? Use the form below — it still reaches us the same way.</p>
+          </div>
+
           <p style="margin-bottom:32px;">Tell us about your organization and requirements. Four short steps, takes about three minutes. We use this to draft a meaningful first response instead of asking you twenty questions over email.</p>
 
           <!-- Step Indicator -->
@@ -765,7 +773,7 @@
               <i class="ri-time-line"></i>
               <div>
                 <strong>Response Time</strong>
-                <p>Qualified inquiries: within 4 business hours</p>
+                <p>Chat &amp; voice: instant, 24/7. Form &amp; email follow-ups: within 4 business hours.</p>
               </div>
             </div>
           </div>
@@ -773,7 +781,7 @@
           <div class="info-sidebar mt-24">
             <h3>What to Expect</h3>
             <ul class="formation-list">
-              <li><i class="ri-checkbox-circle-line"></i> Response within 4 business hours</li>
+              <li><i class="ri-checkbox-circle-line"></i> Instant answers by chat or voice, 24/7</li>
               <li><i class="ri-checkbox-circle-line"></i> Custom quote for your workload</li>
               <li><i class="ri-checkbox-circle-line"></i> No pressure, no follow-up spam</li>
               <li><i class="ri-checkbox-circle-line"></i> Direct access to the builder</li>
@@ -865,6 +873,7 @@
   </footer>
 
   <script defer src="js/main.js"></script>
+  <script defer src="js/chat-widget.js"></script>
 
   <script>
   (function() {

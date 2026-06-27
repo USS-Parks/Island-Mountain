@@ -345,6 +345,9 @@
     return "I'm having a little trouble connecting right now. You can reach Basho directly at 1-801-609-1130 or basho@islandmountain.io.";
   }
 
+  // Public API: let on-page CTAs open the chat (e.g. contact.html bot-lead button).
+  window.imChatOpen = function () { if (!root) init(); openPanel(); };
+
   // --- Deferred init: never block first paint --------------------------------
   function boot() {
     if (document.body) init();
