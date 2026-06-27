@@ -84,6 +84,25 @@ export async function findLead(
   }
 }
 
+/** Attach a voice call's full transcript + recording link to a lead. Best-effort. */
+export async function attachVoiceArtifacts(
+  env: Env,
+  id: string,
+  transcript: unknown,
+  recordingUrl?: string,
+): Promise<boolean> {
+  if (!env.DB) return false;
+  try {
+    await env.DB.prepare('UPDATE leads SET transcript = ?, recording_url = ? WHERE id = ?')
+      .bind(JSON.stringify(transcript ?? null), recordingUrl ?? null, id)
+      .run();
+    return true;
+  } catch (err) {
+    console.error('attachVoiceArtifacts failed:', err);
+    return false;
+  }
+}
+
 /** Update a lead's status (e.g. 'booked', 'docs_sent'). Best-effort. */
 export async function setLeadStatus(env: Env, id: string, status: string): Promise<boolean> {
   if (!env.DB) return false;

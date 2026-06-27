@@ -40,7 +40,8 @@ CREATE TABLE IF NOT EXISTS leads (
   referrer        TEXT,
   -- Lifecycle
   status          TEXT DEFAULT 'new',      -- new | alerted | booked | docs_sent
-  transcript      TEXT                     -- full conversation JSON
+  transcript      TEXT,                    -- full conversation JSON
+  recording_url   TEXT                     -- voice call recording (Vapi), if retained
 );
 
 CREATE INDEX IF NOT EXISTS idx_leads_email   ON leads (email);
