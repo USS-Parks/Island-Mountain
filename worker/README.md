@@ -53,6 +53,13 @@ also persist to D1 as the self-owned mirror.
 Hot leads / scoping-tier → instant alert to `ALERT_EMAIL`; researching (cold) leads →
 an info-pack email to the visitor.
 
+### Cal.com booking (D5)
+Set `CALCOM_LINK` in `wrangler.toml` to your scoping-call event type. In Cal.com →
+Settings → Webhooks, add a webhook to `https://<worker>/api/booking-webhook` for the
+`BOOKING_CREATED` event, with a secret, and `wrangler secret put WEBHOOK_SECRET` to the
+same value. Hot leads get a prefilled "Book a scoping call" button; a completed booking
+marks the lead `booked`, emails Basho, and fires GA4 `schedule_call`.
+
 ### GA4 server events
 Create a Measurement Protocol API secret in GA4 (Admin → Data Streams → your stream →
 Measurement Protocol API secrets) and `wrangler secret put GA4_API_SECRET`. The Worker

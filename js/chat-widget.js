@@ -77,6 +77,9 @@
     '.imchat-send:focus-visible{outline:3px solid #fff;outline-offset:1px;}',
     '.imchat-send svg{width:18px;height:18px;}',
     '.imchat-note{margin:8px 2px 0;font-size:11px;color:var(--mut);text-align:center;}',
+    '.imchat-book{align-self:flex-start;display:inline-flex;align-items:center;gap:8px;margin-top:2px;padding:10px 16px;border-radius:12px;text-decoration:none;font-weight:700;font-size:14px;color:#0f172a;background:linear-gradient(135deg,var(--c),var(--cd));box-shadow:0 4px 14px rgba(245,158,11,.3);}',
+    '.imchat-book:hover{filter:brightness(1.05);}',
+    '.imchat-book:focus-visible{outline:3px solid #fff;outline-offset:2px;}',
     '.imchat-hidden{display:none!important;}',
   ].join('');
 
@@ -181,6 +184,21 @@
   function addBot(t) { return addMsg(t, 'bot'); }
   function scrollDown() { msgsEl.scrollTop = msgsEl.scrollHeight; }
 
+  var bookingShown = false;
+  function addBooking(url) {
+    if (bookingShown || !url) return;
+    bookingShown = true;
+    var a = document.createElement('a');
+    a.className = 'imchat-book';
+    a.href = url;
+    a.target = '_blank';
+    a.rel = 'noopener';
+    a.textContent = '📅 Book a scoping call';
+    a.addEventListener('click', function () { track('booking_offer_click', { page: location.pathname }); });
+    msgsEl.appendChild(a);
+    scrollDown();
+  }
+
   function showTyping() {
     var t = document.createElement('div');
     t.className = 'imchat-typing';
@@ -229,6 +247,7 @@
             if (d.sessionId) setSessionId(d.sessionId);
             ensureBubble().textContent = d.reply || fallbackText();
             scrollDown();
+            if (d.booking && d.booking.url) addBooking(d.booking.url);
           });
         }
         return readSSE(res, ensureBubble);
@@ -261,6 +280,7 @@
           try { evt = JSON.parse(line.slice(5).trim()); } catch (e) { return; }
           if (evt.type === 'meta' && evt.sessionId) setSessionId(evt.sessionId);
           else if (evt.type === 'text') { ensureBubble().textContent += evt.text; scrollDown(); }
+          else if (evt.type === 'done' && evt.booking && evt.booking.url) addBooking(evt.booking.url);
         });
         return pump();
       });
