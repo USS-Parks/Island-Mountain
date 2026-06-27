@@ -27,6 +27,8 @@ export interface Env {
   WEBHOOK_SECRET?: string;
   /** Cloudflare Turnstile secret — bot challenge on session start (PROMPT 10). */
   TURNSTILE_SECRET?: string;
+  /** Bearer token gating GET /api/stats. */
+  STATS_TOKEN?: string;
 
   // --- Vars (wrangler.toml [vars], public) ---
   GA4_MEASUREMENT_ID: string;

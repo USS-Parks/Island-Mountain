@@ -90,6 +90,31 @@ After deploy, the live URL is `https://island-mountain-funnel.<account>.workers.
 (or a custom route). Point the chat widget's `API_BASE` at it (PROMPT 04).
 This `wrangler deploy` is the "Cloudflare update" step run on every BUCKET cycle.
 
+## Funnel & analytics (PROMPT 08)
+
+Event funnel (in order):
+
+| Stage | Event | Fired by |
+|---|---|---|
+| Panel opened | `chat_open` | client (gtag) |
+| First message | `chat_first_message` | client (gtag) |
+| Conversation began | `qualify_started` | **server** (MP) |
+| Voice session | `voice_session` | client |
+| Lead captured | `generate_lead` (`lead_score`, `recommended_action`, `source`, UTM, `value`) | **server** (MP) |
+| Call booked | `schedule_call` | **server** (MP) |
+
+Server-side events go through the GA4 Measurement Protocol from the Worker, so they
+survive client ad-blockers. All events carry UTM source/medium/campaign + landing page.
+
+**GA4 funnel view:** Explore → Funnel exploration with steps
+`chat_open → chat_first_message → qualify_started → generate_lead → schedule_call`.
+**Per-source quality:** Explore → free-form, dimension `utm_source`, metric event count
+of `generate_lead` filtered by `lead_score = hot`.
+
+**Internal dashboard:** `GET /api/stats` (set `STATS_TOKEN` via `wrangler secret put`,
+call with `Authorization: Bearer <token>` or `?token=`). Returns totals, booked, last-7-day
+count, and lead counts by score / source / utm_source (with hot counts per source).
+
 ## Security notes
 - Secrets are set with `wrangler secret put` and live only in Cloudflare — never
   in `wrangler.toml`, the repo, or the client bundle.

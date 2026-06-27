@@ -4,7 +4,7 @@ import type { SessionMeta } from './session';
 import { insertLead, findLead, type LeadRow } from './integrations/d1';
 import { appendToSheet } from './integrations/sheets';
 import { sendEmail } from './integrations/resend';
-import { ga4Event } from './integrations/ga4';
+import { ga4Event, attributionParams } from './integrations/ga4';
 import { alertEmail, docsEmail } from './emails';
 
 export interface ProcessedLead {
@@ -103,9 +103,9 @@ export async function processLead(
       source: ctx.source,
       organization: fields.organization ?? '',
       tier_interest: fields.system_interest ?? '',
-      utm_source: ctx.meta.utm_source ?? '',
       currency: 'USD',
       value: estimatedValue(scored.score),
+      ...attributionParams(ctx.meta),
     },
     clientId,
   );

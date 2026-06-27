@@ -20,9 +20,23 @@
     (isLocal ? 'http://localhost:8787' : 'https://island-mountain-funnel.islandmountain.workers.dev');
   var REDUCED = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  // --- Tracking (expanded in PROMPT 08) ------------------------------------
+  // --- Tracking -------------------------------------------------------------
+  // Standard funnel events: chat_open, chat_first_message (client) +
+  // qualify_started, generate_lead, schedule_call, voice_session (server-side MP).
   function track(event, params) {
-    try { if (typeof window.gtag === 'function') window.gtag('event', event, params || {}); } catch (e) {}
+    try {
+      if (typeof window.gtag === 'function') {
+        window.gtag('event', event, Object.assign({}, attrParams(), params || {}));
+      }
+    } catch (e) {}
+  }
+  function attrParams() {
+    return {
+      utm_source: META.utm_source || '',
+      utm_medium: META.utm_medium || '',
+      utm_campaign: META.utm_campaign || '',
+      landing_page: META.landing_page || '',
+    };
   }
 
   // --- Attribution captured once at load ------------------------------------

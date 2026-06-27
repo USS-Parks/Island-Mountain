@@ -12,6 +12,7 @@ import {
 import { runTurn } from '../agent';
 import type { LeadContext } from '../lead-processor';
 import { buildBookingUrl } from '../booking';
+import { ga4Event, attributionParams } from '../integrations/ga4';
 
 interface ChatRequestBody {
   sessionId?: string;
@@ -55,8 +56,14 @@ export async function handleChat(request: Request, env: Env): Promise<Response> 
       ? body.sessionId
       : crypto.randomUUID();
   let session = await loadSession(env, sessionId);
+  const isNewSession = !session;
   if (!session) session = newSession(sessionId, body.meta ?? {});
   session.messages.push({ role: 'user', content: clipped });
+
+  // Funnel: a real conversation has begun (server-side, ad-blocker resilient).
+  if (isNewSession) {
+    await ga4Event(env, 'qualify_started', { source: 'chat', ...attributionParams(session.meta) }, sessionId);
+  }
 
   const model = pickModel(env, clipped, session.messages.length);
   const system = buildSystemPrompt();
