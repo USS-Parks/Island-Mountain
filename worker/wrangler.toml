@@ -33,7 +33,7 @@ DAILY_MESSAGE_CAP = "5000"
 # Create:  npx wrangler kv namespace create SESSIONS
 [[kv_namespaces]]
 binding = "SESSIONS"
-id = "PLACEHOLDER_RUN_wrangler_kv_namespace_create_SESSIONS"
+id = "0ff5125cdda4444c9acbc98da5da1ec8"
 
 # Durable lead store (D2 keeps Google Sheet as the primary destination;
 # D1 is provisioned in parallel as the self-owned mirror / future CRM source).
@@ -41,4 +41,4 @@ id = "PLACEHOLDER_RUN_wrangler_kv_namespace_create_SESSIONS"
 [[d1_databases]]
 binding = "DB"
 database_name = "island-mountain-leads"
-database_id = "PLACEHOLDER_RUN_wrangler_d1_create_island-mountain-leads"
+database_id = "e850fb25-a22a-45dc-9445-aa6f971102f5"
