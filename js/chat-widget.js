@@ -17,7 +17,7 @@
   var isLocal = /^(localhost|127\.0\.0\.1)$/.test(location.hostname);
   var API_BASE =
     CFG.apiBase ||
-    (isLocal ? 'http://localhost:8787' : 'https://island-mountain-funnel.islandmountain.workers.dev');
+    (isLocal ? 'http://localhost:8787' : 'https://island-mountain-funnel.basho-parks.workers.dev');
   var REDUCED = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   // --- Tracking -------------------------------------------------------------
