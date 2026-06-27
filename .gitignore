@@ -12,6 +12,14 @@ worker/.dev.vars.*
 worker/node_modules/
 worker/dist/
 
+# AI Voice/Conversation Widget + CRM project: tracked on feature branch so
+# files sync back, but never commit secrets or build artifacts.
+AI Voice and Conversation Widget And CRM Project/**/.dev.vars
+AI Voice and Conversation Widget And CRM Project/**/.env
+AI Voice and Conversation Widget And CRM Project/**/.env.*
+AI Voice and Conversation Widget And CRM Project/**/node_modules/
+AI Voice and Conversation Widget And CRM Project/**/.wrangler/
+
 # OS artifacts
 .DS_Store
 Thumbs.db
