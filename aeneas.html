@@ -70,6 +70,36 @@
     object-fit: contain;
     display: block;
   }
+  /* Aeneas: pair each text block with its GIF in one shared row (desktop).
+     Source order is always text-then-media, so mobile stacks unchanged. */
+  .page-aeneas .aeneas-split-media { text-align: center; }
+  .page-aeneas .aeneas-split-media .product-showcase-img {
+    max-width: 100%;
+    margin: 0 auto;
+  }
+  @media (max-width: 768px) {
+    .page-aeneas .aeneas-split-media { margin-top: 24px; }
+  }
+  @media (min-width: 769px) {
+    .page-aeneas .aeneas-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 48px;
+    }
+    .page-aeneas .aeneas-split .section-header {
+      text-align: left;
+      max-width: none;
+      margin: 0;
+    }
+    .page-aeneas .aeneas-split-text .content-narrow {
+      max-width: none;
+      margin: 16px 0 0;
+    }
+    /* Reverse row: GIF on the left, text on the right */
+    .page-aeneas .aeneas-split--reverse .aeneas-split-text { order: 2; }
+    .page-aeneas .aeneas-split--reverse .aeneas-split-media { order: 1; }
+  }
   </style>
   <link rel="canonical" href="https://islandmountain.io/aeneas.html">
 
@@ -236,22 +266,22 @@
     </div>
   </section>
 
-  <!-- Platform -->
+  <!-- Platform (text + GIF paired row) -->
   <section class="section section-dark" id="platform">
     <div class="container">
-      <div class="section-header fade-in">
-        <span class="section-badge">Platform</span>
-        <h2>A security console built for environments that cannot leak context.</h2>
-        <p>Aeneas is designed for teams that need cloud visibility, compliance reporting, and remediation control without handing persistent access or scan data to a third party. It gives operators enough context to prioritize real exposure while keeping deployment details, evidence, and credentials inside the customer boundary.</p>
+      <div class="aeneas-split fade-in">
+        <div class="aeneas-split-text">
+          <div class="section-header">
+            <span class="section-badge">Platform</span>
+            <h2>A security console built for environments that cannot leak context.</h2>
+            <p>Aeneas is designed for teams that need cloud visibility, compliance reporting, and remediation control without handing persistent access or scan data to a third party. It gives operators enough context to prioritize real exposure while keeping deployment details, evidence, and credentials inside the customer boundary.</p>
+          </div>
+        </div>
+        <div class="aeneas-split-media">
+          <img src="images/IMG_7495.GIF" alt="Aeneas cloud posture and data security visibility" class="product-showcase-img" width="568" height="379" loading="lazy">
+          <p class="product-showcase-caption">Cloud visibility and classification, scoped to the operation and kept inside your boundary.</p>
+        </div>
       </div>
-    </div>
-  </section>
-
-  <!-- Platform imagery -->
-  <section class="product-showcase section-darker fade-in">
-    <div class="container">
-      <img src="images/IMG_7495.GIF" alt="Aeneas cloud posture and data security visibility" class="product-showcase-img" width="568" height="379" loading="lazy">
-      <p class="product-showcase-caption">Cloud visibility and classification, scoped to the operation and kept inside your boundary.</p>
     </div>
   </section>
 
@@ -270,15 +300,23 @@
     </div>
   </section>
 
-  <!-- Security Model -->
+  <!-- Security Model (GIF + text paired row, then cards) -->
   <section class="section section-dark">
     <div class="container">
-      <div class="section-header fade-in">
-        <span class="section-badge">Security Model</span>
-        <h2>Least privilege is a product constraint, not a dashboard label.</h2>
-        <p>We design around zero standing privilege: scan access is minted just in time, scoped to the operation, and revoked automatically. Remediation remains approval-gated and auditable. The platform is intentionally structured for environments where a scanner must earn each action instead of accumulating broad permanent trust.</p>
+      <div class="aeneas-split aeneas-split--reverse fade-in">
+        <div class="aeneas-split-text">
+          <div class="section-header">
+            <span class="section-badge">Security Model</span>
+            <h2>Least privilege is a product constraint, not a dashboard label.</h2>
+            <p>We design around zero standing privilege: scan access is minted just in time, scoped to the operation, and revoked automatically. Remediation remains approval-gated and auditable. The platform is intentionally structured for environments where a scanner must earn each action instead of accumulating broad permanent trust.</p>
+          </div>
+        </div>
+        <div class="aeneas-split-media">
+          <img src="vaulted-ai-access-light.gif" alt="Zero standing privilege - access minted just in time, scoped, and revoked" class="product-showcase-img" width="568" height="379" loading="lazy">
+          <p class="product-showcase-caption">Zero standing privilege: access is minted just in time, scoped to the operation, and revoked automatically.</p>
+        </div>
       </div>
-      <div class="card-grid card-grid-2 fade-in">
+      <div class="card-grid card-grid-2 fade-in" style="margin-top:56px;">
         <div class="card">
           <div class="card-icon card-icon-img">
             <img src="images/aeneas-icon-scanning.png" alt="" width="96" height="96" loading="lazy" decoding="async">
@@ -311,33 +349,25 @@
     </div>
   </section>
 
-  <!-- Security Model imagery -->
-  <section class="product-showcase section-darker fade-in">
-    <div class="container">
-      <img src="vaulted-ai-access-light.gif" alt="Zero standing privilege - access minted just in time, scoped, and revoked" class="product-showcase-img" width="568" height="379" loading="lazy">
-      <p class="product-showcase-caption">Zero standing privilege: access is minted just in time, scoped to the operation, and revoked automatically.</p>
-    </div>
-  </section>
-
-  <!-- Deployment -->
+  <!-- Deployment (text + GIF paired row) -->
   <section class="section section-dark">
     <div class="container">
-      <div class="section-header fade-in">
-        <span class="section-badge">Deployment</span>
-        <h2>Built for controlled infrastructure.</h2>
+      <div class="aeneas-split fade-in">
+        <div class="aeneas-split-text">
+          <div class="section-header">
+            <span class="section-badge">Deployment</span>
+            <h2>Built for controlled infrastructure.</h2>
+          </div>
+          <div class="content-narrow">
+            <p class="text-lg-loose">Island Mountain supports deployments where regulatory, contractual, or operational pressure requires direct control of telemetry, secrets, network paths, and audit records. The goal is to fit security work into constrained environments without forcing teams to choose between useful automation and responsible custody.</p>
+            <p class="text-lg-loose">We build &amp; deploy woven fabric cybersecurity solutions with in-house operating systems for organizations that need actionable security posture data, not another permanently privileged SaaS integration. The company's current scope of work is centered on cloud security automation that stays 100% accountable to the teams that operate it.</p>
+          </div>
+        </div>
+        <div class="aeneas-split-media">
+          <img src="IMG_7488.GIF" alt="Woven fabric cybersecurity deployed in controlled infrastructure" class="product-showcase-img" width="568" height="379" loading="lazy">
+          <p class="product-showcase-caption">Woven security services and on-site hardware, fit to environments that require direct custody.</p>
+        </div>
       </div>
-      <div class="fade-in content-narrow">
-        <p class="text-lg-loose">Island Mountain supports deployments where regulatory, contractual, or operational pressure requires direct control of telemetry, secrets, network paths, and audit records. The goal is to fit security work into constrained environments without forcing teams to choose between useful automation and responsible custody.</p>
-        <p class="text-lg-loose">We build &amp; deploy woven fabric cybersecurity solutions with in-house operating systems for organizations that need actionable security posture data, not another permanently privileged SaaS integration. The company's current scope of work is centered on cloud security automation that stays 100% accountable to the teams that operate it.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Deployment imagery -->
-  <section class="product-showcase section-darker fade-in">
-    <div class="container">
-      <img src="IMG_7488.GIF" alt="Woven fabric cybersecurity deployed in controlled infrastructure" class="product-showcase-img" width="568" height="379" loading="lazy">
-      <p class="product-showcase-caption">Woven security services and on-site hardware, fit to environments that require direct custody.</p>
     </div>
   </section>
 
