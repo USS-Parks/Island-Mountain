@@ -37,3 +37,7 @@ lamprey/downloads/
 
 # Cloudflare Wrangler local dev cache
 .wrangler/
+
+# Local credentials for the voice-scheduling work — NEVER commit
+AI Voice and Conversation Widget And CRM Project/Vapi and cal keys.md
+*Vapi and cal keys*.md
