@@ -21,6 +21,19 @@ timeline, budget, decision_maker, infrastructure, current_setup, docs_requested[
 notes; required: name, email). Description: "Register the caller as a qualified lead
 once you have at least their name and email plus what they've shared."
 
+## 2b. Scheduling tools (live in-call Cal.com booking)
+Two extra **Function/Tools** let the agent book a scoping call during the call:
+- `get_available_slots` → returns up to 3 nearest open times (event-type **6140261**,
+  `cal.com/basho-parks-3yuylm/30min`).
+- `book_appointment` → reserves the chosen slot (args: `startISO`, `name`, `email`,
+  `timeZone?`).
+
+Both hit the same `/api/voice-webhook`; the Worker calls Cal.com via
+`integrations/calcom.ts`. Worker env: `CALCOM_API_KEY` (secret, `wrangler secret put`),
+`CALCOM_EVENT_TYPE_ID=6140261`, `CALCOM_TIMEZONE=America/Denver`. The booking is
+correlated to the lead (marked `booked` at end-of-call); Cal.com emails the invite.
+Schemas + the step_11 booking flow live in `vapi-island-mountain-prompt.md`.
+
 ## 3. Server URL (webhook)
 - **Server URL:** `https://<your-worker-subdomain>.workers.dev/api/voice-webhook`
 - **Server URL Secret:** generate a long random string, set it in the dashboard,
