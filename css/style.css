@@ -2332,3 +2332,13 @@ a.risk-card--link:hover {
   .lf-hero-inset { display: none; }
   .lf-room-showcase { padding: 0 16px; gap: 16px; }
 }
+
+/* ===== Navbar spacing fix (12-item nav: Home / Why Local AI / Aeneas / Summit / ...) ===== */
+.navbar .container { max-width: 1320px; }
+.nav-links { gap: 18px; }
+.nav-links a { font-size: 0.8rem; white-space: nowrap; }
+.nav-cta { padding: 9px 18px; }
+@media (max-width: 1240px) {
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+}
