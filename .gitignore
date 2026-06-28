@@ -41,3 +41,15 @@ lamprey/downloads/
 # Local credentials for the voice-scheduling work — NEVER commit
 AI Voice and Conversation Widget And CRM Project/Vapi and cal keys.md
 *Vapi and cal keys*.md
+
+# Local scratch / source artifacts — kept locally, never serve from Pages
+Lamprey Crossover Icon Assets/
+images/*.bak
+ChatGPT Image*.png
+IM Logo*.png
+IM-logo6-cut.png
+images/IM-logo6-cut.png
+Island Mountain 20-Sided.png
+IslandMountain_D20.*
+images/single-user.png
+skull-crossbones.png
