@@ -186,30 +186,29 @@
     </div>
   </section>
 
-  <!-- Capability strip -->
+  <!-- Security model pillars (moved to top) -->
   <section class="section section-first">
     <div class="container">
-      <div class="card-grid card-grid-3 fade-in">
+      <div class="card-grid card-grid-2 fade-in">
         <div class="card">
-          <div class="card-icon card-icon-green">
-            <i class="ri-stack-line"></i>
-          </div>
-          <h3>Multi-cloud</h3>
-          <p>AWS, Azure, GCP, Kubernetes, databases.</p>
+          <span class="tier-badge tier-badge-green">01</span>
+          <h3>Customer-Premises Deployment</h3>
+          <p>Keep findings, samples, credentials, and audit trails inside the customer boundary, aligned to the organization's existing security and governance model.</p>
         </div>
         <div class="card">
-          <div class="card-icon card-icon-green">
-            <i class="ri-cloud-off-line"></i>
-          </div>
-          <h3>No scan-data SaaS</h3>
-          <p>Runs in the customer environment.</p>
+          <span class="tier-badge tier-badge-green">02</span>
+          <h3>Ephemeral Credential Lifecycle</h3>
+          <p>Use short-lived credentials for discovery and scoped write access only after approval, reducing the blast radius of both mistakes and compromise.</p>
         </div>
         <div class="card">
-          <div class="card-icon card-icon-green">
-            <i class="ri-key-2-line"></i>
-          </div>
-          <h3>Scoped access</h3>
-          <p>Ephemeral credentials and audited approvals.</p>
+          <span class="tier-badge tier-badge-green">03</span>
+          <h3>Hub And Gateway Architecture</h3>
+          <p>Run lightweight gateways near the resources they inspect while centralizing evidence, status, and workflow where operators can act on it.</p>
+        </div>
+        <div class="card">
+          <span class="tier-badge tier-badge-green">04</span>
+          <h3>Audit-First Operations</h3>
+          <p>Preserve who requested, approved, and executed each sensitive action so remediation can be reviewed as an operational control, not a black box.</p>
         </div>
       </div>
     </div>
@@ -223,36 +222,6 @@
         <h2>A security console built for environments that cannot leak context.</h2>
         <p>Aeneas is designed for teams that need cloud visibility, compliance reporting, and remediation control without handing persistent access or scan data to a third party. It gives operators enough context to prioritize real exposure while keeping deployment details, evidence, and credentials inside the customer boundary.</p>
       </div>
-      <div class="card-grid card-grid-2 fade-in">
-        <div class="card">
-          <div class="card-icon card-icon-indigo">
-            <i class="ri-radar-line"></i>
-          </div>
-          <h3>Cloud posture scanning</h3>
-          <p>Build a current view of cloud assets, configuration drift, identity exposure, and workload posture across the environments a security team already operates.</p>
-        </div>
-        <div class="card">
-          <div class="card-icon card-icon-indigo">
-            <i class="ri-database-2-line"></i>
-          </div>
-          <h3>DSPM and classification</h3>
-          <p>Identify sensitive data patterns, exposed storage paths, and access-control gaps without turning samples and findings into another external data exhaust.</p>
-        </div>
-        <div class="card">
-          <div class="card-icon card-icon-indigo">
-            <i class="ri-file-shield-2-line"></i>
-          </div>
-          <h3>Compliance evidence</h3>
-          <p>Connect technical findings to control families, preserve audit-ready context, and make posture work easier to explain to compliance and leadership teams.</p>
-        </div>
-        <div class="card">
-          <div class="card-icon card-icon-indigo">
-            <i class="ri-git-merge-line"></i>
-          </div>
-          <h3>Remediation workflow</h3>
-          <p>Translate findings into reviewable plans, require human approval before sensitive changes, and retain the trail needed to prove what happened.</p>
-        </div>
-      </div>
     </div>
   </section>
 
@@ -261,6 +230,21 @@
     <div class="container">
       <img src="images/aeneas-platform.webp" alt="Aeneas cloud posture and data security visibility" class="product-showcase-img" width="280" height="305" loading="lazy">
       <p class="product-showcase-caption">Cloud visibility and classification, scoped to the operation and kept inside your boundary.</p>
+    </div>
+  </section>
+
+  <!-- Consolidated capability card -->
+  <section class="section section-dark">
+    <div class="container">
+      <div class="content-narrow fade-in">
+        <div class="card">
+          <div class="card-icon card-icon-green">
+            <i class="ri-shield-keyhole-line"></i>
+          </div>
+          <h3>Multi-Cloud, Scoped, And Self-Hosted</h3>
+          <p>Covers AWS, Azure, GCP, Kubernetes, and databases. Runs inside the customer environment with no scan-data SaaS. Access stays scoped through ephemeral credentials and audited approvals.</p>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -274,24 +258,32 @@
       </div>
       <div class="card-grid card-grid-2 fade-in">
         <div class="card">
-          <span class="tier-badge tier-badge-green">01</span>
-          <h3>Customer-premises deployment</h3>
-          <p>Keep findings, samples, credentials, and audit trails inside the customer boundary, aligned to the organization's existing security and governance model.</p>
+          <div class="card-icon card-icon-indigo">
+            <i class="ri-radar-line"></i>
+          </div>
+          <h3>Cloud Posture Scanning</h3>
+          <p>Build a current view of cloud assets, configuration drift, identity exposure, and workload posture across the environments a security team already operates.</p>
         </div>
         <div class="card">
-          <span class="tier-badge tier-badge-green">02</span>
-          <h3>Ephemeral credential lifecycle</h3>
-          <p>Use short-lived credentials for discovery and scoped write access only after approval, reducing the blast radius of both mistakes and compromise.</p>
+          <div class="card-icon card-icon-indigo">
+            <i class="ri-database-2-line"></i>
+          </div>
+          <h3>DSPM And Classification</h3>
+          <p>Identify sensitive data patterns, exposed storage paths, and access-control gaps without turning samples and findings into another external data exhaust.</p>
         </div>
         <div class="card">
-          <span class="tier-badge tier-badge-green">03</span>
-          <h3>Hub and gateway architecture</h3>
-          <p>Run lightweight gateways near the resources they inspect while centralizing evidence, status, and workflow where operators can act on it.</p>
+          <div class="card-icon card-icon-indigo">
+            <i class="ri-file-shield-2-line"></i>
+          </div>
+          <h3>Compliance Evidence</h3>
+          <p>Connect technical findings to control families, preserve audit-ready context, and make posture work easier to explain to compliance and leadership teams.</p>
         </div>
         <div class="card">
-          <span class="tier-badge tier-badge-green">04</span>
-          <h3>Audit-first operations</h3>
-          <p>Preserve who requested, approved, and executed each sensitive action so remediation can be reviewed as an operational control, not a black box.</p>
+          <div class="card-icon card-icon-indigo">
+            <i class="ri-git-merge-line"></i>
+          </div>
+          <h3>Remediation Workflow</h3>
+          <p>Translate findings into reviewable plans, require human approval before sensitive changes, and retain the trail needed to prove what happened.</p>
         </div>
       </div>
     </div>
@@ -339,21 +331,21 @@
           <div class="card-icon card-icon-indigo">
             <i class="ri-building-2-line"></i>
           </div>
-          <h3>Enterprise DataSec teams</h3>
+          <h3>Enterprise DataSec Teams</h3>
           <p>Operating multi-cloud visibility, prioritization, and remediation with local custody.</p>
         </div>
         <div class="card">
           <div class="card-icon card-icon-indigo">
             <i class="ri-file-list-3-line"></i>
           </div>
-          <h3>Evidence &amp; control mapping</h3>
+          <h3>Evidence &amp; Control Mapping</h3>
           <p>Evidence collection aligned to control mapping, reporting, and repeatable review workflows within existing compliance program architectures.</p>
         </div>
         <div class="card">
           <div class="card-icon card-icon-indigo">
             <i class="ri-server-line"></i>
           </div>
-          <h3>Managed security providers</h3>
+          <h3>Managed Security Providers</h3>
           <p>Gateway-based scanning for isolated customer environments where access boundaries aren't mere formality.</p>
         </div>
       </div>
