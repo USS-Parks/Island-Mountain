@@ -3,10 +3,10 @@
 ## Tech Stack
 
 - Static HTML/CSS/JS. Every page hand-written. No templating engine.
-- 46 content pages total (31 root + 14 blog, plus 1 pending blog post)
+- ~59 content pages total (38 root + 21 blog). Newest root page: aeneas.html (cloud-security comparison, added 2026-06-28, in the primary nav)
 - Self-hosted fonts: Inter variable (body, latin subset), Space Grotesk variable (H1 headings, latin subset, 22KB)
 - Self-hosted icons: Remixicon (woff2)
-- Google Analytics 4 (G-R674E394D4) on all 45 content pages (excludes 404.html)
+- Google Analytics 4 (G-R674E394D4) on all 58 content pages (excludes 404.html)
 - Chart.js for investor page only (js/charts.js + js/vendor/chart.umd.min.js)
 
 ## Stylesheets
@@ -22,9 +22,9 @@
 
 | File | Lines | Scope |
 |------|-------|-------|
-| js/main.js | 261 | Nav, hamburger, sidebar, scroll animations, fade-in observers. All pages. |
+| js/main.js | 263 | Nav, hamburger, sidebar, scroll animations, fade-in observers. All pages. |
 | js/charts.js | 374 | Chart.js graphs for investors.html only. |
-| js/chat-widget.js | ~330 | AI chat/voice widget. Vanilla, self-injecting scoped styles, deferred idle boot. On all 58 content pages. Talks to the funnel Worker. |
+| js/chat-widget.js | 426 | AI chat/voice widget. Vanilla, self-injecting scoped styles, deferred idle boot. On all 59 content pages. Talks to the funnel Worker. Includes the optional Vapi voice button + live in-call Cal.com scheduling. |
 
 ## AI Conversational + Voice Funnel (backend)
 
@@ -33,20 +33,33 @@ chat + voice lead funnel. Source lives in `/worker` (TypeScript, Cloudflare Work
 it is the only part of the repo with a build/deploy step (`wrangler deploy`). The
 static site stays on GitHub Pages and never holds a secret key.
 
+**Status: LIVE.** Built 2026-06-27 (11 prompts) and merged to `main`; voice scheduling
+went live 2026-06-27 with a verified end-to-end Cal.com booking round-trip. Deployed at
+`https://island-mountain-funnel.basho-parks.workers.dev`. The chat/voice widget is the
+primary lead-capture surface; the FormSubmit.co contact form remains the no-JS fallback.
+
 - **Edge backend:** Cloudflare Worker — `POST /api/chat` (Claude proxy + KV session
   memory), `POST /api/lead`, `POST /api/voice-webhook` (Vapi), `POST /api/booking-webhook`
-  (Cal.com), `GET /api/stats` (token-gated), `GET /api/health`.
+  (Cal.com), `GET /api/history`, `GET /api/stats` (token-gated), `GET /api/health`.
 - **Brain:** Anthropic API (`claude-sonnet-4-6` routine / `claude-opus-4-8` escalation)
   with a `submit_lead` tool; deterministic hot/warm/cold scoring (`worker/src/qualifier.ts`).
 - **State + store:** Workers KV (sessions + rate-limit counters), D1 (`leads` mirror),
   Google Sheet (human-facing lead list).
+- **Voice (Vapi):** AI phone agent on `+1-341-441-8740` (assistant `08eba87f-…`, public
+  key `89dd9bb1-…`). Three tools: `submit_lead`, plus **live in-call Cal.com scheduling**
+  via `get_available_slots` + `book_appointment` (`worker/src/integrations/calcom.ts`,
+  Cal.com API v2). End-of-call transcript + recording are extracted and persisted to D1.
+- **Booking:** Cal.com scoping call (30 min, event-type `6140261`, `CALCOM_LINK`
+  https://cal.com/basho-parks-3yuylm/30min). Hot chat leads get a prefilled booking link;
+  voice callers can book in-call. `BOOKING_CREATED` webhook → mark lead booked + alert Basho.
 - **Routing:** hot → Resend email to Basho + Cal.com booking offer; researching → docs
   email; all → GA4 Measurement Protocol (`generate_lead`/`qualify_started`/`schedule_call`)
   + UTM attribution.
 - **Abuse protection:** per-IP/session/daily KV rate limits + circuit breaker, optional
   Turnstile, prompt-injection-hardened persona, CORS locked to islandmountain.io.
 - **Docs:** `worker/README.md` (runbook), `DEPLOY.md` (one-time setup), `worker/vapi-setup.md`,
-  `worker/sheets-apps-script.gs`. Build log in `DEVLOG.md` (gitignored).
+  `worker/vapi-island-mountain-prompt.md` (12-step call flow), `worker/sheets-apps-script.gs`.
+  Build log in `DEVLOG.md` (gitignored).
 
 ## Brand Colors (CSS Custom Properties)
 
@@ -84,7 +97,7 @@ Root pages:
 ```
 Blog pages: same with `../images/` prefix.
 CSS: `.nav-logo` uses display:inline-flex; align-items:center; transform:translateY(-2px); navbar overflow:visible.
-Desktop navbar: logo pushed left (margin-right:auto), nav-links gap 22px, font 0.85rem (Session 35).
+Desktop navbar: logo pushed left (margin-right:auto). The menu is now **12 items** (Home / Why Local AI / Aeneas / Summit / … / CTA). Spacing fix (2026-06-28, commit 706a408, at the bottom of `css/style.css`): `.navbar .container` max-width 1320px, `.nav-links` gap 18px, `.nav-links a` font 0.8rem + `white-space:nowrap` (prevents wrapping), `.nav-cta` padding 9px 18px. **Hamburger breakpoint is 1240px** — below that the full nav collapses to the mobile menu so the 12-item bar only shows when it fits. (Supersedes the old Session-35 gap-22px/font-0.85rem note.)
 
 ## Footer Logo
 

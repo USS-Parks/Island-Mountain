@@ -2,7 +2,7 @@
 
 ## What This Is
 
-Island Mountain (islandmountain.io) sells pre-built, burn-tested on-premises AI inference servers with NVIDIA H100 and H200 GPUs. Static HTML/CSS/JS site on GitHub Pages. No frameworks, no build step, no SSG.
+Island Mountain (islandmountain.io) sells pre-built, burn-tested on-premises AI inference servers built on NVIDIA RTX PRO 6000 Blackwell GPUs (96GB GDDR7 ECC; the Session-73 hardware overhaul discontinued H100/H200 site-wide, top tier on DGX B200). Static HTML/CSS/JS site on GitHub Pages. No frameworks, no build step, no SSG.
 
 Founded 2026, Colorado. Co-founders: John Dougherty and Basho Parks.
 Site developer/content: Basho Parks (basho@islandmountain.io).
@@ -19,9 +19,10 @@ Target compliance frameworks: HIPAA, ITAR/DFARS, attorney-client privilege, trib
 - Phone: 1-341-441-8740 (tel:+13414418740, 118 occurrences site-wide)
 - LinkedIn: https://www.linkedin.com/company/island-mountain-llc/
 - X (Twitter): https://x.com/IslandMountain_
-- Primary lead capture: AI chat + voice funnel (Cloudflare Worker in `/worker`); see
-  ARCHITECTURE.md "AI Conversational + Voice Funnel" and `DEPLOY.md`. Form handler:
-  FormSubmit.co (posts to basho@islandmountain.io) remains as the no-JS fallback.
+- Primary lead capture: AI chat + voice funnel (Cloudflare Worker in `/worker`), LIVE
+  since 2026-06-27 — site-wide chat widget + Vapi voice line with live in-call Cal.com
+  booking. See ARCHITECTURE.md "AI Conversational + Voice Funnel" and `DEPLOY.md`. Form
+  handler: FormSubmit.co (posts to basho@islandmountain.io) remains as the no-JS fallback.
 - Domain registrar: Squarespace Domains (Google nameservers ns-cloud-d1 through d4)
 
 ## DNS/Email Authentication
