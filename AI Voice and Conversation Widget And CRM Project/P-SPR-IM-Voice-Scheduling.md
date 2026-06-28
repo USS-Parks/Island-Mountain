@@ -183,6 +183,17 @@ the agent can't read open times or reserve a slot on the call.
 
 **PHASE COMPLETE.** Live in-call scheduling shipped end-to-end.
 
+### Correction (2026-06-27, post-ship)
+- P5's inline `submit_lead` was a mistake: `submit_lead` already existed as a
+  **standalone Tool** (`<tool-id>`, server.url =
+  voice-webhook, strict:true) attached to the assistant via `model.toolIds` — it
+  was never a dangling reference. The inline copy created a duplicate same-named
+  tool. Removed the inline `submit_lead`; assistant now keeps `get_available_slots`
+  + `book_appointment` inline and `submit_lead` via the standalone toolId (single
+  source, dashboard-managed). The two scheduling tools remain inline (not in the
+  Tools library UI). Standalone `submit_lead` name/email had no descriptions —
+  updating those in the dashboard (Strict → off, since most fields are optional).
+
 ---
 
 ## Non-goals / notes
