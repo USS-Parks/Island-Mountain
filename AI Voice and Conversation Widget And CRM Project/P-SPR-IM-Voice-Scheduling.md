@@ -129,6 +129,33 @@ the agent can't read open times or reserve a slot on the call.
   saved to `worker/.vapi-assistant-snapshot.json` (gitignored). step_11 present.
 - Defaults chosen: `CALCOM_TIMEZONE=America/Denver` (Mountain).
 
+### P1 — Cal.com client ✅ (2026-06-27)
+- `worker/src/integrations/calcom.ts` (`getAvailableSlots`, `createBooking`,
+  `spokenTime`, `defaultSlotWindow`). Booking metadata carries `sessionId`+`leadId`.
+- env added: `CALCOM_API_KEY` (secret), `CALCOM_EVENT_TYPE_ID=6140261`,
+  `CALCOM_TIMEZONE=America/Denver`. 7 mocked-fetch tests. tsc + 14 tests green.
+
+### P2 — Voice tool handlers ✅ (2026-06-27)
+- `voice.ts` dispatches `get_available_slots` + `book_appointment`.
+- Lead↔booking correlation hardened: booking stashes `voicebooking:<callId>`;
+  end-of-call reconciles the lead → `booked` (survives either capture order).
+- Smoke vs `wrangler dev`: 3 live slots returned; validation paths correct.
+
+### P3 — Deploy + real Cal.com round-trip ✅ (2026-06-27)
+- `wrangler secret put CALCOM_API_KEY`; `wrangler deploy` OK (version 373aab42).
+- Real booking through the handler (local dev → live Cal.com) succeeded; verified
+  on Cal.com (uid 484vwLFCFbQswtShJcr5zf) then **cancelled** (calendar left clean).
+- **New finding 1:** live worker enforces `WEBHOOK_SECRET` (401 without
+  `x-vapi-secret`) — so live worker smoke needs the Vapi-held secret; real live
+  proof happens in P6 via an actual Vapi test call.
+- **New finding 2 (follow-up, out of core scope):** Cal.com has **no webhook**
+  registered → `/api/booking-webhook` never fires today (the chat-path GA4
+  `schedule_call` + worker "booked" email were dormant). The voice feature does
+  NOT depend on it — the lead is marked `booked` by the end-of-call reconcile, and
+  Cal.com natively emails Basho the booking. Wiring the Cal.com→worker webhook
+  needs a `WEBHOOK_SECRET` decision (shared with the Vapi server-url secret);
+  recommended as a separate small task. See "Non-goals / notes".
+
 ---
 
 ## Non-goals / notes
