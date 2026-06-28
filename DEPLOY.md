@@ -5,6 +5,11 @@ backend** that powers the AI chat/voice funnel, plus the one-time third-party
 wiring. Claude built all the code with placeholder secret *bindings*; the live
 keys are set here by Basho and never live in the repo.
 
+**Status: LIVE (2026-06-27).** The Worker is deployed at
+`https://island-mountain-funnel.basho-parks.workers.dev`, the chat/voice widget ships
+on all 59 pages, and live in-call Cal.com voice booking is verified end-to-end. The
+steps below are the canonical setup/redeploy reference; for ongoing changes go to §6.
+
 ## 0. Prereqs
 - Node + npm (have it).
 - A Cloudflare account (have it). `cd worker && npm install`, then `npx wrangler login`.
@@ -25,20 +30,25 @@ npx wrangler secret put GA4_API_SECRET        # GA4 Measurement Protocol
 npx wrangler secret put SHEETS_WEBHOOK_URL    # Apps Script web-app URL (see sheets-apps-script.gs)
 npx wrangler secret put WEBHOOK_SECRET        # validates Cal.com + Vapi webhooks
 npx wrangler secret put VAPI_API_KEY          # voice (optional)
+npx wrangler secret put CALCOM_API_KEY        # live in-call voice booking (optional)
 npx wrangler secret put STATS_TOKEN           # gates GET /api/stats (optional)
 npx wrangler secret put TURNSTILE_SECRET      # bot challenge (optional)
 ```
 Public config (`[vars]` in `wrangler.toml`): `GA4_MEASUREMENT_ID`, `ALERT_EMAIL`,
-`LEAD_FROM_EMAIL` (verified Resend domain), `CALCOM_LINK`, rate-limit caps.
+`LEAD_FROM_EMAIL` (verified Resend domain), `CALCOM_LINK`, `CALCOM_EVENT_TYPE_ID`
+(`6140261`, the 30-min Scoping Call), `CALCOM_TIMEZONE` (`America/Denver`), rate-limit caps.
 
 ## 3. Third-party wiring
 - **Google Sheet:** deploy `worker/sheets-apps-script.gs` as a web app → `SHEETS_WEBHOOK_URL`.
 - **Resend:** verify the `islandmountain.io` sending domain; set `LEAD_FROM_EMAIL`.
 - **GA4:** create a Measurement Protocol API secret → `GA4_API_SECRET`.
-- **Cal.com:** create the scoping-call event type → `CALCOM_LINK`; add a webhook to
-  `https://<worker>/api/booking-webhook` (BOOKING_CREATED) with `WEBHOOK_SECRET`.
-- **Vapi (voice):** follow `worker/vapi-setup.md` (assistant, `submit_lead` tool, Server
-  URL `https://<worker>/api/voice-webhook`, Server-URL Secret = `WEBHOOK_SECRET`, number).
+- **Cal.com:** create the scoping-call event type → `CALCOM_LINK` + `CALCOM_EVENT_TYPE_ID`;
+  add a webhook to `https://<worker>/api/booking-webhook` (BOOKING_CREATED) with
+  `WEBHOOK_SECRET`. For live in-call voice booking, set `CALCOM_API_KEY` (Cal.com API v2).
+- **Vapi (voice):** follow `worker/vapi-setup.md` (assistant, Server URL
+  `https://<worker>/api/voice-webhook`, Server-URL Secret = `WEBHOOK_SECRET`, number).
+  Register three tools: `submit_lead`, and — for in-call scheduling — `get_available_slots`
+  + `book_appointment` (both routed back through `/api/voice-webhook` to Cal.com API v2).
 
 ## 4. Deploy the Worker
 ```bash

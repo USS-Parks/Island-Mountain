@@ -1,6 +1,6 @@
 # Known Issues & Pending Items
 
-Last reviewed: 2026-05-10 (Session 50)
+Last reviewed: 2026-06-28
 
 ---
 
@@ -15,7 +15,7 @@ All HTML files are at risk during sandbox writes, regardless of line count. See 
 - Owner action item: complete verification process
 
 ### css/style.css Size
-At 1686 lines, this is the largest single file in the project. Any edits require extreme caution with sed. Consider whether a future session should split it into modular partials (nav.css, footer.css, etc.) - but only if the complexity justifies the link-tag overhead on 46 pages with no build step.
+At 2344 lines, this is the largest single file in the project (grown from 1686 via the Landfall, navbar, and other additions). Any edits require extreme caution with sed. Consider whether a future session should split it into modular partials (nav.css, footer.css, etc.) - but only if the complexity justifies the link-tag overhead on ~59 pages with no build step.
 
 ### Blackwell Overhaul Follow-Ups (Session 73)
 Two items from the H100/H200 -> RTX PRO 6000 Blackwell overhaul need owner review:
@@ -41,6 +41,10 @@ Python installer script for persistent Cowork skill installation created Session
 ---
 
 ## Resolved Issues (Sessions 1-50)
+
+- **AI chat/voice funnel — LIVE (2026-06-27):** the `/worker` Cloudflare backend + site-wide chat widget shipped and merged to `main`; voice scheduling went live with a verified end-to-end Cal.com booking round-trip. Worker at `island-mountain-funnel.basho-parks.workers.dev`. Vapi voice line `+1-341-441-8740` books the 30-min Scoping Call in-call via `get_available_slots` + `book_appointment`. Site phone updated site-wide to the Vapi line. No longer "deploy pending." See ARCHITECTURE.md + DEPLOY.md. Ongoing: rotate keys, watch Anthropic/Vapi spend, check GA4 + `/api/stats` weekly.
+
+- **Aeneas page + navbar spacing (2026-06-28):** added `aeneas.html` (cloud-security comparison) with a site-wide nav link, taking the menu to 12 items. Navbar spacing fix (commit 706a408) prevents wrapping (`white-space:nowrap`), widens the container to 1320px, tightens gap/font, and moves the hamburger breakpoint to 1240px. Pushed to main.
 
 - **Hardware Overhaul (Session 73, 73A-73G):** Discontinued H100/H200 across the entire site. Moved to NVIDIA RTX PRO 6000 Blackwell (96GB GDDR7 ECC, 1,597 GB/s). Summit Base 2x ($59-69K), Pinnacle 4x ($175-225K), Ridge BTO ($95-120K). Landfall renamed/repriced (Scout RTX 5080 $7-8K, Ranger RTX 5090 $9.5-11.5K, Pack Leader RTX PRO 4500 Blackwell $15-22K). Citadel -> DGX B200 $400-500K. V4-Flash reframed to FP8 on Base (192GB). "Why Enterprise GPUs" -> "Why Professional-Grade GPUs". 2 blog posts rewritten (h100-vs-h200, deepseek-v4-flash deployment). investors.html financials + js/charts.js recalculated. The old H100 SXM5 "3.35 TB/s" bandwidth bug is now moot (RESOLVED). All ~45 HTML files audited, JSON-LD valid, no truncation/NUL.
 
@@ -77,7 +81,7 @@ Python installer script for persistent Cowork skill installation created Session
 ## Things to Watch
 
 - If adding a 12th vertical: update "eleven regulated industries" references across ~15 files, solutions.html grid, nav/sidebar/footer on all 46 pages, sitemap.xml, llms.txt
-- If modifying navbar/sidebar/footer: changes propagate to ALL 46 HTML files (no template engine)
+- If modifying navbar/sidebar/footer: changes propagate to ALL ~59 HTML files (no template engine). The nav is now a 12-item menu; CSS keeps `white-space:nowrap` and collapses to the hamburger at the **1240px** breakpoint so the bar only shows when it fits (see ARCHITECTURE.md "Navbar Logo"). Adding a 13th item risks overflow above 1240px — re-check widths.
 - If adding a blog post: add to blog.html grid, sitemap.xml, update related-article cards on 2-3 existing posts, update blog post count references
 - If changing pricing: update Product schemas on products.html, pricing.html, index.html, all 11 verticals, FAQ answers, AEO summaries, on-premises-ai-cost-comparison.html
 - css/blog.css is loaded by all 14 blog posts - changes affect all of them

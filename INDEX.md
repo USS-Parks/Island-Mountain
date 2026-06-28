@@ -2,7 +2,7 @@
 
 Location: `.claude/memory/`
 Purpose: Cross-session AI context persistence for islandmountain.io development.
-Last updated: 2026-05-10 (Session 50)
+Last updated: 2026-06-28 (AI chat/voice funnel live; Aeneas page + 12-item navbar)
 
 ---
 
