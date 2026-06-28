@@ -97,7 +97,17 @@ If fewer than 10 digits: "Let me make sure I have the full number — all ten di
 Briefly acknowledge what fits in one sentence (never a firm price). Then ALWAYS make the offer and WAIT:
 "I can have Basho reach back out to you directly, or we can set up a scoping call at a
 time that works for you. What's your preference?"
-- If they're serious/near-term or want a call: offer to schedule, or take the callback.
+
+SCHEDULING — when they want to set up a call, book it live before you hang up:
+1. Confirm their timezone if you don't already know it.
+2. Call get_available_slots, then read back two or three of the returned times, speaking
+   each one naturally (say "ten thirty AM", not digit by digit).
+3. When they choose one, make sure you have their name and email, then call book_appointment
+   with that slot's id plus their name, email, and timezone.
+4. On success, confirm: "You're booked for [day and time] — you'll get a calendar invite by
+   email." If it comes back unavailable, offer another time.
+
+- If they'd rather not book now or prefer a callback: take the callback, no pressure.
 - If they're early or "just researching": "No problem — I can have an information pack
   sent to your email so you can look at your own pace. Sound good?"
 Then CALL the submit_lead tool with everything you captured (name, email, phone, job_title,
@@ -151,9 +161,51 @@ lead once you have at least their name and email plus what they shared."
 
 ---
 
+## Scheduling tools — live in-call Cal.com booking
+
+Two function tools let the agent book a scoping call **during the call**. Both
+point at the same Server URL (`/api/voice-webhook`); the Worker calls Cal.com
+(`integrations/calcom.ts`) against event-type **6140261** ("30 min Scoping Call",
+`https://cal.com/basho-parks-3yuylm/30min`). Default timezone `America/Denver`.
+
+**`get_available_slots`** — returns up to 3 nearest open times. The agent speaks
+each option's `when` and remembers its `id` (ISO start).
+```json
+{ "type": "object",
+  "properties": { "timeZone": { "type": "string", "description": "Caller IANA tz, optional; defaults to America/Denver." } },
+  "required": [] }
+```
+
+**`book_appointment`** — reserves the chosen slot. The booking carries
+`sessionId`(+`leadId`) so the lead is correlated; on success Cal.com emails the
+calendar invite and the Worker marks the lead `booked` at end-of-call.
+```json
+{ "type": "object",
+  "properties": {
+    "startISO": { "type": "string", "description": "The chosen slot's id from get_available_slots." },
+    "name":     { "type": "string" },
+    "email":    { "type": "string" },
+    "timeZone": { "type": "string", "description": "Optional; defaults to America/Denver." }
+  },
+  "required": ["startISO", "name", "email"] }
+```
+
+---
+
 ## Vapi assistant settings
-- **Model:** Anthropic → `claude-sonnet-4-6` (or `claude-opus-4-8`).
+- **Model:** Anthropic → `claude-sonnet-4-6` (or `claude-opus-4-8`). *(Live assistant
+  currently runs `claude-sonnet-4-5-20250929`.)*
 - **Server URL:** `https://island-mountain-funnel.basho-parks.workers.dev/api/voice-webhook`
 - **Server URL Secret:** the same value stored as `WEBHOOK_SECRET`.
-- **Server messages:** enable **tool-calls** (or function-call) and **end-of-call-report**.
+- **Server messages:** enable **tool-calls** and **end-of-call-report**.
+- **Tools:** `submit_lead`, `get_available_slots`, `book_appointment`.
+- **Cal.com env (Worker):** `CALCOM_API_KEY` (secret), `CALCOM_EVENT_TYPE_ID=6140261`,
+  `CALCOM_TIMEZONE=America/Denver`.
 - **Phone number:** import/provision one and attach this assistant (answers 24/7).
+
+> **Follow-up (not yet wired):** Cal.com has no outbound webhook registered, so
+> `POST /api/booking-webhook` (GA4 `schedule_call` + Worker "booked" alert email)
+> is dormant. Voice booking does not depend on it — the lead is marked `booked` by
+> the end-of-call reconcile and Cal.com emails the host natively. To enable the
+> extra tracking, register a Cal.com `BOOKING_CREATED` webhook at that URL whose
+> secret matches `WEBHOOK_SECRET`.

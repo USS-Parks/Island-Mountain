@@ -156,6 +156,33 @@ the agent can't read open times or reserve a slot on the call.
   needs a `WEBHOOK_SECRET` decision (shared with the Vapi server-url secret);
   recommended as a separate small task. See "Non-goals / notes".
 
+### P4 — Register Vapi tools ✅ (2026-06-27)
+- PATCHed assistant `08eba87f-…`: added `get_available_slots` + `book_appointment`
+  (type function, server.url = voice-webhook). `serverMessages` set to the default
+  superset (tool-calls + end-of-call-report both present). Model preserved
+  (`claude-sonnet-4-5-20250929`). System prompt untouched at this step.
+
+### P5 — Patch step_11 + register submit_lead ✅ (2026-06-27)
+- Replaced the `step_11_offer_and_route` block verbatim with the live-booking flow
+  (confirm tz → get_available_slots → speak options → book_appointment → confirm).
+  Callback + "info pack" branches + submit_lead call preserved; step_1…step_12 and
+  the `341` phone intact. Prompt 5352 → 5948 B.
+- Also registered **`submit_lead`** (it was never a tool before — capture was
+  end-of-call extraction only). Now that function-calling is active, the prompt's
+  existing "CALL submit_lead" instruction is valid again. Three tools total.
+
+### P6 — End-to-end verify + docs ✅ (2026-06-27)
+- **Live E2E through the deployed worker** using the production `x-vapi-secret`
+  (read from the assistant's `server.headers`) + prod Cal.com secret:
+  get_available_slots → 3 real slots; book_appointment → real Cal.com booking
+  (uid uoYSt42qMgfsXGmTiyD7eD); verified on Cal.com; **cancelled** (clean);
+  401 still enforced without the secret. Telephony voice call is Basho's to place.
+- Docs updated: `vapi-island-mountain-prompt.md` (new step_11 + both tool schemas +
+  Cal.com env + webhook follow-up note) and `vapi-setup.md` (§2b scheduling).
+- Final gate: tsc clean, 14/14 tests pass.
+
+**PHASE COMPLETE.** Live in-call scheduling shipped end-to-end.
+
 ---
 
 ## Non-goals / notes
