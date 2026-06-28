@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) - deferred until user interaction -->
+<link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
+<script>
+  (function(){
+    var loaded = false;
+    function loadGA(){
+      if(loaded) return;
+      loaded = true;
+      var s = document.createElement('script');
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=G-R674E394D4';
+      s.async = true;
+      document.head.appendChild(s);
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      window.gtag = gtag;
+      gtag('js', new Date());
+      gtag('config', 'G-R674E394D4');
+    }
+    ['scroll','click','touchstart','keydown'].forEach(function(e){
+      document.addEventListener(e, loadGA, {once:true, passive:true});
+    });
+    setTimeout(loadGA, 5000);
+  })();
+</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Basho Parks">
+  <meta name="date" content="2026-06-28">
+  <title>Aeneas | Cloud Security Without Standing Privilege</title>
+  <meta name="description" content="Aeneas helps security teams understand cloud risk, protect sensitive data, preserve compliance evidence, and move remediation through controlled approvals - without handing over standing access or operational context.">
+  <link rel="icon" type="image/x-icon" href="favicon.ico?v=2">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png?v=2">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png?v=2">
+  <link rel="stylesheet" href="css/style.min.css">
+  <link rel="stylesheet" href="icons/remixicon.css" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="icons/remixicon.css"></noscript>
+  <link rel="preload" href="fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <style>
+  @font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400 800;
+    font-display: swap;
+    src: url('fonts/inter-latin.woff2') format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+  @font-face {
+    font-family: 'Space Grotesk';
+    font-style: normal;
+    font-weight: 300 700;
+    font-display: swap;
+    src: url('fonts/space-grotesk-latin.woff2') format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+  </style>
+  <link rel="canonical" href="https://islandmountain.io/aeneas.html">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Aeneas | Cloud Security Without Standing Privilege">
+  <meta property="og:description" content="A security console built for environments that cannot leak context. Cloud visibility, compliance evidence, and approval-gated remediation - without handing persistent access to a third party.">
+  <meta property="og:url" content="https://islandmountain.io/aeneas.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Island Mountain">
+  <meta property="og:image" content="https://islandmountain.io/images/hero-solutions.webp">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Aeneas | Cloud Security Without Standing Privilege">
+  <meta name="twitter:description" content="A security console built for environments that cannot leak context. Cloud visibility, compliance evidence, and approval-gated remediation - without handing persistent access to a third party.">
+  <meta name="twitter:image" content="https://islandmountain.io/images/hero-solutions.webp">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://islandmountain.io/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Aeneas",
+      "item": "https://islandmountain.io/aeneas.html"
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+  <!-- Full-page particle canvas -->
+  <canvas id="particles-canvas"></canvas>
+
+  <!-- Hero background photo -->
+  <div class="hero-photo">
+    <img srcset="images/hero-solutions-mobile.webp 800w, images/hero-solutions.webp 1632w" sizes="100vw" src="images/hero-solutions.webp" alt="Aeneas cloud security platform from Island Mountain" fetchpriority="high" decoding="async" width="1632" height="964">
+  </div>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="nav-logo"><img src="images/logo-nav-new.webp" alt="Island Mountain" width="205" height="65"></a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="why-island-mountain.html">Why Local AI</a></li>
+        <li><a href="aeneas.html" class="active">Aeneas</a></li>
+        <li><a href="products.html">Summit</a>
+        <li><a href="landfall-preorder.html">Landfall</a></li>
+        <li><a href="technology.html">Technology</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li class="nav-dropdown">
+          <a href="solutions.html" class="nav-dropdown-toggle">Solutions <i class="ri-arrow-down-s-line"></i></a>
+          <ul class="nav-dropdown-menu">
+            <li><a href="law-firms.html">Law Firms</a></li>
+            <li><a href="medical-practices.html">Medical Practices</a></li>
+            <li><a href="tribal-nations.html">Tribal Nations</a></li>
+            <li><a href="research-labs.html">Research Labs</a></li>
+            <li><a href="defense-contractors.html">Defense Contractors</a></li>
+            <li><a href="financial-services.html">Financial Services</a></li>
+            <li><a href="insurance.html">Insurance</a></li>
+            <li><a href="energy-utilities.html">Energy &amp; Utilities</a></li>
+            <li><a href="government.html">Government</a></li>
+            <li><a href="education.html">Education</a></li>
+            <li><a href="casino-gaming.html">Casino Gaming</a></li>
+          </ul>
+        </li>
+              <li><a href="faq.html">FAQ</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="resources.html">Resources</a></li>
+        <li><a href="contact.html" class="nav-cta">Request Quote</a></li>
+      </ul>
+      <button class="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Sidebar -->
+  <div class="sidebar-overlay"></div>
+  <div class="mobile-sidebar">
+    <a href="index.html">Home</a>
+    <a href="why-island-mountain.html">Why Local AI</a>
+    <a href="aeneas.html">Aeneas</a>
+    <a href="products.html">Summit</a>
+    <a href="landfall-preorder.html">Landfall</a>
+    <a href="technology.html">Technology</a>
+    <a href="pricing.html">Pricing</a>
+    <a href="solutions.html" class="mobile-solutions-toggle">Solutions <i class="ri-arrow-down-s-line"></i></a>
+    <div class="mobile-solutions-links">
+      <a href="law-firms.html">Law Firms</a>
+      <a href="medical-practices.html">Medical Practices</a>
+      <a href="tribal-nations.html">Tribal Nations</a>
+      <a href="research-labs.html">Research Labs</a>
+      <a href="defense-contractors.html">Defense Contractors</a>
+      <a href="financial-services.html">Financial Services</a>
+      <a href="insurance.html">Insurance</a>
+      <a href="energy-utilities.html">Energy &amp; Utilities</a>
+      <a href="government.html">Government</a>
+      <a href="education.html">Education</a>
+      <a href="casino-gaming.html">Casino Gaming</a>
+    </div>
+            <a href="faq.html">FAQ</a>
+    <a href="blog.html">Blog</a>
+    <a href="resources.html">Resources</a>
+    <a href="contact.html" class="nav-cta">Request Quote</a>
+  </div>
+
+  <!-- Hero -->
+  <section class="hero hero-page">
+    <div class="hero-inner">
+      <span class="hero-badge">Aeneas</span>
+      <h1>Cloud security without standing privilege.</h1>
+      <p>Aeneas helps security teams understand cloud risk, protect sensitive data, preserve compliance evidence, and move remediation through controlled approvals without handing over standing access or operational context.</p>
+      <div class="btn-group">
+        <a href="contact.html" class="btn btn-primary">Request a briefing</a>
+        <a href="#platform" class="btn btn-secondary">View platform</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Capability strip -->
+  <section class="section section-first">
+    <div class="container">
+      <div class="card-grid card-grid-3 fade-in">
+        <div class="card">
+          <div class="card-icon card-icon-green">
+            <i class="ri-stack-line"></i>
+          </div>
+          <h3>Multi-cloud</h3>
+          <p>AWS, Azure, GCP, Kubernetes, databases.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon card-icon-green">
+            <i class="ri-cloud-off-line"></i>
+          </div>
+          <h3>No scan-data SaaS</h3>
+          <p>Runs in the customer environment.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon card-icon-green">
+            <i class="ri-key-2-line"></i>
+          </div>
+          <h3>Scoped access</h3>
+          <p>Ephemeral credentials and audited approvals.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Platform -->
+  <section class="section section-dark" id="platform">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-badge">Platform</span>
+        <h2>A security console built for environments that cannot leak context.</h2>
+        <p>Aeneas is designed for teams that need cloud visibility, compliance reporting, and remediation control without handing persistent access or scan data to a third party. It gives operators enough context to prioritize real exposure while keeping deployment details, evidence, and credentials inside the customer boundary.</p>
+      </div>
+      <div class="card-grid card-grid-2 fade-in">
+        <div class="card">
+          <div class="card-icon card-icon-indigo">
+            <i class="ri-radar-line"></i>
+          </div>
+          <h3>Cloud posture scanning</h3>
+          <p>Build a current view of cloud assets, configuration drift, identity exposure, and workload posture across the environments a security team already operates.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon card-icon-indigo">
+            <i class="ri-database-2-line"></i>
+          </div>
+          <h3>DSPM and classification</h3>
+          <p>Identify sensitive data patterns, exposed storage paths, and access-control gaps without turning samples and findings into another external data exhaust.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon card-icon-indigo">
+            <i class="ri-file-shield-2-line"></i>
+          </div>
+          <h3>Compliance evidence</h3>
+          <p>Connect technical findings to control families, preserve audit-ready context, and make posture work easier to explain to compliance and leadership teams.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon card-icon-indigo">
+            <i class="ri-git-merge-line"></i>
+          </div>
+          <h3>Remediation workflow</h3>
+          <p>Translate findings into reviewable plans, require human approval before sensitive changes, and retain the trail needed to prove what happened.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Platform imagery -->
+  <section class="product-showcase section-darker fade-in">
+    <div class="container">
+      <img src="images/IMG_7495.GIF" alt="Aeneas cloud posture and data security visibility" class="product-showcase-img" width="568" height="379" loading="lazy">
+      <p class="product-showcase-caption">Cloud visibility and classification, scoped to the operation and kept inside your boundary.</p>
+    </div>
+  </section>
+
+  <!-- Security Model -->
+  <section class="section section-dark">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-badge">Security Model</span>
+        <h2>Least privilege is a product constraint, not a dashboard label.</h2>
+        <p>We design around zero standing privilege: scan access is minted just in time, scoped to the operation, and revoked automatically. Remediation remains approval-gated and auditable. The platform is intentionally structured for environments where a scanner must earn each action instead of accumulating broad permanent trust.</p>
+      </div>
+      <div class="card-grid card-grid-2 fade-in">
+        <div class="card">
+          <span class="tier-badge tier-badge-green">01</span>
+          <h3>Customer-premises deployment</h3>
+          <p>Keep findings, samples, credentials, and audit trails inside the customer boundary, aligned to the organization's existing security and governance model.</p>
+        </div>
+        <div class="card">
+          <span class="tier-badge tier-badge-green">02</span>
+          <h3>Ephemeral credential lifecycle</h3>
+          <p>Use short-lived credentials for discovery and scoped write access only after approval, reducing the blast radius of both mistakes and compromise.</p>
+        </div>
+        <div class="card">
+          <span class="tier-badge tier-badge-green">03</span>
+          <h3>Hub and gateway architecture</h3>
+          <p>Run lightweight gateways near the resources they inspect while centralizing evidence, status, and workflow where operators can act on it.</p>
+        </div>
+        <div class="card">
+          <span class="tier-badge tier-badge-green">04</span>
+          <h3>Audit-first operations</h3>
+          <p>Preserve who requested, approved, and executed each sensitive action so remediation can be reviewed as an operational control, not a black box.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Security Model imagery -->
+  <section class="product-showcase section-darker fade-in">
+    <div class="container">
+      <img src="vaulted-ai-access.gif" alt="Zero standing privilege - access minted just in time, scoped, and revoked" class="product-showcase-img" width="568" height="379" loading="lazy">
+      <p class="product-showcase-caption">Zero standing privilege: access is minted just in time, scoped to the operation, and revoked automatically.</p>
+    </div>
+  </section>
+
+  <!-- Deployment -->
+  <section class="section section-dark">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-badge">Deployment</span>
+        <h2>Built for controlled infrastructure.</h2>
+      </div>
+      <div class="fade-in content-narrow">
+        <p class="text-lg-loose">Island Mountain supports deployments where regulatory, contractual, or operational pressure requires direct control of telemetry, secrets, network paths, and audit records. The goal is to fit security work into constrained environments without forcing teams to choose between useful automation and responsible custody.</p>
+        <p class="text-lg-loose">We build &amp; deploy woven fabric cybersecurity solutions with in-house operating systems for organizations that need actionable security posture data, not another permanently privileged SaaS integration. The company's current scope of work is centered on cloud security automation that stays 100% accountable to the teams that operate it.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Deployment imagery -->
+  <section class="product-showcase section-darker fade-in">
+    <div class="container">
+      <img src="IMG_7488.GIF" alt="Woven fabric cybersecurity deployed in controlled infrastructure" class="product-showcase-img" width="568" height="379" loading="lazy">
+      <p class="product-showcase-caption">Woven security services and on-site hardware, fit to environments that require direct custody.</p>
+    </div>
+  </section>
+
+  <!-- Who we serve -->
+  <section class="section section-dark">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-badge">Who We Serve</span>
+        <h2>Providing woven security services, on-site hardware deployment, and organizational training</h2>
+      </div>
+      <div class="card-grid card-grid-3 fade-in">
+        <div class="card">
+          <div class="card-icon card-icon-indigo">
+            <i class="ri-building-2-line"></i>
+          </div>
+          <h3>Enterprise DataSec teams</h3>
+          <p>Operating multi-cloud visibility, prioritization, and remediation with local custody.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon card-icon-indigo">
+            <i class="ri-file-list-3-line"></i>
+          </div>
+          <h3>Evidence &amp; control mapping</h3>
+          <p>Evidence collection aligned to control mapping, reporting, and repeatable review workflows within existing compliance program architectures.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon card-icon-indigo">
+            <i class="ri-server-line"></i>
+          </div>
+          <h3>Managed security providers</h3>
+          <p>Gateway-based scanning for isolated customer environments where access boundaries aren't mere formality.</p>
+        </div>
+      </div>
+      <div class="fade-in content-narrow">
+        <p class="text-lg-loose">We comprehensively plan and professionally facilitate deployments where regulatory, contractual, or operational pressure requires direct control of telemetry, secrets, network paths, and audit records. Our goal is to fit security work into constrained environments without forcing teams to choose between useful automation and responsible custody.</p>
+        <div class="btn-group" style="margin-top:40px;">
+          <a href="contact.html" class="btn btn-primary">Request a briefing</a>
+          <a href="solutions.html" class="btn btn-secondary">See What We Build</a>
+        </div>
+        <p class="cta-subtitle"><i class="ri-phone-line icon-copper-mr-sm"></i>Or call directly: <a href="tel:+13414418740" class="copper-semibold">1-341-441-8740</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="images/logo-footer.webp" alt="Island Mountain logo" width="210" height="210" class="d-block-mb">
+          <a href="index.html" class="nav-logo">Island Mountain</a>
+          <p>Local AI infrastructure for data-sovereign organizations. Colorado.</p>
+          <p class="mt-8"><i class="ri-phone-line icon-copper-mr"></i><a href="tel:+13414418740" class="clr-muted">1-341-441-8740</a></p>
+        </div>
+        <div>
+          <h3>Quick Links</h3>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Summit</a>
+            <li><a href="technology.html">Technology</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="resources.html">Resources</a></li>
+              <li><a href="faq.html">FAQ</a></li>
+            <li><a href="blog.html">Blog</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Solutions</h3>
+          <ul class="footer-links">
+            <li><a href="law-firms.html">Law Firms</a></li>
+            <li><a href="medical-practices.html">Medical Practices</a></li>
+            <li><a href="tribal-nations.html">Tribal Nations</a></li>
+            <li><a href="research-labs.html">Research Labs</a></li>
+            <li><a href="defense-contractors.html">Defense Contractors</a></li>
+            <li><a href="financial-services.html">Financial Services</a></li>
+            <li><a href="insurance.html">Insurance</a></li>
+            <li><a href="energy-utilities.html">Energy &amp; Utilities</a></li>
+            <li><a href="government.html">Government</a></li>
+            <li><a href="education.html">Education</a></li>
+            <li><a href="casino-gaming.html">Casino Gaming</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Company</h3>
+          <ul class="footer-links">
+            <li><a href="why-island-mountain.html">Why Local AI</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="investors.html">Investors</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="terms.html">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-newsletter">
+        <form action="https://formsubmit.co/basho@islandmountain.io" method="POST" class="newsletter-form">
+          <input type="hidden" name="_subject" value="Newsletter Signup - Island Mountain">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="text" name="_honey" style="display:none">
+          <label>Get updates on local AI infrastructure</label>
+          <div class="newsletter-input-group">
+            <input type="email" name="email" required placeholder="Your email address">
+            <button type="submit" class="btn btn-primary">Subscribe</button>
+          </div>
+        </form>
+      </div>
+      <div class="footer-bottom flex-col-center-gap">
+        <p>&copy; 2026 Island Mountain. All rights reserved. Founded by <a href="https://www.johndou.com" target="_blank" rel="noopener" class="clr-copper">John Dougherty</a> and <span class="clr-copper">Basho Parks</span>.</p>
+        <a href="tel:+13414418740" class="phone-link"><i class="ri-phone-line text-lg"></i> 1-341-441-8740</a>
+        <a href="https://www.linkedin.com/company/island-mountain-llc/" target="_blank" rel="noopener" aria-label="Island Mountain on LinkedIn" class="phone-link"><i class="ri-linkedin-fill text-lg"></i> Follow us on LinkedIn</a>
+        <a href="https://x.com/IslandMountain_" target="_blank" rel="noopener" aria-label="Island Mountain on X" class="phone-link"><i class="ri-twitter-x-fill text-lg"></i> Follow us on X</a>
+      </div>
+    </div>
+  </footer>
+
+  <script defer src="js/main.js"></script>
+  <script defer src="js/chat-widget.js"></script>
+</body>
+</html>
