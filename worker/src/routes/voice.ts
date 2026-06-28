@@ -2,8 +2,14 @@ import type { Env } from '../types';
 import { jsonResponse } from '../cors';
 import { scoreLead, SUBMIT_LEAD_TOOL, type LeadFields } from '../qualifier';
 import { processLead, type LeadContext } from '../lead-processor';
-import { attachVoiceArtifacts } from '../integrations/d1';
+import { attachVoiceArtifacts, setLeadStatus } from '../integrations/d1';
 import { callMessages, toolUses } from '../anthropic';
+import {
+  getAvailableSlots,
+  createBooking,
+  spokenTime,
+  defaultSlotWindow,
+} from '../integrations/calcom';
 
 /**
  * POST /api/voice-webhook — Vapi server messages.
@@ -40,6 +46,7 @@ interface VapiMessage {
 }
 
 const callKey = (callId: string) => `voicecall:${callId}`;
+const bookingKey = (callId: string) => `voicebooking:${callId}`;
 
 function parseArgs(raw: unknown): LeadFields {
   if (typeof raw === 'string') {
@@ -47,6 +54,16 @@ function parseArgs(raw: unknown): LeadFields {
   }
   return (raw ?? {}) as LeadFields;
 }
+
+/** Generic tool-arg parse (Vapi may deliver args as a JSON string or object). */
+function parseObj(raw: unknown): Record<string, unknown> {
+  if (typeof raw === 'string') {
+    try { return JSON.parse(raw) as Record<string, unknown>; } catch { return {}; }
+  }
+  return (raw ?? {}) as Record<string, unknown>;
+}
+
+const str = (v: unknown): string | undefined => (typeof v === 'string' && v.trim() ? v.trim() : undefined);
 
 export async function handleVoiceWebhook(request: Request, env: Env): Promise<Response> {
   const origin = request.headers.get('Origin');
@@ -78,6 +95,12 @@ export async function handleVoiceWebhook(request: Request, env: Env): Promise<Re
       const fnArgs = tc.function?.arguments ?? tc.arguments;
       if (fnName === 'submit_lead') {
         const out = await runVoiceLead(env, parseArgs(fnArgs), callId, msg);
+        results.push({ toolCallId: tc.id, result: JSON.stringify(out) });
+      } else if (fnName === 'get_available_slots') {
+        const out = await runGetSlots(env, parseObj(fnArgs));
+        results.push({ toolCallId: tc.id, result: JSON.stringify(out) });
+      } else if (fnName === 'book_appointment') {
+        const out = await runBookAppointment(env, parseObj(fnArgs), callId);
         results.push({ toolCallId: tc.id, result: JSON.stringify(out) });
       } else {
         results.push({ toolCallId: tc.id, result: JSON.stringify({ ok: false, error: 'unknown tool' }) });
@@ -119,7 +142,14 @@ export async function handleVoiceWebhook(request: Request, env: Env): Promise<Re
       }
     }
 
-    if (leadId) await attachVoiceArtifacts(env, leadId, transcript, recordingUrl);
+    if (leadId) {
+      await attachVoiceArtifacts(env, leadId, transcript, recordingUrl);
+      // If the caller booked a scoping call mid-conversation, the Cal.com
+      // booking-webhook fired before the lead existed (so it couldn't mark it).
+      // Reconcile here now that we have the leadId.
+      const booked = await env.SESSIONS.get(bookingKey(callId)).catch(() => null);
+      if (booked) await setLeadStatus(env, leadId, 'booked').catch(() => {});
+    }
     return jsonResponse({ success: true, data: { lead_id: leadId ?? null } }, 200, origin, env);
   }
 
@@ -197,4 +227,71 @@ async function runVoiceLead(
     recommended_action: scored.recommendedAction,
     lead_id: processed.id,
   };
+}
+
+/**
+ * `get_available_slots` tool — read open scoping-call times so the agent can
+ * offer specific options out loud. Returns up to 3 nearest slots; each `id` is
+ * the exact ISO start the agent passes back to `book_appointment`.
+ */
+async function runGetSlots(
+  env: Env,
+  args: Record<string, unknown>,
+): Promise<{ ok: boolean; slots: { id: string; when: string }[]; timeZone: string; message?: string }> {
+  const timeZone = str(args.timeZone) || env.CALCOM_TIMEZONE || 'America/Denver';
+  const { fromISO, toISO } = defaultSlotWindow(Date.now());
+  const slots = await getAvailableSlots(env, { fromISO, toISO, timeZone }, 3);
+  return {
+    ok: true,
+    slots: slots.map((s) => ({ id: s.startISO, when: s.spoken })),
+    timeZone,
+    ...(slots.length === 0 ? { message: 'No open times in the next two weeks.' } : {}),
+  };
+}
+
+/**
+ * `book_appointment` tool — reserve the chosen slot on Cal.com. The booking
+ * carries sessionId (+leadId if known) so the existing booking-webhook runs the
+ * mark-booked → alert → GA4 path; we also stash a marker so end-of-call can
+ * reconcile the lead status if the lead is captured after the booking.
+ */
+async function runBookAppointment(
+  env: Env,
+  args: Record<string, unknown>,
+  callId: string,
+): Promise<{ ok: boolean; booked?: boolean; when?: string; error?: string; message?: string }> {
+  const startISO = str(args.startISO) || str(args.id) || str(args.start);
+  const name = str(args.name);
+  const email = str(args.email);
+  const timeZone = str(args.timeZone) || env.CALCOM_TIMEZONE || 'America/Denver';
+  if (!startISO || !name || !email) {
+    return { ok: false, error: 'missing-fields', message: 'I need your name, email, and a chosen time to book.' };
+  }
+
+  const leadId = (await env.SESSIONS.get(callKey(callId)).catch(() => null)) ?? undefined;
+  const result = await createBooking(env, {
+    startISO,
+    name,
+    email,
+    timeZone,
+    sessionId: `voice:${callId}`,
+    leadId,
+    notes: str(args.notes),
+  });
+
+  if (!result.ok) {
+    return {
+      ok: false,
+      error: result.error,
+      message: 'That time isn’t available anymore — would you like to pick another?',
+    };
+  }
+
+  await env.SESSIONS.put(
+    bookingKey(callId),
+    JSON.stringify({ startISO: result.startISO, email, name, uid: result.uid }),
+    { expirationTtl: 60 * 60 * 24 },
+  ).catch(() => {});
+
+  return { ok: true, booked: true, when: spokenTime(result.startISO ?? startISO, timeZone) };
 }
