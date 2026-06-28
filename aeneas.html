@@ -56,6 +56,20 @@
     src: url('fonts/space-grotesk-latin.woff2') format('woff2');
     unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
   }
+  /* Custom Aeneas card icons (2x size, transparent illustration art) */
+  .card-icon.card-icon-img {
+    width: 96px;
+    height: 96px;
+    background: none;
+    border-radius: 0;
+    margin-bottom: 16px;
+  }
+  .card-icon.card-icon-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
   </style>
   <link rel="canonical" href="https://islandmountain.io/aeneas.html">
 
@@ -94,7 +108,7 @@
 }
 </script>
 </head>
-<body>
+<body class="page-aeneas">
 
   <!-- Full-page particle canvas -->
   <canvas id="particles-canvas"></canvas>
@@ -191,22 +205,30 @@
     <div class="container">
       <div class="card-grid card-grid-2 fade-in">
         <div class="card">
-          <span class="tier-badge tier-badge-green">01</span>
+          <div class="card-icon card-icon-img">
+            <img src="images/aeneas-icon-onprem.png" alt="" width="96" height="96" loading="lazy" decoding="async">
+          </div>
           <h3>Customer-Premises Deployment</h3>
           <p>Keep findings, samples, credentials, and audit trails inside the customer boundary, aligned to the organization's existing security and governance model.</p>
         </div>
         <div class="card">
-          <span class="tier-badge tier-badge-green">02</span>
+          <div class="card-icon card-icon-img">
+            <img src="images/aeneas-icon-scoped-access.png" alt="" width="96" height="96" loading="lazy" decoding="async">
+          </div>
           <h3>Ephemeral Credential Lifecycle</h3>
           <p>Use short-lived credentials for discovery and scoped write access only after approval, reducing the blast radius of both mistakes and compromise.</p>
         </div>
         <div class="card">
-          <span class="tier-badge tier-badge-green">03</span>
+          <div class="card-icon card-icon-img">
+            <img src="images/aeneas-icon-gateway.png" alt="" width="96" height="96" loading="lazy" decoding="async">
+          </div>
           <h3>Hub And Gateway Architecture</h3>
           <p>Run lightweight gateways near the resources they inspect while centralizing evidence, status, and workflow where operators can act on it.</p>
         </div>
         <div class="card">
-          <span class="tier-badge tier-badge-green">04</span>
+          <div class="card-icon card-icon-img">
+            <img src="images/aeneas-icon-audit.png" alt="" width="96" height="96" loading="lazy" decoding="async">
+          </div>
           <h3>Audit-First Operations</h3>
           <p>Preserve who requested, approved, and executed each sensitive action so remediation can be reviewed as an operational control, not a black box.</p>
         </div>
@@ -238,8 +260,8 @@
     <div class="container">
       <div class="content-narrow fade-in">
         <div class="card">
-          <div class="card-icon card-icon-green">
-            <i class="ri-shield-keyhole-line"></i>
+          <div class="card-icon card-icon-img">
+            <img src="images/aeneas-icon-multicloud.png" alt="" width="96" height="96" loading="lazy" decoding="async">
           </div>
           <h3>Multi-Cloud, Scoped, And Self-Hosted</h3>
           <p>Covers AWS, Azure, GCP, Kubernetes, and databases. Runs inside the customer environment with no scan-data SaaS. Access stays scoped through ephemeral credentials and audited approvals.</p>
@@ -258,29 +280,29 @@
       </div>
       <div class="card-grid card-grid-2 fade-in">
         <div class="card">
-          <div class="card-icon card-icon-indigo">
-            <i class="ri-radar-line"></i>
+          <div class="card-icon card-icon-img">
+            <img src="images/aeneas-icon-scanning.png" alt="" width="96" height="96" loading="lazy" decoding="async">
           </div>
           <h3>Cloud Posture Scanning</h3>
           <p>Build a current view of cloud assets, configuration drift, identity exposure, and workload posture across the environments a security team already operates.</p>
         </div>
         <div class="card">
-          <div class="card-icon card-icon-indigo">
-            <i class="ri-database-2-line"></i>
+          <div class="card-icon card-icon-img">
+            <img src="images/aeneas-icon-classification.png" alt="" width="96" height="96" loading="lazy" decoding="async">
           </div>
           <h3>DSPM And Classification</h3>
           <p>Identify sensitive data patterns, exposed storage paths, and access-control gaps without turning samples and findings into another external data exhaust.</p>
         </div>
         <div class="card">
-          <div class="card-icon card-icon-indigo">
-            <i class="ri-file-shield-2-line"></i>
+          <div class="card-icon card-icon-img">
+            <img src="images/aeneas-icon-compliance.png" alt="" width="96" height="96" loading="lazy" decoding="async">
           </div>
           <h3>Compliance Evidence</h3>
           <p>Connect technical findings to control families, preserve audit-ready context, and make posture work easier to explain to compliance and leadership teams.</p>
         </div>
         <div class="card">
-          <div class="card-icon card-icon-indigo">
-            <i class="ri-git-merge-line"></i>
+          <div class="card-icon card-icon-img">
+            <img src="images/aeneas-icon-remediation.png" alt="" width="96" height="96" loading="lazy" decoding="async">
           </div>
           <h3>Remediation Workflow</h3>
           <p>Translate findings into reviewable plans, require human approval before sensitive changes, and retain the trail needed to prove what happened.</p>
@@ -328,22 +350,22 @@
       </div>
       <div class="card-grid card-grid-3 fade-in">
         <div class="card">
-          <div class="card-icon card-icon-indigo">
-            <i class="ri-building-2-line"></i>
+          <div class="card-icon card-icon-img">
+            <img src="images/aeneas-icon-console.png" alt="" width="96" height="96" loading="lazy" decoding="async">
           </div>
           <h3>Enterprise DataSec Teams</h3>
           <p>Operating multi-cloud visibility, prioritization, and remediation with local custody.</p>
         </div>
         <div class="card">
-          <div class="card-icon card-icon-indigo">
-            <i class="ri-file-list-3-line"></i>
+          <div class="card-icon card-icon-img">
+            <img src="images/aeneas-icon-mapping.png" alt="" width="96" height="96" loading="lazy" decoding="async">
           </div>
           <h3>Evidence &amp; Control Mapping</h3>
           <p>Evidence collection aligned to control mapping, reporting, and repeatable review workflows within existing compliance program architectures.</p>
         </div>
         <div class="card">
-          <div class="card-icon card-icon-indigo">
-            <i class="ri-server-line"></i>
+          <div class="card-icon card-icon-img">
+            <img src="images/aeneas-icon-providers.png" alt="" width="96" height="96" loading="lazy" decoding="async">
           </div>
           <h3>Managed Security Providers</h3>
           <p>Gateway-based scanning for isolated customer environments where access boundaries aren't mere formality.</p>
