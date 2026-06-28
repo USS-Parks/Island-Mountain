@@ -2342,3 +2342,8 @@ a.risk-card--link:hover {
   .nav-links { display: none; }
   .hamburger { display: flex; }
 }
+
+/* ===== Aeneas: halve showcase GIF on desktop only (mobile untouched) ===== */
+@media (min-width: 769px) {
+  .page-aeneas .product-showcase-img { max-width: 450px; }
+}
