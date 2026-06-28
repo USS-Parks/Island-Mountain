@@ -73,6 +73,8 @@
   /* Center card content (icon + text) and the closing phone line */
   .page-aeneas .card { text-align: center; }
   .page-aeneas .cta-subtitle { text-align: center; }
+  /* 1.5x icon for the Hub & Gateway Architecture card */
+  .card-icon.card-icon-img.card-icon-img--xl { width: 144px; height: 144px; }
   /* Aeneas: pair each text block with its GIF in one shared row (desktop).
      Source order is always text-then-media, so mobile stacks unchanged. */
   .page-aeneas .aeneas-split-media { text-align: center; }
@@ -271,8 +273,8 @@
           <p>Use short-lived credentials for discovery and scoped write access only after approval, reducing the blast radius of both mistakes and compromise.</p>
         </div>
         <div class="card">
-          <div class="card-icon card-icon-img">
-            <img src="images/aeneas-icon-gateway.png" alt="" width="96" height="96" loading="lazy" decoding="async">
+          <div class="card-icon card-icon-img card-icon-img--xl">
+            <img src="images/aeneas-icon-gateway.png" alt="" width="144" height="144" loading="lazy" decoding="async">
           </div>
           <h3>Hub And Gateway Architecture</h3>
           <p>Run lightweight gateways near the resources they inspect while centralizing evidence, status, and workflow where operators can act on it.</p>
