@@ -23,6 +23,8 @@ export interface Env {
   SHEETS_WEBHOOK_URL?: string;
   /** Vapi private API key — voice agent (PROMPT 07). */
   VAPI_API_KEY?: string;
+  /** Cal.com API key (cal_live_…) — live in-call booking for the voice agent. */
+  CALCOM_API_KEY?: string;
   /** Shared secret to validate inbound Vapi/Cal.com webhooks. */
   WEBHOOK_SECRET?: string;
   /** Cloudflare Turnstile secret — bot challenge on session start (PROMPT 10). */
@@ -45,6 +47,10 @@ export interface Env {
   LEAD_FROM_EMAIL?: string;
   /** Cal.com scheduling link offered to hot leads (PROMPT 06). */
   CALCOM_LINK?: string;
+  /** Cal.com event-type id for the "Discovery/Scoping Call" (live voice booking). */
+  CALCOM_EVENT_TYPE_ID?: string;
+  /** Default IANA timezone for the scoping-call calendar, e.g. America/Denver. */
+  CALCOM_TIMEZONE?: string;
 }
 
 /** Standard JSON envelope returned by every endpoint. */
