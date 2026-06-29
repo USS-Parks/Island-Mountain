@@ -15,5 +15,13 @@ dist/
 .DS_Store
 Thumbs.db
 
-# Vapi assistant snapshot (contains config; keep local)
+# Vapi assistant/workflow snapshots + extracted secrets (keep local)
 .vapi-assistant-snapshot.json
+.vapi-assistant-snapshot-full.json
+.vapi-workflow-*.json
+.vapi-openapi.json
+.snapshot-system-prompt.txt
+.snapshot-tool-*.json
+.vapi-number-*.json
+.vapi-workflow-created.json
+.vapi-workflow-verify.json

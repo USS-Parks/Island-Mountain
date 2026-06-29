@@ -1,5 +1,14 @@
 # Vapi voice agent setup (PROMPT 07)
 
+> **Building a Vapi _Workflow_ (node-graph) instead of this single Assistant?**
+> See **[`vapi-workflow-build-guide.md`](./vapi-workflow-build-guide.md)** — the
+> field guide for cogent, operational workflows via the live API. Key gotchas it
+> documents: the start-node first message lives at **`node.messagePlan.firstMessage`**
+> (nested, undocumented; top-level `firstMessage` is rejected); the vapi voice
+> needs **`version: 2` + `language: "en"`** (or calls hang up on an ElevenLabs
+> fallback); set **`metadata.position`** per node or the editor stacks them; and
+> a phone number routes to exactly one of `assistantId` / `workflowId` / `squadId`.
+
 The voice agent shares the **same brain and lead pipeline** as the chat bot. Vapi
 runs the call; when it has enough signal it calls the `submit_lead` tool, which
 hits `POST /api/voice-webhook` and runs the identical `scoreLead` + `processLead`
