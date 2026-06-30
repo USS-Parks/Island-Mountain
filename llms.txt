@@ -68,6 +68,7 @@ All systems ship with DeepSeek V4-Flash pre-installed, OpenWebUI configured, and
 - [Air-Gapped AI Inference](https://islandmountain.io/air-gapped-ai-inference.html)
 
 ## Blog
+- [Agentjacking: Fake Bug Reports Hijack AI Coding Agents](https://islandmountain.io/blog/agentjacking-fake-bug-report.html)
 - [DeepSeek V4-Flash Deployment](https://islandmountain.io/blog/deepseek-v4-flash-local-deployment.html)
 - [Attorney-Client Privilege & Cloud AI](https://islandmountain.io/blog/attorney-client-privilege-cloud-ai.html)
 - [RTX PRO 6000 Blackwell vs. H100 Comparison](https://islandmountain.io/blog/h100-vs-h200-inference-comparison.html)
