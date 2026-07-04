@@ -53,3 +53,10 @@ Island Mountain 20-Sided.png
 IslandMountain_D20.*
 images/single-user.png
 skull-crossbones.png
+
+# Credential/keys notes (NEVER commit)
+AI Voice and Conversation Widget And CRM Project/Twilio Keys.md
+AI Voice and Conversation Widget And CRM Project/Vapi and cal keys.md
+**/*Keys*.md
+**/*keys*.md
+.twilio-*.json

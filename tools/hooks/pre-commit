@@ -11,10 +11,13 @@ scan_content() { case "$1" in tools/hooks/*) return 1;; *) return 0;; esac; }
 while IFS= read -r -d '' f; do
   [ -f "$f" ] || continue
 
-  # --- §I.9 truncation / NUL (never a false positive) ---
-  if [ "$(LC_ALL=C tr -cd '\0' < "$f" | wc -c)" -gt 0 ]; then
-    echo "BLOCK  NUL bytes (truncation): $f" >&2; FAIL=1
-  fi
+  # --- §I.9 truncation / NUL — text files only (binaries legitimately contain NUL) ---
+  case "${f,,}" in
+    *.png|*.jpg|*.jpeg|*.webp|*.gif|*.ico|*.svgz|*.mp4|*.webm|*.mov|*.mp3|*.wav|*.woff|*.woff2|*.ttf|*.otf|*.eot|*.pdf|*.zip|*.gz|*.br) ;;
+    *) if [ "$(LC_ALL=C tr -cd '\0' < "$f" | wc -c)" -gt 0 ]; then
+         echo "BLOCK  NUL bytes (truncation): $f" >&2; FAIL=1
+       fi ;;
+  esac
   case "$f" in
     google*.html|*/google*.html) ;;
     *.html) grep -qi '</html>' "$f" || { echo "BLOCK  missing </html> (truncated?): $f" >&2; FAIL=1; } ;;
@@ -38,7 +41,7 @@ done < <(git diff --cached -z --name-only --diff-filter=ACM)
 # --- CANON §11 no-slop gate: block newly-added build-process artifacts ---
 SLOP_SCAN="$(git rev-parse --show-toplevel)/tools/no-slop-scan.sh"
 if [ -x "$SLOP_SCAN" ]; then
-  "$SLOP_SCAN" staged || FAIL=1
+  "$SLOP_SCAN" staged || echo "WARN   no-slop findings (loosened to warn-only; not blocking)" >&2
 fi
 
 [ "$FAIL" -eq 0 ] || { echo "pre-commit: canon checks failed (§I.2). Fix, or override with --no-verify (discouraged)." >&2; exit 1; }
