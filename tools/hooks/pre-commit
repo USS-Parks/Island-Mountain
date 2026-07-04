@@ -35,5 +35,11 @@ while IFS= read -r -d '' f; do
   fi
 done < <(git diff --cached -z --name-only --diff-filter=ACM)
 
+# --- CANON §11 no-slop gate: block newly-added build-process artifacts ---
+SLOP_SCAN="$(git rev-parse --show-toplevel)/tools/no-slop-scan.sh"
+if [ -x "$SLOP_SCAN" ]; then
+  "$SLOP_SCAN" staged || FAIL=1
+fi
+
 [ "$FAIL" -eq 0 ] || { echo "pre-commit: canon checks failed (§I.2). Fix, or override with --no-verify (discouraged)." >&2; exit 1; }
 exit 0
