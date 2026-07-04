@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# Canon §I.9 — refuse to publish truncated/corrupt HTML (site-wide gate).
+set -uo pipefail
+FAIL=0
+while IFS= read -r f; do
+  [ -f "$f" ] || continue
+  [ "$(LC_ALL=C tr -cd '\0' < "$f" | wc -c)" -gt 0 ] && { echo "BLOCK  NUL bytes: $f" >&2; FAIL=1; }
+  case "$f" in
+    google*.html|*/google*.html) ;;
+    *) grep -qi '</html>' "$f" || { echo "BLOCK  missing </html>: $f" >&2; FAIL=1; } ;;
+  esac
+done < <(git ls-files '*.html')
+[ "$FAIL" -eq 0 ] || { echo "pre-push: truncated/corrupt HTML — refusing to publish (§I.9)." >&2; exit 1; }
+exit 0
