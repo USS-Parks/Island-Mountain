@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+# Canon gate (Island Mountain) — staged-only, fast.
+#   BLOCK: NUL/truncation (§I.9), missing </html>, private keys / vault tokens (§I.8)
+#   WARN:  AWS-key-shaped strings, in-file AI-attribution artifacts (§I.3)
+#          (WARN, not BLOCK — this is a content site; example creds appear in articles)
+set -uo pipefail
+FAIL=0
+# Skip the hook sources themselves in content scans — they carry these patterns by design.
+scan_content() { case "$1" in tools/hooks/*) return 1;; *) return 0;; esac; }
+
+while IFS= read -r -d '' f; do
+  [ -f "$f" ] || continue
+
+  # --- §I.9 truncation / NUL (never a false positive) ---
+  if [ "$(LC_ALL=C tr -cd '\0' < "$f" | wc -c)" -gt 0 ]; then
+    echo "BLOCK  NUL bytes (truncation): $f" >&2; FAIL=1
+  fi
+  case "$f" in
+    google*.html|*/google*.html) ;;
+    *.html) grep -qi '</html>' "$f" || { echo "BLOCK  missing </html> (truncated?): $f" >&2; FAIL=1; } ;;
+  esac
+
+  if scan_content "$f"; then
+    # --- §I.8 high-confidence secrets ---
+    if LC_ALL=C grep -Eq -- '-----BEGIN ([A-Z ]+ )?PRIVATE KEY-----|hv[sb]\.[A-Za-z0-9_-]{20,}' "$f"; then
+      echo "BLOCK  possible private key / vault token: $f" >&2; FAIL=1
+    fi
+    # --- WARN-only (FP-prone on a content site) ---
+    if LC_ALL=C grep -Eq -- 'AKIA[0-9A-Z]{16}' "$f"; then
+      echo "WARN   AWS-key-shaped string (example creds ok): $f" >&2
+    fi
+    if LC_ALL=C grep -Eq -- 'Co-Authored-By: *Claude|Generated with \[?Claude Code' "$f"; then
+      echo "WARN   AI-attribution artifact in file content: $f" >&2
+    fi
+  fi
+done < <(git diff --cached -z --name-only --diff-filter=ACM)
+
+[ "$FAIL" -eq 0 ] || { echo "pre-commit: canon checks failed (§I.2). Fix, or override with --no-verify (discouraged)." >&2; exit 1; }
+exit 0
