@@ -5,9 +5,13 @@ FAIL=0
 while IFS= read -r f; do
   [ -f "$f" ] || continue
   [ "$(LC_ALL=C tr -cd '\0' < "$f" | wc -c)" -gt 0 ] && { echo "BLOCK  NUL bytes: $f" >&2; FAIL=1; }
-  case "$f" in
+  # Full HTML documents only: a <html>/<!doctype> root without a closing tag is
+  # truncated. Partials/includes (no root) are legitimate and never block a push.
+  case "${f,,}" in
     google*.html|*/google*.html) ;;
-    *) grep -qi '</html>' "$f" || { echo "BLOCK  missing </html>: $f" >&2; FAIL=1; } ;;
+    *) if grep -qiE '<!doctype html|<html' "$f" && ! grep -qi '</html>' "$f"; then
+         echo "BLOCK  missing </html> (truncated full document): $f" >&2; FAIL=1
+       fi ;;
   esac
 done < <(git ls-files '*.html')
 # --- CANON §11 no-slop gate: full-tree scan, zero artifacts may publish ---

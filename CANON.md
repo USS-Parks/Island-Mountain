@@ -60,6 +60,11 @@ Nothing gets committed unless the full ladder is green. "Exhaustive" is a ladder
 - Parallel/agent tracks run in **separate git worktrees** — never share a git index. Coordinate cross-track merge-hotspot files per the active plan.
 - *Layer-3 owner:* Layer-2 + a `SessionStart` reminder (III.1).
 
+### I.5b — Branch per session, merge to main
+- **Every session works on its own branch — never commit directly on `main`.** Start each session with `git switch -c session/<short-topic>` (a fresh worktree per §I.5 for parallel tracks). Do the work there, keep every commit green through the gates, then integrate to `main` with `git switch main && git merge --no-ff session/<short-topic>` once the unit is done. `main` is live (GitHub Pages) — merging is local; only Basho pushes (§I.4).
+- The gates **must fail safe**: a hook may block a genuinely corrupt/secret-leaking commit, but must never reject a well-formed one for a tooling reason (missing binary extension, a legitimate HTML partial, a failed `mktemp`/`awk`). A gate that claps clean work is a defect, fixed — not tolerated.
+- *Layer-3 owner:* `pre-commit` **warns** (never blocks) on a direct `main` commit; `commit-msg` always exits 0; the truncation/secret scans use a text allowlist + full-document HTML test so unknown/binary/partial files pass.
+
 ### I.6 — Deliverables land somewhere findable
 - Reports/handoffs/deliverables go at the **top-level project folder**, never buried in a worktree or deep `docs/` path. **Lead the reply with the exact path.**
 - *Layer-3 owner:* Layer-2 only.
