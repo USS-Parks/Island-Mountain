@@ -25,3 +25,5 @@ Thumbs.db
 .vapi-number-*.json
 .vapi-workflow-created.json
 .vapi-workflow-verify.json
+.cal-*.json
+.vapi-import*.json
