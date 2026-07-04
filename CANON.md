@@ -1,7 +1,7 @@
 # CANON — Engineering & Agentic Operations Doctrine
 
 **Scope:** Island Mountain — **WSF** (Woven Sovereignty Fabric, trust plane) + **AOG** (Agentic Orchestration Governance, control plane) · console codename **Lamprey** / public **Aeneas** · foundation **Lamprey MAI**.
-**Author:** Basho Parks · **Status:** DRAFT v0.1 — awaiting review. Items marked **PROPOSED** are *not yet wired*.
+**Author:** Basho Parks · **Status:** v0.2 (2026-07-03) — Parts I–II adopted; enforcement live (Part III). Items marked **PROPOSED** are not yet wired.
 **Created:** 2026-07-03.
 
 > This is the single source of truth for *how we build*, above any one PLANNING/*.md. A PSPR governs one phase; this governs all phases and, for Part I, all projects.
@@ -108,7 +108,7 @@ Every release emits an SBOM (syft) and is code-signed. (Signing cert is an owner
 
 ### II.7 — Provenance / receipts (dogfood our own doctrine)
 "Controls live outside the model." We hold our *own* agentic work to it: agent tool actions (edits, commands, mutations) are recorded to an append-only, hash-chained session audit log — the same shape WSF receipts take.
-- *Layer-3 owner:* **PROPOSED** `PostToolUse` audit-logger.
+- *Layer-3 owner:* **ACTIVE** — `PostToolUse` `audit-log.sh` (hash-chained → `~/.claude/audit/actions.jsonl`).
 
 ### II.8 — Data-classification discipline (HIPAA / ITAR / OCAP)
 Never paste PHI, ITAR-controlled technical data, or OCAP-governed material into a cloud model context (including this assistant). Classified data is envelope-first / local-model-only. This is both product ethos and operational rule.
@@ -123,27 +123,25 @@ You asked about webhooks and pre/post-tool skills. Here is the full surface. **A
 ### III.1 — Claude Code hooks (`~/.claude/settings.json`) — fire *inside agent sessions only*
 | Event | Recommended use here | Status |
 |---|---|---|
-| `PreToolUse` (Write) | block whole-file Write → force atomic Edit (truncation defense) | **ACTIVE** (`block-write-tool.sh`) |
+| `PreToolUse` (Write) | block whole-file Write (CoWork truncation defense) | **REMOVED** 2026-07-03 — dead schema; Write is safe on native Windows |
 | `PreToolUse` (Bash) | RTK token-killer rewrite | **ACTIVE** (`rtk hook claude`) |
-| `PreToolUse` (Bash) | **guard** `git commit --no-verify`, `push --force`, `rm -rf`, destructive DB ops | **PROPOSED** |
-| `PreToolUse` (Bash) | **egress guard** — deny non-allowlisted network calls during build/test (II.4) | **PROPOSED** |
-| `PreToolUse` (Bash) | **commit gate** — run the fast verify subset before `git commit` (belt-and-braces with the git hook) | **PROPOSED** |
-| `PostToolUse` (Edit) | **auto-format + lint** the touched file (`cargo fmt`/`clippy`, `prettier`/`eslint`) so the tree stays green | **PROPOSED** |
-| `PostToolUse` (Edit) | **AI-slop scan** the diff (emoji, tell-phrases, forbidden co-author footer) | **PROPOSED** |
-| `PostToolUse` (any) | **audit logger** — append hash-chained record of every action (II.7) | **PROPOSED** |
-| `PostToolUse` (Edit/Write) | **post-write verify** — `tail`/`wc -l`, flag truncation (I.9) | **PROPOSED** |
-| `UserPromptSubmit` | secret-in-prompt scan (I.8) + classification warn (II.8) + inject active-PSPR reminder | **PROPOSED** |
-| `SessionStart` | print branch/status, active milestone, worktree reminder, refresh revocation snapshot | **PROPOSED** |
-| `Stop` / `SubagentStop` | end-of-turn: truncation sweep, "DEVLOG updated?", warn on uncommitted trust-adjacent changes | **PROPOSED** |
-| `PreCompact` | persist running DEVLOG / handoff before context is compacted (I.10) | **PROPOSED** |
-| `Notification` | route "needs approval" / "run done" to a webhook (see III.4) | **PROPOSED** |
+| `PreToolUse` (Bash) | **guard** `--no-verify`, bare force-push (allows `--force-with-lease`), `rm -rf` on root/home | **ACTIVE** (`guardrail.sh`) |
+| `PostToolUse` (Edit/Write) | **auto-format** touched file (`rustfmt`; project-local `prettier`) | **ACTIVE** (`autoformat.sh`) |
+| `PostToolUse` (any) | **audit logger** — hash-chained record of every action (II.7) | **ACTIVE** (`audit-log.sh`) |
+| `UserPromptSubmit` | **secret-in-prompt scan** — block private keys / vault tokens (I.8) | **ACTIVE** (`prompt-secret-scan.sh`) |
+| `SessionStart` | branch/status, active plan, worktree + gate reminders | **ACTIVE** (`session-brief.sh`) |
+| `PreToolUse` (Bash) | **egress guard** — deny non-allowlisted network during build/test (II.4) | **PROPOSED** |
+| `PostToolUse` (Edit) | **AI-slop scan** the diff (emoji, tell-phrases) | **PROPOSED** (partial: git `pre-commit` warns) |
+| `UserPromptSubmit` | classification warn (II.8) + inject active-PSPR reminder | **PROPOSED** |
+| `Stop` / `SubagentStop` | truncation sweep, "DEVLOG updated?", uncommitted-trust warning | **PROPOSED** |
+| `PreCompact` | persist running DEVLOG / handoff before compaction (I.10) | **PROPOSED** |
+| `Notification` | route approval-needed / run-done / gate-failed to a webhook (III.4) | **PROPOSED** (target TBD) |
 
-### III.2 — Git hooks (`core.hooksPath`, versioned in `tools/hooks/`) — fire on *every* commit by *any* actor
+### III.2 — Git hooks (`core.hooksPath`) — fire on *every* commit by *any* actor
 This is the real owner of "before each commit," because it binds human-in-PowerShell too.
-- **`pre-commit`** — fast verify subset (fmt + lint + typecheck + affected unit tests) + secret scan + AI-slop scan. Red → commit refused.
-- **`commit-msg`** — assert the exact footer (I.3); reject slop/marketing/emoji; enforce plain-speak caps.
-- **`pre-push`** — full V&V ladder (I.2) + `cargo audit`/`deny` (blocks pushing a red branch even if a commit slipped through).
-- **PROPOSED** for both repos. (Lamprey Harness already ships `scripts/hooks/commit-msg` + `check-ai-artifacts.cjs` — reuse that pattern here.)
+- **This repo (`islandmountain`, `tools/hooks/`)** — **ACTIVE** (2026-07-03): `commit-msg` (auto-stamp footer + strip AI credit), `pre-commit` (NUL/truncation + `</html>` + high-confidence secret scan; AI-artifact WARN), `pre-push` (site-wide HTML integrity).
+- **`im-mighty-eel-mai` (`.integrity/hooks/`)** — **ACTIVE** (2026-07-03): added `commit-msg` (footer) + `pre-push` (`cargo fmt --check` + pushed-diff secret scan; clippy/test → CI). Their pre-existing anti-truncation `pre-commit` and `core.hooksPath` were left intact.
+- Full V&V ladder (lint/typecheck/tests) stays in **CI** (III.3) so local commits/pushes stay fast.
 
 ### III.3 — CI (GitHub Actions) — the un-bypassable server-side backstop
 Per PSPR §0.7, turn the commented lanes on: `cargo test --workspace` **on push** (not nightly-only), `cargo audit`/`deny`, `hadolint`, **SBOM (syft)**, **LocalStack** (AWS STS), **live OpenBao** service container, `tsc`+`vitest` job. This is the only gate `--no-verify` cannot dodge.
@@ -165,19 +163,22 @@ Per PSPR §0.7, turn the commented lanes on: `cargo test --workspace` **on push*
 
 ---
 
-# PART IV — GLOBALIZATION PLAN ("recognized across all projects from now on")
+# PART IV — GLOBALIZATION ("recognized across all projects") — ✅ DONE 2026-07-03
 
-1. **Extract Part I** into `~/.claude/CANON.md` and import it from `~/.claude/CLAUDE.md` via `@CANON.md` (mirrors the existing `@RTK.md` pattern). That — and only that — makes Part I genuinely global.
-2. **Keep Part II project-local** (Rust/OpenBao/air-gap/HIPAA specifics don't belong in every project).
-3. **Untangle the accident:** `C:\Users\17076\CLAUDE.md` is the *Lamprey Harness* project file sitting in your home dir, so its Electron-specific instructions leak into **every** project under `C:\Users\17076\` (including Island Mountain). Move it into the Lamprey Harness project directory so it stops applying by accident; promote only the truly-universal lines into the global `CANON.md`.
-4. **Enforcement is per-repo, not global:** git hooks live in each repo's `tools/hooks/` and are wired with `core.hooksPath`. Claude Code hooks are global (`settings.json`) but the heavy commit-gate lives in git so humans are covered too.
+1. ✅ **Part I extracted** to `~/.claude/CANON.md`, imported from `~/.claude/CLAUDE.md` via `@CANON.md` (alongside `@RTK.md`). Part I now applies to every project.
+2. ✅ **Part II stays project-local** (this file).
+3. ✅ **Leak untangled:** the home `C:\Users\17076\CLAUDE.md` was byte-identical to the Lamprey Harness project's own copy, so it was renamed to `CLAUDE.md.bak` (project copy retained). Electron-app instructions no longer bleed into other projects.
+4. ✅ **Enforcement per-repo:** git hooks via `core.hooksPath` in `islandmountain` (`tools/hooks/`) and `im-mighty-eel-mai` (`.integrity/hooks/`); Claude Code hooks global in `settings.json`.
 
 ---
 
-## Appendix — open decisions
-- [ ] Approve globalizing Part I (step 1 above)?
-- [ ] Which enforcement layer to build first — git hooks / Claude Code hooks / CI?
-- [ ] Notification webhook target (Slack? Discord? ntfy?) — needed before III.4.
-- [ ] Confirm `safe-edit` still required on native Windows, or downgrade to "recommended" (PSPR §0.4 leaves this open).
+## Appendix — decisions & remaining
+- [x] Globalize Part I — done (Part IV).
+- [x] First enforcement layer — git hooks (both repos) + Claude Code hooks — done.
+- [x] Commit-footer history — `islandmountain` normalized (316 commits, local; awaits force-push); `im-mighty-eel-mai` enforce-forward-only (50 AI-credited commits left as history).
+- [ ] Notification webhook target (Slack / Discord / ntfy) — skipped for now; III.4 pending.
+- [ ] CI lanes (III.3 / PSPR §0.7) — not yet wired.
+- [ ] `/security-review` as a standing pre-merge gate — not yet standardized.
+- [ ] Confirm `safe-edit` / anti-truncation rules still needed on native Windows (PSPR §0.4).
 
-*Changelog: v0.1 (2026-07-03) — initial draft.*
+*Changelog: v0.2 (2026-07-03) — statuses reconciled to reality: Claude Code hooks + git hooks (both repos) ACTIVE; globalization done; dead Write hook removed. v0.1 — initial draft.*
