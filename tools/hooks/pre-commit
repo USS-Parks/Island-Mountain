@@ -11,16 +11,25 @@ scan_content() { case "$1" in tools/hooks/*) return 1;; *) return 0;; esac; }
 while IFS= read -r -d '' f; do
   [ -f "$f" ] || continue
 
-  # --- §I.9 truncation / NUL — text files only (binaries legitimately contain NUL) ---
+  # --- §I.9 truncation / NUL — scan KNOWN TEXT types ONLY (an allowlist, not a binary
+  #     denylist). Inverting it means an unlisted binary (.wasm/.avif/.heic/.pack/a
+  #     no-extension blob) can never be mis-read as a "truncated" text file and clap
+  #     an otherwise-fine commit. Unknown extension => treated as binary => skipped. ---
   case "${f,,}" in
-    *.png|*.jpg|*.jpeg|*.webp|*.gif|*.ico|*.svgz|*.mp4|*.webm|*.mov|*.mp3|*.wav|*.woff|*.woff2|*.ttf|*.otf|*.eot|*.pdf|*.zip|*.gz|*.br) ;;
-    *) if [ "$(LC_ALL=C tr -cd '\0' < "$f" | wc -c)" -gt 0 ]; then
-         echo "BLOCK  NUL bytes (truncation): $f" >&2; FAIL=1
-       fi ;;
+    *.html|*.htm|*.css|*.js|*.mjs|*.cjs|*.jsx|*.ts|*.tsx|*.json|*.jsonc|*.md|*.markdown|*.txt|*.xml|*.svg|*.yml|*.yaml|*.toml|*.csv|*.rs|*.py|*.sh|*.bash|*.ps1|*.c|*.h|*.go|*.rb|*.java|*.sql|*.map)
+      if [ "$(LC_ALL=C tr -cd '\0' < "$f" | wc -c)" -gt 0 ]; then
+        echo "BLOCK  NUL bytes (truncation): $f" >&2; FAIL=1
+      fi ;;
   esac
-  case "$f" in
+  # Only a file that PRESENTS as a full HTML document (<!doctype html>/<html…>) yet
+  # lacks its closing tag is truncated. Genuine partials/includes/fragments have no
+  # <html> root and are left alone — they must never clap a commit.
+  case "${f,,}" in
     google*.html|*/google*.html) ;;
-    *.html) grep -qi '</html>' "$f" || { echo "BLOCK  missing </html> (truncated?): $f" >&2; FAIL=1; } ;;
+    *.html|*.htm)
+      if grep -qiE '<!doctype html|<html' "$f" && ! grep -qi '</html>' "$f"; then
+        echo "BLOCK  missing </html> (truncated full document): $f" >&2; FAIL=1
+      fi ;;
   esac
 
   if scan_content "$f"; then
@@ -43,6 +52,13 @@ SLOP_SCAN="$(git rev-parse --show-toplevel)/tools/no-slop-scan.sh"
 if [ -x "$SLOP_SCAN" ]; then
   "$SLOP_SCAN" staged || echo "WARN   no-slop findings (loosened to warn-only; not blocking)" >&2
 fi
+
+# --- Branch-per-session nudge (§I.5b): warn only, NEVER block — a block here would
+#     also snag legitimate merge-to-main commits, i.e. clap the very workflow. ---
+BR="$(git rev-parse --abbrev-ref HEAD 2>/dev/null || echo)"
+case "$BR" in
+  main|master) echo "WARN   committing on '$BR' — canon prefers a session branch, then merge to main (§I.5b)." >&2 ;;
+esac
 
 [ "$FAIL" -eq 0 ] || { echo "pre-commit: canon checks failed (§I.2). Fix, or override with --no-verify (discouraged)." >&2; exit 1; }
 exit 0
