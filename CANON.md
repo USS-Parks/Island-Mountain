@@ -80,6 +80,12 @@ Nothing gets committed unless the full ladder is green. "Exhaustive" is a ladder
 - Every prompt/unit logs to the phase DEVLOG: id, files touched, verify result, commit SHA. State outcomes honestly — red tests said as red.
 - *Layer-3 owner:* **`PreCompact`** persist (so a long session's log survives compaction) + Layer-2.
 
+### I.11 — No build-process artifacts in committed source
+- Committed source is the product, not the transcript of how it was built. Never in a commit: build-phase markers (`Session <N>`, `BF-<N>`, bare `S##` roster shorthand, "plan-spec scaffold", "deliverable" as completion language); dangling references (files/tickets/symbols cited but absent); disguised incompleteness (leading `Stub:`/`Placeholder:` confessions, "for now,", `todo!()`/`unimplemented!()` in shipped paths).
+- Unfinished work is finished, feature-gated, or an honest `TODO(owner): …` — never dressed up as complete, and never deleted to fake completeness (I.10).
+- Provenance lives in git history, `PLANNING/`, and DEVLOGs — those locations are exempt. Vetted exceptions carry an inline `slop-ok: <reason>`.
+- *Layer-3 owner:* `tools/no-slop-scan.sh` wired into `pre-commit` (staged, blocks new) + `pre-push` (full-tree, zero remain); mirrored in `mai/.integrity/`; seeded globally via `git config --global init.templateDir` so every new repo is born gated.
+
 ---
 
 # PART II — SOVEREIGNTY STACK CANON (WSF + AOG / Lamprey / MAI)
