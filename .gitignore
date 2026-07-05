@@ -25,6 +25,10 @@ AI Voice and Conversation Widget And CRM Project/**/.wrangler/
 Thumbs.db
 *.~lock.*
 
+# Python tooling bytecode
+__pycache__/
+*.py[cod]
+
 # FUSE mount artifacts (leaked from Cowork sandbox)
 .fuse_hidden*
 

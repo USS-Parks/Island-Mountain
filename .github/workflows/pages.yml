@@ -36,11 +36,15 @@ jobs:
         uses: actions/checkout@v4
       - name: Configure Pages
         uses: actions/configure-pages@v5
+      - name: Build curated site artifact
+        run: python tools/build-pages-artifact.py --output "${{ runner.temp }}/island-mountain-site"
       - name: Upload site artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Repo root is the site root (index.html, css/, js/, images/, CNAME).
-          path: .
+          # Publish runtime files only. Source assets, planning documents, Worker
+          # code, client files, backups, and repository tooling stay private to
+          # the repository and never enter the Pages artifact.
+          path: ${{ runner.temp }}/island-mountain-site
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
