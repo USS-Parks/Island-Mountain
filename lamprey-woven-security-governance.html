@@ -122,6 +122,14 @@
     .woven-split--reverse .woven-split-media{ order:1; }
   }
 
+  /* Exactly three cards per row on desktop. Aurora's .au-cardgrid auto-fit was
+     fitting four at the 1200px container, orphaning the last two (a 4+2 split);
+     pin it to three, then 2 on tablet and 1 on phone. Scoped to this page so the
+     homepage's four-card row is untouched. */
+  .lamprey-aurora .au-cardgrid{ grid-template-columns:repeat(3,1fr); }
+  @media (max-width:860px){ .lamprey-aurora .au-cardgrid{ grid-template-columns:repeat(2,1fr); } }
+  @media (max-width:560px){ .lamprey-aurora .au-cardgrid{ grid-template-columns:1fr; } }
+
   /* Cards: illustration icons + copy, node-comet borders, opaque backing. */
   .lamprey-aurora .au-card{ text-align:center; background:rgba(12,19,33,.86); }
   .lamprey-aurora .au-card .au-ic{ width:76px; height:76px; }
