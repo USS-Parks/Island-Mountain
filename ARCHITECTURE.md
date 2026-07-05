@@ -56,8 +56,9 @@ primary lead-capture surface; the FormSubmit.co contact form remains the no-JS f
 - **Routing:** hot → Resend email to Basho + Cal.com booking offer; researching → docs
   email; all → GA4 Measurement Protocol (`generate_lead`/`qualify_started`/`schedule_call`)
   + UTM attribution.
-- **Abuse protection:** per-IP/session/daily KV rate limits + circuit breaker, optional
-  Turnstile, prompt-injection-hardened persona, CORS locked to islandmountain.io.
+- **Abuse protection:** atomic, fail-closed D1 rate limits per IP/session/day + circuit
+  breaker, optional Turnstile, required webhook authentication, prompt-injection-hardened
+  persona, and CORS locked to islandmountain.io.
 - **Docs:** `worker/README.md` (runbook), `DEPLOY.md` (one-time setup), `worker/vapi-setup.md`,
   `worker/vapi-island-mountain-prompt.md` (12-step call flow), `worker/sheets-apps-script.gs`.
   Build log in `DEVLOG.md` (gitignored).

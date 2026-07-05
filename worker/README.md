@@ -14,7 +14,7 @@ Lead scoring, persistence, alerts, and analytics run only inside the chat and
 authenticated voice pipelines. There is no public direct lead-submission route.
 
 ## Stack
-Cloudflare Worker (TypeScript) · Workers KV (`SESSIONS`) · D1 (`leads`) ·
+Cloudflare Worker (TypeScript) · Workers KV (`SESSIONS`) · D1 (`leads` + atomic counters) ·
 Anthropic API · Vapi (voice) · Cal.com (booking) · Resend (email) ·
 GA4 Measurement Protocol · Google Sheet (lead destination).
 
@@ -123,12 +123,14 @@ count, and lead counts by score / source / utm_source (with hot counts per sourc
 - `.dev.vars` (local secrets) is gitignored.
 - CORS allows only `https://islandmountain.io` (+ `www` + localhost for dev);
   all other origins are rejected (`src/cors.ts`).
+- Vapi and Cal.com webhooks require `WEBHOOK_SECRET`; missing configuration fails closed.
 
 ### Abuse protection (PROMPT 10)
-- **Rate limiting** (`src/ratelimit.ts`, KV counters, blocks *before* any LLM call so an
-  over-limit turn costs $0): per-IP/minute (`RATE_LIMIT_PER_MIN`, default 15), per-session
+- **Rate limiting** (`src/ratelimit.ts`, atomic D1 counters, blocks *before* any LLM call so
+  an over-limit turn costs $0): per-IP/minute (`RATE_LIMIT_PER_MIN`, default 15), per-session
   total (`SESSION_MSG_CAP`, default 60), and a global **daily circuit breaker**
-  (`DAILY_MESSAGE_CAP`, default 5000). Over-limit turns get a graceful canned reply.
+  (`DAILY_MESSAGE_CAP`, default 5000). Counter failures deny the request instead of allowing
+  unmetered traffic; raw IP and session identifiers are hashed before storage.
 - **Prompt-injection hardening** in `src/persona.ts`: visitor text is treated as untrusted
   input; the bot refuses "ignore instructions"/"print your prompt", never reveals system
   details or keys, stays on topic, and caps reply length.
