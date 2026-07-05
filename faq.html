@@ -493,23 +493,6 @@
         <li><a href="index.html">Home</a></li>
         <li><a href="lamprey-woven-security-governance.html">Security Fabric</a></li>
         <li><a href="products.html">Summit</a>
-        <li><a href="technology.html">Technology</a></li>
-        <li class="nav-dropdown">
-          <a href="solutions.html" class="nav-dropdown-toggle">Solutions <i class="ri-arrow-down-s-line"></i></a>
-          <ul class="nav-dropdown-menu">
-            <li><a href="law-firms.html">Law Firms</a></li>
-            <li><a href="medical-practices.html">Medical Practices</a></li>
-            <li><a href="tribal-nations.html">Tribal Nations</a></li>
-            <li><a href="research-labs.html">Research Labs</a></li>
-            <li><a href="defense-contractors.html">Defense Contractors</a></li>
-            <li><a href="financial-services.html">Financial Services</a></li>
-            <li><a href="insurance.html">Insurance</a></li>
-            <li><a href="energy-utilities.html">Energy &amp; Utilities</a></li>
-            <li><a href="government.html">Government</a></li>
-            <li><a href="education.html">Education</a></li>
-            <li><a href="casino-gaming.html">Casino Gaming</a></li>
-          </ul>
-        </li>
         <li><a href="faq.html" class="active">FAQ</a></li>
         <li><a href="blog.html">Blog</a></li>
         <li><a href="resources.html">Resources</a></li>
@@ -527,21 +510,6 @@
     <a href="index.html">Home</a>
     <a href="lamprey-woven-security-governance.html">Security Fabric</a>
     <a href="products.html">Summit</a>
-    <a href="technology.html">Technology</a>
-    <a href="solutions.html" class="mobile-solutions-toggle">Solutions <i class="ri-arrow-down-s-line"></i></a>
-    <div class="mobile-solutions-links">
-      <a href="law-firms.html">Law Firms</a>
-      <a href="medical-practices.html">Medical Practices</a>
-      <a href="tribal-nations.html">Tribal Nations</a>
-      <a href="research-labs.html">Research Labs</a>
-      <a href="defense-contractors.html">Defense Contractors</a>
-      <a href="financial-services.html">Financial Services</a>
-      <a href="insurance.html">Insurance</a>
-      <a href="energy-utilities.html">Energy &amp; Utilities</a>
-      <a href="government.html">Government</a>
-      <a href="education.html">Education</a>
-      <a href="casino-gaming.html">Casino Gaming</a>
-    </div>
             <a href="faq.html">FAQ</a>
     <a href="blog.html">Blog</a>
     <a href="resources.html">Resources</a>
@@ -590,8 +558,8 @@
           <div class="faq-answer">
             <p><strong>Yes. Every Island Mountain system is designed to operate completely air-gapped.</strong> The models, the inference engine (vLLM/Ollama), and the interface (OpenWebUI) all run locally. Once the system is set up and models are loaded, you can disconnect the ethernet cable entirely and everything still works.</p>
             <p>Users access the system through a web browser on your local network. As long as the device and the server are on the same network (even an isolated, non-internet-connected network), inference runs normally. No phone-home. No license checks. No cloud dependencies.</p>
-            <p>The only things that require internet access are downloading new models and applying OS security updates. Both are optional and can be done on a schedule that fits your security posture. Some organizations in high-security environments load models via physical media and apply security patches through an isolated update process. The system supports that workflow. For more on the technology stack, see our <a href="technology.html">Technology</a> page.</p>
-            <p>Island Mountain applies a documented air-gap configuration before delivery, disabling all outbound features at the environment variable level: OFFLINE_MODE, telemetry, community sharing, and web search are all turned off during the 72-hour burn-in. Your IT team can independently verify every setting on the delivered system. See our <a href="technology.html">Technology page</a> for the full configuration reference.</p>
+            <p>The only things that require internet access are downloading new models and applying OS security updates. Both are optional and can be done on a schedule that fits your security posture. Some organizations in high-security environments load models via physical media and apply security patches through an isolated update process. The system supports that workflow.</p>
+            <p>Island Mountain applies a documented air-gap configuration before delivery, disabling all outbound features at the environment variable level: OFFLINE_MODE, telemetry, community sharing, and web search are all turned off during the 72-hour burn-in. Your IT team can independently verify every setting on the delivered system.</p>
           </div>
         </div>
         <div class="faq-item">
@@ -653,7 +621,7 @@
             <p>The safety question about DeepSeek V4-Flash usually comes from two concerns: the model's Chinese origin and data handling. Here are the facts.</p>
             <p><strong>DeepSeek V4-Flash is an open-weights model released under the MIT license. When you run it on Island Mountain hardware, the model executes entirely on your local GPUs. No data is sent to DeepSeek, to any Chinese server, or to any external endpoint.</strong> The model weights are publicly available and have been independently audited by the open-source community. The model does not phone home. It cannot phone home. It is a file sitting on your hard drive being processed by your GPUs.</p>
             <p>The risk with DeepSeek exists only when you use it through DeepSeek's cloud API, which routes your data through their servers. That is not how Island Mountain systems work. Our systems run the model locally, air-gapped if you want, with zero external communication.</p>
-            <p>The model itself does not contain backdoors or data exfiltration code. It is a set of numerical weights processed through standard inference engines (vLLM/Ollama). Treat it like any other software asset: verify the download hash, review your organization's acceptable use policy, and run it on infrastructure you control. For more on DeepSeek and the full model stack, see our <a href="technology.html">Technology</a> page.</p>
+            <p>The model itself does not contain backdoors or data exfiltration code. It is a set of numerical weights processed through standard inference engines (vLLM/Ollama). Treat it like any other software asset: verify the download hash, review your organization's acceptable use policy, and run it on infrastructure you control.</p>
           </div>
         </div>
       </div>
@@ -684,7 +652,7 @@
             <p><strong>DeepSeek V4-Flash</strong> is a reasoning and general-purpose model built for complex analysis, multi-step problem solving, code generation, and structured thinking. It runs at FP8 using approximately 170GB of VRAM on the Summit Base tier.</p>
             <p><strong>Llama 4 Scout</strong> is Meta's general-purpose model, replacing Llama 3.1 with meaningfully better benchmark performance on the same VRAM footprint. Strong across writing, summarization, question answering, and conversational tasks. It uses approximately 40-48GB of VRAM.</p>
             <p><strong>DeepSeek R1 70B Distill or Qwen 3 72B</strong> (buyer selects at order). R1 70B Distill (MIT licensed) provides explicit chain-of-thought reasoning for legal, financial, and compliance work. Qwen 3 72B (Apache 2.0) delivers top-tier enterprise general performance. Each uses approximately 40-48GB of VRAM.</p>
-            <p>All carry permissive open-source licenses (MIT or Apache 2.0) with no usage restrictions. You own them outright. You can switch between them instantly through the OpenWebUI dropdown menu. Additional open-source models can be downloaded and installed after delivery through Ollama or the OpenWebUI interface. For the first 30 days, we walk you through model management directly. See our <a href="technology.html">Technology</a> page for detailed specifications on each model.</p>
+            <p>All carry permissive open-source licenses (MIT or Apache 2.0) with no usage restrictions. You own them outright. You can switch between them instantly through the OpenWebUI dropdown menu. Additional open-source models can be downloaded and installed after delivery through Ollama or the OpenWebUI interface. For the first 30 days, we walk you through model management directly.</p>
           </div>
         </div>
 
@@ -694,7 +662,7 @@
             <p><strong>OpenWebUI is a free, open-source, browser-based interface for interacting with local AI models. Think of it as a private version of ChatGPT that runs entirely on your network.</strong> No account with any cloud provider. No external data transmission.</p>
             <p>You open a web browser on any device connected to your network (Chrome, Firefox, Safari, Edge), navigate to the server's local address, and start prompting. The interface includes a dropdown menu to switch between installed models (DeepSeek V4-Flash, Llama 4 Scout, DeepSeek R1 70B Distill or Qwen 3 72B), full conversation history stored locally on the server, and an admin panel for user management and model access controls.</p>
             <p>Your administrator can create accounts for each team member, control which models each user can access, and monitor usage. Conversations are stored on the server's local drive, not in any cloud. Search, organize, and reference past conversations just like you would in any chat application.</p>
-            <p>OpenWebUI requires no command-line knowledge to use. If someone can use ChatGPT, they can use OpenWebUI. The interface is pre-configured on every Island Mountain system before it ships. For more on OpenWebUI and the full software stack, see our <a href="technology.html">Technology</a> page.</p>
+            <p>OpenWebUI requires no command-line knowledge to use. If someone can use ChatGPT, they can use OpenWebUI. The interface is pre-configured on every Island Mountain system before it ships.</p>
           </div>
         </div>
 
@@ -733,7 +701,7 @@
             <p><strong>Yes. The system is not locked to the three pre-installed models.</strong> You can download and install any compatible open-source model through the Ollama interface or directly through OpenWebUI's model management panel.</p>
             <p>The constraint is VRAM. Your system has a fixed amount of GPU memory, and each model consumes VRAM when loaded. On the Summit Base and Summit Ridge tiers (192GB total VRAM), you can run any model that fits within that memory. Most 70B-parameter models require 40-48GB of VRAM at FP16 precision. Smaller models (7B, 13B, 30B) use less and can run alongside larger models if you want multiple loaded simultaneously.</p>
             <p>You cannot run models that exceed your total VRAM. For example, DeepSeek V4-Flash (284B parameters) needs approximately 282GB of VRAM at full FP16, which fits on the Summit Pinnacle tier (384GB); the Summit Base tier runs it at FP8. Quantized versions of larger models can sometimes fit on lower tiers, but with reduced quality.</p>
-            <p>For the first 30 days after delivery, we walk you through the model installation process directly. After that, it is a download-and-configure process your IT team can handle. We publish tested compatibility lists for each hardware tier. See our <a href="technology.html">Technology</a> page for current model details.</p>
+            <p>For the first 30 days after delivery, we walk you through the model installation process directly. After that, it is a download-and-configure process your IT team can handle. We publish tested compatibility lists for each hardware tier.</p>
           </div>
         </div>
       </div>
@@ -745,7 +713,7 @@
             <p>OpenWebUI is a self-hosted application that runs entirely on the server hardware. Users access it through a web browser pointed at the server's local network address, the same way you access a router's admin panel. No cloud account required. No external API calls for inference.</p>
             <p>Out of the box, OpenWebUI does include features that make outbound network connections: model downloads, version update checks, HuggingFace Hub access for embedding models, optional community sharing, web search integration for RAG, and anonymized telemetry. None of these are required for AI inference.</p>
             <p>Island Mountain disables every outbound feature before shipping. The key environment variables (OFFLINE_MODE, HF_HUB_OFFLINE, ENABLE_COMMUNITY_SHARING, ANONYMIZED_TELEMETRY, ENABLE_RAG_WEB_SEARCH, and SAFE_MODE) are all set to their air-gapped states during the build process. The system is tested in this configuration during the 72-hour burn-in.</p>
-            <p>Your IT team can verify it independently. Inspect the container environment variables on the delivered system. Or connect it to a monitored network segment and confirm zero outbound connections during operation. If your security policy requires belt-and-suspenders, configure host-level firewall rules to block all outbound traffic. The system continues to operate normally. See our <a href="technology.html">Technology</a> page for the full air-gap configuration reference.</p>
+            <p>Your IT team can verify it independently. Inspect the container environment variables on the delivered system. Or connect it to a monitored network segment and confirm zero outbound connections during operation. If your security policy requires belt-and-suspenders, configure host-level firewall rules to block all outbound traffic. The system continues to operate normally.</p>
           </div>
         </div>
 
@@ -827,7 +795,7 @@
             <p><strong>Every Island Mountain system runs 72 hours of continuous stress testing before it ships.</strong> This is not a quick benchmark or a 10-minute smoke test. It is three straight days of sustained GPU compute at high load with automated monitoring.</p>
             <p>The test verifies thermal stability under continuous load (GPUs maintain safe operating temperatures without throttling), memory integrity (no VRAM errors across billions of operations), inference consistency (model outputs remain stable and correct across thousands of sequential prompts), power supply reliability under sustained draw, and storage performance under continuous read/write activity.</p>
             <p>Automated monitoring tracks temperature, clock speeds, error rates, and performance metrics throughout the entire 72-hour window. Any anomaly triggers an alert. Systems that show instability, thermal throttling, VRAM errors, or any deviation from expected performance do not ship. Components are swapped and the test restarts.</p>
-            <p>You receive a complete benchmark report and delivery manifest with your system, documenting every test result, component serial number, and configuration detail. This is not a certificate of perfection; it is proof that the system ran hard for three days without failing. See our <a href="technology.html">Technology</a> page for more on the build and test process.</p>
+            <p>You receive a complete benchmark report and delivery manifest with your system, documenting every test result, component serial number, and configuration detail. This is not a certificate of perfection; it is proof that the system ran hard for three days without failing.</p>
           </div>
         </div>
 
@@ -863,7 +831,7 @@
             <p>Every component of the system is built on open-source software and standard enterprise hardware. The operating system is Ubuntu Server LTS (free, community-supported). The inference engines are vLLM and Ollama (open-source). The interface is OpenWebUI (open-source). The models carry permissive open-source licenses with no usage restrictions. None of it depends on Island Mountain's continued existence.</p>
             <p>If Island Mountain were to close, you would lose access to our specific support, warranty coverage, and GPU upgrade program. But the system itself requires no license, no activation, and no connection to any Island Mountain server. It is a standalone server running open-source software on standard hardware.</p>
             <p>OS updates come from Ubuntu's repositories. CUDA driver updates come from NVIDIA. Model updates come from Hugging Face and Ollama's public model library. Your IT team or any competent Linux administrator can maintain the system independently.</p>
-            <p>We built it this way because vendor lock-in is exactly the problem we are solving. If we built a system that depended on us to function, we would be no different from the cloud vendors we are replacing. See our <a href="technology.html">Technology</a> page for details on the full open-source stack.</p>
+            <p>We built it this way because vendor lock-in is exactly the problem we are solving. If we built a system that depended on us to function, we would be no different from the cloud vendors we are replacing.</p>
           </div>
         </div>
 
@@ -874,7 +842,7 @@
             <p>Cloud providers release proprietary models (GPT-4o, Claude Opus, Gemini) immediately because they control the infrastructure. You get access the day they launch. Open-source models lag that release cycle. When OpenAI ships a new flagship, you will not have an equivalent open-source model on your local hardware that afternoon.</p>
             <p>What has consistently happened over the past two years is that open-source models close the gap rapidly. DeepSeek V4-Flash, Llama 4 Scout, and DeepSeek R1 all reached or exceeded the performance of the proprietary models they followed within weeks to months of those models' releases. The open-source AI development community is massive, well-funded, and accelerating.</p>
             <p>Your Island Mountain system can run any new open-source model that fits within its VRAM. When a new model releases, you download it through Ollama or the OpenWebUI interface, and it is available to your team. No hardware swap needed unless the new model exceeds your VRAM capacity.</p>
-            <p>The risk is that a future model generation requires significantly more VRAM than your system has. That is why we offer a GPU upgrade path. Your existing GPUs are credited at secondary market value toward next-generation cards. See our <a href="technology.html">Technology</a> page for roadmap details, including V4-Flash and the Summit Pinnacle tier timeline.</p>
+            <p>The risk is that a future model generation requires significantly more VRAM than your system has. That is why we offer a GPU upgrade path. Your existing GPUs are credited at secondary market value toward next-generation cards.</p>
           </div>
         </div>
       </div>
@@ -915,7 +883,6 @@
           <ul class="footer-links">
             <li><a href="index.html">Home</a></li>
             <li><a href="products.html">Summit</a>
-            <li><a href="technology.html">Technology</a></li>
         <li><a href="resources.html">Resources</a></li>
               <li><a href="resources.html">Resources</a></li>
               <li><a href="faq.html">FAQ</a></li>
@@ -923,7 +890,7 @@
           </ul>
         </div>
         <div>
-          <h3>Solutions</h3>
+          <h3><a href="solutions.html">Solutions</a></h3>
           <ul class="footer-links">
             <li><a href="law-firms.html">Law Firms</a></li>
             <li><a href="medical-practices.html">Medical Practices</a></li>
