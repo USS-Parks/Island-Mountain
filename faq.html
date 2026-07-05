@@ -37,6 +37,7 @@
   <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png?v=2">
   <link rel="stylesheet" href="css/style.min.css">
   <link rel="stylesheet" href="css/aurora.css">
+  <link rel="stylesheet" href="css/card-nodes.css">
   <link rel="stylesheet" href="icons/remixicon.css" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="icons/remixicon.css"></noscript>
   <link rel="preload" href="fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -352,17 +353,7 @@
   .faq-answer a{ color:var(--au-copper-light); text-decoration:underline; text-underline-offset:2px; }
   .faq-answer a:hover{ color:#fff; }
 
-  /* One slow comet node per card, firing top-down in sequence.
-     Single bright arc (vs the shared multi-node ring), ~18s orbit, staggered so the
-     node cascades from the first card to the last. */
-  .faq-aurora .beam-card::before{
-    background:conic-gradient(from var(--au-angle),
-      var(--au-white-hot) 0deg, var(--au-copper-light) 8deg, var(--au-copper) 18deg,
-      rgba(245,158,11,0) 44deg, rgba(245,158,11,0) 360deg);
-    animation-duration:18s;
-  }
-  .faq-aurora .faq-item.beam-card::before,
-  .faq-aurora .au-card.beam-card::before{ animation-delay:calc(var(--i, 0) * 0.6s - 18s); }
+  /* Card edge nodes now come from the shared css/card-nodes.css + js/card-nodes.js. */
 
   /* AEO summary + closing */
   .faq-aeo{ max-width:900px; margin:0 auto; border-left:3px solid var(--au-copper); padding:18px 22px;
@@ -857,6 +848,7 @@
   </footer>
 
   <script defer src="js/hero-cinematic.js"></script>
+  <script defer src="js/card-nodes.js"></script>
   <script defer src="js/main.js"></script>
   <script defer src="js/chat-widget.js"></script>
 </body>

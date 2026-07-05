@@ -1,0 +1,33 @@
+/* ============================================================
+   Island Mountain - Aurora edge node (one source of truth)
+   A single white-hot copper node rides the TOP edge (fast), rounds
+   the corner, glides down the RIGHT edge (slow), rests a beat, and
+   repeats - perpetually, once the card has scrolled into view.
+   js/card-nodes.js arms each .beam-card and staggers the cascade
+   via a per-card --i. Applies to any .beam-card.
+   ============================================================ */
+.beam-card{ position:relative; isolation:isolate; }
+.beam-card>*{ position:relative; z-index:1; }
+.beam-card::before{
+  content:""; position:absolute; z-index:2; pointer-events:none;
+  top:0; left:0; width:9px; height:9px; border-radius:50%;
+  transform:translate(-50%,-50%); opacity:0; background:#fff7ed;
+  box-shadow:0 0 4px 1px #fff7ed, 0 0 10px 3px var(--au-copper,#f59e0b), 0 0 18px 6px rgba(245,158,11,.42);
+}
+/* Armed by js/card-nodes.js on first scroll-in; then loops top->right->rest
+   forever. --i (0..n) offsets each card so the group cascades in sequence. */
+.beam-card.node-live::before{
+  animation:auEdgeNode 2.8s linear infinite;
+  animation-delay:calc(var(--i,0) * 0.6s);
+}
+@keyframes auEdgeNode{
+  0%   { left:0;    top:0;    opacity:0; }
+  4%   { opacity:1; }
+  26%  { left:100%; top:0;    opacity:1; }   /* fast across the top edge */
+  68%  { left:100%; top:100%; opacity:1; }   /* slow down the right edge */
+  72%  { left:100%; top:100%; opacity:0; }   /* fade out at bottom-right */
+  100% { left:100%; top:100%; opacity:0; }   /* rest a beat, then repeat */
+}
+@media (prefers-reduced-motion:reduce){
+  .beam-card::before{ display:none; }
+}

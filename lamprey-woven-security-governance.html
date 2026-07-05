@@ -37,6 +37,7 @@
   <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png?v=2">
   <link rel="stylesheet" href="css/style.min.css">
   <link rel="stylesheet" href="css/aurora.css">
+  <link rel="stylesheet" href="css/card-nodes.css">
   <link rel="stylesheet" href="icons/remixicon.css" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="icons/remixicon.css"></noscript>
   <link rel="preload" href="fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -136,9 +137,7 @@
   .lamprey-aurora .au-card .au-ic--xl{ width:104px; height:104px; }
   .lamprey-aurora .au-card p{ color:var(--au-muted); font-size:.93rem; line-height:1.62; margin:0; }
 
-  /* Node-comet stagger: each border fires a half-beat after the last
-     (covers the card grids and the glass split-text panels alike). */
-  .lamprey-aurora .beam-card::before{ animation-delay:calc(var(--i,0) * -0.5s); }
+  /* Card edge nodes now come from the shared css/card-nodes.css + js/card-nodes.js. */
 
   /* Closing statement panel. */
   .woven-close{ text-align:center; max-width:900px; margin:0 auto; }
@@ -502,6 +501,7 @@
   })();
   </script>
   <script defer src="js/hero-cinematic.js"></script>
+  <script defer src="js/card-nodes.js"></script>
   <script defer src="js/main.js"></script>
   <script defer src="js/chat-widget.js"></script>
 </body>
