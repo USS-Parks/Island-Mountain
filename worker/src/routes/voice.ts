@@ -4,6 +4,7 @@ import { scoreLead, SUBMIT_LEAD_TOOL, type LeadFields } from '../qualifier';
 import { processLead, type LeadContext } from '../lead-processor';
 import { attachVoiceArtifacts, setLeadStatus } from '../integrations/d1';
 import { callMessages, toolUses } from '../anthropic';
+import { secureEqual } from '../security';
 import {
   getAvailableSlots,
   createBooking,
@@ -68,12 +69,14 @@ const str = (v: unknown): string | undefined => (typeof v === 'string' && v.trim
 export async function handleVoiceWebhook(request: Request, env: Env): Promise<Response> {
   const origin = request.headers.get('Origin');
 
-  // Shared-secret check (Vapi "Server URL Secret").
-  if (env.WEBHOOK_SECRET) {
-    const got = request.headers.get('x-vapi-secret') || request.headers.get('X-Vapi-Secret');
-    if (got !== env.WEBHOOK_SECRET) {
-      return jsonResponse({ success: false, error: 'Invalid secret.' }, 401, origin, env);
-    }
+  // Shared-secret check (Vapi "Server URL Secret"). Missing configuration is
+  // an unavailable authentication boundary, never an allow-all development mode.
+  if (!env.WEBHOOK_SECRET) {
+    return jsonResponse({ success: false, error: 'Webhook authentication unavailable.' }, 503, origin, env);
+  }
+  const got = request.headers.get('x-vapi-secret') || request.headers.get('X-Vapi-Secret') || '';
+  if (!(await secureEqual(got, env.WEBHOOK_SECRET))) {
+    return jsonResponse({ success: false, error: 'Invalid secret.' }, 401, origin, env);
   }
 
   let body: { message?: VapiMessage };
