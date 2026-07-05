@@ -1,0 +1,126 @@
+/* ============================================================
+   Island Mountain - Blog rail (one source of truth)
+   A horizontal, scroll-snapping row of post cards. Newest first;
+   page RIGHT to move back in time. Arrow controls turn one page
+   (the number of fully visible cards) at a time; touch/trackpad
+   swipe and the Left/Right keys work too. Cards reuse the site
+   glass/copper tokens from css/style.min.css. js/blog-scroller.js
+   drives the arrows and their end-of-rail disabled state.
+   Used on the homepage and the Woven Security page, above the footer.
+   ============================================================ */
+.blog-rail-section{ --rail-gap:24px; padding:96px 0; }
+
+.blog-rail-head{
+  display:flex; align-items:flex-end; justify-content:space-between;
+  gap:24px; margin-bottom:36px;
+}
+.blog-rail-eyebrow{
+  display:block; font-size:.78rem; font-weight:600; letter-spacing:2.5px;
+  text-transform:uppercase; color:var(--copper); margin-bottom:12px;
+}
+.blog-rail-title{
+  font-family:"Space Grotesk",sans-serif; font-weight:600;
+  font-size:clamp(1.6rem,3.2vw,2.4rem); line-height:1.15;
+  color:var(--text-light); margin:0; max-width:22ch;
+}
+.blog-rail-controls{ display:flex; gap:12px; flex:0 0 auto; }
+.blog-rail-arrow{
+  width:46px; height:46px; border-radius:50%; flex:0 0 auto;
+  display:inline-flex; align-items:center; justify-content:center;
+  font-size:1.2rem; line-height:1; cursor:pointer;
+  color:var(--text-light); background:var(--card-bg);
+  border:1px solid var(--card-border);
+  transition:color var(--transition-speed), border-color var(--transition-speed),
+             background var(--transition-speed), transform var(--transition-speed);
+}
+.blog-rail-arrow:hover:not(:disabled){
+  color:var(--copper); border-color:rgba(245,158,11,.45); transform:translateY(-2px);
+}
+.blog-rail-arrow:disabled{ opacity:.32; cursor:default; }
+
+/* The scrolling track */
+.blog-rail{
+  display:flex; gap:var(--rail-gap);
+  overflow-x:auto; scroll-snap-type:x mandatory;
+  scroll-padding-left:1px; scroll-behavior:smooth;
+  padding:6px 2px 22px; margin:0 -2px;
+  -ms-overflow-style:none; scrollbar-width:none;
+}
+.blog-rail::-webkit-scrollbar{ display:none; }
+.blog-rail:focus-visible{ outline:2px solid var(--copper); outline-offset:4px; border-radius:8px; }
+
+/* Cards - 3 up on desktop */
+.blog-rail-card{
+  flex:0 0 calc((100% - 2 * var(--rail-gap)) / 3);
+  scroll-snap-align:start;
+  display:flex; flex-direction:column;
+  background:var(--card-bg);
+  backdrop-filter:blur(var(--glass-blur)); -webkit-backdrop-filter:blur(var(--glass-blur));
+  border:1px solid var(--card-border); border-radius:var(--border-radius);
+  padding:28px; min-height:290px;
+  transition:transform var(--transition-speed), box-shadow var(--transition-speed), border-color var(--transition-speed);
+}
+.blog-rail-card:hover{
+  transform:translateY(-4px); box-shadow:0 12px 40px rgba(0,0,0,.3);
+  border-color:rgba(245,158,11,.3);
+}
+.blog-rail-meta{ display:flex; flex-wrap:wrap; align-items:center; gap:10px; margin-bottom:14px; }
+.blog-rail-date{ font-size:.82rem; color:var(--text-muted); }
+.blog-rail-tag{
+  display:inline-block; font-size:.66rem; font-weight:600; letter-spacing:1.4px;
+  text-transform:uppercase; padding:4px 11px; border-radius:50px;
+}
+/* Tag palettes - bundled here because the site only defines them on blog.html */
+.tag-technical{ background:rgba(148,163,184,.1); color:var(--slate-400,#94a3b8); }
+.tag-compliance{ background:rgba(245,158,11,.12); color:var(--copper); }
+.tag-financial{ background:rgba(180,83,9,.15); color:var(--copper-darker,#b45309); }
+.tag-how-to{ background:rgba(100,116,139,.15); color:var(--slate-300,#cbd5e1); }
+.tag-industry{ background:rgba(245,158,11,.08); color:var(--copper-light); }
+.tag-strategy{ background:rgba(148,163,184,.12); color:var(--slate-300,#cbd5e1); }
+.tag-white-paper{ background:rgba(245,158,11,.1); color:var(--copper-light); }
+
+.blog-rail-card h3{
+  font-family:"Space Grotesk",sans-serif; font-size:1.16rem; line-height:1.35;
+  margin:0 0 12px; font-weight:600;
+}
+.blog-rail-card h3 a{ color:var(--text-light); transition:color var(--transition-speed); }
+.blog-rail-card h3 a:hover{ color:var(--copper); }
+.blog-rail-excerpt{
+  font-size:.92rem; line-height:1.65; color:var(--text-muted);
+  margin:0 0 18px;
+  display:-webkit-box; -webkit-line-clamp:4; -webkit-box-orient:vertical; overflow:hidden;
+}
+.blog-rail-read{
+  margin-top:auto; align-self:flex-start;
+  font-size:.9rem; font-weight:600; color:var(--copper);
+  transition:color var(--transition-speed);
+}
+.blog-rail-read:hover{ color:var(--copper-light); }
+
+/* Final "view all" tile */
+.blog-rail-more{
+  align-items:center; justify-content:center; text-align:center;
+  border-style:dashed; border-color:rgba(245,158,11,.35);
+}
+.blog-rail-more-inner{
+  font-family:"Space Grotesk",sans-serif; font-size:1.05rem; font-weight:600;
+  color:var(--copper); display:inline-flex; align-items:center; gap:8px;
+}
+.blog-rail-more:hover .blog-rail-more-inner{ color:var(--copper-light); }
+.blog-rail-more .arw{ transition:transform var(--transition-speed); }
+.blog-rail-more:hover .arw{ transform:translateX(4px); }
+
+/* Tablet - 2 up */
+@media (max-width:1024px){
+  .blog-rail-card{ flex-basis:calc((100% - var(--rail-gap)) / 2); }
+}
+/* Mobile - ~1 up with a peek of the next card */
+@media (max-width:640px){
+  .blog-rail-section{ padding:64px 0; }
+  .blog-rail-head{ align-items:flex-start; flex-direction:column; gap:20px; }
+  .blog-rail-card{ flex-basis:84%; min-height:0; padding:24px; }
+}
+@media (prefers-reduced-motion:reduce){
+  .blog-rail{ scroll-behavior:auto; }
+  .blog-rail-card,.blog-rail-arrow{ transition:none; }
+}
