@@ -6,28 +6,63 @@
 # "Deployment failed, try again later." The concurrency gate below serializes
 # them — one production deploy at a time, and an in-flight deploy is never
 # cancelled — so rapid pushes queue instead of racing. See CANON §12.
-name: Deploy site to Pages
+name: Validate and deploy site
 
 on:
   push:
     branches: [main]
+  pull_request:
+    branches: [main]
   workflow_dispatch:
 
-# Least privilege required by deploy-pages (OIDC-attested deployment).
+# Validation runs read-only. The deploy job receives its additional Pages/OIDC
+# permissions below only after validation succeeds.
 permissions:
   contents: read
-  pages: write
-  id-token: write
-
-# One deployment at a time. Do NOT cancel an in-flight production deploy;
-# queue the next push so every change lands and none collide.
-concurrency:
-  group: pages
-  cancel-in-progress: false
 
 jobs:
-  deploy:
+  validate:
+    name: Validate site and Worker
     runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: worker/package-lock.json
+      - name: Build and validate site artifact
+        run: python tools/build-pages-artifact.py --output "${{ runner.temp }}/island-mountain-validation"
+      - name: Check JavaScript syntax
+        run: find js -type f -name '*.js' -not -path '*/vendor/*' -print0 | xargs -0 -n1 node --check
+      - name: Install Worker dependencies
+        working-directory: worker
+        run: npm ci
+      - name: Typecheck Worker
+        working-directory: worker
+        run: npm run typecheck
+      - name: Test Worker
+        working-directory: worker
+        run: npm test
+      - name: Audit production dependencies
+        working-directory: worker
+        run: npm audit --omit=dev
+
+  deploy:
+    needs: validate
+    if: github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    # One deployment at a time. Do not cancel an in-flight production deploy;
+    # queue the next push so every change lands and none collide.
+    concurrency:
+      group: pages
+      cancel-in-progress: false
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
