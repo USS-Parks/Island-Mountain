@@ -277,6 +277,17 @@
     .risk-card{text-align:center;}
     .risk-card img{margin-left:auto;margin-right:auto;}
   }
+  .gpu-section{background-color:#090d14;background-image:linear-gradient(rgba(6,10,18,0.74),rgba(6,10,18,0.80)),url('images/rtx-blackwell-hands.webp'),url('images/rtx-blackwell-bench.webp');background-repeat:no-repeat,no-repeat,no-repeat;background-position:center,center 24px,center bottom;background-size:cover,100% auto,100% auto;}
+  .gpu-section .section-badge,.gpu-section h2{text-shadow:0 2px 14px rgba(0,0,0,0.75);}
+  .gpu-section .body-lg{color:#e9eff8;text-shadow:0 1px 10px rgba(0,0,0,0.65);}
+  .gpu-cardgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  @media(max-width:1000px){.gpu-cardgrid{grid-template-columns:repeat(2,1fr);}}
+  @media(max-width:640px){.gpu-cardgrid{grid-template-columns:1fr;}}
+  .gpu-card{background:rgba(9,14,24,0.88);border:1px solid rgba(148,163,184,0.18);border-radius:16px;padding:34px 26px;text-align:center;}
+  .gpu-card img{width:104px;height:104px;margin:0 auto 18px;display:block;}
+  .gpu-card h3{color:#fff;font-size:1.18rem;margin-bottom:10px;}
+  .gpu-card p{color:rgba(226,232,240,0.92);font-size:0.95rem;line-height:1.6;margin:0;}
+  .gpu-card .gpu-metric{color:var(--copper);font-weight:700;}
   </style>
 </head>
 <body>
@@ -450,22 +461,49 @@
     </div>
   </section>
 
-  <!-- GPU Provenance -->
-  <section class="section section-dark">
+  <!-- Why Professional-Grade GPUs (RTX PRO 6000 strengths) -->
+  <section class="section section-dark gpu-section">
     <div class="container">
       <div class="section-header fade-in">
         <span class="section-badge">Hardware Integrity</span>
         <h2>Why Professional-Grade GPUs</h2>
       </div>
-      <div class="fade-in" style="display:flex;flex-wrap:wrap;gap:48px;align-items:flex-start;">
-        <div style="flex:1 1 440px;min-width:0;">
-          <p class="body-lg">The NVIDIA RTX PRO 6000 Blackwell Server Edition cards in Island Mountain systems are not the same hardware you find in gaming PCs or consumer AI builds. They are professional server GPUs, purpose-built for always-on deployment in a rack, and that distinction matters for regulated buyers.</p>
-          <p class="body-lg">They carry ECC GDDR7 memory, which detects and corrects single-bit memory errors automatically. For workloads where a silent data flip is unacceptable - clinical, legal, financial, and defense inference - error-correcting memory is the difference between a result you can stand behind and one you cannot. Consumer cards do not have it.</p>
-          <p class="body-lg">They are built for the server room: passive cooling designed for front-to-back rack airflow, PCIe Gen 5 for maximum host throughput, and professional ISV-certified drivers with a validated, long-lived support lifecycle. They are rated for a continuous, always-on duty cycle rather than the bursty gaming workload a consumer card is designed around. Every card also ships with full procurement documentation from authorized NVIDIA channels - the provenance chain a compliance team, auditor, or federal contracting officer can verify.</p>
-          <p class="body-lg">Consumer GPUs - RTX 4090s, 5090s, and their equivalents - deliver strong inference performance per dollar for personal projects and unregulated workloads. But without ECC memory, server-grade cooling, certified drivers, or a documented supply chain, they are the wrong foundation for a system that has to be trusted, audited, and run around the clock.</p>
+      <div class="fade-in" style="max-width:920px;margin:0 auto 44px;">
+        <p class="body-lg">The NVIDIA RTX PRO 6000 Blackwell Server Edition cards in Island Mountain systems are not the same hardware you find in gaming PCs or consumer AI builds. They are professional server GPUs, purpose-built for always-on deployment in a rack, and that distinction matters for regulated buyers.</p>
+        <p class="body-lg">They carry ECC GDDR7 memory, which detects and corrects single-bit memory errors automatically. For workloads where a silent data flip is unacceptable - clinical, legal, financial, and defense inference - error-correcting memory is the difference between a result you can stand behind and one you cannot. Consumer cards do not have it.</p>
+        <p class="body-lg">They are built for the server room: passive cooling designed for front-to-back rack airflow, PCIe Gen 5 for maximum host throughput, and professional ISV-certified drivers with a validated, long-lived support lifecycle. They are rated for a continuous, always-on duty cycle rather than the bursty gaming workload a consumer card is designed around. Every card also ships with full procurement documentation from authorized NVIDIA channels - the provenance chain a compliance team, auditor, or federal contracting officer can verify.</p>
+        <p class="body-lg">Consumer GPUs - RTX 4090s, 5090s, and their equivalents - deliver strong inference performance per dollar for personal projects and unregulated workloads. But without ECC memory, server-grade cooling, certified drivers, or a documented supply chain, they are the wrong foundation for a system that has to be trusted, audited, and run around the clock.</p>
+      </div>
+      <div class="gpu-cardgrid fade-in">
+        <div class="gpu-card">
+          <img src="images/ic-plugins.webp" alt="" width="104" height="104" loading="lazy">
+          <h3>Blackwell Architecture</h3>
+          <p>5th-generation Tensor Cores with native FP8 and FP4 and roughly <span class="gpu-metric">1 PFLOP</span> of FP16 compute per card, built for modern inference.</p>
         </div>
-        <div class="rtx-media-col" style="flex:0 1 340px;min-width:0;margin-left:auto;">
-          <img src="images/rtx6000-units.webp" alt="NVIDIA RTX PRO 6000 Blackwell Server Edition GPUs in an Island Mountain Summit system" width="530" height="682" loading="lazy" style="width:100%;height:auto;border-radius:12px;">
+        <div class="gpu-card">
+          <img src="images/ic-add-file.webp" alt="" width="104" height="104" loading="lazy">
+          <h3><span class="gpu-metric">96GB</span> GDDR7 per Card</h3>
+          <p>Holds 70B-parameter models in full precision, or DeepSeek V4-Flash at FP8 with headroom for KV cache.</p>
+        </div>
+        <div class="gpu-card">
+          <img src="images/ic-code-window.webp" alt="" width="104" height="104" loading="lazy">
+          <h3>Enterprise Drivers</h3>
+          <p>NVIDIA RTX / Enterprise ISV-certified drivers with a validated, long-lived support lifecycle - not consumer game-ready drivers.</p>
+        </div>
+        <div class="gpu-card">
+          <img src="images/ic-coding.webp" alt="" width="104" height="104" loading="lazy">
+          <h3>Built for AI Workloads</h3>
+          <p>Large-model fine-tuning, enterprise inference, CAD/CAE, and 24/7 production workloads - the jobs an on-prem stack actually runs.</p>
+        </div>
+        <div class="gpu-card">
+          <img src="images/ic-default-access.webp" alt="" width="104" height="104" loading="lazy">
+          <h3>ECC Error Correction</h3>
+          <p>Detects and corrects single-bit memory errors automatically - no silent data flips in clinical, legal, or defense inference.</p>
+        </div>
+        <div class="gpu-card">
+          <img src="images/ic-plan.webp" alt="" width="104" height="104" loading="lazy">
+          <h3><span class="gpu-metric">~1,792 GB/s</span> Bandwidth</h3>
+          <p>GDDR7 memory feeds the Tensor Cores fast, sustaining high token throughput under continuous, always-on load.</p>
         </div>
       </div>
     </div>
