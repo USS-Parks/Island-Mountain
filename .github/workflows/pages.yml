@@ -1,0 +1,46 @@
+# Publish the static site to GitHub Pages.
+#
+# This replaces GitHub's implicit "deploy from a branch" build, which has NO
+# concurrency control: when several pushes land close together (parallel
+# sessions on main) the overlapping deployments collide and fail with
+# "Deployment failed, try again later." The concurrency gate below serializes
+# them — one production deploy at a time, and an in-flight deploy is never
+# cancelled — so rapid pushes queue instead of racing. See CANON §12.
+name: Deploy site to Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# Least privilege required by deploy-pages (OIDC-attested deployment).
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# One deployment at a time. Do NOT cancel an in-flight production deploy;
+# queue the next push so every change lands and none collide.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+      - name: Upload site artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          # Repo root is the site root (index.html, css/, js/, images/, CNAME).
+          path: .
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

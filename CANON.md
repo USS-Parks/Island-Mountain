@@ -91,6 +91,11 @@ Nothing gets committed unless the full ladder is green. "Exhaustive" is a ladder
 - Provenance lives in git history, `PLANNING/`, and DEVLOGs — those locations are exempt. Vetted exceptions carry an inline `slop-ok: <reason>`.
 - *Layer-3 owner:* `tools/no-slop-scan.sh` wired into `pre-commit` (staged, blocks new) + `pre-push` (full-tree, zero remain); mirrored in `mai/.integrity/`; seeded globally via `git config --global init.templateDir` so every new repo is born gated.
 
+### I.12 — Continuous deployment is serialized — never race a live deploy
+- Any pipeline that publishes to a live target (GitHub/Cloudflare Pages, container registries, release assets, CDN purge) **must** carry an explicit concurrency gate: one production deploy at a time, an in-flight deploy is **never** cancelled, overlapping triggers **queue**. Parallel and rapid pushes to a deploy branch are normal on this stack (I.5) — the pipeline, not luck, keeps them from colliding.
+- Never rely on a platform's implicit/auto deploy that has no concurrency control and fails opaquely under overlap — e.g. GitHub Pages "deploy from a branch" (`build_type: legacy`), which races on near-simultaneous pushes and reports only "Deployment failed, try again later." A stuck publish is diagnosed at the **pipeline** (`gh run list`, `gh api .../pages`), never by re-pushing and hoping.
+- *Layer-3 owner:* the committed pipeline definition — `.github/workflows/pages.yml` carrying `concurrency: { group: pages, cancel-in-progress: false }`, with Pages source pointed at that workflow (`build_type: workflow`, never `legacy`); a committed `.nojekyll` keeps the artifact served verbatim. The workflow file **is** the owner; the platform default is not.
+
 ---
 
 # PART II — SOVEREIGNTY STACK CANON (WSF + AOG / Lamprey / MAI)
