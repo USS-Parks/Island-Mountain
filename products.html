@@ -288,6 +288,35 @@
   .gpu-card h3{color:#fff;font-size:1.18rem;margin-bottom:10px;}
   .gpu-card p{color:rgba(226,232,240,0.92);font-size:0.95rem;line-height:1.6;margin:0;}
   .gpu-card .gpu-metric{color:var(--copper);font-weight:700;}
+  /* ── Aurora node edge: a SINGLE white-hot copper node fires one lap around each
+     card's border, then fades. Cards ignite in sequence one beat apart as each
+     group scrolls into view (see the IntersectionObserver script near </body>) —
+     idle by default, never a constant orbit. ── */
+  @property --im-node-angle{syntax:"<angle>";inherits:false;initial-value:0deg;}
+  .gpu-card,.risk-card{position:relative;isolation:isolate;}
+  .gpu-card>*,.risk-card>*{position:relative;z-index:1;}
+  .gpu-card::before,.risk-card::before{
+    content:"";position:absolute;inset:0;border-radius:inherit;padding:1.6px;z-index:2;pointer-events:none;opacity:0;
+    background:conic-gradient(from var(--im-node-angle),
+      #fff7ed 0deg,rgba(245,158,11,0) 7deg,
+      rgba(245,158,11,0) 334deg,var(--copper) 355deg,#fff7ed 360deg);
+    -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+    -webkit-mask-composite:xor;
+    mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);mask-composite:exclude;
+    filter:drop-shadow(0 0 4px rgba(251,191,36,.95)) drop-shadow(0 0 10px rgba(245,158,11,.55));
+  }
+  .gpu-card.node-fire::before,.risk-card.node-fire::before{
+    animation:imNodeFire 2.6s cubic-bezier(.45,0,.25,1) both;
+  }
+  @keyframes imNodeFire{
+    0%{--im-node-angle:0deg;opacity:0;}
+    9%{opacity:1;}
+    88%{opacity:1;}
+    100%{--im-node-angle:360deg;opacity:0;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .gpu-card::before,.risk-card::before{display:none;}
+  }
   </style>
 </head>
 <body>
@@ -579,6 +608,37 @@
       </div>
     </div>
   </footer>
+
+  <script>
+  /* Summit Aurora nodes: fire one node per card, in sequence one beat apart,
+     as each card group scrolls into view; re-arms once the group leaves view. */
+  (function(){
+    if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var groups = document.querySelectorAll('.gpu-cardgrid, .risk-grid');
+    if(!groups.length || !('IntersectionObserver' in window)) return;
+    var BEAT = 600;
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        var g = en.target;
+        if(en.isIntersecting){
+          if(g.dataset.imFired === '1') return;
+          g.dataset.imFired = '1';
+          var cards = g.querySelectorAll('.gpu-card, .risk-card');
+          Array.prototype.forEach.call(cards, function(card, i){
+            setTimeout(function(){
+              card.classList.remove('node-fire');
+              void card.offsetWidth;
+              card.classList.add('node-fire');
+            }, i * BEAT);
+          });
+        } else {
+          g.dataset.imFired = '';
+        }
+      });
+    }, { threshold: 0.3 });
+    Array.prototype.forEach.call(groups, function(g){ io.observe(g); });
+  })();
+  </script>
 
   <script defer src="js/main.js"></script>
   <script defer src="js/chat-widget.js"></script>
