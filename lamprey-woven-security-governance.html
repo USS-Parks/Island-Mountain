@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script>document.documentElement.classList.add('js');</script>
 <!-- Google tag (gtag.js) - deferred until user interaction -->
 <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
 <script>
@@ -35,6 +36,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png?v=2">
   <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png?v=2">
   <link rel="stylesheet" href="css/style.min.css">
+  <link rel="stylesheet" href="css/aurora.css">
   <link rel="stylesheet" href="icons/remixicon.css" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="icons/remixicon.css"></noscript>
   <link rel="preload" href="fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -56,54 +58,87 @@
     src: url('fonts/space-grotesk-latin.woff2') format('woff2');
     unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
   }
-  /* Custom card icons (2x size, transparent illustration art) */
-  .card-icon.card-icon-img {
-    width: 96px;
-    height: 96px;
-    background: none;
-    border-radius: 0;
-    margin: 0 auto 16px;
+
+  /* ============================================================
+     Woven Security - Aurora page overrides
+     The hero pan is a fixed backdrop behind the whole page; every
+     free-floating text body rides in a translucent glass card so it
+     stays legible and structured over the moving video.
+     ============================================================ */
+
+  html{ background:#080d18; }
+  body.lamprey-aurora{ background:transparent !important; }
+
+  /* Fixed background: the hero pan persists through the whole scroll. */
+  .woven-bg{ position:fixed; inset:0; z-index:-1; overflow:hidden; background:#080d18; }
+  .woven-bg-video{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+  .woven-bg-veil{ position:absolute; inset:0; pointer-events:none;
+    background:linear-gradient(180deg, rgba(8,13,24,.84) 0%, rgba(8,13,24,.60) 26%, rgba(8,13,24,.60) 72%, rgba(8,13,24,.90) 100%); }
+  @media (prefers-reduced-motion: reduce){ .woven-bg-video{ display:none; } }
+
+  /* Sections go transparent so the video shows through everywhere. */
+  body.lamprey-aurora .au-hero,
+  body.lamprey-aurora .au-section,
+  body.lamprey-aurora .au-section--alt,
+  body.lamprey-aurora .au-section--ink,
+  body.lamprey-aurora .au-statement{ background:transparent !important; }
+  .lamprey-aurora .au-hero{ min-height:88vh; }
+
+  /* Marquee: translucent strip over the video. */
+  .lamprey-aurora .au-marquee{ background:rgba(8,13,24,.72); }
+
+  /* Glass card: the container every free-floating text body now rides in.
+     Opaque-translucent (no backdrop blur) so it stays legible and smooth
+     over the playing fixed-video backdrop. */
+  .woven-panel{ position:relative; background:rgba(12,19,33,.86);
+    border:1px solid var(--au-line); border-radius:20px; padding:34px;
+    box-shadow:0 20px 50px rgba(0,0,0,.42); }
+
+  /* Section intro header, contained + centered. */
+  .woven-header{ max-width:820px; margin:0 auto 30px; text-align:center; padding:26px 34px; }
+  .woven-header .au-eyebrow-c{ display:inline-block; }
+  .woven-header .au-h2{ margin-bottom:0; }
+  .woven-header .au-lede{ margin:12px auto 0; }
+
+  /* Paired text + product-GIF rows: text in a glass card, media beside it.
+     Source order is text-then-media, so mobile stacks text first. */
+  .woven-split{ display:grid; gap:40px; align-items:center; }
+  .woven-split-media img{ width:100%; max-width:568px; height:auto; display:block; margin:0 auto;
+    border-radius:16px; border:1px solid var(--au-line); box-shadow:0 24px 60px rgba(0,0,0,.5); }
+  .woven-split-media .cap{ color:var(--au-muted); font-size:.9rem; line-height:1.6;
+    margin:14px auto 0; max-width:52ch; text-align:center; }
+  .woven-split-text .au-eyebrow-c,
+  .woven-split-text .au-h2,
+  .woven-split-text .au-lede{ text-align:left; }
+  .woven-split-text .au-lede{ margin-left:0; }
+  .woven-split-text .au-lede + .au-lede{ margin-top:16px; }
+  @media (min-width:769px){
+    .woven-split{ grid-template-columns:1fr 1fr; }
+    .woven-split--reverse .woven-split-text{ order:2; }
+    .woven-split--reverse .woven-split-media{ order:1; }
   }
-  .card-icon.card-icon-img img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    display: block;
-  }
-  /* Center card content (icon + text) and the closing phone line */
-  .page-aeneas .card { text-align: center; }
-  .page-aeneas .cta-subtitle { text-align: center; }
-  /* 1.5x icon for the Hub & Gateway Architecture card */
-  .card-icon.card-icon-img.card-icon-img--xl { width: 144px; height: 144px; }
-  /* Pair each text block with its GIF in one shared row (desktop).
-     Source order is always text-then-media, so mobile stacks unchanged. */
-  .page-aeneas .aeneas-split-media { text-align: center; }
-  .page-aeneas .aeneas-split-media .product-showcase-img {
-    max-width: 100%;
-    margin: 0 auto;
-  }
-  @media (max-width: 768px) {
-    .page-aeneas .aeneas-split-media { margin-top: 24px; }
-  }
-  @media (min-width: 769px) {
-    .page-aeneas .aeneas-split {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      align-items: center;
-      gap: 48px;
-    }
-    .page-aeneas .aeneas-split .section-header {
-      text-align: left;
-      max-width: none;
-      margin: 0;
-    }
-    .page-aeneas .aeneas-split-text .content-narrow {
-      max-width: none;
-      margin: 16px 0 0;
-    }
-    /* Reverse row: GIF on the left, text on the right */
-    .page-aeneas .aeneas-split--reverse .aeneas-split-text { order: 2; }
-    .page-aeneas .aeneas-split--reverse .aeneas-split-media { order: 1; }
+
+  /* Cards: illustration icons + copy, node-comet borders, opaque backing. */
+  .lamprey-aurora .au-card{ text-align:center; background:rgba(12,19,33,.86); }
+  .lamprey-aurora .au-card .au-ic{ width:76px; height:76px; }
+  .lamprey-aurora .au-card .au-ic--xl{ width:104px; height:104px; }
+  .lamprey-aurora .au-card p{ color:var(--au-muted); font-size:.93rem; line-height:1.62; margin:0; }
+
+  /* Node-comet stagger: each border fires a half-beat after the last
+     (covers the card grids and the glass split-text panels alike). */
+  .lamprey-aurora .beam-card::before{ animation-delay:calc(var(--i,0) * -0.5s); }
+
+  /* Closing statement panel. */
+  .woven-close{ text-align:center; max-width:900px; margin:0 auto; }
+  .woven-close .au-lede{ margin-left:auto; margin-right:auto; }
+  .woven-close .btn-group{ display:flex; gap:14px; flex-wrap:wrap; justify-content:center; margin-top:22px; }
+  .woven-close .cta-subtitle{ margin-top:22px; color:var(--au-muted); }
+  .woven-close .cta-subtitle a{ color:var(--au-copper-light); text-decoration:none; font-weight:600; }
+
+  @media (max-width:600px){
+    .woven-panel{ padding:24px 20px; }
+    .woven-header{ padding:20px; margin-bottom:22px; }
+    .woven-split{ gap:26px; }
   }
   </style>
   <link rel="canonical" href="https://islandmountain.io/lamprey-woven-security-governance.html">
@@ -143,14 +178,14 @@
 }
 </script>
 </head>
-<body class="page-aeneas">
+<body class="lamprey-aurora">
 
-  <!-- Full-page particle canvas -->
-  <canvas id="particles-canvas"></canvas>
-
-  <!-- Hero background photo -->
-  <div class="hero-photo">
-    <img srcset="images/hero-solutions-mobile.webp 800w, images/hero-solutions.webp 1632w" sizes="100vw" src="images/hero-solutions.webp" alt="Lamprey Woven Security and Governance Fabric from Island Mountain" fetchpriority="high" decoding="async" width="1632" height="964">
+  <!-- Persistent background: the hero pan, fixed behind the whole page -->
+  <div class="woven-bg" aria-hidden="true">
+    <video class="woven-bg-video" autoplay muted loop playsinline preload="auto" poster="images/woven-hero-poster.webp">
+      <source src="images/angle_panning_from_right.mp4" type="video/mp4">
+    </video>
+    <div class="woven-bg-veil"></div>
   </div>
 
   <!-- Navbar -->
@@ -184,81 +219,94 @@
     <a href="contact.html" class="nav-cta">Request Quote</a>
   </div>
 
-  <!-- Hero -->
-  <section class="hero hero-page">
-    <div class="hero-inner">
-      <span class="hero-badge">Lamprey</span>
-      <h1>Woven security and governance, from the cloud or fully air-gapped.</h1>
-      <p>Lamprey is a Woven Security &amp; Governance Fabric: a software layer that secures and governs your organization from the outside through the cloud, or from the inside as an air-gapped deployment. Either way, governance and security stay woven into every action: understanding cloud risk, protecting sensitive data, preserving compliance evidence, and moving remediation through controlled approvals without handing over standing access or operational context.</p>
-      <div class="btn-group">
+  <!-- HERO (Aurora, type-led, over the persistent pan) -->
+  <section class="au-hero">
+    <div class="container">
+      <div class="au-eyebrow au-reveal">Lamprey &middot; Woven Security &amp; Governance</div>
+      <h1 class="au-h1" data-split>Woven security and governance, from the cloud or fully air-gapped.</h1>
+      <div class="au-hrule"></div>
+      <div class="au-sub au-reveal">
+        <span class="au-rotator">
+          <span>Secure and govern from the cloud, or from inside an air-gapped boundary.</span>
+          <span>Cloud visibility, compliance evidence, approval-gated remediation.</span>
+          <span>No standing privilege. No context leaves your custody.</span>
+        </span>
+      </div>
+      <div class="au-badges au-stagger">
+        <span class="au-badge" style="--i:0">Cloud-Side or Air-Gapped</span>
+        <span class="au-badge" style="--i:1">Zero Standing Privilege</span>
+        <span class="au-badge" style="--i:2">Audit-First</span>
+        <span class="au-badge" style="--i:3">WSF Built-In</span>
+      </div>
+      <div class="au-ctas au-reveal">
         <a href="contact.html" class="btn btn-primary">Request a briefing</a>
         <a href="#platform" class="btn btn-secondary">View platform</a>
       </div>
     </div>
   </section>
 
-  <!-- Platform (text + GIF paired row) — first after hero -->
-  <section class="section section-first" id="platform">
+  <!-- Fabric theme marquee -->
+  <div class="au-marquee" aria-label="What the fabric covers">
+    <div class="au-marquee__track">
+      <span class="au-mq-item">Cloud Posture</span><span class="au-mq-item">DSPM &amp; Classification</span><span class="au-mq-item">Zero Standing Privilege</span><span class="au-mq-item">Compliance Evidence</span><span class="au-mq-item">Air-Gapped Deployment</span><span class="au-mq-item">Ephemeral Credentials</span><span class="au-mq-item">Remediation Workflow</span><span class="au-mq-item">Multi-Cloud</span><span class="au-mq-item">Audit-First</span><span class="au-mq-item">Hub &amp; Gateway</span><span class="au-mq-item">Evidence Mapping</span>
+    </div>
+    <div class="au-marquee__track" aria-hidden="true">
+      <span class="au-mq-item">Cloud Posture</span><span class="au-mq-item">DSPM &amp; Classification</span><span class="au-mq-item">Zero Standing Privilege</span><span class="au-mq-item">Compliance Evidence</span><span class="au-mq-item">Air-Gapped Deployment</span><span class="au-mq-item">Ephemeral Credentials</span><span class="au-mq-item">Remediation Workflow</span><span class="au-mq-item">Multi-Cloud</span><span class="au-mq-item">Audit-First</span><span class="au-mq-item">Hub &amp; Gateway</span><span class="au-mq-item">Evidence Mapping</span>
+    </div>
+  </div>
+
+  <!-- Platform (text panel + GIF paired row) -->
+  <section class="au-section" id="platform">
     <div class="container">
-      <div class="aeneas-split fade-in">
-        <div class="aeneas-split-text">
-          <div class="section-header">
-            <span class="section-badge">Platform</span>
-            <h2>A security and governance fabric built for environments that cannot leak context.</h2>
-            <p>Lamprey is designed for teams that need cloud visibility, compliance reporting, and remediation control without handing persistent access or scan data to a third party. Run it outside your organization through the cloud, or inside an air-gapped boundary; either way it gives operators enough context to prioritize real exposure while keeping deployment details, evidence, and credentials in your custody.</p>
-          </div>
+      <div class="woven-split au-reveal">
+        <div class="woven-split-text woven-panel beam-card" style="--i:0">
+          <span class="au-eyebrow-c">Platform</span>
+          <h2 class="au-h2">A security and governance fabric built for environments that cannot leak context.</h2>
+          <p class="au-lede">Lamprey is designed for teams that need cloud visibility, compliance reporting, and remediation control without handing persistent access or scan data to a third party. Run it outside your organization through the cloud, or inside an air-gapped boundary; either way it gives operators enough context to prioritize real exposure while keeping deployment details, evidence, and credentials in your custody.</p>
         </div>
-        <div class="aeneas-split-media">
-          <img src="images/IMG_7495.GIF" alt="Woven security fabric cloud posture and data security visibility" class="product-showcase-img" width="568" height="379" loading="lazy">
-          <p class="product-showcase-caption">Cloud visibility and classification, woven into the operation and kept inside your boundary.</p>
+        <div class="woven-split-media">
+          <img src="images/IMG_7495.GIF" alt="Woven security fabric cloud posture and data security visibility" width="568" height="379" loading="lazy">
+          <p class="cap">Cloud visibility and classification, woven into the operation and kept inside your boundary.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Card block 1 of 2 (six cards, three per row) -->
-  <section class="section section-darker">
+  <!-- Card block 1 of 2 (six cards, node-comet borders) -->
+  <section class="au-section au-section--alt">
     <div class="container">
-      <div class="card-grid card-grid-3 fade-in">
-        <div class="card">
-          <div class="card-icon card-icon-img">
-            <img src="images/aeneas-icon-onprem.png" alt="" width="96" height="96" loading="lazy" decoding="async">
-          </div>
+      <div class="woven-header woven-panel au-reveal">
+        <span class="au-eyebrow-c">Capabilities</span>
+        <h2 class="au-h2">Woven into every action.</h2>
+      </div>
+      <div class="au-cardgrid au-stagger">
+        <div class="au-card beam-card" style="--i:0">
+          <div class="au-ic"><img src="images/aeneas-icon-onprem.png" alt="" loading="lazy" decoding="async"></div>
           <h3>Cloud-Side Or Air-Gapped</h3>
           <p>Deploy the fabric outside your organization through the cloud, or inside as an air-gapped install. Findings, samples, credentials, and audit trails stay inside your boundary, aligned to your existing security and governance model.</p>
         </div>
-        <div class="card">
-          <div class="card-icon card-icon-img">
-            <img src="images/aeneas-icon-scoped-access.png" alt="" width="96" height="96" loading="lazy" decoding="async">
-          </div>
+        <div class="au-card beam-card" style="--i:1">
+          <div class="au-ic"><img src="images/aeneas-icon-scoped-access.png" alt="" loading="lazy" decoding="async"></div>
           <h3>Ephemeral Credential Lifecycle</h3>
           <p>Use short-lived credentials for discovery and scoped write access only after approval, reducing the blast radius of both mistakes and compromise.</p>
         </div>
-        <div class="card">
-          <div class="card-icon card-icon-img card-icon-img--xl">
-            <img src="images/aeneas-icon-gateway.png" alt="" width="144" height="144" loading="lazy" decoding="async">
-          </div>
+        <div class="au-card beam-card au-ic-host" style="--i:2">
+          <div class="au-ic au-ic--xl"><img src="images/aeneas-icon-gateway.png" alt="" loading="lazy" decoding="async"></div>
           <h3>Hub And Gateway Architecture</h3>
           <p>Run lightweight gateways near the resources they inspect while centralizing evidence, status, and workflow where operators can act on it.</p>
         </div>
-        <div class="card">
-          <div class="card-icon card-icon-img">
-            <img src="images/aeneas-icon-audit.png" alt="" width="96" height="96" loading="lazy" decoding="async">
-          </div>
+        <div class="au-card beam-card" style="--i:3">
+          <div class="au-ic"><img src="images/aeneas-icon-audit.png" alt="" loading="lazy" decoding="async"></div>
           <h3>Audit-First Operations</h3>
           <p>Preserve who requested, approved, and executed each sensitive action so remediation can be reviewed as an operational control, not a black box.</p>
         </div>
-        <div class="card">
-          <div class="card-icon card-icon-img">
-            <img src="images/aeneas-icon-multicloud.png" alt="" width="96" height="96" loading="lazy" decoding="async">
-          </div>
+        <div class="au-card beam-card" style="--i:4">
+          <div class="au-ic"><img src="images/aeneas-icon-multicloud.png" alt="" loading="lazy" decoding="async"></div>
           <h3>Multi-Cloud, Scoped, And Self-Hosted</h3>
           <p>Covers AWS, Azure, GCP, Kubernetes, and databases. Runs inside the customer environment with no scan-data SaaS. Access stays scoped through ephemeral credentials and audited approvals.</p>
         </div>
-        <div class="card">
-          <div class="card-icon card-icon-img">
-            <img src="images/aeneas-icon-scanning.png" alt="" width="96" height="96" loading="lazy" decoding="async">
-          </div>
+        <div class="au-card beam-card" style="--i:5">
+          <div class="au-ic"><img src="images/aeneas-icon-scanning.png" alt="" loading="lazy" decoding="async"></div>
           <h3>Cloud Posture Scanning</h3>
           <p>Build a current view of cloud assets, configuration drift, identity exposure, and workload posture across the environments a security team already operates.</p>
         </div>
@@ -266,68 +314,58 @@
     </div>
   </section>
 
-  <!-- Security Model (GIF + text paired row) -->
-  <section class="section section-dark">
+  <!-- Security Model (GIF + text panel paired row, reversed) -->
+  <section class="au-section">
     <div class="container">
-      <div class="aeneas-split aeneas-split--reverse fade-in">
-        <div class="aeneas-split-text">
-          <div class="section-header">
-            <span class="section-badge">Security Model</span>
-            <h2>Least privilege is a product constraint, not a dashboard label.</h2>
-            <p>We design around zero standing privilege: scan access is minted just in time, scoped to the operation, and revoked automatically. Remediation remains approval-gated and auditable. The fabric is intentionally structured for environments where a scanner must earn each action instead of accumulating broad permanent trust.</p>
-          </div>
+      <div class="woven-split woven-split--reverse au-reveal">
+        <div class="woven-split-text woven-panel beam-card" style="--i:1">
+          <span class="au-eyebrow-c">Security Model</span>
+          <h2 class="au-h2">Least privilege is a product constraint, not a dashboard label.</h2>
+          <p class="au-lede">We design around zero standing privilege: scan access is minted just in time, scoped to the operation, and revoked automatically. Remediation remains approval-gated and auditable. The fabric is intentionally structured for environments where a scanner must earn each action instead of accumulating broad permanent trust.</p>
         </div>
-        <div class="aeneas-split-media">
-          <img src="vaulted-ai-access-light.gif" alt="Zero standing privilege - access minted just in time, scoped, and revoked" class="product-showcase-img" width="568" height="379" loading="lazy">
-          <p class="product-showcase-caption">Zero standing privilege: access is minted just in time, scoped to the operation, and revoked automatically.</p>
+        <div class="woven-split-media">
+          <img src="vaulted-ai-access-light.gif" alt="Zero standing privilege - access minted just in time, scoped, and revoked" width="568" height="379" loading="lazy">
+          <p class="cap">Zero standing privilege: access is minted just in time, scoped to the operation, and revoked automatically.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Card block 2 of 2 (six cards, three per row) -->
-  <section class="section section-darker">
+  <!-- Card block 2 of 2 (six cards, node-comet borders) -->
+  <section class="au-section au-section--alt">
     <div class="container">
-      <div class="card-grid card-grid-3 fade-in">
-        <div class="card">
-          <div class="card-icon card-icon-img">
-            <img src="images/aeneas-icon-classification.png" alt="" width="96" height="96" loading="lazy" decoding="async">
-          </div>
+      <div class="woven-header woven-panel au-reveal">
+        <span class="au-eyebrow-c">Compliance &amp; Operations</span>
+        <h2 class="au-h2">Evidence you can hand to an auditor.</h2>
+      </div>
+      <div class="au-cardgrid au-stagger">
+        <div class="au-card beam-card" style="--i:0">
+          <div class="au-ic"><img src="images/aeneas-icon-classification.png" alt="" loading="lazy" decoding="async"></div>
           <h3>DSPM And Classification</h3>
           <p>Identify sensitive data patterns, exposed storage paths, and access-control gaps without turning samples and findings into another external data exhaust.</p>
         </div>
-        <div class="card">
-          <div class="card-icon card-icon-img">
-            <img src="images/aeneas-icon-compliance.png" alt="" width="96" height="96" loading="lazy" decoding="async">
-          </div>
+        <div class="au-card beam-card" style="--i:1">
+          <div class="au-ic"><img src="images/aeneas-icon-compliance.png" alt="" loading="lazy" decoding="async"></div>
           <h3>Compliance Evidence</h3>
           <p>Connect technical findings to control families, preserve audit-ready context, and make posture work easier to explain to compliance and leadership teams.</p>
         </div>
-        <div class="card">
-          <div class="card-icon card-icon-img">
-            <img src="images/aeneas-icon-remediation.png" alt="" width="96" height="96" loading="lazy" decoding="async">
-          </div>
+        <div class="au-card beam-card" style="--i:2">
+          <div class="au-ic"><img src="images/aeneas-icon-remediation.png" alt="" loading="lazy" decoding="async"></div>
           <h3>Remediation Workflow</h3>
           <p>Translate findings into reviewable plans, require human approval before sensitive changes, and retain the trail needed to prove what happened.</p>
         </div>
-        <div class="card">
-          <div class="card-icon card-icon-img">
-            <img src="images/aeneas-icon-console.png" alt="" width="96" height="96" loading="lazy" decoding="async">
-          </div>
+        <div class="au-card beam-card" style="--i:3">
+          <div class="au-ic"><img src="images/aeneas-icon-console.png" alt="" loading="lazy" decoding="async"></div>
           <h3>Enterprise DataSec Teams</h3>
           <p>Operating multi-cloud visibility, prioritization, and remediation with local custody.</p>
         </div>
-        <div class="card">
-          <div class="card-icon card-icon-img">
-            <img src="images/aeneas-icon-mapping.png" alt="" width="96" height="96" loading="lazy" decoding="async">
-          </div>
+        <div class="au-card beam-card" style="--i:4">
+          <div class="au-ic"><img src="images/aeneas-icon-mapping.png" alt="" loading="lazy" decoding="async"></div>
           <h3>Evidence &amp; Control Mapping</h3>
           <p>Evidence collection aligned to control mapping, reporting, and repeatable review workflows within existing compliance program architectures.</p>
         </div>
-        <div class="card">
-          <div class="card-icon card-icon-img">
-            <img src="images/aeneas-icon-providers.png" alt="" width="96" height="96" loading="lazy" decoding="async">
-          </div>
+        <div class="au-card beam-card" style="--i:5">
+          <div class="au-ic"><img src="images/aeneas-icon-providers.png" alt="" loading="lazy" decoding="async"></div>
           <h3>Managed Security Providers</h3>
           <p>Gateway-based scanning for isolated customer environments where access boundaries aren't mere formality.</p>
         </div>
@@ -335,42 +373,36 @@
     </div>
   </section>
 
-  <!-- Deployment (text + GIF paired row) -->
-  <section class="section section-dark">
+  <!-- Deployment (text panel + GIF paired row) -->
+  <section class="au-section">
     <div class="container">
-      <div class="aeneas-split fade-in">
-        <div class="aeneas-split-text">
-          <div class="section-header">
-            <span class="section-badge">Deployment</span>
-            <h2>Built for controlled infrastructure, inside or out.</h2>
-          </div>
-          <div class="content-narrow">
-            <p class="text-lg-loose">Lamprey runs two ways: outside your organization through the cloud, or inside as an air-gapped deployment. Island Mountain supports environments where regulatory, contractual, or operational pressure requires direct control of telemetry, secrets, network paths, and audit records. The goal is to fit security work into constrained environments without forcing teams to choose between useful automation and responsible custody.</p>
-            <p class="text-lg-loose">We build &amp; deploy woven security and governance fabrics with in-house operating systems for organizations that need actionable security posture data, not another permanently privileged SaaS integration. The current scope of work is centered on security and governance automation that stays 100% accountable to the teams that operate it.</p>
-          </div>
+      <div class="woven-split au-reveal">
+        <div class="woven-split-text woven-panel beam-card" style="--i:2">
+          <span class="au-eyebrow-c">Deployment</span>
+          <h2 class="au-h2">Built for controlled infrastructure, inside or out.</h2>
+          <p class="au-lede">Lamprey runs two ways: outside your organization through the cloud, or inside as an air-gapped deployment. Island Mountain supports environments where regulatory, contractual, or operational pressure requires direct control of telemetry, secrets, network paths, and audit records. The goal is to fit security work into constrained environments without forcing teams to choose between useful automation and responsible custody.</p>
+          <p class="au-lede">We build &amp; deploy woven security and governance fabrics with in-house operating systems for organizations that need actionable security posture data, not another permanently privileged SaaS integration. The current scope of work is centered on security and governance automation that stays 100% accountable to the teams that operate it.</p>
         </div>
-        <div class="aeneas-split-media">
-          <img src="IMG_7488.GIF" alt="Woven fabric cybersecurity deployed in controlled infrastructure" class="product-showcase-img" width="568" height="379" loading="lazy">
-          <p class="product-showcase-caption">Woven security services and on-site hardware, fit to environments that require direct custody.</p>
+        <div class="woven-split-media">
+          <img src="IMG_7488.GIF" alt="Woven fabric cybersecurity deployed in controlled infrastructure" width="568" height="379" loading="lazy">
+          <p class="cap">Woven security services and on-site hardware, fit to environments that require direct custody.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Closing CTA (Who We Serve heading + call to action) -->
-  <section class="section section-darker">
+  <!-- Closing statement (Who We Serve + CTA) -->
+  <section class="au-section au-statement">
     <div class="container">
-      <div class="section-header fade-in">
-        <span class="section-badge">Who We Serve</span>
-        <h2>Providing woven security services, on-site hardware deployment, and organizational training</h2>
-      </div>
-      <div class="fade-in content-narrow">
-        <p class="text-lg-loose">We comprehensively plan and professionally facilitate deployments where regulatory, contractual, or operational pressure requires direct control of telemetry, secrets, network paths, and audit records. Our goal is to fit security work into constrained environments without forcing teams to choose between useful automation and responsible custody.</p>
-        <div class="btn-group" style="margin-top:40px;">
+      <div class="woven-close woven-panel au-reveal">
+        <span class="au-eyebrow-c">Who We Serve</span>
+        <h2 class="au-h2">Woven security services, on-site hardware deployment, and organizational training.</h2>
+        <p class="au-lede">We comprehensively plan and professionally facilitate deployments where regulatory, contractual, or operational pressure requires direct control of telemetry, secrets, network paths, and audit records. Our goal is to fit security work into constrained environments without forcing teams to choose between useful automation and responsible custody.</p>
+        <div class="btn-group">
           <a href="contact.html" class="btn btn-primary">Request a briefing</a>
           <a href="solutions.html" class="btn btn-secondary">See What We Build</a>
         </div>
-        <p class="cta-subtitle"><i class="ri-phone-line icon-copper-mr-sm"></i>Or call directly: <a href="tel:+13414418740" class="copper-semibold">1-341-441-8740</a></p>
+        <p class="cta-subtitle"><i class="ri-phone-line icon-copper-mr-sm"></i>Or call directly: <a href="tel:+13414418740">1-341-441-8740</a></p>
       </div>
     </div>
   </section>
@@ -443,6 +475,21 @@
     </div>
   </footer>
 
+  <!-- Slow the persistent background pan; pause it under reduced-motion. -->
+  <script>
+  (function(){
+    var v = document.querySelector('.woven-bg-video');
+    if(!v) return;
+    if(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches){
+      v.removeAttribute('autoplay'); try{ v.pause(); }catch(e){} return;
+    }
+    function go(){ try{ v.playbackRate = 0.5; }catch(e){} var p = v.play && v.play(); if(p && p.catch) p.catch(function(){}); }
+    go();
+    v.addEventListener('loadedmetadata', go);
+    v.addEventListener('canplay', go, { once:true });
+  })();
+  </script>
+  <script defer src="js/hero-cinematic.js"></script>
   <script defer src="js/main.js"></script>
   <script defer src="js/chat-widget.js"></script>
 </body>
