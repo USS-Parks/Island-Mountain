@@ -2347,3 +2347,17 @@ a.risk-card--link:hover {
 @media (min-width: 769px) {
   .page-aeneas .product-showcase-img { max-width: 450px; }
 }
+
+/* aurora footer site-wide */
+.au-footer .footer-brand p { color: var(--text-muted); font-size: .92rem; line-height: 1.6; max-width: 34ch; }
+.au-social { display: flex; gap: 12px; margin-top: 16px; }
+.au-social a { width: 38px; height: 38px; border-radius: 50%; background: rgba(148,163,184,.12); display: flex; align-items: center; justify-content: center; color: #cbd5e1; font-size: 1.05rem; text-decoration: none; }
+.au-social a:hover { background: var(--copper); color: #1a1206; }
+.au-linkfarm { margin: 36px 0 0; padding-top: 26px; border-top: 1px solid rgba(148,163,184,.12); display: flex; flex-wrap: wrap; gap: 9px 20px; }
+.au-linkfarm a { color: #647089; font-size: .8rem; text-decoration: none; white-space: nowrap; }
+.au-linkfarm a:hover { color: var(--copper-light); }
+.au-legal { color: #4a5871; font-size: .76rem; line-height: 1.7; margin: 24px 0 0; }
+.au-legallinks { display: flex; flex-wrap: wrap; gap: 9px 20px; margin-top: 6px; }
+.au-legallinks a { color: #647089; font-size: .8rem; text-decoration: none; }
+.au-legallinks a:hover { color: var(--copper-light); }
+
