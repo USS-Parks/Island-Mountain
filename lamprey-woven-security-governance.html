@@ -102,7 +102,11 @@
 
   /* Paired text + product-GIF rows: text in a glass card, media beside it.
      Source order is text-then-media, so mobile stacks text first. */
-  .woven-split{ display:grid; gap:40px; align-items:center; }
+  .woven-split{ display:grid; gap:40px; align-items:stretch; }
+  /* Stretch the text card to the full row height so it matches the GIF beside
+     it; keep the media at its natural height. Both center their content. */
+  .woven-split-text{ display:flex; flex-direction:column; justify-content:center; }
+  .woven-split-media{ align-self:center; }
   .woven-split-media img{ width:100%; max-width:568px; height:auto; display:block; margin:0 auto;
     border-radius:16px; border:1px solid var(--au-line); box-shadow:0 24px 60px rgba(0,0,0,.5); }
   .woven-split-media .cap{ color:var(--au-muted); font-size:.9rem; line-height:1.6;
