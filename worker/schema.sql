@@ -48,3 +48,13 @@ CREATE INDEX IF NOT EXISTS idx_leads_email   ON leads (email);
 CREATE INDEX IF NOT EXISTS idx_leads_session ON leads (session_id);
 CREATE INDEX IF NOT EXISTS idx_leads_created ON leads (created_at);
 CREATE INDEX IF NOT EXISTS idx_leads_score   ON leads (score);
+
+-- Atomic abuse-protection counters. Identifiers are SHA-256 hashes; raw IPs and
+-- session IDs never enter this table. Expired rows are pruned once per UTC day.
+CREATE TABLE IF NOT EXISTS rate_limits (
+  counter_key TEXT PRIMARY KEY,
+  count       INTEGER NOT NULL,
+  expires_at  INTEGER NOT NULL
+);
+
+CREATE INDEX IF NOT EXISTS idx_rate_limits_expires ON rate_limits (expires_at);

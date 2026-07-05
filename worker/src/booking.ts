@@ -1,5 +1,6 @@
 import type { Env } from './types';
 import type { LeadFields } from './qualifier';
+import { secureEqual } from './security';
 
 /**
  * Build a Cal.com scheduling URL prefilled with what we know and carrying
@@ -27,15 +28,14 @@ export function buildBookingUrl(
 
 /**
  * Verify a Cal.com webhook HMAC-SHA256 signature (hex of the raw body keyed by
- * the webhook secret). If no secret is configured, accept (dev). Constant-time
- * compare.
+ * the webhook secret). Missing configuration fails closed.
  */
 export async function verifyCalSignature(
   env: Env,
   rawBody: string,
   signature: string | null,
 ): Promise<boolean> {
-  if (!env.WEBHOOK_SECRET) return true; // dev / not yet configured
+  if (!env.WEBHOOK_SECRET) return false;
   if (!signature) return false;
   const key = await crypto.subtle.importKey(
     'raw',
@@ -46,12 +46,5 @@ export async function verifyCalSignature(
   );
   const mac = await crypto.subtle.sign('HMAC', key, new TextEncoder().encode(rawBody));
   const expected = [...new Uint8Array(mac)].map((b) => b.toString(16).padStart(2, '0')).join('');
-  return timingSafeEqual(expected, signature.trim().toLowerCase());
-}
-
-function timingSafeEqual(a: string, b: string): boolean {
-  if (a.length !== b.length) return false;
-  let diff = 0;
-  for (let i = 0; i < a.length; i++) diff |= a.charCodeAt(i) ^ b.charCodeAt(i);
-  return diff === 0;
+  return secureEqual(signature.trim().toLowerCase(), expected);
 }
