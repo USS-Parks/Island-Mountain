@@ -35,6 +35,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png?v=2">
   <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png?v=2">
   <link rel="stylesheet" href="css/style.min.css">
+  <link rel="stylesheet" href="css/card-nodes.css">
   <link rel="stylesheet" href="icons/remixicon.css" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="icons/remixicon.css"></noscript>
   <link rel="preload" href="fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -288,35 +289,6 @@
   .gpu-card h3{color:#fff;font-size:1.18rem;margin-bottom:10px;}
   .gpu-card p{color:rgba(226,232,240,0.92);font-size:0.95rem;line-height:1.6;margin:0;}
   .gpu-card .gpu-metric{color:var(--copper);font-weight:700;}
-  /* ── Aurora node edge: a SINGLE white-hot copper node fires one lap around each
-     card's border, then fades. Cards ignite in sequence one beat apart as each
-     group scrolls into view (see the IntersectionObserver script near </body>) —
-     idle by default, never a constant orbit. ── */
-  @property --im-node-angle{syntax:"<angle>";inherits:false;initial-value:0deg;}
-  .gpu-card,.risk-card{position:relative;isolation:isolate;}
-  .gpu-card>*,.risk-card>*{position:relative;z-index:1;}
-  .gpu-card::before,.risk-card::before{
-    content:"";position:absolute;inset:0;border-radius:inherit;padding:1.6px;z-index:2;pointer-events:none;opacity:0;
-    background:conic-gradient(from var(--im-node-angle),
-      #fff7ed 0deg,rgba(245,158,11,0) 7deg,
-      rgba(245,158,11,0) 334deg,var(--copper) 355deg,#fff7ed 360deg);
-    -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
-    -webkit-mask-composite:xor;
-    mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);mask-composite:exclude;
-    filter:drop-shadow(0 0 4px rgba(251,191,36,.95)) drop-shadow(0 0 10px rgba(245,158,11,.55));
-  }
-  .gpu-card.node-fire::before,.risk-card.node-fire::before{
-    animation:imNodeFire 2.6s cubic-bezier(.45,0,.25,1) both;
-  }
-  @keyframes imNodeFire{
-    0%{--im-node-angle:0deg;opacity:0;}
-    9%{opacity:1;}
-    88%{opacity:1;}
-    100%{--im-node-angle:360deg;opacity:0;}
-  }
-  @media (prefers-reduced-motion:reduce){
-    .gpu-card::before,.risk-card::before{display:none;}
-  }
   </style>
 </head>
 <body>
@@ -460,32 +432,32 @@
         <h2>Why Professional-Grade GPUs</h2>
       </div>
       <div class="gpu-cardgrid fade-in">
-        <div class="gpu-card">
+        <div class="gpu-card beam-card">
           <img src="images/ic-plugins.webp" alt="" width="104" height="104" loading="lazy">
           <h3>Blackwell Architecture</h3>
           <p>5th-generation Tensor Cores with native FP8 and FP4 and roughly <span class="gpu-metric">1 PFLOP</span> of FP16 compute per card, built for modern inference.</p>
         </div>
-        <div class="gpu-card">
+        <div class="gpu-card beam-card">
           <img src="images/ic-add-file.webp" alt="" width="104" height="104" loading="lazy">
           <h3><span class="gpu-metric">96GB</span> GDDR7 per Card</h3>
           <p>Holds 70B-parameter models in full precision, or DeepSeek V4-Flash at FP8 with headroom for KV cache.</p>
         </div>
-        <div class="gpu-card">
+        <div class="gpu-card beam-card">
           <img src="images/ic-code-window.webp" alt="" width="104" height="104" loading="lazy">
           <h3>Enterprise Drivers</h3>
           <p>NVIDIA RTX / Enterprise ISV-certified drivers with a validated, long-lived support lifecycle - not consumer game-ready drivers.</p>
         </div>
-        <div class="gpu-card">
+        <div class="gpu-card beam-card">
           <img src="images/ic-coding.webp" alt="" width="104" height="104" loading="lazy">
           <h3>Built for AI Workloads</h3>
           <p>Large-model fine-tuning, enterprise inference, CAD/CAE, and 24/7 production workloads - the jobs an on-prem stack actually runs.</p>
         </div>
-        <div class="gpu-card">
+        <div class="gpu-card beam-card">
           <img src="images/ic-default-access.webp" alt="" width="104" height="104" loading="lazy">
           <h3>ECC Error Correction</h3>
           <p>Detects and corrects single-bit memory errors automatically - no silent data flips in clinical, legal, or defense inference.</p>
         </div>
-        <div class="gpu-card">
+        <div class="gpu-card beam-card">
           <img src="images/ic-plan.webp" alt="" width="104" height="104" loading="lazy">
           <h3><span class="gpu-metric">~1,792 GB/s</span> Bandwidth</h3>
           <p>GDDR7 memory feeds the Tensor Cores fast, sustaining high token throughput under continuous, always-on load.</p>
@@ -501,17 +473,17 @@
         <h2>Product Questions</h2>
       </div>
       <div class="risk-grid fade-in">
-        <div class="risk-card">
+        <div class="risk-card beam-card">
           <img src="images/ic-search.webp" alt="" width="52" height="52" loading="lazy" style="display:block;margin-bottom:12px;">
           <h4>How fast are the answers?</h4>
           <p>Instant. Inference runs on your own GPUs, so tokens stream back at wire speed - no cloud round-trip, no queue, no latency. Immediate answers, hyper-localized to your rack.</p>
         </div>
-        <div class="risk-card">
+        <div class="risk-card beam-card">
           <img src="images/ic-skills-teacher.webp" alt="" width="52" height="52" loading="lazy" style="display:block;margin-bottom:12px;">
           <h4>How far does one rack scale?</h4>
           <p>A single Summit rack ramps to 6-8 RTX PRO 6000 Blackwell GPUs. Start with two and add cards as you grow - more VRAM, more throughput, more seats, all on-prem.</p>
         </div>
-        <div class="risk-card">
+        <div class="risk-card beam-card">
           <img src="images/ic-plan.webp" alt="" width="52" height="52" loading="lazy" style="display:block;margin-bottom:12px;">
           <h4>How many users can it serve?</h4>
           <p>A fully ramped Summit rack serves 1,500-1,800 users. One-time hardware, no per-seat cloud fees, no metering. On-prem open source is a no-brainer.</p>
@@ -609,37 +581,7 @@
     </div>
   </footer>
 
-  <script>
-  /* Summit Aurora nodes: fire one node per card, in sequence one beat apart,
-     as each card group scrolls into view; re-arms once the group leaves view. */
-  (function(){
-    if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    var groups = document.querySelectorAll('.gpu-cardgrid, .risk-grid');
-    if(!groups.length || !('IntersectionObserver' in window)) return;
-    var BEAT = 600;
-    var io = new IntersectionObserver(function(entries){
-      entries.forEach(function(en){
-        var g = en.target;
-        if(en.isIntersecting){
-          if(g.dataset.imFired === '1') return;
-          g.dataset.imFired = '1';
-          var cards = g.querySelectorAll('.gpu-card, .risk-card');
-          Array.prototype.forEach.call(cards, function(card, i){
-            setTimeout(function(){
-              card.classList.remove('node-fire');
-              void card.offsetWidth;
-              card.classList.add('node-fire');
-            }, i * BEAT);
-          });
-        } else {
-          g.dataset.imFired = '';
-        }
-      });
-    }, { threshold: 0.3 });
-    Array.prototype.forEach.call(groups, function(g){ io.observe(g); });
-  })();
-  </script>
-
+  <script defer src="js/card-nodes.js"></script>
   <script defer src="js/main.js"></script>
   <script defer src="js/chat-widget.js"></script>
 </body>

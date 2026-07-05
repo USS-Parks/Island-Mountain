@@ -33,26 +33,10 @@ html:not(.js) #aurora-intro{ display:none; }
 @keyframes auRise{ from{opacity:0; transform:translateY(18px);} to{opacity:1; transform:none;} }
 
 /* ============================================================
-   Traveling node edge: white-hot nodes orbit the border of
-   any .beam-card.
+   Traveling node edge (.beam-card) now lives in css/card-nodes.css
+   as the single source of truth: one edge node that fires the top +
+   right edges in sequence. Load card-nodes.css after this file.
    ============================================================ */
-.beam-card{ position:relative; isolation:isolate; }
-.beam-card::before{
-  content:""; position:absolute; inset:0; border-radius:inherit; padding:1.8px; z-index:2; pointer-events:none;
-  background:conic-gradient(from var(--au-angle),
-    var(--au-white-hot) 0deg, var(--au-copper) 7deg, rgba(245,158,11,0) 18deg,
-    rgba(245,158,11,0) 162deg, var(--au-copper) 173deg, var(--au-white-hot) 180deg, var(--au-copper) 187deg, rgba(245,158,11,0) 198deg,
-    rgba(245,158,11,0) 342deg, var(--au-copper) 353deg, var(--au-white-hot) 360deg);
-  -webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-  -webkit-mask-composite:xor; mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); mask-composite:exclude;
-  filter:drop-shadow(0 0 4px rgba(251,191,36,.9)) drop-shadow(0 0 9px rgba(245,158,11,.45));
-  animation:auSpin 4.5s linear infinite;   /* ALWAYS running */
-}
-.beam-card:nth-of-type(2)::before{ animation-delay:-1.5s; }
-.beam-card:nth-of-type(3)::before{ animation-delay:-3s; }
-.beam-card:nth-of-type(4)::before{ animation-delay:-2.2s; }
-.beam-card>*{ position:relative; z-index:1; }
-@keyframes auSpin{ to{ --au-angle:360deg; } }
 
 /* ---------------- Type-led hero ---------------- */
 .au-hero{ position:relative; min-height:90vh; display:flex; flex-direction:column; justify-content:center; padding:150px 0 88px; overflow:hidden;
