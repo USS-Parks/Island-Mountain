@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script>document.documentElement.classList.add('js');</script>
 <!-- Google tag (gtag.js) - deferred until user interaction -->
 <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
 <script>
@@ -28,50 +29,37 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="author" content="Basho Parks">
-  <meta name="date" content="2026-06-06">
-  <title>Local AI FAQ | Cost, Compliance &amp; Data Sovereignty</title>
-  <meta name="description" content="Straight answers on local AI: HIPAA compliance, privilege risk, VRAM for DeepSeek V4-Flash, and five-year on-premises cost.">
+  <meta name="date" content="2026-07-04">
+  <title>Sovereign AI FAQ | Air-Gapped Hardware, Woven Security &amp; Governance</title>
+  <meta name="description" content="Straight answers about sovereign AI: air-gapped local inference, the Woven Security &amp; Governance Fabric, HIPAA and ITAR, privilege, and how quotes work. Every spec and price is a human conversation.">
   <link rel="icon" type="image/x-icon" href="favicon.ico?v=2">
   <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png?v=2">
   <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png?v=2">
   <link rel="stylesheet" href="css/style.min.css">
+  <link rel="stylesheet" href="css/aurora.css">
   <link rel="stylesheet" href="icons/remixicon.css" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="icons/remixicon.css"></noscript>
   <link rel="preload" href="fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
   <style>
-  @font-face {
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 400 800;
-    font-display: swap;
-    src: url('fonts/inter-latin.woff2') format('woff2');
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-  }
-  @font-face {
-    font-family: 'Space Grotesk';
-    font-style: normal;
-    font-weight: 300 700;
-    font-display: swap;
-    src: url('fonts/space-grotesk-latin.woff2') format('woff2');
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-  }
+  @font-face{font-family:'Inter';font-style:normal;font-weight:400 800;font-display:swap;src:url('fonts/inter-latin.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
+  @font-face{font-family:'Space Grotesk';font-style:normal;font-weight:300 700;font-display:swap;src:url('fonts/space-grotesk-latin.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
   </style>
   <link rel="canonical" href="https://islandmountain.io/faq.html">
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Local AI FAQ | Cost, Compliance &amp; Data Sovereignty">
-  <meta property="og:description" content="Straight answers on local AI: HIPAA compliance, privilege risk, VRAM for DeepSeek V4-Flash, and five-year on-premises cost.">
+  <meta property="og:title" content="Sovereign AI FAQ | Air-Gapped Hardware, Woven Security &amp; Governance">
+  <meta property="og:description" content="Straight answers about sovereign AI: air-gapped local inference, the Woven Security &amp; Governance Fabric, compliance, and how quotes work. Every spec and price is a human conversation.">
   <meta property="og:url" content="https://islandmountain.io/faq.html">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Island Mountain">
-  <meta property="og:image" content="https://islandmountain.io/images/hero-faq.webp">
+  <meta property="og:image" content="https://islandmountain.io/images/summit-shot5.webp">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Local AI FAQ | Cost, Compliance &amp; Data Sovereignty">
-  <meta name="twitter:description" content="Straight answers on local AI: HIPAA compliance, privilege risk, VRAM for DeepSeek V4-Flash, and five-year on-premises cost.">
-  <meta name="twitter:image" content="https://islandmountain.io/images/hero-faq.webp">
+  <meta name="twitter:title" content="Sovereign AI FAQ | Air-Gapped Hardware, Woven Security &amp; Governance">
+  <meta name="twitter:description" content="Straight answers about sovereign AI: air-gapped local inference, the Woven Security &amp; Governance Fabric, compliance, and how quotes work.">
+  <meta name="twitter:image" content="https://islandmountain.io/images/summit-shot5.webp">
 
   <!-- FAQPage Schema -->
   <script type="application/ld+json">
@@ -81,26 +69,58 @@
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "What is local AI inference hardware and how is it different from cloud AI?",
+        "name": "What is local AI inference hardware, and how is it different from cloud AI?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Local AI inference hardware is a physical server with GPUs that runs AI models on your premises instead of sending your data to someone else's data center. Inference means the system processes your prompts and generates responses. It does not train new models. It runs pre-trained models locally. When you use a cloud AI service like ChatGPT, Claude, or Gemini, your prompts leave your network, get processed on the provider's GPUs, and the response comes back over the internet. The provider sees your data and processes it on shared infrastructure. With local hardware, the entire cycle happens inside your building. Prompt goes to your GPU. Response comes back from your GPU. Nothing leaves your network. You own the hardware, you own the models (permissive open-source licenses, open weights), and you control every variable. The tradeoff: cloud AI gives you access to the latest proprietary models without hardware investment. Local AI gives you data sovereignty, zero recurring costs after purchase, and models you control entirely, but you are limited to open-source models that typically lag cloud releases by weeks or months."
+          "text": "Local AI inference hardware is a physical server with GPUs that runs AI models on your premises instead of sending your data to someone else's data center. Inference means the system processes your prompts and generates responses from pre-trained models; it does not train new models. With a cloud AI service your prompts leave your network, get processed on the provider's GPUs, and come back over the internet. With local hardware the entire cycle happens inside your building: prompt goes to your GPU, response comes back from your GPU, nothing leaves your network. You own the hardware, you own the open-weight models, and you control every variable. Every Island Mountain unit also carries the Woven Security and Governance Fabric, so governance travels with the work instead of living in a vendor's cloud."
         }
       },
       {
         "@type": "Question",
-        "name": "Does local AI hardware work without an internet connection?",
+        "name": "Does sovereign AI hardware work fully air-gapped, with no internet connection?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes. Every Island Mountain system is designed to operate completely air-gapped. The models, the inference engine (vLLM and Ollama), and the interface (OpenWebUI) all run locally. Once the system is set up and models are loaded, you can disconnect the ethernet cable entirely and everything still works. Users access the system through a web browser on your local network. As long as the device and the server are on the same network, even an isolated non-internet-connected network, inference runs normally. No phone-home. No license checks. No cloud dependencies. The only things that require internet access are downloading new models and applying OS security updates. Both are optional and can be done on a schedule that fits your security posture. Some organizations in high-security environments load models via physical media and apply security patches through an isolated update process. Island Mountain applies a documented air-gap configuration before delivery, disabling all outbound features at the environment variable level: OFFLINE_MODE, telemetry, community sharing, and web search are all turned off during the 72-hour burn-in. Your IT team can independently verify every setting on the delivered system."
+          "text": "Yes. Every Island Mountain system is designed to operate completely air-gapped. The models, the inference engine (vLLM and Ollama), and the interface (OpenWebUI) all run locally. Once the system is set up you can disconnect the ethernet cable entirely and everything still works. Users reach it through a web browser on your local network, even an isolated network with no internet. No phone-home, no license checks, no cloud dependencies. Island Mountain applies a documented air-gap configuration before delivery, disabling every outbound feature at the environment-variable level and confirming it during the 72-hour burn-in. Your IT team can verify each setting independently on the delivered system."
         }
       },
       {
         "@type": "Question",
-        "name": "Who should NOT buy local AI hardware?",
+        "name": "What does 'a sovereign AI server at every desk' mean?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Local AI hardware is the wrong purchase for several types of buyers. If your organization needs the absolute latest proprietary models (GPT-4o, Claude Opus, Gemini Ultra) on the day they release, local hardware will not deliver that. Open-source models lag proprietary releases. If you need to serve more than 50 concurrent heavy users, a dual-GPU system at this price point is not the right architecture. You need enterprise cloud infrastructure or multiple local systems. If your organization has no IT capability at all and cannot manage a server, be aware that after 30 days of included support, your team owns the maintenance. We offer ongoing support retainers, but the system lives in your server room. If your data sensitivity does not require local processing and cloud AI is working fine for your team at $200 per month, spending $59,000 on hardware does not make financial sense. Cloud is cheaper for low-volume, non-sensitive use cases."
+          "text": "It means the unit of deployment is a workstation, not a shared cloud tenant. Each Summit is its own server and hardware rack: a burnt-copper anodized tower, pre-built and burn-tested for 72 hours, air-gappable out of the box, with two NVIDIA RTX PRO 6000 Blackwell GPUs and models pre-installed. You can put one on a single desk, or deploy an estate across the organization. A single rack starts with two cards and ramps to six to eight GPUs, and a fully ramped rack serves roughly 1,500 to 1,800 users on on-premises inference, with no per-seat cloud fees and no token metering."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the Woven Security and Governance Fabric?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The Woven Security and Governance Fabric (WSF), built as Lamprey, is the trust and control plane that sits inline on every action an AI agent takes: identity, guardrails, approval gates, and an audit ledger on every tool call. It gives operators cloud visibility, data classification, compliance evidence, and approval-gated remediation without handing a third party standing access or your operating context. It runs two ways: outside your organization through the cloud, or inside as an air-gapped deployment. On Island Mountain hardware it is woven into every unit; findings, samples, credentials, and audit trails stay inside your boundary."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does the fabric stop agentic attacks like prompt injection and data exfiltration?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Agentic attacks (prompt injection, agent-jacking, tool poisoning, data exfiltration, memory poisoning, rogue agency) ride the same rails as legitimate work, so the controls live outside the model, inline on every call. Orchestration flows down through runtime and tools into the fabric, where identity, guardrails, approval gates, and the audit ledger evaluate each action before it executes. Sensitive actions are approval-gated, access is scoped and short-lived, and every request and approval is recorded. The model can be tricked; the fabric is where the tricked action is stopped and logged."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is zero standing privilege?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Zero standing privilege means nothing holds broad, permanent access. Scan access is minted just in time, scoped to the operation, and revoked automatically. Write access and remediation are granted only after approval and remain fully audited. We design it as a product constraint rather than a dashboard label: a scanner or an agent must earn each action instead of accumulating trust it can later be tricked into misusing. It reduces the blast radius of both honest mistakes and active compromise."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does the fabric produce compliance evidence and audit trails?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. The fabric preserves who requested, approved, and executed each sensitive action, connects technical findings to control families, and keeps audit-ready context so remediation reads as an operational control rather than a black box. Evidence collection aligns to control mapping and repeatable review workflows that fit inside an existing compliance program, and it stays in your custody instead of becoming another external data exhaust."
         }
       },
       {
@@ -108,15 +128,15 @@
         "name": "Does running AI locally comply with HIPAA?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Running AI on local hardware eliminates the data transmission vector that creates HIPAA exposure in the first place. When you use a cloud AI service, Protected Health Information leaves your network and is processed on shared infrastructure controlled by a third party. Under 45 CFR 164.402, that transmission can constitute a reportable disclosure event. With local inference hardware, PHI never leaves your premises. There is no cloud provider to execute a Business Associate Agreement with because no business associate is involved. The prompts stay on your server. The responses stay on your server. The model weights sit on drives you physically control. That said, local hardware does not automatically make your entire AI workflow HIPAA-compliant. You still need proper access controls, audit logging, encryption at rest, and staff training. The hardware eliminates the cloud transmission risk. Your organization still owns the operational compliance. Island Mountain is not a compliance attorney, and we do not certify HIPAA compliance."
+          "text": "Running AI on local hardware eliminates the data-transmission vector that creates HIPAA exposure in the first place. With a cloud service, Protected Health Information leaves your network and is processed on shared infrastructure controlled by a third party; under 45 CFR 164.402 that transmission can constitute a reportable disclosure event. With local inference, PHI never leaves your premises and there is no business associate to sign a BAA with because none is involved. Local hardware does not by itself make your entire workflow compliant. You still own access controls, audit logging, encryption at rest, and staff training. Island Mountain is not a compliance attorney and does not certify HIPAA compliance; the hardware removes the third-party processing variable, and the Woven Security and Governance Fabric adds the audit trail."
         }
       },
       {
         "@type": "Question",
-        "name": "Can a law firm use local AI without violating attorney-client privilege?",
+        "name": "Can a law firm use local AI without waiving attorney-client privilege?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "The core issue with cloud AI for law firms is this: client data sent to a third-party API is data disclosed to a third party. Under ABA Model Rule 1.6, attorneys have a duty to make reasonable efforts to prevent unauthorized disclosure of client information. Courts have found privilege waived when confidential information is processed through systems outside the firm's control. Local AI hardware keeps every prompt, every document, and every response on a server inside your office. No data travels to an external API. No third party processes your client's information. The model runs on hardware you own, connected to your network, behind your firewall. This does not mean local AI automatically preserves privilege in every scenario. Your firm still needs internal policies governing who accesses the system, what data can be input, and how outputs are treated in the work product. But the fundamental architectural risk of third-party disclosure is eliminated."
+          "text": "The core issue with cloud AI for law firms is that client data sent to a third-party API is data disclosed to a third party. Under ABA Model Rule 1.6, attorneys must make reasonable efforts to prevent unauthorized disclosure of client information, and courts have found privilege waived when confidential information is processed through systems outside the firm's control. Local AI keeps every prompt, document, and response on a server inside your office, behind your firewall, on hardware you own. Your firm still needs internal policies on who accesses the system and what data goes in, but the fundamental architectural risk of third-party disclosure is removed."
         }
       },
       {
@@ -124,15 +144,15 @@
         "name": "Can a tribal government run AI without cloud providers?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes. That is one of the primary use cases Island Mountain hardware is built for. Tribal nations exercise inherent sovereignty over constituent data, enrollment records, health information, and internal governance documents. Routing that data through cloud AI providers means processing sovereign data through jurisdictions and infrastructure outside tribal authority. Local AI hardware keeps everything on tribal premises, under tribal law, processed by hardware the nation owns outright. No data leaves the reservation. No cloud provider terms of service apply to your data. No federal or state jurisdiction touches the processing. The models pre-installed on every system (DeepSeek V4-Flash, Llama 4 Scout, DeepSeek R1 70B Distill or Qwen 3 72B) carry permissive open-source licenses (MIT and Apache 2.0), meaning the tribe owns the models with no usage restrictions. The system works fully air-gapped if your security posture requires it. Disconnect the ethernet cable and it still runs."
+          "text": "Yes; it is one of the primary use cases Island Mountain hardware is built for. Tribal nations exercise inherent sovereignty over constituent data, enrollment records, health information, and governance documents. Local AI keeps everything on tribal premises, under tribal law, processed by hardware the nation owns outright. No data leaves the reservation, no cloud terms of service apply, and no federal or state jurisdiction touches the processing. The pre-installed models carry permissive open-source licenses, so the nation owns them with no usage restrictions, and the system runs fully air-gapped if your security posture requires it."
         }
       },
       {
         "@type": "Question",
-        "name": "Does local AI hardware meet ITAR requirements for defense contractors?",
+        "name": "Does local AI hardware meet ITAR and CMMC requirements for defense contractors?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "ITAR restricts the processing and storage of controlled technical data to environments that prevent foreign access. Cloud infrastructure operated by providers with multinational operations, overseas data centers, or foreign-national employees creates structural compliance risk for ITAR-regulated data. Local AI hardware that you own, operate on US soil, and control with US-person-only access eliminates the cloud processing vector entirely. The data stays on your premises, processed by hardware under your physical control, with no third-party infrastructure involved. Island Mountain systems run open-source models (permissive open-source licenses, publicly available weights) which are not themselves controlled under ITAR. The controlled element is your data, and local hardware ensures that data never transits infrastructure you do not control. However, Island Mountain does not provide ITAR compliance certification, documentation, or legal guidance. ITAR compliance is an organizational responsibility that covers physical security, personnel screening, access controls, and documentation well beyond the hardware layer."
+          "text": "ITAR restricts processing and storage of controlled technical data to environments that prevent foreign access, and cloud infrastructure with multinational operations or foreign-national staff creates structural risk. Hardware you own, operate on US soil, and control with US-person-only access removes the cloud processing vector; the data stays on your premises with no third-party infrastructure involved. The open-weight models are not themselves ITAR-controlled; your data is the controlled element, and local hardware keeps it off infrastructure you do not control. Island Mountain does not provide ITAR or CMMC certification. Compliance covers physical security, personnel screening, access controls, and documentation well beyond the hardware, and the Woven Security and Governance Fabric supplies the audit evidence that supports it."
         }
       },
       {
@@ -140,7 +160,15 @@
         "name": "Is DeepSeek V4-Flash safe to use with sensitive organizational data?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "The safety question about DeepSeek V4-Flash usually comes from two concerns: the model's Chinese origin and data handling. Here are the facts. DeepSeek V4-Flash is an open-weights model released under the MIT license. The model weights are publicly available and have been independently audited by the open-source community. When you run DeepSeek V4-Flash on Island Mountain hardware, the model executes entirely on your local GPUs. No data is sent to DeepSeek, to any Chinese server, or to any external endpoint. The model does not phone home. It cannot phone home. It is a file sitting on your hard drive being processed by your GPUs. The risk with DeepSeek exists only when you use it through DeepSeek's cloud API, which routes your data through their servers. That is not how Island Mountain systems work. Our systems run the model locally, air-gapped if you want, with zero external communication. The model itself does not contain backdoors or data exfiltration code. It is a set of numerical weights processed through standard inference engines."
+          "text": "DeepSeek V4-Flash is an open-weights model released under the MIT license, with publicly available weights that the open-source community has independently audited. When you run it on Island Mountain hardware it executes entirely on your local GPUs. No data is sent to DeepSeek, to any Chinese server, or to any external endpoint. The model does not phone home and cannot: it is a set of numerical weights sitting on your drive, processed by your GPUs through standard inference engines. The risk exists only when you use DeepSeek's cloud API, which routes data through their servers, and that is not how Island Mountain systems work."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What GPUs does Island Mountain use, and how do the Summit tiers differ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Every Summit system uses the NVIDIA RTX PRO 6000 Blackwell Server Edition. Each card carries 96GB of GDDR7 ECC memory with 1,597 GB/s of bandwidth and about 1 PFLOP of FP16 Tensor compute, with native FP8 and FP4 on 5th-generation Tensor Cores. Summit Base pairs two cards for 192GB of combined VRAM and runs DeepSeek V4-Flash at FP8 plus all 70B-class models at full quality. Summit Pinnacle uses four cards for 384GB, enough to run V4-Flash at full FP16 with its 1M-token context. Summit Ridge is a build-to-order configuration between the two. A single rack ramps to six to eight cards. We spec the right tier with you in a conversation rather than from a configurator."
         }
       },
       {
@@ -148,143 +176,31 @@
         "name": "What VRAM do I need to run DeepSeek V4-Flash?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "DeepSeek V4-Flash runs at FP8 in approximately 170GB of VRAM, or 282GB at full FP16 precision. The Summit Base tier (2x NVIDIA RTX PRO 6000 Blackwell 96GB, 192GB total VRAM) runs V4-Flash at FP8 with roughly 22GB of headroom for KV cache, using tensor parallelism to split the model layers across both cards for faster inference. The Summit Ridge tier offers the same capability in a build-to-order configuration, with approximately 60-90 tokens per second for single-user inference thanks to the RTX PRO 6000's 1,597 GB/s GDDR7 memory bandwidth. If you need to run DeepSeek V4-Flash at full FP16 quality, the Summit Pinnacle tier with 4x RTX PRO 6000 Blackwell 96GB GPUs (384GB total VRAM) is the configuration to choose. Pre-order now, ships July 2026."
+          "text": "DeepSeek V4-Flash (284B parameters) runs at FP8 in roughly 170GB of VRAM, or about 282GB at full FP16 precision. Summit Base (two RTX PRO 6000 Blackwell cards, 192GB combined) runs it at FP8 with roughly 22GB of headroom for KV cache, using tensor parallelism across both cards for faster inference, at approximately 60 to 90 tokens per second for single-user inference. To run V4-Flash at full FP16 quality, the four-card Summit Pinnacle tier (384GB combined) is the configuration to choose."
         }
       },
       {
         "@type": "Question",
-        "name": "What models come pre-installed on Island Mountain hardware?",
+        "name": "What models come pre-installed, and can I add my own later?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Every Summit Base and Summit Ridge system ships with three models installed, configured, and burn-tested. DeepSeek V4-Flash is a reasoning and general-purpose model built for complex analysis, multi-step problem solving, code generation, and structured thinking. It runs at FP8 using approximately 170GB of VRAM on the Summit Base tier. Llama 4 Scout is Meta's general-purpose model, replacing Llama 3.1 with meaningfully better benchmark performance on the same VRAM footprint. It uses approximately 40-48GB of VRAM. Your choice of DeepSeek R1 70B Distill (MIT licensed, explicit chain-of-thought reasoning for legal and compliance work) or Qwen 3 72B (Apache 2.0, top-tier enterprise general performance), each using approximately 40-48GB of VRAM. All models carry permissive open-source licenses with no usage restrictions. You own them outright. You can switch between them instantly through the OpenWebUI dropdown menu. Additional open-source models can be downloaded and installed after delivery through Ollama or the OpenWebUI interface."
+          "text": "Every Summit ships with three models installed, configured, and burn-tested: DeepSeek V4-Flash (reasoning and general purpose, FP8), Llama 4 Scout (Meta's general-purpose model), and your choice of DeepSeek R1 70B Distill (MIT, explicit chain-of-thought for legal and compliance work) or Qwen 3 72B (Apache 2.0, enterprise general performance). All carry permissive open-source licenses with no usage restrictions; you own them outright and switch between them in the OpenWebUI dropdown. You are not locked to those three: any compatible open-source model that fits your VRAM can be downloaded through Ollama or OpenWebUI, and for the first 30 days we walk you through it directly."
         }
       },
       {
         "@type": "Question",
-        "name": "What is OpenWebUI and how does it work?",
+        "name": "How many people can one Summit system serve, and how far does a rack scale?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "OpenWebUI is a free, open-source, browser-based interface for interacting with local AI models. Think of it as a private version of ChatGPT that runs entirely on your network. No account with any cloud provider. No external data transmission. You open a web browser on any device connected to your network (Chrome, Firefox, Safari, Edge), navigate to the server's local address, and start prompting. The interface includes a dropdown menu to switch between installed models, full conversation history stored locally on the server, and an admin panel for user management and model access controls. Your administrator can create accounts for each team member, control which models each user can access, and monitor usage. Conversations are stored on the server's local drive, not in any cloud. OpenWebUI requires no command-line knowledge to use. If someone can use ChatGPT, they can use OpenWebUI."
+          "text": "A single Summit rack starts with two RTX PRO 6000 Blackwell GPUs and ramps to six to eight cards as your workload grows: more VRAM, more throughput, more concurrent seats, all on-premises. A fully ramped rack serves roughly 1,500 to 1,800 users on hyper-localized inference. Because the model of deployment is a server per seat or an estate across the organization, you scale by adding cards and adding units rather than renting more cloud, and it stays a one-time hardware purchase with no per-seat fees and no token metering."
         }
       },
       {
         "@type": "Question",
-        "name": "What GPUs does Island Mountain use, and how do the tiers differ?",
+        "name": "What power does a local AI server need?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Every Island Mountain Summit system uses the NVIDIA RTX PRO 6000 Blackwell Server Edition. Each card carries 96GB of GDDR7 ECC memory with 1,597 GB/s of bandwidth and delivers 1 PFLOP of FP16 Tensor compute, with native FP8 and FP4 support on its 5th-generation Tensor Cores. The Summit Base tier pairs two of these cards for 192GB of total VRAM at $59,000-$69,000 and runs DeepSeek V4-Flash at FP8 plus all 70B-class models at full quality. The Summit Pinnacle tier uses four cards for 384GB of total VRAM, enough to run DeepSeek V4-Flash at full FP16 quality with its 1M token context window, at $175,000-$225,000<br>Pre-order now, ships July 2026. The Summit Ridge tier is a build-to-order configuration between the two at $95,000-$120,000."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How many users can simultaneously access an Island Mountain system?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "A dual-GPU Island Mountain system comfortably serves a team of 5-15 simultaneous users for typical business inference tasks like document drafting, research queries, contract review, and summarization. The exact number depends on the model being used, prompt complexity, and response length. Simple queries return fast and queue efficiently. Long-form document generation takes more time per request, which means fewer concurrent users before response times stretch. The Summit Ridge tier (RTX PRO 6000 build-to-order) handles concurrent workloads better than the Summit Base tier because additional GPU capacity and vLLM tensor parallelism across the RTX PRO 6000's 1,597 GB/s GDDR7 memory bandwidth allow fast processing of queued requests. This system is not designed to serve 50 or 100 simultaneous heavy users. If your organization has that kind of demand, you need multiple systems or enterprise cloud infrastructure."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What power requirements does local AI inference hardware need?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "All Island Mountain systems require a dedicated 208V/30A power circuit with a NEMA L6-30R outlet. This is the same kind of circuit found in server rooms, data closets, and commercial facilities. The power supply operates at 200-240V only. It will not run on a standard 120V wall outlet. If your facility does not already have this circuit, a licensed electrician can install one. Typical installation cost ranges from $500 to $2,000 depending on your building's electrical infrastructure. Average power draw under typical inference loads is 1.5-2.5 kW. At $0.12/kWh, that translates to roughly $100-$200 per month in electricity. The system runs at standard server room temperatures (64-80 degrees Fahrenheit) and does not require specialized cooling beyond normal HVAC. The chassis includes redundant 2000W power supplies for reliability."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Can I add models after the system ships?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes. The system is not locked to the three pre-installed models. You can download and install any compatible open-source model through the Ollama interface or directly through OpenWebUI's model management panel. The constraint is VRAM. Your system has a fixed amount of GPU memory, and each model consumes VRAM when loaded. On the Summit Base and Summit Ridge tiers (192GB total VRAM), you can run any model that fits within that memory. Most 70B-parameter models require 40-48GB of VRAM at FP16 precision. Smaller models (7B, 13B, 30B) use less and can run alongside larger models. You cannot run models that exceed your total VRAM. For example, DeepSeek V4-Flash (284B parameters) needs approximately 282GB of VRAM at full FP16, which fits on the Summit Pinnacle tier; the Summit Base tier runs it at FP8. Quantized versions of larger models can sometimes fit on lower tiers, but with reduced quality. For the first 30 days after delivery, we walk you through the model installation process directly."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How much does it cost to set up a private AI server for a small organization?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Island Mountain systems range from $59,000 to $225,000 depending on GPU configuration. The Summit Base tier with 2x NVIDIA RTX PRO 6000 Blackwell 96GB (pre-made) costs $59,000-$69,000. The Summit Ridge tier with RTX PRO 6000 Blackwell GPUs (build-to-order) costs $95,000-$120,000. The Summit Pinnacle tier with 4x RTX PRO 6000 Blackwell 96GB GPUs costs $175,000-$225,000 - pre-order now, ships July 2026. Every system is a one-time purchase. There are no subscription fees, no per-token charges, and no recurring software licensing costs. The models carry permissive open-source licenses and are free to use. The interface (OpenWebUI) is open-source. Beyond the hardware purchase, plan for a dedicated 208V/30A electrical circuit if you do not already have one. A licensed electrician typically installs this for $500-$2,000. Ongoing electricity costs run approximately $100-$200 per month. No hidden fees."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What is the total cost of cloud AI versus local AI hardware over five years?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "The math depends on your team size and usage, but here is a representative comparison for a 10-user organization. Cloud AI subscriptions (ChatGPT Enterprise, Azure OpenAI, Anthropic) cost $20-$200 per user per month, plus per-token overages. For 10 users, that is $2,400-$24,000 per year. Over five years: $12,000-$120,000 in cumulative subscription costs, with prices that historically only increase. An Island Mountain Summit Base system costs $59,000-$69,000 once. Annual electricity runs $1,200-$2,400. Over five years, your total cost of ownership is approximately $65,000-$81,000. The crossover point where local hardware becomes cheaper than cloud depends on your cloud spend. At $500/month in cloud costs, local hardware pays for itself in roughly 10 years. At $2,000/month, the payback period is under 3 years. At $5,000/month or above, you break even in about one year."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What are the ongoing costs after purchasing local AI hardware?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "After the one-time hardware purchase, your recurring costs are electricity and optional support. Electricity runs approximately $100-$200 per month, or $1,200-$2,400 per year. This estimate assumes 1.5-2.5 kW average power draw at $0.12/kWh. Your actual cost depends on local utility rates and usage intensity. There are no software licensing fees. The models (DeepSeek V4-Flash, Llama 4 Scout, DeepSeek R1 70B Distill or Qwen 3 72B) carry permissive open-source licenses (MIT and Apache 2.0). OpenWebUI is open-source. The operating system is Ubuntu Server LTS, also free. After the included 30-day support period, ongoing support is available on a per-incident basis or through an annual retainer. This covers model configuration, performance tuning, troubleshooting, and remote diagnostics. The only additional cost you might encounter is a future GPU upgrade, where your existing cards are credited at secondary market value toward replacement GPUs."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How long does it take to receive and set up an Island Mountain system?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "From deposit to delivery, expect 3-5 weeks. The process has four phases: component sourcing and verification (new GPUs sourced through authorized NVIDIA channels with full procurement documentation), assembly and configuration (15-phase build process), 72-hour continuous burn-in testing, and full benchmarking with delivery manifest. The system arrives pre-configured. Models are installed, OpenWebUI is set up, and the server is ready to run. Setup on your end means racking the server, connecting power (208V/30A circuit), connecting to your network, and opening a browser. Most organizations are running their first prompts within hours of receiving the hardware. The Summit Ridge tier may take 2-4 additional weeks because RTX PRO 6000 GPUs are configured build-to-order. 30 days of hands-on setup support are included with every purchase."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How does the 50% deposit and payment structure work?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "The purchase process starts with a conversation about your workload and requirements, followed by a custom quote. Quotes include a 14-day price lock, meaning the quoted price holds for 14 days from acceptance. If GPU market prices spike above 10% during that window, you can cancel with a full deposit refund. Once you accept the quote, a 50% deposit initiates component sourcing and the build process. We do not build speculatively. Your deposit triggers the purchase of your specific GPUs and components. The remaining 50% is due upon delivery. You do not pay the balance until the system arrives, burn-tested and benchmarked, with a complete delivery manifest documenting every component serial number, test result, and configuration detail."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What does the 72-hour burn-in test verify?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Every Island Mountain system runs 72 hours of continuous stress testing before it ships. This is not a quick benchmark or a 10-minute smoke test. It is three straight days of sustained GPU compute at high load with automated monitoring. The test verifies thermal stability under continuous load (GPUs maintain safe operating temperatures without throttling), memory integrity (no VRAM errors across billions of operations), inference consistency (model outputs remain stable and correct across thousands of sequential prompts), power supply reliability under sustained draw, and storage performance under continuous read/write activity. Automated monitoring tracks temperature, clock speeds, error rates, and performance metrics throughout the entire 72-hour window. Any anomaly triggers an alert. Systems that show instability, thermal throttling, VRAM errors, or any deviation from expected performance do not ship."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What happens if a component fails during the warranty period?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Every Island Mountain system ships with a 1-year hardware warranty covering all components, including GPUs, CPU, RAM, storage drives, and power supplies. If a component fails within the first year, we handle the replacement. GPU failures are managed through supplier RMA agreements with documented replacement timelines. We maintain a 20% warranty reserve per unit to ensure we can cover replacements without delay. The process: you contact us (direct phone at 1-341-441-8740 or email to the builder), we diagnose the issue remotely, and if a physical component needs replacement, we ship the part or arrange a swap. Extended warranty options beyond the first year are available at the time of purchase. After warranty, ongoing support is available on a per-incident or annual retainer basis."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Island Mountain is a new company with no shipped units. Why should I trust a first purchase?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "This is a fair question and you should ask it. Island Mountain is a Colorado company co-founded by John Dougherty (hardware engineer, 25-year technology veteran) and Basho Parks (marketing and sales, with direct relationships across tribal, defense, and research verticals). The company is new. The team is not. Every system is built, tested, and delivered by people with decades of combined experience deploying technology infrastructure in demanding environments. The specific protections built into the purchase process exist because trust has to be earned: the 14-day price lock lets you cancel if GPU prices spike above 10%. The 50% deposit and 50% on delivery structure means you do not pay in full until you have a working, tested system. The 1-year hardware warranty is backed by a 20% warranty reserve per unit. The hardware is standard enterprise components (NVIDIA GPUs, AMD EPYC CPUs, Supermicro chassis) with established supplier RMA agreements. The software is open-source. Nothing is proprietary and nothing is locked."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What happens if Island Mountain goes out of business after I buy?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Your system keeps running. This is by design, not by accident. Every component is built on open-source software and standard enterprise hardware. The operating system is Ubuntu Server LTS (free, community-supported). The inference engines are vLLM and Ollama (open-source). The interface is OpenWebUI (open-source). The models carry permissive open-source licenses with no usage restrictions. None of it depends on Island Mountain's continued existence. If Island Mountain were to close, you would lose access to our specific support, warranty coverage, and GPU upgrade program. But the system itself requires no license, no activation, and no connection to any Island Mountain server. OS updates come from Ubuntu's repositories. CUDA driver updates come from NVIDIA. Model updates come from Hugging Face and Ollama's public model library. Any competent Linux administrator can maintain the system independently. We built it this way because vendor lock-in is exactly the problem we are solving."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Can local AI keep up with cloud AI as models improve?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Not on day one. But within weeks or months, yes. Cloud providers release proprietary models immediately because they control the infrastructure. Open-source models lag that release cycle. When OpenAI ships a new flagship, you will not have an equivalent open-source model on your local hardware that afternoon. What has consistently happened over the past two years is that open-source models close the gap rapidly. DeepSeek V4-Flash, Llama 4 Scout, and DeepSeek R1 all reached or exceeded the performance of the proprietary models they followed within weeks to months of release. Your Island Mountain system can run any new open-source model that fits within its VRAM. When a new model releases, you download it through Ollama or the OpenWebUI interface. No hardware swap needed unless the new model exceeds your VRAM capacity. The risk is that a future model generation requires significantly more VRAM than your system has. That is why we offer a GPU upgrade path where existing GPUs are credited at secondary market value toward next-generation cards."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Why should I pay $59,000+ when I can build a similar AI server for $5,000-$10,000?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "You can. The guides exist, and the software stack is the same: Ollama, vLLM, Open WebUI, and open-weight models like DeepSeek V4-Flash and Llama 4 Scout. If you have the technical staff to build, configure, test, and maintain it, a DIY system running consumer RTX 4090s will run inference. Here is what that build does not include: Professional GPU procurement documentation. Every RTX PRO 6000 Blackwell card in an Island Mountain system has a documented procurement chain - purchase receipts from authorized NVIDIA channels, serial number registry, and RMA history. Consumer GPUs purchased from Amazon or Newegg do not carry it. 72-hour continuous burn-in testing. Island Mountain tests whether the system sustains full-load inference for 72 continuous hours without thermal throttling, memory errors, or performance degradation. NVIDIA professional RMA chains. When a card fails, the replacement GPU enters the same procurement documentation chain, which matters for HIPAA, ITAR/DFARS, and CMMC audit trails. Direct builder support - you talk to the person who built your system. The honest answer: if you are a developer running experiments, build your own. If you are a regulated organization putting AI into production workflows where compliance documentation and hardware provenance matter, that is what the price delta covers."
+          "text": "Every Island Mountain system needs a dedicated 208V/30A circuit with a NEMA L6-30R outlet, the same kind found in server rooms and commercial facilities. The power supply runs at 200 to 240V and will not run on a standard 120V wall outlet, so if your facility lacks the circuit a licensed electrician can install one. Average draw under typical inference load is 1.5 to 2.5 kW. The system runs at standard server-room temperatures (64 to 80 degrees Fahrenheit) with no specialized cooling beyond normal HVAC, and the chassis includes redundant 2000W power supplies."
         }
       },
       {
@@ -292,12 +208,69 @@
         "name": "How can OpenWebUI be air-gapped if it is a web application?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "The 'web' in OpenWebUI refers to the browser-based interface, not internet dependency. OpenWebUI is a self-hosted application that runs entirely on the server hardware. Users access it through a web browser pointed at the server's local network address. No cloud account required. No external API calls for inference. Out of the box, OpenWebUI includes features that make outbound network connections: model downloads, version update checks, HuggingFace Hub access for embedding models, optional community sharing, web search integration for RAG, and anonymized telemetry. None of these are required for AI inference. Island Mountain disables every outbound feature before shipping. The key environment variables - OFFLINE_MODE, HF_HUB_OFFLINE, ENABLE_COMMUNITY_SHARING, ANONYMIZED_TELEMETRY, ENABLE_RAG_WEB_SEARCH, and SAFE_MODE - are all set to their air-gapped states during the build process. The system is tested in this configuration during the 72-hour burn-in. Your IT team can verify it independently by inspecting the container environment variables on the delivered system, or by connecting it to a monitored network segment and confirming zero outbound connections during operation."
+          "text": "The 'web' in OpenWebUI refers to the browser-based interface, not internet dependency. It is a self-hosted application that runs entirely on the server; users reach it through a browser pointed at the server's local address, the way you reach a router's admin panel. Out of the box it includes outbound features (model downloads, update checks, HuggingFace Hub access, community sharing, web search for RAG, telemetry), and none are required for inference. Island Mountain disables every outbound feature before shipping (OFFLINE_MODE, HF_HUB_OFFLINE, ENABLE_COMMUNITY_SHARING, ANONYMIZED_TELEMETRY, ENABLE_RAG_WEB_SEARCH, SAFE_MODE) and confirms it during burn-in. Your IT team can verify it by inspecting the container environment or watching a monitored segment for zero outbound connections."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does pricing work?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Pricing is scoped to your workload and headcount, and every number comes from a conversation, not a configurator. You tell us what you are running, how many people need access, and which models matter; we spec the right system and put a written quote in front of you. Each build is a one-time hardware purchase with no subscription fees, no per-token charges, and no recurring software licensing: the models are open-source, OpenWebUI is open-source, and the operating system is Ubuntu Server LTS. There is no public price list and no self-serve checkout because sizing sovereign infrastructure is a human decision. Talk to the builder to get a number."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I actually buy a system, and how long does delivery take?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "It starts with a conversation about your workload, followed by a written quote scoped to it. We do not build speculatively; a confirmed order triggers sourcing of your specific GPUs and components through authorized NVIDIA channels with full procurement documentation. Terms are handled directly, human to human. From order to delivery expect roughly 3 to 5 weeks for the pre-made Summit Base tier, longer for build-to-order Summit Ridge because those GPUs are sourced per order. The system arrives pre-configured, and most organizations run their first prompts within hours of racking it. Every purchase includes 30 days of hands-on setup support with direct access to the builder."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What does the 72-hour burn-in test verify?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Every system runs 72 hours of continuous stress testing before it ships: three straight days of sustained GPU compute at high load with automated monitoring, not a 10-minute smoke test. It verifies thermal stability without throttling, memory integrity with no VRAM errors across billions of operations, inference consistency across thousands of sequential prompts, power-supply reliability under sustained draw, and storage performance under continuous read and write. Any anomaly triggers an alert, and systems that show instability do not ship. You receive a benchmark report and delivery manifest documenting every test result, component serial number, and configuration detail."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What warranty comes with the system, and what if a component fails?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Every system ships with a 1-year hardware warranty covering all components (GPUs, CPU, RAM, storage, and power supplies). If a component fails within the first year we handle the replacement; GPU failures are managed through supplier RMA agreements with documented timelines, and we hold a 20% warranty reserve per unit so replacements are not waiting on budget. You contact the builder directly, we diagnose remotely, and we ship the part or arrange a swap. Extended warranty options are available at the time of purchase, and after warranty, support is available per incident or on an annual retainer."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Island Mountain is a new company. Why trust a first purchase, and what happens if you go out of business?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Island Mountain is a company co-founded by John Dougherty (hardware engineer, 25-year technology veteran) and Basho Parks, who hand-builds each rack. The company is new; the team is not. The hardware is standard enterprise components (NVIDIA GPUs, AMD EPYC CPUs, Supermicro chassis) with established supplier RMA agreements, and the software is fully open-source, so nothing is proprietary or locked. If Island Mountain closed, your system would keep running: Ubuntu Server LTS, vLLM, Ollama, OpenWebUI, and open-weight models depend on none of our servers. You would lose our support and warranty, but the system needs no license, no activation, and no connection to us. Any competent Linux administrator can maintain it, because vendor independence is the problem we are solving."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can local AI keep up with cloud AI as models improve?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Not on day one, but within weeks to months, yes. Cloud providers ship proprietary models the day they control the infrastructure; open-source models lag that cycle. What has happened consistently is that open-weight models close the gap fast: DeepSeek V4-Flash, Llama 4 Scout, and DeepSeek R1 reached or exceeded the proprietary models they followed within weeks to months. Your system can run any new open-source model that fits its VRAM: you download it through Ollama or OpenWebUI with no hardware change. As your needs grow you add cards to the rack, which ramps from two to six or eight GPUs."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why pay for a Summit when I could build a similar server myself for less?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "You can, and if you are a developer running experiments you probably should: the guides exist and the software stack is the same (Ollama, vLLM, OpenWebUI, open-weight models). What a DIY build does not include is professional GPU procurement documentation (purchase receipts from authorized NVIDIA channels, a serial-number registry, and RMA history that a compliance officer or contracting officer can audit), 72-hour continuous burn-in, professional RMA chains that keep replacement GPUs inside the same documentation trail for HIPAA, ITAR/DFARS, and CMMC audits, and direct access to the person who built your system. If you are a regulated organization putting AI into production where provenance and evidence matter, that is what the difference covers."
         }
       }
     ]
   }
   </script>
+
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -311,179 +284,93 @@
   }
   </script>
 
-  <!-- FAQ page-specific styles -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://islandmountain.io/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "FAQ",
+        "item": "https://islandmountain.io/faq.html"
+      }
+    ]
+  }
+  </script>
+
+  <!-- FAQ Aurora page styles -->
   <style>
-    .faq-jump-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      justify-content: center;
-      margin-bottom: 60px;
+  /* Hero: hand-built workshop shot under a dark veil (overrides aurora.css default) */
+  .au-hero{
+    background:
+      linear-gradient(180deg, rgba(8,13,24,.86) 0%, rgba(12,19,34,.60) 46%, rgba(8,13,24,.96) 100%),
+      url('images/summit-shot5.webp') center 30% / cover no-repeat;
+  }
+  @media (max-width:600px){
+    .au-hero{
+      background:
+        linear-gradient(180deg, rgba(8,13,24,.84) 0%, rgba(12,19,34,.56) 44%, rgba(8,13,24,.96) 100%),
+        url('images/summit-shot5.webp') 58% 26% / cover no-repeat;
     }
+  }
 
-    .faq-jump-links a {
-      display: inline-block;
-      font-size: 0.85rem;
-      font-weight: 500;
-      color: var(--text-muted);
-      border: 1px solid var(--card-border);
-      padding: 8px 16px;
-      border-radius: 50px;
-      transition: color var(--transition-speed), border-color var(--transition-speed), background var(--transition-speed);
-    }
+  /* Topic jump-links as Aurora pills */
+  .faq-topics{ display:flex; flex-wrap:wrap; gap:12px; justify-content:center; margin:30px auto 0; max-width:920px; }
+  .faq-topics a{ font-size:.85rem; font-weight:600; color:#cdd8ea; border:1px solid rgba(245,158,11,.34);
+    background:rgba(245,158,11,.05); padding:9px 18px; border-radius:999px; text-decoration:none;
+    transition:color .25s, border-color .25s, background .25s; }
+  .faq-topics a:hover{ color:var(--au-copper-light); border-color:var(--au-copper); background:rgba(245,158,11,.12); }
 
-    .faq-jump-links a:hover {
-      color: var(--copper);
-      border-color: var(--copper);
-      background: rgba(245, 158, 11, 0.06);
-    }
+  /* Two-product orientation grid */
+  .faq-ways{ max-width:900px; margin:30px auto 0; }
+  .faq-ways .au-card{ text-align:left; padding:30px 28px; }
+  .faq-ways .au-card h3{ display:flex; align-items:center; gap:12px; justify-content:flex-start; }
+  .faq-ways .au-card .au-ways-eyebrow{ letter-spacing:.18em; text-transform:uppercase; font-size:.7rem;
+    font-weight:700; color:var(--au-copper); display:block; margin-bottom:8px; }
+  .faq-ways .au-card p{ color:var(--au-muted); font-size:.95rem; line-height:1.65; margin:0 0 18px; }
+  .faq-ways .au-card a.au-ways-link{ color:var(--au-copper-light); font-weight:600; font-size:.9rem; text-decoration:none; }
+  .faq-ways .au-card a.au-ways-link:hover{ color:#fff; }
 
-    .faq-category {
-      margin-bottom: 60px;
-    }
+  /* Accordion cards (Aurora glass + node-comet border) */
+  .faq-list{ max-width:860px; margin:28px auto 0; }
+  .faq-item{ position:relative; background:rgba(19,28,49,.72); border:1px solid var(--au-line);
+    border-radius:16px; margin-bottom:14px; overflow:visible; }
+  .faq-item h3{ font-size:1.06rem; font-weight:600; color:#eef2f8; margin:0; padding:20px 24px;
+    cursor:pointer; display:flex; align-items:center; justify-content:space-between; gap:16px;
+    user-select:none; transition:color .25s; }
+  .faq-item h3:hover{ color:var(--au-copper-light); }
+  .faq-item h3::after{ content:'+'; font-size:1.5rem; font-weight:300; color:var(--au-copper-light);
+    flex-shrink:0; line-height:1; transition:transform .3s; }
+  .faq-item.active h3::after{ transform:rotate(45deg); }
+  .faq-answer{ max-height:0; overflow:hidden; transition:max-height .45s ease, padding .45s ease; padding:0 24px; }
+  .faq-item.active .faq-answer{ max-height:1600px; padding:0 24px 24px; }
+  .faq-answer p{ font-size:.95rem; line-height:1.8; color:var(--au-muted); margin:0 0 12px; }
+  .faq-answer p:last-child{ margin-bottom:0; }
+  .faq-answer strong{ color:#dbe4f1; }
+  .faq-answer a{ color:var(--au-copper-light); text-decoration:underline; text-underline-offset:2px; }
+  .faq-answer a:hover{ color:#fff; }
 
-    .faq-category h2 {
-      font-size: 1.8rem;
-      margin-bottom: 32px;
-      padding-bottom: 16px;
-      border-bottom: 1px solid var(--card-border);
-    }
+  /* Node-comet stagger: every card fires one beat (0.5s) after the last */
+  .faq-aurora .faq-item.beam-card::before,
+  .faq-aurora .au-card.beam-card::before{ animation-delay:calc(var(--i, 0) * -0.5s); }
 
-    .faq-item {
-      background: var(--card-bg);
-      backdrop-filter: blur(var(--glass-blur));
-      -webkit-backdrop-filter: blur(var(--glass-blur));
-      border: 1px solid var(--card-border);
-      border-radius: var(--border-radius);
-      margin-bottom: 12px;
-      overflow: hidden;
-      transition: border-color var(--transition-speed);
-    }
-
-    .faq-item:hover {
-      border-color: rgba(245, 158, 11, 0.3);
-    }
-
-    .faq-item h3 {
-      font-size: 1.1rem;
-      font-weight: 600;
-      color: var(--text-light);
-      padding: 20px 24px;
-      margin: 0;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      user-select: none;
-      transition: color var(--transition-speed);
-    }
-
-    .faq-item h3:hover {
-      color: var(--copper);
-    }
-
-    .faq-item h3::after {
-      content: '+';
-      font-size: 1.4rem;
-      font-weight: 300;
-      color: var(--copper);
-      flex-shrink: 0;
-      transition: transform var(--transition-speed);
-    }
-
-    .faq-item.active h3::after {
-      transform: rotate(45deg);
-    }
-
-    .faq-answer {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.4s ease, padding 0.4s ease;
-      padding: 0 24px;
-    }
-
-    .faq-item.active .faq-answer {
-      max-height: 800px;
-      padding: 0 24px 24px;
-    }
-
-    .faq-answer p {
-      font-size: 0.95rem;
-      line-height: 1.8;
-      color: var(--text-muted);
-      margin-bottom: 12px;
-    }
-
-    .faq-answer p:last-child {
-      margin-bottom: 0;
-    }
-
-    .faq-answer a {
-      color: var(--copper);
-      text-decoration: underline;
-      text-underline-offset: 2px;
-    }
-
-    .faq-answer a:hover {
-      color: var(--copper-light);
-    }
-
-    .faq-cta {
-      text-align: center;
-      padding: 80px 0;
-    }
-
-    .faq-cta h2 {
-      margin-bottom: 16px;
-    }
-
-    .faq-cta p {
-      font-size: 1.1rem;
-      max-width: 600px;
-      margin: 0 auto 32px;
-    }
-
-    .faq-subtitle {
-      font-size: 1.15rem;
-      color: rgba(255, 255, 255, 0.88);
-      max-width: 640px;
-      margin: 0 auto;
-      line-height: 1.8;
-      text-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
-    }
+  /* AEO summary + closing */
+  .faq-aeo{ max-width:900px; margin:0 auto; border-left:3px solid var(--au-copper); padding:18px 22px;
+    background:rgba(245,158,11,.05); border-radius:0 10px 10px 0; color:var(--au-muted); font-size:.95rem; line-height:1.75; }
+  .faq-aeo strong{ color:#dbe4f1; }
+  .faq-final{ text-align:center; }
+  .faq-final .btn-group{ display:flex; gap:14px; flex-wrap:wrap; justify-content:center; margin-top:10px; }
+  .faq-final .cta-subtitle{ margin-top:22px; }
   </style>
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position": 1,
-      "name": "Home",
-      "item": "https://islandmountain.io/"
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
-      "name": "FAQ",
-      "item": "https://islandmountain.io/faq.html"
-    }
-  ]
-}
-</script>
 </head>
-<body>
-
-  <!-- Full-page particle canvas -->
-  <canvas id="particles-canvas"></canvas>
-
-  <!-- Hero background photo -->
-  <div class="hero-photo">
-    <img srcset="images/hero-faq-mobile.webp 800w, images/hero-faq.webp 1254w" sizes="100vw" src="images/hero-faq.webp" alt="Island Mountain AI server frequently asked questions" fetchpriority="high" decoding="async" width="1254" height="1109">
-  </div>
+<body class="faq-aurora">
 
   <!-- Navbar -->
   <nav class="navbar">
@@ -492,7 +379,7 @@
       <ul class="nav-links">
         <li><a href="index.html">Home</a></li>
         <li><a href="lamprey-woven-security-governance.html">Security Fabric</a></li>
-        <li><a href="products.html">Summit</a>
+        <li><a href="products.html">Summit</a></li>
         <li><a href="faq.html" class="active">FAQ</a></li>
         <li><a href="blog.html">Blog</a></li>
         <li><a href="resources.html">Resources</a></li>
@@ -510,361 +397,387 @@
     <a href="index.html">Home</a>
     <a href="lamprey-woven-security-governance.html">Security Fabric</a>
     <a href="products.html">Summit</a>
-            <a href="faq.html">FAQ</a>
+    <a href="faq.html">FAQ</a>
     <a href="blog.html">Blog</a>
     <a href="resources.html">Resources</a>
     <a href="contact.html" class="nav-cta">Request Quote</a>
   </div>
 
-  <!-- Hero -->
-  <section class="hero hero-page">
-    <div class="hero-inner">
-      <span class="hero-badge">Answers</span>
-      <h1>Frequently Asked Questions</h1>
-      <p class="faq-subtitle">Straight answers about local AI hardware, data sovereignty, and what it costs.</p>
-    </div>
-  </section>
-
-  <!-- FAQ Content -->
-  <section class="section section-first">
+  <!-- HERO (Aurora, type-led) -->
+  <section class="au-hero">
     <div class="container">
-
-      <!-- Jump to Section -->
-      <div class="faq-jump-links fade-in">
-        <a href="#awareness">Is Local AI Right for Us?</a>
-        <a href="#compliance">Compliance &amp; Regulations</a>
-        <a href="#technical">How the Hardware Works</a>
-        <a href="#cost">Cost &amp; Pricing</a>
-        <a href="#process">Purchase &amp; Setup</a>
-        <a href="#risks">Risks &amp; Limitations</a>
+      <div class="au-eyebrow au-reveal">Answers &middot; Human to Human</div>
+      <h1 class="au-h1" data-split>Straight answers about sovereign AI.</h1>
+      <div class="au-hrule"></div>
+      <div class="au-sub au-reveal">
+        <span class="au-rotator">
+          <span>What it is, what it protects, what it takes to run.</span>
+          <span>Air-gappable hardware. Woven security. No cloud.</span>
+          <span>Every spec and every quote, human to human.</span>
+        </span>
       </div>
-
-      <!-- Category A: Awareness / Consideration -->
-      <div class="faq-category fade-in" id="awareness">
-        <h2>Is Local AI Right for Us?</h2>
-
-        <div class="faq-item">
-          <h3>What is local AI inference hardware and how is it different from cloud AI?</h3>
-          <div class="faq-answer answer-q1">
-            <p><strong>Local AI inference hardware is a physical server with GPUs that runs AI models on your premises instead of sending your data to someone else's data center.</strong> "Inference" means the system processes your prompts and generates responses. It does not train new models. It runs pre-trained models locally.</p>
-            <p>When you use a cloud AI service (ChatGPT, Claude, Gemini, Azure OpenAI), your prompts leave your network, get processed on the cloud provider's GPUs, and the response comes back over the internet. The provider sees your data, processes it on shared infrastructure, and may use it according to their terms of service.</p>
-            <p>With local hardware, the entire cycle happens inside your building. Prompt goes to your GPU. Response comes back from your GPU. Nothing leaves your network. You own the hardware, you own the models (permissive open-source licenses, open weights), and you control every variable.</p>
-            <p>The tradeoff is straightforward: cloud AI gives you access to the latest proprietary models (GPT-4o, Claude Opus) without hardware investment. Local AI gives you data sovereignty, zero recurring costs after purchase, and models you control entirely, but you are limited to open-source models that typically lag cloud releases by weeks or months.</p>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <h3>Does local AI hardware work without an internet connection?</h3>
-          <div class="faq-answer">
-            <p><strong>Yes. Every Island Mountain system is designed to operate completely air-gapped.</strong> The models, the inference engine (vLLM/Ollama), and the interface (OpenWebUI) all run locally. Once the system is set up and models are loaded, you can disconnect the ethernet cable entirely and everything still works.</p>
-            <p>Users access the system through a web browser on your local network. As long as the device and the server are on the same network (even an isolated, non-internet-connected network), inference runs normally. No phone-home. No license checks. No cloud dependencies.</p>
-            <p>The only things that require internet access are downloading new models and applying OS security updates. Both are optional and can be done on a schedule that fits your security posture. Some organizations in high-security environments load models via physical media and apply security patches through an isolated update process. The system supports that workflow.</p>
-            <p>Island Mountain applies a documented air-gap configuration before delivery, disabling all outbound features at the environment variable level: OFFLINE_MODE, telemetry, community sharing, and web search are all turned off during the 72-hour burn-in. Your IT team can independently verify every setting on the delivered system.</p>
-          </div>
-        </div>
-        <div class="faq-item">
-          <h3>Who should NOT buy local AI hardware?</h3>
-          <div class="faq-answer">
-            <p><strong>Local AI hardware is the wrong purchase for several types of buyers, and we would rather tell you now than after you have spent $59,000.</strong></p>
-            <p>If your organization needs the absolute latest proprietary models (GPT-4o, Claude Opus, Gemini Ultra) on the day they release, local hardware will not deliver that. Open-source models lag proprietary releases. They close the gap over time, but there is always a gap.</p>
-            <p>If you need to serve more than 50 concurrent heavy users, a dual-GPU system at this price point is not the right architecture. You need enterprise cloud infrastructure or multiple local systems.</p>
-            <p>If your organization has no IT capability at all and cannot manage a server, be aware that after 30 days of included support, your team owns the maintenance. OS updates, network configuration, and troubleshooting fall to you. We offer ongoing support retainers, but the system lives in your server room.</p>
-            <p>If your data sensitivity does not require local processing and cloud AI is working fine for your team at $200/month, spending $59,000 on hardware does not make financial sense. Cloud is cheaper for low-volume, non-sensitive use cases. We say this because it is true.</p>
-          </div>
-        </div>
+      <div class="au-badges au-stagger">
+        <span class="au-badge" style="--i:0">Air-Gappable</span>
+        <span class="au-badge" style="--i:1">WSF Built-In</span>
+        <span class="au-badge" style="--i:2">Quote-Based</span>
+        <span class="au-badge" style="--i:3">72-Hour Burn-In</span>
       </div>
-
-      <!-- Category B: Compliance -->
-      <div class="faq-category fade-in" id="compliance">
-        <h2>Compliance &amp; Regulations</h2>
-
-        <div class="faq-item">
-          <h3>Does running AI locally comply with HIPAA?</h3>
-          <div class="faq-answer">
-            <p><strong>Running AI on local hardware eliminates the data transmission vector that creates HIPAA exposure in the first place.</strong> When you use a cloud AI service, Protected Health Information (PHI) leaves your network and is processed on shared infrastructure controlled by a third party. Under 45 CFR &sect;164.402, that transmission can constitute a reportable disclosure event. With local inference hardware, PHI never leaves your premises. There is no cloud provider to execute a Business Associate Agreement with because no business associate is involved. The prompts stay on your server. The responses stay on your server. The model weights sit on drives you physically control.</p>
-            <p>That said, local hardware does not automatically make your entire AI workflow HIPAA-compliant. You still need proper access controls, audit logging, encryption at rest, and staff training. The hardware eliminates the cloud transmission risk; your organization still owns the operational compliance. Island Mountain is not a compliance attorney, and we do not certify HIPAA compliance. What we build is hardware that removes the third-party processing variable from the equation entirely. For a full breakdown of how local infrastructure fits into a compliance strategy, see our <a href="medical-practices.html">Medical Practices</a> page.</p>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <h3>Can a law firm use local AI without violating attorney-client privilege?</h3>
-          <div class="faq-answer">
-            <p><strong>The core issue with cloud AI for law firms is this: client data sent to a third-party API is data disclosed to a third party.</strong> Under ABA Model Rule 1.6, attorneys have a duty to make reasonable efforts to prevent unauthorized disclosure of client information. Courts have found privilege waived when confidential information is processed through systems outside the firm's control.</p>
-            <p>Local AI hardware keeps every prompt, every document, and every response on a server inside your office. No data travels to an external API. No third party processes your client's information. The model runs on hardware you own, connected to your network, behind your firewall.</p>
-            <p>This does not mean local AI automatically preserves privilege in every scenario. Your firm still needs internal policies governing who accesses the system, what data can be input, and how outputs are treated in the work product. But the fundamental architectural risk of third-party disclosure is eliminated. The system sits in your server room, not someone else's data center. For more on how different organization types benefit from local infrastructure, see our <a href="law-firms.html">Law Firms</a> page.</p>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <h3>Can a tribal government run AI without cloud providers?</h3>
-          <div class="faq-answer">
-            <p><strong>Yes. That is one of the primary use cases Island Mountain hardware is built for.</strong> Tribal nations exercise inherent sovereignty over constituent data, enrollment records, health information, and internal governance documents. Routing that data through cloud AI providers means processing sovereign data through jurisdictions and infrastructure outside tribal authority.</p>
-            <p>Local AI hardware keeps everything on tribal premises, under tribal law, processed by hardware the nation owns outright. No data leaves the reservation. No cloud provider terms of service apply to your data. No federal or state jurisdiction touches the processing.</p>
-            <p>The models pre-installed on every system (DeepSeek V4-Flash, Llama 4 Scout, DeepSeek R1 70B Distill or Qwen 3 72B) carry permissive open-source licenses (MIT and Apache 2.0), meaning the tribe owns the models with no usage restrictions. The system works fully air-gapped if your security posture requires it. Disconnect the ethernet cable and it still runs.</p>
-            <p>Tribal IT infrastructure varies widely. If you have a server room or even a climate-controlled data closet with the right electrical circuit (208V/30A), the system fits. If you don't, we can discuss what site preparation looks like. See our <a href="tribal-nations.html">Tribal Nations</a> page for governance, emergency management, and health services workflows, or visit our <a href="contact.html">contact page</a> to start a conversation about your specific setup.</p>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <h3>Does local AI hardware meet ITAR requirements for defense contractors?</h3>
-          <div class="faq-answer">
-            <p><strong>ITAR restricts the processing and storage of controlled technical data to environments that prevent foreign access.</strong> Cloud infrastructure operated by providers with multinational operations, overseas data centers, or foreign-national employees creates structural compliance risk for ITAR-regulated data.</p>
-            <p>Local AI hardware that you own, operate on US soil, and control with US-person-only access eliminates the cloud processing vector entirely. The data stays on your premises, processed by hardware under your physical control, with no third-party infrastructure involved.</p>
-            <p>Island Mountain systems run open-source models (permissive open-source licenses, publicly available weights), which are not themselves controlled under ITAR. The controlled element is your data, and local hardware ensures that data never transits infrastructure you do not control.</p>
-            <p>However, Island Mountain does not provide ITAR compliance certification, documentation, or legal guidance. ITAR compliance is an organizational responsibility that covers physical security, personnel screening, access controls, and documentation well beyond the hardware layer. What we provide is infrastructure that removes the cloud processing variable from your compliance posture. Consult your ITAR compliance officer or legal counsel for guidance specific to your program. For CUI, CMMC, and ITAR-specific workflows, see our <a href="defense-contractors.html">Defense Contractors</a> page.</p>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <h3>Is DeepSeek V4-Flash safe to use with sensitive organizational data?</h3>
-          <div class="faq-answer">
-            <p>The safety question about DeepSeek V4-Flash usually comes from two concerns: the model's Chinese origin and data handling. Here are the facts.</p>
-            <p><strong>DeepSeek V4-Flash is an open-weights model released under the MIT license. When you run it on Island Mountain hardware, the model executes entirely on your local GPUs. No data is sent to DeepSeek, to any Chinese server, or to any external endpoint.</strong> The model weights are publicly available and have been independently audited by the open-source community. The model does not phone home. It cannot phone home. It is a file sitting on your hard drive being processed by your GPUs.</p>
-            <p>The risk with DeepSeek exists only when you use it through DeepSeek's cloud API, which routes your data through their servers. That is not how Island Mountain systems work. Our systems run the model locally, air-gapped if you want, with zero external communication.</p>
-            <p>The model itself does not contain backdoors or data exfiltration code. It is a set of numerical weights processed through standard inference engines (vLLM/Ollama). Treat it like any other software asset: verify the download hash, review your organization's acceptable use policy, and run it on infrastructure you control.</p>
-          </div>
-        </div>
+      <div class="au-ctas au-reveal">
+        <a href="contact.html" class="btn btn-primary">Talk to Sales</a>
+        <a href="#topics" class="btn btn-secondary">Jump to a Topic</a>
       </div>
-
-
-      <!-- Product Imagery -->
-      <div class="product-inline fade-in">
-        <img src="images/product-summit-healthcare.webp" alt="Island Mountain Summit Series AI server configured for regulated industry operations" class="product-inline-img" width="568" height="379" loading="lazy">
-        <p class="product-inline-caption">Summit Series: pre-built, burn-tested, ready to deploy in regulated environments</p>
-      </div>
-      <!-- Category C: Technical -->
-      <div class="faq-category fade-in" id="technical">
-        <h2>How the Hardware Works</h2>
-
-        <div class="faq-item">
-          <h3>What VRAM do I need to run DeepSeek V4-Flash?</h3>
-          <div class="faq-answer">
-            <p><strong>DeepSeek V4-Flash (284B parameters) runs at FP8 in approximately 170GB of VRAM, or 282GB at full FP16 precision.</strong> Running it across two GPUs using tensor parallelism delivers faster inference because the model layers are split and processed in parallel.</p>
-            <p>All Island Mountain systems ship with at least 192GB of combined VRAM (two GPUs). On our Summit Base tier (2x RTX PRO 6000 Blackwell 96GB), you can run DeepSeek V4-Flash at FP8 with roughly 22GB of headroom and approximately 60-90 tokens per second for single-user inference thanks to the RTX PRO 6000's 1,597 GB/s GDDR7 memory bandwidth. On the Summit Ridge tier (build-to-order), performance is similar in a configuration matched to your workload.</p>
-            <p>If you need to run DeepSeek V4-Flash at full FP16 quality with maximum fidelity, our Summit Pinnacle tier uses 4x RTX PRO 6000 Blackwell 96GB GPUs (384GB VRAM). Pre-order now - ships July 2026. The Summit Base and Summit Ridge tiers run V4-Flash at FP8; full FP16 is the Pinnacle tier. See our full GPU comparison on the <a href="products.html">Summit</a>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <h3>What models come pre-installed on Island Mountain hardware?</h3>
-          <div class="faq-answer">
-            <p><strong>Every Summit Base and Summit Ridge system ships with three models installed, configured, and burn-tested:</strong></p>
-            <p><strong>DeepSeek V4-Flash</strong> is a reasoning and general-purpose model built for complex analysis, multi-step problem solving, code generation, and structured thinking. It runs at FP8 using approximately 170GB of VRAM on the Summit Base tier.</p>
-            <p><strong>Llama 4 Scout</strong> is Meta's general-purpose model, replacing Llama 3.1 with meaningfully better benchmark performance on the same VRAM footprint. Strong across writing, summarization, question answering, and conversational tasks. It uses approximately 40-48GB of VRAM.</p>
-            <p><strong>DeepSeek R1 70B Distill or Qwen 3 72B</strong> (buyer selects at order). R1 70B Distill (MIT licensed) provides explicit chain-of-thought reasoning for legal, financial, and compliance work. Qwen 3 72B (Apache 2.0) delivers top-tier enterprise general performance. Each uses approximately 40-48GB of VRAM.</p>
-            <p>All carry permissive open-source licenses (MIT or Apache 2.0) with no usage restrictions. You own them outright. You can switch between them instantly through the OpenWebUI dropdown menu. Additional open-source models can be downloaded and installed after delivery through Ollama or the OpenWebUI interface. For the first 30 days, we walk you through model management directly.</p>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <h3>What is OpenWebUI and how does it work?</h3>
-          <div class="faq-answer">
-            <p><strong>OpenWebUI is a free, open-source, browser-based interface for interacting with local AI models. Think of it as a private version of ChatGPT that runs entirely on your network.</strong> No account with any cloud provider. No external data transmission.</p>
-            <p>You open a web browser on any device connected to your network (Chrome, Firefox, Safari, Edge), navigate to the server's local address, and start prompting. The interface includes a dropdown menu to switch between installed models (DeepSeek V4-Flash, Llama 4 Scout, DeepSeek R1 70B Distill or Qwen 3 72B), full conversation history stored locally on the server, and an admin panel for user management and model access controls.</p>
-            <p>Your administrator can create accounts for each team member, control which models each user can access, and monitor usage. Conversations are stored on the server's local drive, not in any cloud. Search, organize, and reference past conversations just like you would in any chat application.</p>
-            <p>OpenWebUI requires no command-line knowledge to use. If someone can use ChatGPT, they can use OpenWebUI. The interface is pre-configured on every Island Mountain system before it ships.</p>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <h3>What GPUs does Island Mountain use, and how do the tiers differ?</h3>
-          <div class="faq-answer">
-            <p><strong>Every Island Mountain Summit system uses the same professional GPU: the NVIDIA RTX PRO 6000 Blackwell Server Edition.</strong> The tiers differ in how many cards they pair and how much total VRAM that gives you:</p>
-            <p>Each <strong>RTX PRO 6000 Blackwell</strong> card carries 96GB of GDDR7 ECC memory with 1,597 GB/s of bandwidth and delivers 1 PFLOP of FP16 Tensor compute, with native FP8 and FP4 support on its 5th-generation Tensor Cores. The <strong>Summit Base tier</strong> pairs two cards for 192GB of total VRAM and costs $59,000-$69,000. The <strong>Summit Ridge tier</strong> (build-to-order) costs $95,000-$120,000 with a configuration matched to your workload.</p>
-            <p>The <strong>Summit Pinnacle tier</strong> uses four RTX PRO 6000 Blackwell cards for 384GB of total VRAM, enough to run DeepSeek V4-Flash at full FP16 quality with its 1M token context window, at $175,000-$225,000. Pre-order now, ships July 2026.</p>
-            <p>The Summit Base tier is the best value for most organizations needing strong performance at lower cost. The Summit Ridge tier offers custom configuration. The Summit Pinnacle tier is for organizations that need the largest models at full FP16 quality. See our <a href="products.html">Summit</a>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <h3>How many users can simultaneously access an Island Mountain system?</h3>
-          <div class="faq-answer">
-            <p><strong>A dual-GPU Island Mountain system comfortably serves a team of 5-15 simultaneous users</strong> for typical business inference tasks like document drafting, research queries, contract review, and summarization.</p>
-            <p>The exact number depends on the model being used, prompt complexity, and how long responses need to be. Simple queries return fast and queue efficiently. Long-form document generation with high token counts takes more time per request, which means fewer concurrent users before response times stretch.</p>
-            <p>The Summit Ridge tier (RTX PRO 6000, build-to-order) handles concurrent workloads with additional GPU capacity. The Summit Base tier handles concurrent workloads well, with the RTX PRO 6000's 1,597 GB/s GDDR7 memory bandwidth allowing fast processing of queued requests across vLLM tensor parallelism.</p>
-            <p>This system is not designed to serve 50 or 100 simultaneous heavy users. If your organization has that kind of demand, you either need multiple systems or enterprise cloud infrastructure is the better fit. Island Mountain is built for the team of 5-15 who need data sovereignty and personal service, not for mass-scale deployment. See our <a href="products.html">Summit</a>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <h3>What power requirements does local AI inference hardware need?</h3>
-          <div class="faq-answer">
-            <p><strong>All Island Mountain systems require a dedicated 208V/30A power circuit with a NEMA L6-30R outlet.</strong> This is the same kind of circuit found in server rooms, data closets, and commercial facilities. The power supply operates at 200-240V only. It will not run on a standard 120V wall outlet.</p>
-            <p>If your facility does not already have this circuit, a licensed electrician can install one. Typical installation cost ranges from $500-$2,000 depending on your building's electrical infrastructure and how far the new circuit needs to run from the panel.</p>
-            <p>Average power draw under typical inference loads is 1.5-2.5 kW. At $0.12/kWh, that translates to roughly $100-$200 per month in electricity. The system runs at standard server room temperatures (64-80&deg;F / 18-27&deg;C) and does not require specialized cooling beyond normal HVAC. The chassis includes redundant 2000W power supplies for reliability. See our <a href="products.html">Summit</a>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <h3>Can I add models after the system ships?</h3>
-          <div class="faq-answer">
-            <p><strong>Yes. The system is not locked to the three pre-installed models.</strong> You can download and install any compatible open-source model through the Ollama interface or directly through OpenWebUI's model management panel.</p>
-            <p>The constraint is VRAM. Your system has a fixed amount of GPU memory, and each model consumes VRAM when loaded. On the Summit Base and Summit Ridge tiers (192GB total VRAM), you can run any model that fits within that memory. Most 70B-parameter models require 40-48GB of VRAM at FP16 precision. Smaller models (7B, 13B, 30B) use less and can run alongside larger models if you want multiple loaded simultaneously.</p>
-            <p>You cannot run models that exceed your total VRAM. For example, DeepSeek V4-Flash (284B parameters) needs approximately 282GB of VRAM at full FP16, which fits on the Summit Pinnacle tier (384GB); the Summit Base tier runs it at FP8. Quantized versions of larger models can sometimes fit on lower tiers, but with reduced quality.</p>
-            <p>For the first 30 days after delivery, we walk you through the model installation process directly. After that, it is a download-and-configure process your IT team can handle. We publish tested compatibility lists for each hardware tier.</p>
-          </div>
-        </div>
-      </div>
-
-        <div class="faq-item">
-          <h3>How can OpenWebUI be air-gapped if it is a web application?</h3>
-          <div class="faq-answer">
-            <p><strong>The "web" in OpenWebUI refers to the browser-based interface, not internet dependency.</strong></p>
-            <p>OpenWebUI is a self-hosted application that runs entirely on the server hardware. Users access it through a web browser pointed at the server's local network address, the same way you access a router's admin panel. No cloud account required. No external API calls for inference.</p>
-            <p>Out of the box, OpenWebUI does include features that make outbound network connections: model downloads, version update checks, HuggingFace Hub access for embedding models, optional community sharing, web search integration for RAG, and anonymized telemetry. None of these are required for AI inference.</p>
-            <p>Island Mountain disables every outbound feature before shipping. The key environment variables (OFFLINE_MODE, HF_HUB_OFFLINE, ENABLE_COMMUNITY_SHARING, ANONYMIZED_TELEMETRY, ENABLE_RAG_WEB_SEARCH, and SAFE_MODE) are all set to their air-gapped states during the build process. The system is tested in this configuration during the 72-hour burn-in.</p>
-            <p>Your IT team can verify it independently. Inspect the container environment variables on the delivered system. Or connect it to a monitored network segment and confirm zero outbound connections during operation. If your security policy requires belt-and-suspenders, configure host-level firewall rules to block all outbound traffic. The system continues to operate normally.</p>
-          </div>
-        </div>
-
-      <!-- Category D: Cost -->
-      <div class="faq-category fade-in" id="cost">
-        <h2>Cost &amp; Pricing</h2>
-
-        <div class="faq-item">
-          <h3>How much does it cost to set up a private AI server for a small organization?</h3>
-          <div class="faq-answer">
-            <p><strong>Island Mountain systems range from $59,000 to $225,000 depending on GPU configuration.</strong> The Summit Base tier with 2x NVIDIA RTX PRO 6000 Blackwell 96GB (pre-made) costs $59,000-$69,000. The Summit Ridge tier with RTX PRO 6000 Blackwell GPUs (build-to-order) costs $95,000-$120,000. The Summit Pinnacle tier with 4x RTX PRO 6000 Blackwell 96GB GPUs costs $175,000-$225,000 - pre-order now, ships July 2026.</p>
-            <p>Every system is a one-time purchase. There are no subscription fees, no per-token charges, and no recurring software licensing costs. The models carry permissive open-source licenses and are free to use. The interface (OpenWebUI) is open-source.</p>
-            <p>Beyond the hardware purchase, plan for a dedicated 208V/30A electrical circuit if you don't already have one in your server room. A licensed electrician typically installs this for $500-$2,000. Ongoing electricity costs run approximately $100-$200 per month depending on usage and your local power rates. That's it. No hidden fees.</p>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <h3>What is the total cost of cloud AI versus local AI hardware over five years?</h3>
-          <div class="faq-answer">
-            <p>The math depends on your team size and usage, but here is a representative comparison for a 10-user organization:</p>
-            <p><strong>Cloud AI subscriptions cost $12,000-$120,000 over five years for a 10-user team. An Island Mountain Summit Base system costs $59,000-$69,000 once, with a five-year total cost of ownership of approximately $65,000-$81,000 including electricity.</strong></p>
-            <p>Cloud options (ChatGPT Enterprise, Azure OpenAI, Anthropic) run $20-$200 per user per month, plus per-token overages. For 10 users, that's $2,400-$24,000 per year, with prices that historically only increase. The Island Mountain Summit Base system's annual electricity runs $1,200-$2,400, and that is your only recurring cost.</p>
-            <p>The crossover point where local hardware becomes cheaper than cloud depends on your cloud spend. At $500/month in cloud AI costs (modest usage), local hardware pays for itself in roughly 10 years. At $2,000/month, the payback period is under 3 years. At $5,000/month or above, you break even in about one year.</p>
-            <p>The cost advantage of local hardware grows every month it runs, because the marginal cost of each additional inference is just electricity. Cloud costs compound. Hardware costs don't.</p>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <h3>What are the ongoing costs after purchasing local AI hardware?</h3>
-          <div class="faq-answer">
-            <p><strong>After the one-time hardware purchase, your recurring costs are electricity ($100-$200/month) and optional support. There are no software licensing fees.</strong></p>
-            <p>Electricity runs approximately $100-$200 per month, or $1,200-$2,400 per year. This estimate assumes 1.5-2.5 kW average power draw at $0.12/kWh, which is the US national average. Your actual cost depends on local utility rates and how heavily the system is used.</p>
-            <p>There are no software licensing fees. The models (DeepSeek V4-Flash, Llama 4 Scout, DeepSeek R1 70B Distill or Qwen 3 72B) carry permissive open-source licenses (MIT and Apache 2.0). OpenWebUI is open-source. The operating system is Ubuntu Server LTS, also free.</p>
-            <p>After the included 30-day support period, ongoing support is available on a per-incident basis or through an annual retainer. This covers model configuration, performance tuning, troubleshooting, and remote diagnostics.</p>
-            <p>The only additional cost you might encounter is if you want a GPU upgrade in the future. GPU upgrades are a hardware swap where your existing cards are credited at secondary market value toward the replacement. This is not an annual cost; it is a one-time decision you make if and when you need more capability.</p>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <h3>Why should I pay $59,000+ when I can build a similar AI server for $5,000-$10,000?</h3>
-          <div class="faq-answer">
-            <p><strong>You can. The guides exist, and the software stack is the same.</strong> Ollama, vLLM, Open WebUI, and open-weight models like DeepSeek V4-Flash and Llama 4 Scout. If you have the technical staff to build, configure, test, and maintain it, a DIY system running consumer RTX 4090s will run inference.</p>
-            <p>Here is what that build does not include:</p>
-            <p><strong>Professional GPU procurement documentation.</strong> Every RTX PRO 6000 Blackwell card in an Island Mountain system has a documented procurement chain: purchase receipts from authorized NVIDIA channels, serial number registry, and RMA history. If your compliance officer, auditor, or contracting officer asks where your GPU hardware came from and who has touched it, you need that paper trail. Consumer GPUs purchased from Amazon or Newegg do not carry it.</p>
-            <p><strong>72-hour continuous burn-in testing.</strong> DIY guides test whether the system boots. Island Mountain tests whether it sustains full-load inference for 72 continuous hours without thermal throttling, memory errors, or performance degradation. That is the difference between a personal project and production infrastructure that your organization depends on.</p>
-            <p><strong>NVIDIA professional RMA chains.</strong> When a card fails, the replacement GPU enters the same procurement documentation chain. Consumer GPU RMAs do not maintain that continuity, which matters for HIPAA, ITAR/DFARS, and CMMC audit trails.</p>
-            <p><strong>Direct builder support.</strong> You talk to the person who built your system. Not a tier-1 support ticket queue, not a chatbot, not a forum post. The person who assembled it and ran the burn-in.</p>
-            <p>The honest answer: if you are a developer running experiments, build your own. If you are a regulated organization putting AI into production workflows where compliance documentation and hardware provenance matter, that is what the price delta covers. See our <a href="products.html">Summit</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Category E: Purchase & Setup -->
-      <div class="faq-category fade-in" id="process">
-        <h2>Purchase &amp; Setup Process</h2>
-
-        <div class="faq-item">
-          <h3>How long does it take to receive and set up an Island Mountain system?</h3>
-          <div class="faq-answer">
-            <p><strong>From deposit to delivery, expect 3-5 weeks for the Summit Base tier (pre-made).</strong> The process has four phases: component sourcing and verification (new GPUs sourced through authorized NVIDIA channels with full procurement documentation), assembly and configuration (15-phase build process), 72-hour continuous burn-in testing, and full benchmarking with delivery manifest.</p>
-            <p>The system arrives pre-configured. Models are installed, OpenWebUI is set up, and the server is ready to run. Setup on your end means racking the server, connecting power (208V/30A circuit), connecting to your network, and opening a browser. Most organizations are running their first prompts within hours of receiving the hardware.</p>
-            <p>The Summit Ridge tier may take 4-6 weeks because RTX PRO 6000 GPUs are configured on a build-to-order basis. The Summit Pinnacle tier (4x RTX PRO 6000 Blackwell) is available for pre-order now, ships July 2026. We include 30 days of hands-on setup support with every purchase, so if your IT team hits a snag during network configuration or user setup, you have direct access to the person who built the system.</p>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <h3>How does the 50% deposit and payment structure work?</h3>
-          <div class="faq-answer">
-            <p><strong>The purchase process starts with a conversation about your workload, followed by a custom quote with a 14-day price lock. A 50% deposit initiates the build; the remaining 50% is due upon delivery.</strong> Quotes include a 14-day price lock, meaning the quoted price holds for 14 days from acceptance. If GPU market prices spike above 10% during that window, you can cancel with a full deposit refund.</p>
-            <p>Once you accept the quote, a 50% deposit initiates component sourcing and the build process. We do not build speculatively. Your deposit triggers the purchase of your specific GPUs and components.</p>
-            <p>The remaining 50% is due upon delivery. You do not pay the balance until the system arrives, burn-tested and benchmarked, with a complete delivery manifest documenting every component serial number, test result, and configuration detail.</p>
-            <p>Payment methods and financing options can be discussed during the quote process. Some buyers have successfully financed hardware purchases through equipment financing lenders who treat AI servers like any other capital equipment purchase. Island Mountain does not currently offer direct financing, but we can point you toward lenders who work with technology equipment purchases.</p>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <h3>What does the 72-hour burn-in test verify?</h3>
-          <div class="faq-answer">
-            <p><strong>Every Island Mountain system runs 72 hours of continuous stress testing before it ships.</strong> This is not a quick benchmark or a 10-minute smoke test. It is three straight days of sustained GPU compute at high load with automated monitoring.</p>
-            <p>The test verifies thermal stability under continuous load (GPUs maintain safe operating temperatures without throttling), memory integrity (no VRAM errors across billions of operations), inference consistency (model outputs remain stable and correct across thousands of sequential prompts), power supply reliability under sustained draw, and storage performance under continuous read/write activity.</p>
-            <p>Automated monitoring tracks temperature, clock speeds, error rates, and performance metrics throughout the entire 72-hour window. Any anomaly triggers an alert. Systems that show instability, thermal throttling, VRAM errors, or any deviation from expected performance do not ship. Components are swapped and the test restarts.</p>
-            <p>You receive a complete benchmark report and delivery manifest with your system, documenting every test result, component serial number, and configuration detail. This is not a certificate of perfection; it is proof that the system ran hard for three days without failing.</p>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <h3>What happens if a component fails during the warranty period?</h3>
-          <div class="faq-answer">
-            <p><strong>Every Island Mountain system ships with a 1-year hardware warranty covering all components, including GPUs, CPU, RAM, storage drives, and power supplies.</strong> If a component fails within the first year, we handle the replacement.</p>
-            <p>GPU failures are managed through supplier RMA (Return Merchandise Authorization) agreements with documented replacement timelines. We maintain a 20% warranty reserve per unit specifically to ensure we can cover replacements without delay. You are not waiting for us to find budget.</p>
-            <p>The process works like this: you contact us (direct phone at <a href="tel:+13414418740" class="clr-copper">1-341-441-8740</a> or email to the builder), we diagnose the issue remotely, and if a physical component needs replacement, we ship the part or arrange a swap. For GPU replacements, turnaround depends on the specific card and current availability, but our supplier agreements include prioritized RMA processing.</p>
-            <p>Extended warranty options beyond the first year are available at the time of purchase. After warranty, ongoing support is available on a per-incident or annual retainer basis.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Category F: Risks & Limitations -->
-      <div class="faq-category fade-in" id="risks">
-        <h2>Risks &amp; Limitations</h2>
-
-        <div class="faq-item">
-          <h3>Island Mountain is a new company with no shipped units. Why should I trust a first purchase?</h3>
-          <div class="faq-answer">
-            <p>This is a fair question and you should ask it. Here is the honest answer.</p>
-            <p><strong>Island Mountain is a Colorado company co-founded by <a href="https://www.johndou.com" target="_blank" rel="noopener">John Dougherty</a> (hardware engineer, 25-year technology veteran) and Basho Parks (marketing and sales). The company is new. The team is not.</strong> Every system is built, tested, and delivered by people with decades of combined experience deploying technology infrastructure in demanding environments.</p>
-            <p>The specific protections built into the purchase process exist because we know trust has to be earned: the 14-day price lock lets you cancel if GPU prices spike above 10%. The 50% deposit / 50% on delivery structure means you do not pay in full until you have a working, tested system in your hands. The 1-year hardware warranty is backed by a 20% warranty reserve per unit. The 30-day setup support gives you direct access to the builder, not a call center.</p>
-            <p>The hardware is standard enterprise components (NVIDIA GPUs, AMD EPYC CPUs, Supermicro chassis) with established supplier RMA agreements. The software is open-source (OpenWebUI, vLLM, Ubuntu Server LTS). Nothing is proprietary, nothing is locked, and if Island Mountain disappeared tomorrow, your system would keep running because every piece of it is built on publicly available, open-source infrastructure.</p>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <h3>What happens if Island Mountain goes out of business after I buy?</h3>
-          <div class="faq-answer">
-            <p><strong>Your system keeps running. This is by design, not by accident.</strong></p>
-            <p>Every component of the system is built on open-source software and standard enterprise hardware. The operating system is Ubuntu Server LTS (free, community-supported). The inference engines are vLLM and Ollama (open-source). The interface is OpenWebUI (open-source). The models carry permissive open-source licenses with no usage restrictions. None of it depends on Island Mountain's continued existence.</p>
-            <p>If Island Mountain were to close, you would lose access to our specific support, warranty coverage, and GPU upgrade program. But the system itself requires no license, no activation, and no connection to any Island Mountain server. It is a standalone server running open-source software on standard hardware.</p>
-            <p>OS updates come from Ubuntu's repositories. CUDA driver updates come from NVIDIA. Model updates come from Hugging Face and Ollama's public model library. Your IT team or any competent Linux administrator can maintain the system independently.</p>
-            <p>We built it this way because vendor lock-in is exactly the problem we are solving. If we built a system that depended on us to function, we would be no different from the cloud vendors we are replacing.</p>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <h3>Can local AI keep up with cloud AI as models improve?</h3>
-          <div class="faq-answer">
-            <p><strong>Not on day one. But within weeks or months, yes.</strong></p>
-            <p>Cloud providers release proprietary models (GPT-4o, Claude Opus, Gemini) immediately because they control the infrastructure. You get access the day they launch. Open-source models lag that release cycle. When OpenAI ships a new flagship, you will not have an equivalent open-source model on your local hardware that afternoon.</p>
-            <p>What has consistently happened over the past two years is that open-source models close the gap rapidly. DeepSeek V4-Flash, Llama 4 Scout, and DeepSeek R1 all reached or exceeded the performance of the proprietary models they followed within weeks to months of those models' releases. The open-source AI development community is massive, well-funded, and accelerating.</p>
-            <p>Your Island Mountain system can run any new open-source model that fits within its VRAM. When a new model releases, you download it through Ollama or the OpenWebUI interface, and it is available to your team. No hardware swap needed unless the new model exceeds your VRAM capacity.</p>
-            <p>The risk is that a future model generation requires significantly more VRAM than your system has. That is why we offer a GPU upgrade path. Your existing GPUs are credited at secondary market value toward next-generation cards.</p>
-          </div>
-        </div>
-      </div>
-
     </div>
   </section>
 
-  <!-- AEO Summary -->
-  <div style="border-left:3px solid var(--copper);padding:16px 20px;margin:32px 0;background:rgba(217,119,6,0.05);border-radius:0 8px 8px 0;">
-  <strong>Summary:</strong> Island Mountain builds on-premises AI inference servers with NVIDIA RTX PRO 6000 Blackwell GPUs, priced from $59K to $225K as a one-time purchase. The hardware ships pre-configured with open-source models and requires no cloud connection, making it suitable for organizations bound by HIPAA, ITAR, attorney-client privilege, tribal data sovereignty (OCAP), and FERPA requirements.
+  <!-- Topic marquee -->
+  <div class="au-marquee" aria-label="FAQ topics">
+    <div class="au-marquee__track">
+      <span class="au-mq-item">Air-Gapped AI</span><span class="au-mq-item">HIPAA</span><span class="au-mq-item">Attorney-Client Privilege</span><span class="au-mq-item">ITAR / CMMC</span><span class="au-mq-item">Tribal Sovereignty</span><span class="au-mq-item">Woven Security Fabric</span><span class="au-mq-item">Zero Standing Privilege</span><span class="au-mq-item">RTX PRO 6000 Blackwell</span><span class="au-mq-item">DeepSeek V4-Flash</span><span class="au-mq-item">Quote-Based</span><span class="au-mq-item">72-Hour Burn-In</span>
+    </div>
+    <div class="au-marquee__track" aria-hidden="true">
+      <span class="au-mq-item">Air-Gapped AI</span><span class="au-mq-item">HIPAA</span><span class="au-mq-item">Attorney-Client Privilege</span><span class="au-mq-item">ITAR / CMMC</span><span class="au-mq-item">Tribal Sovereignty</span><span class="au-mq-item">Woven Security Fabric</span><span class="au-mq-item">Zero Standing Privilege</span><span class="au-mq-item">RTX PRO 6000 Blackwell</span><span class="au-mq-item">DeepSeek V4-Flash</span><span class="au-mq-item">Quote-Based</span><span class="au-mq-item">72-Hour Burn-In</span>
+    </div>
   </div>
 
-  <!-- CTA -->
-  <section class="section section-darker faq-cta">
-    <div class="container fade-in">
-      <h2>Still Have Questions?</h2>
-      <p>One conversation, no sales pitch. Tell us about your organization and what you are trying to accomplish with local AI. We will give you a straight answer.</p>
-      <div class="btn-group">
-        <a href="contact.html" class="btn btn-primary">Start a Conversation</a>
-        <a href="products.html" class="btn btn-secondary">See What We Build</a>
+  <!-- Orientation: two halves of a sovereign stack + topic links -->
+  <section class="au-section" id="topics">
+    <div class="container">
+      <span class="au-eyebrow-c au-reveal">Start Here</span>
+      <h2 class="au-h2 au-reveal">Two halves of one sovereign stack.</h2>
+      <p class="au-lede au-reveal">Island Mountain ships the hardware and the governance together: a Summit appliance that runs frontier open-source models entirely on your premises, and the Woven Security &amp; Governance Fabric that sits inline on every action the AI takes. The questions below cover both, plus compliance and how quotes work. There is no public price list, because sizing sovereign infrastructure is a human conversation.</p>
+      <div class="faq-ways au-stagger">
+        <div class="au-card beam-card" style="--i:0">
+          <span class="au-ways-eyebrow">The Appliance</span>
+          <h3>Summit Series</h3>
+          <p>A sovereign AI server per seat: NVIDIA RTX PRO 6000 Blackwell, air-gappable, pre-built and burn-tested for 72 hours, with frontier open-source models installed. One per desk, or an estate across the organization.</p>
+          <a class="au-ways-link" href="products.html">Explore the Summit Series &rarr;</a>
+        </div>
+        <div class="au-card beam-card" style="--i:1">
+          <span class="au-ways-eyebrow">The Trust Plane</span>
+          <h3>Woven Security &amp; Governance</h3>
+          <p>Identity, guardrails, approval gates, and an audit ledger inline on every tool call, with zero standing privilege. Woven into every unit, and deployable cloud-side or fully air-gapped.</p>
+          <a class="au-ways-link" href="lamprey-woven-security-governance.html">Explore the Security Fabric &rarr;</a>
+        </div>
       </div>
-      <p class="cta-subtitle"><i class="ri-phone-line icon-copper-mr-sm"></i>Or call directly: <a href="tel:+13414418740" class="copper-semibold">1-341-441-8740</a></p>
+      <div class="faq-topics au-reveal">
+        <a href="#basics">Sovereign AI, Explained</a>
+        <a href="#fabric">The Security Fabric</a>
+        <a href="#compliance">Compliance &amp; Sovereignty</a>
+        <a href="#hardware">The Summit Hardware</a>
+        <a href="#owning">Quotes, Delivery &amp; Trust</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Category 1: Sovereign AI, Explained -->
+  <section class="au-section au-section--alt" id="basics">
+    <div class="container">
+      <span class="au-eyebrow-c au-reveal">Sovereign AI, Explained</span>
+      <h2 class="au-h2 au-reveal">The basics, in plain terms.</h2>
+      <div class="faq-list">
+
+        <div class="faq-item beam-card au-reveal" style="--i:0">
+          <h3>What is local AI inference hardware, and how is it different from cloud AI?</h3>
+          <div class="faq-answer answer-q1">
+            <p><strong>Local AI inference hardware is a physical server with GPUs that runs AI models on your premises instead of sending your data to someone else's data center.</strong> "Inference" means the system processes your prompts and generates responses from pre-trained models. It does not train new models; it runs them locally.</p>
+            <p>With a cloud AI service (ChatGPT, Claude, Gemini, Azure OpenAI), your prompts leave your network, get processed on the provider's GPUs, and the response comes back over the internet. The provider sees your data and processes it on shared infrastructure. With local hardware the entire cycle happens inside your building: prompt goes to your GPU, response comes back from your GPU, nothing leaves your network.</p>
+            <p>You own the hardware, you own the open-weight models, and you control every variable. And because every Island Mountain unit carries the <a href="lamprey-woven-security-governance.html">Woven Security &amp; Governance Fabric</a>, governance travels with the work instead of living in a vendor's cloud. The tradeoff is honest: cloud gives you the latest proprietary models without buying hardware; local gives you data sovereignty, no recurring token fees, and models you control, while open-source releases trail proprietary ones by weeks to months.</p>
+          </div>
+        </div>
+
+        <div class="faq-item beam-card au-reveal" style="--i:1">
+          <h3>Does sovereign AI hardware work fully air-gapped, with no internet?</h3>
+          <div class="faq-answer">
+            <p><strong>Yes. Every Island Mountain system is designed to operate completely air-gapped.</strong> The models, the inference engine (vLLM and Ollama), and the interface (OpenWebUI) all run locally. Once the system is set up and models are loaded, you can disconnect the ethernet cable entirely and everything still works.</p>
+            <p>Users reach the system through a web browser on your local network. As long as the device and the server share a network, even an isolated one with no internet, inference runs normally. No phone-home. No license checks. No cloud dependencies. The only things that ever need internet are downloading new models and applying OS security updates, both optional and on your schedule.</p>
+            <p>Island Mountain applies a documented air-gap configuration before delivery, disabling every outbound feature at the environment-variable level, and confirms it during the 72-hour burn-in. Your IT team can independently verify every setting on the delivered system.</p>
+          </div>
+        </div>
+
+        <div class="faq-item beam-card au-reveal" style="--i:2">
+          <h3>What does "a sovereign AI server at every desk" mean?</h3>
+          <div class="faq-answer">
+            <p><strong>The unit of deployment is a workstation, not a shared cloud tenant.</strong> Each Summit is its own server and hardware rack: a burnt-copper anodized tower, pre-built and burn-tested for 72 hours, air-gappable out of the box, with two NVIDIA RTX PRO 6000 Blackwell GPUs and models pre-installed.</p>
+            <p>You can put one on a single desk, or deploy an estate across the organization. A single rack starts with two cards and ramps to six to eight GPUs as you grow, and a fully ramped rack serves roughly 1,500 to 1,800 users on on-premises inference, with no per-seat cloud fees and no token metering. See the <a href="products.html">Summit Series</a> for tiers and specifications.</p>
+          </div>
+        </div>
+
+        <div class="faq-item beam-card au-reveal" style="--i:3">
+          <h3>Who should NOT buy sovereign AI hardware?</h3>
+          <div class="faq-answer">
+            <p><strong>We would rather tell you now than after a serious capital purchase.</strong> If your organization needs the absolute latest proprietary models (GPT-4o, Claude Opus, Gemini Ultra) on release day, local hardware will not deliver that; open-source closes the gap over time, but there is always a gap.</p>
+            <p>If your data is not sensitive and cloud AI is working fine for a handful of casual users, the sovereignty story may not justify owning infrastructure. And if your organization has no IT capability at all and cannot rack or maintain a server, know that after the included 30-day setup support your team owns the day-to-day, though ongoing support retainers are available.</p>
+            <p>Where local hardware earns its place is exactly where cloud creates exposure: regulated data, privileged data, sovereign data, and agentic workflows that must be governed and audited. If that is you, the rest of this page is written for you.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Category 2: The Woven Security & Governance Fabric -->
+  <section class="au-section" id="fabric">
+    <div class="container">
+      <span class="au-eyebrow-c au-reveal">The Security Fabric</span>
+      <h2 class="au-h2 au-reveal">Woven security &amp; governance.</h2>
+      <p class="au-lede au-reveal">The model can be tricked. The fabric is where the tricked action is stopped and logged. Here is how the governance layer works, whether it runs cloud-side or fully air-gapped.</p>
+      <div class="faq-list">
+
+        <div class="faq-item beam-card au-reveal" style="--i:4">
+          <h3>What is the Woven Security &amp; Governance Fabric?</h3>
+          <div class="faq-answer">
+            <p><strong>The Woven Security &amp; Governance Fabric (WSF), built as Lamprey, is the trust and control plane that sits inline on every action an AI agent takes.</strong> Identity, guardrails, approval gates, and an audit ledger on every tool call. It gives operators cloud visibility, data classification, compliance evidence, and approval-gated remediation without handing a third party standing access or your operating context.</p>
+            <p>On Island Mountain hardware it is woven into every unit, so findings, samples, credentials, and audit trails stay inside your boundary. It can also run on its own, cloud-side or air-gapped, for teams that need governance across an estate they already operate. For the full platform, see the <a href="lamprey-woven-security-governance.html">Security Fabric</a> page.</p>
+          </div>
+        </div>
+
+        <div class="faq-item beam-card au-reveal" style="--i:5">
+          <h3>Can I run the fabric cloud-side, or does it have to be air-gapped?</h3>
+          <div class="faq-answer">
+            <p><strong>Both. It runs two ways: outside your organization through the cloud, or inside as an air-gapped deployment.</strong> Either way, findings, samples, credentials, and audit trails stay in your custody, aligned to your existing security and governance model.</p>
+            <p>The architecture is hub-and-gateway: lightweight gateways run near the resources they inspect while evidence, status, and workflow are centralized where operators can act. It covers AWS, Azure, GCP, Kubernetes, and databases, runs inside your environment with no scan-data SaaS, and keeps access scoped through ephemeral credentials and audited approvals.</p>
+          </div>
+        </div>
+
+        <div class="faq-item beam-card au-reveal" style="--i:6">
+          <h3>How does the fabric stop agentic attacks like prompt injection and exfiltration?</h3>
+          <div class="faq-answer">
+            <p><strong>Agentic attacks ride the same rails as legitimate work, so the controls live outside the model, inline on every call.</strong> Prompt injection, agent-jacking, tool poisoning, data exfiltration, memory poisoning, and rogue agency all try to turn ordinary tool use against you.</p>
+            <p>Orchestration flows down through runtime and tools into the fabric, where identity, guardrails, approval gates, and the audit ledger evaluate each action before it executes. Sensitive actions are approval-gated, access is scoped and short-lived, and every request and approval is recorded. The model can be fooled; the fabric is where the fooled action is caught, stopped, and logged. The homepage <a href="index.html">security map</a> shows the flow end to end.</p>
+          </div>
+        </div>
+
+        <div class="faq-item beam-card au-reveal" style="--i:7">
+          <h3>What is "zero standing privilege"?</h3>
+          <div class="faq-answer">
+            <p><strong>Zero standing privilege means nothing holds broad, permanent access.</strong> Scan access is minted just in time, scoped to the operation, and revoked automatically. Write access and remediation are granted only after approval and stay fully audited.</p>
+            <p>We treat least privilege as a product constraint, not a dashboard label: a scanner or an agent must earn each action instead of accumulating trust it can later be tricked into misusing. That reduces the blast radius of both honest mistakes and active compromise.</p>
+          </div>
+        </div>
+
+        <div class="faq-item beam-card au-reveal" style="--i:8">
+          <h3>Does the fabric produce compliance evidence and audit trails?</h3>
+          <div class="faq-answer">
+            <p><strong>Yes. It preserves who requested, approved, and executed each sensitive action</strong>, connects technical findings to control families, and keeps audit-ready context so remediation reads as an operational control rather than a black box.</p>
+            <p>Evidence collection aligns to control mapping and repeatable review workflows that fit inside an existing compliance program, and it stays in your custody instead of becoming another external data exhaust. That evidence is what turns "we ran AI locally" into something you can show an auditor.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Category 3: Compliance & Sovereignty -->
+  <section class="au-section au-section--alt" id="compliance">
+    <div class="container">
+      <span class="au-eyebrow-c au-reveal">Compliance &amp; Sovereignty</span>
+      <h2 class="au-h2 au-reveal">The regulated-data questions.</h2>
+      <p class="au-lede au-reveal">We are not your compliance attorney, and nothing here is legal advice. What local hardware does is remove the third-party processing vector; what the fabric adds is the evidence. Your organization still owns the operational program.</p>
+      <div class="faq-list">
+
+        <div class="faq-item beam-card au-reveal" style="--i:9">
+          <h3>Does running AI locally comply with HIPAA?</h3>
+          <div class="faq-answer">
+            <p><strong>Running AI on local hardware eliminates the data-transmission vector that creates HIPAA exposure in the first place.</strong> With a cloud service, Protected Health Information (PHI) leaves your network and is processed on shared infrastructure controlled by a third party. Under 45 CFR &sect;164.402, that transmission can constitute a reportable disclosure event. With local inference, PHI never leaves your premises, and there is no business associate to sign a BAA with because none is involved.</p>
+            <p>Local hardware does not by itself make your entire workflow HIPAA-compliant. You still need access controls, audit logging, encryption at rest, and staff training. The hardware removes the cloud transmission risk, the <a href="lamprey-woven-security-governance.html">fabric</a> supplies the audit trail, and your organization owns the rest. Island Mountain is not a compliance attorney and does not certify HIPAA compliance. See our <a href="medical-practices.html">Medical Practices</a> page for how this fits a clinical program.</p>
+          </div>
+        </div>
+
+        <div class="faq-item beam-card au-reveal" style="--i:10">
+          <h3>Can a law firm use local AI without waiving attorney-client privilege?</h3>
+          <div class="faq-answer">
+            <p><strong>The core issue with cloud AI for law firms is this: client data sent to a third-party API is data disclosed to a third party.</strong> Under ABA Model Rule 1.6, attorneys have a duty to make reasonable efforts to prevent unauthorized disclosure of client information, and courts have found privilege waived when confidential information is processed through systems outside the firm's control.</p>
+            <p>Local AI keeps every prompt, document, and response on a server inside your office, behind your firewall, on hardware you own. Your firm still needs internal policies on who accesses the system, what data goes in, and how outputs are treated in work product, but the fundamental architectural risk of third-party disclosure is removed. See our <a href="law-firms.html">Law Firms</a> page for more.</p>
+          </div>
+        </div>
+
+        <div class="faq-item beam-card au-reveal" style="--i:11">
+          <h3>Can a tribal government run AI without cloud providers?</h3>
+          <div class="faq-answer">
+            <p><strong>Yes. It is one of the primary use cases Island Mountain hardware is built for.</strong> Tribal nations exercise inherent sovereignty over constituent data, enrollment records, health information, and governance documents. Routing that data through cloud AI means processing sovereign data through jurisdictions and infrastructure outside tribal authority.</p>
+            <p>Local AI keeps everything on tribal premises, under tribal law, processed by hardware the nation owns outright. No data leaves the reservation, no cloud terms of service apply, and no federal or state jurisdiction touches the processing. The pre-installed models carry permissive open-source licenses, so the nation owns them with no usage restrictions, and the system runs fully air-gapped if your posture requires it. See our <a href="tribal-nations.html">Tribal Nations</a> page for OCAP-aligned workflows.</p>
+          </div>
+        </div>
+
+        <div class="faq-item beam-card au-reveal" style="--i:12">
+          <h3>Does local AI hardware meet ITAR and CMMC requirements for defense contractors?</h3>
+          <div class="faq-answer">
+            <p><strong>ITAR restricts processing and storage of controlled technical data to environments that prevent foreign access.</strong> Cloud infrastructure with multinational operations, overseas data centers, or foreign-national employees creates structural compliance risk. Hardware you own, operate on US soil, and control with US-person-only access removes the cloud processing vector entirely.</p>
+            <p>The open-weight models are not themselves ITAR-controlled; your data is the controlled element, and local hardware keeps it off infrastructure you do not control. Island Mountain does not provide ITAR or CMMC certification. That compliance covers physical security, personnel screening, access controls, and documentation well beyond the hardware, and the <a href="lamprey-woven-security-governance.html">Woven Security &amp; Governance Fabric</a> supplies the audit evidence that supports it. See our <a href="defense-contractors.html">Defense Contractors</a> page for CUI, CMMC, and DFARS workflows.</p>
+          </div>
+        </div>
+
+        <div class="faq-item beam-card au-reveal" style="--i:13">
+          <h3>Is DeepSeek V4-Flash safe to use with sensitive organizational data?</h3>
+          <div class="faq-answer">
+            <p>The safety question usually comes from two concerns: the model's origin and data handling. Here are the facts.</p>
+            <p><strong>DeepSeek V4-Flash is an open-weights model released under the MIT license. When you run it on Island Mountain hardware, it executes entirely on your local GPUs. No data is sent to DeepSeek, to any Chinese server, or to any external endpoint.</strong> The weights are publicly available and independently audited by the open-source community. The model does not phone home and cannot: it is a file on your drive being processed by your GPUs.</p>
+            <p>The risk with DeepSeek exists only when you use its cloud API, which routes your data through their servers. That is not how Island Mountain systems work; ours run the model locally, air-gapped if you want, with zero external communication. Treat it like any other software asset: verify the download hash, apply your acceptable-use policy, and run it on infrastructure you control.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Category 4: The Summit Hardware -->
+  <section class="au-section" id="hardware">
+    <div class="container">
+      <span class="au-eyebrow-c au-reveal">The Summit Hardware</span>
+      <h2 class="au-h2 au-reveal">GPUs, models, and how it scales.</h2>
+      <div class="faq-list">
+
+        <div class="faq-item beam-card au-reveal" style="--i:14">
+          <h3>What GPUs does Island Mountain use, and how do the tiers differ?</h3>
+          <div class="faq-answer">
+            <p><strong>Every Summit system uses the same professional GPU: the NVIDIA RTX PRO 6000 Blackwell Server Edition.</strong> Each card carries 96GB of GDDR7 ECC memory with 1,597 GB/s of bandwidth and delivers about 1 PFLOP of FP16 Tensor compute, with native FP8 and FP4 support on 5th-generation Tensor Cores.</p>
+            <p><strong>Summit Base</strong> pairs two cards for 192GB of combined VRAM and runs DeepSeek V4-Flash at FP8 plus all 70B-class models at full quality. <strong>Summit Pinnacle</strong> uses four cards for 384GB, enough to run V4-Flash at full FP16 with its 1M-token context window. <strong>Summit Ridge</strong> is a build-to-order configuration between the two. A single rack ramps to six to eight cards as you grow.</p>
+            <p>We spec the right tier with you in a conversation, not from a configurator. Tell us your workload, your headcount, and the models that matter, and we will size it. See the <a href="products.html">Summit Series</a> for the full comparison.</p>
+          </div>
+        </div>
+
+        <div class="faq-item beam-card au-reveal" style="--i:15">
+          <h3>What VRAM do I need to run DeepSeek V4-Flash?</h3>
+          <div class="faq-answer">
+            <p><strong>DeepSeek V4-Flash (284B parameters) runs at FP8 in roughly 170GB of VRAM, or about 282GB at full FP16 precision.</strong> Running it across two GPUs with tensor parallelism delivers faster inference because the layers are split and processed in parallel.</p>
+            <p>Summit Base (two RTX PRO 6000 Blackwell cards, 192GB combined) runs V4-Flash at FP8 with roughly 22GB of headroom for KV cache, at approximately 60 to 90 tokens per second for single-user inference thanks to the card's 1,597 GB/s GDDR7 bandwidth. To run V4-Flash at full FP16 quality, the four-card Summit Pinnacle tier (384GB combined) is the configuration to choose.</p>
+          </div>
+        </div>
+
+        <div class="faq-item beam-card au-reveal" style="--i:16">
+          <h3>What models come pre-installed, and can I add my own later?</h3>
+          <div class="faq-answer">
+            <p><strong>Every Summit ships with three models installed, configured, and burn-tested.</strong> <strong>DeepSeek V4-Flash</strong> is a reasoning and general-purpose model for complex analysis, multi-step problem solving, and code, running at FP8. <strong>Llama 4 Scout</strong> is Meta's general-purpose model, strong across writing, summarization, and Q&amp;A. Then your choice of <strong>DeepSeek R1 70B Distill</strong> (MIT, explicit chain-of-thought for legal and compliance work) or <strong>Qwen 3 72B</strong> (Apache 2.0, enterprise general performance).</p>
+            <p>All carry permissive open-source licenses with no usage restrictions. You own them outright and switch between them instantly in the OpenWebUI dropdown. You are not locked to those three: any compatible open-source model that fits your VRAM can be downloaded through Ollama or OpenWebUI, and for the first 30 days we walk you through model management directly.</p>
+          </div>
+        </div>
+
+        <div class="faq-item beam-card au-reveal" style="--i:17">
+          <h3>What is OpenWebUI, and how does it work?</h3>
+          <div class="faq-answer">
+            <p><strong>OpenWebUI is a free, open-source, browser-based interface for local AI models. Think of it as a private version of ChatGPT that runs entirely on your network.</strong> No cloud account, no external data transmission.</p>
+            <p>You open a browser on any device on your network, navigate to the server's local address, and start prompting. It includes a dropdown to switch between installed models, full conversation history stored locally on the server, and an admin panel for user management and per-user model access. Conversations live on the server's drive, not in any cloud.</p>
+            <p>OpenWebUI needs no command-line knowledge. If someone can use ChatGPT, they can use OpenWebUI, and it is pre-configured on every system before it ships.</p>
+          </div>
+        </div>
+
+        <div class="faq-item beam-card au-reveal" style="--i:18">
+          <h3>How many people can one system serve, and how far does a rack scale?</h3>
+          <div class="faq-answer">
+            <p><strong>A single Summit rack starts with two RTX PRO 6000 Blackwell GPUs and ramps to six to eight cards</strong> as your workload grows: more VRAM, more throughput, more concurrent seats, all on-premises.</p>
+            <p>A fully ramped rack serves roughly 1,500 to 1,800 users on hyper-localized inference. Because the model of deployment is a server per seat or an estate across the organization, you scale by adding cards and adding units rather than renting more cloud, and it stays a one-time hardware purchase with no per-seat fees and no token metering. See the <a href="products.html">Summit Series</a> for configuration details.</p>
+          </div>
+        </div>
+
+        <div class="faq-item beam-card au-reveal" style="--i:19">
+          <h3>What power does a local AI server need?</h3>
+          <div class="faq-answer">
+            <p><strong>Every Island Mountain system needs a dedicated 208V/30A circuit with a NEMA L6-30R outlet</strong>, the same kind found in server rooms, data closets, and commercial facilities. The power supply runs at 200 to 240V and will not run on a standard 120V wall outlet, so if your facility lacks the circuit, a licensed electrician can install one.</p>
+            <p>Average draw under typical inference load is 1.5 to 2.5 kW. The system runs at standard server-room temperatures (64 to 80&deg;F / 18 to 27&deg;C) with no specialized cooling beyond normal HVAC, and the chassis includes redundant 2000W power supplies for reliability. We will confirm your site's electrical readiness as part of scoping.</p>
+          </div>
+        </div>
+
+        <div class="faq-item beam-card au-reveal" style="--i:20">
+          <h3>How can OpenWebUI be air-gapped if it is a web application?</h3>
+          <div class="faq-answer">
+            <p><strong>The "web" in OpenWebUI refers to the browser-based interface, not internet dependency.</strong> It is a self-hosted application that runs entirely on the server. Users reach it through a browser pointed at the server's local address, the way you reach a router's admin panel. No cloud account, no external API calls for inference.</p>
+            <p>Out of the box it does include outbound features: model downloads, update checks, HuggingFace Hub access, community sharing, web search for RAG, and telemetry. None are required for inference, and Island Mountain disables every one before shipping. The key environment variables (OFFLINE_MODE, HF_HUB_OFFLINE, ENABLE_COMMUNITY_SHARING, ANONYMIZED_TELEMETRY, ENABLE_RAG_WEB_SEARCH, SAFE_MODE) are set to their air-gapped states during the build and confirmed during burn-in.</p>
+            <p>Your IT team can verify it independently by inspecting the container environment, or by watching a monitored network segment for zero outbound connections during operation.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Category 5: Quotes, Delivery & Trust -->
+  <section class="au-section au-section--alt" id="owning">
+    <div class="container">
+      <span class="au-eyebrow-c au-reveal">Quotes, Delivery &amp; Trust</span>
+      <h2 class="au-h2 au-reveal">Owning it, human to human.</h2>
+      <p class="au-lede au-reveal">There is no public price list and no self-serve checkout. Every spec, every number, and every commitment comes from a real conversation with the person who builds the hardware.</p>
+      <div class="faq-list">
+
+        <div class="faq-item beam-card au-reveal" style="--i:21">
+          <h3>How does pricing work?</h3>
+          <div class="faq-answer">
+            <p><strong>Pricing is scoped to your workload and headcount, and every number comes from a conversation, not a configurator.</strong> You tell us what you are running, how many people need access, and which models matter; we spec the right system and put a written quote in front of you.</p>
+            <p>Each build is a one-time hardware purchase with no subscription fees, no per-token charges, and no recurring software licensing. The models are open-source, OpenWebUI is open-source, and the operating system is Ubuntu Server LTS. There is no public price list because sizing sovereign infrastructure is a human decision, not a shopping-cart line item. <a href="contact.html">Talk to the builder</a> to get a number, or call <a href="tel:+13414418740">1-341-441-8740</a>.</p>
+          </div>
+        </div>
+
+        <div class="faq-item beam-card au-reveal" style="--i:22">
+          <h3>How do I actually buy a system, and how long does delivery take?</h3>
+          <div class="faq-answer">
+            <p><strong>It starts with a conversation about your workload, followed by a written quote scoped to it.</strong> We do not build speculatively; a confirmed order triggers sourcing of your specific GPUs and components through authorized NVIDIA channels with full procurement documentation. Terms are handled directly, human to human, no automated checkout.</p>
+            <p>From order to delivery, expect roughly 3 to 5 weeks for the pre-made Summit Base tier, and longer for build-to-order Summit Ridge because those GPUs are sourced per order. The system arrives pre-configured: models installed, OpenWebUI set up, ready to run. Setup on your end means racking it, connecting power (208V/30A) and network, and opening a browser, and most organizations run their first prompts within hours. Every purchase includes 30 days of hands-on setup support with direct access to the builder.</p>
+          </div>
+        </div>
+
+        <div class="faq-item beam-card au-reveal" style="--i:23">
+          <h3>What does the 72-hour burn-in test verify?</h3>
+          <div class="faq-answer">
+            <p><strong>Every system runs 72 hours of continuous stress testing before it ships.</strong> Not a quick benchmark or a 10-minute smoke test: three straight days of sustained GPU compute at high load with automated monitoring.</p>
+            <p>It verifies thermal stability without throttling, memory integrity with no VRAM errors across billions of operations, inference consistency across thousands of sequential prompts, power-supply reliability under sustained draw, and storage performance under continuous read and write. Any anomaly triggers an alert, and systems that show instability, throttling, or VRAM errors do not ship; components are swapped and the test restarts.</p>
+            <p>You receive a benchmark report and delivery manifest documenting every test result, component serial number, and configuration detail. It is not a certificate of perfection; it is proof the system ran hard for three days without failing.</p>
+          </div>
+        </div>
+
+        <div class="faq-item beam-card au-reveal" style="--i:24">
+          <h3>What warranty comes with it, and what if a component fails?</h3>
+          <div class="faq-answer">
+            <p><strong>Every system ships with a 1-year hardware warranty covering all components</strong>, including GPUs, CPU, RAM, storage drives, and power supplies. If a component fails within the first year, we handle the replacement.</p>
+            <p>GPU failures are managed through supplier RMA agreements with documented replacement timelines, and we hold a 20% warranty reserve per unit so replacements are not waiting on budget. You contact the builder directly (phone <a href="tel:+13414418740">1-341-441-8740</a> or email), we diagnose remotely, and we ship the part or arrange a swap. Extended warranty options are available at the time of purchase, and after warranty, support is available per incident or on an annual retainer.</p>
+          </div>
+        </div>
+
+        <div class="faq-item beam-card au-reveal" style="--i:25">
+          <h3>You are a new company. Why trust a first purchase, and what if you go out of business?</h3>
+          <div class="faq-answer">
+            <p>This is a fair question, and you should ask it. <strong>Island Mountain is co-founded by <a href="https://www.johndou.com" target="_blank" rel="noopener">John Dougherty</a> (hardware engineer, 25-year technology veteran) and Basho Parks, who hand-builds each rack. The company is new; the team is not.</strong></p>
+            <p>The hardware is standard enterprise components (NVIDIA GPUs, AMD EPYC CPUs, Supermicro chassis) with established supplier RMA agreements, backed by a 1-year warranty and a 20% warranty reserve per unit. The software is entirely open-source, so nothing is proprietary and nothing is locked.</p>
+            <p><strong>If Island Mountain closed, your system would keep running.</strong> Ubuntu Server LTS, vLLM, Ollama, OpenWebUI, and open-weight models depend on none of our servers. You would lose our support and warranty, but the system needs no license, no activation, and no connection to us. OS updates come from Ubuntu, drivers from NVIDIA, models from public libraries, and any competent Linux administrator can maintain it. Vendor independence is exactly the problem we are solving.</p>
+          </div>
+        </div>
+
+        <div class="faq-item beam-card au-reveal" style="--i:26">
+          <h3>Can local AI keep up with cloud AI as models improve?</h3>
+          <div class="faq-answer">
+            <p><strong>Not on day one, but within weeks to months, yes.</strong> Cloud providers ship proprietary models the moment they control the infrastructure. Open-source models lag that cycle, so when a new flagship launches you will not have an equivalent on your local hardware that afternoon.</p>
+            <p>What has happened consistently is that open-weight models close the gap fast. DeepSeek V4-Flash, Llama 4 Scout, and DeepSeek R1 all reached or exceeded the proprietary models they followed within weeks to months. Your system can run any new open-source model that fits its VRAM: you download it through Ollama or OpenWebUI, with no hardware change. And as your needs grow, a rack ramps from two cards to six or eight, so there is headroom to scale into.</p>
+          </div>
+        </div>
+
+        <div class="faq-item beam-card au-reveal" style="--i:27">
+          <h3>Why pay for a Summit when I could build a similar server myself for less?</h3>
+          <div class="faq-answer">
+            <p><strong>You can, and if you are a developer running experiments, you probably should.</strong> The guides exist and the software stack is the same: Ollama, vLLM, OpenWebUI, and open-weight models like DeepSeek V4-Flash and Llama 4 Scout. With the staff to build, configure, test, and maintain it, a DIY box will run inference.</p>
+            <p>Here is what a DIY build does not include. <strong>Professional GPU procurement documentation:</strong> every RTX PRO 6000 Blackwell card in a Summit has a documented chain, purchase receipts from authorized NVIDIA channels, a serial-number registry, and RMA history, which consumer cards from Amazon or Newegg do not carry. <strong>72-hour continuous burn-in.</strong> <strong>Professional RMA chains</strong> that keep replacement GPUs inside the same documentation trail, which matters for HIPAA, ITAR/DFARS, and CMMC audits. <strong>Direct builder support:</strong> you talk to the person who assembled your system, not a ticket queue.</p>
+            <p>The honest answer: if you are experimenting, build your own. If you are a regulated organization putting AI into production where provenance and evidence matter, that is what the difference covers.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- AEO summary + closing CTA -->
+  <section class="au-section au-section--ink">
+    <div class="container">
+      <div class="faq-aeo au-reveal">
+        <strong>Summary:</strong> Island Mountain builds air-gappable, on-premises AI inference servers on NVIDIA RTX PRO 6000 Blackwell GPUs, each carrying the Woven Security &amp; Governance Fabric that governs and audits every action an AI agent takes. Systems ship pre-configured with frontier open-source models and run fully offline, suited to organizations bound by HIPAA, ITAR/CMMC, attorney-client privilege, tribal data sovereignty (OCAP), and FERPA. There is no public price list: every configuration and quote is scoped human to human.
+      </div>
+
+      <div class="faq-final" style="margin-top:56px;">
+        <span class="au-eyebrow-c au-reveal">Still Have Questions?</span>
+        <h2 class="au-h2 au-reveal">Ask a human.</h2>
+        <p class="au-lede au-reveal" style="margin-left:auto;margin-right:auto;">One conversation, no sales pitch. Tell us about your organization and what you are trying to accomplish with sovereign AI, and we will give you a straight answer, and a real number.</p>
+        <div class="btn-group au-reveal">
+          <a href="contact.html" class="btn btn-primary">Talk to Sales</a>
+          <a href="products.html" class="btn btn-secondary">See What We Build</a>
+        </div>
+        <p class="cta-subtitle au-reveal"><i class="ri-phone-line icon-copper-mr-sm"></i>Or call directly: <a href="tel:+13414418740" class="copper-semibold">1-341-441-8740</a></p>
+      </div>
     </div>
   </section>
 
@@ -882,10 +795,10 @@
           <h3>Quick Links</h3>
           <ul class="footer-links">
             <li><a href="index.html">Home</a></li>
-            <li><a href="products.html">Summit</a>
-        <li><a href="resources.html">Resources</a></li>
-              <li><a href="resources.html">Resources</a></li>
-              <li><a href="faq.html">FAQ</a></li>
+            <li><a href="products.html">Summit</a></li>
+            <li><a href="lamprey-woven-security-governance.html">Security Fabric</a></li>
+            <li><a href="resources.html">Resources</a></li>
+            <li><a href="faq.html">FAQ</a></li>
             <li><a href="blog.html">Blog</a></li>
           </ul>
         </div>
@@ -937,6 +850,7 @@
     </div>
   </footer>
 
+  <script defer src="js/hero-cinematic.js"></script>
   <script defer src="js/main.js"></script>
   <script defer src="js/chat-widget.js"></script>
 
@@ -944,24 +858,15 @@
   <script>
   (function () {
     'use strict';
-
     var faqItems = document.querySelectorAll('.faq-item');
-
     faqItems.forEach(function (item) {
       var heading = item.querySelector('h3');
       if (!heading) return;
-
       heading.addEventListener('click', function () {
         var isActive = item.classList.contains('active');
-
-        // Close all other items
         faqItems.forEach(function (other) {
-          if (other !== item) {
-            other.classList.remove('active');
-          }
+          if (other !== item) other.classList.remove('active');
         });
-
-        // Toggle clicked item
         if (isActive) {
           item.classList.remove('active');
         } else {
