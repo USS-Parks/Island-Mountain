@@ -483,7 +483,7 @@
     if(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches){
       v.removeAttribute('autoplay'); try{ v.pause(); }catch(e){} return;
     }
-    function go(){ try{ v.playbackRate = 0.5; }catch(e){} var p = v.play && v.play(); if(p && p.catch) p.catch(function(){}); }
+    function go(){ try{ v.playbackRate = 0.2; }catch(e){} var p = v.play && v.play(); if(p && p.catch) p.catch(function(){}); }
     go();
     v.addEventListener('loadedmetadata', go);
     v.addEventListener('canplay', go, { once:true });
