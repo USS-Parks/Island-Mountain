@@ -184,14 +184,17 @@ def main() -> int:
     if missing_resources:
         raise SystemExit("missing local resources:\n" + "\n".join(sorted(set(missing_resources))))
 
-    html_files = sorted(output.rglob("*.html"))
-    for page in html_files:
-        text = page.read_text(encoding="utf-8")
-        is_google_verification = page.name.lower().startswith("google")
-        if not is_google_verification and "</html>" not in text.lower():
-            raise SystemExit(f"HTML document is missing </html>: {page.relative_to(output)}")
+    text_files = sorted(path for path in output.rglob("*") if path.suffix.lower() in TEXT_SUFFIXES)
+    for path in text_files:
+        text = path.read_text(encoding="utf-8")
+        relative = path.relative_to(output)
         if "\0" in text:
-            raise SystemExit(f"NUL byte in HTML document: {page.relative_to(output)}")
+            raise SystemExit(f"NUL byte in text asset: {relative}")
+        is_google_verification = path.name.lower().startswith("google")
+        if path.suffix.lower() == ".html" and not is_google_verification and "</html>" not in text.lower():
+            raise SystemExit(f"HTML document is missing </html>: {relative}")
+
+    html_files = sorted(output.rglob("*.html"))
 
     byte_count = sum(path.stat().st_size for path in output.rglob("*") if path.is_file())
     print(
