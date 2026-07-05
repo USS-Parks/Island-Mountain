@@ -35,7 +35,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png?v=2">
   <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png?v=2">
   <link rel="stylesheet" href="css/style.min.css">
-  <link rel="stylesheet" href="css/card-nodes.css?v=2">
+  <link rel="stylesheet" href="css/card-nodes.css">
   <link rel="stylesheet" href="icons/remixicon.css" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="icons/remixicon.css"></noscript>
   <link rel="preload" href="fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -274,9 +274,6 @@
   @media (max-width:768px){
     .rtx-media-col{flex-basis:100%!important;margin-left:0!important;}
     .rtx-media-col img{display:block;width:100%;max-width:460px;margin:0 auto;}
-    /* Center the FAQ card icons and content (match the centered card style) */
-    .risk-card{text-align:center;}
-    .risk-card img{margin-left:auto;margin-right:auto;}
   }
   .gpu-section{background-color:#090d14;background-image:linear-gradient(rgba(6,10,18,0.74),rgba(6,10,18,0.80)),url('images/rtx-blackwell-hands.webp'),url('images/rtx-blackwell-bench.webp');background-repeat:no-repeat,no-repeat,no-repeat;background-position:center,center 24px,center bottom;background-size:cover,100% auto,100% auto;}
   .gpu-section .section-badge,.gpu-section h2{text-shadow:0 2px 14px rgba(0,0,0,0.75);}
@@ -289,6 +286,13 @@
   .gpu-card h3{color:#fff;font-size:1.18rem;margin-bottom:10px;}
   .gpu-card p{color:rgba(226,232,240,0.92);font-size:0.95rem;line-height:1.6;margin:0;}
   .gpu-card .gpu-metric{color:var(--copper);font-weight:700;}
+  /* Product Questions cards: 3-up, centered, 2x icons - match the Summit/GPU card treatment */
+  .risk-grid{grid-template-columns:repeat(3,1fr);}
+  @media(max-width:1000px){.risk-grid{grid-template-columns:repeat(2,1fr);}}
+  @media(max-width:640px){.risk-grid{grid-template-columns:1fr;}}
+  .risk-card{text-align:center;}
+  .risk-card h4{justify-content:center;}
+  .risk-card img{width:104px;height:104px;margin:0 auto 18px;display:block;}
   </style>
 </head>
 <body>
@@ -474,17 +478,17 @@
       </div>
       <div class="risk-grid fade-in">
         <div class="risk-card beam-card">
-          <img src="images/ic-search.webp" alt="" width="52" height="52" loading="lazy" style="display:block;margin-bottom:12px;">
+          <img src="images/ic-search.webp" alt="" width="104" height="104" loading="lazy">
           <h4>How fast are the answers?</h4>
           <p>Instant. Inference runs on your own GPUs, so tokens stream back at wire speed - no cloud round-trip, no queue, no latency. Immediate answers, hyper-localized to your rack.</p>
         </div>
         <div class="risk-card beam-card">
-          <img src="images/ic-skills-teacher.webp" alt="" width="52" height="52" loading="lazy" style="display:block;margin-bottom:12px;">
+          <img src="images/ic-skills-teacher.webp" alt="" width="104" height="104" loading="lazy">
           <h4>How far does one rack scale?</h4>
           <p>A single Summit rack ramps to 6-8 RTX PRO 6000 Blackwell GPUs. Start with two and add cards as you grow - more VRAM, more throughput, more seats, all on-prem.</p>
         </div>
         <div class="risk-card beam-card">
-          <img src="images/ic-plan.webp" alt="" width="52" height="52" loading="lazy" style="display:block;margin-bottom:12px;">
+          <img src="images/ic-plan.webp" alt="" width="104" height="104" loading="lazy">
           <h4>How many users can it serve?</h4>
           <p>A fully ramped Summit rack serves 1,500-1,800 users. One-time hardware, no per-seat cloud fees, no metering. On-prem open source is a no-brainer.</p>
         </div>
