@@ -293,6 +293,8 @@
   .risk-card{text-align:center;}
   .risk-card h4{justify-content:center;}
   .risk-card img{width:104px;height:104px;margin:0 auto 18px;display:block;}
+  /* Uniform icon rendering (matches the Woven page): normalize all card icons to one white + one glow. */
+  .gpu-card img, .risk-card img{ filter: brightness(0) invert(1) drop-shadow(0 0 5px rgba(200,220,255,.55)); }
   </style>
 </head>
 <body>
