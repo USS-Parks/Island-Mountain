@@ -277,7 +277,7 @@ html:not(.js) #aurora-intro{ display:none; }
 .au-founder img{ width:230px; height:288px; object-fit:cover; border-radius:18px; flex:0 0 auto;
   border:2px solid rgba(245,158,11,.45); box-shadow:0 18px 44px rgba(0,0,0,.55); }
 .au-founder>div{ flex:1 1 340px; }
-@media (max-width:700px){ .au-founder{ justify-content:center; text-align:center; } }
+@media (max-width:700px){ .au-founder{ justify-content:center; text-align:center; } .au-founder img{ width:150px; height:188px; } }
 
 /* ---------------- Mobile hero fit (phones <=600px) ---------------- */
 @media (max-width:600px){
