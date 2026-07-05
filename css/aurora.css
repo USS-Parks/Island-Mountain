@@ -278,3 +278,25 @@ html:not(.js) #aurora-intro{ display:none; }
   border:2px solid rgba(245,158,11,.45); box-shadow:0 18px 44px rgba(0,0,0,.55); }
 .au-founder>div{ flex:1 1 340px; }
 @media (max-width:700px){ .au-founder{ justify-content:center; text-align:center; } }
+
+/* ---------------- Mobile hero fit (phones <=600px) ---------------- */
+@media (max-width:600px){
+  /* Bug fix: the desktop headline clamp floor (2.6rem) + max-width:16ch overflow a
+     phone viewport and clip. Shrink the type so it wraps inside the screen. */
+  .au-h1{ font-size:clamp(1.7rem,7.6vw,2.55rem); max-width:100%; letter-spacing:-.015em; }
+  /* Rotating subhead spans are white-space:nowrap -> let them wrap on mobile. */
+  .au-sub{ font-size:1rem; }
+  .au-rotator>span{ white-space:normal; }
+  /* CTAs stack full-width for thumb reach instead of crowding one row. */
+  .au-ctas{ gap:10px; }
+  .au-ctas .btn{ flex:1 1 100%; text-align:center; }
+  /* Bug fix: the Summit server sits in the left third of summit-photo3.webp; a
+     centered `cover` crop drops it off-screen on a portrait box. Bias the crop
+     left so the product stays framed, and tighten hero padding. */
+  .au-hero{
+    padding:108px 0 56px;
+    background:
+      linear-gradient(180deg, rgba(8,13,24,.84) 0%, rgba(13,20,36,.58) 46%, rgba(8,13,24,.95) 100%),
+      url('../images/summit-photo3.webp') 30% 45% / cover no-repeat;
+  }
+}
