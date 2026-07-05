@@ -57,6 +57,13 @@
     unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
   }
   </style>
+  <style>
+    /* Branded card icons — centered above the text with the uniform white glow used sitewide */
+    .risk-card{text-align:center}
+    .risk-card h4{display:block}
+    .risk-icon{width:76px;height:76px;margin:0 auto 16px}
+    .risk-icon img{width:100%;height:100%;object-fit:contain;filter:brightness(0) invert(1) drop-shadow(0 0 5px rgba(200,220,255,.55))}
+  </style>
   <link rel="canonical" href="https://islandmountain.io/resources.html">
 
   <!-- Open Graph -->
@@ -154,37 +161,43 @@
       <div class="risk-grid fade-in">
 
         <a href="cloud-act-tribal-data.html" class="risk-card risk-card--link">
-          <h4><i class="ri-shield-star-line"></i> CLOUD Act and Tribal Data</h4>
+          <div class="risk-icon"><img src="images/CLOUD-tribal-icon.webp" alt="" loading="lazy" decoding="async" width="76" height="76"></div>
+          <h4>CLOUD Act and Tribal Data</h4>
           <p><strong>Can the federal government access tribal health data stored in the cloud?</strong></p>
           <p>Yes. 18 U.S.C. § 2703 compels cloud providers to produce tribal data under federal subpoena without tribal consent. OCAP principles, NCAI Resolution NC-24-008, and the Indian Health Care Improvement Act.</p>
         </a>
 
         <a href="hipaa-local-ai-compliance.html" class="risk-card risk-card--link">
-          <h4><i class="ri-heart-pulse-line"></i> HIPAA and Local AI</h4>
+          <div class="risk-icon"><img src="images/hipaa-ai-icon.webp" alt="" loading="lazy" decoding="async" width="76" height="76"></div>
+          <h4>HIPAA and Local AI</h4>
           <p><strong>Does running AI locally comply with HIPAA?</strong></p>
           <p>Local hardware supports compliance by eliminating third-party ePHI transmission. No BAA required for the AI system. Technical safeguards under 45 CFR § 164.312 still apply.</p>
         </a>
 
         <a href="attorney-client-privilege-ai-risk.html" class="risk-card risk-card--link">
-          <h4><i class="ri-scales-3-line"></i> Attorney-Client Privilege and AI</h4>
+          <div class="risk-icon"><img src="images/attorney-client-priv-icon.webp" alt="" loading="lazy" decoding="async" width="76" height="76"></div>
+          <h4>Attorney-Client Privilege and AI</h4>
           <p><strong>Can law firms use AI without waiving privilege?</strong></p>
           <p>Cloud AI creates privilege waiver risk through third-party disclosure. On-premises eliminates it. ABA Model Rule 1.6, Formal Opinion 477R, Upjohn Co. v. United States, FRE 502.</p>
         </a>
 
         <a href="itar-cmmc-ai-infrastructure.html" class="risk-card risk-card--link">
-          <h4><i class="ri-spy-line"></i> ITAR/CMMC AI Infrastructure</h4>
+          <div class="risk-icon"><img src="images/itarr-cmmc-ai-icon.webp" alt="" loading="lazy" decoding="async" width="76" height="76"></div>
+          <h4>ITAR/CMMC AI Infrastructure</h4>
           <p><strong>Can defense contractors use AI with ITAR-controlled data?</strong></p>
           <p>ITAR and DFARS 252.204-7012 prohibit transmitting controlled data to unauthorized servers. On-premises satisfies NIST SP 800-171 and supports CMMC Level 2+ assessment.</p>
         </a>
 
         <a href="on-premises-ai-cost-comparison.html" class="risk-card risk-card--link">
-          <h4><i class="ri-money-dollar-circle-line"></i> On-Premises AI Cost Comparison</h4>
+          <div class="risk-icon"><img src="images/ai-cost-comparison-icon.webp" alt="" loading="lazy" decoding="async" width="76" height="76"></div>
+          <h4>On-Premises AI Cost Comparison</h4>
           <p><strong>How much does on-premises AI cost vs cloud AI?</strong></p>
           <p>Summit Base ($59-69K one-time) costs ~$0.003/query over five years. Equivalent cloud API usage runs $64,000-$220,000+ depending on model tier and usage growth (May 2026 pricing). Break-even in 4-7 months at 500+ daily queries.</p>
         </a>
 
         <a href="air-gapped-ai-inference.html" class="risk-card risk-card--link">
-          <h4><i class="ri-wifi-off-line"></i> Air-Gapped AI Inference</h4>
+          <div class="risk-icon"><img src="images/local-ai-inference-icon.webp" alt="" loading="lazy" decoding="async" width="76" height="76"></div>
+          <h4>Air-Gapped AI Inference</h4>
           <p><strong>Can you run AI models without internet access?</strong></p>
           <p>Yes. Models are pre-loaded, inference runs on local GPUs, and the system works fully air-gapped. Critical for SCIF environments, classified networks, and remote field operations.</p>
         </a>
