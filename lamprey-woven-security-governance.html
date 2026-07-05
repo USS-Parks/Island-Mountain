@@ -151,6 +151,19 @@
     .woven-header{ padding:20px; margin-bottom:22px; }
     .woven-split{ gap:26px; }
   }
+
+  /* Mobile: the text-beside-GIF rows stack full-width, so center their headings
+     (and re-assert the hero) to match the rest of the page instead of the
+     desktop left-alignment. */
+  @media (max-width:768px){
+    .lamprey-aurora .woven-split-text,
+    .lamprey-aurora .woven-split-text .au-eyebrow-c,
+    .lamprey-aurora .woven-split-text .au-h2,
+    .lamprey-aurora .woven-split-text .au-lede{ text-align:center; }
+    .lamprey-aurora .woven-split-text .au-lede{ margin-left:auto; margin-right:auto; }
+    .lamprey-aurora .au-hero .container{ text-align:center; }
+    .lamprey-aurora .au-hero .au-h1{ margin-left:auto; margin-right:auto; }
+  }
   </style>
   <link rel="canonical" href="https://islandmountain.io/lamprey-woven-security-governance.html">
 
