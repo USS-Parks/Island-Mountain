@@ -257,7 +257,7 @@ html:not(.js) #aurora-intro{ display:none; }
 .au-spotlight .au-eyebrow-c{ color:var(--au-copper-light) !important; }
 .au-spotlight .au-lede{ color:#eecfa0 !important; }
 .au-spot-media video{ box-shadow:0 24px 60px rgba(0,0,0,.5); }
-.au-spot-thumbs img{ aspect-ratio:4/3; object-fit:contain; background:#f2f4f7; box-shadow:0 12px 30px rgba(0,0,0,.4); }
+.au-spot-thumbs img{ aspect-ratio:1/1; object-fit:contain; background:#f2f4f7; box-shadow:0 12px 30px rgba(0,0,0,.4); }
 .au-spot-copy{ text-align:center; }
 .au-spot-copy .au-lede{ margin-left:auto; margin-right:auto; }
 
@@ -267,9 +267,9 @@ html:not(.js) #aurora-intro{ display:none; }
     linear-gradient(180deg, rgba(8,13,24,.88) 0%, rgba(13,20,36,.64) 48%, rgba(8,13,24,.94) 100%),
     url('../images/summit-photo3.webp') center 40% / cover no-repeat;
 }
-/* Spotlight thumb: single, centered */
+/* Spotlight thumb: single, full-width to match the video above */
 .au-spot-thumbs{ justify-content:center; }
-.au-spot-thumbs img{ width:62%; }
+.au-spot-thumbs img{ width:100%; }
 /* Statement infographic */
 .au-infographic{ display:block; width:100%; max-width:920px; height:auto; margin:12px auto 30px;
   border-radius:16px; border:1px solid rgba(245,158,11,.28); box-shadow:0 26px 70px rgba(0,0,0,.5); }
