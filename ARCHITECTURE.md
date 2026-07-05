@@ -39,8 +39,9 @@ went live 2026-06-27 with a verified end-to-end Cal.com booking round-trip. Depl
 primary lead-capture surface; the FormSubmit.co contact form remains the no-JS fallback.
 
 - **Edge backend:** Cloudflare Worker — `POST /api/chat` (Claude proxy + KV session
-  memory), `POST /api/lead`, `POST /api/voice-webhook` (Vapi), `POST /api/booking-webhook`
-  (Cal.com), `GET /api/history`, `GET /api/stats` (token-gated), `GET /api/health`.
+  memory), `POST /api/voice-webhook` (Vapi), `POST /api/booking-webhook` (Cal.com),
+  `GET /api/history`, `GET /api/stats` (token-gated), `GET /api/health`. Lead submission
+  is internal to the chat and authenticated voice pipelines; no direct public route exists.
 - **Brain:** Anthropic API (`claude-sonnet-4-6` routine / `claude-opus-4-8` escalation)
   with a `submit_lead` tool; deterministic hot/warm/cold scoring (`worker/src/qualifier.ts`).
 - **State + store:** Workers KV (sessions + rate-limit counters), D1 (`leads` mirror),

@@ -13,9 +13,9 @@ interface LeadRequestBody {
 }
 
 /**
- * POST /api/lead — direct lead submission (no-JS form fallback, external
- * callers, voice). The chat path scores + routes inline via the agent loop;
- * this endpoint exposes the same pipeline over HTTP.
+ * Legacy direct-submission handler retained for migration reference only.
+ * It is deliberately not registered by index.ts: lead side effects are invoked
+ * internally by the chat agent and authenticated voice webhook pipelines.
  */
 export async function handleLead(request: Request, env: Env): Promise<Response> {
   const origin = request.headers.get('Origin');

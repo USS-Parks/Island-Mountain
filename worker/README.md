@@ -8,8 +8,10 @@ qualifier without ever exposing an API key to the browser.
 |---|---|---|---|
 | `/api/health` | GET | Liveness probe | PROMPT 01 |
 | `/api/chat` | POST | Claude proxy + KV session memory | PROMPT 02 |
-| `/api/lead` | POST | Score, persist, alert, GA4 event | PROMPT 03 / 05 |
 | `/api/voice-webhook` | POST | Vapi voice → same pipeline | PROMPT 07 |
+
+Lead scoring, persistence, alerts, and analytics run only inside the chat and
+authenticated voice pipelines. There is no public direct lead-submission route.
 
 ## Stack
 Cloudflare Worker (TypeScript) · Workers KV (`SESSIONS`) · D1 (`leads`) ·
