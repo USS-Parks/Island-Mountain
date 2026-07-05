@@ -1,7 +1,7 @@
 # CANON — Engineering & Agentic Operations Doctrine
 
 **Scope:** Island Mountain — **WSF** (Woven Sovereignty Fabric, trust plane) + **AOG** (Agentic Orchestration Governance, control plane) · console codename **Lamprey** / public **Aeneas** · foundation **Lamprey MAI**.
-**Author:** Basho Parks · **Status:** v0.2 (2026-07-03) — Parts I–II adopted; enforcement live (Part III). Items marked **PROPOSED** are not yet wired.
+**Author:** Basho Parks · **Status:** v0.3 (2026-07-05) — Parts I–II adopted; enforcement live (Part III). Items marked **PROPOSED** are not yet wired.
 **Created:** 2026-07-03.
 
 > This is the single source of truth for *how we build*, above any one PLANNING/*.md. A PSPR governs one phase; this governs all phases and, for Part I, all projects.
@@ -95,6 +95,12 @@ Nothing gets committed unless the full ladder is green. "Exhaustive" is a ladder
 - Any pipeline that publishes to a live target (GitHub/Cloudflare Pages, container registries, release assets, CDN purge) **must** carry an explicit concurrency gate: one production deploy at a time, an in-flight deploy is **never** cancelled, overlapping triggers **queue**. Parallel and rapid pushes to a deploy branch are normal on this stack (I.5) — the pipeline, not luck, keeps them from colliding.
 - Never rely on a platform's implicit/auto deploy that has no concurrency control and fails opaquely under overlap — e.g. GitHub Pages "deploy from a branch" (`build_type: legacy`), which races on near-simultaneous pushes and reports only "Deployment failed, try again later." A stuck publish is diagnosed at the **pipeline** (`gh run list`, `gh api .../pages`), never by re-pushing and hoping.
 - *Layer-3 owner:* the committed pipeline definition — `.github/workflows/pages.yml` carrying `concurrency: { group: pages, cancel-in-progress: false }`, with Pages source pointed at that workflow (`build_type: workflow`, never `legacy`); a committed `.nojekyll` keeps the artifact served verbatim. The workflow file **is** the owner; the platform default is not.
+
+### I.13 — Stop at done: no unrequested verification, no proactive follow-ups
+- The task's scope is the whole job. When the requested change is made and its stated goal is met, **stop** — report the outcome in the fewest true words and end the turn. Work being *done* is the signal to leave, not to hunt for more.
+- **One confirmation, not a battery.** A single check that it works is enough; a passing check is a stopping point, not a licence to run three more — no re-probing what already greened, no cache-header / dimension / attribute re-audits, no "while I was here" sweeps, no gold-plating. Unrequested verification is waste, not diligence: extra audits, re-encodes, re-measures, and sweeps happen **only** on explicit request. Silence is not a request.
+- **Don't volunteer next steps.** Finish and go quiet; never offer to keep helping or enumerate what you *could* do next. A genuine blocker or real risk gets one line, then stop. Over-checking is over-engineering — the same defect as gold-plating the work, the same fix.
+- *Layer-3 owner:* none possible (judgment) — Layer-2 only, the model honoring it each turn. → `CLAUDE.md`. No hook can un-spend the tokens an unrequested probe already cost; a breach is prevented by not doing it, never caught after.
 
 ---
 
@@ -197,4 +203,4 @@ Per PSPR §0.7, turn the commented lanes on: `cargo test --workspace` **on push*
 - [ ] `/security-review` as a standing pre-merge gate — not yet standardized.
 - [ ] Confirm `safe-edit` / anti-truncation rules still needed on native Windows (PSPR §0.4).
 
-*Changelog: v0.2 (2026-07-03) — statuses reconciled to reality: Claude Code hooks + git hooks (both repos) ACTIVE; globalization done; dead Write hook removed. v0.1 — initial draft.*
+*Changelog: v0.3 (2026-07-05) — added I.13 (stop at done; no unrequested or proactive verification). v0.2 (2026-07-03) — statuses reconciled to reality: Claude Code hooks + git hooks (both repos) ACTIVE; globalization done; dead Write hook removed. v0.1 — initial draft.*
