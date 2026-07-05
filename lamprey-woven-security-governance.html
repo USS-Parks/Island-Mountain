@@ -38,6 +38,7 @@
   <link rel="stylesheet" href="css/style.min.css">
   <link rel="stylesheet" href="css/aurora.css?v=2">
   <link rel="stylesheet" href="css/card-nodes.css?v=2">
+  <link rel="stylesheet" href="css/blog-scroller.css?v=1">
   <link rel="stylesheet" href="icons/remixicon.css" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="icons/remixicon.css"></noscript>
   <link rel="preload" href="fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -221,7 +222,6 @@
         <li><a href="lamprey-woven-security-governance.html" class="active">Security Fabric</a></li>
         <li><a href="products.html">Summit</a>
               <li><a href="faq.html">FAQ</a></li>
-        <li><a href="blog.html">Blog</a></li>
         <li><a href="resources.html">Resources</a></li>
         <li><a href="contact.html" class="nav-cta">Request Quote</a></li>
       </ul>
@@ -238,7 +238,6 @@
     <a href="lamprey-woven-security-governance.html">Security Fabric</a>
     <a href="products.html">Summit</a>
             <a href="faq.html">FAQ</a>
-    <a href="blog.html">Blog</a>
     <a href="resources.html">Resources</a>
     <a href="contact.html" class="nav-cta">Request Quote</a>
   </div>
@@ -529,6 +528,123 @@
     </div>
   </section>
 
+  <!-- From the Blog - newest first; page right to move back in time -->
+  <section class="blog-rail-section" data-blog-rail aria-labelledby="blog-rail-heading">
+    <div class="container">
+      <div class="blog-rail-head">
+        <div>
+          <span class="blog-rail-eyebrow">From the Blog</span>
+          <h2 class="blog-rail-title" id="blog-rail-heading">Field notes on local, sovereign AI.</h2>
+        </div>
+        <div class="blog-rail-controls">
+          <button type="button" class="blog-rail-arrow" data-dir="prev" aria-label="Newer posts" disabled>&larr;</button>
+          <button type="button" class="blog-rail-arrow" data-dir="next" aria-label="Older posts">&rarr;</button>
+        </div>
+      </div>
+      <div class="blog-rail" role="region" aria-label="Blog posts, newest first" tabindex="0">
+
+        <article class="blog-rail-card">
+          <div class="blog-rail-meta">
+            <span class="blog-rail-date">July 2, 2026</span>
+            <span class="blog-rail-tag tag-technical">Technical</span>
+          </div>
+          <h3><a href="blog/agentic-orchestration-security-map.html">Agentic Orchestration and Security: The Complete Map of How AI Agents Work, and How They Get Attacked</a></h3>
+          <p class="blog-rail-excerpt">An animated five-layer map of how AI agents plan, delegate, and act, and how they get attacked. Orchestration patterns, tool trust boundaries, agentjacking, the lethal trifecta, and the deterministic controls that break each attack.</p>
+          <a href="blog/agentic-orchestration-security-map.html" class="blog-rail-read">Read &rarr;</a>
+        </article>
+
+        <article class="blog-rail-card">
+          <div class="blog-rail-meta">
+            <span class="blog-rail-date">June 30, 2026</span>
+            <span class="blog-rail-tag tag-technical">Security</span>
+            <span class="blog-rail-tag tag-industry">Industry</span>
+          </div>
+          <h3><a href="blog/agentjacking-fake-bug-report.html">Agentjacking Hit a $250B Company Through a Fake Bug Report. Air-Gapped Buys You Half the Fix.</a></h3>
+          <p class="blog-rail-excerpt">A single fake Sentry error report hijacked the AI coding agent inside a $250 billion Fortune 100 company and more than 100 other organizations. No breach, no stolen credentials. Air-gapped hardware closes the cloud exfiltration category. It does not close an agent that can't tell trusted data from an instruction.</p>
+          <a href="blog/agentjacking-fake-bug-report.html" class="blog-rail-read">Read &rarr;</a>
+        </article>
+
+        <article class="blog-rail-card">
+          <div class="blog-rail-meta">
+            <span class="blog-rail-date">June 14, 2026</span>
+            <span class="blog-rail-tag tag-technical">Technical</span>
+          </div>
+          <h3><a href="blog/on-device-llm-sovereign-edge.html">The Sovereign Edge: On-Device LLMs and the Coming Micro-Scale Inference Revolution</a></h3>
+          <p class="blog-rail-excerpt">Put your phone in airplane mode and the LLM keeps running. Apple, Google, memristors, and quantized MoE models are collapsing the distance between inference and the device in your pocket. The same sovereignty argument Island Mountain makes at rack scale, now at pocket scale.</p>
+          <a href="blog/on-device-llm-sovereign-edge.html" class="blog-rail-read">Read &rarr;</a>
+        </article>
+
+        <article class="blog-rail-card">
+          <div class="blog-rail-meta">
+            <span class="blog-rail-date">June 5, 2026</span>
+            <span class="blog-rail-tag tag-compliance">Compliance</span>
+            <span class="blog-rail-tag tag-industry">Industry</span>
+          </div>
+          <h3><a href="blog/eu-cada-ai-sovereignty-us-regulated-industries.html">Europe Just Defined AI Sovereignty. The U.S. Is Still Pretending It Does Not Apply to Us.</a></h3>
+          <p class="blog-rail-excerpt">On June 3, 2026, the EU published the Cloud and AI Development Act, defining four sovereignty tiers for AI infrastructure. The highest tier blocks any provider subject to the U.S. CLOUD Act. Here is what that framework reveals about every regulated industry in America.</p>
+          <a href="blog/eu-cada-ai-sovereignty-us-regulated-industries.html" class="blog-rail-read">Read &rarr;</a>
+        </article>
+
+        <article class="blog-rail-card">
+          <div class="blog-rail-meta">
+            <span class="blog-rail-date">May 29, 2026</span>
+            <span class="blog-rail-tag tag-industry">Industry</span>
+            <span class="blog-rail-tag tag-compliance">Compliance</span>
+          </div>
+          <h3><a href="blog/tribal-sovereignty-data-centers-landlord-or-owner.html">Landlord or Owner: Tribal Nations, Data Centers, and the Sovereignty Question Nobody's Asking</a></h3>
+          <p class="blog-rail-excerpt">Over 100 hyperscale data center projects proposed on tribal lands. The Seminole Nation voted 24-0 for a moratorium. The Muscogee Nation rejected a facility on food sovereignty land. The question every tribe needs to answer: landlord or owner?</p>
+          <a href="blog/tribal-sovereignty-data-centers-landlord-or-owner.html" class="blog-rail-read">Read &rarr;</a>
+        </article>
+
+        <article class="blog-rail-card">
+          <div class="blog-rail-meta">
+            <span class="blog-rail-date">May 29, 2026</span>
+            <span class="blog-rail-tag tag-financial">Financial</span>
+            <span class="blog-rail-tag tag-strategy">Strategy</span>
+          </div>
+          <h3><a href="blog/50k-month-cloud-ai-local-llm-replacement.html">$50K a Month on Cloud AI Is a Hardware Problem, Not a Budget Problem</a></h3>
+          <p class="blog-rail-excerpt">A 100-person company burning $50,000 a month on Claude tokens can replace that spend with on-premises RTX PRO 6000 Blackwell hardware. Break-even in under two months. Five-year savings exceeding $3.5 million. Here is the math.</p>
+          <a href="blog/50k-month-cloud-ai-local-llm-replacement.html" class="blog-rail-read">Read &rarr;</a>
+        </article>
+
+        <article class="blog-rail-card">
+          <div class="blog-rail-meta">
+            <span class="blog-rail-date">May 14, 2026</span>
+            <span class="blog-rail-tag tag-industry">Industry</span>
+          </div>
+          <h3><a href="blog/grid-screaming-aquifers-on-premises-llm.html">The Grid Is Screaming As Our Aquifers Are Sucked Dry; The Answer Is On-Premises LLM Servers</a></h3>
+          <p class="blog-rail-excerpt">NERC Level 3 alerts, data centers draining aquifers, and 399 billion gallons of water consumed annually. Local AI inference is the responsible path forward for organizations that refuse to subsidize the cloud.</p>
+          <a href="blog/grid-screaming-aquifers-on-premises-llm.html" class="blog-rail-read">Read &rarr;</a>
+        </article>
+
+        <article class="blog-rail-card">
+          <div class="blog-rail-meta">
+            <span class="blog-rail-date">May 10, 2026</span>
+            <span class="blog-rail-tag tag-technical">Technical</span>
+          </div>
+          <h3><a href="blog/local-llm-vs-cloud-ai-hardware-gap.html">Local LLM vs Cloud AI: Every Con on the List Has a Hardware Fix</a></h3>
+          <p class="blog-rail-excerpt">A developer ran Qwen3.6-35B on a MacBook Pro and documented every limitation honestly. Speed, context depth, quality variance. Dedicated RTX PRO 6000 Blackwell GPU inference hardware solves each one today.</p>
+          <a href="blog/local-llm-vs-cloud-ai-hardware-gap.html" class="blog-rail-read">Read &rarr;</a>
+        </article>
+
+        <article class="blog-rail-card">
+          <div class="blog-rail-meta">
+            <span class="blog-rail-date">May 10, 2026</span>
+            <span class="blog-rail-tag tag-industry">Industry</span>
+          </div>
+          <h3><a href="blog/second-revolution-local-ai.html">The Second Revolution of AI Is Local. The Industry Just Admitted It.</a></h3>
+          <p class="blog-rail-excerpt">The CEO of Hugging Face ran a 27B model on a laptop in airplane mode and called it the second revolution of AI. For regulated industries paying per-token fees to process sensitive data on someone else's servers, this revolution has been a long time coming.</p>
+          <a href="blog/second-revolution-local-ai.html" class="blog-rail-read">Read &rarr;</a>
+        </article>
+
+        <a class="blog-rail-card blog-rail-more" href="blog.html" aria-label="View all blog posts">
+          <span class="blog-rail-more-inner">View all posts <span class="arw" aria-hidden="true">&rarr;</span></span>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
   <!-- Footer -->
   <footer class="footer">
     <div class="container">
@@ -613,6 +729,7 @@
   </script>
   <script defer src="js/hero-cinematic.js"></script>
   <script defer src="js/card-nodes.js"></script>
+  <script defer src="js/blog-scroller.js"></script>
   <script defer src="js/main.js"></script>
   <script defer src="js/chat-widget.js"></script>
 </body>
