@@ -261,6 +261,13 @@
   ]
 }
 </script>
+  <style>
+  /* Summit page tweaks: hero mask + Hardware Specs backdrop */
+  .hero-photo::after{background:linear-gradient(180deg,rgba(10,18,35,0.58) 0%,rgba(10,18,35,0.54) 30%,rgba(10,18,35,0.60) 50%,rgba(10,18,35,0.76) 78%,rgba(10,18,35,0.96) 100%);}
+  .specs-bg{background:linear-gradient(rgba(10,18,35,0.72),rgba(10,18,35,0.72)),url('images/summit-front.webp') center/cover no-repeat;background-attachment:scroll;}
+  .specs-bg .table-wrapper{background:rgba(10,18,35,0.93);border:1px solid rgba(148,163,184,0.16);border-radius:14px;}
+  .specs-bg .power-notice{background:rgba(10,18,35,0.93);}
+  </style>
 </head>
 <body>
 
@@ -359,18 +366,8 @@
       </div>
     </div>
   </section>
-  <!-- Summit front image (above Hardware Specs) -->
-  <section class="section section-first">
-    <div class="container">
-      <div class="fade-in" style="text-align:center;">
-        <img src="images/summit-front.webp" alt="Island Mountain Summit Series AI server, front view" width="1254" height="1254" loading="lazy" style="width:100%;max-width:520px;height:auto;border-radius:12px;">
-      </div>
-    </div>
-  </section>
-
-
-  <!-- GPU Comparison Table -->
-  <section class="section section-darker">
+  <!-- GPU Comparison Table (summit-front backdrop) -->
+  <section class="section section-darker specs-bg">
     <div class="container">
       <div class="section-header fade-in">
         <span class="section-badge">Hardware Specs</span>
@@ -487,17 +484,17 @@
       </div>
       <div class="risk-grid fade-in">
         <div class="risk-card">
-          <img src="images/ic-worktree.png" alt="" width="52" height="52" loading="lazy" style="display:block;margin-bottom:12px;">
+          <img src="images/ic-search.webp" alt="" width="52" height="52" loading="lazy" style="display:block;margin-bottom:12px;">
           <h4>Can I upgrade from Summit Base to Summit Ridge later?</h4>
           <p>Yes. Your existing RTX PRO 6000 GPUs are credited at current secondary market value and replaced with higher-performance GPUs if available. This is a physical hardware swap, not a software update. The chassis, CPU, RAM, and storage remain the same. Upgrade pricing depends on the replacement GPU market price minus your trade-in credit. Turnaround is typically 2-4 weeks from order.</p>
         </div>
         <div class="risk-card">
-          <img src="images/ic-reasoning.png" alt="" width="52" height="52" loading="lazy" style="display:block;margin-bottom:12px;">
+          <img src="images/ic-skills-teacher.webp" alt="" width="52" height="52" loading="lazy" style="display:block;margin-bottom:12px;">
           <h4>What is the largest model I can run on the Summit Base tier?</h4>
           <p>The Summit Base tier (192GB total VRAM) runs any model that fits within 192GB at FP16 precision, including all 70B-parameter models like Llama 4 Scout and DeepSeek R1 70B Distill. It runs DeepSeek V4-Flash at FP8 (about 170GB) with roughly 22GB of headroom. For V4-Flash at full FP16 quality, the Summit Pinnacle tier with 4x RTX PRO 6000 Blackwell GPUs (384GB VRAM) is the configuration to choose.</p>
         </div>
         <div class="risk-card">
-          <img src="images/ic-access.png" alt="" width="52" height="52" loading="lazy" style="display:block;margin-bottom:12px;">
+          <img src="images/ic-plan.webp" alt="" width="52" height="52" loading="lazy" style="display:block;margin-bottom:12px;">
           <h4>Are the GPUs new or used?</h4>
           <p>New. Summit Base and Summit Ridge tiers use new NVIDIA RTX PRO 6000 Blackwell Server Edition GPUs purchased through authorized NVIDIA channels with full procurement documentation. These are professional-grade server cards with ECC GDDR7 memory. Every GPU is individually tested before assembly and then undergoes 72 hours of continuous burn-in testing. GPUs showing any instability are rejected.</p>
         </div>
