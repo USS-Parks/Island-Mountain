@@ -4,35 +4,33 @@
  * never sees them. Routes:
  *   GET  /api/health        liveness probe
  *   POST /api/chat          Claude proxy + session memory      (PROMPT 02)
- *   POST /api/lead          score + persist + alert + GA4      (PROMPT 03/05)
  *   POST /api/voice-webhook Vapi voice pipeline                (PROMPT 07)
  */
 import type { Env } from './types';
 import { handlePreflight, jsonResponse, isOriginAllowed } from './cors';
 import { handleHealth } from './routes/health';
 import { handleChat } from './routes/chat';
-import { handleLead } from './routes/lead';
 import { handleVoiceWebhook } from './routes/voice';
 import { handleBookingWebhook } from './routes/booking';
 import { handleStats } from './routes/stats';
 import { handleHistory } from './routes/history';
 
+type RouteAccess = 'public' | 'browser' | 'authenticated' | 'webhook';
+
 interface Route {
   method: string;
   path: string;
   handler: (request: Request, env: Env, ctx: ExecutionContext) => Response | Promise<Response>;
-  /** Webhooks are called by third parties (no browser Origin) — skip origin gate. */
-  publicWebhook?: boolean;
+  access: RouteAccess;
 }
 
 const ROUTES: Route[] = [
-  { method: 'GET', path: '/api/health', handler: handleHealth },
-  { method: 'GET', path: '/api/stats', handler: handleStats, publicWebhook: true },
-  { method: 'GET', path: '/api/history', handler: handleHistory },
-  { method: 'POST', path: '/api/chat', handler: handleChat },
-  { method: 'POST', path: '/api/lead', handler: handleLead },
-  { method: 'POST', path: '/api/voice-webhook', handler: handleVoiceWebhook, publicWebhook: true },
-  { method: 'POST', path: '/api/booking-webhook', handler: handleBookingWebhook, publicWebhook: true },
+  { method: 'GET', path: '/api/health', handler: handleHealth, access: 'public' },
+  { method: 'GET', path: '/api/stats', handler: handleStats, access: 'authenticated' },
+  { method: 'GET', path: '/api/history', handler: handleHistory, access: 'browser' },
+  { method: 'POST', path: '/api/chat', handler: handleChat, access: 'browser' },
+  { method: 'POST', path: '/api/voice-webhook', handler: handleVoiceWebhook, access: 'webhook' },
+  { method: 'POST', path: '/api/booking-webhook', handler: handleBookingWebhook, access: 'webhook' },
 ];
 
 export default {
@@ -58,11 +56,12 @@ export default {
       );
     }
 
-    // Browser-facing endpoints must come from an allowed origin.
-    // Same-origin requests (and webhooks) have no Origin header and pass.
-    if (!route.publicWebhook && origin && !isOriginAllowed(origin, env)) {
+    // Browser routes fail closed: the site calls this Worker cross-origin, so a
+    // legitimate request always carries an allowed Origin header. Public health,
+    // token-authenticated stats, and signed webhooks use their own trust boundary.
+    if (route.access === 'browser' && !isOriginAllowed(origin, env)) {
       return jsonResponse(
-        { success: false, error: 'Origin not allowed.' },
+        { success: false, error: 'Origin required or not allowed.' },
         403,
         origin,
         env,
