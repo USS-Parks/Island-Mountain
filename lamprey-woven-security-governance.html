@@ -136,6 +136,9 @@
   .lamprey-aurora .au-card{ text-align:center; background:rgba(12,19,33,.86); }
   .lamprey-aurora .au-card .au-ic{ width:76px; height:76px; }
   .lamprey-aurora .au-card .au-ic--xl{ width:104px; height:104px; }
+  /* Uniform icon rendering: the swapped-in art varies in intrinsic brightness (crisp white webp vs
+     faint png), so normalize every card icon to the same white and give them one identical glow. */
+  .lamprey-aurora .au-card .au-ic img{ filter: brightness(0) invert(1) drop-shadow(0 0 5px rgba(200,220,255,.55)); }
   .lamprey-aurora .au-card p{ color:var(--au-muted); font-size:.93rem; line-height:1.62; margin:0; }
 
   /* Card edge nodes now come from the shared css/card-nodes.css + js/card-nodes.js. */
