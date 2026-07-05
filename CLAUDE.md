@@ -29,3 +29,6 @@ The gates are built to **fail safe**: they block a genuinely corrupt or secret-l
 
 ## Commit + push
 The footer is applied automatically by the hook: `Authored and reviewed by Basho Parks, Copyright 2026` — never credit an AI co-author. Push only when Basho explicitly says so; the `main` branch is live.
+
+## Deploy — GitHub Pages, serialized (CANON §12)
+The site publishes through `.github/workflows/pages.yml` (Pages source = **GitHub Actions**, `build_type: workflow`), which carries a `concurrency: { group: pages, cancel-in-progress: false }` gate so the parallel/rapid pushes this repo sees on `main` **queue** instead of colliding. Do **not** revert Pages to branch-based "legacy" deploy — with concurrent sessions it races and fails opaquely ("Deployment failed, try again later"). A committed `.nojekyll` keeps the artifact served verbatim as static files. When a publish looks stuck, diagnose the pipeline (`gh run list`, `gh api repos/USS-Parks/islandmountain/pages`), never just re-push and hope.
