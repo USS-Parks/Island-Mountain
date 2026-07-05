@@ -24,7 +24,7 @@
   <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png?v=2">
   <link rel="preload" as="image" href="images/im-opening-poster.webp" fetchpriority="high">
   <link rel="stylesheet" href="css/style.min.css">
-  <link rel="stylesheet" href="css/aurora.css">
+  <link rel="stylesheet" href="css/aurora.css?v=2">
   <link rel="stylesheet" href="css/card-nodes.css?v=2">
   <link rel="stylesheet" href="icons/remixicon.css" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="icons/remixicon.css"></noscript>
@@ -216,104 +216,6 @@
         <div class="vs-inner">
           <div class="vs-play"><i class="ri-play-fill"></i></div>
           <div class="vs-label">Film - Coming Soon</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Agentic Orchestration & Security Map -->
-  <section class="au-section">
-    <div class="container">
-      <span class="au-eyebrow-c au-reveal">The Security Map</span>
-      <h2 class="au-h2 au-reveal">Every action, mapped and governed.</h2>
-      <p class="au-lede au-reveal">Orchestration flows down through runtime and tools into the Woven Security &amp; Governance Fabric, where identity, guardrails, approval gates and the audit ledger sit inline on every call. Attacks ride the same rails; the fabric is where they stop.</p>
-      <div class="au-map-wrap au-reveal beam-card">
-        <svg class="au-map" viewBox="0 0 1240 720" role="img" aria-label="Agentic orchestration and security map: orchestration and runtime flow down into the woven security fabric; telemetry flows back up; attacks from below are stopped at the fabric">
-          <defs>
-            <radialGradient id="auOrb" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stop-color="#fff7ed" stop-opacity="1"/>
-              <stop offset="35%" stop-color="#fbbf24" stop-opacity=".95"/>
-              <stop offset="100%" stop-color="#f59e0b" stop-opacity="0"/>
-            </radialGradient>
-            <radialGradient id="auRed" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stop-color="#fee2e2" stop-opacity="1"/>
-              <stop offset="40%" stop-color="#ef4444" stop-opacity=".9"/>
-              <stop offset="100%" stop-color="#ef4444" stop-opacity="0"/>
-            </radialGradient>
-            <radialGradient id="auTeal" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stop-color="#e0f2fe" stop-opacity="1"/>
-              <stop offset="40%" stop-color="#38bdf8" stop-opacity=".9"/>
-              <stop offset="100%" stop-color="#38bdf8" stop-opacity="0"/>
-            </radialGradient>
-            <linearGradient id="auWire" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#fbbf24" stop-opacity=".75"/>
-              <stop offset="100%" stop-color="#f59e0b" stop-opacity=".2"/>
-            </linearGradient>
-          </defs>
-
-          <!-- task & data flow (down) -->
-          <path class="au-flow" d="M170,128 L170,240"/><path class="au-flow" d="M470,128 L470,240"/><path class="au-flow" d="M770,128 L770,240"/><path class="au-flow" d="M1070,128 L1070,240"/>
-          <path class="au-flow" d="M170,320 L170,424"/><path class="au-flow" d="M470,320 L470,424"/><path class="au-flow" d="M770,320 L770,424"/><path class="au-flow" d="M1070,320 L1070,424"/>
-          <!-- telemetry (up, teal dotted) -->
-          <path class="au-tele" d="M320,418 L320,128"/><path class="au-tele" d="M620,418 L620,128"/><path class="au-tele" d="M920,418 L920,128"/>
-          <!-- attack paths (up from threats, stopped at fabric) -->
-          <path class="au-attack" d="M135,640 C 135,585 170,558 170,520"/>
-          <path class="au-attack" d="M329,640 C 329,585 470,558 470,520"/>
-          <path class="au-attack" d="M523,640 C 523,585 470,558 470,520"/>
-          <path class="au-attack" d="M717,640 C 717,585 770,558 770,520"/>
-          <path class="au-attack" d="M911,640 C 911,585 770,558 770,520"/>
-          <path class="au-attack" d="M1105,640 C 1105,585 1070,558 1070,520"/>
-
-          <!-- 01 Agentic Orchestration Governance -->
-          <text class="au-bandnum" x="40" y="40" style="fill:#34d399">01</text><text class="au-bandlabel" x="74" y="40" style="fill:#6ee7b7">Agentic Orchestration Governance</text>
-          <g><rect class="au-cell au-cell-aog" x="32" y="48" width="276" height="80" rx="12"/><text class="au-ct au-ct-aog" x="170" y="96">Planner</text></g>
-          <g><rect class="au-cell au-cell-aog" x="332" y="48" width="276" height="80" rx="12"/><text class="au-ct au-ct-aog" x="470" y="96">Workers</text></g>
-          <g><rect class="au-cell au-cell-aog" x="632" y="48" width="276" height="80" rx="12"/><text class="au-ct au-ct-aog" x="770" y="96">Router / Handoff</text></g>
-          <g><rect class="au-cell au-cell-aog" x="932" y="48" width="276" height="80" rx="12"/><text class="au-ct au-ct-aog" x="1070" y="96">Evaluator</text></g>
-
-          <!-- 02 Runtime & Tools -->
-          <text class="au-bandnum" x="40" y="230">02</text><text class="au-bandlabel" x="74" y="230">Runtime &amp; Tools</text>
-          <g><rect class="au-cell" x="32" y="240" width="276" height="80" rx="12"/><text class="au-ct" x="170" y="288">Memory / State</text></g>
-          <g><rect class="au-cell" x="332" y="240" width="276" height="80" rx="12"/><text class="au-ct" x="470" y="288">MCP Tools</text></g>
-          <g><rect class="au-cell" x="632" y="240" width="276" height="80" rx="12"/><text class="au-ct" x="770" y="288">Code Execution</text></g>
-          <g><rect class="au-cell" x="932" y="240" width="276" height="80" rx="12"/><text class="au-ct" x="1070" y="288">Browser / Shell</text></g>
-
-          <!-- 03 Woven Security Fabric -->
-          <text class="au-bandnum" x="40" y="414">03</text><text class="au-bandlabel" x="74" y="414" style="fill:#fbbf24">Woven Security Fabric</text>
-          <g><rect class="au-cell au-cell-wsf" x="32" y="424" width="276" height="96" rx="12"/><text class="au-ct au-ct-wsf" x="170" y="480">Identity</text></g>
-          <g><rect class="au-cell au-cell-wsf" x="332" y="424" width="276" height="96" rx="12"/><text class="au-ct au-ct-wsf" x="470" y="480">Guardrails</text></g>
-          <g><rect class="au-cell au-cell-wsf" x="632" y="424" width="276" height="96" rx="12"/><text class="au-ct au-ct-wsf" x="770" y="480">Approval Gates</text></g>
-          <g><rect class="au-cell au-cell-wsf" x="932" y="424" width="276" height="96" rx="12"/><text class="au-ct au-ct-wsf" x="1070" y="480">Audit Ledger</text></g>
-          <!-- control impact points: where attacks die on the fabric edge -->
-          <circle class="au-impact" cx="170" cy="520" r="7"/><circle class="au-impact" cx="470" cy="520" r="7"/><circle class="au-impact" cx="770" cy="520" r="7"/><circle class="au-impact" cx="1070" cy="520" r="7"/>
-
-          <!-- 04 Threats -->
-          <text class="au-bandnum" x="40" y="626" style="fill:#f87171">04</text><text class="au-bandlabel" x="74" y="626" style="fill:#fda4a4">Threats</text>
-          <g><rect class="au-cell au-cell-threat" x="41" y="640" width="188" height="64" rx="12"/><text class="au-ct-t" x="135" y="678">Prompt Injection</text></g>
-          <g><rect class="au-cell au-cell-threat" x="235" y="640" width="188" height="64" rx="12"/><text class="au-ct-t" x="329" y="678">Agent-Jacking</text></g>
-          <g><rect class="au-cell au-cell-threat" x="429" y="640" width="188" height="64" rx="12"/><text class="au-ct-t" x="523" y="678">Tool Poisoning</text></g>
-          <g><rect class="au-cell au-cell-threat" x="623" y="640" width="188" height="64" rx="12"/><text class="au-ct-t" x="717" y="678">Data Exfiltration</text></g>
-          <g><rect class="au-cell au-cell-threat" x="817" y="640" width="188" height="64" rx="12"/><text class="au-ct-t" x="911" y="678">Memory Poisoning</text></g>
-          <g><rect class="au-cell au-cell-threat" x="1011" y="640" width="188" height="64" rx="12"/><text class="au-ct-t" x="1105" y="678">Rogue Agency</text></g>
-
-          <!-- moving elements: copper task flow (down) -->
-          <circle class="au-flowdot au-fd1" r="6" fill="url(#auOrb)"/><circle class="au-flowdot au-fd2" r="6" fill="url(#auOrb)"/>
-          <circle class="au-flowdot au-fd3" r="6" fill="url(#auOrb)"/><circle class="au-flowdot au-fd4" r="6" fill="url(#auOrb)"/>
-          <circle class="au-flowdot au-fd5" r="6" fill="url(#auOrb)"/><circle class="au-flowdot au-fd6" r="6" fill="url(#auOrb)"/>
-          <circle class="au-flowdot au-fd7" r="6" fill="url(#auOrb)"/><circle class="au-flowdot au-fd8" r="6" fill="url(#auOrb)"/>
-          <circle class="au-flowdot au-fd9" r="5" fill="url(#auOrb)"/><circle class="au-flowdot au-fd10" r="5" fill="url(#auOrb)"/>
-          <!-- red attack dots riding the dashed paths, dying at the fabric -->
-          <circle class="au-atkdot au-ad1" r="5.5" fill="url(#auRed)"/><circle class="au-atkdot au-ad2" r="5.5" fill="url(#auRed)"/>
-          <circle class="au-atkdot au-ad3" r="5.5" fill="url(#auRed)"/><circle class="au-atkdot au-ad4" r="5.5" fill="url(#auRed)"/>
-          <circle class="au-atkdot au-ad5" r="5.5" fill="url(#auRed)"/><circle class="au-atkdot au-ad6" r="5.5" fill="url(#auRed)"/>
-          <!-- teal telemetry dots rising -->
-          <circle class="au-teledot au-td1" r="5" fill="url(#auTeal)"/><circle class="au-teledot au-td2" r="5" fill="url(#auTeal)"/><circle class="au-teledot au-td3" r="5" fill="url(#auTeal)"/>
-        </svg>
-        <div class="au-maplegend">
-          <span><i class="au-lg-line"></i> Task &amp; data flow</span>
-          <span><i class="au-lg-dash"></i> Attack path - stopped at the fabric</span>
-          <span><i class="au-lg-tele"></i> Telemetry &amp; audit, flowing back up</span>
-          <span><i class="au-lg-dot"></i> Control impact point</span>
         </div>
       </div>
     </div>
