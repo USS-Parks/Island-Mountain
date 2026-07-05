@@ -417,9 +417,28 @@
   window.imChatOpen = function () { if (!root) init(); openPanel(); };
 
   // --- Deferred init: never block first paint --------------------------------
-  function boot() {
+  // Hold the launcher until the opening intro animation has finished. The intro
+  // controller (hero-cinematic.js) adds `intro-done` to <html> when the video
+  // ends, is skipped, was already seen this session, or reduced-motion is on.
+  // Pages without the intro (everything but the homepage) start immediately.
+  function startWidget() {
     if (document.body) init();
     else document.addEventListener('DOMContentLoaded', init, { once: true });
+  }
+  function boot() {
+    var de = document.documentElement;
+    var hasIntro = !!document.getElementById('aurora-intro');
+    if (!hasIntro || de.classList.contains('intro-done')) { startWidget(); return; }
+    var started = false;
+    function go() { if (started) return; started = true; startWidget(); }
+    try {
+      var mo = new MutationObserver(function () {
+        if (de.classList.contains('intro-done')) { mo.disconnect(); go(); }
+      });
+      mo.observe(de, { attributes: true, attributeFilter: ['class'] });
+    } catch (e) {}
+    // Failsafe: never leave the launcher hidden if intro-done never arrives.
+    setTimeout(go, 12000);
   }
   if ('requestIdleCallback' in window) requestIdleCallback(boot, { timeout: 3000 });
   else setTimeout(boot, 1200);
