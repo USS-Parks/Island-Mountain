@@ -1,0 +1,465 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Island Mountain — Brand & Style Guide</title>
+<meta name="description" content="Internal brand and style reference for Island Mountain: color, typography, iconography, cards, motion, tokens, and process how-tos.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="canonical" href="https://islandmountain.io/style-guide.html">
+<link rel="icon" type="image/x-icon" href="favicon.ico?v=2">
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png?v=2">
+<link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png?v=2">
+<style>
+  @font-face{ font-family:'Grotesk'; src:url(fonts/space-grotesk-latin.woff2) format('woff2'); font-weight:300 700; font-display:swap; }
+  @font-face{ font-family:'Inter'; src:url(fonts/inter-latin.woff2) format('woff2'); font-weight:100 900; font-display:swap; }
+
+  :root{
+    --ink:#080d18; --slate:#0f172a; --slate-2:#131c31; --slate-3:#0d1424;
+    --copper:#f59e0b; --copper-light:#fbbf24; --copper-deep:#d97706; --copper-darker:#b45309;
+    --text:#f1f5f9; --muted:#93a3ba; --faint:#64748b;
+    --line:rgba(148,163,184,.14); --line-2:rgba(148,163,184,.22);
+    --red:#ef4444; --green:#34d399;
+    --card:rgba(19,28,49,.72); --radius:12px; --radius-lg:16px;
+    --disp:'Grotesk','Inter',system-ui,sans-serif;
+    --body:'Inter',system-ui,-apple-system,sans-serif;
+    --mono:ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,monospace;
+    --maxw:1120px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0; background:var(--ink); color:var(--text);
+    font-family:var(--body); font-size:16px; line-height:1.7; font-weight:400;
+    -webkit-font-smoothing:antialiased;
+    background-image:radial-gradient(1200px 600px at 80% -10%, rgba(245,158,11,.06), transparent 60%);
+  }
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 28px}
+  a{color:var(--copper-light); text-decoration:none}
+  a:hover{color:var(--copper)}
+  ::selection{background:rgba(245,158,11,.3); color:#fff}
+
+  /* ---- header ---- */
+  header{position:sticky; top:0; z-index:50; backdrop-filter:blur(14px);
+    background:rgba(8,13,24,.82); border-bottom:1px solid var(--line)}
+  .bar{display:flex; align-items:center; gap:22px; height:62px}
+  .bar img{height:30px; width:auto; display:block}
+  nav.top{margin-left:auto; display:flex; gap:22px; flex-wrap:wrap}
+  nav.top a{color:var(--muted); font-size:.82rem; letter-spacing:.02em; text-transform:uppercase; font-weight:600}
+  nav.top a:hover{color:var(--text)}
+  @media(max-width:760px){ nav.top{display:none} }
+
+  /* ---- type ---- */
+  h1,h2,h3,h4{font-family:var(--disp); font-weight:700; letter-spacing:-.02em; line-height:1.08; text-wrap:balance; margin:0}
+  .eyebrow{font-family:var(--disp); text-transform:uppercase; letter-spacing:.26em; font-size:.72rem; font-weight:700; color:var(--copper); margin:0 0 .7rem}
+  .lede{color:var(--muted); font-size:1.06rem; max-width:64ch}
+  p{max-width:68ch}
+  code{font-family:var(--mono); font-size:.86em; background:rgba(148,163,184,.12); padding:.12em .4em; border-radius:5px; color:#e2e8f0}
+
+  /* ---- hero ---- */
+  .hero{padding:74px 0 46px; border-bottom:1px solid var(--line)}
+  .hero h1{font-size:clamp(2.8rem,7vw,4.6rem); font-weight:700; letter-spacing:-.03em}
+  .hero .lede{font-size:1.18rem; margin-top:18px}
+  .hero .rule{width:64px; height:3px; background:linear-gradient(90deg,var(--copper),var(--copper-deep)); margin:26px 0 0; border-radius:2px}
+  .badge-row{display:flex; gap:10px; flex-wrap:wrap; margin-top:26px}
+  .badge{font-family:var(--mono); font-size:.74rem; color:var(--muted); border:1px solid var(--line-2); border-radius:999px; padding:6px 13px}
+  .badge b{color:var(--copper-light); font-weight:400}
+
+  /* ---- section scaffold ---- */
+  section{padding:64px 0; border-bottom:1px solid var(--line)}
+  section > .wrap > .eyebrow{margin-top:0}
+  h2.sec{font-size:clamp(1.7rem,3.4vw,2.4rem); font-weight:700}
+  .sec-sub{color:var(--muted); margin:.7rem 0 34px; max-width:66ch}
+  h3.blk{font-size:1.05rem; font-weight:700; color:var(--text); margin:34px 0 14px; letter-spacing:-.01em}
+
+  /* ---- color ---- */
+  .swgrid{display:grid; grid-template-columns:repeat(auto-fill,minmax(158px,1fr)); gap:14px}
+  .sw{border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; background:var(--slate-2)}
+  .sw .chip{height:74px}
+  .sw .meta{padding:10px 12px 12px}
+  .sw .tok{font-family:var(--mono); font-size:.72rem; color:var(--text); display:block; overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+  .sw .hex{font-family:var(--mono); font-size:.72rem; color:var(--muted); text-transform:uppercase}
+  .note{border-left:2px solid var(--copper); background:rgba(245,158,11,.05); padding:16px 20px; border-radius:0 var(--radius) var(--radius) 0; margin-top:28px; color:#cbd5e1; font-size:.95rem}
+  .note b{color:var(--copper-light)}
+
+  /* ---- type specimens ---- */
+  .spec{border:1px solid var(--line); border-radius:var(--radius-lg); padding:26px 28px; background:var(--slate-2); margin-bottom:16px}
+  .spec .label{font-family:var(--mono); font-size:.72rem; color:var(--faint); text-transform:uppercase; letter-spacing:.08em; margin-bottom:10px}
+  .sd1{font-family:var(--disp); font-weight:700; font-size:clamp(2rem,5vw,3.4rem); letter-spacing:-.03em; line-height:1.05}
+  .sd2{font-family:var(--disp); font-weight:700; font-size:1.7rem; letter-spacing:-.02em}
+  .sb{font-family:var(--body); font-size:1.02rem; color:#dbe4f0}
+  .scale{width:100%; border-collapse:collapse; font-size:.9rem; margin-top:6px}
+  .scale th,.scale td{text-align:left; padding:9px 12px; border-bottom:1px solid var(--line)}
+  .scale th{font-family:var(--mono); font-size:.7rem; text-transform:uppercase; letter-spacing:.06em; color:var(--faint); font-weight:600}
+  .scale td:first-child{font-family:var(--disp); font-weight:700}
+  .scale td.m{font-family:var(--mono); font-size:.8rem; color:var(--muted)}
+
+  /* ---- cards / icons ---- */
+  .cardgrid{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:16px}
+  .imcard{border:1px solid var(--line); border-radius:var(--radius-lg); background:var(--card); padding:26px 22px; text-align:center; position:relative; isolation:isolate; overflow:hidden}
+  .imcard > *{position:relative; z-index:1}
+  .imcard img.ic{width:96px; height:96px; object-fit:contain; margin:2px auto 14px; display:block}
+  .imcard h4{font-size:1.05rem; font-weight:700; margin-bottom:8px}
+  .imcard p{font-size:.86rem; color:var(--muted); margin:0 auto; max-width:26ch}
+
+  /* beam-card node animation (the house treatment) */
+  .beam{position:relative; isolation:isolate}
+  .beam::before{content:""; position:absolute; z-index:3; top:0; left:0; width:12px; height:12px; border-radius:50%;
+    transform:translate(-50%,-50%); opacity:0; background:transparent; border:2px solid rgba(255,255,255,.92)}
+  .beam.run::before{animation:edge 2.8s linear infinite; animation-delay:calc(var(--i,0)*.55s)}
+  @keyframes edge{0%{left:0;top:0;opacity:0}5%{opacity:1}30%{left:100%;top:0;opacity:1}70%{left:100%;top:100%;opacity:1}78%{opacity:0}100%{left:100%;top:100%;opacity:0}}
+
+  .iconrow{display:grid; grid-template-columns:repeat(auto-fill,minmax(96px,1fr)); gap:14px; margin-top:8px}
+  .icotile{border:1px solid var(--line); border-radius:var(--radius); background:var(--slate-2); padding:16px; text-align:center}
+  .icotile img{width:56px; height:56px; object-fit:contain; display:block; margin:0 auto 8px}
+  .icotile span{font-family:var(--mono); font-size:.64rem; color:var(--muted); display:block; overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+
+  /* ---- buttons ---- */
+  .btnrow{display:flex; gap:16px; flex-wrap:wrap; align-items:center; margin-top:8px}
+  .btn{font-family:var(--body); font-weight:600; font-size:.95rem; padding:13px 28px; border-radius:8px; border:1px solid transparent; cursor:pointer; display:inline-block}
+  .btn-p{background:linear-gradient(135deg,var(--copper),var(--copper-deep)); color:#fff; box-shadow:0 4px 20px rgba(245,158,11,.32)}
+  .btn-p:hover{box-shadow:0 6px 28px rgba(245,158,11,.5); transform:translateY(-2px); color:#fff}
+  .btn-s{color:#fff; border-color:rgba(255,255,255,.28); background:rgba(255,255,255,.04)}
+  .btn-s:hover{background:rgba(255,255,255,.12); border-color:rgba(255,255,255,.5)}
+  .btn{transition:transform .25s, box-shadow .25s, background .25s, border-color .25s}
+
+  /* ---- tokens ---- */
+  .chips{display:flex; flex-wrap:wrap; gap:10px}
+  .chip-t{border:1px solid var(--line); background:var(--slate-2); border-radius:999px; padding:8px 15px; font-family:var(--mono); font-size:.78rem; color:#cbd5e1}
+  .chip-t b{color:var(--copper-light); font-weight:400}
+
+  /* ---- process / how-to ---- */
+  .grp{margin-top:30px}
+  .grp .glab{font-family:var(--disp); font-weight:700; font-size:1.15rem; color:var(--text); display:flex; align-items:baseline; gap:12px; margin-bottom:16px}
+  .grp .glab span{font-family:var(--mono); font-size:.8rem; color:var(--copper); border:1px solid var(--line-2); border-radius:6px; padding:2px 8px}
+  .howto{border:1px solid var(--line); border-radius:var(--radius-lg); background:var(--slate-2); padding:0; margin-bottom:14px; overflow:hidden}
+  .howto .hh{padding:16px 20px 4px}
+  .howto h4{font-size:1rem; font-weight:700}
+  .howto .hh p{font-size:.9rem; color:var(--muted); margin:6px 0 12px}
+  pre{margin:0; background:var(--slate-3); border-top:1px solid var(--line); padding:15px 20px; overflow-x:auto}
+  pre code{background:none; padding:0; font-size:.82rem; line-height:1.65; color:#cbd5e1}
+  .cm{color:var(--faint)}
+  .cp{color:var(--copper-light)}
+  kbd{font-family:var(--mono); font-size:.8em; background:rgba(245,158,11,.12); color:var(--copper-light); border:1px solid rgba(245,158,11,.25); border-radius:5px; padding:.05em .4em}
+
+  /* ---- do/don't ---- */
+  .dd{display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:8px}
+  @media(max-width:640px){.dd{grid-template-columns:1fr}}
+  .dcol{border:1px solid var(--line); border-radius:var(--radius); padding:18px 20px; background:var(--slate-2)}
+  .dcol .t{font-family:var(--disp); font-weight:700; font-size:.95rem; margin-bottom:10px; display:flex; align-items:center; gap:8px}
+  .dcol.good .t{color:var(--green)} .dcol.bad .t{color:var(--red)}
+  .dcol ul{margin:0; padding-left:18px} .dcol li{font-size:.9rem; color:#cbd5e1; margin:6px 0}
+
+  footer{padding:48px 0 70px; color:var(--muted)}
+  footer .canon{font-family:var(--disp); color:var(--text); font-weight:700; letter-spacing:-.01em}
+  footer .src{font-size:.88rem; margin-top:8px}
+
+  @media (prefers-reduced-motion:reduce){
+    .beam.run::before{animation:none; display:none}
+    .btn{transition:none}
+    html{scroll-behavior:auto}
+  }
+</style>
+</head>
+<body>
+
+
+<header>
+  <div class="wrap bar">
+    <img src="images/logo-nav-new.webp" alt="Island Mountain">
+    <nav class="top">
+      <a href="#color">Color</a>
+      <a href="#type">Type</a>
+      <a href="#icons">Icons</a>
+      <a href="#cards">Cards</a>
+      <a href="#motion">Motion</a>
+      <a href="#tokens">Tokens</a>
+      <a href="#process">Process</a>
+    </nav>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Brand &amp; Style Guide</p>
+    <h1>Island&nbsp;Mountain</h1>
+    <p class="lede">Sovereign AI infrastructure for regulated organizations — every workstation its own air-gappable server, with the Woven Security &amp; Governance Fabric built in. Hand-built in California.</p>
+    <div class="rule"></div>
+    <div class="badge-row">
+      <span class="badge"><b>copper</b> on dark</span>
+      <span class="badge">Space&nbsp;Grotesk · Inter</span>
+      <span class="badge"><b>33</b> line-art icons</span>
+      <span class="badge">edge-node motion</span>
+    </div>
+    <p class="lede" style="font-size:.92rem;margin-top:26px;color:var(--faint)">This page renders the canonical <code>BRAND.md</code>, in the brand's own visual language.</p>
+  </div>
+</div>
+
+<!-- VOICE -->
+<section id="voice">
+  <div class="wrap">
+    <p class="eyebrow">01 — Voice</p>
+    <h2 class="sec">Direct, technical, custody-first.</h2>
+    <p class="sec-sub">We describe what the product does and constrains, not what it "empowers." Confident without hype; regulated-industry literate; the through-line is always custody — what stays inside the customer's boundary.</p>
+    <div class="dd">
+      <div class="dcol good">
+        <div class="t">✓ Do</div>
+        <ul>
+          <li>"Attacks ride the same rails; the fabric is where they stop."</li>
+          <li>Name the real frameworks — HIPAA, ITAR/CMMC, the CLOUD Act, OCAP.</li>
+          <li>"One builder, one phone call, real answers — no sales pitch."</li>
+          <li>Plain declaratives; sentence case; lead with what stays in the customer's control.</li>
+        </ul>
+      </div>
+      <div class="dcol bad">
+        <div class="t">✕ Don't</div>
+        <ul>
+          <li>"Revolutionary," "cutting-edge," "empower," "unlock."</li>
+          <li>Exclamation marks or vague benefit claims.</li>
+          <li>Anything implying data leaves the boundary.</li>
+          <li>All-caps outside the wordmark.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COLOR -->
+<section id="color">
+  <div class="wrap">
+    <p class="eyebrow">02 — Color</p>
+    <h2 class="sec">A copper spine on deep navy-slate.</h2>
+    <p class="sec-sub">A warm copper/amber accent over dark grounds, slate neutrals chosen with a cool bias, and a single red reserved for alerts. Every value below is a live swatch of the real token.</p>
+
+    <h3 class="blk">Copper spine — accent</h3>
+    <div class="swgrid">
+      <div class="sw"><div class="chip" style="background:#f59e0b"></div><div class="meta"><span class="tok">--copper</span><span class="hex">#f59e0b</span></div></div>
+      <div class="sw"><div class="chip" style="background:#fbbf24"></div><div class="meta"><span class="tok">--copper-light</span><span class="hex">#fbbf24</span></div></div>
+      <div class="sw"><div class="chip" style="background:#d97706"></div><div class="meta"><span class="tok">--copper-deep</span><span class="hex">#d97706</span></div></div>
+      <div class="sw"><div class="chip" style="background:#b45309"></div><div class="meta"><span class="tok">--copper-darker</span><span class="hex">#b45309</span></div></div>
+    </div>
+
+    <h3 class="blk">Dark grounds</h3>
+    <div class="swgrid">
+      <div class="sw"><div class="chip" style="background:#080d18"></div><div class="meta"><span class="tok">--au-ink</span><span class="hex">#080d18</span></div></div>
+      <div class="sw"><div class="chip" style="background:#0f172a"></div><div class="meta"><span class="tok">--slate / page</span><span class="hex">#0f172a</span></div></div>
+      <div class="sw"><div class="chip" style="background:#0d1424"></div><div class="meta"><span class="tok">--au-slate-3</span><span class="hex">#0d1424</span></div></div>
+      <div class="sw"><div class="chip" style="background:#131c31"></div><div class="meta"><span class="tok">--au-slate-2 / card</span><span class="hex">#131c31</span></div></div>
+      <div class="sw"><div class="chip" style="background:#1e293b"></div><div class="meta"><span class="tok">--secondary-dark</span><span class="hex">#1e293b</span></div></div>
+      <div class="sw"><div class="chip" style="background:#334155"></div><div class="meta"><span class="tok">--tertiary-dark</span><span class="hex">#334155</span></div></div>
+    </div>
+
+    <h3 class="blk">Neutrals, text &amp; the one accent</h3>
+    <div class="swgrid">
+      <div class="sw"><div class="chip" style="background:#f1f5f9"></div><div class="meta"><span class="tok">--text-light</span><span class="hex">#f1f5f9</span></div></div>
+      <div class="sw"><div class="chip" style="background:#cbd5e1"></div><div class="meta"><span class="tok">--slate-300</span><span class="hex">#cbd5e1</span></div></div>
+      <div class="sw"><div class="chip" style="background:#93a3ba"></div><div class="meta"><span class="tok">--au-muted</span><span class="hex">#93a3ba</span></div></div>
+      <div class="sw"><div class="chip" style="background:#64748b"></div><div class="meta"><span class="tok">--slate-500</span><span class="hex">#64748b</span></div></div>
+      <div class="sw"><div class="chip" style="background:#ef4444"></div><div class="meta"><span class="tok">--red-accent</span><span class="hex">#ef4444</span></div></div>
+    </div>
+
+    <div class="note"><b>Canonical-token rule.</b> The palette lives in two variable families that resolve to the same hex — <code>--copper</code> (style.css) and <code>--au-copper</code> (aurora.css). The hex values are canonical; the two families are aliases. Use <code>--au-*</code> in aurora sections, <code>--*</code> in the component library — but never introduce a third value for an existing color.</div>
+  </div>
+</section>
+
+<!-- TYPE -->
+<section id="type">
+  <div class="wrap">
+    <p class="eyebrow">03 — Typography</p>
+    <h2 class="sec">Space Grotesk sets the tone; Inter carries the words.</h2>
+    <p class="sec-sub">Display in Space Grotesk at 700–800 with tight tracking; body in Inter at a ~65-character measure. Uppercase copper eyebrows are the kicker above every heading.</p>
+
+    <div class="spec">
+      <div class="label">Display · Space Grotesk · 700 · −.03em</div>
+      <div class="sd1">One sovereign stack, from silicon to governance.</div>
+    </div>
+    <div class="spec">
+      <div class="label">Eyebrow · Space Grotesk · .26em · uppercase</div>
+      <div class="eyebrow" style="margin:0">Compliance &amp; Operations</div>
+      <div class="sd2" style="margin-top:6px">Evidence you can hand to an auditor.</div>
+    </div>
+    <div class="spec">
+      <div class="label">Body · Inter · 400 · 1.7</div>
+      <div class="sb">Least privilege is a product constraint, not a dashboard label. Scan access is minted just in time, scoped to the operation, and revoked automatically — the fabric is intentionally structured for environments where a scanner must earn each action instead of accumulating broad permanent trust.</div>
+    </div>
+
+    <h3 class="blk">Type scale</h3>
+    <div style="overflow-x:auto">
+    <table class="scale">
+      <thead><tr><th>Role</th><th>Family</th><th>Size</th><th>Weight</th></tr></thead>
+      <tbody>
+        <tr><td>Hero H1</td><td class="m">Space Grotesk</td><td class="m">clamp(2.6, 6vw, 4.5rem)</td><td class="m">700</td></tr>
+        <tr><td>Section H2</td><td class="m">Space Grotesk</td><td class="m">clamp(1.85, 3.6vw, 2.7rem)</td><td class="m">800</td></tr>
+        <tr><td>H3</td><td class="m">Space Grotesk</td><td class="m">1.14–1.5rem</td><td class="m">600–700</td></tr>
+        <tr><td>Body</td><td class="m">Inter</td><td class="m">0.95–1.05rem / 1.7</td><td class="m">400</td></tr>
+        <tr><td>Eyebrow</td><td class="m">Space Grotesk</td><td class="m">0.75rem · .24em</td><td class="m">700</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+</section>
+
+<!-- ICONS -->
+<section id="icons">
+  <div class="wrap">
+    <p class="eyebrow">04 — Iconography</p>
+    <h2 class="sec">White line-art, floated on the dark.</h2>
+    <p class="sec-sub">A library of ~33 icons: white linework on transparent, stored at 1254×1254 webp with luminance-based alpha, frequently carrying the sunburst. Centered over the text, never in a badge.</p>
+
+    <div class="iconrow">
+      <div class="icotile"><img src="images/faq-icon.webp" alt=""><span>faq</span></div>
+      <div class="icotile"><img src="images/resources-icon.webp" alt=""><span>resources</span></div>
+      <div class="icotile"><img src="images/contact-icon.webp" alt=""><span>contact</span></div>
+      <div class="icotile"><img src="images/air-gapped-icon.webp" alt=""><span>air-gapped</span></div>
+      <div class="icotile"><img src="images/WSF-icon.webp" alt=""><span>WSF</span></div>
+      <div class="icotile"><img src="images/agentic-orchestration-icon.webp" alt=""><span>agentic-orch</span></div>
+    </div>
+
+    <div class="note"><b>Sizing.</b> <code>.au-ic</code> 54px · <code>.card-icon-im</code> ≤210px centered · <code>.au-vcard-icon</code> 72px. All <code>object-fit:contain</code>, <code>alt=""</code> (the heading labels it), <code>loading="lazy"</code>. To make a new one, see <b>How-To A1 / A6</b> below.</div>
+  </div>
+</section>
+
+<!-- CARDS + MOTION -->
+<section id="cards">
+  <div class="wrap">
+    <p class="eyebrow">05 — Cards &amp; Motion</p>
+    <h2 class="sec">One card language, one signature motion.</h2>
+    <p class="sec-sub">Dark glass, hairline border, rounded, hover-lift — unified across families (<code>.card</code>, <code>.au-card</code>, <code>gpu-card</code>, <code>risk-card</code>) by one animation: a hollow white ring rides the top then the right edge, once, on scroll-in, staggered across a row. It's running live below.</p>
+
+    <div class="cardgrid" id="beamdemo">
+      <div class="imcard beam" style="--i:0"><img class="ic" src="images/faq-icon.webp" alt=""><h4>FAQ</h4><p>Straight answers on deployment, model selection, and air-gapping.</p></div>
+      <div class="imcard beam" style="--i:1"><img class="ic" src="images/resources-icon.webp" alt=""><h4>Resources</h4><p>Direct-answer briefs on HIPAA, ITAR/CMMC, and the CLOUD Act.</p></div>
+      <div class="imcard beam" style="--i:2"><img class="ic" src="images/contact-icon.webp" alt=""><h4>Contact</h4><p>One builder, one phone call, real answers — no sales pitch.</p></div>
+    </div>
+
+    <h3 class="blk">Buttons</h3>
+    <div class="btnrow">
+      <a class="btn btn-p" href="#">Request a build &rarr;</a>
+      <a class="btn btn-s" href="#">Read the FAQ &rarr;</a>
+    </div>
+    <p class="sec-sub" style="margin-top:16px"><code>.btn-primary</code> — copper gradient, glow, primary CTA only. <code>.btn-secondary</code> — glass outline, card CTAs. Inline links use <code>class="clr-copper"</code> on marketing pages, plain <code>&lt;a&gt;</code> in blog prose.</p>
+  </div>
+</section>
+
+<!-- TOKENS -->
+<section id="tokens">
+  <div class="wrap">
+    <p class="eyebrow">06 — Surfaces &amp; Tokens</p>
+    <h2 class="sec">The measured details.</h2>
+    <p class="sec-sub">Consistent radii, one glass blur, restrained shadows, a fixed nav and container width.</p>
+    <div class="chips">
+      <span class="chip-t">radius-sm <b>8px</b></span>
+      <span class="chip-t">radius <b>12px</b></span>
+      <span class="chip-t">radius-lg <b>16px</b></span>
+      <span class="chip-t">glass-blur <b>16px</b></span>
+      <span class="chip-t">transition <b>0.3s</b></span>
+      <span class="chip-t">nav-height <b>80px</b></span>
+      <span class="chip-t">max-width <b>1200px</b></span>
+      <span class="chip-t">card hover <b>0 12px 40px /.3</b></span>
+      <span class="chip-t">media shadow <b>0 24px 60px /.5</b></span>
+      <span class="chip-t">copper glow <b>0 4px 20px /.35</b></span>
+    </div>
+    <div class="note"><b>Motion tokens.</b> Edge-node <code>auEdgeNode</code> 2.8s linear, once, staggered by <code>--i</code> · reveal <code>auRise</code> .72s cubic-bezier(.22,.61,.36,1) on scroll · everything disabled under <kbd>prefers-reduced-motion</kbd>.</div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="wrap">
+    <p class="eyebrow">07 — Process How-To's</p>
+    <h2 class="sec">The procedures, so nothing is re-derived.</h2>
+    <p class="sec-sub">The repeatable methods behind the brand — copy-pasteable. Full detail lives in <code>BRAND.md</code>; the essentials are here.</p>
+
+    <div class="grp">
+      <div class="glab"><span>A</span> Asset production</div>
+
+      <div class="howto"><div class="hh"><h4>A1 · Icon → transparent → webp</h4>
+        <p>Solid-bg PNG → transparent via luminance-keyed alpha (keeps white linework crisp), then lossless webp.</p></div>
+        <pre><code><span class="cm"># black bg → transparent, force pure-white RGB</span>
+convert in.png \( +clone -colorspace Gray \) -alpha off \
+  -compose CopyOpacity -composite \
+  -channel RGB -fill white -colorize 100 +channel PNG32:t.png
+cwebp -quiet -lossless -alpha_q 100 t.png -o <span class="cp">images/name-icon.webp</span></code></pre></div>
+
+      <div class="howto"><div class="hh"><h4>A2 · Video for web (.au-infographic)</h4>
+        <p>H.264, web-safe pixel format, faststart, no audio — plus a webp poster from the last frame.</p></div>
+        <pre><code>ffmpeg -y -framerate 24 -i frames/f_%04d.png \
+  -c:v libx264 -pix_fmt yuv420p -crf 20 -preset slow \
+  -movflags +faststart -an <span class="cp">video/name.mp4</span>
+ffmpeg -y -sseof -0.3 -i video/name.mp4 -vframes 1 \
+  -c:v libwebp -quality 82 <span class="cp">images/name-poster.webp</span></code></pre></div>
+
+      <div class="howto"><div class="hh"><h4>A3 · Watermark removal</h4>
+        <p>Preferred: full-frame masked inpaint — locate the static glyph via the temporal-minimum across frames, then per-frame <code>cv2.INPAINT_TELEA</code>. Corner-crop only when nothing important lives in the corner. To <em>brand</em> a clip, see <code>VIDEO_BRANDING_WORKFLOW.md</code>.</p></div></div>
+
+      <div class="howto"><div class="hh"><h4>A4 · Infographic translucency</h4>
+        <p>Soften flat-white embedded graphics so the dark ground shows through; full opacity on hover.</p></div>
+        <pre><code>.woven-split-media img{ opacity:.78; transition:opacity .3s }
+.woven-split-media img:hover{ opacity:1 }</code></pre></div>
+
+      <div class="howto"><div class="hh"><h4>A6 · GIF builds — <code>tools/gif_process.py</code></h4>
+        <p>Float a light-bg GIF onto the dark theme (luminance→alpha), recolor (<code>white·copper·gray·keep·fire</code>), protect a central emblem via <code>--radial/--accent</code>, export 8-bit-alpha WebP (preferred) or 1-bit GIF.</p></div>
+        <pre><code>python tools/gif_process.py in.gif <span class="cp">images/name.webp</span> \
+  --color white --scale 0.5            <span class="cm"># --format gif for 1-bit</span></code></pre></div>
+    </div>
+
+    <div class="grp">
+      <div class="glab"><span>B</span> Markup templates</div>
+      <div class="howto"><div class="hh"><h4>B6 / B7 · Card + node animation</h4>
+        <p>Use <code>.card</code> (component lib) or <code>.au-card</code> (aurora, centered). Add the house motion with <code>beam-card</code> + a staggered <code>--i</code>.</p></div>
+        <pre><code>&lt;div class="card <span class="cp">beam-card</span>" style="<span class="cp">--i:0</span>"&gt;
+  &lt;div class="card-icon-im"&gt;&lt;img src="images/faq-icon.webp" alt=""&gt;&lt;/div&gt;
+  &lt;h3&gt;FAQ&lt;/h3&gt; &lt;p&gt;…&lt;/p&gt;
+&lt;/div&gt;
+<span class="cm"># page MUST load: css/card-nodes.css + js/card-nodes.js</span></code></pre></div>
+    </div>
+
+    <div class="grp">
+      <div class="glab"><span>C</span> Build, delivery &amp; deploy</div>
+      <div class="howto"><div class="hh"><h4>C10 · CSS change delivery — the gotcha</h4>
+        <p>Pages load <code>style.min.css</code> and there is <b>no build step</b>. Every change goes in <em>both</em> <code>style.css</code> and <code>style.min.css</code>, then bump the cache key everywhere.</p></div>
+        <pre><code>grep -rl 'style.min.css?v=2' --include=*.html . \
+  | xargs sed -i 's#style.min.css?v=2#style.min.css?v=3#g'</code></pre></div>
+      <div class="howto"><div class="hh"><h4>C11 · Deploy &amp; verify</h4>
+        <p>Push to <code>main</code> → the serialized <code>pages.yml</code> workflow. Watch the run to green; don't push and hope. Note: this session's egress blocks fetching islandmountain.io — verify via the GitHub API/tree instead.</p></div></div>
+    </div>
+
+    <div class="grp">
+      <div class="glab"><span>D</span> Verification / QA</div>
+      <div class="howto"><div class="hh"><h4>D13 · HTML integrity scan</h4>
+        <p>After editing HTML: no NUL/truncation, terminator present, balanced sections. Two traps: <code>grep -c $'\\x00'</code> collapses to an empty match; <code>grep -c</code> exits non-zero on zero hits.</p></div>
+        <pre><code>LC_ALL=C grep -qP '\x00' f.html &amp;&amp; echo "NUL FOUND"   <span class="cm"># correct form</span>
+tail -c 20 f.html | grep -o '&lt;/html&gt;'
+grep -oE '&lt;section' f.html | wc -l   <span class="cm"># vs &lt;/section&gt;</span></code></pre></div>
+      <div class="howto"><div class="hh"><h4>D14 · Render check</h4>
+        <p>Drive the preinstalled Chromium — absolute import, 390px mobile / 1000px+ desktop, screenshot <code>el.closest('section')</code>, and <em>measure</em> computed styles rather than eyeballing.</p></div>
+        <pre><code>import pkg from '/opt/node22/lib/node_modules/playwright/index.js'
+const {chromium}=pkg
+chromium.launch({executablePath:'/opt/pw-browsers/chromium'})</code></pre></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p class="canon">Authored and reviewed by Bashō Parks, copyright 2026</p>
+    <p class="src">Canonical source: <code>BRAND.md</code> at the repo root. This page is a rendered view of it, in the brand's own type, color, and motion.</p>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce) return;
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){ en.target.classList.add('run'); }
+        else { en.target.classList.remove('run'); } // re-arm when it scrolls back
+      });
+    }, {threshold:0.35});
+    document.querySelectorAll('.beam').forEach(function(c){ io.observe(c); });
+  })();
+</script>
+
+</body>
+</html>
