@@ -9,7 +9,7 @@ Universal engineering rules load from the global `~/.claude/CANON.md`. This file
 
 ## What lives here
 - **The website** — ~60 hand-crafted HTML pages + `css/`, `js/`, `blog/`. Deploys to islandmountain.io via **GitHub Pages from `main`** (remote `USS-Parks/islandmountain`). Every push to `main` publishes.
-- **`Island Mountain Mighty Eel OS/mai/`** — the **`im-mighty-eel-mai`** Rust workspace (its own git repo): Lamprey MAI inference substrate + governance (Trust Manifold, OpenBao/TLM). The foundation the WSF/AOG products extend — reused, not rebuilt.
+- **Lamprey MAI (`im-mighty-eel-mai`) — SEPARATE sibling repo, no longer in this tree.** The Rust workspace (Lamprey MAI inference substrate + governance: Trust Manifold, OpenBao/TLM) that the WSF/AOG products extend — reused, not rebuilt. **Un-nested from this repo on 2026-07-05**, it now lives on its own at `C:\Users\17076\Documents\Claude\Mighty Eel OS\` (git repo root `Mighty Eel OS\mai\`, origin `USS-Parks/im-mighty-eel-mai`). Do **not** re-clone or re-nest it under this website repo — sovereignty-stack / WSF / AOG / mai work happens over in that sibling folder.
 - **`worker/`** — the Cloudflare Worker behind the live chat/voice lead funnel (Vapi voice + Cal.com booking).
 - **`PLANNING/`** — P-SPRs (gitignored). Active sovereignty plan: `PLANNING/AOG-WSF-SOVEREIGNTY-STACK-PSPR.md` (DRAFT — awaits STS).
 - **`_work/`**, **`.claude/Project Memory Library/`** — session logs, SEO work, skills, cross-session memory.

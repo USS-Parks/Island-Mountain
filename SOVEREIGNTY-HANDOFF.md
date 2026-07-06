@@ -21,9 +21,13 @@ core / agentjacking defense). Full workspace: **`cargo test --workspace` = 1788 
 
 ```
 Worktree (do ALL work here):
-  C:\Users\17076\Documents\Claude\Island Mountain\Island Mountain Mighty Eel OS\mai-worktrees\mai-SOV-1
+  C:\Users\17076\Documents\Claude\Mighty Eel OS\mai-worktrees\mai-SOV-1
 Branch:  session/SOV-1   HEAD = 9c136e5   (NOT pushed)
 Tooling: cargo 1.9x / node 24 / Docker 29 / Python 3 — all present.
+NOTE (2026-07-05): the whole Mighty Eel OS workspace was un-nested from the
+Island Mountain website repo and moved to C:\Users\17076\Documents\Claude\Mighty Eel OS\.
+Any "...\Island Mountain\Island Mountain Mighty Eel OS\..." path elsewhere in this
+handoff is stale — read it under the new base. The two repos are independent.
 ```
 
 - **Commit footer (CANON §3, verbatim, every commit):**

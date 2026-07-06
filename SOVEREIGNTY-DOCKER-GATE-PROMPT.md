@@ -18,7 +18,8 @@ never an AI co-author (CANON §3).
 
 ## Where to work
 - **Worktree (do ALL work here):**
-  `C:\Users\17076\Documents\Claude\Island Mountain\Island Mountain Mighty Eel OS\mai-worktrees\mai-SOV-1`
+  `C:\Users\17076\Documents\Claude\Mighty Eel OS\mai-worktrees\mai-SOV-1`
+  (the Mighty Eel OS workspace was un-nested from the website repo on 2026-07-05 — it is now a standalone sibling folder, no longer under `Island Mountain\`.)
 - **Branch:** `session/SOV-1` (HEAD `d481f5b`), **not pushed**.
 - **Read first:** top-level `SOVEREIGNTY-HANDOFF.md`, then in the worktree
   `docs/sessions/SOVEREIGNTY-DEVLOG.md` (§ Phase D) + `deployment/appliance/README.md`
