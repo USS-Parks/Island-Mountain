@@ -11,21 +11,34 @@ function intVar(v: string | undefined, fallback: number): number {
   return Number.isFinite(n) && n > 0 ? n : fallback;
 }
 
-/** Get→increment→put a KV counter with a TTL window. Returns the new count. */
-async function bump(env: Env, key: string, ttl: number): Promise<number> {
-  const cur = parseInt((await env.SESSIONS.get(key)) ?? '0', 10) || 0;
-  const next = cur + 1;
-  await env.SESSIONS.put(key, String(next), { expirationTtl: ttl }).catch(() => {});
-  return next;
+/** Atomically increment or reset a D1 counter. Storage errors fail the request closed. */
+async function bump(env: Env, key: string, ttl: number, nowSeconds: number): Promise<number> {
+  const expiresAt = nowSeconds + ttl;
+  const row = await env.DB.prepare(
+    `INSERT INTO rate_limits (counter_key, count, expires_at) VALUES (?, 1, ?)
+     ON CONFLICT(counter_key) DO UPDATE SET
+       count = CASE WHEN rate_limits.expires_at <= ? THEN 1 ELSE rate_limits.count + 1 END,
+       expires_at = CASE WHEN rate_limits.expires_at <= ? THEN excluded.expires_at ELSE rate_limits.expires_at END
+     RETURNING count`,
+  )
+    .bind(key, expiresAt, nowSeconds, nowSeconds)
+    .first<{ count: number }>();
+  if (!row || !Number.isFinite(row.count)) throw new Error('rate-limit counter update failed');
+  return row.count;
+}
+
+async function privateKey(namespace: string, value: string): Promise<string> {
+  const digest = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(value));
+  const hex = [...new Uint8Array(digest)].map((byte) => byte.toString(16).padStart(2, '0')).join('');
+  return `${namespace}:${hex}`;
 }
 
 const dayStamp = (d: Date) => d.toISOString().slice(0, 10);
 
 /**
- * Layered limits on a chat turn (cheap KV counters; minor races acceptable at
- * this volume). Blocks BEFORE any LLM call, so an over-limit request costs
- * nothing. Order: per-IP/minute → per-session total → global daily (circuit
- * breaker). All caps are vars in wrangler.toml; 0/unset uses the defaults.
+ * Layered limits on a chat turn. D1 upserts make each increment atomic, and any
+ * storage error fails closed before an LLM call. Raw IPs and session IDs are
+ * SHA-256 hashed before storage. All caps are vars in wrangler.toml.
  */
 export async function enforceLimits(
   env: Env,
@@ -36,15 +49,25 @@ export async function enforceLimits(
   const perMin = intVar(env.RATE_LIMIT_PER_MIN, 15);
   const sessionCap = intVar(env.SESSION_MSG_CAP, 60);
   const dailyCap = intVar(env.DAILY_MESSAGE_CAP, 5000);
+  const nowSeconds = Math.floor(now.getTime() / 1000);
+  const [ipKey, sessionKey] = await Promise.all([
+    privateKey('ip', ip),
+    privateKey('session', sessionId),
+  ]);
 
-  const minuteBucket = Math.floor(now.getTime() / 60000);
-  const ipCount = await bump(env, `rl:ip:${ip}:${minuteBucket}`, 70);
+  const ipCount = await bump(env, ipKey, 70, nowSeconds);
   if (ipCount > perMin) return { allowed: false, reason: 'per_minute' };
 
-  const sessCount = await bump(env, `rl:sess:${sessionId}`, 60 * 60 * 24 * 7);
+  const sessCount = await bump(env, sessionKey, 60 * 60 * 24 * 7, nowSeconds);
   if (sessCount > sessionCap) return { allowed: false, reason: 'session' };
 
-  const dayCount = await bump(env, `rl:global:${dayStamp(now)}`, 60 * 60 * 25);
+  const dayKey = `global:${dayStamp(now)}`;
+  const dayCount = await bump(env, dayKey, 60 * 60 * 25, nowSeconds);
+  if (dayCount === 1) {
+    await env.DB.prepare('DELETE FROM rate_limits WHERE expires_at <= ? AND counter_key <> ?')
+      .bind(nowSeconds, dayKey)
+      .run();
+  }
   if (dayCount > dailyCap) return { allowed: false, reason: 'daily' };
 
   return { allowed: true };

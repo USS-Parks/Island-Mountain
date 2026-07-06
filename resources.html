@@ -35,6 +35,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png?v=2">
   <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png?v=2">
   <link rel="stylesheet" href="css/style.min.css?v=2">
+  <link rel="stylesheet" href="css/card-nodes.css">
   <link rel="stylesheet" href="icons/remixicon.css" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="icons/remixicon.css"></noscript>
   <link rel="preload" href="fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -160,42 +161,42 @@
       </div>
       <div class="risk-grid fade-in">
 
-        <a href="cloud-act-tribal-data.html" class="risk-card risk-card--link">
+        <a href="cloud-act-tribal-data.html" class="risk-card risk-card--link beam-card">
           <div class="risk-icon"><img src="images/CLOUD-tribal-icon.webp" alt="" loading="lazy" decoding="async" width="76" height="76"></div>
           <h4>CLOUD Act and Tribal Data</h4>
           <p><strong>Can the federal government access tribal health data stored in the cloud?</strong></p>
           <p>Yes. 18 U.S.C. § 2703 compels cloud providers to produce tribal data under federal subpoena without tribal consent. OCAP principles, NCAI Resolution NC-24-008, and the Indian Health Care Improvement Act.</p>
         </a>
 
-        <a href="hipaa-local-ai-compliance.html" class="risk-card risk-card--link">
+        <a href="hipaa-local-ai-compliance.html" class="risk-card risk-card--link beam-card">
           <div class="risk-icon"><img src="images/hipaa-ai-icon.webp" alt="" loading="lazy" decoding="async" width="76" height="76"></div>
           <h4>HIPAA and Local AI</h4>
           <p><strong>Does running AI locally comply with HIPAA?</strong></p>
           <p>Local hardware supports compliance by eliminating third-party ePHI transmission. No BAA required for the AI system. Technical safeguards under 45 CFR § 164.312 still apply.</p>
         </a>
 
-        <a href="attorney-client-privilege-ai-risk.html" class="risk-card risk-card--link">
+        <a href="attorney-client-privilege-ai-risk.html" class="risk-card risk-card--link beam-card">
           <div class="risk-icon"><img src="images/attorney-client-priv-icon.webp" alt="" loading="lazy" decoding="async" width="76" height="76"></div>
           <h4>Attorney-Client Privilege and AI</h4>
           <p><strong>Can law firms use AI without waiving privilege?</strong></p>
           <p>Cloud AI creates privilege waiver risk through third-party disclosure. On-premises eliminates it. ABA Model Rule 1.6, Formal Opinion 477R, Upjohn Co. v. United States, FRE 502.</p>
         </a>
 
-        <a href="itar-cmmc-ai-infrastructure.html" class="risk-card risk-card--link">
+        <a href="itar-cmmc-ai-infrastructure.html" class="risk-card risk-card--link beam-card">
           <div class="risk-icon"><img src="images/itarr-cmmc-ai-icon.webp" alt="" loading="lazy" decoding="async" width="76" height="76"></div>
           <h4>ITAR/CMMC AI Infrastructure</h4>
           <p><strong>Can defense contractors use AI with ITAR-controlled data?</strong></p>
           <p>ITAR and DFARS 252.204-7012 prohibit transmitting controlled data to unauthorized servers. On-premises satisfies NIST SP 800-171 and supports CMMC Level 2+ assessment.</p>
         </a>
 
-        <a href="on-premises-ai-cost-comparison.html" class="risk-card risk-card--link">
+        <a href="on-premises-ai-cost-comparison.html" class="risk-card risk-card--link beam-card">
           <div class="risk-icon"><img src="images/ai-cost-comparison-icon.webp" alt="" loading="lazy" decoding="async" width="76" height="76"></div>
           <h4>On-Premises AI Cost Comparison</h4>
           <p><strong>How much does on-premises AI cost vs cloud AI?</strong></p>
           <p>Summit Base ($59-69K one-time) costs ~$0.003/query over five years. Equivalent cloud API usage runs $64,000-$220,000+ depending on model tier and usage growth (May 2026 pricing). Break-even in 4-7 months at 500+ daily queries.</p>
         </a>
 
-        <a href="air-gapped-ai-inference.html" class="risk-card risk-card--link">
+        <a href="air-gapped-ai-inference.html" class="risk-card risk-card--link beam-card">
           <div class="risk-icon"><img src="images/local-ai-inference-icon.webp" alt="" loading="lazy" decoding="async" width="76" height="76"></div>
           <h4>Air-Gapped AI Inference</h4>
           <p><strong>Can you run AI models without internet access?</strong></p>
@@ -327,5 +328,6 @@
 
   <script defer src="js/main.js"></script>
   <script defer src="js/chat-widget.js"></script>
+  <script defer src="js/card-nodes.js"></script>
 </body>
 </html>
