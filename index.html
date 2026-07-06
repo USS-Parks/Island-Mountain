@@ -38,6 +38,23 @@
   .au-card .au-ic{ width:76px; height:76px; }
   /* Uniform icon rendering (matches the Woven page): normalize card icons to one white + one glow. */
   .au-card .au-ic img{ filter: brightness(0) invert(1) drop-shadow(0 0 5px rgba(200,220,255,.55)); }
+
+  /* Verticals ("who it's for") layout — overrides the base .au-vgrid in css/aurora.css.
+     Desktop: 4 across, broken out full-bleed to fill the screen on both sides.
+     Tablet: 2 up, back inside the container. Phone: one stacked card per row. */
+  .au-verticals{ overflow-x:clip; }
+  .au-verticals .au-vgrid{
+    grid-template-columns:repeat(4,1fr); gap:20px; max-width:none;
+    margin-left:calc(50% - 50vw); margin-right:calc(50% - 50vw);
+    padding-left:clamp(20px,4vw,56px); padding-right:clamp(20px,4vw,56px);
+  }
+  @media (max-width:900px){
+    .au-verticals .au-vgrid{ grid-template-columns:repeat(2,1fr); max-width:none;
+      margin-left:auto; margin-right:auto; padding-left:0; padding-right:0; }
+  }
+  @media (max-width:600px){
+    .au-verticals .au-vgrid{ grid-template-columns:1fr; gap:14px; }
+  }
   </style>
   <link rel="canonical" href="https://islandmountain.io/">
   <meta property="og:title" content="Island Mountain - Sovereign AI, One Workstation at a Time">
@@ -217,15 +234,7 @@
       <span class="au-eyebrow-c au-reveal">Built for your world</span>
       <h2 class="au-h2 au-reveal">Sovereignty, where the stakes run highest.</h2>
       <div class="au-vgrid au-stagger">
-        <a class="au-vcard beam-card" style="--i:0" href="tribal-nations.html">
-          <div class="au-vcard-img"><img src="images/tribal-nations-vertical.webp" alt="Central Council of the Tlingit and Haida Indian Tribes of Alaska building" width="1672" height="941" loading="lazy"></div>
-          <div class="au-vcard-body">
-            <h3>Tribal Nations</h3>
-            <p>Sovereign data stays on sovereign land, under your own jurisdiction.</p>
-            <span class="au-vcard-go">Explore <i class="ri-arrow-right-line" aria-hidden="true"></i></span>
-          </div>
-        </a>
-        <a class="au-vcard beam-card" style="--i:1" href="government.html">
+        <a class="au-vcard beam-card" style="--i:0" href="government.html">
           <div class="au-vcard-img"><img src="images/local-govt-vertical.webp" alt="Municipal City Hall building" width="1448" height="1086" loading="lazy"></div>
           <div class="au-vcard-body">
             <h3>Local Government</h3>
@@ -233,19 +242,27 @@
             <span class="au-vcard-go">Explore <i class="ri-arrow-right-line" aria-hidden="true"></i></span>
           </div>
         </a>
-        <a class="au-vcard beam-card" style="--i:2" href="casino-gaming.html">
-          <div class="au-vcard-img"><img src="images/casino-vertical.webp" alt="Tribal gaming casino and resort" width="1672" height="941" loading="lazy"></div>
+        <a class="au-vcard beam-card" style="--i:1" href="tribal-nations.html">
+          <div class="au-vcard-img"><img src="images/tribal-nations-vertical.webp" alt="Central Council of the Tlingit and Haida Indian Tribes of Alaska building" width="1672" height="941" loading="lazy"></div>
           <div class="au-vcard-body">
-            <h3>Casino Gaming</h3>
-            <p>Player and surveillance data never leave the property.</p>
+            <h3>Tribal Nations</h3>
+            <p>Sovereign data stays on sovereign land, under your own jurisdiction.</p>
             <span class="au-vcard-go">Explore <i class="ri-arrow-right-line" aria-hidden="true"></i></span>
           </div>
         </a>
-        <a class="au-vcard beam-card" style="--i:3" href="education.html">
+        <a class="au-vcard beam-card" style="--i:2" href="education.html">
           <div class="au-vcard-img"><img src="images/higher-learning-vertical.webp" alt="College campus with students" width="1536" height="1024" loading="lazy"></div>
           <div class="au-vcard-body">
             <h3>Higher Learning</h3>
             <p>Research and student records stay on campus, not in the cloud.</p>
+            <span class="au-vcard-go">Explore <i class="ri-arrow-right-line" aria-hidden="true"></i></span>
+          </div>
+        </a>
+        <a class="au-vcard beam-card" style="--i:3" href="casino-gaming.html">
+          <div class="au-vcard-img"><img src="images/casino-vertical.webp" alt="Tribal gaming casino and resort" width="1672" height="941" loading="lazy"></div>
+          <div class="au-vcard-body">
+            <h3>Casino Gaming</h3>
+            <p>Player and surveillance data never leave the property.</p>
             <span class="au-vcard-go">Explore <i class="ri-arrow-right-line" aria-hidden="true"></i></span>
           </div>
         </a>
