@@ -1,8 +1,8 @@
 /* ============================================================
    Island Mountain - Aurora edge node (one source of truth)
    A simple white ring rides the TOP edge (fast), rounds the top-right
-   corner, and glides down the RIGHT edge (slower), then rests a beat and
-   repeats - perpetually, once the card has scrolled into view. Hollow -
+   corner, and glides down the RIGHT edge (slower), then fades out. It
+   fires once, when the card first scrolls into view. Hollow -
    no fill, no glow, no colour, no tail. Uses left/top so it runs in every
    browser. js/card-nodes.js arms each .beam-card and staggers the cascade
    via a per-card --i.
@@ -18,10 +18,10 @@
   transform:translate(-50%,-50%); opacity:0;
   background:transparent; border:2px solid rgba(255,255,255,.9);
 }
-/* Armed by js/card-nodes.js on first scroll-in; then loops perpetually.
+/* Armed by js/card-nodes.js on first scroll-in; then fires exactly once.
    --i (0..n) offsets each card so the group cascades in sequence. */
 .beam-card.node-live::before{
-  animation:auEdgeNode 2.8s linear infinite;
+  animation:auEdgeNode 2.8s linear forwards;
   animation-delay:calc(var(--i,0) * 0.6s);
 }
 @keyframes auEdgeNode{
@@ -30,7 +30,7 @@
   30%  { left:100%; top:0;    opacity:1; }   /* fast across the top edge */
   70%  { left:100%; top:100%; opacity:1; }   /* slower down the right edge */
   76%  { left:100%; top:100%; opacity:0; }   /* fade out at bottom-right */
-  100% { left:100%; top:100%; opacity:0; }   /* rest a beat, then repeat */
+  100% { left:100%; top:100%; opacity:0; }   /* hold hidden at rest - fires once */
 }
 @media (prefers-reduced-motion:reduce){
   .beam-card::before{ display:none; }
