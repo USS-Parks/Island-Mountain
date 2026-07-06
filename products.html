@@ -295,6 +295,9 @@
   .risk-card img{width:104px;height:104px;margin:0 auto 18px;display:block;}
   /* Uniform icon rendering (matches the Woven page): normalize all card icons to one white + one glow. */
   .gpu-card img, .risk-card img{ filter: brightness(0) invert(1) drop-shadow(0 0 5px rgba(200,220,255,.55)); }
+  /* Hardware reveal video: locked 16:9 (source is 1280x720) so it never squishes on mobile or desktop */
+  .hw-video{max-width:960px;margin:0 auto;}
+  .hw-video video{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;border-radius:16px;background:#000;box-shadow:0 24px 60px rgba(0,0,0,0.45);}
   </style>
 </head>
 <body>
@@ -424,6 +427,17 @@
             </tr>
           </tbody>
         </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Hardware reveal video (16:9 autoplay loop) -->
+  <section class="section section-dark hw-video-section">
+    <div class="container">
+      <div class="hw-video fade-in">
+        <video autoplay muted loop playsinline preload="metadata">
+          <source src="images/A_video_based_on_this_image_wi.mp4" type="video/mp4">
+        </video>
       </div>
     </div>
   </section>
