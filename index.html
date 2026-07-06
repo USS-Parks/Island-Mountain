@@ -24,7 +24,7 @@
   <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png?v=2">
   <link rel="preload" as="image" href="images/im-opening-poster.webp" fetchpriority="high">
   <link rel="stylesheet" href="css/style.min.css">
-  <link rel="stylesheet" href="css/aurora.css?v=2">
+  <link rel="stylesheet" href="css/aurora.css?v=3">
   <link rel="stylesheet" href="css/card-nodes.css">
   <link rel="stylesheet" href="css/blog-scroller.css?v=1">
   <link rel="stylesheet" href="icons/remixicon.css" media="print" onload="this.media='all'">
@@ -69,6 +69,9 @@
   </script>
 </head>
 <body>
+
+  <!-- Page-wide VERA mosaic: fixed canvas background, reconstructs across the full scroll -->
+  <canvas class="au-mosaic-bg" id="au-mosaic-canvas" aria-hidden="true"></canvas>
 
   <!-- Aurora intro reveal (branded video -> fades into page) -->
   <div id="aurora-intro" aria-hidden="true">
@@ -167,7 +170,7 @@
   <!-- Dark manifesto -->
   <section class="au-manifesto">
     <div class="container au-reveal">
-      <h2 class="au-typewriter" data-typewriter="For a decade, your data lived on someone else's servers. That era is over.">For a decade, your data lived on someone else's servers. That era is over.</h2>
+      <h2 class="au-typewriter" data-typewriter="Your most sensitive work has been renting space on someone else's servers. Bring it home.">Your most sensitive work has been renting space on someone else's servers. Bring it home.</h2>
     </div>
   </section>
 
@@ -204,11 +207,70 @@
   <!-- New Architecture statement -->
   <section class="au-section au-statement">
     <div class="container au-reveal">
-      <span class="au-eyebrow-c" style="color:#ffd9a8">The New Architecture</span>
+      <span class="au-eyebrow-c" style="color:#ffd9a8">The Sovereign Stack</span>
       <h2 class="au-h2">Sovereignty is an architecture, not a subscription.</h2>
-      <p class="au-lede" style="color:#efe0c8;">The cloud made AI possible, and made your most sensitive data someone else's liability. Island Mountain moves the entire stack (model, hardware, and governance) inside your walls, one appliance per seat.</p>
-      <img class="au-infographic" src="images/im-infographic-1.webp" alt="Island Mountain infographic: Local AI at every workstation. Plug-and-play deployment, token-max without metering, data boundary by design, governed agentic work. Summit Series stack, built in California." width="1426" height="1103" loading="lazy">
+      <p class="au-lede" style="color:#efe0c8;">Renting intelligence from someone else's data center turned your most sensitive work into their liability. Island Mountain moves the entire stack &mdash; model, hardware, and governance &mdash; onto your own floor, one appliance per seat.</p>
+      <video class="au-infographic au-stackvid" autoplay muted loop playsinline preload="metadata" poster="images/summit-stack-poster.webp" aria-label="Exploded view of the Summit Series stack, from silicon up: Silicon (RTX 6000 Pro), Runtime, an open-source model, the Lamprey Woven Security Fabric, and the Lamprey UI.">
+        <source src="video/summit-stack.mp4" type="video/mp4">
+      </video>
       <a href="contact.html" class="btn btn-primary">Talk to Sales</a>
+    </div>
+  </section>
+
+  <!-- How every Summit is made (step cards float above the page-wide VERA mosaic) -->
+  <section class="au-section au-howmade" id="au-howmade">
+    <div class="container">
+      <span class="au-eyebrow-c au-reveal">Hand-built, then proven</span>
+      <h2 class="au-h2 au-reveal">How every Summit is made</h2>
+      <div class="au-hm-steps au-stagger">
+        <div class="au-hm-step" style="--i:0"><span class="au-hm-idx">01</span><div><h3>Order</h3><p>Tell us the workload and headcount. We scope the exact build.</p></div></div>
+        <div class="au-hm-step" style="--i:1"><span class="au-hm-idx">02</span><div><h3>Hand-built in California</h3><p>Every Summit assembled by hand, one unit at a time.</p></div></div>
+        <div class="au-hm-step" style="--i:2"><span class="au-hm-idx">03</span><div><h3>72-hour burn-in</h3><p>Run hard for three days straight before it earns the shipping label.</p></div></div>
+        <div class="au-hm-step" style="--i:3"><span class="au-hm-idx">04</span><div><h3>Shipped</h3><p>Delivered to your facility, ready to rack.</p></div></div>
+        <div class="au-hm-step" style="--i:4"><span class="au-hm-idx">05</span><div><h3>Serving</h3><p>Plug in and it answers &mdash; sovereign from the first token.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Verticals: who it's for (image-backed, node-animated cards) -->
+  <section class="au-section au-section--alt au-verticals">
+    <div class="container">
+      <span class="au-eyebrow-c au-reveal">Built for your world</span>
+      <h2 class="au-h2 au-reveal">Sovereignty, where the stakes run highest.</h2>
+      <div class="au-vgrid au-stagger">
+        <a class="au-vcard beam-card" style="--i:0" href="tribal-nations.html">
+          <div class="au-vcard-img"><img src="images/tribal-nations-vertical.webp" alt="Central Council of the Tlingit and Haida Indian Tribes of Alaska building" width="1672" height="941" loading="lazy"></div>
+          <div class="au-vcard-body">
+            <h3>Tribal Nations</h3>
+            <p>Sovereign data stays on sovereign land, under your own jurisdiction.</p>
+            <span class="au-vcard-go">Explore <i class="ri-arrow-right-line" aria-hidden="true"></i></span>
+          </div>
+        </a>
+        <a class="au-vcard beam-card" style="--i:1" href="government.html">
+          <div class="au-vcard-img"><img src="images/local-govt-vertical.webp" alt="Municipal City Hall building" width="1448" height="1086" loading="lazy"></div>
+          <div class="au-vcard-body">
+            <h3>Local Government</h3>
+            <p>Resident records, cases, and PII stay on municipal premises.</p>
+            <span class="au-vcard-go">Explore <i class="ri-arrow-right-line" aria-hidden="true"></i></span>
+          </div>
+        </a>
+        <a class="au-vcard beam-card" style="--i:2" href="casino-gaming.html">
+          <div class="au-vcard-img"><img src="images/casino-vertical.webp" alt="Tribal gaming casino and resort" width="1672" height="941" loading="lazy"></div>
+          <div class="au-vcard-body">
+            <h3>Casino Gaming</h3>
+            <p>Player and surveillance data never leave the property.</p>
+            <span class="au-vcard-go">Explore <i class="ri-arrow-right-line" aria-hidden="true"></i></span>
+          </div>
+        </a>
+        <a class="au-vcard beam-card" style="--i:3" href="education.html">
+          <div class="au-vcard-img"><img src="images/higher-learning-vertical.webp" alt="College campus with students" width="1536" height="1024" loading="lazy"></div>
+          <div class="au-vcard-body">
+            <h3>Higher Learning</h3>
+            <p>Research and student records stay on campus, not in the cloud.</p>
+            <span class="au-vcard-go">Explore <i class="ri-arrow-right-line" aria-hidden="true"></i></span>
+          </div>
+        </a>
+      </div>
     </div>
   </section>
 
@@ -481,6 +543,7 @@
   </footer>
 
   <script defer src="js/hero-cinematic.js"></script>
+  <script defer src="js/aurora-sections.js"></script>
   <script defer src="js/card-nodes.js"></script>
   <script defer src="js/blog-scroller.js"></script>
   <script defer src="js/main.js"></script>
