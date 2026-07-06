@@ -65,7 +65,7 @@ jobs:
       cancel-in-progress: false
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+      url: ${{ steps.deploy1.outputs.page_url || steps.deploy2.outputs.page_url || steps.deploy3.outputs.page_url }}
     steps:
       - name: Checkout
         uses: actions/checkout@v5
@@ -80,6 +80,31 @@ jobs:
           # code, client files, backups, and repository tooling stay private to
           # the repository and never enter the Pages artifact.
           path: ${{ runner.temp }}/island-mountain-site
-      - name: Deploy to GitHub Pages
-        id: deployment
+      # GitHub's Pages deploy backend fails intermittently with
+      # "Deployment failed, try again later." (actions/deploy-pages#406) — a
+      # transient infra flake, not our artifact. A fresh attempt almost always
+      # succeeds, so the deploy self-heals instead of stranding the site until a
+      # human re-triggers the run. The artifact is uploaded exactly ONCE above;
+      # re-uploading would trip the duplicate-artifact bug
+      # (upload-pages-artifact#97), so only the deploy step retries, with
+      # backoff. The first attempt to succeed skips the rest; if all three fail
+      # the job fails honestly (a real GitHub outage, not a flake).
+      - name: Deploy to GitHub Pages (attempt 1)
+        id: deploy1
+        uses: actions/deploy-pages@v5
+        continue-on-error: true
+      - name: Back off before attempt 2
+        if: steps.deploy1.outcome == 'failure'
+        run: sleep 60
+      - name: Deploy to GitHub Pages (attempt 2)
+        id: deploy2
+        if: steps.deploy1.outcome == 'failure'
+        uses: actions/deploy-pages@v5
+        continue-on-error: true
+      - name: Back off before attempt 3
+        if: steps.deploy1.outcome == 'failure' && steps.deploy2.outcome == 'failure'
+        run: sleep 120
+      - name: Deploy to GitHub Pages (attempt 3, final)
+        id: deploy3
+        if: steps.deploy1.outcome == 'failure' && steps.deploy2.outcome == 'failure'
         uses: actions/deploy-pages@v5
