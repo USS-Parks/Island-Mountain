@@ -197,7 +197,7 @@
 
         <h2>DeepSeek V4-Flash Just Changed the Game for Local AI</h2>
 
-<p>April 24, 2026. DeepSeek drops V4-Flash, a 284-billion parameter mixture-of-experts model, and anybody running language models on constrained hardware needs to pay attention. We've spent a week running it hard on our Summit Base tier. What we're seeing rewrites the economics of local AI deployment entirely.</p>
+<p>April 24, 2026. DeepSeek drops V4-Flash, a 284-billion parameter mixture-of-experts model, and anybody running language models on constrained hardware needs to pay attention. We've spent a week running it hard on our <a href="../products.html">Summit Base tier</a>. What we're seeing rewrites the economics of local AI deployment entirely.</p>
 
 <p>Bottom line up front: V4-Flash is the first model we've tested that makes a 192GB system genuinely competitive with cloud inference for real production work. But that claim only lands if you understand what a mixture-of-experts architecture does.</p>
 
@@ -233,7 +233,7 @@
 
 <p>Early testing puts V4-Flash at 90 to 140 tokens per second for single-user workloads on the Pinnacle tier. The additional VRAM also means you never trade precision for fit: you run the full FP16 weights rather than any quantized build.</p>
 
-<p>Honest question to ask yourself before upgrading: does V4-Flash at FP8 on Summit Base already meet your requirements? If yes, you don't need 384GB. If you're running multi-user loads or need full-precision FP16 inference, you do. Know your actual load before you spend the money.</p>
+<p>Honest <a href="../faq.html">question to ask yourself before upgrading</a>: does V4-Flash at FP8 on Summit Base already meet your requirements? If yes, you don't need 384GB. If you're running multi-user loads or need full-precision FP16 inference, you do. Know your actual load before you spend the money.</p>
 
 <h2>The Sovereignty Argument</h2>
 
@@ -243,7 +243,7 @@
 
 <p>Cloud API providers can't offer that guarantee. OpenAI, Anthropic, DeepSeek's cloud product, all of them reserve the right to use submitted queries for model improvement in their terms of service. Many explicitly retain data. Even contractual opt-outs don't change the fact that your data transited their infrastructure, and that creates real liability for regulated industries.</p>
 
-<p>Local deployment isn't just a speed or cost conversation. It's a control conversation. If your threat model includes data exfiltration, inference interception, or regulatory data residency requirements, local is the only option. V4-Flash makes it the only option that also performs.</p>
+<p>Local deployment isn't just a speed or cost conversation. It's <a href="../lamprey-woven-security-governance.html">a control conversation</a>. If your threat model includes data exfiltration, inference interception, or regulatory data residency requirements, local is the only option. V4-Flash makes it the only option that also performs.</p>
 
 <p>A medical practice using DeepSeek's cloud API for clinical documentation is sending patient data to servers they don't control. Running that same model locally means patient data never leaves the building. The model file lives on the server's NVMe drive. Inference happens on the GPUs in your rack. The response returns over your local network. DeepSeek the organization is involved in exactly zero steps.</p>
 

@@ -250,7 +250,7 @@
 
 <p>If you've deployed Island Mountain hardware, you need a clean way to manage who accesses the AI models, what they can do with them, and how to maintain records for compliance. OpenWebUI is the standard open-source interface for running multiple language models locally. It handles user permissions, conversation history, and usage logging without sending anything to a cloud platform.</p>
 
-<p>This guide covers the essential admin tasks: initial setup, user account management, role-based access to models, conversation history and retention, and network configuration for teams. We're assuming you've already deployed the hardware and have Ubuntu Server LTS running.</p>
+<p>This guide covers the essential admin tasks: initial setup, user account management, role-based access to models, conversation history and retention, and network configuration for teams. We're assuming you've already <a href="../faq.html">deployed the hardware</a> and have Ubuntu Server LTS running.</p>
 
 <h2>Initial Setup and Admin Login</h2>
 
@@ -298,7 +298,7 @@
 
 <h2>Network Configuration: Static IP and Hostname</h2>
 
-<p>Your Island Mountain server needs a stable network location. Users shouldn't have to remember an IP address.</p>
+<p>Your <a href="../products.html">Island Mountain server</a> needs a stable network location. Users shouldn't have to remember an IP address.</p>
 
 <p>Assign a static IP on your network router or DHCP server. Something like <code>192.168.1.50</code> prevents the server from pulling a new IP on reboot. Then give the server a meaningful hostname like <code>ai.yourfirm.local</code> or <code>gpt-local.yourfirm.local</code> and point it to that static IP in your internal DNS or hosts file. Now users reach OpenWebUI at <code>http://ai.yourfirm.local:8080</code> instead of memorizing an address.</p>
 
