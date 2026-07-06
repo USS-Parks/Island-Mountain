@@ -289,3 +289,41 @@ html:not(.js) #aurora-intro{ display:none; }
       url('../images/summit-photo3.webp') 30% 45% / cover no-repeat;
   }
 }
+
+/* ---------------- Verticals: image-backed, node-animated cards ---------------- */
+.au-vgrid{ display:grid; grid-template-columns:repeat(2,1fr); gap:16px; max-width:760px; margin:26px auto 0; }
+.au-vcard{ display:flex; flex-direction:column; text-decoration:none; color:inherit;
+  background:rgba(19,28,49,.72); border:1px solid var(--au-line); border-radius:16px;
+  transition:border-color .25s ease, transform .25s ease, box-shadow .25s ease; }
+.au-vcard:hover{ border-color:rgba(245,158,11,.5); transform:translateY(-3px); box-shadow:0 18px 40px rgba(0,0,0,.4); }
+/* Inner wrapper clips the photo (rounded top) WITHOUT clipping the edge node,
+   which rides .au-vcard itself (no overflow:hidden on the card). */
+.au-vcard-img{ border-radius:16px 16px 0 0; overflow:hidden; aspect-ratio:3/2; background:var(--au-slate-2); }
+.au-vcard-img img{ width:100%; height:100%; object-fit:cover; display:block; }
+.au-vcard-body{ padding:16px 16px 18px; display:flex; flex-direction:column; gap:7px; flex:1 1 auto; text-align:left; }
+.au-vcard-body h3{ margin:0; font-size:1.04rem; font-weight:700; color:#f1f5f9; }
+.au-vcard-body p{ margin:0; color:var(--au-muted); font-size:.86rem; line-height:1.5; }
+.au-vcard-go{ margin-top:auto; padding-top:4px; color:var(--au-copper-light); font-weight:700; font-size:.82rem;
+  display:inline-flex; align-items:center; gap:6px; transition:gap .25s ease; }
+.au-vcard:hover .au-vcard-go{ gap:11px; }
+@media (max-width:600px){
+  .au-vgrid{ gap:12px; }
+  .au-vcard-body{ padding:12px 12px 14px; gap:5px; }
+  .au-vcard-body h3{ font-size:.95rem; }
+  .au-vcard-body p{ font-size:.8rem; line-height:1.45; }
+  .au-vcard-go{ font-size:.78rem; }
+}
+
+/* ---------------- How every Summit is made - build-process step cards ---------------- */
+.au-hm-steps{ display:flex; flex-direction:column; gap:12px; margin:24px auto 0; max-width:560px; }
+.au-hm-step{ display:flex; gap:14px; align-items:flex-start; padding:15px 18px; border-radius:14px; text-align:left;
+  background:rgba(19,28,49,.72); border:1px solid var(--au-line); }
+.au-hm-idx{ flex:0 0 auto; font-family:'Space Grotesk','Inter',system-ui,sans-serif; font-weight:800; font-size:1.05rem; line-height:1.3; color:var(--au-copper-light); }
+.au-hm-step h3{ margin:0 0 3px; font-size:1.06rem; font-weight:700; color:#eef3fb; }
+.au-hm-step p{ margin:0; color:var(--au-muted); font-size:.9rem; line-height:1.5; }
+@media (max-width:600px){
+  .au-hm-steps{ gap:10px; margin-top:18px; }
+  .au-hm-step{ padding:12px 14px; gap:11px; }
+  .au-hm-step h3{ font-size:.98rem; }
+  .au-hm-step p{ font-size:.84rem; }
+}
