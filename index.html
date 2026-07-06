@@ -39,6 +39,12 @@
   /* Uniform icon rendering (matches the Woven page): normalize card icons to one white + one glow. */
   .au-card .au-ic img{ filter: brightness(0) invert(1) drop-shadow(0 0 5px rgba(200,220,255,.55)); }
 
+  /* Homepage-only: drop the magenta band on The Summit spotlight and the gold aura on
+     The Sovereign Stack statement, leaving the site's neutral dark background. Overrides the
+     !important rules in css/aurora.css (this inline block loads after that stylesheet). */
+  .au-spotlight{ background:linear-gradient(180deg, var(--au-ink), var(--au-slate)) !important; }
+  .au-statement{ background:linear-gradient(180deg,#0e1626,#0a0f1c) !important; }
+
   /* Verticals ("who it's for") layout — overrides the base .au-vgrid in css/aurora.css.
      Desktop: 4 across, broken out full-bleed to fill the screen on both sides.
      Tablet: 2 up, back inside the container. Phone: one stacked card per row. */
@@ -52,7 +58,7 @@
      Icon and text sized up to better fill the wide cards (tasteful bump, not egregious). */
   .au-verticals .au-vcard-body{ background:#1b3a6b; border-radius:0 0 16px 16px; padding:18px 18px 20px; gap:9px; }
   .au-verticals .au-vcard-icon{ align-self:center; width:96px; height:96px; object-fit:contain; margin-bottom:4px; }
-  .au-verticals .au-vcard-body h3{ font-size:1.25rem; }
+  .au-verticals .au-vcard-body h3{ font-size:1.25rem; text-align:center; }
   .au-verticals .au-vcard-body p{ font-size:1rem; line-height:1.55; }
   .au-verticals .au-vcard-go{ font-size:.95rem; }
   @media (max-width:900px){
