@@ -314,27 +314,10 @@ html:not(.js) #aurora-intro{ display:none; }
   .au-vcard-go{ font-size:.78rem; }
 }
 
-/* ---------------- Page-wide VERA mosaic background (living layer) ---------------- */
-html{ background:#070c17; }
-body{ background:transparent; }
-.au-mosaic-bg{ position:fixed; inset:0; width:100%; height:100%; z-index:-1; display:block; pointer-events:none;
-  filter:contrast(1.24) saturate(1.12) brightness(1.05); }
-
-/* Living-mosaic mode: content sections go translucent so the mosaic reads through the
-   whole page. The image-backed hero, founder and lead-form bands keep their own art. */
-.au-howmade{ background:rgba(11,18,33,.64) !important; }
-.au-section--alt{ background:rgba(9,15,28,.54) !important; }
-.au-section--ink{ background:rgba(6,10,20,.6) !important; }
-.au-manifesto{ background:rgba(7,11,22,.7) !important; }
-.au-statement{ background:rgba(14,20,34,.5) !important; }
-.au-spotlight{ background:linear-gradient(180deg, rgba(20,12,26,.74), rgba(44,14,54,.5) 50%, rgba(15,12,26,.74)) !important; }
-.blog-rail-section{ background:rgba(9,15,28,.54) !important; }
-.footer, .au-footer{ background:rgba(6,10,20,.42) !important; }
-
-/* How every Summit is made - step cards floating one layer above the mosaic */
+/* ---------------- How every Summit is made - build-process step cards ---------------- */
 .au-hm-steps{ display:flex; flex-direction:column; gap:12px; margin:24px auto 0; max-width:560px; }
 .au-hm-step{ display:flex; gap:14px; align-items:flex-start; padding:15px 18px; border-radius:14px; text-align:left;
-  background:rgba(9,15,29,.82); border:1px solid var(--au-line); -webkit-backdrop-filter:blur(4px); backdrop-filter:blur(4px); }
+  background:rgba(19,28,49,.72); border:1px solid var(--au-line); }
 .au-hm-idx{ flex:0 0 auto; font-family:'Space Grotesk','Inter',system-ui,sans-serif; font-weight:800; font-size:1.05rem; line-height:1.3; color:var(--au-copper-light); }
 .au-hm-step h3{ margin:0 0 3px; font-size:1.06rem; font-weight:700; color:#eef3fb; }
 .au-hm-step p{ margin:0; color:var(--au-muted); font-size:.9rem; line-height:1.5; }

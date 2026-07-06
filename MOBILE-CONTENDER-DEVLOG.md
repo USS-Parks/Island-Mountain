@@ -68,7 +68,14 @@ expression — leave it.
   2 cols (165.6px each), two rows, all imgs decoded, 3:2 cover crop, node-live x4, zero console
   errors, screenshot clean.
 
-## 2.3 — Living VERA mosaic (page-wide) — SHIPPED (on Basho's go, for live testing)
+## 2.3 — Living VERA mosaic — CANCELLED & REMOVED (Basho's call)
+Removed completely per the rollback below: canvas element + mosaic engine + translucent-section
+re-skin + the 3.4MB mosaic asset all gone; sections restored to opaque; `js/aurora-sections.js`
+kept only the stack-video play-on-scroll. The "How every Summit is made" step cards were kept as a
+normal opaque section (not mosaic-dependent). Removal also cleared the failing Pages deploy (the
+validator flagged the canvas's `images/…png` reference resolved relative to `js/`).
+
+### (historical) what was built before removal
 Reconceived from a boxed scroll-section into a **page-wide fixed background**: a single `<canvas>`
 (`#au-mosaic-canvas`, `js/aurora-sections.js`) reconstructs the real 300dpi VERA mosaic from ~150
 ultra-fine tesserae that snow down and fill left->right then up the right edge, keyed to **total
