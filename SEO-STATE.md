@@ -1,6 +1,6 @@
 # SEO & Schema State
 
-Last updated: 2026-05-10 (Session 50)
+Last updated: 2026-07-06 (blog internal-linking + breakage repair)
 
 ## JSON-LD Inventory
 
@@ -61,11 +61,17 @@ Total JSON-LD blocks site-wide: ~105 (all valid, zero parse errors)
 
 ## Sitemap & Crawling
 
-- sitemap.xml: 45 URLs (all content pages except 404.html)
+- sitemap.xml: 46 URLs (added blog/ai-search-visibility-consultant.html; all content pages except 404.html and the chrome-less interactive infographic)
 - robots.txt: allows all crawlers including GPTBot, ClaudeBot, PerplexityBot
 - llms.txt: AI answer engine optimization file, lists all 11 verticals
 - Canonical tags on all pages point to .html versions
 - GitHub Pages serves extensionless URLs as alternates (Google correctly excludes these)
+
+## Internal Linking (2026-07-06)
+
+- Nav pages: the 6 top-nav pages (Home, Security Fabric, Summit, FAQ, Resources, Contact) cross-link each other contextually and each carry an "Explore the Platform" card block.
+- Blog -> nav: all 23 real posts now link into the nav from article-body prose. Inbound contextual (body) links: Security Fabric 16, Summit 20, Resources 13, Contact 13, FAQ 7, Home 4 (Security Fabric / FAQ / Resources were 0 before this pass). No post links zero nav pages.
+- Blog breakages repaired: dead link (msp slug), product mislink (governance layer -> Security Fabric), malformed anchor (eu-cada Summit Pinnacle), products.html tier anchor ids (#summit-base / #summit-ridge / #summit-pinnacle), interactive infographic given canonical + noindex, and the unclosed Summit nav <li> closed across 21 posts.
 
 ## AEO Direct-Answer Pages (Session 34)
 

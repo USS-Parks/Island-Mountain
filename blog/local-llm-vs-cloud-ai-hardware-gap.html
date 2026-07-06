@@ -151,7 +151,7 @@
       <ul class="nav-links">
         <li><a href="../index.html">Home</a></li>
         <li><a href="../lamprey-woven-security-governance.html">Security Fabric</a></li>
-        <li><a href="../products.html">Summit</a>
+        <li><a href="../products.html">Summit</a></li>
               <li><a href="../faq.html">FAQ</a></li>
         <li><a href="../resources.html">Resources</a></li>
         <li><a href="../contact.html" class="nav-cta">Contact Sales</a></li>
@@ -229,7 +229,7 @@
 
 <p>A <a href="../law-firms.html">law firm</a> with 30 attorneys needs 30 people querying the same system concurrently. A <a href="../research-labs.html">research lab</a> with a dozen postdocs needs parallel inference sessions processing different datasets simultaneously. A <a href="../defense-contractors.html">defense subcontractor</a> needs multiple analysts working with CUI in isolated sessions on the same hardware.</p>
 
-<p>A laptop can't do this. It's not a limitation of the model or the software. It's a limitation of single-user hardware trying to serve multi-user workloads. Island Mountain servers run <a href="openwebui-admin-setup-guide.html">OpenWebUI</a> with role-based access control, conversation history, and admin oversight. vLLM handles tensor parallelism across both RTX PRO 6000 Blackwell GPUs, serving 20-plus concurrent users with production-grade response times. That's the infrastructure gap between a proof of concept and a deployment.</p>
+<p>A laptop can't do this. It's not a limitation of the model or the software. It's a limitation of single-user hardware trying to serve multi-user workloads. Island Mountain servers run <a href="openwebui-admin-setup-guide.html">OpenWebUI</a> with role-based access control, conversation history, and <a href="../lamprey-woven-security-governance.html">admin oversight</a>. vLLM handles tensor parallelism across both RTX PRO 6000 Blackwell GPUs, serving 20-plus concurrent users with production-grade response times. That's the infrastructure gap between a proof of concept and a deployment.</p>
 
 <h2>The Pricing Signal Everyone Should Be Watching</h2>
 
@@ -257,7 +257,7 @@
 
 <p>You don't get automatic updates. When the next Qwen or Llama drops, someone on your team downloads, tests, and deploys it. You don't get elastic scaling; your inference capacity is fixed by the GPUs you purchased. And you don't get a 24/7 monitoring center; if hardware fails at midnight, that's on your IT team or your support contract.</p>
 
-<p>For most regulated organizations, those trade-offs are not just acceptable but preferable. Fixed capacity means predictable performance. Manual updates mean you control what runs on your systems. No elastic scaling means no surprise invoices. The limitations are features if your compliance framework values control over convenience.</p>
+<p>For most regulated organizations, those trade-offs are not just acceptable but preferable. Fixed capacity means predictable performance. Manual updates mean you control <a href="../faq.html">what runs on your systems</a>. No elastic scaling means no surprise invoices. The limitations are features if your compliance framework values control over convenience.</p>
 
 <div style="border-left:3px solid var(--copper);padding:16px 20px;margin:32px 0;background:rgba(217,119,6,0.05);border-radius:0 8px 8px 0;">
 <strong>Summary:</strong> A developer ran the honest test: local LLM vs cloud AI on a MacBook, with every con documented. Speed, context depth, and quality variance are real constraints on laptop hardware. Dedicated RTX PRO 6000 Blackwell GPU servers solve each one today: 60 to 90 tokens per second, 192GB of dedicated VRAM, and 70B-parameter models that close the quality gap to single digits. The local AI transition doesn't need 12 to 24 months. It needs the right hardware.
