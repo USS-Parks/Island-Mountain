@@ -63,3 +63,31 @@ test('allowed browser traffic and public health checks still reach their handler
   const health = await worker.fetch(new Request(`${base}/api/health`), env, ctx);
   assert.equal(health.status, 200);
 });
+
+test('voice webhooks fail closed when authentication is unconfigured', async () => {
+  const response = await worker.fetch(
+    new Request(`${base}/api/voice-webhook`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: '{}',
+    }),
+    env,
+    ctx,
+  );
+  assert.equal(response.status, 503);
+});
+
+test('voice webhooks reject invalid secrets and accept the configured secret', async () => {
+  const webhookEnv = { ...env, WEBHOOK_SECRET: 'test-webhook-secret' } as Env;
+  const request = (secret: string) => new Request(`${base}/api/voice-webhook`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'X-Vapi-Secret': secret,
+    },
+    body: '{}',
+  });
+
+  assert.equal((await worker.fetch(request('wrong-secret'), webhookEnv, ctx)).status, 401);
+  assert.equal((await worker.fetch(request('test-webhook-secret'), webhookEnv, ctx)).status, 200);
+});
