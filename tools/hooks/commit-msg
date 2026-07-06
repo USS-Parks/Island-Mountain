@@ -10,7 +10,7 @@ MSG_FILE="${1:-}"
 [ -n "$MSG_FILE" ] && [ -f "$MSG_FILE" ] || exit 0    # nothing to stamp → don't block
 HOOK_DIR="$(cd "$(dirname "$0")" 2>/dev/null && pwd || echo .)"
 AWK="$HOOK_DIR/footer-filter.awk"
-FOOTER="Authored and reviewed by Basho Parks, Copyright 2026"
+FOOTER="Authored and reviewed by Bashō Parks, copyright 2026"
 
 work="$(mktemp 2>/dev/null || echo "${MSG_FILE}.work.$$")"
 # Drop git's comment + verbose-scissors lines the way git would — unless the message
