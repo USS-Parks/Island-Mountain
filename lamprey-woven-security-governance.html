@@ -268,7 +268,7 @@
         <span class="au-badge" style="--i:2">Audit-First</span>
       </div>
       <div class="au-reveal">
-        <video class="au-infographic au-stackvid" autoplay muted loop playsinline preload="metadata" poster="images/summit-stack-poster.webp" aria-label="Exploded view of the sovereign stack, from silicon up: Silicon (RTX 6000 Pro), Runtime, an open-source model, the Lamprey Woven Security Fabric, and the Lamprey UI.">
+        <video class="au-infographic au-stackvid" data-lazy muted loop playsinline preload="none" poster="images/summit-stack-poster.webp" aria-label="Exploded view of the sovereign stack, from silicon up: Silicon (RTX 6000 Pro), Runtime, an open-source model, the Lamprey Woven Security Fabric, and the Lamprey UI.">
           <source src="video/summit-stack.mp4" type="video/mp4">
         </video>
       </div>
@@ -295,7 +295,7 @@
           <p class="au-lede">Lamprey is designed for teams that need cloud visibility, <a href="resources.html" class="clr-copper">compliance reporting</a>, and remediation control without handing persistent access or scan data to a third party. Run it outside your organization through the cloud, or inside an air-gapped boundary; either way it gives operators enough context to prioritize real exposure while keeping deployment details, evidence, and credentials in your custody.</p>
         </div>
         <div class="woven-split-media">
-          <img src="images/IMG_7495.GIF" alt="Island Mountain Lamprey Woven Fabric: data security, regulatory compliance, and a local LLM at the core, ringed by software licensing, entitlement management, usage intelligence, fulfillment automation, self service portals, and IP protection" width="560" height="610" loading="lazy">
+          <img src="images/IMG_7495.webp" alt="Island Mountain Lamprey Woven Fabric: data security, regulatory compliance, and a local LLM at the core, ringed by software licensing, entitlement management, usage intelligence, fulfillment automation, self service portals, and IP protection" width="560" height="610" loading="lazy">
           <p class="cap">Cloud visibility and classification, woven into the operation and kept inside your boundary.</p>
         </div>
       </div>
@@ -366,7 +366,7 @@
           <p class="au-lede">We design around zero standing privilege: scan access is minted just in time, scoped to the operation, and revoked automatically. Remediation remains approval-gated and auditable. The fabric is intentionally structured for environments where a scanner must earn each action instead of accumulating broad permanent trust.</p>
         </div>
         <div class="woven-split-media">
-          <img src="vaulted-ai-access-light.gif" alt="Zero standing privilege - access minted just in time, scoped, and revoked" width="568" height="379" loading="lazy">
+          <img src="images/vaulted-ai-access-light.webp" alt="Zero standing privilege - access minted just in time, scoped, and revoked" width="608" height="480" loading="lazy">
           <p class="cap">Zero standing privilege: access is minted just in time, scoped to the operation, and revoked automatically.</p>
         </div>
       </div>
@@ -422,7 +422,7 @@
       <h2 class="au-h2 au-reveal">Every action, mapped and governed.</h2>
       <p class="au-lede au-reveal">Orchestration flows down through runtime and tools into the Woven Security &amp; Governance Fabric, where identity, guardrails, approval gates and the audit ledger sit inline on every call. Attacks ride the same rails; the fabric is where they stop.</p>
       <div class="au-reveal">
-        <video class="au-infographic au-stackvid" autoplay muted loop playsinline preload="metadata" poster="images/security-map-poster.webp" aria-label="The Agentic Orchestration and Security Map: orchestration patterns flow down through the agent runtime and state layer, threat-control cross-connections, and the threat landscape, with the Woven Security &amp; Governance Fabric governing every layer.">
+        <video class="au-infographic au-stackvid" data-lazy muted loop playsinline preload="none" poster="images/security-map-poster.webp" aria-label="The Agentic Orchestration and Security Map: orchestration patterns flow down through the agent runtime and state layer, threat-control cross-connections, and the threat landscape, with the Woven Security &amp; Governance Fabric governing every layer.">
           <source src="video/security-map.mp4" type="video/mp4">
         </video>
       </div>
@@ -440,7 +440,7 @@
           <p class="au-lede">We build &amp; deploy woven security and governance fabrics with in-house operating systems for organizations that need actionable security posture data, not another permanently privileged SaaS integration. The current scope of work is centered on security and governance automation that stays 100% accountable to the teams that operate it.</p>
         </div>
         <div class="woven-split-media">
-          <img src="IMG_7488.GIF" alt="Woven fabric cybersecurity deployed in controlled infrastructure" width="568" height="379" loading="lazy">
+          <img src="images/IMG_7488.webp" alt="Woven fabric cybersecurity deployed in controlled infrastructure" width="500" height="592" loading="lazy">
           <p class="cap">Woven security services and on-site hardware, fit to environments that require direct custody.</p>
         </div>
       </div>
@@ -713,6 +713,7 @@
   <script defer src="js/hero-cinematic.js"></script>
   <script defer src="js/card-nodes.js?v=2"></script>
   <script defer src="js/blog-scroller.js"></script>
+  <script defer src="js/lazy-video.js"></script>
   <script defer src="js/main.js"></script>
   <script defer src="js/chat-widget.js"></script>
 </body>

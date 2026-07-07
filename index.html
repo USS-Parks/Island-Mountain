@@ -29,6 +29,7 @@
   <link rel="stylesheet" href="css/blog-scroller.css?v=1">
   <link rel="stylesheet" href="icons/remixicon.css" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="icons/remixicon.css"></noscript>
+  <link rel="preload" href="images/im-opening-poster.webp" as="image" fetchpriority="high">
   <link rel="preload" href="fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
   <style>
@@ -226,7 +227,7 @@
       <span class="au-eyebrow-c" style="color:#ffd9a8">The Sovereign Stack</span>
       <h2 class="au-h2">Sovereignty is an architecture, not a subscription.</h2>
       <p class="au-lede" style="color:#efe0c8;">Renting intelligence from someone else's data center turned your most sensitive work into their liability. Island Mountain moves the entire stack &mdash; model, hardware, and <a href="lamprey-woven-security-governance.html" class="clr-copper">governance</a> &mdash; onto your own floor, <a href="products.html" class="clr-copper">one appliance per seat</a>.</p>
-      <video class="au-infographic au-stackvid" autoplay muted loop playsinline preload="metadata" poster="images/summit-stack-poster.webp" aria-label="Exploded view of the Summit Series stack, from silicon up: Silicon (RTX 6000 Pro), Runtime, an open-source model, the Lamprey Woven Security Fabric, and the Lamprey UI.">
+      <video class="au-infographic au-stackvid" data-lazy muted loop playsinline preload="none" poster="images/summit-stack-poster.webp" aria-label="Exploded view of the Summit Series stack, from silicon up: Silicon (RTX 6000 Pro), Runtime, an open-source model, the Lamprey Woven Security Fabric, and the Lamprey UI.">
         <source src="video/summit-stack.mp4" type="video/mp4">
       </video>
     </div>
@@ -580,9 +581,9 @@
   </footer>
 
   <script defer src="js/hero-cinematic.js"></script>
-  <script defer src="js/aurora-sections.js"></script>
   <script defer src="js/card-nodes.js?v=2"></script>
   <script defer src="js/blog-scroller.js"></script>
+  <script defer src="js/lazy-video.js"></script>
   <script defer src="js/main.js"></script>
   <script defer src="js/chat-widget.js"></script>
 </body>
