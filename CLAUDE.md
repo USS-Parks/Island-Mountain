@@ -25,6 +25,8 @@ git hooks via `core.hooksPath=tools/hooks`: `commit-msg` (stamps the canon foote
 ## Branching — default to `main`; branch only when the task needs it (CANON §I.5b)
 Work directly on `main` by default. Do **not** spin up a session branch or worktree out of the gate — read the task first. Open a `session/<short-topic>` branch (or worktree) **only** when the work genuinely needs an isolated track: concurrent sessions committing in parallel, or a risky spike you might throw away. An ordinary single change goes straight onto `main`; if a session lands on an auto-created branch it doesn't need, switch to `main` and work there. Keep every commit green through the gates — the `pre-commit` hook only *warns* on a direct `main` commit, never blocks it.
 
+**Remote/web sessions automate this (standing order, 2026-07-07):** the SessionStart hook (`tools/hooks/session-start.sh`) lands every Claude Code on the web session on origin's default branch and deletes the harness `claude/*` auto-branch — only when that branch carries zero commits of its own; a branch holding real work is never touched. Never recreate a `claude/*` branch or move work onto one; Basho decides at the top of the session where the work goes. Pushing `main` still happens only on his explicit go — the site deploys from it.
+
 The gates are built to **fail safe**: they block a genuinely corrupt or secret-leaking commit, but never reject a clean one over tooling (unknown/binary file extension, a legitimate HTML partial, a missing `awk`/`mktemp`). If a gate ever claps a clean commit that is a bug in the hook — fix the hook, never reach for `--no-verify`.
 
 ## Commit + push

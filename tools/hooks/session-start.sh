@@ -33,4 +33,59 @@ else
   echo "[session-start] tools/hooks not found; skipped hooks wiring" >&2
 fi
 
+# ---------------------------------------------------------------------------
+# Remote sessions land on the repo's default branch — Basho's standing order,
+# 2026-07-07. Claude Code on the web starts every session on an auto-generated
+# `claude/<topic>-<hash>` branch; Basho does not want harness branches, ever.
+# In a remote session ONLY (local CoWork sessions keep the CANON §I.5b
+# session-branch flow), this block:
+#   1. resolves origin's default branch (origin/HEAD; asks the remote if the
+#      clone doesn't know; falls back to `main`) — so whichever repo the
+#      session was opened on, its OWN mainline is where the session lands;
+#   2. if HEAD is on a harness `claude/*` branch, fetches the default branch
+#      and — only when the working tree is clean AND the harness branch holds
+#      zero commits of its own — checks out the default branch and deletes the
+#      harness branch. A `claude/*` branch carrying real unmerged commits (a
+#      resumed session) is left untouched: repositioning must never eat work.
+# Same doctrine as above: fail-safe, idempotent, never blocks the session.
+if [ "${CLAUDE_CODE_REMOTE:-}" = "true" ]; then
+  current="$(git symbolic-ref --quiet --short HEAD 2>/dev/null || echo HEAD)"
+  case "$current" in
+    claude/*)
+      default="$(git symbolic-ref --quiet --short refs/remotes/origin/HEAD 2>/dev/null | sed 's|^origin/||')"
+      if [ -z "$default" ]; then
+        default="$(git ls-remote --symref origin HEAD 2>/dev/null | sed -n 's|^ref: refs/heads/\(.*\)\tHEAD$|\1|p')"
+      fi
+      default="${default:-main}"
+      if ! git fetch origin "$default" 2>/dev/null; then
+        echo "[session-start] could not fetch origin/$default; staying on $current" >&2
+      elif [ -n "$(git status --porcelain 2>/dev/null)" ]; then
+        echo "[session-start] working tree not clean; staying on $current" >&2
+      elif ! git merge-base --is-ancestor "$current" "refs/remotes/origin/$default" 2>/dev/null; then
+        echo "[session-start] $current has commits not on origin/$default; keeping it (not eating work)" >&2
+      else
+        # Never reset away local work: if a local default branch already
+        # exists and holds commits origin doesn't have (unpushed work from
+        # earlier turns of this session), switch to it as-is; otherwise
+        # create/sync it at origin's tip.
+        mode=""
+        if git show-ref --verify --quiet "refs/heads/$default" \
+           && ! git merge-base --is-ancestor "refs/heads/$default" "refs/remotes/origin/$default" 2>/dev/null; then
+          git checkout "$default" 2>/dev/null && mode="kept local $default, it has unpushed commits"
+        else
+          git checkout -B "$default" "refs/remotes/origin/$default" 2>/dev/null && mode="synced to origin/$default"
+        fi
+        if [ -n "$mode" ]; then
+          git branch -D "$current" 2>/dev/null || true
+          echo "[session-start] repositioned onto $default ($mode); harness branch $current deleted" >&2
+          # stdout is injected into session context: standing orders for the agent.
+          echo "SessionStart: this session is on '$default' by Basho's standing order. The harness branch '$current' was deleted — do not recreate it, do not create any claude/* branch, and do not use worktrees. Work directly on '$default'; push only when Basho explicitly says so."
+        else
+          echo "[session-start] checkout of $default failed; staying on $current" >&2
+        fi
+      fi
+      ;;
+  esac
+fi
+
 exit 0
