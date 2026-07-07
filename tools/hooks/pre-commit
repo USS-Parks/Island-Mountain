@@ -53,12 +53,5 @@ if [ -x "$SLOP_SCAN" ]; then
   "$SLOP_SCAN" staged || echo "WARN   no-slop findings (loosened to warn-only; not blocking)" >&2
 fi
 
-# --- Branch-per-session nudge (§I.5b): warn only, NEVER block — a block here would
-#     also snag legitimate merge-to-main commits, i.e. clap the very workflow. ---
-BR="$(git rev-parse --abbrev-ref HEAD 2>/dev/null || echo)"
-case "$BR" in
-  main|master) echo "WARN   committing on '$BR' — canon prefers a session branch, then merge to main (§I.5b)." >&2 ;;
-esac
-
 [ "$FAIL" -eq 0 ] || { echo "pre-commit: canon checks failed (§I.2). Fix, or override with --no-verify (discouraged)." >&2; exit 1; }
 exit 0

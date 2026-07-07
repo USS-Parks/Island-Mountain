@@ -30,7 +30,7 @@ The stale clone at `Documents/VS Code Lamprey Repo Clone/im-mighty-eel-mai` is *
 
 ### 0.4 Commit + DEVLOG discipline
 - One prompt = one focused commit (or a tight bundle), co-author footer per repo convention.
-- **Worktree-per-session** (`tools/Session-Worktree.ps1`) — mandatory; parallel tracks never share a git index.
+- **Worktree per parallel track** (`tools/Session-Worktree.ps1`) — only when concurrent tracks actually run; parallel tracks never share a git index. A single serial session works on `main` (CANON §I.5/§I.5b).
 - **`safe-edit` skill** is mandatory for every file under `mai/` (verify it still applies on native Windows at 0.1; if the CoWork truncation bug is gone, downgrade to "recommended" and record that in the plan — do not silently ignore a mandatory skill).
 - Log every prompt in a new `docs/sessions/SOVEREIGNTY-DEVLOG.md`: prompt id, files, verify result, commit SHA.
 
