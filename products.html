@@ -352,7 +352,7 @@
     <div class="container">
       <div class="fade-in" style="display:flex;flex-wrap:wrap;align-items:center;gap:48px;">
         <div style="flex:1 1 440px;min-width:0;">
-          <video src="images/v2_traced-0f0f7ad5-94b8-4ea2-8193-b69514949926.mp4" autoplay loop muted playsinline preload="metadata" aria-label="Island Mountain Summit Series animation" style="width:100%;height:auto;border-radius:12px;display:block;"></video>
+          <video src="images/v2_traced-0f0f7ad5-94b8-4ea2-8193-b69514949926-web.mp4" data-lazy loop muted playsinline preload="none" aria-label="Island Mountain Summit Series animation" style="width:100%;height:auto;border-radius:12px;display:block;"></video>
         </div>
         <div style="flex:1 1 380px;min-width:0;">
           <span class="section-badge">The Summit Series</span>
@@ -435,7 +435,7 @@
   <section class="section section-dark hw-video-section">
     <div class="container">
       <div class="hw-video fade-in">
-        <video autoplay muted loop playsinline preload="metadata">
+        <video data-lazy muted loop playsinline preload="none">
           <source src="images/A_video_based_on_this_image_wi.mp4" type="video/mp4">
         </video>
       </div>
@@ -648,6 +648,7 @@
   </footer>
 
   <script defer src="js/card-nodes.js?v=2"></script>
+  <script defer src="js/lazy-video.js"></script>
   <script defer src="js/main.js"></script>
   <script defer src="js/chat-widget.js"></script>
 </body>
