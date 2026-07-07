@@ -4,7 +4,10 @@ SESSION-LOG.md
 DEVLOG.md
 _docs/
 _work/
-.claude/
+# Keep .claude/ private EXCEPT the committed SessionStart hook config, which must
+# be tracked so every fresh clone re-arms core.hooksPath (see tools/hooks/session-start.sh).
+.claude/*
+!.claude/settings.json
 
 # Funnel Worker — local secrets + dependencies (never serve from Pages)
 worker/.dev.vars
