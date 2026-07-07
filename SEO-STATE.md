@@ -1,6 +1,6 @@
 # SEO & Schema State
 
-Last updated: 2026-07-06 (blog internal-linking + breakage repair)
+Last updated: 2026-07-07 (private-page noindex policy, llms.txt GEO revision, weak-post wiring)
 
 ## JSON-LD Inventory
 
@@ -92,3 +92,13 @@ Cross-linked from 8 verticals. Each AEO page has FAQPage (4 Q&A) + BreadcrumbLis
 - .nojekyll: disables Jekyll processing
 - NUL byte issues: cleaned in Session 16 (privacy.html, solutions.html), Session 48 (resources.html committed fix, js/main.js local fix)
 - All OG/Twitter meta images and JSON-LD image refs point to .webp (Session 41)
+
+## Private Pages (2026-07-07) - keep OUT of search, deliberately unlinked
+pricing.html, why-island-mountain.html, landfall-preorder.html, landfall-product-line.html, compliance-dashboard.html, basho-parks.html, bibliography.html
+- All carry meta robots noindex, nofollow; none are in sitemap.xml or llms.txt; no internal links point to them. Do NOT wire these into nav, cards, prose, sitemap, or llms.txt.
+- Owner action for fast de-indexing of the five newly-noindexed URLs: Search Console > Removals.
+
+## Internal Linking pass 2 + llms.txt (2026-07-07)
+- llms.txt rewritten: private URLs removed, Security Fabric (Lamprey) section added, all 23 public blog posts listed.
+- Weak-post wiring (inbound counts): agentjacking 3->5, openai-discovery 3->5, tribal-datacenters 3->5, ai-search-visibility 1->3, msp 2->4. Prose anchors in agentic-map, hipaa-checklist, attorney-client-cloud-ai, law-firms, tribal-nations; related-cards in msp, second-revolution, cloud-tco, on-prem-vs-colo, tribal-data-sovereignty.
+- sitemap.xml: 57 -> 52 URLs.

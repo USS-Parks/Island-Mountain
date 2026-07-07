@@ -9,7 +9,6 @@ Three tiers of local AI inference hardware:
 - Summit Ridge: Build-to-order configuration. $95K-$120K.
 - Summit Pinnacle: 4x NVIDIA RTX PRO 6000 Blackwell 96GB, 384GB GDDR7 ECC VRAM. $175K-$225K. Pre-order now.
 
-
 Landfall Series (Home AI):
 - Landfall Scout: NVIDIA RTX 5080 16GB. Home AI server for personal use. $7,000-$8,000.
 - Landfall Ranger: NVIDIA RTX 5090 32GB. Family and small business AI server. $9,500-$11,500.
@@ -17,6 +16,10 @@ Landfall Series (Home AI):
 
 All Landfall systems are air-gapped by design. One-time purchase. No subscriptions.
 All systems ship with DeepSeek V4-Flash pre-installed, OpenWebUI configured, and 72 hours of burn-in testing completed.
+
+## Security Fabric (Lamprey)
+Lamprey is a Woven Security & Governance Fabric - a software layer that secures and governs an organization from the outside through the cloud, or from the inside with air-gapped security. Cloud visibility, compliance evidence, and approval-gated remediation without standing privilege. Zero standing privilege: scan access is minted just in time, scoped to the operation, and revoked automatically.
+- [Lamprey Woven Security & Governance Fabric](https://islandmountain.io/lamprey-woven-security-governance.html)
 
 ## Who This Is For
 - Law firms protecting attorney-client privilege (ABA Model Rule 1.6)
@@ -32,18 +35,16 @@ All systems ship with DeepSeek V4-Flash pre-installed, OpenWebUI configured, and
 - Casino gaming operations complying with Title 31 BSA/AML, NIGC MICS, and state gaming commission cybersecurity requirements
 
 ## Team
-- Basho Parks, Co-founder. AI systems, prompt engineering, forward deployment, business development, and content. Background in tribal emergency management with the Yurok Tribe. [CV](https://islandmountain.io/basho-parks.html)
+- Basho Parks, Co-founder. AI systems, prompt engineering, forward deployment, business development, and content. Background in tribal emergency management with the Yurok Tribe.
 - John Dougherty, Co-founder. Hardware engineering and product. 25 years in enterprise security and GPU systems. [johndou.com](https://www.johndou.com)
 
 ## Key Pages
 - [Products](https://islandmountain.io/products.html)
-- [Landfall Series Pre-Order](https://islandmountain.io/landfall-preorder.html)
-- [Pricing](https://islandmountain.io/pricing.html)
 - [FAQ (27 Q&A pairs)](https://islandmountain.io/faq.html)
 - [Contact/Quote](https://islandmountain.io/contact.html)
-- [Why Island Mountain](https://islandmountain.io/why-island-mountain.html)
+- [About](https://islandmountain.io/about.html)
 - [Technology Stack](https://islandmountain.io/technology.html)
-- [Compliance Dashboard](https://islandmountain.io/compliance-dashboard.html)
+- [Security Fabric (Lamprey)](https://islandmountain.io/lamprey-woven-security-governance.html)
 - [Solutions by Industry](https://islandmountain.io/solutions.html)
 - [Law Firms](https://islandmountain.io/law-firms.html)
 - [Medical Practices](https://islandmountain.io/medical-practices.html)
@@ -57,7 +58,7 @@ All systems ship with DeepSeek V4-Flash pre-installed, OpenWebUI configured, and
 - [Education](https://islandmountain.io/education.html)
 - [Casino Gaming](https://islandmountain.io/casino-gaming.html)
 - [Resources (Direct-Answer Hub)](https://islandmountain.io/resources.html)
-- [Real Citations (verified bibliography and citation checker)](https://islandmountain.io/bibliography.html)
+- [Blog](https://islandmountain.io/blog.html)
 
 ## Direct-Answer Reference Pages
 - [CLOUD Act & Tribal Data](https://islandmountain.io/cloud-act-tribal-data.html)
@@ -68,10 +69,26 @@ All systems ship with DeepSeek V4-Flash pre-installed, OpenWebUI configured, and
 - [Air-Gapped AI Inference](https://islandmountain.io/air-gapped-ai-inference.html)
 
 ## Blog
+- [Agentic Orchestration and Security: The Complete Map](https://islandmountain.io/blog/agentic-orchestration-security-map.html)
 - [Agentjacking: Fake Bug Reports Hijack AI Coding Agents](https://islandmountain.io/blog/agentjacking-fake-bug-report.html)
-- [DeepSeek V4-Flash Deployment](https://islandmountain.io/blog/deepseek-v4-flash-local-deployment.html)
+- [AI Search Visibility in 2026](https://islandmountain.io/blog/ai-search-visibility-consultant.html)
+- [AI Sovereignty Framework for Tribal Nations](https://islandmountain.io/blog/ai-sovereignty-framework-tribal-nations.html)
 - [Attorney-Client Privilege & Cloud AI](https://islandmountain.io/blog/attorney-client-privilege-cloud-ai.html)
+- [$50K/Month on Cloud AI? The Math on Local Replacement](https://islandmountain.io/blog/50k-month-cloud-ai-local-llm-replacement.html)
+- [Cloud AI vs. Local Hardware: 5-Year TCO](https://islandmountain.io/blog/cloud-ai-vs-local-hardware-tco.html)
+- [DeepSeek V4-Flash Local Deployment](https://islandmountain.io/blog/deepseek-v4-flash-local-deployment.html)
+- [EU CADA and AI Sovereignty for US Regulated Industries](https://islandmountain.io/blog/eu-cada-ai-sovereignty-us-regulated-industries.html)
+- [The Grid Is Screaming and Aquifers Are Running Dry](https://islandmountain.io/blog/grid-screaming-aquifers-on-premises-llm.html)
 - [RTX PRO 6000 Blackwell vs. H100 Comparison](https://islandmountain.io/blog/h100-vs-h200-inference-comparison.html)
-- [Cloud vs Local TCO](https://islandmountain.io/blog/cloud-ai-vs-local-hardware-tco.html)
+- [HIPAA Technical Safeguards for Local AI](https://islandmountain.io/blog/hipaa-technical-checklist.html)
+- [ITAR & DFARS AI Self-Assessment](https://islandmountain.io/blog/itar-dfars-ai-self-assessment.html)
+- [Local LLM vs Cloud AI: Every Con Has a Hardware Fix](https://islandmountain.io/blog/local-llm-vs-cloud-ai-hardware-gap.html)
+- [The MSP Model Sold Accountability, Not Real Service](https://islandmountain.io/blog/msp-model-accountability-ticket-queue.html)
+- [OCAP Principles & the CLOUD Act](https://islandmountain.io/blog/ocap-cloud-act-guide.html)
+- [On-Device LLMs: The Sovereign Edge](https://islandmountain.io/blog/on-device-llm-sovereign-edge.html)
+- [On-Prem vs. Colocation vs. Cloud: Decision Guide](https://islandmountain.io/blog/on-prem-vs-colo-vs-cloud.html)
+- [OpenAI Discovery Risk: Subpoena Exposure for Firms](https://islandmountain.io/blog/openai-discovery-risk-law-firms.html)
 - [OpenWebUI Admin Guide](https://islandmountain.io/blog/openwebui-admin-setup-guide.html)
-- [Tribal Data Sovereignty](https://islandmountain.io/blog/tribal-data-sovereignty-ai-infrastructure.html)
+- [The Second Revolution of AI: Local Inference](https://islandmountain.io/blog/second-revolution-local-ai.html)
+- [Tribal Data Sovereignty: Why Cloud AI Falls Short](https://islandmountain.io/blog/tribal-data-sovereignty-ai-infrastructure.html)
+- [Tribal Sovereignty and Data Centers: Landlord or Owner?](https://islandmountain.io/blog/tribal-sovereignty-data-centers-landlord-or-owner.html)
