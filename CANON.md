@@ -56,12 +56,14 @@ Nothing gets committed unless the full ladder is green. "Exhaustive" is a ladder
 - Never volunteer a push. Never `--force` without an explicit force instruction.
 - *Layer-3 owner:* none (intent). Layer-2 only.
 
-### I.5 — Parallelism = worktrees
-- Parallel/agent tracks run in **separate git worktrees** — never share a git index. Coordinate cross-track merge-hotspot files per the active plan.
-- *Layer-3 owner:* Layer-2 + a `SessionStart` reminder (III.1).
+### I.5 — Worktrees are for parallelism only
+- **A worktree is for genuine parallelism, never a default.** Only when two or more sessions/agents run concurrent tracks does each take its own git worktree — never share a git index; coordinate cross-track merge-hotspot files per the active plan. A single, serial task uses no worktree and no branch: it works on `main` (§I.5b).
+- *Layer-3 owner:* Layer-2 + the `SessionStart` brief (III.1) — it reports the current branch and that `main` is the default, and never tells a serial task to branch.
 
-### I.5b — Branch per session, merge to main
-- **Every session works on its own branch — never commit directly on `main`.** Start each session with `git switch -c session/<short-topic>` (a fresh worktree per §I.5 for parallel tracks). Do the work there, keep every commit green through the gates, then integrate to `main` with `git switch main && git merge --no-ff session/<short-topic>` once the unit is done. `main` is live (GitHub Pages) — merging is local; only Basho pushes (§I.4).
+### I.5b — Default to `main`; branch only when the task demands it
+- **Work directly on `main` by default.** Read the task before touching git topology: an ordinary, single unit of work commits straight to `main` — no branch, no worktree, nothing spun up "out of the gate."
+- **Branch only when the task genuinely needs isolation:** concurrent sessions committing in parallel (each takes its own `session/<short-topic>` branch / worktree per §I.5), or a risky spike you may discard — then integrate with `git switch main && git merge --no-ff session/<short-topic>` when the unit is done. A session that lands on an auto-created branch it doesn't need should switch to `main`.
+- `main` is live (GitHub Pages) — commits and merges are local; only Basho pushes (§I.4).
 - The gates **must fail safe**: a hook may block a genuinely corrupt/secret-leaking commit, but must never reject a well-formed one for a tooling reason (missing binary extension, a legitimate HTML partial, a failed `mktemp`/`awk`). A gate that claps clean work is a defect, fixed — not tolerated.
 - *Layer-3 owner:* `pre-commit` **warns** (never blocks) on a direct `main` commit; `commit-msg` always exits 0; the truncation/secret scans use a text allowlist + full-document HTML test so unknown/binary/partial files pass.
 
@@ -151,7 +153,7 @@ You asked about webhooks and pre/post-tool skills. Here is the full surface. **A
 | `PostToolUse` (Edit/Write) | **auto-format** touched file (`rustfmt`; project-local `prettier`) | **ACTIVE** (`autoformat.sh`) |
 | `PostToolUse` (any) | **audit logger** — hash-chained record of every action (II.7) | **ACTIVE** (`audit-log.sh`) |
 | `UserPromptSubmit` | **secret-in-prompt scan** — block private keys / vault tokens (I.8) | **ACTIVE** (`prompt-secret-scan.sh`) |
-| `SessionStart` | branch/status, active plan, worktree + gate reminders | **ACTIVE** (`session-brief.sh`) |
+| `SessionStart` | current branch/status, active plan, gate reminders — `main` by default; worktree only for genuine parallel tracks (§I.5/§I.5b) | **ACTIVE** (`session-brief.sh`) |
 | `PreToolUse` (Bash) | **egress guard** — deny non-allowlisted network during build/test (II.4) | **PROPOSED** |
 | `PostToolUse` (Edit) | **AI-slop scan** the diff (emoji, tell-phrases) | **PROPOSED** (partial: git `pre-commit` warns) |
 | `UserPromptSubmit` | classification warn (II.8) + inject active-PSPR reminder | **PROPOSED** |
