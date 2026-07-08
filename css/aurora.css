@@ -15,12 +15,16 @@
 /* ---------------- Intro reveal ---------------- */
 #aurora-intro{ position:fixed; inset:0; z-index:10000; background:#000; display:flex; align-items:center; justify-content:center; overflow:hidden;
   transition:opacity .85s ease, visibility .85s ease; }
-#aurora-intro video{ width:100%; height:100%; object-fit:cover; }
+#aurora-intro video{ width:100%; height:100%; object-fit:cover; position:relative; z-index:1; }
+/* Poster painted as a real <img> under the video: registers as the LCP
+   candidate at first paint instead of waiting out the intro. Mirrors the
+   video's fit rules so the frame is identical while the video buffers. */
+#aurora-intro .au-intro-poster{ position:absolute; inset:0 0 1px; width:100%; height:calc(100% - 1px); object-fit:cover; }
 /* Mobile: the intro is a compact crest centered on pure black (~37% of the 16:9 frame's width).
    Fit-to-width (contain) keeps it undistorted; because the container and the video share a black
    background the letterbox is invisible, so we scale the centered crest up to ~65% of screen width
    for presence. overflow:hidden on #aurora-intro clips the (black, invisible) surplus. */
-@media (max-width:700px){ #aurora-intro video{ object-fit:contain; transform:scale(1.78); transform-origin:center; } }
+@media (max-width:700px){ #aurora-intro video, #aurora-intro .au-intro-poster{ object-fit:contain; transform:scale(1.78); transform-origin:center; } }
 #aurora-intro .au-skip{ position:absolute; right:22px; bottom:22px; z-index:2; background:rgba(0,0,0,.45); border:1px solid rgba(255,255,255,.28);
   color:#fff; border-radius:999px; padding:9px 20px; cursor:pointer; letter-spacing:.02em; font:600 .85rem/1 'Inter',system-ui,sans-serif; backdrop-filter:blur(4px); }
 #aurora-intro .au-skip:hover{ border-color:var(--au-copper); color:var(--au-copper-light); }

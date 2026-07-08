@@ -24,9 +24,9 @@
   <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png?v=2">
   <link rel="preload" as="image" href="images/im-opening-poster.webp" fetchpriority="high">
   <link rel="stylesheet" href="css/style.min.css?v=4">
-  <link rel="stylesheet" href="css/aurora.css?v=4">
-  <link rel="stylesheet" href="css/card-nodes.css?v=2">
-  <link rel="stylesheet" href="css/blog-scroller.css?v=1">
+  <link rel="stylesheet" href="css/aurora.min.css?v=5">
+  <link rel="stylesheet" href="css/card-nodes.min.css?v=3">
+  <link rel="stylesheet" href="css/blog-scroller.min.css?v=2">
   <link rel="stylesheet" href="icons/remixicon.css" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="icons/remixicon.css"></noscript>
   <link rel="preload" href="images/im-opening-poster.webp" as="image" fetchpriority="high">
@@ -35,17 +35,17 @@
   <style>
   @font-face{font-family:'Inter';font-style:normal;font-weight:400 800;font-display:swap;src:url('fonts/inter-latin.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
   @font-face{font-family:'Space Grotesk';font-style:normal;font-weight:300 700;font-display:swap;src:url('fonts/space-grotesk-latin.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
-  /* Card icons use the canonical enlarged size from css/aurora.css (.au-ic--xl = 104px). No inline size override. */
+  /* Card icons use the canonical enlarged size from css/aurora.min.css?v=5 (.au-ic--xl = 104px). No inline size override. */
   /* Uniform icon rendering (matches the Woven page): normalize card icons to one white + one glow. */
   .au-card .au-ic img{ filter: brightness(0) invert(1) drop-shadow(0 0 5px rgba(200,220,255,.55)); }
 
   /* Homepage-only: drop the magenta band on The Summit spotlight and the gold aura on
      The Sovereign Stack statement, leaving the site's neutral dark background. Overrides the
-     !important rules in css/aurora.css (this inline block loads after that stylesheet). */
+     !important rules in css/aurora.min.css?v=5 (this inline block loads after that stylesheet). */
   .au-spotlight{ background:linear-gradient(180deg, var(--au-ink), var(--au-slate)) !important; }
   .au-statement{ background:linear-gradient(180deg,#0e1626,#0a0f1c) !important; }
 
-  /* Verticals ("who it's for") layout — overrides the base .au-vgrid in css/aurora.css.
+  /* Verticals ("who it's for") layout — overrides the base .au-vgrid in css/aurora.min.css?v=5.
      Desktop: 4 across, broken out full-bleed to fill the screen on both sides.
      Tablet: 2 up, back inside the container. Phone: one stacked card per row. */
   .au-verticals{ overflow-x:clip; }
@@ -109,6 +109,7 @@
 
   <!-- Aurora intro reveal (branded video -> fades into page) -->
   <div id="aurora-intro" aria-hidden="true">
+    <img class="au-intro-poster" src="images/im-opening-poster.webp" alt="" fetchpriority="high" decoding="async">
     <video autoplay muted playsinline preload="auto" poster="images/im-opening-poster.webp">
       <source src="video/im-opening.mp4" type="video/mp4">
     </video>
@@ -584,7 +585,7 @@
   <script defer src="js/card-nodes.js?v=2"></script>
   <script defer src="js/blog-scroller.js"></script>
   <script defer src="js/lazy-video.js"></script>
-  <script defer src="js/main.js"></script>
-  <script defer src="js/chat-widget.js"></script>
+  <script defer src="js/main.min.js?v=2"></script>
+  <script defer src="js/chat-widget.min.js?v=2"></script>
 </body>
 </html>

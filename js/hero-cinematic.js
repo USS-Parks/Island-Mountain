@@ -67,12 +67,15 @@
   function split(el) {
     var text = el.textContent
     el.setAttribute('aria-label', text)
-    el.textContent = ''
+    // Build the whole word/char span tree in a detached fragment and attach
+    // it in ONE operation. Appending word-by-word into the live H1 forced a
+    // style recalc per word (a 700ms+ main-thread task on load).
+    var frag = document.createDocumentFragment()
     var ci = 0
     text.split(/(\s+)/).forEach(function (chunk) {
       if (chunk === '') return
       if (/^\s+$/.test(chunk)) {
-        el.appendChild(document.createTextNode(' '))
+        frag.appendChild(document.createTextNode(' '))
         return
       }
       var w = document.createElement('span')
@@ -85,8 +88,10 @@
         s.textContent = ch
         w.appendChild(s)
       })
-      el.appendChild(w)
+      frag.appendChild(w)
     })
+    el.textContent = ''
+    el.appendChild(frag)
   }
   if (!reduce) {
     document.querySelectorAll('.au-h1[data-split]').forEach(split)
