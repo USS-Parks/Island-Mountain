@@ -60,10 +60,10 @@ html:not(.js) #aurora-intro{ display:none; }
 .au-h1 .char{ display:inline-block; }
 .js .au-h1.in .char{ animation:auChar .55s cubic-bezier(.22,.61,.36,1) both; animation-delay:calc(var(--c)*22ms); }
 @keyframes auChar{ from{opacity:0; transform:translateY(.5em);} to{opacity:1; transform:none;} }
-.au-hrule{ width:0; max-width:560px; height:3px; margin:26px 0 24px; border-radius:2px;
-  background:linear-gradient(90deg,var(--au-copper),var(--au-white-hot)); box-shadow:0 0 14px rgba(245,158,11,.6); }
+.au-hrule{ width:100%; max-width:560px; height:3px; margin:26px 0 24px; border-radius:2px;
+  background:linear-gradient(90deg,var(--au-copper),var(--au-white-hot)); box-shadow:0 0 14px rgba(245,158,11,.6); transform:scaleX(0); }
 .js .au-hero.in .au-hrule{ animation:auRule 1s .5s cubic-bezier(.22,.61,.36,1) both; }
-@keyframes auRule{ from{width:0;opacity:0;} to{width:100%;opacity:1;} }
+@keyframes auRule{ from{transform:scaleX(0);opacity:0;} to{transform:scaleX(1);opacity:1;} }
 .au-grad{ background:linear-gradient(100deg,var(--au-white-hot),var(--au-copper-light) 44%,var(--au-copper-deep)); -webkit-background-clip:text; background-clip:text; color:transparent; }
 .au-rotator{ display:inline-grid; vertical-align:top; }
 .au-rotator>span{ grid-area:1/1; opacity:0; transform:translateY(.3em); transition:opacity .5s ease, transform .5s ease; white-space:nowrap; }
@@ -201,7 +201,7 @@ html:not(.js) #aurora-intro{ display:none; }
 @media (prefers-reduced-motion:reduce){
   .js .au-reveal, .js .au-stagger>*, .js .au-h1 .char{ opacity:1 !important; animation:none !important; transform:none !important; }
   .au-flowdot, .au-atkdot, .au-teledot, .au-attack, .au-tele, .au-impact, .beam-card::before, .au-marquee__track{ animation:none !important; }
-  .au-hrule{ width:100% !important; animation:none !important; }
+  .au-hrule{ transform:none !important; animation:none !important; }
   .au-rotator>span{ transition:none; }
 }
 
