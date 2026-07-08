@@ -31,10 +31,18 @@
     function go(dir) {
       track.scrollBy({ left: dir * pageSize(), behavior: reduce ? 'auto' : 'smooth' })
     }
+    // Coalesce to one layout read per frame: scroll events fire faster than
+    // paint, and reading scrollWidth/clientWidth mid-handler forces reflow.
+    var queued = false
     function update() {
-      var max = track.scrollWidth - track.clientWidth - 2
-      if (prev) prev.disabled = track.scrollLeft <= 2
-      if (next) next.disabled = track.scrollLeft >= max
+      if (queued) return
+      queued = true
+      requestAnimationFrame(function () {
+        queued = false
+        var max = track.scrollWidth - track.clientWidth - 2
+        if (prev) prev.disabled = track.scrollLeft <= 2
+        if (next) next.disabled = track.scrollLeft >= max
+      })
     }
 
     if (prev)

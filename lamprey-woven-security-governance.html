@@ -36,7 +36,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png?v=2">
   <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png?v=2">
   <link rel="stylesheet" href="css/style.min.css?v=4">
-  <link rel="stylesheet" href="css/aurora.min.css?v=5">
+  <link rel="stylesheet" href="css/aurora.min.css?v=6">
   <link rel="stylesheet" href="css/card-nodes.min.css?v=3">
   <link rel="stylesheet" href="css/blog-scroller.min.css?v=2">
   <link rel="stylesheet" href="icons/remixicon.css" media="print" onload="this.media='all'">
@@ -139,7 +139,7 @@
 
   /* Cards: illustration icons + copy, node-comet borders, opaque backing. */
   .lamprey-aurora .au-card{ text-align:center; background:rgba(12,19,33,.86); }
-  /* Icon-card sizes come from the canonical .au-ic / .au-ic--xl (104px) in css/aurora.min.css?v=5 — no inline override. */
+  /* Icon-card sizes come from the canonical .au-ic / .au-ic--xl (104px) in css/aurora.min.css?v=6 — no inline override. */
   /* Uniform icon rendering: the swapped-in art varies in intrinsic brightness (crisp white webp vs
      faint png), so normalize every card icon to the same white and give them one identical glow. */
   .lamprey-aurora .au-card .au-ic img{ filter: brightness(0) invert(1) drop-shadow(0 0 5px rgba(200,220,255,.55)); }
@@ -268,7 +268,7 @@
         <span class="au-badge" style="--i:2">Audit-First</span>
       </div>
       <div class="au-reveal">
-        <video class="au-infographic au-stackvid" data-lazy muted loop playsinline preload="none" poster="images/summit-stack-poster.webp" aria-label="Exploded view of the sovereign stack, from silicon up: Silicon (RTX 6000 Pro), Runtime, an open-source model, the Lamprey Woven Security Fabric, and the Lamprey UI.">
+        <video class="au-infographic au-stackvid" data-lazy muted loop playsinline preload="none" poster="images/summit-stack-poster.webp?v=2" aria-label="Exploded view of the sovereign stack, from silicon up: Silicon (RTX 6000 Pro), Runtime, an open-source model, the Lamprey Woven Security Fabric, and the Lamprey UI.">
           <source src="video/summit-stack.mp4" type="video/mp4">
         </video>
       </div>
@@ -712,7 +712,7 @@
   </script>
   <script defer src="js/hero-cinematic.js"></script>
   <script defer src="js/card-nodes.js?v=2"></script>
-  <script defer src="js/blog-scroller.js"></script>
+  <script defer src="js/blog-scroller.js?v=2"></script>
   <script defer src="js/lazy-video.js"></script>
   <script defer src="js/main.min.js?v=2"></script>
   <script defer src="js/chat-widget.min.js?v=3"></script>
