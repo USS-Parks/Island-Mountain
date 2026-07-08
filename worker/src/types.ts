@@ -23,6 +23,10 @@ export interface Env {
   SHEETS_WEBHOOK_URL?: string;
   /** Vapi private API key — voice agent (PROMPT 07). */
   VAPI_API_KEY?: string;
+  /** Vapi public (client) key — served to the widget via /api/voice-config. */
+  VAPI_PUBLIC_KEY?: string;
+  /** Vapi assistant id — served to the widget via /api/voice-config. */
+  VAPI_ASSISTANT_ID?: string;
   /** Cal.com API key (cal_live_…) — live in-call booking for the voice agent. */
   CALCOM_API_KEY?: string;
   /** Shared secret to validate inbound Vapi/Cal.com webhooks. */

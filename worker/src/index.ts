@@ -9,6 +9,7 @@
 import type { Env } from './types';
 import { handlePreflight, jsonResponse, isOriginAllowed } from './cors';
 import { handleHealth } from './routes/health';
+import { handleVoiceConfig } from './routes/voice-config';
 import { handleChat } from './routes/chat';
 import { handleVoiceWebhook } from './routes/voice';
 import { handleBookingWebhook } from './routes/booking';
@@ -26,6 +27,7 @@ interface Route {
 
 const ROUTES: Route[] = [
   { method: 'GET', path: '/api/health', handler: handleHealth, access: 'public' },
+  { method: 'GET', path: '/api/voice-config', handler: handleVoiceConfig, access: 'browser' },
   { method: 'GET', path: '/api/stats', handler: handleStats, access: 'authenticated' },
   { method: 'GET', path: '/api/history', handler: handleHistory, access: 'browser' },
   { method: 'POST', path: '/api/chat', handler: handleChat, access: 'browser' },
