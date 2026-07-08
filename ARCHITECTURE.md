@@ -46,8 +46,9 @@ primary lead-capture surface; the FormSubmit.co contact form remains the no-JS f
   with a `submit_lead` tool; deterministic hot/warm/cold scoring (`worker/src/qualifier.ts`).
 - **State + store:** Workers KV (sessions + rate-limit counters), D1 (`leads` mirror),
   Google Sheet (human-facing lead list).
-- **Voice (Vapi):** AI phone agent on `+1-341-441-8740` (assistant `08eba87f-…`, public
-  key `89dd9bb1-…`). Three tools: `submit_lead`, plus **live in-call Cal.com scheduling**
+- **Voice (Vapi):** AI phone agent on `+1-341-441-8740` (assistant + public-key config
+  served at runtime by the funnel Worker, not embedded in this repo). Three tools:
+  `submit_lead`, plus **live in-call Cal.com scheduling**
   via `get_available_slots` + `book_appointment` (`worker/src/integrations/calcom.ts`,
   Cal.com API v2). End-of-call transcript + recording are extracted and persisted to D1.
 - **Booking:** Cal.com scoping call (30 min, event-type `6140261`, `CALCOM_LINK`

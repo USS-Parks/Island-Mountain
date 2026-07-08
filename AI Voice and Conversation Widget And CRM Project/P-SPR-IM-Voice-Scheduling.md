@@ -123,7 +123,7 @@ the agent can't read open times or reserve a slot on the call.
 - **Booking API:** `POST /v2/bookings`, header `cal-api-version: 2024-08-13`,
   body `{ start, eventTypeId, attendee:{ name,email,timeZone,language }, metadata }`
   — shape to be locked with the real test booking in P3.
-- **Vapi assistant** `08eba87f-…`: model `claude-sonnet-4-5-20250929`; server.url
+- **Vapi assistant** `<assistant-id>`: model `claude-sonnet-4-5-20250929`; server.url
   already `…/api/voice-webhook`; **`tools: []`** (none registered — capture is
   end-of-call extraction only); `serverMessages` unset (Vapi defaults). Snapshot
   saved to `worker/.vapi-assistant-snapshot.json` (gitignored). step_11 present.
@@ -157,7 +157,7 @@ the agent can't read open times or reserve a slot on the call.
   recommended as a separate small task. See "Non-goals / notes".
 
 ### P4 — Register Vapi tools ✅ (2026-06-27)
-- PATCHed assistant `08eba87f-…`: added `get_available_slots` + `book_appointment`
+- PATCHed assistant `<assistant-id>`: added `get_available_slots` + `book_appointment`
   (type function, server.url = voice-webhook). `serverMessages` set to the default
   superset (tool-calls + end-of-call-report both present). Model preserved
   (`claude-sonnet-4-5-20250929`). System prompt untouched at this step.

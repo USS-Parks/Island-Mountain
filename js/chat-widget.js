@@ -148,6 +148,7 @@
     launcher.addEventListener('click', function () { openPanel(); });
     root.appendChild(launcher);
     document.body.appendChild(root);
+    fetchVoiceConfig();
     // Stay open across page changes: if it was open on the previous page, reopen.
     if (isOpenFlag()) openPanel(true);
   }
@@ -228,12 +229,30 @@
   }
 
   // --- Voice (Vapi) — in-page web call (no third-party tab) -----------------
-  // Defaults baked in for islandmountain.io; override via window.IM_CHAT_CONFIG.voice.
-  // vapiPublicKey is a public, client-safe key.
-  var VOICE = CFG.voice || {
-    vapiPublicKey: '<vapi-public-key>',
-    vapiAssistantId: '<assistant-id>',
-  };
+  // No identifiers ship in this file: voice config comes from
+  // window.IM_CHAT_CONFIG.voice or is fetched at runtime from the funnel Worker.
+  var VOICE = CFG.voice || {};
+  var voiceFetched = false;
+  function fetchVoiceConfig() {
+    if (voiceFetched || VOICE.phone || (VOICE.vapiPublicKey && VOICE.vapiAssistantId)) return;
+    voiceFetched = true;
+    fetch(API_BASE + '/api/voice-config')
+      .then(function (r) { return r.json(); })
+      .then(function (j) {
+        var v = (j && j.data) || {};
+        if (v.vapiPublicKey && v.vapiAssistantId) { VOICE = v; injectVoiceButton(); }
+      })
+      .catch(function () {});
+  }
+  function injectVoiceButton() {
+    if (!builtPanel) return;
+    if (panel.querySelector('.imchat-voice')) return;
+    var foot = panel.querySelector('.imchat-foot');
+    var html = voiceButtonHtml();
+    if (!foot || !html) return;
+    foot.insertAdjacentHTML('afterbegin', html);
+    wireVoiceButton(panel);
+  }
   function voiceButtonHtml() {
     if (!VOICE || (!VOICE.phone && !(VOICE.vapiPublicKey && VOICE.vapiAssistantId))) return '';
     return '<button class="imchat-voice" type="button" aria-label="Talk to an AI specialist by voice">🎙️ Talk to an AI specialist</button>';
