@@ -10,7 +10,10 @@ Universal engineering rules load from the global `~/.claude/CANON.md`. This file
 ## What lives here
 - **The website** — ~60 hand-crafted HTML pages + `css/`, `js/`, `blog/`. Deploys to islandmountain.io via **GitHub Pages from `main`** (remote `USS-Parks/islandmountain`). Every push to `main` publishes.
 - **Lamprey MAI (`im-mighty-eel-mai`) — SEPARATE sibling repo, no longer in this tree.** The Rust workspace (Lamprey MAI inference substrate + governance: Trust Manifold, OpenBao/TLM) that the WSF/AOG products extend — reused, not rebuilt. **Un-nested from this repo on 2026-07-05**, it now lives on its own at `C:\Users\17076\Documents\Claude\Mighty Eel OS\` (git repo root `Mighty Eel OS\mai\`, origin `USS-Parks/im-mighty-eel-mai`). Do **not** re-clone or re-nest it under this website repo — sovereignty-stack / WSF / AOG / mai work happens over in that sibling folder.
-- **`worker/`** — the Cloudflare Worker behind the live chat/voice lead funnel (Vapi voice + Cal.com booking).
+- **`worker/`** — the Cloudflare Worker behind the live chat/voice lead funnel (Vapi voice + Cal.com booking) plus the two capture endpoints: `/api/worksheet` (cost-worksheet email gate behind `sovereign-cost-worksheet.html`) and `/api/slot` (Founder's Build Slot claims from `contact.html#claim-slot`). Deploy with `npm run deploy` from `worker/`.
+
+## Pricing posture — absolute (Basho's ruling, 2026-07-10)
+No Island Mountain dollar figure appears anywhere public: not in page copy, tables, meta/OG tags, JSON-LD, form options, or the chat/voice agent prompts. Cloud-cost, regulatory-fine, and competitor figures are fine — they're the pain hook, not our pricing. The private Summit comparison range lives in exactly one place, `worker/src/emails.ts` (`worksheetEmail`), and travels only by email. Never reintroduce a price on-page or into an agent prompt; regression gate: grep `Summit[^<]{0,60}\$[0-9]` across `*.html` must return zero.
 - **`PLANNING/`** — P-SPRs (gitignored). Active sovereignty plan: `PLANNING/AOG-WSF-SOVEREIGNTY-STACK-PSPR.md` (DRAFT — awaits STS).
 - **`_work/`**, **`.claude/Project Memory Library/`** — session logs, SEO work, skills, cross-session memory.
 
