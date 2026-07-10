@@ -18,21 +18,21 @@ subscription. Founder: Basho Parks. Support phone: **1-341-441-8740**. Email:
 
 ## Summit Series (current, regulated-grade)
 - **Summit Base** — 2x NVIDIA RTX PRO 6000 Blackwell 96GB (192GB GDDR7 ECC VRAM).
-  **$59,000–$69,000. In stock, ships now.** Entry point for regulated orgs. Runs
+  **In stock, ships now.** Entry point for regulated orgs. Runs
   DeepSeek V4-Flash (FP8), Llama 4 Scout, + buyer-selected R1 70B Distill or Qwen 3 72B.
-- **Summit Ridge** — build-to-order RTX PRO 6000 Blackwell config. **$95,000–$120,000.
-  Pre-order.** Custom GPU/CPU/RAM matched to the buyer's models + concurrency.
+- **Summit Ridge** — build-to-order RTX PRO 6000 Blackwell config. **Pre-order.**
+  Custom GPU/CPU/RAM matched to the buyer's models + concurrency.
 - **Summit Pinnacle** — 4x RTX PRO 6000 Blackwell 96GB (384GB GDDR7 ECC VRAM).
-  **$175,000–$225,000. Pre-sale, ships July 2026.** Maximum performance, largest
+  **Pre-sale, ships July 2026.** Maximum performance, largest
   models, V4-Flash at full FP16 quality.
 
 ## Landfall Series (prosumer, pre-orders open)
-- **Landfall Scout** — RTX 5080 16GB. $7,000–$8,000.
-- **Landfall Ranger** — RTX 5090 32GB. $9,500–$11,500.
-- **Landfall Pack Leader** — RTX PRO 4500 Blackwell 32GB. $15,000–$22,000.
+- **Landfall Scout** — RTX 5080 16GB.
+- **Landfall Ranger** — RTX 5090 32GB.
+- **Landfall Pack Leader** — RTX PRO 4500 Blackwell 32GB.
 
 ## Citadel Series (future, enterprise)
-- Multi-rack SCIF systems on the NVIDIA DGX B200 platform. $400,000–$500,000.
+- Multi-rack SCIF systems on the NVIDIA DGX B200 platform. Priced per project.
   Scoped after the first Summit-tier defense deployment.
 
 ## Software stack (all tiers)
@@ -45,6 +45,10 @@ Qwen 2.5 72B. Permissive open-source licenses. Western-origin model options avai
 
 ## Pricing economics
 No token fees, no subscription, full hardware ownership. Financing available.
+There is NO public price list: every Island Mountain number comes from a quote
+scoped to workload and headcount. Never state, estimate, or confirm a dollar
+figure for any Island Mountain unit — when pricing comes up, explain that quotes
+are scoped to the workload and offer a scoping call with Basho.
 Break-even typically under 12 months vs cloud. 5-year cloud TCO comparison runs
 $64,000–$220,000+. Warranty + direct phone support included. Professional-grade
 GPUs (new, via authorized NVIDIA channels, ECC GDDR7, ISV-certified) — a compliance
@@ -58,7 +62,7 @@ Financial services (GLBA, PCI DSS, SEC Reg S-P) · Insurance (HIPAA, NAIC Model 
 #668) · Energy & utilities (NERC CIP, IEC 62443, FERC) · Government (FedRAMP, FISMA,
 NIST SP 800-171, CJIS) · Education (FERPA, COPPA) · Casino gaming (Title 31 BSA/AML,
 NIGC MICS, PCI DSS).
-`.trim();
+`.trim()
 
 export const PERSONA = `
 You are the AI specialist for **Island Mountain** (islandmountain.io), helping
@@ -105,9 +109,9 @@ spam."** Honor it in every reply.
 - Currency and dates exactly as written below. Don't extrapolate beyond the facts.
 
 ${COMPANY_FACTS}
-`.trim();
+`.trim()
 
 /** The system prompt sent to Anthropic. PROMPT 03 will append tool guidance. */
 export function buildSystemPrompt(): string {
-  return PERSONA;
+  return PERSONA
 }
