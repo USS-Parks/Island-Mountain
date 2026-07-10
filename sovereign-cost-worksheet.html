@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) - deferred until user interaction -->
+<link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
+<script>
+  (function(){
+    var loaded = false;
+    function loadGA(){
+      if(loaded) return;
+      loaded = true;
+      var s = document.createElement('script');
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=G-R674E394D4';
+      s.async = true;
+      document.head.appendChild(s);
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      window.gtag = gtag;
+      gtag('js', new Date());
+      gtag('config', 'G-R674E394D4');
+    }
+    ['scroll','click','touchstart','keydown'].forEach(function(e){
+      document.addEventListener(e, loadGA, {once:true, passive:true});
+    });
+    setTimeout(loadGA, 5000);
+  })();
+</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Basho Parks">
+  <title>Cloud AI Cost Calculator | Your 5-Year Number - Island Mountain</title>
+  <meta name="description" content="See what cloud AI will cost your team over five years, from your own numbers, in sixty seconds. Free worksheet: your figures plus the on-premises comparison, emailed by the builder.">
+  <link rel="icon" type="image/x-icon" href="favicon.ico?v=2">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png?v=2">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png?v=2">
+  <link rel="stylesheet" href="css/style.min.css?v=3">
+  <link rel="stylesheet" href="icons/remixicon.css" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="icons/remixicon.css"></noscript>
+  <link rel="preload" href="fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <style>
+  @font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400 800;
+    font-display: swap;
+    src: url('fonts/inter-latin.woff2') format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+  @font-face {
+    font-family: 'Space Grotesk';
+    font-style: normal;
+    font-weight: 300 700;
+    font-display: swap;
+    src: url('fonts/space-grotesk-latin.woff2') format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+  .cw-card{background:var(--secondary-dark);border:1px solid var(--tertiary-dark);border-radius:14px;padding:28px;max-width:720px;margin:0 auto;}
+  .cw-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin-bottom:20px;}
+  .cw-field label{display:block;font-size:.85rem;color:var(--text-muted);margin-bottom:6px;}
+  .cw-field input,.cw-field select{width:100%;padding:12px 14px;background:var(--primary-dark,#0b1120);border:1px solid var(--tertiary-dark);border-radius:8px;color:#fff;font-size:1rem;font-family:inherit;}
+  .cw-field input:focus,.cw-field select:focus{outline:2px solid var(--copper,#c77b52);border-color:transparent;}
+  .cw-result{display:none;margin-top:26px;}
+  .cw-result.show{display:block;}
+  .cw-total{font-family:'Space Grotesk',sans-serif;font-size:clamp(2rem,5vw,3rem);font-weight:700;color:var(--copper,#c77b52);line-height:1.1;}
+  .cw-bars{width:100%;height:auto;margin-top:18px;}
+  .cw-note{font-size:.8rem;color:var(--text-muted);margin-top:14px;line-height:1.6;}
+  .cw-gate{display:none;margin-top:26px;border-top:1px solid var(--tertiary-dark);padding-top:24px;}
+  .cw-gate.show{display:block;}
+  .cw-gate-row{display:grid;grid-template-columns:1fr 1fr auto;gap:12px;align-items:end;}
+  @media (max-width:640px){.cw-gate-row{grid-template-columns:1fr;}}
+  .cw-success{display:none;margin-top:22px;padding:18px;border:1px solid var(--copper,#c77b52);border-radius:10px;color:#e6e9ef;line-height:1.7;}
+  .cw-success.show{display:block;}
+  .cw-err{display:none;color:#f2a3a3;font-size:.9rem;margin-top:10px;}
+  </style>
+  <link rel="canonical" href="https://islandmountain.io/sovereign-cost-worksheet.html">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Cloud AI Cost Calculator | Your 5-Year Number - Island Mountain">
+  <meta property="og:description" content="See what cloud AI will cost your team over five years, from your own numbers, in sixty seconds. Free worksheet emailed by the builder.">
+  <meta property="og:url" content="https://islandmountain.io/sovereign-cost-worksheet.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Island Mountain">
+  <meta property="og:image" content="https://islandmountain.io/images/hero-mountain.webp">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Cloud AI Cost Calculator | Your 5-Year Number - Island Mountain">
+  <meta name="twitter:description" content="See what cloud AI will cost your team over five years, from your own numbers, in sixty seconds.">
+  <meta name="twitter:image" content="https://islandmountain.io/images/hero-mountain.webp">
+
+  <!-- BreadcrumbList Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://islandmountain.io/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Cloud AI Cost Calculator",
+        "item": "https://islandmountain.io/sovereign-cost-worksheet.html"
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <canvas id="particles-canvas"></canvas>
+
+  <!-- Hero background photo -->
+  <div class="hero-photo">
+    <img srcset="images/hero-mountain-mobile.webp 800w, images/hero-mountain.webp 1913w" sizes="100vw" src="images/hero-mountain.webp" alt="Island Mountain brand hero - on-premises AI infrastructure, built in California" fetchpriority="high" decoding="async" width="1913" height="892">
+  </div>
+
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="nav-logo"><img src="images/logo-nav-new.webp" alt="Island Mountain" width="205" height="65"></a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="lamprey-woven-security-governance.html">Security Fabric</a></li>
+        <li><a href="products.html">AI Servers</a>
+              <li><a href="faq.html">FAQ</a></li>
+        <li><a href="resources.html">Resources</a></li>
+        <li><a href="contact.html" class="nav-cta">Contact Sales</a></li>
+      </ul>
+      <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <div class="sidebar-overlay"></div>
+  <div class="mobile-sidebar">
+    <a href="index.html">Home</a>
+    <a href="lamprey-woven-security-governance.html">Security Fabric</a>
+    <a href="products.html">AI Servers</a>
+            <a href="faq.html">FAQ</a>
+    <a href="resources.html">Resources</a>
+    <a href="contact.html" class="nav-cta">Contact Sales</a>
+  </div>
+
+  <!-- Breadcrumb -->
+  <div class="breadcrumb-bar" style="background:var(--secondary-dark);padding:12px 0;border-bottom:1px solid var(--tertiary-dark);">
+    <div class="container" style="font-size:0.85rem;color:var(--text-muted);">
+      <a href="index.html" style="color:var(--copper);text-decoration:none;">Home</a>
+      <span style="margin:0 8px;">/</span>
+      <span>Cloud AI Cost Calculator</span>
+    </div>
+  </div>
+
+  <section class="hero hero-page">
+    <div class="hero-inner">
+      <span class="hero-badge">Free Worksheet</span>
+      <h1>What Will Cloud AI Cost You Over Five Years?</h1>
+      <p>Three inputs. Your number, on your screen, in sixty seconds. No email needed to see it.</p>
+    </div>
+  </section>
+
+  <section class="section section-dark">
+    <div class="container">
+      <div class="cw-card">
+        <div class="cw-grid">
+          <div class="cw-field">
+            <label for="cw-seats">People using AI tools</label>
+            <input type="number" id="cw-seats" min="1" max="100000" value="25" inputmode="numeric">
+          </div>
+          <div class="cw-field">
+            <label for="cw-spend">Monthly cloud AI spend today (USD)</label>
+            <input type="number" id="cw-spend" min="0" max="10000000" value="5000" inputmode="numeric">
+          </div>
+          <div class="cw-field">
+            <label for="cw-growth">Usage &amp; price growth</label>
+            <select id="cw-growth">
+              <option value="0">Flat (0%/yr)</option>
+              <option value="0.15" selected>Typical (15%/yr)</option>
+              <option value="0.30">Aggressive (30%/yr)</option>
+            </select>
+          </div>
+        </div>
+        <button type="button" class="btn btn-primary" id="cw-calc">Show My 5-Year Number</button>
+
+        <div class="cw-result" id="cw-result" aria-live="polite">
+          <p style="margin:0 0 4px;color:var(--text-muted);font-size:.9rem;">Your cumulative cloud AI spend, five years:</p>
+          <div class="cw-total" id="cw-total">$0</div>
+          <p style="margin:8px 0 0;color:var(--text-muted);" id="cw-perseat"></p>
+          <svg class="cw-bars" id="cw-bars" viewBox="0 0 520 190" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Annual cloud AI spend by year"></svg>
+          <p class="cw-note">Assumptions: your inputs, escalated annually at the growth rate you chose. Documented cloud AI pricing history runs 10&ndash;15% annual increases; enterprise usage typically grows 15&ndash;30% a year as teams adopt the tools. Every dollar here is spend that ends with nothing owned.</p>
+
+          <div class="cw-gate show" id="cw-gate">
+            <p style="margin:0 0 14px;line-height:1.7;color:#e6e9ef;"><strong>Want it in writing?</strong> I&#39;ll email you the full worksheet with your numbers filled in &mdash; including the one-time Summit comparison we don&#39;t publish on the site &mdash; plus the compliance brief for your industry. No follow-up spam; you&#39;re talking to the person who builds the hardware.</p>
+            <form id="cw-form">
+              <div class="cw-gate-row">
+                <div class="cw-field">
+                  <label for="cw-email">Work email</label>
+                  <input type="email" id="cw-email" required placeholder="you@organization.com" autocomplete="email">
+                </div>
+                <div class="cw-field">
+                  <label for="cw-industry">Industry</label>
+                  <select id="cw-industry">
+                    <option value="">Select&hellip;</option>
+                    <option>Law Firm</option>
+                    <option>Medical / Healthcare</option>
+                    <option>Tribal Nation</option>
+                    <option>Defense Contractor</option>
+                    <option>Financial Services</option>
+                    <option>Insurance</option>
+                    <option>Energy &amp; Utilities</option>
+                    <option>Government</option>
+                    <option>Education / Research</option>
+                    <option>Casino Gaming</option>
+                    <option>Other</option>
+                  </select>
+                </div>
+                <button type="submit" class="btn btn-primary" id="cw-send">Email Me the Worksheet</button>
+              </div>
+              <p class="cw-err" id="cw-err">Something went wrong sending that. Try again, or email <a href="mailto:info@islandmountain.io" style="color:var(--copper);">info@islandmountain.io</a> directly.</p>
+            </form>
+            <div class="cw-success" id="cw-success">
+              Sent. Check your inbox &mdash; your worksheet and industry brief are on the way. If it hasn&#39;t landed in a few minutes, check spam or email <a href="mailto:info@islandmountain.io" style="color:var(--copper);">info@islandmountain.io</a>. &mdash; Basho
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <p style="text-align:center;margin:34px auto 0;color:var(--text-muted);max-width:640px;line-height:1.8;">Prefer to talk it through? <a href="contact.html" style="color:var(--copper);">Book a scoping call</a> &mdash; one conversation with the builder, no sales pitch. Or read <a href="on-premises-ai-cost-comparison.html" style="color:var(--copper);">the full on-premises cost analysis</a> first.</p>
+    </div>
+  </section>
+
+  <footer class="footer au-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="images/im-badge.webp" alt="Island Mountain" width="200" height="183" class="d-block-mb">
+          <p>Sovereign AI infrastructure for regulated organizations. Every workstation its own air-gappable server and rack, with the Woven Security &amp; Governance Fabric built in. Hand-built in California.</p>
+          <p class="mt-8"><i class="ri-phone-line icon-copper-mr"></i><a href="tel:+13414418740" class="clr-muted">1-341-441-8740</a></p>
+          <div class="au-social">
+            <a href="https://www.linkedin.com/company/island-mountain-llc/" target="_blank" rel="noopener" aria-label="Island Mountain on LinkedIn"><i class="ri-linkedin-fill"></i></a>
+            <a href="https://x.com/IslandMountain_" target="_blank" rel="noopener" aria-label="Island Mountain on X"><i class="ri-twitter-x-fill"></i></a>
+          </div>
+        </div>
+        <div>
+          <h3>Products</h3>
+          <ul class="footer-links">
+            <li><a href="products.html">Summit Series</a></li>
+            <li><a href="lamprey-woven-security-governance.html">Lamprey &middot; Security Fabric</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3><a href="solutions.html">Solutions</a></h3>
+          <ul class="footer-links">
+            <li><a href="law-firms.html">Law Firms</a></li>
+            <li><a href="medical-practices.html">Medical Practices</a></li>
+            <li><a href="tribal-nations.html">Tribal Nations</a></li>
+            <li><a href="defense-contractors.html">Defense Contractors</a></li>
+            <li><a href="financial-services.html">Financial Services</a></li>
+            <li><a href="research-labs.html">Research Labs</a></li>
+            <li><a href="insurance.html">Insurance</a></li>
+            <li><a href="energy-utilities.html">Energy &amp; Utilities</a></li>
+            <li><a href="government.html">Government</a></li>
+            <li><a href="education.html">Education</a></li>
+            <li><a href="casino-gaming.html">Casino Gaming</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Company</h3>
+          <ul class="footer-links">
+            <li><a href="about.html">About</a></li>
+            <li><a href="investors.html">Investors</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="resources.html">Resources</a></li>
+            <li><a href="contact.html">Contact Sales</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="au-legal">Island Mountain LLC designs, assembles, and ships pre-configured on-premises AI inference hardware. Nothing on this site constitutes an offer or sale of securities, or legal, compliance, tax, or investment advice. Compliance with HIPAA, ITAR, DFARS / CMMC, OCAP, and other frameworks depends on your organization's deployment, configuration, policies, and controls; on-premises hardware is one component of a compliant program, not a certification. Product specifications, model availability, and lead times are subject to change. Pricing is quoted by sales on a per-engagement basis. NVIDIA, RTX, and Blackwell, and all other marks are the property of their respective owners.</p>
+
+      <div class="footer-bottom flex-col-center-gap">
+        <p>&copy; 2026 Island Mountain LLC. All rights reserved. Hand-built in California by <span class="clr-copper">Basho Parks</span>.</p>
+        <div class="au-legallinks">
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="terms.html">Terms of Service</a>
+          <a href="contact.html">Contact Sales</a>
+          <a href="tel:+13414418740">1-341-441-8740</a>
+          <a href="https://www.linkedin.com/company/island-mountain-llc/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="https://x.com/IslandMountain_" target="_blank" rel="noopener">X</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+  (function(){
+    var isLocal = /^(localhost|127\.0\.0\.1)$/.test(location.hostname);
+    var API_BASE = isLocal ? 'http://localhost:8787' : 'https://island-mountain-funnel.basho-parks.workers.dev';
+    var fmt = function(n){ return '$' + Math.round(n).toLocaleString('en-US'); };
+    var state = null;
+
+    function calc(){
+      var seats = Math.max(1, parseInt(document.getElementById('cw-seats').value, 10) || 1);
+      var spend = Math.max(0, parseFloat(document.getElementById('cw-spend').value) || 0);
+      var growth = parseFloat(document.getElementById('cw-growth').value) || 0;
+      var years = [], total = 0;
+      for (var y = 0; y < 5; y++) {
+        var annual = spend * 12 * Math.pow(1 + growth, y);
+        years.push(annual);
+        total += annual;
+      }
+      state = { seats: seats, spend: spend, growth: growth, years: years, total: total };
+      document.getElementById('cw-total').textContent = fmt(total);
+      document.getElementById('cw-perseat').textContent = 'That is ' + fmt(total / seats) + ' per person on your team — rented, never owned.';
+      drawBars(years);
+      document.getElementById('cw-result').classList.add('show');
+      if (window.gtag) gtag('event', 'worksheet_calculate', { value: Math.round(total), currency: 'USD' });
+    }
+
+    function drawBars(years){
+      var svg = document.getElementById('cw-bars');
+      var max = Math.max.apply(null, years) || 1;
+      var w = 520, h = 190, pad = 10, bw = 70, gap = 24, baseY = h - 28;
+      var html = '';
+      for (var i = 0; i < 5; i++) {
+        var bh = Math.max(4, (years[i] / max) * (baseY - pad - 20));
+        var x = pad + i * (bw + gap);
+        html += '<rect x="' + x + '" y="' + (baseY - bh) + '" width="' + bw + '" height="' + bh + '" rx="4" fill="#c77b52" opacity="' + (0.55 + i * 0.11) + '"></rect>';
+        html += '<text x="' + (x + bw / 2) + '" y="' + (baseY - bh - 7) + '" text-anchor="middle" fill="#e6e9ef" font-size="12" font-family="Inter,sans-serif">' + fmt(years[i]) + '</text>';
+        html += '<text x="' + (x + bw / 2) + '" y="' + (baseY + 18) + '" text-anchor="middle" fill="#8a93a6" font-size="12" font-family="Inter,sans-serif">Year ' + (i + 1) + '</text>';
+      }
+      svg.innerHTML = html;
+    }
+
+    document.getElementById('cw-calc').addEventListener('click', calc);
+
+    document.getElementById('cw-form').addEventListener('submit', function(e){
+      e.preventDefault();
+      if (!state) calc();
+      var email = document.getElementById('cw-email').value.trim();
+      var industry = document.getElementById('cw-industry').value;
+      var btn = document.getElementById('cw-send');
+      var err = document.getElementById('cw-err');
+      err.style.display = 'none';
+      btn.disabled = true;
+      btn.textContent = 'Sending…';
+      fetch(API_BASE + '/api/worksheet', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email: email,
+          industry: industry,
+          seats: state.seats,
+          monthly_spend: state.spend,
+          growth_pct: Math.round(state.growth * 100),
+          five_year_total: Math.round(state.total),
+          landing_page: '/sovereign-cost-worksheet.html',
+          referrer: document.referrer || ''
+        })
+      }).then(function(r){
+        if (!r.ok) throw new Error('http ' + r.status);
+        document.getElementById('cw-form').style.display = 'none';
+        document.getElementById('cw-success').classList.add('show');
+        if (window.gtag) gtag('event', 'worksheet_email', { value: Math.round(state.total), currency: 'USD' });
+      }).catch(function(){
+        err.style.display = 'block';
+        btn.disabled = false;
+        btn.textContent = 'Email Me the Worksheet';
+      });
+    });
+  })();
+  </script>
+  <script defer src="js/main.min.js?v=2"></script>
+  <script defer src="js/chat-widget.min.js?v=3"></script>
+</body>
+</html>
