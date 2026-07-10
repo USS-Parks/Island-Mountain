@@ -15,7 +15,7 @@ Landfall Series (Home AI):
 - Landfall Pack Leader: NVIDIA RTX PRO 4500 Blackwell 32GB. Professional home AI server with maximum capability. $15,000-$22,000.
 
 All Landfall systems are air-gapped by design. One-time purchase. No subscriptions.
-All systems ship with DeepSeek V4-Flash pre-installed, OpenWebUI configured, and 72 hours of burn-in testing completed.
+All systems ship with DeepSeek V4-Flash pre-installed, OpenWebUI configured, and burn-in testing completed.
 
 ## Security Fabric (Lamprey)
 Lamprey is a Woven Security & Governance Fabric - a software layer that secures and governs an organization from the outside through the cloud, or from the inside with air-gapped security. Cloud visibility, compliance evidence, and approval-gated remediation without standing privilege. Zero standing privilege: scan access is minted just in time, scoped to the operation, and revoked automatically.
