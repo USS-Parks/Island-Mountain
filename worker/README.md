@@ -9,9 +9,15 @@ qualifier without ever exposing an API key to the browser.
 | `/api/health` | GET | Liveness probe | PROMPT 01 |
 | `/api/chat` | POST | Claude proxy + KV session memory | PROMPT 02 |
 | `/api/voice-webhook` | POST | Vapi voice → same pipeline | PROMPT 07 |
+| `/api/worksheet` | POST | Cost-worksheet email gate: recomputes the 5-yr cloud burn, persists a cold lead, emails the private Summit comparison (1 send/address/hour) | 2026-07 |
+| `/api/slot` | POST | Founder's Build Slot claim: forced-hot lead → alert to Basho + 90-day quote-lock confirmation to the claimant | 2026-07 |
 
-Lead scoring, persistence, alerts, and analytics run only inside the chat and
-authenticated voice pipelines. There is no public direct lead-submission route.
+Lead scoring, persistence, alerts, and analytics run inside the chat and
+authenticated voice pipelines plus the two origin-gated form routes above
+(`/api/worksheet`, `/api/slot`) — all four feed the same `processLead` pipeline.
+The private Summit price range lives ONLY in `src/emails.ts` (worksheetEmail);
+the public posture is quote-based with no price list — never move it on-page
+or into the chat/voice prompts.
 
 ## Stack
 Cloudflare Worker (TypeScript) · Workers KV (`SESSIONS`) · D1 (`leads` + atomic counters) ·
