@@ -1013,7 +1013,16 @@
     form.addEventListener('submit', function(e) {
       if (!validateAllSteps()) {
         e.preventDefault();
+      } else if (window.gtag) {
+        gtag('event', 'quote_form_submit', { transport_type: 'beacon' });
       }
+    });
+
+    // ── Measurement: tel: click beacon ──
+    document.querySelectorAll('a[href^="tel:"]').forEach(function(a) {
+      a.addEventListener('click', function() {
+        if (window.gtag) gtag('event', 'tel_click', { transport_type: 'beacon' });
+      });
     });
 
     // ── Conditional Logic: System Interest ──
