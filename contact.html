@@ -455,6 +455,23 @@
             <button type="button" onclick="if(window.imChatOpen)window.imChatOpen();return false;" style="display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border:none;border-radius:999px;cursor:pointer;color:#0f172a;font-weight:700;font-size:15px;background:linear-gradient(135deg,var(--copper),var(--copper-deep));box-shadow:0 4px 16px var(--copper-glow);">💬 Start a conversation</button>
             <p style="margin:12px 0 0;font-size:0.85rem;color:var(--text-muted);">Prefer to write it out? Use the form below — it still reaches us the same way.</p>
           </div>
+          <!-- Founder's Build Slot claim -->
+          <div class="bot-lead" id="claim-slot" style="margin-bottom:28px;padding:20px 22px;border:1px solid var(--copper);border-radius:var(--border-radius);background:linear-gradient(135deg,rgba(199,123,82,.12),rgba(217,119,6,.04));">
+            <p style="margin:0 0 6px;font-size:1.05rem;color:var(--text-light);"><strong>The Founder&#39;s Build Slot.</strong> I build every Summit myself, one at a time &mdash; a slot holds your place in the build queue. Claiming one costs nothing and commits you to nothing, and any quote we scope together is <strong>locked for 90 days</strong>.</p>
+            <form id="slot-form" style="margin-top:14px;">
+              <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;">
+                <input required type="text" id="slot-name" placeholder="Name" autocomplete="name" style="padding:11px 12px;background:rgba(11,17,28,.7);border:1px solid var(--card-border);border-radius:8px;color:#fff;font-size:.95rem;">
+                <input required type="email" id="slot-email" placeholder="Work email" autocomplete="email" style="padding:11px 12px;background:rgba(11,17,28,.7);border:1px solid var(--card-border);border-radius:8px;color:#fff;font-size:.95rem;">
+                <input type="tel" id="slot-phone" placeholder="Phone" autocomplete="tel" style="padding:11px 12px;background:rgba(11,17,28,.7);border:1px solid var(--card-border);border-radius:8px;color:#fff;font-size:.95rem;">
+                <input type="text" id="slot-org" placeholder="Organization" autocomplete="organization" style="padding:11px 12px;background:rgba(11,17,28,.7);border:1px solid var(--card-border);border-radius:8px;color:#fff;font-size:.95rem;">
+              </div>
+              <input type="text" id="slot-workload" placeholder="One line on the workload (optional)" style="margin-top:10px;width:100%;padding:11px 12px;background:rgba(11,17,28,.7);border:1px solid var(--card-border);border-radius:8px;color:#fff;font-size:.95rem;">
+              <button type="submit" class="btn btn-primary" style="margin-top:12px;">Claim a Build Slot</button>
+              <span style="margin-left:10px;font-size:.85rem;color:var(--text-muted);">No deposit. No commitment.</span>
+              <p id="slot-err" style="display:none;color:#f2a3a3;font-size:.9rem;margin:10px 0 0;">That didn&#39;t send &mdash; try again or call 1-341-441-8740.</p>
+            </form>
+            <div id="slot-ok" style="display:none;margin-top:8px;color:var(--text-light);line-height:1.7;">Slot held. I&#39;ll reach out within one business day to scope your build &mdash; check your email for confirmation. &mdash; Basho</div>
+          </div>
 
           <p style="margin-bottom:32px;">Tell us about your organization and requirements. Four short steps, takes about three minutes. We use this to draft a meaningful first response instead of asking you twenty questions over email.</p>
           <p style="margin:0 0 32px;font-size:0.9rem;color:var(--text-muted);">Not ready yet? Skim the <a href="faq.html" class="clr-copper">FAQ</a>, see the <a href="lamprey-woven-security-governance.html" class="clr-copper">Security Fabric</a>, or browse the <a href="products.html" class="clr-copper">Summit lineup</a> first.</p>
@@ -1023,5 +1040,40 @@
 
   })();
   </script>
+  <script>
+  (function(){
+    var f = document.getElementById('slot-form'); if(!f) return;
+    var isLocal = /^(localhost|127\.0\.0\.1)$/.test(location.hostname);
+    var API = isLocal ? 'http://localhost:8787' : 'https://island-mountain-funnel.basho-parks.workers.dev';
+    f.addEventListener('submit', function(e){
+      e.preventDefault();
+      var btn = f.querySelector('button[type=submit]'); btn.disabled = true; btn.textContent = 'Holding your slot…';
+      document.getElementById('slot-err').style.display = 'none';
+      fetch(API + '/api/slot', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({
+        name: document.getElementById('slot-name').value.trim(),
+        email: document.getElementById('slot-email').value.trim(),
+        phone: document.getElementById('slot-phone').value.trim(),
+        organization: document.getElementById('slot-org').value.trim(),
+        workload: document.getElementById('slot-workload').value.trim(),
+        landing_page: location.pathname, referrer: document.referrer || ''
+      })}).then(function(r){
+        if(!r.ok) throw 0;
+        f.style.display = 'none';
+        document.getElementById('slot-ok').style.display = 'block';
+        if (window.gtag) gtag('event','slot_claim',{});
+      }).catch(function(){
+        document.getElementById('slot-err').style.display = 'block';
+        btn.disabled = false; btn.textContent = 'Claim a Build Slot';
+      });
+    });
+  })();
+  </script>
+
+  <!-- worksheet band -->
+  <div id="im-band" style="position:fixed;left:0;right:0;bottom:0;z-index:900;background:linear-gradient(90deg,#1c130b,#241407);border-top:1px solid rgba(199,123,82,.5);padding:10px 96px 10px 16px;text-align:center;font-size:.92rem;color:#e6d5c3;display:none;">
+    <a href="sovereign-cost-worksheet.html" style="color:#e8935e;text-decoration:none;font-weight:600;">Free: see your 5-year cloud-AI number in 60 seconds &rarr;</a>
+    <button onclick="document.getElementById('im-band').style.display='none';try{sessionStorage.setItem('imBandOff','1')}catch(e){}" aria-label="Dismiss" style="position:absolute;right:12px;top:50%;transform:translateY(-50%);background:none;border:none;color:#94a3b8;font-size:18px;cursor:pointer;padding:4px 8px;">&times;</button>
+  </div>
+  <script>try{if(!sessionStorage.getItem('imBandOff'))document.getElementById('im-band').style.display='block'}catch(e){}</script>
 </body>
 </html>
