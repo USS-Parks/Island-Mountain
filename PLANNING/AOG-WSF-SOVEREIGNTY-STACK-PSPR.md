@@ -11,7 +11,7 @@
 ## §0 — Governance (source of truth for this phase)
 
 ### 0.1 Where this builds
-Primary repo: **`im-mighty-eel-mai`** (authoritative working copy: `Island Mountain Mighty Eel OS/mai/`; origin `USS-Parks/im-mighty-eel-mai`). We extend the existing Cargo workspace with new crates + services and add a `console/` app. Rationale: ~100K LOC of tested, conventioned Rust + the TLM OpenBao integration already live here; a port to a fresh repo is pure cost. The WSF boundary is enforced by **crate boundaries and published schemas**, not by repo separation.
+Primary repo: **`im-mighty-eel-mai`** (authoritative working copy: `C:\Users\17076\Documents\Claude\Mighty Eel OS\mai\` — relocated 2026-07-05 out of the Island Mountain website repo, now a standalone sibling folder; origin `USS-Parks/im-mighty-eel-mai`). We extend the existing Cargo workspace with new crates + services and add a `console/` app. Rationale: ~100K LOC of tested, conventioned Rust + the TLM OpenBao integration already live here; a port to a fresh repo is pure cost. The WSF boundary is enforced by **crate boundaries and published schemas**, not by repo separation.
 The stale clone at `Documents/VS Code Lamprey Repo Clone/im-mighty-eel-mai` is **disposable** (pre-TLM). Delete it at 0.1 so no session ever edits it.
 
 ### 0.2 Stack (settled)
