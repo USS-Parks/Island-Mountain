@@ -279,7 +279,7 @@
 
 <h2>The Cost-Per-Token Math</h2>
 
-<p>Here is the version that decides budgets. Summit Base lists at $59,000 to $69,000. Take the midpoint, about $64,000, depreciated over three years: roughly $21,000 per year. At one billion tokens annually, a reasonable figure for a medium-sized organization, that is about <strong>$0.000021 per token</strong> in hardware cost.</p>
+<p>Here is the version that decides budgets. Depreciate a Summit Base over three years against one billion tokens annually - a reasonable figure for a medium-sized organization - and the per-token hardware cost is a rounding error.</p>
 
 <p>Cloud inference from major providers runs $0.003 to $0.01 per token on comparable models. Even after electricity, cooling, and staffing, on-premises inference is cheaper by two to three orders of magnitude. The capital cost is front-loaded; the unit cost is low and stays low for the life of the box.</p>
 
@@ -303,7 +303,7 @@
 
 <h2>The Honest Guidance</h2>
 
-<p>Start with Summit Base at $59,000 to $69,000. It is the price of admission to working on-premises inference today, on new Blackwell hardware rather than aging secondary-market Hopper cards. You learn your real usage patterns before committing more. Summit Ridge runs $95,000 to $120,000 and Summit Pinnacle runs $175,000 to $225,000; step up to those when concurrent load or full-precision V4-Flash concretely demands it, not because a larger number looks reassuring.</p>
+<p>Start with Summit Base. It is the price of admission to working on-premises inference today, on new Blackwell hardware rather than aging secondary-market Hopper cards. You learn your real usage patterns before committing more. Summit Ridge and Summit Pinnacle step up from there; move to those when concurrent load or full-precision V4-Flash concretely demands it, not because a larger number looks reassuring.</p>
 
 <p>The H100 was the right tool for its moment. For new on-premises deployments in 2026, a new RTX PRO 6000 Blackwell card wins on cost per token and total cost for the workloads regulated organizations actually run. That is why Summit moved.</p>
 

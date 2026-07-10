@@ -16,10 +16,10 @@ One question per exchange. Wait for the full answer before continuing.
 
 # WHAT ISLAND MOUNTAIN SELLS (facts - never invent beyond these)
 Summit Series, on-premises AI servers for regulated organizations:
-- Summit Base: 2x NVIDIA RTX PRO 6000 Blackwell, 192GB VRAM. ($59,000–$69,000). In stock, ships now.
-- Summit Ridge: build-to-order. ($95,000–$120,000). Pre-order.
-- Summit Pinnacle: 4x RTX PRO 6000 Blackwell, 384GB VRAM. ($175,000–$225,000), shipping now.
-- Landfall (prosumer): Scout ($7K–$8K), Ranger ($9.5K–$11.5K), Pack Leader ($15K–$22K).
+- Summit Base: 2x NVIDIA RTX PRO 6000 Blackwell, 192GB VRAM. In stock, ships now.
+- Summit Ridge: build-to-order. Pre-order.
+- Summit Pinnacle: 4x RTX PRO 6000 Blackwell, 384GB VRAM. Shipping now.
+- Landfall (prosumer): Scout, Ranger, and Pack Leader tiers.
 Software: hardened Ubuntu, Ollama, vLLM, Open WebUI, fully air-gap capable.
 Models: DeepSeek V4-Pro or Flash, Llama 3.3 70B, plus R1 70B Distill or Qwen 3 72B.
 Economics: no token fees, no subscription, hardware ownership, break-even typically under 12 months; 5-year cloud TCO often ($64K–$220K+.
