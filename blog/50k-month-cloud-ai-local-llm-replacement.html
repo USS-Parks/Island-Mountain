@@ -237,7 +237,7 @@
 
 <p>vLLM uses continuous batching and PagedAttention for dynamic memory allocation, which means that at the same 50-user concurrency, time-to-first-response holds at around 145 milliseconds. On NVIDIA hardware running a 70B model in FP8 quantization, vLLM delivers 8,033 tokens per second compared to Ollama's 484, a 16.6x throughput advantage that isn't a benchmark artifact but a direct consequence of architectural decisions about how memory and compute are scheduled.</p>
 
-<p><a href="../index.html">Island Mountain</a> ships both. Ollama handles model management and quick single-user access for the IT admin who needs to test something at midnight. vLLM runs the production inference engine for multi-user serving. <a href="openwebui-admin-setup-guide.html">Open WebUI</a> sits on top as the multi-user interface with role-based access controls, conversation logging, and admin permissions. The entire stack ships pre-configured, burn-tested for 72 hours, and ready to serve users on day one.</p>
+<p><a href="../index.html">Island Mountain</a> ships both. Ollama handles model management and quick single-user access for the IT admin who needs to test something at midnight. vLLM runs the production inference engine for multi-user serving. <a href="openwebui-admin-setup-guide.html">Open WebUI</a> sits on top as the multi-user interface with role-based access controls, conversation logging, and admin permissions. The entire stack ships pre-configured, burn-tested, and ready to serve users on day one.</p>
 
 <h2>The Five-Year Math: Cloud AI vs. On-Premises Hardware</h2>
 
