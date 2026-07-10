@@ -746,5 +746,12 @@
 
   <script defer src="js/main.min.js?v=2"></script>
   <script defer src="js/chat-widget.min.js?v=3"></script>
+
+  <!-- worksheet band -->
+  <div id="im-band" style="position:fixed;left:0;right:0;bottom:0;z-index:900;background:linear-gradient(90deg,#1c130b,#241407);border-top:1px solid rgba(199,123,82,.5);padding:10px 96px 10px 16px;text-align:center;font-size:.92rem;color:#e6d5c3;display:none;">
+    <a href="sovereign-cost-worksheet.html" style="color:#e8935e;text-decoration:none;font-weight:600;">Free: see your 5-year cloud-AI number in 60 seconds &rarr;</a>
+    <button onclick="document.getElementById('im-band').style.display='none';try{sessionStorage.setItem('imBandOff','1')}catch(e){}" aria-label="Dismiss" style="position:absolute;right:12px;top:50%;transform:translateY(-50%);background:none;border:none;color:#94a3b8;font-size:18px;cursor:pointer;padding:4px 8px;">&times;</button>
+  </div>
+  <script>try{if(!sessionStorage.getItem('imBandOff'))document.getElementById('im-band').style.display='block'}catch(e){}</script>
 </body>
 </html>
