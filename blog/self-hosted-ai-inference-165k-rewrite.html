@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) - deferred until user interaction -->
+<link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
+<script>
+  (function(){
+    var loaded = false;
+    function loadGA(){
+      if(loaded) return;
+      loaded = true;
+      var s = document.createElement('script');
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=G-R674E394D4';
+      s.async = true;
+      document.head.appendChild(s);
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      window.gtag = gtag;
+      gtag('js', new Date());
+      gtag('config', 'G-R674E394D4');
+    }
+    ['scroll','click','touchstart','keydown'].forEach(function(e){
+      document.addEventListener(e, loadGA, {once:true, passive:true});
+    });
+    setTimeout(loadGA, 5000);
+  })();
+</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Basho Parks">
+  <meta name="date" content="2026-07-10">
+  <title>Self-Hosted AI Inference and the $165,000 Rewrite</title>
+  <meta name="description" content="The Bun rewrite burned $165,000 in tokens at API pricing. Anthropic never paid it. What frontier lab economics admit about self-hosted AI inference.">
+  <link rel="icon" type="image/x-icon" href="../favicon.ico?v=2">
+  <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon-32.png?v=2">
+  <link rel="apple-touch-icon" sizes="180x180" href="../images/apple-touch-icon.png?v=2">
+  <link rel="stylesheet" href="../css/style.min.css?v=3">
+  <link rel="stylesheet" href="../icons/remixicon.css" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="../icons/remixicon.css"></noscript>
+  <link rel="preload" href="../fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <style>
+  @font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400 800;
+    font-display: swap;
+    src: url('../fonts/inter-latin.woff2') format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+  @font-face {
+    font-family: 'Space Grotesk';
+    font-style: normal;
+    font-weight: 300 700;
+    font-display: swap;
+    src: url('../fonts/space-grotesk-latin.woff2') format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+  </style>
+  <link rel="canonical" href="https://islandmountain.io/blog/self-hosted-ai-inference-165k-rewrite.html">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Self-Hosted AI Inference and the $165,000 Rewrite">
+  <meta property="og:description" content="The Bun rewrite burned $165,000 in tokens at API pricing. Anthropic never paid it. What frontier lab economics admit about self-hosted AI inference.">
+  <meta property="og:url" content="https://islandmountain.io/blog/self-hosted-ai-inference-165k-rewrite.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Island Mountain">
+  <meta property="og:image" content="https://islandmountain.io/images/hero-mountain.webp">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Self-Hosted AI Inference and the $165,000 Rewrite">
+  <meta name="twitter:description" content="The Bun rewrite burned $165,000 in tokens at API pricing. Anthropic never paid it. What frontier lab economics admit about self-hosted AI inference.">
+  <meta name="twitter:image" content="https://islandmountain.io/images/hero-mountain.webp">
+
+  <!-- Article Schema -->
+  <script type="application/ld+json">
+  {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Self-Hosted AI Inference and the $165,000 Rewrite",
+  "description": "The Bun rewrite burned $165,000 in tokens at API pricing. Anthropic never paid it. What frontier lab economics admit about self-hosted AI inference.",
+  "url": "https://islandmountain.io/blog/self-hosted-ai-inference-165k-rewrite.html",
+  "datePublished": "2026-07-10",
+  "dateModified": "2026-07-10",
+  "author": {
+    "@type": "Organization",
+    "name": "Island Mountain",
+    "url": "https://islandmountain.io"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Island Mountain",
+    "url": "https://islandmountain.io",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://islandmountain.io/images/hero-mountain.webp"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://islandmountain.io/blog/self-hosted-ai-inference-165k-rewrite.html"
+  },
+  "image": "https://islandmountain.io/images/hero-mountain.webp"
+}
+  </script>
+
+  <link rel="stylesheet" href="../css/blog.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://islandmountain.io/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Blog",
+      "item": "https://islandmountain.io/blog.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Self-Hosted AI and the $165K Rewrite",
+      "item": "https://islandmountain.io/blog/self-hosted-ai-inference-165k-rewrite.html"
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+  <!-- Full-page particle canvas -->
+  <canvas id="particles-canvas"></canvas>
+
+  <!-- Hero background photo -->
+  <div class="hero-photo">
+    <img srcset="../images/hero-mountain-mobile.webp 800w, ../images/hero-mountain.webp 1913w" sizes="100vw" src="../images/hero-mountain.webp" alt="Island Mountain AI inference server hardware" fetchpriority="high" decoding="async" width="1913" height="892">
+  </div>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="../index.html" class="nav-logo"><img src="../images/logo-nav-new.webp" alt="Island Mountain" width="205" height="65"></a>
+      <ul class="nav-links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../lamprey-woven-security-governance.html">Security Fabric</a></li>
+        <li><a href="../products.html">AI Servers</a></li>
+        <li><a href="../faq.html">FAQ</a></li>
+        <li><a href="../resources.html">Resources</a></li>
+        <li><a href="../contact.html" class="nav-cta">Contact Sales</a></li>
+      </ul>
+      <button class="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Sidebar -->
+  <div class="sidebar-overlay"></div>
+  <div class="mobile-sidebar">
+    <a href="../index.html">Home</a>
+    <a href="../lamprey-woven-security-governance.html">Security Fabric</a>
+    <a href="../products.html">AI Servers</a>
+    <a href="../faq.html">FAQ</a>
+    <a href="../resources.html">Resources</a>
+    <a href="../contact.html" class="nav-cta">Contact Sales</a>
+  </div>
+
+  <!-- Article -->
+  <section class="section section-first hero-spacer">
+    <div class="container content-max-840">
+
+      <!-- Breadcrumb -->
+      <nav class="breadcrumb">
+        <a href="../index.html">Home</a><span>&rsaquo;</span><a href="../blog.html">Blog</a><span>&rsaquo;</span>Self-Hosted AI and the $165K Rewrite
+      </nav>
+
+      <!-- Article Header -->
+      <div class="article-header">
+        <div class="article-meta">
+          <span class="article-date">July 10, 2026</span>
+          <span class="article-tag tag-financial">Financial</span>
+          <span class="article-tag tag-strategy">Strategy</span>
+          <span class="article-read-time">5 min read</span>
+        </div>
+        <h1 class="text-2xl">Self-Hosted AI Inference and the $165,000 Rewrite</h1>
+        <p class="article-author">Basho Parks</p>
+      </div>
+
+      <article class="article-body">
+
+        <h2>What Frontier Labs Just Admitted About Token Billing</h2>
+
+<p>On July 8, <a href="https://bun.com/blog/bun-in-rust" target="_blank" rel="noopener">Jarred Sumner published his account</a> of rewriting Bun, the JavaScript runtime behind Claude Code, from Zig to Rust: over a million lines of code, 64 parallel Claude instances running for 11 days, and roughly $165,000 in tokens at API pricing before the merge.</p>
+
+<p>Here's the thing about that number. Anthropic never paid it. They acquired Bun in December 2025, Sumner works there, and the whole job ran on their own infrastructure at their own marginal cost. The $165,000 is what you'd pay. It's fair to wonder whether the project gets greenlit at all if someone had to invoice it at retail.</p>
+
+<h2>The People Selling You Tokens Don't Buy Tokens</h2>
+
+<p>Miriah Peterson, a systems engineer who <a href="https://soypetetech.substack.com/p/i-replaced-claude-code-with-minimax" target="_blank" rel="noopener">documented replacing Claude Code with a self-hosted MiniMax model</a> served through OpenCode, read the Bun numbers and called it: if a frontier lab burns an engineer's salary in inference to ship one project, per-token billing isn't a cost structure anyone running real volume can live inside. The math works for Anthropic because Anthropic owns the meter. Her conclusion: "I'd rather copy their engineering practices than just consume their APIs."</p>
+
+<p>The rewrite itself proves her point better than the price tag does. Sumner didn't ration anything. Sixty-four agents ran in parallel. Every implementer's diff went to two separate reviewers who were told to assume the code was broken and find out why. When something failed, he rewrote the workflow that generated the code instead of hand-patching the output. Most of those 5.9 billion input tokens went to review, retries, and dead ends, and that's not waste, that's the method. It only exists because nobody in the loop was watching a meter.</p>
+
+<p>Put that same engineer on a retail API and watch the discipline erode: shorter prompts, thinner context, one reviewer instead of two, first plausible answer wins. The tool doesn't get worse. Your use of it does. You're not paying per token; you're paying per hesitation.</p>
+
+<h2>What This Looks Like at Your Scale</h2>
+
+<p>You're not porting a runtime. Doesn't matter. The same economics hit a <a href="../law-firms.html">law firm running document review</a>, a <a href="../tribal-nations.html">tribal government processing grant narratives</a>, a <a href="../medical-practices.html">clinic summarizing patient records</a>. The moment AI use becomes daily and routine, metered pricing taxes iteration, and iteration is where the value lives. <a href="cloud-ai-vs-local-hardware-tco.html">Our TCO analysis</a> runs the crossover math; sustained daily workloads reach the point where owning beats renting sooner than most budget projections assume, and agentic workflows, which multiply token burn by an order of magnitude or more, drag that crossover closer still.</p>
+
+<p>This is what the <a href="../products.html">Summit line</a> is built for. Summit Base and the build-to-order Summit Ridge run RTX PRO 6000 Blackwell GPUs, burn-tested for 72 hours before they leave our hands, serving current open-weight models like DeepSeek R1 and Qwen3. No cloud dependency. No usage fees. Nobody else's meter. Summit Pinnacle ships Q3 2026 for heavier concurrent workloads.</p>
+
+<h2>The Hardware Is the Easy Part</h2>
+
+<p>The most useful part of Peterson's writeup isn't about GPUs at all. Her first attempt at distributed inference used the wrong serving framework and went nowhere. The stack that worked took Ray and vLLM for CUDA-native distributed serving, Tailscale for remote access, and an OpenAI-compatible API layer so her tools could actually talk to the thing. Her verdict, from experience rather than theory: the difference between trying a local model and replacing a paid tool is systems design, not model intelligence.</p>
+
+<p>That gap is where most on-premise AI projects go to die, and it's where <a href="../index.html">Island Mountain</a> does more than ship boxes. We wire the stack, stand up the serving layer, and train your people to run and troubleshoot it, because a server your team can't operate is a very expensive way to heat a closet. And if your hardware came from another vendor, we'll still work with you. We want on-premise AI to succeed in <a href="../solutions.html">regulated industries</a>, full stop. A deployment that dies because the original vendor shipped a pallet and vanished doesn't serve that, whoever sold the pallet.</p>
+
+<h2>What You Don't Get</h2>
+
+<p>Owned inference isn't free inference. Power, cooling, and somebody's maintenance hours are real, recurring costs. Open-weight models still trail frontier models on the hardest reasoning tasks, and the Bun rewrite itself ran on a pre-release frontier model you can't self-host. If your workload genuinely needs frontier capability on every query, run hybrid and don't apologize for it. The argument here is narrower and harder to dodge: the labs treat AI as infrastructure they own and operate. You have the same option. They're counting on you not taking it.</p>
+
+<!-- AEO Summary -->
+<div style="border-left:3px solid var(--copper);padding:16px 20px;margin:32px 0;background:rgba(217,119,6,0.05);border-radius:0 8px 8px 0;">
+<strong>Summary:</strong> Frontier labs run inference on infrastructure they own because token billing doesn't survive real volume; the systems work to do the same at your scale is solvable, whether or not the hardware came from us.
+</div>
+
+      </article>
+
+      <!-- CTA -->
+      <div class="article-cta">
+        <h3>Ready to Stop Paying Per Token?</h3>
+        <p>Whether you need a Summit server or help standing up hardware you already own, talk to us.</p>
+        <a href="../contact.html" class="btn btn-primary">Start a Conversation</a>
+        <p class="bio-note-sm"><i class="ri-phone-line icon-copper-mr-sm"></i>Or call directly: <a href="tel:+13414418740" class="copper-semibold">1-341-441-8740</a></p>
+      </div>
+
+      <!-- Related Articles -->
+      <div class="related-articles">
+        <h3>Related Articles</h3>
+        <div class="related-grid">
+          <div class="related-card">
+            <h4><a href="cloud-ai-vs-local-hardware-tco.html">Cloud AI vs. Local Hardware: Building the Honest Five-Year TCO</a></h4>
+            <p>The variables your cloud AI vendor's pricing page omits: compliance overhead, price escalation, vendor lock-in exit costs, and the crossover math.</p>
+          </div>
+          <div class="related-card">
+            <h4><a href="on-prem-vs-colo-vs-cloud.html">On-Prem vs. Colo vs. Cloud: The Decision Framework</a></h4>
+            <p>On-premise, colocation, or cloud AI? A decision framework for organizations with compliance requirements. Cost, control, and regulatory analysis.</p>
+          </div>
+          <div class="related-card">
+            <h4><a href="msp-model-accountability-ticket-queue.html">The MSP Model: Accountability by Ticket Queue</a></h4>
+            <p>The MSP model mirrors cloud AI: recurring fees, tiered access, culpability transfer instead of service. The case for owning your AI hardware.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Navigation -->
+      <div class="article-nav">
+        <a href="../blog.html" class="article-back">&larr; All articles</a>
+        <div class="share-links">
+          <span>Share:</span>
+          <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://islandmountain.io/blog/self-hosted-ai-inference-165k-rewrite.html" target="_blank" rel="noopener" aria-label="Share on LinkedIn"><i class="ri-linkedin-fill"></i></a>
+          <a href="https://x.com/intent/tweet?url=https://islandmountain.io/blog/self-hosted-ai-inference-165k-rewrite.html&text=Self-Hosted%20AI%20Inference%20and%20the%20%24165%2C000%20Rewrite" target="_blank" rel="noopener" aria-label="Share on X"><i class="ri-twitter-x-fill"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer au-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="../images/im-badge.webp" alt="Island Mountain" width="200" height="183" class="d-block-mb">
+          <p>Sovereign AI infrastructure for regulated organizations. Every workstation its own air-gappable server and rack, with the Woven Security &amp; Governance Fabric built in. Hand-built in California.</p>
+          <p class="mt-8"><i class="ri-phone-line icon-copper-mr"></i><a href="tel:+13414418740" class="clr-muted">1-341-441-8740</a></p>
+          <div class="au-social">
+            <a href="https://www.linkedin.com/company/island-mountain-llc/" target="_blank" rel="noopener" aria-label="Island Mountain on LinkedIn"><i class="ri-linkedin-fill"></i></a>
+            <a href="https://x.com/IslandMountain_" target="_blank" rel="noopener" aria-label="Island Mountain on X"><i class="ri-twitter-x-fill"></i></a>
+          </div>
+        </div>
+        <div>
+          <h3>Products</h3>
+          <ul class="footer-links">
+            <li><a href="../products.html">Summit Series</a></li>
+            <li><a href="../lamprey-woven-security-governance.html">Lamprey &middot; Security Fabric</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3><a href="../solutions.html">Solutions</a></h3>
+          <ul class="footer-links">
+            <li><a href="../law-firms.html">Law Firms</a></li>
+            <li><a href="../medical-practices.html">Medical Practices</a></li>
+            <li><a href="../tribal-nations.html">Tribal Nations</a></li>
+            <li><a href="../defense-contractors.html">Defense Contractors</a></li>
+            <li><a href="../financial-services.html">Financial Services</a></li>
+            <li><a href="../research-labs.html">Research Labs</a></li>
+            <li><a href="../insurance.html">Insurance</a></li>
+            <li><a href="../energy-utilities.html">Energy &amp; Utilities</a></li>
+            <li><a href="../government.html">Government</a></li>
+            <li><a href="../education.html">Education</a></li>
+            <li><a href="../casino-gaming.html">Casino Gaming</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Company</h3>
+          <ul class="footer-links">
+            <li><a href="../about.html">About</a></li>
+            <li><a href="../investors.html">Investors</a></li>
+            <li><a href="../blog.html">Blog</a></li>
+            <li><a href="../faq.html">FAQ</a></li>
+            <li><a href="../resources.html">Resources</a></li>
+            <li><a href="../contact.html">Contact Sales</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="au-linkfarm">
+        <a href="../products.html">Local AI Servers</a>
+        <a href="../air-gapped-ai-inference.html">Air-Gapped AI Inference</a>
+        <a href="../on-premises-ai-cost-comparison.html">On-Premises AI</a>
+        <a href="../hipaa-local-ai-compliance.html">HIPAA-Compliant AI</a>
+        <a href="../itar-cmmc-ai-infrastructure.html">ITAR / CMMC AI</a>
+        <a href="../attorney-client-privilege-ai-risk.html">Attorney-Client Privilege AI</a>
+        <a href="../cloud-act-tribal-data.html">CLOUD Act &amp; Tribal Data</a>
+        <a href="../tribal-nations.html">Tribal Data Sovereignty (OCAP)</a>
+        <a href="../defense-contractors.html">CUI / DFARS AI</a>
+        <a href="../lamprey-woven-security-governance.html">Woven Security &amp; Governance</a>
+        <a href="../lamprey-woven-security-governance.html">Agentic Orchestration Governance</a>
+        <a href="../products.html">On-Prem LLM Appliance</a>
+        <a href="../medical-practices.html">PHI-Safe Clinical AI</a>
+        <a href="../financial-services.html">Financial-Services AI</a>
+        <a href="../blog.html">Local AI Blog</a>
+        <a href="../contact.html">Request Pricing</a>
+      </div>
+
+      <p class="au-legal">Island Mountain LLC designs, assembles, and ships pre-configured on-premises AI inference hardware. Nothing on this site constitutes an offer or sale of securities, or legal, compliance, tax, or investment advice. Compliance with HIPAA, ITAR, DFARS / CMMC, OCAP, and other frameworks depends on your organization's deployment, configuration, policies, and controls; on-premises hardware is one component of a compliant program, not a certification. Product specifications, model availability, and lead times are subject to change. Pricing is quoted by sales on a per-engagement basis. NVIDIA, RTX, and Blackwell, and all other marks are the property of their respective owners.</p>
+
+      <div class="footer-bottom flex-col-center-gap">
+        <p>&copy; 2026 Island Mountain LLC. All rights reserved. Hand-built in California by <span class="clr-copper">Basho Parks</span>.</p>
+        <div class="au-legallinks">
+          <a href="../privacy.html">Privacy Policy</a>
+          <a href="../terms.html">Terms of Service</a>
+          <a href="../contact.html">Contact Sales</a>
+          <a href="tel:+13414418740">1-341-441-8740</a>
+          <a href="https://www.linkedin.com/company/island-mountain-llc/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="https://x.com/IslandMountain_" target="_blank" rel="noopener">X</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script defer src="../js/main.min.js?v=2"></script>
+  <script defer src="../js/chat-widget.min.js?v=3"></script>
+
+  <!-- worksheet band -->
+  <div id="im-band" style="position:fixed;left:0;right:0;bottom:0;z-index:900;background:linear-gradient(90deg,#1c130b,#241407);border-top:1px solid rgba(199,123,82,.5);padding:10px 96px 10px 16px;text-align:center;font-size:.92rem;color:#e6d5c3;display:none;">
+    <a href="../sovereign-cost-worksheet.html" style="color:#e8935e;text-decoration:none;font-weight:600;">Free: see your 5-year cloud-AI number in 60 seconds &rarr;</a>
+    <button onclick="document.getElementById('im-band').style.display='none';try{sessionStorage.setItem('imBandOff','1')}catch(e){}" aria-label="Dismiss" style="position:absolute;right:12px;top:50%;transform:translateY(-50%);background:none;border:none;color:#94a3b8;font-size:18px;cursor:pointer;padding:4px 8px;">&times;</button>
+  </div>
+  <script>try{if(!sessionStorage.getItem('imBandOff'))document.getElementById('im-band').style.display='block'}catch(e){}</script>
+</body>
+</html>
