@@ -150,6 +150,13 @@
 
   <!-- Blog Posts (newest first) -->
   <url>
+    <loc>https://islandmountain.io/blog/agentic-infrastructure-control-plane.html</loc>
+    <lastmod>2026-07-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
     <loc>https://islandmountain.io/blog/american-open-source-llm-sovereign-ai.html</loc>
     <lastmod>2026-07-11</lastmod>
     <changefreq>monthly</changefreq>
@@ -376,7 +383,7 @@
   </url>
   <url>
     <loc>https://islandmountain.io/blog/agentic-orchestration-security-map.html</loc>
-    <lastmod>2026-07-02</lastmod>
+    <lastmod>2026-07-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>

@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) - deferred until user interaction -->
+<link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
+<script>
+  (function(){
+    var loaded = false;
+    function loadGA(){
+      if(loaded) return;
+      loaded = true;
+      var s = document.createElement('script');
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=G-R674E394D4';
+      s.async = true;
+      document.head.appendChild(s);
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      window.gtag = gtag;
+      gtag('js', new Date());
+      gtag('config', 'G-R674E394D4');
+    }
+    ['scroll','click','touchstart','keydown'].forEach(function(e){
+      document.addEventListener(e, loadGA, {once:true, passive:true});
+    });
+    setTimeout(loadGA, 5000);
+  })();
+</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Basho Parks">
+  <meta name="date" content="2026-07-11">
+  <title>Agentic Infrastructure Is Shedding Its Scaffolding. The Controls Have to Land Somewhere.</title>
+  <meta name="description" content="Anthropic's platform team says agentic infrastructure is shedding its scaffolding: agent identity, ambient agents, budgets. Where the controls land.">
+  <link rel="icon" type="image/x-icon" href="../favicon.ico?v=2">
+  <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon-32.png?v=2">
+  <link rel="apple-touch-icon" sizes="180x180" href="../images/apple-touch-icon.png?v=2">
+  <link rel="stylesheet" href="../css/style.min.css?v=3">
+  <link rel="stylesheet" href="../icons/remixicon.css" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="../icons/remixicon.css"></noscript>
+  <link rel="preload" href="../fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <style>
+  @font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400 800;
+    font-display: swap;
+    src: url('../fonts/inter-latin.woff2') format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+  @font-face {
+    font-family: 'Space Grotesk';
+    font-style: normal;
+    font-weight: 300 700;
+    font-display: swap;
+    src: url('../fonts/space-grotesk-latin.woff2') format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+  </style>
+  <link rel="canonical" href="https://islandmountain.io/blog/agentic-infrastructure-control-plane.html">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Agentic Infrastructure Is Shedding Its Scaffolding. The Controls Have to Land Somewhere.">
+  <meta property="og:description" content="Anthropic's platform team says agentic infrastructure is shedding its scaffolding: agent identity, ambient agents, budgets. Where the controls land.">
+  <meta property="og:url" content="https://islandmountain.io/blog/agentic-infrastructure-control-plane.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Island Mountain">
+  <meta property="og:image" content="https://islandmountain.io/images/hero-mountain.webp">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Agentic Infrastructure Is Shedding Its Scaffolding. The Controls Have to Land Somewhere.">
+  <meta name="twitter:description" content="Anthropic's platform team says agentic infrastructure is shedding its scaffolding: agent identity, ambient agents, budgets. Where the controls land.">
+  <meta name="twitter:image" content="https://islandmountain.io/images/hero-mountain.webp">
+
+  <!-- Article Schema -->
+  <script type="application/ld+json">
+  {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Agentic Infrastructure Is Shedding Its Scaffolding. The Controls Have to Land Somewhere.",
+  "description": "Anthropic's platform team says agentic infrastructure is shedding its scaffolding: agent identity, ambient agents, budgets. Where the controls land.",
+  "url": "https://islandmountain.io/blog/agentic-infrastructure-control-plane.html",
+  "datePublished": "2026-07-11",
+  "dateModified": "2026-07-11",
+  "author": {
+    "@type": "Organization",
+    "name": "Island Mountain",
+    "url": "https://islandmountain.io"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Island Mountain",
+    "url": "https://islandmountain.io",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://islandmountain.io/images/hero-mountain.webp"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://islandmountain.io/blog/agentic-infrastructure-control-plane.html"
+  },
+  "image": "https://islandmountain.io/images/hero-mountain.webp"
+}
+  </script>
+
+  <link rel="stylesheet" href="../css/blog.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://islandmountain.io/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Blog",
+      "item": "https://islandmountain.io/blog.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Agentic Infrastructure's Control Plane",
+      "item": "https://islandmountain.io/blog/agentic-infrastructure-control-plane.html"
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+  <!-- Full-page particle canvas -->
+  <canvas id="particles-canvas"></canvas>
+
+  <!-- Hero background photo -->
+  <div class="hero-photo">
+    <img srcset="../images/hero-mountain-mobile.webp 800w, ../images/hero-mountain.webp 1913w" sizes="100vw" src="../images/hero-mountain.webp" alt="Island Mountain AI inference server hardware" fetchpriority="high" decoding="async" width="1913" height="892">
+  </div>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="../index.html" class="nav-logo"><img src="../images/logo-nav-new.webp" alt="Island Mountain" width="205" height="65"></a>
+      <ul class="nav-links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../lamprey-woven-security-governance.html">Security Fabric</a></li>
+        <li><a href="../products.html">AI Servers</a></li>
+        <li><a href="../faq.html">FAQ</a></li>
+        <li><a href="../resources.html">Resources</a></li>
+        <li><a href="../contact.html" class="nav-cta">Contact Sales</a></li>
+      </ul>
+      <button class="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Sidebar -->
+  <div class="sidebar-overlay"></div>
+  <div class="mobile-sidebar">
+    <a href="../index.html">Home</a>
+    <a href="../lamprey-woven-security-governance.html">Security Fabric</a>
+    <a href="../products.html">AI Servers</a>
+    <a href="../faq.html">FAQ</a>
+    <a href="../resources.html">Resources</a>
+    <a href="../contact.html" class="nav-cta">Contact Sales</a>
+  </div>
+
+  <!-- Article -->
+  <section class="section section-first hero-spacer">
+    <div class="container content-max-840">
+
+      <!-- Breadcrumb -->
+      <nav class="breadcrumb">
+        <a href="../index.html">Home</a><span>&rsaquo;</span><a href="../blog.html">Blog</a><span>&rsaquo;</span>Agentic Infrastructure's Control Plane
+      </nav>
+
+      <!-- Article Header -->
+      <div class="article-header">
+        <div class="article-meta">
+          <span class="article-date">July 11, 2026</span>
+          <span class="article-tag tag-technical">Technical</span>
+          <span class="article-tag tag-strategy">Strategy</span>
+          <span class="article-read-time">8 min read</span>
+        </div>
+        <h1 class="text-2xl">Agentic Infrastructure Is Shedding Its Scaffolding. The Controls Have to Land Somewhere.</h1>
+        <p class="article-author">Basho Parks</p>
+      </div>
+
+      <article class="article-body">
+
+        <h2>The Vendors Just Read You the Blueprint</h2>
+
+<p>Anthropic's Claude Platform team recently sat down on camera to talk about where agentic infrastructure is going, and the conversation deserves your attention twice over. Once for what it promises: agents with their own identities, agents calling other agents, scaffolding getting thinner, work handed off as an outcome with a budget attached. And once for what it relocates. Every convenience on that list moves a security control out of application code and down into the infrastructure layer underneath it. When the people building the platform describe their roadmap, they are also describing, whether they intend to or not, where the load-bearing wall of the next architecture sits. Read the blueprint the way an inspector would.</p>
+
+<p>Their own framing of the past six months is the setup. The platform used to be an API that sold you access to inference and tokens. The products the team is excited about now are the ones that take infrastructure problems and model-scaffolding engineering off the customer's plate: managed agents, persistent memory, outcomes with rubrics and iteration caps. The direction of travel is unambiguous. The agent stack is consolidating downward, out of your codebase and into the platform.</p>
+
+<h2>Six Things They Said That Matter</h2>
+
+<p><strong>1. Agents will hold their own identities.</strong> The sketch offered on camera goes like this: you give an agent an outcome. It comes back and reports that to accomplish it, it needs access to A, B, C, and D. You approve the first three and refuse the fourth. The agent then effectively creates a service account for itself, and from that moment you can audit it like any other actor on the network.</p>
+
+<p><strong>2. Agents will talk to agents.</strong> Teams are already building a managed agent and standing a thin MCP server in front of it so that any other agent knows exactly how to call it, the same way a person would. Agent-to-agent traffic stops being a diagram in a conference talk and becomes ordinary east-west traffic on somebody's network.</p>
+
+<p><strong>3. The scaffolding is coming down.</strong> Until a few months ago, builders wrapped models in elaborate boxes of business process: step A, then step B, but only if these conditions hold. The boxes were fragile, and they existed because model nondeterminism used to be a problem you engineered around. The models got better, so the restrictive parts of the wrapper are getting deleted, and the trend line points thinner still.</p>
+
+<p><strong>4. What replaces process boxes is strategy composition.</strong> Multiple agents competing on the same problem. A generator paired with an adversarial critic. An advisor pattern where a stuck agent calls a smarter model for help. Fan out wide, judge the candidates, then iterate on the winner. The structure around the model stops encoding your business process and starts encoding search.</p>
+
+<p><strong>5. Agents will be ambient, and eventually unprompted.</strong> The infrastructure now exists for an agent to sit resident in a workspace, get triggered by an event, run for as long as the job takes, and report back when it is done. The future they describe goes further: the agent notices a service went down, diagnoses it, fixes it, and shows up holding the pull request. Then comes the sentence that should make every security architect sit up straight, delivered as a convenience: you might tell it that next time, for something this small, skip the review and ship it.</p>
+
+<p><strong>6. The end state is an outcome and a budget.</strong> The whole trajectory compresses into one line from the conversation: "I want this outcome and here's a budget. Go."</p>
+
+<h2>They Also Named the Wall</h2>
+
+<p>Asked why some organizations are watching their ceiling rise while others feel nothing, neither speaker reached for model quality. The first answer was security and compliance guardrails. The second was evals. And the diagnosis underneath was the correct one: a lot of enterprise security postures were designed twenty years ago, for a network of humans with logins and human-speed judgment, and agents break the assumptions those postures rest on. We have made the same argument from the other side of the table. An <a href="agentic-orchestration-security-map.html">agent with credentials is not a chatbot, it is an actor on your network</a>. The difference is that this time it is the platform vendor saying it.</p>
+
+<p>Take the roadmap and the diagnosis together and they turn out to be one observation, not two. Every feature on the roadmap is either a new control surface or a new reason you need one.</p>
+
+<h2>Deleting the Scaffolding Does Not Delete the Control</h2>
+
+<p>Here is the part that matters for anyone who owns risk. The old scaffolding did two jobs at once, and nobody had to separate them until now. Job one was capability: the hard-coded flowchart kept a weaker model from wandering off task. Job two was control: that same flowchart was often the only thing bounding what the system could actually touch. Better models made job one obsolete, and the platform team is right to celebrate deleting it. Nobody should mourn the brittle process box.</p>
+
+<p>But job two was never the scaffolding's to keep. Anything that lives in prompt logic, the workflow graph, the standard operating procedure pasted into context, the system prompt itself, is advisory the moment a model can be talked out of it, and models can be talked out of things. That is what prompt injection is. The controls that hold are deterministic and live outside the model, which is the argument at the center of our <a href="agentic-orchestration-security-map.html">agentic orchestration and security map</a>: a system prompt is a request, a sandbox is a fact.</p>
+
+<p>So when the scaffolding thins, the controls do not evaporate. They migrate down the stack, out of application code and into infrastructure. Identity. Metering. Egress. Session integrity. Audit. Run back through the six signals and notice that every one of them lands its weight on that short list.</p>
+
+<table>
+<thead>
+<tr><th>What they described</th><th>Where the weight lands</th></tr>
+</thead>
+<tbody>
+<tr><td>An agent that mints its own service account</td><td>Per-agent identity: least privilege, scoped short-lived credentials, revocation that actually propagates</td></tr>
+<tr><td>Agents calling agents through thin MCP fronts</td><td>Mutual authentication on every hop, because your data now moves between actors nobody hired</td></tr>
+<tr><td>Ambient agents with standing approvals</td><td>Session integrity and a kill switch; a standing ship-it approval is exactly the authority <a href="agentjacking-fake-bug-report.html">agentjacking</a> inherits</td></tr>
+<tr><td>Outcome plus budget</td><td>Metering enforced outside the model: tokens, dollars, iterations, wall-clock time</td></tr>
+<tr><td>Competing agents and adversarial pairs</td><td>Hard ceilings and capacity planning, because a composite strategy multiplies token volume by the number of candidates</td></tr>
+<tr><td>Everyone a builder, ten prototypes apiece</td><td>Inventory and an audit ledger: which agents exist, whose credentials they hold, what they touched</td></tr>
+</tbody>
+</table>
+
+<p>The platform team said the load-bearing part themselves, approvingly: once the agent has its own service account, you can audit it. Correct. The identity layer, the metering layer, and the audit ledger are the product now. None of it lives in the model. All of it lives under the model. Even their ROI guidance points the same direction: measure individual speed first, then team throughput, then whole processes. You cannot measure agent work you do not meter, and the meter is infrastructure too.</p>
+
+<h2>Agentic Infrastructure Under Regulated Conditions</h2>
+
+<p>On a managed platform, every control surface in that table exists, and it exists inside the vendor's perimeter. For most of the market, that is the right trade, the same way managed Kubernetes is the right trade for most teams. The invisible-substrate future the team describes, agents spun up and down as casually as browser tabs, arriving unprompted with finished pull requests, is going to be genuinely useful for organizations whose data can live in someone else's building.</p>
+
+<p>Now run the same future under regulated conditions. Agent memory, one of the features customers reportedly praise most, is a record store that accumulates whatever the agent works on. At a <a href="../law-firms.html">law firm</a>, that is privileged case strategy, and <a href="attorney-client-privilege-cloud-ai.html">privilege depends on who can access it</a>. At a <a href="../medical-practices.html">medical practice</a>, it accumulates PHI, and HIPAA's access-control and audit obligations attach wherever it sits. At a <a href="../defense-contractors.html">defense contractor</a>, it accumulates CUI, and the flow-down clauses do not carry a carve-out for what the agent remembered. The east-west traffic between agents is your data in motion between actors nobody hired. And the audit ledger that makes the whole system governable sits under someone else's retention policy and <a href="openai-discovery-risk-law-firms.html">someone else's subpoena surface</a>.</p>
+
+<p>The counter-architecture is not exotic, and it rejects nothing the platform team said. It is the same architecture with the perimeter drawn around your building. Open-weight models on <a href="../products.html">hardware you own</a> serve the inference. The orchestration, the memory, and the inter-agent traffic stay on your network. The enforcement plane, the per-agent identities, the budgets, the receipts, the kill switch, becomes something you own and can inspect. That layer is not left as homework: Island Mountain servers ship with the Agentic Orchestration Governance layer and the <a href="../lamprey-woven-security-governance.html">Woven Security and Governance Fabric</a> integrated, so identity, guardrails, approval gates, and the audit ledger sit inline on every call your agents make. And one control gets stronger than any policy can make it: on an air-gapped deployment, the outbound channel is not an allowlist you maintain, it is a route that does not exist. The ambient agent that cannot reach the internet cannot leak to it.</p>
+
+<p>The budget half of outcome-plus-budget changes shape too. Composite strategies are token multipliers: a generator with an adversarial critic pays for the work twice, and a five-way fan-out pays five times, all before the winning candidate ships a line. On metered pricing, those multipliers compound straight into the invoice, the same arithmetic that put a <a href="self-hosted-ai-inference-165k-rewrite.html">six-figure list price on one public agentic rewrite</a>. On hardware you own, the same burst is measured in watts, and the budget you hand an agent becomes a governance decision instead of a procurement event.</p>
+
+<h2>What You Do Not Get</h2>
+
+<p>Honesty, as always. What ships in the crate is the governed floor, not the workforce: the rack, the models, and the fabric that identifies, meters, gates, and logs every agent action. The agents themselves, their prompts, their business logic, and the judgment about what they should be allowed to do, are still yours to build and to own; the fabric enforces your decisions, it does not make them for you. Thinner scaffolding is a frontier-model property, and the open-weight models you run locally trail the frontier, so expect to keep more structure around a local agent than the demos suggest, for a while. The air gap's exfiltration guarantee weakens the moment you open an egress path, so agents that need the live web put you back on allowlists and monitoring like everyone else. And evals got named as a barrier for good reason: no vendor, including us, can sell you certainty that the agent did the job well. That discipline stays yours under every architecture.</p>
+
+<!-- AEO Summary -->
+<div style="border-left:3px solid var(--copper);padding:16px 20px;margin:32px 0;background:rgba(217,119,6,0.05);border-radius:0 8px 8px 0;">
+<strong>Summary:</strong> The team building the leading agent platform describes a near future of agent identity, agent-to-agent traffic, thinner scaffolding, ambient execution, and work submitted as an outcome with a budget, and names security and compliance as the biggest barrier to adoption. Every trend on that list moves the controls that matter, identity, metering, egress, session integrity, and audit, out of the model and into infrastructure. For a regulated organization, the open question is whether that infrastructure sits inside your perimeter or inside a vendor's.
+</div>
+
+      </article>
+
+      <!-- CTA -->
+      <div class="article-cta">
+        <h3>Ready to Stop Paying Per Token?</h3>
+        <p>Whether you need a Summit server or help standing up hardware you already own, talk to us.</p>
+        <a href="../contact.html" class="btn btn-primary">Start a Conversation</a>
+        <p class="bio-note-sm"><i class="ri-phone-line icon-copper-mr-sm"></i>Or call directly: <a href="tel:+13414418740" class="copper-semibold">1-341-441-8740</a></p>
+      </div>
+
+      <!-- Related Articles -->
+      <div class="related-articles">
+        <h3>Related Articles</h3>
+        <div class="related-grid">
+          <div class="related-card">
+            <h4><a href="agentic-orchestration-security-map.html">Agentic Orchestration and Security: The Complete Map</a></h4>
+            <p>Five layers from orchestration patterns to the threat layer, with the nine attack families and the control that breaks each one.</p>
+          </div>
+          <div class="related-card">
+            <h4><a href="agentjacking-fake-bug-report.html">Agentjacking Hit a $250B Company Through a Fake Bug Report. Air-Gapped Buys You Half the Fix.</a></h4>
+            <p>How a hijacked agent session inherits every credential and standing approval the agent holds, and what breaks the attack.</p>
+          </div>
+          <div class="related-card">
+            <h4><a href="self-hosted-ai-inference-165k-rewrite.html">Self-Hosted AI Inference and the $165,000 Rewrite</a></h4>
+            <p>The Bun rewrite burned $165,000 in tokens at API pricing that Anthropic never paid. What frontier lab economics admit about owning inference.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Navigation -->
+      <div class="article-nav">
+        <a href="../blog.html" class="article-back">&larr; All articles</a>
+        <div class="share-links">
+          <span>Share:</span>
+          <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://islandmountain.io/blog/agentic-infrastructure-control-plane.html" target="_blank" rel="noopener" aria-label="Share on LinkedIn"><i class="ri-linkedin-fill"></i></a>
+          <a href="https://x.com/intent/tweet?url=https://islandmountain.io/blog/agentic-infrastructure-control-plane.html&text=Agentic%20Infrastructure%20Is%20Shedding%20Its%20Scaffolding.%20The%20Controls%20Have%20to%20Land%20Somewhere." target="_blank" rel="noopener" aria-label="Share on X"><i class="ri-twitter-x-fill"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer au-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="../images/im-badge.webp" alt="Island Mountain" width="200" height="183" class="d-block-mb">
+          <p>Sovereign AI infrastructure for regulated organizations. Every workstation its own air-gappable server and rack, with the Woven Security &amp; Governance Fabric built in. Hand-built in California.</p>
+          <p class="mt-8"><i class="ri-phone-line icon-copper-mr"></i><a href="tel:+13414418740" class="clr-muted">1-341-441-8740</a></p>
+          <div class="au-social">
+            <a href="https://www.linkedin.com/company/island-mountain-llc/" target="_blank" rel="noopener" aria-label="Island Mountain on LinkedIn"><i class="ri-linkedin-fill"></i></a>
+            <a href="https://x.com/IslandMountain_" target="_blank" rel="noopener" aria-label="Island Mountain on X"><i class="ri-twitter-x-fill"></i></a>
+          </div>
+        </div>
+        <div>
+          <h3>Products</h3>
+          <ul class="footer-links">
+            <li><a href="../products.html">Summit Series</a></li>
+            <li><a href="../lamprey-woven-security-governance.html">Lamprey &middot; Security Fabric</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3><a href="../solutions.html">Solutions</a></h3>
+          <ul class="footer-links">
+            <li><a href="../law-firms.html">Law Firms</a></li>
+            <li><a href="../medical-practices.html">Medical Practices</a></li>
+            <li><a href="../tribal-nations.html">Tribal Nations</a></li>
+            <li><a href="../defense-contractors.html">Defense Contractors</a></li>
+            <li><a href="../financial-services.html">Financial Services</a></li>
+            <li><a href="../research-labs.html">Research Labs</a></li>
+            <li><a href="../insurance.html">Insurance</a></li>
+            <li><a href="../energy-utilities.html">Energy &amp; Utilities</a></li>
+            <li><a href="../government.html">Government</a></li>
+            <li><a href="../education.html">Education</a></li>
+            <li><a href="../casino-gaming.html">Casino Gaming</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Company</h3>
+          <ul class="footer-links">
+            <li><a href="../about.html">About</a></li>
+            <li><a href="../investors.html">Investors</a></li>
+            <li><a href="../blog.html">Blog</a></li>
+            <li><a href="../faq.html">FAQ</a></li>
+            <li><a href="../resources.html">Resources</a></li>
+            <li><a href="../contact.html">Contact Sales</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="au-linkfarm">
+        <a href="../products.html">Local AI Servers</a>
+        <a href="../air-gapped-ai-inference.html">Air-Gapped AI Inference</a>
+        <a href="../on-premises-ai-cost-comparison.html">On-Premises AI</a>
+        <a href="../hipaa-local-ai-compliance.html">HIPAA-Compliant AI</a>
+        <a href="../itar-cmmc-ai-infrastructure.html">ITAR / CMMC AI</a>
+        <a href="../attorney-client-privilege-ai-risk.html">Attorney-Client Privilege AI</a>
+        <a href="../cloud-act-tribal-data.html">CLOUD Act &amp; Tribal Data</a>
+        <a href="../tribal-nations.html">Tribal Data Sovereignty (OCAP)</a>
+        <a href="../defense-contractors.html">CUI / DFARS AI</a>
+        <a href="../lamprey-woven-security-governance.html">Woven Security &amp; Governance</a>
+        <a href="../lamprey-woven-security-governance.html">Agentic Orchestration Governance</a>
+        <a href="../products.html">On-Prem LLM Appliance</a>
+        <a href="../medical-practices.html">PHI-Safe Clinical AI</a>
+        <a href="../financial-services.html">Financial-Services AI</a>
+        <a href="../blog.html">Local AI Blog</a>
+        <a href="../contact.html">Request Pricing</a>
+      </div>
+
+      <p class="au-legal">Island Mountain LLC designs, assembles, and ships pre-configured on-premises AI inference hardware. Nothing on this site constitutes an offer or sale of securities, or legal, compliance, tax, or investment advice. Compliance with HIPAA, ITAR, DFARS / CMMC, OCAP, and other frameworks depends on your organization's deployment, configuration, policies, and controls; on-premises hardware is one component of a compliant program, not a certification. Product specifications, model availability, and lead times are subject to change. Pricing is quoted by sales on a per-engagement basis. NVIDIA, RTX, and Blackwell, and all other marks are the property of their respective owners.</p>
+
+      <div class="footer-bottom flex-col-center-gap">
+        <p>&copy; 2026 Island Mountain LLC. All rights reserved. Hand-built in California by <span class="clr-copper">Basho Parks</span>.</p>
+        <div class="au-legallinks">
+          <a href="../privacy.html">Privacy Policy</a>
+          <a href="../terms.html">Terms of Service</a>
+          <a href="../contact.html">Contact Sales</a>
+          <a href="tel:+13414418740">1-341-441-8740</a>
+          <a href="https://www.linkedin.com/company/island-mountain-llc/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="https://x.com/IslandMountain_" target="_blank" rel="noopener">X</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script defer src="../js/main.min.js?v=2"></script>
+  <script defer src="../js/chat-widget.min.js?v=3"></script>
+</body>
+</html>

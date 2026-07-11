@@ -82,7 +82,7 @@
   "description": "A five-layer map of agentic orchestration and AI agent security: coordination patterns, tool trust boundaries, agentjacking, and the deterministic controls that break each attack.",
   "url": "https://islandmountain.io/blog/agentic-orchestration-security-map.html",
   "datePublished": "2026-07-02",
-  "dateModified": "2026-07-02",
+  "dateModified": "2026-07-11",
   "author": {
     "@type": "Organization",
     "name": "Island Mountain",
@@ -261,7 +261,7 @@
 
 <h2>What You Do Not Get</h2>
 
-<p>The map is an architecture reference, not a compliance certification, and local hardware is not a security silver bullet. Air-gapping does not stop prompt injection: a poisoned document on your own file share still carries hostile instructions, and guardrails, approval gates, and provenance tagging are software disciplines you still have to run. Orchestration frameworks, policy engines, and audit pipelines are engineering work your team or your contractor still owns; they do not arrive in the crate. And the exfiltration protection of an air gap weakens the moment you open an egress path, so if your agents need live web access, you are back to allowlists and monitoring like everyone else. The honest version of the pitch is narrower and stronger: local infrastructure makes the single most load-bearing control in the agentic threat model a matter of physical fact rather than vendor policy.</p>
+<p>The map is an architecture reference, not a compliance certification, and local hardware is not a security silver bullet. Air-gapping does not stop prompt injection: a poisoned document on your own file share still carries hostile instructions, which is why the guardrails, approval gates, and audit ledger have to sit inline on every call. On Island Mountain hardware they do: the Agentic Orchestration Governance layer and the Woven Security and Governance Fabric arrive in the crate, integrated with the stack. What stays yours is the judgment the fabric enforces: the policies you set, the actions you choose to gate, the agents and business logic you run on top, and the evals that tell you whether any of it worked. And the exfiltration protection of an air gap weakens the moment you open an egress path, so if your agents need live web access, you are back to allowlists and monitoring like everyone else. The honest version of the pitch is narrower and stronger: local infrastructure makes the single most load-bearing control in the agentic threat model a matter of physical fact rather than vendor policy, and the fabric that polices the rest ships with the machine.</p>
 
 <div style="border-left:3px solid var(--copper);padding:16px 20px;margin:32px 0;background:rgba(217,119,6,0.05);border-radius:0 8px 8px 0;">
 <strong>Summary:</strong> Agentic orchestration gives AI systems the ability to act, and every action crosses a trust boundary that must be defended. The controls that matter are deterministic and live outside the model: least privilege, sandboxing, egress control, approval gates, and audit. Local AI infrastructure turns the most load-bearing of those controls, the outbound channel, into a physical property of your deployment instead of a promise in a vendor's terms of service.
