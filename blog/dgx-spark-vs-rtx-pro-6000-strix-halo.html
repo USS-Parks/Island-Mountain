@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) - deferred until user interaction -->
+<link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
+<script>
+  (function(){
+    var loaded = false;
+    function loadGA(){
+      if(loaded) return;
+      loaded = true;
+      var s = document.createElement('script');
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=G-R674E394D4';
+      s.async = true;
+      document.head.appendChild(s);
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      window.gtag = gtag;
+      gtag('js', new Date());
+      gtag('config', 'G-R674E394D4');
+    }
+    ['scroll','click','touchstart','keydown'].forEach(function(e){
+      document.addEventListener(e, loadGA, {once:true, passive:true});
+    });
+    setTimeout(loadGA, 5000);
+  })();
+</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Basho Parks">
+  <meta name="date" content="2026-07-10">
+  <title>DGX Spark vs RTX PRO 6000: When a $4,700 Box Is Enough, and When It Isn't</title>
+  <meta name="description" content="DGX Spark, AMD Strix Halo, or RTX PRO 6000 for local AI? Honest numbers on bandwidth, decode speed, concurrency, and when the small box is enough.">
+  <link rel="icon" type="image/x-icon" href="../favicon.ico?v=2">
+  <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon-32.png?v=2">
+  <link rel="apple-touch-icon" sizes="180x180" href="../images/apple-touch-icon.png?v=2">
+  <link rel="stylesheet" href="../css/style.min.css?v=3">
+  <link rel="stylesheet" href="../icons/remixicon.css" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="../icons/remixicon.css"></noscript>
+  <link rel="preload" href="../fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <style>
+  @font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400 800;
+    font-display: swap;
+    src: url('../fonts/inter-latin.woff2') format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+  @font-face {
+    font-family: 'Space Grotesk';
+    font-style: normal;
+    font-weight: 300 700;
+    font-display: swap;
+    src: url('../fonts/space-grotesk-latin.woff2') format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+  </style>
+  <link rel="canonical" href="https://islandmountain.io/blog/dgx-spark-vs-rtx-pro-6000-strix-halo.html">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="DGX Spark vs RTX PRO 6000: When a $4,700 Box Is Enough, and When It Isn't">
+  <meta property="og:description" content="DGX Spark, AMD Strix Halo, or RTX PRO 6000 for local AI? Honest numbers on bandwidth, decode speed, concurrency, and when the small box is enough.">
+  <meta property="og:url" content="https://islandmountain.io/blog/dgx-spark-vs-rtx-pro-6000-strix-halo.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Island Mountain">
+  <meta property="og:image" content="https://islandmountain.io/images/hero-mountain.webp">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="DGX Spark vs RTX PRO 6000: When a $4,700 Box Is Enough, and When It Isn't">
+  <meta name="twitter:description" content="DGX Spark, AMD Strix Halo, or RTX PRO 6000 for local AI? Honest numbers on bandwidth, decode speed, concurrency, and when the small box is enough.">
+  <meta name="twitter:image" content="https://islandmountain.io/images/hero-mountain.webp">
+
+  <!-- Article Schema -->
+  <script type="application/ld+json">
+  {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "DGX Spark vs RTX PRO 6000: When a $4,700 Box Is Enough, and When It Isn't",
+  "description": "DGX Spark, AMD Strix Halo, or RTX PRO 6000 for local AI? Honest numbers on bandwidth, decode speed, concurrency, and when the small box is enough.",
+  "url": "https://islandmountain.io/blog/dgx-spark-vs-rtx-pro-6000-strix-halo.html",
+  "datePublished": "2026-07-10",
+  "dateModified": "2026-07-10",
+  "author": {
+    "@type": "Organization",
+    "name": "Island Mountain",
+    "url": "https://islandmountain.io"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Island Mountain",
+    "url": "https://islandmountain.io",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://islandmountain.io/images/hero-mountain.webp"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://islandmountain.io/blog/dgx-spark-vs-rtx-pro-6000-strix-halo.html"
+  },
+  "image": "https://islandmountain.io/images/hero-mountain.webp"
+}
+  </script>
+
+  <link rel="stylesheet" href="../css/blog.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://islandmountain.io/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Blog",
+      "item": "https://islandmountain.io/blog.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "DGX Spark vs RTX PRO 6000",
+      "item": "https://islandmountain.io/blog/dgx-spark-vs-rtx-pro-6000-strix-halo.html"
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+  <!-- Full-page particle canvas -->
+  <canvas id="particles-canvas"></canvas>
+
+  <!-- Hero background photo -->
+  <div class="hero-photo">
+    <img srcset="../images/hero-mountain-mobile.webp 800w, ../images/hero-mountain.webp 1913w" sizes="100vw" src="../images/hero-mountain.webp" alt="Island Mountain AI inference server hardware" fetchpriority="high" decoding="async" width="1913" height="892">
+  </div>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="../index.html" class="nav-logo"><img src="../images/logo-nav-new.webp" alt="Island Mountain" width="205" height="65"></a>
+      <ul class="nav-links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../lamprey-woven-security-governance.html">Security Fabric</a></li>
+        <li><a href="../products.html">AI Servers</a></li>
+        <li><a href="../faq.html">FAQ</a></li>
+        <li><a href="../resources.html">Resources</a></li>
+        <li><a href="../contact.html" class="nav-cta">Contact Sales</a></li>
+      </ul>
+      <button class="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Sidebar -->
+  <div class="sidebar-overlay"></div>
+  <div class="mobile-sidebar">
+    <a href="../index.html">Home</a>
+    <a href="../lamprey-woven-security-governance.html">Security Fabric</a>
+    <a href="../products.html">AI Servers</a>
+    <a href="../faq.html">FAQ</a>
+    <a href="../resources.html">Resources</a>
+    <a href="../contact.html" class="nav-cta">Contact Sales</a>
+  </div>
+
+  <!-- Article -->
+  <section class="section section-first hero-spacer">
+    <div class="container content-max-840">
+
+      <!-- Breadcrumb -->
+      <nav class="breadcrumb">
+        <a href="../index.html">Home</a><span>&rsaquo;</span><a href="../blog.html">Blog</a><span>&rsaquo;</span>DGX Spark vs RTX PRO 6000
+      </nav>
+
+      <!-- Article Header -->
+      <div class="article-header">
+        <div class="article-meta">
+          <span class="article-date">July 10, 2026</span>
+          <span class="article-tag tag-technical">Technical</span>
+          <span class="article-tag tag-financial">Financial</span>
+          <span class="article-read-time">6 min read</span>
+        </div>
+        <h1 class="text-2xl">DGX Spark vs RTX PRO 6000: When a $4,700 Box Is Enough, and When It Isn't</h1>
+        <p class="article-author">Basho Parks</p>
+      </div>
+
+      <article class="article-body">
+
+        <h2>The Unified-Memory Question Everyone Is Asking</h2>
+
+<p>Two NVIDIA DGX Sparks cost about $9,400 and hold 256GB of unified memory between them. One RTX PRO 6000 Blackwell workstation card retails in the same neighborhood and holds 96GB. If you are moving AI inference on-premises, that arithmetic looks like it settles the question in the small boxes' favor. For some workloads it does. For the rest, a single number the spec sheets bury decides it the other way, and this post is about knowing which side of that line your organization sits on.</p>
+
+<p>The small-box class is real now. NVIDIA's DGX Spark packs a GB10 Grace Blackwell chip and 128GB of unified LPDDR5X into something the size of a hardcover book, at $4,699 after February's price increase. AMD's answer, mini PCs built on the Ryzen AI Max+ 395 (codename Strix Halo), carries the same 128GB of unified memory for roughly $2,200 to $2,400 from vendors like Framework and HP. Both promise the thing we sell: inference on hardware you own, with nobody else's meter running. So it is worth being precise about where they deliver on that promise and where they run out.</p>
+
+<h2>The Number That Decides It</h2>
+
+<p>Generating tokens is a memory exercise. For every token the model produces, the hardware reads the model's active weights out of memory, so single-stream generation speed tracks memory bandwidth almost linearly. The DGX Spark moves 273 GB/s. The RTX PRO 6000 Blackwell moves 1,792 GB/s of ECC GDDR7. That is a 6.6x gap on the one number that governs how fast words appear on screen.</p>
+
+<p>Benchmarks confirm the arithmetic. <a href="https://github.com/casualcomputer/rtx_pro_6000_vs_dgx_spark" target="_blank" rel="noopener">Head-to-head sglang testing</a> across batch sizes 1 through 32 shows the RTX PRO 6000 generating tokens 6 to 7 times faster than the Spark on the same models. A dense 70B model that produces around 32 tokens a second on the Blackwell card crawls along in the single digits on a Spark. Nothing tunes that away. It is physics with a spec sheet.</p>
+
+<h2>Two Sparks Are Not One Blackwell</h2>
+
+<p>The tempting move is to stack them. Two Sparks pair over a ConnectX-7 link at 200 gigabits, and NVIDIA markets the pair as running models up to 405B parameters. The capacity claim is true. The performance conclusion people draw from it is not. Splitting a model across two boxes over an ethernet-class link adds memory room while per-stream speed stays pinned to each box's own 273 GB/s, minus interconnect overhead. Prefill, the compute-heavy pass that reads your whole prompt before the first token appears, runs roughly 4x slower on the Spark's GB10 than on the full Blackwell card as well. Stacking buys room, not speed. Capacity and throughput are different products, and the marketing does not go out of its way to distinguish them.</p>
+
+<p>What 256GB of pooled memory is genuinely good for is mixture-of-experts models, which store enormous total weights but activate only a fraction of them per token. That is exactly the rig in <a href="self-hosted-ai-inference-165k-rewrite.html">the writeup we published this week</a>: systems engineer Miriah Peterson <a href="https://soypetetech.substack.com/p/i-replaced-claude-code-with-minimax" target="_blank" rel="noopener">ran MiniMax on two DGX Sparks</a> and replaced her metered coding assistant outright, at speeds around 30 to 40 tokens a second. For one developer, that works. The Spark is a fine machine for the job it was built for, which is one or two people, not an organization.</p>
+
+<h2>The AMD Side: Strix Halo</h2>
+
+<p>The Ryzen AI Max+ 395 machines are the value play of the class. Sixteen Zen 5 cores, a Radeon 8060S GPU, 128GB of unified LPDDR5X at roughly 256 GB/s, and ordinary x86 that runs Windows or Linux, at about half the Spark's price. On token generation they essentially tie the Spark: <a href="https://www.notebookcheck.net/Compact-AI-workstations-in-comparison-Nvidia-DGX-Spark-meets-AMD-Ryzen-AI-Max-395.1232660.0.html" target="_blank" rel="noopener">independent testing</a> on the 120B-parameter GPT-OSS model clocks roughly 34 tokens a second against the Spark's 38. AMD's own accounting puts the platform at about 1.7x more tokens per dollar, and on that narrow metric the claim holds up.</p>
+
+<p>Two caveats keep it honest. Prefill on the AMD box runs roughly 340 tokens a second against the Spark's 1,700 on the same test, so a long contract or a thick patient chart sits in prompt processing about five times longer before the first word of the answer appears. And the software stack is ROCm and Vulkan rather than CUDA, which works and improves monthly but still demands more systems patience than vLLM's native NVIDIA path. There is also no ConnectX-class pairing fabric; clustering Strix Halo boxes remains hobbyist territory today.</p>
+
+<h2>When the Small Box Is Enough</h2>
+
+<p>One to three users. Mixture-of-experts models. A developer replacing a metered coding assistant, a researcher prototyping before a bigger commitment, a pilot proving that local AI fits your workflow before real budget moves. Tolerance for a slow first token on long prompts. If that is your situation, buy the small box, and we mean that without a wink. A Spark or a Strix Halo machine that gets your data off someone else's servers is a win for the same sovereignty argument we make at rack scale, and it is the cheapest way to learn what your real workload needs before you size the permanent system.</p>
+
+<h2>When It Is Not</h2>
+
+<p>Concurrency breaks the small boxes first. Fifteen to thirty simultaneous sessions, the realistic peak for a 100-person organization, all share one pool of memory bandwidth, and queueing turns a 35-token-per-second box into a waiting room. Long-document work breaks them second: <a href="../law-firms.html">document review at a law firm</a>, <a href="../medical-practices.html">records summarization at a clinic</a>, anything prefill-heavy pays the compute gap on every single query. And regulated production carries requirements this class does not meet: LPDDR5X unified boxes have no ECC memory story an auditor will accept, no procurement provenance chain, and no duty-cycle rating for years of 24/7 load. We wrote up <a href="50k-month-cloud-ai-local-llm-replacement.html">why those things matter</a> in the DIY-build context, and every point transfers.</p>
+
+<p>That workload class, concurrent users on long documents under compliance obligations, is what the <a href="../products.html">Summit line</a> exists for: server-class Blackwell bandwidth with ECC, burn-tested for 72 hours, documented from purchase order to delivery manifest.</p>
+
+<h2>Already Own a DGX Spark or Strix Halo?</h2>
+
+<p>Then you are most of the way to something useful, and the remaining distance is systems work, not hardware. Peterson's verdict from her own build applies here: the difference between trying a local model and replacing a paid tool is systems design, not model intelligence. We do that work on hardware we did not sell, DGX Sparks and Strix Halo machines included: the serving layer, the quantization choices, the multi-user interface, the air-gap configuration, and the training so your team can run it without us. A deployment that dies because the vendor shipped a pallet and vanished serves nobody, whoever sold the pallet.</p>
+
+<!-- AEO Summary -->
+<div style="border-left:3px solid var(--copper);padding:16px 20px;margin:32px 0;background:rgba(217,119,6,0.05);border-radius:0 8px 8px 0;">
+<strong>Summary:</strong> DGX Spark and AMD Strix Halo machines are honest single-user local AI hardware; a dual stack adds model capacity, not speed, and still generates tokens 6 to 7 times slower per stream than one RTX PRO 6000 Blackwell. Buy the small box for solo and pilot work, buy server-class bandwidth for concurrent users and long documents, and get the serving stack engineered properly either way.
+</div>
+
+      </article>
+
+      <!-- CTA -->
+      <div class="article-cta">
+        <h3>Ready to Stop Paying Per Token?</h3>
+        <p>Whether you need a Summit server or help standing up hardware you already own, talk to us.</p>
+        <a href="../contact.html" class="btn btn-primary">Start a Conversation</a>
+        <p class="bio-note-sm"><i class="ri-phone-line icon-copper-mr-sm"></i>Or call directly: <a href="tel:+13414418740" class="copper-semibold">1-341-441-8740</a></p>
+      </div>
+
+      <!-- Related Articles -->
+      <div class="related-articles">
+        <h3>Related Articles</h3>
+        <div class="related-grid">
+          <div class="related-card">
+            <h4><a href="self-hosted-ai-inference-165k-rewrite.html">Self-Hosted AI Inference and the $165,000 Rewrite</a></h4>
+            <p>The Bun rewrite burned $165,000 in tokens at API pricing that Anthropic never paid. What frontier lab economics admit about owning inference.</p>
+          </div>
+          <div class="related-card">
+            <h4><a href="local-llm-vs-cloud-ai-hardware-gap.html">Local LLM vs Cloud AI: Every Con on the List Has a Hardware Fix</a></h4>
+            <p>A developer ran Qwen3.6-35B on a MacBook Pro and documented every limitation honestly. Dedicated RTX PRO 6000 Blackwell GPU inference hardware solves each one today.</p>
+          </div>
+          <div class="related-card">
+            <h4><a href="50k-month-cloud-ai-local-llm-replacement.html">$50K a Month on Cloud AI Is a Hardware Problem, Not a Budget Problem</a></h4>
+            <p>A 100-person company burning $50,000 a month on cloud tokens can replace that spend with on-premises hardware. Break-even in under two months.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Navigation -->
+      <div class="article-nav">
+        <a href="../blog.html" class="article-back">&larr; All articles</a>
+        <div class="share-links">
+          <span>Share:</span>
+          <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://islandmountain.io/blog/dgx-spark-vs-rtx-pro-6000-strix-halo.html" target="_blank" rel="noopener" aria-label="Share on LinkedIn"><i class="ri-linkedin-fill"></i></a>
+          <a href="https://x.com/intent/tweet?url=https://islandmountain.io/blog/dgx-spark-vs-rtx-pro-6000-strix-halo.html&text=DGX%20Spark%20vs%20RTX%20PRO%206000%3A%20When%20a%20%244%2C700%20Box%20Is%20Enough" target="_blank" rel="noopener" aria-label="Share on X"><i class="ri-twitter-x-fill"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer au-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="../images/im-badge.webp" alt="Island Mountain" width="200" height="183" class="d-block-mb">
+          <p>Sovereign AI infrastructure for regulated organizations. Every workstation its own air-gappable server and rack, with the Woven Security &amp; Governance Fabric built in. Hand-built in California.</p>
+          <p class="mt-8"><i class="ri-phone-line icon-copper-mr"></i><a href="tel:+13414418740" class="clr-muted">1-341-441-8740</a></p>
+          <div class="au-social">
+            <a href="https://www.linkedin.com/company/island-mountain-llc/" target="_blank" rel="noopener" aria-label="Island Mountain on LinkedIn"><i class="ri-linkedin-fill"></i></a>
+            <a href="https://x.com/IslandMountain_" target="_blank" rel="noopener" aria-label="Island Mountain on X"><i class="ri-twitter-x-fill"></i></a>
+          </div>
+        </div>
+        <div>
+          <h3>Products</h3>
+          <ul class="footer-links">
+            <li><a href="../products.html">Summit Series</a></li>
+            <li><a href="../lamprey-woven-security-governance.html">Lamprey &middot; Security Fabric</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3><a href="../solutions.html">Solutions</a></h3>
+          <ul class="footer-links">
+            <li><a href="../law-firms.html">Law Firms</a></li>
+            <li><a href="../medical-practices.html">Medical Practices</a></li>
+            <li><a href="../tribal-nations.html">Tribal Nations</a></li>
+            <li><a href="../defense-contractors.html">Defense Contractors</a></li>
+            <li><a href="../financial-services.html">Financial Services</a></li>
+            <li><a href="../research-labs.html">Research Labs</a></li>
+            <li><a href="../insurance.html">Insurance</a></li>
+            <li><a href="../energy-utilities.html">Energy &amp; Utilities</a></li>
+            <li><a href="../government.html">Government</a></li>
+            <li><a href="../education.html">Education</a></li>
+            <li><a href="../casino-gaming.html">Casino Gaming</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Company</h3>
+          <ul class="footer-links">
+            <li><a href="../about.html">About</a></li>
+            <li><a href="../investors.html">Investors</a></li>
+            <li><a href="../blog.html">Blog</a></li>
+            <li><a href="../faq.html">FAQ</a></li>
+            <li><a href="../resources.html">Resources</a></li>
+            <li><a href="../contact.html">Contact Sales</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="au-linkfarm">
+        <a href="../products.html">Local AI Servers</a>
+        <a href="../air-gapped-ai-inference.html">Air-Gapped AI Inference</a>
+        <a href="../on-premises-ai-cost-comparison.html">On-Premises AI</a>
+        <a href="../hipaa-local-ai-compliance.html">HIPAA-Compliant AI</a>
+        <a href="../itar-cmmc-ai-infrastructure.html">ITAR / CMMC AI</a>
+        <a href="../attorney-client-privilege-ai-risk.html">Attorney-Client Privilege AI</a>
+        <a href="../cloud-act-tribal-data.html">CLOUD Act &amp; Tribal Data</a>
+        <a href="../tribal-nations.html">Tribal Data Sovereignty (OCAP)</a>
+        <a href="../defense-contractors.html">CUI / DFARS AI</a>
+        <a href="../lamprey-woven-security-governance.html">Woven Security &amp; Governance</a>
+        <a href="../lamprey-woven-security-governance.html">Agentic Orchestration Governance</a>
+        <a href="../products.html">On-Prem LLM Appliance</a>
+        <a href="../medical-practices.html">PHI-Safe Clinical AI</a>
+        <a href="../financial-services.html">Financial-Services AI</a>
+        <a href="../blog.html">Local AI Blog</a>
+        <a href="../contact.html">Request Pricing</a>
+      </div>
+
+      <p class="au-legal">Island Mountain LLC designs, assembles, and ships pre-configured on-premises AI inference hardware. Nothing on this site constitutes an offer or sale of securities, or legal, compliance, tax, or investment advice. Compliance with HIPAA, ITAR, DFARS / CMMC, OCAP, and other frameworks depends on your organization's deployment, configuration, policies, and controls; on-premises hardware is one component of a compliant program, not a certification. Product specifications, model availability, and lead times are subject to change. Pricing is quoted by sales on a per-engagement basis. NVIDIA, RTX, and Blackwell, and all other marks are the property of their respective owners.</p>
+
+      <div class="footer-bottom flex-col-center-gap">
+        <p>&copy; 2026 Island Mountain LLC. All rights reserved. Hand-built in California by <span class="clr-copper">Basho Parks</span>.</p>
+        <div class="au-legallinks">
+          <a href="../privacy.html">Privacy Policy</a>
+          <a href="../terms.html">Terms of Service</a>
+          <a href="../contact.html">Contact Sales</a>
+          <a href="tel:+13414418740">1-341-441-8740</a>
+          <a href="https://www.linkedin.com/company/island-mountain-llc/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="https://x.com/IslandMountain_" target="_blank" rel="noopener">X</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script defer src="../js/main.min.js?v=2"></script>
+  <script defer src="../js/chat-widget.min.js?v=3"></script>
+</body>
+</html>

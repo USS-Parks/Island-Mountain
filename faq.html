@@ -267,6 +267,14 @@
           "@type": "Answer",
           "text": "You can, and if you are a developer running experiments you probably should: the guides exist and the software stack is the same (Ollama, vLLM, OpenWebUI, open-weight models). What a DIY build does not include is professional GPU procurement documentation (purchase receipts from authorized NVIDIA channels, a serial-number registry, and RMA history that a compliance officer or contracting officer can audit), continuous burn-in, professional RMA chains that keep replacement GPUs inside the same documentation trail for HIPAA, ITAR/DFARS, and CMMC audits, and direct access to the person who built your system. If you are a regulated organization putting AI into production where provenance and evidence matter, that is what the difference covers."
         }
+      },
+      {
+        "@type": "Question",
+        "name": "I already own DGX Sparks or a Strix Halo box. Will Island Mountain work with hardware you didn't sell?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Island Mountain wires the serving stack, stands up the software, and trains your team on hardware from any vendor, including NVIDIA DGX Spark units, AMD Ryzen AI Max (Strix Halo) machines, and servers another integrator shipped. The gap that kills most on-premises AI projects is systems design, not hardware: the serving framework, quantization choices, the multi-user layer, and the air-gap configuration. Small unified-memory boxes are real local AI hardware with honest limits: strong for one to three users on mixture-of-experts models, weak on concurrency and long-document prompt processing. If the box you own fits your workload, we will get it serving; if it does not, we will say so before you spend more."
+        }
       }
     ]
   }
@@ -748,6 +756,14 @@
             <p><strong>You can, and if you are a developer running experiments, you probably should.</strong> The guides exist and the software stack is the same: Ollama, vLLM, OpenWebUI, and open-weight models like DeepSeek V4-Flash and Llama 4 Scout. With the staff to build, configure, test, and maintain it, a DIY box will run inference.</p>
             <p>Here is what a DIY build does not include. <strong>Professional GPU procurement documentation:</strong> every RTX PRO 6000 Blackwell card in a Summit has a documented chain, purchase receipts from authorized NVIDIA channels, a serial-number registry, and RMA history, which consumer cards from Amazon or Newegg do not carry. <strong>Continuous burn-in.</strong> <strong>Professional RMA chains</strong> that keep replacement GPUs inside the same documentation trail, which matters for HIPAA, ITAR/DFARS, and CMMC audits. <strong>Direct builder support:</strong> you talk to the person who assembled your system, not a ticket queue.</p>
             <p>The honest answer: if you are experimenting, build your own. If you are a regulated organization putting AI into production where provenance and evidence matter, that is what the difference covers.</p>
+          </div>
+        </div>
+
+        <div class="faq-item beam-card au-reveal" style="--i:28">
+          <h3>I already own DGX Sparks or a Strix Halo box. Will Island Mountain work with hardware you didn't sell?</h3>
+          <div class="faq-answer">
+            <p><strong>Yes. We wire the serving stack, stand up the software, and train your team on hardware from any vendor</strong>, including NVIDIA DGX Spark units, AMD Ryzen AI Max (Strix Halo) machines, and servers another integrator shipped and never configured. The gap that kills most on-premises AI projects is systems design, not hardware: the serving framework, the quantization choices, the multi-user layer, the air-gap configuration. That is the same work we put into every Summit build.</p>
+            <p>Small unified-memory boxes are real local AI hardware with honest limits: strong for one to three users on mixture-of-experts models, weak on concurrency and long-document prompt processing. Our <a href="blog/dgx-spark-vs-rtx-pro-6000-strix-halo.html">DGX Spark vs RTX PRO 6000 comparison</a> runs the numbers. If the box you own fits your workload, we will get it serving; if it does not, we will say so before you spend more. <a href="contact.html">Talk to the builder</a>.</p>
           </div>
         </div>
 
