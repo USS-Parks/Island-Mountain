@@ -81,7 +81,7 @@
         "name": "Does sovereign AI hardware work fully air-gapped, with no internet connection?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes. Every Island Mountain system is designed to operate completely air-gapped. The models, the inference engine (vLLM and Ollama), and the interface (OpenWebUI) all run locally. Once the system is set up you can disconnect the ethernet cable entirely and everything still works. Users reach it through a web browser on your local network, even an isolated network with no internet. No phone-home, no license checks, no cloud dependencies. Island Mountain applies a documented air-gap configuration before delivery, disabling every outbound feature at the environment-variable level and confirming it during burn-in. Your IT team can verify each setting independently on the delivered system."
+          "text": "Yes. Every Island Mountain system is designed to operate completely air-gapped. The models, the inference engine (vLLM and Ollama), and the interface (OpenWebUI) all run locally. Once the system is set up you can disconnect the ethernet cable entirely and everything still works. Users reach it through a web browser on your local network, even an isolated network with no internet. No phone-home, no license checks, no cloud dependencies. Island Mountain applies a documented air-gap configuration before delivery, disabling every outbound feature at the environment-variable level and confirming it before shipping. Your IT team can verify each setting independently on the delivered system."
         }
       },
       {
@@ -89,7 +89,7 @@
         "name": "What does 'a sovereign AI server at every desk' mean?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "It means the unit of deployment is a workstation, not a shared cloud tenant. Each Summit is its own server and hardware rack: a burnt-copper anodized tower, pre-built and burn-tested, air-gappable out of the box, with two NVIDIA RTX PRO 6000 Blackwell GPUs and models pre-installed. You can put one on a single desk, or deploy an estate across the organization. A single rack starts with two cards and ramps to six to eight GPUs, and a fully ramped rack serves roughly 1,500 to 1,800 users on on-premises inference, with no per-seat cloud fees and no token metering."
+          "text": "It means the unit of deployment is a workstation, not a shared cloud tenant. Each Summit is its own server and hardware rack: a burnt-copper anodized tower, pre-built, air-gappable out of the box, with two NVIDIA RTX PRO 6000 Blackwell GPUs and models pre-installed. You can put one on a single desk, or deploy an estate across the organization. A single rack starts with two cards and ramps to six to eight GPUs, and a fully ramped rack serves roughly 1,500 to 1,800 users on on-premises inference, with no per-seat cloud fees and no token metering."
         }
       },
       {
@@ -185,7 +185,7 @@
         "name": "What models come pre-installed, and can I add my own later?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Every Summit ships with three models installed, configured, and burn-tested: DeepSeek V4-Flash (reasoning and general purpose, FP8), Llama 4 Scout (Meta's general-purpose model), and your choice of DeepSeek R1 70B Distill (MIT, explicit chain-of-thought for legal and compliance work) or Qwen 3 72B (Apache 2.0, enterprise general performance). All carry permissive open-source licenses with no usage restrictions; you own them outright and switch between them in the OpenWebUI dropdown. You are not locked to those three: any compatible open-source model that fits your VRAM can be downloaded through Ollama or OpenWebUI, and for the first 30 days we walk you through it directly."
+          "text": "Every Summit ships with three models installed and configured: DeepSeek V4-Flash (reasoning and general purpose, FP8), Llama 4 Scout (Meta's general-purpose model), and your choice of DeepSeek R1 70B Distill (MIT, explicit chain-of-thought for legal and compliance work) or Qwen 3 72B (Apache 2.0, enterprise general performance). All carry permissive open-source licenses with no usage restrictions; you own them outright and switch between them in the OpenWebUI dropdown. You are not locked to those three: any compatible open-source model that fits your VRAM can be downloaded through Ollama or OpenWebUI, and for the first 30 days we walk you through it directly."
         }
       },
       {
@@ -209,7 +209,7 @@
         "name": "How can OpenWebUI be air-gapped if it is a web application?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "The 'web' in OpenWebUI refers to the browser-based interface, not internet dependency. It is a self-hosted application that runs entirely on the server; users reach it through a browser pointed at the server's local address, the way you reach a router's admin panel. Out of the box it includes outbound features (model downloads, update checks, HuggingFace Hub access, community sharing, web search for RAG, telemetry), and none are required for inference. Island Mountain disables every outbound feature before shipping (OFFLINE_MODE, HF_HUB_OFFLINE, ENABLE_COMMUNITY_SHARING, ANONYMIZED_TELEMETRY, ENABLE_RAG_WEB_SEARCH, SAFE_MODE) and confirms it during burn-in. Your IT team can verify it by inspecting the container environment or watching a monitored segment for zero outbound connections."
+          "text": "The 'web' in OpenWebUI refers to the browser-based interface, not internet dependency. It is a self-hosted application that runs entirely on the server; users reach it through a browser pointed at the server's local address, the way you reach a router's admin panel. Out of the box it includes outbound features (model downloads, update checks, HuggingFace Hub access, community sharing, web search for RAG, telemetry), and none are required for inference. Island Mountain disables every outbound feature before shipping (OFFLINE_MODE, HF_HUB_OFFLINE, ENABLE_COMMUNITY_SHARING, ANONYMIZED_TELEMETRY, ENABLE_RAG_WEB_SEARCH, SAFE_MODE) and confirms it before shipping. Your IT team can verify it by inspecting the container environment or watching a monitored segment for zero outbound connections."
         }
       },
       {
@@ -226,14 +226,6 @@
         "acceptedAnswer": {
           "@type": "Answer",
           "text": "It starts with a conversation about your workload, followed by a written quote scoped to it. We do not build speculatively; a confirmed order triggers sourcing of your specific GPUs and components through authorized NVIDIA channels with full procurement documentation. Terms are handled directly, human to human. From order to delivery expect roughly 3 to 5 weeks for the pre-made Summit Base tier, longer for build-to-order Summit Ridge because those GPUs are sourced per order. The system arrives pre-configured, and most organizations run their first prompts within hours of racking it. Every purchase includes 30 days of hands-on setup support with direct access to the builder."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What does the 72-hour burn-in test verify?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Every system runs 72 hours of continuous stress testing before it ships: three straight days of sustained GPU compute at high load with automated monitoring, not a 10-minute smoke test. It verifies thermal stability without throttling, memory integrity with no VRAM errors across billions of operations, inference consistency across thousands of sequential prompts, power-supply reliability under sustained draw, and storage performance under continuous read and write. Any anomaly triggers an alert, and systems that show instability do not ship. You receive a benchmark report and delivery manifest documenting every test result, component serial number, and configuration detail."
         }
       },
       {
@@ -265,7 +257,7 @@
         "name": "Why pay for a Summit when I could build a similar server myself for less?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "You can, and if you are a developer running experiments you probably should: the guides exist and the software stack is the same (Ollama, vLLM, OpenWebUI, open-weight models). What a DIY build does not include is professional GPU procurement documentation (purchase receipts from authorized NVIDIA channels, a serial-number registry, and RMA history that a compliance officer or contracting officer can audit), continuous burn-in, professional RMA chains that keep replacement GPUs inside the same documentation trail for HIPAA, ITAR/DFARS, and CMMC audits, and direct access to the person who built your system. If you are a regulated organization putting AI into production where provenance and evidence matter, that is what the difference covers."
+          "text": "You can, and if you are a developer running experiments you probably should: the guides exist and the software stack is the same (Ollama, vLLM, OpenWebUI, open-weight models). What a DIY build does not include is professional GPU procurement documentation (purchase receipts from authorized NVIDIA channels, a serial-number registry, and RMA history that a compliance officer or contracting officer can audit), professional RMA chains that keep replacement GPUs inside the same documentation trail for HIPAA, ITAR/DFARS, and CMMC audits, and direct access to the person who built your system. If you are a regulated organization putting AI into production where provenance and evidence matter, that is what the difference covers."
         }
       },
       {
@@ -422,7 +414,6 @@
       <div class="au-badges au-stagger">
         <span class="au-badge" style="--i:0">Air-Gappable</span>
         <span class="au-badge" style="--i:1">Quote-Based</span>
-        <span class="au-badge" style="--i:2">Burn-In Tested</span>
       </div>
       <div class="au-ctas au-reveal">
         <a href="contact.html" class="btn btn-primary">Talk to Sales</a>
@@ -434,10 +425,10 @@
   <!-- Topic marquee -->
   <div class="au-marquee" aria-label="FAQ topics">
     <div class="au-marquee__track">
-      <span class="au-mq-item">Air-Gapped AI</span><span class="au-mq-item">HIPAA</span><span class="au-mq-item">Attorney-Client Privilege</span><span class="au-mq-item">ITAR / CMMC</span><span class="au-mq-item">Tribal Sovereignty</span><span class="au-mq-item">Woven Security Fabric</span><span class="au-mq-item">Zero Standing Privilege</span><span class="au-mq-item">RTX PRO 6000 Blackwell</span><span class="au-mq-item">DeepSeek V4-Flash</span><span class="au-mq-item">Quote-Based</span><span class="au-mq-item">Burn-In Tested</span>
+      <span class="au-mq-item">Air-Gapped AI</span><span class="au-mq-item">HIPAA</span><span class="au-mq-item">Attorney-Client Privilege</span><span class="au-mq-item">ITAR / CMMC</span><span class="au-mq-item">Tribal Sovereignty</span><span class="au-mq-item">Woven Security Fabric</span><span class="au-mq-item">Zero Standing Privilege</span><span class="au-mq-item">RTX PRO 6000 Blackwell</span><span class="au-mq-item">DeepSeek V4-Flash</span><span class="au-mq-item">Quote-Based</span>
     </div>
     <div class="au-marquee__track" aria-hidden="true">
-      <span class="au-mq-item">Air-Gapped AI</span><span class="au-mq-item">HIPAA</span><span class="au-mq-item">Attorney-Client Privilege</span><span class="au-mq-item">ITAR / CMMC</span><span class="au-mq-item">Tribal Sovereignty</span><span class="au-mq-item">Woven Security Fabric</span><span class="au-mq-item">Zero Standing Privilege</span><span class="au-mq-item">RTX PRO 6000 Blackwell</span><span class="au-mq-item">DeepSeek V4-Flash</span><span class="au-mq-item">Quote-Based</span><span class="au-mq-item">Burn-In Tested</span>
+      <span class="au-mq-item">Air-Gapped AI</span><span class="au-mq-item">HIPAA</span><span class="au-mq-item">Attorney-Client Privilege</span><span class="au-mq-item">ITAR / CMMC</span><span class="au-mq-item">Tribal Sovereignty</span><span class="au-mq-item">Woven Security Fabric</span><span class="au-mq-item">Zero Standing Privilege</span><span class="au-mq-item">RTX PRO 6000 Blackwell</span><span class="au-mq-item">DeepSeek V4-Flash</span><span class="au-mq-item">Quote-Based</span>
     </div>
   </div>
 
@@ -451,7 +442,7 @@
         <div class="au-card beam-card" style="--i:0">
           <span class="au-ways-eyebrow">The Appliance</span>
           <h3>Summit Series</h3>
-          <p>A sovereign AI server per seat: NVIDIA RTX PRO 6000 Blackwell, air-gappable, pre-built and burn-tested, with frontier open-source models installed. One per desk, or an estate across the organization.</p>
+          <p>A sovereign AI server per seat: NVIDIA RTX PRO 6000 Blackwell, air-gappable, pre-built, with frontier open-source models installed. One per desk, or an estate across the organization.</p>
           <a class="au-ways-link" href="products.html">Explore the Summit Series &rarr;</a>
         </div>
         <div class="au-card beam-card" style="--i:1">
@@ -492,14 +483,14 @@
           <div class="faq-answer">
             <p><strong>Yes. Every Island Mountain system is designed to operate completely air-gapped.</strong> The models, the inference engine (vLLM and Ollama), and the interface (OpenWebUI) all run locally. Once the system is set up and models are loaded, you can disconnect the ethernet cable entirely and everything still works.</p>
             <p>Users reach the system through a web browser on your local network. As long as the device and the server share a network, even an isolated one with no internet, inference runs normally. No phone-home. No license checks. No cloud dependencies. The only things that ever need internet are downloading new models and applying OS security updates, both optional and on your schedule.</p>
-            <p>Island Mountain applies a documented air-gap configuration before delivery, disabling every outbound feature at the environment-variable level, and confirms it during burn-in. Your IT team can independently verify every setting on the delivered system.</p>
+            <p>Island Mountain applies a documented air-gap configuration before delivery, disabling every outbound feature at the environment-variable level, and confirms it before shipping. Your IT team can independently verify every setting on the delivered system.</p>
           </div>
         </div>
 
         <div class="faq-item beam-card au-reveal" style="--i:2">
           <h3>What does "a sovereign AI server at every desk" mean?</h3>
           <div class="faq-answer">
-            <p><strong>The unit of deployment is a workstation, not a shared cloud tenant.</strong> Each Summit is its own server and hardware rack: a burnt-copper anodized tower, pre-built and burn-tested, air-gappable out of the box, with two NVIDIA RTX PRO 6000 Blackwell GPUs and models pre-installed.</p>
+            <p><strong>The unit of deployment is a workstation, not a shared cloud tenant.</strong> Each Summit is its own server and hardware rack: a burnt-copper anodized tower, pre-built, air-gappable out of the box, with two NVIDIA RTX PRO 6000 Blackwell GPUs and models pre-installed.</p>
             <p>You can put one on a single desk, or deploy an estate across the organization. A single rack starts with two cards and ramps to six to eight GPUs as you grow, and a fully ramped rack serves roughly 1,500 to 1,800 users on on-premises inference, with no per-seat cloud fees and no token metering. See the <a href="products.html">Summit Series</a> for tiers and specifications.</p>
           </div>
         </div>
@@ -649,7 +640,7 @@
         <div class="faq-item beam-card au-reveal" style="--i:16">
           <h3>What models come pre-installed, and can I add my own later?</h3>
           <div class="faq-answer">
-            <p><strong>Every Summit ships with three models installed, configured, and burn-tested.</strong> <strong>DeepSeek V4-Flash</strong> is a reasoning and general-purpose model for complex analysis, multi-step problem solving, and code, running at FP8. <strong>Llama 4 Scout</strong> is Meta's general-purpose model, strong across writing, summarization, and Q&amp;A. Then your choice of <strong>DeepSeek R1 70B Distill</strong> (MIT, explicit chain-of-thought for legal and compliance work) or <strong>Qwen 3 72B</strong> (Apache 2.0, enterprise general performance).</p>
+            <p><strong>Every Summit ships with three models installed and configured.</strong> <strong>DeepSeek V4-Flash</strong> is a reasoning and general-purpose model for complex analysis, multi-step problem solving, and code, running at FP8. <strong>Llama 4 Scout</strong> is Meta's general-purpose model, strong across writing, summarization, and Q&amp;A. Then your choice of <strong>DeepSeek R1 70B Distill</strong> (MIT, explicit chain-of-thought for legal and compliance work) or <strong>Qwen 3 72B</strong> (Apache 2.0, enterprise general performance).</p>
             <p>All carry permissive open-source licenses with no usage restrictions. You own them outright and switch between them instantly in the OpenWebUI dropdown. You are not locked to those three: any compatible open-source model that fits your VRAM can be downloaded through Ollama or OpenWebUI, and for the first 30 days we walk you through model management directly.</p>
           </div>
         </div>
@@ -683,7 +674,7 @@
           <h3>How can OpenWebUI be air-gapped if it is a web application?</h3>
           <div class="faq-answer">
             <p><strong>The "web" in OpenWebUI refers to the browser-based interface, not internet dependency.</strong> It is a self-hosted application that runs entirely on the server. Users reach it through a browser pointed at the server's local address, the way you reach a router's admin panel. No cloud account, no external API calls for inference.</p>
-            <p>Out of the box it does include outbound features: model downloads, update checks, HuggingFace Hub access, community sharing, web search for RAG, and telemetry. None are required for inference, and Island Mountain disables every one before shipping. The key environment variables (OFFLINE_MODE, HF_HUB_OFFLINE, ENABLE_COMMUNITY_SHARING, ANONYMIZED_TELEMETRY, ENABLE_RAG_WEB_SEARCH, SAFE_MODE) are set to their air-gapped states during the build and confirmed during burn-in.</p>
+            <p>Out of the box it does include outbound features: model downloads, update checks, HuggingFace Hub access, community sharing, web search for RAG, and telemetry. None are required for inference, and Island Mountain disables every one before shipping. The key environment variables (OFFLINE_MODE, HF_HUB_OFFLINE, ENABLE_COMMUNITY_SHARING, ANONYMIZED_TELEMETRY, ENABLE_RAG_WEB_SEARCH, SAFE_MODE) are set to their air-gapped states during the build and confirmed before shipping.</p>
             <p>Your IT team can verify it independently by inspecting the container environment, or by watching a monitored network segment for zero outbound connections during operation.</p>
           </div>
         </div>
@@ -716,14 +707,6 @@
           </div>
         </div>
 
-        <div class="faq-item beam-card au-reveal" style="--i:23">
-          <h3>What does the 72-hour burn-in test verify?</h3>
-          <div class="faq-answer">
-            <p><strong>Every system runs 72 hours of continuous stress testing before it ships.</strong> Not a quick benchmark or a 10-minute smoke test: three straight days of sustained GPU compute at high load with automated monitoring.</p>
-            <p>It verifies thermal stability without throttling, memory integrity with no VRAM errors across billions of operations, inference consistency across thousands of sequential prompts, power-supply reliability under sustained draw, and storage performance under continuous read and write. Any anomaly triggers an alert, and systems that show instability, throttling, or VRAM errors do not ship; components are swapped and the test restarts.</p>
-            <p>You receive a benchmark report and delivery manifest documenting every test result, component serial number, and configuration detail. It is not a certificate of perfection; it is proof the system ran hard for three days without failing.</p>
-          </div>
-        </div>
 
         <div class="faq-item beam-card au-reveal" style="--i:24">
           <h3>What warranty comes with it, and what if a component fails?</h3>
@@ -754,7 +737,7 @@
           <h3>Why pay for a Summit when I could build a similar server myself for less?</h3>
           <div class="faq-answer">
             <p><strong>You can, and if you are a developer running experiments, you probably should.</strong> The guides exist and the software stack is the same: Ollama, vLLM, OpenWebUI, and open-weight models like DeepSeek V4-Flash and Llama 4 Scout. With the staff to build, configure, test, and maintain it, a DIY box will run inference.</p>
-            <p>Here is what a DIY build does not include. <strong>Professional GPU procurement documentation:</strong> every RTX PRO 6000 Blackwell card in a Summit has a documented chain, purchase receipts from authorized NVIDIA channels, a serial-number registry, and RMA history, which consumer cards from Amazon or Newegg do not carry. <strong>Continuous burn-in.</strong> <strong>Professional RMA chains</strong> that keep replacement GPUs inside the same documentation trail, which matters for HIPAA, ITAR/DFARS, and CMMC audits. <strong>Direct builder support:</strong> you talk to the person who assembled your system, not a ticket queue.</p>
+            <p>Here is what a DIY build does not include. <strong>Professional GPU procurement documentation:</strong> every RTX PRO 6000 Blackwell card in a Summit has a documented chain, purchase receipts from authorized NVIDIA channels, a serial-number registry, and RMA history, which consumer cards from Amazon or Newegg do not carry. <strong>Professional RMA chains</strong> that keep replacement GPUs inside the same documentation trail, which matters for HIPAA, ITAR/DFARS, and CMMC audits. <strong>Direct builder support:</strong> you talk to the person who assembled your system, not a ticket queue.</p>
             <p>The honest answer: if you are experimenting, build your own. If you are a regulated organization putting AI into production where provenance and evidence matter, that is what the difference covers.</p>
           </div>
         </div>
