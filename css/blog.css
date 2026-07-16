@@ -71,6 +71,11 @@
   color: var(--copper-light);
 }
 
+.tag-strategy {
+  background: rgba(148, 163, 184, 0.12);
+  color: var(--slate-300, #cbd5e1);
+}
+
 .tag-white-paper {
   background: rgba(255, 255, 255, 0.12);
   color: #ffffff;
