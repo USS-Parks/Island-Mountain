@@ -2,7 +2,7 @@
 
 **Scope:** The security and robustness contract binding on both products — **WSF** (Woven Sovereignty Fabric, trust plane) and **AOG** (Agentic Orchestration Governance, control plane) — and the **Loom** orchestration engine (M3 addendum). This is the standard every phase, prompt, and gate is held to. **It governs:** where any PLANNING doc, prompt, or convenience conflicts with an invariant here, the invariant wins.
 **Relationship:** extends CANON Part II; referenced as the governing contract by `AOG-WSF-SOVEREIGNTY-STACK-PSPR.md` and `AOG-ORCHESTRATION-ENGINE-M3-SUMMIT-ADDENDUM-PSPR.md`.
-**Author:** Basho Parks · **Created:** 2026-07-03 · **Status:** DRAFT — doctrine for review; authorizes no code.
+**Author:** Basho Parks · **Created:** 2026-07-03 · **Status:** **ACTIVE — the governing contract, in force.** The Loom orchestration engine was built to it; its **D9 conformance gate is satisfied** as of 2026-07-11 (see D9). As a standing contract it is never "done" — it binds every future phase and prompt.
 
 ---
 
@@ -120,6 +120,18 @@ An invariant is only real if a test proves it cannot be silently broken:
 - **RC-DEPUTY** — a confused-deputy suite: attempt to turn the fabric's own authority against the custody boundary; must fail.
 
 Passing D9 is a precondition to any external "fail-proof / cannot leak context" claim. Until then the claim is unproven and is not made.
+
+**D9 status — SATISFIED (2026-07-11).** The RC suite is implemented and green:
+`mai/crates/aog-conformance/tests/robustness_conformance.rs` runs **RC-1..RC-9** (one
+adversarial test per invariant I-1..I-9, each injecting its D2 threat against the real
+primitive and asserting fail-closed) plus **RC-KILL / RC-LEAK / RC-DEPUTY** — 11 tests,
+all passing (`cargo test -p aog-conformance --test robustness_conformance`). The
+estate-scale legs of RC-KILL (propagation to every replica; the partitioned-node freshness
+fail-closed; the revocation-to-denial SLO) are the live gates
+`deployment/loom-harness/gates/v5-kill-switch-under-scale.sh` and `v10-revocation-slo.sh`,
+run green on the containerized 5-CP estate. The "cannot leak context / fail-proof" claim is
+now evidenced, not merely asserted. Regression-gate: keep the RC suite green in CI; a new
+invariant means a new RC-N before its mechanism ships.
 
 ---
 *DRAFT doctrine. It authorizes no code. It governs the plan: where a prompt, a convenience, or a schedule conflicts with an invariant here, the invariant wins. Parent §0, CANON Parts I–II, and this doctrine are read together.*

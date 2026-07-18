@@ -43,6 +43,7 @@ Lamprey is a Woven Security & Governance Fabric - a software layer that secures 
 - [FAQ (27 Q&A pairs)](https://islandmountain.io/faq.html)
 - [Contact/Quote](https://islandmountain.io/contact.html)
 - [About](https://islandmountain.io/about.html)
+- [Careers](https://islandmountain.io/careers.html)
 - [Technology Stack](https://islandmountain.io/technology.html)
 - [Security Fabric (Lamprey)](https://islandmountain.io/lamprey-woven-security-governance.html)
 - [Solutions by Industry](https://islandmountain.io/solutions.html)
@@ -59,6 +60,12 @@ Lamprey is a Woven Security & Governance Fabric - a software layer that secures 
 - [Casino Gaming](https://islandmountain.io/casino-gaming.html)
 - [Resources (Direct-Answer Hub)](https://islandmountain.io/resources.html)
 - [Blog](https://islandmountain.io/blog.html)
+
+## Open Positions
+- [Lead Hardware Production & Systems Integration Engineer](https://islandmountain.io/career-lead-hardware-production-systems-integration-engineer.html)
+- [Principal Platform & Release Engineer](https://islandmountain.io/career-principal-platform-release-engineer.html)
+- [Principal Agentic Security & Governance Engineer](https://islandmountain.io/career-principal-agentic-security-governance-engineer.html)
+- [Deputy Forward-Deployed Enterprise Engineer](https://islandmountain.io/career-deputy-forward-deployed-enterprise-engineer.html)
 
 ## Direct-Answer Reference Pages
 - [CLOUD Act & Tribal Data](https://islandmountain.io/cloud-act-tribal-data.html)
