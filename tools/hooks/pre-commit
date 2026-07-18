@@ -47,6 +47,21 @@ while IFS= read -r -d '' f; do
   fi
 done < <(git diff --cached -z --name-only --diff-filter=ACM)
 
+# Structural HTML/navigation gate reads the staged index, not unstaged working copies.
+HTML_GATE="$(git rev-parse --show-toplevel)/tools/html-structure-gate.py"
+PYTHON_BIN="$(command -v python3 2>/dev/null || command -v python 2>/dev/null || true)"
+if [ -f "$HTML_GATE" ] && [ -n "$PYTHON_BIN" ]; then
+  "$PYTHON_BIN" "$HTML_GATE" staged || FAIL=1
+else
+  # Tooling-safe fallback blocks the exact high-confidence corruption class.
+  while IFS= read -r -d '' f; do
+    [ -f "$f" ] || continue
+    if LC_ALL=C grep -Eq -- 'bout\.html>About</a></li>/a|</li>/a[[:space:]]*<li|href=[^"'"'"'[:space:]>]' "$f"; then
+      echo "BLOCK  malformed HTML/navigation fallback signature: $f" >&2; FAIL=1
+    fi
+  done < <(git diff --cached -z --name-only --diff-filter=ACM -- '*.html')
+fi
+
 # --- CANON §11 no-slop gate: block newly-added build-process artifacts ---
 SLOP_SCAN="$(git rev-parse --show-toplevel)/tools/no-slop-scan.sh"
 if [ -x "$SLOP_SCAN" ]; then

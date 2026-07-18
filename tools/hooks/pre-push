@@ -14,6 +14,21 @@ while IFS= read -r f; do
        fi ;;
   esac
 done < <(git ls-files '*.html')
+
+# Structural HTML/navigation gate across the complete tracked site.
+HTML_GATE="$(git rev-parse --show-toplevel)/tools/html-structure-gate.py"
+PYTHON_BIN="$(command -v python3 2>/dev/null || command -v python 2>/dev/null || true)"
+if [ -f "$HTML_GATE" ] && [ -n "$PYTHON_BIN" ]; then
+  "$PYTHON_BIN" "$HTML_GATE" full || FAIL=1
+else
+  # Tooling-safe fallback blocks the exact high-confidence corruption class.
+  while IFS= read -r f; do
+    [ -f "$f" ] || continue
+    if LC_ALL=C grep -Eq -- 'bout\.html>About</a></li>/a|</li>/a[[:space:]]*<li|href=[^"'"'"'[:space:]>]' "$f"; then
+      echo "BLOCK  malformed HTML/navigation fallback signature: $f" >&2; FAIL=1
+    fi
+  done < <(git ls-files '*.html')
+fi
 # --- CANON §11 no-slop gate: full-tree scan, zero artifacts may publish ---
 SLOP_SCAN="$(git rev-parse --show-toplevel)/tools/no-slop-scan.sh"
 if [ -x "$SLOP_SCAN" ]; then

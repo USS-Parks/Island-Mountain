@@ -35,6 +35,8 @@ jobs:
           cache-dependency-path: worker/package-lock.json
       - name: Build and validate site artifact
         run: python tools/build-pages-artifact.py --output "${{ runner.temp }}/island-mountain-validation"
+      - name: Validate HTML navigation structure
+        run: python tools/html-structure-gate.py full
       - name: Check JavaScript syntax
         run: find js -type f -name '*.js' -not -path '*/vendor/*' -print0 | xargs -0 -n1 node --check
       - name: Install Worker dependencies
