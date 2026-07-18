@@ -4,7 +4,9 @@
 **Parent plan:** `PLANNING/AOG-WSF-SOVEREIGNTY-STACK-PSPR.md` — this addendum **extends** it; it does not replace or reorder M1/M2. It slots after M2 completes (Phase T, C5–C7, D3–D5) and re-scopes the M3 line into a true orchestration engine.
 **Codename:** **Loom** — the loom that weaves WSF trust through every orchestrated workload. Warp = the WSF trust plane (identity, token, envelope, receipt); weft = the orchestration actions (schedule, reconcile, roll out, heal). No thread runs unwoven.
 **Foundation:** extends the M1/M2 estate — `fabric-*` crates, `wsf-*` services, `aog-gateway`, `aog-meter`, `aog-toolproxy`, and the parked `mai-scheduler` (revived here). Reused, extracted, hardened — **not rebuilt** (CANON II.1).
-**Author:** Basho Parks · **Created:** 2026-07-03 · **Status:** DRAFT — awaits explicit STS sign-off before any code. Drafting this file is not authorization (CANON I.1 / parent §0.5).
+**Author:** Basho Parks · **Created:** 2026-07-03 · **Status:** **COMPLETE — executed STS and landed on `origin/main` (2026-07-11, tip `5922752`).** All milestones (M3a/M3b/M3c + Summit-Conformance) shipped and gated green; A5 completion criteria met (see A5). Full narrative + per-prompt evidence in `mai/docs/sessions/LOOM-DEVLOG.md`.
+
+> **Completion banner (2026-07-11).** Loom is built. Phases K·R·S·N·O·H·X·V all executed and verified. The `aog-conformance` suite reports `is_summit_ready() == true` (8 A1.12 bars asserted, 0 pending); the five containerized live gates (V4 split-brain, V5 kill-switch-under-scale, V7 chaos+soak, V8 scale, V10 revocation SLO) ran green on a real 5-CP + 5-edge Docker estate + live OpenBao; the V11 D9 robustness suite (RC-1..RC-9 + RC-KILL/LEAK/DEPUTY) is green; full workspace `cargo test` 2310 passed / 236 suites. Phase X migration (X1–X5) complete, including the Compose↔k3s packaging-parity proof and retirement of the hand-managed path. **"Kubernetes-grade, woven" is now a gated, evidenced claim.**
 **Governing security contract:** `AOG-WSF-ROBUSTNESS-AND-ZERO-TRUST-DOCTRINE.md` — every prompt and gate below is subordinate to its invariants (I-1..I-9). Where a convenience conflicts with an invariant, the invariant wins.
 
 ---
@@ -255,8 +257,10 @@ New `docs/sessions/LOOM-DEVLOG.md`; one prompt = one focused commit (or tight bu
 - **k3s/k0s vs pure Loom edge:** Loom is the control plane regardless; k3s/k0s is only an optional *packaging* of the node tier for cluster customers (X5), never the trust plane.
 - **`mai-scheduler` fake-metrics debt:** it is *revived by deletion-and-rebuild of the fake paths* (S1), not by extending them. Do not inherit the defect.
 
-## A5 — Completion criteria (Summit)
+## A5 — Completion criteria (Summit) — **MET (2026-07-11)**
 Loom is done when: the Phase V conformance suite is green; kill-switch-under-scale and attested-scheduling breach tests pass on a real multi-node estate; DR restores from cold backup by runbook; the estate runs a full air-gap topology with federation over media; and every A2 Tier-0/Tier-1 failure mode has a passing test proving it cannot occur silently. Only then is "Kubernetes-grade, woven" a claim we can stand behind — pound for pound, on correctness, and ahead on trust.
 
+**Every criterion met** (evidence in the LOOM-DEVLOG A5 assessment): conformance suite `is_summit_ready()` true; V5 kill-switch-under-scale green on the live 5-CP estate; V6 attested-scheduling breach green (a Ring-3 workload stays `Pending`, never force-placed); H4 DR restore-from-cold-backup drill by runbook; H5 air-gap federation over signed media; and every Tier-0/Tier-1 harm carries a passing test — V5+RC-KILL (kill switch), V4+`split_brain_safety` (split-brain allow), X1 shared lease ledger (double-spend), V2 10⁴ fuzz (non-idempotent reconcile), V6 (sovereignty breach). The claim stands.
+
 ---
-*This addendum is DRAFT. It authorizes nothing. Execute only on an explicit "run it STS" (whole addendum) or per-milestone approval (M3a / M3b / M3c / Summit-Conformance). Parent §0 governance and CANON Parts I–II apply in full.*
+*This addendum is **COMPLETE** (executed STS, landed on `origin/main` 2026-07-11 at `5922752`). It is retained as the executed plan of record; the running system is the DEVLOG + the `aog-*` crates + `deployment/loom-harness/`. Parent §0 governance and CANON Parts I–II applied in full throughout.*

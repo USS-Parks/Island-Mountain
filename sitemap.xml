@@ -53,6 +53,38 @@
     <priority>0.6</priority>
   </url>
 
+  <!-- Careers -->
+  <url>
+    <loc>https://islandmountain.io/careers.html</loc>
+    <lastmod>2026-07-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://islandmountain.io/career-lead-hardware-production-systems-integration-engineer.html</loc>
+    <lastmod>2026-07-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://islandmountain.io/career-principal-platform-release-engineer.html</loc>
+    <lastmod>2026-07-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://islandmountain.io/career-principal-agentic-security-governance-engineer.html</loc>
+    <lastmod>2026-07-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://islandmountain.io/career-deputy-forward-deployed-enterprise-engineer.html</loc>
+    <lastmod>2026-07-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
 
   <url>
     <loc>https://islandmountain.io/resources.html</loc>
