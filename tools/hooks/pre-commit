@@ -53,12 +53,18 @@ PYTHON_BIN="$(command -v python3 2>/dev/null || command -v python 2>/dev/null ||
 if [ -f "$HTML_GATE" ] && [ -n "$PYTHON_BIN" ]; then
   "$PYTHON_BIN" "$HTML_GATE" staged || FAIL=1
 else
-  # Tooling-safe fallback blocks the exact high-confidence corruption class.
+  # Tooling-safe fallback blocks the exact high-confidence corruption classes.
   while IFS= read -r -d '' f; do
     [ -f "$f" ] || continue
     if LC_ALL=C grep -Eq -- 'bout\.html>About</a></li>/a|</li>/a[[:space:]]*<li|href=[^"'"'"'[:space:]>]' "$f"; then
       echo "BLOCK  malformed HTML/navigation fallback signature: $f" >&2; FAIL=1
     fi
+    while IFS= read -r endpoint; do
+      case "$endpoint" in
+        https://formsubmit.co/basho@islandmountain.io) ;;
+        *) echo "BLOCK  unapproved FormSubmit endpoint in $f: $endpoint" >&2; FAIL=1 ;;
+      esac
+    done < <(LC_ALL=C grep -Eio -- 'https://formsubmit\.co/[^"'"'"'[:space:]<>]+' "$f" || true)
   done < <(git diff --cached -z --name-only --diff-filter=ACM -- '*.html')
 fi
 
