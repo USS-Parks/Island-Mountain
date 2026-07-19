@@ -22,6 +22,13 @@ Universal engineering rules load from the global `~/.Codex/CANON.md`. This file 
 ## Enforcement active in this repo
 git hooks via `core.hooksPath=tools/hooks`: `commit-msg` (stamps the canon footer, strips any AI co-author credit), `pre-commit` (NUL/truncation + high-confidence secret scan), `pre-push` (site-wide HTML integrity). Never `--no-verify`.
 
+### FormSubmit production safety
+
+- The only approved FormSubmit action is `https://formsubmit.co/basho@islandmountain.io`.
+- Never introduce or rotate a FormSubmit destination merely because an inbox exists. A new destination requires Basho's explicit approval, inbox activation, and a successful labeled live submission before it may replace the canonical action.
+- Every new or changed public form must pass `python tools/html-structure-gate.py self-test`, `python tools/html-structure-gate.py full`, and one live submission before it is described as working or published.
+- `tools/html-structure-gate.py` is the Layer-3 owner: it blocks unapproved FormSubmit actions and incomplete career application forms at pre-commit, pre-push, and GitHub Actions deployment.
+
 ## Branching — default to `main`; branch only when the task needs it (CANON §I.5b)
 Work directly on `main` by default. Do **not** spin up a session branch or worktree out of the gate — read the task first. Open a `session/<short-topic>` branch (or worktree) **only** when the work genuinely needs an isolated track: concurrent sessions committing in parallel, or a risky spike you might throw away. An ordinary single change goes straight onto `main`; if a session lands on an auto-created branch it doesn't need, switch to `main` and work there. Keep every commit green through the gates — the `pre-commit` hook only *warns* on a direct `main` commit, never blocks it.
 
