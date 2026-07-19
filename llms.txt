@@ -76,6 +76,7 @@ Lamprey is a Woven Security & Governance Fabric - a software layer that secures 
 - [Air-Gapped AI Inference](https://islandmountain.io/air-gapped-ai-inference.html)
 
 ## Blog
+- [Agentic Scar Tissue: How Long-Running Agents Drift](https://islandmountain.io/blog/agentic-scar-tissue-long-running-agents.html)
 - [Agentic Orchestration and Security: The Complete Map](https://islandmountain.io/blog/agentic-orchestration-security-map.html)
 - [Agentjacking: Fake Bug Reports Hijack AI Coding Agents](https://islandmountain.io/blog/agentjacking-fake-bug-report.html)
 - [AI Search Visibility in 2026](https://islandmountain.io/blog/ai-search-visibility-consultant.html)
