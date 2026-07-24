@@ -30,8 +30,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="author" content="Basho Parks">
   <meta name="date" content="2026-07-04">
-  <title>Sovereign AI FAQ | Air-Gapped Hardware, Woven Security &amp; Governance</title>
-  <meta name="description" content="Straight answers about sovereign AI: air-gapped local inference, the Woven Security &amp; Governance Fabric, HIPAA and ITAR, privilege, and how quotes work. Every spec and price is a human conversation.">
+  <title>Sovereign AI FAQ | Forward Deployment, Air-Gapped Hardware &amp; Governance</title>
+  <meta name="description" content="Straight answers about sovereign AI: what a forward deployment looks like, how long we are on-site, air-gapped local inference, swappable open-weight models, the Woven Security &amp; Governance Fabric, HIPAA and ITAR. Every spec and price is a human conversation.">
   <link rel="icon" type="image/x-icon" href="favicon.ico?v=2">
   <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png?v=2">
   <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png?v=2">
@@ -410,8 +410,8 @@
       <div class="au-hrule"></div>
       <div class="au-sub au-reveal">
         <span class="au-rotator">
-          <span>What it is, what it protects, what it takes to run.</span>
-          <span>Air-gappable hardware. Woven security. No cloud.</span>
+          <span>What a deployment looks like, what it protects, what it takes to run.</span>
+          <span>Swappable hardware. Swappable open-weight models. No cloud.</span>
           <span>Every spec and every quote, human to human.</span>
         </span>
       </div>
@@ -492,14 +492,22 @@
         </div>
 
         <div class="faq-item beam-card au-reveal" style="--i:2">
-          <h3>What does "a sovereign AI server at every desk" mean?</h3>
+          <h3>What does a forward deployment actually look like?</h3>
           <div class="faq-answer">
-            <p><strong>The unit of deployment is a workstation, not a shared cloud tenant.</strong> Each Summit is its own server and hardware rack: a burnt-copper anodized tower, pre-built, air-gappable out of the box, with two NVIDIA RTX PRO 6000 Blackwell GPUs and models pre-installed.</p>
-            <p>You can put one on a single desk, or deploy an estate across the organization. A single rack starts with two cards and ramps to six to eight GPUs as you grow, and a fully ramped rack serves roughly 1,500 to 1,800 users on on-premises inference, with no per-seat cloud fees and no token metering. See the <a href="products.html">Summit Series</a> for tiers and specifications.</p>
+            <p><strong>It starts with us on-site, watching your people work, before anything gets specced.</strong> We sit with the staff who run the workflow: the senior paralegal who knows which intake questions matter, the records clerk who can tell you which form gets filled out wrong every time, the compliance officer who knows where the real risk lives. We learn the work the way they run it, not the way the SOP describes it, and fill in the gaps in conversation.</p>
+            <p>That study becomes a system design. Only then does hardware enter the picture, sized to what we found. After the build we hand it off and train your team, because a deployment that leaves behind people who understand the thing is the one still running a year later. The full method is on the <a href="forward-deployed-ai-engineering.html">Forward Deployed</a> page.</p>
           </div>
         </div>
 
         <div class="faq-item beam-card au-reveal" style="--i:3">
+          <h3>How long are you on-site, and who do you need access to?</h3>
+          <div class="faq-answer">
+            <p><strong>Long enough to understand the work, which depends entirely on how tangled it is.</strong> A single-department workflow is a short engagement. An organization with a dozen handoffs between departments takes longer, and we would rather tell you that than quote you a tidy number that turns out to be fiction.</p>
+            <p>Who we need is more important than how long. Not a steering committee: the people who actually do the job, for enough hours that we see the exceptions and not just the happy path. Those hours are the highest-leverage part of the whole engagement, and they are the part organizations are most tempted to cut.</p>
+          </div>
+        </div>
+
+        <div class="faq-item beam-card au-reveal" style="--i:4">
           <h3>Who should NOT buy sovereign AI hardware?</h3>
           <div class="faq-answer">
             <p><strong>We would rather tell you now than after a serious capital purchase.</strong> If your organization needs the absolute latest proprietary models (GPT-4o, Claude Opus, Gemini Ultra) on release day, local hardware will not deliver that; open-source closes the gap over time, but there is always a gap.</p>
@@ -642,10 +650,10 @@
         </div>
 
         <div class="faq-item beam-card au-reveal" style="--i:16">
-          <h3>What models come pre-installed, and can I add my own later?</h3>
+          <h3>Which models do we get, and are we stuck with them?</h3>
           <div class="faq-answer">
-            <p><strong>Every Summit ships with three models installed and configured.</strong> <strong>DeepSeek V4-Flash</strong> is a reasoning and general-purpose model for complex analysis, multi-step problem solving, and code, running at FP8. <strong>Llama 4 Scout</strong> is Meta's general-purpose model, strong across writing, summarization, and Q&amp;A. Then your choice of <strong>DeepSeek R1 70B Distill</strong> (MIT, explicit chain-of-thought for legal and compliance work) or <strong>Qwen 3 72B</strong> (Apache 2.0, enterprise general performance).</p>
-            <p>All carry permissive open-source licenses with no usage restrictions. You own them outright and switch between them instantly in the OpenWebUI dropdown. You are not locked to those three: any compatible open-source model that fits your VRAM can be downloaded through Ollama or OpenWebUI, and for the first 30 days we walk you through model management directly.</p>
+            <p><strong>Open-source, open-weight models chosen to fit your work, and no, you are never stuck with them.</strong> The model layer is as swappable as the hardware. A deployment typically lands with a reasoning and general-purpose model like <strong>DeepSeek V4-Flash</strong> at FP8, a strong generalist like <strong>Llama 4 Scout</strong>, and a third picked for your domain: <strong>DeepSeek R1 70B Distill</strong> (MIT, explicit chain-of-thought, useful for legal and compliance work) or <strong>Qwen 3 72B</strong> (Apache 2.0, enterprise general performance).</p>
+            <p>All carry permissive open-source licenses with no usage restrictions. You own them outright and switch between them in the OpenWebUI dropdown. Any compatible open-weight model that fits your VRAM can be pulled through Ollama or OpenWebUI, so as the frontier moves you swap rather than renegotiate. That is the point of open weights: no lab holds a meter on you, and nobody can deprecate the model your workflow depends on. For the first 30 days we walk your team through model management directly.</p>
           </div>
         </div>
 
@@ -704,10 +712,10 @@
         </div>
 
         <div class="faq-item beam-card au-reveal" style="--i:22">
-          <h3>How do I actually buy a system, and how long does delivery take?</h3>
+          <h3>How does an engagement start, and how long until we are running?</h3>
           <div class="faq-answer">
-            <p><strong>It starts with a conversation about your workload, followed by a written quote scoped to it.</strong> We do not build speculatively; a confirmed order triggers sourcing of your specific GPUs and components through authorized NVIDIA channels with full procurement documentation. Terms are handled directly, human to human, no automated checkout.</p>
-            <p>From order to delivery, expect roughly 3 to 5 weeks for the pre-made Summit Base tier, and longer for build-to-order Summit Ridge because those GPUs are sourced per order. The system arrives pre-configured: models installed, OpenWebUI set up, ready to run. Setup on your end means racking it, connecting power (208V/30A) and network, and opening a browser, and most organizations run their first prompts within hours. Every purchase includes 30 days of hands-on setup support with direct access to the builder.</p>
+            <p><strong>It starts with a scoping call, then time on-site with your people, then a written quote scoped to what we found.</strong> We do not spec speculatively. Once the design is agreed, that triggers sourcing of your specific GPUs and components through authorized NVIDIA channels with full procurement documentation. Terms are handled directly, human to human, no automated checkout.</p>
+            <p>Hardware lead time runs roughly 3 to 5 weeks, longer when the build calls for parts sourced per order. That clock overlaps the workflow study rather than following it, so the schedule is usually set by how quickly we can get the right hours with the right people, not by shipping. The system is configured and air-gapped before it lands, so once it is racked and powered (208V/30A) most organizations run their first real prompts the same day. Every deployment includes 30 days of hands-on support with direct access to the engineer who built it.</p>
           </div>
         </div>
 
