@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>document.documentElement.classList.add('js');</script>
+<link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
+<script>
+  (function(){
+    var loaded=false;
+    function loadGA(){ if(loaded)return; loaded=true;
+      var s=document.createElement('script'); s.src='https://www.googletagmanager.com/gtag/js?id=G-R674E394D4'; s.async=true; document.head.appendChild(s);
+      window.dataLayer=window.dataLayer||[]; function gtag(){dataLayer.push(arguments);} window.gtag=gtag; gtag('js',new Date()); gtag('config','G-R674E394D4');
+    }
+    ['scroll','click','touchstart','keydown'].forEach(function(e){document.addEventListener(e,loadGA,{once:true,passive:true});});
+    setTimeout(loadGA,5000);
+  })();
+</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Basho Parks">
+  <title>Forward Deployed AI Engineering | Island Mountain</title>
+  <meta name="description" content="Forward deployed AI engineering: we sit with the people who have run the workflow for fifteen years, learn how the work actually runs, then design and deploy an independent on-premise AI system around it. Swappable hardware, swappable open-weight models.">
+  <link rel="icon" type="image/x-icon" href="favicon.ico?v=2">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png?v=2">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png?v=2">
+  <link rel="stylesheet" href="css/style.min.css?v=4">
+  <link rel="stylesheet" href="css/aurora.min.css?v=6">
+  <link rel="stylesheet" href="css/card-nodes.min.css?v=3">
+  <link rel="stylesheet" href="icons/remixicon.css" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="icons/remixicon.css"></noscript>
+  <link rel="preload" href="fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <style>
+  @font-face{font-family:'Inter';font-style:normal;font-weight:400 800;font-display:swap;src:url('fonts/inter-latin.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
+  @font-face{font-family:'Space Grotesk';font-style:normal;font-weight:300 700;font-display:swap;src:url('fonts/space-grotesk-latin.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
+  .au-card .au-ic img{ filter: brightness(0) invert(1) drop-shadow(0 0 5px rgba(200,220,255,.55)); }
+  /* Page-local: the people cards read as quotes, not feature tiles. */
+  .fd-people{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+  .fd-person{ border:1px solid rgba(148,163,184,.22); border-left:3px solid var(--copper,#c77b52); border-radius:0 14px 14px 0; padding:26px 24px; background:linear-gradient(135deg,rgba(199,123,82,.07),rgba(11,17,28,.5)); }
+  .fd-person h3{ font-size:1.08rem; margin:0 0 10px; color:#f1f5f9; }
+  .fd-person p{ margin:0; color:#cbd5e1; line-height:1.7; font-size:.97rem; }
+  @media (max-width:900px){ .fd-people{ grid-template-columns:1fr; gap:14px; } }
+  /* Pull-quote band for the thesis. */
+  .fd-thesis{ max-width:900px; margin:0 auto; text-align:center; }
+  .fd-thesis .au-h2{ margin-bottom:18px; }
+  </style>
+  <link rel="canonical" href="https://islandmountain.io/forward-deployed-ai-engineering.html">
+  <meta property="og:title" content="Forward Deployed AI Engineering | Island Mountain">
+  <meta property="og:description" content="We sit with the people who have run the workflow for fifteen years, learn how the work actually runs, then build the on-premise AI system around it.">
+  <meta property="og:url" content="https://islandmountain.io/forward-deployed-ai-engineering.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Island Mountain">
+  <meta property="og:image" content="https://islandmountain.io/images/summit-hero.webp">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Forward Deployed AI Engineering | Island Mountain">
+  <meta name="twitter:description" content="Learn the workflow first. Build the system after.">
+  <meta name="twitter:image" content="https://islandmountain.io/images/summit-hero.webp">
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org","@type":"Service",
+    "name":"Forward Deployed AI Engineering",
+    "serviceType":"On-premises AI deployment and workflow engineering",
+    "provider":{"@type":"Organization","name":"Island Mountain","url":"https://islandmountain.io"},
+    "areaServed":"US",
+    "description":"Embedded, on-site AI engineering for regulated organizations. Island Mountain shadows the subject-matter experts who run a workflow, translates that workflow into a system design, then deploys an independent on-premise AI system sized to it, on swappable hardware running swappable open-weight models."
+  }
+  </script>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="nav-logo"><img src="images/logo-nav-new.webp" alt="Island Mountain" width="205" height="65"></a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="forward-deployed-ai-engineering.html" class="active">Forward Deployed</a></li>
+        <li><a href="products.html">The Stack</a></li>
+        <li><a href="lamprey-woven-security-governance.html">Security Fabric</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="resources.html">Resources</a></li>
+        <li><a href="careers.html">Careers</a></li>
+        <li><a href="contact.html" class="nav-cta">Start a Scoping Call</a></li>
+      </ul>
+      <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <!-- Mobile Sidebar -->
+  <div class="sidebar-overlay"></div>
+  <div class="mobile-sidebar">
+    <a href="index.html">Home</a>
+    <a href="forward-deployed-ai-engineering.html">Forward Deployed</a>
+    <a href="products.html">The Stack</a>
+    <a href="lamprey-woven-security-governance.html">Security Fabric</a>
+    <a href="faq.html">FAQ</a>
+    <a href="resources.html">Resources</a>
+    <a href="careers.html">Careers</a>
+    <a href="contact.html" class="nav-cta">Start a Scoping Call</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="au-hero">
+    <div class="container">
+      <div class="au-eyebrow au-reveal">Forward Deployed</div>
+      <h1 class="au-h1" data-split>Learn the workflow first. Build the system after.</h1>
+      <div class="au-hrule"></div>
+      <div class="au-sub au-reveal">
+        <span>Show up, shut up, and learn the work the way they run it, not the way the SOP describes it. Then fill in the gaps in conversation.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Thesis -->
+  <section class="au-manifesto">
+    <div class="container au-reveal">
+      <h2 class="au-typewriter" data-typewriter="Technology that ignores expertise gets ignored by the experts.">Technology that ignores expertise gets ignored by the experts.</h2>
+    </div>
+  </section>
+
+  <!-- The argument -->
+  <section class="au-section">
+    <div class="container au-reveal">
+      <div class="fd-thesis">
+        <span class="au-eyebrow-c">The argument</span>
+        <h2 class="au-h2">Tome-level knowledge barely lives in the documentation.</h2>
+        <p class="au-lede" style="color:#cbd5e1;">So how would it live in a language model? The knowledge that decides whether a deployment works has been in someone's hands for fifteen or twenty years. It isn't written down anywhere you can point a retrieval pipeline at. The only way to get it is to go sit with the person who has it.</p>
+        <p style="color:#cbd5e1;line-height:1.8;margin-top:18px;">The last twenty-five months of confident proselytizing from tech CEOs implied that expertise like this is easy to replicate. It isn't. Watching someone do a job they've done for two decades is worth more than any amount of requirements gathering, and it's the part almost nobody budgets for.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- The people -->
+  <section class="au-section au-section--alt">
+    <div class="container">
+      <span class="au-eyebrow-c au-reveal">Who we sit with</span>
+      <h2 class="au-h2 au-reveal">The expertise is already in the building.</h2>
+      <div class="fd-people au-stagger au-reveal">
+        <div class="fd-person" style="--i:0">
+          <h3>The senior paralegal</h3>
+          <p>Knows which intake questions matter, and which ones are on the form because they've always been on the form.</p>
+        </div>
+        <div class="fd-person" style="--i:1">
+          <h3>The records clerk in fiscal</h3>
+          <p>Can tell you which form gets filled out wrong every single time, and what it costs downstream when it does.</p>
+        </div>
+        <div class="fd-person" style="--i:2">
+          <h3>The compliance officer</h3>
+          <p>Knows where the real organizational risk lives, which is rarely where the risk register says it lives.</p>
+        </div>
+      </div>
+      <p class="au-lede au-reveal" style="color:#cbd5e1;max-width:860px;margin:34px auto 0;text-align:center;">The most essential window in a deployment opens while you're sitting next to one of them. That's the part you can't outsource, can't shortcut, and can't buy in a box.</p>
+    </div>
+  </section>
+
+  <!-- The arc -->
+  <section class="au-section au-howmade">
+    <div class="container">
+      <span class="au-eyebrow-c au-reveal">How a deployment runs</span>
+      <h2 class="au-h2 au-reveal">Four steps, and the first one isn&#39;t technical</h2>
+      <div class="au-hm-steps au-stagger">
+        <div class="au-hm-step" style="--i:0"><span class="au-hm-idx">01</span><div><h3>Shadow</h3><p>We sit with the people who do the job and watch the work run. Its cadence, its battle rhythms, the workarounds nobody documented.</p></div></div>
+        <div class="au-hm-step" style="--i:1"><span class="au-hm-idx">02</span><div><h3>Translate</h3><p>The real workflow becomes a system design. Forward deployed engineering is mostly translation and synthesis, and this is where it happens.</p></div></div>
+        <div class="au-hm-step" style="--i:2"><span class="au-hm-idx">03</span><div><h3>Build</h3><p>Now the stack gets sized. Hardware and models chosen to fit the work, never the other way around.</p></div></div>
+        <div class="au-hm-step" style="--i:3"><span class="au-hm-idx">04</span><div><h3>Hand Off</h3><p>Your people run it. A deployment that leaves behind a team thinking differently is the one still working a year later.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why now -->
+  <section class="au-section au-statement">
+    <div class="container au-reveal">
+      <span class="au-eyebrow-c" style="color:#ffd9a8">Why this works now</span>
+      <h2 class="au-h2">The hardware question got boring, and that&#39;s the good news.</h2>
+      <p class="au-lede" style="color:#efe0c8;">A $7,000 laptop now runs open-weight models in the frontier weight class. That's the second revolution arriving on schedule, and it moves the hard part of this work off the spec sheet and onto the workflow. When the substrate stops being the constraint, the constraint becomes whether anyone bothered to learn how your organization actually operates.</p>
+      <p style="color:#efe0c8;line-height:1.8;margin-top:18px;">So we stopped leading with the gear. <a href="products.html" class="clr-copper">The stack</a> is swappable: a bench of DGX Sparks, RTX 5090s, RTX PRO 6000 Blackwells, on up to H100 and H200 capacity, sized to what the workflow study turned up. The models are swappable too, open-source and open-weight, changed out as the frontier moves, with no lab holding a meter. Already own hardware? We wire the serving stack, set the air-gap configuration, and train your team on gear we didn't sell, because on-premise AI failing in regulated industries helps nobody.</p>
+    </div>
+  </section>
+
+  <!-- What defends itself -->
+  <section class="au-section au-section--alt">
+    <div class="container au-reveal">
+      <div class="fd-thesis">
+        <span class="au-eyebrow-c">What you&#39;re left with</span>
+        <h2 class="au-h2">Build around the experts and the deployment defends itself.</h2>
+        <p class="au-lede" style="color:#cbd5e1;">A system shaped around how someone already works gets used. A system that ignores them gets quietly routed around until it's shelfware with a budget line. That's the whole difference, and it gets decided in week one, not at go-live.</p>
+        <p style="color:#cbd5e1;line-height:1.8;margin-top:18px;">What stays behind when we leave: an independent on-site deployment your organization owns outright, the <a href="lamprey-woven-security-governance.html" class="clr-copper">Woven Security &amp; Governance Fabric</a> holding every action to an identity and a receipt, and a team that understands the thing well enough to change it. More on that last part in <a href="blog/education-is-the-deployment.html" class="clr-copper">Education Is the Deployment</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="au-section">
+    <div class="container au-reveal" style="max-width:780px;text-align:center;">
+      <span class="au-eyebrow-c">Start here</span>
+      <h2 class="au-h2" style="margin:10px 0 14px;">What does the work actually look like?</h2>
+      <p style="color:#cbd5e1;line-height:1.8;margin:0 0 22px;">Tell us whose desk the work runs through and what hurts about it. One conversation, no sales pitch, and a straight answer about whether we can help.</p>
+      <a href="contact.html" class="btn btn-primary">Start a Scoping Call</a>
+      <p class="cta-subtitle" style="margin-top:14px;"><i class="ri-phone-line icon-copper-mr-sm"></i>Or call directly: <a href="tel:+13414418740" class="copper-semibold">1-341-441-8740</a></p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer au-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="images/im-badge.webp" alt="Island Mountain" width="200" height="183" class="d-block-mb">
+          <p>Forward-deployed AI engineering for regulated organizations. We learn the workflow on-site, then build the independent on-premise system around it, with the Woven Security &amp; Governance Fabric woven through. California built.</p>
+          <p class="mt-8"><i class="ri-phone-line icon-copper-mr"></i><a href="tel:+13414418740" class="clr-muted">1-341-441-8740</a></p>
+          <div class="au-social">
+            <a href="https://www.linkedin.com/company/island-mountain-llc/" target="_blank" rel="noopener" aria-label="Island Mountain on LinkedIn"><i class="ri-linkedin-fill"></i></a>
+            <a href="https://x.com/IslandMountain_" target="_blank" rel="noopener" aria-label="Island Mountain on X"><i class="ri-twitter-x-fill"></i></a>
+          </div>
+        </div>
+        <div>
+          <h3>What We Do</h3>
+          <ul class="footer-links">
+            <li><a href="forward-deployed-ai-engineering.html">Forward Deployed</a></li>
+            <li><a href="products.html">The Stack</a></li>
+            <li><a href="lamprey-woven-security-governance.html">Lamprey &middot; Security Fabric</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3><a href="solutions.html">Solutions</a></h3>
+          <ul class="footer-links">
+            <li><a href="law-firms.html">Law Firms</a></li>
+            <li><a href="medical-practices.html">Medical Practices</a></li>
+            <li><a href="tribal-nations.html">Tribal Nations</a></li>
+            <li><a href="defense-contractors.html">Defense Contractors</a></li>
+            <li><a href="financial-services.html">Financial Services</a></li>
+            <li><a href="research-labs.html">Research Labs</a></li>
+            <li><a href="insurance.html">Insurance</a></li>
+            <li><a href="energy-utilities.html">Energy &amp; Utilities</a></li>
+            <li><a href="government.html">Government</a></li>
+            <li><a href="education.html">Education</a></li>
+            <li><a href="casino-gaming.html">Casino Gaming</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Company</h3>
+          <ul class="footer-links">
+            <li><a href="about.html">About</a></li>
+            <li><a href="careers.html">Careers</a></li>
+            <li><a href="investors.html">Investors</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="resources.html">Resources</a></li>
+            <li><a href="contact.html">Start a Scoping Call</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="au-legal">Island Mountain LLC provides forward-deployed AI engineering services and designs, integrates, and deploys on-premises AI inference systems. Nothing on this site constitutes an offer or sale of securities, or legal, compliance, tax, or investment advice. Compliance with HIPAA, ITAR, DFARS / CMMC, OCAP, and other frameworks depends on your organization's deployment, configuration, policies, and controls; on-premises infrastructure is one component of a compliant program, not a certification. Specifications, model availability, and lead times are subject to change. Engagements are quoted on a per-engagement basis. NVIDIA, RTX, and Blackwell, and all other marks are the property of their respective owners.</p>
+
+      <div class="footer-bottom flex-col-center-gap">
+        <p>&copy; 2026 Island Mountain LLC. All rights reserved. Built in California by <span class="clr-copper">Basho Parks</span>.</p>
+        <div class="au-legallinks">
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="terms.html">Terms of Service</a>
+          <a href="contact.html">Start a Scoping Call</a>
+          <a href="tel:+13414418740">1-341-441-8740</a>
+          <a href="https://www.linkedin.com/company/island-mountain-llc/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="https://x.com/IslandMountain_" target="_blank" rel="noopener">X</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script defer src="js/hero-cinematic.js"></script>
+  <script defer src="js/card-nodes.js?v=2"></script>
+  <script defer src="js/main.min.js?v=2"></script>
+  <script defer src="js/chat-widget.min.js?v=3"></script>
+
+</body>
+</html>
