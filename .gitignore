@@ -75,3 +75,6 @@ worker/.vapi-*.json
 
 # Raw demo export exceeds GitHub's 100 MB object limit; publish through R2/CDN instead
 Lamprey Demo 7.13.26.mp4
+
+# Planning docs (PSPRs) — private, never published to the public repo or Pages
+PLANNING/
