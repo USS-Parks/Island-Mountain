@@ -203,7 +203,7 @@
 
 <p>For two years the default answer for on-premises inference was a datacenter Hopper card. The NVIDIA H100 was the part everyone benchmarked against. For regulated organizations that cannot send data to the cloud - law firms, medical practices, defense contractors, tribal nations - the question was usually how many refurbished H100s to buy and how to cool them.</p>
 
-<p>That answer changed. Island Mountain's <a href="../products.html">Summit line</a> now ships on the NVIDIA RTX PRO 6000 Blackwell Server Edition, a professional Blackwell-generation card. This is not a marketing swap. On the two things that actually decide on-premises inference economics, cost per token and total cost, a new Blackwell professional card beats a refurbished H100 for the workloads our customers run. Here is the reasoning, with the math rebuilt from current specs.</p>
+<p>That answer changed. Island Mountain builds on whatever the work needs, and for this workload class that is increasingly the NVIDIA RTX PRO 6000 Blackwell Server Edition, a professional Blackwell-generation card. This is not a marketing swap. On the two things that actually decide on-premises inference economics, cost per token and total cost, a new Blackwell professional card beats a refurbished H100 for the workloads our customers run. Here is the reasoning, with the math rebuilt from current specs.</p>
 
 <h2>The Headline Numbers</h2>
 
@@ -255,7 +255,7 @@
 
 <p><strong>tokens per second &asymp; memory bandwidth &divide; active weight bytes</strong>, then multiply by a real-world efficiency factor of roughly 50 to 70 percent for kernel overhead, attention, and KV-cache traffic.</p>
 
-<p>Take DeepSeek V4-Flash. It is a mixture-of-experts model: 284 billion total parameters but only about 13 billion active per token. At FP8, those active weights are roughly 13 GB. On the RTX PRO 6000 at 1,597 GB/s that is about 1,597 / 13 &asymp; 123 tokens per second in theory. Apply the efficiency factor and you land at a realistic <strong>60 to 90 tokens per second single-stream (estimate)</strong>. That is faster than most people read, and it is the figure we quote for V4-Flash on Summit.</p>
+<p>Take DeepSeek V4-Flash. It is a mixture-of-experts model: 284 billion total parameters but only about 13 billion active per token. At FP8, those active weights are roughly 13 GB. On the RTX PRO 6000 at 1,597 GB/s that is about 1,597 / 13 &asymp; 123 tokens per second in theory. Apply the efficiency factor and you land at a realistic <strong>60 to 90 tokens per second single-stream (estimate)</strong>. That is faster than most people read, and it is the figure we quote for V4-Flash on that configuration.</p>
 
 <p>Run the same arithmetic for a dense 70B model at FP8. Now the full ~70 GB of weights move for every token: 1,597 / 70 &asymp; 23 tokens per second single-stream per card (estimate). Split that model across two cards with tensor parallelism and you reach roughly <strong>40 to 45 tokens per second (estimate)</strong>. The MoE design is why V4-Flash feels several times quicker than a dense 70B on the same hardware: it moves a fraction of the bytes per token.</p>
 
@@ -269,33 +269,33 @@
 
 <h2>What Fits Where</h2>
 
-<p>Summit configurations are built from RTX PRO 6000 cards:</p>
+<p>Sized in RTX PRO 6000 cards, the common configurations land like this:</p>
 
 <ul>
-<li><strong>Summit Base</strong> - 2 cards, 192GB GDDR7 ECC total.</li>
-<li><strong>Summit Ridge</strong> - the mid configuration for buyers who want more concurrent headroom.</li>
-<li><strong>Summit Pinnacle</strong> - 4 cards, 384GB GDDR7 ECC total.</li>
+<li><strong>Two cards</strong> - 192GB GDDR7 ECC total.</li>
+<li><strong>Three cards</strong> - the middle ground when you want more concurrent headroom.</li>
+<li><strong>Four cards</strong> - 384GB GDDR7 ECC total.</li>
 </ul>
 
-<p>What fits is mostly a function of model size and quantization. V4-Flash served at FP8 needs roughly 170GB once you account for all 284B parameters resident plus the KV cache. That fits on Summit Base's 192GB with about 22GB of headroom. If you want the full model at FP16 precision, you need the 384GB of Summit Pinnacle. A dense 70B model at FP8 (~70 GB) fits on a single card with room to spare, and runs faster across two cards with tensor parallelism.</p>
+<p>What fits is mostly a function of model size and quantization. V4-Flash served at FP8 needs roughly 170GB once you account for all 284B parameters resident plus the KV cache. That fits in 192GB with about 22GB of headroom. If you want the full model at FP16 precision, you need 384GB. A dense 70B model at FP8 (~70 GB) fits on a single card with room to spare, and runs faster across two cards with tensor parallelism.</p>
 
-<p>Each card also supports up to four MIG instances and ECC memory, so a single Summit box can be partitioned for isolated workloads, and memory errors are corrected rather than silently corrupting a result. For regulated data that correctness guarantee matters.</p>
+<p>Each card also supports up to four MIG instances and ECC memory, so a single box can be partitioned for isolated workloads, and memory errors are corrected rather than silently corrupting a result. For regulated data that correctness guarantee matters.</p>
 
 <h2>The Cost-Per-Token Math</h2>
 
-<p>Here is the version that decides budgets. Depreciate a Summit Base over three years against one billion tokens annually - a reasonable figure for a medium-sized organization - and the per-token hardware cost is a rounding error.</p>
+<p>Here is the version that decides budgets. Depreciate a two-card build over three years against one billion tokens annually - a reasonable figure for a medium-sized organization - and the per-token hardware cost is a rounding error.</p>
 
 <p>Cloud inference from major providers runs $0.003 to $0.01 per token on comparable models. Even after electricity, cooling, and staffing, on-premises inference is cheaper by two to three orders of magnitude. The capital cost is front-loaded; the unit cost is low and stays low for the life of the box.</p>
 
-<p>Now compare the same Summit Base built on refurbished H100s instead. Two H100 PCIe cards at $25,000 to $33,000 each is $50,000 to $66,000 in silicon alone, before chassis, cooling, and integration, for a 160GB system with no warranty. The Blackwell build delivers 192GB, new-card warranty, and ECC for less total cost. The cost-per-token line moves in the same direction: lower capital, more VRAM, same order-of-magnitude advantage over cloud.</p>
+<p>Now compare the same build on refurbished H100s instead. Two H100 PCIe cards at $25,000 to $33,000 each is $50,000 to $66,000 in silicon alone, before chassis, cooling, and integration, for a 160GB system with no warranty. The Blackwell build delivers 192GB, new-card warranty, and ECC for less total cost. The cost-per-token line moves in the same direction: lower capital, more VRAM, same order-of-magnitude advantage over cloud.</p>
 
-<h2>What Summit Delivers in Practice</h2>
+<h2>What That Build Delivers in Practice</h2>
 
-<p>On Summit Base with V4-Flash at FP8, sustained single-user generation runs an estimated 60 to 90 tokens per second. Batch multiple requests and aggregate throughput climbs well past that, because the active weights loaded for one sequence serve the others in the batch.</p>
+<p>On two cards with V4-Flash at FP8, sustained single-user generation runs an estimated 60 to 90 tokens per second. Batch multiple requests and aggregate throughput climbs well past that, because the active weights loaded for one sequence serve the others in the batch.</p>
 
-<p>A law firm with 30 attorneys generating 10 queries each per day is processing roughly 300 queries daily. At 500 tokens per response, that is 150,000 generated tokens. Summit Base produces that in well under an hour of cumulative generation time spread across the workday, with large idle headroom. Scale to 300 attorneys and 1.5 million tokens per day and a single Summit box still keeps pace for sequential and loosely concurrent load.</p>
+<p>A law firm with 30 attorneys generating 10 queries each per day is processing roughly 300 queries daily. At 500 tokens per response, that is 150,000 generated tokens. Two cards produce that in well under an hour of cumulative generation time spread across the workday, with large idle headroom. Scale to 300 attorneys and 1.5 million tokens per day and a single box still keeps pace for sequential and loosely concurrent load.</p>
 
-<p>You move up to Summit Ridge or Summit Pinnacle when you have heavy concurrent load demanding parallel generation, when you want V4-Flash at full FP16 precision, or when you need multiple large models resident at once. Those are workload reasons, not spec-sheet reasons.</p>
+<p>You add cards when you have heavy concurrent load demanding parallel generation, when you want V4-Flash at full FP16 precision, or when you need multiple large models resident at once. Those are workload reasons, not spec-sheet reasons.</p>
 
 <h2>Build vs. Buy</h2>
 
@@ -303,13 +303,13 @@
 
 <p>A stack of consumer RTX cards or a pallet of refurbished H100s gets you raw silicon, not a working inference appliance. Then come the cooling, networking, driver matrices, firmware tuning, system administration, and the absence of any warranty when a secondary-market H100 dies. By the time it is built and debugged, the capital savings are gone and you own an integration project instead of a tool.</p>
 
-<p>Island Mountain systems are purpose-built for this workload. The software stack is pre-installed, the firmware is tuned for inference, the cards are new with warranty coverage, and support is included. You pay for a system that works on day one.</p>
+<p>Island Mountain builds for the workload in front of us, and the software stack is configured, the firmware is tuned for inference, the cards are new with warranty coverage, and support is included. You pay for a system that works on day one.</p>
 
 <h2>The Honest Guidance</h2>
 
-<p>Start with Summit Base. It is the price of admission to working on-premises inference today, on new Blackwell hardware rather than aging secondary-market Hopper cards. You learn your real usage patterns before committing more. Summit Ridge and Summit Pinnacle step up from there; move to those when concurrent load or full-precision V4-Flash concretely demands it, not because a larger number looks reassuring.</p>
+<p>Start with two cards. That is the price of admission to working on-premises inference today, on new Blackwell hardware rather than aging secondary-market Hopper cards. You learn your real usage patterns before committing more. More cards step up from there; move to them when concurrent load or full-precision V4-Flash concretely demands it, not because a larger number looks reassuring.</p>
 
-<p>The H100 was the right tool for its moment. For new on-premises deployments in 2026, a new RTX PRO 6000 Blackwell card wins on cost per token and total cost for the workloads regulated organizations actually run. That is why Summit moved.</p>
+<p>The H100 was the right tool for its moment. For new on-premises deployments in 2026, a new RTX PRO 6000 Blackwell card wins on cost per token and total cost for the workloads regulated organizations actually run. That is why we moved.</p>
 
 <!-- AEO Summary -->
 <div style="border-left:3px solid var(--copper);padding:16px 20px;margin:32px 0;background:rgba(217,119,6,0.05);border-radius:0 8px 8px 0;">
@@ -320,7 +320,7 @@
       <!-- CTA -->
       <div class="article-cta">
         <h3>Ready to Stop Paying Per Token?</h3>
-        <p>One conversation. No sales pitch. Just straight talk about what local AI hardware can do for your organization.</p>
+        <p>One conversation. No sales pitch. Just straight talk about what an on-site deployment would look like in your organization, and whether it is worth doing at all.</p>
         <a href="../contact.html" class="btn btn-primary">Start a Conversation</a>
         <p class="bio-note-sm"><i class="ri-phone-line icon-copper-mr-sm"></i>Or call directly: <a href="tel:+13414418740" class="copper-semibold">1-341-441-8740</a></p>
       </div>

@@ -201,7 +201,7 @@
 
         <h2>DeepSeek V4-Flash Just Changed the Game for Local AI</h2>
 
-<p>April 24, 2026. DeepSeek drops V4-Flash, a 284-billion parameter mixture-of-experts model, and anybody running language models on constrained hardware needs to pay attention. We've spent a week running it hard on our <a href="../products.html">Summit Base tier</a>. What we're seeing rewrites the economics of local AI deployment entirely.</p>
+<p>April 24, 2026. DeepSeek drops V4-Flash, a 284-billion parameter mixture-of-experts model, and anybody running language models on constrained hardware needs to pay attention. We've spent a week running it hard on a two-card <a href="../products.html">RTX PRO 6000 Blackwell box</a>, 192GB total. What we're seeing rewrites the economics of local AI deployment entirely.</p>
 
 <p>Bottom line up front: V4-Flash is the first model we've tested that makes a 192GB system genuinely competitive with cloud inference for real production work. But that claim only lands if you understand what a mixture-of-experts architecture does.</p>
 
@@ -213,15 +213,15 @@
 
 <h2>The VRAM Reality and What FP8 Does</h2>
 
-<p>V4-Flash at full FP16 precision needs roughly 282 gigabytes for the model weights alone. Our Summit Base tier carries 192GB total across two RTX PRO 6000 Blackwell cards. Full FP16 doesn't fit on Base. That part is real.</p>
+<p>V4-Flash at full FP16 precision needs roughly 282 gigabytes for the model weights alone. That box carries 192GB total across two cards. Full FP16 doesn't fit. That part is real.</p>
 
-<p>FP8 closes the gap. At FP8 the V4-Flash weights land at approximately 170 gigabytes, which fits inside Summit Base's 192GB with about 22GB of headroom left for the KV cache. This is the part that changed: with 192GB on hand, you run the full FP8 model, not a heavily compressed INT4 build. The pre-installed FP8 V4-Flash on our Summit Base tier runs 60 to 90 tokens per second for single-user inference, sustained.</p>
+<p>FP8 closes the gap. At FP8 the V4-Flash weights land at approximately 170 gigabytes, which fits inside 192GB with about 22GB of headroom left for the KV cache. This is the part that changed: with 192GB on hand, you run the full FP8 model, not a heavily compressed INT4 build. FP8 V4-Flash on that hardware runs 60 to 90 tokens per second for single-user inference, sustained.</p>
 
 <p>Here's the math on that throughput. V4-Flash activates roughly 13 billion parameters per token, and at FP8 those active weights come to about 13GB. The RTX PRO 6000 Blackwell moves 1,597 GB/s of memory bandwidth, so the memory-bandwidth roofline sits near 1,597 / 13, about 123 tokens per second in theory. Real single-stream inference lands in the 60 to 90 tokens per second range once you account for the KV cache, attention overhead, and routing. These are estimates grounded in the bandwidth math, not vendor marketing.</p>
 
 <p>FP8 is a precision step down from FP16, but it is a far lighter touch than the aggressive INT4 quantization a tighter-VRAM system used to force. For summarization, classification, structured extraction, and code generation, the quality holds. The speed gain is not negligible.</p>
 
-<p>Both cards in Summit Base carry the same 96GB of GDDR7 ECC, and throughput is governed by memory bandwidth, so the figures above are a property of the hardware tier, not the individual build.</p>
+<p>Both cards carry the same 96GB of GDDR7 ECC, and throughput is governed by memory bandwidth, so the figures above are a property of the silicon, not of any particular build.</p>
 
 <h2>One Million Tokens. That's Not Marketing Language.</h2>
 
@@ -231,19 +231,19 @@
 
 <p>This is where local and cloud AI diverge in ways raw benchmark scores never capture. Cloud providers cap context windows or charge premium rates for long-context use. Running V4-Flash locally means the one-million-token window costs you nothing extra per use. The model lives on your GPUs. Context is a function of your VRAM, not somebody else's billing tier.</p>
 
-<h2>The Summit Pinnacle Question</h2>
+<h2>The Four-Card Question</h2>
 
-<p>Our Summit Pinnacle tier carries four RTX PRO 6000 Blackwell GPUs for 384GB of total VRAM. That headroom is what lets you run V4-Flash at full FP16 precision: the model's roughly 282GB of weights fit on Pinnacle with room left for the KV cache, where Summit Base runs the same model at FP8. Larger models open up on Pinnacle too. The four-card configuration also quadruples aggregate memory bandwidth, which shows up directly in sustained throughput and in concurrent-user capacity.</p>
+<p>Step up to four RTX PRO 6000 Blackwell GPUs and you have 384GB of total VRAM. That headroom is what lets you run V4-Flash at full FP16 precision: the model's roughly 282GB of weights fit on Pinnacle with room left for the KV cache, where two cards run the same model at FP8. Larger models open up at that capacity too. The four-card configuration also quadruples aggregate memory bandwidth, which shows up directly in sustained throughput and in concurrent-user capacity.</p>
 
 <p>Early testing puts V4-Flash at 90 to 140 tokens per second for single-user workloads on the Pinnacle tier. The additional VRAM also means you never trade precision for fit: you run the full FP16 weights rather than any quantized build.</p>
 
-<p>Honest <a href="../faq.html">question to ask yourself before upgrading</a>: does V4-Flash at FP8 on Summit Base already meet your requirements? If yes, you don't need 384GB. If you're running multi-user loads or need full-precision FP16 inference, you do. Know your actual load before you spend the money.</p>
+<p>Honest <a href="../faq.html">question to ask yourself before upgrading</a>: does V4-Flash at FP8 on two cards already meet your requirements? If yes, you don't need 384GB. If you're running multi-user loads or need full-precision FP16 inference, you do. Know your actual load before you spend the money.</p>
 
 <h2>The Sovereignty Argument</h2>
 
 <p>This part rarely gets quantified. It should.</p>
 
-<p>When V4-Flash runs on your Summit Base tier, your data never leaves your premises. No API call to DeepSeek's servers. No metadata logs. No audit trail living in someone else's system. The model is MIT-licensed, meaning you own the weights outright. Modify them, redistribute them under MIT terms, run them indefinitely without licensing fees. That's yours.</p>
+<p>When V4-Flash runs on hardware you own, your data never leaves your premises. No API call to DeepSeek's servers. No metadata logs. No audit trail living in someone else's system. The model is MIT-licensed, meaning you own the weights outright. Modify them, redistribute them under MIT terms, run them indefinitely without licensing fees. That's yours.</p>
 
 <p>Cloud API providers can't offer that guarantee. OpenAI, Anthropic, DeepSeek's cloud product, all of them reserve the right to use submitted queries for model improvement in their terms of service. Many explicitly retain data. Even contractual opt-outs don't change the fact that your data transited their infrastructure, and that creates real liability for regulated industries.</p>
 
@@ -268,7 +268,7 @@
       <!-- CTA -->
       <div class="article-cta">
         <h3>Ready to Stop Paying Per Token?</h3>
-        <p>One conversation. No sales pitch. Just straight talk about what local AI hardware can do for your organization.</p>
+        <p>One conversation. No sales pitch. Just straight talk about what an on-site deployment would look like in your organization, and whether it is worth doing at all.</p>
         <a href="../contact.html" class="btn btn-primary">Start a Conversation</a>
         <p class="bio-note-sm"><i class="ri-phone-line icon-copper-mr-sm"></i>Or call directly: <a href="tel:+13414418740" class="copper-semibold">1-341-441-8740</a></p>
       </div>
