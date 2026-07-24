@@ -76,7 +76,7 @@ Execution home: dedicated worktree + branch `session/forward-deployed-facelift` 
 
 ## 5. Files
 
-Core: `index.html`, `products.html`, `about.html`, `faq.html`, `contact.html`, new methodology page, `lamprey-woven-security-governance.html`, `sovereign-cost-worksheet.html`, 11 industry pages, `solutions.html`, `resources.html`, `why-island-mountain.html`, `sitemap.xml`, nav/footer blocks in all touched pages, `worker/src/persona.ts`, `worker/src/qualifier.ts`, `worker/src/emails.ts`. Planning artifacts (gitignored): `PLANNING/FDF-INVENTORY.md`, `PLANNING/FDF-SPINE.md`. DEVLOG: `_work/FDF-DEVLOG.md`.
+Core: `index.html`, `products.html`, `about.html`, `faq.html`, `contact.html`, new methodology page, `lamprey-woven-security-governance.html`, `sovereign-cost-worksheet.html`, 11 industry pages, `solutions.html`, `resources.html`, `why-island-mountain.html`, `sitemap.xml`, nav/footer blocks in all touched pages, `worker/src/persona.ts`, `worker/src/qualifier.ts`, `worker/src/emails.ts`. Planning artifacts (gitignored): `PLANNING/FDF-INVENTORY.md`, `PLANNING/FDF-SPINE.md`. DEVLOG: `PLANNING/FDF-DEVLOG.md`.
 
 ## 6. Verify gates (every commit; full ladder at wrap)
 
