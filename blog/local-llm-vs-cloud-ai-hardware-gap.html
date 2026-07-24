@@ -219,13 +219,13 @@
 
 <p>The M2 Max with 64GB unified RAM is a powerful machine. But it's doing double duty: running the operating system, the coding agent, the IDE, the browser, and the model inference simultaneously, all competing for the same memory bus. Dedicated inference hardware doesn't compete with anything. It exists to do one thing: move model weights through GPU memory as fast as physics and bandwidth allow.</p>
 
-<p>Here's what changes when you move from a MacBook to an <a href="../products.html">Island Mountain Summit Base server</a> with 2x NVIDIA RTX PRO 6000 Blackwell 96GB GPUs:</p>
+<p>Here's what changes when you move from a MacBook to a <a href="../products.html">purpose-built inference box</a> with 2x NVIDIA RTX PRO 6000 Blackwell 96GB GPUs:</p>
 
 <p><strong>Speed.</strong> On RTX PRO 6000 Blackwell hardware running DeepSeek V4-Flash at FP8, sustained single-user inference hits <a href="h100-vs-h200-inference-comparison.html">60 to 90 tokens per second</a>. Batch multiple requests and throughput pushes past 200 tokens per second across all requests combined. That landing page the Reddit developer generated in 8 to 9 minutes? On RTX PRO 6000 Blackwell hardware running a comparable model, it's a 2 to 3 minute task. Faster than the cloud API he was comparing against.</p>
 
-<p><strong>Context depth.</strong> 192GB of dedicated GDDR7 ECC VRAM across two RTX PRO 6000 Blackwell GPUs isn't shared with the operating system, the agent framework, or the browser. It's reserved entirely for the model and its context. That means running 70B-parameter models at full precision with deep context windows that handle long documents, multi-file codebases, and extended agentic conversations without the context exhaustion the developer experienced at 35B on shared laptop memory. The <a href="h100-vs-h200-inference-comparison.html">Summit Pinnacle tier at 384GB VRAM</a> extends this further for workloads that demand full-precision models or simultaneous multi-model deployment.</p>
+<p><strong>Context depth.</strong> 192GB of dedicated GDDR7 ECC VRAM across two RTX PRO 6000 Blackwell GPUs isn't shared with the operating system, the agent framework, or the browser. It's reserved entirely for the model and its context. That means running 70B-parameter models at full precision with deep context windows that handle long documents, multi-file codebases, and extended agentic conversations without the context exhaustion the developer experienced at 35B on shared laptop memory. <a href="h100-vs-h200-inference-comparison.html">Stepping up to 384GB VRAM</a> extends this further for workloads that demand full-precision models or simultaneous multi-model deployment.</p>
 
-<p><strong>Quality.</strong> The quality gap the developer reported, 75% one-shot versus near-100% from Opus, is partly a model gap and partly a parameter gap. His MacBook ran Qwen3.6 at 35B parameters. Summit Base ships with DeepSeek V4-Flash, Llama 4 Scout, and Qwen 3 72B, models with roughly double the parameter count. More parameters means richer representations, better reasoning chains, and fewer iterations to land a correct output. The 70B-class models running on RTX PRO 6000 Blackwell hardware close the quality distance that the developer experienced at 35B. They don't match Opus on every task. But the delta drops from 25% to single digits for most practical workloads.</p>
+<p><strong>Quality.</strong> The quality gap the developer reported, 75% one-shot versus near-100% from Opus, is partly a model gap and partly a parameter gap. His MacBook ran Qwen3.6 at 35B parameters. A build like that runs open-weight models such as DeepSeek V4-Flash, Llama 4 Scout, and Qwen 3 72B, models with roughly double the parameter count. More parameters means richer representations, better reasoning chains, and fewer iterations to land a correct output. The 70B-class models running on RTX PRO 6000 Blackwell hardware close the quality distance that the developer experienced at 35B. They don't match Opus on every task. But the delta drops from 25% to single digits for most practical workloads.</p>
 
 <h2>The Concurrency Problem Laptops Can't Touch</h2>
 
@@ -271,7 +271,7 @@
       <!-- CTA -->
       <div class="article-cta">
         <h3>Ready to Stop Paying Per Token?</h3>
-        <p>One conversation. No sales pitch. Just straight talk about what local AI hardware can do for your organization.</p>
+        <p>One conversation. No sales pitch. Just straight talk about what an on-site deployment would look like in your organization, and whether it is worth doing at all.</p>
         <a href="../contact.html" class="btn btn-primary">Start a Conversation</a>
         <p class="bio-note-sm"><i class="ri-phone-line icon-copper-mr-sm"></i>Or call directly: <a href="tel:+13414418740" class="copper-semibold">1-341-441-8740</a></p>
       </div>

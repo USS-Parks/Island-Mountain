@@ -228,7 +228,7 @@
 
 <p>A company with 100 employees using AI daily doesn't need all 100 hammering the system simultaneously. Realistic concurrent usage for that headcount runs 15 to 30 simultaneous sessions during peak hours, with 50 to 100 sessions spread across a full workday. The original poster said speed isn't the priority; quality is. They're writing code, summarizing documents, drafting client communications, analyzing data, and reviewing contracts, not asking the model to solve PhD-level mathematics in real time.</p>
 
-<p>That workload doesn't require GLM-5.1 in BF16. It requires a well-tuned 70B-class model, quantized intelligently, running on inference hardware purpose-built for multi-user concurrency. DeepSeek V4-Flash, a 284-billion parameter MoE with roughly 37 billion active per token, fits on the 192GB Summit Base at FP8 (~170GB, leaving ~22GB headroom) and delivers output quality that sits in the same competitive tier as Claude Sonnet for the categories of work most enterprise teams are doing daily. Llama 4 Scout handles general-purpose workloads at high quality in quantized formats on the same hardware. Both ship pre-installed on the <a href="../products.html">Summit Base</a>.</p>
+<p>That workload doesn't require GLM-5.1 in BF16. It requires a well-tuned 70B-class model, quantized intelligently, running on inference hardware purpose-built for multi-user concurrency. DeepSeek V4-Flash, a 284-billion parameter MoE with roughly 37 billion active per token, fits in 192GB at FP8 (~170GB, leaving ~22GB headroom) and delivers output quality that sits in the same competitive tier as Claude Sonnet for the categories of work most enterprise teams are doing daily. Llama 4 Scout handles general-purpose workloads at high quality in quantized formats on the same hardware. Both run comfortably on a two-card <a href="../products.html">build</a>.</p>
 
 <p>The quality question deserves a straight answer. For document drafting, code review, legal analysis, internal communications, and data synthesis, the current generation of open-weight 70B+ models delivers output that end users cannot reliably distinguish from cloud frontier models in blind evaluations. Where the gap persists is in the hardest reasoning tasks, multi-step agentic coding loops, and frontier-scale context windows exceeding 200K tokens. Those edge cases are real, they're documented in our <a href="local-llm-vs-cloud-ai-hardware-gap.html">honest limitations comparison</a>, and they represent something closer to 5 to 10 percent of daily enterprise workloads rather than the 80 percent that forum debates would have you believe.</p>
 
@@ -241,7 +241,7 @@
 
 <p>vLLM uses continuous batching and PagedAttention for dynamic memory allocation, which means that at the same 50-user concurrency, time-to-first-response holds at around 145 milliseconds. On NVIDIA hardware running a 70B model in FP8 quantization, vLLM delivers 8,033 tokens per second compared to Ollama's 484, a 16.6x throughput advantage that isn't a benchmark artifact but a direct consequence of architectural decisions about how memory and compute are scheduled.</p>
 
-<p><a href="../index.html">Island Mountain</a> ships both. Ollama handles model management and quick single-user access for the IT admin who needs to test something at midnight. vLLM runs the production inference engine for multi-user serving. <a href="openwebui-admin-setup-guide.html">Open WebUI</a> sits on top as the multi-user interface with role-based access controls, conversation logging, and admin permissions. The entire stack ships pre-configured and ready to serve users on day one.</p>
+<p><a href="../index.html">Island Mountain</a> ships both. Ollama handles model management and quick single-user access for the IT admin who needs to test something at midnight. vLLM runs the production inference engine for multi-user serving. <a href="openwebui-admin-setup-guide.html">Open WebUI</a> sits on top as the multi-user interface with role-based access controls, conversation logging, and admin permissions. The whole stack is configured and air-gapped before it lands, and serving users the day it does.</p>
 
 <h2>The Five-Year Math: Cloud AI vs. On-Premises Hardware</h2>
 
@@ -252,7 +252,7 @@
 <tr>
 <th>Cost Category</th>
 <th>Cloud AI ($50K/mo)</th>
-<th>Summit Base</th>
+<th>On-Premises Build</th>
 </tr>
 </thead>
 <tbody>
@@ -290,9 +290,9 @@
 </table>
 
 
-<p>The cloud column assumes a conservative 10 percent annual price escalation and flat usage, both assumptions that favor the cloud because real-world usage grows as teams discover what AI can do for them. The on-premises column includes the <a href="../products.html">Summit Base</a> at the top of the price range, first-year warranty and setup support, and ongoing electricity at roughly $200 a month for a system drawing 1.5 to 2.5 kilowatts. After the hardware purchase, your ongoing costs are electricity and periodic maintenance. There are no token fees, no API rate limits, no per-seat charges, and no overage invoices that land on your CFO's desk because someone's team had a productive quarter.</p>
+<p>The cloud column assumes a conservative 10 percent annual price escalation and flat usage, both assumptions that favor the cloud because real-world usage grows as teams discover what AI can do for them. The on-premises column includes a two-card build at the top of the price range, first-year warranty and setup support, and ongoing electricity at roughly $200 a month for a system drawing 1.5 to 2.5 kilowatts. After the hardware purchase, your ongoing costs are electricity and periodic maintenance. There are no token fees, no API rate limits, no per-seat charges, and no overage invoices that land on your CFO's desk because someone's team had a productive quarter.</p>
 
-<p>The break-even point is less than two months. At $50K a month in cloud spend, the <a href="../on-premises-ai-cost-comparison.html">Summit Base pays for itself</a> before the first quarterly review. If your concurrency needs demand more headroom, the Summit Ridge is build-to-order with custom GPU, CPU, and RAM configurations matched to your workload, and even at the top of that tier, break-even still falls under four months against a $50K monthly cloud bill.</p>
+<p>The break-even point is less than two months. At $50K a month in cloud spend, the <a href="../on-premises-ai-cost-comparison.html">build pays for itself</a> before the first quarterly review. If your concurrency needs demand more headroom, the build scales with custom GPU, CPU, and RAM matched to your workload, and even at the top of that range, break-even still falls under four months against a $50K monthly cloud bill.</p>
 
 <p>For organizations that want to understand <a href="cloud-ai-vs-local-hardware-tco.html">how the full five-year TCO comparison works</a> including <a href="../resources.html">compliance overhead</a>, equipment financing, and Section 179 deductions, we've written the full breakdown separately.</p>
 
@@ -302,7 +302,7 @@
 
 <p>Consumer GPUs don't carry ECC memory, which means a single bit flip during a long inference run corrupts the output silently, and in a coding or <a href="../law-firms.html">legal analysis</a> context, silent corruption is worse than a crash because nobody knows it happened until the brief is filed or the code ships. Consumer cards aren't designed for 24/7 sustained operation under thermal load; server-class GPUs ship with higher thermal tolerances, better voltage regulator components, and longer duty cycle ratings because they're expected to run around the clock for years. And enterprise GPU provenance matters for compliance, because when an auditor from a <a href="../medical-practices.html">HIPAA-covered entity</a> or a <a href="../defense-contractors.html">defense subcontractor under CMMC review</a> asks about your AI infrastructure, "I built it from gaming cards off Amazon" is not the answer that satisfies the audit.</p>
 
-<p>The <a href="../products.html">Summit Series</a> uses NVIDIA RTX PRO 6000 Blackwell 96GB GPUs with full procurement documentation and RMA chains maintained from purchase through deployment. That documentation exists because the organizations buying these systems have compliance obligations that require it.</p>
+<p>Builds like this one use professional-grade GPUs with full procurement documentation and RMA chains maintained from purchase through deployment. That documentation exists because the organizations buying these systems have compliance obligations that require it.</p>
 
 <h2>What You Don't Get</h2>
 
@@ -319,7 +319,7 @@
 
 <h2>The Decision</h2>
 
-<p>The company in that forum thread asked for people who'd done the math. Here it is. $3.6 million in cloud fees over five years, or one Summit Base purchase, once. The hardware runs open-weight models that are closing the quality gap with frontier cloud services every quarter, your data never leaves your building, your compliance posture improves the day the system goes live, and when someone on your team uses it at 2 AM on a Saturday, you don't get an overage bill on Monday.</p>
+<p>The company in that forum thread asked for people who'd done the math. Here it is. $3.6 million in cloud fees over five years, or one on-premise build, once. The hardware runs open-weight models that are closing the quality gap with frontier cloud services every quarter, your data never leaves your building, your compliance posture improves the day the system goes live, and when someone on your team uses it at 2 AM on a Saturday, you don't get an overage bill on Monday.</p>
 
 <p>If you're spending more than $10,000 a month on cloud AI and you have an IT person who can manage a server, the financial case for local hardware is already made. At $50,000 a month, it's not even a conversation. It's arithmetic.</p>
 
@@ -333,7 +333,7 @@
       <!-- CTA -->
       <div class="article-cta">
         <h3>Ready to Stop Paying Per Token?</h3>
-        <p>One conversation. No sales pitch. Just straight talk about what local AI hardware can do for your organization and your budget.</p>
+        <p>One conversation. No sales pitch. Just straight talk about what an on-site deployment would look like in your organization, and what it would cost you.</p>
         <a href="../contact.html" class="btn btn-primary">Start a Conversation</a>
         <p class="bio-note-sm"><i class="ri-phone-line icon-copper-mr-sm"></i>Or call directly: <a href="tel:+13414418740" class="copper-semibold">1-341-441-8740</a></p>
       </div>
