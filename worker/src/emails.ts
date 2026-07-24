@@ -11,7 +11,7 @@ const FIELD_LABELS: [keyof LeadFields, string][] = [
   ['industry', 'Industry'],
   ['use_case', 'Use case'],
   ['concurrent_users', 'Concurrent users'],
-  ['system_interest', 'Tier interest'],
+  ['system_interest', 'Interest'],
   ['compliance', 'Compliance'],
   ['timeline', 'Timeline'],
   ['budget', 'Budget'],
@@ -72,10 +72,10 @@ export function docsEmail(fields: LeadFields): { subject: string; html: string }
   const html = `
     <div style="font-family:system-ui,Arial,sans-serif;max-width:600px;color:#0f172a">
       <p>Hi ${esc(fields.name || 'there')},</p>
-      <p>Thanks for your interest in Island Mountain's on-premises AI servers. As requested,
+      <p>Thanks for your interest in Island Mountain's forward-deployed AI work. As requested,
       here are the resources to explore at your own pace — no pressure, no spam:</p>
       <ul style="line-height:1.8">
-        <li><a href="https://islandmountain.io/products.html">Summit server lineup</a></li>
+        <li><a href="https://islandmountain.io/forward-deployed-ai-engineering.html">How a deployment runs</a></li>
         <li><a href="https://islandmountain.io/sovereign-cost-worksheet.html">Cost worksheet — your 5-year cloud number</a></li>
         <li><a href="https://islandmountain.io/resources.html">Compliance &amp; regulatory briefs</a></li>
         <li><a href="https://islandmountain.io/faq.html">Frequently asked questions</a></li>
@@ -229,19 +229,19 @@ export function slotEmail(name: string, calLink?: string): { subject: string; ht
   const html = `
     <div style="font-family:system-ui,Arial,sans-serif;max-width:600px;color:#0f172a">
       <p>Hi ${esc(name)},</p>
-      <p>Your claim is in, and your place in the build queue is held. I build every Summit
+      <p>Your claim is in, and your place in the queue is held. I run every deployment
       myself, one at a time — a slot is how I keep that honest.</p>
       <p><strong>What it costs you: nothing. What it commits you to: nothing.</strong></p>
       <p>Here is what happens next:</p>
       <ul style="line-height:1.8">
-        <li>I will reach out within one business day to scope your build — workload, headcount, compliance posture.</li>
+        <li>I will reach out within one business day to scope the work — the workflow that hurts, who owns it, headcount, compliance posture.</li>
         <li>You get a written quote scoped to it, and that quote is <strong>locked for 90 days</strong> — GPU market be damned.</li>
         <li>If the timing is not right, say so and I release the slot. No questions, no follow-up spam.</li>
       </ul>
       ${scheduleLine}
       <p>Direct line: <strong>1-341-441-8740</strong> — you are talking to the person who
-      builds the hardware.</p>
-      <p style="color:#64748b;font-size:13px">— Basho Parks, Island Mountain · hand-built in California</p>
+      runs the deployment.</p>
+      <p style="color:#64748b;font-size:13px">— Basho Parks, Island Mountain · built in California</p>
     </div>`
   return { subject, html }
 }
