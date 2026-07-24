@@ -33,12 +33,18 @@
   @font-face{font-family:'Inter';font-style:normal;font-weight:400 800;font-display:swap;src:url('fonts/inter-latin.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
   @font-face{font-family:'Space Grotesk';font-style:normal;font-weight:300 700;font-display:swap;src:url('fonts/space-grotesk-latin.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
   .au-card .au-ic img{ filter: brightness(0) invert(1) drop-shadow(0 0 5px rgba(200,220,255,.55)); }
-  /* Page-local: the people cards read as quotes, not feature tiles. */
-  .fd-people{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
-  .fd-person{ border:1px solid rgba(148,163,184,.22); border-left:3px solid var(--copper,#c77b52); border-radius:0 14px 14px 0; padding:26px 24px; background:linear-gradient(135deg,rgba(199,123,82,.07),rgba(11,17,28,.5)); }
-  .fd-person h3{ font-size:1.08rem; margin:0 0 10px; color:#f1f5f9; }
-  .fd-person p{ margin:0; color:#cbd5e1; line-height:1.7; font-size:.97rem; }
-  @media (max-width:900px){ .fd-people{ grid-template-columns:1fr; gap:14px; } }
+  /* Page-local: the roll call. A litany of roles, not a fixed set of archetypes,
+     so it can grow without turning into another card grid. Two columns of
+     hanging-indent lines on desktop, one on phones. */
+  .fd-roll{ list-style:none; margin:26px auto 0; padding:0; max-width:1020px;
+    columns:2; column-gap:44px; }
+  .fd-roll li{ break-inside:avoid; padding:11px 0 11px 20px; position:relative;
+    color:#cbd5e1; line-height:1.65; font-size:.98rem;
+    border-bottom:1px solid rgba(148,163,184,.14); }
+  .fd-roll li::before{ content:""; position:absolute; left:0; top:1.15em;
+    width:9px; height:1px; background:var(--copper,#c77b52); }
+  .fd-roll b{ color:#f1f5f9; font-weight:650; }
+  @media (max-width:820px){ .fd-roll{ columns:1; } }
   /* Pull-quote band for the thesis. */
   .fd-thesis{ max-width:900px; margin:0 auto; text-align:center; }
   .fd-thesis .au-h2{ margin-bottom:18px; }
@@ -134,21 +140,26 @@
     <div class="container">
       <span class="au-eyebrow-c au-reveal">Who we sit with</span>
       <h2 class="au-h2 au-reveal">The expertise is already in the building.</h2>
-      <div class="fd-people au-stagger au-reveal">
-        <div class="fd-person" style="--i:0">
-          <h3>The senior paralegal</h3>
-          <p>Knows which intake questions matter, and which ones are on the form because they've always been on the form.</p>
-        </div>
-        <div class="fd-person" style="--i:1">
-          <h3>The records clerk in fiscal</h3>
-          <p>Can tell you which form gets filled out wrong every single time, and what it costs downstream when it does.</p>
-        </div>
-        <div class="fd-person" style="--i:2">
-          <h3>The compliance officer</h3>
-          <p>Knows where the real organizational risk lives, which is rarely where the risk register says it lives.</p>
-        </div>
-      </div>
-      <p class="au-lede au-reveal" style="color:#cbd5e1;max-width:860px;margin:34px auto 0;text-align:center;">The most essential window in a deployment opens while you're sitting next to one of them. That's the part you can't outsource, can't shortcut, and can't buy in a box.</p>
+      <p class="au-lede au-reveal" style="color:#cbd5e1;max-width:880px;margin:0 auto 6px;text-align:center;">Every industry has them, and every job classification has its own version: the person who has run this particular work for fifteen or twenty years and carries the whole thing in their head. Some of who we've sat with, and who we expect to:</p>
+      <ul class="fd-roll au-reveal">
+        <li><b>The senior paralegal</b> who knows which intake questions matter and which are on the form because they've always been on the form</li>
+        <li><b>The records clerk in fiscal</b> who can tell you which form gets filled out wrong every single time</li>
+        <li><b>The compliance officer</b> who knows where the risk actually lives, which is rarely where the risk register says</li>
+        <li><b>The charge nurse</b> who runs the floor at three in the morning</li>
+        <li><b>The export control officer</b> who has read every license on the wall</li>
+        <li><b>The docketing clerk</b> who has never once missed a deadline and can tell you why</li>
+        <li><b>The surveillance shift lead</b> who spots the pattern well before the system flags it</li>
+        <li><b>The enrollment officer</b> who knows the families and the history behind every file</li>
+        <li><b>The control room operator</b> who hears the fault before the alarm board admits it</li>
+        <li><b>The BSA analyst</b> who can tell structuring from a bad week</li>
+        <li><b>The registrar</b> who knows which exception is legitimate and which is someone's favor</li>
+        <li><b>The claims adjuster</b> who can separate fraud from plain bad luck on the first read</li>
+        <li><b>The lab manager</b> who keeps chain of custody honest when nobody is checking</li>
+        <li><b>The underwriter</b> who prices the things a model will never see</li>
+        <li><b>The dispatcher</b> who knows which call is actually the emergency</li>
+        <li><b>The shop foreman</b> who knows which spec gets waived and who has to sign for it</li>
+      </ul>
+      <p class="au-lede au-reveal" style="color:#cbd5e1;max-width:880px;margin:30px auto 0;text-align:center;">The list doesn't end, and it isn't ours to write. Yours are already on payroll, and the most essential window in a deployment opens while we're sitting next to one of them. That's the part you can't outsource, can't shortcut, and can't buy in a box.</p>
     </div>
   </section>
 
