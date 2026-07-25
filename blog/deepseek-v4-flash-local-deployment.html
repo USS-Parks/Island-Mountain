@@ -233,9 +233,9 @@
 
 <h2>The Four-Card Question</h2>
 
-<p>Step up to four RTX PRO 6000 Blackwell GPUs and you have 384GB of total VRAM. That headroom is what lets you run V4-Flash at full FP16 precision: the model's roughly 282GB of weights fit on Pinnacle with room left for the KV cache, where two cards run the same model at FP8. Larger models open up at that capacity too. The four-card configuration also quadruples aggregate memory bandwidth, which shows up directly in sustained throughput and in concurrent-user capacity.</p>
+<p>Step up to four RTX PRO 6000 Blackwell GPUs and you have 384GB of total VRAM. That headroom is what lets you run V4-Flash at full FP16 precision: the model's roughly 282GB of weights fit on four cards with room left for the KV cache, where two cards run the same model at FP8. Larger models open up at that capacity too. The four-card configuration also quadruples aggregate memory bandwidth, which shows up directly in sustained throughput and in concurrent-user capacity.</p>
 
-<p>Early testing puts V4-Flash at 90 to 140 tokens per second for single-user workloads on the Pinnacle tier. The additional VRAM also means you never trade precision for fit: you run the full FP16 weights rather than any quantized build.</p>
+<p>Early testing puts V4-Flash at 90 to 140 tokens per second for single-user workloads on that four-card footing. The additional VRAM also means you never trade precision for fit: you run the full FP16 weights rather than any quantized build.</p>
 
 <p>Honest <a href="../faq.html">question to ask yourself before upgrading</a>: does V4-Flash at FP8 on two cards already meet your requirements? If yes, you don't need 384GB. If you're running multi-user loads or need full-precision FP16 inference, you do. Know your actual load before you spend the money.</p>
 
