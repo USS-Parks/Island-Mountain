@@ -40,6 +40,19 @@
   <link rel="preload" href="fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
   <style>
+  /* The storefront is lit where the old mountain shot was dark, so the shared
+     hero veil (style.css .hero-photo::after, tuned for that dark photo) left the
+     headline sitting on the sign. Deepen it for this page only. */
+  .hero-photo::after{
+    background:linear-gradient(180deg,
+      rgba(15,23,42,.66) 0%,
+      rgba(15,23,42,.58) 30%,
+      rgba(15,23,42,.58) 50%,
+      rgba(15,23,42,.72) 75%,
+      rgba(15,23,42,.95) 100%);
+  }
+  </style>
+  <style>
   @font-face {
     font-family: 'Inter';
     font-style: normal;
@@ -149,7 +162,7 @@
 
   <!-- Hero background photo -->
   <div class="hero-photo">
-    <img srcset="images/hero-mountain-mobile.webp 800w, images/hero-mountain.webp 1913w" sizes="100vw" src="images/hero-mountain.webp" alt="Island Mountain rising from the ocean at sunset" fetchpriority="high" decoding="async" width="1913" height="892">
+    <img srcset="images/hero-storefront-mobile.webp 800w, images/hero-storefront.webp 1530w" sizes="100vw" src="images/hero-storefront.webp" alt="The Island Mountain AI storefront, lit from inside behind full-height glass" fetchpriority="high" decoding="async" width="1530" height="1012">
   </div>
 
   <nav class="navbar">
