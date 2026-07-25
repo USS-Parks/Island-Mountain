@@ -38,12 +38,15 @@ report() {  # report <label> <file:line:text>
 # The credo blocks name the retired products in order to forbid them, and two skills
 # carry a literal grep command as their own regression gate. Both are the fix, not
 # the defect. Anything else naming a retired product is describing it.
+# Match the intent, not one phrasing. The first cut keyed on the exact credo wording
+# and then warned on _work/skills/README.md, which forbids the same names in slightly
+# different words ("Never resurrect" rather than "Do not resurrect"). A gate that only
+# recognises one sentence is a gate that cries wolf the moment someone rewords the rule.
 is_exempt() {
   case "$1" in
-    *"retired ones were"*)              return 0 ;;
-    *"Do not resurrect"*)               return 0 ;;
-    *"Summit, Base, Ridge, Pinnacle, Landfall, and Citadel"*) return 0 ;;
-    *"grep -"*)                         return 0 ;;  # a regression-gate command line
+    *resurrect*)   return 0 ;;  # "Do not resurrect" / "Never resurrect them"
+    *retired*)     return 0 ;;  # "The retired ones were ..."
+    *"grep -"*)    return 0 ;;  # a regression-gate command line
   esac
   return 1
 }
