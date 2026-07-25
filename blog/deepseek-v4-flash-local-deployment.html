@@ -233,7 +233,7 @@
 
 <p>Running V4-Flash at FP16 rather than FP8 is a memory question with a clean answer: about 282GB of weights, so 384GB of VRAM covers it with room for the KV cache. Aggregate bandwidth scales with the memory you add, too, which shows up in sustained throughput and in how many people can be talking to the thing at once. Early testing puts single-user generation at 90 to 140 tokens per second at that capacity, and you're never trading precision for fit.</p>
 
-<p>Whether any of that's worth buying isn't a question I can answer from here. The tidy decision tree people publish for this ("if X then buy Y") is mostly a sales instrument wearing a lab coat. What decides it is your concurrency, your document lengths, and <a href="../faq.html">which department's workflow turns out to be the real load</a>, and I don't know any of those until I've sat next to your people and watched them work. Neither do you, entirely. That's not an insult, it's just how organizations work.</p>
+<p>Whether any of that's worth buying isn't a question I can answer from here. The tidy decision tree people publish for this ("if X then buy Y") is mostly a sales instrument wearing a lab coat. What decides it is your concurrency, your document lengths, and <a href="../faq.html">which department's workflow turns out to be the real load</a>, and I don't know any of those until I've sat next to your people and watched them work. Neither do you, entirely. That's just how organizations work, and no insult is intended.</p>
 
 <h2>The Sovereignty Argument</h2>
 
@@ -243,7 +243,7 @@
 
 <p>Cloud API providers can't offer that guarantee, and to be fair to them they've never claimed to. OpenAI, Anthropic, DeepSeek's own cloud product, all of them reserve some right to use submitted queries for model improvement in their terms. Many explicitly retain data. Even a contractual opt-out doesn't change the fact that your data transited their infrastructure, and for a regulated organization that transit is the liability, not the retention.</p>
 
-<p>So local deployment isn't just a speed conversation or a cost conversation. It's <a href="../lamprey-woven-security-governance.html">a control conversation</a>. If your threat model includes data exfiltration, inference interception, or a data-residency rule with teeth, local's the only option. V4-Flash is what makes it the only option that also performs.</p>
+<p>So local deployment is <a href="../lamprey-woven-security-governance.html">a control conversation</a>, not just a speed or cost one. If your threat model includes data exfiltration, inference interception, or a data-residency rule with teeth, local's the only option. V4-Flash is what makes it the only option that also performs.</p>
 
 <p>A medical practice running clinical documentation through DeepSeek's cloud API is sending patient data to servers it doesn't control. Running the same model locally means the patient data never leaves the building. The model file sits on an NVMe drive in your rack. Inference happens on your GPUs. The response comes back over your own network. DeepSeek the organization is involved in exactly zero steps, which is the entire point.</p>
 
