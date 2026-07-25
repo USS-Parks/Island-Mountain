@@ -211,9 +211,15 @@ html:not(.js) #aurora-intro{ display:none; }
 .au-hero .container{ text-align:center; }
 .au-h1, .au-hrule, .au-sub{ margin-left:auto; margin-right:auto; }
 .au-badges, .au-ctas{ justify-content:center; }
-.au-section > .container > .au-eyebrow-c{ display:block; text-align:center; }
-.au-section > .container > .au-h2{ text-align:center; }
-.au-section > .container > .au-lede{ text-align:center; margin-left:auto; margin-right:auto; }
+/* Not just direct children: some headings sit one wrapper deeper, which left
+   them ragged against their centred neighbours. */
+.au-section .au-eyebrow-c{ display:block; text-align:center; }
+.au-section .au-h2{ text-align:center; }
+/* Body copy reads left, block still centred under the heading. Headings,
+   eyebrows and icons stay centred. Matches the rule in style.css. */
+.au-section > .container > .au-lede{ text-align:left; margin-left:auto; margin-right:auto; }
+.au-spot-copy p, .au-spot-copy .au-lede,
+.au-statement p, .au-statement .au-lede{ text-align:left; margin-left:auto; margin-right:auto; }
 
 /* Scroll reveal: sections rise and fade in; JS failsafe forces visible */
 .js .au-reveal{ opacity:0; }

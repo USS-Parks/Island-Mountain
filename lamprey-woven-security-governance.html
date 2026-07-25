@@ -35,8 +35,8 @@
   <link rel="icon" type="image/x-icon" href="favicon.ico?v=2">
   <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png?v=2">
   <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png?v=2">
-  <link rel="stylesheet" href="css/style.min.css?v=4">
-  <link rel="stylesheet" href="css/aurora.min.css?v=9">
+  <link rel="stylesheet" href="css/style.min.css?v=6">
+  <link rel="stylesheet" href="css/aurora.min.css?v=10">
   <link rel="stylesheet" href="css/card-nodes.min.css?v=3">
   <link rel="stylesheet" href="css/blog-scroller.min.css?v=3">
   <link rel="stylesheet" href="icons/remixicon.css" media="print" onload="this.media='all'">
@@ -141,7 +141,7 @@
 
   /* Cards: illustration icons + copy, node-comet borders, opaque backing. */
   .lamprey-aurora .au-card{ text-align:center; background:rgba(12,19,33,.86); }
-  /* Icon-card sizes come from the canonical .au-ic / .au-ic--xl (104px) in css/aurora.min.css?v=9 - no inline override. */
+  /* Icon-card sizes come from the canonical .au-ic / .au-ic--xl (104px) in css/aurora.min.css?v=10 - no inline override. */
   /* Uniform icon rendering: the swapped-in art varies in intrinsic brightness (crisp white webp vs
      faint png), so normalize every card icon to the same white and give them one identical glow. */
   .lamprey-aurora .au-card .au-ic img{ filter: brightness(0) invert(1) drop-shadow(0 0 5px rgba(200,220,255,.55)); }
@@ -243,6 +243,7 @@
         <li><a href="lamprey-woven-security-governance.html" class="active">Security Fabric</a></li>
         <li><a href="faq.html">FAQ</a></li>
         <li><a href="resources.html">Resources</a></li>
+        <li><a href="blog.html">Blog</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="contact.html" class="nav-cta">Start a Scoping Call</a></li>
       </ul>
@@ -260,6 +261,7 @@
     <a href="lamprey-woven-security-governance.html">Security Fabric</a>
             <a href="faq.html">FAQ</a>
     <a href="resources.html">Resources</a>
+    <a href="blog.html">Blog</a>
     <a href="about.html">About</a>
     <a href="contact.html" class="nav-cta">Start a Scoping Call</a>
   </div>
@@ -495,7 +497,30 @@
       </div>
       <div class="blog-rail" role="region" aria-label="Blog posts, newest first" tabindex="0">
 
-        <article class="blog-rail-card">
+        <article class="blog-rail-card beam-card">
+          <div class="blog-rail-meta">
+            <span class="blog-rail-date">July 26, 2026</span>
+            <span class="blog-rail-tag tag-technical">Technical</span>
+            <span class="blog-rail-tag tag-strategy">Strategy</span>
+          </div>
+          <h3><a href="blog/zimreaper-session-authority-ai-agent-credentials.html">ZimReaper Ran With a Human&#39;s Session. So Does Your AI Agent.</a></h3>
+          <p class="blog-rail-excerpt">TA488&#39;s payload never needed privileges of its own. It inherited an authenticated Zimbra session, made only legitimate API calls, and minted itself an app-specific password that survives a password reset. A process with human session authority that provisions its own durable credential is the default shape of an AI agent.</p>
+          <a href="blog/zimreaper-session-authority-ai-agent-credentials.html" class="blog-rail-read">Read &rarr;</a>
+        </article>
+
+        <article class="blog-rail-card beam-card">
+          <div class="blog-rail-meta">
+            <span class="blog-rail-date">July 25, 2026</span>
+            <span class="blog-rail-tag tag-technical">Technical</span>
+            <span class="blog-rail-tag tag-strategy">Strategy</span>
+          </div>
+          <h3><a href="blog/bonsai-27b-phone-local-ai.html">Bonsai 27B Runs on a Phone. The Sovereignty Math Just Moved Again.</a></h3>
+          <p class="blog-rail-excerpt">PrismML rounded a 27B multimodal model down to 1.125 bits per weight: 3.9 GB, phone-resident, 90 percent of its benchmark average intact, Apache 2.0. The floor under private multimodal AI just dropped again, and the category table says the deepest cuts land exactly where agentic work lives.</p>
+          <a href="blog/bonsai-27b-phone-local-ai.html" class="blog-rail-read">Read &rarr;</a>
+        </article>
+
+
+        <article class="blog-rail-card beam-card">
           <div class="blog-rail-meta">
             <span class="blog-rail-date">July 16, 2026</span>
             <span class="blog-rail-tag tag-strategy">Strategy</span>
@@ -506,7 +531,7 @@
           <a href="blog/education-is-the-deployment.html" class="blog-rail-read">Read &rarr;</a>
         </article>
 
-        <article class="blog-rail-card">
+        <article class="blog-rail-card beam-card">
           <div class="blog-rail-meta">
             <span class="blog-rail-date">July 11, 2026</span>
             <span class="blog-rail-tag tag-technical">Technical</span>
@@ -517,7 +542,7 @@
           <a href="blog/agentic-infrastructure-control-plane.html" class="blog-rail-read">Read &rarr;</a>
         </article>
 
-        <article class="blog-rail-card">
+        <article class="blog-rail-card beam-card">
           <div class="blog-rail-meta">
             <span class="blog-rail-date">July 11, 2026</span>
             <span class="blog-rail-tag tag-strategy">Strategy</span>
@@ -528,7 +553,7 @@
           <a href="blog/american-open-source-llm-sovereign-ai.html" class="blog-rail-read">Read &rarr;</a>
         </article>
 
-        <article class="blog-rail-card">
+        <article class="blog-rail-card beam-card">
           <div class="blog-rail-meta">
             <span class="blog-rail-date">July 10, 2026</span>
             <span class="blog-rail-tag tag-technical">Technical</span>
@@ -539,7 +564,7 @@
           <a href="blog/dgx-spark-vs-rtx-pro-6000-strix-halo.html" class="blog-rail-read">Read &rarr;</a>
         </article>
 
-        <article class="blog-rail-card">
+        <article class="blog-rail-card beam-card">
           <div class="blog-rail-meta">
             <span class="blog-rail-date">July 10, 2026</span>
             <span class="blog-rail-tag tag-financial">Financial</span>
@@ -550,7 +575,7 @@
           <a href="blog/self-hosted-ai-inference-165k-rewrite.html" class="blog-rail-read">Read &rarr;</a>
         </article>
 
-        <article class="blog-rail-card">
+        <article class="blog-rail-card beam-card">
           <div class="blog-rail-meta">
             <span class="blog-rail-date">July 7, 2026</span>
             <span class="blog-rail-tag tag-technical">Technical</span>
@@ -561,7 +586,7 @@
           <a href="blog/llm-harnesses-saddles-paddocks.html" class="blog-rail-read">Read &rarr;</a>
         </article>
 
-        <article class="blog-rail-card">
+        <article class="blog-rail-card beam-card">
           <div class="blog-rail-meta">
             <span class="blog-rail-date">July 2, 2026</span>
             <span class="blog-rail-tag tag-technical">Technical</span>
@@ -571,7 +596,7 @@
           <a href="blog/agentic-orchestration-security-map.html" class="blog-rail-read">Read &rarr;</a>
         </article>
 
-        <article class="blog-rail-card">
+        <article class="blog-rail-card beam-card">
           <div class="blog-rail-meta">
             <span class="blog-rail-date">June 30, 2026</span>
             <span class="blog-rail-tag tag-technical">Security</span>
@@ -582,7 +607,7 @@
           <a href="blog/agentjacking-fake-bug-report.html" class="blog-rail-read">Read &rarr;</a>
         </article>
 
-        <article class="blog-rail-card">
+        <article class="blog-rail-card beam-card">
           <div class="blog-rail-meta">
             <span class="blog-rail-date">June 21, 2026</span>
             <span class="blog-rail-tag tag-technical">Technical</span>
@@ -592,7 +617,7 @@
           <a href="blog/ai-search-visibility-consultant.html" class="blog-rail-read">Read &rarr;</a>
         </article>
 
-        <article class="blog-rail-card">
+        <article class="blog-rail-card beam-card">
           <div class="blog-rail-meta">
             <span class="blog-rail-date">June 14, 2026</span>
             <span class="blog-rail-tag tag-technical">Technical</span>
@@ -602,7 +627,7 @@
           <a href="blog/on-device-llm-sovereign-edge.html" class="blog-rail-read">Read &rarr;</a>
         </article>
 
-        <article class="blog-rail-card">
+        <article class="blog-rail-card beam-card">
           <div class="blog-rail-meta">
             <span class="blog-rail-date">June 5, 2026</span>
             <span class="blog-rail-tag tag-compliance">Compliance</span>
@@ -613,7 +638,7 @@
           <a href="blog/eu-cada-ai-sovereignty-us-regulated-industries.html" class="blog-rail-read">Read &rarr;</a>
         </article>
 
-        <article class="blog-rail-card">
+        <article class="blog-rail-card beam-card">
           <div class="blog-rail-meta">
             <span class="blog-rail-date">May 29, 2026</span>
             <span class="blog-rail-tag tag-industry">Industry</span>
@@ -624,7 +649,7 @@
           <a href="blog/tribal-sovereignty-data-centers-landlord-or-owner.html" class="blog-rail-read">Read &rarr;</a>
         </article>
 
-        <article class="blog-rail-card">
+        <article class="blog-rail-card beam-card">
           <div class="blog-rail-meta">
             <span class="blog-rail-date">May 29, 2026</span>
             <span class="blog-rail-tag tag-financial">Financial</span>
@@ -635,7 +660,7 @@
           <a href="blog/50k-month-cloud-ai-local-llm-replacement.html" class="blog-rail-read">Read &rarr;</a>
         </article>
 
-        <article class="blog-rail-card">
+        <article class="blog-rail-card beam-card">
           <div class="blog-rail-meta">
             <span class="blog-rail-date">May 14, 2026</span>
             <span class="blog-rail-tag tag-industry">Industry</span>
@@ -645,7 +670,7 @@
           <a href="blog/grid-screaming-aquifers-on-premises-llm.html" class="blog-rail-read">Read &rarr;</a>
         </article>
 
-        <article class="blog-rail-card">
+        <article class="blog-rail-card beam-card">
           <div class="blog-rail-meta">
             <span class="blog-rail-date">May 10, 2026</span>
             <span class="blog-rail-tag tag-technical">Technical</span>
@@ -655,7 +680,7 @@
           <a href="blog/local-llm-vs-cloud-ai-hardware-gap.html" class="blog-rail-read">Read &rarr;</a>
         </article>
 
-        <article class="blog-rail-card">
+        <article class="blog-rail-card beam-card">
           <div class="blog-rail-meta">
             <span class="blog-rail-date">May 10, 2026</span>
             <span class="blog-rail-tag tag-industry">Industry</span>
@@ -665,7 +690,7 @@
           <a href="blog/second-revolution-local-ai.html" class="blog-rail-read">Read &rarr;</a>
         </article>
 
-        <a class="blog-rail-card blog-rail-more" href="blog.html" aria-label="View all blog posts">
+        <a class="blog-rail-card blog-rail-more beam-card" href="blog.html" aria-label="View all blog posts">
           <span class="blog-rail-more-inner">View all posts <span class="arw" aria-hidden="true">&rarr;</span></span>
         </a>
 
