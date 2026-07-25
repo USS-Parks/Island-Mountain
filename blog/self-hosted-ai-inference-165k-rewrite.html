@@ -30,7 +30,7 @@
   <meta name="author" content="Basho Parks">
   <meta name="date" content="2026-07-10">
   <title>Self-Hosted AI Inference and the $165,000 Rewrite</title>
-  <meta name="description" content="The Bun rewrite burned $165,000 in tokens at API pricing. Anthropic never paid it. What frontier lab economics admit about self-hosted AI inference.">
+  <meta name="description" content="The Bun rewrite burned $165,000 in tokens at API pricing. Anthropic never paid it, because Anthropic owns the meter. What that admits about self-hosted AI inference at your scale.">
   <link rel="icon" type="image/x-icon" href="../favicon.ico?v=2">
   <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon-32.png?v=2">
   <link rel="apple-touch-icon" sizes="180x180" href="../images/apple-touch-icon.png?v=2">
@@ -61,7 +61,7 @@
 
   <!-- Open Graph -->
   <meta property="og:title" content="Self-Hosted AI Inference and the $165,000 Rewrite">
-  <meta property="og:description" content="The Bun rewrite burned $165,000 in tokens at API pricing. Anthropic never paid it. What frontier lab economics admit about self-hosted AI inference.">
+  <meta property="og:description" content="The Bun rewrite burned $165,000 in tokens at API pricing. Anthropic never paid it, because Anthropic owns the meter. What that admits about self-hosted AI inference at your scale.">
   <meta property="og:url" content="https://islandmountain.io/blog/self-hosted-ai-inference-165k-rewrite.html">
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="Island Mountain">
@@ -70,7 +70,7 @@
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Self-Hosted AI Inference and the $165,000 Rewrite">
-  <meta name="twitter:description" content="The Bun rewrite burned $165,000 in tokens at API pricing. Anthropic never paid it. What frontier lab economics admit about self-hosted AI inference.">
+  <meta name="twitter:description" content="The Bun rewrite burned $165,000 in tokens at API pricing. Anthropic never paid it, because Anthropic owns the meter. What that admits about self-hosted AI inference at your scale.">
   <meta name="twitter:image" content="https://islandmountain.io/images/hero-mountain.webp">
 
   <!-- Article Schema -->
@@ -79,14 +79,14 @@
   "@context": "https://schema.org",
   "@type": "BlogPosting",
   "headline": "Self-Hosted AI Inference and the $165,000 Rewrite",
-  "description": "The Bun rewrite burned $165,000 in tokens at API pricing. Anthropic never paid it. What frontier lab economics admit about self-hosted AI inference.",
+  "description": "The Bun rewrite burned $165,000 in tokens at API pricing. Anthropic never paid it, because Anthropic owns the meter. What that admits about self-hosted AI inference at your scale.",
   "url": "https://islandmountain.io/blog/self-hosted-ai-inference-165k-rewrite.html",
   "datePublished": "2026-07-10",
   "dateModified": "2026-07-10",
   "author": {
-    "@type": "Organization",
-    "name": "Island Mountain",
-    "url": "https://islandmountain.io"
+    "@type": "Person",
+    "name": "Basho Parks",
+    "url": "https://islandmountain.io/about.html"
   },
   "publisher": {
     "@type": "Organization",
@@ -204,35 +204,35 @@
 
 <p>On July 8, <a href="https://bun.com/blog/bun-in-rust" target="_blank" rel="noopener">Jarred Sumner published his account</a> of rewriting Bun, the JavaScript runtime behind Claude Code, from Zig to Rust: over a million lines of code, 64 parallel Claude instances running for 11 days, and roughly $165,000 in tokens at API pricing before the merge.</p>
 
-<p>Here's the thing about that number. Anthropic never paid it. They acquired Bun in December 2025, Sumner works there, and the whole job ran on their own infrastructure at their own marginal cost. The $165,000 is what you'd pay. It's fair to wonder whether the project gets greenlit at all if someone had to invoice it at retail.</p>
+<p>Here's the thing about that number. Anthropic never paid it. They acquired Bun in December 2025, Sumner works there, and the whole job ran on their own infrastructure at their own marginal cost. The $165,000 is what you'd pay. It's fair to wonder whether the project gets greenlit at all if somebody'd had to invoice it at retail.</p>
 
 <h2>The People Selling You Tokens Don't Buy Tokens</h2>
 
-<p>Miriah Peterson, a systems engineer who <a href="https://soypetetech.substack.com/p/i-replaced-claude-code-with-minimax" target="_blank" rel="noopener">documented replacing Claude Code with a self-hosted MiniMax model</a> served through OpenCode, read the Bun numbers and called it: if a frontier lab burns an engineer's salary in inference to ship one project, per-token billing isn't a cost structure anyone running real volume can live inside. The math works for Anthropic because Anthropic owns the meter. Her conclusion: "I'd rather copy their engineering practices than just consume their APIs."</p>
+<p>Miriah Peterson, a systems engineer who <a href="https://soypetetech.substack.com/p/i-replaced-claude-code-with-minimax" target="_blank" rel="noopener">documented replacing Claude Code with a self-hosted MiniMax model</a> served through OpenCode, read the Bun numbers and called it: if a frontier lab burns an engineer's salary in inference to ship one project, per-token billing isn't a cost structure anybody running real volume can live inside. The math works for Anthropic because Anthropic owns the meter. Her conclusion: "I'd rather copy their engineering practices than just consume their APIs."</p>
 
-<p>The rewrite itself proves her point better than the price tag does. Sumner didn't ration anything. Sixty-four agents ran in parallel. Every implementer's diff went to two separate reviewers who were told to assume the code was broken and find out why. When something failed, he rewrote the workflow that generated the code instead of hand-patching the output. Most of those 5.9 billion input tokens went to review, retries, and dead ends, and that's not waste, that's the method. It only exists because nobody in the loop was watching a meter.</p>
+<p>The rewrite itself proves her point better than the price tag does. Sumner didn't ration anything. Sixty-four agents ran in parallel. Every implementer's diff went to two separate reviewers who were told to assume the code was broken and go find out why. When something failed he rewrote the workflow that generated the code instead of hand-patching the output. Most of those 5.9 billion input tokens went to review, retries, and dead ends, and that's not waste, that's the method. It only exists because nobody in the loop was watching a meter.</p>
 
-<p>Put that same engineer on a retail API and watch the discipline erode: shorter prompts, thinner context, one reviewer instead of two, first plausible answer wins. The tool doesn't get worse. Your use of it does. You're not paying per token; you're paying per hesitation.</p>
+<p>Put that same engineer on a retail API and watch the discipline erode. Shorter prompts. Thinner context. One reviewer instead of two. First plausible answer wins. The tool doesn't get worse; your use of it does. You're not paying per token, you're paying per hesitation.</p>
 
 <h2>What This Looks Like at Your Scale</h2>
 
-<p>You're not porting a runtime. Doesn't matter. The same economics hit a <a href="../law-firms.html">law firm running document review</a>, a <a href="../tribal-nations.html">tribal government processing grant narratives</a>, a <a href="../medical-practices.html">clinic summarizing patient records</a>. The moment AI use becomes daily and routine, metered pricing taxes iteration, and iteration is where the value lives. <a href="cloud-ai-vs-local-hardware-tco.html">Our TCO analysis</a> runs the crossover math; sustained daily workloads reach the point where owning beats renting sooner than most budget projections assume, and agentic workflows, which multiply token burn by an order of magnitude or more, drag that crossover closer still.</p>
+<p>You're not porting a runtime. Doesn't matter. The same economics land on a <a href="../law-firms.html">law firm running document review</a>, a <a href="../tribal-nations.html">tribal government processing grant narratives</a>, a <a href="../medical-practices.html">clinic summarizing patient records</a>. The moment AI use goes daily and routine, metered pricing taxes iteration, and iteration's where the value lives. <a href="cloud-ai-vs-local-hardware-tco.html">The TCO breakdown</a> runs the crossover math; sustained daily workloads hit the point where owning beats renting sooner than most budget projections assume, and agentic workflows, which multiply token burn by an order of magnitude or more, drag that crossover closer still.</p>
 
-<p>This is what an <a href="../products.html">on-site build</a> is for. Size it to the concurrency you actually run, from a couple of professional cards up to H100 and H200 capacity, serving current open-weight models like DeepSeek R1 and Qwen3. No cloud dependency. No usage fees. Nobody else's meter.</p>
+<p>That's what an <a href="../products.html">on-site build</a> is for. What it ends up being isn't something I'll guess at from here, because scale's a finding and not an opening assumption. I come out, sit with your people, and Discovery tells us both what the work needs. It can run from a modest box up to H100 and H200 capacity, serving current open-weight models like DeepSeek R1 and Qwen3. No cloud dependency. No usage fees. Nobody else's meter.</p>
 
-<h2>The Hardware Is the Easy Part</h2>
+<h2>The Hardware's the Easy Part</h2>
 
-<p>The most useful part of Peterson's writeup isn't about GPUs at all. Her first attempt at distributed inference used the wrong serving framework and went nowhere. The stack that worked took Ray and vLLM for CUDA-native distributed serving, Tailscale for remote access, and an OpenAI-compatible API layer so her tools could actually talk to the thing. Her verdict, from experience rather than theory: the difference between trying a local model and replacing a paid tool is systems design, not model intelligence.</p>
+<p>The most useful part of Peterson's writeup isn't about GPUs at all. Her first attempt at distributed inference used the wrong serving framework and went nowhere. The stack that worked took Ray and vLLM for CUDA-native distributed serving, Tailscale for remote access, and an OpenAI-compatible API layer so her tools could talk to the thing at all. Her verdict, from experience rather than theory: the difference between trying a local model and replacing a paid tool is systems design, not model intelligence.</p>
 
-<p>That gap is where most on-premise AI projects go to die, and it's where <a href="../index.html">Island Mountain</a> does more than ship boxes. We wire the stack, stand up the serving layer, and train your people to run and troubleshoot it, because a server your team can't operate is a very expensive way to heat a closet. And if your hardware came from another vendor, we'll still work with you. We want on-premise AI to succeed in <a href="../solutions.html">regulated industries</a>, full stop. A deployment that dies because the original vendor shipped a pallet and vanished doesn't serve that, whoever sold the pallet.</p>
+<p>That gap's where most on-premise AI projects go to die, and it's why my <a href="../index.html">practice</a> doesn't stop at hardware. I come to you. We deploy and configure the stack together on site, stand the serving layer up on your network, and then I onboard your team on the workflows and the agentic orchestration your work runs on, because a server nobody's been taught to drive is a very expensive way to heat a closet. And if your hardware came from somebody else, I'll still work with you. I want on-premise AI to succeed in <a href="../solutions.html">regulated industries</a>, full stop. A deployment that dies because the original vendor dropped a pallet and vanished doesn't serve that, whoever sold the pallet.</p>
 
 <h2>What You Don't Get</h2>
 
-<p>Owned inference isn't free inference. Power, cooling, and somebody's maintenance hours are real, recurring costs. Open-weight models still trail frontier models on the hardest reasoning tasks, and the Bun rewrite itself ran on a pre-release frontier model you can't self-host. If your workload genuinely needs frontier capability on every query, run hybrid and don't apologize for it. The argument here is narrower and harder to dodge: the labs treat AI as infrastructure they own and operate. You have the same option. They're counting on you not taking it.</p>
+<p>Owned inference isn't free inference. Power, cooling, and somebody's maintenance hours are real, recurring costs. Open-weight models still trail frontier models on the hardest reasoning, and the Bun rewrite itself ran on a pre-release frontier model you can't self-host. If your workload genuinely needs frontier capability on every query, run hybrid and don't apologize for it. The argument here's narrower and harder to dodge: the labs treat AI as infrastructure they own and operate. You've got the same option. They're counting on you not to take it.</p>
 
 <!-- AEO Summary -->
 <div style="border-left:3px solid var(--copper);padding:16px 20px;margin:32px 0;background:rgba(217,119,6,0.05);border-radius:0 8px 8px 0;">
-<strong>Summary:</strong> Frontier labs run inference on infrastructure they own because token billing doesn't survive real volume; the systems work to do the same at your scale is solvable, whether or not the hardware came from us.
+<strong>Summary:</strong> Frontier labs run inference on infrastructure they own, because token billing doesn't survive real volume. The $165,000 on the Bun rewrite is what you'd have been billed, not what Anthropic paid. The systems work to do the same thing at your scale is solvable, and I'll help whether or not the hardware came from me.
 </div>
 
       </article>

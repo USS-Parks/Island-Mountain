@@ -30,7 +30,7 @@
   <meta name="author" content="Basho Parks">
   <meta name="date" content="2026-05-10">
   <title>The Second Revolution of AI: Local Inference Changes Everything</title>
-  <meta name="description" content="The CEO of Hugging Face just ran a 27B model on a laptop in airplane mode. The second revolution of AI is local inference, and it changes the calculus for every regulated industry.">
+  <meta name="description" content="Hugging Face's CEO ran a 27B model on a laptop in airplane mode and called it the second revolution of AI. Why that settles the cloud argument for regulated work.">
   <link rel="icon" type="image/x-icon" href="../favicon.ico?v=2">
   <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon-32.png?v=2">
   <link rel="apple-touch-icon" sizes="180x180" href="../images/apple-touch-icon.png?v=2">
@@ -61,7 +61,7 @@
 
   <!-- Open Graph -->
   <meta property="og:title" content="The Second Revolution of AI: Local Inference Changes Everything">
-  <meta property="og:description" content="The CEO of Hugging Face just ran a 27B model on a laptop in airplane mode. The second revolution of AI is local inference, and it changes the calculus for every regulated industry.">
+  <meta property="og:description" content="Hugging Face's CEO ran a 27B model on a laptop in airplane mode and called it the second revolution of AI. Why that settles the cloud argument for regulated work.">
   <meta property="og:url" content="https://islandmountain.io/blog/second-revolution-local-ai.html">
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="Island Mountain">
@@ -70,7 +70,7 @@
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="The Second Revolution of AI: Local Inference Changes Everything">
-  <meta name="twitter:description" content="The CEO of Hugging Face just ran a 27B model on a laptop in airplane mode. The second revolution of AI is local inference, and it changes the calculus for every regulated industry.">
+  <meta name="twitter:description" content="Hugging Face's CEO ran a 27B model on a laptop in airplane mode and called it the second revolution of AI. Why that settles the cloud argument for regulated work.">
   <meta name="twitter:image" content="https://islandmountain.io/images/hero-mountain.webp">
 
   <!-- Article Schema -->
@@ -79,14 +79,14 @@
   "@context": "https://schema.org",
   "@type": "BlogPosting",
   "headline": "The Second Revolution of AI: Local Inference Changes Everything",
-  "description": "The CEO of Hugging Face called local AI inference 'the second revolution of AI.' For regulated industries paying per-token fees to process sensitive data on someone else's servers, this revolution has been a long time coming.",
+  "description": "Julien Chaumond ran Qwen3.6 27B through Llama.cpp on a laptop in airplane mode and called it the second revolution of AI. Open weights closed the quality gap, and the compliance frameworks were describing a local architecture all along.",
   "url": "https://islandmountain.io/blog/second-revolution-local-ai.html",
   "datePublished": "2026-05-10",
   "dateModified": "2026-05-10",
   "author": {
-    "@type": "Organization",
-    "name": "Island Mountain",
-    "url": "https://islandmountain.io"
+    "@type": "Person",
+    "name": "Basho Parks",
+    "url": "https://islandmountain.io/about.html"
   },
   "publisher": {
     "@type": "Organization",
@@ -194,91 +194,90 @@
           <span class="article-read-time">8 min read</span>
         </div>
         <h1 class="text-2xl">The Second Revolution of AI Is Local. The Industry Just Admitted It.</h1>
-        <p class="article-author">Island Mountain</p>
+        <p class="article-author">Basho Parks</p>
       </div>
 
       <article class="article-body">
+<p>A guy on an airplane just retired the last honest argument for cloud AI.</p>
 
-<p>On April 24, 2026, Julien Chaumond, the CEO of Hugging Face, the largest open-source AI platform on the planet, posted a photo from an airplane seat. His MacBook Pro was running Qwen3.6 27B through Llama.cpp. Full inference. No internet connection. No API key. No cloud endpoint. Airplane mode. He called it "the second revolution of AI" and said most people haven't realized it yet.</p>
+<p>On April 24, 2026, Julien Chaumond, CEO of Hugging Face, the largest open-source AI platform on the planet, posted a photo from an airplane seat. His MacBook Pro was running Qwen3.6 27B through Llama.cpp. Full inference. No internet connection. No API key. No cloud endpoint. Airplane mode. He called it "the second revolution of AI" and reckoned most people hadn't clocked it yet.</p>
 
-<p>He's right. And the organizations that figure this out first will be the ones that stop bleeding money and risk into infrastructure they don't own.</p>
+<p>He's right. I'd only add that the organizations clocking it first are the ones who've spent three years paying rent on infrastructure they'll never own.</p>
 
 <h2>What the First Revolution Got Wrong</h2>
 
-<p>The first wave of AI adoption was a cloud land grab. OpenAI, Anthropic, Google, Amazon, Microsoft, every major player shipped the same basic proposition: send us your data, rent our compute, pay per token, and trust that we'll handle it responsibly. For consumer applications, that model works fine. For regulated industries, it was always a structural compromise dressed up as convenience.</p>
+<p>The first wave was a land grab, and nobody's shy about saying so now. OpenAI, Anthropic, Google, Amazon, Microsoft, every major player shipped the same proposition: send us your data, rent our compute, pay per token, and trust that we'll be careful with it. For consumer work that's a fine trade. For regulated work it's always been a structural compromise wearing convenience as a costume.</p>
 
-<p>A <a href="../law-firms.html">law firm</a> sending client communications through a cloud AI API is routing attorney-client privileged material through third-party infrastructure governed by terms of service that explicitly reserve the right to process that data for model training, safety review, or legal compliance. A <a href="../medical-practices.html">medical practice</a> using a cloud-hosted AI assistant for clinical documentation is creating copies of protected health information on servers it cannot audit, in jurisdictions it didn't choose, under a Business Associate Agreement that shifts liability without shifting control. A <a href="../tribal-nations.html">tribal government</a> feeding community health data or cultural knowledge into a cloud platform is placing sovereign information inside infrastructure governed by the <a href="https://www.congress.gov/bill/115th-congress/house-bill/4943" target="_blank" rel="noopener">CLOUD Act</a>, which grants the U.S. government compulsory access regardless of where that data physically sits.</p>
+<p>A <a href="../law-firms.html">law firm</a> sending client communications through a cloud AI API is routing privileged material through third-party infrastructure governed by terms of service that reserve the right to process that data for training, safety review, or legal compliance. A <a href="../medical-practices.html">medical practice</a> running clinical documentation through a cloud assistant is making copies of protected health information on servers it can't audit, in jurisdictions it didn't pick, under a Business Associate Agreement that moves liability without moving control. A <a href="../tribal-nations.html">tribal government</a> feeding community health data or cultural knowledge into a cloud platform is putting sovereign information inside infrastructure governed by the <a href="https://www.congress.gov/bill/115th-congress/house-bill/4943" target="_blank" rel="noopener">CLOUD Act</a>, which hands the U.S. government compulsory access no matter where the bytes physically sit.</p>
 
-<p>None of this was secret. The trade-off was always visible. But for years the counterargument was simple: there's no practical alternative. The models worth using required data center-scale compute. Running them locally meant buying millions of dollars in hardware and hiring a team to manage it. For most organizations, that wasn't a real option. It was a theoretical one.</p>
+<p>None of that's a secret. The trade-off's been sitting in plain sight the whole time. But the counterargument was simple and it held: there wasn't a practical alternative. The models worth using wanted data-center compute. Running them yourself meant millions in hardware and a crew to babysit it. For most organizations that wasn't an option, it was a thought experiment.</p>
 
-<p>That argument just died on a commercial flight at 35,000 feet.</p>
+<p>The thought experiment just flew coach.</p>
 
-<h2>What Changed: Open-Source Models Closed the Gap</h2>
+<h2>Open Weights Closed the Gap</h2>
 
-<p>The distance between the best closed-source API models and the best open-source local models has collapsed. Chaumond's specific claim is worth reading carefully: for non-trivial coding tasks on the Hugging Face codebases, Qwen3.6 27B running locally through Llama.cpp felt "very, very close to hitting the latest Opus in Claude Code." That's the CEO of the company that hosts more open-source AI models than anyone else on Earth, comparing a 27-billion-parameter model running on a laptop to one of the most capable closed-source models available through any API.</p>
+<p>Chaumond's specific claim is the part worth reading twice. For non-trivial coding work on the Hugging Face codebases, Qwen3.6 27B running locally through Llama.cpp felt "very, very close to hitting the latest Opus in Claude Code." That's the CEO of the company hosting more open models than anybody on Earth, setting a 27-billion-parameter model on a laptop next to one of the strongest closed models money can rent.</p>
 
-<p>He's not alone in this assessment. The open-source model ecosystem has been moving at a pace that the cloud providers don't want you to notice. DeepSeek V4-Flash, Llama 3.3 70B, Qwen 2.5 72B, Mistral Large, these models handle document analysis, contract review, code generation, summarization, and structured data extraction at quality levels that were exclusive to cloud APIs eighteen months ago. The performance ceiling on local inference isn't theoretical anymore. It's been measured, benchmarked, and <a href="deepseek-v4-flash-local-deployment.html">deployed in production environments</a>.</p>
+<p>He isn't alone in the read. The open ecosystem's been moving at a clip the cloud providers would rather you didn't notice. DeepSeek V4-Flash, Llama 3.3 70B, Qwen 2.5 72B, Mistral Large: document analysis, contract review, code generation, summarization, structured extraction, all at a quality that belonged exclusively to cloud APIs eighteen months back. The ceiling on local inference isn't theoretical anymore. It's been measured, benchmarked, and <a href="deepseek-v4-flash-local-deployment.html">put into production</a>.</p>
 
-<p>And these models don't phone home.</p>
+<p>And these models don't phone home. That's the sentence I'd underline.</p>
 
-<h2>The Hardware Arithmetic Has Shifted</h2>
+<h2>The Arithmetic Moved</h2>
 
-<p>Here's the part the cloud vendors really don't want you to do: the math.</p>
+<p>Here's the part the vendors would rather you skipped: the math.</p>
 
-<p>Chaumond ran a 27B model on a MacBook Pro. Consumer hardware. Now consider what happens when you put that same class of model on purpose-built inference hardware. An Island Mountain <a href="../products.html">on-site build</a>, two NVIDIA RTX PRO 6000 Blackwell 96GB GPUs with 192GB of combined VRAM, runs 70B-parameter models at production speed. Not demo speed. Not "works for a proof of concept" speed. Full multi-user inference through <a href="openwebui-admin-setup-guide.html">OpenWebUI</a>, with 20+ concurrent users prompting simultaneously, getting responses in seconds.</p>
+<p>Take a year of cloud AI at a 50-person <a href="../defense-contractors.html">defense contracting</a> firm or a mid-size <a href="../financial-services.html">financial services</a> shop. At enterprise pricing, heavy API usage runs $80,000 to $200,000 annually depending on model selection and volume. That meter doesn't stop, it climbs, and the renewal conversation goes one direction every single year: the price goes up 15% because your usage grew.</p>
 
-<p>You buy that server once. No subscription. No per-token billing. No annual renewal negotiation where the price goes up 15% because your usage grew.</p>
-
-<p>Compare that to what a 50-person <a href="../defense-contractors.html">defense contracting</a> firm or a mid-size <a href="../financial-services.html">financial services</a> company spends on cloud AI APIs in a year. At enterprise pricing tiers, heavy API usage runs $80,000 to $200,000 annually, depending on model selection and volume. By year two, you've paid more than the cost of owning the hardware outright. By year five, you've spent three to five times the purchase price, and you still don't own anything. You're renting inference from someone else's data center, and every prompt your team sends is another data point on someone else's servers.</p>
-
-<p>The <a href="cloud-ai-vs-local-hardware-tco.html">five-year total cost of ownership comparison</a> isn't close. It hasn't been close for a while. What's new is that the quality gap has closed too. The last argument for cloud was that the models were better. That argument is evaporating in real time.</p>
+<p>Owning the compute's a bigger commitment up front and a smaller one every year after. What it costs depends on what got built, and what got built depends on the work, which is why that number's got to come out of a scoped conversation instead of a page like this one. The <a href="cloud-ai-vs-local-hardware-tco.html">five-year comparison</a> hasn't been close for a while. What's new is that the quality argument went with it. The last honest reason to rent was that the rented models were better, and that reason's evaporating in real time.</p>
 
 <h2>Airplane Mode Is the Compliance Test</h2>
 
-<p>Here's what Chaumond's airplane photo actually demonstrates, beyond the technical capability: the model runs with zero network dependency. No handshake with an authentication server. No telemetry. No usage logging to a third-party endpoint. No data leaving the device.</p>
+<p>Set the benchmark aside a second. What that photo's really demonstrating is an absence of things: no handshake with an auth server, no telemetry, no usage logging to a third-party endpoint, nothing leaving the device.</p>
 
-<p>That's not a feature. For regulated industries, it's the requirement.</p>
+<p>That's not a feature. For regulated work it's the requirement.</p>
 
-<p>ITAR-controlled environments under <a href="https://www.ecfr.gov/current/title-22/chapter-I/subchapter-M/part-120" target="_blank" rel="noopener">22 CFR Part 120</a> prohibit the transfer of controlled technical data to foreign persons or foreign-accessible infrastructure. Cloud AI services operated by multinational corporations, staffed by globally distributed engineering teams, processing data in geographically distributed data centers, present a structural ITAR exposure that no contractual clause can fully mitigate. An <a href="itar-dfars-ai-self-assessment.html">air-gapped inference server</a> eliminates that exposure by design.</p>
+<p>ITAR-controlled environments under <a href="https://www.ecfr.gov/current/title-22/chapter-I/subchapter-M/part-120" target="_blank" rel="noopener">22 CFR Part 120</a> prohibit transferring controlled technical data to foreign persons or foreign-accessible infrastructure. Cloud AI run by multinationals, staffed by globally distributed engineering teams, processing in geographically distributed data centers, is a structural exposure, and no contract clause I've read closes it. An <a href="itar-dfars-ai-self-assessment.html">air-gapped inference server</a> closes it by construction.</p>
 
-<p>HIPAA's Technical Safeguard requirements under <a href="https://www.ecfr.gov/current/title-45/subtitle-A/subchapter-C/part-164/subpart-C" target="_blank" rel="noopener">45 CFR 164.312</a> require access controls, audit controls, integrity controls, and transmission security for electronic protected health information. A local server behind the organization's own firewall satisfies every one of those controls with infrastructure the covered entity directly manages. A cloud API introduces a chain of subprocessors, data transfer agreements, and BAA provisions that create compliance surface area without providing compliance certainty. The <a href="hipaa-technical-checklist.html">HIPAA technical checklist</a> for local AI is shorter, cleaner, and more defensible.</p>
+<p>HIPAA's Technical Safeguards under <a href="https://www.ecfr.gov/current/title-45/subtitle-A/subchapter-C/part-164/subpart-C" target="_blank" rel="noopener">45 CFR 164.312</a> want access controls, audit controls, integrity controls, and transmission security for electronic PHI. A server behind your own firewall satisfies every one of them with infrastructure you manage directly. A cloud API introduces a chain of subprocessors, transfer agreements, and BAA provisions that manufacture compliance surface without manufacturing compliance certainty. The <a href="hipaa-technical-checklist.html">technical checklist</a> for local AI is shorter, cleaner, and a whole lot easier to defend to somebody holding a clipboard.</p>
 
-<p>The <a href="ocap-cloud-act-guide.html">OCAP Principles</a> (Ownership, Control, Access, Possession) require that First Nations communities maintain physical possession and jurisdictional control over their data. Cloud infrastructure, by definition, violates the Possession principle. <a href="tribal-data-sovereignty-ai-infrastructure.html">Local AI infrastructure</a> running on tribal lands, behind the tribal firewall, satisfies all four principles simultaneously.</p>
+<p>The <a href="ocap-cloud-act-guide.html">OCAP Principles</a>, Ownership, Control, Access, and Possession, require that a nation keep physical possession and jurisdictional control of its data. Cloud infrastructure violates Possession by definition, because you can't sign your way into holding something. <a href="tribal-data-sovereignty-ai-infrastructure.html">Infrastructure on tribal land, behind the tribal firewall</a>, satisfies all four at once.</p>
 
-<p><a href="../law-firms.html">ABA Model Rule 1.6</a> requires lawyers to make reasonable efforts to prevent unauthorized disclosure of client information. When a lawyer uses a cloud AI service, the analysis of whether that constitutes "reasonable efforts" depends on the vendor's security posture, data handling practices, subprocessor agreements, and jurisdiction, none of which the lawyer directly controls. When the AI runs on a server in the firm's own office, the <a href="attorney-client-privilege-cloud-ai.html">privilege analysis collapses to a simple question</a>: is the building secure?</p>
+<p><a href="../law-firms.html">ABA Model Rule 1.6</a> asks lawyers to make reasonable efforts against unauthorized disclosure of client information. Route that through a cloud service and "reasonable efforts" turns into an essay about the vendor's security posture, data handling, subprocessors, and jurisdiction, none of which the lawyer controls. Run it on a server down the hall and the <a href="attorney-client-privilege-cloud-ai.html">privilege analysis collapses to one question</a>: is the building secure?</p>
 
-<p>Airplane mode isn't a gimmick. It's the architecture that compliance frameworks have been demanding all along.</p>
+<p>Airplane mode isn't a party trick. It's the architecture the compliance frameworks have been describing all along.</p>
 
-<h2>What "The Second Revolution" Actually Means</h2>
+<h2>The Four Words</h2>
 
-<p>Chaumond framed the shift around four words: efficiency, security, privacy, sovereignty. That framing is precise, and it maps directly onto the concerns that every regulated industry has been trying to negotiate around since the first cloud AI APIs launched.</p>
+<p>Chaumond framed the shift around efficiency, security, privacy, sovereignty. It's a precise list, and it maps onto what every regulated organization I've sat with has been trying to negotiate around since the first cloud API shipped.</p>
 
-<p><strong>Efficiency:</strong> No per-token cost. No metered usage. Flat cost of ownership after the initial purchase. Your team runs as many prompts as they want, as often as they want, without anyone tracking usage or sending you a bill at the end of the month.</p>
+<p><strong>Efficiency:</strong> no per-token cost, no metered usage, no bill at month's end that scales with how useful the thing turned out to be.</p>
 
-<p><strong>Security:</strong> No attack surface beyond your own network perimeter. No API keys to rotate. No shared infrastructure to trust. No third-party breach notifications to worry about.</p>
+<p><strong>Security:</strong> no attack surface past your own perimeter. No keys to rotate. No shared tenancy to trust. No third-party breach notice landing in your inbox on a Friday afternoon.</p>
 
-<p><strong>Privacy:</strong> No data leaves the building. No conversation logs on someone else's server. No training data contributions you didn't consent to. No subpoena risk from a jurisdiction you didn't choose.</p>
+<p><strong>Privacy:</strong> nothing leaves the building. No conversation logs on somebody else's disk. No training contributions you didn't agree to. No subpoena risk from a jurisdiction you never chose.</p>
 
-<p><strong>Sovereignty:</strong> The data stays where the organization's legal authority says it must stay. For <a href="../tribal-nations.html">tribal nations</a>, that's on tribal land under tribal jurisdiction. For <a href="../government.html">government agencies</a>, that's within the agency's own infrastructure boundary. For <a href="../defense-contractors.html">defense contractors</a>, that's inside a controlled environment that meets CMMC requirements. For every organization, it means <a href="../lamprey-woven-security-governance.html">the data governance decision belongs to you</a>, not to the vendor whose terms of service you clicked through.</p>
+<p><strong>Sovereignty:</strong> the data sits where your legal authority says it's got to sit. For <a href="../tribal-nations.html">tribal nations</a> that's tribal land under tribal jurisdiction. For <a href="../government.html">government agencies</a> it's inside the agency boundary. For <a href="../defense-contractors.html">defense contractors</a> it's a controlled environment CMMC recognizes. Across all three it means <a href="../lamprey-woven-security-governance.html">the governance decision is yours</a>, not the vendor's whose terms you clicked through at some point in 2024.</p>
 
-<h2>The Gap Between a Laptop and a Server</h2>
+<h2>The Gap Between a Laptop and a Building</h2>
 
-<p>Chaumond's demonstration ran on a MacBook Pro. That's impressive, and it proves the concept. But a laptop running a 27B model through Llama.cpp is a single-user tool with constrained VRAM, limited context windows, and no multi-user access layer. It's a proof of concept, not a production deployment.</p>
+<p>Chaumond's demo ran on a MacBook Pro. It proves the concept and it's still a single-user tool: one person's context window, no access layer, nobody else's work on it. A proof of concept isn't a deployment, and the distance between them isn't hardware. It's knowing what the work is.</p>
 
-<p>The gap between a laptop demo and an organizational deployment is the gap <a href="../index.html">Island Mountain</a> fills. A purpose-built inference server with dual RTX PRO 6000 Blackwell GPUs provides 192GB of VRAM, enough to run 70B+ parameter models at full precision with context windows that handle long documents, complex contracts, and multi-turn research conversations. OpenWebUI provides the multi-user interface, role-based access control, conversation history, and admin oversight that organizations need. The system arrives loaded with production-ready open-weight models, configured for the work we watched you do.</p>
+<p>Which is why I don't lead with a configuration, and it isn't modesty. I don't know which intake question your senior paralegal treats as the one that matters. I don't know which quarterly report your fiscal office rebuilds by hand every time because the export's been broken since 2019. That knowledge lives in the people who've done the job for fifteen or twenty years, and it barely lives in the documentation.</p>
 
-<p>If a 27B model on a laptop in airplane mode impressed the CEO of Hugging Face, consider what a 70B model on dedicated RTX PRO 6000 Blackwell hardware does for a <a href="../research-labs.html">research lab</a> protecting pre-publication data, or an <a href="../insurance.html">insurance company</a> processing claims without exposing claimant information to a third party, or a <a href="../casino-gaming.html">tribal gaming operation</a> analyzing patron data under gaming commission sovereignty requirements.</p>
+<p>So I show up first and sit next to them. Discovery turns up the work already sitting in the building, most of which nobody's said out loud yet. Only then do I recommend a stack, and it's <a href="../products.html">whatever the work turned out to need</a>, with room to grow. Then we deploy and configure it together, on site, and I onboard your team on the workflows and the agentic orchestration their vertical runs on. That last part decides whether any of this was worth doing. <a href="openwebui-admin-setup-guide.html">The admin layer</a> your people drive afterward is part of the handoff, never an afterthought. That's the whole sequence <a href="../index.html">Island Mountain</a> runs, and there's no catalogue in front of it.</p>
+
+<p>What it buys a <a href="../research-labs.html">research lab</a> protecting pre-publication data, an <a href="../insurance.html">insurance company</a> working claims without handing claimant files to a stranger, or a <a href="../casino-gaming.html">tribal gaming operation</a> analyzing patron data under commission sovereignty rules is the same thing in three costumes: the capability, in the building, on your terms. That's the whole of it.</p>
 
 <h2>What You Don't Get</h2>
 
-<p>Local AI infrastructure is not a replacement for every cloud service. It's worth being specific about what it doesn't include. You don't get access to the largest frontier models (GPT-5, Claude Opus 4.6) locally. Those models require more compute than any single server provides and are only available through their respective APIs. You don't get automatic model updates; when a new open-source model releases, someone needs to download, test, and deploy it. You don't get a 24/7 NOC watching your hardware; if a drive fails at 2 AM, that's your team's problem or your IT contractor's problem. And you don't get the elastic scaling of cloud compute; your inference capacity is fixed by the hardware you purchased.</p>
+<p>Local isn't a drop-in for every cloud service, and I'd rather say so here than in month four. You don't get the largest frontier models on site; those need more compute than any single system provides and they live behind their own APIs. You don't get automatic updates, so when a strong open model drops, somebody has to download, test, and deploy it. You don't get a 24/7 NOC, so a drive that dies at 2 AM is your team's problem or your IT contractor's. And you don't get elastic scale: your capacity's the capacity you built.</p>
 
-<p>For many organizations, those limitations are acceptable trade-offs against the compliance certainty, cost predictability, and data sovereignty that local infrastructure provides. For some organizations, particularly those with massive, variable inference workloads and minimal regulatory exposure, cloud remains the better fit. Knowing which category your organization falls into is the first honest step.</p>
+<p>For plenty of organizations those are cheap trades against compliance certainty, cost predictability, and knowing where the data's sleeping at night. For a few, particularly the ones with enormous variable workloads and no regulatory exposure, cloud's the better fit and I'll say so on the first call. Working out which one you are is the honest first step, and it doesn't cost you a thing.</p>
 
 <div style="border-left:3px solid var(--copper);padding:16px 20px;margin:32px 0;background:rgba(217,119,6,0.05);border-radius:0 8px 8px 0;">
-<strong>Summary:</strong> The CEO of the world's largest open-source AI platform called local inference "the second revolution of AI." Open-source models now match cloud API quality for most enterprise tasks. The cost, compliance, and sovereignty arguments for local AI infrastructure have never been stronger. For regulated industries paying per-token fees to process sensitive data on someone else's servers, the question is no longer whether local inference works. It's how long you keep paying for someone else's infrastructure when you don't have to.
+<strong>Summary:</strong> The CEO of the world's largest open-source AI platform called local inference "the second revolution of AI" after running Qwen3.6 27B on a laptop in airplane mode. Open weights now match cloud API quality for most professional work, and the compliance frameworks were describing a local architecture all along. The question isn't whether local inference works. It's how long you keep renting somebody else's building for work that never needed to leave yours.
 </div>
-      </article>
+</article>
 
       <!-- CTA -->
       <div class="article-cta">

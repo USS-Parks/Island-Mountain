@@ -28,9 +28,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="author" content="Basho Parks">
-  <meta name="date" content="2026-05-01">
+  <meta name="date" content="2026-04-16">
   <title>RTX PRO 6000 Blackwell vs. H100 Hopper for On-Premises AI</title>
-  <meta name="description" content="Why on-premises AI inference moved from refurbished H100 Hopper cards to the RTX PRO 6000 Blackwell Server Edition. Bandwidth, VRAM, cost per token, and total cost compared.">
+  <meta name="description" content="The H100 keeps a 25% memory-bandwidth edge and still loses on cost per token. The decode-roofline arithmetic for sizing any GPU, and why the parts list comes last.">
   <link rel="icon" type="image/x-icon" href="../favicon.ico?v=2">
   <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon-32.png?v=2">
   <link rel="apple-touch-icon" sizes="180x180" href="../images/apple-touch-icon.png?v=2">
@@ -61,7 +61,7 @@
 
   <!-- Open Graph -->
   <meta property="og:title" content="RTX PRO 6000 Blackwell vs. H100 Hopper for On-Premises AI">
-  <meta property="og:description" content="Why on-premises AI inference moved from refurbished H100 Hopper cards to the RTX PRO 6000 Blackwell Server Edition. Bandwidth, VRAM, cost per token, and total cost compared.">
+  <meta property="og:description" content="The H100 keeps a 25% memory-bandwidth edge and still loses on cost per token. The decode-roofline arithmetic for sizing any GPU, and why the parts list comes last.">
   <meta property="og:url" content="https://islandmountain.io/blog/h100-vs-h200-inference-comparison.html">
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="Island Mountain">
@@ -70,7 +70,7 @@
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="RTX PRO 6000 Blackwell vs. H100 Hopper for On-Premises AI">
-  <meta name="twitter:description" content="Why on-premises AI inference moved from refurbished H100 Hopper cards to the RTX PRO 6000 Blackwell Server Edition. Bandwidth, VRAM, cost per token, and total cost compared.">
+  <meta name="twitter:description" content="The H100 keeps a 25% memory-bandwidth edge and still loses on cost per token. The decode-roofline arithmetic for sizing any GPU, and why the parts list comes last.">
   <meta name="twitter:image" content="https://islandmountain.io/images/hero-mountain.webp">
 
   <!-- Article Schema -->
@@ -79,14 +79,14 @@
   "@context": "https://schema.org",
   "@type": "BlogPosting",
   "headline": "RTX PRO 6000 Blackwell vs. H100 Hopper: Why On-Premises AI Moved to Blackwell",
-  "description": "Why on-premises AI inference moved from refurbished H100 Hopper cards to the RTX PRO 6000 Blackwell Server Edition. Bandwidth, VRAM, cost per token, and total cost compared.",
+  "description": "The H100 keeps a 25% memory-bandwidth edge and still loses on cost per token. The decode-roofline arithmetic for sizing any GPU, and why the parts list comes last.",
   "url": "https://islandmountain.io/blog/h100-vs-h200-inference-comparison.html",
   "datePublished": "2026-04-16",
   "dateModified": "2026-06-26",
   "author": {
-    "@type": "Organization",
-    "name": "Island Mountain",
-    "url": "https://islandmountain.io"
+    "@type": "Person",
+    "name": "Basho Parks",
+    "url": "https://islandmountain.io/about.html"
   },
   "publisher": {
     "@type": "Organization",
@@ -194,20 +194,19 @@
           <span class="article-read-time">8 min read</span>
         </div>
         <h1 class="text-2xl">RTX PRO 6000 Blackwell vs. H100 Hopper: Why On-Premises AI Moved to Blackwell</h1>
-        <p class="article-author">Island Mountain</p>
+        <p class="article-author">Basho Parks</p>
       </div>
 
       <article class="article-body">
+        <h2>The H100 Is the Faster Card. Run the Arithmetic Anyway.</h2>
 
-        <h2>RTX PRO 6000 Blackwell vs. H100 Hopper: Why On-Premises AI Moved to Blackwell</h2>
+<p>For two years the default answer for on-premises inference was a datacenter Hopper card. The NVIDIA H100 was the part everybody benchmarked against, and for organizations that can't send data to the cloud (law firms, medical practices, defense contractors, tribal nations) the question was usually how many refurbished H100s to buy and how to cool them.</p>
 
-<p>For two years the default answer for on-premises inference was a datacenter Hopper card. The NVIDIA H100 was the part everyone benchmarked against. For regulated organizations that cannot send data to the cloud - law firms, medical practices, defense contractors, tribal nations - the question was usually how many refurbished H100s to buy and how to cool them.</p>
-
-<p>That answer changed. Island Mountain builds on whatever the work needs, and for this workload class that is increasingly the NVIDIA RTX PRO 6000 Blackwell Server Edition, a professional Blackwell-generation card. This is not a marketing swap. On the two things that actually decide on-premises inference economics, cost per token and total cost, a new Blackwell professional card beats a refurbished H100 for the workloads our customers run. Here is the reasoning, with the math rebuilt from current specs.</p>
+<p>That question aged badly. Not because the H100 got worse, it didn't. It's that a new professional Blackwell card turned up at a fraction of the secondary-market price with more VRAM on it, and the two numbers that decide on-premises inference economics, cost per token and total cost, quit pointing at Hopper. So here's the reasoning with the math rebuilt from current specs, and it's laid out so you can run it yourself against whatever parts you're weighing. I'm not going to tell you what to buy at the end of it. That decision doesn't belong in a blog post, and I'd be lying if I pretended it did.</p>
 
 <h2>The Headline Numbers</h2>
 
-<p>Here is the comparison stripped down, per card:</p>
+<p>Stripped down, per card:</p>
 
 <table>
 <thead>
@@ -243,79 +242,75 @@
 </tbody>
 </table>
 
-<p>The H100 holds a raw bandwidth edge: 2,000 GB/s of HBM2e against 1,597 GB/s of GDDR7. On a single dimension the Hopper card wins. But look at the rest of the row. The Blackwell card carries 96GB against 80GB, draws comparable power, ships brand new with a warranty, and costs roughly a third to a quarter of what a secondary-market H100 costs. The spec sheet is not the whole story, and the price line is where this decision is actually made (<a href="https://www.nvidia.com/en-us/products/workstations/professional-desktop-gpus/rtx-pro-6000/" target="_blank" rel="noopener">NVIDIA RTX PRO 6000 specifications</a>).</p>
+<p>The H100 holds a raw bandwidth edge: 2,000 GB/s of HBM2e against 1,597 GB/s of GDDR7 on the Server Edition part. On that one dimension Hopper wins, period, and I'm not going to talk anybody out of it. Then look at the rest of the row. There's 96GB against 80GB, there's comparable power draw, there's a card that's brand new with a warranty behind it, and there's a sticker that's roughly a third to a quarter of what a secondary-market H100 costs (<a href="https://www.nvidia.com/en-us/products/workstations/professional-desktop-gpus/rtx-pro-6000/" target="_blank" rel="noopener">NVIDIA RTX PRO 6000 specifications</a>). The spec sheet isn't the whole story and the price line's where this gets decided.</p>
 
 <h2>Why Bandwidth Sets the Pace for Token Generation</h2>
 
-<p>This is the concept most spec-sheet comparisons miss, and it is the one that drives the purchasing decision.</p>
+<p>Here's the concept most spec-sheet comparisons skip, and it's the one that settles the purchase.</p>
 
-<p>When a model generates text one token at a time (the decode phase), it is not compute-bound. It is memory-bandwidth-bound. To produce each token, the GPU reads the active model weights out of VRAM, multiplies, and writes the result back. The multiplication is fast. Moving the weights across the memory bus is what takes time.</p>
+<p>When a model generates text one token at a time (the decode phase) it isn't compute-bound. It's memory-bandwidth-bound. To produce each token the GPU reads the active model weights out of VRAM, multiplies, and writes the result back. The multiplication's fast. It's moving the weights across the memory bus that takes the time, and that's true no matter whose logo is on the card.</p>
 
-<p>That gives a clean back-of-envelope ceiling for single-stream decode:</p>
+<p>Which gives you a clean back-of-envelope ceiling for single-stream decode:</p>
 
 <p><strong>tokens per second &asymp; memory bandwidth &divide; active weight bytes</strong>, then multiply by a real-world efficiency factor of roughly 50 to 70 percent for kernel overhead, attention, and KV-cache traffic.</p>
 
-<p>Take DeepSeek V4-Flash. It is a mixture-of-experts model: 284 billion total parameters but only about 13 billion active per token. At FP8, those active weights are roughly 13 GB. On the RTX PRO 6000 at 1,597 GB/s that is about 1,597 / 13 &asymp; 123 tokens per second in theory. Apply the efficiency factor and you land at a realistic <strong>60 to 90 tokens per second single-stream (estimate)</strong>. That is faster than most people read, and it is the figure we quote for V4-Flash on that configuration.</p>
+<p>Learn that one line and you don't need me for this part. It'll work on any card with a published bandwidth figure, and that includes every part I've never had my hands on.</p>
 
-<p>Run the same arithmetic for a dense 70B model at FP8. Now the full ~70 GB of weights move for every token: 1,597 / 70 &asymp; 23 tokens per second single-stream per card (estimate). Split that model across two cards with tensor parallelism and you reach roughly <strong>40 to 45 tokens per second (estimate)</strong>. The MoE design is why V4-Flash feels several times quicker than a dense 70B on the same hardware: it moves a fraction of the bytes per token.</p>
+<p>Take DeepSeek V4-Flash. It's a mixture-of-experts model: 284 billion total parameters, only about 13 billion active per token, roughly 4.6 percent of the weights. At FP8 those active weights come to about 13GB. At 1,597 GB/s that's 1,597 / 13 &asymp; 123 tokens per second in theory. Apply the efficiency factor and you're at a realistic <strong>60 to 90 tokens per second single-stream (estimate)</strong>. That's faster than most people read.</p>
 
-<p>All of these are conservative single-stream estimates. Batching concurrent requests raises aggregate throughput because weights loaded once serve several sequences, but per-user speed stays governed by bandwidth. Treat the numbers as planning figures, not guarantees.</p>
+<p>Now run the same arithmetic on a dense 70B at FP8. The full ~70GB of weights moves for every single token: 1,597 / 70 &asymp; 23 tokens per second per card (estimate). Split it across two cards with tensor parallelism and you're at roughly <strong>40 to 45 tokens per second (estimate)</strong>. That's the whole reason V4-Flash feels several times quicker than a dense 70B on identical silicon. It's moving a fraction of the bytes per token, and that's it, that's the trick.</p>
 
-<h2>Where the H100's Bandwidth Edge Does and Does Not Matter</h2>
+<p>Every figure up there is a conservative single-stream estimate. Batching concurrent requests raises aggregate throughput, because weights loaded once serve several sequences, but per-user speed stays governed by bandwidth. They're planning figures, not guarantees.</p>
 
-<p>The H100's 2,000 GB/s is about 25 percent higher than the Blackwell card's 1,597 GB/s. By the roofline above, that translates to roughly 25 percent more single-stream tokens per second for the same model at the same precision. Real and measurable.</p>
+<h2>Where the H100's Bandwidth Edge Does and Doesn't Matter</h2>
 
-<p>It also does not change the buying decision for most regulated deployments, for three reasons. First, V4-Flash already clears 60 to 90 tokens per second on the Blackwell card, which is well past human reading speed; a faster card mostly shortens an already-short wait. Second, the H100 PCIe part you can actually buy today is refurbished secondary-market stock at $25,000 to $33,000 a card, against $8,000 to $9,200 for a new Blackwell card with a warranty. Third, the Blackwell card carries 96GB against the H100's 80GB, so it fits more model per card. You are paying three to four times as much per card to recover a 25 percent single-stream margin on a workload that was already fast enough, while giving up VRAM headroom and warranty coverage. For most buyers that trade does not close.</p>
+<p>The H100's 2,000 GB/s is about 25 percent higher than 1,597. By the roofline above that's roughly 25 percent more single-stream tokens per second for the same model at the same precision. Real, measurable, and I'd rather concede it in the first sentence than bury it in a footnote.</p>
+
+<p>It also doesn't change the buying decision for most regulated deployments, and the reasons aren't complicated. V4-Flash already clears 60 to 90 tokens per second on the Blackwell part, which is well past reading speed, so a faster card mostly shortens a wait that wasn't long. The H100 PCIe part you can buy today is refurbished secondary-market stock at $25,000 to $33,000 a card, against $8,000 to $9,200 for a new card that somebody will still honor a claim on. And 96GB fits more model than 80GB does. So you're paying three to four times as much per card to recover 25 percent on a workload that was already fast enough, and you're handing back VRAM headroom and warranty coverage to do it.</p>
+
+<p>Here's the thing about a 25 percent margin: it's the kind of number that wins an argument on a slide and loses one in a building. For most buyers that trade doesn't close. For a few it does, and if yours is one of them the arithmetic above will say so louder than I can.</p>
 
 <h2>What Fits Where</h2>
 
-<p>Sized in RTX PRO 6000 cards, the common configurations land like this:</p>
+<p>VRAM's the gate, and it's arithmetic rather than opinion.</p>
 
-<ul>
-<li><strong>Two cards</strong> - 192GB GDDR7 ECC total.</li>
-<li><strong>Three cards</strong> - the middle ground when you want more concurrent headroom.</li>
-<li><strong>Four cards</strong> - 384GB GDDR7 ECC total.</li>
-</ul>
+<p>V4-Flash served at FP8 wants roughly 170GB once all 284B parameters are resident and the KV cache has somewhere to live. At full FP16 precision it wants 384GB. A dense 70B at FP8 is about 70GB, so it'll sit on a single 96GB card with room to spare and it runs quicker split across two with tensor parallelism. That's the arithmetic, all of it. Divide by whatever your card carries and you've sized the memory half of the problem in about ten seconds, no vendor required.</p>
 
-<p>What fits is mostly a function of model size and quantization. V4-Flash served at FP8 needs roughly 170GB once you account for all 284B parameters resident plus the KV cache. That fits in 192GB with about 22GB of headroom. If you want the full model at FP16 precision, you need 384GB. A dense 70B model at FP8 (~70 GB) fits on a single card with room to spare, and runs faster across two cards with tensor parallelism.</p>
-
-<p>Each card also supports up to four MIG instances and ECC memory, so a single box can be partitioned for isolated workloads, and memory errors are corrected rather than silently corrupting a result. For regulated data that correctness guarantee matters.</p>
+<p>Blackwell professional cards also support up to four MIG instances each and they carry ECC memory, so a box gets partitioned for isolated workloads and a memory error gets corrected instead of quietly corrupting a result. For regulated data that correctness guarantee isn't a bullet point. It's the difference between an answer and an answer you can defend.</p>
 
 <h2>The Cost-Per-Token Math</h2>
 
-<p>Here is the version that decides budgets. Depreciate a two-card build over three years against one billion tokens annually - a reasonable figure for a medium-sized organization - and the per-token hardware cost is a rounding error.</p>
+<p>Here's the version that decides budgets. Depreciate whatever you end up buying over three years against a billion tokens a year, a reasonable figure for a medium-sized organization, and the per-token hardware cost is a rounding error.</p>
 
-<p>Cloud inference from major providers runs $0.003 to $0.01 per token on comparable models. Even after electricity, cooling, and staffing, on-premises inference is cheaper by two to three orders of magnitude. The capital cost is front-loaded; the unit cost is low and stays low for the life of the box.</p>
+<p>Cloud inference from the major providers runs $0.003 to $0.01 per token on comparable models. Even after electricity, cooling, and staffing, inference on hardware you own comes in cheaper by two to three orders of magnitude. The capital cost's front-loaded; the unit cost is low and it stays low for the life of the box. That's the whole shape of the trade.</p>
 
-<p>Now compare the same build on refurbished H100s instead. Two H100 PCIe cards at $25,000 to $33,000 each is $50,000 to $66,000 in silicon alone, before chassis, cooling, and integration, for a 160GB system with no warranty. The Blackwell build delivers 192GB, new-card warranty, and ECC for less total cost. The cost-per-token line moves in the same direction: lower capital, more VRAM, same order-of-magnitude advantage over cloud.</p>
+<p>Now price the same capacity in refurbished H100s. Two H100 PCIe cards at $25,000 to $33,000 each is $50,000 to $66,000 in silicon alone, before chassis, cooling, and integration, for 160GB with nobody standing behind it. That same money in new Blackwell cards buys more VRAM, ECC, and a warranty you can call somebody about. The cost-per-token line moves the same direction: lower capital, more memory, same order-of-magnitude advantage over cloud.</p>
 
-<h2>What That Build Delivers in Practice</h2>
+<h2>What the Throughput Looks Like Against Real Load</h2>
 
-<p>On two cards with V4-Flash at FP8, sustained single-user generation runs an estimated 60 to 90 tokens per second. Batch multiple requests and aggregate throughput climbs well past that, because the active weights loaded for one sequence serve the others in the batch.</p>
+<p>Do this part with your own headcount, not mine. A firm with 30 attorneys running 10 queries each per day is 300 queries. At 500 tokens a response that's 150,000 generated tokens a day. At 60 to 90 tokens per second you're well under an hour of cumulative generation spread across a workday, and you've got idle headroom you'd have to work at to consume. Scale it to 300 attorneys and 1.5 million tokens a day and the arithmetic still isn't frightening for sequential and loosely concurrent load.</p>
 
-<p>A law firm with 30 attorneys generating 10 queries each per day is processing roughly 300 queries daily. At 500 tokens per response, that is 150,000 generated tokens. Two cards produce that in well under an hour of cumulative generation time spread across the workday, with large idle headroom. Scale to 300 attorneys and 1.5 million tokens per day and a single box still keeps pace for sequential and loosely concurrent load.</p>
-
-<p>You add cards when you have heavy concurrent load demanding parallel generation, when you want V4-Flash at full FP16 precision, or when you need multiple large models resident at once. Those are workload reasons, not spec-sheet reasons.</p>
+<p>Concurrency is what bends that curve, along with full-precision residency and holding several large models at once. Every one of those is a fact about your own shop, they're knowable, and they're knowable well before anybody quotes you a thing.</p>
 
 <h2>Build vs. Buy</h2>
 
-<p>People ask <a href="../faq.html">whether they can assemble something cheaper</a> on consumer cards or scavenged datacenter hardware. You can. You usually should not.</p>
+<p>People ask <a href="../faq.html">whether they can assemble something cheaper</a> out of consumer cards or scavenged datacenter hardware. You can. You usually shouldn't.</p>
 
-<p>A stack of consumer RTX cards or a pallet of refurbished H100s gets you raw silicon, not a working inference appliance. Then come the cooling, networking, driver matrices, firmware tuning, system administration, and the absence of any warranty when a secondary-market H100 dies. By the time it is built and debugged, the capital savings are gone and you own an integration project instead of a tool.</p>
-
-<p>Island Mountain builds for the workload in front of us, and the software stack is configured, the firmware is tuned for inference, the cards are new with warranty coverage, and support is included. You pay for a system that works on day one.</p>
+<p>A stack of consumer RTX cards or a pallet of refurbished H100s gets you raw silicon and that's all it gets you. It isn't a working inference system yet. Then come the cooling, the networking, the driver matrices, the firmware tuning, the systems administration, and the total absence of anybody to call when a secondary-market card dies at two in the morning. By the time it's built and debugged the capital savings are gone and you've got an integration project instead of a tool. I've watched that happen to genuinely competent people.</p>
 
 <h2>The Honest Guidance</h2>
 
-<p>Start with two cards. That is the price of admission to working on-premises inference today, on new Blackwell hardware rather than aging secondary-market Hopper cards. You learn your real usage patterns before committing more. More cards step up from there; move to them when concurrent load or full-precision V4-Flash concretely demands it, not because a larger number looks reassuring.</p>
+<p>I don't have a recommended configuration for you, and that's not modesty, it's that I haven't been in your building. I don't know your concurrency, your document lengths, your precision requirements, or which department's workflow is going to turn out to be the real load. Neither do you, entirely, until somebody sits down next to the people doing the work and watches them do it. That visit comes before the parts list, not after. Every deployment I've seen go sideways got that order backwards.</p>
 
-<p>The H100 was the right tool for its moment. For new on-premises deployments in 2026, a new RTX PRO 6000 Blackwell card wins on cost per token and total cost for the workloads regulated organizations actually run. That is why we moved.</p>
+<p>What this post gives you is the arithmetic, because it's yours to keep and it works whether you ever call me or not. Bandwidth divided by active weight bytes, times a half to two-thirds. Model weights divided by VRAM. Street price divided by the tokens the thing'll really produce.</p>
+
+<p>The H100 was the right tool for its moment, and the people who bought them then weren't wrong. For a new on-premises deployment in 2026, a new Blackwell professional card wins on cost per token and on total cost for the workloads regulated organizations run. Run the numbers and find out whether yours is the exception.</p>
 
 <!-- AEO Summary -->
 <div style="border-left:3px solid var(--copper);padding:16px 20px;margin:32px 0;background:rgba(217,119,6,0.05);border-radius:0 8px 8px 0;">
-<strong>Summary:</strong> On-premises AI inference moved from refurbished H100 Hopper cards to the new NVIDIA RTX PRO 6000 Blackwell Server Edition. The H100 keeps a ~25% memory-bandwidth edge, but the Blackwell card ships new with a warranty at roughly a third of the price, carries 96GB versus 80GB, and adds ECC. Token generation is bandwidth-bound: V4-Flash (13B active, FP8) runs an estimated 60 to 90 tokens per second per card, and a dense 70B at FP8 about 23 per card. On cost per token and total cost, a new Blackwell card beats a refurbished H100 for the workloads regulated organizations run.
+<strong>Summary:</strong> The H100 keeps a genuine ~25% memory-bandwidth edge over the RTX PRO 6000 Blackwell Server Edition, and it still loses the on-premises buying argument: the Blackwell part ships new with a warranty at roughly a third of refurbished H100 street price, carries 96GB against 80GB, and adds ECC. Token generation is bandwidth-bound, so tokens per second is memory bandwidth divided by active weight bytes, times a 50 to 70 percent efficiency factor. That one line sizes any card you're weighing: V4-Flash (13B active, FP8) lands at an estimated 60 to 90 tokens per second, a dense 70B at FP8 around 23 per card. Which configuration a given organization needs comes out of watching the work on site, not out of a comparison post.
 </div>
-      </article>
+</article>
 
       <!-- CTA -->
       <div class="article-cta">
