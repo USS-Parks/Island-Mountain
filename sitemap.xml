@@ -347,7 +347,19 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
+  <url>
+    <loc>https://islandmountain.io/blog/openai-discovery-risk-law-firms.html</loc>
+    <lastmod>2026-07-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
   <!-- Personal / CV -->
+  <url>
+    <loc>https://islandmountain.io/basho-parks.html</loc>
+    <lastmod>2026-07-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
   <url>
     <loc>https://islandmountain.io/blog/on-device-llm-sovereign-edge.html</loc>
     <lastmod>2026-06-26</lastmod>
@@ -361,4 +373,22 @@
     <priority>0.7</priority>
   </url>
   <!-- Tools -->
+  <url>
+    <loc>https://islandmountain.io/sovereign-cost-worksheet.html</loc>
+    <lastmod>2026-07-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://islandmountain.io/on-premises-ai-cost-comparison.html</loc>
+    <lastmod>2026-07-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://islandmountain.io/bibliography.html</loc>
+    <lastmod>2026-07-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
 </urlset>
