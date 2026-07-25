@@ -27,7 +27,7 @@
   <link rel="stylesheet" href="css/card-nodes.min.css?v=3">
   <link rel="stylesheet" href="icons/remixicon.css" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="icons/remixicon.css"></noscript>
-  <link rel="preload" as="image" href="images/summit-photo3.webp" fetchpriority="high">
+  <link rel="preload" as="image" href="images/summit-product-photo4.webp" fetchpriority="high">
   <link rel="preload" href="fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
   <style>
@@ -49,7 +49,19 @@
   /* Pull-quote band for the thesis. */
   .fd-thesis{ max-width:900px; margin:0 auto; text-align:center; }
   .fd-thesis .au-h2{ margin-bottom:18px; }
-  
+  /* aurora.css only centers .au-lede as a direct child of .container, so inside
+     .fd-thesis it stayed left-flushed at 60ch while its plain siblings ran the
+     full 900px. Give every paragraph in the band one measure, centered. */
+  .fd-thesis p, .au-statement .container > p{ max-width:60ch; margin-left:auto; margin-right:auto; }
+
+  /* Hero: the warehouse build photo under a dark veil, in place of the
+     site-wide summit-photo3 that aurora.css sets for every .au-hero. */
+  .au-hero{
+    background:
+      linear-gradient(180deg, rgba(8,13,24,.90) 0%, rgba(13,20,36,.70) 46%, rgba(8,13,24,.96) 100%),
+      url('images/summit-product-photo4.webp') center center / cover no-repeat;
+  }
+
   /* Merged from the retired Configs page: photo-backed section treatments. */
   .specs-bg{background-color:#0b1424;background-image:linear-gradient(rgba(11,20,36,0.66),rgba(11,20,36,0.66)),url('images/summit-front.webp');background-repeat:no-repeat,no-repeat;background-position:center,left top;background-size:cover,cover;}
   .range-section{background-color:#090d14;background-image:linear-gradient(rgba(6,10,18,0.74),rgba(6,10,18,0.80)),url('images/rtx-blackwell-hands.webp'),url('images/rtx-blackwell-bench.webp');background-repeat:no-repeat,no-repeat,no-repeat;background-position:center,center 24px,center bottom;background-size:cover,100% auto,100% auto;}
@@ -58,10 +70,16 @@
   .range-copy p{color:#e9eff8;font-size:1.05rem;line-height:1.85;text-shadow:0 1px 10px rgba(0,0,0,0.65);margin:0 0 20px;}
   .range-copy p:last-child{margin-bottom:0;}
   .hw-video-section{padding-top:0;}
-  .hw-shot{max-width:940px;margin:0 auto 22px;border-radius:18px;overflow:hidden;}
-  .hw-shot img{width:100%;height:auto;display:block;}
-  .hw-video{max-width:940px;margin:0 auto;border-radius:18px;overflow:hidden;}
-  .hw-video video{width:100%;height:auto;display:block;}
+  /* Both clips carry preload="none", so lock the box to the source ratio.
+     Without it the element falls back to 300x150 and renders as a letterbox
+     sliver until the first frame arrives. Deployment loop is 1664x1248,
+     the stack reveal is 1280x720. */
+  .hw-shot,.hw-video{max-width:940px;margin:0 auto;border-radius:18px;overflow:hidden;
+    box-shadow:0 24px 60px rgba(0,0,0,0.45);}
+  .hw-shot{max-width:660px;margin-bottom:32px;}
+  .hw-shot video,.hw-video video{display:block;width:100%;height:auto;object-fit:cover;background:#000;}
+  .hw-shot video{aspect-ratio:4/3;}
+  .hw-video video{aspect-ratio:16/9;}
   .risk-grid{grid-template-columns:repeat(3,1fr);}
   @media(max-width:1000px){.risk-grid{grid-template-columns:repeat(2,1fr);}}
   @media(max-width:640px){.risk-grid{grid-template-columns:1fr;}}
@@ -229,12 +247,15 @@
 
   <section class="section section-dark hw-video-section">
     <div class="container">
-      <figure class="hw-shot fade-in">
-          <img src="images/summit-product-photo4.webp" alt="An Island Mountain on-premise AI inference build"
-               width="1916" height="821" sizes="100vw" loading="lazy" decoding="async">
-        </figure>
-        <div class="hw-video fade-in">
-        <video data-lazy muted loop playsinline preload="none">
+      <div class="hw-shot fade-in">
+        <video data-lazy muted loop playsinline preload="none"
+               aria-label="Island Mountain on-premise AI deployment animation">
+          <source src="images/v2_traced-0f0f7ad5-94b8-4ea2-8193-b69514949926-web.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="hw-video fade-in">
+        <video data-lazy muted loop playsinline preload="none"
+               aria-label="An Island Mountain server stack, exploded to its components">
           <source src="images/summit-stack-explosion.mp4" type="video/mp4">
         </video>
       </div>
@@ -304,7 +325,7 @@
   </section>
 
   <!-- What defends itself -->
-  <section class="au-section au-section--alt">
+  <section class="au-section">
     <div class="container au-reveal">
       <div class="fd-thesis">
         <span class="au-eyebrow-c">What you&#39;re left with</span>
@@ -395,8 +416,6 @@
     </div>
   </section>
 
-  
-
   <!-- CTA -->
   <section class="au-section">
     <div class="container au-reveal" style="max-width:780px;text-align:center;">
@@ -468,6 +487,7 @@
 
   <script defer src="js/hero-cinematic.js?v=2"></script>
   <script defer src="js/card-nodes.js?v=2"></script>
+  <script defer src="js/lazy-video.js"></script>
   <script defer src="js/main.min.js?v=2"></script>
   <script defer src="js/chat-widget.min.js?v=4"></script>
 
