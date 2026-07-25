@@ -30,7 +30,7 @@
   <meta name="author" content="Basho Parks">
   <meta name="date" content="2026-07-10">
   <title>DGX Spark vs RTX PRO 6000: When a $4,700 Box Is Enough, and When It Isn't</title>
-  <meta name="description" content="DGX Spark, AMD Strix Halo, or RTX PRO 6000 for local AI? Honest numbers on bandwidth, decode speed, concurrency, and when the small box is enough.">
+  <meta name="description" content="DGX Spark, AMD Strix Halo, or RTX PRO 6000 for local AI? Honest numbers on bandwidth, decode speed, and concurrency, plus when I'd tell you to buy the cheap box.">
   <link rel="icon" type="image/x-icon" href="../favicon.ico?v=2">
   <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon-32.png?v=2">
   <link rel="apple-touch-icon" sizes="180x180" href="../images/apple-touch-icon.png?v=2">
@@ -61,7 +61,7 @@
 
   <!-- Open Graph -->
   <meta property="og:title" content="DGX Spark vs RTX PRO 6000: When a $4,700 Box Is Enough, and When It Isn't">
-  <meta property="og:description" content="DGX Spark, AMD Strix Halo, or RTX PRO 6000 for local AI? Honest numbers on bandwidth, decode speed, concurrency, and when the small box is enough.">
+  <meta property="og:description" content="DGX Spark, AMD Strix Halo, or RTX PRO 6000 for local AI? Honest numbers on bandwidth, decode speed, and concurrency, plus when I'd tell you to buy the cheap box.">
   <meta property="og:url" content="https://islandmountain.io/blog/dgx-spark-vs-rtx-pro-6000-strix-halo.html">
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="Island Mountain">
@@ -70,7 +70,7 @@
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="DGX Spark vs RTX PRO 6000: When a $4,700 Box Is Enough, and When It Isn't">
-  <meta name="twitter:description" content="DGX Spark, AMD Strix Halo, or RTX PRO 6000 for local AI? Honest numbers on bandwidth, decode speed, concurrency, and when the small box is enough.">
+  <meta name="twitter:description" content="DGX Spark, AMD Strix Halo, or RTX PRO 6000 for local AI? Honest numbers on bandwidth, decode speed, and concurrency, plus when I'd tell you to buy the cheap box.">
   <meta name="twitter:image" content="https://islandmountain.io/images/hero-mountain.webp">
 
   <!-- Article Schema -->
@@ -79,14 +79,14 @@
   "@context": "https://schema.org",
   "@type": "BlogPosting",
   "headline": "DGX Spark vs RTX PRO 6000: When a $4,700 Box Is Enough, and When It Isn't",
-  "description": "DGX Spark, AMD Strix Halo, or RTX PRO 6000 for local AI? Honest numbers on bandwidth, decode speed, concurrency, and when the small box is enough.",
+  "description": "DGX Spark, AMD Strix Halo, or RTX PRO 6000 for local AI? Honest numbers on bandwidth, decode speed, and concurrency, plus when I'd tell you to buy the cheap box.",
   "url": "https://islandmountain.io/blog/dgx-spark-vs-rtx-pro-6000-strix-halo.html",
   "datePublished": "2026-07-10",
   "dateModified": "2026-07-10",
   "author": {
-    "@type": "Organization",
-    "name": "Island Mountain",
-    "url": "https://islandmountain.io"
+    "@type": "Person",
+    "name": "Basho Parks",
+    "url": "https://islandmountain.io/about.html"
   },
   "publisher": {
     "@type": "Organization",
@@ -202,48 +202,48 @@
 
         <h2>The Unified-Memory Question Everyone Is Asking</h2>
 
-<p>Two NVIDIA DGX Sparks cost about $9,400 and hold 256GB of unified memory between them. One RTX PRO 6000 Blackwell workstation card retails in the same neighborhood and holds 96GB. If you are moving AI inference on-premises, that arithmetic looks like it settles the question in the small boxes' favor. For some workloads it does. For the rest, a single number the spec sheets bury decides it the other way, and this post is about knowing which side of that line your organization sits on.</p>
+<p>Two NVIDIA DGX Sparks cost about $9,400 and hold 256GB of unified memory between them. One RTX PRO 6000 Blackwell card retails in the same neighborhood and holds 96GB. If you're moving AI inference on-premises, that arithmetic looks like it settles the question in the small boxes' favor. For some workloads it does. For the rest, a single number the spec sheets bury settles it the other way, and this post's about knowing which side of that line you're standing on.</p>
 
-<p>The small-box class is real now. NVIDIA's DGX Spark packs a GB10 Grace Blackwell chip and 128GB of unified LPDDR5X into something the size of a hardcover book, at $4,699 after February's price increase. AMD's answer, mini PCs built on the Ryzen AI Max+ 395 (codename Strix Halo), carries the same 128GB of unified memory for roughly $2,200 to $2,400 from vendors like Framework and HP. Both promise the thing we sell: inference on hardware you own, with nobody else's meter running. So it is worth being precise about where they deliver on that promise and where they run out.</p>
+<p>The small-box class is real now. NVIDIA's DGX Spark packs a GB10 Grace Blackwell chip and 128GB of unified LPDDR5X into something the size of a hardcover book, at $4,699 after February's price increase. AMD's answer, mini PCs built on the Ryzen AI Max+ 395 (codename Strix Halo), carries the same 128GB of unified memory for roughly $2,200 to $2,400 from vendors like Framework and HP. Both of them promise the thing I care about: inference on hardware you own, with nobody else's meter running. So it's worth being precise about where they deliver on that promise and where they run out of road.</p>
 
 <h2>The Number That Decides It</h2>
 
-<p>Generating tokens is a memory exercise. For every token the model produces, the hardware reads the model's active weights out of memory, so single-stream generation speed tracks memory bandwidth almost linearly. The DGX Spark moves 273 GB/s. The RTX PRO 6000 Blackwell moves 1,792 GB/s of ECC GDDR7. That is a 6.6x gap on the one number that governs how fast words appear on screen.</p>
+<p>Generating tokens is a memory exercise. For every token the model produces, the hardware reads the model's active weights out of memory, so single-stream generation speed tracks memory bandwidth almost linearly. The DGX Spark moves 273 GB/s. The RTX PRO 6000 Blackwell Server Edition moves 1,597 GB/s of ECC GDDR7. That's close to a 6x gap on the one number that governs how fast words appear on a screen. It's the first figure I'd look up on any part I'm weighing, ahead of the memory total and ahead of the price.</p>
 
-<p>Benchmarks confirm the arithmetic. <a href="https://github.com/casualcomputer/rtx_pro_6000_vs_dgx_spark" target="_blank" rel="noopener">Head-to-head sglang testing</a> across batch sizes 1 through 32 shows the RTX PRO 6000 generating tokens 6 to 7 times faster than the Spark on the same models. A dense 70B model that produces around 32 tokens a second on the Blackwell card crawls along in the single digits on a Spark. Nothing tunes that away. It is physics with a spec sheet.</p>
+<p>Benchmarks confirm the arithmetic. <a href="https://github.com/casualcomputer/rtx_pro_6000_vs_dgx_spark" target="_blank" rel="noopener">Head-to-head sglang testing</a> across batch sizes 1 through 32 shows the RTX PRO 6000 generating tokens 6 to 7 times faster than the Spark on the same models. A dense 70B that produces around 32 tokens a second on the Blackwell card crawls along in the single digits on a Spark. Nothing tunes that away. It's physics with a spec sheet stapled to it.</p>
 
 <h2>Two Sparks Are Not One Blackwell</h2>
 
-<p>The tempting move is to stack them. Two Sparks pair over a ConnectX-7 link at 200 gigabits, and NVIDIA markets the pair as running models up to 405B parameters. The capacity claim is true. The performance conclusion people draw from it is not. Splitting a model across two boxes over an ethernet-class link adds memory room while per-stream speed stays pinned to each box's own 273 GB/s, minus interconnect overhead. Prefill, the compute-heavy pass that reads your whole prompt before the first token appears, runs roughly 4x slower on the Spark's GB10 than on the full Blackwell card as well. Stacking buys room, not speed. Capacity and throughput are different products, and the marketing does not go out of its way to distinguish them.</p>
+<p>The tempting move is to stack them. Two Sparks pair over a ConnectX-7 link at 200 gigabits, and NVIDIA markets the pair as running models up to 405B parameters. The capacity claim's true. The performance conclusion people draw from it isn't. Splitting a model across two boxes over an ethernet-class link adds memory room while per-stream speed stays pinned to each box's own 273 GB/s, minus interconnect overhead. Prefill, the compute-heavy pass that reads your whole prompt before the first token appears, runs roughly 4x slower on the Spark's GB10 than on the full Blackwell card as well. Stacking buys you room, not speed. Capacity and throughput are different products, and the marketing doesn't go out of its way to distinguish them.</p>
 
-<p>What 256GB of pooled memory is genuinely good for is mixture-of-experts models, which store enormous total weights but activate only a fraction of them per token. That is exactly the rig in <a href="self-hosted-ai-inference-165k-rewrite.html">the writeup we published this week</a>: systems engineer Miriah Peterson <a href="https://soypetetech.substack.com/p/i-replaced-claude-code-with-minimax" target="_blank" rel="noopener">ran MiniMax on two DGX Sparks</a> and replaced her metered coding assistant outright, at speeds around 30 to 40 tokens a second. For one developer, that works. The Spark is a fine machine for the job it was built for, which is one or two people, not an organization.</p>
+<p>What 256GB of pooled memory is genuinely good for is mixture-of-experts models, which store enormous total weights but only activate a fraction of them per token. That's exactly the rig in <a href="self-hosted-ai-inference-165k-rewrite.html">the writeup we published this week</a>: systems engineer Miriah Peterson <a href="https://soypetetech.substack.com/p/i-replaced-claude-code-with-minimax" target="_blank" rel="noopener">ran MiniMax on two DGX Sparks</a> and replaced her metered coding assistant outright, at speeds around 30 to 40 tokens a second. For one developer, that works, and she's right about why it works. The Spark's a fine machine for the job it was built for, which is one or two people, not an organization.</p>
 
 <h2>The AMD Side: Strix Halo</h2>
 
-<p>The Ryzen AI Max+ 395 machines are the value play of the class. Sixteen Zen 5 cores, a Radeon 8060S GPU, 128GB of unified LPDDR5X at roughly 256 GB/s, and ordinary x86 that runs Windows or Linux, at about half the Spark's price. On token generation they essentially tie the Spark: <a href="https://www.notebookcheck.net/Compact-AI-workstations-in-comparison-Nvidia-DGX-Spark-meets-AMD-Ryzen-AI-Max-395.1232660.0.html" target="_blank" rel="noopener">independent testing</a> on the 120B-parameter GPT-OSS model clocks roughly 34 tokens a second against the Spark's 38. AMD's own accounting puts the platform at about 1.7x more tokens per dollar, and on that narrow metric the claim holds up.</p>
+<p>The Ryzen AI Max+ 395 machines are the value play of the class. Sixteen Zen 5 cores, a Radeon 8060S GPU, 128GB of unified LPDDR5X at roughly 256 GB/s, and ordinary x86 that'll run Windows or Linux, at about half the Spark's price. On token generation they essentially tie the Spark: <a href="https://www.notebookcheck.net/Compact-AI-workstations-in-comparison-Nvidia-DGX-Spark-meets-AMD-Ryzen-AI-Max-395.1232660.0.html" target="_blank" rel="noopener">independent testing</a> on the 120B-parameter GPT-OSS model clocks roughly 34 tokens a second against the Spark's 38. AMD's own accounting puts the platform at about 1.7x more tokens per dollar, and on that narrow metric the claim holds up. Good on them.</p>
 
-<p>Two caveats keep it honest. Prefill on the AMD box runs roughly 340 tokens a second against the Spark's 1,700 on the same test, so a long contract or a thick patient chart sits in prompt processing about five times longer before the first word of the answer appears. And the software stack is ROCm and Vulkan rather than CUDA, which works and improves monthly but still demands more systems patience than vLLM's native NVIDIA path. There is also no ConnectX-class pairing fabric; clustering Strix Halo boxes remains hobbyist territory today.</p>
+<p>Two caveats keep it honest. Prefill on the AMD box runs roughly 340 tokens a second against the Spark's 1,700 on the same test, so a long contract or a thick patient chart sits in prompt processing about five times longer before the first word of the answer shows up. And the software stack's ROCm and Vulkan rather than CUDA, which works and improves monthly but still demands more systems patience than vLLM's native NVIDIA path. There's also no ConnectX-class pairing fabric, so clustering Strix Halo boxes is hobbyist territory today.</p>
 
 <h2>When the Small Box Is Enough</h2>
 
-<p>One to three users. Mixture-of-experts models. A developer replacing a metered coding assistant, a researcher prototyping before a bigger commitment, a pilot proving that local AI fits your workflow before real budget moves. Tolerance for a slow first token on long prompts. If that is your situation, buy the small box, and we mean that without a wink. A Spark or a Strix Halo machine that gets your data off someone else's servers is a win for the same sovereignty argument we make at rack scale, and it is the cheapest way to learn what your real workload needs before you size the permanent system.</p>
+<p>One to three users. Mixture-of-experts models. A developer replacing a metered coding assistant, a researcher prototyping before a bigger commitment, a pilot proving that local AI fits your workflow before real budget moves. Tolerance for a slow first token on long prompts. If that's your situation, buy the small box, and we mean that without a wink. You don't need a rack to get your data off somebody else's servers. A Spark or a Strix Halo machine that does it is a win for the same sovereignty argument I make at rack scale, and it's the cheapest way I know to learn what your real workload needs before anybody sizes a permanent system.</p>
 
 <h2>When It Is Not</h2>
 
-<p>Concurrency breaks the small boxes first. Fifteen to thirty simultaneous sessions, the realistic peak for a 100-person organization, all share one pool of memory bandwidth, and queueing turns a 35-token-per-second box into a waiting room. Long-document work breaks them second: <a href="../law-firms.html">document review at a law firm</a>, <a href="../medical-practices.html">records summarization at a clinic</a>, anything prefill-heavy pays the compute gap on every single query. And regulated production carries requirements this class does not meet: LPDDR5X unified boxes have no ECC memory story an auditor will accept, no procurement provenance chain, and no duty-cycle rating for years of 24/7 load. We wrote up <a href="50k-month-cloud-ai-local-llm-replacement.html">why those things matter</a> in the DIY-build context, and every point transfers.</p>
+<p>Concurrency breaks the small boxes first. Fifteen to thirty simultaneous sessions, the realistic peak for a 100-person organization, all share one pool of memory bandwidth, and queueing turns a 35-token-per-second box into a waiting room. There's no tuning flag for a waiting room. Long-document work breaks them second: <a href="../law-firms.html">document review at a law firm</a>, <a href="../medical-practices.html">records summarization at a clinic</a>, anything prefill-heavy pays that compute gap on every single query. And regulated production carries requirements this class doesn't meet: LPDDR5X unified boxes have no ECC memory story an auditor's going to accept, no procurement provenance chain, and no duty-cycle rating for years of 24/7 load. We wrote up <a href="50k-month-cloud-ai-local-llm-replacement.html">why those things matter</a> in the DIY-build context, and every point transfers.</p>
 
-<p>That workload class, concurrent users on long documents under compliance obligations, is where server-class Blackwell bandwidth with ECC earns its keep, documented from purchase order to delivery manifest.</p>
+<p>That workload class, concurrent users on long documents under compliance obligations, is where server-class Blackwell bandwidth with ECC earns its keep, documented from purchase order to delivery manifest. Which of those two descriptions fits your building isn't something I can settle from here, and I'd be suspicious of anybody who tried.</p>
 
 <h2>Already Own a DGX Spark or Strix Halo?</h2>
 
-<p>Then you are most of the way to something useful, and the remaining distance is systems work, not hardware. Peterson's verdict from her own build applies here: the difference between trying a local model and replacing a paid tool is systems design, not model intelligence. We do that work on hardware we did not sell, DGX Sparks and Strix Halo machines included: the serving layer, the quantization choices, the multi-user interface, the air-gap configuration, and the training so your team can run it without us. A deployment that dies because the vendor shipped a pallet and vanished serves nobody, whoever sold the pallet.</p>
+<p>Then you're most of the way to something useful, and the remaining distance is systems work, not hardware. Peterson's verdict from her own build applies here: the difference between trying a local model and replacing a paid tool is systems design, not model intelligence. We do that work on hardware we did not sell, DGX Sparks and Strix Halo machines included: the serving layer, the quantization choices, the multi-user interface, the air-gap configuration, and the training so your team can run it without us. A deployment that dies because the vendor shipped a pallet and vanished serves nobody, whoever sold the pallet. That's the part I'd worry about, and it hasn't got anything to do with whose logo is on the box.</p>
 
 <!-- AEO Summary -->
 <div style="border-left:3px solid var(--copper);padding:16px 20px;margin:32px 0;background:rgba(217,119,6,0.05);border-radius:0 8px 8px 0;">
-<strong>Summary:</strong> DGX Spark and AMD Strix Halo machines are honest single-user local AI hardware; a dual stack adds model capacity, not speed, and still generates tokens 6 to 7 times slower per stream than one RTX PRO 6000 Blackwell. Buy the small box for solo and pilot work, buy server-class bandwidth for concurrent users and long documents, and get the serving stack engineered properly either way.
+<strong>Summary:</strong> DGX Spark and AMD Strix Halo machines are honest single-user local AI hardware, and if that's your situation you should buy one. A dual Spark stack adds model capacity, not speed, and still generates tokens 6 to 7 times slower per stream than one RTX PRO 6000 Blackwell. Concurrency, long documents, ECC, and duty cycle are what push a workload past the small box; which side of that line an organization sits on is a question for a site visit, not a comparison post.
 </div>
 
-      </article>
+</article>
 
       <!-- CTA -->
       <div class="article-cta">
