@@ -186,6 +186,19 @@ p {
   margin-right: auto;
 }
 
+/* Alignment system, shared with aurora.css: eyebrows, headings, icons and
+   icon-card titles stay centred; body copy reads left. The block itself stays
+   centred under its heading, so the column still looks deliberate, but the
+   sentences no longer come out as a ragged centred stack. .au-card already
+   worked this way (centred icon and title over a left-aligned .au-chk list);
+   this brings the other card and section types onto the same footing. */
+.section-header p,
+.risk-card p,
+.card.text-center p {
+  text-align: left;
+}
+
+
 .section-badge {
   display: inline-block;
   font-size: 0.75rem;
@@ -611,6 +624,18 @@ p {
     rgba(15, 23, 42, 0.9) 100%
   );
   pointer-events: none;
+}
+
+/* .hero-photo is position:fixed with z-index:0, which puts it in the positioned
+   paint layer. A band that is position:static paints its background BELOW that
+   layer, so the photo covers the band's own background and the text lands
+   straight on the photo with no veil: that is the contrast failure on the
+   manifesto and the blog rail. Every band after the photo is positioned so it
+   paints above. Cannot be solved with z-index:-1 on the photo, because html
+   carries a solid background that would then hide it entirely. */
+.hero-photo ~ section,
+.hero-photo ~ footer {
+  position: relative;
 }
 
 .hero-page {
