@@ -1,20 +1,22 @@
-# Island Mountain
+# Island Mountain AI Inc.
 
 ## About
-Forward-deployed AI engineering for regulated organizations. Island Mountain embeds on-site, learns how an organization works from the people who run it, finds where AI genuinely helps, then assembles whatever configuration serves that and trains the team to run it. Everything runs on the customer's premises, air-gap capable, so no data leaves the building. They own the hardware and the models outright: no token fees, no subscription, no per-seat charges. California built.
+Forward-deployed AI engineering for regulated organizations. Island Mountain AI Inc. embeds on-site, learns how an organization works from the people who run it, finds where AI genuinely helps, then assembles whatever configuration serves that and trains the team to run it. Everything runs on the customer's premises, air-gap capable, so no data leaves the building. They own the hardware and the models outright: no token fees, no subscription, no per-seat charges. California built.
 
 ## The Sequence
 1. Immerse: an intense period on-site with senior employees, managers, and founders. Not a discovery deck.
 2. Discover: mapping the use-cases and applications already latent in the organization, most of which nobody has articulated yet.
-3. Configure: a short-list we have proven, the client chooses, we install it. Sized with room to grow.
-4. Onboard: complete onboarding, because a deployment nobody can run is a very expensive shelf.
+3. Configure: Basho recommends the stack purchase for what Discovery turned up, then it is deployed and configured together, on-site. Sized with room to grow.
+4. Onboard: he onboards the customer's team to workflows and agentic orchestration built for their vertical and for what they actually sell or do. A deployment nobody can run is a very expensive shelf.
 
 Discovery comes before configuration on purpose. Nobody can tell you what to buy before knowing what you would use it for.
 
 ## Configurations
-There is no product line and no price list. Every number comes from a quote scoped to the engagement after the work has been seen. Configurations run from two DGX Sparks and a few M5-class laptops at a small business up to H200 racks with adjacent data server racks across an enterprise estate. Both are real answers and neither is the upsell; which one a client gets falls out of Discovery.
+There is no product line, no price list, and no set hardware specifications. Island Mountain AI Inc. will configure and deploy any hardware and software combination a customer needs. There is no standing catalog and no standing recommendation, because the recommendation does not exist until Discovery has shown what the organization actually does.
 
-Hardware we tend to recommend: DGX Spark, RTX 5090, RTX PRO 6000 Blackwell 96GB, H100/H200. We also configure hardware we did not sell, including machines another integrator shipped and never set up. Models are any open-source, open-weight model, swapped as the frontier moves. Software: hardened Ubuntu, Ollama, vLLM with tensor parallelism, Open WebUI, fully air-gap capable, with the Woven Security and Governance Fabric woven through.
+Scale is whatever the work calls for. A small business running a couple of desktop-class boxes and a few laptops is as real an answer as an enterprise estate on rack-mounted accelerators with adjacent data server racks. Neither is the upsell. Island Mountain also configures hardware it did not sell, including machines another integrator shipped and never set up.
+
+Models are any open-source, open-weight model, swapped as the frontier moves, so no lab holds a meter and nobody can deprecate the model a workflow depends on. The serving stack is hardened Linux with the open inference tooling the deployment calls for, fully air-gap capable, with the Woven Security and Governance Fabric woven through. Every number comes from a quote scoped to the engagement after the work has been seen.
 
 ## Security Fabric (Lamprey)
 Lamprey is a Woven Security & Governance Fabric - a software layer that secures and governs an organization from the outside through the cloud, or from the inside with air-gapped security. Cloud visibility, compliance evidence, and approval-gated remediation without standing privilege. Zero standing privilege: scan access is minted just in time, scoped to the operation, and revoked automatically.
@@ -34,8 +36,7 @@ Lamprey is a Woven Security & Governance Fabric - a software layer that secures 
 - Casino gaming operations complying with Title 31 BSA/AML, NIGC MICS, and state gaming commission cybersecurity requirements
 
 ## Team
-- Basho Parks, Co-founder. AI systems, prompt engineering, forward deployment, business development, and content. Background in tribal emergency management with the Yurok Tribe.
-- John Dougherty, Co-founder. Hardware engineering and product. 25 years in enterprise security and GPU systems. [johndou.com](https://www.johndou.com)
+- Basho Parks, Founder. Sole founder of Island Mountain AI Inc. He runs every deployment himself: the on-site immersion, Discovery, the stack recommendation, the deployment, and the onboarding. AI systems, prompt engineering, forward deployment, business development, and content. Background in tribal emergency management with the Yurok Tribe.
 
 ## Key Pages
 - [Forward Deployed](https://islandmountain.io/forward-deployed-ai-engineering.html)
