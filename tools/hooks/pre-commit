@@ -68,6 +68,14 @@ else
   done < <(git diff --cached -z --name-only --diff-filter=ACM -- '*.html')
 fi
 
+# --- Skills drift gate: _work/skills/ is gitignored, so no other gate can see it.
+#     A hook can read an ignored path, which is the whole trick. Warn-only until
+#     tools/.skills-gate-enforce exists; never blocks on tooling or a missing dir. ---
+SKILLS_SCAN="$(git rev-parse --show-toplevel)/tools/skills-drift-scan.sh"
+if [ -x "$SKILLS_SCAN" ]; then
+  "$SKILLS_SCAN" || FAIL=1
+fi
+
 # --- CANON §11 no-slop gate: block newly-added build-process artifacts ---
 SLOP_SCAN="$(git rev-parse --show-toplevel)/tools/no-slop-scan.sh"
 if [ -x "$SLOP_SCAN" ]; then
