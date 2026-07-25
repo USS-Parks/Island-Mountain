@@ -35,6 +35,15 @@ git -C "$SKILLS" commit -q -m "Autosave skills: ${CHANGED}
 Written by a Claude Code session via the PostToolUse hook. Squash or reword
 freely; the point is that nothing is lost between deliberate commits.
 
-Authored and reviewed by Basho Parks, Copyright 2026" >/dev/null 2>&1
+Authored and reviewed by Basho Parks, Copyright 2026" >/dev/null 2>&1 || exit 0
+
+# Get it off the drive. A local commit survives a mistake; it does not survive the
+# disk. USS-Parks/Island-Mountain-Skills is private, so this publishes nothing.
+# Best-effort by design: offline, no remote, or a rejected push all exit quietly,
+# and the next edit pushes the backlog. Timeout so a hung network cannot stall an
+# edit; 20s is far longer than a markdown push needs.
+if git -C "$SKILLS" remote get-url origin >/dev/null 2>&1; then
+  timeout 20 git -C "$SKILLS" push -q origin HEAD >/dev/null 2>&1 || true
+fi
 
 exit 0
