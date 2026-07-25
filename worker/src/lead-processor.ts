@@ -155,7 +155,7 @@ function sheetRow(row: LeadRow, scored: ScoreResult): Record<string, unknown> {
   };
 }
 
-/** Rough deal value for GA4 reporting (midpoint of tier range, USD). */
+/** Rough deal value for GA4 reporting (indicative engagement size, USD). */
 function estimatedValue(score: ScoreResult['score']): number {
   if (score === 'hot') return 120000;
   if (score === 'warm') return 64000;
