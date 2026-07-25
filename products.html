@@ -30,7 +30,7 @@
   <meta name="author" content="Basho Parks">
   <meta name="date" content="2026-06-06">
   <title>Configs | On-Premise AI, Assembled to Fit</title>
-  <meta name="description" content="We do not have a lineup. We recommend a short-list we have proven and install what you choose: any hardware from two DGX Sparks to an H200 estate, any open-weight model, any data server rack. Discovery decides the shape.">
+  <meta name="description" content="No catalog and no set specs. Discovery shows what the work needs, then we configure and deploy whatever hardware and software combination serves it, on-site, together.">
   <link rel="icon" type="image/x-icon" href="favicon.ico?v=2">
   <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png?v=2">
   <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png?v=2">
@@ -62,7 +62,7 @@
 
   <!-- Open Graph -->
   <meta property="og:title" content="Configs | On-Premise AI, Assembled to Fit">
-  <meta property="og:description" content="We do not have a lineup. We recommend a short-list we have proven and install what you choose: any hardware, any open-weight model, from two DGX Sparks to an H200 estate.">
+  <meta property="og:description" content="No catalog and no set specs. Discovery shows what the work needs, then we configure and deploy whatever hardware and software combination serves it, on-site.">
   <meta property="og:url" content="https://islandmountain.io/products.html">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Island Mountain">
@@ -71,7 +71,7 @@
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Configs | On-Premise AI, Assembled to Fit">
-  <meta name="twitter:description" content="We do not have a lineup. We recommend a short-list we have proven and install what you choose: any hardware, any open-weight model, from two DGX Sparks to an H200 estate.">
+  <meta name="twitter:description" content="No catalog and no set specs. Discovery shows what the work needs, then we configure and deploy whatever hardware and software combination serves it, on-site.">
   <meta name="twitter:image" content="https://islandmountain.io/images/summit-product-photo4.webp">
 
   <!-- Service Schema: what we actually do -->
@@ -83,7 +83,7 @@
     "serviceType": "Configuration-agnostic on-premise AI deployment",
     "provider": {"@type": "Organization", "name": "Island Mountain", "url": "https://islandmountain.io"},
     "areaServed": "US",
-    "description": "Island Mountain recommends a short-list of proven configurations and installs whatever the client chooses: any hardware from a pair of DGX Sparks and M5-class laptops up to H100 and H200 racks with adjacent data server racks, running any open-source open-weight model. The configuration follows an on-site immersion and Discovery rather than a catalog."
+    "description": "Island Mountain has no catalog, no set hardware specifications, and no standing recommendation. It configures and deploys any hardware and software combination the work calls for, running open-source open-weight models, air-gap capable throughout. The recommendation is made per customer after an on-site immersion and Discovery, then deployed and configured together on-site."
   }
   </script>
 
@@ -103,18 +103,18 @@
       },
       {
         "@type": "Question",
-        "name": "How many GPUs can a single rack hold?",
+        "name": "How do you decide what we need?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "A single rack ramps to 6-8 NVIDIA RTX PRO 6000 Blackwell GPUs. You can start with two cards and add capacity as your workload grows - more VRAM, more throughput, and more concurrent seats, all on-premises."
+          "text": "Discovery decides it. There is no catalog and no standing recommendation, because nobody can tell you what to buy before knowing what you would use it for. Island Mountain sits with the people who run the work until the work is understood, and the recommendation falls out of that."
         }
       },
       {
         "@type": "Question",
-        "name": "How many users can one rack support?",
+        "name": "Can we start smaller and grow into it?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "A fully ramped rack supports 1,500-1,800 users on hyper-localized, on-premises inference. It is a one-time hardware purchase with no per-seat cloud fees and no token metering."
+          "text": "Yes, and every deployment is built with room to grow, because the alternative is buying twice. You add capacity as the work grows rather than replacing what you already bought, and it stays on your premises the whole time."
         }
       }
     ]
@@ -154,17 +154,11 @@
     .rtx-media-col{flex-basis:100%!important;margin-left:0!important;}
     .rtx-media-col img{display:block;width:100%;max-width:460px;margin:0 auto;}
   }
-  .gpu-section{background-color:#090d14;background-image:linear-gradient(rgba(6,10,18,0.74),rgba(6,10,18,0.80)),url('images/rtx-blackwell-hands.webp'),url('images/rtx-blackwell-bench.webp');background-repeat:no-repeat,no-repeat,no-repeat;background-position:center,center 24px,center bottom;background-size:cover,100% auto,100% auto;}
-  .gpu-section .section-badge,.gpu-section h2{text-shadow:0 2px 14px rgba(0,0,0,0.75);}
-  .gpu-section .body-lg{color:#e9eff8;text-shadow:0 1px 10px rgba(0,0,0,0.65);}
-  .gpu-cardgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
-  @media(max-width:1000px){.gpu-cardgrid{grid-template-columns:repeat(2,1fr);}}
-  @media(max-width:640px){.gpu-cardgrid{grid-template-columns:1fr;}}
-  .gpu-card{background:rgba(9,14,24,0.88);border:1px solid rgba(148,163,184,0.18);border-radius:16px;padding:34px 26px;text-align:center;}
-  .gpu-card img{width:104px;height:104px;margin:0 auto 18px;display:block;}
-  .gpu-card h3{color:#fff;font-size:1.18rem;margin-bottom:10px;}
-  .gpu-card p{color:rgba(226,232,240,0.92);font-size:0.95rem;line-height:1.6;margin:0;}
-  .gpu-card .gpu-metric{color:var(--copper);font-weight:700;}
+  .range-section{background-color:#090d14;background-image:linear-gradient(rgba(6,10,18,0.74),rgba(6,10,18,0.80)),url('images/rtx-blackwell-hands.webp'),url('images/rtx-blackwell-bench.webp');background-repeat:no-repeat,no-repeat,no-repeat;background-position:center,center 24px,center bottom;background-size:cover,100% auto,100% auto;}
+  .range-section .section-badge,.range-section h2{text-shadow:0 2px 14px rgba(0,0,0,0.75);}
+  .range-copy{max-width:760px;margin:0 auto;}
+  .range-copy p{color:#e9eff8;font-size:1.05rem;line-height:1.85;text-shadow:0 1px 10px rgba(0,0,0,0.65);margin:0 0 20px;}
+  .range-copy p:last-child{margin-bottom:0;}
   /* Product Questions cards: 3-up, centered, 2x icons - match the GPU card treatment */
   .risk-grid{grid-template-columns:repeat(3,1fr);}
   @media(max-width:1000px){.risk-grid{grid-template-columns:repeat(2,1fr);}}
@@ -173,7 +167,7 @@
   .risk-card h4{justify-content:center;}
   .risk-card img{width:104px;height:104px;margin:0 auto 18px;display:block;}
   /* Uniform icon rendering (matches the Woven page): normalize all card icons to one white + one glow. */
-  .gpu-card img, .risk-card img{ filter: brightness(0) invert(1) drop-shadow(0 0 5px rgba(200,220,255,.55)); }
+  .risk-card img{ filter: brightness(0) invert(1) drop-shadow(0 0 5px rgba(200,220,255,.55)); }
   /* Hardware reveal video: locked 16:9 (source is 1280x720) so it never squishes on mobile or desktop */
   .hw-video{max-width:960px;margin:0 auto;}
   .hw-video video{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;border-radius:16px;background:#000;box-shadow:0 24px 60px rgba(0,0,0,0.45);}
@@ -225,7 +219,7 @@
   <section class="hero hero-page">
     <div class="hero-inner">
       <h1>Configs</h1>
-      <h2>We Install What You Want. We Just Have Opinions About It.</h2>
+      <h2>We Install What You Want. We Just Won&#39;t Guess First.</h2>
       <h3>Any hardware, any open-weight model, any data server rack. Chosen after Discovery, never off a spec sheet.</h3>
     </div>
   </section>
@@ -240,35 +234,35 @@
         <div style="flex:1 1 380px;min-width:0;">
           <span class="section-badge">What We Deploy</span>
           <h2 style="margin-top:12px;">A Loosely Connected Band of Pirates</h2>
-          <p class="body-lg">This industry is a loosely connected band of pirates, swapping hardware and weights to suit the moment. We operate the same way and we say so. Depending on what <a href="forward-deployed-ai-engineering.html" class="clr-copper">Discovery</a> turns up, a deployment is a bench of DGX Sparks and some M5 laptops, a few RTX 5090s, RTX PRO 6000 Blackwells, or H100 and H200 capacity with adjacent data server racks. Open-source, open-weight models run on top, swapped out as the frontier moves, with no lab holding a meter on you.</p>
+          <p class="body-lg">This industry is a loosely connected band of pirates, swapping hardware and weights to suit the moment. We operate the same way and we say so. There&#39;s no catalog here, no set specs, and no standing recommendation, because the recommendation doesn&#39;t exist until <a href="forward-deployed-ai-engineering.html" class="clr-copper">Discovery</a> has shown what you do. Then we configure and deploy whatever hardware and software combination serves it. Open-source, open-weight models run on top, swapped out as the frontier moves, with no lab holding a meter on you.</p>
           <p class="body-lg">What doesn&#39;t change: it&#39;s air-gapped, it&#39;s yours, and the <a href="lamprey-woven-security-governance.html" class="clr-copper">Woven Security &amp; Governance Fabric</a> is in the crate. Nothing phones home, nothing leaves your building. Weighing the move? The <a href="resources.html" class="clr-copper">resource library</a> breaks down air-gapped inference, HIPAA, ITAR/CMMC, and on-premises cost.</p>
         </div>
       </div>
     </div>
   </section>
-  <!-- The short-list we recommend -->
+  <!-- How a configuration gets decided -->
   <section class="section section-darker specs-bg">
     <div class="container">
       <div class="section-header fade-in">
-        <span class="section-badge">The Short-List</span>
-        <h2>Three shapes we keep coming back to</h2>
-        <p>These aren&#39;t products and you can&#39;t order one. They&#39;re the configurations that keep proving themselves, offered as a starting point for the conversation. Discovery decides which shape fits, and plenty of deployments land somewhere between two of them.</p>
+        <span class="section-badge">Before Anyone Names Hardware</span>
+        <h2>How a configuration gets decided</h2>
+        <p>There&#39;s no catalog on this page and there isn&#39;t one anywhere else either. Nobody can tell you what to buy before knowing what you&#39;d use it for, so the recommendation gets made once, for you, after Discovery. Here&#39;s what has to be on the table before it can be made at all.</p>
       </div>
       <div class="card-grid card-grid-3 fade-in">
         <div class="card beam-card" style="--i:0">
-          <h3>The small shop</h3>
-          <p>Two DGX Sparks and a few M5-class laptops. Real work, genuinely useful models, no rack and no dedicated room. For an office where a handful of people carry the institutional knowledge and the data can never leave.</p>
+          <h3>Whose desk the work runs through</h3>
+          <p>How many people touch it, how often, and whether they&#39;re all hitting it at once. Concurrency moves the answer further than anything else on this list, and it&#39;s the thing nobody guesses right over the phone.</p>
         </div>
         <div class="card beam-card" style="--i:1">
-          <h3>The department</h3>
-          <p>Professional cards in a single chassis, usually RTX 5090s or RTX PRO 6000 Blackwells, serving a floor concurrently. The middle of the range and where most first deployments land, with headroom to add cards rather than start over.</p>
+          <h3>What the data is, and what it can&#39;t touch</h3>
+          <p>Regulated data sets the air-gap posture, and the posture shapes the deployment. A workload that can never see a network is a different build from one that just prefers not to.</p>
         </div>
         <div class="card beam-card" style="--i:2">
-          <h3>The estate</h3>
-          <p>H100 and H200 capacity with adjacent data server racks, feeding multiple departments and heavier concurrent load. For organizations where AI stopped being a pilot and became infrastructure.</p>
+          <h3>What the building can take</h3>
+          <p>Power, cooling, network, and where a rack can physically live. Facilities gets a veto, and it&#39;s a great deal cheaper to hear it before anything is ordered than after it arrives.</p>
         </div>
       </div>
-      <p class="fade-in" style="max-width:760px;margin:28px auto 0;text-align:center;color:var(--text-muted);line-height:1.8;">Every one of them is built with room to grow, because the alternative is buying twice. And if you want something not on this list, we&#39;ll install that instead. It&#39;s your building.</p>
+      <p class="fade-in" style="max-width:760px;margin:28px auto 0;text-align:center;color:var(--text-muted);line-height:1.8;">Then Basho recommends the stack purchase, and we deploy and configure it together, in your building. After that he onboards your team to the workflows and <a href="lamprey-woven-security-governance.html" class="clr-copper">agentic orchestration</a> built for your vertical and for what you sell, because a deployment nobody can run is a very expensive shelf.</p>
     </div>
   </section>
 
@@ -283,44 +277,16 @@
     </div>
   </section>
 
-  <!-- Why Professional-Grade GPUs (RTX PRO 6000 strength cards) -->
-  <section class="section section-dark gpu-section">
+  <!-- The range, in shape rather than part numbers -->
+  <section class="section section-dark range-section">
     <div class="container">
       <div class="section-header fade-in">
-        <span class="section-badge">Hardware Integrity</span>
-        <h2>When Professional-Grade Cards Earn Their Keep</h2>
+        <span class="section-badge">The Range</span>
+        <h2>Both ends of this are real answers</h2>
       </div>
-      <div class="gpu-cardgrid fade-in">
-        <div class="gpu-card beam-card">
-          <img src="images/blackwell-arch-icon.webp" alt="" width="104" height="104" loading="lazy">
-          <h3>Blackwell Architecture</h3>
-          <p>5th-generation Tensor Cores with native FP8 and FP4 and roughly <span class="gpu-metric">1 PFLOP</span> of FP16 compute per card, built for modern inference.</p>
-        </div>
-        <div class="gpu-card beam-card">
-          <img src="images/gddr7-icon.webp" alt="" width="104" height="104" loading="lazy">
-          <h3><span class="gpu-metric">96GB</span> GDDR7 per Card</h3>
-          <p>Holds 70B-parameter models in full precision, or DeepSeek V4-Flash at FP8 with headroom for KV cache.</p>
-        </div>
-        <div class="gpu-card beam-card">
-          <img src="images/enterprise-drivers-icon.webp" alt="" width="104" height="104" loading="lazy">
-          <h3>Enterprise Drivers</h3>
-          <p>NVIDIA RTX / Enterprise ISV-certified drivers with a validated, long-lived support lifecycle - not consumer game-ready drivers.</p>
-        </div>
-        <div class="gpu-card beam-card">
-          <img src="images/built-for-ai-icon.webp" alt="" width="104" height="104" loading="lazy">
-          <h3>Built for AI Workloads</h3>
-          <p>Large-model fine-tuning, enterprise inference, CAD/CAE, and 24/7 production workloads - the jobs an on-prem stack actually runs.</p>
-        </div>
-        <div class="gpu-card beam-card">
-          <img src="images/ecc-error-correction.webp" alt="" width="104" height="104" loading="lazy">
-          <h3>ECC Error Correction</h3>
-          <p>Detects and corrects single-bit memory errors automatically - no silent data flips in clinical, legal, or defense inference.</p>
-        </div>
-        <div class="gpu-card beam-card">
-          <img src="images/gb-sec-icon.webp" alt="" width="104" height="104" loading="lazy">
-          <h3><span class="gpu-metric">~1,792 GB/s</span> Bandwidth</h3>
-          <p>GDDR7 memory feeds the Tensor Cores fast, sustaining high token throughput under continuous, always-on load.</p>
-        </div>
+      <div class="range-copy fade-in">
+        <p>A small business doing genuinely useful work on a couple of desktop-class machines and a few laptops sits at one end. A large estate on rack-mounted accelerators with adjacent data server racks, feeding several departments at once, sits at the other. Neither one is the upsell, and there&#39;s no ladder between them that anybody gets walked up.</p>
+        <p>What doesn&#39;t change across that spread: it&#39;s yours outright, it&#39;s air-gap capable, the models are open-weight and swappable, and the <a href="lamprey-woven-security-governance.html" class="clr-copper">Woven Security &amp; Governance Fabric</a> is in the crate either way. When professional accelerators are the right call we&#39;ll say so and explain why, and when they&#39;re overkill for what Discovery found, we&#39;ll say that instead. Every deployment gets built with room to grow, because the alternative is buying twice.</p>
       </div>
     </div>
   </section>
@@ -339,13 +305,13 @@
         </div>
         <div class="risk-card beam-card">
           <img src="images/ic-skills-teacher.webp" alt="" width="104" height="104" loading="lazy">
-          <h4>How far does one rack scale?</h4>
-          <p>A single rack ramps to 6-8 RTX PRO 6000 Blackwell GPUs. Start with two and add cards as you grow - more VRAM, more throughput, more seats, all on-prem.</p>
+          <h4>How do you decide what we need?</h4>
+          <p>Discovery decides it. Nobody can tell you what to buy before knowing what you&#39;d use it for, so we sit with the people who run the work until we know it, and the recommendation falls out of that.</p>
         </div>
         <div class="risk-card beam-card">
           <img src="images/ic-plan.webp" alt="" width="104" height="104" loading="lazy">
-          <h4>How many users can it serve?</h4>
-          <p>A fully ramped rack serves 1,500-1,800 users. One-time hardware, no per-seat cloud fees, no metering. On-prem open source is a no-brainer.</p>
+          <h4>Can we start smaller and grow?</h4>
+          <p>Yes, and everything gets built with room to grow, because the alternative is buying twice. You add capacity as the work grows instead of replacing what you already own.</p>
         </div>
       </div>
       <div class="text-center-mt-32">
@@ -357,7 +323,7 @@
 
   <!-- AEO Summary -->
   <div style="border-left:3px solid var(--copper);padding:16px 20px;margin:32px 0;background:rgba(217,119,6,0.05);border-radius:0 8px 8px 0;">
-  <strong>Summary:</strong> Island Mountain deploys on-premises AI systems sized to an organization's workflow after an on-site study. The hardware layer is swappable, spanning DGX Spark and RTX 5090 class machines through RTX PRO 6000 Blackwell and up to H100/H200 capacity, and the model layer is swappable open-source open-weight models on Ubuntu, vLLM, and Open WebUI. Island Mountain also configures and air-gaps hardware bought from other vendors.
+  <strong>Summary:</strong> Island Mountain deploys on-premises AI systems configured to an organization's workflow after an on-site immersion and Discovery. There is no catalog, no set hardware specification, and no standing recommendation: any hardware and software combination the work calls for, from a couple of desktop-class machines up to rack-mounted accelerators with adjacent data server racks, running swappable open-source open-weight models on a hardened Linux serving stack. Island Mountain also configures and air-gaps hardware bought from other vendors.
   </div>
 
   <!-- CTA -->
