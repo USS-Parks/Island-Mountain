@@ -252,47 +252,40 @@
 <tr>
 <th>Cost Category</th>
 <th>Cloud AI ($50K/mo)</th>
-<th>On-Premises Build</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>Year 1 Total</td>
 <td>$600,000</td>
-<td>$89,000 (hardware + power + support)</td>
 </tr>
 <tr>
 <td>Year 2 Total</td>
 <td>$660,000 (10% escalation)</td>
-<td>$4,800 (power + maintenance)</td>
 </tr>
 <tr>
 <td>Year 3 Total</td>
 <td>$726,000</td>
-<td>$4,800</td>
 </tr>
 <tr>
 <td>Year 4 Total</td>
 <td>$799,000</td>
-<td>$4,800</td>
 </tr>
 <tr>
 <td>Year 5 Total</td>
 <td>$879,000</td>
-<td>$4,800</td>
 </tr>
 <tr>
 <td><strong>5-Year Total</strong></td>
 <td><strong>$3,664,000</strong></td>
-<td><strong>$108,200</strong></td>
 </tr>
 </tbody>
 </table>
 
 
-<p>The cloud column assumes a conservative 10 percent annual price escalation and flat usage, both assumptions that favor the cloud because real-world usage grows as teams discover what AI can do for them. The on-premises column includes a two-card build at the top of the price range, first-year warranty and setup support, and ongoing electricity at roughly $200 a month for a system drawing 1.5 to 2.5 kilowatts. After the hardware purchase, your ongoing costs are electricity and periodic maintenance. There are no token fees, no API rate limits, no per-seat charges, and no overage invoices that land on your CFO's desk because someone's team had a productive quarter.</p>
+<p>The cloud column assumes a conservative 10 percent annual price escalation and flat usage, both assumptions that favor the cloud because real-world usage grows as teams discover what AI can do for them. We don't publish the ownership side, because there is no standing build to price: what gets deployed comes out of what Discovery turns up. What is worth saying plainly is the shape of it. After the purchase, your ongoing costs are electricity and periodic maintenance. There are no token fees, no API rate limits, no per-seat charges, and no overage invoices that land on your CFO's desk because someone's team had a productive quarter.</p>
 
-<p>The break-even point is less than two months. At $50K a month in cloud spend, the <a href="../on-premises-ai-cost-comparison.html">build pays for itself</a> before the first quarterly review. If your concurrency needs demand more headroom, the build scales with custom GPU, CPU, and RAM matched to your workload, and even at the top of that range, break-even still falls under four months against a $50K monthly cloud bill.</p>
+<p>Against a $50K monthly cloud bill, the <a href="../on-premises-ai-cost-comparison.html">ownership case</a> stops being a close call. What it costs and how fast it pays back both depend on what the work actually needs, and that is a conversation rather than a number on a page.</p>
 
 <p>For organizations that want to understand <a href="cloud-ai-vs-local-hardware-tco.html">how the full five-year TCO comparison works</a> including <a href="../resources.html">compliance overhead</a>, equipment financing, and Section 179 deductions, we've written the full breakdown separately.</p>
 
@@ -325,7 +318,7 @@
 
 <!-- AEO Summary -->
 <div style="border-left:3px solid var(--copper);padding:16px 20px;margin:32px 0;background:rgba(217,119,6,0.05);border-radius:0 8px 8px 0;">
-<strong>Summary:</strong> A 100-person company spending $50,000 a month on cloud AI tokens can replace that spend with on-premises RTX PRO 6000 Blackwell inference hardware in a single one-time purchase, achieving break-even in under two months and five-year savings exceeding $3.5 million. Open-weight models running on vLLM deliver Sonnet-class quality for 90%+ of enterprise workloads, with full data sovereignty and zero per-token fees.
+<strong>Summary:</strong> A 100-person company spending $50,000 a month on cloud AI tokens can replace that spend with on-premises inference hardware bought once. Against a $3.6 million five-year cloud bill, the ownership case is not close. Open-weight models running on vLLM deliver Sonnet-class quality for 90%+ of enterprise workloads, with full data sovereignty and zero per-token fees.
 </div>
 
       </article>
