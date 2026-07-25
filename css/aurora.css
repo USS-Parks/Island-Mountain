@@ -79,9 +79,12 @@ html:not(.js) #aurora-intro{ display:none; }
 @keyframes auMarquee{ from{transform:translateX(0);} to{transform:translateX(calc(-100% - var(--gap)));} }
 
 /* ---------------- Sections (dense, deliberate backgrounds) ---------------- */
-.au-section{ padding:72px 0; position:relative; background:var(--au-slate); }
-.au-section--alt{ background:var(--au-slate-3); }
-.au-section--ink{ background:var(--au-ink); }
+/* Same alphas the rest of the site runs (.section-dark / .section-darker in
+   style.css), so the fixed hero photo ghosts through the page below the fold
+   instead of being sealed off by an opaque slab. */
+.au-section{ padding:72px 0; position:relative; background:rgba(15,23,42,.92); }
+.au-section--alt{ background:rgba(13,20,36,.95); }
+.au-section--ink{ background:rgba(8,13,24,.95); }
 .au-eyebrow-c{ letter-spacing:.24em; text-transform:uppercase; font-size:.75rem; font-weight:700; color:var(--au-copper); display:inline-block; margin-bottom:.5rem; }
 .au-h2{ font-family:'Space Grotesk','Inter',system-ui,sans-serif; font-size:clamp(1.85rem,3.6vw,2.7rem); font-weight:800; letter-spacing:-.01em; margin:0 0 .5em; line-height:1.08; }
 .au-lede{ color:var(--au-muted); font-size:1.05rem; line-height:1.7; max-width:60ch; }
@@ -250,11 +253,18 @@ html:not(.js) #aurora-intro{ display:none; }
 .au-spot-copy{ text-align:center; }
 .au-spot-copy .au-lede{ margin-left:auto; margin-right:auto; }
 
-/* Hero: Summit product photo under a dark veil */
+/* Hero: Summit product photo under a dark veil.
+   The photo lives in the body-level .hero-photo div (style.css), which is
+   position:fixed, so it stays put while the page scrolls over it. That is how
+   every non-aurora page on the site works; as a section background it scrolled
+   away with the hero. .au-hero keeps only the veil so the photo shows through,
+   and .hero-photo's own veil is switched off so the two do not stack. This
+   sheet loads on the four aurora pages only, so the ::after rule is scoped. */
+.hero-photo::after{ display:none; }
+.hero-photo img{ object-position:center 40%; }
 .au-hero{
   background:
-    linear-gradient(180deg, rgba(8,13,24,.88) 0%, rgba(13,20,36,.64) 48%, rgba(8,13,24,.94) 100%),
-    url('../images/summit-photo3.webp') center 40% / cover no-repeat;
+    linear-gradient(180deg, rgba(8,13,24,.88) 0%, rgba(13,20,36,.64) 48%, rgba(8,13,24,.94) 100%);
 }
 /* Spotlight thumb: single, full-width to match the video above */
 .au-spot-thumbs{ justify-content:center; }
@@ -283,13 +293,13 @@ html:not(.js) #aurora-intro{ display:none; }
   .au-ctas .btn{ flex:1 1 100%; text-align:center; }
   /* Bug fix: the Summit server sits in the left third of the photo; a centered
      `cover` crop drops it off-screen on a portrait box. Bias the crop left so
-     the product stays framed, and tighten hero padding. The -mobile file is the
-     same photo at 1200px wide: identical framing, roughly half the bytes. */
+     the product stays framed, and tighten hero padding. The <picture> element
+     swaps in the -mobile file here: same photo at 1200px wide, half the bytes. */
+  .hero-photo img{ object-position:30% 45%; }
   .au-hero{
     padding:108px 0 56px;
     background:
-      linear-gradient(180deg, rgba(8,13,24,.84) 0%, rgba(13,20,36,.58) 46%, rgba(8,13,24,.95) 100%),
-      url('../images/summit-photo3-mobile.webp') 30% 45% / cover no-repeat;
+      linear-gradient(180deg, rgba(8,13,24,.84) 0%, rgba(13,20,36,.58) 46%, rgba(8,13,24,.95) 100%);
   }
 }
 

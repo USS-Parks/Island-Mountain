@@ -36,10 +36,12 @@
   <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png?v=2">
   <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png?v=2">
   <link rel="stylesheet" href="css/style.min.css?v=4">
-  <link rel="stylesheet" href="css/aurora.min.css?v=8">
+  <link rel="stylesheet" href="css/aurora.min.css?v=9">
   <link rel="stylesheet" href="css/card-nodes.min.css?v=3">
   <link rel="stylesheet" href="icons/remixicon.css" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="icons/remixicon.css"></noscript>
+  <link rel="preload" as="image" href="images/summit-photo3.webp" fetchpriority="high" media="(min-width:601px)">
+  <link rel="preload" as="image" href="images/summit-photo3-mobile.webp" fetchpriority="high" media="(max-width:600px)">
   <link rel="preload" href="fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
   <style>
@@ -397,6 +399,17 @@
   </style>
 </head>
 <body class="faq-aurora">
+
+  <!-- Hero background photo: fixed behind the page (style.css .hero-photo), so it
+       holds still while the content scrolls over it. Same treatment as every
+       non-aurora page on the site. -->
+  <div class="hero-photo">
+    <picture>
+      <source media="(max-width:600px)" srcset="images/summit-photo3-mobile.webp">
+      <img src="images/summit-photo3.webp" alt="" fetchpriority="high" decoding="async" width="1672" height="941">
+    </picture>
+  </div>
+
 
   <!-- Persistent fixed hero backdrop (stays behind content through the whole scroll) -->
   <div class="faq-backdrop" aria-hidden="true"></div>
