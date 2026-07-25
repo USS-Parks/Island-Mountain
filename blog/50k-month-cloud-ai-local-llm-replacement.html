@@ -210,7 +210,7 @@
 
 <p>That's $600,000 a year. Call it $3 million over five if prices hold flat, which they won't, because cloud AI pricing has climbed 10 to 15 percent a year as usage scales and providers reshuffle their tiers. $50K a month today is $80K to $95K a month by year three without anybody changing a single workflow.</p>
 
-<p>And every token that leaves your network takes something with it. Your code. Your client information. Your internal strategy docs. Your competitive positioning. For anybody working under <a href="../hipaa-local-ai-compliance.html">HIPAA</a>, <a href="attorney-client-privilege-cloud-ai.html">attorney-client privilege</a>, <a href="itar-dfars-ai-self-assessment.html">ITAR</a>, or <a href="../cloud-act-tribal-data.html">tribal data sovereignty frameworks</a>, that isn't a footnote buried in a risk register. That's the whole argument.</p>
+<p>And every token that leaves your network takes something with it. Your code. Your client information. Your internal strategy docs. Your competitive positioning. For anybody working under <a href="../hipaa-local-ai-compliance.html">HIPAA</a>, <a href="attorney-client-privilege-cloud-ai.html">attorney-client privilege</a>, <a href="itar-dfars-ai-self-assessment.html">ITAR</a>, or <a href="../cloud-act-tribal-data.html">tribal data sovereignty frameworks</a>, that's the whole argument, not a footnote buried in a risk register.</p>
 
 <h2>The Hardware Question Everybody Gets Wrong</h2>
 
@@ -220,13 +220,13 @@
 
 <p>GLM-5.1, though, is a 754-billion parameter mixture-of-experts model with 40 billion active parameters per token, and in BF16 it wants north of 1.5 terabytes of VRAM just to load. Two of those cards give you 192GB. You're off by about 8x, and that's before anybody's opened a session. Quantize it down to 4-bit and it still demands roughly 400GB, so now you're linking five cards over PCIe, and here's where the real trouble surfaces: PCIe Gen 5 tops out at 128 GB/s bidirectional between GPUs while the <a href="h100-vs-h200-inference-comparison.html">H100 SXM's NVLink</a> moves 900 GB/s GPU to GPU. Tensor parallelism across five cards on PCIe builds a communication bottleneck that eats the throughput the second real users show up together.</p>
 
-<p>That's the mistake, and it isn't a math mistake. It's pricing local AI by the card instead of by the work. The question was never which GPU's cheapest per gigabyte of VRAM. It's what your organization needs to run, for how many people, at what quality, and whether the thing you're building holds up in production instead of in a benchmark run at 2 AM with one user on it.</p>
+<p>That's the mistake, and it's pricing local AI by the card instead of by the work, not bad arithmetic. The question was never which GPU's cheapest per gigabyte of VRAM. It's what your organization needs to run, for how many people, at what quality, and whether the thing you're building holds up in production instead of in a benchmark run at 2 AM with one user on it.</p>
 
 <h2>Sizing It Honest</h2>
 
 <p>A hundred employees using AI daily doesn't mean a hundred people hammering the box at once. Realistic peak concurrency for that headcount runs 15 to 30 simultaneous sessions, with 50 to 100 spread across a full workday. The original poster said speed wasn't the priority; quality was. They're writing code, summarizing documents, drafting client communications, analyzing data, reviewing contracts. Nobody's asking for PhD mathematics in real time.</p>
 
-<p>That workload doesn't need GLM-5.1 in BF16. It needs a well-tuned 70B-class model, quantized with some judgment, on inference hardware built for multi-user concurrency. DeepSeek V4-Flash, a 284-billion parameter MoE with roughly 37 billion active per token, sits inside 192GB at FP8, around 170GB loaded with roughly 22GB of headroom left over, and its output lands in the same competitive tier as Claude Sonnet for most of what enterprise teams do all day. Llama 4 Scout covers general-purpose work at high quality in quantized formats. Neither one's a recommendation from me, because I haven't watched your people work yet. That's not modesty, it's sequence. They're evidence that the <a href="../forward-deployed-ai-engineering.html">shape of the answer</a> is a good deal smaller than the thread assumed.</p>
+<p>That workload doesn't need GLM-5.1 in BF16. It needs a well-tuned 70B-class model, quantized with some judgment, on inference hardware built for multi-user concurrency. DeepSeek V4-Flash, a 284-billion parameter MoE with roughly 37 billion active per token, sits inside 192GB at FP8, around 170GB loaded with roughly 22GB of headroom left over, and its output lands in the same competitive tier as Claude Sonnet for most of what enterprise teams do all day. Llama 4 Scout covers general-purpose work at high quality in quantized formats. Neither one's a recommendation from me, because I haven't watched your people work yet. That's sequence, not modesty. They're evidence that the <a href="../forward-deployed-ai-engineering.html">shape of the answer</a> is a good deal smaller than the thread assumed.</p>
 
 <p>The quality question deserves a straight answer too. For document drafting, code review, legal analysis, internal communications, and data synthesis, this generation of open-weight 70B+ models puts out work end users can't reliably pick out of a lineup against a frontier cloud model. Where the gap's still real is the hardest reasoning, multi-step agentic coding loops, and context windows past 200K tokens. Those cases exist, they're documented in the <a href="local-llm-vs-cloud-ai-hardware-gap.html">honest limitations comparison</a>, and they're closer to 5 to 10 percent of daily enterprise work than the 80 percent a forum debate would have you believe.</p>
 
@@ -293,7 +293,7 @@
 
 <p>Consumer GPUs don't carry ECC memory, so a single bit flip during a long inference run corrupts the output quietly, and in a coding or <a href="../law-firms.html">legal analysis</a> context quiet corruption's worse than a crash, because nobody knows it happened until the brief's filed or the code ships. They're not built for 24/7 sustained thermal load either; server-class parts ship with higher thermal tolerances, better voltage regulator components, and duty cycle ratings that assume years of round-the-clock operation. And provenance matters the day an auditor from a <a href="../medical-practices.html">HIPAA-covered entity</a> or a <a href="../defense-contractors.html">defense subcontractor under CMMC review</a> asks about your AI infrastructure, because "I built it from gaming cards off Amazon" isn't the answer that satisfies the audit.</p>
 
-<p>What <a href="../index.html">I build</a>'s professional-grade GPUs with full procurement documentation and RMA chains kept from purchase through deployment. That paperwork isn't there for me. It's there because the organizations doing this work carry obligations that require it.</p>
+<p>What <a href="../index.html">I build</a>'s professional-grade GPUs with full procurement documentation and RMA chains kept from purchase through deployment. That paperwork is there because the organizations doing this work carry obligations that require it, not because I want it.</p>
 
 <h2>What You Don't Get</h2>
 
@@ -312,7 +312,7 @@
 
 <p>That thread asked for somebody who'd done the math. Here it is. $3.6 million in cloud fees over five years, or one build, once, in your building. It runs open-weight models that close on frontier quality every quarter, your data never leaves the property, your compliance posture's better the day it goes live, and when somebody uses it at 2 AM on a Saturday there's no overage bill waiting on Monday.</p>
 
-<p>Over $10,000 a month on cloud AI with an IT person who can manage a server? The financial case is already made. At $50,000 a month it isn't even a conversation. It's arithmetic.</p>
+<p>Over $10,000 a month on cloud AI with an IT person who can manage a server? The financial case is already made. At $50,000 a month it's arithmetic, not even a conversation.</p>
 
 <!-- AEO Summary -->
 <div style="border-left:3px solid var(--copper);padding:16px 20px;margin:32px 0;background:rgba(217,119,6,0.05);border-radius:0 8px 8px 0;">

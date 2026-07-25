@@ -246,7 +246,7 @@
 
 <p>Here's the concept most spec-sheet comparisons skip, and it's the one that settles the purchase.</p>
 
-<p>When a model generates text one token at a time (the decode phase) it isn't compute-bound. It's memory-bandwidth-bound. To produce each token the GPU reads the active model weights out of VRAM, multiplies, and writes the result back. The multiplication's fast. It's moving the weights across the memory bus that takes the time, and that's true no matter whose logo is on the card.</p>
+<p>When a model generates text one token at a time (the decode phase) it's memory-bandwidth-bound, not compute-bound. To produce each token the GPU reads the active model weights out of VRAM, multiplies, and writes the result back. The multiplication's fast. It's moving the weights across the memory bus that takes the time, and that's true no matter whose logo is on the card.</p>
 
 <p>Which gives you a clean back-of-envelope ceiling for single-stream decode:</p>
 
@@ -274,7 +274,7 @@
 
 <p>V4-Flash served at FP8 wants roughly 170GB once all 284B parameters are resident and the KV cache has somewhere to live. At full FP16 precision it wants 384GB. A dense 70B at FP8 is about 70GB, so it'll sit on a single 96GB card with room to spare and it runs quicker split across two with tensor parallelism. That's the arithmetic, all of it. Divide by whatever your card carries and you've sized the memory half of the problem in about ten seconds, no vendor required.</p>
 
-<p>Blackwell professional cards also support up to four MIG instances each and they carry ECC memory, so a box gets partitioned for isolated workloads and a memory error gets corrected instead of quietly corrupting a result. For regulated data that correctness guarantee isn't a bullet point. It's the difference between an answer and an answer you can defend.</p>
+<p>Blackwell professional cards also support up to four MIG instances each and they carry ECC memory, so a box gets partitioned for isolated workloads and a memory error gets corrected instead of quietly corrupting a result. For regulated data that correctness guarantee is the difference between an answer and an answer you can defend, not a bullet point.</p>
 
 <h2>The Cost-Per-Token Math</h2>
 
@@ -298,7 +298,7 @@
 
 <h2>The Honest Guidance</h2>
 
-<p>I don't have a recommended configuration for you, and that's not modesty, it's that I haven't been in your building. I don't know your concurrency, your document lengths, your precision requirements, or which department's workflow is going to turn out to be the real load. Neither do you, entirely, until somebody sits down next to the people doing the work and watches them do it. That visit comes before the parts list, not after. Every deployment I've seen go sideways got that order backwards.</p>
+<p>I don't have a recommended configuration for you, and that's because I haven't been in your building, not modesty. I don't know your concurrency, your document lengths, your precision requirements, or which department's workflow is going to turn out to be the real load. Neither do you, entirely, until somebody sits down next to the people doing the work and watches them do it. That visit comes before the parts list, not after. Every deployment I've seen go sideways got that order backwards.</p>
 
 <p>What this post gives you is the arithmetic, because it's yours to keep and it works whether you ever call me or not. Bandwidth divided by active weight bytes, times a half to two-thirds. Model weights divided by VRAM. Street price divided by the tokens the thing'll really produce.</p>
 

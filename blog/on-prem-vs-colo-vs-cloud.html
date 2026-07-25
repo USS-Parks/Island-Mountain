@@ -199,15 +199,15 @@
 
         <h2>The Decision That Shapes Every Audit After It</h2>
 
-<p>The worst AI infrastructure decision a regulated research lab can make isn't picking the wrong vendor. It's picking the wrong framework for the decision itself.</p>
+<p>The worst AI infrastructure decision a regulated research lab can make is picking the wrong framework for the decision itself, not the wrong vendor.</p>
 
-<p>Most private-sector pharma, biotech, and clinical research organizations come at this the way they'd come at buying office equipment. What's cheapest, what deploys fastest, what asks the least of internal staff. That logic's fine for laptops. It falls apart the moment the system you're standing up will process clinical trial data, patient genomics, IRB-protected research records, or FDA-regulated electronic records under 21 CFR Part 11, because in that world the infrastructure decision isn't operational. It's a compliance posture, and the posture you build your AI on follows you into every audit, every FDA inspection, every IRB data security review, and every breach notification for the life of that system.</p>
+<p>Most private-sector pharma, biotech, and clinical research organizations come at this the way they'd come at buying office equipment. What's cheapest, what deploys fastest, what asks the least of internal staff. That logic's fine for laptops. It falls apart the moment the system you're standing up will process clinical trial data, patient genomics, IRB-protected research records, or FDA-regulated electronic records under 21 CFR Part 11, because in that world the infrastructure decision is a compliance posture rather than an operational one, and the posture you build your AI on follows you into every audit, every FDA inspection, every IRB data security review, and every breach notification for the life of that system.</p>
 
 <p>In the 2024 to 2025 period, FDA frequently cited missing audit trails, corrupted electronic records, and lack of system validation as compliance failures, and it is reasonable to predict that once AI use is widespread, regulators will scrutinize how companies control AI data flows. (<a href="https://intuitionlabs.ai/articles/21-cfr-part-11-ai-compliance" target="_blank" rel="noopener">IntuitionLabs</a>)</p>
 
 <p>That last part's a prediction, and it's the one I'd bet the house on.</p>
 
-<p>What follows isn't a framework for picking a winner. It's a framework for asking the questions in the right order, so whatever you land on is defensible three years out with an inspector sitting across the table from your compliance team.</p>
+<p>This is a framework for asking the questions in the right order rather than for picking a winner, so whatever you land on is defensible three years out with an inspector sitting across the table from your compliance team.</p>
 
 <h2>Start With the Data, Not the Architecture</h2>
 
@@ -261,11 +261,11 @@
 
 <p>The compliance case weakens the instant identified clinical data, protected genomic information, or IRB-governed research records enter the pipeline. Organizations using private AI applications are likely turning to on-premises infrastructure because they're running large language models or small language models on their own gear, training or fine-tuning those AI models with their own private corporate data, and are hesitant to share their LLMs with AI vendors. (<a href="https://biztechmagazine.com/article/2025/08/why-some-workloads-are-coming-home-case-cloud-repatriation" target="_blank" rel="noopener">BizTech Magazine</a>)</p>
 
-<p>So the cloud isn't categorically wrong for a regulated research lab. It's categorically wrong for the specific workloads that define that lab's hardest compliance obligations. And because most labs can't cleanly guarantee those workloads never touch a cloud-based AI pipeline, this needs deliberate governance rather than "we'll use the cloud for AI" or "we'll avoid the cloud entirely."</p>
+<p>So the cloud is categorically wrong for the specific workloads that define that lab's hardest compliance obligations. And because most labs can't cleanly guarantee those workloads never touch a cloud-based AI pipeline, this needs deliberate governance rather than "we'll use the cloud for AI" or "we'll avoid the cloud entirely."</p>
 
 <h2>Match the Architecture to the Workload's Risk Class</h2>
 
-<p>The practical decision framework isn't "which architecture is best" in the abstract. It's "which architecture matches the regulatory risk profile of each specific workload class." Most organizations should adopt hybrid strategies for AI data sovereignty, matching their architecture to the sensitivity and regulatory profile of each workload. Not all data carries the same risks or is regulated with the same level of strictness, so it doesn't all have to be handled the same way. (<a href="https://www.techtarget.com/searchenterpriseai/tip/How-to-navigate-data-sovereignty-for-AI-compliance" target="_blank" rel="noopener">TechTarget</a>)</p>
+<p>The practical decision framework is "which architecture matches the regulatory risk profile of each specific workload class." Most organizations should adopt hybrid strategies for AI data sovereignty, matching their architecture to the sensitivity and regulatory profile of each workload. Not all data carries the same risks or is regulated with the same level of strictness, so it doesn't all have to be handled the same way. (<a href="https://www.techtarget.com/searchenterpriseai/tip/How-to-navigate-data-sovereignty-for-AI-compliance" target="_blank" rel="noopener">TechTarget</a>)</p>
 
 <p>Three tiers, and they aren't subtle. Workloads touching identified subject data, validated GxP systems, or IRB-governed datasets belong on on-premises or colocation infrastructure under your direct control, period. Workloads on de-identified research data, internal operational analytics, or development and testing pipelines with no production PHI can legitimately live in a properly configured cloud environment with the right vendor agreements, and I'm not going to pretend otherwise. And the gray zone, where the classification's uncertain or where AI outputs might expose patterns derived from regulated inputs, demands governance documentation that says out loud why you chose what you chose and what's compensating for the residual risk. Write that down before somebody asks for it, not after.</p>
 
@@ -287,7 +287,7 @@
 
 <!-- AEO Summary -->
 <div style="border-left:3px solid var(--copper);padding:16px 20px;margin:32px 0;background:rgba(217,119,6,0.05);border-radius:0 8px 8px 0;">
-<strong>Summary:</strong> There isn't one right AI architecture for a regulated research lab. It's a workload-by-workload call that matches infrastructure control to data sensitivity and compliance risk. On-premises gives maximum control for your most regulated workloads. Colocation gives physical sovereignty without the whole operational burden. Cloud works for genuinely low-risk, de-identified, or synthetic pipelines. Most labs end up hybrid, and the ones that survive an inspection got there by deliberate risk classification rather than by accident.
+<strong>Summary:</strong> There's no single right AI architecture for a regulated research lab; it's a workload-by-workload call that matches infrastructure control to data sensitivity and compliance risk. On-premises gives maximum control for your most regulated workloads. Colocation gives physical sovereignty without the whole operational burden. Cloud works for genuinely low-risk, de-identified, or synthetic pipelines. Most labs end up hybrid, and the ones that survive an inspection got there by deliberate risk classification rather than by accident.
 </div>
 
 <!-- CTA -->
