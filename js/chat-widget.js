@@ -70,7 +70,7 @@
   function logMsg(who, text) { chatLog.push({ who: who, text: text }); saveLog(); }
   var chatLog = loadLog();
 
-  var GREETING = 'Hi — I’m the Island Mountain AI specialist. I can help you figure out whether an on-premises AI server fits your compliance and budget, and answer questions about the Summit lineup. What brings you in today?';
+  var GREETING = 'Hi, I’m the Island Mountain AI specialist. We build private, on-site AI around the way an organization already works. What does your team spend its day on?';
 
   // Remember whether the panel is open, so it stays open across page changes.
   function setOpenFlag(v) { try { sessionStorage.setItem('im_chat_open', v ? '1' : '0'); } catch (e) {} }
@@ -170,7 +170,7 @@
       '<div class="imchat-foot">' +
         voiceButtonHtml() +
         '<div class="imchat-inrow">' +
-          '<textarea class="imchat-in" rows="1" placeholder="Ask about Summit servers, compliance, pricing…" aria-label="Type your message"></textarea>' +
+          '<textarea class="imchat-in" rows="1" placeholder="Ask about the work…" aria-label="Type your message"></textarea>' +
           '<button class="imchat-send" type="button" aria-label="Send message">' + SEND_ICON + '</button>' +
         '</div>' +
         '<p class="imchat-note">Answers from Island Mountain’s AI. For anything urgent: 1-341-441-8740</p>' +
