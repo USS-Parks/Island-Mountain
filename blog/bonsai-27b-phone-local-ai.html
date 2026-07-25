@@ -133,6 +133,55 @@
   ]
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is Bonsai 27B?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Bonsai 27B is PrismML's extreme-quantized release of Qwen3.6 27B, out July 14, 2026 under Apache 2.0. Two builds ship: a ternary one at 5.9 GB holding 95 percent of the baseline benchmark average, and a 1-bit one at 3.9 GB holding 90 percent. It's the whole model in both cases, vision tower included, and the weights are on Hugging Face."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can a 27B model really run on a phone?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. The 1-bit build sits in roughly four gigabytes of memory on an iPhone 17 Pro. It turns out 87 tokens a second on an M5 Max laptop and 163 on an RTX 5090, so it isn't a slideshow either. Long context is the asterisk: 262K tokens is a spec-sheet figure, and the working memory that long context eats at inference time is exactly what the weight compression never bought back."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much accuracy does 1-bit quantization cost?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "About ten percent of the benchmark average, and it lands unevenly. Math holds 96 percent of baseline even at 1-bit, because answers you can check survive rounding. Tool-calling falls from 80.0 to 66.0, instruction following from 78.4 to 65.8, and vision gives up thirteen points. Averages hide that, so read the category table."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should I run the ternary build or the 1-bit build?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ternary, if the work touches tools. It keeps 95 percent of the baseline and 74.0 on tool-calling, which is the difference between an agent you can leave alone and one you can't. Run the 1-bit build when footprint is the binding constraint and a human reads every output. Test either one against a workflow you already know cold."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is a quantized model on a phone enough for HIPAA or ITAR work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Model size has nothing to do with it. What decides the question is whether inference runs on hardware you control and whether the data ever leaves it. Hardware is one component of a compliant program and never a certification: identity, egress control, metering, audit and a kill switch still have to exist, and those controls live outside the model whether it's in a rack or a pocket."
+      }
+    }
+  ]
+}
+</script>
+
 </head>
 <body>
 
@@ -234,6 +283,22 @@
 
 <p>So pull the ternary build down this week and run it against one workflow you already understand cold. It's free, it's 5.9 GB, and you'll learn more in an afternoon than you will from anybody's benchmark table, mine included. Then ask the question that hasn't changed in three years of this, which is whose building the controls sit in. <a href="../contact.html">Talk to the builder</a>.</p>
 
+<h2>Frequently Asked Questions</h2>
+
+<h3>What is Bonsai 27B?</h3>
+<p>Bonsai 27B is PrismML's extreme-quantized release of Qwen3.6 27B, out July 14, 2026 under Apache 2.0. Two builds ship: a ternary one at 5.9 GB holding 95 percent of the baseline benchmark average, and a 1-bit one at 3.9 GB holding 90 percent. It's the whole model in both cases, vision tower included, and the weights are on Hugging Face.</p>
+
+<h3>Can a 27B model really run on a phone?</h3>
+<p>Yes. The 1-bit build sits in roughly four gigabytes of memory on an iPhone 17 Pro. It turns out 87 tokens a second on an M5 Max laptop and 163 on an RTX 5090, so it isn't a slideshow either. Long context is the asterisk: 262K tokens is a spec-sheet figure, and the working memory that long context eats at inference time is exactly what the weight compression never bought back.</p>
+
+<h3>How much accuracy does 1-bit quantization cost?</h3>
+<p>About ten percent of the benchmark average, and it lands unevenly. Math holds 96 percent of baseline even at 1-bit, because answers you can check survive rounding. Tool-calling falls from 80.0 to 66.0, instruction following from 78.4 to 65.8, and vision gives up thirteen points. Averages hide that, so read the category table.</p>
+
+<h3>Should I run the ternary build or the 1-bit build?</h3>
+<p>Ternary, if the work touches tools. It keeps 95 percent of the baseline and 74.0 on tool-calling, which is the difference between an agent you can leave alone and one you can't. Run the 1-bit build when footprint is the binding constraint and a human reads every output. Test either one against a workflow you already know cold.</p>
+
+<h3>Is a quantized model on a phone enough for HIPAA or ITAR work?</h3>
+<p>Model size has nothing to do with it. What decides the question is whether inference runs on hardware you control and whether the data ever leaves it. Hardware is one component of a compliant program and never a certification: identity, egress control, metering, audit and a kill switch still have to exist, and those controls live outside the model whether it's in a rack or a pocket.</p>
 <!-- AEO Summary -->
 <div style="border-left:3px solid var(--copper);padding:16px 20px;margin:32px 0;background:rgba(217,119,6,0.05);border-radius:0 8px 8px 0;">
 <strong>Summary:</strong> PrismML's Bonsai 27B compresses a 27-billion-parameter multimodal model to 3.9 GB at 1.125 effective bits per weight, keeping 90 percent of its benchmark average under Apache 2.0. Phone-sized local AI moves the data-sovereignty floor again; the categories agentic work depends on take the deepest cuts, so test the ternary build and keep the governance outside the model.
