@@ -12,7 +12,11 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-CAREERS_HREF = re.compile(r"^(?:\.\./)?careers\.html$")
+# Canary for nav truncation: one link that must appear exactly once in both the
+# desktop navbar and the mobile sidebar of every page. Point it at whichever nav
+# item is stable. It was careers.html until Careers came out of the nav; Home is
+# the one link every nav carries, including the reduced nav on lamprey/index.html.
+NAV_ANCHOR_HREF = re.compile(r"^(?:\.\./)?index\.html$")
 FULL_DOCUMENT = re.compile(r"<!doctype html|<html\b", re.IGNORECASE)
 UNQUOTED_HREF = re.compile(r"\bhref\s*=\s*(?![\"'])[^\s>]", re.IGNORECASE)
 KNOWN_CORRUPTION = (
@@ -168,9 +172,9 @@ def check_document(path: str, text: str) -> list[str]:
             errors.append(f"expected one mobile sidebar, found {len(mobile)}")
 
     for container in desktop + mobile:
-        careers_count = sum(bool(CAREERS_HREF.match(href)) for href in container.hrefs)
-        if careers_count != 1:
-            errors.append(f"{container.kind} must contain exactly one Careers link, found {careers_count}")
+        anchor_count = sum(bool(NAV_ANCHOR_HREF.match(href)) for href in container.hrefs)
+        if anchor_count != 1:
+            errors.append(f"{container.kind} must contain exactly one Home link, found {anchor_count}")
         duplicates = sorted({href for href in container.hrefs if container.hrefs.count(href) > 1})
         if duplicates:
             errors.append(f"{container.kind} repeats destinations: {', '.join(duplicates)}")
@@ -227,17 +231,17 @@ def check_document(path: str, text: str) -> list[str]:
 
 def self_test() -> int:
     clean = """<!doctype html><html><body>
-<ul class="nav-links"><li><a href="careers.html">Careers</a></li></ul>
-<div class="mobile-sidebar"><a href="careers.html">Careers</a></div>
+<ul class="nav-links"><li><a href="index.html">Home</a></li></ul>
+<div class="mobile-sidebar"><a href="index.html">Home</a></div>
 </body></html>"""
     corrupt = clean.replace(
         "</li></ul>",
-        "</li>\nbout.html>About</a></li>/a <li><a href=../careers.html>Careers</a></li></ul>",
+        "</li>\nbout.html>About</a></li>/a <li><a href=../resources.html>Resources</a></li></ul>",
     )
-    missing = clean.replace('href="careers.html"', 'href="resources.html"')
+    missing = clean.replace('href="index.html"', 'href="resources.html"')
     duplicate = clean.replace(
         "</li></ul>",
-        "</li><li><a href=\"careers.html\">Careers</a></li></ul>",
+        "</li><li><a href=\"index.html\">Home</a></li></ul>",
     )
     unbalanced = clean.replace("</li></ul>", "</ul>")
     canonical_form = clean.replace(
@@ -264,8 +268,8 @@ def self_test() -> int:
     cases = {
         "clean": ("fixture:clean", clean, False),
         "known corruption": ("fixture:known-corruption", corrupt, True),
-        "missing Careers": ("fixture:missing-careers", missing, True),
-        "duplicate Careers": ("fixture:duplicate-careers", duplicate, True),
+        "missing nav anchor": ("fixture:missing-nav-anchor", missing, True),
+        "duplicate nav anchor": ("fixture:duplicate-nav-anchor", duplicate, True),
         "unbalanced list item": ("fixture:unbalanced-list-item", unbalanced, True),
         "canonical FormSubmit": ("fixture:canonical-formsubmit", canonical_form, False),
         "unapproved FormSubmit": ("fixture:unapproved-formsubmit", unapproved_form, True),
