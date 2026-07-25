@@ -63,40 +63,6 @@
     })
   }, 3000)
 
-  // ---- Per-WORD, per-letter split ----
-  function split(el) {
-    var text = el.textContent
-    el.setAttribute('aria-label', text)
-    // Build the whole word/char span tree in a detached fragment and attach
-    // it in ONE operation. Appending word-by-word into the live H1 forced a
-    // style recalc per word (a 700ms+ main-thread task on load).
-    var frag = document.createDocumentFragment()
-    var ci = 0
-    text.split(/(\s+)/).forEach(function (chunk) {
-      if (chunk === '') return
-      if (/^\s+$/.test(chunk)) {
-        frag.appendChild(document.createTextNode(' '))
-        return
-      }
-      var w = document.createElement('span')
-      w.className = 'au-word'
-      w.setAttribute('aria-hidden', 'true')
-      chunk.split('').forEach(function (ch) {
-        var s = document.createElement('span')
-        s.className = 'char'
-        s.style.setProperty('--c', ci++)
-        s.textContent = ch
-        w.appendChild(s)
-      })
-      frag.appendChild(w)
-    })
-    el.textContent = ''
-    el.appendChild(frag)
-  }
-  if (!reduce) {
-    document.querySelectorAll('.au-h1[data-split]').forEach(split)
-  }
-
   // ---- Rotating phrase ----
   var rot = document.querySelector('.au-rotator')
   if (rot) {
