@@ -626,18 +626,6 @@ p {
   pointer-events: none;
 }
 
-/* .hero-photo is position:fixed with z-index:0, which puts it in the positioned
-   paint layer. A band that is position:static paints its background BELOW that
-   layer, so the photo covers the band's own background and the text lands
-   straight on the photo with no veil: that is the contrast failure on the
-   manifesto and the blog rail. Every band after the photo is positioned so it
-   paints above. Cannot be solved with z-index:-1 on the photo, because html
-   carries a solid background that would then hide it entirely. */
-.hero-photo ~ section,
-.hero-photo ~ footer {
-  position: relative;
-}
-
 .hero-page {
   min-height: 70vh;
   padding: 180px 24px 100px;
