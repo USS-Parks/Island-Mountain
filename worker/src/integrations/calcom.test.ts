@@ -98,7 +98,7 @@ test('createBooking posts the v2 shape and returns uid on success', async () => 
       timeZone: 'America/Denver',
       sessionId: 'voice:call_1',
       leadId: 'lead_42',
-      notes: 'Healthcare HIPAA, Summit Base',
+      notes: 'Healthcare HIPAA, prior-auth workflow',
     });
     assert.equal(r.ok, true);
     assert.equal(r.uid, 'bk_123');
