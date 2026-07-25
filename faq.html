@@ -169,7 +169,7 @@
         "name": "What GPUs does Island Mountain use, and how do the configurations differ?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Every on-premise system uses the NVIDIA RTX PRO 6000 Blackwell Server Edition. Each card carries 96GB of GDDR7 ECC memory with 1,597 GB/s of bandwidth and about 1 PFLOP of FP16 Tensor compute, with native FP8 and FP4 on 5th-generation Tensor Cores. two-card build pairs two cards for 192GB of combined VRAM and runs DeepSeek V4-Flash at FP8 plus all 70B-class models at full quality. four-card build uses four cards for 384GB, enough to run V4-Flash at full FP16 with its 1M-token context. build-to-order configuration is a build-to-order configuration between the two. A single rack ramps to six to eight cards. We spec the right tier with you in a conversation rather than from a configurator."
+          "text": "When the workload justifies professional silicon we recommend the NVIDIA RTX PRO 6000 Blackwell Server Edition, though we install whatever the client chooses. Each card carries 96GB of GDDR7 ECC memory with 1,597 GB/s of bandwidth and about 1 PFLOP of FP16 Tensor compute, with native FP8 and FP4 on 5th-generation Tensor Cores. A two-card build pairs two cards for 192GB of combined VRAM and runs DeepSeek V4-Flash at FP8 plus all 70B-class models at full quality. A four-card build uses four cards for 384GB, enough to run V4-Flash at full FP16 with its 1M-token context. build-to-order configuration is a build-to-order configuration between the two. A single rack ramps to six to eight cards. We spec the right tier with you in a conversation rather than from a configurator."
         }
       },
       {
@@ -177,7 +177,7 @@
         "name": "What VRAM do I need to run DeepSeek V4-Flash?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "DeepSeek V4-Flash (284B parameters) runs at FP8 in roughly 170GB of VRAM, or about 282GB at full FP16 precision. two-card build (two RTX PRO 6000 Blackwell cards, 192GB combined) runs it at FP8 with roughly 22GB of headroom for KV cache, using tensor parallelism across both cards for faster inference, at approximately 60 to 90 tokens per second for single-user inference. To run V4-Flash at full FP16 quality, the four-card four-card configuration (384GB combined) is the configuration to choose."
+          "text": "DeepSeek V4-Flash (284B parameters) runs at FP8 in roughly 170GB of VRAM, or about 282GB at full FP16 precision. A two-card build (two RTX PRO 6000 Blackwell cards, 192GB combined) runs it at FP8 with roughly 22GB of headroom for KV cache, using tensor parallelism across both cards for faster inference, at approximately 60 to 90 tokens per second for single-user inference. To run V4-Flash at full FP16 quality, the four-card four-card configuration (384GB combined) is the configuration to choose."
         }
       },
       {
@@ -443,13 +443,13 @@
     <div class="container">
       <span class="au-eyebrow-c au-reveal">Start Here</span>
       <h2 class="au-h2 au-reveal">Two halves of one sovereign stack.</h2>
-      <p class="au-lede au-reveal">Island Mountain ships the hardware and the governance together: an on-premise build that runs frontier open-source models entirely on your premises, and the Woven Security &amp; Governance Fabric that sits inline on every action the AI takes. The questions below cover both, plus compliance and how quotes work. There is no public price list, because sizing sovereign infrastructure is a human conversation.</p>
+      <p class="au-lede au-reveal">We install the configuration and the governance together: on-premise hardware running open-weight models entirely on your own floor, and the Woven Security &amp; Governance Fabric sitting inline on every action the AI takes. The questions below cover both, plus compliance and how quotes work. There is no public price list, because sizing this is a human conversation and always has been.</p>
       <div class="faq-ways au-stagger">
         <div class="au-card beam-card" style="--i:0">
-          <span class="au-ways-eyebrow">The Appliance</span>
-          <h3>on-premise AI deployment</h3>
-          <p>A sovereign AI server per seat: NVIDIA RTX PRO 6000 Blackwell, air-gappable, pre-built, with frontier open-source models installed. One per desk, or an estate across the organization.</p>
-          <a class="au-ways-link" href="products.html">Explore our on-premise builds &rarr;</a>
+          <span class="au-ways-eyebrow">The Configuration</span>
+          <h3>Whatever the Work Needs</h3>
+          <p>Any hardware, any open-weight model, any data server rack, air-gappable throughout. Two DGX Sparks and a few laptops, or H200 capacity across departments. Discovery decides which.</p>
+          <a class="au-ways-link" href="products.html">See what we recommend &rarr;</a>
         </div>
         <div class="au-card beam-card" style="--i:1">
           <span class="au-ways-eyebrow">The Trust Plane</span>
@@ -635,11 +635,11 @@
       <div class="faq-list">
 
         <div class="faq-item beam-card au-reveal" style="--i:14">
-          <h3>What GPUs does Island Mountain use, and how do the tiers differ?</h3>
+          <h3>What hardware do you recommend, and do we have to take it?</h3>
           <div class="faq-answer">
-            <p><strong>Every on-premise system uses the same professional GPU: the NVIDIA RTX PRO 6000 Blackwell Server Edition.</strong> Each card carries 96GB of GDDR7 ECC memory with 1,597 GB/s of bandwidth and delivers about 1 PFLOP of FP16 Tensor compute, with native FP8 and FP4 support on 5th-generation Tensor Cores.</p>
-            <p><strong>two-card build</strong> pairs two cards for 192GB of combined VRAM and runs DeepSeek V4-Flash at FP8 plus all 70B-class models at full quality. <strong>four-card build</strong> uses four cards for 384GB, enough to run V4-Flash at full FP16 with its 1M-token context window. <strong>build-to-order configuration</strong> is a build-to-order configuration between the two. A single rack ramps to six to eight cards as you grow.</p>
-            <p>We spec the right tier with you in a conversation, not from a configurator. Tell us your workload, your headcount, and the models that matter, and we will size it. See the <a href="products.html">on-premise AI deployment</a> for the full comparison.</p>
+            <p><strong>We recommend from a short-list we've proven, and no, you don't have to take it.</strong> We'll tell you what we'd install and why, and then we install what you want. It's your building and your budget.</p>
+            <p>When the workload justifies professional silicon, that usually means the NVIDIA RTX PRO 6000 Blackwell Server Edition: 96GB of GDDR7 ECC per card, 1,597 GB/s of bandwidth, roughly 1 PFLOP of FP16 Tensor compute with native FP8 and FP4. Two cards give 192GB and run frontier open-weight models at FP8 plus 70B-class models at full quality. Four give 384GB and full FP16 headroom. A single rack ramps to six or eight cards as you grow.</p>
+            <p>Plenty of good deployments never need any of that. Two DGX Sparks and a few M5-class laptops do real work for a small office, and at the other end there's H100 and H200 capacity with adjacent data server racks. The honest sizing falls out of <a href="forward-deployed-ai-engineering.html">Discovery</a>, not a configurator. See <a href="products.html">the configurations we keep coming back to</a>.</p>
           </div>
         </div>
 
@@ -647,7 +647,7 @@
           <h3>What VRAM do I need to run DeepSeek V4-Flash?</h3>
           <div class="faq-answer">
             <p><strong>DeepSeek V4-Flash (284B parameters) runs at FP8 in roughly 170GB of VRAM, or about 282GB at full FP16 precision.</strong> Running it across two GPUs with tensor parallelism delivers faster inference because the layers are split and processed in parallel.</p>
-            <p>two-card build (two RTX PRO 6000 Blackwell cards, 192GB combined) runs V4-Flash at FP8 with roughly 22GB of headroom for KV cache, at approximately 60 to 90 tokens per second for single-user inference thanks to the card's 1,597 GB/s GDDR7 bandwidth. To run V4-Flash at full FP16 quality, the four-card four-card configuration (384GB combined) is the configuration to choose.</p>
+            <p>A two-card build (two RTX PRO 6000 Blackwell cards, 192GB combined) runs V4-Flash at FP8 with roughly 22GB of headroom for KV cache, at approximately 60 to 90 tokens per second for single-user inference thanks to the card's 1,597 GB/s GDDR7 bandwidth. To run V4-Flash at full FP16 quality, the four-card four-card configuration (384GB combined) is the configuration to choose.</p>
           </div>
         </div>
 
