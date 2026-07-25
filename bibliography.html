@@ -479,7 +479,7 @@
       } catch (e) {
         throw new Error('Could not reach the verification service. Please try again in a moment.');
       }
-      if (r.status === 429) throw new Error("You're searching a bit fast — please wait a moment and try again.");
+      if (r.status === 429) throw new Error("You're searching a bit fast - please wait a moment and try again.");
       if (!r.ok) throw new Error('The verification service returned an error (' + r.status + '). Please try again shortly.');
       return r.json();
     }
@@ -588,7 +588,7 @@
         if (e.name !== 'AbortError') handlers.onError('Could not reach the verification service. Please try again in a moment.');
         return;
       }
-      if (resp.status === 429) { handlers.onError("You're searching a bit fast — please wait a moment and try again."); return; }
+      if (resp.status === 429) { handlers.onError("You're searching a bit fast - please wait a moment and try again."); return; }
       if (!resp.ok || !resp.body) { handlers.onError('The verification service returned an error (' + resp.status + ').'); return; }
       // Batch fallback: if the backend returned JSON instead of SSE, synthesize events from it
       var ct = (resp.headers.get('content-type') || '');
@@ -637,7 +637,7 @@
           }
         }
       } catch (e) {
-        if (e.name !== 'AbortError') handlers.onError('Connection lost — showing partial results.');
+        if (e.name !== 'AbortError') handlers.onError('Connection lost - showing partial results.');
       }
     }
 
@@ -757,11 +757,11 @@
 
           var cards = d.ranking.map(function(cid) { return cardMap[cid]; }).filter(Boolean);
 
-          // FLIP animation: First — record current positions
+          // FLIP animation: First - record current positions
           var firstRects = {};
           cards.forEach(function(card) { firstRects[card.dataset.candidateId] = card.getBoundingClientRect(); });
 
-          // Last — reorder DOM nodes + re-number badges
+          // Last - reorder DOM nodes + re-number badges
           cards.forEach(function(card, i) {
             out.append(card);
             var badge = card.querySelector('.rc-verdict');
