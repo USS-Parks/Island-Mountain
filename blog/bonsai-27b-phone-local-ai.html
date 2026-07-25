@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) - deferred until user interaction -->
+<link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
+<script>
+  (function(){
+    var loaded = false;
+    function loadGA(){
+      if(loaded) return;
+      loaded = true;
+      var s = document.createElement('script');
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=G-R674E394D4';
+      s.async = true;
+      document.head.appendChild(s);
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      window.gtag = gtag;
+      gtag('js', new Date());
+      gtag('config', 'G-R674E394D4');
+    }
+    ['scroll','click','touchstart','keydown'].forEach(function(e){
+      document.addEventListener(e, loadGA, {once:true, passive:true});
+    });
+    setTimeout(loadGA, 5000);
+  })();
+</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Basho Parks">
+  <meta name="date" content="2026-07-25">
+  <title>Bonsai 27B: 1-Bit Quantization Puts a 27B Model on a Phone</title>
+  <meta name="description" content="PrismML's Bonsai 27B squeezes a 27B multimodal model to 3.9 GB at 1.125 bits per weight. What phone-sized, Apache 2.0 local AI means for data sovereignty.">
+  <link rel="icon" type="image/x-icon" href="../favicon.ico?v=2">
+  <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon-32.png?v=2">
+  <link rel="apple-touch-icon" sizes="180x180" href="../images/apple-touch-icon.png?v=2">
+  <link rel="stylesheet" href="../css/style.min.css?v=3">
+  <link rel="stylesheet" href="../icons/remixicon.css" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="../icons/remixicon.css"></noscript>
+  <link rel="preload" href="../fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <style>
+  @font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400 800;
+    font-display: swap;
+    src: url('../fonts/inter-latin.woff2') format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+  @font-face {
+    font-family: 'Space Grotesk';
+    font-style: normal;
+    font-weight: 300 700;
+    font-display: swap;
+    src: url('../fonts/space-grotesk-latin.woff2') format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+  </style>
+  <link rel="canonical" href="https://islandmountain.io/blog/bonsai-27b-phone-local-ai.html">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Bonsai 27B Runs on a Phone. The Sovereignty Math Just Moved Again.">
+  <meta property="og:description" content="PrismML's Bonsai 27B squeezes a 27B multimodal model to 3.9 GB at 1.125 bits per weight. What phone-sized, Apache 2.0 local AI means for data sovereignty.">
+  <meta property="og:url" content="https://islandmountain.io/blog/bonsai-27b-phone-local-ai.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Island Mountain">
+  <meta property="og:image" content="https://islandmountain.io/images/hero-mountain.webp">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Bonsai 27B Runs on a Phone. The Sovereignty Math Just Moved Again.">
+  <meta name="twitter:description" content="PrismML's Bonsai 27B squeezes a 27B multimodal model to 3.9 GB at 1.125 bits per weight. What phone-sized, Apache 2.0 local AI means for data sovereignty.">
+  <meta name="twitter:image" content="https://islandmountain.io/images/hero-mountain.webp">
+
+  <!-- Article Schema -->
+  <script type="application/ld+json">
+  {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Bonsai 27B Runs on a Phone. The Sovereignty Math Just Moved Again.",
+  "description": "PrismML's Bonsai 27B squeezes a 27B multimodal model to 3.9 GB at 1.125 bits per weight. What phone-sized, Apache 2.0 local AI means for data sovereignty.",
+  "url": "https://islandmountain.io/blog/bonsai-27b-phone-local-ai.html",
+  "datePublished": "2026-07-25",
+  "dateModified": "2026-07-25",
+  "author": {
+    "@type": "Person",
+    "name": "Basho Parks",
+    "url": "https://islandmountain.io/basho-parks.html"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Island Mountain",
+    "url": "https://islandmountain.io",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://islandmountain.io/images/hero-mountain.webp"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://islandmountain.io/blog/bonsai-27b-phone-local-ai.html"
+  },
+  "image": "https://islandmountain.io/images/hero-mountain.webp"
+}
+  </script>
+
+  <link rel="stylesheet" href="../css/blog.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://islandmountain.io/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Blog",
+      "item": "https://islandmountain.io/blog.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Bonsai 27B",
+      "item": "https://islandmountain.io/blog/bonsai-27b-phone-local-ai.html"
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+  <!-- Full-page particle canvas -->
+  <canvas id="particles-canvas"></canvas>
+
+  <!-- Hero background photo -->
+  <div class="hero-photo">
+    <img srcset="../images/hero-mountain-mobile.webp 800w, ../images/hero-mountain.webp 1913w" sizes="100vw" src="../images/hero-mountain.webp" alt="Island Mountain AI inference server hardware" fetchpriority="high" decoding="async" width="1913" height="892">
+  </div>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="../index.html" class="nav-logo"><img src="../images/logo-nav-new.webp" alt="Island Mountain" width="205" height="65"></a>
+      <ul class="nav-links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../forward-deployed-ai-engineering.html">Forward Deployed</a></li>
+        <li><a href="../lamprey-woven-security-governance.html">Security Fabric</a></li>
+        <li><a href="../faq.html">FAQ</a></li>
+        <li><a href="../resources.html">Resources</a></li>
+        <li><a href="../about.html">About</a></li>
+        <li><a href="../contact.html" class="nav-cta">Start a Scoping Call</a></li>
+      </ul>
+      <button class="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Sidebar -->
+  <div class="sidebar-overlay"></div>
+  <div class="mobile-sidebar">
+    <a href="../index.html">Home</a>
+    <a href="../forward-deployed-ai-engineering.html">Forward Deployed</a>
+    <a href="../lamprey-woven-security-governance.html">Security Fabric</a>
+    <a href="../faq.html">FAQ</a>
+    <a href="../resources.html">Resources</a>
+    <a href="../about.html">About</a>
+    <a href="../contact.html" class="nav-cta">Start a Scoping Call</a>
+  </div>
+
+  <!-- Article -->
+  <section class="section section-first hero-spacer">
+    <div class="container content-max-840">
+
+      <!-- Breadcrumb -->
+      <nav class="breadcrumb">
+        <a href="../index.html">Home</a><span>&rsaquo;</span><a href="../blog.html">Blog</a><span>&rsaquo;</span>Bonsai 27B
+      </nav>
+
+      <!-- Article Header -->
+      <div class="article-header">
+        <div class="article-meta">
+          <span class="article-date">July 25, 2026</span>
+          <span class="article-tag tag-technical">Technical</span>
+          <span class="article-tag tag-strategy">Strategy</span>
+          <span class="article-read-time">6 min read</span>
+        </div>
+        <h1 class="text-2xl">Bonsai 27B Runs on a Phone. The Sovereignty Math Just Moved Again.</h1>
+        <p class="article-author"><a href="../basho-parks.html">Basho Parks</a></p>
+      </div>
+
+      <article class="article-body">
+
+        <h2>Somebody Put a 27B Model in a Pocket</h2>
+
+<p>Look, I called this direction back in June - <a href="on-device-llm-sovereign-edge.html">micro-scale inference, the sovereign edge</a> - and I had the timetable off by about a year. On July 14 PrismML, a Caltech-founded shop funded by Khosla Ventures, Cerberus and Google at the start with Samsung along since, <a href="https://prismml.com/news/bonsai-27b" target="_blank" rel="noopener">shipped Bonsai 27B</a> and led with "the first 27B-class model to run on a phone." Weights went up on Hugging Face the same day, Apache 2.0. For once the press line's underselling what happened.</p>
+
+<p>What they did was take Qwen3.6 27B, a multimodal model averaging 85.0 across their fifteen-benchmark suite, and round every weight in it down to almost nothing. The ternary build keeps three values per weight, minus one, zero, plus one, which pencils out to 1.71 effective bits apiece once you count the group scaling, and it lands at 5.9 GB holding 95% of the baseline. The 1-bit build throws out the zero: two values, 1.125 bits, 3.9 GB, 90% held. And it's the whole model that got squeezed, not the convenient layers. Embeddings, attention, MLPs, the LM head, the vision tower down at 4-bit. 262K context on the spec sheet, structured tool calls, computer-use loops.</p>
+
+<p>It's quick, too, which I didn't expect at that footprint. 163 tokens a second on one RTX 5090 for the 1-bit, 87 on an M5 Max laptop, ternary trailing at 134 and 58. And the phone claim's literal, not a demo on a tethered dev board: roughly four gigabytes resident on an iPhone 17 Pro.</p>
+
+<p>Most of what twenty-seven billion parameters know survives getting rounded to three values. I don't have a tidy answer for what that says about where the intelligence in these things lives, and I'd be a little suspicious of anybody who claims they do. But a 27B-class model now fits in less room than a full-precision 2B needs, and that's shipped, with weights, not sitting on a waitlist.</p>
+
+<h2>The Radio-Off Test Fits in a Pocket Now</h2>
+
+<p>Back in May I <a href="second-revolution-local-ai.html">called airplane mode the compliance test</a>. If the model answers with the radio off, your data went nowhere, and you don't need a vendor's word for it. Running that test used to mean a laptop and a decent GPU. As of mid-July it runs on a handset, and it can see.</p>
+
+<p>I'd slow down on the seeing, because reading a photo or a form or a screenshot on the device means that image never goes to anybody's API. The adjuster standing in six inches of water doing three-point contact, shooting the water line and the subfloor, drafts the file note right there and the claim file stays out of a third party's building. Or the ICWA caseworker on the four-hour re-entry job because the state sends the file in a format nobody can use, and now the reading happens on <a href="../tribal-nations.html">a device the tribe owns</a>, with the enrollment records behind it never going anywhere. Or the engineer with an ITAR drawing on a shop floor, where <a href="../defense-contractors.html">a deemed export's a question about where bytes went</a>. Bytes that never left the handset make for a shorter conversation with the export compliance manager.</p>
+
+<p>None of that's me telling you your field kit's a phone. What goes where in your shop <a href="../forward-deployed-ai-engineering.html">comes out of Discovery</a>, sitting next to whoever's run that workflow for twenty years, and it doesn't come out of anybody's launch post. The floor under serious, private, multimodal work dropped again, and it dropped further than most of the people budgeting for this stuff have noticed.</p>
+
+<h2>Read the Category Table Before You Get Excited</h2>
+
+<p>That 90% headline's an average and averages hide things. Break it apart and the pattern's clear enough. Math holds 96% of baseline even at 1-bit, because answers you can check survive rounding, which tracks with everything we've learned out of verifiable-reward training. What pays for the compression is the agentic column. Tool-calling goes 80.0 to 74.0 ternary, then 66.0 at 1-bit. Instruction following, 78.4 to 65.8. Vision gives up thirteen points.</p>
+
+<p>So if the job is a model driving tools through a long loop without supervision, the 1-bit build isn't ready and the ternary build's the one to put on the bench. Test it against your own workflow, not their suite. (Their suite, incidentally, is theirs; I'd treat every retention number here as a vendor claim until somebody independent reruns it.)</p>
+
+<p>Couple things the announcement leaves out. A model in a pocket that can call tools and drive a screen is an agent, and an agent's needs don't shrink on the way from the rack to the pocket: identity, egress, metering, audit, a kill switch. None of that got smaller because the weights did, and <a href="../lamprey-woven-security-governance.html">the controls that hold still live outside the model</a>. And 262K context is a spec-sheet number. Long context eats working memory at inference time that the compression never bought back, so nobody should picture a quarter-million-token privilege review running on a handset this year.</p>
+
+<h2>An American Shop Shipped It, and the Base Model Is Chinese</h2>
+
+<p>I've spent real ink asking for <a href="american-open-source-llm-sovereign-ai.html">an independently funded American open-weight lab</a>, so I'll name both halves of this one. Bonsai is American engineering released Apache 2.0 with weights first, which is the behavior I said I wanted, and good on them for it. It's also built on Qwen3.6, so the provenance conversation procurement runs on doesn't go away because the compression happened in Pasadena. The math inside a set of weights is auditable wherever it was trained. Committees care anyway, and I've stopped arguing with them about it. Bonsai sharpens that argument instead of settling it: the compression work's here, the funded base-model work still isn't.</p>
+
+<h2>The Bench Gets Deeper</h2>
+
+<p>None of this changes the pairing I keep landing on with regulated shops: one big organizational model for the hard reasoning, a bench of small local specialists on the repetitive work, all of it owned outright. Bonsai stretches that bench out to the field and gives it eyes. The estate in the building does the thinking that needs depth, the device in somebody's hand reads what's in front of it, and nothing leaves.</p>
+
+<p>So pull the ternary build down this week and run it against one workflow you already understand cold. It's free, it's 5.9 GB, and you'll learn more in an afternoon than you will from anybody's benchmark table, mine included. Then ask the question that hasn't changed in three years of this, which is whose building the controls sit in. <a href="../contact.html">Talk to the builder</a>.</p>
+
+<!-- AEO Summary -->
+<div style="border-left:3px solid var(--copper);padding:16px 20px;margin:32px 0;background:rgba(217,119,6,0.05);border-radius:0 8px 8px 0;">
+<strong>Summary:</strong> PrismML's Bonsai 27B compresses a 27-billion-parameter multimodal model to 3.9 GB at 1.125 effective bits per weight, keeping 90 percent of its benchmark average under Apache 2.0. Phone-sized local AI moves the data-sovereignty floor again; the categories agentic work depends on take the deepest cuts, so test the ternary build and keep the governance outside the model.
+</div>
+
+      </article>
+
+      <!-- CTA -->
+      <div class="article-cta">
+        <h3>Ready to Stop Paying Per Token?</h3>
+        <p>Whether you need a system built from scratch or help standing up hardware you already own, talk to us.</p>
+        <a href="../contact.html" class="btn btn-primary">Start a Conversation</a>
+        <p class="bio-note-sm"><i class="ri-phone-line icon-copper-mr-sm"></i>Or call directly: <a href="tel:+13414418740" class="copper-semibold">1-341-441-8740</a></p>
+      </div>
+
+      <!-- Related Articles -->
+      <div class="related-articles">
+        <h3>Related Articles</h3>
+        <div class="related-grid">
+          <div class="related-card">
+            <h4><a href="on-device-llm-sovereign-edge.html">The Sovereign Edge: On-Device LLMs and the Coming Micro-Scale Inference Revolution</a></h4>
+            <p>The June piece that called this shift early: micro-scale inference, memristors, and why the edge is the next sovereignty frontier.</p>
+          </div>
+          <div class="related-card">
+            <h4><a href="second-revolution-local-ai.html">The Second Revolution of AI Is Local. The Industry Just Admitted It.</a></h4>
+            <p>The CEO of Hugging Face ran a 27B model on a laptop in airplane mode and called it the second revolution of AI.</p>
+          </div>
+          <div class="related-card">
+            <h4><a href="american-open-source-llm-sovereign-ai.html">Sovereign AI Is Having Its Moment. Now Fund the American Open-Source Lab It Needs.</a></h4>
+            <p>Palantir and NVIDIA went sovereign with open models. The next step is an independently funded American open-source lab with no meter attached.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Navigation -->
+      <div class="article-nav">
+        <a href="../blog.html" class="article-back">&larr; All articles</a>
+        <div class="share-links">
+          <span>Share:</span>
+          <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://islandmountain.io/blog/bonsai-27b-phone-local-ai.html" target="_blank" rel="noopener" aria-label="Share on LinkedIn"><i class="ri-linkedin-fill"></i></a>
+          <a href="https://x.com/intent/tweet?url=https://islandmountain.io/blog/bonsai-27b-phone-local-ai.html&text=Bonsai%2027B%20Runs%20on%20a%20Phone.%20The%20Sovereignty%20Math%20Just%20Moved%20Again." target="_blank" rel="noopener" aria-label="Share on X"><i class="ri-twitter-x-fill"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer au-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="../images/im-badge.webp" alt="Island Mountain" width="200" height="183" class="d-block-mb">
+          <p>Forward-deployed AI engineering for regulated organizations. We learn the workflow on-site, then build the independent on-premise system around it, with the Woven Security &amp; Governance Fabric woven through. California built.</p>
+          <p class="mt-8"><i class="ri-phone-line icon-copper-mr"></i><a href="tel:+13414418740" class="clr-muted">1-341-441-8740</a></p>
+          <div class="au-social">
+            <a href="https://www.linkedin.com/company/island-mountain-llc/" target="_blank" rel="noopener" aria-label="Island Mountain on LinkedIn"><i class="ri-linkedin-fill"></i></a>
+            <a href="https://x.com/IslandMountain_" target="_blank" rel="noopener" aria-label="Island Mountain on X"><i class="ri-twitter-x-fill"></i></a>
+          </div>
+        </div>
+        <div>
+          <h3>What We Do</h3>
+          <ul class="footer-links">
+            <li><a href="../forward-deployed-ai-engineering.html">Forward Deployed</a></li>
+            <li><a href="../lamprey-woven-security-governance.html">Lamprey &middot; Security Fabric</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3><a href="../solutions.html">Solutions</a></h3>
+          <ul class="footer-links">
+            <li><a href="../tribal-nations.html">Tribal Nations</a></li>
+            <li><a href="../government.html">Government</a></li>
+            <li><a href="../education.html">Education</a></li>
+            <li><a href="../casino-gaming.html">Casino Gaming</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Company</h3>
+          <ul class="footer-links">
+            <li><a href="../about.html">About</a></li>
+            <li><a href="../partnerships.html">Partnerships</a></li>
+            <li><a href="../blog.html">Blog</a></li>
+            <li><a href="../faq.html">FAQ</a></li>
+            <li><a href="../resources.html">Resources</a></li>
+            <li><a href="../contact.html">Start a Scoping Call</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="au-linkfarm">
+        <a href="../forward-deployed-ai-engineering.html">Local AI Servers</a>
+        <a href="../air-gapped-ai-inference.html">Air-Gapped AI Inference</a>
+        <a href="../on-premises-ai-cost-comparison.html">On-Premises AI</a>
+        <a href="../hipaa-local-ai-compliance.html">HIPAA-Compliant AI</a>
+        <a href="../itar-cmmc-ai-infrastructure.html">ITAR / CMMC AI</a>
+        <a href="../attorney-client-privilege-ai-risk.html">Attorney-Client Privilege AI</a>
+        <a href="../cloud-act-tribal-data.html">CLOUD Act &amp; Tribal Data</a>
+        <a href="../tribal-nations.html">Tribal Data Sovereignty (OCAP)</a>
+        <a href="../lamprey-woven-security-governance.html">Woven Security &amp; Governance</a>
+        <a href="../lamprey-woven-security-governance.html">Agentic Orchestration Governance</a>
+        <a href="../forward-deployed-ai-engineering.html">On-Prem LLM Deployment</a>
+        <a href="../blog.html">Local AI Blog</a>
+        <a href="../contact.html">Start a Scoping Call</a>
+      </div>
+
+      <p class="au-legal">Island Mountain AI Inc. provides forward-deployed AI engineering services and designs, integrates, and deploys on-premises AI inference systems. Nothing on this site constitutes an offer or sale of securities, or legal, compliance, tax, or investment advice. Compliance with HIPAA, ITAR, DFARS / CMMC, OCAP, and other frameworks depends on your organization's deployment, configuration, policies, and controls; on-premises hardware is one component of a compliant program, not a certification. Product specifications, model availability, and lead times are subject to change. Pricing is quoted by sales on a per-engagement basis. NVIDIA, RTX, and Blackwell, and all other marks are the property of their respective owners.</p>
+
+      <div class="footer-bottom flex-col-center-gap">
+        <p>&copy; 2026 Island Mountain AI Inc. All rights reserved. Hand-built in California by <span class="clr-copper">Basho Parks</span>.</p>
+        <div class="au-legallinks">
+          <a href="../privacy.html">Privacy Policy</a>
+          <a href="../terms.html">Terms of Service</a>
+          <a href="../contact.html">Start a Scoping Call</a>
+          <a href="tel:+13414418740">1-341-441-8740</a>
+          <a href="https://www.linkedin.com/company/island-mountain-llc/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="https://x.com/IslandMountain_" target="_blank" rel="noopener">X</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script defer src="../js/main.min.js?v=2"></script>
+  <script defer src="../js/chat-widget.min.js?v=4"></script>
+</body>
+</html>
