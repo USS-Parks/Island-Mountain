@@ -1,21 +1,20 @@
 # Island Mountain
 
 ## About
-Pre-built, burn-tested on-premise AI inference servers with NVIDIA RTX PRO 6000 Blackwell GPUs. Air-gapped, HIPAA-ready, ITAR-compliant. One-time purchase. No cloud fees. No subscriptions. No per-token charges. Built in Colorado.
+Forward-deployed AI engineering for regulated organizations. Island Mountain embeds on-site, learns how an organization works from the people who run it, finds where AI genuinely helps, then assembles whatever configuration serves that and trains the team to run it. Everything runs on the customer's premises, air-gap capable, so no data leaves the building. They own the hardware and the models outright: no token fees, no subscription, no per-seat charges. California built.
 
-## Products
-Three tiers of local AI inference hardware:
-- Summit Base: 2x NVIDIA RTX PRO 6000 Blackwell 96GB, 192GB GDDR7 ECC VRAM, AMD EPYC 7413, 512GB DDR4 ECC. $59K-$69K.
-- Summit Ridge: Build-to-order configuration. $95K-$120K.
-- Summit Pinnacle: 4x NVIDIA RTX PRO 6000 Blackwell 96GB, 384GB GDDR7 ECC VRAM. $175K-$225K. Pre-order now.
+## The Sequence
+1. Immerse: an intense period on-site with senior employees, managers, and founders. Not a discovery deck.
+2. Discover: mapping the use-cases and applications already latent in the organization, most of which nobody has articulated yet.
+3. Configure: a short-list we have proven, the client chooses, we install it. Sized with room to grow.
+4. Onboard: complete onboarding, because a deployment nobody can run is a very expensive shelf.
 
-Landfall Series (Home AI):
-- Landfall Scout: NVIDIA RTX 5080 16GB. Home AI server for personal use. $7,000-$8,000.
-- Landfall Ranger: NVIDIA RTX 5090 32GB. Family and small business AI server. $9,500-$11,500.
-- Landfall Pack Leader: NVIDIA RTX PRO 4500 Blackwell 32GB. Professional home AI server with maximum capability. $15,000-$22,000.
+Discovery comes before configuration on purpose. Nobody can tell you what to buy before knowing what you would use it for.
 
-All Landfall systems are air-gapped by design. One-time purchase. No subscriptions.
-All systems ship with DeepSeek V4-Flash pre-installed, OpenWebUI configured, and burn-in testing completed.
+## Configurations
+There is no product line and no price list. Every number comes from a quote scoped to the engagement after the work has been seen. Configurations run from two DGX Sparks and a few M5-class laptops at a small business up to H200 racks with adjacent data server racks across an enterprise estate. Both are real answers and neither is the upsell; which one a client gets falls out of Discovery.
+
+Hardware we tend to recommend: DGX Spark, RTX 5090, RTX PRO 6000 Blackwell 96GB, H100/H200. We also configure hardware we did not sell, including machines another integrator shipped and never set up. Models are any open-source, open-weight model, swapped as the frontier moves. Software: hardened Ubuntu, Ollama, vLLM with tensor parallelism, Open WebUI, fully air-gap capable, with the Woven Security and Governance Fabric woven through.
 
 ## Security Fabric (Lamprey)
 Lamprey is a Woven Security & Governance Fabric - a software layer that secures and governs an organization from the outside through the cloud, or from the inside with air-gapped security. Cloud visibility, compliance evidence, and approval-gated remediation without standing privilege. Zero standing privilege: scan access is minted just in time, scoped to the operation, and revoked automatically.
@@ -39,25 +38,19 @@ Lamprey is a Woven Security & Governance Fabric - a software layer that secures 
 - John Dougherty, Co-founder. Hardware engineering and product. 25 years in enterprise security and GPU systems. [johndou.com](https://www.johndou.com)
 
 ## Key Pages
-- [Products](https://islandmountain.io/products.html)
-- [FAQ (27 Q&A pairs)](https://islandmountain.io/faq.html)
-- [Contact/Quote](https://islandmountain.io/contact.html)
-- [About](https://islandmountain.io/about.html)
-- [Technology Stack](https://islandmountain.io/technology.html)
+- [Forward Deployed](https://islandmountain.io/forward-deployed-ai-engineering.html)
+- [Configs](https://islandmountain.io/products.html)
 - [Security Fabric (Lamprey)](https://islandmountain.io/lamprey-woven-security-governance.html)
+- [FAQ](https://islandmountain.io/faq.html)
+- [Resources (Direct-Answer Hub)](https://islandmountain.io/resources.html)
+- [About](https://islandmountain.io/about.html)
+- [Partnerships](https://islandmountain.io/partnerships.html)
+- [Contact/Quote](https://islandmountain.io/contact.html)
 - [Solutions by Industry](https://islandmountain.io/solutions.html)
-- [Law Firms](https://islandmountain.io/law-firms.html)
-- [Medical Practices](https://islandmountain.io/medical-practices.html)
 - [Tribal Nations](https://islandmountain.io/tribal-nations.html)
-- [Research Labs](https://islandmountain.io/research-labs.html)
-- [Defense Contractors](https://islandmountain.io/defense-contractors.html)
-- [Financial Services](https://islandmountain.io/financial-services.html)
-- [Insurance](https://islandmountain.io/insurance.html)
-- [Energy & Utilities](https://islandmountain.io/energy-utilities.html)
 - [Government](https://islandmountain.io/government.html)
 - [Education](https://islandmountain.io/education.html)
 - [Casino Gaming](https://islandmountain.io/casino-gaming.html)
-- [Resources (Direct-Answer Hub)](https://islandmountain.io/resources.html)
 - [Blog](https://islandmountain.io/blog.html)
 
 ## Direct-Answer Reference Pages
