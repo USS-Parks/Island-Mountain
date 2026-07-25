@@ -48,6 +48,25 @@
   /* Pull-quote band for the thesis. */
   .fd-thesis{ max-width:900px; margin:0 auto; text-align:center; }
   .fd-thesis .au-h2{ margin-bottom:18px; }
+  
+  /* Merged from the retired Configs page: photo-backed section treatments. */
+  .specs-bg{background-color:#0b1424;background-image:linear-gradient(rgba(11,20,36,0.66),rgba(11,20,36,0.66)),url('images/summit-front.webp');background-repeat:no-repeat,no-repeat;background-position:center,left top;background-size:cover,cover;}
+  .range-section{background-color:#090d14;background-image:linear-gradient(rgba(6,10,18,0.74),rgba(6,10,18,0.80)),url('images/rtx-blackwell-hands.webp'),url('images/rtx-blackwell-bench.webp');background-repeat:no-repeat,no-repeat,no-repeat;background-position:center,center 24px,center bottom;background-size:cover,100% auto,100% auto;}
+  .range-section .section-badge,.range-section h2{text-shadow:0 2px 14px rgba(0,0,0,0.75);}
+  .range-copy{max-width:760px;margin:0 auto;}
+  .range-copy p{color:#e9eff8;font-size:1.05rem;line-height:1.85;text-shadow:0 1px 10px rgba(0,0,0,0.65);margin:0 0 20px;}
+  .range-copy p:last-child{margin-bottom:0;}
+  .hw-video-section{padding-top:0;}
+  .hw-shot{max-width:940px;margin:0 auto 22px;border-radius:18px;overflow:hidden;}
+  .hw-shot img{width:100%;height:auto;display:block;}
+  .hw-video{max-width:940px;margin:0 auto;border-radius:18px;overflow:hidden;}
+  .hw-video video{width:100%;height:auto;display:block;}
+  .risk-grid{grid-template-columns:repeat(3,1fr);}
+  @media(max-width:1000px){.risk-grid{grid-template-columns:repeat(2,1fr);}}
+  @media(max-width:640px){.risk-grid{grid-template-columns:1fr;}}
+  .risk-card{text-align:center;}
+  .risk-card h4{justify-content:center;}
+  .risk-card img{width:104px;height:104px;margin:0 auto 18px;display:block;}
   </style>
   <link rel="canonical" href="https://islandmountain.io/forward-deployed-ai-engineering.html">
   <meta property="og:title" content="Forward Deployed AI Engineering | Island Mountain">
@@ -55,11 +74,11 @@
   <meta property="og:url" content="https://islandmountain.io/forward-deployed-ai-engineering.html">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Island Mountain">
-  <meta property="og:image" content="https://islandmountain.io/images/summit-hero.webp">
+  <meta property="og:image" content="https://islandmountain.io/images/summit-product-photo4.webp">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Forward Deployed AI Engineering | Island Mountain">
   <meta name="twitter:description" content="An intense on-site immersion with your senior people, a Discovery of where AI genuinely helps, then whatever configuration serves it. No catalog.">
-  <meta name="twitter:image" content="https://islandmountain.io/images/summit-hero.webp">
+  <meta name="twitter:image" content="https://islandmountain.io/images/summit-product-photo4.webp">
   <script type="application/ld+json">
   {
     "@context":"https://schema.org","@type":"Service",
@@ -68,6 +87,38 @@
     "provider":{"@type":"Organization","name":"Island Mountain","url":"https://islandmountain.io"},
     "areaServed":"US",
     "description":"Embedded, on-site AI engineering for regulated organizations. Island Mountain immerses with senior staff, discovers where AI genuinely applies, then configures and deploys whatever serves it: any hardware and software combination the work calls for, running any open-source open-weight model. There is no catalog and no standing recommendation, and the team is onboarded to workflows and agentic orchestration built for their vertical."
+  }
+  </script>
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How fast are answers on an on-premise AI system?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Instant. Inference runs entirely on your own on-premises GPUs, so tokens stream back at wire speed with no cloud round-trip and no network latency. Answers are immediate and hyper-localized to your rack."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do you decide what we need?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Discovery decides it. There is no catalog and no standing recommendation, because nobody can tell you what to buy before knowing what you would use it for. Island Mountain sits with the people who run the work until the work is understood, and the recommendation falls out of that."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can we start smaller and grow into it?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, and every deployment is built with room to grow, because the alternative is buying twice. You add capacity as the work grows rather than replacing what you already bought, and it stays on your premises the whole time."
+        }
+      }
+    ]
   }
   </script>
 </head>
@@ -80,7 +131,6 @@
       <ul class="nav-links">
         <li><a href="index.html">Home</a></li>
         <li><a href="forward-deployed-ai-engineering.html" class="active">Forward Deployed</a></li>
-        <li><a href="products.html">Configs</a></li>
         <li><a href="lamprey-woven-security-governance.html">Security Fabric</a></li>
         <li><a href="faq.html">FAQ</a></li>
         <li><a href="resources.html">Resources</a></li>
@@ -96,7 +146,6 @@
   <div class="mobile-sidebar">
     <a href="index.html">Home</a>
     <a href="forward-deployed-ai-engineering.html">Forward Deployed</a>
-    <a href="products.html">Configs</a>
     <a href="lamprey-woven-security-governance.html">Security Fabric</a>
     <a href="faq.html">FAQ</a>
     <a href="resources.html">Resources</a>
@@ -144,7 +193,7 @@
       <ul class="fd-roll au-reveal">
         <li><b>The senior paralegal</b> who knows which intake questions matter and which are on the form because they've always been on the form</li>
         <li><b>The records clerk in fiscal</b> who can tell you which form gets filled out wrong every single time</li>
-        <li><b>The compliance officer</b> who knows where the risk actually lives, which is rarely where the risk register says</li>
+        <li><b>The compliance officer</b> who knows where the risk really lives, which is rarely where the risk register says</li>
         <li><b>The charge nurse</b> who runs the floor at three in the morning</li>
         <li><b>The export control officer</b> who has read every license on the wall</li>
         <li><b>The docketing clerk</b> who has never once missed a deadline and can tell you why</li>
@@ -156,7 +205,7 @@
         <li><b>The claims adjuster</b> who can separate fraud from plain bad luck on the first read</li>
         <li><b>The lab manager</b> who keeps chain of custody honest when nobody is checking</li>
         <li><b>The underwriter</b> who prices the things a model will never see</li>
-        <li><b>The dispatcher</b> who knows which call is actually the emergency</li>
+        <li><b>The dispatcher</b> who knows which call is the real emergency</li>
         <li><b>The shop foreman</b> who knows which spec gets waived and who has to sign for it</li>
       </ul>
       <p class="au-lede au-reveal" style="color:#cbd5e1;max-width:880px;margin:30px auto 0;text-align:center;">The list doesn't end, and it isn't ours to write. Yours are already on payroll, and the most essential window in a deployment opens while we're sitting next to one of them. That's the part you can't outsource, can't shortcut, and can't buy in a box.</p>
@@ -177,14 +226,65 @@
     </div>
   </section>
 
+  <section class="section section-dark hw-video-section">
+    <div class="container">
+      <figure class="hw-shot fade-in">
+          <img src="images/summit-product-photo4.webp" alt="An Island Mountain on-premise AI inference build"
+               width="1916" height="821" sizes="100vw" loading="lazy" decoding="async">
+        </figure>
+        <div class="hw-video fade-in">
+        <video data-lazy muted loop playsinline preload="none">
+          <source src="images/summit-stack-explosion.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-darker specs-bg">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-badge">Before Anyone Names Hardware</span>
+        <h2>How a configuration gets decided</h2>
+        <p>There&#39;s no catalog on this page and there isn&#39;t one anywhere else either. Nobody can tell you what to buy before knowing what you&#39;d use it for, so the recommendation gets made once, for you, after Discovery. Here&#39;s what has to be on the table before it can be made at all.</p>
+      </div>
+      <div class="card-grid card-grid-3 fade-in">
+        <div class="card beam-card" style="--i:0">
+          <h3>Whose desk the work runs through</h3>
+          <p>How many people touch it, how often, and whether they&#39;re all hitting it at once. Concurrency moves the answer further than anything else here, and it&#39;s the thing nobody guesses right over the phone.</p>
+        </div>
+        <div class="card beam-card" style="--i:1">
+          <h3>What the data is, and what it can&#39;t touch</h3>
+          <p>Regulated data sets the air-gap posture, and the posture shapes the deployment. That&#39;s the constraint you can&#39;t design around later. A workload that can never see a network is a different build from one that just prefers not to.</p>
+        </div>
+        <div class="card beam-card" style="--i:2">
+          <h3>What the building can take</h3>
+          <p>Power, cooling, network, and where a rack can physically live. It&#39;s the question that sinks more deployments than any spec sheet. Facilities gets a veto, and it&#39;s a great deal cheaper to hear it before anything is ordered than after it arrives.</p>
+        </div>
+      </div>
+      <p class="fade-in" style="max-width:760px;margin:28px auto 0;text-align:center;color:var(--text-muted);line-height:1.8;">Then Basho recommends the stack purchase, and we deploy and configure it together, in your building. After that he onboards your team to the workflows and <a href="lamprey-woven-security-governance.html" class="clr-copper">agentic orchestration</a> built for your vertical and for what you sell, because a deployment nobody can run is a very expensive shelf.</p>
+    </div>
+  </section>
+
   <!-- Why now -->
   <section class="au-section au-statement">
     <div class="container au-reveal">
       <span class="au-eyebrow-c" style="color:#ffd9a8">Why this works now</span>
-      <h2 class="au-h2">The whole industry is a band of pirates, and that&#39;s fine.</h2>
-      <p class="au-lede" style="color:#efe0c8;">Everyone doing serious work right now is freely swapping hardware and weights to suit the moment, because the gear turns over every few months and the open models turn over faster. Anybody still selling you a fixed product is protecting their inventory, not solving your problem. A $7,000 laptop runs open-weight models in the frontier weight class now. The substrate stopped being the constraint, and what's left is whether anyone bothered to learn how your organization actually operates.</p>
-      <p style="color:#efe0c8;line-height:1.8;margin-top:18px;">So we don't have a lineup, and we don't have set specs either. No catalog, no reference build, no standing recommendation, because <a href="products.html" class="clr-copper">the recommendation doesn't exist</a> until Discovery has shown what you do. Then we configure and deploy whatever combination serves it. That runs from a large estate on rack-mounted accelerators with adjacent data server racks down to a small business getting real work done on a couple of desktop-class machines and a few laptops. Both are legitimate answers, neither is the upsell, and which one you end up with falls out of Discovery rather than out of our catalog, because we don't have one.</p>
-      <p style="color:#efe0c8;line-height:1.8;margin-top:18px;">Already own hardware? We wire the serving stack, set the air-gap configuration, and train your team on gear we didn't sell, because on-premise AI failing in regulated industries helps nobody.</p>
+      <h2 class="au-h2">The hardware stopped being the hard part.</h2>
+      <p class="au-lede" style="color:#efe0c8;">Accelerators turn over every few months and the open models turn over faster, so the honest recommendation changes with them. That&#39;s the pace of the field, not a knock on it, and it&#39;s why we&#39;d rather match the moment than defend a catalog. Anyone still selling you a fixed product is protecting their inventory, not solving your problem. A $7,000 laptop runs open-weight models in the frontier weight class now. The substrate stopped being the constraint, and what&#39;s left is whether anyone bothered to learn how your organization runs.</p>
+      <p style="color:#efe0c8;line-height:1.8;margin-top:18px;">So there&#39;s no lineup here and no set specs. No catalog, no reference build, no standing recommendation, because the recommendation doesn&#39;t exist until Discovery has shown what you do. Then we configure and deploy whatever combination serves it, and we tell you plainly when professional accelerators are the right call and when they&#39;d be overkill for what Discovery found.</p>
+    </div>
+  </section>
+
+  <section class="section section-dark range-section">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-badge">The Range</span>
+        <h2>Both ends of this are real answers</h2>
+      </div>
+      <div class="range-copy fade-in">
+        <p>A small business doing genuinely useful work on a couple of desktop-class machines and a few laptops sits at one end, and it isn&#39;t a lesser answer. A large estate on rack-mounted accelerators with adjacent data server racks, feeding several departments at once, sits at the other. Neither one is the upsell, and there&#39;s no ladder between them that anybody gets walked up.</p>
+        <p>What doesn&#39;t change across that spread: it&#39;s yours outright, it&#39;s air-gap capable, the models are open-weight and swappable, and the <a href="lamprey-woven-security-governance.html" class="clr-copper">Woven Security &amp; Governance Fabric</a> is in the crate either way. When professional accelerators are the right call we&#39;ll say so and explain why, and when they&#39;re overkill for what Discovery found, we&#39;ll say that instead. Every deployment gets built with room to grow, because the alternative is buying twice.</p>
+      </div>
     </div>
   </section>
 
@@ -214,11 +314,93 @@
     </div>
   </section>
 
+  <section class="section section-darker text-center">
+    <div class="container fade-in" style="max-width:780px;">
+      <span class="section-badge">Already Own Hardware?</span>
+      <h2 style="margin:12px 0 14px;">We make other vendors' boxes work, too.</h2>
+      <p style="color:var(--text-muted);line-height:1.8;margin:0 auto 18px;max-width:640px;">DGX Sparks on a lab bench, an AMD Strix Halo mini PC, a rack another integrator shipped and never configured: the hardware is rarely the problem. We wire the serving stack, set the air-gap configuration, and train your team on gear we didn't sell, because on-premises AI failing in regulated industries helps nobody. Read <a href="blog/dgx-spark-vs-rtx-pro-6000-strix-halo.html" class="clr-copper">the honest small-box comparison</a>, then tell us what's on your bench.</p>
+      <a href="contact.html" class="btn btn-primary">Start a Scoping Call</a>
+    </div>
+  </section>
+
+  <section class="section section-dark">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-badge">Common Questions</span>
+        <h2>Product Questions</h2>
+      </div>
+      <div class="risk-grid fade-in">
+        <div class="risk-card beam-card">
+          <img src="images/ic-search.webp" alt="" width="104" height="104" loading="lazy">
+          <h4>How fast are the answers?</h4>
+          <p>Instant. Inference runs on your own GPUs, so tokens stream back at wire speed - no cloud round-trip, no queue, no latency. Immediate answers, hyper-localized to your rack.</p>
+        </div>
+        <div class="risk-card beam-card">
+          <img src="images/ic-skills-teacher.webp" alt="" width="104" height="104" loading="lazy">
+          <h4>How do you decide what we need?</h4>
+          <p>Discovery decides it. Nobody can tell you what to buy before knowing what you&#39;d use it for, so we sit with the people who run the work until we know it, and the recommendation falls out of that.</p>
+        </div>
+        <div class="risk-card beam-card">
+          <img src="images/ic-plan.webp" alt="" width="104" height="104" loading="lazy">
+          <h4>Can we start smaller and grow?</h4>
+          <p>Yes, and everything gets built with room to grow, because the alternative is buying twice. You add capacity as the work grows instead of replacing what you already own.</p>
+        </div>
+      </div>
+      <div class="text-center-mt-32">
+        <a href="faq.html" class="btn btn-secondary">See All FAQs</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-dark">
+    <div class="container fade-in" style="max-width:780px;">
+      <div style="border:1px solid rgba(199,123,82,.5);border-radius:16px;padding:34px 30px;background:rgba(199,123,82,.06);text-align:center;">
+        <span class="section-badge">The Founder&#39;s Build Slot</span>
+        <h2 style="margin:12px 0 14px;">I run every deployment myself. A slot holds your place.</h2>
+        <p style="color:var(--text-muted);line-height:1.8;margin:0 auto 18px;max-width:620px;">Being on-site caps how many deployments run at once. A slot costs nothing, commits you to nothing, and locks the quote we scope together for 90 days.</p>
+        <a href="contact.html#claim-slot" class="btn btn-primary">Claim a Build Slot</a>
+        <p class="cta-subtitle" style="margin-top:12px;">No deposit &middot; No commitment</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-badge">Explore the Platform</span>
+        <h2>Beyond the hardware</h2>
+        <p>The stack is the easy half. Here's the work that decides whether it lands.</p>
+      </div>
+      <div class="card-grid card-grid-3 fade-in">
+        <div class="card beam-card" style="--i:0">
+          <div class="card-icon-im"><img src="images/faq-icon.webp" alt="" loading="lazy" decoding="async"></div>
+          <h3>FAQ</h3>
+          <p>Straight answers on what a deployment looks like, how long we're on-site, model selection, air-gapping, and what you end up owning.</p>
+          <a href="faq.html" class="btn btn-secondary mt-16">Read the FAQ &rarr;</a>
+        </div>
+        <div class="card beam-card" style="--i:1">
+          <div class="card-icon-im"><img src="images/resources-icon.webp" alt="" loading="lazy" decoding="async"></div>
+          <h3>Resources</h3>
+          <p>Direct-answer briefs on air-gapped inference, HIPAA, ITAR/CMMC, the CLOUD Act, and on-premises AI cost.</p>
+          <a href="resources.html" class="btn btn-secondary mt-16">Browse resources &rarr;</a>
+        </div>
+        <div class="card beam-card" style="--i:2">
+          <div class="card-icon-im"><img src="images/contact-icon.webp" alt="" loading="lazy" decoding="async"></div>
+          <h3>Contact</h3>
+          <p>Tell us whose desk the work runs through. One engineer, one phone call, real answers.</p>
+          <a href="contact.html" class="btn btn-secondary mt-16">Start a scoping call &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+
   <!-- CTA -->
   <section class="au-section">
     <div class="container au-reveal" style="max-width:780px;text-align:center;">
       <span class="au-eyebrow-c">Start here</span>
-      <h2 class="au-h2" style="margin:10px 0 14px;">What does the work actually look like?</h2>
+      <h2 class="au-h2" style="margin:10px 0 14px;">What does the work really look like?</h2>
       <p style="color:#cbd5e1;line-height:1.8;margin:0 0 22px;">Tell us whose desk the work runs through and what hurts about it. One conversation, no sales pitch, and a straight answer about whether we can help.</p>
       <a href="contact.html" class="btn btn-primary">Start a Scoping Call</a>
       <p class="cta-subtitle" style="margin-top:14px;"><i class="ri-phone-line icon-copper-mr-sm"></i>Or call directly: <a href="tel:+13414418740" class="copper-semibold">1-341-441-8740</a></p>
@@ -242,7 +424,6 @@
           <h3>What We Do</h3>
           <ul class="footer-links">
             <li><a href="forward-deployed-ai-engineering.html">Forward Deployed</a></li>
-            <li><a href="products.html">Configs</a></li>
             <li><a href="lamprey-woven-security-governance.html">Lamprey &middot; Security Fabric</a></li>
           </ul>
         </div>
