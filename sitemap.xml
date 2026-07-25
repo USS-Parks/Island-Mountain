@@ -67,6 +67,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://islandmountain.io/partnerships.html</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://islandmountain.io/career-lead-hardware-production-systems-integration-engineer.html</loc>
     <lastmod>2026-07-18</lastmod>
     <changefreq>weekly</changefreq>
