@@ -192,10 +192,10 @@
           <div class="cw-total" id="cw-total">$0</div>
           <p style="margin:8px 0 0;color:var(--text-muted);" id="cw-perseat"></p>
           <svg class="cw-bars" id="cw-bars" viewBox="0 0 520 190" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Annual cloud AI spend by year"></svg>
-          <p class="cw-note">Assumptions: your inputs, escalated annually at the growth rate you chose. Documented cloud AI pricing history runs 10&ndash;15% annual increases; enterprise usage typically grows 15&ndash;30% a year as teams adopt the tools. Every dollar here is spend that ends with nothing owned.</p>
+          <p class="cw-note">Assumptions: your inputs, escalated annually at the growth rate you chose. Documented cloud AI pricing history runs 10-15% annual increases; enterprise usage typically grows 15-30% a year as teams adopt the tools. Every dollar here is spend that ends with nothing owned.</p>
 
           <div class="cw-gate show" id="cw-gate">
-            <p style="margin:0 0 14px;line-height:1.7;color:#e6e9ef;"><strong>Want it in writing?</strong> I&#39;ll email you the full worksheet with your numbers filled in &mdash; including the one-time ownership comparison we don&#39;t publish on the site &mdash; plus the compliance brief for your industry. No follow-up spam; you&#39;re talking to the person who builds the hardware.</p>
+            <p style="margin:0 0 14px;line-height:1.7;color:#e6e9ef;"><strong>Want it in writing?</strong> I&#39;ll email you the full worksheet with your numbers filled in - including the one-time ownership comparison we don&#39;t publish on the site - plus the compliance brief for your industry. No follow-up spam; you&#39;re talking to the person who builds the hardware.</p>
             <form id="cw-form">
               <div class="cw-gate-row">
                 <div class="cw-field">
@@ -224,13 +224,13 @@
               <p class="cw-err" id="cw-err">Something went wrong sending that. Try again, or email <a href="mailto:info@islandmountain.io" style="color:var(--copper);">info@islandmountain.io</a> directly.</p>
             </form>
             <div class="cw-success" id="cw-success">
-              Sent. Check your inbox &mdash; your worksheet and industry brief are on the way. If it hasn&#39;t landed in a few minutes, check spam or email <a href="mailto:info@islandmountain.io" style="color:var(--copper);">info@islandmountain.io</a>. &mdash; Basho
+              Sent. Check your inbox - your worksheet and industry brief are on the way. If it hasn&#39;t landed in a few minutes, check spam or email <a href="mailto:info@islandmountain.io" style="color:var(--copper);">info@islandmountain.io</a>. - Basho
             </div>
           </div>
         </div>
       </div>
 
-      <p style="text-align:center;margin:34px auto 0;color:var(--text-muted);max-width:640px;line-height:1.8;">Prefer to talk it through? <a href="contact.html" style="color:var(--copper);">Book a scoping call</a> &mdash; one conversation with the engineer who runs the deployment, no sales pitch. Or read <a href="on-premises-ai-cost-comparison.html" style="color:var(--copper);">the full on-premises cost analysis</a> first.</p>
+      <p style="text-align:center;margin:34px auto 0;color:var(--text-muted);max-width:640px;line-height:1.8;">Prefer to talk it through? <a href="contact.html" style="color:var(--copper);">Book a scoping call</a> - one conversation with the engineer who runs the deployment, no sales pitch. Or read <a href="on-premises-ai-cost-comparison.html" style="color:var(--copper);">the full on-premises cost analysis</a> first.</p>
     </div>
   </section>
 
@@ -310,7 +310,7 @@
       }
       state = { seats: seats, spend: spend, growth: growth, years: years, total: total };
       document.getElementById('cw-total').textContent = fmt(total);
-      document.getElementById('cw-perseat').textContent = 'That is ' + fmt(total / seats) + ' per person on your team — rented, never owned.';
+      document.getElementById('cw-perseat').textContent = 'That is ' + fmt(total / seats) + ' per person on your team - rented, never owned.';
       drawBars(years);
       document.getElementById('cw-result').classList.add('show');
       if (window.gtag) gtag('event', 'worksheet_calculate', { value: Math.round(total), currency: 'USD' });
