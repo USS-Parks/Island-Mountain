@@ -281,14 +281,15 @@ html:not(.js) #aurora-intro{ display:none; }
   /* CTAs stack full-width for thumb reach instead of crowding one row. */
   .au-ctas{ gap:10px; }
   .au-ctas .btn{ flex:1 1 100%; text-align:center; }
-  /* Bug fix: the Summit server sits in the left third of summit-photo3.webp; a
-     centered `cover` crop drops it off-screen on a portrait box. Bias the crop
-     left so the product stays framed, and tighten hero padding. */
+  /* Bug fix: the Summit server sits in the left third of the photo; a centered
+     `cover` crop drops it off-screen on a portrait box. Bias the crop left so
+     the product stays framed, and tighten hero padding. The -mobile file is the
+     same photo at 1200px wide: identical framing, roughly half the bytes. */
   .au-hero{
     padding:108px 0 56px;
     background:
       linear-gradient(180deg, rgba(8,13,24,.84) 0%, rgba(13,20,36,.58) 46%, rgba(8,13,24,.95) 100%),
-      url('../images/summit-photo3.webp') 30% 45% / cover no-repeat;
+      url('../images/summit-photo3-mobile.webp') 30% 45% / cover no-repeat;
   }
 }
 
