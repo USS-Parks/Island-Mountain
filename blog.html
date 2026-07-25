@@ -28,13 +28,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="author" content="Basho Parks">
-  <meta name="date" content="2026-05-01">
-  <title>On-Premises AI Blog | HIPAA, ITAR &amp; TCO Deep Dives</title>
-  <meta name="description" content="Technical writing on forward-deployed AI: HIPAA safeguards, ITAR controls, tribal sovereignty, cloud vs. local TCO, honest hardware sizing, and open-weight model deployment.">
+  <meta name="date" content="2026-07-25">
+  <title>Forward-Deployed AI Blog | Agentic Security, Sovereignty &amp; TCO</title>
+  <meta name="description" content="Field notes on forward-deployed AI engineering: agentic security and governance, HIPAA and ITAR, tribal data sovereignty, and honest cloud vs. local TCO.">
   <link rel="icon" type="image/x-icon" href="favicon.ico?v=2">
   <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png?v=2">
   <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png?v=2">
-  <link rel="stylesheet" href="css/style.min.css?v=3">
+  <link rel="stylesheet" href="css/style.min.css?v=4">
+  <link rel="stylesheet" href="css/card-nodes.min.css?v=3">
   <link rel="stylesheet" href="icons/remixicon.css" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="icons/remixicon.css"></noscript>
   <link rel="preload" href="fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -60,8 +61,8 @@
   <link rel="canonical" href="https://islandmountain.io/blog.html">
 
   <!-- Open Graph -->
-  <meta property="og:title" content="On-Premises AI Blog | HIPAA, ITAR &amp; TCO Deep Dives">
-  <meta property="og:description" content="Technical writing on forward-deployed AI: HIPAA safeguards, ITAR controls, tribal sovereignty, cloud vs. local TCO, honest hardware sizing, and open-weight model deployment.">
+  <meta property="og:title" content="Forward-Deployed AI Blog | Agentic Security, Sovereignty &amp; TCO">
+  <meta property="og:description" content="Field notes on forward-deployed AI engineering: agentic security and governance, HIPAA and ITAR, tribal data sovereignty, and honest cloud vs. local TCO.">
   <meta property="og:url" content="https://islandmountain.io/blog.html">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Island Mountain">
@@ -69,8 +70,8 @@
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="On-Premises AI Blog | HIPAA, ITAR &amp; TCO Deep Dives">
-  <meta name="twitter:description" content="Technical writing on forward-deployed AI: HIPAA safeguards, ITAR controls, tribal sovereignty, cloud vs. local TCO, honest hardware sizing, and open-weight model deployment.">
+  <meta name="twitter:title" content="Forward-Deployed AI Blog | Agentic Security, Sovereignty &amp; TCO">
+  <meta name="twitter:description" content="Field notes on forward-deployed AI engineering: agentic security and governance, HIPAA and ITAR, tribal data sovereignty, and honest cloud vs. local TCO.">
   <meta name="twitter:image" content="https://islandmountain.io/images/hero-blog.webp">
 
   <!-- Blog Schema -->
@@ -79,7 +80,7 @@
     "@context": "https://schema.org",
     "@type": "Blog",
     "name": "Island Mountain Blog",
-    "description": "Technical writing on local AI hardware, data sovereignty, and organizational AI infrastructure",
+    "description": "Field notes on forward-deployed AI engineering, agentic security and governance, and data sovereignty",
     "url": "https://islandmountain.io/blog.html",
     "publisher": {
       "@type": "Organization",
@@ -167,6 +168,11 @@
     .tag-strategy {
       background: rgba(148, 163, 184, 0.12);
       color: var(--slate-300, #cbd5e1);
+    }
+
+    .tag-white-paper {
+      background: rgba(180, 83, 9, 0.12);
+      color: var(--copper-light);
     }
 
     .blog-card h2 {
@@ -285,7 +291,7 @@
     <div class="hero-inner">
       <span class="hero-badge">From the Builder</span>
       <h1>The Island Mountain Blog</h1>
-      <p class="blog-subtitle">Technical writing on local AI infrastructure, data sovereignty, and what it costs to run AI on your own hardware.</p>
+      <p class="blog-subtitle">Field notes from the work: agentic security and governance, data sovereignty, and what the cloud's meter really costs you.</p>
     </div>
   </section>
 
@@ -294,7 +300,7 @@
     <div class="container">
       <div class="blog-grid fade-in">
         <!-- Article: Bonsai 27B -->
-        <div class="blog-card">
+        <div class="blog-card beam-card">
           <div class="blog-card-meta">
             <span class="blog-card-date">July 25, 2026</span>
             <span class="blog-card-tag tag-technical">Technical</span>
@@ -306,7 +312,7 @@
         </div>
 
         <!-- Article: Agentic Scar Tissue -->
-        <div class="blog-card">
+        <div class="blog-card beam-card">
           <div class="blog-card-meta">
             <span class="blog-card-date">July 19, 2026</span>
             <span class="blog-card-tag tag-strategy">Strategy</span>
@@ -317,7 +323,7 @@
         </div>
 
         <!-- Article: Education Is the Deployment -->
-        <div class="blog-card">
+        <div class="blog-card beam-card">
           <div class="blog-card-meta">
             <span class="blog-card-date">July 16, 2026</span>
             <span class="blog-card-tag tag-strategy">Strategy</span>
@@ -329,7 +335,7 @@
         </div>
 
         <!-- Article: Agentic Infrastructure Control Plane -->
-        <div class="blog-card">
+        <div class="blog-card beam-card">
           <div class="blog-card-meta">
             <span class="blog-card-date">July 11, 2026</span>
             <span class="blog-card-tag tag-technical">Technical</span>
@@ -341,7 +347,7 @@
         </div>
 
         <!-- Article: The American Open-Source LLM Lab -->
-        <div class="blog-card">
+        <div class="blog-card beam-card">
           <div class="blog-card-meta">
             <span class="blog-card-date">July 11, 2026</span>
             <span class="blog-card-tag tag-strategy">Strategy</span>
@@ -353,7 +359,7 @@
         </div>
 
         <!-- Article: DGX Spark vs RTX PRO 6000 -->
-        <div class="blog-card">
+        <div class="blog-card beam-card">
           <div class="blog-card-meta">
             <span class="blog-card-date">July 10, 2026</span>
             <span class="blog-card-tag tag-technical">Technical</span>
@@ -365,7 +371,7 @@
         </div>
 
         <!-- Article: Self-Hosted AI Inference and the $165,000 Rewrite -->
-        <div class="blog-card">
+        <div class="blog-card beam-card">
           <div class="blog-card-meta">
             <span class="blog-card-date">July 10, 2026</span>
             <span class="blog-card-tag tag-financial">Financial</span>
@@ -377,7 +383,7 @@
         </div>
 
         <!-- Article: LLM Harnesses, Saddles, and Paddocks -->
-        <div class="blog-card">
+        <div class="blog-card beam-card">
           <div class="blog-card-meta">
             <span class="blog-card-date">July 7, 2026</span>
             <span class="blog-card-tag tag-technical">Technical</span>
@@ -389,7 +395,7 @@
         </div>
 
         <!-- Article: Agentic Orchestration and Security Map -->
-        <div class="blog-card">
+        <div class="blog-card beam-card">
           <div class="blog-card-meta">
             <span class="blog-card-date">July 2, 2026</span>
             <span class="blog-card-tag tag-technical">Technical</span>
@@ -400,7 +406,7 @@
         </div>
 
         <!-- Article: Agentjacking Fake Bug Report -->
-        <div class="blog-card">
+        <div class="blog-card beam-card">
           <div class="blog-card-meta">
             <span class="blog-card-date">June 30, 2026</span>
             <span class="blog-card-tag tag-technical">Security</span>
@@ -412,7 +418,7 @@
         </div>
 
         <!-- Article: AI Search Visibility Consultant -->
-        <div class="blog-card">
+        <div class="blog-card beam-card">
           <div class="blog-card-meta">
             <span class="blog-card-date">June 21, 2026</span>
             <span class="blog-card-tag tag-technical">Technical</span>
@@ -423,7 +429,7 @@
         </div>
 
         <!-- Article: The Sovereign Edge On-Device LLMs -->
-        <div class="blog-card">
+        <div class="blog-card beam-card">
           <div class="blog-card-meta">
             <span class="blog-card-date">June 14, 2026</span>
             <span class="blog-card-tag tag-technical">Technical</span>
@@ -434,7 +440,7 @@
         </div>
 
         <!-- Article: EU CADA AI Sovereignty -->
-        <div class="blog-card">
+        <div class="blog-card beam-card">
           <div class="blog-card-meta">
             <span class="blog-card-date">June 5, 2026</span>
             <span class="blog-card-tag tag-compliance">Compliance</span>
@@ -446,7 +452,7 @@
         </div>
 
         <!-- Article: Tribal Sovereignty Data Centers -->
-        <div class="blog-card">
+        <div class="blog-card beam-card">
           <div class="blog-card-meta">
             <span class="blog-card-date">May 29, 2026</span>
             <span class="blog-card-tag tag-industry">Industry</span>
@@ -458,7 +464,7 @@
         </div>
 
         <!-- Article: 50K Month Cloud AI Replacement -->
-        <div class="blog-card">
+        <div class="blog-card beam-card">
           <div class="blog-card-meta">
             <span class="blog-card-date">May 29, 2026</span>
             <span class="blog-card-tag tag-financial">Financial</span>
@@ -470,7 +476,7 @@
         </div>
 
         <!-- Article: Grid Screaming Aquifers -->
-        <div class="blog-card">
+        <div class="blog-card beam-card">
           <div class="blog-card-meta">
             <span class="blog-card-date">May 14, 2026</span>
             <span class="blog-card-tag tag-industry">Industry</span>
@@ -483,7 +489,7 @@
 
 
         <!-- Article: Local LLM vs Cloud AI Hardware Gap -->
-        <div class="blog-card">
+        <div class="blog-card beam-card">
           <div class="blog-card-meta">
             <span class="blog-card-date">May 10, 2026</span>
             <span class="blog-card-tag tag-technical">Technical</span>
@@ -493,7 +499,7 @@
           <a href="blog/local-llm-vs-cloud-ai-hardware-gap.html" class="blog-card-read">Read &rarr;</a>
         </div>
         <!-- Article: Second Revolution Local AI -->
-        <div class="blog-card">
+        <div class="blog-card beam-card">
           <div class="blog-card-meta">
             <span class="blog-card-date">May 10, 2026</span>
             <span class="blog-card-tag tag-industry">Industry</span>
@@ -503,7 +509,7 @@
           <a href="blog/second-revolution-local-ai.html" class="blog-card-read">Read &rarr;</a>
         </div>
         <!-- Article: AI Sovereignty Framework -->
-        <div class="blog-card">
+        <div class="blog-card beam-card">
           <div class="blog-card-meta">
             <span class="blog-card-date">May 9, 2026</span>
             <span class="blog-card-tag tag-industry">Industry</span>
@@ -516,7 +522,7 @@
         </div>
 
         <!-- Article: MSP Model -->
-        <div class="blog-card">
+        <div class="blog-card beam-card">
           <div class="blog-card-meta">
             <span class="blog-card-date">May 5, 2026</span>
             <span class="blog-card-tag tag-strategy">Strategy</span>
@@ -527,7 +533,7 @@
         </div>
 
         <!-- Article 1 -->
-        <div class="blog-card">
+        <div class="blog-card beam-card">
           <div class="blog-card-meta">
             <span class="blog-card-date">April 30, 2026</span>
             <span class="blog-card-tag tag-technical">Technical</span>
@@ -538,7 +544,7 @@
         </div>
 
         <!-- Article 2 -->
-        <div class="blog-card">
+        <div class="blog-card beam-card">
           <div class="blog-card-meta">
             <span class="blog-card-date">April 23, 2026</span>
             <span class="blog-card-tag tag-compliance">Compliance</span>
@@ -549,7 +555,7 @@
         </div>
 
         <!-- Article 3 -->
-        <div class="blog-card">
+        <div class="blog-card beam-card">
           <div class="blog-card-meta">
             <span class="blog-card-date">April 16, 2026</span>
             <span class="blog-card-tag tag-technical">Technical</span>
@@ -560,7 +566,7 @@
         </div>
 
         <!-- Article 4 -->
-        <div class="blog-card">
+        <div class="blog-card beam-card">
           <div class="blog-card-meta">
             <span class="blog-card-date">April 9, 2026</span>
             <span class="blog-card-tag tag-financial">Financial</span>
@@ -571,7 +577,7 @@
         </div>
 
         <!-- Article 5 -->
-        <div class="blog-card">
+        <div class="blog-card beam-card">
           <div class="blog-card-meta">
             <span class="blog-card-date">April 2, 2026</span>
             <span class="blog-card-tag tag-how-to">How-To</span>
@@ -582,7 +588,7 @@
         </div>
 
         <!-- Article 6 -->
-        <div class="blog-card">
+        <div class="blog-card beam-card">
           <div class="blog-card-meta">
             <span class="blog-card-date">March 26, 2026</span>
             <span class="blog-card-tag tag-industry">Industry</span>
@@ -593,7 +599,7 @@
         </div>
 
         <!-- Article 7 -->
-        <div class="blog-card">
+        <div class="blog-card beam-card">
           <div class="blog-card-meta">
             <span class="blog-card-date">March 12, 2026</span>
             <span class="blog-card-tag tag-industry">Industry</span>
@@ -604,7 +610,7 @@
         </div>
 
         <!-- Article 8 -->
-        <div class="blog-card">
+        <div class="blog-card beam-card">
           <div class="blog-card-meta">
             <span class="blog-card-date">March 5, 2026</span>
             <span class="blog-card-tag tag-compliance">Compliance</span>
@@ -615,7 +621,7 @@
         </div>
 
         <!-- Article 9 -->
-        <div class="blog-card">
+        <div class="blog-card beam-card">
           <div class="blog-card-meta">
             <span class="blog-card-date">February 26, 2026</span>
             <span class="blog-card-tag tag-compliance">Compliance</span>
@@ -626,7 +632,7 @@
         </div>
 
         <!-- Article 10 -->
-        <div class="blog-card">
+        <div class="blog-card beam-card">
           <div class="blog-card-meta">
             <span class="blog-card-date">February 19, 2026</span>
             <span class="blog-card-tag tag-compliance">Compliance</span>
@@ -637,7 +643,7 @@
         </div>
 
         <!-- Article 11 -->
-        <div class="blog-card">
+        <div class="blog-card beam-card">
           <div class="blog-card-meta">
             <span class="blog-card-date">February 12, 2026</span>
             <span class="blog-card-tag tag-technical">Technical</span>
@@ -655,9 +661,9 @@
   <section class="section section-darker text-center">
     <div class="container fade-in">
       <h2>Have a Question This Blog Doesn't Answer?</h2>
-      <p class="cta-sub-wrap">One conversation. No sales pitch. Just straight talk about what local AI hardware can do for your organization.</p>
+      <p class="cta-sub-wrap">Tell us whose desk the work runs through and what hurts about it. One conversation, no sales pitch, and a straight answer about whether we can help.</p>
       <div class="btn-group">
-        <a href="contact.html" class="btn btn-primary">Start a Conversation</a>
+        <a href="contact.html" class="btn btn-primary">Start a Scoping Call</a>
         <a href="faq.html" class="btn btn-secondary">See the FAQ</a>
       </div>
       <p class="cta-subtitle"><i class="ri-phone-line icon-copper-mr-sm"></i>Or call directly: <a href="tel:+13414418740" class="copper-semibold">1-341-441-8740</a></p>
@@ -739,6 +745,7 @@
   </footer>
 
   <script defer src="js/main.min.js?v=2"></script>
+  <script defer src="js/card-nodes.js?v=2"></script>
   <script defer src="js/chat-widget.min.js?v=4"></script>
 
 </body>
