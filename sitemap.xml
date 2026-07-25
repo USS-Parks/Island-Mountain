@@ -103,12 +103,18 @@
   <!-- Blog Index -->
   <url>
     <loc>https://islandmountain.io/blog.html</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-07-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <!-- Blog Posts (newest first) -->
+  <url>
+    <loc>https://islandmountain.io/blog/zimreaper-session-authority-ai-agent-credentials.html</loc>
+    <lastmod>2026-07-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
   <url>
     <loc>https://islandmountain.io/blog/bonsai-27b-phone-local-ai.html</loc>
     <lastmod>2026-07-25</lastmod>
@@ -117,7 +123,7 @@
   </url>
   <url>
     <loc>https://islandmountain.io/blog/agentic-scar-tissue-long-running-agents.html</loc>
-    <lastmod>2026-07-19</lastmod>
+    <lastmod>2026-07-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -130,7 +136,7 @@
 
   <url>
     <loc>https://islandmountain.io/blog/agentic-infrastructure-control-plane.html</loc>
-    <lastmod>2026-07-11</lastmod>
+    <lastmod>2026-07-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
