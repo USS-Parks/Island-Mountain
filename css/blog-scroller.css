@@ -39,10 +39,14 @@
 .blog-rail-arrow:disabled{ opacity:.32; cursor:default; }
 
 /* The scrolling track */
+/* The arrows pass behavior:"smooth" to scrollBy themselves. Declaring it here
+   too made the initial snap an animated scroll, and an animated scroll on load
+   ends LCP recording before any candidate is reported: the page produced no
+   Largest Contentful Paint at all. */
 .blog-rail{
   display:flex; gap:var(--rail-gap);
   overflow-x:auto; scroll-snap-type:x mandatory;
-  scroll-padding-left:1px; scroll-behavior:smooth;
+  scroll-padding-left:1px;
   padding:6px 2px 22px; margin:0 -2px;
   -ms-overflow-style:none; scrollbar-width:none;
 }
