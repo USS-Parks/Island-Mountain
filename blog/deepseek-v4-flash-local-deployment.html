@@ -28,9 +28,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="author" content="Basho Parks">
-  <meta name="date" content="2026-05-01">
+  <meta name="date" content="2026-04-30">
   <title>DeepSeek V4-Flash: A Local AI Deployment Milestone</title>
-  <meta name="description" content="DeepSeek V4-Flash runs 284 billion parameters with only 13B active per token. Here is what that means for local AI inference on RTX PRO 6000 Blackwell hardware.">
+  <meta name="description" content="DeepSeek V4-Flash runs 284 billion parameters with 13 billion active per token, MIT licensed. The bandwidth arithmetic for what that means on hardware you own.">
   <link rel="icon" type="image/x-icon" href="../favicon.ico?v=2">
   <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon-32.png?v=2">
   <link rel="apple-touch-icon" sizes="180x180" href="../images/apple-touch-icon.png?v=2">
@@ -61,7 +61,7 @@
 
   <!-- Open Graph -->
   <meta property="og:title" content="DeepSeek V4-Flash: A Local AI Deployment Milestone">
-  <meta property="og:description" content="DeepSeek V4-Flash runs 284 billion parameters with only 13B active per token. Here is what that means for local AI inference on RTX PRO 6000 Blackwell hardware.">
+  <meta property="og:description" content="DeepSeek V4-Flash runs 284 billion parameters with 13 billion active per token, MIT licensed. The bandwidth arithmetic for what that means on hardware you own.">
   <meta property="og:url" content="https://islandmountain.io/blog/deepseek-v4-flash-local-deployment.html">
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="Island Mountain">
@@ -70,7 +70,7 @@
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="DeepSeek V4-Flash: A Local AI Deployment Milestone">
-  <meta name="twitter:description" content="DeepSeek V4-Flash runs 284 billion parameters with only 13B active per token. Here is what that means for local AI inference on RTX PRO 6000 Blackwell hardware.">
+  <meta name="twitter:description" content="DeepSeek V4-Flash runs 284 billion parameters with 13 billion active per token, MIT licensed. The bandwidth arithmetic for what that means on hardware you own.">
   <meta name="twitter:image" content="https://islandmountain.io/images/hero-mountain.webp">
 
   <!-- Article Schema -->
@@ -79,14 +79,14 @@
   "@context": "https://schema.org",
   "@type": "BlogPosting",
   "headline": "DeepSeek V4-Flash Just Changed the Game for Local AI",
-  "description": "DeepSeek V4-Flash runs 284 billion parameters with only 13B active per token. Here is what that means for local AI inference on RTX PRO 6000 Blackwell hardware.",
+  "description": "DeepSeek V4-Flash runs 284 billion parameters with 13 billion active per token, MIT licensed. The bandwidth arithmetic for what that means on hardware you own.",
   "url": "https://islandmountain.io/blog/deepseek-v4-flash-local-deployment.html",
   "datePublished": "2026-04-30",
   "dateModified": "2026-06-26",
   "author": {
-    "@type": "Organization",
-    "name": "Island Mountain",
-    "url": "https://islandmountain.io"
+    "@type": "Person",
+    "name": "Basho Parks",
+    "url": "https://islandmountain.io/about.html"
   },
   "publisher": {
     "@type": "Organization",
@@ -194,76 +194,75 @@
           <span class="article-read-time">7 min read</span>
         </div>
         <h1 class="text-2xl">DeepSeek V4-Flash Just Changed the Game for Local AI</h1>
-        <p class="article-author">Island Mountain</p>
+        <p class="article-author">Basho Parks</p>
       </div>
 
       <article class="article-body">
 
-        <h2>DeepSeek V4-Flash Just Changed the Game for Local AI</h2>
+        <h2>284 Billion Parameters, 13 Billion Moving</h2>
 
-<p>April 24, 2026. DeepSeek drops V4-Flash, a 284-billion parameter mixture-of-experts model, and anybody running language models on constrained hardware needs to pay attention. We've spent a week running it hard on a two-card <a href="../products.html">RTX PRO 6000 Blackwell box</a>, 192GB total. What we're seeing rewrites the economics of local AI deployment entirely.</p>
+<p>April 24, 2026. DeepSeek drops V4-Flash, a 284-billion-parameter mixture-of-experts model under an MIT licence, and anybody running language models on <a href="../products.html">hardware they own</a> ought to pay attention. I've spent a week running it hard. What I'm seeing rewrites the arithmetic of local deployment, and I don't say that about many releases.</p>
 
-<p>Bottom line up front: V4-Flash is the first model we've tested that makes a 192GB system genuinely competitive with cloud inference for real production work. But that claim only lands if you understand what a mixture-of-experts architecture does.</p>
+<p>Bottom line up front: V4-Flash is the first model I've tested where a machine sized for a single organization is genuinely competitive with cloud inference on real production work. That claim only lands if you understand what a mixture-of-experts architecture does, so that's where I'll start.</p>
 
 <h2>284 Billion Parameters. 13 Billion Active. Here's Why That Matters.</h2>
 
-<p>V4-Flash is sparse by design. The raw parameter count hits 284 billion, but in a MoE model, not every parameter fires on every token. V4-Flash activates roughly 13 billion parameters per token, about 4.6% of its total weight.</p>
+<p>V4-Flash is sparse by design. The raw parameter count hits 284 billion, but in an MoE model not every parameter fires on every token. V4-Flash activates roughly 13 billion parameters per token, about 4.6 percent of its total weight.</p>
 
-<p>Memory bandwidth is the actual bottleneck in inference, not raw compute. Dense models like Llama 3.3 70B move all 70 billion parameters into memory every single inference pass. V4-Flash only loads its active experts. The math changes completely, and we've measured it, not theorized it.</p>
+<p>Memory bandwidth's the real bottleneck in inference, not raw compute. Dense models like Llama 3.3 70B haul all 70 billion parameters across the bus on every single pass. V4-Flash only moves the experts it lit up. That's a different machine's worth of throughput out of identical silicon, and it's measurable rather than theoretical.</p>
 
 <h2>The VRAM Reality and What FP8 Does</h2>
 
-<p>V4-Flash at full FP16 precision needs roughly 282 gigabytes for the model weights alone. That box carries 192GB total across two cards. Full FP16 doesn't fit. That part is real.</p>
+<p>V4-Flash at full FP16 precision wants roughly 282 gigabytes for the weights alone. That's the honest number and it rules out a lot of hardware. No amount of enthusiasm changes it.</p>
 
-<p>FP8 closes the gap. At FP8 the V4-Flash weights land at approximately 170 gigabytes, which fits inside 192GB with about 22GB of headroom left for the KV cache. This is the part that changed: with 192GB on hand, you run the full FP8 model, not a heavily compressed INT4 build. FP8 V4-Flash on that hardware runs 60 to 90 tokens per second for single-user inference, sustained.</p>
+<p>FP8's what closes the gap. At FP8 the weights land around 170 gigabytes, so 192GB of VRAM holds the whole model with about 22GB left over for the KV cache. That's the part that changed this year. You're running the full FP8 model rather than a heavily compressed INT4 build, and the difference in output quality isn't subtle.</p>
 
-<p>Here's the math on that throughput. V4-Flash activates roughly 13 billion parameters per token, and at FP8 those active weights come to about 13GB. The RTX PRO 6000 Blackwell moves 1,597 GB/s of memory bandwidth, so the memory-bandwidth roofline sits near 1,597 / 13, about 123 tokens per second in theory. Real single-stream inference lands in the 60 to 90 tokens per second range once you account for the KV cache, attention overhead, and routing. These are estimates grounded in the bandwidth math, not vendor marketing.</p>
+<p>Here's the throughput arithmetic, and it's the same arithmetic for any card you're weighing. V4-Flash activates roughly 13 billion parameters per token, and at FP8 those active weights come to about 13GB. The RTX PRO 6000 Blackwell Server Edition moves 1,597 GB/s, so the memory-bandwidth roofline sits near 1,597 / 13, about 123 tokens per second in theory. Real single-stream inference lands in the 60 to 90 tokens per second range once you've paid for the KV cache, attention overhead, and expert routing. Those are estimates grounded in the bandwidth math, not vendor marketing, and I'd rather hand you the division than the conclusion.</p>
 
-<p>FP8 is a precision step down from FP16, but it is a far lighter touch than the aggressive INT4 quantization a tighter-VRAM system used to force. For summarization, classification, structured extraction, and code generation, the quality holds. The speed gain is not negligible.</p>
+<p>FP8's a precision step down from FP16, but it's a far lighter touch than the aggressive INT4 quantization a tighter-VRAM machine used to force on you. For summarization, classification, structured extraction, and code generation, the quality holds. And the speed you get back for it isn't nothing.</p>
 
-<p>Both cards carry the same 96GB of GDDR7 ECC, and throughput is governed by memory bandwidth, so the figures above are a property of the silicon, not of any particular build.</p>
+<p>None of that's a property of any particular build. It's a property of memory bandwidth and active weight bytes, which is why the numbers travel. Point them at whatever silicon you're considering and they'll tell you roughly what it'll do before anybody quotes you a thing.</p>
 
 <h2>One Million Tokens. That's Not Marketing Language.</h2>
 
-<p>V4-Flash supports a one-million-token context window. We've tested 500K-token contexts and watched the model hold coherence across that entire span. One million tokens is roughly 750,000 words. A 1,500-page document. An entire codebase. A multi-year email archive dropped into a single prompt.</p>
+<p>V4-Flash carries a one-million-token context window. I've run 500K-token contexts and watched the model hold coherence across the whole span. A million tokens is roughly 750,000 words. A 1,500-page document. An entire codebase. A multi-year email archive dropped into a single prompt.</p>
 
-<p>Most production work lives in the 4K to 32K context range, so the full million-token capability sits largely untapped right now. But the implication for organizational buyers is real: you load entire documents, codebases, or conversation histories without chunking strategies or summarization workarounds. A law firm drops a 50-page contract into context whole. A medical practice loads a patient's full chart. A tribal government loads an entire grant application with every appendix and asks the model to review it against program requirements.</p>
+<p>Most production work lives in the 4K to 32K range, so the full million sits largely untapped right now, and I'll say that rather than pretend otherwise. But the implication for an organization is real: you load whole documents, whole codebases, whole conversation histories, and the chunking strategies and summarization workarounds go in the bin. A law firm drops a 50-page contract in whole. A clinic loads a patient's full chart. A tribal government loads an entire grant application with every appendix attached and asks the model to check it against program requirements.</p>
 
-<p>This is where local and cloud AI diverge in ways raw benchmark scores never capture. Cloud providers cap context windows or charge premium rates for long-context use. Running V4-Flash locally means the one-million-token window costs you nothing extra per use. The model lives on your GPUs. Context is a function of your VRAM, not somebody else's billing tier.</p>
+<p>Here's where local and cloud diverge in a way no benchmark score captures. Cloud providers cap context windows or charge a premium for long-context use, because that's their meter and it's supposed to run. Running V4-Flash on your own hardware means the million-token window costs you nothing extra per use. The model lives on your GPUs. Context is a function of your VRAM, not somebody else's billing tier.</p>
 
-<h2>The Four-Card Question</h2>
+<h2>What Full FP16 Costs You in Memory</h2>
 
-<p>Step up to four RTX PRO 6000 Blackwell GPUs and you have 384GB of total VRAM. That headroom is what lets you run V4-Flash at full FP16 precision: the model's roughly 282GB of weights fit on four cards with room left for the KV cache, where two cards run the same model at FP8. Larger models open up at that capacity too. The four-card configuration also quadruples aggregate memory bandwidth, which shows up directly in sustained throughput and in concurrent-user capacity.</p>
+<p>Running V4-Flash at FP16 rather than FP8 is a memory question with a clean answer: about 282GB of weights, so 384GB of VRAM covers it with room for the KV cache. Aggregate bandwidth scales with the memory you add, too, which shows up in sustained throughput and in how many people can be talking to the thing at once. Early testing puts single-user generation at 90 to 140 tokens per second at that capacity, and you're never trading precision for fit.</p>
 
-<p>Early testing puts V4-Flash at 90 to 140 tokens per second for single-user workloads on that four-card footing. The additional VRAM also means you never trade precision for fit: you run the full FP16 weights rather than any quantized build.</p>
-
-<p>Honest <a href="../faq.html">question to ask yourself before upgrading</a>: does V4-Flash at FP8 on two cards already meet your requirements? If yes, you don't need 384GB. If you're running multi-user loads or need full-precision FP16 inference, you do. Know your actual load before you spend the money.</p>
+<p>Whether any of that's worth buying isn't a question I can answer from here. The tidy decision tree people publish for this ("if X then buy Y") is mostly a sales instrument wearing a lab coat. What decides it is your concurrency, your document lengths, and <a href="../faq.html">which department's workflow turns out to be the real load</a>, and I don't know any of those until I've sat next to your people and watched them work. Neither do you, entirely. That's not an insult, it's just how organizations work.</p>
 
 <h2>The Sovereignty Argument</h2>
 
 <p>This part rarely gets quantified. It should.</p>
 
-<p>When V4-Flash runs on hardware you own, your data never leaves your premises. No API call to DeepSeek's servers. No metadata logs. No audit trail living in someone else's system. The model is MIT-licensed, meaning you own the weights outright. Modify them, redistribute them under MIT terms, run them indefinitely without licensing fees. That's yours.</p>
+<p>When V4-Flash runs on hardware you own, your data doesn't leave your premises. No API call to DeepSeek's servers. No metadata logs. No audit trail living in somebody else's system. The model's MIT-licensed, which means you own the weights outright: modify them, redistribute them under MIT terms, run them for as long as you like without a licensing fee. That's yours. Nobody can revoke it in a terms-of-service update.</p>
 
-<p>Cloud API providers can't offer that guarantee. OpenAI, Anthropic, DeepSeek's cloud product, all of them reserve the right to use submitted queries for model improvement in their terms of service. Many explicitly retain data. Even contractual opt-outs don't change the fact that your data transited their infrastructure, and that creates real liability for regulated industries.</p>
+<p>Cloud API providers can't offer that guarantee, and to be fair to them they've never claimed to. OpenAI, Anthropic, DeepSeek's own cloud product, all of them reserve some right to use submitted queries for model improvement in their terms. Many explicitly retain data. Even a contractual opt-out doesn't change the fact that your data transited their infrastructure, and for a regulated organization that transit is the liability, not the retention.</p>
 
-<p>Local deployment isn't just a speed or cost conversation. It's <a href="../lamprey-woven-security-governance.html">a control conversation</a>. If your threat model includes data exfiltration, inference interception, or regulatory data residency requirements, local is the only option. V4-Flash makes it the only option that also performs.</p>
+<p>So local deployment isn't just a speed conversation or a cost conversation. It's <a href="../lamprey-woven-security-governance.html">a control conversation</a>. If your threat model includes data exfiltration, inference interception, or a data-residency rule with teeth, local's the only option. V4-Flash is what makes it the only option that also performs.</p>
 
-<p>A medical practice using DeepSeek's cloud API for clinical documentation is sending patient data to servers they don't control. Running that same model locally means patient data never leaves the building. The model file lives on the server's NVMe drive. Inference happens on the GPUs in your rack. The response returns over your local network. DeepSeek the organization is involved in exactly zero steps.</p>
+<p>A medical practice running clinical documentation through DeepSeek's cloud API is sending patient data to servers it doesn't control. Running the same model locally means the patient data never leaves the building. The model file sits on an NVMe drive in your rack. Inference happens on your GPUs. The response comes back over your own network. DeepSeek the organization is involved in exactly zero steps, which is the entire point.</p>
 
 <h2>What V4-Flash Replaces</h2>
 
-<p>Before April 2026, local deployment meant choosing between size and speed. Llama 3.3 70B is fast on 192GB but caps at a 128K context window and doesn't carry the reasoning capacity of a 284B-parameter system. V3 had 671 billion parameters with 37 billion active, but needed 350GB or more of VRAM at full precision, pricing it out of any two-card build.</p>
+<p>Before April 2026, local deployment meant picking between size and speed. Llama 3.3 70B is quick but caps at a 128K context window and doesn't carry the reasoning capacity of a 284B-parameter system. V3 had 671 billion parameters with 37 billion active, but wanted 350GB or more of VRAM at full precision, which priced it out of most rooms.</p>
 
-<p>V4-Flash fills the gap that didn't exist until now. The knowledge capacity of a 284B-parameter system. The inference speed of a 13B-parameter system. A context window ten times larger than most competing models. On our hardware, it sits alongside Llama as a genuinely different capability class, not a marginal upgrade.</p>
+<p>V4-Flash fills a gap that didn't exist until now. The knowledge capacity of a 284B-parameter system. The inference speed of a 13B one. A context window ten times larger than most of what it competes with. It sits alongside Llama as a genuinely different capability class, not a marginal upgrade, and that's the first time I've written that sentence about an open release.</p>
 
 <p>That middle ground is where production work lives.</p>
 
 <!-- AEO Summary -->
 <div style="border-left:3px solid var(--copper);padding:16px 20px;margin:32px 0;background:rgba(217,119,6,0.05);border-radius:0 8px 8px 0;">
-<strong>Summary:</strong> DeepSeek V4-Flash's mixture-of-experts architecture makes local AI genuinely cost-competitive with cloud inference for production workloads while keeping data on-premises.
+<strong>Summary:</strong> DeepSeek V4-Flash is a 284-billion-parameter mixture-of-experts model under an MIT licence that activates only about 13 billion parameters per token, roughly 4.6 percent of its weights. At FP8 the weights land near 170GB, so 192GB of VRAM holds the whole model with headroom for the KV cache; full FP16 wants about 282GB and so 384GB to serve it. Because decode is bandwidth-bound, expected throughput is memory bandwidth divided by active weight bytes: an estimated 60 to 90 tokens per second single-stream. MIT licensing means the weights are owned outright rather than rented. What hardware a given organization needs comes out of watching its work, not out of a post like this one.
 </div>
-      </article>
+
+</article>
 
       <!-- CTA -->
       <div class="article-cta">
