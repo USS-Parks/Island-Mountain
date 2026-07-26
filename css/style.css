@@ -626,6 +626,19 @@ p {
   pointer-events: none;
 }
 
+/* Lit-exterior hero photos. The veil above is tuned for the dark mountain shot;
+   over a daylit building it leaves the headline sitting on the signage. */
+.hero-photo--lit::after {
+  background: linear-gradient(
+    180deg,
+    rgba(15, 23, 42, 0.66) 0%,
+    rgba(15, 23, 42, 0.58) 30%,
+    rgba(15, 23, 42, 0.58) 50%,
+    rgba(15, 23, 42, 0.72) 75%,
+    rgba(15, 23, 42, 0.95) 100%
+  );
+}
+
 .hero-page {
   min-height: 70vh;
   padding: 180px 24px 100px;

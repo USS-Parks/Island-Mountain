@@ -34,24 +34,11 @@
   <link rel="icon" type="image/x-icon" href="favicon.ico?v=2">
   <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png?v=2">
   <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png?v=2">
-  <link rel="stylesheet" href="css/style.min.css?v=5">
+  <link rel="stylesheet" href="css/style.min.css?v=6">
   <link rel="stylesheet" href="icons/remixicon.css" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="icons/remixicon.css"></noscript>
   <link rel="preload" href="fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <style>
-  /* The storefront is lit where the old mountain shot was dark, so the shared
-     hero veil (style.css .hero-photo::after, tuned for that dark photo) left the
-     headline sitting on the sign. Deepen it for this page only. */
-  .hero-photo::after{
-    background:linear-gradient(180deg,
-      rgba(15,23,42,.66) 0%,
-      rgba(15,23,42,.58) 30%,
-      rgba(15,23,42,.58) 50%,
-      rgba(15,23,42,.72) 75%,
-      rgba(15,23,42,.95) 100%);
-  }
-  </style>
   <style>
   @font-face {
     font-family: 'Inter';
@@ -161,7 +148,7 @@
   <canvas id="particles-canvas"></canvas>
 
   <!-- Hero background photo -->
-  <div class="hero-photo">
+  <div class="hero-photo hero-photo--lit">
     <img srcset="images/hero-storefront-mobile.webp 800w, images/hero-storefront.webp 1530w" sizes="100vw" src="images/hero-storefront.webp" alt="The Island Mountain AI storefront, lit from inside behind full-height glass" fetchpriority="high" decoding="async" width="1530" height="1012">
   </div>
 
