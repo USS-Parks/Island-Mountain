@@ -92,7 +92,7 @@
         "name": "What government workflows can run on Island Mountain on-premises AI hardware?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Island Mountain hardware supports document review and CUI analysis, FOIA request processing and response drafting, policy analysis and legislative drafting, citizen service documentation, grant and budget analysis, and after-action report generation. The system runs DeepSeek V4-Flash for complex multi-document analysis and policy synthesis, and Llama 4 Scout for general drafting tasks. All processing occurs on hardware inside agency-controlled facilities with zero data transmitted to external servers."
+          "text": "Island Mountain builds agents and orchestration for public-records and FOIA responses, permit review, council and board-packet drafting, constituent communications, grant writing, and policy drafting. The system runs current open-weight models for analysis and drafting, and custom models we build for your jurisdiction where the work needs one. All processing occurs on hardware inside agency-controlled facilities with zero data transmitted to external servers."
         }
       },
       {
@@ -128,36 +128,15 @@
   }
   </script>
 
-  <!-- Product Schema -->
+  <!-- Service Schema -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "Service",
-    "@id": "https://islandmountain.io/forward-deployed-ai-engineering.html",
-    "name": "Island Mountain On-Premise AI Deployment \u2014 On-Premises AI Server for Government",
-    "description": "On-site AI deployment configured after an immersion and Discovery. Any hardware and software combination the work calls for, running open-source open-weight models, air-gap capable. No catalog and no standing recommendation.",
-    "brand": {
-      "@type": "Brand",
-      "name": "Island Mountain"
-    },
-    "category": "AI Inference Hardware for Government Agencies",
-    "additionalProperty": [
-      {
-        "@type": "PropertyValue",
-        "name": "Configuration",
-        "value": "Determined per customer after Discovery; any hardware and software combination the work calls for"
-      },
-      {
-        "@type": "PropertyValue",
-        "name": "Models",
-        "value": "Any open-source open-weight model, chosen with the customer and swapped as the frontier moves"
-      },
-      {
-        "@type": "PropertyValue",
-        "name": "Interface",
-        "value": "OpenWebUI (browser-based)"
-      }
-    ]
+    "serviceType": "On-premises AI configuration and deployment for municipal and county government",
+    "provider": { "@type": "Organization", "name": "Island Mountain", "url": "https://islandmountain.io" },
+    "areaServed": "US",
+    "description": "Island Mountain builds the agents, orchestration, and custom models that run a local government's work on its own hardware. Current open-weight models served on-site, custom reasoning models and small language models built to the jurisdiction's ontology, governed by the Woven Security Fabric. Constituent data stays on the network, air-gap capable. Configured after discovery, with on-site onboarding, SOP development, and tiered support."
   }
   </script>
   <style>/* readable headline over the industry hero photo */
@@ -208,7 +187,7 @@
     <div class="hero-inner">
       <span class="hero-badge">Local AI for Government</span>
       <h1>Government Data Stays on Government Hardware. Full Stop.</h1>
-      <p>FedRAMP, CUI handling rules, and data sovereignty requirements exist because government data demands government-controlled infrastructure. Cloud AI processing creates structural dependency on commercial vendors. On-premises AI restores data sovereignty government agencies require.</p>
+      <p>Every constituent record a clerk pastes into a cloud AI tool is public data handed to a company that answers to its shareholders, not to your voters. We&#39;ll build the whole system on hardware you own instead: the agents, the orchestration, and the models that carry your jurisdiction&#39;s real work, and constituent data never leaves your network.</p>
     </div>
   </section>
 
@@ -274,13 +253,31 @@
   </section>
 
 
+  <!-- We build it around the government -->
+  <section class="section section-darker">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-badge">The Build</span>
+        <h2>We Build It Around How Your Government Runs</h2>
+      </div>
+      <div class="fade-in content-narrow">
+        <p class="body-lg">A general model off the shelf knows civics the way a textbook does. It&#39;s never read your ordinances, doesn&#39;t know your permit codes from your zoning classes, can&#39;t tell your records-retention schedule from a council calendar. We build for the government you run.</p>
+        <p class="body-lg">Island Mountain builds the agents and the orchestration that carry the multi-step work that clogs your counters and your inboxes: a public-records or FOIA response from intake through redaction to release, permit review against the code, a council or board packet drafted the way your clerk assembles it, constituent correspondence, grant writing, and policy drafting. It runs on open-weight models that clear your jurisdiction&#39;s provenance and security policy, Nous Hermes 4 among them, served through Ollama or vLLM behind an OpenWebUI front end. We run what your policy allows, and nothing it doesn&#39;t. All of it governed by our own agentic orchestration and the <a href="lamprey-woven-security-governance.html" class="clr-copper">Woven Security Fabric</a>, so every action carries an identity, an approval, and a receipt, and the credentials expire when the task is done. Constituent data never leaves your network to make any of it happen.</p>
+        <p class="body-lg">When the work needs a model that speaks your jurisdiction, we&#39;ll build one. Reasoning models and small language models from scratch, trained to orbit your government&#39;s ontology: your departments, your ordinances, your local procedures. It learns your terminology and the cadence your staff writes in, not a generic city&#39;s.</p>
+        <p class="body-lg">It air-gaps completely for the work that demands it: sealed records, criminal justice information under CJIS, personnel and constituent files that can&#39;t touch an outside wire. It reaches the cloud only when a task genuinely needs to. That&#39;s your call, workflow by workflow.</p>
+        <p class="body-lg">Then we hand it back. On-site onboarding, SOPs written for your departments, the keys dropped into your own people&#39;s hands so they run and rework the workflows without opening a ticket with us. Want the upkeep off your IT shop&#39;s plate? We offer tiered support sized to the government you are, a county or a small town, and we plug in wherever that&#39;s easiest. This is your community&#39;s legacy. We build it alongside you, and we won&#39;t call it done until your people can run it without us.</p>
+      </div>
+    </div>
+  </section>
+
+
   <!-- Workflows -->
   <section class="section section-darker">
     <div class="container">
       <div class="section-header fade-in">
         <span class="section-badge">Workflows</span>
         <h2>Government Workflows a Deployment Supports</h2>
-        <p>The same AI capabilities you want from cloud services, running on hardware that doesn't create compliance exposure.</p>
+        <p>These aren&#39;t chat prompts. They&#39;re agentic workflows the orchestration runs start to finish, each step carrying its own identity and receipt, and no constituent data leaves your network.</p>
       </div>
       <div class="card-grid card-grid-3 fade-in">
         <div class="card">
@@ -325,25 +322,24 @@
   <section class="section section-dark">
     <div class="container">
       <div class="section-header fade-in">
-        <span class="section-badge">Model Selection</span>
-        <h2>Which Models Work Best for Government Tasks</h2>
-        <p>Government AI infrastructure running open-source models under agency control. A local LLM CUI processing capability with zero cloud transmission. Private AI for public sector agencies under government control.</p>
+        <span class="section-badge">Models</span>
+        <h2>The Models We Run, and the Ones We Build</h2>
       </div>
       <div class="card-grid card-grid-3 fade-in">
         <div class="card text-center">
           <div class="card-icon-im"><img src="images/local-ai-inference-icon.webp?v=3" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
-          <h3>DeepSeek V4-Flash</h3>
-          <p><strong>Best for:</strong> Complex policy analysis, multi-document regulatory review, FOIA document processing, long-context report summarization tasks. 284B parameters with mixture-of-experts architecture. Local DeepSeek for government runs at FP8 on the accelerators the deployment lands on.</p>
+          <h3>Current Open Weights</h3>
+          <p>Open-weight models that clear your jurisdiction&#39;s provenance and security policy, Nous Hermes 4 among them, served through Ollama or vLLM behind OpenWebUI. Open weights move fast, so we run the current one that fits the task and clears your rules, not whatever topped a leaderboard last spring.</p>
         </div>
         <div class="card text-center">
           <div class="card-icon-im"><img src="images/local-ai-inference-icon.webp?v=3" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
-          <h3>Llama 4 Scout</h3>
-          <p><strong>Best for:</strong> General drafting, citizen correspondence, policy memos, interagency communications, budget narratives. Strong general-purpose model that produces clean, structured prose quickly.</p>
+          <h3>Built to Orbit Your Jurisdiction</h3>
+          <p>When nothing off the shelf speaks your government&#39;s language, we build it. Reasoning models and small language models from scratch, trained on your ontology: your departments, your ordinances, the way your records move. Small, sharp, and yours alone.</p>
         </div>
         <div class="card text-center">
           <div class="card-icon-im"><img src="images/local-ai-inference-icon.webp?v=3" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
-          <h3>R1 70B Distill or Qwen 3 72B</h3>
-          <p><strong>Best for:</strong> Chain-of-thought policy reasoning (R1 Distill) or high-throughput administrative drafting (Qwen 3 72B). Chosen during the workflow study, and swappable afterwards. Both run on the same VRAM budget.</p>
+          <h3>Governed, Not Just Installed</h3>
+          <p>Every model runs under our agentic orchestration and the Woven Security Fabric. Scoped access, ephemeral credentials, a receipt for every action. Air-gapped when the record demands it, cloud-connected when a task earns it.</p>
         </div>
       </div>
     </div>
@@ -444,7 +440,7 @@
         <div class="risk-card">
           <div class="risk-icon"><img src="images/itarr-cmmc-ai-icon.webp?v=3" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
           <h4>No Classified Data Certification</h4>
-          <p>Island Mountain hardware is suitable for CUI and sensitive-but-unclassified data when deployed inside an appropriate security environment, and it is neither SCIF-rated, NSA-approved, nor certified for classified processing. Local AI for classified data requires purpose-built systems - Island Mountain serves the CUI tier, not the classified tier. Classified data requires purpose-built classified processing systems.</p>
+          <p>Island Mountain hardware is suitable for CUI and sensitive-but-unclassified data when deployed inside an appropriate security environment, and it is neither SCIF-rated, NSA-approved, nor certified for classified processing. Island Mountain serves the CUI tier, not the classified tier. Classified processing runs on dedicated systems built and accredited for that work, through different procurement channels.</p>
         </div>
         <div class="risk-card">
           <div class="risk-icon"><img src="images/ic-default-access.webp?v=3" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
@@ -501,7 +497,7 @@
         <div class="risk-card">
           <div class="risk-icon"><img src="images/agentic-orchestration-icon.webp?v=3" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
           <h4>What government workflows does this hardware support?</h4>
-          <p>Island Mountain hardware supports document review and CUI analysis, FOIA request processing and response drafting, policy analysis and legislative drafting, citizen service documentation, grant and budget analysis, and after-action report generation. The system runs DeepSeek V4-Flash for complex multi-document analysis and Llama 4 Scout for general drafting tasks.</p>
+          <p>Island Mountain builds agents and orchestration for public-records and FOIA responses, permit review, council and board-packet drafting, constituent communications, grant writing, and policy drafting. The system runs current open-weight models for analysis and drafting, and custom models we build for your jurisdiction where the work needs one.</p>
         </div>
         <div class="risk-card">
           <div class="risk-icon"><img src="images/ai-cost-comparison-icon.webp?v=3" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
@@ -531,7 +527,7 @@
 
   <!-- Western-Origin Model Note -->
   <div style="border-left:3px solid var(--copper);padding:16px 20px;margin:32px 0;background:rgba(217,119,6,0.05);border-radius:0 8px 8px 0;">
-  <strong>Model Provenance:</strong> For government agencies subject to state executive orders or federal policy restricting Chinese-origin AI, Island Mountain configures fully Western-origin model stacks using models from Meta (Llama), OpenAI (GPT-OSS), and Microsoft (Phi-4). Tribal government entities with sovereign status have additional configuration flexibility. Model provenance is documented in procurement-ready delivery manifests. <a href="contact.html" class="clr-copper">Contact us</a> to discuss your requirements.
+  <strong>Model Provenance:</strong> For government agencies subject to state executive orders or federal policy restricting Chinese-origin AI, Island Mountain configures fully Western-origin model stacks, built only from open-weight models developed in the United States and allied nations. Tribal government entities with sovereign status have additional configuration flexibility. Model provenance is documented in procurement-ready delivery manifests. <a href="contact.html" class="clr-copper">Contact us</a> to discuss your requirements.
   </div>
 
   <!-- AEO Summary -->
@@ -674,7 +670,7 @@
         <a href="contact.html">Start a Scoping Call</a>
       </div>
 
-      <p class="au-legal">Island Mountain AI Inc. provides forward-deployed AI engineering services and designs, integrates, and deploys on-premises AI inference systems. Nothing on this site constitutes an offer or sale of securities, or legal, compliance, tax, or investment advice. Compliance with HIPAA, ITAR, DFARS / CMMC, OCAP, and other frameworks depends on your organization's deployment, configuration, policies, and controls; on-premises hardware is one component of a compliant program, not a certification. Product specifications, model availability, and lead times are subject to change. Pricing is quoted by sales on a per-engagement basis. NVIDIA, RTX, and Blackwell, and all other marks are the property of their respective owners.</p>
+      <p class="au-legal">Island Mountain AI Inc. provides forward-deployed AI engineering services and designs, integrates, and deploys on-premises AI inference systems. Nothing on this site constitutes an offer or sale of securities, or legal, compliance, tax, or investment advice. Compliance with HIPAA, ITAR, DFARS / CMMC, OCAP, and other frameworks depends on your organization's deployment, configuration, policies, and controls; on-premises hardware is one component of a compliant program, not a certification. Product specifications, model availability, and lead times are subject to change. Pricing is quoted by sales on a per-engagement basis. All product names and marks are the property of their respective owners.</p>
 
       <div class="footer-bottom flex-col-center-gap">
         <p>&copy; 2026 Island Mountain AI Inc. All rights reserved. Hand-built in California by <span class="clr-copper">Basho Parks</span>.</p>
