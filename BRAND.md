@@ -42,17 +42,32 @@ Every value below is pulled from the live stylesheets (`css/style.css`, `css/aur
 
 ## 1. Brand essence & positioning
 
-Island Mountain builds **sovereign AI infrastructure for regulated organizations** —
-every workstation its own air-gappable server, with the Woven Security & Governance
-Fabric built in. Hand-built in California.
+Island Mountain builds the AI system an organization actually runs on: the agents,
+the orchestration, and the models. Then we hand it back for the organization to own.
+On-premises by default, air-gap capable, with the Woven Security & Governance Fabric
+built in. Hand-built in California.
 
-- **Products:** **Summit** (the on-prem NVIDIA RTX PRO 6000 Blackwell hardware),
-  the **Woven Security & Governance Fabric** (trust plane), and the **Console**
-  (build codename *Lamprey*, public name *Aeneas*).
-- **Audience:** regulated and sovereignty-sensitive buyers — tribal governments,
-  healthcare, legal, defense/ITAR, higher-ed, public sector.
-- **The through-line:** custody. Deployment details, evidence, credentials, and
-  audit records stay inside the customer's boundary.
+- **What we build:** the agentic orchestration and the agents that carry an
+  organization's multi-step work; custom reasoning models and small language models
+  built from scratch to orbit a vertical's own ontology (its jargon, its cadence, its
+  institutional history); current open-weight models (Kimi K3, ZAI GLM 5.2, Qwen 3.8+,
+  Nous Hermes 4, and whatever's current) served on-site through Ollama or vLLM behind
+  OpenWebUI; all of it governed by the **Woven Security & Governance Fabric** (scoped
+  access, ephemeral credentials, a receipt for every action) and surfaced through the
+  **Console** (build codename *Lamprey*, public name *Aeneas*).
+- **How we deliver:** discovery first, then configuration and deployment on-site, then
+  the keys back. Thorough onboarding and SOP development so the organization runs and
+  reworks the system without us, plus optional tiered support sized to its capacity.
+  A deployment isn't done until the organization's own people can run it.
+- **Hardware is a variable, not the product.** Any accelerator, any build the workload
+  calls for, recommended only after discovery. No catalog, no set specs.
+- **Audience:** regulated and sovereignty-sensitive organizations: tribal nations,
+  healthcare, legal, defense/ITAR, higher-ed and school districts, municipal
+  government, insurance, financial services, casino/gaming, energy/utilities, research
+  labs.
+- **The through-line:** custody and legacy. The deployment, credentials, models, and
+  audit records stay inside the organization's boundary, and the organization ends up
+  owning what we build.
 
 ## 2. Voice & tone
 
