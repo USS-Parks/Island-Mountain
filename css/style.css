@@ -2430,4 +2430,4 @@ a.risk-card--link:hover {
 /* Footer: verticals list in two columns (desktop widens the Solutions cell) */
 .footer-links--split{columns:2;column-gap:24px}
 .footer-links--split li{break-inside:avoid}
-@media (min-width:993px){.footer-grid--verticals{grid-template-columns:2fr 1fr 2fr 1fr}}
+@media (min-width:993px){.footer-grid--verticals{grid-template-columns:1.8fr 1.2fr 1.8fr 1.2fr}}

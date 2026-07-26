@@ -22,13 +22,13 @@
   <link rel="icon" type="image/x-icon" href="favicon.ico?v=2">
   <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png?v=2">
   <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png?v=2">
-  <link rel="stylesheet" href="css/style.min.css?v=13">
+  <link rel="stylesheet" href="css/style.min.css?v=14">
   <link rel="stylesheet" href="css/aurora.min.css?v=11">
   <link rel="stylesheet" href="css/card-nodes.min.css?v=3">
   <link rel="stylesheet" href="icons/remixicon.css" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="icons/remixicon.css"></noscript>
-  <link rel="preload" as="image" href="images/summit-product-photo4.webp" fetchpriority="high" media="(min-width:601px)">
-  <link rel="preload" as="image" href="images/summit-product-photo4-mobile.webp" fetchpriority="high" media="(max-width:600px)">
+  <link rel="preload" as="image" href="images/im-deploys-hero.webp" fetchpriority="high" media="(min-width:601px)">
+  <link rel="preload" as="image" href="images/im-deploys-hero-mobile.webp" fetchpriority="high" media="(max-width:600px)">
   <link rel="preload" href="fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
   <style>
@@ -59,19 +59,19 @@
   .fd-thesis .au-h2, .fd-thesis .au-eyebrow-c{ text-align:center; }
   .range-copy p{ text-align:left; }
 
-  /* Hero: the warehouse build photo under a dark veil, in place of the
+  /* Hero: the emblem-and-hardware-orbit render under a dark veil, in place of the
      site-wide summit-photo3 that aurora.css sets for every .au-hero. */
   .au-hero{
     background:
       linear-gradient(180deg, rgba(8,13,24,.90) 0%, rgba(13,20,36,.70) 46%, rgba(8,13,24,.96) 100%),
-      url('images/summit-product-photo4.webp') center center / cover no-repeat;
+      url('images/im-deploys-hero.webp') center center / cover no-repeat;
   }
-  /* Phones pull the same photo at 1200px wide: identical framing, 127KB not 348KB. */
+  /* Phones pull the same render at 1200px wide: identical framing, 763KB not 1.4MB. */
   @media (max-width:600px){
     .au-hero{
       background:
         linear-gradient(180deg, rgba(8,13,24,.90) 0%, rgba(13,20,36,.70) 46%, rgba(8,13,24,.96) 100%),
-        url('images/summit-product-photo4-mobile.webp') center center / cover no-repeat;
+        url('images/im-deploys-hero-mobile.webp') center center / cover no-repeat;
     }
   }
 
@@ -125,11 +125,11 @@
   <meta property="og:url" content="https://islandmountain.io/forward-deployed-ai-engineering.html">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Island Mountain">
-  <meta property="og:image" content="https://islandmountain.io/images/summit-product-photo4.webp">
+  <meta property="og:image" content="https://islandmountain.io/images/im-deploys-hero.webp">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Forward Deployed AI Engineering | Island Mountain">
   <meta name="twitter:description" content="An intense on-site immersion with your senior people, a Discovery of where AI genuinely helps, then whatever configuration serves it. No catalog.">
-  <meta name="twitter:image" content="https://islandmountain.io/images/summit-product-photo4.webp">
+  <meta name="twitter:image" content="https://islandmountain.io/images/im-deploys-hero.webp">
   <script type="application/ld+json">
   {
     "@context":"https://schema.org","@type":"Service",
