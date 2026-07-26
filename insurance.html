@@ -30,7 +30,7 @@
   <meta name="author" content="Basho Parks">
   <meta name="date" content="2026-06-06">
   <title>On-Premises AI for Insurance | Your PII Stays Here</title>
-  <meta name="description" content="Process claims, underwriting, and fraud detection on hardware you own. RTX PRO 6000 Blackwell racks keep policyholder data in your network. No cloud exposure.">
+  <meta name="description" content="On-premises AI for insurance carriers and agencies: agents, orchestration, and models built around your book, run on your own hardware. Policyholder data never leaves your network. Air-gap capable.">
   <link rel="icon" type="image/x-icon" href="favicon.ico?v=2">
   <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png?v=2">
   <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png?v=2">
@@ -62,7 +62,7 @@
 
   <!-- Open Graph -->
   <meta property="og:title" content="On-Premises AI for Insurance | Your PII Stays Here">
-  <meta property="og:description" content="Process claims, underwriting, and fraud detection on hardware you own. RTX PRO 6000 Blackwell racks keep policyholder data in your network. No cloud exposure.">
+  <meta property="og:description" content="On-premises AI for insurance carriers and agencies: agents, orchestration, and models built around your book, run on your own hardware. Policyholder data never leaves your network. Air-gap capable.">
   <meta property="og:url" content="https://islandmountain.io/insurance.html">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Island Mountain">
@@ -71,7 +71,7 @@
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="On-Premises AI for Insurance | Your PII Stays Here">
-  <meta name="twitter:description" content="Process claims, underwriting, and fraud detection on hardware you own. RTX PRO 6000 Blackwell racks keep policyholder data in your network. No cloud exposure.">
+  <meta name="twitter:description" content="On-premises AI for insurance carriers and agencies: agents, orchestration, and models built around your book, run on your own hardware. Policyholder data never leaves your network. Air-gap capable.">
   <meta name="twitter:image" content="https://islandmountain.io/images/hero-insurance.webp?v=2">
 
   <!-- FAQPage Schema -->
@@ -85,7 +85,7 @@
         "name": "Does using cloud AI create HIPAA risk for health insurance carriers?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes. Transmitting protected health information (PHI) to a cloud AI provider constitutes disclosure to a third party, triggering Business Associate Agreement (BAA) requirements under HIPAA's Security Rule. Even with a BAA, PHI leaves your network and resides on shared commercial infrastructure outside your direct security controls. The NAIC Insurance Data Security Model Law (#668) adds state-level requirements for information security programs. On-premises AI hardware from Island Mountain eliminates the business associate dependency entirely - PHI and policyholder PII stay on NVIDIA RTX PRO 6000 Blackwell servers inside your facility under your security program. No BAA required because no third-party data handling occurs."
+          "text": "Yes. Transmitting protected health information (PHI) to a cloud AI provider constitutes disclosure to a third party, triggering Business Associate Agreement (BAA) requirements under HIPAA's Security Rule. Even with a BAA, PHI leaves your network and resides on shared commercial infrastructure outside your direct security controls. The NAIC Insurance Data Security Model Law (#668) adds state-level requirements for information security programs. On-premises AI from Island Mountain eliminates the business associate dependency entirely - PHI and policyholder PII stay on your own hardware inside your facility under your security program. No BAA required because no third-party data handling occurs."
         }
       },
       {
@@ -93,7 +93,7 @@
         "name": "What insurance workflows can run on Island Mountain on-premises AI hardware?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Island Mountain hardware supports claims processing and summarization, underwriting analysis, fraud detection pattern recognition, policy document review, actuarial support documentation, regulatory filing drafting, and customer correspondence. The system runs DeepSeek V4-Flash for complex multi-document claims analysis and Llama 4 Scout for general drafting tasks. All processing occurs on NVIDIA RTX PRO 6000 Blackwell GPUs inside your facility with zero policyholder data transmitted to external servers."
+          "text": "Island Mountain builds workflows for claims review and summarization, underwriting support, policy and endorsement drafting, complaint handling, regulatory filings, and customer correspondence. The system runs current open-weight models, and custom models we build for your book, all on your own hardware inside your facility with zero policyholder data transmitted to external servers."
         }
       },
       {
@@ -101,7 +101,7 @@
         "name": "How does on-premises AI cost compare to cloud AI for a 30-person insurance office?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Cloud AI platforms for insurance typically cost $50 to $200 per user per month. For 30 users, that totals $18,000 to $72,000 per year. Over three years: $54,000 to $216,000 cumulative with ongoing data exposure. An Island Mountain two-card build is a one-time purchase, quoted to your workload, with only electricity costs ongoing (approximately $100 to $200 per month). Cost parity typically reached within year one to two while eliminating HIPAA and NAIC compliance risk from AI operations entirely."
+          "text": "Cloud AI platforms for insurance typically cost $50 to $200 per user per month. For 30 users, that totals $18,000 to $72,000 per year. Over three years: $54,000 to $216,000 cumulative with ongoing data exposure. An Island Mountain build is a one-time purchase, sized and quoted to your workload, with only electricity costs ongoing (approximately $100 to $200 per month). Cost parity typically reached within year one to two while eliminating HIPAA and NAIC compliance risk from AI operations entirely."
         }
       },
       {
@@ -129,41 +129,15 @@
   }
   </script>
 
-  <!-- Product Schema -->
+  <!-- Service Schema -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Product",
-    "@id": "https://islandmountain.io/forward-deployed-ai-engineering.html",
-    "name": "Island Mountain two-card build \u2014 On-Premises AI Server for Insurance",
-    "description": "Pre-built AI inference server with 2x NVIDIA RTX PRO 6000 Blackwell 96GB GPUs. Air-gap capable. HIPAA and NAIC compliance-ready. Includes DeepSeek V4-Flash, Llama 4 Scout, and OpenWebUI.",
-    "brand": {
-      "@type": "Brand",
-      "name": "Island Mountain"
-    },
-    "category": "AI Inference Hardware for Insurance",
-    "additionalProperty": [
-      {
-        "@type": "PropertyValue",
-        "name": "GPU Model",
-        "value": "NVIDIA RTX PRO 6000 Blackwell 96GB (2x two-card build / 4x four-card build)"
-      },
-      {
-        "@type": "PropertyValue",
-        "name": "Total VRAM",
-        "value": "192GB-384GB"
-      },
-      {
-        "@type": "PropertyValue",
-        "name": "Pre-Installed Models",
-        "value": "DeepSeek V4-Flash (FP8), Llama 4 Scout, DeepSeek R1 70B Distill or Qwen 3 72B (buyer selects)"
-      },
-      {
-        "@type": "PropertyValue",
-        "name": "Interface",
-        "value": "OpenWebUI (browser-based)"
-      }
-    ]
+    "@type": "Service",
+    "serviceType": "On-premises AI configuration and deployment for insurance carriers and agencies",
+    "provider": { "@type": "Organization", "name": "Island Mountain", "url": "https://islandmountain.io" },
+    "areaServed": "US",
+    "description": "Island Mountain builds the agents, orchestration, and custom models that run an insurance carrier's work on its own hardware. Current open-weight models served on-site, custom reasoning models and small language models built to the carrier's ontology, governed by the Woven Security Fabric. Policyholder data stays on the network, air-gap capable. Configured after discovery, with on-site onboarding, SOP development, and tiered support."
   }
   </script>
 </head>
@@ -212,7 +186,7 @@
     <div class="hero-inner">
       <span class="hero-badge">Local AI for Insurance</span>
       <h1>Policyholder Data Doesn't Belong in Someone Else's Data Center</h1>
-      <p>Claims processing, underwriting analysis, and fraud detection all require handling sensitive personal and health information. Cloud AI transmits that data to third-party infrastructure. On-premises AI for insurance keeps it on hardware you own and control.</p>
+      <p>Every claims file an adjuster pastes into a cloud model is policyholder data handed to a third party, and your state DOI still holds you answerable for it. We&#39;ll build the whole system on your own hardware instead: the agents, the orchestration, and the models that carry your carrier&#39;s real work, and policyholder data never leaves your network.</p>
     </div>
   </section>
 
@@ -266,7 +240,7 @@
         <div class="card">
           <div class="card-icon-im"><img src="images/server-rack-icon.webp?v=3" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
           <h3>A System You Own</h3>
-          <p>Physical server with NVIDIA RTX PRO 6000 Blackwell GPUs in your data center, running on your power, connected to your network. You own it outright. No hosted service dependency.</p>
+          <p>A physical server in your data center, running on your power, connected to your network, not a hosted service wearing a "local" label. You own it outright. No vendor dependency.</p>
         </div>
         <div class="card">
           <div class="card-icon-im"><img src="images/air-gapped-icon.webp?v=3" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
@@ -278,13 +252,31 @@
   </section>
 
 
+  <!-- We build it around the book -->
+  <section class="section section-darker">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-badge">The Build</span>
+        <h2>We Build It Around How Your Book Runs</h2>
+      </div>
+      <div class="fade-in content-narrow">
+        <p class="body-lg">A general model knows insurance the way a textbook does, and nothing about the book you write. It&#39;s never opened your policy forms, doesn&#39;t know your claims playbook, can&#39;t tell your rating rules from the carrier&#39;s down the street. We build for the book you run.</p>
+        <p class="body-lg">Island Mountain builds the agents and the orchestration that carry the work your carrier runs on: claims review and summarization, underwriting support, policy and endorsement drafting, complaint handling, and the regulatory filings your examiners expect on time. It runs on current open-weight models like Kimi K3, ZAI GLM 5.2, Qwen 3.8+, and Nous Hermes 4, served through Ollama or vLLM behind an OpenWebUI front end, or whatever open weights fit the task. All of it governed by our own agentic orchestration and the <a href="lamprey-woven-security-governance.html" class="clr-copper">Woven Security Fabric</a>, so every action carries an identity, an approval, and a receipt, and the credentials expire when the task is done. Policyholder data never leaves your network to make any of it happen.</p>
+        <p class="body-lg">When the work needs a model that speaks your book, we&#39;ll build one. Reasoning models and small language models from scratch, trained to orbit your carrier&#39;s ontology: your lines of business, your policy language, your claims process. It learns your terminology and your cadence, not a generic carrier&#39;s.</p>
+        <p class="body-lg">It air-gaps for the lines that carry the most sensitive health and financial data, and reaches the cloud only when a task genuinely needs it. That&#39;s your call, workflow by workflow.</p>
+        <p class="body-lg">Then we hand it back. On-site onboarding, SOPs written for your staff, the keys dropped into your team&#39;s hands so they run and rework the workflows without calling us. Want the upkeep off your IT group&#39;s plate? We offer tiered support sized to your carrier, and we plug in wherever that&#39;s easiest. This is your carrier&#39;s legacy. We build it alongside you, and we won&#39;t call it done until your people can run it without us.</p>
+      </div>
+    </div>
+  </section>
+
+
   <!-- Workflows -->
   <section class="section section-darker">
     <div class="container">
       <div class="section-header fade-in">
         <span class="section-badge">Workflows</span>
         <h2>Insurance Workflows a Deployment Supports</h2>
-        <p>The same AI capabilities you want from cloud services, running on hardware that doesn't create compliance exposure.</p>
+        <p>These aren&#39;t chat prompts. They&#39;re agentic workflows the orchestration runs start to finish, each step carrying its own identity and receipt, and no policyholder data leaves your network.</p>
       </div>
       <div class="card-grid card-grid-3 fade-in">
         <div class="card">
@@ -325,29 +317,28 @@
     </div>
   </section>
 
-  <!-- Model Selection -->
+  <!-- Which Models for What -->
   <section class="section section-dark">
     <div class="container">
       <div class="section-header fade-in">
-        <span class="section-badge">Model Selection</span>
-        <h2>Which Models Work Best for Insurance Tasks</h2>
-        <p>NVIDIA RTX PRO 6000 Blackwell insurance AI infrastructure running open-source models under your control. A local LLM underwriting and claims workflow eliminates cloud vendor dependency.</p>
+        <span class="section-badge">Models</span>
+        <h2>The Models We Run, and the Ones We Build</h2>
       </div>
       <div class="card-grid card-grid-3 fade-in">
         <div class="card text-center">
           <div class="card-icon-im"><img src="images/local-ai-inference-icon.webp?v=3" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
-          <h3>DeepSeek V4-Flash</h3>
-          <p><strong>Best for:</strong> Complex claims analysis, multi-document underwriting review, fraud pattern detection, long-context policy comparison tasks. 284B parameters with mixture-of-experts architecture. Runs at FP8 on the two-card configuration.</p>
+          <h3>Current Open Weights</h3>
+          <p>Kimi K3, ZAI GLM 5.2, Qwen 3.8+, Nous Hermes 4, and whatever&#39;s strongest the month we deploy, served through Ollama or vLLM behind OpenWebUI. Open weights turn over fast, so the honest answer turns over with them. We run the model that fits the claim or the filing in front of it, not the one that topped a leaderboard last quarter.</p>
         </div>
         <div class="card text-center">
           <div class="card-icon-im"><img src="images/local-ai-inference-icon.webp?v=3" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
-          <h3>Llama 4 Scout</h3>
-          <p><strong>Best for:</strong> General drafting, customer correspondence, denial explanations, renewal notices, internal memos. Local Llama for insurance workflows - a strong general-purpose model that produces clean, structured prose quickly.</p>
+          <h3>Built to Orbit Your Book</h3>
+          <p>When nothing off the shelf speaks your book, we build it. Reasoning models and small language models from scratch, trained on your ontology: your lines of business, your policy language, the way your claims move. Small, sharp, and yours alone.</p>
         </div>
         <div class="card text-center">
           <div class="card-icon-im"><img src="images/local-ai-inference-icon.webp?v=3" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
-          <h3>R1 70B Distill or Qwen 3 72B</h3>
-          <p><strong>Best for:</strong> Chain-of-thought compliance reasoning (R1 Distill) or high-throughput enterprise drafting (Qwen 3 72B). Chosen during the workflow study, and swappable afterwards. Both run on the same VRAM budget.</p>
+          <h3>Governed, Not Just Installed</h3>
+          <p>Every model runs under our agentic orchestration and the Woven Security Fabric. Scoped access, ephemeral credentials, a receipt for every action. Air-gapped when the line demands it, cloud-connected when a task earns it.</p>
         </div>
       </div>
     </div>
@@ -367,7 +358,7 @@
             <tr>
               <th></th>
               <th>Cloud AI</th>
-              <th>Island Mountain two-card build</th>
+              <th>Island Mountain build</th>
             </tr>
           </thead>
           <tbody>
@@ -421,7 +412,7 @@
       </div>
       <div class="comparison-note fade-in mt-20">
         <i class="ri-information-line"></i>
-        Cloud estimates based on AI platforms charging $50-$200/user/month for 30 users. Island Mountain electricity estimate assumes 1.5-2.5 kW average draw at $0.12/kWh. For higher-throughput requirements, the NVIDIA RTX PRO 6000 Blackwell for insurance tier offers 96GB GDDR7 ECC memory per GPU, quoted on request.
+        Cloud estimates based on AI platforms charging $50-$200/user/month for 30 users. Island Mountain electricity estimate assumes 1.5-2.5 kW average draw at $0.12/kWh. For higher-throughput requirements, a larger build is sized and quoted on request.
       </div>
     </div>
   </section>
@@ -438,7 +429,7 @@
         <div class="risk-card">
           <div class="risk-icon"><img src="images/ic-search.webp?v=3" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
           <h4>No Insurance-Specific Fine-Tuning</h4>
-          <p>The models are general-purpose large language models, not insurance-specific AI. They're strong at reasoning, analysis, and prose generation, but they're general tools rather than purpose-built insurance AI, with no fine-tuning on insurance datasets, actuarial tables, or claims databases. What the system does provide is secure AI for customer PII: all policyholder data stays on your hardware.</p>
+          <p>The models are general-purpose large language models, not insurance-specific AI. They're strong at reasoning, analysis, and prose generation, but they're general tools rather than an insurance-specific AI platform, with no fine-tuning on insurance datasets, actuarial tables, or claims databases. What the system does provide is secure AI for customer PII: all policyholder data stays on your hardware.</p>
         </div>
         <div class="risk-card">
           <div class="risk-icon"><img src="images/ic-plugins.webp?v=3" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
@@ -504,12 +495,12 @@
         <div class="risk-card">
           <div class="risk-icon"><img src="images/agentic-orchestration-icon.webp?v=3" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
           <h4>What insurance workflows does this hardware support?</h4>
-          <p>Island Mountain hardware supports claims processing and summarization, underwriting analysis, fraud detection pattern recognition, policy document review, actuarial support documentation, regulatory filing drafting, and customer correspondence. The system runs DeepSeek V4-Flash for complex multi-document claims analysis and Llama 4 Scout for general drafting tasks.</p>
+          <p>Island Mountain builds workflows for claims review and summarization, underwriting support, policy and endorsement drafting, complaint handling, regulatory filings, and customer correspondence. The system runs current open-weight models, and custom models we build for your book where the work needs one.</p>
         </div>
         <div class="risk-card">
           <div class="risk-icon"><img src="images/ai-cost-comparison-icon.webp?v=3" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
           <h4>How does the cost compare for a 30-person insurance office?</h4>
-          <p>Cloud AI platforms for insurance typically cost $50 to $200 per user per month. For 30 users, that totals $18,000 to $72,000 per year. Over three years: $54,000 to $216,000 cumulative with ongoing data exposure. An Island Mountain two-card build is a one-time purchase, quoted to your workload. Cost parity typically reached within year one to two.</p>
+          <p>Cloud AI platforms for insurance typically cost $50 to $200 per user per month. For 30 users, that totals $18,000 to $72,000 per year. Over three years: $54,000 to $216,000 cumulative with ongoing data exposure. An Island Mountain build is a one-time purchase, sized and quoted to your workload. Cost parity typically reached within year one to two.</p>
         </div>
         <div class="risk-card">
           <div class="risk-icon"><img src="images/ic-skills-teacher.webp?v=3" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
@@ -633,7 +624,7 @@
         <a href="contact.html">Start a Scoping Call</a>
       </div>
 
-      <p class="au-legal">Island Mountain AI Inc. provides forward-deployed AI engineering services and designs, integrates, and deploys on-premises AI inference systems. Nothing on this site constitutes an offer or sale of securities, or legal, compliance, tax, or investment advice. Compliance with HIPAA, ITAR, DFARS / CMMC, OCAP, and other frameworks depends on your organization's deployment, configuration, policies, and controls; on-premises hardware is one component of a compliant program, not a certification. Product specifications, model availability, and lead times are subject to change. Pricing is quoted by sales on a per-engagement basis. NVIDIA, RTX, and Blackwell, and all other marks are the property of their respective owners.</p>
+      <p class="au-legal">Island Mountain AI Inc. provides forward-deployed AI engineering services and designs, integrates, and deploys on-premises AI inference systems. Nothing on this site constitutes an offer or sale of securities, or legal, compliance, tax, or investment advice. Compliance with HIPAA, ITAR, DFARS / CMMC, OCAP, and other frameworks depends on your organization's deployment, configuration, policies, and controls; on-premises hardware is one component of a compliant program, not a certification. Product specifications, model availability, and lead times are subject to change. Pricing is quoted by sales on a per-engagement basis. All product names and marks are the property of their respective owners.</p>
 
       <div class="footer-bottom flex-col-center-gap">
         <p>&copy; 2026 Island Mountain AI Inc. All rights reserved. Hand-built in California by <span class="clr-copper">Basho Parks</span>.</p>
