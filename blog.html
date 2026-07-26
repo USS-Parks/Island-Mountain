@@ -96,6 +96,25 @@
 
   <!-- Blog-specific styles -->
   <style>
+    /* Hero copy sits on a busy night photo now, so it carries the copper the
+       style guide uses for accent type instead of white on city lights. */
+    .hero-page h1 {
+      color: var(--copper-light);
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.85), 0 2px 24px rgba(0, 0, 0, 0.6);
+    }
+    .hero-badge {
+      color: var(--copper-light);
+      border-color: rgba(245, 158, 11, 0.55);
+      background: rgba(0, 0, 0, 0.45);
+    }
+    .blog-subtitle {
+      color: #f0d9b0;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.85), 0 1px 14px rgba(0, 0, 0, 0.55);
+    }
+
+    /* No scrim over the hero photo: the cards carry their own translucent
+       panel and float on the photo the whole way down. */
+    .section-first { background-color: transparent; }
     .blog-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -291,7 +310,7 @@
   <!-- Hero -->
   <section class="hero hero-page">
     <div class="hero-inner">
-      <span class="hero-badge">From the Builder</span>
+      <span class="hero-badge">Basho&#39;s Pond</span>
       <h1>The Island Mountain Blog</h1>
       <p class="blog-subtitle">Field notes from the work: agentic security and governance, data sovereignty, and what the cloud's meter really costs you.</p>
     </div>
