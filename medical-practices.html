@@ -30,7 +30,7 @@
   <meta name="author" content="Basho Parks">
   <meta name="date" content="2026-06-06">
   <title>HIPAA-Compliant AI Inference for Medical Practices</title>
-  <meta name="description" content="On-premises AI hardware for healthcare. PHI never leaves your building. Clinical notes, prior auth, patient analysis. No cloud BAA needed.">
+  <meta name="description" content="On-premises AI for healthcare: agents, orchestration, and models built around your practice and run on your own hardware. PHI never leaves the building. No cloud BAA needed.">
   <link rel="icon" type="image/x-icon" href="favicon.ico?v=2">
   <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png?v=2">
   <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png?v=2">
@@ -62,7 +62,7 @@
 
   <!-- Open Graph -->
   <meta property="og:title" content="HIPAA-Compliant AI Inference for Medical Practices">
-  <meta property="og:description" content="On-premises AI hardware for healthcare. PHI never leaves your building. Clinical notes, prior auth, patient analysis. No cloud BAA needed.">
+  <meta property="og:description" content="On-premises AI for healthcare: agents, orchestration, and models built around your practice and run on your own hardware. PHI never leaves the building. No cloud BAA needed.">
   <meta property="og:url" content="https://islandmountain.io/medical-practices.html">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Island Mountain">
@@ -71,7 +71,7 @@
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="HIPAA-Compliant AI Inference for Medical Practices">
-  <meta name="twitter:description" content="On-premises AI hardware for healthcare. PHI never leaves your building. Clinical notes, prior auth, patient analysis. No cloud BAA needed.">
+  <meta name="twitter:description" content="On-premises AI for healthcare: agents, orchestration, and models built around your practice and run on your own hardware. PHI never leaves the building. No cloud BAA needed.">
   <meta name="twitter:image" content="https://islandmountain.io/images/hero-medical-practices.webp?v=2">
 
   <!-- FAQPage Schema -->
@@ -85,7 +85,7 @@
         "name": "Do I need a Business Associate Agreement to use local AI with patient data?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "No. A Business Associate Agreement is only required under HIPAA when Protected Health Information (PHI) is shared with a third-party service provider. On-premises AI hardware processes PHI entirely within your facility - no data transmitted to any external service means no business associate relationship exists. The BAA requirement under 45 CFR Part 164 does not apply because no third-party handling occurs. Island Mountain hardware with NVIDIA RTX PRO 6000 Blackwell GPUs keeps ePHI on servers you own, inside your network, under your HIPAA Security Rule controls. The HITECH Act's breach notification requirements become far simpler when PHI never leaves the building."
+          "text": "No. A Business Associate Agreement is only required under HIPAA when Protected Health Information (PHI) is shared with a third-party service provider. On-premises AI hardware processes PHI entirely within your facility - no data transmitted to any external service means no business associate relationship exists. The BAA requirement under 45 CFR Part 164 does not apply because no third-party handling occurs. Island Mountain keeps ePHI on servers you own, inside your network, under your HIPAA Security Rule controls. The HITECH Act's breach notification requirements become far simpler when PHI never leaves the building."
         }
       },
       {
@@ -93,7 +93,7 @@
         "name": "Is Island Mountain hardware a medical device or clinical decision support tool?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "No. Island Mountain hardware is general-purpose AI inference infrastructure, not a medical device or clinical decision support tool. It carries no FDA classification and provides no diagnostic assistance or treatment recommendations. The system runs the same type of large language models available through cloud services, but on NVIDIA RTX PRO 6000 Blackwell GPUs inside your facility under your direct control. Any use of AI output in clinical contexts requires the same professional judgment that applies to any information source."
+          "text": "No. Island Mountain hardware is general-purpose AI inference infrastructure, not a medical device or clinical decision support tool. It carries no FDA classification and provides no diagnostic assistance or treatment recommendations. The system runs current open-weight models and, where the work needs one, models we build for your practice, all on your own hardware inside your facility under your direct control. Any use of AI output in clinical contexts requires the same professional judgment that applies to any information source."
         }
       },
       {
@@ -109,7 +109,7 @@
         "name": "How does the cost compare to cloud AI for a 15-provider medical practice?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Cloud AI subscriptions for healthcare platforms typically cost $30 to $150 per user per month. For 25 users (15 providers plus 10 staff), that totals $9,000 to $45,000 per year with ongoing BAA management overhead and breach exposure on every query. An Island Mountain two-card build with two NVIDIA RTX PRO 6000 Blackwell GPUs is a one-time purchase, quoted to your workload. Ongoing costs limited to electricity (~$100-$200/month). No per-user fees. No per-token charges. No BAA required. Cost parity typically reached within two years while eliminating HIPAA compliance risk from AI operations entirely."
+          "text": "Cloud AI subscriptions for healthcare platforms typically cost $30 to $150 per user per month. For 25 users (15 providers plus 10 staff), that totals $9,000 to $45,000 per year with ongoing BAA management overhead and breach exposure on every query. An Island Mountain build is a one-time purchase, sized and quoted to your workload. Ongoing costs limited to electricity (~$100-$200/month). No per-user fees. No per-token charges. No BAA required. Cost parity typically reached within two years while eliminating HIPAA compliance risk from AI operations entirely."
         }
       }
     ]
@@ -131,37 +131,15 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Product",
-    "@id": "https://islandmountain.io/forward-deployed-ai-engineering.html",
-    "name": "Island Mountain two-card build \u2014 On-Premises AI Server for Medical Practices",
-    "description": "Pre-built AI inference server with 2x NVIDIA RTX PRO 6000 Blackwell 96GB GPUs. Air-gap capable. HIPAA and HITECH compliance-ready. Includes DeepSeek V4-Flash, Llama 4 Scout, and OpenWebUI.",
-    "brand": {
-      "@type": "Brand",
-      "name": "Island Mountain"
+    "@type": "Service",
+    "serviceType": "On-premises AI configuration and deployment for medical practices",
+    "provider": {
+      "@type": "Organization",
+      "name": "Island Mountain",
+      "url": "https://islandmountain.io"
     },
-    "category": "AI Inference Hardware for Healthcare",
-    "additionalProperty": [
-      {
-        "@type": "PropertyValue",
-        "name": "GPU Model",
-        "value": "NVIDIA RTX PRO 6000 Blackwell 96GB (2x two-card build / 4x four-card build)"
-      },
-      {
-        "@type": "PropertyValue",
-        "name": "Total VRAM",
-        "value": "192GB-384GB"
-      },
-      {
-        "@type": "PropertyValue",
-        "name": "Pre-Installed Models",
-        "value": "DeepSeek V4-Flash (FP8), Llama 4 Scout, DeepSeek R1 70B Distill or Qwen 3 72B (buyer selects)"
-      },
-      {
-        "@type": "PropertyValue",
-        "name": "Interface",
-        "value": "OpenWebUI (browser-based)"
-      }
-    ]
+    "areaServed": "US",
+    "description": "Island Mountain builds the agents, orchestration, and custom models that run a medical practice's work on its own hardware. Current open-weight models served on-site, custom reasoning models and small language models built to the practice's clinical ontology, governed by the Woven Security Fabric. PHI stays in the building, air-gap capable. Configured after discovery, with on-site onboarding, SOP development, and tiered support."
   }
   </script>
 </head>
@@ -210,7 +188,7 @@
     <div class="hero-inner">
       <span class="hero-badge">Local AI for Medical Practices</span>
       <h1>PHI Stays on Your Hardware. No BAA Required.</h1>
-      <p>Cloud AI services require Business Associate Agreements and create breach exposure every time PHI is transmitted. Local AI hardware eliminates both problems because patient data never leaves your network.</p>
+      <p>Cloud AI services want a Business Associate Agreement and create breach exposure every time PHI moves. We&#39;ll build the whole system on your hardware instead: the agents, the orchestration, and the models that run your practice&#39;s work, and patient data never leaves your network.</p>
     </div>
   </section>
 
@@ -275,6 +253,23 @@
   </section>
 
 
+  <!-- We build it around the practice -->
+  <section class="section section-darker">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-badge">The Build</span>
+        <h2>We Build It Around How Your Practice Runs</h2>
+      </div>
+      <div class="fade-in content-narrow">
+        <p class="body-lg">A general model knows textbook medicine and nothing about your clinic. It&#39;s never seen your note templates, doesn&#39;t know your referral network, can&#39;t tell your billing team&#39;s shorthand from a nurse&#39;s triage note. We build for the practice you run.</p>
+        <p class="body-lg">Island Mountain builds the agents and the orchestration that carry the work that eats your staff&#39;s day: intake and history, prior-auth drafting with the payer&#39;s own denial patterns in view, a clinical note from a dictated encounter, coding review against the documentation, the referral letter and the appeal. It runs on current open-weight models like Kimi K3, ZAI GLM 5.2, Qwen 3.8+, and Nous Hermes 4, served through Ollama or vLLM behind an OpenWebUI front end, or whatever open weights fit the task. All of it governed by our own agentic orchestration and the <a href="lamprey-woven-security-governance.html" class="clr-copper">Woven Security Fabric</a>, so every action carries an identity, an approval, and a receipt, and the credentials expire when the task is done. PHI never leaves the building to make any of it happen.</p>
+        <p class="body-lg">When the work needs a model that speaks your medicine, we&#39;ll build one. Reasoning models and small language models from scratch, trained to orbit your clinical ontology: your specialties, your order sets, your payer mix, the way your practice charts. It learns your abbreviations and your cadence, not a generic hospital&#39;s.</p>
+        <p class="body-lg">It air-gaps for the records that demand it, and reaches out only when a task genuinely needs to. You decide, workflow by workflow.</p>
+        <p class="body-lg">Then we hand it back. On-site onboarding, SOPs your staff can follow, the keys dropped into your team&#39;s hands so they run and rework the workflows without a support ticket. Want the upkeep off your practice&#39;s plate? We offer tiered support sized to your clinic, and we plug in wherever that&#39;s easiest. This is your practice&#39;s legacy. We build it alongside you, and we won&#39;t call it done until your people can run it without us.</p>
+      </div>
+    </div>
+  </section>
+
   <!-- Product Imagery -->
   <section class="product-showcase section-dark fade-in">
     <div class="container">
@@ -288,7 +283,7 @@
       <div class="section-header fade-in">
         <span class="section-badge">Workflows</span>
         <h2>Workflows a Deployment Supports</h2>
-        <p>The same AI capabilities your staff wants from cloud services, running on hardware that keeps PHI under your control.</p>
+        <p>These aren&#39;t chat prompts. They&#39;re agentic workflows the orchestration runs start to finish, each step carrying its own identity and receipt, and no PHI leaves your network.</p>
       </div>
       <div class="card-grid card-grid-3 fade-in">
         <div class="card">
@@ -321,7 +316,7 @@
         <div class="card">
           <div class="card-icon-im"><img src="images/ic-skills-teacher.webp?v=3" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
           <h3>Multilingual Support</h3>
-          <p>Your choice of R1 70B Distill or Qwen 3 72B provides a second reasoning model for practices needing parallel workloads. Draft patient communications, translate educational materials, and produce discharge instructions while the primary model handles clinical analysis.</p>
+          <p>Draft patient communications, translate education materials, and produce discharge instructions in your patients&#39; languages. A second model runs these in parallel while the primary handles clinical drafting, all on your own hardware.</p>
         </div>
       </div>
 
@@ -362,7 +357,7 @@
             <tr>
               <th></th>
               <th>Cloud AI (25 Users)</th>
-              <th>Island Mountain two-card build</th>
+              <th>Island Mountain build</th>
             </tr>
           </thead>
           <tbody>
@@ -480,7 +475,7 @@
         <div class="risk-card">
           <div class="risk-icon"><img src="images/hipaa-ai-icon.webp?v=3" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
           <h4>Is this a medical device or clinical decision support tool?</h4>
-          <p>No. Island Mountain hardware is general-purpose AI inference infrastructure, not a medical device or clinical decision support tool. It is not classified under FDA regulations and does not provide diagnostic assistance or treatment recommendations. The system runs the same type of large language models available through cloud services, but on NVIDIA RTX PRO 6000 Blackwell GPUs inside your facility.</p>
+          <p>No. Island Mountain builds general-purpose AI infrastructure, not a medical device or clinical decision support tool. It is not classified under FDA regulations and does not provide diagnostic assistance or treatment recommendations. The system runs current open-weight models and custom models we build for your practice, all on your own hardware inside your facility.</p>
         </div>
         <div class="risk-card">
           <div class="risk-icon"><img src="images/ic-skills-teacher.webp?v=3" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
@@ -490,7 +485,7 @@
         <div class="risk-card">
           <div class="risk-icon"><img src="images/ai-cost-comparison-icon.webp?v=3" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
           <h4>How does cost compare for a 15-provider practice?</h4>
-          <p>Cloud AI subscriptions for healthcare platforms typically cost $30 to $150 per user per month. For 25 users, that totals $9,000 to $45,000 per year with ongoing BAA management overhead and breach exposure on every query. An Island Mountain two-card build with two NVIDIA RTX PRO 6000 Blackwell GPUs is a one-time purchase, quoted to your workload. No per-user fees. No BAA required.</p>
+          <p>Cloud AI subscriptions for healthcare platforms typically cost $30 to $150 per user per month. For 25 users, that totals $9,000 to $45,000 per year with ongoing BAA management overhead and breach exposure on every query. An Island Mountain build is a one-time purchase, sized and quoted to your workload. No per-user fees. No BAA required.</p>
         </div>
       </div>
       <div class="text-center-mt-32">
@@ -646,7 +641,7 @@
         <a href="contact.html">Start a Scoping Call</a>
       </div>
 
-      <p class="au-legal">Island Mountain AI Inc. provides forward-deployed AI engineering services and designs, integrates, and deploys on-premises AI inference systems. Nothing on this site constitutes an offer or sale of securities, or legal, compliance, tax, or investment advice. Compliance with HIPAA, ITAR, DFARS / CMMC, OCAP, and other frameworks depends on your organization's deployment, configuration, policies, and controls; on-premises hardware is one component of a compliant program, not a certification. Product specifications, model availability, and lead times are subject to change. Pricing is quoted by sales on a per-engagement basis. NVIDIA, RTX, and Blackwell, and all other marks are the property of their respective owners.</p>
+      <p class="au-legal">Island Mountain AI Inc. provides forward-deployed AI engineering services and designs, integrates, and deploys on-premises AI inference systems. Nothing on this site constitutes an offer or sale of securities, or legal, compliance, tax, or investment advice. Compliance with HIPAA, ITAR, DFARS / CMMC, OCAP, and other frameworks depends on your organization's deployment, configuration, policies, and controls; on-premises hardware is one component of a compliant program, not a certification. Product specifications, model availability, and lead times are subject to change. Pricing is quoted by sales on a per-engagement basis. All product names and marks are the property of their respective owners.</p>
 
       <div class="footer-bottom flex-col-center-gap">
         <p>&copy; 2026 Island Mountain AI Inc. All rights reserved. Hand-built in California by <span class="clr-copper">Basho Parks</span>.</p>
