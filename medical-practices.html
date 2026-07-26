@@ -172,7 +172,7 @@
 
   <!-- Hero background photo -->
   <div class="hero-photo">
-    <img srcset="images/hero-medical-practices-mobile.webp 800w, images/hero-medical-practices.webp 1672w" sizes="100vw" src="images/hero-medical-practices.webp" alt="HIPAA-compliant AI server for medical practices" fetchpriority="high" decoding="async" width="1672" height="941">
+    <img srcset="images/hero-medical-practices-mobile.webp?v=2 800w, images/hero-medical-practices.webp?v=2 1448w" sizes="100vw" src="images/hero-medical-practices.webp?v=2" alt="A community health clinic on a neighborhood street" fetchpriority="high" decoding="async" width="1448" height="1086">
   </div>
 
   <!-- Navbar -->
@@ -258,23 +258,17 @@
       </div>
       <div class="card-grid card-grid-3 fade-in">
         <div class="card">
-          <div class="card-icon card-icon-green">
-            <i class="ri-shield-check-line"></i>
-          </div>
+          <div class="card-icon-im"><img src="images/air-gapped-icon.webp" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
           <h3>No PHI Transmission</h3>
           <p>AI models run on a physical server in your facility. Patient data travels from the workstation to the server over your internal network. No internet connection required for inference. No data packets leave your building.</p>
         </div>
         <div class="card">
-          <div class="card-icon card-icon-indigo">
-            <i class="ri-file-shield-2-line"></i>
-          </div>
+          <div class="card-icon-im"><img src="images/hipaa-ai-icon.webp" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
           <h3>No BAA Required</h3>
           <p>When PHI never leaves your network, there is no third-party business associate. The BAA requirement, the vendor security assessment, and the ongoing compliance monitoring of the cloud provider - all of it goes away.</p>
         </div>
         <div class="card">
-          <div class="card-icon card-icon-purple">
-            <i class="ri-lock-line"></i>
-          </div>
+          <div class="card-icon-im"><img src="images/itarr-cmmc-ai-icon.webp" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
           <h3>Your Security Controls</h3>
           <p>The server lives behind your firewall, under your physical access controls, governed by your security policies. You control who accesses it, how data is handled, and what stays logged. Your compliance posture. Your rules.</p>
         </div>
@@ -300,16 +294,12 @@
       </div>
       <div class="card-grid card-grid-3 fade-in">
         <div class="card">
-          <div class="card-icon card-icon-green">
-            <i class="ri-file-text-line"></i>
-          </div>
+          <div class="card-icon-im"><img src="images/ic-add-file.webp" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
           <h3>Clinical Note Drafting</h3>
           <p>Generate first drafts of SOAP notes, progress notes, and visit summaries from dictated or typed encounter descriptions. Providers review and finalize. The AI handles the documentation burden - the provider retains clinical judgment.</p>
         </div>
         <div class="card">
-          <div class="card-icon card-icon-indigo">
-            <i class="ri-mail-send-line"></i>
-          </div>
+          <div class="card-icon-im"><img src="images/contact-icon.webp" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
           <h3>Prior Authorization Letters</h3>
           <p>Draft prior authorization narratives with clinical justification language. Feed in the procedure, diagnosis, and clinical context - the AI produces a structured letter that addresses common payer denial patterns.</p>
         </div>
@@ -321,23 +311,17 @@
           <p>Generate plain-language patient education documents tailored to specific conditions, procedures, or medication regimens. Produce materials at appropriate reading levels for your patient population.</p>
         </div>
         <div class="card">
-          <div class="card-icon card-icon-amber">
-            <i class="ri-barcode-box-line"></i>
-          </div>
+          <div class="card-icon-im"><img src="images/ai-cost-comparison-icon.webp" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
           <h3>Coding Documentation Review</h3>
           <p>Review encounter documentation against coding requirements. Identify documentation gaps that could affect code selection or audit defensibility. Flag areas where additional clinical detail would support the billed level of service.</p>
         </div>
         <div class="card">
-          <div class="card-icon card-icon-green">
-            <i class="ri-customer-service-2-line"></i>
-          </div>
+          <div class="card-icon-im"><img src="images/contact-icon.webp" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
           <h3>Administrative Correspondence</h3>
           <p>Draft referral letters, insurance appeal letters, patient recall correspondence, and internal communications. Consistent formatting and professional tone across all practice communications.</p>
         </div>
         <div class="card">
-          <div class="card-icon card-icon-indigo">
-            <i class="ri-translate-2"></i>
-          </div>
+          <div class="card-icon-im"><img src="images/ic-skills-teacher.webp" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
           <h3>Multilingual Support</h3>
           <p>Your choice of R1 70B Distill or Qwen 3 72B provides a second reasoning model for practices needing parallel workloads. Draft patient communications, translate educational materials, and produce discharge instructions while the primary model handles clinical analysis.</p>
         </div>
@@ -449,19 +433,23 @@
       </div>
       <div class="risk-grid fade-in">
         <div class="risk-card">
-          <h4><i class="ri-hospital-line"></i> Not an EHR Integration</h4>
+          <div class="risk-icon"><img src="images/hipaa-ai-icon.webp" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
+          <h4>Not an EHR Integration</h4>
           <p>Island Mountain hardware does not connect to Epic, Cerner, Athenahealth, or any EHR system. The AI runs through OpenWebUI - a standalone browser-based interface. Moving data between your EHR and the AI is a manual copy-paste process.</p>
         </div>
         <div class="risk-card">
-          <h4><i class="ri-stethoscope-line"></i> Not a Medical Device</h4>
+          <div class="risk-icon"><img src="images/hipaa-ai-icon.webp" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
+          <h4>Not a Medical Device</h4>
           <p>This hardware is not FDA-classified, not a clinical decision support tool, and not a diagnostic system. It generates text based on what you provide. It does not access medical databases, imaging systems, or lab results. Clinical judgment remains entirely with the provider.</p>
         </div>
         <div class="risk-card">
-          <h4><i class="ri-bar-chart-line"></i> No Clinical Analytics</h4>
+          <div class="risk-icon"><img src="images/evidence-mapping-icon.webp" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
+          <h4>No Clinical Analytics</h4>
           <p>The system is a text generation tool, not a data analytics platform, so it performs no population health analytics, quality measure reporting, or clinical outcome tracking. It writes what you ask it to write - it does not analyze your practice data.</p>
         </div>
         <div class="risk-card">
-          <h4><i class="ri-settings-3-line"></i> You Own the Maintenance</h4>
+          <div class="risk-icon"><img src="images/ic-default-access.webp" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
+          <h4>You Own the Maintenance</h4>
           <p>After the 30-day included support period, your practice or IT contractor handles OS updates, model updates, and general system maintenance. This is standard Linux server administration. Most managed service providers who support medical offices can handle it.</p>
         </div>
       </div>
@@ -487,19 +475,23 @@
       </div>
       <div class="risk-grid fade-in">
         <div class="risk-card">
-          <h4><i class="ri-file-shield-2-line"></i> Do I need a BAA to use local AI with patient data?</h4>
+          <div class="risk-icon"><img src="images/hipaa-ai-icon.webp" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
+          <h4>Do I need a BAA to use local AI with patient data?</h4>
           <p>No. A Business Associate Agreement is only required under HIPAA when Protected Health Information (PHI) is shared with a third-party service provider. On-premises AI hardware processes PHI entirely within your facility - no data transmitted to any external service means no business associate relationship exists. The BAA requirement under 45 CFR Part 164 does not apply.</p>
         </div>
         <div class="risk-card">
-          <h4><i class="ri-error-warning-line"></i> Is this a medical device or clinical decision support tool?</h4>
+          <div class="risk-icon"><img src="images/hipaa-ai-icon.webp" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
+          <h4>Is this a medical device or clinical decision support tool?</h4>
           <p>No. Island Mountain hardware is general-purpose AI inference infrastructure, not a medical device or clinical decision support tool. It is not classified under FDA regulations and does not provide diagnostic assistance or treatment recommendations. The system runs the same type of large language models available through cloud services, but on NVIDIA RTX PRO 6000 Blackwell GPUs inside your facility.</p>
         </div>
         <div class="risk-card">
-          <h4><i class="ri-group-line"></i> Can non-technical staff use it without IT training?</h4>
+          <div class="risk-icon"><img src="images/ic-skills-teacher.webp" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
+          <h4>Can non-technical staff use it without IT training?</h4>
           <p>Yes. The system runs OpenWebUI, a browser-based interface that works like ChatGPT. Staff open any web browser on the office network, log in, and start typing. No command line, no technical configuration, no software installation. Administrative staff, billing specialists, and clinical support staff can use the system on day one.</p>
         </div>
         <div class="risk-card">
-          <h4><i class="ri-coin-line"></i> How does cost compare for a 15-provider practice?</h4>
+          <div class="risk-icon"><img src="images/ai-cost-comparison-icon.webp" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
+          <h4>How does cost compare for a 15-provider practice?</h4>
           <p>Cloud AI subscriptions for healthcare platforms typically cost $30 to $150 per user per month. For 25 users, that totals $9,000 to $45,000 per year with ongoing BAA management overhead and breach exposure on every query. An Island Mountain two-card build with two NVIDIA RTX PRO 6000 Blackwell GPUs is a one-time purchase, quoted to your workload. No per-user fees. No BAA required.</p>
         </div>
       </div>

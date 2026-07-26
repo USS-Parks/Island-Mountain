@@ -177,7 +177,7 @@
 
   <!-- Hero background photo -->
   <div class="hero-photo">
-    <img srcset="images/hero-defense-contractors-mobile.webp 800w, images/hero-defense-contractors.webp 1672w" sizes="100vw" src="images/hero-defense-contractors.webp" alt="ITAR-compliant AI inference server for defense contractors" fetchpriority="high" decoding="async" width="1672" height="941">
+    <img srcset="images/hero-defense-contractors-mobile.webp?v=2 800w, images/hero-defense-contractors.webp?v=2 1535w" sizes="100vw" src="images/hero-defense-contractors.webp?v=2" alt="A defense contractor's headquarters at dusk, US flag at the entrance" fetchpriority="high" decoding="async" width="1535" height="1024">
   </div>
 
   <!-- Navbar -->
@@ -263,25 +263,19 @@
       </div>
       <div class="card-grid card-grid-3 fade-in">
         <div class="card">
-          <div class="card-icon card-icon-green">
-            <i class="ri-shield-check-line"></i>
-          </div>
+          <div class="card-icon-im"><img src="images/air-gapped-icon.webp" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
           <h3>Your Physical Security Controls</h3>
           <p>The server sits in your facility, behind your physical access controls, within your security perimeter. Badge readers, locked rooms, visitor logs, security cameras - your existing physical security infrastructure governs access to the AI hardware.</p>
         </div>
         <div class="card">
-          <div class="card-icon card-icon-indigo">
-            <i class="ri-wifi-off-line"></i>
-          </div>
+          <div class="card-icon-im"><img src="images/air-gapped-icon.webp" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
           <h3>Air-Gap Capable</h3>
           <p>After initial configuration, the system operates without internet connectivity. Models run locally from NVMe storage. The inference engine and user interface are self-contained. No external connections required for daily operations. Complete network isolation is achievable.</p>
           <p style="margin-top:0.75rem;">Before delivery, Island Mountain applies a hardened configuration to the OpenWebUI deployment. <code>OFFLINE_MODE</code>, <code>HF_HUB_OFFLINE</code>, <code>ANONYMIZED_TELEMETRY</code>, <code>ENABLE_COMMUNITY_SHARING</code>, and <code>ENABLE_RAG_WEB_SEARCH</code> are all set to their disabled states. The system is tested in this configuration before shipping.</p>
           <p style="margin-top:0.75rem;">For CMMC assessors and security auditors: the complete environment variable configuration is inspectable on the delivered system. Your team can verify every setting independently. We provide a configuration manifest documenting the air-gap hardening applied to your specific build.</p>
         </div>
         <div class="card">
-          <div class="card-icon card-icon-purple">
-            <i class="ri-lock-line"></i>
-          </div>
+          <div class="card-icon-im"><img src="images/itarr-cmmc-ai-icon.webp" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
           <h3>Network Segregation Ready</h3>
           <p>The system can be placed on a segregated network segment within your CUI enclave. Linux-based operating system supports your existing access control, auditing, and monitoring requirements. Standard network security tools apply.</p>
         </div>
@@ -299,44 +293,32 @@
       </div>
       <div class="card-grid card-grid-3 fade-in">
         <div class="card">
-          <div class="card-icon card-icon-green">
-            <i class="ri-file-search-line"></i>
-          </div>
+          <div class="card-icon-im"><img src="images/ic-search.webp" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
           <h3>CUI-Adjacent Document Analysis</h3>
           <p>Analyze contract requirements, review solicitation documents, compare compliance language, and extract obligations from CUI-marked materials. All processing stays within your controlled environment.</p>
         </div>
         <div class="card">
-          <div class="card-icon card-icon-indigo">
-            <i class="ri-draft-line"></i>
-          </div>
+          <div class="card-icon-im"><img src="images/ic-add-file.webp" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
           <h3>Proposal Drafting</h3>
           <p>Generate first drafts of technical volumes, past performance narratives, management approaches, and staffing plans. Process proposal content that references controlled programs without transmitting it to cloud services.</p>
         </div>
         <div class="card">
-          <div class="card-icon card-icon-purple">
-            <i class="ri-file-text-line"></i>
-          </div>
+          <div class="card-icon-im"><img src="images/ic-add-file.webp" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
           <h3>Technical Writing Support</h3>
           <p>Draft technical documentation, engineering reports, test procedures, and program status updates. Llama 4 Scout handles structured technical prose. DeepSeek V4-Flash handles complex analytical tasks and multi-document synthesis.</p>
         </div>
         <div class="card">
-          <div class="card-icon card-icon-amber">
-            <i class="ri-search-eye-line"></i>
-          </div>
+          <div class="card-icon-im"><img src="images/ic-search.webp" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
           <h3>Contract Compliance Research</h3>
           <p>Analyze FAR/DFARS clauses, compare contract modifications, review compliance requirements, and identify obligations across multiple contract vehicles. Process contract language locally without exposing program details.</p>
         </div>
         <div class="card">
-          <div class="card-icon card-icon-green">
-            <i class="ri-shield-keyhole-line"></i>
-          </div>
+          <div class="card-icon-im"><img src="images/WSF-icon.webp" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
           <h3>Security Documentation</h3>
           <p>Draft System Security Plans, Plan of Action and Milestones documents, incident response procedures, and security policy documentation. Process security-relevant content on segregated, controlled infrastructure.</p>
         </div>
         <div class="card">
-          <div class="card-icon card-icon-indigo">
-            <i class="ri-mail-send-line"></i>
-          </div>
+          <div class="card-icon-im"><img src="images/contact-icon.webp" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
           <h3>Internal Communications</h3>
           <p>Draft program status briefings, internal memoranda, subcontractor correspondence, and team communications. Consistent formatting and professional language across all program communications.</p>
         </div>
@@ -437,19 +419,23 @@
       </div>
       <div class="risk-grid fade-in">
         <div class="risk-card">
-          <h4><i class="ri-award-line"></i> No CMMC Certification</h4>
+          <div class="risk-icon"><img src="images/compliance-evidence-icon.webp" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
+          <h4>No CMMC Certification</h4>
           <p>Island Mountain hardware does not carry CMMC certification. No hardware component does. CMMC evaluates your organizational security posture, not individual pieces of equipment. The hardware supports a compliant posture - it does not certify one.</p>
         </div>
         <div class="risk-card">
-          <h4><i class="ri-lock-line"></i> No Classified Network Connectivity</h4>
+          <div class="risk-icon"><img src="images/itarr-cmmc-ai-icon.webp" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
+          <h4>No Classified Network Connectivity</h4>
           <p>This is commercial off-the-shelf hardware. It is not designed for classified networks, SCIFs, or SIPRNet environments. It processes CUI and ITAR-controlled unclassified data on your commercial or CUI-enclave network. Classified processing requires government-furnished equipment and accredited facilities.</p>
         </div>
         <div class="risk-card">
-          <h4><i class="ri-government-line"></i> No GFE Integration</h4>
+          <div class="risk-icon"><img src="images/local-govt-ai-icon.webp" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
+          <h4>No GFE Integration</h4>
           <p>Island Mountain hardware is a standalone commercial AI system for internal use inside your contractor facility, with no integration into government-furnished equipment, government networks, or government information systems.</p>
         </div>
         <div class="risk-card">
-          <h4><i class="ri-settings-3-line"></i> You Own the Security</h4>
+          <div class="risk-icon"><img src="images/ic-default-access.webp" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
+          <h4>You Own the Security</h4>
           <p>After the 30-day support period, your IT security team is responsible for system hardening, patching, monitoring, and incident response. The system runs Linux and responds to the same security management practices you apply to other systems in your CUI enclave.</p>
         </div>
       </div>
@@ -494,19 +480,23 @@
       </div>
       <div class="risk-grid fade-in">
         <div class="risk-card">
-          <h4><i class="ri-file-shield-2-line"></i> Can I process CUI through a commercial cloud AI API?</h4>
+          <div class="risk-icon"><img src="images/hipaa-ai-icon.webp" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
+          <h4>Can I process CUI through a commercial cloud AI API?</h4>
           <p>No. Commercial cloud AI APIs are generally incompatible with CUI handling requirements under DFARS 252.204-7012. CUI must be processed in environments meeting NIST SP 800-171 security requirements - most commercial AI endpoints do not operate on FedRAMP High authorized infrastructure. On-premises AI hardware from Island Mountain processes CUI-adjacent documents under your own security controls.</p>
         </div>
         <div class="risk-card">
-          <h4><i class="ri-global-line"></i> Does cloud AI create ITAR export risk?</h4>
+          <div class="risk-icon"><img src="images/itarr-cmmc-ai-icon.webp" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
+          <h4>Does cloud AI create ITAR export risk?</h4>
           <p>Yes. If a cloud AI provider's infrastructure is accessible to foreign nationals or located outside the United States, processing ITAR-controlled technical data constitutes potential unauthorized export under 22 CFR 120-130. On-premises Island Mountain hardware under your physical access controls eliminates this export control concern entirely. Consult your export compliance officer for fact-specific guidance.</p>
         </div>
         <div class="risk-card">
-          <h4><i class="ri-shield-check-line"></i> Does this hardware have CMMC certification?</h4>
+          <div class="risk-icon"><img src="images/air-gapped-icon.webp" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
+          <h4>Does this hardware have CMMC certification?</h4>
           <p>Island Mountain hardware is commercial off-the-shelf AI infrastructure - it does not carry CMMC certification itself. However, on-premises hardware under your physical and logical access controls directly supports CMMC Level 2 practices for access control, media protection, and system/communications protection. Air-gap capability and network segregation satisfy the most restrictive NIST SP 800-171 controls.</p>
         </div>
         <div class="risk-card">
-          <h4><i class="ri-wifi-off-line"></i> Can it operate air-gapped?</h4>
+          <div class="risk-icon"><img src="images/air-gapped-icon.webp" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
+          <h4>Can it operate air-gapped?</h4>
           <p>Yes. All models are pre-loaded on local NVMe drives before delivery. The inference engine and OpenWebUI interface run entirely locally - zero external network connectivity required for daily operations. Model updates in air-gapped environments use approved removable media transfer. Designed for environments where DFARS, CMMC, and ITAR require complete network isolation.</p>
         </div>
       </div>
