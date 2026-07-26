@@ -101,12 +101,8 @@
   .hw-reveal.is-armed .hw-reveal-copy{opacity:0;}
   .hw-reveal.is-revealed .hw-video{opacity:0.14;}
   .hw-reveal.is-revealed .hw-reveal-copy{opacity:1;}
-  .hw-reveal-title.caret::after,.hw-reveal-body.caret::after{content:"\258f";margin-left:2px;color:#f59e0b;
-    animation:hwCaret 1.05s step-end infinite;}
-  @keyframes hwCaret{50%{opacity:0;}}
   @media (max-width:600px){.hw-reveal-copy{padding:7% 6%;gap:10px;}}
-  @media (prefers-reduced-motion:reduce){.hw-video,.hw-reveal-copy{transition:none;}
-    .hw-reveal-title.caret::after,.hw-reveal-body.caret::after{display:none;}}
+  @media (prefers-reduced-motion:reduce){.hw-video,.hw-reveal-copy{transition:none;}}
   .risk-grid{grid-template-columns:repeat(3,1fr);}
   @media(max-width:1000px){.risk-grid{grid-template-columns:repeat(2,1fr);}}
   @media(max-width:640px){.risk-grid{grid-template-columns:1fr;}}
@@ -524,36 +520,20 @@
   <script defer src="js/main.min.js?v=4"></script>
   <script defer src="js/chat-widget.min.js?v=4"></script>
   <script>
-  /* Stack-clip reveal: play a beat, fade the video to a faint backdrop, then
-     type the copy into the same footprint. Runs once. Text lives in the HTML,
-     so no-JS and reduced-motion readers get it plainly. */
+  /* Stack-clip reveal: play a beat, then cross-fade — the clip drops to a faint
+     backdrop while the copy fades in over it, and stays. Runs once. Text lives
+     in the HTML, so no-JS and reduced-motion readers get it plainly too. */
   (function(){
     var reveal=document.querySelector('[data-hw-reveal]');
     if(!reveal||!('IntersectionObserver'in window)) return;
     var video=reveal.querySelector('video');
-    var segs=[reveal.querySelector('.hw-reveal-title'),reveal.querySelector('.hw-reveal-body')]
-      .filter(Boolean).map(function(el){return {el:el,text:el.textContent};});
-    if(!segs.length) return;
     if(matchMedia('(prefers-reduced-motion:reduce)').matches){reveal.classList.add('is-revealed');return;}
-    segs.forEach(function(s){s.el.textContent='';});
     reveal.classList.add('is-armed');
     var started=false;
-    function type(i){
-      segs.forEach(function(s){s.el.classList.remove('caret');});
-      if(i>=segs.length) return;
-      var el=segs[i].el, txt=segs[i].text, c=0;
-      el.classList.add('caret');
-      (function step(){
-        el.textContent=txt.slice(0,c);
-        if(c++<txt.length){setTimeout(step,30+Math.random()*60);}
-        else{setTimeout(function(){type(i+1);},300);}
-      })();
-    }
     function revealNow(){
       if(started)return; started=true;
       reveal.classList.remove('is-armed');
       reveal.classList.add('is-revealed');
-      setTimeout(function(){type(0);},520);
     }
     var io=new IntersectionObserver(function(entries){
       entries.forEach(function(e){
