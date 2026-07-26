@@ -98,6 +98,16 @@
   @media(max-width:640px){.risk-grid{grid-template-columns:1fr;}}
   .risk-card{text-align:center;}
   .risk-card h4{justify-content:center;}
+  /* This page only: the four process steps as a 2x2 icon-card grid. The shared
+     .au-hm-steps stays a single column on the homepage. Icon + title centred,
+     body copy left-aligned. */
+  .au-hm-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;max-width:900px;}
+  .au-hm-grid .au-hm-step{flex-direction:column;align-items:stretch;gap:10px;padding:24px 24px;text-align:center;}
+  .au-hm-grid .au-hm-icon{width:72px;height:72px;margin:0 auto 2px;display:block;}
+  .au-hm-grid .au-hm-idx{display:block;font-size:1.4rem;line-height:1;}
+  .au-hm-grid .au-hm-step h3{text-align:center;}
+  .au-hm-grid .au-hm-step p{text-align:left;}
+  @media(max-width:680px){.au-hm-grid{grid-template-columns:1fr;max-width:560px;}}
   </style>
   <link rel="canonical" href="https://islandmountain.io/forward-deployed-ai-engineering.html">
   <meta property="og:title" content="Forward Deployed AI Engineering | Island Mountain">
@@ -250,11 +260,11 @@
     <div class="container">
       <span class="au-eyebrow-c au-reveal">How a deployment runs</span>
       <h2 class="au-h2 au-reveal">Nobody can tell you what to buy before knowing what you&#39;d use it for</h2>
-      <div class="au-hm-steps au-stagger">
-        <div class="au-hm-step" style="--i:0"><span class="au-hm-idx">01</span><div><h3>Immerse</h3><p>An intense stretch on-site with senior employees, managers, and founders. We watch the work run: its cadence, its battle rhythms, the workarounds nobody documented.</p></div></div>
-        <div class="au-hm-step" style="--i:1"><span class="au-hm-idx">02</span><div><h3>Discover</h3><p>We map the use-cases and applications already latent in the organization. Most of them nobody has articulated yet, and a few of them are the whole reason to do this.</p></div></div>
-        <div class="au-hm-step" style="--i:2"><span class="au-hm-idx">03</span><div><h3>Configure</h3><p>Basho recommends the stack purchase for what Discovery turned up, then we deploy and configure it together, on-site. Any hardware, any open-weight model, any data server rack, with room to grow.</p></div></div>
-        <div class="au-hm-step" style="--i:3"><span class="au-hm-idx">04</span><div><h3>Onboard</h3><p>He onboards your team to workflows and agentic orchestration built for your vertical and for what you sell, because a deployment nobody can run is a very expensive shelf.</p></div></div>
+      <div class="au-hm-steps au-hm-grid au-stagger">
+        <div class="au-hm-step" style="--i:0"><img class="au-hm-icon" src="images/immerse-icon.webp?v=1" alt="" width="72" height="72" loading="lazy" decoding="async"><span class="au-hm-idx">01</span><h3>Immerse</h3><p>An intense stretch on-site with senior employees, managers, and founders. We watch the work run: its cadence, its battle rhythms, the workarounds nobody documented.</p></div>
+        <div class="au-hm-step" style="--i:1"><img class="au-hm-icon" src="images/discover-icon.webp?v=1" alt="" width="72" height="72" loading="lazy" decoding="async"><span class="au-hm-idx">02</span><h3>Discover</h3><p>We map the use-cases and applications already latent in the organization. Most of them nobody has articulated yet, and a few of them are the whole reason to do this.</p></div>
+        <div class="au-hm-step" style="--i:2"><img class="au-hm-icon" src="images/configure-icon.webp?v=1" alt="" width="72" height="72" loading="lazy" decoding="async"><span class="au-hm-idx">03</span><h3>Configure</h3><p>Basho recommends the stack purchase for what Discovery turned up, then we deploy and configure it together, on-site. Any hardware, any open-weight model, any data server rack, with room to grow.</p></div>
+        <div class="au-hm-step" style="--i:3"><img class="au-hm-icon" src="images/onboard-icon.webp?v=1" alt="" width="72" height="72" loading="lazy" decoding="async"><span class="au-hm-idx">04</span><h3>Onboard</h3><p>He onboards your team to workflows and agentic orchestration built for your vertical and for what you sell, because a deployment nobody can run is a very expensive shelf.</p></div>
       </div>
     </div>
   </section>
