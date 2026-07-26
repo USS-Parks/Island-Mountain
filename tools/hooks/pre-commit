@@ -92,5 +92,20 @@ if [ -x "$SLOP_SCAN" ]; then
   "$SLOP_SCAN" staged || echo "WARN   no-slop findings (loosened to warn-only; not blocking)" >&2
 fi
 
+# --- Missing-asset gate (CI parity): the post-commit tree must satisfy the same
+#     local-resource crawl CI runs. Runs tools/build-pages-artifact.py verbatim
+#     against a materialization of the index; untracked working-tree files can't
+#     green a reference. Exit 2 = genuine findings (block); anything else warns
+#     and passes — tooling must never clap a clean commit (fail-safe). ---
+ASSET_GATE="$(git rev-parse --show-toplevel)/tools/missing-asset-gate.py"
+if [ -f "$ASSET_GATE" ] && [ -n "$PYTHON_BIN" ]; then
+  "$PYTHON_BIN" "$ASSET_GATE"
+  case $? in
+    0) ;;
+    2) echo "BLOCK  staged tree fails the CI resource crawl above — stage assets with (or before) the markup referencing them." >&2; FAIL=1 ;;
+    *) echo "WARN   missing-asset gate skipped (tooling, not findings); CI remains the backstop." >&2 ;;
+  esac
+fi
+
 [ "$FAIL" -eq 0 ] || { echo "pre-commit: canon checks failed (§I.2). Fix, or override with --no-verify (discouraged)." >&2; exit 1; }
 exit 0
