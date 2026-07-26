@@ -418,8 +418,8 @@ ffmpeg -y -sseof -0.3 -i video/name.mp4 -vframes 1 \
       <div class="glab"><span>C</span> Build, delivery &amp; deploy</div>
       <div class="howto"><div class="hh"><h4>C10 · CSS change delivery - the gotcha</h4>
         <p>Pages load <code>style.min.css</code> and there is <b>no build step</b>. Every change goes in <em>both</em> <code>style.css</code> and <code>style.min.css</code>, then bump the cache key everywhere.</p></div>
-        <pre><code>grep -rl 'style.min.css?v=10' --include=*.html . \
-  | xargs sed -i 's#style.min.css?v=10#style.min.css?v=10#g'</code></pre></div>
+        <pre><code>grep -rl 'style.min.css?v=11' --include=*.html . \
+  | xargs sed -i 's#style.min.css?v=11#style.min.css?v=11#g'</code></pre></div>
       <div class="howto"><div class="hh"><h4>C11 · Deploy &amp; verify</h4>
         <p>Push to <code>main</code> → the serialized <code>pages.yml</code> workflow. Watch the run to green; don't push and hope. Note: this session's egress blocks fetching islandmountain.io - verify via the GitHub API/tree instead.</p></div></div>
     </div>
