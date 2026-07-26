@@ -83,16 +83,30 @@
   .range-copy p{color:#e9eff8;font-size:1.05rem;line-height:1.85;text-shadow:0 1px 10px rgba(0,0,0,0.65);margin:0 0 20px;}
   .range-copy p:last-child{margin-bottom:0;}
   .hw-video-section{padding-top:0;}
-  /* Both clips carry preload="none", so lock the box to the source ratio.
-     Without it the element falls back to 300x150 and renders as a letterbox
-     sliver until the first frame arrives. Deployment loop is 1664x1248,
-     the stack reveal is 1280x720. */
-  .hw-shot,.hw-video{max-width:940px;margin:0 auto;border-radius:18px;overflow:hidden;
-    box-shadow:0 24px 60px rgba(0,0,0,0.45);}
-  .hw-shot{max-width:660px;margin-bottom:32px;}
-  .hw-shot video,.hw-video video{display:block;width:100%;height:auto;object-fit:cover;background:#000;}
-  .hw-shot video{aspect-ratio:4/3;}
-  .hw-video video{aspect-ratio:16/9;}
+  /* Stack clip (1280x720), 30% larger, sharing one footprint with the typed
+     copy (grid-stacked so the box is as tall as whichever is taller). The clip
+     plays a beat, then fades to a faint backdrop while the copy types in over
+     it. preload="none" so the box is ratio-locked, no 300x150 sliver. */
+  .hw-video-section .container{max-width:1270px;}
+  .hw-reveal{position:relative;display:grid;max-width:1222px;margin:0 auto;}
+  .hw-video{grid-area:1/1;align-self:center;border-radius:18px;overflow:hidden;
+    box-shadow:0 24px 60px rgba(0,0,0,0.45);transition:opacity .9s ease;}
+  .hw-video video{display:block;width:100%;height:auto;object-fit:cover;background:#000;aspect-ratio:16/9;}
+  .hw-reveal-copy{grid-area:1/1;display:flex;flex-direction:column;justify-content:center;gap:14px;
+    padding:6% 8%;text-align:left;transition:opacity .8s ease;pointer-events:none;
+    text-shadow:0 2px 14px rgba(0,0,0,0.72),0 1px 3px rgba(0,0,0,0.85);}
+  .hw-reveal-title{margin:0;font-family:Space Grotesk,Inter,system-ui,sans-serif;font-weight:700;color:#fff;
+    font-size:clamp(1.5rem,3.2vw,2.4rem);line-height:1.15;}
+  .hw-reveal-body{margin:0;color:#e7eefb;font-size:clamp(1rem,1.6vw,1.3rem);line-height:1.7;max-width:46ch;}
+  .hw-reveal.is-armed .hw-reveal-copy{opacity:0;}
+  .hw-reveal.is-revealed .hw-video{opacity:0.14;}
+  .hw-reveal.is-revealed .hw-reveal-copy{opacity:1;}
+  .hw-reveal-title.caret::after,.hw-reveal-body.caret::after{content:"\258f";margin-left:2px;color:#f59e0b;
+    animation:hwCaret 1.05s step-end infinite;}
+  @keyframes hwCaret{50%{opacity:0;}}
+  @media (max-width:600px){.hw-reveal-copy{padding:7% 6%;gap:10px;}}
+  @media (prefers-reduced-motion:reduce){.hw-video,.hw-reveal-copy{transition:none;}
+    .hw-reveal-title.caret::after,.hw-reveal-body.caret::after{display:none;}}
   .risk-grid{grid-template-columns:repeat(3,1fr);}
   @media(max-width:1000px){.risk-grid{grid-template-columns:repeat(2,1fr);}}
   @media(max-width:640px){.risk-grid{grid-template-columns:1fr;}}
@@ -271,22 +285,23 @@
 
   <section class="section section-dark hw-video-section">
     <div class="container">
-      <div class="hw-video fade-in">
-        <video data-lazy muted loop playsinline preload="none"
-               aria-label="An Island Mountain server stack, exploded to its components">
-          <source src="images/summit-stack-explosion.mp4" type="video/mp4">
-        </video>
+      <div class="hw-reveal fade-in" data-hw-reveal>
+        <div class="hw-video">
+          <video data-lazy muted loop playsinline preload="none"
+                 aria-label="An Island Mountain server stack, exploded to its components">
+            <source src="images/summit-stack-explosion.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="hw-reveal-copy">
+          <h2 class="hw-reveal-title">How we decide configuration:</h2>
+          <p class="hw-reveal-body">There&#39;s no catalog of hardware on this website. Nobody should be telling you what to buy before knowing what your organization would use it for, so the recommendation gets made after Discovery. Here&#39;s what has to be on the table:</p>
+        </div>
       </div>
     </div>
   </section>
 
   <section class="section section-darker specs-bg">
     <div class="container">
-      <div class="section-header fade-in">
-        <span class="section-badge">Before Anyone Names Hardware</span>
-        <h2>How a configuration gets decided</h2>
-        <p>There&#39;s no catalog on this page and there isn&#39;t one anywhere else either. Nobody can tell you what to buy before knowing what you&#39;d use it for, so the recommendation gets made once, for you, after Discovery. Here&#39;s what has to be on the table before it can be made at all.</p>
-      </div>
       <div class="card-grid card-grid-3 fade-in">
         <div class="card beam-card" style="--i:0">
           <h3>Whose desk the work runs through</h3>
@@ -508,6 +523,49 @@
   <script defer src="js/lazy-video.js"></script>
   <script defer src="js/main.min.js?v=4"></script>
   <script defer src="js/chat-widget.min.js?v=4"></script>
+  <script>
+  /* Stack-clip reveal: play a beat, fade the video to a faint backdrop, then
+     type the copy into the same footprint. Runs once. Text lives in the HTML,
+     so no-JS and reduced-motion readers get it plainly. */
+  (function(){
+    var reveal=document.querySelector('[data-hw-reveal]');
+    if(!reveal||!('IntersectionObserver'in window)) return;
+    var video=reveal.querySelector('video');
+    var segs=[reveal.querySelector('.hw-reveal-title'),reveal.querySelector('.hw-reveal-body')]
+      .filter(Boolean).map(function(el){return {el:el,text:el.textContent};});
+    if(!segs.length) return;
+    if(matchMedia('(prefers-reduced-motion:reduce)').matches){reveal.classList.add('is-revealed');return;}
+    segs.forEach(function(s){s.el.textContent='';});
+    reveal.classList.add('is-armed');
+    var started=false;
+    function type(i){
+      segs.forEach(function(s){s.el.classList.remove('caret');});
+      if(i>=segs.length) return;
+      var el=segs[i].el, txt=segs[i].text, c=0;
+      el.classList.add('caret');
+      (function step(){
+        el.textContent=txt.slice(0,c);
+        if(c++<txt.length){setTimeout(step,14+Math.random()*38);}
+        else{setTimeout(function(){type(i+1);},300);}
+      })();
+    }
+    function revealNow(){
+      if(started)return; started=true;
+      reveal.classList.remove('is-armed');
+      reveal.classList.add('is-revealed');
+      setTimeout(function(){type(0);},520);
+    }
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(!e.isIntersecting)return;
+        if(video){var p=video.play();if(p&&p.catch)p.catch(function(){});}
+        io.disconnect();
+        setTimeout(revealNow,4000);   /* let the clip play a beat first */
+      });
+    },{threshold:0.5});
+    io.observe(reveal);
+  })();
+  </script>
 
 </body>
 </html>
