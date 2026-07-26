@@ -30,7 +30,7 @@
   <meta name="author" content="Basho Parks">
   <meta name="date" content="2026-06-06">
   <title>On-Premises AI for Energy &amp; Utilities | NERC CIP-013</title>
-  <meta name="description" content="RTX PRO 6000 Blackwell hardware for NERC CIP and IEC 62443 environments. Grid analytics and compliance analysis entirely on-premises. Air-gap capable.">
+  <meta name="description" content="On-premises AI for energy and utilities: agents, orchestration, and models built around your grid and run on your own hardware. Operational data never leaves the network. Air-gap capable, NERC CIP and IEC 62443 aligned.">
   <link rel="icon" type="image/x-icon" href="favicon.ico?v=2">
   <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png?v=2">
   <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png?v=2">
@@ -62,7 +62,7 @@
 
   <!-- Open Graph -->
   <meta property="og:title" content="On-Premises AI for Energy &amp; Utilities | NERC CIP-013">
-  <meta property="og:description" content="RTX PRO 6000 Blackwell hardware for NERC CIP and IEC 62443 environments. Grid analytics and compliance analysis entirely on-premises. Air-gap capable.">
+  <meta property="og:description" content="On-premises AI for energy and utilities: agents, orchestration, and models built around your grid and run on your own hardware. Operational data never leaves the network. Air-gap capable, NERC CIP and IEC 62443 aligned.">
   <meta property="og:url" content="https://islandmountain.io/energy-utilities.html">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Island Mountain">
@@ -71,7 +71,7 @@
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="On-Premises AI for Energy &amp; Utilities | NERC CIP-013">
-  <meta name="twitter:description" content="RTX PRO 6000 Blackwell hardware for NERC CIP and IEC 62443 environments. Grid analytics and compliance analysis entirely on-premises. Air-gap capable.">
+  <meta name="twitter:description" content="On-premises AI for energy and utilities: agents, orchestration, and models built around your grid and run on your own hardware. Operational data never leaves the network. Air-gap capable, NERC CIP and IEC 62443 aligned.">
   <meta name="twitter:image" content="https://islandmountain.io/images/hero-energy-utilities.webp">
 
   <!-- FAQPage Schema -->
@@ -85,7 +85,7 @@
         "name": "Does cloud AI processing of operational data violate NERC CIP requirements?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes. Cloud AI creates external routable connections that must be documented in your Electronic Security Perimeter under CIP-005, subjected to access management requirements, and continuously monitored. Operational data transmitted to cloud AI may qualify as BES Cyber System Information (BCSI) under CIP-011, triggering additional protection requirements. On-premises AI hardware from Island Mountain operates entirely within the Electronic Security Perimeter. No external connections. No CIP-005 complications. No BCSI exposure to third parties. NVIDIA RTX PRO 6000 Blackwell servers process operational data air-gapped inside your facility."
+          "text": "Yes. Cloud AI creates external routable connections that must be documented in your Electronic Security Perimeter under CIP-005, subjected to access management requirements, and continuously monitored. Operational data transmitted to cloud AI may qualify as BES Cyber System Information (BCSI) under CIP-011, triggering additional protection requirements. On-premises AI hardware from Island Mountain operates entirely within the Electronic Security Perimeter. No external connections. No CIP-005 complications. No BCSI exposure to third parties. Your own hardware processes operational data air-gapped inside your facility."
         }
       },
       {
@@ -93,7 +93,7 @@
         "name": "What energy sector workflows can run on Island Mountain air-gapped AI hardware?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Island Mountain hardware supports predictive maintenance analysis, grid operations documentation, NERC CIP compliance reporting, pipeline monitoring data analysis, outage response documentation, and regulatory filing drafting. The system runs DeepSeek V4-Flash for complex operational analysis and Llama 4 Scout for general documentation tasks. All processing occurs on NVIDIA RTX PRO 6000 Blackwell GPUs inside your facility, fully air-gapped from external networks."
+          "text": "Island Mountain supports outage and incident reporting, grid and asset documentation, NERC CIP compliance evidence, maintenance and field-report synthesis, and regulatory filing drafting. The system runs current open-weight models for operational analysis and documentation, and where the work calls for it, custom models Island Mountain builds for your utility. All processing occurs on your own hardware inside your facility, fully air-gapped from external networks."
         }
       },
       {
@@ -101,7 +101,7 @@
         "name": "How does on-premises AI cost compare to cloud alternatives for a utility company?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Cloud AI costs $50 to $200 per user per month, totaling $15,000 to $60,000 per year for 25 users - plus significant compliance costs for documenting and securing the external connection under NERC CIP. An Island Mountain two-card build is a one-time purchase, quoted to your workload, with no ongoing compliance overhead for the AI connection itself. Only electricity costs apply (~$100-$200/month). The system eliminates the external routable path entirely."
+          "text": "Cloud AI costs $50 to $200 per user per month, totaling $15,000 to $60,000 per year for 25 users - plus significant compliance costs for documenting and securing the external connection under NERC CIP. An Island Mountain build is a one-time purchase, sized and quoted to your workload, with no ongoing compliance overhead for the AI connection itself. Only electricity costs apply (~$100-$200/month). The system eliminates the external routable path entirely."
         }
       },
       {
@@ -129,41 +129,15 @@
   }
   </script>
 
-  <!-- Product Schema -->
+  <!-- Service Schema -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Product",
-    "@id": "https://islandmountain.io/forward-deployed-ai-engineering.html",
-    "name": "Island Mountain two-card build \u2014 Air-Gapped AI Server for Energy & Utilities",
-    "description": "Pre-built AI inference server with 2x NVIDIA RTX PRO 6000 Blackwell 96GB GPUs. Air-gap capable for NERC CIP and IEC 62443 environments. Includes DeepSeek V4-Flash, Llama 4 Scout, and OpenWebUI.",
-    "brand": {
-      "@type": "Brand",
-      "name": "Island Mountain"
-    },
-    "category": "Air-Gapped AI Inference Hardware for Critical Infrastructure",
-    "additionalProperty": [
-      {
-        "@type": "PropertyValue",
-        "name": "GPU Model",
-        "value": "NVIDIA RTX PRO 6000 Blackwell 96GB (2x two-card build / 4x four-card build)"
-      },
-      {
-        "@type": "PropertyValue",
-        "name": "Total VRAM",
-        "value": "192GB-384GB"
-      },
-      {
-        "@type": "PropertyValue",
-        "name": "Pre-Installed Models",
-        "value": "DeepSeek V4-Flash (FP8), Llama 4 Scout, DeepSeek R1 70B Distill or Qwen 3 72B (buyer selects)"
-      },
-      {
-        "@type": "PropertyValue",
-        "name": "Interface",
-        "value": "OpenWebUI (browser-based)"
-      }
-    ]
+    "@type": "Service",
+    "serviceType": "On-premises AI configuration and deployment for energy and utility operators",
+    "provider": { "@type": "Organization", "name": "Island Mountain", "url": "https://islandmountain.io" },
+    "areaServed": "US",
+    "description": "Island Mountain builds the agents, orchestration, and custom models that run a utility's work on its own hardware. Current open-weight models served on-site, custom reasoning models and small language models built to the utility's ontology, governed by the Woven Security Fabric. Operational data stays on the network, air-gap capable. Configured after discovery, with on-site onboarding, SOP development, and tiered support."
   }
   </script>
 </head>
@@ -212,7 +186,7 @@
     <div class="hero-inner">
       <span class="hero-badge">Local AI for Energy &amp; Utilities</span>
       <h1>Critical Infrastructure Data Doesn't Leave the Facility. Period.</h1>
-      <p>NERC CIP and IEC 62443 exist because the bulk electric system cannot tolerate data exposure. Cloud AI processing of operational technology data creates structural compliance violations. On-premises AI for energy companies eliminates the attack surface entirely.</p>
+      <p>NERC CIP and IEC 62443 exist because the bulk electric system can&#39;t tolerate data walking out the door. We&#39;ll build the whole system inside your perimeter instead: the agents, the orchestration, and the models that carry your utility&#39;s real work, and operational data never leaves your network.</p>
     </div>
   </section>
 
@@ -265,13 +239,30 @@
         <div class="card">
           <div class="card-icon-im"><img src="images/server-rack-icon.webp?v=3" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
           <h3>A System You Own</h3>
-          <p>Physical server with NVIDIA RTX PRO 6000 Blackwell GPUs in your facility, running on your power, inside your electronic security perimeter. You own it outright. No cloud dependency.</p>
+          <p>A physical server in your facility, running on your power, inside your electronic security perimeter. You own it outright. Not a hosted service with &quot;local&quot; branding on someone else&#39;s box.</p>
         </div>
         <div class="card">
           <div class="card-icon-im"><img src="images/air-gapped-icon.webp?v=3" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
           <h3>Air-Gap Capable</h3>
-          <p>Air-gap GPU server energy configuration with complete network isolation. No external connections of any kind. Models loaded and verified before it lands. Zero attack surface expansion.</p>
+          <p>Complete network isolation, no external connections of any kind. The models are loaded and verified before it lands, so the system works the day it&#39;s racked. Zero attack surface expansion.</p>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- We build it around the utility -->
+  <section class="section section-darker">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-badge">The Build</span>
+        <h2>We Build It Around How Your Utility Runs</h2>
+      </div>
+      <div class="fade-in content-narrow">
+        <p class="body-lg">A general model knows the grid in the abstract and nothing about the one you run. It&#39;s never opened your asset register, doesn&#39;t know your outage codes, can&#39;t tell a real NERC evidence binder from a textbook diagram. We build for the utility you operate, not the abstraction.</p>
+        <p class="body-lg">Island Mountain builds the agents and the orchestration that carry the work stacking up between shifts: outage and incident reporting, regulatory filings, asset and maintenance documentation, field-report synthesis, the compliance evidence an auditor is going to ask for. It runs on current open-weight models like Kimi K3, ZAI GLM 5.2, Qwen 3.8+, and Nous Hermes 4, served through Ollama or vLLM behind an OpenWebUI front end, or whatever open weights fit the task. All of it governed by our own agentic orchestration and the <a href="lamprey-woven-security-governance.html" class="clr-copper">Woven Security Fabric</a>, so every action carries an identity, an approval, and a receipt, and the credentials expire when the task is done. Operational data never leaves your network to make any of it happen.</p>
+        <p class="body-lg">When the work needs a model that speaks your utility, we&#39;ll build one. Reasoning models and small language models from scratch, trained to orbit your utility&#39;s ontology: your grid and asset map, your maintenance procedures, your regulatory calendar. It learns your terminology and your cadence, not a generic operator&#39;s.</p>
+        <p class="body-lg">It air-gaps completely for the OT and critical-infrastructure work that demands the separation, and reaches out only when a task genuinely needs to. You decide, workflow by workflow.</p>
+        <p class="body-lg">Then we hand it back. On-site onboarding, SOPs your operators can follow at 3 a.m., the keys dropped into your team&#39;s hands so they run and rework the workflows without a phone call. Want the upkeep off your OT staff&#39;s plate? We offer tiered support sized to the utility, and we plug in wherever that&#39;s easiest. This is your utility&#39;s legacy. We build it alongside you, and we won&#39;t call it done until your people can run it without us.</p>
       </div>
     </div>
   </section>
@@ -282,7 +273,7 @@
       <div class="section-header fade-in">
         <span class="section-badge">Workflows</span>
         <h2>Operational Workflows a Deployment Supports</h2>
-        <p>The same AI capabilities you want from cloud services, running on hardware that doesn't create compliance exposure.</p>
+        <p>These aren&#39;t chat prompts. They&#39;re agentic workflows the orchestration runs start to finish, each step carrying its own identity and receipt, and no operational data leaves your network.</p>
       </div>
       <div class="card-grid card-grid-3 fade-in">
         <div class="card">
@@ -318,34 +309,33 @@
       </div>
       <div class="comparison-note fade-in mt-32">
         <i class="ri-information-line"></i>
-        Island Mountain hardware runs general-purpose large language models. These are not utility-specific fine-tuned models. They do not include SCADA integration, real-time grid management capabilities, OMS/DMS connectors, or energy market trading systems. The models are strong at reasoning, analysis, and drafting - but they are tools for energy professionals, not control systems.
+        The system reasons, drafts, and carries the steps between. It doesn&#39;t plug into SCADA, run real-time grid management, or wire into your OMS/DMS or market systems. An operator still owns the decisions, same as it&#39;s always been. What we build is a tool for your people, not a control system.
       </div>
     </div>
   </section>
 
-  <!-- Model Selection -->
+  <!-- Which Models for What -->
   <section class="section section-dark">
     <div class="container">
       <div class="section-header fade-in">
-        <span class="section-badge">Model Selection</span>
-        <h2>Which Models Work Best for Energy Sector Tasks</h2>
-        <p>NVIDIA RTX PRO 6000 Blackwell SCADA-ready AI infrastructure running open-source models on your facility network. A local LLM grid management and operations workflow with zero cloud dependency. Private AI for power plants and utilities under your operational control.</p>
+        <span class="section-badge">Models</span>
+        <h2>The Models We Run, and the Ones We Build</h2>
       </div>
       <div class="card-grid card-grid-3 fade-in">
         <div class="card text-center">
           <div class="card-icon-im"><img src="images/local-ai-inference-icon.webp?v=3" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
-          <h3>DeepSeek V4-Flash</h3>
-          <p><strong>Best for:</strong> Complex maintenance analysis, multi-source operational data synthesis, compliance documentation review, long-context regulatory reporting tasks. 284B parameters with mixture-of-experts architecture. Local DeepSeek for utilities runs at FP8 on the two-card configuration.</p>
+          <h3>Current Open Weights</h3>
+          <p>Kimi K3, ZAI GLM 5.2, Qwen 3.8+, Nous Hermes 4, or whatever&#39;s carrying the load the month we deploy, served through Ollama or vLLM behind OpenWebUI. The open-weight field moves quarter to quarter, and our answer moves with it. We run what fits the task in front of us, not last year&#39;s benchmark darling.</p>
         </div>
         <div class="card text-center">
           <div class="card-icon-im"><img src="images/local-ai-inference-icon.webp?v=3" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
-          <h3>Llama 4 Scout</h3>
-          <p><strong>Best for:</strong> General documentation, shift reports, correspondence, compliance narratives, internal communications. Strong general-purpose model that produces clean, structured prose quickly.</p>
+          <h3>Built to Orbit Your Grid</h3>
+          <p>When nothing off the shelf speaks your utility&#39;s language, we build it. Reasoning models and small language models from scratch, trained on your ontology: your asset map, your maintenance procedures, the way your crews write up a job. Compact, precise, and nobody else&#39;s.</p>
         </div>
         <div class="card text-center">
           <div class="card-icon-im"><img src="images/local-ai-inference-icon.webp?v=3" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
-          <h3>R1 70B Distill or Qwen 3 72B</h3>
-          <p><strong>Best for:</strong> Chain-of-thought incident analysis and compliance reasoning (R1 Distill) or high-throughput operational drafting (Qwen 3 72B). Chosen during the workflow study, and swappable afterwards. Both run on the same VRAM budget.</p>
+          <h3>Governed, Not Just Installed</h3>
+          <p>Nothing runs unsupervised. Our agentic orchestration and the Woven Security Fabric wrap every model call: access scoped to the task, credentials that expire, a receipt an auditor can read. Air-gapped where the OT side demands it, cloud-connected only where a task earns it.</p>
         </div>
       </div>
     </div>
@@ -365,7 +355,7 @@
             <tr>
               <th></th>
               <th>Cloud AI</th>
-              <th>Island Mountain two-card build</th>
+              <th>Island Mountain build</th>
             </tr>
           </thead>
           <tbody>
@@ -419,7 +409,7 @@
       </div>
       <div class="comparison-note fade-in mt-20">
         <i class="ri-information-line"></i>
-        Cloud estimates based on AI platforms charging $50-$200/user/month for 25 users. Compliance costs for cloud AI in NERC CIP environments (documentation, auditing, ESP modifications) often exceed the subscription cost itself. For maximum throughput, the NVIDIA RTX PRO 6000 Blackwell for grid operations tier offers 96GB GDDR7 ECC memory per GPU, quoted on request.
+        Cloud estimates based on AI platforms charging $50-$200/user/month for 25 users. Compliance costs for cloud AI in NERC CIP environments (documentation, auditing, ESP modifications) often exceed the subscription cost itself. For higher concurrent usage, the build is sized to the load and quoted on request.
       </div>
     </div>
   </section>
@@ -503,12 +493,12 @@
         <div class="risk-card">
           <div class="risk-icon"><img src="images/agentic-orchestration-icon.webp?v=3" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
           <h4>What energy workflows does this hardware support?</h4>
-          <p>Island Mountain hardware supports predictive maintenance analysis, grid operations documentation, NERC CIP compliance reporting, pipeline monitoring data analysis, outage response documentation, and regulatory filing drafting. The system runs DeepSeek V4-Flash for complex operational analysis and Llama 4 Scout for general documentation tasks. All processing occurs air-gapped on NVIDIA RTX PRO 6000 Blackwell GPUs inside your facility.</p>
+          <p>Island Mountain supports outage and incident reporting, grid and asset documentation, NERC CIP compliance evidence, maintenance and field-report synthesis, and regulatory filing drafting. The system runs current open-weight models for operational analysis and documentation, and custom models we build for your utility. All processing occurs air-gapped on your own hardware inside your facility.</p>
         </div>
         <div class="risk-card">
           <div class="risk-icon"><img src="images/ai-cost-comparison-icon.webp?v=3" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
           <h4>How does the cost compare for a 25-person operations team?</h4>
-          <p>Cloud AI costs $50 to $200 per user per month, totaling $15,000 to $60,000 per year for 25 users - plus significant compliance costs for documenting and securing the external connection under NERC CIP. An Island Mountain two-card build is a one-time purchase, quoted to your workload, with no ongoing compliance overhead. The system eliminates the external routable path entirely.</p>
+          <p>Cloud AI costs $50 to $200 per user per month, totaling $15,000 to $60,000 per year for 25 users - plus significant compliance costs for documenting and securing the external connection under NERC CIP. An Island Mountain build is a one-time purchase, sized and quoted to your workload, with no ongoing compliance overhead. The system eliminates the external routable path entirely.</p>
         </div>
         <div class="risk-card">
           <div class="risk-icon"><img src="images/ic-skills-teacher.webp?v=3" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
@@ -533,7 +523,7 @@
 
   <!-- AEO Summary -->
   <div style="border-left:3px solid var(--copper);padding:16px 20px;margin:32px 0;background:rgba(217,119,6,0.05);border-radius:0 8px 8px 0;">
-  <strong>Summary:</strong> Island Mountain builds air-gapped AI inference hardware for energy companies and utilities operating under NERC CIP and IEC 62443 requirements. NVIDIA RTX PRO 6000 Blackwell servers process operational data entirely within the facility perimeter - no cloud transmission, no electronic security perimeter breach, no third-party access to critical infrastructure data. Critical infrastructure AI systems are quoted to workload and headcount, with complete network isolation capability.
+  <strong>Summary:</strong> Island Mountain builds the agents, orchestration, and custom models that run a utility&#39;s work on its own hardware, air-gapped, under NERC CIP and IEC 62443 requirements. Operational data stays inside the facility perimeter: no cloud transmission, no electronic security perimeter breach, no third-party access to critical infrastructure data. Deployments are sized and quoted to workload, with complete network isolation capability.
   <p class="body-md" style="margin-top:16px;">Related: <a href="air-gapped-ai-inference.html" class="clr-copper">Can You Run AI Without Internet Access?</a></p>
   </div>
 
@@ -632,7 +622,7 @@
         <a href="contact.html">Start a Scoping Call</a>
       </div>
 
-      <p class="au-legal">Island Mountain AI Inc. provides forward-deployed AI engineering services and designs, integrates, and deploys on-premises AI inference systems. Nothing on this site constitutes an offer or sale of securities, or legal, compliance, tax, or investment advice. Compliance with HIPAA, ITAR, DFARS / CMMC, OCAP, and other frameworks depends on your organization's deployment, configuration, policies, and controls; on-premises hardware is one component of a compliant program, not a certification. Product specifications, model availability, and lead times are subject to change. Pricing is quoted by sales on a per-engagement basis. NVIDIA, RTX, and Blackwell, and all other marks are the property of their respective owners.</p>
+      <p class="au-legal">Island Mountain AI Inc. provides forward-deployed AI engineering services and designs, integrates, and deploys on-premises AI inference systems. Nothing on this site constitutes an offer or sale of securities, or legal, compliance, tax, or investment advice. Compliance with HIPAA, ITAR, DFARS / CMMC, OCAP, and other frameworks depends on your organization's deployment, configuration, policies, and controls; on-premises hardware is one component of a compliant program, not a certification. Product specifications, model availability, and lead times are subject to change. Pricing is quoted by sales on a per-engagement basis. All product names and marks are the property of their respective owners.</p>
 
       <div class="footer-bottom flex-col-center-gap">
         <p>&copy; 2026 Island Mountain AI Inc. All rights reserved. Hand-built in California by <span class="clr-copper">Basho Parks</span>.</p>
