@@ -23,7 +23,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png?v=2">
   <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png?v=2">
   <link rel="stylesheet" href="css/style.min.css?v=6">
-  <link rel="stylesheet" href="css/aurora.min.css?v=10">
+  <link rel="stylesheet" href="css/aurora.min.css?v=11">
   <link rel="stylesheet" href="css/card-nodes.min.css?v=3">
   <link rel="stylesheet" href="css/blog-scroller.min.css?v=3">
   <link rel="stylesheet" href="icons/remixicon.css" media="print" onload="this.media='all'">
@@ -35,17 +35,17 @@
   <style>
   @font-face{font-family:'Inter';font-style:normal;font-weight:400 800;font-display:swap;src:url('fonts/inter-latin.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
   @font-face{font-family:'Space Grotesk';font-style:normal;font-weight:300 700;font-display:swap;src:url('fonts/space-grotesk-latin.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
-  /* Card icons use the canonical enlarged size from css/aurora.min.css?v=10 (.au-ic--xl = 104px). No inline size override. */
+  /* Card icons use the canonical enlarged size from css/aurora.min.css?v=11 (.au-ic--xl = 104px). No inline size override. */
   /* Uniform icon rendering (matches the Woven page): normalize card icons to one white + one glow. */
   .au-card .au-ic img{ filter: brightness(0) invert(1) drop-shadow(0 0 5px rgba(200,220,255,.55)); }
 
   /* Homepage-only: drop the magenta band on the spotlight and the gold aura on
      The Sovereign Stack statement, leaving the site's neutral dark background. Overrides the
-     !important rules in css/aurora.min.css?v=10 (this inline block loads after that stylesheet). */
+     !important rules in css/aurora.min.css?v=11 (this inline block loads after that stylesheet). */
   .au-spotlight{ background:linear-gradient(180deg, var(--au-ink), var(--au-slate)) !important; }
   .au-statement{ background:linear-gradient(180deg,#0e1626,#0a0f1c) !important; }
 
-  /* Verticals ("who it's for") layout - overrides the base .au-vgrid in css/aurora.min.css?v=10.
+  /* Verticals ("who it's for") layout - overrides the base .au-vgrid in css/aurora.min.css?v=11.
      Desktop: 4 across, broken out full-bleed to fill the screen on both sides.
      Tablet: 2 up, back inside the container. Phone: one stacked card per row. */
   .au-verticals{ overflow-x:clip; }
