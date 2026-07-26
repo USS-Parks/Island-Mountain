@@ -98,7 +98,7 @@
   .cardgrid{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:16px}
   .imcard{border:1px solid var(--line); border-radius:var(--radius-lg); background:var(--card); padding:26px 22px; text-align:center; position:relative; isolation:isolate; overflow:hidden}
   .imcard > *{position:relative; z-index:1}
-  .imcard img.ic{width:96px; height:96px; object-fit:contain; margin:2px auto 14px; display:block}
+  .imcard img.ic{width:96px; height:96px; object-fit:contain; filter:brightness(0) invert(1) drop-shadow(0 0 5px rgba(200,220,255,.55)); margin:2px auto 14px; display:block}
   .imcard h4{font-size:1.05rem; font-weight:700; margin-bottom:8px}
   .imcard p{font-size:.86rem; color:var(--muted); margin:0 auto; max-width:26ch}
 
