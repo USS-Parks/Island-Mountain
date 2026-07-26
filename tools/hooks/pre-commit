@@ -37,6 +37,16 @@ while IFS= read -r -d '' f; do
     if LC_ALL=C grep -Eq -- '-----BEGIN ([A-Z ]+ )?PRIVATE KEY-----|hv[sb]\.[A-Za-z0-9_-]{20,}' "$f"; then
       echo "BLOCK  possible private key / vault token: $f" >&2; FAIL=1
     fi
+    # --- Pricing posture (Basho ruling 2026-07-10): no IM selling-price figure goes
+    #     public. High-confidence markers only — retired tier names and selling-price
+    #     language near a dollar figure. Cloud/competitor/fine figures carry no marker
+    #     and never match; COGS/margin figures on the investor page carry no marker. ---
+    case "${f,,}" in
+      *.html|*.htm)
+        if LC_ALL=C grep -Eq -- '\b(Summit|Landfall|Citadel|ASP|MSRP|[Ll]ist [Pp]rice)\b[^<]{0,60}\$[0-9]' "$f"; then
+          echo "BLOCK  IM selling-price figure on a public page (pricing posture 2026-07-10): $f" >&2; FAIL=1
+        fi ;;
+    esac
     # --- WARN-only (FP-prone on a content site) ---
     if LC_ALL=C grep -Eq -- 'AKIA[0-9A-Z]{16}' "$f"; then
       echo "WARN   AWS-key-shaped string (example creds ok): $f" >&2

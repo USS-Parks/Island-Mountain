@@ -13,6 +13,11 @@ while IFS= read -r f; do
          echo "BLOCK  missing </html> (truncated full document): $f" >&2; FAIL=1
        fi ;;
   esac
+  # Pricing posture (2026-07-10): no IM selling-price figure publishes. Markers only —
+  # tier names / ASP / MSRP / list price near $N; unmarked cloud+competitor figures pass.
+  if LC_ALL=C grep -Eq -- '\b(Summit|Landfall|Citadel|ASP|MSRP|[Ll]ist [Pp]rice)\b[^<]{0,60}\$[0-9]' "$f"; then
+    echo "BLOCK  IM selling-price figure on a public page (pricing posture 2026-07-10): $f" >&2; FAIL=1
+  fi
 done < <(git ls-files '*.html')
 
 # Structural HTML/navigation gate across the complete tracked site.
