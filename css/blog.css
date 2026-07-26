@@ -1,3 +1,42 @@
+/* ------------------------------------------------------------------
+   Post background. Every article that loads this sheet gets the blog
+   hero fixed behind it, so a new post inherits it by existing rather
+   than by remembering to paste a markup block. Mirrors .hero-photo in
+   style.css: same fixed cover, same veil, folded into one layer.
+   ------------------------------------------------------------------ */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(15, 23, 42, 0.25) 0%,
+      rgba(15, 23, 42, 0.05) 30%,
+      rgba(15, 23, 42, 0.05) 50%,
+      rgba(15, 23, 42, 0.4) 75%,
+      rgba(15, 23, 42, 0.9) 100%
+    ),
+    url('../images/hero-blog.webp?v=3') center 30% / cover no-repeat;
+}
+
+@media (max-width: 600px) {
+  body::before {
+    background-image:
+      linear-gradient(
+        180deg,
+        rgba(15, 23, 42, 0.25) 0%,
+        rgba(15, 23, 42, 0.05) 30%,
+        rgba(15, 23, 42, 0.05) 50%,
+        rgba(15, 23, 42, 0.4) 75%,
+        rgba(15, 23, 42, 0.9) 100%
+      ),
+      url('../images/hero-blog-mobile.webp?v=3');
+  }
+}
+
 .breadcrumb {
   font-size: 0.85rem;
   color: var(--text-muted);
