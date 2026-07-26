@@ -30,7 +30,7 @@
   <meta name="author" content="Basho Parks">
   <meta name="date" content="2026-06-06">
   <title>Local AI Servers for Education | FERPA &amp; COPPA Ready</title>
-  <meta name="description" content="Local AI for education, configured after Discovery rather than picked from a catalog. Campus-controlled inference aligns with FERPA's school official exception. Air-gappable. No cloud required.">
+  <meta name="description" content="On-premises AI for school districts: agents, orchestration, and models built around how your district runs, on your own hardware. Air-gap capable, FERPA aligned. Student records stay on your network.">
   <link rel="icon" type="image/x-icon" href="favicon.ico?v=2">
   <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png?v=2">
   <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png?v=2">
@@ -61,7 +61,7 @@
 
   <!-- Open Graph -->
   <meta property="og:title" content="Local AI Servers for Education | FERPA &amp; COPPA Ready">
-  <meta property="og:description" content="Local AI for education, configured after Discovery rather than picked from a catalog. Campus-controlled inference aligns with FERPA's school official exception. Air-gappable. No cloud required.">
+  <meta property="og:description" content="On-premises AI for school districts: agents, orchestration, and models built around how your district runs, on your own hardware. Air-gap capable, FERPA aligned. Student records stay on your network.">
   <meta property="og:url" content="https://islandmountain.io/education.html">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Island Mountain">
@@ -70,7 +70,7 @@
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Local AI Servers for Education | FERPA &amp; COPPA Ready">
-  <meta name="twitter:description" content="Local AI for education, configured after Discovery rather than picked from a catalog. Campus-controlled inference aligns with FERPA's school official exception. Air-gappable. No cloud required.">
+  <meta name="twitter:description" content="On-premises AI for school districts: agents, orchestration, and models built around how your district runs, on your own hardware. Air-gap capable, FERPA aligned. Student records stay on your network.">
   <meta name="twitter:image" content="https://islandmountain.io/images/hero-education.webp">
 
   <!-- FAQPage Schema -->
@@ -92,7 +92,7 @@
         "name": "What education workflows can run on Island Mountain campus AI hardware?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Island Mountain hardware supports curriculum design assistance, student record summarization and academic advising, research data analysis for faculty, administrative document drafting including accreditation reports, grant proposal development, and assessment assistance. The system runs DeepSeek V4-Flash for complex research analysis and Llama 4 Scout for general drafting. All processing occurs on campus-controlled hardware with no student data transmitted to external servers."
+          "text": "Island Mountain hardware supports curriculum design assistance, student record summarization and academic advising, research data analysis for faculty, administrative document drafting including accreditation reports, grant proposal development, and assessment assistance. The system runs current open-weight models, and custom models we build for your district. All processing occurs on campus-controlled hardware with no student data transmitted to external servers."
         }
       },
       {
@@ -133,31 +133,10 @@
   {
     "@context": "https://schema.org",
     "@type": "Service",
-    "@id": "https://islandmountain.io/forward-deployed-ai-engineering.html",
-    "name": "Island Mountain On-Premise AI Deployment \u2014 On-Premises AI Server for Education",
-    "description": "On-site AI deployment configured after an immersion and Discovery. Any hardware and software combination the work calls for, running open-source open-weight models, air-gap capable. No catalog and no standing recommendation.",
-    "brand": {
-      "@type": "Brand",
-      "name": "Island Mountain"
-    },
-    "category": "AI Inference Hardware for Educational Institutions",
-    "additionalProperty": [
-      {
-        "@type": "PropertyValue",
-        "name": "Configuration",
-        "value": "Determined per customer after Discovery; any hardware and software combination the work calls for"
-      },
-      {
-        "@type": "PropertyValue",
-        "name": "Models",
-        "value": "Any open-source open-weight model, chosen with the customer and swapped as the frontier moves"
-      },
-      {
-        "@type": "PropertyValue",
-        "name": "Interface",
-        "value": "OpenWebUI (browser-based)"
-      }
-    ]
+    "serviceType": "On-premises AI configuration and deployment for school districts",
+    "provider": { "@type": "Organization", "name": "Island Mountain", "url": "https://islandmountain.io" },
+    "areaServed": "US",
+    "description": "Island Mountain builds the agents, orchestration, and custom models that run a school district's work on its own hardware. Current open-weight models served on-site, custom reasoning models and small language models built to the district's ontology, governed by the Woven Security Fabric. Student records stay on the district network, air-gap capable. Configured after discovery, with on-site onboarding, SOP development, and tiered support."
   }
   </script>
   <style>/* readable headline over the industry hero photo */
@@ -208,7 +187,7 @@
     <div class="hero-inner">
       <span class="hero-badge">Local AI for Education</span>
       <h1>Student Data Privacy Isn't Optional. Your AI Architecture Shouldn't Treat It That Way.</h1>
-      <p>FERPA protects student education records. The "school official" exception works best when the AI processing those records is under direct institutional control - not a cloud vendor's terms of service. On-premises AI for schools and universities keeps student data on campus hardware.</p>
+      <p>FERPA protects student education records. The "school official" exception was written for people under the district&#39;s direct control, not a cloud vendor&#39;s terms of service. We&#39;ll build the whole system on your own hardware instead: the agents, the orchestration, and the models that run the district&#39;s real work, and student records never leave your network.</p>
     </div>
   </section>
 
@@ -273,13 +252,31 @@
   </section>
 
 
+  <!-- We build it around the district -->
+  <section class="section section-darker">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-badge">The Build</span>
+        <h2>We Build It Around How Your District Runs</h2>
+      </div>
+      <div class="fade-in content-narrow">
+        <p class="body-lg">A general model knows plenty about education in the abstract and nothing about your district. It&#39;s never opened your IEP templates, doesn&#39;t know the fields in your SIS, can&#39;t tell your board&#39;s policy language from a principal&#39;s weekly memo. We build for the district you run.</p>
+        <p class="body-lg">Island Mountain builds the agents and the orchestration that carry the work that fills a district&#39;s week: IEP drafting support with the goal bank and the templates in view, lesson and curriculum planning against your standards, grant writing, parent communications, public-records responses, and board-packet prep. It runs on current open-weight models like Kimi K3, ZAI GLM 5.2, Qwen 3.8+, and Nous Hermes 4, served through Ollama or vLLM behind an OpenWebUI front end, or whatever open weights fit the task. All of it governed by our own agentic orchestration and the <a href="lamprey-woven-security-governance.html" class="clr-copper">Woven Security Fabric</a>, so every action carries an identity, an approval, and a receipt, and the credentials expire when the task is done. Student records never leave the district network to make any of it happen.</p>
+        <p class="body-lg">When the work needs a model that speaks your district, we&#39;ll build one. Reasoning models and small language models from scratch, trained to orbit your district&#39;s ontology: your curriculum standards, your student-services process, your board and department structure. It learns your terminology and cadence, not a generic school&#39;s.</p>
+        <p class="body-lg">For student records that can&#39;t touch an outside wire, the system runs fully air-gapped. For a task that genuinely needs the open web, it reaches out. That line gets drawn workflow by workflow, and the district draws it.</p>
+        <p class="body-lg">Then we hand back the keys. On-site onboarding, SOPs a teacher or an office administrator can follow, the login and the controls in your team&#39;s hands so they run and rework the workflows without calling us. Want the upkeep off your technology department&#39;s plate? We offer tiered support sized to the district, and we plug in wherever that&#39;s easiest. This is your district&#39;s legacy. We build it alongside you, and we won&#39;t call it done until your people can run it without us.</p>
+      </div>
+    </div>
+  </section>
+
+
   <!-- Workflows -->
   <section class="section section-darker">
     <div class="container">
       <div class="section-header fade-in">
         <span class="section-badge">Workflows</span>
         <h2>Campus Workflows a Deployment Supports</h2>
-        <p>The same AI capabilities you want from cloud services, running on hardware that doesn't create compliance exposure.</p>
+        <p>These aren&#39;t chat prompts. They&#39;re agentic workflows the orchestration runs start to finish, each step carrying its own identity and receipt, and no student records leave your network.</p>
       </div>
       <div class="card-grid card-grid-3 fade-in">
         <div class="card">
@@ -320,29 +317,28 @@
     </div>
   </section>
 
-  <!-- Model Selection -->
+  <!-- Models -->
   <section class="section section-dark">
     <div class="container">
       <div class="section-header fade-in">
-        <span class="section-badge">Model Selection</span>
-        <h2>Which Models Work Best for Education Tasks</h2>
-        <p>Campus AI infrastructure running open-source models under institutional control. A local LLM for universities and K-12 districts with zero cloud dependency. Private AI for K-12 and higher education under institutional control.</p>
+        <span class="section-badge">Models</span>
+        <h2>The Models Behind a District Deployment</h2>
       </div>
       <div class="card-grid card-grid-3 fade-in">
         <div class="card text-center">
           <div class="card-icon-im"><img src="images/local-ai-inference-icon.webp?v=3" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
-          <h3>DeepSeek V4-Flash</h3>
-          <p><strong>Best for:</strong> Complex research analysis, multi-document literature review, accreditation documentation, long-context institutional reporting tasks. 284B parameters with mixture-of-experts architecture. Local DeepSeek for higher ed runs at FP8 on the accelerators the deployment lands on.</p>
+          <h3>Current Open Weights</h3>
+          <p>Kimi K3, ZAI GLM 5.2, Qwen 3.8+, Nous Hermes 4, or whatever&#39;s leading the month a district goes live, all served through Ollama or vLLM behind OpenWebUI. The open-weight field moves fast, and the deployment moves with it. We pick the model that fits the job in front of us, not the one that topped a leaderboard last spring.</p>
         </div>
         <div class="card text-center">
           <div class="card-icon-im"><img src="images/local-ai-inference-icon.webp?v=3" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
-          <h3>Llama 4 Scout</h3>
-          <p><strong>Best for:</strong> General drafting, correspondence, grant narratives, curriculum descriptions, administrative communications. Strong general-purpose model that produces clean, structured prose quickly.</p>
+          <h3>Built to Orbit Your District</h3>
+          <p>When no open model fits the way your district works, we train one from the ground up. Reasoning models and small language models built on your ontology: the curriculum standards, the student-services process, the board and department structure that make your district itself. Compact, precise, and nobody else&#39;s.</p>
         </div>
         <div class="card text-center">
           <div class="card-icon-im"><img src="images/local-ai-inference-icon.webp?v=3" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
-          <h3>R1 70B Distill or Qwen 3 72B</h3>
-          <p><strong>Best for:</strong> Chain-of-thought academic reasoning (R1 Distill) or high-throughput institutional drafting (Qwen 3 72B). Chosen during the workflow study, and swappable afterwards. Both run on the same VRAM budget.</p>
+          <h3>Governed, Not Just Installed</h3>
+          <p>Every model answers to our agentic orchestration and the Woven Security Fabric. Scoped access, credentials that expire, a receipt for every action taken against student data. Air-gapped for the records that demand it, cloud-connected only when a task earns it.</p>
         </div>
       </div>
     </div>
@@ -433,7 +429,7 @@
         <div class="risk-card">
           <div class="risk-icon"><img src="images/ic-search.webp?v=3" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
           <h4>No Education-Specific Fine-Tuning</h4>
-          <p>The models are general-purpose large language models. They're strong at reasoning, analysis, and prose generation, but they're general tools rather than purpose-built educational AI, with no training on educational datasets, pedagogical frameworks, or discipline-specific knowledge bases.</p>
+          <p>The models are general-purpose large language models. They're strong at reasoning, analysis, and prose generation, but they're general tools rather than education-specific AI, with no training on educational datasets, pedagogical frameworks, or discipline-specific knowledge bases.</p>
         </div>
         <div class="risk-card">
           <div class="risk-icon"><img src="images/ic-plugins.webp?v=3" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
@@ -500,7 +496,7 @@
         <div class="risk-card">
           <div class="risk-icon"><img src="images/agentic-orchestration-icon.webp?v=3" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
           <h4>What educational workflows does this hardware support?</h4>
-          <p>Island Mountain hardware supports curriculum design assistance, student record summarization and academic advising, research data analysis for faculty, administrative document drafting including accreditation reports, grant proposal development, and assessment assistance. The system runs DeepSeek V4-Flash for complex research analysis and Llama 4 Scout for general drafting.</p>
+          <p>Island Mountain hardware supports curriculum design assistance, student record summarization and academic advising, research data analysis for faculty, administrative document drafting including accreditation reports, grant proposal development, and assessment assistance. The system runs current open-weight models for analysis and drafting, and custom models we build for your district.</p>
         </div>
         <div class="risk-card">
           <div class="risk-icon"><img src="images/ai-cost-comparison-icon.webp?v=3" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
@@ -628,7 +624,7 @@
         <a href="contact.html">Start a Scoping Call</a>
       </div>
 
-      <p class="au-legal">Island Mountain AI Inc. provides forward-deployed AI engineering services and designs, integrates, and deploys on-premises AI inference systems. Nothing on this site constitutes an offer or sale of securities, or legal, compliance, tax, or investment advice. Compliance with HIPAA, ITAR, DFARS / CMMC, OCAP, and other frameworks depends on your organization's deployment, configuration, policies, and controls; on-premises hardware is one component of a compliant program, not a certification. Product specifications, model availability, and lead times are subject to change. Pricing is quoted by sales on a per-engagement basis. NVIDIA, RTX, and Blackwell, and all other marks are the property of their respective owners.</p>
+      <p class="au-legal">Island Mountain AI Inc. provides forward-deployed AI engineering services and designs, integrates, and deploys on-premises AI inference systems. Nothing on this site constitutes an offer or sale of securities, or legal, compliance, tax, or investment advice. Compliance with HIPAA, ITAR, DFARS / CMMC, OCAP, and other frameworks depends on your organization's deployment, configuration, policies, and controls; on-premises hardware is one component of a compliant program, not a certification. Product specifications, model availability, and lead times are subject to change. Pricing is quoted by sales on a per-engagement basis. All product names and marks are the property of their respective owners.</p>
 
       <div class="footer-bottom flex-col-center-gap">
         <p>&copy; 2026 Island Mountain AI Inc. All rights reserved. Hand-built in California by <span class="clr-copper">Basho Parks</span>.</p>
