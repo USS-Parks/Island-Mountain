@@ -156,7 +156,7 @@ body::before {
 .article-body p {
   font-size: 1.05rem;
   margin-bottom: 20px;
-  color: var(--text-muted);
+  color: var(--text-light);
 }
 
 .article-body a {
@@ -177,7 +177,7 @@ body::before {
 
 .article-body li {
   font-size: 1.05rem;
-  color: var(--text-muted);
+  color: var(--text-light);
   margin-bottom: 8px;
   line-height: 1.8;
 }

@@ -35,10 +35,26 @@
   <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png?v=2">
   <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png?v=2">
   <link rel="stylesheet" href="css/style.min.css?v=10">
+  <link rel="stylesheet" href="css/card-nodes.min.css?v=3">
   <link rel="stylesheet" href="icons/remixicon.css" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="icons/remixicon.css"></noscript>
   <link rel="preload" href="fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <style>
+  /* Hero lede rides in its own panel: copper hairline, copper picked out in
+     the copy, and the shared .beam-card edge node from card-nodes.css. */
+  .hero-lede-card{
+    max-width:760px; margin:0 auto; padding:26px 30px;
+    background:rgba(12,19,33,.72);
+    border:1px solid rgba(245,158,11,.38);
+    border-radius:var(--border-radius-lg);
+    box-shadow:0 18px 44px rgba(0,0,0,.42);
+    backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px);
+  }
+  .hero-lede-card p{ margin:0; color:var(--text-light); }
+  .hero-lede-card .clr-copper{ color:var(--copper-light); }
+  @media (max-width:600px){ .hero-lede-card{ padding:20px 18px; } }
+  </style>
   <style>
   @font-face {
     font-family: 'Inter';
@@ -182,9 +198,10 @@
 
   <section class="hero hero-page">
     <div class="hero-inner">
-      <span class="hero-badge">About Us</span>
       <h1>We Come to You.</h1>
-      <p>Island Mountain is a forward-deployed AI consultancy for organizations that cannot, or will not, send their data to the cloud. We embed on-site, learn how the work runs from the people who run it, then build the on-premise system around it.</p>
+      <div class="hero-lede-card beam-card">
+        <p>Island Mountain is a <span class="clr-copper">forward-deployed AI consultancy</span> for organizations that cannot, or will not, send their data to the cloud. We embed on-site, learn how the work runs from the people who run it, then build the <span class="clr-copper">on-premise system</span> around it.</p>
+      </div>
     </div>
   </section>
 
@@ -192,7 +209,6 @@
     <div class="container">
       <div class="section-header fade-in">
         <span class="section-badge">The Company</span>
-        <h2>Why Island Mountain Exists</h2>
       </div>
       <div class="content-block fade-in content-max-800">
         <p class="body-md">AI is changing how every industry operates. But for organizations handling privileged, classified, or sovereignty-protected data, the cloud is not an option. Attorney-client communications, patient health records, ITAR-controlled defense data, and tribal governance information all carry legal obligations that cloud AI services cannot satisfy.</p>
@@ -372,6 +388,7 @@
     </div>
   </footer>
 
+  <script defer src="js/card-nodes.js?v=2"></script>
   <script defer src="js/main.min.js?v=4"></script>
   <script defer src="js/chat-widget.min.js?v=4"></script>
 
