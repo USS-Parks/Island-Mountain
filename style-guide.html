@@ -307,12 +307,12 @@
     <p class="sec-sub">A library of ~33 icons: white linework on transparent, stored at 1254×1254 webp with luminance-based alpha, frequently carrying the sunburst. Centered over the text, never in a badge.</p>
 
     <div class="iconrow">
-      <div class="icotile"><img src="images/faq-icon.webp" alt=""><span>faq</span></div>
-      <div class="icotile"><img src="images/resources-icon.webp" alt=""><span>resources</span></div>
-      <div class="icotile"><img src="images/contact-icon.webp" alt=""><span>contact</span></div>
-      <div class="icotile"><img src="images/air-gapped-icon.webp?v=2" alt=""><span>air-gapped</span></div>
-      <div class="icotile"><img src="images/WSF-icon.webp?v=2" alt=""><span>WSF</span></div>
-      <div class="icotile"><img src="images/agentic-orchestration-icon.webp" alt=""><span>agentic-orch</span></div>
+      <div class="icotile"><img src="images/faq-icon.webp?v=3" alt=""><span>faq</span></div>
+      <div class="icotile"><img src="images/resources-icon.webp?v=3" alt=""><span>resources</span></div>
+      <div class="icotile"><img src="images/contact-icon.webp?v=3" alt=""><span>contact</span></div>
+      <div class="icotile"><img src="images/air-gapped-icon.webp?v=3" alt=""><span>air-gapped</span></div>
+      <div class="icotile"><img src="images/WSF-icon.webp?v=3" alt=""><span>WSF</span></div>
+      <div class="icotile"><img src="images/agentic-orchestration-icon.webp?v=3" alt=""><span>agentic-orch</span></div>
     </div>
 
     <div class="note"><b>Sizing.</b> <code>.au-ic</code> 54px · <code>.card-icon-im</code> ≤210px centered · <code>.au-vcard-icon</code> 72px. All <code>object-fit:contain</code>, <code>alt=""</code> (the heading labels it), <code>loading="lazy"</code>. To make a new one, see <b>How-To A1 / A6</b> below.</div>
@@ -327,9 +327,9 @@
     <p class="sec-sub">Dark glass, hairline border, rounded, hover-lift - unified across families (<code>.card</code>, <code>.au-card</code>, <code>gpu-card</code>, <code>risk-card</code>) by one animation: a hollow white ring rides the top then the right edge, once, on scroll-in, staggered across a row. It's running live below.</p>
 
     <div class="cardgrid" id="beamdemo">
-      <div class="imcard beam" style="--i:0"><img class="ic" src="images/faq-icon.webp" alt=""><h4>FAQ</h4><p>Straight answers on deployment, model selection, and air-gapping.</p></div>
-      <div class="imcard beam" style="--i:1"><img class="ic" src="images/resources-icon.webp" alt=""><h4>Resources</h4><p>Direct-answer briefs on HIPAA, ITAR/CMMC, and the CLOUD Act.</p></div>
-      <div class="imcard beam" style="--i:2"><img class="ic" src="images/contact-icon.webp" alt=""><h4>Contact</h4><p>One builder, one phone call, real answers - no sales pitch.</p></div>
+      <div class="imcard beam" style="--i:0"><img class="ic" src="images/faq-icon.webp?v=3" alt=""><h4>FAQ</h4><p>Straight answers on deployment, model selection, and air-gapping.</p></div>
+      <div class="imcard beam" style="--i:1"><img class="ic" src="images/resources-icon.webp?v=3" alt=""><h4>Resources</h4><p>Direct-answer briefs on HIPAA, ITAR/CMMC, and the CLOUD Act.</p></div>
+      <div class="imcard beam" style="--i:2"><img class="ic" src="images/contact-icon.webp?v=3" alt=""><h4>Contact</h4><p>One builder, one phone call, real answers - no sales pitch.</p></div>
     </div>
 
     <h3 class="blk">Buttons</h3>
@@ -379,7 +379,7 @@
 convert in.png \( +clone -colorspace Gray \) -alpha off \
   -compose CopyOpacity -composite \
   -channel RGB -fill white -colorize 100 +channel PNG32:t.png
-cwebp -quiet -lossless -alpha_q 100 t.png -o <span class="cp">images/name-icon.webp</span></code></pre></div>
+cwebp -quiet -lossless -alpha_q 100 t.png -o <span class="cp">images/name-icon.webp?v=3</span></code></pre></div>
 
       <div class="howto"><div class="hh"><h4>A2 · Video for web (.au-infographic)</h4>
         <p>H.264, web-safe pixel format, faststart, no audio - plus a webp poster from the last frame.</p></div>
@@ -408,7 +408,7 @@ ffmpeg -y -sseof -0.3 -i video/name.mp4 -vframes 1 \
       <div class="howto"><div class="hh"><h4>B6 / B7 · Card + node animation</h4>
         <p>Use <code>.card</code> (component lib) or <code>.au-card</code> (aurora, centered). Add the house motion with <code>beam-card</code> + a staggered <code>--i</code>.</p></div>
         <pre><code>&lt;div class="card <span class="cp">beam-card</span>" style="<span class="cp">--i:0</span>"&gt;
-  &lt;div class="card-icon-im"&gt;&lt;img src="images/faq-icon.webp" alt=""&gt;&lt;/div&gt;
+  &lt;div class="card-icon-im"&gt;&lt;img src="images/faq-icon.webp?v=3" alt=""&gt;&lt;/div&gt;
   &lt;h3&gt;FAQ&lt;/h3&gt; &lt;p&gt;…&lt;/p&gt;
 &lt;/div&gt;
 <span class="cm"># page MUST load: css/card-nodes.min.css?v=3 + js/card-nodes.js</span></code></pre></div>
