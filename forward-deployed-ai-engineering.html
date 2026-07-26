@@ -545,7 +545,7 @@
       el.classList.add('caret');
       (function step(){
         el.textContent=txt.slice(0,c);
-        if(c++<txt.length){setTimeout(step,14+Math.random()*38);}
+        if(c++<txt.length){setTimeout(step,30+Math.random()*60);}
         else{setTimeout(function(){type(i+1);},300);}
       })();
     }
@@ -560,7 +560,7 @@
         if(!e.isIntersecting)return;
         if(video){var p=video.play();if(p&&p.catch)p.catch(function(){});}
         io.disconnect();
-        setTimeout(revealNow,4000);   /* let the clip play a beat first */
+        setTimeout(revealNow,2500);   /* let the clip play a beat first */
       });
     },{threshold:0.5});
     io.observe(reveal);
