@@ -249,6 +249,23 @@
     </div>
   </section>
 
+  <!-- We build it around the lab -->
+  <section class="section section-darker">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-badge">The Build</span>
+        <h2>We Build It Around How Your Lab Runs</h2>
+      </div>
+      <div class="fade-in content-narrow">
+        <p class="body-lg">A general model knows science the way a textbook does. In the abstract, sourced from everyone, tuned to no one. It&#39;s never read your instrument logs, doesn&#39;t know your bench protocols, can&#39;t tell your PI&#39;s shorthand from a rotating grad student&#39;s. And it&#39;s never once laid eyes on your unpublished results. That&#39;s the gap we close.</p>
+        <p class="body-lg">Island Mountain builds the agents and the orchestration that carry the multi-step work that&#39;s eating your lab&#39;s hours: literature synthesis across a stack of papers, protocol and methods drafting, grant narratives, data-analysis summaries, experiment write-ups, and the IRB and IACUC paperwork nobody volunteers for. It runs on current open-weight models like Kimi K3, ZAI GLM 5.2, Qwen 3.8+, and Nous Hermes 4, served through Ollama or vLLM behind an OpenWebUI front end, or whatever open weights fit the task. All of it governed by our own agentic orchestration and the <a href="lamprey-woven-security-governance.html" class="clr-copper">Woven Security Fabric</a>, so every action carries an identity, an approval, and a receipt, and the credentials expire when the task is done. Your unpublished data never leaves the building to make any of it happen.</p>
+        <p class="body-lg">When the work needs a model that speaks your science, we&#39;ll build one. Reasoning models and small language models from scratch, trained to orbit your lab&#39;s ontology: your instruments, your protocols, your prior results, the way your group really writes. It picks up your terminology and your cadence, the notation you&#39;ve leaned on since the first grant, not a generic survey of the field.</p>
+        <p class="body-lg">It air-gaps completely for the work that demands it: the embargoed dataset, the sponsor&#39;s proprietary compound, the findings that aren&#39;t published yet. And it reaches the cloud only when a task genuinely needs to. You draw that line, workflow by workflow, and it&#39;s yours to move.</p>
+        <p class="body-lg">Then we hand back the keys. On-site onboarding, SOPs written for your people, the whole thing dropped into your team&#39;s hands so they run and rework the workflows without paging us. Want the upkeep off the lab manager&#39;s desk? We offer tiered support sized to the lab, and we plug in wherever that&#39;s easiest to carry. A lab is a body of work built over years, and the tooling should belong to the institution that outlasts any single grant. We build it alongside you, and we won&#39;t call it done until your people can run it without us.</p>
+      </div>
+    </div>
+  </section>
+
 
   <!-- Research Workflows -->
   <section class="section section-darker">
@@ -256,13 +273,13 @@
       <div class="section-header fade-in">
         <span class="section-badge">Workflows</span>
         <h2>Workflows a Deployment Supports</h2>
-        <p>AI capabilities shaped for the rhythm and requirements of active research.</p>
+        <p>These aren&#39;t chat prompts. They&#39;re agentic workflows the orchestration runs start to finish, each step carrying its own identity and receipt, and your unpublished data never leaves your network.</p>
       </div>
       <div class="card-grid card-grid-3 fade-in">
         <div class="card">
           <div class="card-icon-im"><img src="images/resources-icon.webp?v=3" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
           <h3>Literature Synthesis</h3>
-          <p>Process and synthesize large volumes of published literature. Identify themes across papers, summarize findings, compare methodologies, and generate structured literature review drafts. DeepSeek V4-Flash's extended context handles multi-paper analysis in a single session.</p>
+          <p>Process and synthesize large volumes of published literature. Identify themes across papers, summarize findings, compare methodologies, and generate structured literature review drafts. Long context windows hold a whole stack of sources in a single session, so the analysis spans them at once.</p>
         </div>
         <div class="card">
           <div class="card-icon-im"><img src="images/ic-search.webp?v=3" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
@@ -287,7 +304,7 @@
         <div class="card">
           <div class="card-icon-im"><img src="images/ic-add-file.webp?v=3" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
           <h3>Academic Writing Support</h3>
-          <p>Draft manuscript sections, restructure arguments, improve clarity, and format content for specific journal requirements. Llama 4 Scout produces clean academic prose. Process entire manuscripts locally for revision and editing support.</p>
+          <p>Draft manuscript sections, restructure arguments, improve clarity, and format content for specific journal requirements. The system turns out clean academic prose. Process entire manuscripts locally for revision and editing support.</p>
         </div>
       </div>
     </div>
@@ -303,8 +320,8 @@
       <div class="risk-grid fade-in">
         <div class="risk-card">
           <div class="risk-icon"><img src="images/ic-code-window.webp?v=3" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
-          <h4>1M Token Context Window</h4>
-          <p>DeepSeek V4-Flash supports a 1M token context window on the four-card configuration (pre-order now, ships July 2026). On the two-card configuration, V4-Flash at FP8 still provides substantially longer context than most cloud APIs. This matters for full-dataset analysis, long-document synthesis, and research sessions that require maintaining context across extensive source material.</p>
+          <h4>Long-Context Windows</h4>
+          <p>Current open-weight models carry long context windows, and the strongest of them stretch well past what most cloud APIs will hand you. That matters for full-dataset analysis, long-document synthesis, and research sessions that hold a whole body of source material in view at once. We run the model that fits the job, and the context budget climbs as the open weights do.</p>
         </div>
         <div class="risk-card">
           <div class="risk-icon"><img src="images/ic-default-access.webp?v=3" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
@@ -339,7 +356,7 @@
             <tr>
               <th></th>
               <th>Cloud AI API (3 Researchers)</th>
-              <th>an Island Mountain two-card build</th>
+              <th>Island Mountain build</th>
             </tr>
           </thead>
           <tbody>
@@ -452,7 +469,7 @@
         <div class="risk-card">
           <div class="risk-icon"><img src="images/hipaa-ai-icon.webp?v=3" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
           <h4>How does local AI help with grant data residency requirements?</h4>
-          <p>Local AI satisfies data residency requirements with a simple documentation posture. NIH, NSF, and DoD increasingly require data management plans specifying where grant-funded data is processed and stored. With Island Mountain hardware, you document that AI-assisted analysis occurred on institution-owned NVIDIA RTX PRO 6000 Blackwell servers within your facility, with no external data transmission.</p>
+          <p>Local AI satisfies data residency requirements with a simple documentation posture. NIH, NSF, and DoD increasingly require data management plans specifying where grant-funded data is processed and stored. With Island Mountain hardware, you document that AI-assisted analysis occurred on institution-owned hardware within your facility, with no external data transmission.</p>
         </div>
         <div class="risk-card">
           <div class="risk-icon"><img src="images/ic-default-access.webp?v=3" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
@@ -462,7 +479,7 @@
         <div class="risk-card">
           <div class="risk-icon"><img src="images/ai-cost-comparison-icon.webp?v=3" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
           <h4>How does cost compare for a heavy-usage research lab?</h4>
-          <p>Cloud AI APIs charge $15 to $60 per million tokens. A three-researcher lab with heavy usage processes 50 to 200 million tokens per month, costing $750 to $12,000 monthly. An Island Mountain two-card build with two NVIDIA RTX PRO 6000 Blackwell GPUs is a one-time purchase, quoted to your workload, with unlimited inference. Cost parity typically reached within 12 to 18 months.</p>
+          <p>Cloud AI APIs charge $15 to $60 per million tokens. A three-researcher lab with heavy usage processes 50 to 200 million tokens per month, costing $750 to $12,000 monthly. An Island Mountain build is a one-time purchase, sized and quoted to your workload, with unlimited inference. Cost parity typically reached within 12 to 18 months.</p>
         </div>
       </div>
       <div class="text-center-mt-32">
@@ -570,7 +587,7 @@
         <a href="contact.html">Start a Scoping Call</a>
       </div>
 
-      <p class="au-legal">Island Mountain AI Inc. provides forward-deployed AI engineering services and designs, integrates, and deploys on-premises AI inference systems. Nothing on this site constitutes an offer or sale of securities, or legal, compliance, tax, or investment advice. Compliance with HIPAA, ITAR, DFARS / CMMC, OCAP, and other frameworks depends on your organization's deployment, configuration, policies, and controls; on-premises hardware is one component of a compliant program, not a certification. Product specifications, model availability, and lead times are subject to change. Pricing is quoted by sales on a per-engagement basis. NVIDIA, RTX, and Blackwell, and all other marks are the property of their respective owners.</p>
+      <p class="au-legal">Island Mountain AI Inc. provides forward-deployed AI engineering services and designs, integrates, and deploys on-premises AI inference systems. Nothing on this site constitutes an offer or sale of securities, or legal, compliance, tax, or investment advice. Compliance with HIPAA, ITAR, DFARS / CMMC, OCAP, and other frameworks depends on your organization's deployment, configuration, policies, and controls; on-premises hardware is one component of a compliant program, not a certification. Product specifications, model availability, and lead times are subject to change. Pricing is quoted by sales on a per-engagement basis. All product names and marks are the property of their respective owners.</p>
 
       <div class="footer-bottom flex-col-center-gap">
         <p>&copy; 2026 Island Mountain AI Inc. All rights reserved. Hand-built in California by <span class="clr-copper">Basho Parks</span>.</p>
