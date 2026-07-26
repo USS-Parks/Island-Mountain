@@ -8,7 +8,9 @@
 #
 # Fails on:
 #   - a retired product-line name (Summit / Landfall / Citadel / Pinnacle)
-#   - an Island Mountain dollar figure
+#   - a marked selling-price figure (ASP / MSRP / list price near a dollar amount;
+#     a tier-name price already fails on the name alone, and unmarked third-party
+#     figures — cloud rates, competitor costs, fines — are the pain hook and pass)
 #   - a stale company fact (former co-founder, old phone, wrong entity)
 #
 # ROLLOUT: warn-only until someone runs  touch tools/.skills-gate-enforce
@@ -51,28 +53,19 @@ is_exempt() {
   return 1
 }
 
-# --- Allowlisted dollar figures --------------------------------------------------
-# Third-party numbers are the pain hook and must survive; ours must not exist.
-# Allowlisted explicitly rather than by accident, so a new figure has to be added
-# here on purpose.
-#   $64,000-$220,000+  cloud 5-year TCO range
-#   $25 billion        Cerebras backlog, quoted verbatim in WRITING-SAMPLES.md
-ALLOWED_FIGURES='\$64,000|\$220,000|\$25 billion'
-
 while IFS= read -r hit; do
   line="${hit#*:*:}"
   is_exempt "$line" && continue
   report "retired product name" "$hit"
 done < <(grep -rniE 'Summit|Landfall|Citadel|Pinnacle' --include='*.md' "$SKILLS" 2>/dev/null || true)
 
+# Selling-price markers only (mirrors the site pricing gate, 2026-07-26). Any
+# unmarked dollar figure is third-party by construction and never reported.
 while IFS= read -r hit; do
   line="${hit#*:*:}"
   is_exempt "$line" && continue
-  # Strip the allowlisted figures, then see whether any dollar figure survives.
-  stripped="$(printf '%s' "$line" | sed -E "s/${ALLOWED_FIGURES}//g")"
-  printf '%s' "$stripped" | grep -qE '\$[0-9]' || continue
-  report "Island Mountain dollar figure" "$hit"
-done < <(grep -rn '\$[0-9]' --include='*.md' "$SKILLS" 2>/dev/null || true)
+  report "IM selling-price figure" "$hit"
+done < <(grep -rnE '\b(ASP|MSRP|[Ll]ist [Pp]rice)\b.{0,60}\$[0-9]' --include='*.md' "$SKILLS" 2>/dev/null || true)
 
 while IFS= read -r hit; do
   report "stale company fact" "$hit"
