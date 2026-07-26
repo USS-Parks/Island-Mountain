@@ -61,7 +61,10 @@ html:not(.js) #aurora-intro{ display:none; }
 .js .au-hero.in .au-hrule{ animation:auRule 1s .5s cubic-bezier(.22,.61,.36,1) both; }
 @keyframes auRule{ from{transform:scaleX(0);opacity:0;} to{transform:scaleX(1);opacity:1;} }
 .au-grad{ background:linear-gradient(100deg,var(--au-white-hot),var(--au-copper-light) 44%,var(--au-copper-deep)); -webkit-background-clip:text; background-clip:text; color:transparent; }
-.au-rotator{ display:inline-grid; vertical-align:top; }
+/* The widest phrase is nowrap and can exceed .au-sub's max-width; center the
+   rotator on its own midpoint so it overflows symmetrically instead of shoving
+   the subtitle right of the centred H1. */
+.au-rotator{ display:inline-grid; vertical-align:top; position:relative; left:50%; transform:translateX(-50%); }
 .au-rotator>span{ grid-area:1/1; opacity:0; transform:translateY(.3em); transition:opacity .5s ease, transform .5s ease; white-space:nowrap; }
 .au-rotator>span.on{ opacity:1; transform:none; }
 .au-sub{ max-width:56ch; color:var(--au-muted); font-size:1.14rem; line-height:1.65; margin:0 0 28px; }
