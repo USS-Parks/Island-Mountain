@@ -28,9 +28,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="author" content="Basho Parks">
-  <meta name="date" content="2026-05-09">
+  <meta name="date" content="2026-07-26">
   <title>On-Premises AI Cost vs Cloud AI: TCO Comparison</title>
-  <meta name="description" content="What five years of cloud AI costs against an on-premises system you own. Cloud runs $64,000-$220,000+; the hardware is quoted to the deployment.">
+  <meta name="description" content="What five years of cloud AI costs vs hardware you own. Frontier APIs run $300,000+ at July 2026 token rates; owning open-weight models ends the 20x markup.">
   <link rel="icon" type="image/x-icon" href="favicon.ico?v=2">
   <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png?v=2">
   <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png?v=2">
@@ -61,7 +61,7 @@
 
   <!-- Open Graph -->
   <meta property="og:title" content="On-Premises AI Cost vs Cloud AI: TCO Comparison">
-  <meta property="og:description" content="What five years of cloud AI costs against an on-premises system you own. Cloud runs $64,000-$220,000+; the hardware is quoted to the deployment.">
+  <meta property="og:description" content="What five years of cloud AI costs vs hardware you own. Frontier APIs run $300,000+ at July 2026 token rates; owning open-weight models ends the 20x markup.">
   <meta property="og:url" content="https://islandmountain.io/on-premises-ai-cost-comparison.html">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Island Mountain">
@@ -70,7 +70,7 @@
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="On-Premises AI Cost vs Cloud AI: TCO Comparison">
-  <meta name="twitter:description" content="What five years of cloud AI costs against an on-premises system you own. Cloud runs $64,000-$220,000+; the hardware is quoted to the deployment.">
+  <meta name="twitter:description" content="What five years of cloud AI costs vs hardware you own. Frontier APIs run $300,000+ at July 2026 token rates; owning open-weight models ends the 20x markup.">
   <meta name="twitter:image" content="https://islandmountain.io/images/hero-cost-comparison.webp">
 
   <!-- FAQPage Schema -->
@@ -84,7 +84,7 @@
         "name": "How much does on-premises AI cost compared to cloud AI?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "An on-premises system is a one-time purchase. Running 40 concurrent users at 50 queries per day with 4,000 tokens per query (input + output), the per-query cost over five years is a fraction of a cent. Equivalent cloud API usage costs $64,000-$220,000+ over the same period depending on model tier, usage growth, and compliance overhead (based on May 2026 API pricing from OpenAI, Anthropic, and Google). On-premises breaks even within 4-7 months for organizations with consistent daily usage above 500 queries."
+          "text": "An on-premises system is a one-time purchase. Running 40 concurrent users at 50 queries per day with 4,000 tokens per query (input + output), the per-query cost over five years is a fraction of a cent. The same workload on closed frontier APIs costs $300,000-$385,000+ over five years at flat usage (July 2026 published rates: OpenAI Sol 5.6 at $15/$60 per million tokens, Anthropic Fable 5 at $12/$48), with usage growth and compliance overhead pushing past $500,000. Hosted open-weight models cost 14x-50x less per token, and an air-gapped open-weight deployment on owned hardware has no per-token cost at all. On-premises breaks even within 4-7 months for organizations with consistent daily usage above 500 queries."
         }
       },
       {
@@ -100,7 +100,7 @@
         "name": "What are the ongoing costs of on-premises AI hardware?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "After the initial hardware purchase, ongoing costs include electricity (approximately $200-400 per month for a two-accelerator example system under typical workloads), IT staff time for basic administration, and optional extended warranty coverage. There are no per-query fees, no per-seat licensing, no API rate limits, and no subscription charges. Total annual operating cost is typically $3,000-$6,000 compared to $50,000-$150,000 or more in annual cloud AI API fees for equivalent usage."
+          "text": "After the initial hardware purchase, ongoing costs include electricity (approximately $200-400 per month for a two-accelerator example system under typical workloads), IT staff time for basic administration, and optional extended warranty coverage. There are no per-query fees, no per-seat licensing, no API rate limits, and no subscription charges. Total annual operating cost is typically $3,000-$6,000 compared to $61,000-$77,000 or more in annual frontier API fees for equivalent usage at July 2026 rates."
         }
       },
       {
@@ -183,7 +183,7 @@
     <div class="hero-inner">
       <span class="hero-badge">Total Cost of Ownership</span>
       <h1>How Much Does On-Premises AI Cost vs Cloud AI?</h1>
-      <p>A direct cost comparison between owning AI inference hardware and paying per-token cloud API fees, with real numbers over a five-year horizon.</p>
+      <p>A direct cost comparison between owning AI inference hardware and renting intelligence by the token, with the July 2026 rate sheet painted on the wall above.</p>
     </div>
   </section>
 
@@ -202,7 +202,7 @@
     <div class="container">
       <div class="content-block fade-in content-max-800">
         <div style="border-left:4px solid var(--copper);padding:20px 24px;margin:0 0 32px 0;background:rgba(217,119,6,0.08);border-radius:0 8px 8px 0;">
-          <p style="font-size:1.15rem;line-height:1.7;color:var(--text-light);margin:0;">A <a href="forward-deployed-ai-engineering.html" class="clr-copper">on-premises system</a> (one-time purchase) running 40 concurrent users at 50 queries per day costs <strong>a fraction of a cent per query over five years</strong>. Equivalent cloud API usage runs <strong>$64,000-$220,000+ over the same period</strong> depending on model tier, usage growth, and compliance overhead. On-premises breaks even within 4-7 months for organizations with consistent daily usage above 500 queries. <em style="font-size:0.85em;color:var(--text-muted);">Cloud estimates based on May 2026 API pricing from OpenAI, Anthropic, and Google. Assumptions stated below.</em></p>
+          <p style="font-size:1.15rem;line-height:1.7;color:var(--text-light);margin:0;">The July 2026 rate sheet reads like this: OpenAI's Sol 5.6 charges <strong>$15 per million input tokens and $60 per million output</strong>. Anthropic's Fable 5 charges <strong>$12 and $48</strong>. The open-weight models now going toe to toe with them, Llama, Qwen, Mixtral, Gemma, rent from hosted providers for <strong>$0.30-$0.80 in and $1.20-$3.50 out</strong>, and cost <strong>nothing per token</strong> once the weights run air-gapped on your own hardware. That's a <strong>20x+ markup</strong> for closed frontier access. An <a href="forward-deployed-ai-engineering.html" class="clr-copper">on-premises system</a> (one-time purchase) running 40 concurrent users at 50 queries per day costs <strong>a fraction of a cent per query over five years</strong>. The same workload on frontier closed APIs runs <strong>$300,000-$385,000+ over the same period at flat usage</strong>, before growth and compliance overhead. On-premises breaks even within 4-7 months for organizations with consistent daily usage above 500 queries. <em style="font-size:0.85em;color:var(--text-muted);">Rates from published July 2026 API pricing (openai.com, anthropic.com, huggingface.co). Rates subject to change. Assumptions stated below.</em></p>
         </div>
       </div>
     </div>
@@ -214,10 +214,11 @@
       <div class="content-block fade-in content-max-800">
         <h2 class="mb-16" style="color:var(--text-light);">The Five-Year TCO Math</h2>
         <p class="body-md"><strong>On-premises (example, two accelerators):</strong> Hardware: a one-time purchase, quoted to the deployment. Annual electricity ~$3,600 ($300/month at typical workloads). Annual IT administration overhead ~$2,400 (estimated 2 hours/month at $100/hour). Optional extended warranty ~$5,000/year. Five-year operating total on top of the hardware: approximately $30,000-$55,000 depending on warranty coverage.</p>
-        <p class="body-md"><strong>Cloud AI API (May 2026 pricing):</strong> At 40 users running 50 queries per day (2,000 queries/day), with an average query consuming ~4,000 tokens (3,000 input + 1,000 output, typical for enterprise RAG workflows with document context), daily token usage is approximately 6 million input and 2 million output tokens. Cloud costs vary widely by model tier:</p>
-        <p class="body-md" style="padding-left:20px;"><strong>Budget model</strong> (e.g. GPT-4.1 Nano at $0.10/$0.40 per million tokens): ~$1.40/day, ~$511/year, ~$2,555 over five years.<br><strong>Mid-tier model</strong> (e.g. GPT-4o at $2.50/$10 per million tokens): ~$35/day, ~$12,775/year, ~$63,875 over five years.<br><strong>Premium model</strong> (e.g. Claude Opus 4.6 at $5/$25 per million tokens): ~$80/day, ~$29,200/year, ~$146,000 over five years.</p>
-        <p class="body-md">These figures assume flat usage and no compliance costs. In practice, enterprise AI usage grows 15-30% annually as teams adopt the tools. At 20% annual growth with a mid-tier model, the five-year total climbs to ~$95,000. Add regulatory compliance overhead ($15,000-$30,000/year for HIPAA, ITAR, or GLBA organizations) and the range reaches $150,000-$220,000+. Budget models reduce these figures but lack the capability most professional workflows demand.</p>
-        <p class="body-md"><strong>The real comparison:</strong> Cloud pricing is per-token and scales linearly with usage. If your team doubles their AI usage (a reasonable expectation as adoption grows), cloud costs double. On-premises costs stay flat. The hardware you bought on day one handles twice the queries at the same cost. The break-even point arrives faster the more you use it.</p>
+        <p class="body-md"><strong>Cloud AI API (July 2026 rate sheet):</strong> At 40 users running 50 queries per day (2,000 queries/day), with an average query consuming ~4,000 tokens (3,000 input + 1,000 output, typical for enterprise RAG workflows with document context), daily token usage is approximately 6 million input and 2 million output tokens. Price that workload against the three columns on the wall:</p>
+        <p class="body-md" style="padding-left:20px;"><strong>OpenAI Sol 5.6</strong> ($15 in / $60 out per million tokens): ~$210/day, ~$76,650/year, ~$383,000 over five years.<br><strong>Anthropic Fable 5</strong> ($12 in / $48 out): ~$168/day, ~$61,320/year, ~$307,000 over five years.<br><strong>Open-weight models</strong> (Llama, Qwen, Mixtral, Gemma at $0.30-$0.80 in / $1.20-$3.50 out, hosted): ~$4-$12/day, ~$1,500-$4,300/year, ~$8,000-$22,000 over five years.</p>
+        <p class="body-md">Same workload, same tokens. The spread between the closed frontier column and the open-weight column runs 14x to 50x depending on which pair you price; the wall rounds it to 20x+ and that's the polite version. That markup used to buy a real capability gap. As of July 2026 it doesn't: open weights are going toe to toe with the frontier labs, and the models we're most excited to deploy, Kimi K3 and the pending Qwen releases, sit in that column.</p>
+        <p class="body-md">These figures assume flat usage and no compliance costs. In practice, enterprise AI usage grows 15-30% annually as teams adopt the tools. At 20% annual growth, the five-year frontier totals climb past $450,000. Add regulatory compliance overhead ($15,000-$30,000/year for HIPAA, ITAR, or GLBA organizations) and you're carrying $500,000-$700,000 for the privilege of renting tokens. The hosted open-weight column cuts those figures by an order of magnitude, but it still meters every token and still ships your data to somebody else's datacenter.</p>
+        <p class="body-md"><strong>The real comparison:</strong> Cloud pricing is per-token and scales linearly with usage. If your team doubles their AI usage (a reasonable expectation as adoption grows), cloud costs double. On-premises costs stay flat, and the models it runs are the same open-weight column from the wall. Here's the part the rate sheet can't show: an air-gapped open-weight model is free. The weights download once, run on hardware you own, and never touch a meter; the marginal cost of a token is electricity. You don't negotiate the 20x markup down. You stop paying it.</p>
       </div>
     </div>
   </section>
@@ -271,7 +272,7 @@
     <div class="container">
       <div class="content-block fade-in content-max-800">
         <div style="border-left:3px solid var(--copper);padding:16px 20px;margin:32px 0;background:rgba(217,119,6,0.05);border-radius:0 8px 8px 0;">
-          <p class="body-md" style="margin:0;"><strong>Summary:</strong> On-premises AI is a one-time capital purchase quoted to the deployment, with annual operating costs of $3,000-$6,000. Equivalent cloud AI API usage for 40 users costs approximately $12,000-$146,000+ per year depending on model tier (May 2026 pricing), with costs scaling linearly as adoption grows. On-premises breaks even within 4-7 months at 500+ daily queries and eliminates per-token fees, rate limits, and vendor price volatility.</p>
+          <p class="body-md" style="margin:0;"><strong>Summary:</strong> On-premises AI is a one-time capital purchase quoted to the deployment, with annual operating costs of $3,000-$6,000. The same 40-user workload on closed frontier APIs (OpenAI Sol 5.6 at $15/$60 per million tokens, Anthropic Fable 5 at $12/$48, July 2026 published rates) runs $61,000-$77,000 per year, $300,000-$385,000+ over five years at flat usage. Hosted open-weight models cost 14x-50x less per token; air-gapped on owned hardware, the weights themselves are free and there is no meter at all. On-premises breaks even within 4-7 months at 500+ daily queries and eliminates per-token fees, rate limits, and vendor price volatility.</p>
         </div>
         <p class="body-md">Learn more: <a href="blog/cloud-ai-vs-local-hardware-tco.html" class="clr-copper">Cloud AI vs Local Hardware TCO</a> | <a href="forward-deployed-ai-engineering.html" class="clr-copper">on-premise AI deployment Products</a></p>
       </div>
