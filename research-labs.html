@@ -30,7 +30,7 @@
   <meta name="author" content="Basho Parks">
   <meta name="date" content="2026-06-06">
   <title>On-Premises AI for Research Labs | Data Protection</title>
-  <meta name="description" content="Local AI hardware for university and federal research labs. Protect pre-publication data, meet NSF/NIH compliance, run unlimited inference.">
+  <meta name="description" content="On-premises AI for research labs: agents, orchestration, and models built around your lab, run on your own hardware. Air-gap capable, unpublished data never leaves the building.">
   <link rel="icon" type="image/x-icon" href="favicon.ico?v=2">
   <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png?v=2">
   <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png?v=2">
@@ -62,7 +62,7 @@
 
   <!-- Open Graph -->
   <meta property="og:title" content="On-Premises AI for Research Labs | Data Protection">
-  <meta property="og:description" content="Local AI hardware for university and federal research labs. Protect pre-publication data, meet NSF/NIH compliance, run unlimited inference.">
+  <meta property="og:description" content="On-premises AI for research labs: agents, orchestration, and models built around your lab, run on your own hardware. Air-gap capable, unpublished data never leaves the building.">
   <meta property="og:url" content="https://islandmountain.io/research-labs.html">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Island Mountain">
@@ -71,7 +71,7 @@
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="On-Premises AI for Research Labs | Data Protection">
-  <meta name="twitter:description" content="Local AI hardware for university and federal research labs. Protect pre-publication data, meet NSF/NIH compliance, run unlimited inference.">
+  <meta name="twitter:description" content="On-premises AI for research labs: agents, orchestration, and models built around your lab, run on your own hardware. Air-gap capable, unpublished data never leaves the building.">
   <meta name="twitter:image" content="https://islandmountain.io/images/hero-research-labs.webp?v=2">
 
   <!-- FAQPage Schema -->
@@ -85,7 +85,7 @@
         "name": "Does processing research data through cloud AI risk intellectual property exposure?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes. Cloud AI transmits unpublished research data to third-party infrastructure, creating IP exposure and provenance liability for patentable discoveries. Some providers reserve rights to use submitted data for model training, and even where prohibited, data has left your institutional network. For labs handling data subject to 21 CFR Part 11, IRB protocols, or GxP compliance requirements, third-party processing introduces regulatory complications. On-premises AI from Island Mountain eliminates this risk - data stays on NVIDIA RTX PRO 6000 Blackwell GPUs inside your facility. No third-party transmission. No provenance questions at patent filing or publication."
+          "text": "Yes. Cloud AI transmits unpublished research data to third-party infrastructure, creating IP exposure and provenance liability for patentable discoveries. Some providers reserve rights to use submitted data for model training, and even where prohibited, data has left your institutional network. For labs handling data subject to 21 CFR Part 11, IRB protocols, or GxP compliance requirements, third-party processing introduces regulatory complications. On-premises AI from Island Mountain eliminates this risk - data stays on your own hardware inside your facility. No third-party transmission. No provenance questions at patent filing or publication."
         }
       },
       {
@@ -93,7 +93,7 @@
         "name": "How does local AI help with federal grant data residency requirements?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Local AI satisfies data residency requirements with a simple documentation posture. NIH, NSF, and DoD increasingly require data management plans specifying where grant-funded data is processed and stored. Cloud AI introduces a third-party handler into your governance documentation. With Island Mountain hardware, you document that AI-assisted analysis occurred on institution-owned NVIDIA RTX PRO 6000 Blackwell servers within your facility, with no external data transmission. This straightforward residency posture satisfies most federal grant data handling requirements."
+          "text": "Local AI satisfies data residency requirements with a simple documentation posture. NIH, NSF, and DoD increasingly require data management plans specifying where grant-funded data is processed and stored. Cloud AI introduces a third-party handler into your governance documentation. With Island Mountain hardware, you document that AI-assisted analysis occurred on institution-owned hardware within your facility, with no external data transmission. This straightforward residency posture satisfies most federal grant data handling requirements."
         }
       },
       {
@@ -109,7 +109,7 @@
         "name": "How does per-token cloud cost compare to local hardware for a research lab running extended sessions?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Cloud AI APIs charge $15 to $60 per million tokens. A three-researcher lab with heavy usage processes 50 to 200 million tokens per month, costing $750 to $12,000 monthly. Over two years: $18,000 to $288,000 cumulative with ongoing IP exposure. An Island Mountain two-card build with two NVIDIA RTX PRO 6000 Blackwell GPUs is a one-time purchase, quoted to your workload, with unlimited inference and zero per-token charges. Ongoing costs limited to electricity (~$100-$200/month). Cost parity typically reached within 12 to 18 months for sustained research workloads."
+          "text": "Cloud AI APIs charge $15 to $60 per million tokens. A three-researcher lab with heavy usage processes 50 to 200 million tokens per month, costing $750 to $12,000 monthly. Over two years: $18,000 to $288,000 cumulative with ongoing IP exposure. An Island Mountain build is a one-time purchase, sized and quoted to your workload, with unlimited inference and zero per-token charges. Ongoing costs limited to electricity (~$100-$200/month). Cost parity typically reached within 12 to 18 months for sustained research workloads."
         }
       }
     ]
@@ -131,37 +131,11 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Product",
-    "@id": "https://islandmountain.io/forward-deployed-ai-engineering.html",
-    "name": "an Island Mountain two-card build \u2014 On-Premises AI Server for Research Labs",
-    "description": "Pre-built AI inference server with 2x NVIDIA RTX PRO 6000 Blackwell 96GB GPUs. Air-gap capable. 21 CFR Part 11 and IRB compliance-ready. Includes DeepSeek V4-Flash, Llama 4 Scout, and OpenWebUI.",
-    "brand": {
-      "@type": "Brand",
-      "name": "Island Mountain"
-    },
-    "category": "AI Inference Hardware for Research Laboratories",
-    "additionalProperty": [
-      {
-        "@type": "PropertyValue",
-        "name": "GPU Model",
-        "value": "NVIDIA RTX PRO 6000 Blackwell 96GB (2x two-card build / 4x four-card build)"
-      },
-      {
-        "@type": "PropertyValue",
-        "name": "Total VRAM",
-        "value": "192GB-384GB"
-      },
-      {
-        "@type": "PropertyValue",
-        "name": "Pre-Installed Models",
-        "value": "DeepSeek V4-Flash (FP8), Llama 4 Scout, DeepSeek R1 70B Distill or Qwen 3 72B (buyer selects)"
-      },
-      {
-        "@type": "PropertyValue",
-        "name": "Interface",
-        "value": "OpenWebUI (browser-based)"
-      }
-    ]
+    "@type": "Service",
+    "serviceType": "On-premises AI configuration and deployment for research labs",
+    "provider": { "@type": "Organization", "name": "Island Mountain", "url": "https://islandmountain.io" },
+    "areaServed": "US",
+    "description": "Island Mountain builds the agents, orchestration, and custom models that run a research lab's work on its own hardware. Current open-weight models served on-site, custom reasoning models and small language models built to the lab's ontology, governed by the Woven Security Fabric. Unpublished data stays in the building, air-gap capable. Configured after discovery, with on-site onboarding, SOP development, and tiered support."
   }
   </script>
 </head>
@@ -210,7 +184,7 @@
     <div class="hero-inner">
       <span class="hero-badge">Local AI for Research Labs</span>
       <h1>Your Data, Your Models, Your Publication Timeline</h1>
-      <p>Unpublished research data processed through cloud APIs is data you've handed to a third party before publication. Local AI hardware keeps your proprietary datasets, pre-publication findings, and grant-funded research on infrastructure you control.</p>
+      <p>Unpublished research run through a cloud API is data you&#39;ve handed to a third party before you&#39;ve published a word. We&#39;ll build the whole system on your own hardware instead: the agents, the orchestration, and the models that carry your lab&#39;s real work, and your unpublished data never leaves the building.</p>
     </div>
   </section>
 
@@ -276,13 +250,6 @@
   </section>
 
 
-  <!-- Product Imagery -->
-  <section class="product-showcase section-dark fade-in">
-    <div class="container">
-      <img src="images/product-summit-education.webp" alt="an Island Mountain on-premise deployment AI servers scaled for institutional research and educational operations" class="product-showcase-img" width="568" height="379" loading="lazy">
-      <p class="product-showcase-caption">on-premise AI deployment scaled for institutional deployment across research and academic departments</p>
-    </div>
-  </section>
   <!-- Research Workflows -->
   <section class="section section-darker">
     <div class="container">
