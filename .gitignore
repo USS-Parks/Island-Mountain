@@ -68,6 +68,11 @@ skull-crossbones.png
 # images/ as the working masters, never committed (the web-ready webp ships instead).
 images/* *.png
 images/IM-Deploys-.png
+# Icon pipeline scratch — PNG source art and webp outputs staged in icons/. Nothing
+# committed references icons/ image assets (the site serves icons from images/ and the
+# tracked remixicon font), so this whole staging area stays local, never committed.
+icons/*.png
+icons/*.webp
 
 # Credential/keys notes (NEVER commit)
 AI Voice and Conversation Widget And CRM Project/Twilio Keys.md
