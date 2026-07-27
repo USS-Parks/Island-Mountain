@@ -27,8 +27,8 @@
   <link rel="stylesheet" href="css/card-nodes.min.css?v=3">
   <link rel="stylesheet" href="icons/remixicon.css" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="icons/remixicon.css"></noscript>
-  <link rel="preload" as="image" href="images/im-deploys-hero.webp" fetchpriority="high" media="(min-width:601px)">
-  <link rel="preload" as="image" href="images/im-deploys-hero-mobile.webp" fetchpriority="high" media="(max-width:600px)">
+  <link rel="preload" as="image" href="images/im-deploys-hero.webp?v=2" fetchpriority="high" media="(min-width:601px)">
+  <link rel="preload" as="image" href="images/im-deploys-hero-mobile.webp?v=2" fetchpriority="high" media="(max-width:600px)">
   <link rel="preload" href="fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
   <style>
@@ -53,8 +53,12 @@
   /* aurora.css only centers .au-lede as a direct child of .container, so inside
      .fd-thesis it stayed left-flushed at 60ch while its plain siblings ran the
      full 900px. Give every paragraph in the band one measure, centered. */
-  .fd-thesis p, .au-statement .container > p{ max-width:60ch; margin-left:auto; margin-right:auto;
-    text-align:left; }
+  .fd-thesis p, .au-statement .container > p{ margin-left:auto; margin-right:auto; text-align:left; }
+  /* Both thesis paragraphs share one font-independent measure so their left edges
+     align: the lede (1.05rem) and the body p resolve 60ch to different pixel widths,
+     which left the second paragraph looking indented. */
+  .fd-thesis p{ max-width:32rem; }
+  .au-statement .container > p{ max-width:60ch; }
   /* Heading and eyebrow stay centred; only the prose reads left. */
   .fd-thesis .au-h2, .fd-thesis .au-eyebrow-c{ text-align:center; }
   .range-copy p{ text-align:left; }
@@ -64,12 +68,21 @@
      scrolls over it, instead of scrolling away with the hero section. Replaces
      the scrolling image background aurora.css otherwise sets on .au-hero. */
   .hero-backdrop{ position:fixed; inset:0; z-index:-1; pointer-events:none;
-    background:#070c16 url('images/im-deploys-hero.webp') center center / cover no-repeat; }
-  .hero-backdrop::after{ content:''; position:absolute; inset:0;
-    background:linear-gradient(180deg, rgba(8,13,24,.90) 0%, rgba(13,20,36,.70) 46%, rgba(8,13,24,.96) 100%); }
-  /* Phones pull the same render at 1200px wide: identical framing, 115KB not 197KB. */
-  @media (max-width:600px){ .hero-backdrop{ background-image:url('images/im-deploys-hero-mobile.webp'); } }
+    background:#070c16 url('images/im-deploys-hero.webp?v=2') center center / contain no-repeat; }
+  /* Phones pull the same render at 1200px wide: identical framing, fewer bytes. */
+  @media (max-width:600px){ .hero-backdrop{ background-image:url('images/im-deploys-hero-mobile.webp?v=2'); } }
   .au-hero{ background:transparent !important; }
+  .au-hero .container{ text-shadow:0 2px 20px rgba(4,8,16,.85); }
+
+  /* Blue scrim dropped: the fixed render persists behind the whole page and each
+     text body rides in its own shaded panel for legibility, instead of a full-page
+     veil. The gold "why this works now" statement and the photo-backed sections
+     stay opaque as natural breaks. */
+  .au-section:not(.au-statement){ background:transparent !important; }
+  .fd-thesis, .fd-panel{ background:rgba(10,16,28,.84); border:1px solid rgba(148,163,184,.16);
+    border-radius:20px; box-shadow:0 22px 54px rgba(0,0,0,.46); padding:clamp(24px,4vw,44px); }
+  .au-howmade .au-hm-step{ background:rgba(10,16,28,.84); border:1px solid rgba(148,163,184,.16);
+    border-radius:14px; }
 
   /* Merged from the retired Configs page: photo-backed section treatments. */
   .specs-bg{background-color:#0b1424;background-image:linear-gradient(rgba(11,20,36,0.66),rgba(11,20,36,0.66)),url('images/summit-front.webp');background-repeat:no-repeat,no-repeat;background-position:center,left top;background-size:cover,cover;}
@@ -229,7 +242,7 @@
     <div class="container au-reveal">
       <div class="fd-thesis">
         <span class="au-eyebrow-c">The argument</span>
-        <h2 class="au-h2">Tome-level knowledge barely lives in the documentation.</h2>
+        <h2 class="au-h2">Tome-level knowledge barely lives<br>in the documentation.</h2>
         <p class="au-lede" style="color:#cbd5e1;">So how would it live in a language model? The knowledge that decides whether a deployment works has been in someone's hands for fifteen or twenty years. It isn't written down anywhere you can point a retrieval pipeline at. The only way to get it is to go sit with the person who has it.</p>
         <p style="color:#cbd5e1;line-height:1.8;margin-top:18px;">The last twenty-five months of confident proselytizing from tech CEOs implied that expertise like this is easy to replicate. It isn't. Watching someone do a job they've done for two decades is worth more than any amount of requirements gathering, and it's the part almost nobody budgets for.</p>
       </div>
@@ -239,6 +252,7 @@
   <!-- The people -->
   <section class="au-section au-section--alt">
     <div class="container">
+      <div class="fd-panel">
       <span class="au-eyebrow-c au-reveal">Who we sit with</span>
       <h2 class="au-h2 au-reveal">The expertise is already in the building.</h2>
       <p class="au-lede au-reveal" style="color:#cbd5e1;max-width:880px;margin:0 auto 6px;">Every industry has them, and every job classification has its own version: the person who has run this particular work for fifteen or twenty years and carries the whole thing in their head. Some of who we've sat with, and who we expect to:</p>
@@ -261,6 +275,7 @@
         <li><b>The shop foreman</b> who knows which spec gets waived and who has to sign for it</li>
       </ul>
       <p class="au-lede au-reveal" style="color:#cbd5e1;max-width:880px;margin:30px auto 0;">The list doesn't end, and it isn't ours to write. Yours are already on payroll, and the most essential window in a deployment opens while we're sitting next to one of them. That's the part you can't outsource, can't shortcut, and can't buy in a box.</p>
+      </div>
     </div>
   </section>
 
