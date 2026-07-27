@@ -27,8 +27,8 @@
   <link rel="stylesheet" href="css/card-nodes.min.css?v=3">
   <link rel="stylesheet" href="icons/remixicon.css" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="icons/remixicon.css"></noscript>
-  <link rel="preload" as="image" href="images/im-deploys-hero.webp?v=3" fetchpriority="high" media="(min-width:601px)">
-  <link rel="preload" as="image" href="images/im-deploys-hero-mobile.webp?v=3" fetchpriority="high" media="(max-width:600px)">
+  <link rel="preload" as="image" href="images/im-deploys-hero.webp?v=4" fetchpriority="high" media="(min-width:601px)">
+  <link rel="preload" as="image" href="images/im-deploys-hero-mobile.webp?v=4" fetchpriority="high" media="(max-width:600px)">
   <link rel="preload" href="fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
   <style>
@@ -68,11 +68,15 @@
      scrolls over it, instead of scrolling away with the hero section. Replaces
      the scrolling image background aurora.css otherwise sets on .au-hero. */
   .hero-backdrop{ position:fixed; inset:0; z-index:-1; pointer-events:none;
-    background:#070c16 url('images/im-deploys-hero.webp?v=3') center center / cover no-repeat; }
+    background:#070c16 url('images/im-deploys-hero.webp?v=4') center center / cover no-repeat; }
   /* Phones pull the same scene at 1200px wide: identical framing, fewer bytes. */
-  @media (max-width:600px){ .hero-backdrop{ background-image:url('images/im-deploys-hero-mobile.webp?v=3'); } }
+  @media (max-width:600px){ .hero-backdrop{ background-image:url('images/im-deploys-hero-mobile.webp?v=4'); } }
   .au-hero{ background:transparent !important; }
-  .au-hero .container{ text-shadow:0 2px 20px rgba(4,8,16,.85); }
+  /* Light hero backdrop: the headline rides in a shaded panel so the white type
+     stays legible, matching the body text panels. */
+  .au-hero .container{ background:rgba(10,16,28,.84); border:1px solid rgba(148,163,184,.16);
+    border-radius:20px; box-shadow:0 22px 54px rgba(0,0,0,.46); padding:clamp(30px,4vw,52px);
+    max-width:900px; }
 
   /* Blue scrim dropped: the fixed render persists behind the whole page and each
      text body rides in its own shaded panel for legibility, instead of a full-page
