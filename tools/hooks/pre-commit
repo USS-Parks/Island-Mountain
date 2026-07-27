@@ -86,6 +86,29 @@ if [ -x "$SKILLS_SCAN" ]; then
   "$SKILLS_SCAN" || FAIL=1
 fi
 
+# --- Voice gate (WARN-only): Basho-voice slop + contraction check on staged blog
+#     posts. Scripts live in gitignored _work/skills/ — the same read-an-ignored-
+#     path trick as the skills-drift gate above, so the LIVE editable copy runs,
+#     never the frozen skills bundle. Heuristic style gate: it WARNs and never sets
+#     FAIL, so editing a post that already carries a pre-existing fragment run can't
+#     clap a clean commit. Skips silently when python or the private scripts are
+#     absent (fail-safe on CI and on any machine without _work/). ---
+VOICE_DIR="$(git rev-parse --show-toplevel)/_work/skills/basho-writing-style"
+if [ -n "$PYTHON_BIN" ] && [ -f "$VOICE_DIR/slopcheck.py" ] && [ -f "$VOICE_DIR/voicecheck.py" ]; then
+  VOICE_STAGED=()
+  while IFS= read -r -d '' f; do VOICE_STAGED+=("$f"); done \
+    < <(git diff --cached -z --name-only --diff-filter=ACM -- 'blog/*.html')
+  if [ "${#VOICE_STAGED[@]}" -gt 0 ]; then
+    SLOP_OUT="$("$PYTHON_BIN" "$VOICE_DIR/slopcheck.py" "${VOICE_STAGED[@]}" 2>&1)"; SLOP_RC=$?
+    VOICE_OUT="$("$PYTHON_BIN" "$VOICE_DIR/voicecheck.py" "${VOICE_STAGED[@]}" 2>&1)"; VOICE_RC=$?
+    if [ "$SLOP_RC" -ne 0 ] || [ "$VOICE_RC" -ne 0 ]; then
+      echo "WARN   voice gate (style heuristics, not blocking) — review before you push:" >&2
+      { [ "$SLOP_RC" -ne 0 ] && printf '%s\n' "$SLOP_OUT"
+        [ "$VOICE_RC" -ne 0 ] && printf '%s\n' "$VOICE_OUT"; } | sed 's/^/         /' >&2
+    fi
+  fi
+fi
+
 # --- CANON §11 no-slop gate: block newly-added build-process artifacts ---
 SLOP_SCAN="$(git rev-parse --show-toplevel)/tools/no-slop-scan.sh"
 if [ -x "$SLOP_SCAN" ]; then
