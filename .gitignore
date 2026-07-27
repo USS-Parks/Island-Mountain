@@ -26,6 +26,7 @@ AI Voice and Conversation Widget And CRM Project/**/.wrangler/
 # OS artifacts
 .DS_Store
 Thumbs.db
+desktop.ini
 *.~lock.*
 
 # Python tooling bytecode
@@ -63,6 +64,10 @@ Island Mountain 20-Sided.png
 IslandMountain_D20.*
 images/single-user.png
 skull-crossbones.png
+# Source master art — the title-cased originals behind the served webps. Kept in
+# images/ as the working masters, never committed (the web-ready webp ships instead).
+images/* *.png
+images/IM-Deploys-.png
 
 # Credential/keys notes (NEVER commit)
 AI Voice and Conversation Widget And CRM Project/Twilio Keys.md
