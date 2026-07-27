@@ -819,7 +819,7 @@ p {
 }
 
 /* Island Mountain image icons on cards: centered over the text body,
-   held to the canonical icon standard — the same 104px box and white +
+   held to the canonical icon standard, the same 104px box and white +
    glow treatment as the aurora .au-ic--xl icons (icon art at 85% fill). */
 .card-icon-im {
   width: 104px;
@@ -1435,7 +1435,7 @@ table tbody tr:last-child td {
   padding: 24px;
 }
 
-/* Brief-card icon: held to the canonical icon standard — same 104px box,
+/* Brief-card icon: held to the canonical icon standard, same 104px box,
    85%-fill art, and white + glow as .au-ic--xl / .card-icon-im. */
 .risk-icon {
   width: 104px;
@@ -1665,7 +1665,7 @@ a.risk-card--link:hover {
 }
 
 /* ============================================
-   Inline Style Extraction — Session 22
+   Inline Style Extraction
    Repeated patterns migrated to classes
    ============================================ */
 
