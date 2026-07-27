@@ -87,6 +87,10 @@
     border-radius:20px; box-shadow:0 22px 54px rgba(0,0,0,.46); padding:clamp(24px,4vw,44px); }
   .au-howmade .au-hm-step{ background:rgba(10,16,28,.72); border:1px solid rgba(148,163,184,.16);
     border-radius:14px; }
+  /* Typewriter section: aurora.css paints it as a full-bleed near-black band, darker
+     and wider than the cards. Drop the section fill so the typed line rides in a
+     centered .fd-thesis card, matching the 900px width and 72% shading below it. */
+  .au-manifesto{ background:transparent; }
 
   /* Merged from the retired Configs page: photo-backed section treatments. */
   .specs-bg{background-color:#0b1424;background-image:linear-gradient(rgba(11,20,36,0.66),rgba(11,20,36,0.66)),url('images/summit-front.webp');background-repeat:no-repeat,no-repeat;background-position:center,left top;background-size:cover,cover;}
@@ -237,7 +241,9 @@
   <!-- Thesis -->
   <section class="au-manifesto">
     <div class="container au-reveal">
-      <h2 class="au-typewriter" data-typewriter="Technology that ignores expertise gets ignored by the experts.">Technology that ignores expertise gets ignored by the experts.</h2>
+      <div class="fd-thesis">
+        <h2 class="au-typewriter" data-typewriter="Technology that ignores expertise gets ignored by the experts.">Technology that ignores expertise gets ignored by the experts.</h2>
+      </div>
     </div>
   </section>
 
