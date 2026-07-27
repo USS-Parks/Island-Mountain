@@ -24,8 +24,9 @@
   <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png?v=2">
   <link rel="stylesheet" href="css/style.min.css?v=15">
   <link rel="stylesheet" href="css/aurora.min.css?v=13">
-  <link rel="stylesheet" href="css/card-nodes.min.css?v=3">
-  <link rel="stylesheet" href="css/blog-scroller.min.css?v=3">
+  <link rel="stylesheet" href="css/card-nodes.min.css?v=3" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="css/blog-scroller.min.css?v=3" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="css/card-nodes.min.css?v=3"><link rel="stylesheet" href="css/blog-scroller.min.css?v=3"></noscript>
   <link rel="stylesheet" href="icons/remixicon.css" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="icons/remixicon.css"></noscript>
   <link rel="preload" as="image" href="images/summit-photo3.webp" fetchpriority="high" media="(min-width:601px)">
@@ -81,11 +82,11 @@
      vertical pages): the summit photo stays put while content scrolls over it,
      instead of scrolling away with the hero section. Overrides the scrolling
      image background css/aurora.css sets on .au-hero. */
-  .hero-backdrop{ position:fixed; inset:0; z-index:-1; pointer-events:none;
-    background:#070c16 url('images/summit-photo3.webp') center 40% / cover no-repeat; }
+  .hero-backdrop{ position:fixed; inset:0; z-index:-1; pointer-events:none; background:#070c16; }
+  .hero-backdrop img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 40%; }
   .hero-backdrop::after{ content:''; position:absolute; inset:0;
     background:linear-gradient(180deg, rgba(8,13,24,.88) 0%, rgba(13,20,36,.64) 48%, rgba(8,13,24,.94) 100%); }
-  @media (max-width:600px){ .hero-backdrop{ background-image:url('images/summit-photo3-mobile.webp'); background-position:30% 45%; } }
+  @media (max-width:600px){ .hero-backdrop img{ object-position:30% 45%; } }
   .au-hero{ background:transparent !important; }
   </style>
   <link rel="canonical" href="https://islandmountain.io/">
@@ -120,7 +121,7 @@
 <body>
 
   <!-- Hero backdrop: fixed image layer, locked during scroll -->
-  <div class="hero-backdrop" aria-hidden="true"></div>
+  <div class="hero-backdrop" aria-hidden="true"><img src="images/summit-photo3.webp" srcset="images/summit-photo3-mobile.webp 1200w, images/summit-photo3.webp 1672w" sizes="100vw" width="1672" height="941" fetchpriority="high" decoding="async" alt=""></div>
 
   <!-- Navbar -->
   <nav class="navbar">
