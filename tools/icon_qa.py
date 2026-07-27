@@ -14,25 +14,31 @@ eyeball it.
 import sys, os, glob
 import numpy as np
 from PIL import Image
+from scipy import ndimage
 
 SIZE = 208
 VIEW = 104                      # the largest slot the site renders an icon at
 
-# Thresholds calibrated against the 41 shipping icons, set just outside the 5th
-# and 95th percentiles so the accepted library defines the norm and only art
-# that falls outside it trips. See PLANNING/ICON-LIBRARY-EXPANSION-PSPR.md
+# Thresholds recalibrated against the canonical set produced by icon_ingest.py
+# (208px, fill 0.85, stroke normalized to ~2.9px@208), set just outside the
+# observed 5th/95th percentiles so a conforming icon passes and drift trips.
+# The site removed the icon drop-shadow in 2026-07 — weight now lives in the
+# stroke, so stroke width and fill are the load-bearing gates: they are what
+# catch the batch-to-batch thickness and size drift.
 #
-# NEW art should not aim at these floors. They are the reject line, not the
-# target. Aim at the library median: solidity 0.41, ink 0.17, fill 0.85.
+# NEW art should be run THROUGH icon_ingest.py, not hand-aimed at these numbers.
 GATES = {
     'solidity_min': 0.30,       # share of inked pixels still solid white at 104px
-    'ink_min': 0.079,           # too little and the icon reads as empty
-    'ink_max': 0.257,           # too much and it reads as a filled block
-    'fill_max': 0.89,           # art must leave a margin round the canvas
-    'fill_min': 0.55,           # floating speck in a big canvas
+    'ink_min': 0.090,           # too little and the icon reads as empty
+    'ink_max': 0.275,           # too much and it reads as a filled block
+    'fill_max': 0.88,           # art must leave a margin round the canvas
+    'fill_min': 0.82,           # icon_ingest fits to ~0.85; below this it never
+                                # went through the tool
+    'stroke_min': 2.2,          # wire-line width @208; thinner = un-normalized
+    'stroke_max': 4.6,          # thicker = un-normalized, or a filled (ic-*) style
     'alpha_edge_max': 0.002,    # background must be genuinely transparent
 }
-TARGET = {'solidity': 0.41, 'ink': 0.17, 'fill': 0.85}   # library medians
+TARGET = {'solidity': 0.43, 'ink': 0.18, 'fill': 0.85, 'stroke': 2.9}   # canonical medians
 
 
 def check(path):
@@ -61,6 +67,17 @@ def check(path):
         fails.append('too sparse: ink coverage %.3f < %.3f' % (stats['ink'], GATES['ink_min']))
     elif stats['ink'] > GATES['ink_max']:
         fails.append('too dense: ink coverage %.3f > %.3f' % (stats['ink'], GATES['ink_max']))
+
+    # --- wire-line weight: uniform stroke is the canonical control now the glow
+    #     is gone. 2x mean distance-to-edge over the inked region = mean width.
+    solid = a > 0.5
+    stats['stroke'] = float(2 * ndimage.distance_transform_edt(solid)[solid].mean()) if solid.any() else 0.0
+    if stats['stroke'] < GATES['stroke_min']:
+        fails.append('wire lines too thin: stroke %.1f < %.1f px, run icon_ingest.py'
+                     % (stats['stroke'], GATES['stroke_min']))
+    elif stats['stroke'] > GATES['stroke_max']:
+        fails.append('wire lines too thick: stroke %.1f > %.1f px (un-normalized or a filled style)'
+                     % (stats['stroke'], GATES['stroke_max']))
 
     # --- framing: art centred with a real margin
     ys, xs = np.nonzero(ink)
@@ -123,13 +140,13 @@ def main(argv):
             for w in warns:
                 print('        note: %s' % w)
         elif warns and not quiet:
-            print('PASS  %-38s solidity %.2f  ink %.3f  fill %.2f'
-                  % (name, st.get('solidity', 0), st.get('ink', 0), st.get('fill', 0)))
+            print('PASS  %-38s stroke %.1f  solidity %.2f  ink %.3f  fill %.2f'
+                  % (name, st.get('stroke', 0), st.get('solidity', 0), st.get('ink', 0), st.get('fill', 0)))
             for w in warns:
                 print('        note: %s' % w)
         elif not quiet:
-            print('PASS  %-38s solidity %.2f  ink %.3f  fill %.2f'
-                  % (name, st.get('solidity', 0), st.get('ink', 0), st.get('fill', 0)))
+            print('PASS  %-38s stroke %.1f  solidity %.2f  ink %.3f  fill %.2f'
+                  % (name, st.get('stroke', 0), st.get('solidity', 0), st.get('ink', 0), st.get('fill', 0)))
 
     print('\n%d checked, %d failed' % (len(paths), bad))
     return 1 if bad else 0

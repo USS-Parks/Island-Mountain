@@ -22,7 +22,7 @@
   <link rel="icon" type="image/x-icon" href="favicon.ico?v=2">
   <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png?v=2">
   <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png?v=2">
-  <link rel="stylesheet" href="css/style.min.css?v=14">
+  <link rel="stylesheet" href="css/style.min.css?v=15">
   <link rel="stylesheet" href="css/aurora.min.css?v=13">
   <link rel="stylesheet" href="css/card-nodes.min.css?v=3">
   <link rel="stylesheet" href="css/blog-scroller.min.css?v=3">
@@ -37,7 +37,7 @@
   @font-face{font-family:'Space Grotesk';font-style:normal;font-weight:300 700;font-display:swap;src:url('fonts/space-grotesk-latin.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
   /* Card icons use the canonical enlarged size from css/aurora.min.css?v=13 (.au-ic--xl = 104px). No inline size override. */
   /* Uniform icon rendering (matches the Woven page): normalize card icons to one white + one glow. */
-  .au-card .au-ic img{ filter: brightness(0) invert(1) drop-shadow(0 0 5px rgba(200,220,255,.55)); }
+  .au-card .au-ic img{ filter: brightness(0) invert(1); }
 
   /* Homepage-only: drop the magenta band on the spotlight and the gold aura on
      The Sovereign Stack statement, leaving the site's neutral dark background. Overrides the
@@ -190,22 +190,22 @@
       <h2 class="au-h2 au-reveal">What you get out of a deployment.</h2>
       <div class="au-cardgrid au-stagger">
         <div class="au-card beam-card" style="--i:0">
-          <div class="au-ic au-ic--xl"><img src="images/air-gapped-icon.webp?v=3" alt="" loading="lazy"></div>
+          <div class="au-ic au-ic--xl"><img src="images/air-gapped-icon.webp?v=4" alt="" loading="lazy"></div>
           <h3>Air-Gapped by Design</h3>
           <ul class="au-chk"><li>Zero data egress</li><li>No third-party handling</li><li>Runs fully offline</li></ul>
         </div>
         <div class="au-card beam-card" style="--i:1">
-          <div class="au-ic au-ic--xl"><img src="images/server-rack-icon.webp?v=3" alt="" loading="lazy"></div>
+          <div class="au-ic au-ic--xl"><img src="images/server-rack-icon.webp?v=4" alt="" loading="lazy"></div>
           <h3>Built Around the Work</h3>
           <ul class="au-chk"><li>We immerse before we spec</li><li>Discovery drives the config</li><li>Any hardware, any model</li></ul>
         </div>
         <div class="au-card beam-card" style="--i:2">
-          <div class="au-ic au-ic--xl"><img src="images/WSF-icon.webp?v=3" alt="" loading="lazy"></div>
+          <div class="au-ic au-ic--xl"><img src="images/WSF-icon.webp?v=4" alt="" loading="lazy"></div>
           <h3>Woven Security Fabric</h3>
           <ul class="au-chk"><li>Budget-carrying tokens</li><li>Sealed receipt ledger</li><li>Tool-call governance</li></ul>
         </div>
         <div class="au-card beam-card" style="--i:3">
-          <div class="au-ic au-ic--xl"><img src="images/on-prem-ai-icon.webp?v=3" alt="" loading="lazy"></div>
+          <div class="au-ic au-ic--xl"><img src="images/on-prem-ai-icon.webp?v=4" alt="" loading="lazy"></div>
           <h3>Yours to Run</h3>
           <ul class="au-chk"><li>No token fees, ever</li><li>No vendor or lab lock-in</li><li>Onboarded, not handed over</li></ul>
         </div>
@@ -248,7 +248,7 @@
         <a class="au-vcard beam-card" style="--i:0" href="government.html">
           <div class="au-vcard-img"><img src="images/local-govt-vertical.webp" alt="Municipal City Hall building" width="800" height="600" loading="lazy"></div>
           <div class="au-vcard-body">
-            <img class="au-vcard-icon" src="images/local-govt-ai-icon.webp?v=3" alt="" width="72" height="72" loading="lazy">
+            <img class="au-vcard-icon" src="images/local-govt-ai-icon.webp?v=4" alt="" width="72" height="72" loading="lazy">
             <h3>Local Government</h3>
             <p>Resident records, cases, and PII stay on municipal premises.</p>
             <span class="au-vcard-go">Explore <i class="ri-arrow-right-line" aria-hidden="true"></i></span>
@@ -257,7 +257,7 @@
         <a class="au-vcard beam-card" style="--i:1" href="tribal-nations.html">
           <div class="au-vcard-img"><img src="images/tribal-nations-vertical.webp" alt="Central Council of the Tlingit and Haida Indian Tribes of Alaska building" width="800" height="450" loading="lazy"></div>
           <div class="au-vcard-body">
-            <img class="au-vcard-icon" src="images/tribal-nation-icon.webp?v=3" alt="" width="72" height="72" loading="lazy">
+            <img class="au-vcard-icon" src="images/tribal-nation-icon.webp?v=4" alt="" width="72" height="72" loading="lazy">
             <h3>Tribal Nations</h3>
             <p>Sovereign data stays on sovereign land, under your own jurisdiction.</p>
             <span class="au-vcard-go">Explore <i class="ri-arrow-right-line" aria-hidden="true"></i></span>
@@ -266,7 +266,7 @@
         <a class="au-vcard beam-card" style="--i:2" href="education.html">
           <div class="au-vcard-img"><img src="images/higher-learning-vertical.webp" alt="College campus with students" width="800" height="533" loading="lazy"></div>
           <div class="au-vcard-body">
-            <img class="au-vcard-icon" src="images/higher-learning-ai-icon.webp?v=3" alt="" width="72" height="72" loading="lazy">
+            <img class="au-vcard-icon" src="images/higher-learning-ai-icon.webp?v=4" alt="" width="72" height="72" loading="lazy">
             <h3>Higher Learning</h3>
             <p>Research and student records stay on campus, not in the cloud.</p>
             <span class="au-vcard-go">Explore <i class="ri-arrow-right-line" aria-hidden="true"></i></span>
@@ -275,7 +275,7 @@
         <a class="au-vcard beam-card" style="--i:3" href="casino-gaming.html">
           <div class="au-vcard-img"><img src="images/casino-vertical.webp" alt="Tribal gaming casino and resort" width="800" height="450" loading="lazy"></div>
           <div class="au-vcard-body">
-            <img class="au-vcard-icon" src="images/casino-ai-icon.webp?v=3" alt="" width="72" height="72" loading="lazy">
+            <img class="au-vcard-icon" src="images/casino-ai-icon.webp?v=4" alt="" width="72" height="72" loading="lazy">
             <h3>Casino Gaming</h3>
             <p>Player and surveillance data never leave the property.</p>
             <span class="au-vcard-go">Explore <i class="ri-arrow-right-line" aria-hidden="true"></i></span>
@@ -587,19 +587,19 @@
       </div>
       <div class="card-grid card-grid-3 fade-in">
         <div class="card beam-card" style="--i:0">
-          <div class="card-icon-im"><img src="images/faq-icon.webp?v=3" alt="" loading="lazy" decoding="async"></div>
+          <div class="card-icon-im"><img src="images/faq-icon.webp?v=4" alt="" loading="lazy" decoding="async"></div>
           <h3>FAQ</h3>
           <p>Straight answers on what a deployment looks like, how long we&#39;re on-site, model selection, air-gapping, and what you end up owning.</p>
           <a href="faq.html" class="btn btn-secondary mt-16">Read the FAQ &rarr;</a>
         </div>
         <div class="card beam-card" style="--i:1">
-          <div class="card-icon-im"><img src="images/resources-icon.webp?v=3" alt="" loading="lazy" decoding="async"></div>
+          <div class="card-icon-im"><img src="images/resources-icon.webp?v=4" alt="" loading="lazy" decoding="async"></div>
           <h3>Resources</h3>
           <p>Direct-answer briefs on air-gapped inference, HIPAA, ITAR/CMMC, the CLOUD Act, and on-premises AI cost.</p>
           <a href="resources.html" class="btn btn-secondary mt-16">Browse resources &rarr;</a>
         </div>
         <div class="card beam-card" style="--i:2">
-          <div class="card-icon-im"><img src="images/contact-icon.webp?v=3" alt="" loading="lazy" decoding="async"></div>
+          <div class="card-icon-im"><img src="images/contact-icon.webp?v=4" alt="" loading="lazy" decoding="async"></div>
           <h3>Contact</h3>
           <p>Tell us whose desk the work runs through. One engineer, one phone call, real answers, no sales pitch.</p>
           <a href="contact.html" class="btn btn-secondary mt-16">Start a scoping call &rarr;</a>

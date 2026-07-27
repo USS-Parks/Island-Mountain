@@ -833,19 +833,18 @@ p {
   display: block;
 }
 
-/* One wire-and-glow treatment for every icon slot on the site, declared once.
-   This used to live in three page-local <style> blocks and only matched
-   .au-card .au-ic img, so the homepage vertical-card icons and the style guide
-   swatches rendered flat next to cards that glowed. Library art is white
-   linework on transparent at 208x208, which is the 2x asset for the 104px
-   slots; brightness(0) invert(1) forces every file to the same white whatever
-   its source happened to measure, and the drop-shadow is the house glow. */
+/* One white-line treatment for every icon slot on the site, declared once.
+   Library art is white linework on transparent at 208x208, the 2x asset for the
+   104px slots, with a canonical stroke weight baked in by tools/icon_ingest.py.
+   brightness(0) invert(1) forces every file to the same pure white whatever its
+   source measured. No drop-shadow: the weight lives in the stroke, not a glow,
+   so dense icons no longer bloom and sparse ones no longer read faint. */
 .card-icon-im img,
 .risk-icon img,
 .au-ic img,
 .au-vcard-icon,
 .icotile img {
-  filter: brightness(0) invert(1) drop-shadow(0 0 5px rgba(200,220,255,.55));
+  filter: brightness(0) invert(1);
 }
 
 .card h3 {
@@ -1448,7 +1447,7 @@ table tbody tr:last-child td {
   height: 100%;
   object-fit: contain;
   display: block;
-  filter: brightness(0) invert(1) drop-shadow(0 0 5px rgba(200,220,255,.55));
+  filter: brightness(0) invert(1);
 }
 
 .risk-card h4 {

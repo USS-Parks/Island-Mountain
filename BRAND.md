@@ -183,8 +183,18 @@ Eyebrows/badges are the copper "kicker" above a heading. Body copy is muted slat
 ## 6. Iconography
 
 **Style:** white line-art on transparent, frequently carrying the IM sunburst.
-Stored as **1254×1254 webp** with luminance-based alpha (86–92% transparent, opaque
-pixels pure white). ~33 icons in the set (`images/*-icon.webp`).
+Delivered as **208×208 webp** (2x the 104px slot) with luminance-based alpha, opaque
+pixels pure white, art fit to **0.85 of the canvas** and every icon's **wire-line
+stroke normalized to one canonical weight** (~2.9px @208). Hi-res masters live in
+`icons/`; the 208 delivery files in `images/*-icon.webp` are produced only by
+`tools/icon_ingest.py` — never hand-keyed, or batches drift (they did: pre-2026-07
+stroke ranged 3.8x across the set).
+
+**Rendered with weight, no glow.** The card filter is `brightness(0) invert(1)` and
+**nothing else** — no drop-shadow. The weight is in the stroke, baked into the file,
+so dense icons don't bloom and sparse ones don't read faint. Do not reintroduce an
+icon `drop-shadow`; that was removed site-wide in 2026-07. (The animated card-node
+*beams* keep their glow — that is a different treatment in `css/aurora.css`.)
 
 **Sizing & placement**
 | Class | Display | Layout |
@@ -290,28 +300,28 @@ one is missing). Playwright/Chromium is preinstalled at `/opt/pw-browsers/chromi
 
 ## A. Asset production
 
-### A1. Icon → transparent → webp
+### A1. Icon → canonical webp (`tools/icon_ingest.py`)
 
-Source icons arrive as **white line-art on a solid (black) background**. Convert the
-background to transparent using **luminance as the alpha channel** — this keeps the
-white linework's anti-aliased edges clean (a flat `-transparent black` leaves gray
-halos). Then encode lossless webp so the lines stay crisp.
+Source icons arrive as **white line-art on a solid (black) background** (keep the
+hi-res master in `icons/`). One tool does the whole canonical conversion — luminance
+key → pure-white RGB → crop and fit to 0.85 of the canvas → **normalize the wire-line
+stroke to one weight** → 208×208 lossless webp. Do not hand-run `convert`/`cwebp`
+and drop the result in `images/`; that is exactly how stroke weight drifted across
+batches. Requires Pillow + scipy (both in the env).
 
 ```bash
-# 1) solid-bg PNG -> transparent PNG (luminance -> alpha, force pure-white RGB)
-convert input.png \( +clone -colorspace Gray \) -alpha off \
-  -compose CopyOpacity -composite \
-  -channel RGB -fill white -colorize 100 +channel \
-  PNG32:name-icon-transparent.png
+# master in icons/  ->  canonical 208 delivery icon in images/
+python tools/icon_ingest.py icons/document-drafting.png images/document-drafting-icon.webp
 
-# 2) transparent PNG -> webp (lossless: crisp line-art + full alpha)
-cwebp -quiet -lossless -alpha_q 100 name-icon-transparent.png -o images/name-icon.webp
+# then gate it — do not eyeball
+python tools/icon_qa.py images/document-drafting-icon.webp
 ```
 
-**Verify:** `identify -format "%wx%h alpha=%A\n" images/name-icon.webp` → expect
-`1254x1254 alpha=True`; opaque pixels should be pure white `[255,255,255]` (matches
-the existing set). Keep the canvas 1254×1254 to match the library; CSS sizes it.
-Place with `.au-ic` (54px) or `.card-icon-im` (≤210px centered).
+**Verify:** `icon_qa.py` must print `PASS` — it checks 208×208, transparent ground,
+pure-white linework, fill ~0.85, and **stroke width in the canonical 2.2–4.6px band**
+(the gate that catches un-normalized art). The site renders icons white with **no
+glow** (`css/style.css`: `filter: brightness(0) invert(1)`), so the stroke *is* the
+weight. Place with `.au-ic` (54px) or `.card-icon-im` (104px centered).
 
 ### A2. Video for web (`.au-infographic`)
 
