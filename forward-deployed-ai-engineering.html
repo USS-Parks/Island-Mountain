@@ -59,21 +59,17 @@
   .fd-thesis .au-h2, .fd-thesis .au-eyebrow-c{ text-align:center; }
   .range-copy p{ text-align:left; }
 
-  /* Hero: the emblem-and-hardware-orbit render under a dark veil, in place of the
-     site-wide summit-photo3 that aurora.css sets for every .au-hero. */
-  .au-hero{
-    background:
-      linear-gradient(180deg, rgba(8,13,24,.90) 0%, rgba(13,20,36,.70) 46%, rgba(8,13,24,.96) 100%),
-      url('images/im-deploys-hero.webp') center center / cover no-repeat;
-  }
+  /* Hero image locked as a fixed backdrop (same manner as faq / lamprey / the
+     vertical pages): the emblem-and-hardware render stays put while content
+     scrolls over it, instead of scrolling away with the hero section. Replaces
+     the scrolling image background aurora.css otherwise sets on .au-hero. */
+  .hero-backdrop{ position:fixed; inset:0; z-index:-1; pointer-events:none;
+    background:#070c16 url('images/im-deploys-hero.webp') center center / cover no-repeat; }
+  .hero-backdrop::after{ content:''; position:absolute; inset:0;
+    background:linear-gradient(180deg, rgba(8,13,24,.90) 0%, rgba(13,20,36,.70) 46%, rgba(8,13,24,.96) 100%); }
   /* Phones pull the same render at 1200px wide: identical framing, 115KB not 197KB. */
-  @media (max-width:600px){
-    .au-hero{
-      background:
-        linear-gradient(180deg, rgba(8,13,24,.90) 0%, rgba(13,20,36,.70) 46%, rgba(8,13,24,.96) 100%),
-        url('images/im-deploys-hero-mobile.webp') center center / cover no-repeat;
-    }
-  }
+  @media (max-width:600px){ .hero-backdrop{ background-image:url('images/im-deploys-hero-mobile.webp'); } }
+  .au-hero{ background:transparent !important; }
 
   /* Merged from the retired Configs page: photo-backed section treatments. */
   .specs-bg{background-color:#0b1424;background-image:linear-gradient(rgba(11,20,36,0.66),rgba(11,20,36,0.66)),url('images/summit-front.webp');background-repeat:no-repeat,no-repeat;background-position:center,left top;background-size:cover,cover;}
@@ -174,6 +170,9 @@
   </script>
 </head>
 <body>
+
+  <!-- Hero backdrop: fixed image layer, locked during scroll -->
+  <div class="hero-backdrop" aria-hidden="true"></div>
 
   <!-- Navbar -->
   <nav class="navbar">

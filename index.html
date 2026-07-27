@@ -77,6 +77,16 @@
   }
   /* Center the hero type stack: the blocks were centered but their text ragged left. */
   .au-hero .au-eyebrow, .au-hero .au-h1, .au-hero .au-sub{ text-align:center; }
+  /* Hero image locked as a fixed backdrop (same manner as faq / lamprey / the
+     vertical pages): the summit photo stays put while content scrolls over it,
+     instead of scrolling away with the hero section. Overrides the scrolling
+     image background css/aurora.css sets on .au-hero. */
+  .hero-backdrop{ position:fixed; inset:0; z-index:-1; pointer-events:none;
+    background:#070c16 url('images/summit-photo3.webp') center 40% / cover no-repeat; }
+  .hero-backdrop::after{ content:''; position:absolute; inset:0;
+    background:linear-gradient(180deg, rgba(8,13,24,.88) 0%, rgba(13,20,36,.64) 48%, rgba(8,13,24,.94) 100%); }
+  @media (max-width:600px){ .hero-backdrop{ background-image:url('images/summit-photo3-mobile.webp'); background-position:30% 45%; } }
+  .au-hero{ background:transparent !important; }
   </style>
   <link rel="canonical" href="https://islandmountain.io/">
   <meta property="og:title" content="Island Mountain - Forward Deployed AI Engineering">
@@ -108,6 +118,9 @@
   </script>
 </head>
 <body>
+
+  <!-- Hero backdrop: fixed image layer, locked during scroll -->
+  <div class="hero-backdrop" aria-hidden="true"></div>
 
   <!-- Navbar -->
   <nav class="navbar">
