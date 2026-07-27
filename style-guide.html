@@ -98,7 +98,7 @@
   .cardgrid{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:16px}
   .imcard{border:1px solid var(--line); border-radius:var(--radius-lg); background:var(--card); padding:26px 22px; text-align:center; position:relative; isolation:isolate; overflow:hidden}
   .imcard > *{position:relative; z-index:1}
-  .imcard img.ic{width:96px; height:96px; object-fit:contain; filter:brightness(0) invert(1) drop-shadow(0 0 5px rgba(200,220,255,.55)); margin:2px auto 14px; display:block}
+  .imcard img.ic{width:96px; height:96px; object-fit:contain; filter:brightness(0) invert(1); margin:2px auto 14px; display:block}
   .imcard h4{font-size:1.05rem; font-weight:700; margin-bottom:8px}
   .imcard p{font-size:.86rem; color:var(--muted); margin:0 auto; max-width:26ch}
 
@@ -307,12 +307,12 @@
     <p class="sec-sub">A library of ~33 icons: white linework on transparent, stored at 1254×1254 webp with luminance-based alpha, frequently carrying the sunburst. Centered over the text, never in a badge.</p>
 
     <div class="iconrow">
-      <div class="icotile"><img src="images/faq-icon.webp?v=3" alt=""><span>faq</span></div>
-      <div class="icotile"><img src="images/resources-icon.webp?v=3" alt=""><span>resources</span></div>
-      <div class="icotile"><img src="images/contact-icon.webp?v=3" alt=""><span>contact</span></div>
-      <div class="icotile"><img src="images/air-gapped-icon.webp?v=3" alt=""><span>air-gapped</span></div>
-      <div class="icotile"><img src="images/WSF-icon.webp?v=3" alt=""><span>WSF</span></div>
-      <div class="icotile"><img src="images/agentic-orchestration-icon.webp?v=3" alt=""><span>agentic-orch</span></div>
+      <div class="icotile"><img src="images/faq-icon.webp?v=4" alt=""><span>faq</span></div>
+      <div class="icotile"><img src="images/resources-icon.webp?v=4" alt=""><span>resources</span></div>
+      <div class="icotile"><img src="images/contact-icon.webp?v=4" alt=""><span>contact</span></div>
+      <div class="icotile"><img src="images/air-gapped-icon.webp?v=4" alt=""><span>air-gapped</span></div>
+      <div class="icotile"><img src="images/WSF-icon.webp?v=4" alt=""><span>WSF</span></div>
+      <div class="icotile"><img src="images/agentic-orchestration-icon.webp?v=4" alt=""><span>agentic-orch</span></div>
     </div>
 
     <div class="note"><b>Sizing.</b> <code>.au-ic</code> 54px · <code>.card-icon-im</code> ≤210px centered · <code>.au-vcard-icon</code> 72px. All <code>object-fit:contain</code>, <code>alt=""</code> (the heading labels it), <code>loading="lazy"</code>. To make a new one, see <b>How-To A1 / A6</b> below.</div>
@@ -327,9 +327,9 @@
     <p class="sec-sub">Dark glass, hairline border, rounded, hover-lift - unified across families (<code>.card</code>, <code>.au-card</code>, <code>gpu-card</code>, <code>risk-card</code>) by one animation: a hollow white ring rides the top then the right edge, once, on scroll-in, staggered across a row. It's running live below.</p>
 
     <div class="cardgrid" id="beamdemo">
-      <div class="imcard beam" style="--i:0"><img class="ic" src="images/faq-icon.webp?v=3" alt=""><h4>FAQ</h4><p>Straight answers on deployment, model selection, and air-gapping.</p></div>
-      <div class="imcard beam" style="--i:1"><img class="ic" src="images/resources-icon.webp?v=3" alt=""><h4>Resources</h4><p>Direct-answer briefs on HIPAA, ITAR/CMMC, and the CLOUD Act.</p></div>
-      <div class="imcard beam" style="--i:2"><img class="ic" src="images/contact-icon.webp?v=3" alt=""><h4>Contact</h4><p>One builder, one phone call, real answers - no sales pitch.</p></div>
+      <div class="imcard beam" style="--i:0"><img class="ic" src="images/faq-icon.webp?v=4" alt=""><h4>FAQ</h4><p>Straight answers on deployment, model selection, and air-gapping.</p></div>
+      <div class="imcard beam" style="--i:1"><img class="ic" src="images/resources-icon.webp?v=4" alt=""><h4>Resources</h4><p>Direct-answer briefs on HIPAA, ITAR/CMMC, and the CLOUD Act.</p></div>
+      <div class="imcard beam" style="--i:2"><img class="ic" src="images/contact-icon.webp?v=4" alt=""><h4>Contact</h4><p>One builder, one phone call, real answers - no sales pitch.</p></div>
     </div>
 
     <h3 class="blk">Buttons</h3>
@@ -408,7 +408,7 @@ ffmpeg -y -sseof -0.3 -i video/name.mp4 -vframes 1 \
       <div class="howto"><div class="hh"><h4>B6 / B7 · Card + node animation</h4>
         <p>Use <code>.card</code> (component lib) or <code>.au-card</code> (aurora, centered). Add the house motion with <code>beam-card</code> + a staggered <code>--i</code>.</p></div>
         <pre><code>&lt;div class="card <span class="cp">beam-card</span>" style="<span class="cp">--i:0</span>"&gt;
-  &lt;div class="card-icon-im"&gt;&lt;img src="images/faq-icon.webp?v=3" alt=""&gt;&lt;/div&gt;
+  &lt;div class="card-icon-im"&gt;&lt;img src="images/faq-icon.webp?v=4" alt=""&gt;&lt;/div&gt;
   &lt;h3&gt;FAQ&lt;/h3&gt; &lt;p&gt;…&lt;/p&gt;
 &lt;/div&gt;
 <span class="cm"># page MUST load: css/card-nodes.min.css?v=3 + js/card-nodes.js</span></code></pre></div>
@@ -418,8 +418,8 @@ ffmpeg -y -sseof -0.3 -i video/name.mp4 -vframes 1 \
       <div class="glab"><span>C</span> Build, delivery &amp; deploy</div>
       <div class="howto"><div class="hh"><h4>C10 · CSS change delivery - the gotcha</h4>
         <p>Pages load <code>style.min.css</code> and there is <b>no build step</b>. Every change goes in <em>both</em> <code>style.css</code> and <code>style.min.css</code>, then bump the cache key everywhere.</p></div>
-        <pre><code>grep -rl 'style.min.css?v=12' --include=*.html . \
-  | xargs sed -i 's#style.min.css?v=12#style.min.css?v=12#g'</code></pre></div>
+        <pre><code>grep -rl 'style.min.css?v=15' --include=*.html . \
+  | xargs sed -i 's#style.min.css?v=15#style.min.css?v=15#g'</code></pre></div>
       <div class="howto"><div class="hh"><h4>C11 · Deploy &amp; verify</h4>
         <p>Push to <code>main</code> → the serialized <code>pages.yml</code> workflow. Watch the run to green; don't push and hope. Note: this session's egress blocks fetching islandmountain.io - verify via the GitHub API/tree instead.</p></div></div>
     </div>
