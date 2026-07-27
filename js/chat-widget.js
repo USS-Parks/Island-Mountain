@@ -1,5 +1,5 @@
 /* ============================================================
-   Island Mountain — AI chat widget (vanilla, drop-in)
+   Island Mountain: AI chat widget (vanilla, drop-in)
    No framework. Self-injects scoped styles. Lazy-builds the panel
    on first open so it never sits in the critical render path.
 
@@ -197,7 +197,7 @@
       addMsg(GREETING, 'bot');
       logMsg('bot', GREETING);
     }
-    // Reconcile with the server's stored conversation — this recovers a reply
+    // Reconcile with the server's stored conversation; this recovers a reply
     // that finished server-side after the visitor changed pages mid-response.
     syncHistory();
   }
@@ -228,7 +228,7 @@
       .catch(function () {});
   }
 
-  // --- Voice (Vapi) — in-page web call (no third-party tab) -----------------
+  // --- Voice (Vapi): in-page web call (no third-party tab) -----------------
   // No identifiers ship in this file: voice config comes from
   // window.IM_CHAT_CONFIG.voice or is fetched at runtime from the funnel Worker.
   var VOICE = CFG.voice || {};
@@ -269,12 +269,12 @@
   function startWebCall(btn) {
     if (vapi) { try { vapi.stop(); } catch (e) {} vapi = null; btn.textContent = '🎙️ Talk to an AI specialist'; btn.removeAttribute('data-state'); return; }
     btn.textContent = 'Connecting…';
-    addBot('Connecting you to our AI voice specialist. This call is handled by an AI assistant — please don’t share anything you wouldn’t put in writing.');
+    addBot('Connecting you to our AI voice specialist. This call is handled by an AI assistant. Please don’t share anything you wouldn’t put in writing.');
     track('voice_session', { mode: 'web' });
     import('https://esm.sh/@vapi-ai/web@2').then(function (mod) {
       var Vapi = mod.default || mod;
       vapi = new Vapi(VOICE.vapiPublicKey);
-      vapi.on('call-start', function () { btn.textContent = '● In call — tap to end'; btn.setAttribute('data-state', 'incall'); });
+      vapi.on('call-start', function () { btn.textContent = '● In call, tap to end'; btn.setAttribute('data-state', 'incall'); });
       vapi.on('call-end', function () { btn.textContent = '🎙️ Talk to an AI specialist'; btn.removeAttribute('data-state'); vapi = null; });
       vapi.on('error', function () { btn.textContent = '🎙️ Talk to an AI specialist'; btn.removeAttribute('data-state'); addBot(fallbackText()); vapi = null; });
       vapi.start(VOICE.vapiAssistantId);

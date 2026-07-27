@@ -46,7 +46,7 @@
       vid.addEventListener('ended', endIntro)
       var p = vid.play && vid.play()
       // If autoplay is blocked/rejected (rare with muted+playsinline), don't strand the
-      // visitor on a black frame until the 11s failsafe — reveal the page promptly instead.
+      // visitor on a black frame until the 11s failsafe; reveal the page promptly instead.
       if (p && p.catch)
         p.catch(function () {
           setTimeout(endIntro, 500)
