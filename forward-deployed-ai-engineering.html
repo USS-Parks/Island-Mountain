@@ -113,12 +113,17 @@
   .range-copy p{color:#e9eff8;font-size:1.05rem;line-height:1.85;text-shadow:0 1px 10px rgba(0,0,0,0.65);margin:0 0 20px;}
   .range-copy p:last-child{margin-bottom:0;}
   .hw-video-section{padding-top:0;}
+  /* Drop the full-bleed dark band: the shading belongs to the video card, not the
+     whole screen. The fixed backdrop then shows around the panel like every other
+     section. */
+  .section.hw-video-section{background-color:transparent;}
   /* Stack clip (1280x720), 30% larger, sharing one footprint with the typed
      copy (grid-stacked so the box is as tall as whichever is taller). The clip
      plays a beat, then fades to a faint backdrop while the copy types in over
      it. preload="none" so the box is ratio-locked, no 300x150 sliver. */
   .hw-video-section .container{max-width:1270px;}
-  .hw-reveal{position:relative;display:grid;max-width:1222px;margin:0 auto;}
+  .hw-reveal{position:relative;display:grid;max-width:1222px;margin:0 auto;
+    background:rgba(15,23,42,.92);border-radius:18px;box-shadow:0 22px 54px rgba(0,0,0,.46);}
   .hw-video{grid-area:1/1;align-self:center;border-radius:18px;overflow:hidden;
     box-shadow:0 24px 60px rgba(0,0,0,0.45);transition:opacity .9s ease;}
   .hw-video video{display:block;width:100%;height:auto;object-fit:cover;background:#000;aspect-ratio:16/9;}
