@@ -48,7 +48,15 @@
 
   <url>
     <loc>https://islandmountain.io/about.html</loc>
-    <lastmod>2026-06-26</lastmod>
+    <lastmod>2026-07-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- The Doctrine (full text) -->
+  <url>
+    <loc>https://islandmountain.io/the-island-mountain-doctrine.html</loc>
+    <lastmod>2026-07-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
