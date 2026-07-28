@@ -256,6 +256,52 @@ class Trace:
         return e * (np.maximum(m_head, m_hold) * self.ink * 0.95 + halo * (1 - self.ink))
 
 
+def _ring_kernel(radius, thick):
+    """Soft annulus (o-ring) stamp: 1 on the ring centerline, ~1.5px AA edges."""
+    r = int(math.ceil(radius + thick / 2)) + 2
+    yy, xx = np.mgrid[-r:r + 1, -r:r + 1]
+    dist = np.hypot(xx, yy)
+    k = np.clip((thick / 2 - np.abs(dist - radius)) / 1.5 + 0.5, 0, 1)
+    return k.astype(np.float32), r
+
+
+class RingFlow:
+    """An endless train of evenly spaced o-ring nodes drifting along a polyline
+    for the WHOLE loop (global time, not slot-gated). Speed is an integer number
+    of spacings per loop so the pattern wraps seamlessly; nodes fade in/out over
+    `endfade` px at the path ends so nothing pops."""
+    def __init__(self, c, H, W):
+        self.samples, self.d, self.L = _resample_path(c["path"], step=2.0)
+        self.color = np.asarray(c["color"], np.float32)
+        self.spacing = float(c.get("spacing", 260))
+        self.k = max(1, int(c.get("speed", 2)))
+        self.alpha = float(c.get("alpha", 0.85))
+        self.fade = float(c.get("endfade", 90))
+        self.kern, self.kr = _ring_kernel(c.get("radius", 34), c.get("thickness", 12))
+        pad = self.kr + 3
+        x0 = max(0, int(self.samples[:, 0].min()) - pad)
+        y0 = max(0, int(self.samples[:, 1].min()) - pad)
+        x1 = min(W, int(self.samples[:, 0].max()) + pad + 1)
+        y1 = min(H, int(self.samples[:, 1].max()) + pad + 1)
+        self.bb = (x0, y0, x1, y1)
+
+    def gain(self, u):
+        x0, y0, x1, y1 = self.bb
+        m = np.zeros((y1 - y0, x1 - x0), np.float32)
+        d = (u * self.k * self.spacing) % self.spacing
+        while d < self.L:
+            e = min(1.0, d / self.fade, (self.L - d) / self.fade)
+            if e > 0.02:
+                cx = int(round(np.interp(d, self.d, self.samples[:, 0]))) - x0
+                cy = int(round(np.interp(d, self.d, self.samples[:, 1]))) - y0
+                ys = slice(max(0, cy - self.kr), cy + self.kr + 1)
+                xs = slice(max(0, cx - self.kr), cx + self.kr + 1)
+                kh = self.kern[max(0, self.kr - cy):, max(0, self.kr - cx):][:m[ys, xs].shape[0], :m[ys, xs].shape[1]]
+                np.maximum(m[ys, xs], kh * e, out=m[ys, xs])
+            d += self.spacing
+        return m * self.alpha
+
+
 class ArrowPulse:
     """Translucent scaled copy of the arrow's own pixels, breathing over the
     original. Saturation-masked so only the colored arrowhead is lifted, then
@@ -316,6 +362,7 @@ def render_slots(cfg, out_path, fps, scale, keep_frames, scratch):
         glow.append(items)
 
     traces = [[Trace(t, arr, H, W) for t in s.get("traces", [])] for s in slots]
+    ringflows = [RingFlow(c, H, W) for c in cfg.get("ringflows", [])]
 
     ac = cfg.get("arrows", {})
     pulses = [ArrowPulse(b, arr) for b in ac.get("boxes", [])]
@@ -346,6 +393,11 @@ def render_slots(cfg, out_path, fps, scale, keep_frames, scratch):
                     x0, y0, x1, y1 = tr.bb
                     sub = frame[y0:y1, x0:x1]
                     sub += (tr.color[None, None, :] - sub) * gm[..., None]
+            for rf in ringflows:
+                gm = rf.gain(fi / total)
+                x0, y0, x1, y1 = rf.bb
+                sub = frame[y0:y1, x0:x1]
+                sub += (rf.color[None, None, :] - sub) * gm[..., None]
             img = Image.fromarray(frame.astype(np.uint8), "RGB")
             p = 0.5 * (1 - math.cos(2 * math.pi * fi / period))
             for ap in pulses:
