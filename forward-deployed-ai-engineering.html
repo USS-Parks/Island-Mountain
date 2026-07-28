@@ -56,12 +56,14 @@
   .fd-thesis p, .au-statement .container > p{ margin-left:auto; margin-right:auto; text-align:left; }
   /* Both thesis paragraphs share one font-independent measure so their left edges
      align: the lede (1.05rem) and the body p resolve 60ch to different pixel widths,
-     which left the second paragraph looking indented. */
+     which left the second paragraph looking indented. Same fix on the statement band. */
   .fd-thesis p{ max-width:32rem; }
-  .au-statement .container > p{ max-width:60ch; }
+  .au-statement .container > p{ max-width:34rem; }
   /* Heading and eyebrow stay centred; only the prose reads left. */
   .fd-thesis .au-h2, .fd-thesis .au-eyebrow-c{ text-align:center; }
   .range-copy p{ text-align:left; }
+  /* Balance headings so a lone word doesn't drop to its own last line. */
+  .au-h1, .au-h2, .section h2, .hw-reveal-title{ text-wrap:balance; }
 
   /* Hero image locked as a fixed backdrop (same manner as faq / lamprey / the
      vertical pages): the emblem-and-hardware render stays put while content
@@ -91,6 +93,17 @@
      and wider than the cards. Drop the section fill so the typed line rides in a
      centered .fd-thesis card, matching the 900px width and 72% shading below it. */
   .au-manifesto{ background:transparent; }
+
+  /* Why-this-works statement: aurora paints this as a full-bleed solid dark band.
+     Drop the band, let the fixed backdrop show through, and float the copy in a
+     padded, warm-tinted panel so it reads like every other section on the page
+     instead of one flat block of dark. */
+  .au-statement{ background:transparent !important; }
+  .au-statement::after{ display:none; }
+  .au-statement .container{ max-width:900px;
+    background:linear-gradient(180deg,rgba(43,28,8,.82),rgba(14,16,26,.84));
+    border:1px solid rgba(245,158,11,.22); border-radius:20px;
+    box-shadow:0 22px 54px rgba(0,0,0,.46); padding:clamp(28px,4vw,48px); }
 
   /* Merged from the retired Configs page: photo-backed section treatments. */
   .specs-bg{background-color:#0b1424;background-image:linear-gradient(rgba(11,20,36,0.66),rgba(11,20,36,0.66)),url('images/summit-front.webp');background-repeat:no-repeat,no-repeat;background-position:center,left top;background-size:cover,cover;}
