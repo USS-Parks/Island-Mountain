@@ -208,6 +208,18 @@
   ]
 }
 </script>
+  <style>
+  /* Doctrine panel: the shared shaded treatment for doctrine call-outs woven through the site (mirrors About's hero-lede-card). */
+  .doctrine-panel{ max-width:760px; margin:28px auto 0; padding:24px 28px; text-align:left;
+    background:rgba(12,19,33,.72); border:1px solid rgba(245,158,11,.38);
+    border-radius:16px; box-shadow:0 18px 44px rgba(0,0,0,.42);
+    backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px); }
+  .doctrine-panel p{ margin:0; color:var(--text-light); line-height:1.75; font-size:1.02rem; }
+  .doctrine-panel p + p{ margin-top:12px; }
+  .doctrine-panel .doctrine-link{ display:inline-block; margin-top:14px; font-weight:700; color:var(--copper-light); text-decoration:none; }
+  .doctrine-panel .doctrine-link:hover{ text-decoration:underline; }
+  @media (max-width:600px){ .doctrine-panel{ padding:20px 18px; } }
+  </style>
 </head>
 <body class="lamprey-aurora">
 
@@ -428,6 +440,11 @@
         <video class="au-infographic au-stackvid" data-lazy muted loop playsinline preload="none" poster="images/security-map-poster.webp" aria-label="The Agentic Orchestration and Security Map: orchestration patterns flow down through the agent runtime and state layer, threat-control cross-connections, and the threat landscape, with the Woven Security &amp; Governance Fabric governing every layer.">
           <source src="video/security-map.mp4?v=2" type="video/mp4">
         </video>
+      </div>
+      <div class="doctrine-panel au-reveal">
+        <p><strong>&ldquo;Every action carries an identity, an authorization, and a receipt. A system prompt is a request; a sandbox is a fact.&rdquo;</strong></p>
+        <p>Principles 10 and 11 of the doctrine, and the fabric is what makes them enforcement instead of etiquette: the controls that hold are deterministic, and they live outside the model.</p>
+        <a class="doctrine-link" href="the-island-mountain-doctrine.html#chapter-10">Chapter 10: Security Is a Design Constraint &rarr;</a>
       </div>
     </div>
   </section>

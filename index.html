@@ -119,6 +119,18 @@
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"WebSite","name":"Island Mountain","url":"https://islandmountain.io","dateModified":"2026-07-04"}
   </script>
+  <style>
+  /* Doctrine panel: the shared shaded treatment for doctrine call-outs woven through the site (mirrors About's hero-lede-card). */
+  .doctrine-panel{ max-width:760px; margin:28px auto 0; padding:24px 28px; text-align:left;
+    background:rgba(12,19,33,.72); border:1px solid rgba(245,158,11,.38);
+    border-radius:16px; box-shadow:0 18px 44px rgba(0,0,0,.42);
+    backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px); }
+  .doctrine-panel p{ margin:0; color:var(--text-light); line-height:1.75; font-size:1.02rem; }
+  .doctrine-panel p + p{ margin-top:12px; }
+  .doctrine-panel .doctrine-link{ display:inline-block; margin-top:14px; font-weight:700; color:var(--copper-light); text-decoration:none; }
+  .doctrine-panel .doctrine-link:hover{ text-decoration:underline; }
+  @media (max-width:600px){ .doctrine-panel{ padding:20px 18px; } }
+  </style>
 </head>
 <body>
 
@@ -196,6 +208,11 @@
   <section class="au-manifesto">
     <div class="container au-reveal">
       <h2 class="au-typewriter" data-typewriter="Technology that ignores expertise gets ignored by the experts.">Technology that ignores expertise gets ignored by the experts.</h2>
+      <div class="doctrine-panel">
+        <p><strong>Technology serves people. People serve missions. Missions serve communities. Communities preserve civilization.</strong></p>
+        <p>That&#39;s the chain of command this company runs on, and technology is at the bottom of it. Nothing in the chain runs the other way. The whole point of view is written down, versioned, and public.</p>
+        <a class="doctrine-link" href="the-island-mountain-doctrine.html#chapter-4">Read the Island Mountain Doctrine &rarr;</a>
+      </div>
     </div>
   </section>
 
