@@ -141,6 +141,18 @@
   ]
 }
 </script>
+  <style>
+  /* Doctrine panel: the shared shaded treatment for doctrine call-outs woven through the site (mirrors About's hero-lede-card). */
+  .doctrine-panel{ max-width:760px; margin:28px auto 0; padding:24px 28px; text-align:left;
+    background:rgba(12,19,33,.72); border:1px solid rgba(245,158,11,.38);
+    border-radius:16px; box-shadow:0 18px 44px rgba(0,0,0,.42);
+    backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px); }
+  .doctrine-panel p{ margin:0; color:var(--text-light); line-height:1.75; font-size:1.02rem; }
+  .doctrine-panel p + p{ margin-top:12px; }
+  .doctrine-panel .doctrine-link{ display:inline-block; margin-top:14px; font-weight:700; color:var(--copper-light); text-decoration:none; }
+  .doctrine-panel .doctrine-link:hover{ text-decoration:underline; }
+  @media (max-width:600px){ .doctrine-panel{ padding:20px 18px; } }
+  </style>
 </head>
 <body>
 
@@ -202,6 +214,10 @@
       <article class="article-body">
 
 <p>Most startups begin with a business plan. Island Mountain began with a point of view, and this month I wrote it down: a founding doctrine, version 0.1, the document a new engineer gets on their first day so they know what we believe before anyone shows them what we build. This post is the Island Mountain Doctrine at a fraction of its length, and the argument survives the compression.</p>
+<div class="doctrine-panel">
+  <p>The full text is public: eight parts, 24 chapters, two appendices, version number and all.</p>
+  <a class="doctrine-link" href="../the-island-mountain-doctrine.html">Read the complete Island Mountain Doctrine &rarr;</a>
+</div>
 
 <p>Why doctrine at all? Armies keep doctrine because plans die on contact and principles don't. It isn't a rulebook; it's a shared way of deciding when the situation is new, the plan is obsolete, and nobody senior is in the room. That's the working condition of a forward deployed engineer most days: alone in a server room in a county building, or across a folding table from a tribal council, when somebody asks the question the plan didn't anticipate. A company that runs that way needs its judgment written down, versioned, and open to being argued with. So now ours is.</p>
 

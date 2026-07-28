@@ -115,6 +115,18 @@
   ]
 }
 </script>
+  <style>
+  /* Doctrine panel: the shared shaded treatment for doctrine call-outs woven through the site (mirrors About's hero-lede-card). */
+  .doctrine-panel{ max-width:760px; margin:28px auto 0; padding:24px 28px; text-align:left;
+    background:rgba(12,19,33,.72); border:1px solid rgba(245,158,11,.38);
+    border-radius:16px; box-shadow:0 18px 44px rgba(0,0,0,.42);
+    backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px); }
+  .doctrine-panel p{ margin:0; color:var(--text-light); line-height:1.75; font-size:1.02rem; }
+  .doctrine-panel p + p{ margin-top:12px; }
+  .doctrine-panel .doctrine-link{ display:inline-block; margin-top:14px; font-weight:700; color:var(--copper-light); text-decoration:none; }
+  .doctrine-panel .doctrine-link:hover{ text-decoration:underline; }
+  @media (max-width:600px){ .doctrine-panel{ padding:20px 18px; } }
+  </style>
 </head>
 <body>
   <div class="hero-photo">
@@ -157,6 +169,10 @@
       <span class="hero-badge">Start the Conversation</span>
       <h1>Start a Scoping Call</h1>
       <p>One conversation. No sales pitch. Tell us whose desk the work runs through and where it hurts, and we&#39;ll tell you straight whether a <a href="forward-deployed-ai-engineering.html" class="clr-copper">forward deployment</a> helps.</p>
+      <div class="doctrine-panel">
+        <p>The call runs on a doctrine rule: <strong>Discovery before recommendation; no exceptions for enthusiasm.</strong> Nothing gets pitched, priced, or specced before the work is understood.</p>
+        <a class="doctrine-link" href="the-island-mountain-doctrine.html#chapter-8">Why the method works that way &rarr;</a>
+      </div>
     </div>
   </section>
 
