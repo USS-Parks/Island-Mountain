@@ -1,0 +1,390 @@
+# The Island Mountain Doctrine
+
+**Operationalizing Enterprise AI Through Forward Deployed Engineering**
+
+Version 0.1 · A Living Document
+Island Mountain AI Inc. · Basho Parks
+
+---
+
+## Preface: Why This Document Exists
+
+Most startups begin with a business plan. Island Mountain begins with a point of view. This document is that point of view written down, so the next engineer through the door knows what we believe before anyone shows them what we build.
+
+Armies keep doctrine because plans die on contact and principles don't. Doctrine isn't a rulebook, and it isn't strategy either; it's a shared way of deciding when the situation is new, the plan is obsolete, and nobody senior is in the room. That's the working condition of a forward deployed engineer most days: alone in a server room in a county building, or across a folding table from a tribal council, holding technical skill, the customer's trust, and this document's worth of judgment. If a page here only makes sense back at headquarters, the page is wrong, and I want to hear about it.
+
+The second reason to write doctrine down is less romantic: companies forget. Drift happens one reasonable compromise at a time, and none of those compromises announces itself as the moment the company changed. Written doctrine is the fixed point you measure drift against, and when the ruler itself needs to change, we change it in the open, with a version number. Anyone in the company can propose an amendment; the standard of evidence is the field, not fashion. What never happens is a silent edit.
+
+So: a living document. The models it references will be obsolete in months, and that's fine; references are allowed to age. The beliefs underneath them shouldn't move more than once in a career, and when one moves, we say so out loud and explain why.
+
+It's written for more than one reader. For employees, the first-day document: why we build the way we build, so disagreement is a real argument instead of a misunderstanding. For customers, the honest disclosure of what you're hiring: what we'll refuse to sell you, when we'll tell you a smaller system is the right answer, what we mean when we say the engagement is designed to end. For partners and investors, the operating philosophy you're attaching your name to; the doctrine came first, in writing. For the governments and tribal nations we serve, a record of the posture we brought to your door, written before we knocked. And for the engineers who'll join years from now: this is what the founder believed when the whole thing was one truck and a point of view. Outgrow it honestly, in the open, and hold the rest of us to it in the meantime.
+
+The document runs from the situation, through what we believe, how we work, whom we serve, what we build with, how we build the company, and where it's all going. It's written plainly because complicated work is where plain language earns its keep. That's the preface. The rest is the doctrine.
+# Part I: The Moment We Find Ourselves In
+
+## Chapter 1: The AI Inflection Point
+
+Every few generations a technology arrives that doesn't stay in its lane. Electricity didn't remain a lighting product; it reorganized factories, cities, and the length of the working day. The Internet didn't remain a document viewer. GPS became the timing layer under power grids and financial markets, infrastructure nobody notices until it blinks. Artificial intelligence is that kind of technology, and pretending otherwise stopped being a defensible position a couple of years ago.
+
+The electricity story carries the warning label this industry refuses to print. For decades after central power arrived, most factories just bolted one giant electric motor onto the old line-shaft architecture and got marginal gains. The revolution came only when owners redesigned the factory around the technology: one motor per machine, floor plans laid out by workflow. The gains went to the institutions that did the redesign, not to the ones that owned the most motors. Organizations bolting a chatbot subscription onto an unchanged workflow are running the giant-motor play, and they'll get the giant-motor results.
+
+What makes this transition harder than the ones before it is speed. Electricity gave institutions decades to adapt; the Internet gave them about ten years; AI capability is compounding on a cycle measured in months, while institutional absorption stays linear: annual budgets, slow hiring, slower training, and trust, the real rate limiter. And AI inverted the usual order of arrival: it walked into organizations as a consumer product, on employees' phones, before any governance existed. Institutions aren't deciding whether to adopt AI; they're deciding whether to govern something already happening.
+
+One more piece of the terrain: the release treadmill convinces buyers to wait, since whatever they deploy will be obsolete by fiscal year-end. That confuses the frontier with the work. Most institutional workloads crossed the good-enough line several release cycles ago; what ships now is headroom. The widening pile of already-released capability nobody has operationalized is called overhang, and the overhang is this company's entire inventory.
+
+The distance between the capability curve and the absorption line is the implementation gap. It's widening, and nothing on the release calendar will narrow it, because the gap was never about the models. It's about institutions, and institutions are where we work.
+
+## Chapter 2: Organizations Are Falling Behind
+
+Not because they lack intelligence. The people running counties, courts, clinics, utilities, and tribal governments are as sharp as anyone shipping model weights, and they carry a burden the labs don't: their mistakes land on real people, in public, under audit.
+
+They're falling behind for reasons that are individually rational and collectively fatal. Complexity: every real deployment is an integration project wearing an AI costume, landing on thirty years of accumulated systems. Risk: a tool that's right most of the time and persuasive all of the time is a genuinely novel hazard for institutions whose accountability assumes systems either work or visibly break. Regulation: HIPAA, CJIS, FERPA, ITAR, privilege, OCAP still bind, and almost nothing sold as enterprise AI was designed with them as a starting constraint. Uncertainty: telling real capability from demo theater is a full-time technical job, and their technical jobs are taken keeping the lights on. Technical debt: twenty years of deferred maintenance under everything. And cultural inertia, which deserves respect: staff skepticism is institutional memory defending itself, and the emergency manager who won't wire an untested system into dispatch is doing her job.
+
+So organizations are AI-curious and implementation-starved. Pilot fatigue is real, and the autopsy is always the same: conceived at a conference, scoped to impress instead of to relieve pain, run on clean data, declared promising in the lab, then dead in security review, procurement, or the gap between demo data and the real records. Run that autopsy backwards and you get our method: born from a workflow's pain, scoped by the people who feel it, run on real data under real governance, carried past the demo by someone whose job doesn't end there.
+
+Shadow AI completes the picture. The staff didn't wait for governance: the paralegal is summarizing depositions in a consumer chatbot, the nurse is drafting notes on her phone, and prohibition memos just push it underground. You don't beat shadow AI with policy. You beat it with something better on the desktop that the institution owns.
+
+The honest state of the market is a thousand organizations holding a thousand expiring pilot licenses, wondering why capability keeps rising and nothing at work has changed. Nothing changed because nobody's job was to change the work. That job is the subject of this doctrine.
+
+## Chapter 3: The Missing Layer
+
+Look at what the market sells: GPUs, clouds, models, APIs, software licenses. Every layer of the stack is for sale several times over, with a booth at every conference.
+
+Now look at what an institution needs before any of that spend becomes capability: implementation inside its own walls and rules. Trust built with the people whose workflows are about to change. Workflow redesign by someone who bothered to learn the workflow first. Education that outlives the engagement. And adoption itself, the slow human process by which a tool becomes how the work gets done, which no purchase order has ever contained.
+
+That second list is the missing layer, and almost nobody sells it, for structural reasons: it can't be downloaded, it doesn't demo in fifteen minutes, every unit is custom, and it scales at the speed of trust instead of the speed of software, so venture capital flows elsewhere. The big integrators sell something adjacent at prices only defense budgets and the Fortune 100 can pay, so the layer stays missing precisely where the need runs deepest: the county, the tribal government, the regional clinic, the sixty-person defense sub.
+
+The discipline that fills the gap has a name, proven in the hardest deployment environments software has faced: forward deployed engineering. Island Mountain exists to be that layer for the institutions the industry priced out. The rest of this doctrine is what that discipline believes and how it runs.
+# Part II: The Philosophy of Island Mountain
+
+## Chapter 4: What We Believe
+
+Technology serves people. People serve missions. Missions serve communities. Communities preserve civilization.
+
+That's the chain of command, and technology is at the bottom of it. Nothing in the chain runs the other way, and any deployment that inverts it, where people end up serving the technology, is a failure we won't ship, whatever the benchmark says. When you're unsure about a design decision in the field, run the chain: who serves whom in this version? The answer usually settles it, and it also tells you how to say no: not "compliance blocked it" but "the mission you serve is why we won't."
+
+Run the chain through one concrete decision and watch it work. A department head asks for a capability that'd speed her team's output by feeding the model records her data-governance rules haven't cleared. Technology serves people: the speed gain is real and the temptation is honest. People serve missions: her team exists to deliver a service lawfully, and lawfully is part of the mission, not a tax on it. Missions serve communities: the records belong to community members who never consented to this use, and the mission that burns their trust to move faster has eaten its own foundation. The chain says no, build the cleared-data version. Engineers who can run that trace in the field don't need to call anyone, and that self-sufficiency is what a belief system is for.
+
+From that chain, six working beliefs, each with teeth.
+
+**Technology should increase human capability.** The measure of a system is what the people around it can do after it lands that they couldn't before. A tool that makes its operator smaller is a bad tool, however impressive the engine. The teeth: "the staff got better at their jobs" is a deliverable, not a side effect.
+
+**AI should preserve institutional knowledge.** Organizations bleed hard-won knowledge at every retirement, and AI is the first technology that can catch a real fraction of it on the way out the door. We treat knowledge capture as a first-class design goal in every deployment.
+
+**Security enables innovation.** For the organizations we serve, the containment isn't the brake; it's the permission slip. A hospital can't experiment at all until the data is provably contained. Security posture gets designed before capability, never retrofitted after.
+
+**Implementation matters more than demonstration.** A mediocre model in production, wired into a real workflow with real accountability, beats a frontier model in a slide deck. We judge ourselves by what's running on a customer's floor a year later.
+
+**Trust compounds.** Every honest recommendation, every "you don't need this yet," every deadline kept builds the only asset in this business that appreciates with use. The reverse compounds too: one inflated claim costs more than ten good deployments earn. We say the smaller number when the smaller number is true.
+
+**Relationships outlast products.** The hardware gets replaced; the model gets swapped; the relationship survives every refresh cycle if we've done the work right. That means never optimizing an engagement for extraction, because we intend to be welcome in that building in ten years.
+
+## Chapter 5: Our Definition of Success
+
+The industry measures itself in GPU counts, tokens processed, parameters, and benchmark scores. Fine metrics for labs, useless for institutions: every one of them can go up while the institution gets nothing. Tokens are a cost, not an outcome; measuring value in tokens is measuring a hospital by its electricity bill.
+
+We measure a deployment by what changed in the organization. Better decisions: leadership seeing further with cleaner information, sooner. Better workflows: the intake that took an afternoon taking minutes, the backlog that only ever grew, shrinking; baselined during Discovery so the after compares to a real before. Better resilience: systems and people that keep functioning when the network drops, the budget cuts, or the flood comes. Better stewardship: data governed where it belongs, by the people it belongs to. Better institutional memory: knowledge that used to live in one head living in the institution.
+
+Measurement has its own discipline. Baselines get taken before anything is recommended; the metrics resist gaming: time-to-completion, error and rework rates, backlog depth over months, and adoption measured honestly, where seats logged in is vanity and workflows that retired their old path is real. We revisit at the year mark, when the novelty has worn off and the number is true, and we count misses in the same ledger as wins, in the customer's sight.
+
+Success also defines what we walk away from. We don't build verdict automation, in any vertical, at any price. We don't build surveillance dressed as capability, or anything whose honest description would embarrass the customer in front of their own workforce. We don't monetize customer data; it was never ours to price. And we don't take engagements designed to fail politely, the box-checking pilot, the innovation-theater purchase. Each refusal costs revenue somebody would happily collect, and every one is cheaper than what it protects.
+
+Over it all, one question outranks the rest: can the organization continue without us? A deployment that needs us forever isn't a success; it's a leash, and we don't sell leashes. Dependence is a revenue model. It isn't ours.
+
+## Chapter 6: AI as Institutional Capability
+
+The market has trained organizations to think of AI as a chatbot: a text box, priced per seat, renewed annually. That's a category error, like meeting electricity and concluding the product is lamps.
+
+Deployed as capability, AI takes up roles. A collaborator, drafting alongside staff and holding the boring half of the work. An assistant with total recall of the institution's own paper: every SOP, contract, and grant agreement, quotable with citations. An analyst, assembling parcel histories, claims patterns, and incident timelines while the professional makes the judgment call; this is where deployments earn their keep, converting data the institution already owns into the raw material of decisions. An educator, onboarding the new hire with the institution's own accumulated practice instead of a generic manual. A memory, answering how did this used to get done after the person who knew has left the building. A continuity engine, keeping all of it current so the memory doesn't fossilize.
+
+None of these roles replace the professional; every one puts more institution behind the professional's judgment. And underneath them sits a stack whose ends the market ignores: the data layer, governed and findable, where most of the real work hides; the model layer, deliberately the most replaceable part; the workflow layer, where the value lives; the governance layer that makes it defensible to a board or an examiner; and the people layer, the trained staff who turn all of it into changed work. Institutions get sold the model layer relentlessly and the other four almost never, which is why so many own impressive engines bolted to nothing.
+
+A chatbot is a product you subscribe to. Capability is something your organization owns and compounds, and the roles stack: the collaborator this year, the analyst next year, on the same infrastructure, the same governed data, the same trained staff. This doctrine is a manual for building the asset.
+# Part III: Forward Deployed Engineering
+
+## Chapter 7: What Is Forward Deployed Engineering?
+
+A forward deployed engineer goes to where the work is, embeds with the people who run it, learns it well enough to be trusted with it, and builds the system inside the institution's own walls, constraints, and culture.
+
+The name is borrowed from the military, where forward deployed means stationed in the theater, close to the problem, instead of garrisoned at home. The software industry borrowed the posture when Palantir proved across a decade of government contracts what happens when you stop shipping software at a problem and start shipping engineers at it: the software finally fits, because somebody stayed long enough to learn what it needed to fit. The insight was never proprietary; it just doesn't package, so the discipline stayed concentrated at the top of the market, priced for defense budgets.
+
+The bet is timed. When capable models cost eight figures to train, only defense-budget institutions could fund embedded engineering around them. Open weights changed the denominator: frontier-class capability now runs on hardware a county can own, so the expensive part of a deployment stopped being the intelligence and became the implementation, and implementation is labor a small crew can sell, at prices the mid-market can pay. The economics that locked forward deployment to the top of the market have inverted, and most of the industry hasn't noticed because the industry doesn't sell labor. Island Mountain drives through that hole: the discipline works exactly as well aimed at a county as at a combatant command, and nobody's aiming it there.
+
+FDE is best understood by what it isn't. Not consulting, which arrives with a framework and leaves with a deck while the risk stays with the customer. Not systems integration, which wires purchased parts to a spec and calls the workflow out of scope. Not managed services, which meters your dependence monthly and calls it a relationship. Not professional services, which bills the hours a product's gaps generate. Not traditional IT, which keeps systems standing but was never chartered to change what the institution can do. The difference is compound: we hold the outcome, not the hours; the engineer who scoped it installs it and teaches it; and the engagement is designed from day one to end. Every other model on that list gets paid more when the customer stays weak. Ours only works when the customer gets strong, and the company was built so that stays true.
+
+The daily reality is humbler than the title sounds. A deployment week runs like this: Monday, a morning in the customer's operations meeting, listening, then an afternoon of racking and cabling with their IT tech, teaching while installing. Tuesday, shadowing a records clerk through the real intake, collecting the exceptions the SOP never met. Wednesday, a governance session with the director and the compliance officer, drafted with them, not for them. Thursday, training, the champion cohort driving while we talk, and the first honest complaints landing, which is the sound of adoption starting. Friday, documentation and the debrief, written plainly enough that the next engineer inherits the week without having lived it. No keynote anywhere in it; the keynote version of this job doesn't exist. A forward deployed engineer doesn't arrive with answers; they arrive with questions and the patience to earn real ones back.
+
+## Chapter 8: The Island Mountain Method
+
+The method runs in seven phases, in order. Each exists because skipping it produces a specific, expensive failure two phases later, where the missing work was supposed to be carrying weight. Skipping steps is how expensive shelves get built. On cadence: the early phases move in weeks, a full engagement commonly spans one to three quarters, and anyone promising the same outcome in three weeks is selling a pilot with a ribbon on it.
+
+**Phase One: Observe.** Sit in the meetings. Watch the workflows run at the cadence they really run, not the cadence the SOP describes; the gap between portrait and practice is where deployments die. Watch the workarounds: every sticky note and shadow spreadsheet is a requirement somebody discovered the hard way and nobody wrote down. No opinions yet; opinions this early are priors wearing a hard hat. Prevents: building for the org chart instead of the organization.
+
+**Phase Two: Listen.** Leadership tells you the mission and the fear. Staff tell you where the work hurts and which workarounds nobody documented; those workarounds are the spec. Customers tell you what the institution looks like from outside the counter; stakeholders tell you what any change must survive politically. The four accounts differ, and the differences are the map. Ask about the last bad day, not the average day; ask what they tried already; and listen for pride, because the clerk who has never missed a docket deadline is telling you what the system must never take away. Prevents: solving the stated problem instead of the real one.
+
+**Phase Three: Map.** Current state as it exists. Future state as the institution defines it. Pain ranked by operational cost, not complaint volume. And the knowledge flows: where expertise lives, whose head it's in, where it leaks. This is Discovery, and it ends with the gate that gives the doctrine its commercial spine: nothing gets recommended, priced, or purchased until it's done. The customer receives the deliverable regardless of what happens next: their own operations documented, pain ranked with baselines, the recommendation with reasoning shown, and the walk-away option stated plainly, because some problems aren't AI problems and a Discovery that can't reach that conclusion is a sales document in a lab coat. Prevents: sizing the system to the sales conversation instead of the workload.
+
+**Phase Four: Prototype.** Small wins, fast, in front of the people who'll live with the result. A prototype gets validated or killed within weeks, and both outcomes are wins; a killed prototype is tuition paid cheap. One workflow, one team, real data under the real governance rules, and watch what the staff do with it rather than survey what they say. Prevents: the big-bang deployment, six months of building in a vacuum followed by an ambush.
+
+**Phase Five: Deploy.** On their ground, under their control. Security posture first, never retrofitted: air-gap where the data demands it, identity and audit woven through from first boot. Training runs alongside installation, so the system is familiar before it's live; familiarity is what adoption is made of. Iteration starts the day it meets real work, because the first version is a conversation, not a verdict. Prevents: the ribbon-cutting deployment, where the vendor's job ends at go-live and the institution's problems begin there.
+
+**Phase Six: Institutionalize.** Documentation the institution can maintain itself, written for the next hire. Knowledge transfer until "how does this work" lives inside the building. Internal champions identified and equipped; they carry the culture of the thing after we leave. Governance stood up as the institution's own function: who may use the system, for what, under whose authority, with what record. This is where "education is the deployment" becomes a schedule, and it's the phase impatient budgets trim first, so the doctrine is blunt: an untransferred deployment is an unfinished deployment. Prevents: the orphaned system, running fine until the first staffing change.
+
+**Phase Seven: Depart.** Leave the organization stronger than we found it, and leave. The criteria: the institution runs the system, changes the system, and trains its own people without us. Departure isn't abandonment; the relationship persists and the refresh cycles come. But the system belongs to them, and the going is the proof that everything before it was real. Prevents: the industry default, the engagement that never ends because leaving was never in the design.
+
+The method comes under three predictable pressures, and the answers are pre-decided, which is most of what a doctrine is for. Against Discovery: the customer who already knows what they need can lose two weeks validating the pick or save the cost of learning it after the purchase order; a customer who won't allow Discovery is asking us to co-sign a guess, and we decline. Against education: we'd rather shrink the system than shrink the transfer; a smaller capability fully owned beats a larger one on life support. And against departure, the quiet pressure from inside: dependent customers are recurring revenue, and every services firm in history has slid from partner to fixture along that grade. The counter is structural, the engagement priced to end, and cultural, a crew that celebrates departures as wins.
+# Part IV: Principles of AI Deployment
+
+## Chapter 9: AI Must Be Practical
+
+Novelty is the enemy dressed as the goal. The market rewards demos that astonish; institutions need systems that hold up on a bad Tuesday, and the two are almost never the same build. We build for the Tuesday.
+
+The right first deployment is almost always the boring one: the backlog that only grows, the intake that eats an afternoon, the report that never gets written, the records request that takes three weeks of somebody's attention. Unglamorous, measurable, owned by someone who feels the pain weekly: that's the profile that survives contact with reality. The wrong first deployment is the impressive one, the moonshot that photographs well and touches no workflow anyone runs on Thursday.
+
+Triage runs on four questions, answered with Discovery evidence rather than enthusiasm. Is the pain weekly and owned, because unowned pain has no adoption champion. Is the data available and governed, because a use case that needs a data-governance project first is two projects wearing one budget line. Is the outcome measurable, in numbers the institution already respects. And is the human verdict preserved, because any use case that only works by automating the verdict is disqualified at the gate. Score honestly and the portfolio sorts itself: boring and low-blast-radius first, the second deployment leaning on the first's infrastructure and trust, the moonshot last, funded by the credibility the boring wins built. Institutions don't fail at AI because they lacked ambition; they fail because ambition went first.
+
+Practicality also means honest sequencing. Institutions under pilot fatigue don't need a grand strategy document; they need one workflow measurably improved within a quarter, because one real win rebuilds more institutional appetite than any roadmap. The win has to be real, though: baselined before, measured after, felt by the people who do the work. Manufactured wins are worse than nothing, because the staff sees through them and files the whole initiative under theater.
+
+The discipline extends to declining work that's interesting to us and useless to them, said plainly, billing walked away from. Staff can smell a solution hunting for a problem from the far end of the building, and they're never wrong about it. The work is the spec, permanently; when a new release tempts us to add what it makes possible rather than what the work makes necessary, the temptation loses.
+
+## Chapter 10: Security Is a Design Constraint
+
+Security isn't a feature tier and it isn't a retrofit. It's a design constraint, present from the first whiteboard, the way gravity is present in bridge design; the interval between deployment and retrofit has a name in the incident reports, and the name is exposure.
+
+The posture starts with where inference runs: on-premises, on hardware the institution owns, which retires whole classes of risk before any policy is written: no third-party processor, no data-in-transit to a vendor's cloud, no subpoena served on somebody else's data center. Where the data demands it, the system is air-gapped from birth, models and updates arriving on media, rather than being a cloud product with the cable pulled.
+
+Identity runs through everything. Every action, human or agent, carries an identity, an authorization, and lands in an audit record. An agent acting on the institution's systems is a principal, not a feature: scoped credentials, budgeted authority, receipts, and a kill switch that lives in infrastructure rather than in a prompt. A system prompt is a request; a sandbox is a fact. The controls that hold are deterministic and live outside the model.
+
+The threat model is specific. Prompt injection is permanent: any text a model reads is potentially an instruction to it, and no prompt will ever fix that; the defense is architectural. The most dangerous configuration is memorizable: private data, untrusted content, and outward communication together in one agent; break any leg of that trifecta and exfiltration gets categorically harder, which is why egress control is a load-carrying wall in our deployments, not a checkbox. Tools get allowlisted per workflow, so an agent's blast radius is the size of its job. Model weights get supply-chain custody: checksums, provenance, controlled storage. And the unglamorous half gets equal standing, because the failure statistics live there: tested backups, key custody, rehearsed recovery, patch discipline on the whole stack. An AI deployment is a production system and inherits every obligation production systems have carried for fifty years.
+
+Compliance frameworks are requirements at the beginning, not checkboxes at the end. HIPAA's technical safeguards read like a design brief for exactly this architecture. ITAR and CMMC put walls around where technical data lives, which on-premises deployment satisfies physically rather than contractually. CJIS binds criminal-justice data; OCAP articulates tribal data governance; privilege survives on infrastructure the firm controls. In every case the framework stops being a burden the moment the architecture is designed for it.
+
+And the governance fabric ships in the crate: orchestration, policy enforcement, metering, audit, delivered working, never homework left for the customer's IT department. An institution that can't govern its AI doesn't have capability; it has liability with a login page.
+
+## Chapter 11: Human Agency
+
+AI should augment human judgment, clarify what's in front of the decision-maker, and accelerate the work between decisions. It should never diminish the judgment itself.
+
+The line is bright and we draw it the same way in every vertical. Drafting the after-action report so the incident commander can correct it: augmentation. Assembling the parcel history so the planner rules on it: augmentation. Deciding the claim, the enrollment, the diagnosis code, the shutoff: the professional's call, structurally. At a claims desk it looks like this: the system assembles the policy history, pulls the matching priors, drafts the coverage summary, and flags the inconsistency before the adjuster's coffee cools; what it cannot do, structurally, is deny the claim, because the denial button doesn't exist in the machine's half of the interface. The human owns the verdict; the machine owns the paperwork around it, and the wiring is enforcement, not etiquette.
+
+Meaning it requires engineering against automation bias, because decision support fails quietly: the recommendation arrives fluent, the queue is long, and review decays into a rubber stamp. So our systems show their work: sources cited, confidence stated, the trail from evidence to draft walkable, the interface built to invite correction. We measure a decision-support deployment partly by whether the professionals still disagree with it, because the day nobody disagrees is the day nobody's checking. Deskilling gets managed deliberately too: the institution decides which skills the machine may carry and which stay in human hands at any price, as a visible governance decision instead of a drift.
+
+This is engineering discipline with a moral floor. A deployment that routes around the charge nurse, the records clerk, or the compliance officer will be routed around by them in turn, and they'll be right. Build for the experts and the deployment defends itself.
+
+## Chapter 12: Institutional Memory
+
+Every retirement is a library that burns.
+
+Organizations lose knowledge on a schedule they can see coming and mostly ignore. The person who knows why the mutual-aid agreement reads the way it does, which vendor's invoices deserve a second look, how the last flood was fought street by street: when they go, the binder they leave behind answers none of the questions that matter, because the binder was always the least of it. The real loss is tacit knowledge, what Polanyi meant by "we know more than we can tell": pattern recognition built across thousands of cases, the feel for which rule bends and which one breaks. I came to this work out of emergency management, where the loss isn't abstract; it's operational, and it compounds with every separation HR processes. The sector's traditional answers, exit interviews and shadowing, recover a rounding error of what's leaving, and everyone who has run one knows it.
+
+AI changes the arithmetic. A system embedded in the workflow while the expert still runs it captures the work in working form: not a deathbed download but a living record accumulated across months of normal operation, the intake logic, the drafting patterns, the exceptions and their handling. Knowledge graphs make the connections queryable. Local language models tuned on the institution's own corpus make it conversational: the next generation can ask the institution itself how this used to get done, with citations into the record.
+
+The honesty the subject deserves: this captures a fraction, and the fraction is the point. The judgment retires with the person, as it should; what the institution keeps is the context the judgment ran on, which is most of what the successor is missing on their hardest days. And how capture happens matters as much as whether: as a byproduct of normal work, never an added documentation duty; deliberate depth through structured conversations on the expert's schedule, with the expert's review. The doctrine draws a line, because this capability has an evil twin: knowledge capture is not surveillance. The staff know what's captured and why, the record belongs to the institution, and nothing captured becomes productivity scoring of the people who provided it. Dignity is a design requirement here, same as security, and for the same reason.
+
+We build these systems on the institution's ground, under its ownership, because memory this valuable is sovereignty, not subscription content. For most of the organizations we serve, this chapter, not productivity, is the deepest reason to care about AI at all.
+# Part V: Customers
+
+## Chapter 13: Why Tribal Nations
+
+Tribal nations are sovereign governments. Everything else in this chapter follows from taking that sentence literally, the way the law does and the industry doesn't. A nation with inherent sovereignty and government-to-government standing is not a market segment, and a vendor who hasn't done the homework should stay home.
+
+Data is the newest territory where sovereignty gets tested, and the test is going badly. When a nation's health records, enrollment files, or language archives sit in a commercial cloud, they sit under legal frameworks written without tribes at the table: the CLOUD Act reaches data held by U.S. providers wherever it lives, terms of service change on the provider's schedule, and subpoenas get served on the company holding the data. OCAP names the standard any infrastructure either passes or fails: ownership, control, access, possession. Cloud terms fail at possession; on-premises AI on hardware the nation owns passes it physically, a fact you can walk into a room and look at.
+
+Language preservation raises the stakes past policy into civilization. A language spoken fluently by a shrinking number of elders is Chapter 12 at its most irreplaceable; the library that burns at that retirement took ten thousand years to write. Language technology can put real weight behind revitalization, and mishandled it becomes the newest extraction: a nation's language scraped into somebody's training corpus. The rule is absolute: the owner of the data decides who holds the model. A model trained on a nation's language belongs to that nation, held on its hardware, serving whom it chooses and no one else, and every step happens at the nation's direction, which recordings, which speakers consented, which uses honor the culture's own rules. Those aren't constraints on the project. They are the project.
+
+The mechanics deserve a plain paragraph, because the field hides them behind jargon. A language model for a nation's language starts from the nation's own materials: recordings of fluent speakers, transcriptions, the dictionaries and curricula the language program already built. The quality of what's possible tracks the quality of that archive, which makes the archive the treasure and its custody the first decision. Speech models give learners a patient ear; text models power lookup and conversational drill in the program's own orthography; and all of it runs on hardware that fits in the program's office, because a single language's model doesn't need a data center.
+
+The work runs across the whole of tribal government: health systems, enrollment offices holding the most sensitive records a nation keeps, courts, housing, natural resources, gaming commissions, and emergency management for communities that are last in line for outside help and first to lose connectivity when the weather turns. I've spent years in tribal emergency management and written and administered tens of millions of dollars in public-safety funding across that terrain; the pattern never varied: documentation demands outrunning staffing, hours bleeding into paperwork that should have gone to preparedness. Capability in that office isn't a productivity story; it's operational capacity the community didn't have. Self-determination contracting compounds the case: every program a nation takes over brings its data and workflows home, and a nation that owns its infrastructure administers those programs on its own terms instead of repatriating the program while outsourcing its nervous system.
+
+Trust, here more than anywhere, is earned in years and spent in seconds. Indian Country's experience of technology vendors is a long record of extraction and grant-cycle abandonment. We don't get exempted from that history by intending well; we get exempted by behaving differently across enough years that the difference is the record: systems that run after we leave, data that never moved, and a phone answered in year five the same as week five. Plan in decades, because the institution across the table does. We are our children's children's ancestors, and nowhere is that sentence more literally the planning horizon.
+
+## Chapter 14: Public Agencies
+
+Public agencies run on thin budgets, thinner staffing, and mandates that don't shrink to match. Into that reality the industry has been selling seat licenses and demo days, and the agencies have been right not to buy.
+
+What agencies need maps onto what this doctrine builds, function by function. Emergency management lives on documents and dies on staffing: plans, after-action reports, grant applications and their quarterly reporting, maintained by offices of one and two; a drafter that turns incident logs into after-action drafts while the memory's fresh, on local hardware that works when the network doesn't, is the backlog addressed, not futurism. Utilities carry regulatory reporting and a workforce where the person who knows the system's quirks is nearest retirement; Chapter 12 is their chapter, and control-room proximity makes deterministic local inference an operational fact, not a preference. Planning and records offices sit on decades of parcel histories and permits unusable at the speed of a counter conversation; the analyst role runs entirely on data the county already owns. Healthcare districts carry HIPAA, which makes the on-premises argument for them. Education carries FERPA; student data belongs under the district's control, not in a product's training pipeline. Law enforcement and courts run under CJIS, and the accountability their transparency obligations demand, every output attributable, every access logged, is what we'd build anyway. Natural resources agencies manage century-deep datasets with field operations at the far end of connectivity.
+
+The buying reality shapes the work too. Agencies buy through grants, and grants have grammars: allowable costs, periods of performance, single-audit exposure. Owned infrastructure fits grant logic better than subscriptions: an award can buy an asset and leave the agency holding it, where a subscription outlives its funding and dies at renewal. We learn the programs our customers draw from and scope deployments that fit inside them honestly, which happens to be exactly what this doctrine ships anyway.
+
+One principle binds the public-sector work: public money spent on capability should leave public capability behind. Auditable systems, explainable outputs, infrastructure the agency owns, staff trained to run it. That's the test we invite every agency to hold us to.
+
+## Chapter 15: Private Industry
+
+The private-sector version runs through regulation, and the through-line is that the industries with the most to gain from AI are the ones whose obligations the cloud AI market wasn't built for.
+
+Manufacturing under export control: ITAR and EAR put hard walls around technical data that a defense sub can't paste into a consumer tool without creating a violation nobody can un-create, and CMMC turns supply-chain security into audited practice; meanwhile the machinist who knows why that fixture runs backwards is walking toward retirement on schedule. Healthcare under HIPAA: clinical documentation is the profession's loudest burnout complaint, and on-premises inference resolves the data problem at the architecture. Energy and critical infrastructure under NERC CIP: operational data that shouldn't transit anyone's cloud, uptime that can't depend on an uplink, a graying workforce. Legal under privilege: the firm's work product is protected by an obligation older than the republic, and infrastructure the firm controls keeps the privilege analysis clean in a way no vendor assurance letter replicates. Finance under examination: a bank that can walk an examiner into its own server room and produce the audit log of every AI-assisted decision holds a conversation its cloud-dependent peer can't.
+
+Casino gaming sits at the junction of several of these worlds: gaming commissions with their own minimum internal control standards, Title 31 obligations putting bank-grade AML duties on the cage and floor, and patron data concentrating financial and behavioral records under one roof; a tribal casino's data is a nation's data twice over, sovereign by right and regulated by practice. The surveillance lead who spots the pattern before the system flags it and the compliance officer who can tell structuring from a bad week are the expertise argument in person. Insurance runs on the same grammar from the carrier's side: adjusters separating fraud from bad luck on the first read, examination cycles asking for every decision's paper trail, and decades of claims history that are pure Chapter 12 material.
+
+For all of them the arithmetic converges: data that can't leave, expertise that's retiring, workloads that repeat daily, and cloud AI terms written for companies whose data is allowed to wander. The verticals differ; the doctrine doesn't. Learn the work, contain the data, build around the experts, leave the institution stronger.
+# Part VI: Technology Philosophy
+
+## Chapter 16: Local AI
+
+Local AI, inference on hardware the institution owns, is our default posture, for reasons that survive scrutiny. Sovereignty: the data never leaves the institution's custody, retiring the CLOUD Act problem and the subpoena-served-on-somebody-else problem at the architecture. Deterministic performance: tokens stream from the rack down the hall, every time, with no rate limit you didn't set and no queue you can't see. Cost shape: cloud inference is an operating expense that compounds precisely because adoption grew, which is when the pricing power has moved entirely to the vendor; owned hardware fronts its cost, then flattens into power and maintenance while the workload grows tenfold without a procurement action. Institutional workloads are repetitive by nature, the same intakes and drafts daily forever, which is exactly the load profile owned capacity eats for the cost of electricity; the elasticity premium buys nothing and compounds anyway. And auditability: the compliance officer who can walk an examiner into the server room is holding a conversation her cloud-dependent peer conducts through an attestation letter.
+
+The limitations get stated just as plainly, because a doctrine that can't name its own costs is marketing. Local capacity is what you bought; there's no elastic burst. Frontier-scale training stays in the labs. Operations land on the institution's payroll after we leave, measured in hours a week, not heads, with runbooks written for the person who missed the training, monitoring a generalist can read at a glance, and an escalation boundary that moves toward the institution every year. And capital is capital, which is why Discovery sizes systems to measured workload instead of ambition.
+
+Cloud makes sense in nameable situations, and we name them without embarrassment: public data with spiky demand, workloads without residency obligations, experiments too early to justify iron. Hybrid architectures are legitimate and common, with the boundary drawn by data classification instead of vendor preference. We're not anti-cloud; we're pro-choice, and the choice belongs to the institution and its obligations. For the organizations we serve, the obligations made the choice before we arrived.
+
+Continuity of operations closes the argument. The organizations we serve are the ones that can't stop: dispatch, the utility, the emergency operations center that stands up precisely when the region's connectivity lies down, and every major-incident after-action report carries the same finding about communications failing first. An intelligence layer that depends on an uplink abandons them at the exact hour it matters most. Resilience isn't a premium feature of on-premises architecture. It's the architecture.
+
+## Chapter 17: Hardware Matters
+
+The industry talks about AI as if it were weightless. It isn't. It's silicon, storage, networking, power, and cooling, bolted into a building that has opinions about all five, and the deployments that forget the building end up as case studies in somebody else's slide deck.
+
+Facilities gets a veto, and hearing it before the purchase order beats hearing it after delivery. So the walk-through is a named Discovery step with a checklist: the actual circuits available, not the ones the diagram promises; cooling capacity measured against the thermal load, with headroom; floor path and floor load, because a loaded rack has opinions about ramps; network drops that exist in the wall; who holds keys to the room; and noise adjacency, because a GPU node's fans next to the council chambers is a discovery better made on paper.
+
+We think in ecosystems, not brands. NVIDIA anchors an ecosystem of accelerators and the serving software a decade of open source has built against it; Supermicro anchors an ecosystem of validated platforms across form factors; storage, networking, and power protection carry their own. Selection favors compatibility across years over spec-sheet victory in any quarter, because the county's server room doesn't have a hyperscaler's staff: parts that work together, parts the market will stock in five years, parts a trained local administrator can service.
+
+Within those ecosystems we stay deliberately neutral. Island Mountain doesn't build or carry specific hardware by design, and there's no catalog on our website on purpose: nobody can tell you what to buy before knowing what you'd use it for. The recommendation comes out of Discovery, sized to the workflow and the volume, and we say plainly when professional accelerators are the right call and when they'd be overkill. A small office doing genuinely useful work on desktop-class machines is a real answer, not a lesser one; the four-person law firm's workstation under a desk, air-gapped by never touching the network, gets the same discipline in a ten-minute walk-through. A multi-department estate on rack-mounted accelerators is a real answer too, and there's no ladder between them anybody gets walked up for the vendor's benefit. Neutrality is what lets the recommendation be trusted, and the trusted recommendation is the product.
+
+Reliability outranks peak performance in every build. Infrastructure is judged by its worst day, not its benchmark run: redundancy where the mission demands it, thermal headroom over thermal bravado, clean power, spares discussed before the failure, lead times treated as engineering inputs. And room to grow, always, because the alternative to room to grow is buying twice.
+
+## Chapter 18: Models Come and Go
+
+Any doctrine that names a best model has a shelf life of a quarter, so this one doesn't. Models are components: they arrive, lead the leaderboard for a season, and get replaced. The releases everyone reorganized around eighteen months ago are museum pieces, and today's flagships are next.
+
+What outlasts the churn is architecture, and we build so the model is the most replaceable part of the system. Open-weight models the institution possesses, weight files on its own storage, so no vendor's business decision can reach into the building and take a capability away. Standard serving interfaces, so the applications above don't know or care which checkpoint answers. Orchestration and governance that are model-agnostic by construction, so the security posture survives every swap untouched.
+
+Evaluation is what makes swapping safe. During deployment we build test suites from the institution's own work: its documents, its formats, its edge cases, scored against what its professionals call correct. A new release gets measured against those suites, not leaped at from a press release: better on the institution's own work, swap, and the improvement lands everywhere without touching a workflow; not better, skip, and nothing was lost but an afternoon. Compare the cloud default, where the model changes when the vendor changes it and the institution's workflows are the test suite whether anyone consented or not.
+
+Selection criteria outlast any release cycle: a license that permits real commercial use, no rug-pull clauses, because a capability the license can revoke was never owned. The smallest model that clears the institution's evaluation bar, since headroom the work never uses is electricity the budget pays for anyway; the pattern that keeps winning pairs one strong generalist for hard reasoning with smaller specialists tuned to the daily grind. Quantization as an engineering decision measured against the suites, not a purity test. Context length against the institution's actual documents. Language coverage where the mission demands it. Provenance always: known sources, verified checksums, controlled custody.
+
+Interoperability is the standing requirement underneath: any component that only works inside one vendor's walled garden is a future hostage negotiation, priced accordingly, and the system should survive any single vendor's death or pivot, including ours. The promise is modest and firm: the system we leave behind gets better as models get better, without being torn out. Doctrine outlasts model releases. So should deployments.
+# Part VII: Building Island Mountain
+
+## Chapter 19: Culture
+
+Culture is what the crew does when nobody's watching, so it lives in hiring and habits, not on the wall. The values are behavioral, each with what it looks like on a Tuesday, because a value you can't observe on a Tuesday is a font choice.
+
+Curiosity: the engineer who asks the records clerk a second question, reads the enabling statute nobody assigned, and comes back from lunch knowing why the old system was built the way it was. Incurious people can be excellent engineers; they can't be forward deployed ones. Humility: changing the design because a clerk's objection was right, saying I don't know out loud in front of a customer, and treating institutional skepticism as data. Technical excellence: the person on-site is the company, and excellence is quiet, the absence of the second visit for the same problem. Stewardship: we're trusted with data that constitutes a community's sovereignty, a patient's privacy, or a nation's language, and that trust is the entire franchise; the engineer treats every record like it belongs to someone, because it does. Teaching: education is the deployment, and an engineer who can't explain the system hasn't finished building it. Craftsmanship: cable management nobody will photograph, error messages written for the person who'll read them, the small refusals to ship the sloppy version nobody would have caught. Candor: bad news travels fast to the person who can act on it, the junior engineer flags the senior's mistake in the morning and gets thanked in front of the crew, because the thank-you is what makes the next flag happen. Service: the mission chain ends at communities, and everyone here should be able to say whom their work served, specifically, this quarter.
+
+What culture is not: perks, slogans, homogeneity, or comfort. Culture is the observed pattern of what gets rewarded, tolerated, and stopped. People read the pattern, not the poster, and they read it fast. So it's enforced by ritual: the deployment debrief after every engagement, wins and misses in one ledger the next crew inherits; the annual doctrine review, where practice and doctrine get reconciled out loud; writing as a daily discipline, because documentation is a deliverable; and the no-contempt rule, screened in hiring, corrected once, separated the second time, because one contemptuous engineer in one meeting can spend trust a whole crew earned in a year.
+
+## Chapter 20: Hiring
+
+Skills get people an interview. What gets them hired is harder to teach, and this is the list, in order.
+
+Character, because the person will hold admin keys inside a hospital, a courthouse, a tribal government; integrity is the product, and we check it the way it can be checked: references run long, and the candidate's account of their own failures weighed for honesty. Judgment, because forward deployment means deciding alone, in the field, with incomplete information, which rules bend and which never do; we interview with scenarios from real deployments and watch where the candidate looks for answers, because the ones who reach for the mission chain hold up alone. Communication, because the job is half translation: an engineer who can't sit with a records clerk and earn her candor, or explain an architecture to a council without slides, can't do this work, whatever their benchmark scores. Learning, because the stack turns over quarterly and every vertical is its own education; we look for the person who has changed fields and landed standing up. Ownership, because when the deployment struggles, the engineer who scoped it stands up; on a Tuesday it looks like the unprompted status report that includes the bad news, with the plan attached.
+
+Where we look follows: mission-adjacent fields pre-train most of the list. Emergency management, military service, public health, the trades, teaching, anywhere someone has been accountable for outcomes in the physical world with real stakes and thin resources. We'll take the firefighter who learned to code over the resume that's never been outdoors, because this job's hardest scenes are ones that person has already worked. Growth runs on apprenticeship: second chair on deployments before first chair on one, verticals as rotations, and a ladder measured in trust rather than titles, because the real rank structure in a company like this is who the customers ask for by name.
+
+One disqualifier, absolute: contempt, for the customer's staff, the old system, or the person who asks the basic question. It doesn't coach out, and it poisons exactly the trust the method runs on. We'd rather run short-handed.
+
+## Chapter 21: Leadership
+
+Leaders here teach; a leader hoarding knowledge is a single point of failure wearing a title. Their deployment notes read like a course, every engagement gets debriefed so the whole crew inherits what one crew learned, and they measure their own success partly by how rarely they're irreplaceable.
+
+Leaders listen the way the method listens: to staff before strategy, to the field before the dashboard. The engineer on-site knows things the org chart can't, and a leadership that stops metabolizing field truth starts drifting the same way institutions do. The mechanisms are boring on purpose: real debriefs, dissent welcomed in the open, decisions revised in daylight.
+
+Leaders build trust the slow way, with kept promises inside the company and out, and the standard runs internally first: an engineer who watches leadership shade the truth to a customer learns the actual values that afternoon, and no document survives the lesson. Succession is a leadership duty from the first day, not a crisis plan for the last one; this company preaches that institutions shouldn't depend on any single head, and a company whose method died with its founder would be the punchline to its own manual. The doctrine written and versioned, the debrief corpus accumulated, the crew grown into people who can teach the method: that's the transfer, running continuously.
+
+And leaders remain technical. This company embeds engineers with working institutions; it can't be led from an altitude where the work is an abstraction. Whoever leads Island Mountain, now and after me, can rack the server, read the audit log, and sit with the charge nurse, or they're leading something else wearing this company's name. When the field can't recognize its leaders as colleagues, the doctrine has failed at the top first, and the version number should change to record who let it.
+# Part VIII: The Future
+
+## Chapter 22: The Next Decade
+
+Predictions in this field embarrass their authors on schedule, so these come with humility attached and doctrine underneath: for each, what we expect and what we'll do either way, because the doctrine's job isn't to be right about the future; it's to make us useful in any future that shows up.
+
+Agents will carry more of the work, and the governance vacuum around them will be the story of the decade, because every convenience the agentic roadmap ships picks a security control up off the application floor and reburies it in infrastructure. Our line doesn't move: every agent action carries an identity, an authorization, and a receipt; the controls live in infrastructure the institution owns; the kill switch is a fact, not a request. Reasoning systems will make machine output more persuasive, which raises the stakes on Chapter 11 rather than retiring it; the human owns the verdict all the same. Robotics brings AI into physical workflows, where the safety case becomes the design constraint the way the security case is today, and the FDE discipline transfers directly. Edge AI suits us: the edge is sovereignty at smaller scale, and capability that doesn't need the uplink finally reaches the communities at the far end of connectivity. Whole-organization education becomes the competitive frontier, which is our home ground. Government adoption arrives slower and stricter than the industry keeps predicting, which is precisely why embedded, security-first engineering is how it lands.
+
+And a prediction about the weather rather than the technology: the governance reckoning arrives on schedule. Somewhere in the decade an agentic system with too much authority and too little audit does something expensive enough to make national news, and the regulatory response lands on everyone. Institutions that adopted this doctrine's posture will read the new requirements as a description of their current architecture; the rest will fund a remediation industry. Incident-driven regulation is how this country governs technology, and we build to the standard before it's mandatory because it's correct; the mandate will be a tailwind we didn't need.
+
+Two quieter trends bend toward us. Small language models keep eating the repetitive institutional workload, and the winning pattern, one strong generalist plus a bench of local specialists, is an on-premises pattern by nature. And the sovereignty movement keeps spreading: nations, states, tribes, and whole industries concluding in parallel that intelligence infrastructure is too consequential to rent, while the open-weight ecosystem matures into public infrastructure the way open-source operating systems did a generation ago. A world of capable small models and sovereignty obligations needs exactly this discipline, in exactly the buildings this doctrine names.
+
+Any of these could break differently, and some will. The doctrine holds either way: learn the work, contain the data, build around the experts, leave the institution stronger.
+
+## Chapter 23: Stewardship
+
+The communities we work in should be stronger because we were there. Not our customers only; the communities their missions serve. When the county's emergency plans are searchable at 2 a.m., the strength lands in every household the county covers; when a nation's language model serves its own classrooms, the strength lands in a generation. Stronger communities look like specific things: the permit backlog cleared for every family waiting on a foundation, the health program documenting at half the cost and treating with the other half, the utility keeping the lights on through the next storm with the retired operator's knowledge still in the building. None of that appears on our invoices, and all of it is the actual product.
+
+The organizations we serve should be more resilient when we leave than when we arrived, measured on the bad day: what still works when the uplink is down, the budget is cut, and the expert has retired. And our engineers should become what this industry has too few of: trusted advisors, the people an institution calls before a decision instead of after a failure. That standing can't be claimed, only accumulated, and it's the future of the company in one line: the fees follow the trust, never the reverse.
+
+Stewardship is the long discipline under all of it. We are our children's children's ancestors. Tribal nations plan on that horizon as civilizational practice, and a company that means to serve institutions like that has to deserve a place in plans that long: building things that hold, teaching in ways that propagate, measuring ourselves against what's still standing in thirty years. Most of the industry sets its clock by the demo; the institutions we serve are still running systems their predecessors bought a generation ago. Between those two clocks, we set ours by theirs.
+
+## Chapter 24: The Long View
+
+Island Mountain doesn't exist to deploy servers. It doesn't exist to install language models. It exists to help institutions become wiser, more resilient, and more capable through the thoughtful implementation of artificial intelligence.
+
+The servers are the crate. The cargo is an institution that can do more than it could before we arrived, and keeps being able to after we've gone.
+
+The name was chosen for this chapter before this chapter existed. An island mountain is high ground that stands on its own: self-contained, weathering what arrives, holding its shape while the water does whatever the water does. That's the deployment this doctrine describes, an institution's own capability on its own ground, and it's the company this document is building: one that holds its shape against the market's weather because the shape was written down and defended.
+
+Follow this document's thread all the way down and that's what you find. Part I said the gap is institutional, not technical. Parts II through IV said capability, human agency, and memory are the products, with security as the ground they stand on. Parts V and VI said whom we serve and what we build with. Part VII said what kind of company can do this work without becoming the thing it replaced. And this part says what it's all for: institutions that hold, in communities that last.
+
+So the standing orders are simple, and they're the sentences I'd keep if the rest of the document burned. Every deployment leaves behind more knowledge than it consumes. Every engineer leaves behind more trust than they arrived with. Every partnership strengthens the institution it serves.
+
+If it's your first day: show up, shut up, and learn the work. Everything else in this company falls out of that.
+# Appendix A: Island Mountain Vocabulary
+
+Words drift, and drifted words wreck deployments, because two people who think they agree are building two different systems. These are the working definitions this company holds.
+
+**Forward Deployed Engineering (FDE).** Engineering practiced on-site, embedded with the people who run the work: learn the workflow as it's really run, design the system around it, deploy inside the institution's walls and rules, teach it until it's owned. The forward part is human before it's technical.
+
+**Institutional Capability.** What an organization can do, as opposed to what it has. The product we're hired to increase. A rack is not capability; a rack plus governed data plus trained staff plus a changed workflow is.
+
+**Operational AI.** AI wired into real workflows with real accountability: named owners, audit trails, measured outcomes. The opposite of demonstration AI, which lives in pilots and dies in procurement. The test: does somebody's Tuesday depend on it.
+
+**AI Readiness.** The preconditions for adoption: data posture, security posture, workflow clarity, staffing reality, staff trust. Discovery measures it; the plan respects it. Readiness is not enthusiasm, and the gap between the two is where pilots go to die.
+
+**Discovery.** Phase Three of the method as a commercial gate: mapped current state, ranked pain, knowledge flows. Nothing gets recommended, priced, or purchased before it's done; no exceptions for enthusiasm.
+
+**The Implementation Gap.** The distance between released AI capability and any institution's absorbed use of it. Widening, because capability compounds and absorption doesn't. The terrain this company works.
+
+**Capability Overhang.** The pile of already-released capability nobody has operationalized. The overhang, not the frontier, is this company's inventory.
+
+**Knowledge Stewardship.** The deliberate care of an institution's accumulated expertise: capturing it in working form while its holders are present, governing who holds it, handing it forward. Organizational memory is what the practice produces.
+
+**Organizational Memory.** The sum of what an institution knows, including the tacit knowledge that never made the SOP. The asset most threatened by retirement, and the one AI is newly able to help keep.
+
+**Human-in-the-Loop.** The design rule that machine output feeds human judgment and the human owns the verdict. In our deployments this is architecture, not etiquette; consequential decisions cannot execute without a human principal.
+
+**Governance Fabric.** The woven layer of identity, authorization, metering, audit, and kill-switch controls every action passes through, human or agent. Ships in the crate, delivered working; never the customer's homework.
+
+**Air-Gapped AI.** Infrastructure with no path to outside networks, built that way from birth: models and updates arrive on media. The strictest sovereignty posture, and distinct from "on-premises with the cable pulled," which is a cloud product having phantom-limb pain.
+
+**Local AI.** Inference on hardware the institution owns, on its own ground, under its own keys. This company's default posture; the boundary with cloud is drawn by data classification.
+
+**Internal Champion.** The customer staff member who took to the system first, got the deeper training, and carries the capability culturally after we leave. Identified deliberately in Phase Six, because orphaned systems are systems that never had one.
+
+**The Bad Tuesday.** The ordinary worst case: network down, expert out, queue long, exception arriving. The design target for every system we ship, as against demo day, which designs itself.
+
+**AI Implementation.** The whole of the work between a capability existing and an institution using it: Discovery, deployment, education, governance, adoption. The missing layer, and this company's trade.
+
+# Appendix B: Design Principles
+
+The doctrine, compressed to what fits in a head. When two principles collide in the field, the mission chain of Chapter 4 breaks the tie.
+
+1. Trust before technology.
+2. Observe before advising.
+3. Teach before automating.
+4. The workflow is the spec.
+5. Discovery before recommendation; no exceptions for enthusiasm.
+6. Security is foundational, not optional.
+7. The data sleeps at home.
+8. The owner of the data decides who holds the model.
+9. Respect data sovereignty in the architecture, not the brochure.
+10. Every action carries an identity, an authorization, and a receipt.
+11. A system prompt is a request; a sandbox is a fact.
+12. Build around the experts and the deployment defends itself.
+13. The human owns the verdict; the machine owns the paperwork.
+14. Solve the bad Tuesday, not the demo day.
+15. Simplicity scales; cleverness gets decoded at 3 a.m.
+16. Make complexity manageable, not invisible.
+17. Measure outcomes, not activity.
+18. Build for maintainability; the next engineer is a customer too.
+19. Favor interoperable architectures over vendor lock-in.
+20. The model is the most replaceable part of the system.
+21. Room to grow beats buying twice.
+22. Technology adapts to people before people adapt to technology.
+23. Education is the deployment.
+24. Departure is the deliverable: leave systems, and organizations, stronger than you found them.
+25. Plain language is an engineering skill.
+26. Say no to work that serves us and not them.
+27. Every deployment leaves more knowledge than it consumes.
+28. Every engineer leaves more trust than they arrived with.
+
+---
+
+*Version 0.1, July 2026. This document gets revised as the field teaches us better. The beliefs move slowly; the references move with the technology; the standard doesn't move at all.*
