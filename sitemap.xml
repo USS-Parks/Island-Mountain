@@ -160,12 +160,18 @@
   <!-- Blog Index -->
   <url>
     <loc>https://islandmountain.io/blog.html</loc>
-    <lastmod>2026-07-26</lastmod>
+    <lastmod>2026-07-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <!-- Blog Posts (newest first) -->
+  <url>
+    <loc>https://islandmountain.io/blog/ai-electricity-analogy-giant-motor.html</loc>
+    <lastmod>2026-07-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
   <url>
     <loc>https://islandmountain.io/blog/zimreaper-session-authority-ai-agent-credentials.html</loc>
     <lastmod>2026-07-26</lastmod>
