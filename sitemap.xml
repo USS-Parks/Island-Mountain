@@ -430,12 +430,6 @@
   </url>
   <!-- Personal / CV -->
   <url>
-    <loc>https://islandmountain.io/basho-parks.html</loc>
-    <lastmod>2026-07-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
     <loc>https://islandmountain.io/blog/on-device-llm-sovereign-edge.html</loc>
     <lastmod>2026-07-25</lastmod>
     <changefreq>monthly</changefreq>
