@@ -1,0 +1,61 @@
+/* Credo chain banner — the homepage opening sequence.
+   Four credo cards descend as alternating stairs, bridged by dotted gradient
+   arcs that draw themselves in as the user scrolls (comet-head front, bloom,
+   settle, arrowhead landing). Markup: index.html. Motion: js/credo-chain.js.
+   Colors follow the credo chain poster (blue, orange, green, purple). */
+
+.credo{position:relative;padding:140px 0 36px}
+.credo-inner{position:relative;max-width:1200px;margin:0 auto;padding:0 24px}
+
+.credo-kicker{width:fit-content;margin:0 auto 6vh;padding:11px 24px;border-radius:999px;
+  background:linear-gradient(180deg,rgba(30,41,59,.85),rgba(15,23,42,.85));
+  border:1px solid rgba(245,158,11,.32);
+  box-shadow:0 8px 28px rgba(0,0,0,.4), inset 0 1px 0 rgba(241,245,249,.06);
+  letter-spacing:.24em;text-transform:uppercase;font-size:.8rem;font-weight:700;
+  color:var(--copper);text-align:center}
+
+.credo-card{position:relative;z-index:2;display:flex;align-items:center;gap:30px;
+  width:68%;padding:38px 42px;border-radius:16px;
+  background:rgba(19,28,49,.84);
+  border:1px solid color-mix(in srgb, var(--cc) 38%, transparent);
+  box-shadow:0 18px 50px rgba(0,0,0,.45), 0 0 70px color-mix(in srgb, var(--cc) 13%, transparent);
+  margin-bottom:22vh}
+.credo-card:nth-of-type(odd){margin-right:auto}
+.credo-card:nth-of-type(even){margin-left:auto}
+.credo-card:last-of-type{margin-bottom:10vh}
+
+.credo-ic{flex:0 0 auto;line-height:0}
+.credo-ic img{display:block;width:156px;height:156px}
+
+.credo-h1{font-family:'Space Grotesk',Inter,sans-serif;font-weight:800;
+  font-size:clamp(1.9rem,3.9vw,2.9rem);line-height:1.06;letter-spacing:-.01em;
+  text-transform:uppercase;color:var(--cc);margin-bottom:10px}
+.credo-h1::after{content:'';display:block;width:104px;height:3px;margin-top:12px;border-radius:2px;
+  background:linear-gradient(90deg,var(--cc),transparent)}
+.credo-body{font-size:clamp(1.08rem,1.5vw,1.32rem);line-height:1.55;color:var(--slate-300);max-width:44ch}
+
+/* Dotted-arc overlay rides above the cards, never intercepts input */
+.credo-svg{position:absolute;inset:0;z-index:3;pointer-events:none;overflow:visible}
+.credo-arrow{transition:opacity .3s ease}
+
+.credo-outro{position:relative;z-index:2;text-align:center;padding:2vh 0 6vh}
+.credo-tagline{font-family:'Space Grotesk',Inter,sans-serif;font-weight:700;
+  letter-spacing:.14em;text-transform:uppercase;font-size:clamp(1rem,2vw,1.45rem);color:var(--text-light)}
+.credo-tagline::before,.credo-tagline::after{content:'';display:inline-block;vertical-align:middle;
+  width:46px;height:3px;border-radius:2px;background:var(--copper);margin:0 18px}
+.credo-doctrine{display:inline-block;margin-top:18px;color:var(--copper);text-decoration:none;
+  font-weight:600;font-size:1.02rem}
+.credo-doctrine:hover{text-decoration:underline}
+
+@media (max-width:760px){
+  .credo{padding:104px 0 28px}
+  .credo-kicker{font-size:.7rem;letter-spacing:.14em;padding:9px 18px;line-height:1.6;max-width:min(94%,420px)}
+  .credo-card{width:92%;padding:26px 24px;gap:18px;margin-bottom:19vh}
+  .credo-ic img{width:104px;height:104px}
+  .credo-h1::after{margin-top:9px}
+  .credo-tagline::before,.credo-tagline::after{width:26px;margin:0 10px}
+}
+
+@media (prefers-reduced-motion:reduce){
+  .credo-arrow{transition:none}
+}
