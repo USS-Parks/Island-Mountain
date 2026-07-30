@@ -40,7 +40,7 @@
 
 .credo-outro{position:relative;z-index:2;text-align:center;padding:2vh 0 6vh}
 .credo-tagline{font-family:'Space Grotesk',Inter,sans-serif;font-weight:700;
-  letter-spacing:.14em;text-transform:uppercase;font-size:clamp(1rem,2vw,1.45rem);color:var(--text-light)}
+  letter-spacing:.14em;text-transform:uppercase;font-size:clamp(1rem,1.6vw,1.25rem);color:var(--text-light)}
 .credo-tagline::before,.credo-tagline::after{content:'';display:inline-block;vertical-align:middle;
   width:46px;height:3px;border-radius:2px;background:var(--copper);margin:0 18px}
 .credo-doctrine{display:inline-block;margin-top:18px;color:var(--copper);text-decoration:none;
