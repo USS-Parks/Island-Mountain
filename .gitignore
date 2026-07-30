@@ -73,6 +73,7 @@ images/IM-Deploys-.png
 # tracked remixicon font), so this whole staging area stays local, never committed.
 icons/*.png
 icons/*.webp
+icons/*.jpg
 
 # Credential/keys notes (NEVER commit)
 AI Voice and Conversation Widget And CRM Project/Twilio Keys.md
