@@ -27,6 +27,8 @@
   <link rel="stylesheet" href="css/card-nodes.min.css?v=3" media="print" onload="this.media='all'">
   <link rel="stylesheet" href="css/blog-scroller.min.css?v=3" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="css/card-nodes.min.css?v=3"><link rel="stylesheet" href="css/blog-scroller.min.css?v=3"></noscript>
+  <link rel="stylesheet" href="css/credo-chain.min.css?v=1" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="css/credo-chain.min.css?v=1"></noscript>
   <link rel="stylesheet" href="icons/remixicon.css" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="icons/remixicon.css"></noscript>
   <link rel="preload" as="image" href="images/summit-photo3.webp" fetchpriority="high" media="(min-width:601px)">
@@ -168,6 +170,46 @@
     <a href="contact.html" class="nav-cta">Start a Scoping Call</a>
   </div>
 
+  <!-- Credo chain banner: the page opens on the credo; the hero follows -->
+  <section class="credo" aria-label="The Island Mountain credo">
+    <div class="credo-inner" id="credoInner">
+      <svg class="credo-svg" id="credoSvg" aria-hidden="true"></svg>
+      <div class="credo-kicker">Forward Deployed On-Prem AI Solutions</div>
+      <article class="credo-card" style="--cc:#4696fa">
+        <div class="credo-ic" aria-hidden="true"><img src="images/technology-serves-people-icon.webp" alt="" width="156" height="156"></div>
+        <div>
+          <h2 class="credo-h1">Technology serves people.</h2>
+          <p class="credo-body">Tools are not the goal. They exist to empower, enable, and elevate human capability.</p>
+        </div>
+      </article>
+      <article class="credo-card" style="--cc:#fa9650">
+        <div class="credo-ic" aria-hidden="true"><img src="images/people-serve-missions-icon.webp" alt="" width="156" height="156" loading="lazy"></div>
+        <div>
+          <h2 class="credo-h1">People serve missions.</h2>
+          <p class="credo-body">Purpose gives direction. We apply our skills and compassion to advance meaningful missions.</p>
+        </div>
+      </article>
+      <article class="credo-card" style="--cc:#78cd5f">
+        <div class="credo-ic" aria-hidden="true"><img src="images/missions-serve-communities-icon.webp" alt="" width="156" height="156" loading="lazy"></div>
+        <div>
+          <h2 class="credo-h1">Missions serve communities.</h2>
+          <p class="credo-body">Every mission creates impact. We build solutions that strengthen, support, and uplift the communities we are part of.</p>
+        </div>
+      </article>
+      <article class="credo-card" style="--cc:#b982fa">
+        <div class="credo-ic" aria-hidden="true"><img src="images/communities-preserve-civilization-icon.webp" alt="" width="156" height="156" loading="lazy"></div>
+        <div>
+          <h2 class="credo-h1">Communities preserve civilization.</h2>
+          <p class="credo-body">Strong communities sustain culture, knowledge, and freedom. They are the foundation of a resilient and enduring civilization.</p>
+        </div>
+      </article>
+      <footer class="credo-outro">
+        <div class="credo-tagline">Build with purpose. Deploy with integrity. Make an impact that endures.</div>
+        <div><a class="credo-doctrine" href="the-island-mountain-doctrine.html#chapter-4">Read the Island Mountain Doctrine &rarr;</a></div>
+      </footer>
+    </div>
+  </section>
+
   <!-- HERO (type-led) -->
   <section class="au-hero">
     <div class="container">
@@ -209,7 +251,6 @@
     <div class="container au-reveal">
       <h2 class="au-typewriter" data-typewriter="Technology that ignores expertise gets ignored by the experts.">Technology that ignores expertise gets ignored by the experts.</h2>
       <div class="doctrine-panel">
-        <p><strong>Technology serves people. People serve missions. Missions serve communities. Communities preserve civilization.</strong></p>
         <p>That&#39;s the chain of command this company runs on, and technology is at the bottom of it. Nothing in the chain runs the other way. The whole point of view is written down, versioned, and public.</p>
         <a class="doctrine-link" href="the-island-mountain-doctrine.html#chapter-4">Read the Island Mountain Doctrine &rarr;</a>
       </div>
@@ -726,6 +767,7 @@
   <script defer src="js/hero-cinematic.js?v=2"></script>
   <script defer src="js/card-nodes.js?v=2"></script>
   <script defer src="js/blog-scroller.js?v=2"></script>
+  <script defer src="js/credo-chain.js?v=1"></script>
   <script defer src="js/lazy-video.js"></script>
   <script defer src="js/main.min.js?v=4"></script>
   <script defer src="js/chat-widget.min.js?v=4"></script>
