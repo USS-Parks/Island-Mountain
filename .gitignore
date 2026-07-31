@@ -74,6 +74,7 @@ images/IM-Deploys-.png
 icons/*.png
 icons/*.webp
 icons/*.jpg
+icons/masters/
 
 # Credential/keys notes (NEVER commit)
 AI Voice and Conversation Widget And CRM Project/Twilio Keys.md
