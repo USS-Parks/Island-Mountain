@@ -85,5 +85,6 @@ Lamprey is a Woven Security & Governance Fabric - a software layer that secures 
 - [OpenAI Discovery Risk: Subpoena Exposure for Firms](https://islandmountain.io/blog/openai-discovery-risk-law-firms.html)
 - [OpenWebUI Admin Guide](https://islandmountain.io/blog/openwebui-admin-setup-guide.html)
 - [The Second Revolution of AI: Local Inference](https://islandmountain.io/blog/second-revolution-local-ai.html)
+- [Self-Hosted Inference and the Idle-GPU Problem: Superlinked SIE](https://islandmountain.io/blog/superlinked-sie-self-hosted-inference.html)
 - [Tribal Data Sovereignty: Why Cloud AI Falls Short](https://islandmountain.io/blog/tribal-data-sovereignty-ai-infrastructure.html)
 - [Tribal Sovereignty and Data Centers: Landlord or Owner?](https://islandmountain.io/blog/tribal-sovereignty-data-centers-landlord-or-owner.html)
