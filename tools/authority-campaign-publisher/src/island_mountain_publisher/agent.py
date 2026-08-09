@@ -209,7 +209,13 @@ class AuthorityCampaignPublisher(Agent, llm=FakeLLMClient()):  # type: ignore[ca
                     actions.append(f"blog:{campaign_id}:{result}")
                 else:
                     actions.append(f"blog:{campaign_id}:due")
-            if current >= item.schedule.linkedin_at:
+            linkedin_cutoff = item.schedule.linkedin_at.replace(
+                hour=8,
+                minute=1,
+                second=0,
+                microsecond=0,
+            )
+            if item.schedule.linkedin_at <= current < linkedin_cutoff:
                 if self.mode == "production":
                     result = self.publish_linkedin(campaign_id)
                     actions.append(f"linkedin:{campaign_id}:{result}")
