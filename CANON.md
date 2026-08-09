@@ -138,6 +138,15 @@ Every release emits an SBOM (syft) and is code-signed. (Signing cert is an owner
 Never paste PHI, ITAR-controlled technical data, or OCAP-governed material into a cloud model context (including this assistant). Classified data is envelope-first / local-model-only. This is both product ethos and operational rule.
 - *Layer-3 owner:* **PROPOSED** `UserPromptSubmit` classifier warn + Layer-2.
 
+### II.9 — Validated patterns and public naming (Basho's ruling, 2026-08-09)
+The public framing is **validated deployment patterns**, not "no catalog": Discovery selects the pattern; benchmarks, governance requirements, and the facility survey finalize the build. Naming rules for public surfaces:
+- **Vendor-level claims: allowed everywhere.** "Flagship NVIDIA accelerated infrastructure, virtually stack-wide."
+- **Pattern names: allowed.** Secure Departmental Node, Sovereign Workgroup Stack, Regulated AI Infrastructure Pod, canonical in `PLANNING/Island_Mountain_NPN_Reference_Architecture.pptx` (Revision A). Hardware-agnostic descriptions; never presented as tiers, a ladder, or a price-implying series (the stale Landfall / Base / Summit debates are the cautionary tale).
+- **Real example builds: allowed and encouraged.** Delivered installs, named plainly, NVIDIA visible, captioned as illustrations of range; customers stay anonymous. Only builds whose photos Island Mountain owns.
+- **Banned: the standing menu.** Recommendation lists, spec tables, reference-build pages, prices, forward-looking SKU promises. Evergreen pages never name silicon generations as forward-looking specs; versioned, dated artifacts (Revision letters) and dated blog posts are the sanctioned homes.
+- **Disclosure boundary.** The website proves the specification system exists (pattern names and one-liners, the Discovery sentence, the acceptance-test claim, example builds) and never publishes the system itself (sizing instruments, specification-contract clusters, support terms, reference envelopes). Depth lives in partner artifacts and engagement deliverables.
+- *Layer-3 owner:* pre-commit/pre-push price-grep (ACTIVE, 2026-07-26) covers the pricing edge; the rest is Layer-2, restated here so the debate stays settled.
+
 ---
 
 # PART III — THE ENFORCEMENT MAP (what you're forgetting)
