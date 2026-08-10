@@ -26,6 +26,7 @@ export interface LeadRow {
   utm_source?: string;
   utm_medium?: string;
   utm_campaign?: string;
+  utm_content?: string;
   landing_page?: string;
   referrer?: string;
   status: string;
@@ -37,7 +38,7 @@ const COLS = [
   'organization', 'industry', 'use_case', 'concurrent_users', 'system_interest',
   'compliance', 'timeline', 'budget', 'decision_maker', 'infrastructure',
   'current_setup', 'docs_requested', 'score', 'score_reason', 'source',
-  'utm_source', 'utm_medium', 'utm_campaign', 'landing_page', 'referrer',
+  'utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'landing_page', 'referrer',
   'status', 'transcript',
 ] as const;
 

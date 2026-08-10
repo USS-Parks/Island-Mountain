@@ -62,7 +62,7 @@ export function alertEmail(
       <table style="border-collapse:collapse;font-size:14px;margin-bottom:20px">${fieldRows(fields)}</table>
       <h3 style="color:#0f172a;margin:0 0 6px">Conversation</h3>
       <div style="font-size:13px;background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:12px">${transcriptHtml(ctx)}</div>
-      <p style="margin-top:16px;font-size:12px;color:#94a3b8">UTM: ${esc(ctx.meta.utm_source || '—')} / ${esc(ctx.meta.utm_medium || '—')} · Landing: ${esc(ctx.meta.landing_page || '—')}</p>
+      <p style="margin-top:16px;font-size:12px;color:#94a3b8">UTM: ${esc(ctx.meta.utm_source || '—')} / ${esc(ctx.meta.utm_medium || '—')} · Post: ${esc(ctx.meta.utm_content || '—')} · Landing: ${esc(ctx.meta.landing_page || '—')}</p>
     </div>`
   return { subject, html }
 }

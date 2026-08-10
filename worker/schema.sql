@@ -36,6 +36,7 @@ CREATE TABLE IF NOT EXISTS leads (
   utm_source      TEXT,
   utm_medium      TEXT,
   utm_campaign    TEXT,
+  utm_content     TEXT,                    -- per-post attribution (campaign pNN)
   landing_page    TEXT,
   referrer        TEXT,
   -- Lifecycle

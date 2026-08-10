@@ -36,6 +36,12 @@ export async function handleStats(request: Request, env: Env): Promise<Response>
         'COUNT(*) AS n, SUM(CASE WHEN score=\'hot\' THEN 1 ELSE 0 END) AS hot ' +
         'FROM leads GROUP BY utm_source ORDER BY n DESC',
     );
+    const byContent = await rows(
+      env,
+      "SELECT COALESCE(NULLIF(utm_content,''),'(untagged)') AS utm_content, " +
+        'COUNT(*) AS n, SUM(CASE WHEN score=\'hot\' THEN 1 ELSE 0 END) AS hot ' +
+        'FROM leads GROUP BY utm_content ORDER BY n DESC',
+    );
     return jsonResponse(
       {
         success: true,
@@ -46,6 +52,7 @@ export async function handleStats(request: Request, env: Env): Promise<Response>
           by_score: byScore,
           by_source: bySource,
           by_utm_source: bySrc,
+          by_utm_content: byContent,
         },
       },
       200,

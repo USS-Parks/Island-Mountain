@@ -82,6 +82,7 @@ export async function processLead(
     utm_source: ctx.meta.utm_source,
     utm_medium: ctx.meta.utm_medium,
     utm_campaign: ctx.meta.utm_campaign,
+    utm_content: ctx.meta.utm_content,
     landing_page: ctx.meta.landing_page,
     referrer: ctx.meta.referrer,
     status: 'new',

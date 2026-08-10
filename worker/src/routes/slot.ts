@@ -15,6 +15,10 @@ interface SlotBody {
   workload?: string
   landing_page?: string
   referrer?: string
+  utm_source?: string
+  utm_medium?: string
+  utm_campaign?: string
+  utm_content?: string
 }
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/
@@ -69,6 +73,10 @@ export async function handleSlot(request: Request, env: Env): Promise<Response> 
   const ctx: LeadContext = {
     sessionId,
     meta: {
+      utm_source: (body.utm_source || '').slice(0, 120),
+      utm_medium: (body.utm_medium || '').slice(0, 120),
+      utm_campaign: (body.utm_campaign || '').slice(0, 120),
+      utm_content: (body.utm_content || '').slice(0, 120),
       landing_page: (body.landing_page || '').slice(0, 200),
       referrer: (body.referrer || '').slice(0, 300)
     },
