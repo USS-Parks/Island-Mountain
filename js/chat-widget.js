@@ -462,3 +462,27 @@
   if ('requestIdleCallback' in window) requestIdleCallback(boot, { timeout: 3000 });
   else setTimeout(boot, 1200);
 })();
+
+// First-touch campaign attribution: persist utm_* from the entry URL for 90 days
+// so the worksheet and build-slot forms can attribute a later conversion to the
+// post that brought the reader in (utm_content=pNN). First touch wins.
+(function () {
+  try {
+    var KEY = 'im_attr';
+    var TTL = 7776000000; // 90 days
+    var q = new URLSearchParams(location.search);
+    if (!(q.get('utm_source') || q.get('utm_medium') || q.get('utm_campaign') || q.get('utm_content'))) return;
+    var prev = null;
+    try { prev = JSON.parse(localStorage.getItem(KEY)); } catch (e) {}
+    if (prev && prev.ts && (Date.now() - prev.ts) < TTL) return;
+    localStorage.setItem(KEY, JSON.stringify({
+      utm_source: q.get('utm_source') || '',
+      utm_medium: q.get('utm_medium') || '',
+      utm_campaign: q.get('utm_campaign') || '',
+      utm_content: q.get('utm_content') || '',
+      landing_page: location.pathname + location.search,
+      referrer: document.referrer || '',
+      ts: Date.now()
+    }));
+  } catch (e) {}
+})();

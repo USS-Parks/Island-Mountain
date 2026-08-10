@@ -367,18 +367,30 @@
     var f = document.getElementById('slot-form'); if(!f) return;
     var isLocal = /^(localhost|127\.0\.0\.1)$/.test(location.hostname);
     var API = isLocal ? 'http://localhost:8787' : 'https://island-mountain-funnel.basho-parks.workers.dev';
+    // First-touch attribution stored by js/chat-widget by way of localStorage im_attr;
+    // falls back to this page when the visitor arrived untagged.
+    function imAttr(){
+      var a = null;
+      try { a = JSON.parse(localStorage.getItem('im_attr')); } catch (err) {}
+      if (!a || !a.ts || (Date.now() - a.ts) > 7776000000) a = {};
+      return {
+        utm_source: a.utm_source || '', utm_medium: a.utm_medium || '',
+        utm_campaign: a.utm_campaign || '', utm_content: a.utm_content || '',
+        landing_page: a.landing_page || location.pathname,
+        referrer: a.referrer || document.referrer || ''
+      };
+    }
     f.addEventListener('submit', function(e){
       e.preventDefault();
       var btn = f.querySelector('button[type=submit]'); btn.disabled = true; btn.textContent = 'Holding your slot…';
       document.getElementById('slot-err').style.display = 'none';
-      fetch(API + '/api/slot', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({
+      fetch(API + '/api/slot', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(Object.assign({
         name: document.getElementById('slot-name').value.trim(),
         email: document.getElementById('slot-email').value.trim(),
         phone: document.getElementById('slot-phone').value.trim(),
         organization: document.getElementById('slot-org').value.trim(),
-        workload: document.getElementById('slot-workload').value.trim(),
-        landing_page: location.pathname, referrer: document.referrer || ''
-      })}).then(function(r){
+        workload: document.getElementById('slot-workload').value.trim()
+      }, imAttr()))}).then(function(r){
         if(!r.ok) throw 0;
         f.style.display = 'none';
         document.getElementById('slot-ok').style.display = 'block';

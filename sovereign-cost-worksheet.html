@@ -340,6 +340,20 @@
 
     document.getElementById('cw-calc').addEventListener('click', calc);
 
+    // First-touch attribution stored by js/chat-widget by way of localStorage im_attr;
+    // falls back to this page when the visitor arrived untagged.
+    function imAttr(){
+      var a = null;
+      try { a = JSON.parse(localStorage.getItem('im_attr')); } catch (err) {}
+      if (!a || !a.ts || (Date.now() - a.ts) > 7776000000) a = {};
+      return {
+        utm_source: a.utm_source || '', utm_medium: a.utm_medium || '',
+        utm_campaign: a.utm_campaign || '', utm_content: a.utm_content || '',
+        landing_page: a.landing_page || location.pathname,
+        referrer: a.referrer || document.referrer || ''
+      };
+    }
+
     document.getElementById('cw-form').addEventListener('submit', function(e){
       e.preventDefault();
       if (!state) calc();
@@ -353,16 +367,14 @@
       fetch(API_BASE + '/api/worksheet', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
+        body: JSON.stringify(Object.assign({
           email: email,
           industry: industry,
           seats: state.seats,
           monthly_spend: state.spend,
           growth_pct: Math.round(state.growth * 100),
-          five_year_total: Math.round(state.total),
-          landing_page: '/sovereign-cost-worksheet.html',
-          referrer: document.referrer || ''
-        })
+          five_year_total: Math.round(state.total)
+        }, imAttr()))
       }).then(function(r){
         if (!r.ok) throw new Error('http ' + r.status);
         document.getElementById('cw-form').style.display = 'none';
