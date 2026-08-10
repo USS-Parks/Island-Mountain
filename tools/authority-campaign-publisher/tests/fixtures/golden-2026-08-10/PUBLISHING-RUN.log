@@ -1,0 +1,905 @@
+[2026-08-10T05:00:05-07:00] Island Mountain publisher wakeup
+[2026-08-10T05:00:05-07:00] Island Mountain publisher wakeup
+Traceback (most recent call last):
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/.venv/bin/im-publisher", line 12, in <module>
+    sys.exit(main())
+             ~~~~^^
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/src/island_mountain_publisher/cli.py", line 80, in main
+    print(json.dumps(agent.run_due(), indent=2))
+                     ~~~~~~~~~~~~~^^
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/.venv/lib/python3.13/site-packages/nooa/runtime/method_wrapper.py", line 468, in wrapper
+    result = original_func(self, *args, **kwargs)
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/src/island_mountain_publisher/agent.py", line 202, in run_due
+    result = self.publish_blog(campaign_id)
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/.venv/lib/python3.13/site-packages/nooa/runtime/method_wrapper.py", line 468, in wrapper
+    result = original_func(self, *args, **kwargs)
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/src/island_mountain_publisher/agent.py", line 157, in publish_blog
+    WorkspaceTransaction(GitWorkspace(self._repository_root), planned).apply()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/src/island_mountain_publisher/workspace.py", line 197, in apply
+    os.replace(staged_target, target)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/mnt/c/Users/17076/Documents/Claude/Island Mountain/.llms.txt.publisher-tmp' -> '/mnt/c/Users/17076/Documents/Claude/Island Mountain/llms.txt'
+[
+  "blog:p01:75b947f06748443e71dbed1a628d30b38a2676bc"
+]
+
+[2026-08-10T05:15:06-07:00] Island Mountain publisher wakeup
+[
+  "blog:p01:already-published"
+]
+
+[2026-08-10T05:30:07-07:00] Island Mountain publisher wakeup
+[
+  "blog:p01:already-published"
+]
+
+[2026-08-10T05:45:07-07:00] Island Mountain publisher wakeup
+[
+  "blog:p01:already-published"
+]
+
+
+[2026-08-10T06:00:05-07:00] Island Mountain publisher wakeup
+[2026-08-10T06:00:05-07:00] Island Mountain publisher wakeup
+[
+  "blog:p01:already-published"
+]
+[
+  "blog:p01:already-published"
+]
+
+[2026-08-10T06:05:05-07:00] Island Mountain publisher wakeup
+[
+  "blog:p01:already-published"
+]
+
+[2026-08-10T06:10:05-07:00] Island Mountain publisher wakeup
+[
+  "blog:p01:already-published"
+]
+
+
+[2026-08-10T06:15:05-07:00] Island Mountain publisher wakeup
+[2026-08-10T06:15:05-07:00] Island Mountain publisher wakeup
+[
+  "blog:p01:already-published"
+]
+[
+  "blog:p01:already-published"
+]
+
+[2026-08-10T06:20:05-07:00] Island Mountain publisher wakeup
+[
+  "blog:p01:already-published"
+]
+
+[2026-08-10T06:25:05-07:00] Island Mountain publisher wakeup
+[
+  "blog:p01:already-published"
+]
+
+
+[2026-08-10T06:30:05-07:00] Island Mountain publisher wakeup
+[2026-08-10T06:30:05-07:00] Island Mountain publisher wakeup
+[
+  "blog:p01:already-published"
+]
+[
+  "blog:p01:already-published"
+]
+
+[2026-08-10T06:35:05-07:00] Island Mountain publisher wakeup
+[
+  "blog:p01:already-published"
+]
+
+[2026-08-10T06:40:05-07:00] Island Mountain publisher wakeup
+[
+  "blog:p01:already-published"
+]
+
+[2026-08-10T06:45:05-07:00] Island Mountain publisher wakeup
+
+[2026-08-10T06:45:05-07:00] Island Mountain publisher wakeup
+[
+  "blog:p01:already-published"
+]
+[
+  "blog:p01:already-published"
+]
+
+[2026-08-10T06:50:05-07:00] Island Mountain publisher wakeup
+[
+  "blog:p01:already-published"
+]
+
+[2026-08-10T06:55:05-07:00] Island Mountain publisher wakeup
+[
+  "blog:p01:already-published"
+]
+
+
+[2026-08-10T07:00:05-07:00] Island Mountain publisher wakeup
+[2026-08-10T07:00:05-07:00] Island Mountain publisher wakeup
+[
+  "blog:p01:already-published"
+]
+[
+  "blog:p01:already-published"
+]
+
+[2026-08-10T07:05:05-07:00] Island Mountain publisher wakeup
+[
+  "blog:p01:already-published"
+]
+
+[2026-08-10T07:10:05-07:00] Island Mountain publisher wakeup
+Traceback (most recent call last):
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/src/island_mountain_publisher/linkedin.py", line 70, in _request
+    with urllib.request.urlopen(request, timeout=45) as response:
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/home/basho/.local/share/uv/python/cpython-3.13.15-linux-x86_64-gnu/lib/python3.13/urllib/request.py", line 189, in urlopen
+    return opener.open(url, data, timeout)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/home/basho/.local/share/uv/python/cpython-3.13.15-linux-x86_64-gnu/lib/python3.13/urllib/request.py", line 495, in open
+    response = meth(req, response)
+  File "/home/basho/.local/share/uv/python/cpython-3.13.15-linux-x86_64-gnu/lib/python3.13/urllib/request.py", line 604, in http_response
+    response = self.parent.error(
+        'http', request, response, code, msg, hdrs)
+  File "/home/basho/.local/share/uv/python/cpython-3.13.15-linux-x86_64-gnu/lib/python3.13/urllib/request.py", line 533, in error
+    return self._call_chain(*args)
+           ~~~~~~~~~~~~~~~~^^^^^^^
+  File "/home/basho/.local/share/uv/python/cpython-3.13.15-linux-x86_64-gnu/lib/python3.13/urllib/request.py", line 466, in _call_chain
+    result = func(*args)
+  File "/home/basho/.local/share/uv/python/cpython-3.13.15-linux-x86_64-gnu/lib/python3.13/urllib/request.py", line 613, in http_error_default
+    raise HTTPError(req.full_url, code, msg, hdrs, fp)
+urllib.error.HTTPError: HTTP Error 403: Forbidden
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/.venv/bin/im-publisher", line 12, in <module>
+    sys.exit(main())
+             ~~~~^^
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/src/island_mountain_publisher/cli.py", line 80, in main
+    print(json.dumps(agent.run_due(), indent=2))
+                     ~~~~~~~~~~~~~^^
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/.venv/lib/python3.13/site-packages/nooa/runtime/method_wrapper.py", line 468, in wrapper
+    result = original_func(self, *args, **kwargs)
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/src/island_mountain_publisher/agent.py", line 214, in run_due
+    result = self.publish_linkedin(campaign_id)
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/.venv/lib/python3.13/site-packages/nooa/runtime/method_wrapper.py", line 468, in wrapper
+    result = original_func(self, *args, **kwargs)
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/src/island_mountain_publisher/agent.py", line 181, in publish_linkedin
+    image = self._linkedin.upload_image(item)
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/src/island_mountain_publisher/linkedin.py", line 80, in upload_image
+    initialized, _ = self._request(
+                     ~~~~~~~~~~~~~^
+        "POST",
+        ^^^^^^^
+        "https://api.linkedin.com/rest/images?action=initializeUpload",
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        {"initializeUploadRequest": {"owner": self.actor_urn}},
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/src/island_mountain_publisher/linkedin.py", line 75, in _request
+    raise LinkedInError(f"LinkedIn {method} did not complete: {url}") from exc
+island_mountain_publisher.linkedin.LinkedInError: LinkedIn POST did not complete: https://api.linkedin.com/rest/images?action=initializeUpload
+
+
+[2026-08-10T07:15:05-07:00] Island Mountain publisher wakeup
+[2026-08-10T07:15:05-07:00] Island Mountain publisher wakeup
+Traceback (most recent call last):
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/src/island_mountain_publisher/linkedin.py", line 70, in _request
+    with urllib.request.urlopen(request, timeout=45) as response:
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/home/basho/.local/share/uv/python/cpython-3.13.15-linux-x86_64-gnu/lib/python3.13/urllib/request.py", line 189, in urlopen
+    return opener.open(url, data, timeout)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/home/basho/.local/share/uv/python/cpython-3.13.15-linux-x86_64-gnu/lib/python3.13/urllib/request.py", line 495, in open
+    response = meth(req, response)
+  File "/home/basho/.local/share/uv/python/cpython-3.13.15-linux-x86_64-gnu/lib/python3.13/urllib/request.py", line 604, in http_response
+    response = self.parent.error(
+        'http', request, response, code, msg, hdrs)
+  File "/home/basho/.local/share/uv/python/cpython-3.13.15-linux-x86_64-gnu/lib/python3.13/urllib/request.py", line 533, in error
+    return self._call_chain(*args)
+           ~~~~~~~~~~~~~~~~^^^^^^^
+  File "/home/basho/.local/share/uv/python/cpython-3.13.15-linux-x86_64-gnu/lib/python3.13/urllib/request.py", line 466, in _call_chain
+    result = func(*args)
+  File "/home/basho/.local/share/uv/python/cpython-3.13.15-linux-x86_64-gnu/lib/python3.13/urllib/request.py", line 613, in http_error_default
+    raise HTTPError(req.full_url, code, msg, hdrs, fp)
+urllib.error.HTTPError: HTTP Error 403: Forbidden
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/.venv/bin/im-publisher", line 12, in <module>
+    sys.exit(main())
+             ~~~~^^
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/src/island_mountain_publisher/cli.py", line 80, in main
+    print(json.dumps(agent.run_due(), indent=2))
+                     ~~~~~~~~~~~~~^^
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/.venv/lib/python3.13/site-packages/nooa/runtime/method_wrapper.py", line 468, in wrapper
+    result = original_func(self, *args, **kwargs)
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/src/island_mountain_publisher/agent.py", line 214, in run_due
+    result = self.publish_linkedin(campaign_id)
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/.venv/lib/python3.13/site-packages/nooa/runtime/method_wrapper.py", line 468, in wrapper
+    result = original_func(self, *args, **kwargs)
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/src/island_mountain_publisher/agent.py", line 181, in publish_linkedin
+    image = self._linkedin.upload_image(item)
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/src/island_mountain_publisher/linkedin.py", line 80, in upload_image
+    initialized, _ = self._request(
+                     ~~~~~~~~~~~~~^
+        "POST",
+        ^^^^^^^
+        "https://api.linkedin.com/rest/images?action=initializeUpload",
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        {"initializeUploadRequest": {"owner": self.actor_urn}},
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/src/island_mountain_publisher/linkedin.py", line 75, in _request
+    raise LinkedInError(f"LinkedIn {method} did not complete: {url}") from exc
+island_mountain_publisher.linkedin.LinkedInError: LinkedIn POST did not complete: https://api.linkedin.com/rest/images?action=initializeUpload
+Traceback (most recent call last):
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/src/island_mountain_publisher/linkedin.py", line 70, in _request
+    with urllib.request.urlopen(request, timeout=45) as response:
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/home/basho/.local/share/uv/python/cpython-3.13.15-linux-x86_64-gnu/lib/python3.13/urllib/request.py", line 189, in urlopen
+    return opener.open(url, data, timeout)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/home/basho/.local/share/uv/python/cpython-3.13.15-linux-x86_64-gnu/lib/python3.13/urllib/request.py", line 495, in open
+    response = meth(req, response)
+  File "/home/basho/.local/share/uv/python/cpython-3.13.15-linux-x86_64-gnu/lib/python3.13/urllib/request.py", line 604, in http_response
+    response = self.parent.error(
+        'http', request, response, code, msg, hdrs)
+  File "/home/basho/.local/share/uv/python/cpython-3.13.15-linux-x86_64-gnu/lib/python3.13/urllib/request.py", line 533, in error
+    return self._call_chain(*args)
+           ~~~~~~~~~~~~~~~~^^^^^^^
+  File "/home/basho/.local/share/uv/python/cpython-3.13.15-linux-x86_64-gnu/lib/python3.13/urllib/request.py", line 466, in _call_chain
+    result = func(*args)
+  File "/home/basho/.local/share/uv/python/cpython-3.13.15-linux-x86_64-gnu/lib/python3.13/urllib/request.py", line 613, in http_error_default
+    raise HTTPError(req.full_url, code, msg, hdrs, fp)
+urllib.error.HTTPError: HTTP Error 403: Forbidden
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/.venv/bin/im-publisher", line 12, in <module>
+    sys.exit(main())
+             ~~~~^^
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/src/island_mountain_publisher/cli.py", line 80, in main
+    print(json.dumps(agent.run_due(), indent=2))
+                     ~~~~~~~~~~~~~^^
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/.venv/lib/python3.13/site-packages/nooa/runtime/method_wrapper.py", line 468, in wrapper
+    result = original_func(self, *args, **kwargs)
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/src/island_mountain_publisher/agent.py", line 214, in run_due
+    result = self.publish_linkedin(campaign_id)
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/.venv/lib/python3.13/site-packages/nooa/runtime/method_wrapper.py", line 468, in wrapper
+    result = original_func(self, *args, **kwargs)
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/src/island_mountain_publisher/agent.py", line 181, in publish_linkedin
+    image = self._linkedin.upload_image(item)
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/src/island_mountain_publisher/linkedin.py", line 80, in upload_image
+    initialized, _ = self._request(
+                     ~~~~~~~~~~~~~^
+        "POST",
+        ^^^^^^^
+        "https://api.linkedin.com/rest/images?action=initializeUpload",
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        {"initializeUploadRequest": {"owner": self.actor_urn}},
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/src/island_mountain_publisher/linkedin.py", line 75, in _request
+    raise LinkedInError(f"LinkedIn {method} did not complete: {url}") from exc
+island_mountain_publisher.linkedin.LinkedInError: LinkedIn POST did not complete: https://api.linkedin.com/rest/images?action=initializeUpload
+
+[2026-08-10T07:20:05-07:00] Island Mountain publisher wakeup
+Traceback (most recent call last):
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/src/island_mountain_publisher/linkedin.py", line 70, in _request
+    with urllib.request.urlopen(request, timeout=45) as response:
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/home/basho/.local/share/uv/python/cpython-3.13.15-linux-x86_64-gnu/lib/python3.13/urllib/request.py", line 189, in urlopen
+    return opener.open(url, data, timeout)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/home/basho/.local/share/uv/python/cpython-3.13.15-linux-x86_64-gnu/lib/python3.13/urllib/request.py", line 495, in open
+    response = meth(req, response)
+  File "/home/basho/.local/share/uv/python/cpython-3.13.15-linux-x86_64-gnu/lib/python3.13/urllib/request.py", line 604, in http_response
+    response = self.parent.error(
+        'http', request, response, code, msg, hdrs)
+  File "/home/basho/.local/share/uv/python/cpython-3.13.15-linux-x86_64-gnu/lib/python3.13/urllib/request.py", line 533, in error
+    return self._call_chain(*args)
+           ~~~~~~~~~~~~~~~~^^^^^^^
+  File "/home/basho/.local/share/uv/python/cpython-3.13.15-linux-x86_64-gnu/lib/python3.13/urllib/request.py", line 466, in _call_chain
+    result = func(*args)
+  File "/home/basho/.local/share/uv/python/cpython-3.13.15-linux-x86_64-gnu/lib/python3.13/urllib/request.py", line 613, in http_error_default
+    raise HTTPError(req.full_url, code, msg, hdrs, fp)
+urllib.error.HTTPError: HTTP Error 403: Forbidden
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/.venv/bin/im-publisher", line 12, in <module>
+    sys.exit(main())
+             ~~~~^^
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/src/island_mountain_publisher/cli.py", line 80, in main
+    print(json.dumps(agent.run_due(), indent=2))
+                     ~~~~~~~~~~~~~^^
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/.venv/lib/python3.13/site-packages/nooa/runtime/method_wrapper.py", line 468, in wrapper
+    result = original_func(self, *args, **kwargs)
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/src/island_mountain_publisher/agent.py", line 214, in run_due
+    result = self.publish_linkedin(campaign_id)
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/.venv/lib/python3.13/site-packages/nooa/runtime/method_wrapper.py", line 468, in wrapper
+    result = original_func(self, *args, **kwargs)
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/src/island_mountain_publisher/agent.py", line 181, in publish_linkedin
+    image = self._linkedin.upload_image(item)
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/src/island_mountain_publisher/linkedin.py", line 80, in upload_image
+    initialized, _ = self._request(
+                     ~~~~~~~~~~~~~^
+        "POST",
+        ^^^^^^^
+        "https://api.linkedin.com/rest/images?action=initializeUpload",
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        {"initializeUploadRequest": {"owner": self.actor_urn}},
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/src/island_mountain_publisher/linkedin.py", line 75, in _request
+    raise LinkedInError(f"LinkedIn {method} did not complete: {url}") from exc
+island_mountain_publisher.linkedin.LinkedInError: LinkedIn POST did not complete: https://api.linkedin.com/rest/images?action=initializeUpload
+
+[2026-08-10T07:25:05-07:00] Island Mountain publisher wakeup
+Traceback (most recent call last):
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/src/island_mountain_publisher/linkedin.py", line 70, in _request
+    with urllib.request.urlopen(request, timeout=45) as response:
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/home/basho/.local/share/uv/python/cpython-3.13.15-linux-x86_64-gnu/lib/python3.13/urllib/request.py", line 189, in urlopen
+    return opener.open(url, data, timeout)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/home/basho/.local/share/uv/python/cpython-3.13.15-linux-x86_64-gnu/lib/python3.13/urllib/request.py", line 495, in open
+    response = meth(req, response)
+  File "/home/basho/.local/share/uv/python/cpython-3.13.15-linux-x86_64-gnu/lib/python3.13/urllib/request.py", line 604, in http_response
+    response = self.parent.error(
+        'http', request, response, code, msg, hdrs)
+  File "/home/basho/.local/share/uv/python/cpython-3.13.15-linux-x86_64-gnu/lib/python3.13/urllib/request.py", line 533, in error
+    return self._call_chain(*args)
+           ~~~~~~~~~~~~~~~~^^^^^^^
+  File "/home/basho/.local/share/uv/python/cpython-3.13.15-linux-x86_64-gnu/lib/python3.13/urllib/request.py", line 466, in _call_chain
+    result = func(*args)
+  File "/home/basho/.local/share/uv/python/cpython-3.13.15-linux-x86_64-gnu/lib/python3.13/urllib/request.py", line 613, in http_error_default
+    raise HTTPError(req.full_url, code, msg, hdrs, fp)
+urllib.error.HTTPError: HTTP Error 403: Forbidden
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/.venv/bin/im-publisher", line 12, in <module>
+    sys.exit(main())
+             ~~~~^^
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/src/island_mountain_publisher/cli.py", line 80, in main
+    print(json.dumps(agent.run_due(), indent=2))
+                     ~~~~~~~~~~~~~^^
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/.venv/lib/python3.13/site-packages/nooa/runtime/method_wrapper.py", line 468, in wrapper
+    result = original_func(self, *args, **kwargs)
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/src/island_mountain_publisher/agent.py", line 214, in run_due
+    result = self.publish_linkedin(campaign_id)
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/.venv/lib/python3.13/site-packages/nooa/runtime/method_wrapper.py", line 468, in wrapper
+    result = original_func(self, *args, **kwargs)
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/src/island_mountain_publisher/agent.py", line 181, in publish_linkedin
+    image = self._linkedin.upload_image(item)
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/src/island_mountain_publisher/linkedin.py", line 80, in upload_image
+    initialized, _ = self._request(
+                     ~~~~~~~~~~~~~^
+        "POST",
+        ^^^^^^^
+        "https://api.linkedin.com/rest/images?action=initializeUpload",
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        {"initializeUploadRequest": {"owner": self.actor_urn}},
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/src/island_mountain_publisher/linkedin.py", line 75, in _request
+    raise LinkedInError(f"LinkedIn {method} did not complete: {url}") from exc
+island_mountain_publisher.linkedin.LinkedInError: LinkedIn POST did not complete: https://api.linkedin.com/rest/images?action=initializeUpload
+
+
+[2026-08-10T07:30:05-07:00] Island Mountain publisher wakeup
+[2026-08-10T07:30:05-07:00] Island Mountain publisher wakeup
+
+[2026-08-10T07:35:04-07:00] Island Mountain publisher wakeup
+Traceback (most recent call last):
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/src/island_mountain_publisher/linkedin.py", line 70, in _request
+    with urllib.request.urlopen(request, timeout=45) as response:
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/home/basho/.local/share/uv/python/cpython-3.13.15-linux-x86_64-gnu/lib/python3.13/urllib/request.py", line 189, in urlopen
+    return opener.open(url, data, timeout)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/home/basho/.local/share/uv/python/cpython-3.13.15-linux-x86_64-gnu/lib/python3.13/urllib/request.py", line 495, in open
+    response = meth(req, response)
+  File "/home/basho/.local/share/uv/python/cpython-3.13.15-linux-x86_64-gnu/lib/python3.13/urllib/request.py", line 604, in http_response
+    response = self.parent.error(
+        'http', request, response, code, msg, hdrs)
+  File "/home/basho/.local/share/uv/python/cpython-3.13.15-linux-x86_64-gnu/lib/python3.13/urllib/request.py", line 533, in error
+    return self._call_chain(*args)
+           ~~~~~~~~~~~~~~~~^^^^^^^
+  File "/home/basho/.local/share/uv/python/cpython-3.13.15-linux-x86_64-gnu/lib/python3.13/urllib/request.py", line 466, in _call_chain
+    result = func(*args)
+  File "/home/basho/.local/share/uv/python/cpython-3.13.15-linux-x86_64-gnu/lib/python3.13/urllib/request.py", line 613, in http_error_default
+    raise HTTPError(req.full_url, code, msg, hdrs, fp)
+urllib.error.HTTPError: HTTP Error 403: Forbidden
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/.venv/bin/im-publisher", line 12, in <module>
+    sys.exit(main())
+             ~~~~^^
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/src/island_mountain_publisher/cli.py", line 80, in main
+    print(json.dumps(agent.run_due(), indent=2))
+                     ~~~~~~~~~~~~~^^
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/.venv/lib/python3.13/site-packages/nooa/runtime/method_wrapper.py", line 468, in wrapper
+    result = original_func(self, *args, **kwargs)
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/src/island_mountain_publisher/agent.py", line 214, in run_due
+    result = self.publish_linkedin(campaign_id)
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/.venv/lib/python3.13/site-packages/nooa/runtime/method_wrapper.py", line 468, in wrapper
+    result = original_func(self, *args, **kwargs)
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/src/island_mountain_publisher/agent.py", line 181, in publish_linkedin
+    image = self._linkedin.upload_image(item)
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/src/island_mountain_publisher/linkedin.py", line 80, in upload_image
+    initialized, _ = self._request(
+                     ~~~~~~~~~~~~~^
+        "POST",
+        ^^^^^^^
+        "https://api.linkedin.com/rest/images?action=initializeUpload",
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        {"initializeUploadRequest": {"owner": self.actor_urn}},
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/src/island_mountain_publisher/linkedin.py", line 75, in _request
+    raise LinkedInError(f"LinkedIn {method} did not complete: {url}") from exc
+island_mountain_publisher.linkedin.LinkedInError: LinkedIn POST did not complete: https://api.linkedin.com/rest/images?action=initializeUpload
+
+[2026-08-10T07:40:05-07:00] Island Mountain publisher wakeup
+Traceback (most recent call last):
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/src/island_mountain_publisher/linkedin.py", line 70, in _request
+    with urllib.request.urlopen(request, timeout=45) as response:
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/home/basho/.local/share/uv/python/cpython-3.13.15-linux-x86_64-gnu/lib/python3.13/urllib/request.py", line 189, in urlopen
+    return opener.open(url, data, timeout)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/home/basho/.local/share/uv/python/cpython-3.13.15-linux-x86_64-gnu/lib/python3.13/urllib/request.py", line 495, in open
+    response = meth(req, response)
+  File "/home/basho/.local/share/uv/python/cpython-3.13.15-linux-x86_64-gnu/lib/python3.13/urllib/request.py", line 604, in http_response
+    response = self.parent.error(
+        'http', request, response, code, msg, hdrs)
+  File "/home/basho/.local/share/uv/python/cpython-3.13.15-linux-x86_64-gnu/lib/python3.13/urllib/request.py", line 533, in error
+    return self._call_chain(*args)
+           ~~~~~~~~~~~~~~~~^^^^^^^
+  File "/home/basho/.local/share/uv/python/cpython-3.13.15-linux-x86_64-gnu/lib/python3.13/urllib/request.py", line 466, in _call_chain
+    result = func(*args)
+  File "/home/basho/.local/share/uv/python/cpython-3.13.15-linux-x86_64-gnu/lib/python3.13/urllib/request.py", line 613, in http_error_default
+    raise HTTPError(req.full_url, code, msg, hdrs, fp)
+urllib.error.HTTPError: HTTP Error 403: Forbidden
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/.venv/bin/im-publisher", line 12, in <module>
+    sys.exit(main())
+             ~~~~^^
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/src/island_mountain_publisher/cli.py", line 80, in main
+    print(json.dumps(agent.run_due(), indent=2))
+                     ~~~~~~~~~~~~~^^
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/.venv/lib/python3.13/site-packages/nooa/runtime/method_wrapper.py", line 468, in wrapper
+    result = original_func(self, *args, **kwargs)
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/src/island_mountain_publisher/agent.py", line 214, in run_due
+    result = self.publish_linkedin(campaign_id)
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/.venv/lib/python3.13/site-packages/nooa/runtime/method_wrapper.py", line 468, in wrapper
+    result = original_func(self, *args, **kwargs)
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/src/island_mountain_publisher/agent.py", line 181, in publish_linkedin
+    image = self._linkedin.upload_image(item)
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/src/island_mountain_publisher/linkedin.py", line 80, in upload_image
+    initialized, _ = self._request(
+                     ~~~~~~~~~~~~~^
+        "POST",
+        ^^^^^^^
+        "https://api.linkedin.com/rest/images?action=initializeUpload",
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        {"initializeUploadRequest": {"owner": self.actor_urn}},
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/src/island_mountain_publisher/linkedin.py", line 75, in _request
+    raise LinkedInError(f"LinkedIn {method} did not complete: {url}") from exc
+island_mountain_publisher.linkedin.LinkedInError: LinkedIn POST did not complete: https://api.linkedin.com/rest/images?action=initializeUpload
+
+
+[2026-08-10T07:45:05-07:00] Island Mountain publisher wakeup
+[2026-08-10T07:45:05-07:00] Island Mountain publisher wakeup
+Traceback (most recent call last):
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/src/island_mountain_publisher/linkedin.py", line 70, in _request
+    with urllib.request.urlopen(request, timeout=45) as response:
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/home/basho/.local/share/uv/python/cpython-3.13.15-linux-x86_64-gnu/lib/python3.13/urllib/request.py", line 189, in urlopen
+    return opener.open(url, data, timeout)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/home/basho/.local/share/uv/python/cpython-3.13.15-linux-x86_64-gnu/lib/python3.13/urllib/request.py", line 495, in open
+    response = meth(req, response)
+  File "/home/basho/.local/share/uv/python/cpython-3.13.15-linux-x86_64-gnu/lib/python3.13/urllib/request.py", line 604, in http_response
+    response = self.parent.error(
+        'http', request, response, code, msg, hdrs)
+  File "/home/basho/.local/share/uv/python/cpython-3.13.15-linux-x86_64-gnu/lib/python3.13/urllib/request.py", line 533, in error
+    return self._call_chain(*args)
+           ~~~~~~~~~~~~~~~~^^^^^^^
+  File "/home/basho/.local/share/uv/python/cpython-3.13.15-linux-x86_64-gnu/lib/python3.13/urllib/request.py", line 466, in _call_chain
+    result = func(*args)
+  File "/home/basho/.local/share/uv/python/cpython-3.13.15-linux-x86_64-gnu/lib/python3.13/urllib/request.py", line 613, in http_error_default
+    raise HTTPError(req.full_url, code, msg, hdrs, fp)
+urllib.error.HTTPError: HTTP Error 403: Forbidden
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/.venv/bin/im-publisher", line 12, in <module>
+    sys.exit(main())
+             ~~~~^^
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/src/island_mountain_publisher/cli.py", line 80, in main
+    print(json.dumps(agent.run_due(), indent=2))
+                     ~~~~~~~~~~~~~^^
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/.venv/lib/python3.13/site-packages/nooa/runtime/method_wrapper.py", line 468, in wrapper
+    result = original_func(self, *args, **kwargs)
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/src/island_mountain_publisher/agent.py", line 214, in run_due
+    result = self.publish_linkedin(campaign_id)
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/.venv/lib/python3.13/site-packages/nooa/runtime/method_wrapper.py", line 468, in wrapper
+    result = original_func(self, *args, **kwargs)
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/src/island_mountain_publisher/agent.py", line 181, in publish_linkedin
+    image = self._linkedin.upload_image(item)
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/src/island_mountain_publisher/linkedin.py", line 80, in upload_image
+    initialized, _ = self._request(
+                     ~~~~~~~~~~~~~^
+        "POST",
+        ^^^^^^^
+        "https://api.linkedin.com/rest/images?action=initializeUpload",
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        {"initializeUploadRequest": {"owner": self.actor_urn}},
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/src/island_mountain_publisher/linkedin.py", line 75, in _request
+    raise LinkedInError(f"LinkedIn {method} did not complete: {url}") from exc
+island_mountain_publisher.linkedin.LinkedInError: LinkedIn POST did not complete: https://api.linkedin.com/rest/images?action=initializeUpload
+Traceback (most recent call last):
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/src/island_mountain_publisher/linkedin.py", line 70, in _request
+    with urllib.request.urlopen(request, timeout=45) as response:
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/home/basho/.local/share/uv/python/cpython-3.13.15-linux-x86_64-gnu/lib/python3.13/urllib/request.py", line 189, in urlopen
+    return opener.open(url, data, timeout)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/home/basho/.local/share/uv/python/cpython-3.13.15-linux-x86_64-gnu/lib/python3.13/urllib/request.py", line 495, in open
+    response = meth(req, response)
+  File "/home/basho/.local/share/uv/python/cpython-3.13.15-linux-x86_64-gnu/lib/python3.13/urllib/request.py", line 604, in http_response
+    response = self.parent.error(
+        'http', request, response, code, msg, hdrs)
+  File "/home/basho/.local/share/uv/python/cpython-3.13.15-linux-x86_64-gnu/lib/python3.13/urllib/request.py", line 533, in error
+    return self._call_chain(*args)
+           ~~~~~~~~~~~~~~~~^^^^^^^
+  File "/home/basho/.local/share/uv/python/cpython-3.13.15-linux-x86_64-gnu/lib/python3.13/urllib/request.py", line 466, in _call_chain
+    result = func(*args)
+  File "/home/basho/.local/share/uv/python/cpython-3.13.15-linux-x86_64-gnu/lib/python3.13/urllib/request.py", line 613, in http_error_default
+    raise HTTPError(req.full_url, code, msg, hdrs, fp)
+urllib.error.HTTPError: HTTP Error 403: Forbidden
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/.venv/bin/im-publisher", line 12, in <module>
+    sys.exit(main())
+             ~~~~^^
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/src/island_mountain_publisher/cli.py", line 80, in main
+    print(json.dumps(agent.run_due(), indent=2))
+                     ~~~~~~~~~~~~~^^
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/.venv/lib/python3.13/site-packages/nooa/runtime/method_wrapper.py", line 468, in wrapper
+    result = original_func(self, *args, **kwargs)
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/src/island_mountain_publisher/agent.py", line 214, in run_due
+    result = self.publish_linkedin(campaign_id)
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/.venv/lib/python3.13/site-packages/nooa/runtime/method_wrapper.py", line 468, in wrapper
+    result = original_func(self, *args, **kwargs)
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/src/island_mountain_publisher/agent.py", line 181, in publish_linkedin
+    image = self._linkedin.upload_image(item)
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/src/island_mountain_publisher/linkedin.py", line 80, in upload_image
+    initialized, _ = self._request(
+                     ~~~~~~~~~~~~~^
+        "POST",
+        ^^^^^^^
+        "https://api.linkedin.com/rest/images?action=initializeUpload",
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        {"initializeUploadRequest": {"owner": self.actor_urn}},
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/src/island_mountain_publisher/linkedin.py", line 75, in _request
+    raise LinkedInError(f"LinkedIn {method} did not complete: {url}") from exc
+island_mountain_publisher.linkedin.LinkedInError: LinkedIn POST did not complete: https://api.linkedin.com/rest/images?action=initializeUpload
+
+[2026-08-10T07:50:06-07:00] Island Mountain publisher wakeup
+Traceback (most recent call last):
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/src/island_mountain_publisher/linkedin.py", line 70, in _request
+    with urllib.request.urlopen(request, timeout=45) as response:
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/home/basho/.local/share/uv/python/cpython-3.13.15-linux-x86_64-gnu/lib/python3.13/urllib/request.py", line 189, in urlopen
+    return opener.open(url, data, timeout)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/home/basho/.local/share/uv/python/cpython-3.13.15-linux-x86_64-gnu/lib/python3.13/urllib/request.py", line 495, in open
+    response = meth(req, response)
+  File "/home/basho/.local/share/uv/python/cpython-3.13.15-linux-x86_64-gnu/lib/python3.13/urllib/request.py", line 604, in http_response
+    response = self.parent.error(
+        'http', request, response, code, msg, hdrs)
+  File "/home/basho/.local/share/uv/python/cpython-3.13.15-linux-x86_64-gnu/lib/python3.13/urllib/request.py", line 533, in error
+    return self._call_chain(*args)
+           ~~~~~~~~~~~~~~~~^^^^^^^
+  File "/home/basho/.local/share/uv/python/cpython-3.13.15-linux-x86_64-gnu/lib/python3.13/urllib/request.py", line 466, in _call_chain
+    result = func(*args)
+  File "/home/basho/.local/share/uv/python/cpython-3.13.15-linux-x86_64-gnu/lib/python3.13/urllib/request.py", line 613, in http_error_default
+    raise HTTPError(req.full_url, code, msg, hdrs, fp)
+urllib.error.HTTPError: HTTP Error 403: Forbidden
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/.venv/bin/im-publisher", line 12, in <module>
+    sys.exit(main())
+             ~~~~^^
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/src/island_mountain_publisher/cli.py", line 80, in main
+    print(json.dumps(agent.run_due(), indent=2))
+                     ~~~~~~~~~~~~~^^
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/.venv/lib/python3.13/site-packages/nooa/runtime/method_wrapper.py", line 468, in wrapper
+    result = original_func(self, *args, **kwargs)
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/src/island_mountain_publisher/agent.py", line 214, in run_due
+    result = self.publish_linkedin(campaign_id)
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/.venv/lib/python3.13/site-packages/nooa/runtime/method_wrapper.py", line 468, in wrapper
+    result = original_func(self, *args, **kwargs)
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/src/island_mountain_publisher/agent.py", line 181, in publish_linkedin
+    image = self._linkedin.upload_image(item)
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/src/island_mountain_publisher/linkedin.py", line 80, in upload_image
+    initialized, _ = self._request(
+                     ~~~~~~~~~~~~~^
+        "POST",
+        ^^^^^^^
+        "https://api.linkedin.com/rest/images?action=initializeUpload",
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        {"initializeUploadRequest": {"owner": self.actor_urn}},
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/src/island_mountain_publisher/linkedin.py", line 75, in _request
+    raise LinkedInError(f"LinkedIn {method} did not complete: {url}") from exc
+island_mountain_publisher.linkedin.LinkedInError: LinkedIn POST did not complete: https://api.linkedin.com/rest/images?action=initializeUpload
+
+[2026-08-10T07:54:37-07:00] Island Mountain publisher wakeup
+
+[2026-08-10T07:55:01-07:00] Island Mountain publisher wakeup
+Traceback (most recent call last):
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/src/island_mountain_publisher/linkedin.py", line 70, in _request
+    with urllib.request.urlopen(request, timeout=45) as response:
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/home/basho/.local/share/uv/python/cpython-3.13.15-linux-x86_64-gnu/lib/python3.13/urllib/request.py", line 189, in urlopen
+    return opener.open(url, data, timeout)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/home/basho/.local/share/uv/python/cpython-3.13.15-linux-x86_64-gnu/lib/python3.13/urllib/request.py", line 495, in open
+    response = meth(req, response)
+  File "/home/basho/.local/share/uv/python/cpython-3.13.15-linux-x86_64-gnu/lib/python3.13/urllib/request.py", line 604, in http_response
+    response = self.parent.error(
+        'http', request, response, code, msg, hdrs)
+  File "/home/basho/.local/share/uv/python/cpython-3.13.15-linux-x86_64-gnu/lib/python3.13/urllib/request.py", line 533, in error
+    return self._call_chain(*args)
+           ~~~~~~~~~~~~~~~~^^^^^^^
+  File "/home/basho/.local/share/uv/python/cpython-3.13.15-linux-x86_64-gnu/lib/python3.13/urllib/request.py", line 466, in _call_chain
+    result = func(*args)
+  File "/home/basho/.local/share/uv/python/cpython-3.13.15-linux-x86_64-gnu/lib/python3.13/urllib/request.py", line 613, in http_error_default
+    raise HTTPError(req.full_url, code, msg, hdrs, fp)
+urllib.error.HTTPError: HTTP Error 403: Forbidden
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/.venv/bin/im-publisher", line 12, in <module>
+    sys.exit(main())
+             ~~~~^^
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/src/island_mountain_publisher/cli.py", line 80, in main
+    print(json.dumps(agent.run_due(), indent=2))
+                     ~~~~~~~~~~~~~^^
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/.venv/lib/python3.13/site-packages/nooa/runtime/method_wrapper.py", line 468, in wrapper
+    result = original_func(self, *args, **kwargs)
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/src/island_mountain_publisher/agent.py", line 214, in run_due
+    result = self.publish_linkedin(campaign_id)
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/.venv/lib/python3.13/site-packages/nooa/runtime/method_wrapper.py", line 468, in wrapper
+    result = original_func(self, *args, **kwargs)
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/src/island_mountain_publisher/agent.py", line 181, in publish_linkedin
+    image = self._linkedin.upload_image(item)
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/src/island_mountain_publisher/linkedin.py", line 80, in upload_image
+    initialized, _ = self._request(
+                     ~~~~~~~~~~~~~^
+        "POST",
+        ^^^^^^^
+        "https://api.linkedin.com/rest/images?action=initializeUpload",
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        {"initializeUploadRequest": {"owner": self.actor_urn}},
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/src/island_mountain_publisher/linkedin.py", line 75, in _request
+    raise LinkedInError(f"LinkedIn {method} did not complete: {url}") from exc
+island_mountain_publisher.linkedin.LinkedInError: LinkedIn POST did not complete: https://api.linkedin.com/rest/images?action=initializeUpload
+Traceback (most recent call last):
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/src/island_mountain_publisher/linkedin.py", line 70, in _request
+    with urllib.request.urlopen(request, timeout=45) as response:
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/home/basho/.local/share/uv/python/cpython-3.13.15-linux-x86_64-gnu/lib/python3.13/urllib/request.py", line 189, in urlopen
+    return opener.open(url, data, timeout)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/home/basho/.local/share/uv/python/cpython-3.13.15-linux-x86_64-gnu/lib/python3.13/urllib/request.py", line 495, in open
+    response = meth(req, response)
+  File "/home/basho/.local/share/uv/python/cpython-3.13.15-linux-x86_64-gnu/lib/python3.13/urllib/request.py", line 604, in http_response
+    response = self.parent.error(
+        'http', request, response, code, msg, hdrs)
+  File "/home/basho/.local/share/uv/python/cpython-3.13.15-linux-x86_64-gnu/lib/python3.13/urllib/request.py", line 533, in error
+    return self._call_chain(*args)
+           ~~~~~~~~~~~~~~~~^^^^^^^
+  File "/home/basho/.local/share/uv/python/cpython-3.13.15-linux-x86_64-gnu/lib/python3.13/urllib/request.py", line 466, in _call_chain
+    result = func(*args)
+  File "/home/basho/.local/share/uv/python/cpython-3.13.15-linux-x86_64-gnu/lib/python3.13/urllib/request.py", line 613, in http_error_default
+    raise HTTPError(req.full_url, code, msg, hdrs, fp)
+urllib.error.HTTPError: HTTP Error 403: Forbidden
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/.venv/bin/im-publisher", line 12, in <module>
+    sys.exit(main())
+             ~~~~^^
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/src/island_mountain_publisher/cli.py", line 80, in main
+    print(json.dumps(agent.run_due(), indent=2))
+                     ~~~~~~~~~~~~~^^
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/.venv/lib/python3.13/site-packages/nooa/runtime/method_wrapper.py", line 468, in wrapper
+    result = original_func(self, *args, **kwargs)
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/src/island_mountain_publisher/agent.py", line 214, in run_due
+    result = self.publish_linkedin(campaign_id)
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/.venv/lib/python3.13/site-packages/nooa/runtime/method_wrapper.py", line 468, in wrapper
+    result = original_func(self, *args, **kwargs)
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/src/island_mountain_publisher/agent.py", line 181, in publish_linkedin
+    image = self._linkedin.upload_image(item)
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/src/island_mountain_publisher/linkedin.py", line 80, in upload_image
+    initialized, _ = self._request(
+                     ~~~~~~~~~~~~~^
+        "POST",
+        ^^^^^^^
+        "https://api.linkedin.com/rest/images?action=initializeUpload",
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        {"initializeUploadRequest": {"owner": self.actor_urn}},
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/src/island_mountain_publisher/linkedin.py", line 75, in _request
+    raise LinkedInError(f"LinkedIn {method} did not complete: {url}") from exc
+island_mountain_publisher.linkedin.LinkedInError: LinkedIn POST did not complete: https://api.linkedin.com/rest/images?action=initializeUpload
+
+
+[2026-08-10T08:00:05-07:00] Island Mountain publisher wakeup
+[2026-08-10T08:00:05-07:00] Island Mountain publisher wakeup
+Traceback (most recent call last):
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/src/island_mountain_publisher/linkedin.py", line 70, in _request
+    with urllib.request.urlopen(request, timeout=45) as response:
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/home/basho/.local/share/uv/python/cpython-3.13.15-linux-x86_64-gnu/lib/python3.13/urllib/request.py", line 189, in urlopen
+    return opener.open(url, data, timeout)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/home/basho/.local/share/uv/python/cpython-3.13.15-linux-x86_64-gnu/lib/python3.13/urllib/request.py", line 495, in open
+    response = meth(req, response)
+  File "/home/basho/.local/share/uv/python/cpython-3.13.15-linux-x86_64-gnu/lib/python3.13/urllib/request.py", line 604, in http_response
+    response = self.parent.error(
+        'http', request, response, code, msg, hdrs)
+  File "/home/basho/.local/share/uv/python/cpython-3.13.15-linux-x86_64-gnu/lib/python3.13/urllib/request.py", line 533, in error
+    return self._call_chain(*args)
+           ~~~~~~~~~~~~~~~~^^^^^^^
+  File "/home/basho/.local/share/uv/python/cpython-3.13.15-linux-x86_64-gnu/lib/python3.13/urllib/request.py", line 466, in _call_chain
+    result = func(*args)
+  File "/home/basho/.local/share/uv/python/cpython-3.13.15-linux-x86_64-gnu/lib/python3.13/urllib/request.py", line 613, in http_error_default
+    raise HTTPError(req.full_url, code, msg, hdrs, fp)
+urllib.error.HTTPError: HTTP Error 403: Forbidden
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/.venv/bin/im-publisher", line 12, in <module>
+    sys.exit(main())
+             ~~~~^^
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/src/island_mountain_publisher/cli.py", line 80, in main
+    print(json.dumps(agent.run_due(), indent=2))
+                     ~~~~~~~~~~~~~^^
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/.venv/lib/python3.13/site-packages/nooa/runtime/method_wrapper.py", line 468, in wrapper
+    result = original_func(self, *args, **kwargs)
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/src/island_mountain_publisher/agent.py", line 214, in run_due
+    result = self.publish_linkedin(campaign_id)
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/.venv/lib/python3.13/site-packages/nooa/runtime/method_wrapper.py", line 468, in wrapper
+    result = original_func(self, *args, **kwargs)
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/src/island_mountain_publisher/agent.py", line 186, in publish_linkedin
+    comment = self._linkedin.create_comment(item, post_urn)
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/src/island_mountain_publisher/linkedin.py", line 158, in create_comment
+    _body, headers = self._request(
+                     ~~~~~~~~~~~~~^
+        "POST",
+        ^^^^^^^
+    ...<4 lines>...
+        },
+        ^^
+    )
+    ^
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/src/island_mountain_publisher/linkedin.py", line 75, in _request
+    raise LinkedInError(f"LinkedIn {method} did not complete: {url}") from exc
+island_mountain_publisher.linkedin.LinkedInError: LinkedIn POST did not complete: https://api.linkedin.com/rest/socialActions/urn%3Ali%3Ashare%3A7492595742579253248/comments
+Traceback (most recent call last):
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/src/island_mountain_publisher/linkedin.py", line 70, in _request
+    with urllib.request.urlopen(request, timeout=45) as response:
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/home/basho/.local/share/uv/python/cpython-3.13.15-linux-x86_64-gnu/lib/python3.13/urllib/request.py", line 189, in urlopen
+    return opener.open(url, data, timeout)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/home/basho/.local/share/uv/python/cpython-3.13.15-linux-x86_64-gnu/lib/python3.13/urllib/request.py", line 495, in open
+    response = meth(req, response)
+  File "/home/basho/.local/share/uv/python/cpython-3.13.15-linux-x86_64-gnu/lib/python3.13/urllib/request.py", line 604, in http_response
+    response = self.parent.error(
+        'http', request, response, code, msg, hdrs)
+  File "/home/basho/.local/share/uv/python/cpython-3.13.15-linux-x86_64-gnu/lib/python3.13/urllib/request.py", line 533, in error
+    return self._call_chain(*args)
+           ~~~~~~~~~~~~~~~~^^^^^^^
+  File "/home/basho/.local/share/uv/python/cpython-3.13.15-linux-x86_64-gnu/lib/python3.13/urllib/request.py", line 466, in _call_chain
+    result = func(*args)
+  File "/home/basho/.local/share/uv/python/cpython-3.13.15-linux-x86_64-gnu/lib/python3.13/urllib/request.py", line 613, in http_error_default
+    raise HTTPError(req.full_url, code, msg, hdrs, fp)
+urllib.error.HTTPError: HTTP Error 403: Forbidden
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/.venv/bin/im-publisher", line 12, in <module>
+    sys.exit(main())
+             ~~~~^^
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/src/island_mountain_publisher/cli.py", line 80, in main
+    print(json.dumps(agent.run_due(), indent=2))
+                     ~~~~~~~~~~~~~^^
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/.venv/lib/python3.13/site-packages/nooa/runtime/method_wrapper.py", line 468, in wrapper
+    result = original_func(self, *args, **kwargs)
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/src/island_mountain_publisher/agent.py", line 214, in run_due
+    result = self.publish_linkedin(campaign_id)
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/.venv/lib/python3.13/site-packages/nooa/runtime/method_wrapper.py", line 468, in wrapper
+    result = original_func(self, *args, **kwargs)
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/src/island_mountain_publisher/agent.py", line 186, in publish_linkedin
+    comment = self._linkedin.create_comment(item, post_urn)
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/src/island_mountain_publisher/linkedin.py", line 158, in create_comment
+    _body, headers = self._request(
+                     ~~~~~~~~~~~~~^
+        "POST",
+        ^^^^^^^
+    ...<4 lines>...
+        },
+        ^^
+    )
+    ^
+  File "/mnt/c/Users/17076/Documents/Claude/Island Mountain/tools/authority-campaign-publisher/src/island_mountain_publisher/linkedin.py", line 75, in _request
+    raise LinkedInError(f"LinkedIn {method} did not complete: {url}") from exc
+island_mountain_publisher.linkedin.LinkedInError: LinkedIn POST did not complete: https://api.linkedin.com/rest/socialActions/urn%3Ali%3Ashare%3A7492595745741545472/comments
+
+[2026-08-10T08:05:06-07:00] Island Mountain publisher wakeup
+Refusing to publish while unrelated files are staged.
+
+[2026-08-10T08:15:03-07:00] Island Mountain publisher wakeup
+Refusing to publish while unrelated files are staged.
+
+[2026-08-10T08:15:33-07:00] Island Mountain publisher wakeup
+Refusing to publish while unrelated files are staged.
+
+[2026-08-10T08:16:27-07:00] Island Mountain publisher wakeup
+Refusing to publish while unrelated files are staged.
