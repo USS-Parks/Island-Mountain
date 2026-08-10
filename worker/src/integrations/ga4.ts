@@ -7,6 +7,7 @@ export function attributionParams(meta: SessionMeta): Record<string, string> {
     utm_source: meta.utm_source ?? '',
     utm_medium: meta.utm_medium ?? '',
     utm_campaign: meta.utm_campaign ?? '',
+    utm_content: meta.utm_content ?? '',
     landing_page: meta.landing_page ?? '',
     referrer: meta.referrer ?? '',
   };
