@@ -114,12 +114,14 @@ class LinkedInClient:
         raise LinkedInError("LinkedIn image did not become available")
 
     def create_post(self, item: ManifestItem, image_urn: str) -> MutationReceipt:
-        commentary = "\n\n".join(
-            (
-                item.campaign.linkedin_summary,
-                " ".join(item.campaign.linkedin_hashtags),
-            )
-        )
+        # Every signed summary already ends with its hashtag line; appending
+        # again doubled it on the 2026-08-10 posts. Append only when absent.
+        summary = item.campaign.linkedin_summary
+        joined = " ".join(item.campaign.linkedin_hashtags)
+        if joined and summary.rstrip().endswith(joined):
+            commentary = summary
+        else:
+            commentary = "\n\n".join((summary, joined))
         _body, headers = self._request(
             "POST",
             "https://api.linkedin.com/rest/posts",
@@ -157,7 +159,10 @@ class LinkedInClient:
         encoded = urllib.parse.quote(post_urn, safe="")
         _body, headers = self._request(
             "POST",
-            f"https://api.linkedin.com/rest/socialActions/{encoded}/comments",
+            # v2, not /rest: the versioned socialActions API is partner-gated
+            # (ACCESS_DENIED partnerApiSocialActions.CREATE for member tokens);
+            # /v2 accepts w_member_social. Proven live 2026-08-10.
+            f"https://api.linkedin.com/v2/socialActions/{encoded}/comments",
             {
                 "actor": self.actor_urn,
                 "message": {"text": item.linkedin_first_comment},
