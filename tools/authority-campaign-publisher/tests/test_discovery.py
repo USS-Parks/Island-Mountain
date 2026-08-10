@@ -1,4 +1,3 @@
-import shutil
 import subprocess
 from pathlib import Path
 
@@ -9,11 +8,29 @@ from island_mountain_publisher.manifest import compile_manifest
 from island_mountain_publisher.renderer import render_article
 from island_mountain_publisher.workspace import GitWorkspace, WorkspaceTransaction
 
+# Synthetic pre-campaign surfaces. The fixture used to copy the LIVE
+# blog.html/sitemap.xml/llms.txt, so every real campaign publish mutated the
+# fixtures and flipped tests (first flip: p01's real publish, 2026-08-10).
+# These carry exactly the structure discovery.py requires and nothing else.
+BLOG_GRID_ANCHOR = '      <div class="blog-grid fade-in">\n'
+PRISTINE_BLOG = (
+    "<!doctype html>\n<html>\n  <body>\n"
+    + BLOG_GRID_ANCHOR
+    + "      </div>\n  </body>\n</html>\n"
+)
+PRISTINE_SITEMAP = (
+    '<?xml version="1.0" encoding="UTF-8"?>\n'
+    '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+    "</urlset>\n"
+)
+PRISTINE_LLMS = "# Island Mountain\n\n## Blog\n"
+
 
 @pytest.fixture
-def discovery_repository(tmp_path: Path, repository_root: Path) -> Path:
-    for name in ("blog.html", "sitemap.xml", "llms.txt"):
-        shutil.copy2(repository_root / name, tmp_path / name)
+def discovery_repository(tmp_path: Path) -> Path:
+    (tmp_path / "blog.html").write_text(PRISTINE_BLOG, encoding="utf-8")
+    (tmp_path / "sitemap.xml").write_text(PRISTINE_SITEMAP, encoding="utf-8")
+    (tmp_path / "llms.txt").write_text(PRISTINE_LLMS, encoding="utf-8")
     subprocess.run(["git", "init", "-q"], cwd=tmp_path, check=True)
     subprocess.run(["git", "config", "user.email", "test@example.com"], cwd=tmp_path, check=True)
     subprocess.run(["git", "config", "user.name", "Test Owner"], cwd=tmp_path, check=True)
@@ -116,11 +133,35 @@ def test_existing_divergent_article_is_never_overwritten(
 
 
 def test_post_one_adopts_existing_page_and_only_repairs_missing_surfaces(
+    discovery_repository: Path,
     repository_root: Path,
     campaign_root: Path,
     cards_root: Path,
 ) -> None:
     item, rendered = _item_and_render(repository_root, campaign_root, cards_root, "p01")
-    plan = plan_blog_publication(repository_root, item, rendered, adopt_existing=True)
+    # Pre-campaign reality for p01: the page and its blog.html card were
+    # hand-made before the campaign; only sitemap/llms lack the entry.
+    blog = discovery_repository / "blog.html"
+    card = (
+        f'        <h2><a href="{item.blog_path}">{item.campaign.title}</a></h2>\n'
+        f'        <a href="{item.blog_path}" class="blog-card-read">Read</a>\n'
+    )
+    blog.write_text(
+        blog.read_text(encoding="utf-8").replace(BLOG_GRID_ANCHOR, BLOG_GRID_ANCHOR + card),
+        encoding="utf-8",
+    )
+    target = discovery_repository / item.blog_path
+    target.parent.mkdir(parents=True)
+    target.write_text(
+        "<html>\n<head>\n"
+        f'<link rel="canonical" href="{item.blog_url}">\n'
+        "</head>\n<body>\n"
+        f"<h1>{item.campaign.title}</h1>\n"
+        "hand-made page body that diverges from the rendered article\n"
+        "</body>\n</html>\n",
+        encoding="utf-8",
+    )
+
+    plan = plan_blog_publication(discovery_repository, item, rendered, adopt_existing=True)
 
     assert {file.path for file in plan} == {"sitemap.xml", "llms.txt"}
