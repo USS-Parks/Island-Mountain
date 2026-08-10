@@ -11,6 +11,7 @@ from .agent import AuthorityCampaignPublisher
 from .approvals import load_approvals, load_manifest
 from .ledger import JsonlLedger
 from .linkedin import LinkedInClient
+from .scorecard import run_scorecard
 
 
 def _repository_root() -> Path:
@@ -51,10 +52,26 @@ def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
         "command",
-        choices=("status", "run-due", "publish-blog", "publish-linkedin"),
+        choices=("status", "run-due", "publish-blog", "publish-linkedin", "scorecard"),
     )
     parser.add_argument("--item", help="campaign ID for an explicit publication command")
+    parser.add_argument("--week", type=int, help="campaign week number for the scorecard")
+    parser.add_argument("--d1-json", type=Path, help="scorecard: wrangler d1 JSON export to read")
+    parser.add_argument("--clicks-json", type=Path, help="scorecard: Ahrefs clicks export to read")
+    parser.add_argument(
+        "--d1-live", action="store_true", help="scorecard: query D1 live through wrangler"
+    )
     args = parser.parse_args(argv)
+    if args.command == "scorecard":
+        if args.week is None:
+            parser.error("--week is required for the scorecard command")
+        return run_scorecard(
+            _repository_root(),
+            week=args.week,
+            d1_json=args.d1_json,
+            clicks_json=args.clicks_json,
+            d1_live=args.d1_live,
+        )
     agent = _agent()
     if args.command == "status":
         print(agent.status().model_dump_json(indent=2))
