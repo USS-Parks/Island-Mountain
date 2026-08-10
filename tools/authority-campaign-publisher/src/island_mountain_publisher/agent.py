@@ -108,8 +108,15 @@ class AuthorityCampaignPublisher(Agent, llm=FakeLLMClient()):  # type: ignore[ca
         )
         return completed.stdout.strip()
 
+    def _require_main_branch(self) -> None:
+        branch = self._git("rev-parse", "--abbrev-ref", "HEAD")
+        if branch != "main":
+            raise ProductionModeRequired(
+                f"repository is on {branch!r}; publication commits only on main"
+            )
+
     def _push(self) -> None:
-        self._git("push", "origin", "HEAD:main")
+        self._git("push", "origin", "main")
 
     def _existing_remote(self, campaign_id: str, kind: MutationKind) -> str | None:
         if self._ledger is None:
@@ -121,18 +128,6 @@ class AuthorityCampaignPublisher(Agent, llm=FakeLLMClient()):  # type: ignore[ca
             ):
                 return event.evidence.get("remote_id")
         return None
-
-    def _save_linkedin_state(self, campaign_id: str, phase: str) -> None:
-        if self._ledger is None or self._repository_root is None:
-            raise ProductionModeRequired("publication ledger was not configured")
-        relative = self._ledger.path.relative_to(self._repository_root).as_posix()
-        self._git("add", "--", relative)
-        self._git(
-            "commit",
-            "-m",
-            f"Record {campaign_id} LinkedIn {phase} [skip ci]",
-        )
-        self._push()
 
     @hidden
     def publish_blog(self, campaign_id: str) -> str:
@@ -158,6 +153,7 @@ class AuthorityCampaignPublisher(Agent, llm=FakeLLMClient()):  # type: ignore[ca
         )
         if not planned:
             return "already-published"
+        self._require_main_branch()
         WorkspaceTransaction(GitWorkspace(self._repository_root), planned).apply()
         paths = tuple(file.path for file in planned)
         self._git("add", "--", *paths)
@@ -187,10 +183,8 @@ class AuthorityCampaignPublisher(Agent, llm=FakeLLMClient()):  # type: ignore[ca
             post = self._linkedin.create_post(item, image.remote_id)
             self._ledger.append(post)
             post_urn = post.remote_id
-            self._save_linkedin_state(campaign_id, "post")
         comment = self._linkedin.create_comment(item, post_urn)
         self._ledger.append(comment)
-        self._save_linkedin_state(campaign_id, "comment")
         return post_urn
 
     def run_due(self, now: datetime | None = None) -> tuple[str, ...]:
