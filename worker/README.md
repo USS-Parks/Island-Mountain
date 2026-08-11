@@ -9,15 +9,17 @@ qualifier without ever exposing an API key to the browser.
 | `/api/health` | GET | Liveness probe | PROMPT 01 |
 | `/api/chat` | POST | Claude proxy + KV session memory | PROMPT 02 |
 | `/api/voice-webhook` | POST | Vapi voice → same pipeline | PROMPT 07 |
-| `/api/worksheet` | POST | Cost-worksheet email gate: recomputes the 5-yr cloud burn, persists a cold lead, emails the private Summit comparison (1 send/address/hour) | 2026-07 |
+| `/api/worksheet` | POST | Cost-worksheet email gate: recomputes the 5-yr cloud burn, persists a cold lead, emails the private ownership comparison (1 send/address/hour) | 2026-07 |
 | `/api/slot` | POST | Founder's Build Slot claim: forced-hot lead → alert to Basho + 90-day quote-lock confirmation to the claimant | 2026-07 |
+| `/api/brief/preview` | GET | NOOA Sales Brief (Purser): render today's brief as HTML, no send (Bearer `BRIEF_SECRET`) | 2026-08 |
+| `/api/brief/run` | POST | Purser: compose, send to `ALERT_EMAIL`, append a receipt (Bearer `BRIEF_SECRET`) | 2026-08 |
 
 Lead scoring, persistence, alerts, and analytics run inside the chat and
 authenticated voice pipelines plus the two origin-gated form routes above
 (`/api/worksheet`, `/api/slot`) — all four feed the same `processLead` pipeline.
-The private Summit price range lives ONLY in `src/emails.ts` (worksheetEmail);
-the public posture is quote-based with no price list — never move it on-page
-or into the chat/voice prompts.
+The private entry-build price range lives ONLY in `src/emails.ts` (worksheetEmail);
+the public posture is quote-based with no price list, no named SKUs, and no
+product lines — never move the range on-page or into the chat/voice prompts.
 
 ## Stack
 Cloudflare Worker (TypeScript) · Workers KV (`SESSIONS`) · D1 (`leads` + atomic counters) ·
@@ -45,7 +47,11 @@ npx wrangler secret put SHEETS_WEBHOOK_URL
 npx wrangler secret put VAPI_API_KEY          # voice (PROMPT 07)
 npx wrangler secret put WEBHOOK_SECRET        # validates Vapi/Cal.com webhooks
 npx wrangler secret put TURNSTILE_SECRET      # bot challenge (PROMPT 10)
+npx wrangler secret put BRIEF_SECRET          # Purser brief ops endpoints (preview/run only)
 ```
+
+`BRIEF_SECRET` gates only the two `/api/brief/*` ops endpoints; the daily cron
+needs no secret (it reads bindings the Worker already holds).
 
 Public (non-secret) config lives in the `[vars]` block of `wrangler.toml`:
 `GA4_MEASUREMENT_ID`, `ALERT_EMAIL`, `ALLOWED_ORIGIN`, `LEAD_FROM_EMAIL`,
@@ -67,6 +73,23 @@ Settings → Webhooks, add a webhook to `https://<worker>/api/booking-webhook` f
 `BOOKING_CREATED` event, with a secret, and `wrangler secret put WEBHOOK_SECRET` to the
 same value. Hot leads get a prefilled "Book a scoping call" button; a completed booking
 marks the lead `booked`, emails Basho, and fires GA4 `schedule_call`.
+
+### NOOA Sales Brief — "Purser" (2026-08)
+A daily cron (`[triggers] crontab = ["15 16 * * *"]`, UTC → **9:15 AM Pacific**) composes a
+read-only pipeline brief from D1 (`leads`) + Cal.com upcoming bookings and emails it to
+`ALERT_EMAIL` via Resend, then appends a row to `brief_runs` for audit. Four sections:
+today's/tomorrow's booked calls (prep cards), new leads (last 24h), warm-and-aging
+follow-ups, and a score×status board. **No LLM at runtime** — a faithful render of the store,
+with all lead-provided text escaped.
+
+- **Table:** `brief_runs` ships in `schema.sql`; apply with the same idempotent
+  `wrangler d1 execute island-mountain-leads --remote --file=./schema.sql`.
+- **Ops** (Bearer `BRIEF_SECRET`), against the deployed Worker:
+  - `curl -H "Authorization: Bearer $BRIEF_SECRET" https://<worker>/api/brief/preview` → the brief as HTML, nothing sent.
+  - `curl -X POST -H "Authorization: Bearer $BRIEF_SECRET" https://<worker>/api/brief/run` → compose, send now, record.
+- **Cadence caveat:** Cloudflare cron is UTC, so the send drifts to 8:15 AM PST in winter
+  (add a second seasonal crontab line if that matters).
+- **v2 (deferred):** signable follow-up drafts for the aging-warm list.
 
 ### GA4 server events
 Create a Measurement Protocol API secret in GA4 (Admin → Data Streams → your stream →
