@@ -19,6 +19,7 @@ import { handleWorksheet } from './routes/worksheet'
 import { handleSlot } from './routes/slot'
 import { handleWatchstander } from './routes/watchstander'
 import { runBrief } from './brief-run'
+import { handleBriefPreview, handleBriefRun } from './routes/brief'
 
 type RouteAccess = 'public' | 'browser' | 'authenticated' | 'webhook'
 
@@ -49,7 +50,14 @@ const ROUTES: Route[] = [
     path: '/api/watchstander',
     handler: handleWatchstander,
     access: 'authenticated'
-  }
+  },
+  {
+    method: 'GET',
+    path: '/api/brief/preview',
+    handler: handleBriefPreview,
+    access: 'authenticated'
+  },
+  { method: 'POST', path: '/api/brief/run', handler: handleBriefRun, access: 'authenticated' }
 ]
 
 export default {
