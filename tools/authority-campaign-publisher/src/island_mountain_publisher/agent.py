@@ -169,8 +169,11 @@ class AuthorityCampaignPublisher(Agent, llm=FakeLLMClient()):  # type: ignore[ca
         self._require_main_branch()
         WorkspaceTransaction(GitWorkspace(self._repository_root), planned).apply()
         paths = tuple(file.path for file in planned)
+        # Stage (tracks new files) then commit ONLY our own paths: a pathspec-scoped
+        # commit ignores anything else left staged in the index, so leftover state from
+        # another session can never be swept into a publication commit.
         self._git("add", "--", *paths)
-        self._git("commit", "-m", f"Publish {campaign_id}: {item.campaign.title}")
+        self._git("commit", "-m", f"Publish {campaign_id}: {item.campaign.title}", "--", *paths)
         self._push()
         return self._git("rev-parse", "HEAD")
 
