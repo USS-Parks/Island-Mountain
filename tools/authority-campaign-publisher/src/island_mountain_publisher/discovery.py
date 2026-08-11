@@ -56,6 +56,33 @@ def _blog_card(item: ManifestItem, newline: str) -> str:
     return newline.join(lines)
 
 
+def _rail_card(item: ManifestItem, newline: str) -> str:
+    title = html.escape(item.campaign.title)
+    excerpt = html.escape(_description(item.campaign.long_form_article))
+    date = (
+        f"{item.campaign.publish_date.strftime('%B')} "
+        f"{item.campaign.publish_date.day}, {item.campaign.publish_date.year}"
+    )
+    form = html.escape(item.campaign.delivery_form)
+    hashtag = html.escape(item.campaign.article_hashtags[0])
+    href = html.escape(item.blog_path, quote=True)
+    lines = (
+        f"        <!-- Authority campaign: {item.campaign.campaign_id} -->",
+        '        <article class="blog-rail-card beam-card">',
+        '          <div class="blog-rail-meta">',
+        f'            <span class="blog-rail-date">{date}</span>',
+        f'            <span class="blog-rail-tag tag-strategy">{form}</span>',
+        f'            <span class="blog-rail-tag tag-financial">{hashtag}</span>',
+        "          </div>",
+        f'          <h3><a href="{href}">{title}</a></h3>',
+        f'          <p class="blog-rail-excerpt">{excerpt}</p>',
+        f'          <a href="{href}" class="blog-rail-read">Read &rarr;</a>',
+        "        </article>",
+        "",
+    )
+    return newline.join(lines)
+
+
 def update_blog_index(source: str, item: ManifestItem) -> str:
     newline = _newline(source)
     anchor = f'      <div class="blog-grid fade-in">{newline}'
@@ -70,6 +97,27 @@ def update_blog_index(source: str, item: ManifestItem) -> str:
             f"blog.html: expected zero or two links for {item.slug}, found {occurrences}"
         )
     return source.replace(anchor, anchor + _blog_card(item, newline), 1)
+
+
+def update_home_rail(source: str, item: ManifestItem) -> str:
+    """Insert the newest post at the front of the homepage blog rail (newest-first)."""
+
+    newline = _newline(source)
+    anchor = (
+        '      <div class="blog-rail" role="region" '
+        'aria-label="Blog posts, newest first" tabindex="0">' + newline
+    )
+    if source.count(anchor) != 1:
+        raise DiscoveryError("index.html: malformed or missing blog-rail anchor")
+    href = f'href="{item.blog_path}"'
+    occurrences = source.count(href)
+    if occurrences == 2:
+        return source
+    if occurrences != 0:
+        raise DiscoveryError(
+            f"index.html: expected zero or two rail links for {item.slug}, found {occurrences}"
+        )
+    return source.replace(anchor, anchor + newline + _rail_card(item, newline), 1)
 
 
 def update_sitemap(source: str, item: ManifestItem) -> str:
@@ -146,6 +194,7 @@ def plan_blog_publication(
 
     paths = {
         "blog.html": update_blog_index(_exact_text(repository_root / "blog.html"), item),
+        "index.html": update_home_rail(_exact_text(repository_root / "index.html"), item),
         "sitemap.xml": update_sitemap(_exact_text(repository_root / "sitemap.xml"), item),
         "llms.txt": update_llms(_exact_text(repository_root / "llms.txt"), item),
     }
