@@ -24,11 +24,19 @@ PRISTINE_SITEMAP = (
     "</urlset>\n"
 )
 PRISTINE_LLMS = "# Island Mountain\n\n## Blog\n"
+RAIL_ANCHOR = (
+    '      <div class="blog-rail" role="region" '
+    'aria-label="Blog posts, newest first" tabindex="0">\n'
+)
+PRISTINE_INDEX = (
+    "<!doctype html>\n<html>\n  <body>\n" + RAIL_ANCHOR + "      </div>\n  </body>\n</html>\n"
+)
 
 
 @pytest.fixture
 def discovery_repository(tmp_path: Path) -> Path:
     (tmp_path / "blog.html").write_text(PRISTINE_BLOG, encoding="utf-8")
+    (tmp_path / "index.html").write_text(PRISTINE_INDEX, encoding="utf-8")
     (tmp_path / "sitemap.xml").write_text(PRISTINE_SITEMAP, encoding="utf-8")
     (tmp_path / "llms.txt").write_text(PRISTINE_LLMS, encoding="utf-8")
     subprocess.run(["git", "init", "-q"], cwd=tmp_path, check=True)
@@ -65,9 +73,12 @@ def test_repeated_discovery_update_is_a_complete_noop(
 
     assert plan_blog_publication(discovery_repository, item, rendered) == ()
     blog = (discovery_repository / "blog.html").read_text(encoding="utf-8")
+    index = (discovery_repository / "index.html").read_text(encoding="utf-8")
     sitemap = (discovery_repository / "sitemap.xml").read_text(encoding="utf-8")
     llms = (discovery_repository / "llms.txt").read_text(encoding="utf-8")
     assert blog.count(f'href="{item.blog_path}"') == 2
+    assert index.count(f'href="{item.blog_path}"') == 2
+    assert 'class="blog-rail-card' in index
     assert sitemap.count(item.blog_url) == 1
     assert llms.count(item.blog_url) == 1
     assert (discovery_repository / item.blog_path).read_bytes() == rendered.html
@@ -94,6 +105,25 @@ def test_malformed_blog_anchor_fails_before_any_write(
     with pytest.raises(DiscoveryError, match="blog-grid anchor"):
         plan_blog_publication(discovery_repository, item, rendered)
     assert {source: source.read_bytes() for source in before} == before
+
+
+def test_malformed_rail_anchor_fails_before_any_write(
+    discovery_repository: Path,
+    repository_root: Path,
+    campaign_root: Path,
+    cards_root: Path,
+) -> None:
+    item, rendered = _item_and_render(repository_root, campaign_root, cards_root, "p02")
+    index = discovery_repository / "index.html"
+    index.write_text(
+        index.read_text(encoding="utf-8").replace('class="blog-rail"', 'class="rail"'),
+        encoding="utf-8",
+    )
+    before = index.read_bytes()
+
+    with pytest.raises(DiscoveryError, match="blog-rail anchor"):
+        plan_blog_publication(discovery_repository, item, rendered)
+    assert index.read_bytes() == before
 
 
 def test_partial_duplicate_slug_fails_before_write(
@@ -148,6 +178,15 @@ def test_post_one_adopts_existing_page_and_only_repairs_missing_surfaces(
     )
     blog.write_text(
         blog.read_text(encoding="utf-8").replace(BLOG_GRID_ANCHOR, BLOG_GRID_ANCHOR + card),
+        encoding="utf-8",
+    )
+    index = discovery_repository / "index.html"
+    rail_card = (
+        f'        <h3><a href="{item.blog_path}">{item.campaign.title}</a></h3>\n'
+        f'        <a href="{item.blog_path}" class="blog-rail-read">Read</a>\n'
+    )
+    index.write_text(
+        index.read_text(encoding="utf-8").replace(RAIL_ANCHOR, RAIL_ANCHOR + rail_card),
         encoding="utf-8",
     )
     target = discovery_repository / item.blog_path
