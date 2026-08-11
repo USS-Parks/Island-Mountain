@@ -46,5 +46,13 @@ if [ -x "$SLOP_SCAN" ]; then
   "$SLOP_SCAN" full >&2 || echo "WARN   no-slop findings (loosened to warn-only; not blocking)" >&2
 fi
 
-[ "$FAIL" -eq 0 ] || { echo "pre-push: truncated/corrupt HTML — refusing to publish (§I.9)." >&2; exit 1; }
+# Worker import gate: every committed relative import in the Worker must resolve to a
+# tracked file, so a half-committed import (module file left untracked) cannot silently
+# fail the deploy's Worker typecheck and block every site publish.
+WORKER_GATE="$(git rev-parse --show-toplevel)/tools/worker-import-gate.py"
+if [ -f "$WORKER_GATE" ] && [ -n "$PYTHON_BIN" ]; then
+  "$PYTHON_BIN" "$WORKER_GATE" full || FAIL=1
+fi
+
+[ "$FAIL" -eq 0 ] || { echo "pre-push: a publish gate blocked this push (see BLOCK lines above). Refusing to push." >&2; exit 1; }
 exit 0
