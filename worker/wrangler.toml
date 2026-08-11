@@ -50,4 +50,4 @@ database_id = "e850fb25-a22a-45dc-9445-aa6f971102f5"
 # Daily NOOA Sales Brief (Purser). Cloudflare cron is UTC: 16:15 UTC = 9:15 AM
 # PDT (drifts to 8:15 AM PST in winter — acceptable, or add a second line).
 [triggers]
-crontab = ["15 16 * * *"]
+crons = ["15 16 * * *"]
