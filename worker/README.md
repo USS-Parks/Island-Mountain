@@ -75,7 +75,7 @@ same value. Hot leads get a prefilled "Book a scoping call" button; a completed 
 marks the lead `booked`, emails Basho, and fires GA4 `schedule_call`.
 
 ### NOOA Sales Brief — "Purser" (2026-08)
-A daily cron (`[triggers] crontab = ["15 16 * * *"]`, UTC → **9:15 AM Pacific**) composes a
+A daily cron (`[triggers] crons = ["15 16 * * *"]`, UTC → **9:15 AM Pacific**) composes a
 read-only pipeline brief from D1 (`leads`) + Cal.com upcoming bookings and emails it to
 `ALERT_EMAIL` via Resend, then appends a row to `brief_runs` for audit. Four sections:
 today's/tomorrow's booked calls (prep cards), new leads (last 24h), warm-and-aging
