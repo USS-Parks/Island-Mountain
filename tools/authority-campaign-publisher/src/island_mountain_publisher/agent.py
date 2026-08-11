@@ -3,6 +3,9 @@
 from __future__ import annotations
 
 import subprocess
+import urllib.error
+import urllib.request
+from collections.abc import Callable
 from datetime import UTC, datetime
 from pathlib import Path
 from typing import Annotated, Literal
@@ -24,6 +27,16 @@ from .ledger import JsonlLedger
 from .models import ApprovalBundle, CampaignManifest, ManifestItem
 from .renderer import render_article
 from .workspace import GitWorkspace, WorkspaceTransaction
+
+
+class BlogNotLiveError(RuntimeError):
+    """The blog article is not live; LinkedIn must not point at a missing page."""
+
+
+def _blog_http_status(url: str) -> int:
+    request = urllib.request.Request(url, method="GET")
+    with urllib.request.urlopen(request, timeout=20) as response:
+        return int(response.status)
 
 
 class AgentStatus(BaseModel):
@@ -165,6 +178,22 @@ class AuthorityCampaignPublisher(Agent, llm=FakeLLMClient()):  # type: ignore[ca
         if self.mode != "production":
             raise ProductionModeRequired("publication requires PUBLISH_ENABLED=true")
 
+    def _require_blog_live(
+        self, item: ManifestItem, http_status: Callable[[str], int] = _blog_http_status
+    ) -> None:
+        """Fail closed: never let LinkedIn point at an article that is not live."""
+        try:
+            status = http_status(item.blog_url)
+        except Exception as exc:  # DNS, TLS, timeout: all mean not live
+            raise BlogNotLiveError(
+                f"{item.blog_url} unreachable ({exc}); refusing to post LinkedIn"
+            ) from exc
+        if status != 200:
+            raise BlogNotLiveError(
+                f"{item.blog_url} returned HTTP {status}; refusing to post LinkedIn "
+                "until the article is live"
+            )
+
     @hidden
     def publish_linkedin(self, campaign_id: str) -> str:
         """Publish the approved summary, matching card, and article comment."""
@@ -176,6 +205,7 @@ class AuthorityCampaignPublisher(Agent, llm=FakeLLMClient()):  # type: ignore[ca
         existing_comment = self._existing_remote(campaign_id, MutationKind.LINKEDIN_COMMENT)
         if existing_comment:
             return existing_comment
+        self._require_blog_live(item)
         post_urn = self._existing_remote(campaign_id, MutationKind.LINKEDIN_POST)
         if post_urn is None:
             image = self._linkedin.upload_image(item)
