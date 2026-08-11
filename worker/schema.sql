@@ -59,3 +59,18 @@ CREATE TABLE IF NOT EXISTS rate_limits (
 );
 
 CREATE INDEX IF NOT EXISTS idx_rate_limits_expires ON rate_limits (expires_at);
+
+-- NOOA Sales Brief (Purser) run receipts: one row per daily brief, for audit
+-- (did it run, what did it see, did the email send). Read-only agent, so this
+-- is the only thing it writes.
+CREATE TABLE IF NOT EXISTS brief_runs (
+  id           TEXT PRIMARY KEY,        -- uuid
+  ran_at       TEXT NOT NULL,           -- ISO 8601
+  new_count    INTEGER NOT NULL,        -- leads in the last 24h
+  aging_count  INTEGER NOT NULL,        -- warm/hot going cold
+  calls_count  INTEGER NOT NULL,        -- booked calls prepped
+  total_leads  INTEGER NOT NULL,        -- whole-board size
+  sent         INTEGER NOT NULL         -- 1 if the email dispatched, else 0
+);
+
+CREATE INDEX IF NOT EXISTS idx_brief_runs_ran ON brief_runs (ran_at);
