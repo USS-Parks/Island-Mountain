@@ -46,3 +46,8 @@ id = "0ff5125cdda4444c9acbc98da5da1ec8"
 binding = "DB"
 database_name = "island-mountain-leads"
 database_id = "e850fb25-a22a-45dc-9445-aa6f971102f5"
+
+# Daily NOOA Sales Brief (Purser). Cloudflare cron is UTC: 16:15 UTC = 9:15 AM
+# PDT (drifts to 8:15 AM PST in winter — acceptable, or add a second line).
+[triggers]
+crontab = ["15 16 * * *"]
