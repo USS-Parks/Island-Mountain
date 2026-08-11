@@ -17,6 +17,8 @@ import { handleStats } from './routes/stats'
 import { handleHistory } from './routes/history'
 import { handleWorksheet } from './routes/worksheet'
 import { handleSlot } from './routes/slot'
+import { handleWatchstander } from './routes/watchstander'
+import { runBrief } from './brief-run'
 
 type RouteAccess = 'public' | 'browser' | 'authenticated' | 'webhook'
 
@@ -36,7 +38,18 @@ const ROUTES: Route[] = [
   { method: 'POST', path: '/api/worksheet', handler: handleWorksheet, access: 'browser' },
   { method: 'POST', path: '/api/slot', handler: handleSlot, access: 'browser' },
   { method: 'POST', path: '/api/voice-webhook', handler: handleVoiceWebhook, access: 'webhook' },
-  { method: 'POST', path: '/api/booking-webhook', handler: handleBookingWebhook, access: 'webhook' }
+  {
+    method: 'POST',
+    path: '/api/booking-webhook',
+    handler: handleBookingWebhook,
+    access: 'webhook'
+  },
+  {
+    method: 'POST',
+    path: '/api/watchstander',
+    handler: handleWatchstander,
+    access: 'authenticated'
+  }
 ]
 
 export default {
@@ -73,5 +86,24 @@ export default {
       console.error('Unhandled error:', err)
       return jsonResponse({ success: false, error: 'Internal error.' }, 500, origin, env)
     }
+  },
+
+  // Daily NOOA Sales Brief (Purser): compose from D1 + Cal.com, email
+  // ALERT_EMAIL, append a brief_runs receipt. Read-only beyond that receipt.
+  async scheduled(
+    _controller: ScheduledController,
+    env: Env,
+    ctx: ExecutionContext
+  ): Promise<void> {
+    ctx.waitUntil(
+      runBrief(env)
+        .then(({ sent, counts }) =>
+          console.log(
+            `[brief] sent=${sent} new=${counts.new_count} aging=${counts.aging_count} ` +
+              `calls=${counts.calls_count} total=${counts.total_leads}`
+          )
+        )
+        .catch((err) => console.error('scheduled brief failed:', err))
+    )
   }
 } satisfies ExportedHandler<Env>
