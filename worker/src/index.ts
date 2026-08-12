@@ -20,6 +20,7 @@ import { handleSlot } from './routes/slot'
 import { handleWatchstander } from './routes/watchstander'
 import { runBrief } from './brief-run'
 import { handleBriefPreview, handleBriefRun } from './routes/brief'
+import { runLookout } from './geo/run'
 
 type RouteAccess = 'public' | 'browser' | 'authenticated' | 'webhook'
 
@@ -96,13 +97,23 @@ export default {
     }
   },
 
-  // Daily NOOA Sales Brief (Purser): compose from D1 + Cal.com, email
-  // ALERT_EMAIL, append a brief_runs receipt. Read-only beyond that receipt.
-  async scheduled(
-    _controller: ScheduledController,
-    env: Env,
-    ctx: ExecutionContext
-  ): Promise<void> {
+  // Scheduled work, dispatched by cron string:
+  //  - Purser (daily 16:15 UTC): the sales brief.
+  //  - Lookout (Mondays 16:00 UTC): the GEO-visibility run.
+  async scheduled(controller: ScheduledController, env: Env, ctx: ExecutionContext): Promise<void> {
+    if (controller.cron === '0 16 * * 1') {
+      ctx.waitUntil(
+        runLookout(env)
+          .then((s) =>
+            console.log(
+              `[lookout] engines=${s.engines.join(',')} prompts=${s.prompts} ` +
+                `snapshots=${s.snapshots} im_mentions=${s.im_mentions}`
+            )
+          )
+          .catch((err) => console.error('scheduled lookout failed:', err))
+      )
+      return
+    }
     ctx.waitUntil(
       runBrief(env)
         .then(({ sent, counts }) =>

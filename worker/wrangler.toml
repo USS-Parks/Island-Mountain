@@ -47,7 +47,9 @@ binding = "DB"
 database_name = "island-mountain-leads"
 database_id = "e850fb25-a22a-45dc-9445-aa6f971102f5"
 
-# Daily NOOA Sales Brief (Purser). Cloudflare cron is UTC: 16:15 UTC = 9:15 AM
-# PDT (drifts to 8:15 AM PST in winter — acceptable, or add a second line).
+# Scheduled NOOA agents (Cloudflare cron is UTC):
+#  - Purser  16:15 UTC daily      = 9:15 AM PDT sales brief.
+#  - Lookout 16:00 UTC Mondays    = 9:00 AM PDT GEO-visibility run.
+# (Both drift one hour earlier in winter/PST — acceptable for these.)
 [triggers]
-crons = ["15 16 * * *"]
+crons = ["15 16 * * *", "0 16 * * 1"]
