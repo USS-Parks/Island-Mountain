@@ -1,6 +1,7 @@
 import type { Env } from '../types'
 import { jsonResponse } from '../cors'
 import { runPublisher } from '../publisher/run'
+import { githubWriteCheck } from '../publisher/github'
 
 /**
  * Authority-campaign publisher ops endpoint, gated by Bearer PUBLISHER_SECRET
@@ -20,6 +21,10 @@ export async function handlePublisherRun(request: Request, env: Env): Promise<Re
   }
   if (unauthorized(request, env)) {
     return jsonResponse({ success: false, error: 'Unauthorized.' }, 401, origin, env)
+  }
+  if (new URL(request.url).searchParams.get('check') === 'write') {
+    const result = await githubWriteCheck(env)
+    return jsonResponse({ success: result.ok, data: result }, result.ok ? 200 : 502, origin, env)
   }
   const results = await runPublisher(env)
   return jsonResponse({ success: true, data: { results } }, 200, origin, env)

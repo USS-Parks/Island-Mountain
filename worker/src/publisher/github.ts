@@ -35,7 +35,9 @@ async function gh(env: Env, method: string, path: string, body?: unknown): Promi
     const text = await res.text()
     throw new Error(`GitHub ${method} ${path} -> ${res.status}: ${text.slice(0, 300)}`)
   }
-  return res.json()
+  if (res.status === 204) return {}
+  const raw = await res.text()
+  return raw ? JSON.parse(raw) : {}
 }
 
 function base64ToBytes(b64: string): Uint8Array {
@@ -112,4 +114,47 @@ export async function commitFiles(
     }
   }
   throw new Error(`commitFiles: ref update kept failing: ${String(lastErr)}`)
+}
+
+/**
+ * Prove the FULL write path (blob -> tree -> commit -> ref create/update/delete) with the
+ * real token, without ever touching main: everything happens on a throwaway
+ * `publisher-writecheck` branch that is created, committed to, read back, and deleted before
+ * returning. Exposed via POST /api/publisher/run?check=write.
+ */
+export async function githubWriteCheck(
+  env: Env
+): Promise<{ ok: boolean; scratchCommit: string; detail: string }> {
+  const branch = 'publisher-writecheck'
+  const refHeads = `/repos/${REPO}/git/refs/heads/${branch}`
+  const mainRef = await gh(env, 'GET', `/repos/${REPO}/git/ref/heads/main`)
+  const baseSha = mainRef.object.sha as string
+  const baseCommit = await gh(env, 'GET', `/repos/${REPO}/git/commits/${baseSha}`)
+  const baseTreeSha = baseCommit.tree.sha as string
+  // Start from a clean scratch branch (ignore "absent" on the pre-emptive delete).
+  try {
+    await gh(env, 'DELETE', refHeads)
+  } catch {
+    /* branch not present */
+  }
+  await gh(env, 'POST', `/repos/${REPO}/git/refs`, { ref: `refs/heads/${branch}`, sha: baseSha })
+  const stamp = new Date().toISOString()
+  const marker = `write-path ok ${stamp}\n`
+  const tree = await gh(env, 'POST', `/repos/${REPO}/git/trees`, {
+    base_tree: baseTreeSha,
+    tree: [{ path: '.publisher-writecheck', mode: '100644', type: 'blob', content: marker }]
+  })
+  const commit = await gh(env, 'POST', `/repos/${REPO}/git/commits`, {
+    message: 'publisher write-path self-check (scratch branch, auto-deleted)',
+    tree: tree.sha,
+    parents: [baseSha]
+  })
+  await gh(env, 'PATCH', refHeads, { sha: commit.sha, force: true })
+  const readback = await readFileTextOrNull(env, '.publisher-writecheck', commit.sha as string)
+  await gh(env, 'DELETE', refHeads) // main never saw any of this
+  return {
+    ok: readback === marker,
+    scratchCommit: commit.sha as string,
+    detail: 'created scratch branch, committed a blob, read it back, deleted the branch'
+  }
 }
