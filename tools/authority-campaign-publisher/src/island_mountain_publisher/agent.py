@@ -33,8 +33,16 @@ class BlogNotLiveError(RuntimeError):
     """The blog article is not live; LinkedIn must not point at a missing page."""
 
 
+_BROWSER_UA = (
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+    "(KHTML, like Gecko) Chrome/126.0 Safari/537.36"
+)
+
+
 def _blog_http_status(url: str) -> int:
-    request = urllib.request.Request(url, method="GET")
+    # Cloudflare 403s the default Python-urllib user-agent as a bot; browsers and the
+    # LinkedIn crawler get 200. Probe with a browser UA so liveness reflects reality.
+    request = urllib.request.Request(url, method="GET", headers={"User-Agent": _BROWSER_UA})
     with urllib.request.urlopen(request, timeout=20) as response:
         return int(response.status)
 

@@ -12,6 +12,12 @@ import { commitFiles, type FileChange } from './github'
 import { done, ensureLedger, record, remoteId } from './ledger'
 import { createComment, createPost, uploadImage } from './linkedin'
 
+// Cloudflare 403s bot user-agents (default Workers/urllib UA); browsers get 200. The
+// blog-live probe must present a browser UA or it falsely defers every LinkedIn post.
+const BROWSER_UA =
+  'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 ' +
+  '(KHTML, like Gecko) Chrome/126.0 Safari/537.36'
+
 async function publishBlog(env: Env, day: CampaignDay): Promise<string> {
   return commitFiles(
     env,
@@ -39,7 +45,10 @@ async function publishLinkedIn(env: Env, day: CampaignDay): Promise<string> {
     return `linkedin ${day.campaign_id} aborted: LINKEDIN_ACTOR_URN must be a person URN`
   }
   // Fail closed: never let LinkedIn point at an article that is not live.
-  const liveCheck = await fetch(day.blog_url, { method: 'GET' })
+  const liveCheck = await fetch(day.blog_url, {
+    method: 'GET',
+    headers: { 'User-Agent': BROWSER_UA }
+  })
   if (liveCheck.status !== 200) {
     return `linkedin ${day.campaign_id} deferred: blog HTTP ${liveCheck.status}`
   }
