@@ -142,7 +142,7 @@ interface GeminiResp {
 
 async function queryGemini(env: Env, prompt: string): Promise<EngineResult | null> {
   if (!env.GEMINI_API_KEY) return null
-  const model = env.GEMINI_MODEL || 'gemini-2.5-flash'
+  const model = env.GEMINI_MODEL || 'gemini-flash-latest'
   try {
     const res = await timedFetch(
       `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`,
