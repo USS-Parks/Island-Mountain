@@ -21,6 +21,7 @@ import { handleWatchstander } from './routes/watchstander'
 import { runBrief } from './brief-run'
 import { handleBriefPreview, handleBriefRun } from './routes/brief'
 import { runLookout } from './geo/run'
+import { handleGeoDashboard } from './routes/geo'
 
 type RouteAccess = 'public' | 'browser' | 'authenticated' | 'webhook'
 
@@ -58,7 +59,13 @@ const ROUTES: Route[] = [
     handler: handleBriefPreview,
     access: 'authenticated'
   },
-  { method: 'POST', path: '/api/brief/run', handler: handleBriefRun, access: 'authenticated' }
+  { method: 'POST', path: '/api/brief/run', handler: handleBriefRun, access: 'authenticated' },
+  {
+    method: 'GET',
+    path: '/api/geo/dashboard',
+    handler: handleGeoDashboard,
+    access: 'authenticated'
+  }
 ]
 
 export default {
