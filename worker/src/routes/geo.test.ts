@@ -37,8 +37,10 @@ function req(token?: string): Request {
   return new Request('https://w/api/geo/dashboard', { headers })
 }
 
-test('dashboard is 503 when GEO_SECRET is not configured', async () => {
-  assert.equal((await handleGeoDashboard(req('x'), emptyDBEnv(undefined))).status, 503)
+test('dashboard is open (200) when no GEO_SECRET is configured', async () => {
+  const res = await handleGeoDashboard(req(), emptyDBEnv(undefined))
+  assert.equal(res.status, 200)
+  assert.match(res.headers.get('content-type') || '', /text\/html/)
 })
 
 test('dashboard rejects a wrong bearer token with 401', async () => {
