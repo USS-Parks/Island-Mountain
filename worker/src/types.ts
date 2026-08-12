@@ -39,6 +39,13 @@ export interface Env {
   WATCHSTANDER_SECRET?: string
   /** Shared secret gating the /api/brief ops endpoints (Purser preview + manual run). */
   BRIEF_SECRET?: string
+  // --- Lookout (GEO watchstander) ---
+  /** Engine API keys — each optional; a missing key skips that engine at run time. */
+  OPENAI_API_KEY?: string
+  GEMINI_API_KEY?: string
+  PERPLEXITY_API_KEY?: string
+  /** Shared secret gating the /api/geo endpoints (dashboard, run, preview). */
+  GEO_SECRET?: string
 
   // --- Abuse-protection caps (vars; defaults applied if unset) ---
   RATE_LIMIT_PER_MIN?: string
@@ -59,6 +66,10 @@ export interface Env {
   CALCOM_EVENT_TYPE_ID?: string
   /** Default IANA timezone for the scoping-call calendar, e.g. America/Denver. */
   CALCOM_TIMEZONE?: string
+  /** Lookout engine model overrides (public vars; sensible defaults in code). */
+  OPENAI_MODEL?: string
+  GEMINI_MODEL?: string
+  PERPLEXITY_MODEL?: string
 }
 
 /** Standard JSON envelope returned by every endpoint. */
