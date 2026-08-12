@@ -13,6 +13,9 @@ qualifier without ever exposing an API key to the browser.
 | `/api/slot` | POST | Founder's Build Slot claim: forced-hot lead → alert to Basho + 90-day quote-lock confirmation to the claimant | 2026-07 |
 | `/api/brief/preview` | GET | NOOA Sales Brief (Purser): render today's brief as HTML, no send (Bearer `BRIEF_SECRET`) | 2026-08 |
 | `/api/brief/run` | POST | Purser: compose, send to `ALERT_EMAIL`, append a receipt (Bearer `BRIEF_SECRET`) | 2026-08 |
+| `/api/geo/dashboard` | GET | Lookout: light IM-branded GEO-visibility dashboard, HTML (Bearer `GEO_SECRET`) | 2026-08 |
+| `/api/geo/run` | POST | Lookout: trigger a collection run now (Bearer `GEO_SECRET`) | 2026-08 |
+| `/api/geo/preview` | GET | Lookout: latest run's aggregate as JSON (Bearer `GEO_SECRET`) | 2026-08 |
 
 Lead scoring, persistence, alerts, and analytics run inside the chat and
 authenticated voice pipelines plus the two origin-gated form routes above
@@ -48,6 +51,10 @@ npx wrangler secret put VAPI_API_KEY          # voice (PROMPT 07)
 npx wrangler secret put WEBHOOK_SECRET        # validates Vapi/Cal.com webhooks
 npx wrangler secret put TURNSTILE_SECRET      # bot challenge (PROMPT 10)
 npx wrangler secret put BRIEF_SECRET          # Purser brief ops endpoints (preview/run only)
+npx wrangler secret put GEO_SECRET            # Lookout /api/geo endpoints
+npx wrangler secret put OPENAI_API_KEY        # Lookout engine (optional; skipped if unset)
+npx wrangler secret put GEMINI_API_KEY        # Lookout engine (optional; skipped if unset)
+npx wrangler secret put PERPLEXITY_API_KEY    # Lookout engine (optional; skipped if unset)
 ```
 
 `BRIEF_SECRET` gates only the two `/api/brief/*` ops endpoints; the daily cron
@@ -90,6 +97,28 @@ with all lead-provided text escaped.
 - **Cadence caveat:** Cloudflare cron is UTC, so the send drifts to 8:15 AM PST in winter
   (add a second seasonal crontab line if that matters).
 - **v2 (deferred):** signable follow-up drafts for the aging-warm list.
+
+### NOOA GEO Watchstander — "Lookout" (2026-08)
+A **Monday 16:00 UTC (9:00 AM Pacific)** cron asks every keyed AI engine a tracked prompt
+set, parses each answer for whether Island Mountain is **mentioned / cited / out-ranked**,
+and snapshots the result to D1. A light Island Mountain–branded dashboard renders the
+share-of-voice trend, a per-prompt grid, and the competitor tally.
+
+- **Engines** (`src/geo/engines.ts`), each key-guarded + best-effort — a missing key
+  skips that engine: **Claude** (`web_search`, uses the existing `ANTHROPIC_API_KEY`),
+  **OpenAI**, **Gemini**, **Perplexity**. Model overrides: `OPENAI_MODEL`, `GEMINI_MODEL`,
+  `PERPLEXITY_MODEL` (public vars; defaults in code — set one if a default 404s).
+- **Deterministic**, no LLM in the scoring: `parse.ts` matches IM aliases/domain + the
+  competitor list from `src/geo/config.ts` (the prompt set + entity lists Basho edits).
+- **Cost:** ~$10–15/mo for all four at the weekly cadence (per-search fees dominate;
+  Gemini grounding free under 5k/mo). Base modes + an 800-token cap hold it there.
+- **Tables:** `geo_prompts` (seeded from code, editable in D1) + `geo_snapshots` ship in
+  `schema.sql` (idempotent). `run_id` groups one run; `raw_answer` kept for audit.
+- **Access** (Bearer `GEO_SECRET`):
+  - `curl -H "Authorization: Bearer $GEO_SECRET" https://<worker>/api/geo/dashboard -o geo.html` then open it.
+  - `curl -X POST -H "Authorization: Bearer $GEO_SECRET" https://<worker>/api/geo/run` to collect on demand.
+- **v1.1 (deferred):** a weekly movement email; an in-browser gate page so the dashboard
+  opens without the curl step.
 
 ### GA4 server events
 Create a Measurement Protocol API secret in GA4 (Admin → Data Streams → your stream →
