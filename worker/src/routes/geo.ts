@@ -1,7 +1,8 @@
 import type { Env } from '../types'
 import { jsonResponse } from '../cors'
 import { snapshotsSince, latestSnapshots } from '../geo/store'
-import { renderDashboard } from '../geo/dashboard'
+import { renderDashboard, aggregateRun } from '../geo/dashboard'
+import { runLookout } from '../geo/run'
 
 /**
  * Lookout ops endpoints, gated by Bearer GEO_SECRET (internal competitive
@@ -32,4 +33,30 @@ export async function handleGeoDashboard(request: Request, env: Env): Promise<Re
     status: 200,
     headers: { 'content-type': 'text/html; charset=utf-8' }
   })
+}
+
+export async function handleGeoRun(request: Request, env: Env): Promise<Response> {
+  const blocked = gate(request, env)
+  if (blocked) return blocked
+  const summary = await runLookout(env)
+  return jsonResponse({ success: true, data: summary }, 200, request.headers.get('Origin'), env)
+}
+
+export async function handleGeoPreview(request: Request, env: Env): Promise<Response> {
+  const blocked = gate(request, env)
+  if (blocked) return blocked
+  const latest = await latestSnapshots(env)
+  const agg = latest.length ? aggregateRun(latest) : null
+  const data = agg
+    ? {
+        run_date: agg.run_date,
+        cells: agg.cells,
+        sov: agg.sov,
+        mentionRate: agg.mentionRate,
+        citeRate: agg.citeRate,
+        byEngine: agg.byEngine,
+        competitors: agg.competitors
+      }
+    : { empty: true }
+  return jsonResponse({ success: true, data }, 200, request.headers.get('Origin'), env)
 }
