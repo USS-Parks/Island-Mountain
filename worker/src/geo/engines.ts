@@ -19,6 +19,12 @@ export interface Engine {
 }
 
 const MAX_TOKENS = 900
+const TIMEOUT_MS = 25_000
+
+/** fetch with a hard timeout so one slow engine can't stall the whole run. */
+function timedFetch(url: string, init: RequestInit): Promise<Response> {
+  return fetch(url, { ...init, signal: AbortSignal.timeout(TIMEOUT_MS) })
+}
 
 function nonOk(engine: string, status: number): null {
   console.error(`geo engine ${engine} non-2xx: ${status}`)
@@ -41,7 +47,7 @@ async function queryClaude(env: Env, prompt: string): Promise<EngineResult | nul
   if (!env.ANTHROPIC_API_KEY) return null
   const model = env.CHAT_MODEL_ROUTINE || 'claude-sonnet-4-6'
   try {
-    const res = await fetch('https://api.anthropic.com/v1/messages', {
+    const res = await timedFetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
       headers: {
         'x-api-key': env.ANTHROPIC_API_KEY,
@@ -94,7 +100,7 @@ async function queryOpenAI(env: Env, prompt: string): Promise<EngineResult | nul
   if (!env.OPENAI_API_KEY) return null
   const model = env.OPENAI_MODEL || 'gpt-4o'
   try {
-    const res = await fetch('https://api.openai.com/v1/responses', {
+    const res = await timedFetch('https://api.openai.com/v1/responses', {
       method: 'POST',
       headers: {
         Authorization: `Bearer ${env.OPENAI_API_KEY}`,
@@ -138,7 +144,7 @@ async function queryGemini(env: Env, prompt: string): Promise<EngineResult | nul
   if (!env.GEMINI_API_KEY) return null
   const model = env.GEMINI_MODEL || 'gemini-2.5-flash'
   try {
-    const res = await fetch(
+    const res = await timedFetch(
       `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`,
       {
         method: 'POST',
@@ -179,7 +185,7 @@ async function queryPerplexity(env: Env, prompt: string): Promise<EngineResult |
   if (!env.PERPLEXITY_API_KEY) return null
   const model = env.PERPLEXITY_MODEL || 'sonar'
   try {
-    const res = await fetch('https://api.perplexity.ai/chat/completions', {
+    const res = await timedFetch('https://api.perplexity.ai/chat/completions', {
       method: 'POST',
       headers: {
         Authorization: `Bearer ${env.PERPLEXITY_API_KEY}`,

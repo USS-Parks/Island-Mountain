@@ -41,11 +41,22 @@ export async function handleGeoDashboard(request: Request, env: Env): Promise<Re
   })
 }
 
-export async function handleGeoRun(request: Request, env: Env): Promise<Response> {
+export async function handleGeoRun(
+  request: Request,
+  env: Env,
+  ctx: ExecutionContext
+): Promise<Response> {
   const blocked = gate(request, env)
   if (blocked) return blocked
-  const summary = await runLookout(env)
-  return jsonResponse({ success: true, data: summary }, 200, request.headers.get('Origin'), env)
+  // A full run is dozens of grounded queries — too long to hold the request
+  // open. Kick it off in the background and return immediately.
+  ctx.waitUntil(runLookout(env).catch((err) => console.error('geo run failed:', err)))
+  return jsonResponse(
+    { success: true, data: { started: true } },
+    202,
+    request.headers.get('Origin'),
+    env
+  )
 }
 
 export async function handleGeoPreview(request: Request, env: Env): Promise<Response> {
