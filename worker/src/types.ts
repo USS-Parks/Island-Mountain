@@ -46,6 +46,15 @@ export interface Env {
   PERPLEXITY_API_KEY?: string
   /** Shared secret gating the /api/geo endpoints (dashboard, run, preview). */
   GEO_SECRET?: string
+  // --- Publisher (autonomous authority-campaign cron) ---
+  /** GitHub fine-grained PAT (Contents: read+write on USS-Parks/islandmountain) — blog lane. */
+  GITHUB_TOKEN?: string
+  /** LinkedIn member token / person URN / API version — social lane (optional; skips if unset). */
+  LINKEDIN_ACCESS_TOKEN?: string
+  LINKEDIN_ACTOR_URN?: string
+  LINKEDIN_VERSION?: string
+  /** Shared secret gating POST /api/publisher/run (manual catch-up / validation run). */
+  PUBLISHER_SECRET?: string
 
   // --- Abuse-protection caps (vars; defaults applied if unset) ---
   RATE_LIMIT_PER_MIN?: string

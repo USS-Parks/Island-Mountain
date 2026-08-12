@@ -22,6 +22,8 @@ import { runBrief } from './brief-run'
 import { handleBriefPreview, handleBriefRun } from './routes/brief'
 import { runLookout } from './geo/run'
 import { handleGeoDashboard, handleGeoRun, handleGeoPreview } from './routes/geo'
+import { runPublisher } from './publisher/run'
+import { handlePublisherRun } from './routes/publisher'
 
 type RouteAccess = 'public' | 'browser' | 'authenticated' | 'webhook'
 
@@ -67,7 +69,13 @@ const ROUTES: Route[] = [
     access: 'authenticated'
   },
   { method: 'POST', path: '/api/geo/run', handler: handleGeoRun, access: 'authenticated' },
-  { method: 'GET', path: '/api/geo/preview', handler: handleGeoPreview, access: 'authenticated' }
+  { method: 'GET', path: '/api/geo/preview', handler: handleGeoPreview, access: 'authenticated' },
+  {
+    method: 'POST',
+    path: '/api/publisher/run',
+    handler: handlePublisherRun,
+    access: 'authenticated'
+  }
 ]
 
 export default {
@@ -109,6 +117,7 @@ export default {
   // Scheduled work, dispatched by cron string:
   //  - Purser (daily 16:15 UTC): the sales brief.
   //  - Lookout (Mondays 16:00 UTC): the GEO-visibility run.
+  //  - Publisher (hourly 12:00-15:00 UTC): the authority-campaign blog + LinkedIn.
   async scheduled(controller: ScheduledController, env: Env, ctx: ExecutionContext): Promise<void> {
     if (controller.cron === '0 16 * * 1') {
       ctx.waitUntil(
@@ -120,6 +129,14 @@ export default {
             )
           )
           .catch((err) => console.error('scheduled lookout failed:', err))
+      )
+      return
+    }
+    if (controller.cron === '0 12-15 * * *') {
+      ctx.waitUntil(
+        runPublisher(env)
+          .then((results) => console.log(`[publisher] ${results.join(' | ')}`))
+          .catch((err) => console.error('scheduled publisher failed:', err))
       )
       return
     }

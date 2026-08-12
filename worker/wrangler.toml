@@ -48,8 +48,11 @@ database_name = "island-mountain-leads"
 database_id = "e850fb25-a22a-45dc-9445-aa6f971102f5"
 
 # Scheduled NOOA agents (Cloudflare cron is UTC):
-#  - Purser  16:15 UTC daily      = 9:15 AM PDT sales brief.
-#  - Lookout 16:00 UTC Mondays    = 9:00 AM PDT GEO-visibility run.
-# (Both drift one hour earlier in winter/PST — acceptable for these.)
+#  - Purser    16:15 UTC daily        = 9:15 AM PDT sales brief.
+#  - Lookout   16:00 UTC Mondays      = 9:00 AM PDT GEO-visibility run.
+#  - Publisher 12:00-15:00 UTC hourly = ~05:00-08:00 PT authority-campaign publish.
+#    Hourly + a D1 idempotency ledger makes it DST-proof and self-retrying: the blog lane
+#    fires once at/after 05:00 PT, the LinkedIn lane inside its window (hard cutoff 08:01 PT).
+# (The 16:xx agents drift one hour earlier in winter/PST — acceptable for these.)
 [triggers]
-crons = ["15 16 * * *", "0 16 * * 1"]
+crons = ["15 16 * * *", "0 16 * * 1", "0 12-15 * * *"]
