@@ -16,11 +16,17 @@ function unauthorized(request: Request, env: Env): boolean {
 }
 
 function gate(request: Request, env: Env): Response | null {
-  const origin = request.headers.get('Origin')
-  if (!env.GEO_SECRET)
-    return jsonResponse({ success: false, error: 'Not configured.' }, 503, origin, env)
+  // No GEO_SECRET set = open. It's Basho's own traffic dashboard, not a secret;
+  // he opted out of a password. If a GEO_SECRET ever IS set, it's enforced, so
+  // locking it later is a single `wrangler secret put` with no code change.
+  if (!env.GEO_SECRET) return null
   if (unauthorized(request, env))
-    return jsonResponse({ success: false, error: 'Unauthorized.' }, 401, origin, env)
+    return jsonResponse(
+      { success: false, error: 'Unauthorized.' },
+      401,
+      request.headers.get('Origin'),
+      env
+    )
   return null
 }
 
