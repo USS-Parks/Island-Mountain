@@ -30,25 +30,22 @@ export async function runLookout(env: Env, nowMs = Date.now()): Promise<LookoutS
   let snapshots = 0
   let im_mentions = 0
 
-  // ponytail: prompts in chunks of 5, all engines parallel within a chunk (≤20
-  // concurrent subrequests, within the Workers Paid 1000 cap). Chunking keeps
-  // wall time down so an on-demand run finishes inside the background budget.
-  const CHUNK = 5
-  for (let i = 0; i < prompts.length; i += CHUNK) {
-    const tasks = prompts.slice(i, i + CHUNK).flatMap((p) => ENGINES.map((e) => ({ p, e })))
-    const results = await Promise.all(
-      tasks.map(async ({ p, e }) => ({ p, id: e.id, res: await e.query(env, p.text) }))
-    )
-    for (const { p, id, res } of results) {
-      if (!res) continue
-      enginesUsed.add(id)
+  // Fire every prompt×engine at once and insert each result the instant it
+  // returns, so a limited on-demand background budget still persists whatever
+  // finished (rows land incrementally, never all-or-nothing). ~60 concurrent
+  // subrequests at full coverage, within the Workers Paid 1000 cap; the Monday
+  // cron has the budget to complete the whole set.
+  const tasks = prompts.flatMap((p) => ENGINES.map((e) => ({ p, e })))
+  const settled = await Promise.all(
+    tasks.map(async ({ p, e }) => {
+      const res = await e.query(env, p.text)
+      if (!res) return null
       const v = parseVisibility(res.answer, res.citations, ENTITIES)
-      if (v.im_mentioned) im_mentions++
       const ok = await insertSnapshot(env, {
         id: crypto.randomUUID(),
         run_id,
         run_date,
-        engine: id,
+        engine: e.id,
         prompt_id: p.id,
         prompt_text: p.text,
         im_mentioned: v.im_mentioned ? 1 : 0,
@@ -59,8 +56,14 @@ export async function runLookout(env: Env, nowMs = Date.now()): Promise<LookoutS
         citations: JSON.stringify(res.citations),
         raw_answer: res.answer.slice(0, 4000)
       })
-      if (ok) snapshots++
-    }
+      return ok ? { engine: e.id, mentioned: v.im_mentioned } : null
+    })
+  )
+  for (const r of settled) {
+    if (!r) continue
+    enginesUsed.add(r.engine)
+    snapshots++
+    if (r.mentioned) im_mentions++
   }
 
   return {
