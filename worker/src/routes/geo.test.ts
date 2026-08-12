@@ -54,29 +54,27 @@ test('authorized dashboard returns HTML (empty state with no data)', async () =>
   assert.match(await res.text(), /Lookout/)
 })
 
+const CTX = { waitUntil() {} } as unknown as ExecutionContext
+
 test('run and preview reject a wrong bearer token with 401', async () => {
   const runReq = new Request('https://w/api/geo/run', {
     method: 'POST',
     headers: { Authorization: 'Bearer wrong' }
   })
-  assert.equal((await handleGeoRun(runReq, emptyDBEnv('right'))).status, 401)
+  assert.equal((await handleGeoRun(runReq, emptyDBEnv('right'), CTX)).status, 401)
   assert.equal((await handleGeoPreview(req('wrong'), emptyDBEnv('right'))).status, 401)
 })
 
-test('authorized run executes and reports a summary (no keys → nothing written)', async () => {
+test('authorized run starts in the background and returns 202', async () => {
   const runReq = new Request('https://w/api/geo/run', {
     method: 'POST',
     headers: { Authorization: 'Bearer right' }
   })
-  const res = await handleGeoRun(runReq, emptyDBEnv('right'))
-  assert.equal(res.status, 200)
-  const body = (await res.json()) as {
-    success: boolean
-    data: { snapshots: number; engines: string[] }
-  }
+  const res = await handleGeoRun(runReq, emptyDBEnv('right'), CTX)
+  assert.equal(res.status, 202)
+  const body = (await res.json()) as { success: boolean; data: { started: boolean } }
   assert.equal(body.success, true)
-  assert.equal(body.data.snapshots, 0)
-  assert.deepEqual(body.data.engines, [])
+  assert.equal(body.data.started, true)
 })
 
 test('authorized preview returns an empty summary when there are no runs', async () => {

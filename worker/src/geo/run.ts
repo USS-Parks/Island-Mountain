@@ -30,14 +30,16 @@ export async function runLookout(env: Env, nowMs = Date.now()): Promise<LookoutS
   let snapshots = 0
   let im_mentions = 0
 
-  // ponytail: sequential prompts, engines in parallel per prompt. Up to
-  // (prompts × engines) subrequests/run — ~60 at full 4-engine coverage, within
-  // the Workers Paid 1000 cap; only ANTHROPIC is keyed until Basho adds the rest.
-  for (const p of prompts) {
+  // ponytail: prompts in chunks of 5, all engines parallel within a chunk (≤20
+  // concurrent subrequests, within the Workers Paid 1000 cap). Chunking keeps
+  // wall time down so an on-demand run finishes inside the background budget.
+  const CHUNK = 5
+  for (let i = 0; i < prompts.length; i += CHUNK) {
+    const tasks = prompts.slice(i, i + CHUNK).flatMap((p) => ENGINES.map((e) => ({ p, e })))
     const results = await Promise.all(
-      ENGINES.map(async (e) => ({ id: e.id, res: await e.query(env, p.text) }))
+      tasks.map(async ({ p, e }) => ({ p, id: e.id, res: await e.query(env, p.text) }))
     )
-    for (const { id, res } of results) {
+    for (const { p, id, res } of results) {
       if (!res) continue
       enginesUsed.add(id)
       const v = parseVisibility(res.answer, res.citations, ENTITIES)
