@@ -74,3 +74,34 @@ CREATE TABLE IF NOT EXISTS brief_runs (
 );
 
 CREATE INDEX IF NOT EXISTS idx_brief_runs_ran ON brief_runs (ran_at);
+
+-- Lookout (GEO watchstander): the tracked prompt set. Seeded from code on first
+-- run; edit rows here afterward (no redeploy). active=0 retires a prompt.
+CREATE TABLE IF NOT EXISTS geo_prompts (
+  id       TEXT PRIMARY KEY,        -- stable slug, e.g. 'brand-what-is'
+  category TEXT NOT NULL,           -- brand | category | competitor
+  text     TEXT NOT NULL,           -- the prompt asked of each engine
+  active   INTEGER NOT NULL DEFAULT 1
+);
+
+-- One row per (run, engine, prompt): did IM show up in that AI answer, was it
+-- cited, where did it rank, who else appeared. raw_answer kept for audit.
+CREATE TABLE IF NOT EXISTS geo_snapshots (
+  id            TEXT PRIMARY KEY,   -- uuid
+  run_id        TEXT NOT NULL,      -- groups one full run (uuid)
+  run_date      TEXT NOT NULL,      -- ISO 8601
+  engine        TEXT NOT NULL,      -- claude | openai | gemini | perplexity
+  prompt_id     TEXT NOT NULL,
+  prompt_text   TEXT,
+  im_mentioned  INTEGER NOT NULL,   -- 0/1
+  im_cited      INTEGER NOT NULL,   -- 0/1 (islandmountain.io in sources)
+  im_position   INTEGER,            -- rank if the answer is a list, else NULL
+  competitors   TEXT,               -- JSON array of competitor names seen
+  sov           REAL,               -- share of voice 0..1 for this answer
+  citations     TEXT,               -- JSON array of cited URLs
+  raw_answer    TEXT                -- full answer text
+);
+
+CREATE INDEX IF NOT EXISTS idx_geo_snapshots_date   ON geo_snapshots (run_date);
+CREATE INDEX IF NOT EXISTS idx_geo_snapshots_run    ON geo_snapshots (run_id);
+CREATE INDEX IF NOT EXISTS idx_geo_snapshots_engine ON geo_snapshots (engine);
