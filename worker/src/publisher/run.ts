@@ -94,3 +94,60 @@ export async function runPublisher(env: Env, now: Date = new Date()): Promise<st
   if (!day) return [`no campaign scheduled for ${today}`]
   return [await blogLane(env, day, now), await linkedinLane(env, day, now)]
 }
+
+/**
+ * Read-only diagnosis of why the LinkedIn lane may not be posting: is the blog live to the
+ * Worker's own fetch, is the token valid (userinfo), does the actor URN match the token's
+ * member, and does the first write (initializeUpload — reserves an upload, posts nothing)
+ * succeed. Exposed via POST /api/publisher/run?check=linkedin.
+ */
+export async function linkedinCheck(env: Env): Promise<Record<string, unknown>> {
+  const today = pacificDate(new Date())
+  const day = dayFor(today)
+  const out: Record<string, unknown> = {
+    today,
+    item: day?.campaign_id ?? null,
+    secretsPresent: {
+      token: Boolean(env.LINKEDIN_ACCESS_TOKEN),
+      actor: env.LINKEDIN_ACTOR_URN ?? null,
+      version: env.LINKEDIN_VERSION ?? null
+    }
+  }
+  if (day) {
+    const r = await fetch(day.blog_url, { method: 'GET', headers: { 'User-Agent': BROWSER_UA } })
+    out.blogLive = { url: day.blog_url, status: r.status }
+  }
+  const token = env.LINKEDIN_ACCESS_TOKEN
+  if (token) {
+    const u = await fetch('https://api.linkedin.com/v2/userinfo', {
+      headers: { Authorization: `Bearer ${token}` }
+    })
+    if (u.ok) {
+      const info = (await u.json()) as { sub?: string }
+      out.userinfo = {
+        status: u.status,
+        sub: info.sub ?? null,
+        actorMatches: info.sub ? (env.LINKEDIN_ACTOR_URN ?? '').endsWith(info.sub) : null
+      }
+    } else {
+      out.userinfo = { status: u.status, error: (await u.text()).slice(0, 200) }
+    }
+    if (env.LINKEDIN_ACTOR_URN && env.LINKEDIN_VERSION) {
+      const init = await fetch('https://api.linkedin.com/rest/images?action=initializeUpload', {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${token}`,
+          'LinkedIn-Version': env.LINKEDIN_VERSION,
+          'X-Restli-Protocol-Version': '2.0.0',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ initializeUploadRequest: { owner: env.LINKEDIN_ACTOR_URN } })
+      })
+      out.initializeUpload = {
+        status: init.status,
+        error: init.ok ? null : (await init.text()).slice(0, 200)
+      }
+    }
+  }
+  return out
+}

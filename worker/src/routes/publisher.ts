@@ -1,7 +1,8 @@
 import type { Env } from '../types'
 import { jsonResponse } from '../cors'
-import { runPublisher } from '../publisher/run'
+import { runPublisher, linkedinCheck } from '../publisher/run'
 import { githubWriteCheck } from '../publisher/github'
+import { ensureLedger, record } from '../publisher/ledger'
 
 /**
  * Authority-campaign publisher ops endpoint, gated by Bearer PUBLISHER_SECRET
@@ -22,9 +23,23 @@ export async function handlePublisherRun(request: Request, env: Env): Promise<Re
   if (unauthorized(request, env)) {
     return jsonResponse({ success: false, error: 'Unauthorized.' }, 401, origin, env)
   }
-  if (new URL(request.url).searchParams.get('check') === 'write') {
+  const url = new URL(request.url)
+  const check = url.searchParams.get('check')
+  if (check === 'write') {
     const result = await githubWriteCheck(env)
     return jsonResponse({ success: result.ok, data: result }, result.ok ? 200 : 502, origin, env)
+  }
+  if (check === 'linkedin') {
+    const result = await linkedinCheck(env)
+    return jsonResponse({ success: true, data: result }, 200, origin, env)
+  }
+  // Mark an item's LinkedIn as already done (dedup when it was posted out-of-band, e.g.
+  // a manual catch-up) so the scheduled lane will not re-post it.
+  const mark = url.searchParams.get('mark')
+  if (mark) {
+    await ensureLedger(env)
+    await record(env, mark, 'linkedin_comment', 'manual')
+    return jsonResponse({ success: true, data: { marked: mark } }, 200, origin, env)
   }
   const results = await runPublisher(env)
   return jsonResponse({ success: true, data: { results } }, 200, origin, env)
