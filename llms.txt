@@ -45,7 +45,6 @@ Lamprey is a Woven Security & Governance Fabric - a software layer that secures 
 - [FAQ](https://islandmountain.io/faq.html)
 - [Resources (Direct-Answer Hub)](https://islandmountain.io/resources.html)
 - [About](https://islandmountain.io/about.html)
-- [Partnerships](https://islandmountain.io/partnerships.html)
 - [Contact/Quote](https://islandmountain.io/contact.html)
 - [Solutions by Industry](https://islandmountain.io/solutions.html)
 - [Tribal Nations](https://islandmountain.io/tribal-nations.html)
