@@ -4,10 +4,9 @@ SESSION-LOG.md
 DEVLOG.md
 _docs/
 _work/
-# Keep .claude/ private EXCEPT the committed SessionStart hook config, which must
-# be tracked so every fresh clone re-arms core.hooksPath (see tools/hooks/session-start.sh).
-.claude/*
-!.claude/settings.json
+# Claude/Cursor local settings — never in the public tree.
+# tools/hooks/session-start.sh still lives in-repo; point a local settings.json at it.
+.claude/
 
 # Funnel Worker — local secrets + dependencies (never serve from Pages)
 worker/.dev.vars
@@ -97,3 +96,49 @@ PLANNING/
 # LinkedIn six-week campaign — internal working files, plans, and icon cards; never in the public repo
 /linkedin-six-week-authority-campaign-2026-08-10/
 /cards/
+
+# Workshop dumps and agent/session docs — keep out of the public GitHub tree.
+# Scoped to repo root (leading /) so images/, video/, worker/, and tools/ stay commitable.
+*.bak
+/IMG_*.jpeg
+/IMG_*.jpg
+/IMG_*.JPG
+/IMG_*.GIF
+/IMG_*.gif
+/Screenshot *
+/Generated image *
+gemini_generated_*
+* - Copy.*
+/*.docx
+/CoWork *
+/AI Voice and Conversation Widget And CRM Project/
+/Agentic Orchestration and Woven Security Fabric/
+/Screenshots/
+/_pml-updates/
+/assets-src/
+/AGENTS.md
+/CLAUDE.md
+/INDEX.md
+/SESSION-RULES.md
+/CANON.md
+/BRAND.md
+/CONVENTIONS.md
+/ARCHITECTURE.md
+/DEPLOY.md
+/PRODUCTS.md
+/PROJECT.md
+/VERTICALS.md
+/SEO-STATE.md
+/AURORA-PRESENTATION-RESEARCH.md
+/ICON-BACKLOG.md
+/ICON-MAPPING.md
+/MOBILE-CONTENDER-DEVLOG.md
+/STYLE-CONTINUITY-AUDIT.md
+/TRAFFIC-AND-HOOK-AUDIT.md
+/VIDEO_BRANDING_WORKFLOW.md
+/ISLAND-MOUNTAIN-VISION-MISSION.md
+/THE-ISLAND-MOUNTAIN-DOCTRINE.md
+/SOVEREIGNTY-HANDOFF.md
+/SOVEREIGNTY-DOCKER-GATE-PROMPT.md
+/Long-running Agents.pdf
+/MEMRI Promo *
