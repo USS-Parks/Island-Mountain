@@ -62,6 +62,7 @@ Lamprey is a Woven Security & Governance Fabric - a software layer that secures 
 - [Air-Gapped AI Inference](https://islandmountain.io/air-gapped-ai-inference.html)
 
 ## Blog
+- [Snake Oil Passing for Water](https://islandmountain.io/blog/snake-oil-passing-for-water.html)
 - [Shadow AI Usually Arrives Before Policy](https://islandmountain.io/blog/shadow-ai-usually-arrives-before-policy.html)
 - [A Deployment Should Have an Ending](https://islandmountain.io/blog/a-deployment-should-have-an-ending.html)
 - [Concurrency Is a Workflow Question](https://islandmountain.io/blog/concurrency-is-a-workflow-question.html)
