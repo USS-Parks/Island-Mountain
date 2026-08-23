@@ -133,7 +133,7 @@
   <!-- Blog Index -->
   <url>
     <loc>https://islandmountain.io/blog.html</loc>
-    <lastmod>2026-08-02</lastmod>
+    <lastmod>2026-08-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -502,6 +502,12 @@
   <url>
     <loc>https://islandmountain.io/blog/snake-oil-passing-for-water.html</loc>
     <lastmod>2026-08-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://islandmountain.io/blog/the-appetite-didnt-leave-the-discount-did.html</loc>
+    <lastmod>2026-08-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
