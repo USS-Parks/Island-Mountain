@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+from datetime import datetime, timezone
 import html
 from html.parser import HTMLParser
 from pathlib import Path, PurePosixPath
@@ -12,6 +13,7 @@ import re
 import shutil
 import sys
 from urllib.parse import unquote, urlsplit
+import xml.etree.ElementTree as ET
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -20,10 +22,21 @@ TEXT_SUFFIXES = {".html", ".css", ".js"}
 REQUIRED_ROOT_FILES = (
     ".nojekyll",
     "CNAME",
+    "_redirects",
     "favicon.ico",
     "llms.txt",
     "robots.txt",
     "sitemap.xml",
+    "sitemap.txt",
+)
+SITEMAP_EXCLUDE = {
+    "404.html",
+    "style-guide.html",
+}
+SITEMAP_NS = "http://www.sitemaps.org/schemas/sitemap/0.9"
+REFRESH_RE = re.compile(
+    r'http-equiv=["\']refresh["\'][^>]*url=|url=[^>]*http-equiv=["\']refresh["\']',
+    re.IGNORECASE,
 )
 SEED_PATTERNS = (
     "*.html",
@@ -116,6 +129,107 @@ def local_path(raw_url: str, referring_file: PurePosixPath) -> PurePosixPath | N
     return PurePosixPath(normalized)
 
 
+def is_redirect_page(path: Path) -> bool:
+    """True for the short meta-refresh stubs used for retired URLs."""
+    text = path.read_text(encoding="utf-8", errors="replace")[:8000]
+    return bool(REFRESH_RE.search(text)) and "<nav" not in text.lower()
+
+
+def sitemap_priority(relative: PurePosixPath) -> str:
+    posix = relative.as_posix()
+    if posix == "index.html":
+        return "1.0"
+    if posix in {
+        "forward-deployed-ai-engineering.html",
+        "lamprey-woven-security-governance.html",
+        "solutions.html",
+    }:
+        return "0.9"
+    if posix in {
+        "faq.html",
+        "contact.html",
+        "resources.html",
+        "blog.html",
+        "on-premises-ai-cost-comparison.html",
+        "government.html",
+        "tribal-nations.html",
+        "education.html",
+        "casino-gaming.html",
+    }:
+        return "0.8"
+    if posix in {"privacy.html", "terms.html"}:
+        return "0.3"
+    return "0.7"
+
+
+def sitemap_changefreq(relative: PurePosixPath) -> str:
+    posix = relative.as_posix()
+    if posix in {"index.html", "blog.html"}:
+        return "weekly"
+    if posix in {"privacy.html", "terms.html"}:
+        return "yearly"
+    return "monthly"
+
+
+def public_loc(relative: PurePosixPath) -> str:
+    if relative.as_posix() == "index.html":
+        return "https://islandmountain.io/"
+    return f"https://islandmountain.io/{relative.as_posix()}"
+
+
+def write_sitemaps(output: Path, copied: set[PurePosixPath]) -> tuple[int, int]:
+    """Write a comment-free XML sitemap and a text sitemap of living public URLs."""
+    entries: list[tuple[str, str, str, str]] = []
+    for relative in sorted(copied, key=lambda item: item.as_posix()):
+        if relative.suffix.lower() != ".html":
+            continue
+        if relative.name.lower().startswith("google"):
+            continue
+        if relative.as_posix() in SITEMAP_EXCLUDE or relative.name in SITEMAP_EXCLUDE:
+            continue
+        source = output.joinpath(*relative.parts)
+        if is_redirect_page(source):
+            continue
+        lastmod = datetime.fromtimestamp(source.stat().st_mtime, tz=timezone.utc).date().isoformat()
+        entries.append(
+            (
+                public_loc(relative),
+                lastmod,
+                sitemap_changefreq(relative),
+                sitemap_priority(relative),
+            )
+        )
+
+    xml_lines = [
+        '<?xml version="1.0" encoding="UTF-8"?>',
+        f'<urlset xmlns="{SITEMAP_NS}">',
+    ]
+    for loc, lastmod, changefreq, priority in entries:
+        xml_lines.extend(
+            (
+                "  <url>",
+                f"    <loc>{html.escape(loc, quote=True)}</loc>",
+                f"    <lastmod>{lastmod}</lastmod>",
+                f"    <changefreq>{changefreq}</changefreq>",
+                f"    <priority>{priority}</priority>",
+                "  </url>",
+            )
+        )
+    xml_lines.append("</urlset>")
+    xml_lines.append("")
+    xml_text = "\n".join(xml_lines)
+    (output / "sitemap.xml").write_text(xml_text, encoding="utf-8")
+    (output / "sitemap.txt").write_text(
+        "".join(f"{loc}\n" for loc, _, _, _ in entries), encoding="utf-8"
+    )
+
+    parsed = ET.fromstring(xml_text)
+    found = parsed.findall(f"{{{SITEMAP_NS}}}url/{{{SITEMAP_NS}}}loc")
+    if len(found) != len(entries):
+        raise SystemExit("generated sitemap.xml failed XML validation")
+    return len(entries), len(xml_text)
+
+
 def discover_urls(source: Path, relative: PurePosixPath) -> list[tuple[str, bool]]:
     text = source.read_text(encoding="utf-8")
     if source.suffix.lower() == ".html":
@@ -195,11 +309,14 @@ def main() -> int:
             raise SystemExit(f"HTML document is missing </html>: {relative}")
 
     html_files = sorted(output.rglob("*.html"))
+    url_count, sitemap_bytes = write_sitemaps(output, copied)
+    copied.add(PurePosixPath("sitemap.txt"))
 
     byte_count = sum(path.stat().st_size for path in output.rglob("*") if path.is_file())
     print(
         f"Built curated Pages artifact: {len(copied)} files, "
-        f"{len(html_files)} HTML documents, {byte_count / 1024 / 1024:.2f} MiB"
+        f"{len(html_files)} HTML documents, {byte_count / 1024 / 1024:.2f} MiB, "
+        f"{url_count} sitemap URLs ({sitemap_bytes} bytes)"
     )
     return 0
 

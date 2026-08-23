@@ -38,5 +38,7 @@ Allow: /
 User-agent: AhrefsSiteAudit
 Disallow: /cdn-cgi/
 
-# Sitemap location
+# Sitemap location. sitemap.xml is the canonical XML map; sitemap.txt is a
+# plain-text fallback (GitHub Pages serves .txt reliably when XML is challenged).
 Sitemap: https://islandmountain.io/sitemap.xml
+Sitemap: https://islandmountain.io/sitemap.txt

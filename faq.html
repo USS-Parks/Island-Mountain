@@ -208,7 +208,7 @@
         "name": "Which models do we get, and are we stuck with them?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Open-source, open-weight models chosen to fit your work, and no, you are never stuck with them. The model layer is as swappable as the hardware. A deployment often lands with a reasoning and general-purpose model like DeepSeek V4-Flash at FP8, a strong generalist like Llama 4 Scout, and a third picked for your domain: DeepSeek R1 70B Distill (MIT, explicit chain-of-thought for legal and compliance work) or Qwen 3 72B (Apache 2.0, enterprise general performance). All carry permissive open-source licenses with no usage restrictions; you own them outright and switch between them in the OpenWebUI dropdown. Any compatible open-weight model that fits your VRAM can be pulled through Ollama or OpenWebUI, so as the frontier moves you swap rather than renegotiate."
+          "text": "Open-source, open-weight models chosen to fit your work, and no, you are never stuck with them. The model layer is as swappable as the hardware. There is no fixed stack: Discovery picks the weights after the work has been watched. Current open-weight families such as DeepSeek V4-Flash, Llama 4 Scout, DeepSeek R1, or Qwen 3 are examples, not a catalog. All carry permissive open-source licenses with no usage restrictions; you own them outright and switch between them in the OpenWebUI dropdown. Any compatible open-weight model that fits your VRAM can be pulled through Ollama or OpenWebUI, so as the frontier moves you swap rather than renegotiate."
         }
       },
       {
@@ -464,10 +464,10 @@
   <!-- Topic marquee -->
   <div class="au-marquee" aria-label="FAQ topics">
     <div class="au-marquee__track">
-      <span class="au-mq-item">Air-Gapped AI</span><span class="au-mq-item">HIPAA</span><span class="au-mq-item">Attorney-Client Privilege</span><span class="au-mq-item">ITAR / CMMC</span><span class="au-mq-item">Tribal Sovereignty</span><span class="au-mq-item">Woven Security Fabric</span><span class="au-mq-item">Zero Standing Privilege</span><span class="au-mq-item">Any Open-Weight Model</span><span class="au-mq-item">DeepSeek V4-Flash</span><span class="au-mq-item">Quote-Based</span>
+      <span class="au-mq-item">Air-Gapped AI</span><span class="au-mq-item">HIPAA</span><span class="au-mq-item">Attorney-Client Privilege</span><span class="au-mq-item">ITAR / CMMC</span><span class="au-mq-item">Tribal Sovereignty</span><span class="au-mq-item">Woven Security Fabric</span><span class="au-mq-item">Zero Standing Privilege</span><span class="au-mq-item">Any Open-Weight Model</span><span class="au-mq-item">Quote-Based</span>
     </div>
     <div class="au-marquee__track" aria-hidden="true">
-      <span class="au-mq-item">Air-Gapped AI</span><span class="au-mq-item">HIPAA</span><span class="au-mq-item">Attorney-Client Privilege</span><span class="au-mq-item">ITAR / CMMC</span><span class="au-mq-item">Tribal Sovereignty</span><span class="au-mq-item">Woven Security Fabric</span><span class="au-mq-item">Zero Standing Privilege</span><span class="au-mq-item">Any Open-Weight Model</span><span class="au-mq-item">DeepSeek V4-Flash</span><span class="au-mq-item">Quote-Based</span>
+      <span class="au-mq-item">Air-Gapped AI</span><span class="au-mq-item">HIPAA</span><span class="au-mq-item">Attorney-Client Privilege</span><span class="au-mq-item">ITAR / CMMC</span><span class="au-mq-item">Tribal Sovereignty</span><span class="au-mq-item">Woven Security Fabric</span><span class="au-mq-item">Zero Standing Privilege</span><span class="au-mq-item">Any Open-Weight Model</span><span class="au-mq-item">Quote-Based</span>
     </div>
   </div>
 
@@ -687,7 +687,7 @@
         <div class="faq-item beam-card au-reveal" style="--i:16">
           <h3>Which models do we get, and are we stuck with them?</h3>
           <div class="faq-answer">
-            <p><strong>Open-source, open-weight models chosen to fit your work, and no, you are never stuck with them.</strong> The model layer is as swappable as the hardware. A deployment typically lands with a reasoning and general-purpose model like <strong>DeepSeek V4-Flash</strong> at FP8, a strong generalist like <strong>Llama 4 Scout</strong>, and a third picked for your domain: <strong>DeepSeek R1 70B Distill</strong> (MIT, explicit chain-of-thought, useful for legal and compliance work) or <strong>Qwen 3 72B</strong> (Apache 2.0, enterprise general performance).</p>
+            <p><strong>Open-source, open-weight models chosen to fit your work, and no, you are never stuck with them.</strong> The model layer is as swappable as the hardware. There is no fixed stack: Discovery picks the weights after the work has been watched. Current open-weight families such as <strong>DeepSeek V4-Flash</strong>, <strong>Llama 4 Scout</strong>, <strong>DeepSeek R1</strong>, or <strong>Qwen 3</strong> are examples, not a catalog.</p>
             <p>All carry permissive open-source licenses with no usage restrictions. You own them outright and switch between them in the OpenWebUI dropdown. Any compatible open-weight model that fits your VRAM can be pulled through Ollama or OpenWebUI, so as the frontier moves you swap rather than renegotiate. That is the point of open weights: no lab holds a meter on you, and nobody can deprecate the model your workflow depends on. For the first 30 days we walk your team through model management directly.</p>
           </div>
         </div>
@@ -751,15 +751,16 @@
           <h3>How does pricing work?</h3>
           <div class="faq-answer">
             <p><strong>Pricing is scoped to your workload and headcount, and every number comes from a conversation, not a configurator.</strong> You tell us what you are running, how many people need access, and which models matter; we spec the right system and put a written quote in front of you.</p>
-            <p>Each build is a one-time hardware purchase with no subscription fees, no per-token charges, and no recurring software licensing. The models are open-source, OpenWebUI is open-source, and the operating system is Ubuntu Server LTS. There is no public price list because sizing sovereign infrastructure is a human decision, not a shopping-cart line item. <a href="contact.html">Talk to the builder</a> to get a number, or call <a href="tel:+13414418740">1-341-441-8740</a>.</p>
+            <p>Each build is a one-time hardware purchase with no subscription fees, no per-token charges, and no recurring software licensing. The models are open-source, OpenWebUI is open-source, and the operating system is Ubuntu Server LTS. There is no public price list because sizing sovereign infrastructure is a human decision, not a shopping-cart line item. <a href="contact.html">Talk to the builder</a> to get a number, or call <a href="tel:+13414418740">1-341-441-8740</a>
+ <a href="mailto:basho@islandmountain.io">basho@islandmountain.io</a>.</p>
           </div>
         </div>
 
         <div class="faq-item beam-card au-reveal" style="--i:22">
           <h3>How does an engagement start, and how long until we are running?</h3>
           <div class="faq-answer">
-            <p><strong>It starts with a scoping call, then time on-site with your people, then a written quote scoped to what we found.</strong> We do not spec speculatively. Once the design is agreed, that triggers sourcing of your specific GPUs and components through authorized NVIDIA channels with full procurement documentation. Terms are handled directly, human to human, no automated checkout.</p>
-            <p>Hardware lead time runs roughly 3 to 5 weeks, longer when the build calls for parts sourced per order. That clock overlaps the workflow study rather than following it, so the schedule is usually set by how quickly we can get the right hours with the right people, not by shipping. The system is configured and air-gapped before it lands, so once it is racked and powered (208V/30A) most organizations run their first real prompts the same day. Every deployment includes 30 days of hands-on support with direct access to the engineer who built it.</p>
+            <p><strong>It starts with a scoping call, then time on-site with your people, then a written quote scoped to what we found.</strong> We do not spec speculatively. Once the design is agreed, that triggers sourcing of the specific components through authorized channels with full procurement documentation. Terms are handled directly, human to human, no automated checkout.</p>
+            <p>Hardware lead time runs roughly 3 to 5 weeks, longer when the build calls for parts sourced per order. That clock overlaps the workflow study rather than following it, so the schedule is usually set by how quickly we can get the right hours with the right people, not by shipping. The system is configured and air-gapped before it lands, so once it is racked and powered most organizations run their first real prompts the same day. Power and cooling follow the configuration, not a stock SKU. Every deployment includes 30 days of hands-on support with direct access to the engineer who built it.</p>
           </div>
         </div>
 
@@ -768,7 +769,8 @@
           <h3>What warranty comes with it, and what if a component fails?</h3>
           <div class="faq-answer">
             <p><strong>Every system ships with a 1-year hardware warranty covering all components</strong>, including GPUs, CPU, RAM, storage drives, and power supplies. If a component fails within the first year, we handle the replacement.</p>
-            <p>GPU failures are managed through supplier RMA agreements with documented replacement timelines, and we hold a 20% warranty reserve per unit so replacements are not waiting on budget. You contact the builder directly (phone <a href="tel:+13414418740">1-341-441-8740</a> or email), we diagnose remotely, and we ship the part or arrange a swap. Extended warranty options are available at the time of purchase, and after warranty, support is available per incident or on an annual retainer.</p>
+            <p>GPU failures are managed through supplier RMA agreements with documented replacement timelines, and we hold a 20% warranty reserve per unit so replacements are not waiting on budget. You contact the builder directly (phone <a href="tel:+13414418740">1-341-441-8740</a>
+ <a href="mailto:basho@islandmountain.io">basho@islandmountain.io</a> or email), we diagnose remotely, and we ship the part or arrange a swap. Extended warranty options are available at the time of purchase, and after warranty, support is available per incident or on an annual retainer.</p>
           </div>
         </div>
 
@@ -869,6 +871,7 @@
           <img src="images/im-badge.webp" alt="Island Mountain" width="200" height="183" class="d-block-mb" loading="lazy">
           <p>Forward-deployed AI engineering for regulated organizations. We learn the workflow on-site, then build the independent on-premise system around it, with the Woven Security &amp; Governance Fabric woven through. California built.</p>
           <p class="mt-8"><i class="ri-phone-line icon-copper-mr"></i><a href="tel:+13414418740" class="clr-muted">1-341-441-8740</a></p>
+          <p class="mt-8"><i class="ri-mail-line icon-copper-mr"></i><a href="mailto:basho@islandmountain.io" class="clr-muted">basho@islandmountain.io</a></p>
           <div class="au-social">
             <a href="https://www.linkedin.com/company/island-mountain-llc/" target="_blank" rel="noopener" aria-label="Island Mountain on LinkedIn"><i class="ri-linkedin-fill"></i></a>
             <a href="https://x.com/IslandMountain_" target="_blank" rel="noopener" aria-label="Island Mountain on X"><i class="ri-twitter-x-fill"></i></a>
@@ -885,8 +888,8 @@
           <h3><a href="solutions.html">Solutions</a></h3>
           <ul class="footer-links footer-links--split">
             <li><a href="tribal-nations.html">Tribal Nations</a></li>
-            <li><a href="government.html">Government</a></li>
-            <li><a href="education.html">Education</a></li>
+            <li><a href="government.html">Local Government</a></li>
+            <li><a href="education.html">Higher Learning</a></li>
             <li><a href="casino-gaming.html">Casino Gaming</a></li>
             <li><a href="law-firms.html">Law Firms</a></li>
             <li><a href="medical-practices.html">Medical Practices</a></li>
@@ -935,6 +938,7 @@
           <a href="terms.html">Terms of Service</a>
           <a href="contact.html">Start a Scoping Call</a>
           <a href="tel:+13414418740">1-341-441-8740</a>
+          <a href="mailto:basho@islandmountain.io">basho@islandmountain.io</a>
           <a href="https://www.linkedin.com/company/island-mountain-llc/" target="_blank" rel="noopener">LinkedIn</a>
           <a href="https://x.com/IslandMountain_" target="_blank" rel="noopener">X</a>
         </div>
