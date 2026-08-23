@@ -91,7 +91,7 @@
   "inLanguage": "en-US",
   "keywords": "DeepSeek V4 Flash, DeepSeek V4 Pro, OpenCode, open-weight models, on-premises AI, token pricing",
   "articleSection": "Forward Deployed AI",
-  "wordCount": 716,
+  "wordCount": 418,
   "author": {
     "@type": "Person",
     "name": "Basho Parks"
@@ -194,7 +194,7 @@
           <span class="article-date">August 23, 2026</span>
           <span class="article-tag tag-strategy">Strategy</span>
           <span class="article-tag tag-industry">Industry</span>
-          <span class="article-read-time">4 min read</span>
+          <span class="article-read-time">2 min read</span>
         </div>
         <h1 class="text-2xl">The Appetite Didn't Leave. The Discount Did.</h1>
         <p class="article-author">Basho Parks</p>
@@ -202,30 +202,17 @@
 
       <article class="article-body">
 
-<p><a href="https://opencode.ai/data/deepseek/deepseek-v4-flash" target="_blank" rel="noopener">Jay, the CEO of OpenCode</a>, pinned the numbers this week and they are the most honest thing the industry has published in months. DeepSeek V4 Flash landed on his platform August 1. Inside two weeks, daily volume went from about 3 trillion tokens to 18 trillion. That is a 6x jump, nearly double OpenRouter's whole daily book, and a third to half of DeepSeek's own traffic. He priced the reason without poetry: 350x cheaper than Fable, 175x cheaper than 5.6 Sol, 70x cheaper than Sonnet, 7x cheaper than Luna. Users treated it like AI so cheap you stop measuring.</p>
+<p><a href="https://opencode.ai/data/deepseek/deepseek-v4-flash" target="_blank" rel="noopener">Jay, the CEO of OpenCode</a>, pinned the numbers this week. DeepSeek V4 Flash hit his platform August 1. Inside two weeks daily volume went from about 3 trillion tokens to 18 trillion — 6x, nearly double OpenRouter's whole daily book, 30 to 50 percent of DeepSeek's own traffic. He priced the reason without dressing it up: 350x cheaper than Fable, 175x cheaper than 5.6 Sol, 70x cheaper than Sonnet, 7x cheaper than Luna. Users treated it like AI so cheap you stop measuring.</p>
 
-<p>On August 16, DeepSeek raised the meter. Five times at peak hours, two and a half off-peak. Growth stopped. Daily volume fell to less than half the peak. Jay's reading is the one I would make: the lab could not hold a 6x volume shock, GPUs got more expensive, and the original price was a gift the silicon could not keep paying. He is hunting providers to fill a 10-trillion-token-a-day hole, and matching the old price takes on the order of a thousand B300s. People running Flash through OpenCode Go have been riding provider swaps while that hunt runs.</p>
+<p>August 16, DeepSeek raised the meter. 5x at peak hours, 2.5x off-peak. Growth stopped. Daily volume fell to less than half the peak. Jay's read is the one I'd make: they couldn't hold a 6x volume shock, GPUs got more expensive, and the original price was a gift the silicon couldn't keep paying. He's hunting providers to fill a 10-trillion-token-a-day hole, and matching the old price takes on the order of a thousand B300s. People running Flash on Go have been riding provider swaps while that hunt runs.</p>
 
-<p>The industry will try to file that under capacity hiccup. It is not a hiccup. It is the demand curve, printed in public, for a model that is competent and cheap enough that people actually use it. The appetite did not leave on August 16. The discount did.</p>
+<p>That's not a capacity hiccup. That's the demand curve, printed. The appetite didn't leave on August 16. The discount did.</p>
 
-<h2>August 23 Is the Switch, Not the Honeymoon</h2>
+<p>And right now — August 23, 2026 — so many users and companies are eager to switch to DeepSeek V4 Flash and Pro at scale that you can feel the floor move. It's an exciting time, watching Anthropic's dog and pony show glamor sunset itself into obsolescence ahead of a $2T+ IPO for an essentially nonexistent competitive moat. A brand, a safety deck, and a price list isn't a moat once the buyer has a file they can put on a drive. The market just proved it will abandon a premium meter the week a competent open-weight model is priced like a utility.</p>
 
-<p>Companies are lining up for Flash and Pro at organizational scale the same way they lined up for the cheap API in the first two weeks of August. That eagerness is real. I am watching it in the same rooms I have been sitting in all year. If they do that switch on somebody else's GPUs, they are buying the story Jay just watched collapse: a price that lasts until the provider's fleet runs hot.</p>
+<p>If they make that switch on somebody else's GPUs, they're buying the story Jay just watched collapse: a price that lasts until the provider's fleet runs hot. A rented token is a rented policy. DeepSeek can change the rate on a Sunday. OpenCode can cycle providers. Your workflow doesn't get a vote.</p>
 
-<p>A rented token is a rented policy. DeepSeek can change the rate on a Sunday. OpenCode can cycle providers. Your workflow does not get a vote. The same weights, on iron you own, do not have a peak-hour surcharge, because there is no hour that belongs to somebody else's billing calendar.</p>
-
-<p>I wrote the <a href="deepseek-v4-flash-local-deployment.html">local-deployment arithmetic for V4-Flash in April</a>: 284 billion parameters, about 13 billion active, MIT license, 192GB of VRAM at FP8. The weights have not gotten less interesting since then. What is new is the market finally saying the quiet part at a volume no slide deck can talk away. Pro sits next to Flash as the heavier sibling on the same meter. The API version of either plan has a half-life. The file on the drive does not.</p>
-
-<h2>A Meter Is Not a Moat</h2>
-
-<p>The comparison Jay published is the one the frontier labs should be losing sleep over, and not because Flash beat Opus on a leaderboard. Because the market just demonstrated it will abandon a premium meter the week a competent open-weight model is priced like a utility. Anthropic can take a two-trillion-dollar IPO story on the road. A moat that exists mostly as brand, a safety deck, and a price list is not a moat once the buyer has a file they can put on a drive. The glamor sunset is not a dunk. It is what a missing cost advantage looks like when the volume finally shows up.</p>
-
-<p>If you want Flash and Pro at the scale those two weeks proved is real, stop shopping for the next subsidized API. Run the weights. I already did the bandwidth math. Jay just did the demand math. Neither number cares about the roadshow.</p>
-
-<!-- AEO Summary -->
-<div style="border-left:3px solid var(--copper);padding:16px 20px;margin:32px 0;background:rgba(217,119,6,0.05);border-radius:0 8px 8px 0;">
-<strong>Summary:</strong> OpenCode's CEO reported DeepSeek V4 Flash jumping from about 3 trillion to 18 trillion tokens a day in the two weeks after August 1, then losing more than half that volume after a 5x peak / 2.5x off-peak price hike on August 16, leaving a roughly 10-trillion-token-a-day gap. That is demand for a competent cheap model, not a promo that expired. Organizations switching to Flash and Pro at scale on August 23 inherit the same meter risk if they rent the GPUs. The MIT-licensed weights on hardware you own do not have a peak-hour surcharge.
-</div>
+<p>I wrote the <a href="deepseek-v4-flash-local-deployment.html">local-deployment arithmetic for V4-Flash in April</a>: 284 billion parameters, about 13 billion active, MIT license, 192GB of VRAM at FP8. The weights haven't gotten less interesting. What's new is the volume. If you want Flash and Pro at the scale those two weeks proved is real, run the weights. I already did the bandwidth math. Jay just did the demand math. Neither number cares about the roadshow.</p>
 
       </article>
 
