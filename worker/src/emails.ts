@@ -90,12 +90,13 @@ export function docsEmail(fields: LeadFields): { subject: string; html: string }
 
 // ---------------------------------------------------------------------------
 // Cost worksheet + build-slot emails (the two capture paths).
-// The Summit comparison figures below are PRIVATE: they travel only in email,
-// never in site HTML — the public posture is quote-based with no price list.
+// The comparison figures below are PRIVATE: they travel only in email,
+// never in site HTML — the public posture is quote-based with no price list,
+// no named SKUs, no product lines. Every build is scoped after Discovery.
 // ---------------------------------------------------------------------------
 
-const SUMMIT_BASE_RANGE = '$59,000–$69,000'
-const SUMMIT_BASE_MID = 64000
+const ENTRY_BUILD_RANGE = '$59,000–$69,000'
+const ENTRY_BUILD_MID = 64000
 
 const INDUSTRY_BRIEFS: [RegExp, { label: string; url: string }][] = [
   [
@@ -159,7 +160,7 @@ export function briefFor(industry: string): { label: string; url: string } {
 
 const usd = (n: number) => '$' + Math.round(n).toLocaleString('en-US')
 
-/** The emailed worksheet: the visitor's own numbers + the private Summit comparison. */
+/** The emailed worksheet: the visitor's own numbers + the private ownership comparison. */
 export function worksheetEmail(
   industry: string,
   calc: { seats: number; monthlySpend: number; growth: number; years: number[]; total: number }
@@ -175,22 +176,22 @@ export function worksheetEmail(
     .join('')
 
   const breakEvenMonths =
-    calc.monthlySpend > 0 ? Math.ceil(SUMMIT_BASE_MID / calc.monthlySpend) : null
+    calc.monthlySpend > 0 ? Math.ceil(ENTRY_BUILD_MID / calc.monthlySpend) : null
   const comparison =
     breakEvenMonths === null
       ? `<p>You entered no current cloud spend, so there is no burn to compare against yet —
-         but the ownership math is simple: a Summit Base (the two-GPU configuration most teams
-         start with) typically lands in the <strong>${SUMMIT_BASE_RANGE}</strong> range as a
-         one-time purchase, with your exact number coming from a scoped quote.</p>`
+         but the ownership math is simple: the two-GPU configuration most teams start with
+         typically lands in the <strong>${ENTRY_BUILD_RANGE}</strong> range as a
+         one-time purchase, with your exact number coming from a scoped quote after Discovery.</p>`
       : breakEvenMonths <= 36
-        ? `<p>Here is the comparison we don't publish on the site: a Summit Base — the two-GPU
-           configuration most teams start with — typically lands in the
-           <strong>${SUMMIT_BASE_RANGE}</strong> range as a one-time purchase (your exact number
-           comes from a scoped quote). At your current spend of ${usd(calc.monthlySpend)}/month,
+        ? `<p>Here is the comparison we don't publish on the site: the two-GPU
+           configuration most teams start with typically lands in the
+           <strong>${ENTRY_BUILD_RANGE}</strong> range as a one-time purchase (your exact number
+           comes from a scoped quote after Discovery). At your current spend of ${usd(calc.monthlySpend)}/month,
            that is <strong>break-even in roughly ${breakEvenMonths} month${breakEvenMonths === 1 ? '' : 's'}</strong>.
            Everything after that is spend you keep instead of rent — and the hardware, the models,
            and every prompt stay on your premises.</p>`
-        : `<p>Honest math first: a Summit Base typically lands in the <strong>${SUMMIT_BASE_RANGE}</strong>
+        : `<p>Honest math first: the two-GPU starter configuration typically lands in the <strong>${ENTRY_BUILD_RANGE}</strong>
            range one-time, which at your current spend of ${usd(calc.monthlySpend)}/month works out to
            break-even around ${breakEvenMonths} months. If your usage stays this light, cloud may remain
            the cheaper path until it grows — we would rather tell you that now than after a serious

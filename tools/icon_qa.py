@@ -30,7 +30,9 @@ VIEW = 104                      # the largest slot the site renders an icon at
 GATES = {
     'solidity_min': 0.30,       # share of inked pixels still solid white at 104px
     'ink_min': 0.090,           # too little and the icon reads as empty
-    'ink_max': 0.275,           # too much and it reads as a filled block
+    'ink_max': 0.30,            # too much and it reads as a filled block
+                                # (widened .275 -> .30, 2026-08-08: dense generated
+                                # sources; legibility is solidity's job, not this)
     'fill_max': 0.88,           # art must leave a margin round the canvas
     'fill_min': 0.82,           # icon_ingest fits to ~0.85; below this it never
                                 # went through the tool

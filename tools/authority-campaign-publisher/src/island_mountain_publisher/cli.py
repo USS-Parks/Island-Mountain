@@ -52,8 +52,9 @@ def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
         "command",
-        choices=("status", "run-due", "publish-blog", "publish-linkedin", "scorecard"),
+        choices=("status", "run-due", "publish-blog", "publish-linkedin", "scorecard", "watch"),
     )
+    parser.add_argument("--day", help="watch: audit this date (YYYY-MM-DD, default today)")
     parser.add_argument("--item", help="campaign ID for an explicit publication command")
     parser.add_argument("--week", type=int, help="campaign week number for the scorecard")
     parser.add_argument("--d1-json", type=Path, help="scorecard: wrangler d1 JSON export to read")
@@ -62,6 +63,15 @@ def main(argv: list[str] | None = None) -> int:
         "--d1-live", action="store_true", help="scorecard: query D1 live through wrangler"
     )
     args = parser.parse_args(argv)
+    if args.command == "watch":
+        from datetime import date
+
+        from .watchstander import run_watch
+
+        return run_watch(
+            _repository_root(),
+            date.fromisoformat(args.day) if args.day else None,
+        )
     if args.command == "scorecard":
         if args.week is None:
             parser.error("--week is required for the scorecard command")

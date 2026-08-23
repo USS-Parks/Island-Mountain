@@ -15,8 +15,11 @@ weight ended up ranging 3.8x across the set). This does all of it:
   save          -> lossless webp
 
     python tools/icon_ingest.py icons/document-drafting.png images/document-drafting-icon.webp
+    python tools/icon_ingest.py icons/foo.png out/foo-icon.webp --size 832   # 4x delivery (LinkedIn)
 
-icons/ holds the hi-res masters; images/ holds the 208 delivery icons. The site
+--size sets the delivery raster only; the treatment (fit, stroke canon) is
+identical at any size, so a --size 832 file downsampled to 208 IS the canon
+delivery. icons/ holds the hi-res masters; images/ holds the 208 delivery icons. The site
 renders them with weight but NO glow (see css/style.css) — the weight lives in
 the stroke, which is why the stroke width is normalized here, canonically. Run
 tools/icon_qa.py on the output before it goes near a page.
@@ -65,7 +68,11 @@ def _source_alpha(src: str) -> Image.Image:
     return Image.fromarray((keyed * 255).astype("uint8"))
 
 
-def ingest(src: str, dst: str) -> None:
+def ingest(src: str, dst: str, keep_weight: bool = False, size: int = SIZE) -> None:
+    """keep_weight: skip stroke normalization. For emblem-style art with solid
+    fills (trophy, dial, filled chip), the fill skews the mean-width measure and
+    the normalizer erodes real detail (dots, ticks) chasing it. The master must
+    already sit inside the QA stroke band at delivery scale."""
     alpha = _source_alpha(src)
 
     bbox = alpha.point(lambda v: 255 if v > 38 else 0).getbbox()
@@ -86,24 +93,48 @@ def ingest(src: str, dst: str) -> None:
     a = np.asarray(canvas, dtype=np.float32) / 255.0
     width = _stroke_width(a)
     delta = CANON_STROKE - width
+    if keep_weight:
+        delta = 0.0
     if abs(delta) >= 1.0:                    # sub-pixel deltas aren't worth touching
-        foot = _disk(abs(delta) / 2.0)
-        a = ndimage.grey_dilation(a, footprint=foot) if delta > 0 \
-            else ndimage.grey_erosion(a, footprint=foot)
+        # Converge on the LANDED width, not the open-loop delta/2 radius: on dense
+        # art each dilation step also closes inter-line gaps, which inflates the
+        # measured width, so the open-loop radius overshoots and fuses detail into
+        # mush (2026-08-08 batch: landed 15-18 against a target of 10). Step the
+        # radius and stop at the first result that reaches CANON_STROKE.
+        op = ndimage.grey_dilation if delta > 0 else ndimage.grey_erosion
+        prev, prev_w = a, width
+        for r in range(1, int(np.ceil(abs(delta) / 2.0)) + 1):
+            cand = np.clip(op(a, footprint=_disk(r)), 0, 1)
+            w = _stroke_width(cand)
+            if (delta > 0) == (w >= CANON_STROKE):
+                # crossing step: if it badly overshot and the previous step was
+                # already inside the QA band (>=8.8 @WORK), the thinner one wins
+                a = prev if (abs(w - CANON_STROKE) > 4.0 and prev_w >= 8.8) else cand
+                break
+            prev, prev_w = cand, w
+        else:
+            a = prev
     a = np.clip(a, 0, 1)
 
-    final_alpha = Image.fromarray((a * 255).astype("uint8")).resize((SIZE, SIZE), Image.LANCZOS)
-    out = Image.merge("RGBA", (Image.new("L", (SIZE, SIZE), 255),) * 3 + (final_alpha,))
+    final_alpha = Image.fromarray((a * 255).astype("uint8")).resize((size, size), Image.LANCZOS)
+    out = Image.merge("RGBA", (Image.new("L", (size, size), 255),) * 3 + (final_alpha,))
     os.makedirs(os.path.dirname(dst) or ".", exist_ok=True)
     out.save(dst, "WEBP", lossless=True, quality=100, method=6)
 
-    landed = _stroke_width(np.asarray(final_alpha, dtype=np.float32) / 255.0) * WORK / SIZE
+    landed = _stroke_width(np.asarray(final_alpha, dtype=np.float32) / 255.0) * WORK / size
     print("%s -> %s  (stroke %.1f -> %.1f @%d, %.1fK)"
           % (os.path.basename(src), dst, width, landed, WORK, os.path.getsize(dst) / 1024))
 
 
 if __name__ == "__main__":
-    if len(sys.argv) != 3:
+    argv = sys.argv[1:]
+    size = SIZE
+    if "--size" in argv:
+        i = argv.index("--size")
+        size = int(argv[i + 1])
+        del argv[i:i + 2]
+    args = [a for a in argv if a != "--keep-weight"]
+    if len(args) != 2:
         print(__doc__)
         sys.exit(1)
-    ingest(sys.argv[1], sys.argv[2])
+    ingest(args[0], args[1], keep_weight="--keep-weight" in argv, size=size)

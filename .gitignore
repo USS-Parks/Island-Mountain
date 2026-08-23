@@ -142,3 +142,56 @@ gemini_generated_*
 /SOVEREIGNTY-DOCKER-GATE-PROMPT.md
 /Long-running Agents.pdf
 /MEMRI Promo *
+
+# Cold outreach templates — internal sales assets, never in the public repo (this repo is PUBLIC)
+/Cold Outreach Templates/
+
+# ─────────────────────────────────────────────────────────────────────────
+# Financial artifacts — LOCAL ONLY, NEVER on GitHub (this repo is PUBLIC).
+# Pro forma, COGS, BOM, financial models + their decks/intakes/reviews/locks.
+# This repo is a website; no spreadsheet is ever meant to be served or tracked.
+*.xlsx
+*.xlsm
+*.xlsb
+*PRO-FORMA*
+*Pro-Forma*
+*pro-forma*
+*proforma*
+*PROFORMA*
+*COGS*
+*cogs*
+*-BOM.*
+*BOM*.xlsx
+*Financial-Model*
+*financial-model*
+IM-PRO-FORMA*
+# Business plan now carries the raise + financial tables — treat as a financial artifact.
+*BUSINESS-PLAN*
+*Business-Plan*
+*business-plan*
+bom_preview.html
+# Office/temp lock files (~$… shadow files)
+~$*
+
+# graft's local graph cache — regenerable, not committed (run `graft build`).
+/graft/
+
+# ─────────────────────────────────────────────────────────────────────────
+# Private local materials — this repo is PUBLIC (GitHub Pages from main).
+# Entity filings, tax letters, TTX/SitMan packages, and named private papers.
+/Formation Documents/
+/Emergency Management White Paper and TTX SitMan/
+*Cascadian*Shadow*
+*Cascadian_Shadow*
+
+# Loose private papers that keep landing in the site root
+/30 Content Ideas for Basho Parks.docx
+/Abstract_Moving_Ceiling.docx
+/Author_Bio_Moving_Ceiling.docx
+/LINKEDIN-CAMPAIGN-AUTOPSY-*.md
+/NVIDIA-PITCH-DECK-CLAUDE-DESIGN-PROMPT.md
+/Local_AI_for_a_bad_Tuesday.m4a
+/blog-draft-*.md
+
+# Live-worker inspection dumps (assistant IDs, webhook secrets, full prompts)
+worker/.audit-*.json

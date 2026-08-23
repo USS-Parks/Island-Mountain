@@ -51,7 +51,7 @@ export function computeBurn(seats: number, monthlySpend: number, growth: number)
 /**
  * POST /api/worksheet — the cost-worksheet email gate.
  * Persists a lead (source=form, cold/followup: no auto docs email), then sends
- * the worksheet email carrying the private Summit comparison. One send per
+ * the worksheet email carrying the private ownership comparison. One send per
  * email address per hour; standard IP limits apply.
  */
 export async function handleWorksheet(request: Request, env: Env): Promise<Response> {

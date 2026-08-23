@@ -11,8 +11,9 @@ import re
 import subprocess
 import urllib.request
 from dataclasses import dataclass
-from datetime import date
+from datetime import UTC, date, datetime
 from pathlib import Path
+from zoneinfo import ZoneInfo
 
 from .approvals import ApprovalBundle, load_approvals, load_manifest
 from .ledger import JsonlLedger, LedgerError
@@ -256,3 +257,30 @@ def audit_day(
     env_text = env_path.read_text(encoding="utf-8") if env_path.exists() else ""
     findings.extend(check_runways(manifest, approvals, env_text, today))
     return tuple(findings)
+
+
+CAMPAIGN_DIR = "linkedin-six-week-authority-campaign-2026-08-10"
+
+
+def run_watch(repository_root: Path, day: date | None = None) -> int:
+    """CLI lane: audit one day, append to WATCH-LOG.md, exit 0 green / 3 red."""
+    now = datetime.now(UTC).astimezone(ZoneInfo("America/Los_Angeles"))
+    target = day or now.date()
+    campaign = repository_root / CAMPAIGN_DIR
+    findings = audit_day(repository_root, campaign, target, today=now.date())
+    stamp = now.isoformat(timespec="seconds")
+    log = campaign / "WATCH-LOG.md"
+    if not findings:
+        line = f"[{stamp}] GREEN {target} — all checks clean"
+        with log.open("a", encoding="utf-8") as destination:
+            destination.write(line + "\n")
+        print(line)
+        return 0
+    block = "\n".join(
+        [f"[{stamp}] RED {target}: {len(findings)} finding(s)"]
+        + [f"- [{finding.check}] {finding.detail}" for finding in findings]
+    )
+    with log.open("a", encoding="utf-8") as destination:
+        destination.write(block + "\n")
+    print(block)
+    return 3
