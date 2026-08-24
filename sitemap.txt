@@ -1,13 +1,11 @@
 https://islandmountain.io/about.html
 https://islandmountain.io/air-gapped-ai-inference.html
 https://islandmountain.io/attorney-client-privilege-ai-risk.html
-https://islandmountain.io/bibliography.html
 https://islandmountain.io/blog.html
 https://islandmountain.io/blog/50k-month-cloud-ai-local-llm-replacement.html
 https://islandmountain.io/blog/a-baa-is-not-an-architecture.html
 https://islandmountain.io/blog/a-deployment-should-have-an-ending.html
 https://islandmountain.io/blog/agentic-infrastructure-control-plane.html
-https://islandmountain.io/blog/agentic-orchestration-security-map-interactive.html
 https://islandmountain.io/blog/agentic-orchestration-security-map.html
 https://islandmountain.io/blog/agentic-scar-tissue-long-running-agents.html
 https://islandmountain.io/blog/agentjacking-fake-bug-report.html
@@ -43,6 +41,7 @@ https://islandmountain.io/blog/second-revolution-local-ai.html
 https://islandmountain.io/blog/self-hosted-ai-inference-165k-rewrite.html
 https://islandmountain.io/blog/shadow-ai-usually-arrives-before-policy.html
 https://islandmountain.io/blog/snake-oil-passing-for-water.html
+https://islandmountain.io/blog/sovereignty-changes-the-requirements.html
 https://islandmountain.io/blog/superlinked-sie-self-hosted-inference.html
 https://islandmountain.io/blog/the-compliance-officer-knows-where-the-risk-lives.html
 https://islandmountain.io/blog/the-docketing-clerk-is-part-of-the-architecture.html
@@ -51,14 +50,8 @@ https://islandmountain.io/blog/the-island-mountain-doctrine.html
 https://islandmountain.io/blog/tribal-data-sovereignty-ai-infrastructure.html
 https://islandmountain.io/blog/tribal-sovereignty-data-centers-landlord-or-owner.html
 https://islandmountain.io/blog/zimreaper-session-authority-ai-agent-credentials.html
-https://islandmountain.io/career-deputy-forward-deployed-enterprise-engineer.html
-https://islandmountain.io/career-lead-hardware-production-systems-integration-engineer.html
-https://islandmountain.io/career-principal-agentic-security-governance-engineer.html
-https://islandmountain.io/career-principal-platform-release-engineer.html
-https://islandmountain.io/careers.html
 https://islandmountain.io/casino-gaming.html
 https://islandmountain.io/cloud-act-tribal-data.html
-https://islandmountain.io/compliance-dashboard.html
 https://islandmountain.io/contact.html
 https://islandmountain.io/defense-contractors.html
 https://islandmountain.io/education.html

@@ -33,9 +33,20 @@ SITEMAP_EXCLUDE = {
     "404.html",
     "style-guide.html",
 }
+# Always ship these even when they are only referenced from JS string literals.
+REQUIRED_ASSETS = (
+    "images/gate-live.webp",
+    "images/gate-retrieved.webp",
+    "images/gate-standing.webp",
+)
 SITEMAP_NS = "http://www.sitemaps.org/schemas/sitemap/0.9"
 REFRESH_RE = re.compile(
     r'http-equiv=["\']refresh["\'][^>]*url=|url=[^>]*http-equiv=["\']refresh["\']',
+    re.IGNORECASE,
+)
+ROBOTS_NOINDEX_RE = re.compile(
+    r"<meta\b(?=[^>]*\bname\s*=\s*['\"]robots['\"])"
+    r"(?=[^>]*\bcontent\s*=\s*['\"][^'\"]*\bnoindex\b)[^>]*>",
     re.IGNORECASE,
 )
 SEED_PATTERNS = (
@@ -64,6 +75,7 @@ JS_ASSET_RE = re.compile(
     r"(['\"])((?:\.{0,2}/|/)?(?:downloads|fonts|icons|images|video)/[^'\"]+)\1",
     re.IGNORECASE,
 )
+SCRIPT_BODY_RE = re.compile(r"<script\b[^>]*>(.*?)</script>", re.IGNORECASE | re.DOTALL)
 
 
 class ResourceParser(HTMLParser):
@@ -135,6 +147,20 @@ def is_redirect_page(path: Path) -> bool:
     return bool(REFRESH_RE.search(text)) and "<nav" not in text.lower()
 
 
+def is_noindex_page(path: Path) -> bool:
+    """True when the document asks crawlers not to index it."""
+    text = path.read_text(encoding="utf-8", errors="replace")[:16000]
+    return bool(ROBOTS_NOINDEX_RE.search(text))
+
+
+def sitemap_lastmod(path: Path) -> str:
+    """ISO date from mtime, or today when the checkout has epoch/placeholder stamps."""
+    mtime = datetime.fromtimestamp(path.stat().st_mtime, tz=timezone.utc).date()
+    if mtime.year < 2020:
+        return datetime.now(timezone.utc).date().isoformat()
+    return mtime.isoformat()
+
+
 def sitemap_priority(relative: PurePosixPath) -> str:
     posix = relative.as_posix()
     if posix == "index.html":
@@ -188,9 +214,9 @@ def write_sitemaps(output: Path, copied: set[PurePosixPath]) -> tuple[int, int]:
         if relative.as_posix() in SITEMAP_EXCLUDE or relative.name in SITEMAP_EXCLUDE:
             continue
         source = output.joinpath(*relative.parts)
-        if is_redirect_page(source):
+        if is_redirect_page(source) or is_noindex_page(source):
             continue
-        lastmod = datetime.fromtimestamp(source.stat().st_mtime, tz=timezone.utc).date().isoformat()
+        lastmod = sitemap_lastmod(source)
         entries.append(
             (
                 public_loc(relative),
@@ -235,7 +261,10 @@ def discover_urls(source: Path, relative: PurePosixPath) -> list[tuple[str, bool
     if source.suffix.lower() == ".html":
         parser = ResourceParser()
         parser.feed(text)
-        return parser.urls
+        urls = list(parser.urls)
+        for block in SCRIPT_BODY_RE.findall(text):
+            urls.extend((match.group(2), True) for match in JS_ASSET_RE.finditer(block))
+        return urls
     if source.suffix.lower() == ".css":
         return [(match.group(2), True) for match in CSS_URL_RE.finditer(text)]
     if source.suffix.lower() == ".js":
@@ -270,6 +299,8 @@ def main() -> int:
             pending.append(relative)
 
     for name in REQUIRED_ROOT_FILES:
+        copy(PurePosixPath(name))
+    for name in REQUIRED_ASSETS:
         copy(PurePosixPath(name))
     for pattern in SEED_PATTERNS:
         for source in sorted(ROOT.glob(pattern)):
