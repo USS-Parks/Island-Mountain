@@ -1,10 +1,45 @@
-# Retired product / catalog URLs. GitHub Pages serves the HTML stubs (200 +
-# meta-refresh + canonical). Cloudflare honors this file if the zone is on
-# Pages or Bulk Redirects are imported from it — that is the HTTP 301 path.
+# Retired catalog / leftover URLs.
+#
+# GitHub Pages cannot emit HTTP 301. HTML stubs stay as 200 + meta-refresh +
+# robots noindex so Ahrefs stops scoring them as soft-404 Errors until the
+# edge rules below are live.
+#
+# This file is NOT applied by Cloudflare automatically. The zone proxies
+# GitHub Pages; it is not a Cloudflare Pages project. Import these rows as
+# Bulk Redirects, or add equivalent Single Redirects on islandmountain.io
+# (Rules -> Redirect Rules). The zone already has www -> apex. Group by
+# destination so the Free-plan Single Redirect count stays small.
+#
+# Do not point the leftover `islandmountain` Workers Builds project at this
+# repo as the site host. That worker is a Hello-world stub; Git deploys run
+# `npx wrangler versions upload` at repo root and fail with no entry-point.
+#
+# After the rules are enabled:
+#   curl -sI https://islandmountain.io/pricing.html
+# should show HTTP 301 and a Location header, not 200.
+
 /technology.html /forward-deployed-ai-engineering.html 301
 /products.html /forward-deployed-ai-engineering.html 301
+/products /forward-deployed-ai-engineering.html 301
+/products/ /forward-deployed-ai-engineering.html 301
+/products/ai-servers /forward-deployed-ai-engineering.html 301
+/products/ai-servers.html /forward-deployed-ai-engineering.html 301
+/ai-servers.html /forward-deployed-ai-engineering.html 301
 /pricing.html /faq.html 301
 /landfall-product-line.html /faq.html 301
 /landfall-preorder.html /faq.html 301
 /why-island-mountain.html /faq.html 301
+/summit.html /faq.html 301
+/base.html /faq.html 301
+/ridge.html /faq.html 301
+/pinnacle.html /faq.html 301
+/products/summit.html /faq.html 301
+/products/base.html /faq.html 301
+/products/ridge.html /faq.html 301
+/products/pinnacle.html /faq.html 301
 /the-island-mountain-doctrine.html /blog/the-island-mountain-doctrine.html 301
+/investors.html /solutions.html 301
+/partnerships.html /about.html 301
+/lamprey /lamprey-woven-security-governance.html 301
+/lamprey/ /lamprey-woven-security-governance.html 301
+/lamprey/index.html /lamprey-woven-security-governance.html 301

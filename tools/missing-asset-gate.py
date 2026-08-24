@@ -71,7 +71,9 @@ def fast_leg(staged: list[str], index_set: set[str]) -> list[str] | None:
         if suffix in {".html", ".htm"}:
             parser = bpa.ResourceParser()
             parser.feed(text)
-            urls = parser.urls
+            urls = list(parser.urls)
+            for block in bpa.SCRIPT_BODY_RE.findall(text):
+                urls.extend((m.group(2), True) for m in bpa.JS_ASSET_RE.finditer(block))
         elif suffix == ".css":
             urls = [(m.group(2), True) for m in bpa.CSS_URL_RE.finditer(text)]
         else:
