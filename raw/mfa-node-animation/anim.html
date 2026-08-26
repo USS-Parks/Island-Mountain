@@ -1,0 +1,117 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  html,body{margin:0;padding:0;background:#fff;}
+  #stage{position:relative;width:1400px;height:931px;overflow:hidden;}
+  #stage img{position:absolute;inset:0;width:100%;height:100%;display:block;}
+  .hl{position:absolute;border-radius:10px;opacity:0;pointer-events:none;
+      border:3px solid transparent;}
+  /* Node: hollow black ring, same manner as .beam-card::before in css/card-nodes.css
+     but black per spec. Centred on the point it rides. */
+  .nd{position:absolute;width:11px;height:11px;border-radius:50%;
+      background:transparent;border:2.5px solid #111;opacity:0;
+      transform:translate(-50%,-50%);pointer-events:none;}
+</style>
+</head>
+<body>
+<div id="stage">
+  <img src="bg.png">
+</div>
+<script>
+// Card map: fractional [x, y, w, h] of the source image, plus highlight colour.
+// Order = beat order: left-to-right within each band, bands top-to-bottom.
+const CARDS = [
+  // Top flow row (black-bordered cards)
+  {r:[0.0135,0.0630,0.1340,0.2530], c:'#111111'},
+  {r:[0.1990,0.0630,0.1230,0.2490], c:'#111111'},
+  {r:[0.3620,0.0630,0.1265,0.2530], c:'#111111'},
+  {r:[0.5280,0.0620,0.1850,0.2560], c:'#111111'},
+  {r:[0.7490,0.0620,0.2370,0.2580], c:'#111111'},
+  // Blue Entra point-of-view banner
+  {r:[0.1450,0.3450,0.4990,0.0660], c:'#2b6cd8'},
+  // Session-theft row (inside red container -> red highlights)
+  {r:[0.0225,0.4740,0.1050,0.2220], c:'#c22c22'},
+  {r:[0.1460,0.4740,0.1170,0.2220], c:'#c22c22'},
+  {r:[0.2825,0.4740,0.1450,0.2220], c:'#c22c22'},
+  {r:[0.4475,0.4740,0.1125,0.2220], c:'#c22c22'},
+  // Why password reset does not help (red panel)
+  {r:[0.5830,0.4280,0.4030,0.2850], c:'#c22c22'},
+  // What actually stops it row (green)
+  {r:[0.0200,0.7780,0.1030,0.1330], c:'#1c8a3c'},
+  {r:[0.1450,0.7780,0.1230,0.1330], c:'#1c8a3c'},
+  {r:[0.2970,0.7780,0.1160,0.1330], c:'#1c8a3c'},
+  {r:[0.4270,0.7780,0.1060,0.1210], c:'#1c8a3c'},
+  // How to revoke (black panel)
+  {r:[0.5560,0.7210,0.4300,0.1850], c:'#111111'},
+  // CIRT warning strip (red)
+  {r:[0.0135,0.9330,0.9720,0.0530], c:'#c22c22'},
+];
+
+const W = 1400, H = 931;
+const BEAT = 0.75;          // seconds per card
+const NODES_PER = 3;        // train of nodes per card
+const GAP = 24;             // px spacing between trailing nodes
+const TRAVEL = 0.62;        // seconds the lead node takes for top+right edges
+const stage = document.getElementById('stage');
+
+const els = CARDS.map(card => {
+  const [fx,fy,fw,fh] = card.r;
+  const x=fx*W, y=fy*H, w=fw*W, h=fh*H;
+  const hl = document.createElement('div');
+  hl.className='hl';
+  hl.style.left=x+'px'; hl.style.top=y+'px';
+  hl.style.width=w+'px'; hl.style.height=h+'px';
+  hl.style.borderColor=card.c;
+  hl.style.boxShadow=`0 0 16px 2px ${card.c}55, inset 0 0 22px ${card.c}22`;
+  hl.style.background=card.c+'0d';
+  stage.appendChild(hl);
+  const nodes=[];
+  for(let i=0;i<NODES_PER;i++){
+    const nd=document.createElement('div');
+    nd.className='nd'; stage.appendChild(nd); nodes.push(nd);
+  }
+  return {x,y,w,h,hl,nodes};
+});
+
+// Position along the card edge path: across the top edge, round the corner,
+// down the right edge (the site's auEdgeNode path). d = distance in px.
+function edgePoint(card, d){
+  if(d <= card.w) return [card.x + d, card.y];
+  return [card.x + card.w, card.y + Math.min(d - card.w, card.h)];
+}
+
+window.seek = function(t){
+  els.forEach((card, idx) => {
+    const local = t - idx*BEAT;           // time within this card's beat
+    // Highlight envelope: ramp in, hold, ramp out (lingers a touch past beat)
+    let o = 0;
+    if(local > 0){
+      const IN=0.10, HOLD=BEAT-0.05, OUT=0.28;
+      if(local < IN) o = local/IN;
+      else if(local < HOLD) o = 1;
+      else if(local < HOLD+OUT) o = 1-(local-HOLD)/OUT;
+    }
+    card.hl.style.opacity = o.toFixed(3);
+    // Node train: constant-speed travel across top + down right edge
+    const L = card.w + card.h;
+    const speed = L/TRAVEL;
+    card.nodes.forEach((nd,i)=>{
+      const d = (local-0.04)*speed - i*GAP;   // lead node first, trailers behind
+      if(d < 0 || d > L){ nd.style.opacity='0'; return; }
+      const [px,py] = edgePoint(card, d);
+      nd.style.left = px+'px'; nd.style.top = py+'px';
+      // fade in off the top-left corner, fade out at bottom-right (site manner)
+      let no = 1;
+      if(d < 14) no = d/14;
+      else if(d > L-26) no = Math.max(0,(L-d)/26);
+      nd.style.opacity = no.toFixed(3);
+    });
+  });
+};
+window.TOTAL = CARDS.length*BEAT + 0.55;   // tail hold before the loop restarts
+seek(0);
+</script>
+</body>
+</html>
