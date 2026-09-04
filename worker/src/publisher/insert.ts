@@ -48,3 +48,16 @@ export function applyInsertion(live: string, surface: Surface): string {
   const insertion = (surface.prepend_newline ? nl : '') + fragment
   return live.replace(target, () => target + insertion)
 }
+
+/** Keep sitemap.txt in lockstep with sitemap.xml. Sorted, idempotent. */
+export function upsertSitemapTxt(live: string, url: string): string {
+  const nl = live.includes('\r\n') ? '\r\n' : '\n'
+  const lines = live.split(/\r?\n/)
+  const count = lines.filter((line) => line === url).length
+  if (count === 1) return live
+  if (count > 1) throw new InsertionError(`sitemap.txt: duplicate URL ${url}`)
+  const urls = [...lines.filter((line) => line !== ''), url].sort()
+  let text = urls.join(nl)
+  if (live.endsWith(nl) || live === '') text += nl
+  return text
+}

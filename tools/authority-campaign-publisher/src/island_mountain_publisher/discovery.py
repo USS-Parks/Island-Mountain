@@ -144,6 +144,20 @@ def update_sitemap(source: str, item: ManifestItem) -> str:
     return _replace_once(source, anchor, replacement, label="sitemap.xml")
 
 
+def update_sitemap_txt(source: str, item: ManifestItem) -> str:
+    newline = _newline(source)
+    lines = source.splitlines()
+    if lines.count(item.blog_url) == 1:
+        return source
+    if item.blog_url in lines:
+        raise DiscoveryError(f"sitemap.txt: duplicate URL for {item.slug}")
+    urls = sorted(line for line in (*lines, item.blog_url) if line)
+    text = newline.join(urls)
+    if source.endswith(newline) or source == "":
+        text += newline
+    return text
+
+
 def update_llms(source: str, item: ManifestItem) -> str:
     occurrences = source.count(item.blog_url)
     if occurrences == 1:
@@ -196,6 +210,7 @@ def plan_blog_publication(
         "blog.html": update_blog_index(_exact_text(repository_root / "blog.html"), item),
         "index.html": update_home_rail(_exact_text(repository_root / "index.html"), item),
         "sitemap.xml": update_sitemap(_exact_text(repository_root / "sitemap.xml"), item),
+        "sitemap.txt": update_sitemap_txt(_exact_text(repository_root / "sitemap.txt"), item),
         "llms.txt": update_llms(_exact_text(repository_root / "llms.txt"), item),
     }
     planned: list[PlannedFile] = []

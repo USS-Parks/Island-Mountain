@@ -3,7 +3,11 @@ from pathlib import Path
 
 import pytest
 
-from island_mountain_publisher.discovery import DiscoveryError, plan_blog_publication
+from island_mountain_publisher.discovery import (
+    DiscoveryError,
+    plan_blog_publication,
+    update_sitemap_txt,
+)
 from island_mountain_publisher.manifest import compile_manifest
 from island_mountain_publisher.renderer import render_article
 from island_mountain_publisher.workspace import GitWorkspace, WorkspaceTransaction
@@ -23,6 +27,7 @@ PRISTINE_SITEMAP = (
     '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
     "</urlset>\n"
 )
+PRISTINE_SITEMAP_TXT = ""
 PRISTINE_LLMS = "# Island Mountain\n\n## Blog\n"
 RAIL_ANCHOR = (
     '      <div class="blog-rail" role="region" '
@@ -38,6 +43,7 @@ def discovery_repository(tmp_path: Path) -> Path:
     (tmp_path / "blog.html").write_text(PRISTINE_BLOG, encoding="utf-8")
     (tmp_path / "index.html").write_text(PRISTINE_INDEX, encoding="utf-8")
     (tmp_path / "sitemap.xml").write_text(PRISTINE_SITEMAP, encoding="utf-8")
+    (tmp_path / "sitemap.txt").write_text(PRISTINE_SITEMAP_TXT, encoding="utf-8")
     (tmp_path / "llms.txt").write_text(PRISTINE_LLMS, encoding="utf-8")
     subprocess.run(["git", "init", "-q"], cwd=tmp_path, check=True)
     subprocess.run(["git", "config", "user.email", "test@example.com"], cwd=tmp_path, check=True)
@@ -75,11 +81,13 @@ def test_repeated_discovery_update_is_a_complete_noop(
     blog = (discovery_repository / "blog.html").read_text(encoding="utf-8")
     index = (discovery_repository / "index.html").read_text(encoding="utf-8")
     sitemap = (discovery_repository / "sitemap.xml").read_text(encoding="utf-8")
+    sitemap_txt = (discovery_repository / "sitemap.txt").read_text(encoding="utf-8")
     llms = (discovery_repository / "llms.txt").read_text(encoding="utf-8")
     assert blog.count(f'href="{item.blog_path}"') == 2
     assert index.count(f'href="{item.blog_path}"') == 2
     assert 'class="blog-rail-card' in index
     assert sitemap.count(item.blog_url) == 1
+    assert sitemap_txt.splitlines() == [item.blog_url]
     assert llms.count(item.blog_url) == 1
     assert (discovery_repository / item.blog_path).read_bytes() == rendered.html
 
@@ -203,4 +211,18 @@ def test_post_one_adopts_existing_page_and_only_repairs_missing_surfaces(
 
     plan = plan_blog_publication(discovery_repository, item, rendered, adopt_existing=True)
 
-    assert {file.path for file in plan} == {"sitemap.xml", "llms.txt"}
+    assert {file.path for file in plan} == {"sitemap.xml", "sitemap.txt", "llms.txt"}
+
+
+def test_sitemap_txt_inserts_in_sorted_order() -> None:
+    item = type("Item", (), {"blog_url": "https://islandmountain.io/blog/m.html", "slug": "m"})()
+    updated = update_sitemap_txt(
+        "https://islandmountain.io/blog/a.html\nhttps://islandmountain.io/blog/z.html\n",
+        item,
+    )
+    assert updated.splitlines() == [
+        "https://islandmountain.io/blog/a.html",
+        "https://islandmountain.io/blog/m.html",
+        "https://islandmountain.io/blog/z.html",
+    ]
+    assert update_sitemap_txt(updated, item) == updated
