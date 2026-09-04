@@ -1,6 +1,6 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
-import { applyInsertion, InsertionError } from './insert'
+import { applyInsertion, InsertionError, upsertSitemapTxt } from './insert'
 import type { Surface } from './content'
 
 const blogSurface: Surface = {
@@ -65,4 +65,18 @@ test('refuses on an unexpected marker count (partial/corrupt state)', () => {
 test('refuses when the anchor is missing', () => {
   const live = 'no anchor here\n'
   assert.throws(() => applyInsertion(live, blogSurface), InsertionError)
+})
+
+test('sitemap.txt: inserts URL in sorted order', () => {
+  const live = 'https://islandmountain.io/blog/a.html\nhttps://islandmountain.io/blog/z.html\n'
+  const out = upsertSitemapTxt(live, 'https://islandmountain.io/blog/m.html')
+  assert.equal(
+    out,
+    'https://islandmountain.io/blog/a.html\nhttps://islandmountain.io/blog/m.html\nhttps://islandmountain.io/blog/z.html\n'
+  )
+})
+
+test('sitemap.txt: idempotent when the URL is already present', () => {
+  const live = 'https://islandmountain.io/blog/x.html\n'
+  assert.equal(upsertSitemapTxt(live, 'https://islandmountain.io/blog/x.html'), live)
 })

@@ -7,7 +7,7 @@
  */
 import type { Env } from '../types'
 import { dayFor, linkedinCutoffMs, pacificDate, type CampaignDay } from './content'
-import { applyInsertion } from './insert'
+import { applyInsertion, upsertSitemapTxt } from './insert'
 import { commitFiles, type FileChange } from './github'
 import { done, ensureLedger, record, remoteId } from './ledger'
 import { createComment, createPost, uploadImage } from './linkedin'
@@ -33,6 +33,12 @@ async function publishBlog(env: Env, day: CampaignDay): Promise<string> {
         if (live === null) throw new Error(`missing ${surface.path} in repository`)
         const updated = applyInsertion(live, surface)
         if (updated !== live) files.push({ path: surface.path, content: updated })
+      }
+      const sitemapTxt = await readAtBase('sitemap.txt')
+      if (sitemapTxt === null) throw new Error('missing sitemap.txt in repository')
+      const updatedSitemapTxt = upsertSitemapTxt(sitemapTxt, day.blog_url)
+      if (updatedSitemapTxt !== sitemapTxt) {
+        files.push({ path: 'sitemap.txt', content: updatedSitemapTxt })
       }
       return files
     }

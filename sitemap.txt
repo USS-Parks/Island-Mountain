@@ -13,6 +13,7 @@ https://islandmountain.io/blog/ai-electricity-analogy-giant-motor.html
 https://islandmountain.io/blog/ai-search-visibility-consultant.html
 https://islandmountain.io/blog/ai-sovereignty-framework-tribal-nations.html
 https://islandmountain.io/blog/american-open-source-llm-sovereign-ai.html
+https://islandmountain.io/blog/an-anomaly-score-can-t-read-the-floor.html
 https://islandmountain.io/blog/attorney-client-privilege-cloud-ai.html
 https://islandmountain.io/blog/bonsai-27b-phone-local-ai.html
 https://islandmountain.io/blog/capturing-institutional-knowledge-without-surveillance.html
@@ -36,13 +37,16 @@ https://islandmountain.io/blog/on-prem-vs-colo-vs-cloud.html
 https://islandmountain.io/blog/onboarding-is-part-of-the-system.html
 https://islandmountain.io/blog/openai-discovery-risk-law-firms.html
 https://islandmountain.io/blog/openwebui-admin-setup-guide.html
+https://islandmountain.io/blog/read-the-cloud-contract-beside-the-architecture.html
 https://islandmountain.io/blog/right-sizing-ai-infrastructure-smaller-system.html
+https://islandmountain.io/blog/running-two-dgx-sparks-locally.html
 https://islandmountain.io/blog/second-revolution-local-ai.html
 https://islandmountain.io/blog/self-hosted-ai-inference-165k-rewrite.html
 https://islandmountain.io/blog/shadow-ai-usually-arrives-before-policy.html
 https://islandmountain.io/blog/snake-oil-passing-for-water.html
 https://islandmountain.io/blog/sovereignty-changes-the-requirements.html
 https://islandmountain.io/blog/superlinked-sie-self-hosted-inference.html
+https://islandmountain.io/blog/surveillance-expertise-is-institutional-memory.html
 https://islandmountain.io/blog/the-compliance-officer-knows-where-the-risk-lives.html
 https://islandmountain.io/blog/the-docketing-clerk-is-part-of-the-architecture.html
 https://islandmountain.io/blog/the-facility-survey-can-sink-a-good-deployment.html
