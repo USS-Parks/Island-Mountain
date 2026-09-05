@@ -206,7 +206,7 @@ def public_loc(relative: PurePosixPath) -> str:
 
 
 def validate_api_catalog(path: Path) -> None:
-    """Keep the RFC 9727 stub parseable and price-free."""
+    """Keep the RFC 9727 placeholder parseable, price-free, and API-free."""
     try:
         data = load_json(path.read_text(encoding="utf-8"))
     except JSONDecodeError as exc:
@@ -214,6 +214,9 @@ def validate_api_catalog(path: Path) -> None:
     linkset = data.get("linkset") if isinstance(data, dict) else None
     if not isinstance(linkset, list) or not linkset:
         raise SystemExit("api-catalog must be an RFC 9727 linkset object")
+    for entry in linkset:
+        if isinstance(entry, dict) and entry.get("item"):
+            raise SystemExit("api-catalog is a placeholder; do not invent API item targets")
     text = path.read_text(encoding="utf-8")
     if "$" in text or "Summit" in text or "Landfall" in text or "Citadel" in text:
         raise SystemExit("api-catalog must stay price-free and omit retired product names")

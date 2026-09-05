@@ -1,28 +1,7 @@
 {
   "linkset": [
     {
-      "anchor": "https://islandmountain.io/",
-      "item": [
-        {
-          "href": "https://islandmountain.io/llms.txt",
-          "type": "text/plain",
-          "title": "Island Mountain agent brief"
-        }
-      ],
-      "service-doc": [
-        {
-          "href": "https://islandmountain.io/faq.html",
-          "type": "text/html",
-          "title": "Island Mountain FAQ"
-        }
-      ],
-      "describedby": [
-        {
-          "href": "https://islandmountain.io/llms.txt",
-          "type": "text/plain",
-          "title": "Island Mountain agent brief"
-        }
-      ]
+      "anchor": "https://islandmountain.io/"
     }
   ]
 }
