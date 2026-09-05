@@ -1,0 +1,43 @@
+{
+  "description": "Tier A security headers: COOP plus HSTS preload directive. Additive rule for the existing zone response-header Transform Ruleset.",
+  "notes": [
+    "GitHub Pages cannot emit custom response headers. islandmountain.io is proxied by Cloudflare in front of Pages, so this rule lives on the existing zone ruleset 'Security response headers' (phase http_response_headers_transform).",
+    "ADD this rule. Do not replace the existing security-header rewrite (thin CSP, XFO, and the rest). Do not PUT the whole ruleset with only this payload; a full ruleset replace would wipe live headers including CSP and the homepage Link rule.",
+    "Zone: islandmountain.io. Ruleset id from prior Link-headers work: c0fae000097143e0ba49736efbe36c87. Confirm with GET /zones/$ZONE_ID/rulesets/phases/http_response_headers_transform/entrypoint before applying if that id is ever rotated.",
+    "Preserve observed live headers this rule does not set: Content-Security-Policy: frame-ancestors 'none'; object-src 'none'; base-uri 'self'; upgrade-insecure-requests. Plus existing X-Frame-Options and other useful security rewrites already on the zone.",
+    "HSTS is already live as max-age=31536000; includeSubDomains. This rule SETs the same max-age and includeSubDomains and adds the preload directive on the header only. Do not submit islandmountain.io to the HSTS preload list as part of enabling this rule.",
+    "No Cross-Origin-Opener-Policy is on origin responses today. same-origin-allow-popups isolates the browsing context while still allowing window.open popups (share, OAuth, chat).",
+    "Out of scope for this rule: full CSP script-src enforce, Trusted Types, Private Network Access, CSP Report-Only."
+  ],
+  "enable": {
+    "dashboard": [
+      "Cloudflare Dashboard > islandmountain.io > Rules > Overview (or Transform Rules) > Modify Response Header.",
+      "Add a new rule. Do not edit the existing security-header rewrite.",
+      "When incoming requests match: Custom filter expression `true` (all responses on the zone).",
+      "Then: Set static header Cross-Origin-Opener-Policy = same-origin-allow-popups.",
+      "And: Set static header Strict-Transport-Security = max-age=31536000; includeSubDomains; preload.",
+      "Deploy. Confirm the older security-header rule and any homepage Link rule are still enabled."
+    ],
+    "api": [
+      "Additive create-rule only: POST https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID/rules with this object (minus notes/enable).",
+      "Do not PUT https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID with a rules array that contains only this rule.",
+      "After enable: curl -sI https://islandmountain.io/ must show Cross-Origin-Opener-Policy: same-origin-allow-popups and Strict-Transport-Security: max-age=31536000; includeSubDomains; preload."
+    ]
+  },
+  "ref": "tier_a_coop_hsts_preload",
+  "expression": "true",
+  "action": "rewrite",
+  "enabled": true,
+  "action_parameters": {
+    "headers": {
+      "Cross-Origin-Opener-Policy": {
+        "operation": "set",
+        "value": "same-origin-allow-popups"
+      },
+      "Strict-Transport-Security": {
+        "operation": "set",
+        "value": "max-age=31536000; includeSubDomains; preload"
+      }
+    }
+  }
+}
