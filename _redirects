@@ -14,6 +14,10 @@
 # repo as the site host. That worker is a Hello-world stub; Git deploys run
 # `npx wrangler versions upload` at repo root and fail with no entry-point.
 #
+# Homepage RFC 9727 Link headers are a separate Response Header Transform Rule
+# (not a redirect). Payload: tools/cloudflare-homepage-link-headers.json.
+# GitHub Pages cannot emit custom headers; _headers files are ignored here.
+#
 # After the rules are enabled:
 #   curl -sI https://islandmountain.io/pricing.html
 # should show HTTP 301 and a Location header, not 200.

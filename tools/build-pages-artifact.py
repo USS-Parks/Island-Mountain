@@ -7,6 +7,7 @@ import argparse
 from datetime import datetime, timezone
 import html
 from html.parser import HTMLParser
+from json import JSONDecodeError, loads as load_json
 from pathlib import Path, PurePosixPath
 import posixpath
 import re
@@ -28,6 +29,7 @@ REQUIRED_ROOT_FILES = (
     "robots.txt",
     "sitemap.xml",
     "sitemap.txt",
+    ".well-known/api-catalog",
 )
 SITEMAP_EXCLUDE = {
     "404.html",
@@ -203,6 +205,20 @@ def public_loc(relative: PurePosixPath) -> str:
     return f"https://islandmountain.io/{relative.as_posix()}"
 
 
+def validate_api_catalog(path: Path) -> None:
+    """Keep the RFC 9727 stub parseable and price-free."""
+    try:
+        data = load_json(path.read_text(encoding="utf-8"))
+    except JSONDecodeError as exc:
+        raise SystemExit(f"api-catalog is not valid JSON: {exc}") from exc
+    linkset = data.get("linkset") if isinstance(data, dict) else None
+    if not isinstance(linkset, list) or not linkset:
+        raise SystemExit("api-catalog must be an RFC 9727 linkset object")
+    text = path.read_text(encoding="utf-8")
+    if "$" in text or "Summit" in text or "Landfall" in text or "Citadel" in text:
+        raise SystemExit("api-catalog must stay price-free and omit retired product names")
+
+
 def write_sitemaps(output: Path, copied: set[PurePosixPath]) -> tuple[int, int]:
     """Write a comment-free XML sitemap and a text sitemap of living public URLs."""
     entries: list[tuple[str, str, str, str]] = []
@@ -300,6 +316,7 @@ def main() -> int:
 
     for name in REQUIRED_ROOT_FILES:
         copy(PurePosixPath(name))
+    validate_api_catalog(output / ".well-known" / "api-catalog")
     for name in REQUIRED_ASSETS:
         copy(PurePosixPath(name))
     for pattern in SEED_PATTERNS:
