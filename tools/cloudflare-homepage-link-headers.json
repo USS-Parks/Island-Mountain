@@ -1,0 +1,22 @@
+{
+  "description": "RFC 9727 / Robauto Day 1: advertise already-published machine files on the homepage via Link.",
+  "notes": [
+    "GitHub Pages cannot emit custom response headers. islandmountain.io is proxied by Cloudflare in front of Pages, so this rule lives on the existing zone ruleset 'Security response headers' (phase http_response_headers_transform).",
+    "Add this rule; do not replace the existing security-header rewrite.",
+    "Zone: islandmountain.io. Ruleset id: c0fae000097143e0ba49736efbe36c87.",
+    "Targets that already exist: describedby -> /llms.txt, service-desc -> /sitemap.xml, service-doc -> /sitemap.txt.",
+    "api-catalog stays a placeholder path (/.well-known/api-catalog) until a real catalog exists. Do not invent OpenAPI or a product API surface."
+  ],
+  "ref": "homepage_rfc9727_link_headers",
+  "expression": "(http.request.uri.path eq \"/\" or http.request.uri.path eq \"/index.html\")",
+  "action": "rewrite",
+  "enabled": true,
+  "action_parameters": {
+    "headers": {
+      "Link": {
+        "operation": "set",
+        "value": "<https://islandmountain.io/.well-known/api-catalog>; rel=\"api-catalog\"; type=\"application/linkset+json\", <https://islandmountain.io/sitemap.xml>; rel=\"service-desc\"; type=\"application/xml\", <https://islandmountain.io/sitemap.txt>; rel=\"service-doc\"; type=\"text/plain\", <https://islandmountain.io/llms.txt>; rel=\"describedby\"; type=\"text/plain\""
+      }
+    }
+  }
+}
