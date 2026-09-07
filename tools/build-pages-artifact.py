@@ -20,6 +20,9 @@ import xml.etree.ElementTree as ET
 ROOT = Path(__file__).resolve().parents[1]
 SITE_HOSTS = {"islandmountain.io", "www.islandmountain.io"}
 TEXT_SUFFIXES = {".html", ".css", ".js"}
+# Dot-prefixed paths are required on the published site. This builder copies
+# them into the artifact; actions/upload-pages-artifact@v5 still strips them
+# unless the workflow sets include-hidden-files: true. See validate_pages_upload.
 REQUIRED_ROOT_FILES = (
     ".nojekyll",
     "CNAME",
@@ -222,6 +225,26 @@ def validate_api_catalog(path: Path) -> None:
         raise SystemExit("api-catalog must stay price-free and omit retired product names")
 
 
+def validate_pages_upload() -> None:
+    """Fail if the Pages upload would drop .well-known / .nojekyll.
+
+    Skip when pages.yml is missing or a zero-byte placeholder (the
+    missing-asset-gate materializes non-text files that way).
+    """
+    workflow = ROOT / ".github" / "workflows" / "pages.yml"
+    if not workflow.is_file():
+        return
+    text = workflow.read_text(encoding="utf-8")
+    if "upload-pages-artifact" not in text:
+        return
+    if "include-hidden-files: true" not in text:
+        raise SystemExit(
+            "pages.yml must set include-hidden-files: true on "
+            "upload-pages-artifact; otherwise .well-known/api-catalog is "
+            "stripped from the publish tarball"
+        )
+
+
 def write_sitemaps(output: Path, copied: set[PurePosixPath]) -> tuple[int, int]:
     """Write a comment-free XML sitemap and a text sitemap of living public URLs."""
     entries: list[tuple[str, str, str, str]] = []
@@ -320,6 +343,7 @@ def main() -> int:
     for name in REQUIRED_ROOT_FILES:
         copy(PurePosixPath(name))
     validate_api_catalog(output / ".well-known" / "api-catalog")
+    validate_pages_upload()
     for name in REQUIRED_ASSETS:
         copy(PurePosixPath(name))
     for pattern in SEED_PATTERNS:
