@@ -21,6 +21,7 @@ Models are any open-source, open-weight model, swapped as the frontier moves, so
 ## Security Fabric (Lamprey)
 Lamprey is a Woven Security & Governance Fabric - a software layer that secures and governs an organization from the outside through the cloud, or from the inside with air-gapped security. Cloud visibility, compliance evidence, and approval-gated remediation without standing privilege. Zero standing privilege: scan access is minted just in time, scoped to the operation, and revoked automatically.
 - [Lamprey Woven Security & Governance Fabric](https://islandmountain.io/lamprey-woven-security-governance.html)
+- [Download Lamprey](https://islandmountain.io/lamprey.html)
 
 ## Who This Is For
 - Law firms protecting attorney-client privilege (ABA Model Rule 1.6)
@@ -42,6 +43,7 @@ Lamprey is a Woven Security & Governance Fabric - a software layer that secures 
 - [Forward Deployed](https://islandmountain.io/forward-deployed-ai-engineering.html)
 - [Configs](https://islandmountain.io/forward-deployed-ai-engineering.html)
 - [Security Fabric (Lamprey)](https://islandmountain.io/lamprey-woven-security-governance.html)
+- [Download Lamprey](https://islandmountain.io/lamprey.html)
 - [FAQ](https://islandmountain.io/faq.html)
 - [Resources (Direct-Answer Hub)](https://islandmountain.io/resources.html)
 - [About](https://islandmountain.io/about.html)

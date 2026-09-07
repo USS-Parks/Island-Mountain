@@ -21,6 +21,15 @@
 # After the rules are enabled:
 #   curl -sI https://islandmountain.io/pricing.html
 # should show HTTP 301 and a Location header, not 200.
+#
+# /lamprey is the public installer door (lamprey.html), not the product essay.
+# The zone already proxies GitHub Pages and applies live Bulk/Single Redirects
+# for /lamprey, /lamprey/, and /lamprey/index.html to
+# lamprey-woven-security-governance.html. Updating this file is not enough.
+# After merge, change those Cloudflare Bulk/Single Redirects to /lamprey.html
+# or the live URL still lands on the essay. Verify with:
+#   curl -sI https://islandmountain.io/lamprey
+# Location should be https://islandmountain.io/lamprey.html
 
 /technology.html /forward-deployed-ai-engineering.html 301
 /products.html /forward-deployed-ai-engineering.html 301
@@ -44,6 +53,6 @@
 /the-island-mountain-doctrine.html /blog/the-island-mountain-doctrine.html 301
 /investors.html /solutions.html 301
 /partnerships.html /about.html 301
-/lamprey /lamprey-woven-security-governance.html 301
-/lamprey/ /lamprey-woven-security-governance.html 301
-/lamprey/index.html /lamprey-woven-security-governance.html 301
+/lamprey /lamprey.html 301
+/lamprey/ /lamprey.html 301
+/lamprey/index.html /lamprey.html 301

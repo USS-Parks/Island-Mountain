@@ -68,6 +68,7 @@ https://islandmountain.io/hipaa-local-ai-compliance.html
 https://islandmountain.io/
 https://islandmountain.io/insurance.html
 https://islandmountain.io/itar-cmmc-ai-infrastructure.html
+https://islandmountain.io/lamprey.html
 https://islandmountain.io/lamprey-woven-security-governance.html
 https://islandmountain.io/law-firms.html
 https://islandmountain.io/medical-practices.html
