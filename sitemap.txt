@@ -21,6 +21,7 @@ https://islandmountain.io/blog/cloud-ai-vs-local-hardware-tco.html
 https://islandmountain.io/blog/concurrency-is-a-workflow-question.html
 https://islandmountain.io/blog/deepseek-v4-flash-local-deployment.html
 https://islandmountain.io/blog/dgx-spark-vs-rtx-pro-6000-strix-halo.html
+https://islandmountain.io/blog/discovery-before-config.html
 https://islandmountain.io/blog/discovery-can-kill-the-project.html
 https://islandmountain.io/blog/education-is-the-deployment.html
 https://islandmountain.io/blog/eu-cada-ai-sovereignty-us-regulated-industries.html
