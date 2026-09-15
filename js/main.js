@@ -85,7 +85,7 @@
   var navAllLinks = document.querySelectorAll('.nav-links a, .mobile-sidebar a');
   navAllLinks.forEach(function (link) {
     var href = link.getAttribute('href');
-    if (href === currentPage || (currentPage === '' && href === 'index.html')) {
+    if (href === currentPage || (currentPage === 'index.html' && href === '/')) {
       link.classList.add('active');
     }
   });
