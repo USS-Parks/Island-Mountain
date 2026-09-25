@@ -30,15 +30,15 @@
   <meta name="date" content="2026-09-25">
   <meta name="robots" content="noindex">
   <title>Lamprey EOC | Island Mountain</title>
-  <meta name="description" content="Download the Open Source EOC 0.9.1 demo installer for Windows. Verify the SHA-256 checksum before you run it.">
+  <meta name="description" content="Download the Open Source EOC 0.9.2 demo for Windows, as an installer or a ZIP archive. Verify the SHA-256 checksum before you run it.">
   <link rel="canonical" href="https://islandmountain.io/lamprey-eoc/download">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Open Source EOC 0.9.1 Demo Download">
-  <meta property="og:description" content="The Open Source EOC 0.9.1 demo installer for Windows.">
+  <meta property="og:title" content="Open Source EOC 0.9.2 Demo Download">
+  <meta property="og:description" content="The Open Source EOC 0.9.2 demo for Windows.">
   <meta property="og:image" content="https://islandmountain.io/images/im-badge.webp">
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Open Source EOC 0.9.1 Demo Download">
-  <meta name="twitter:description" content="The Open Source EOC 0.9.1 demo installer for Windows.">
+  <meta name="twitter:title" content="Open Source EOC 0.9.2 Demo Download">
+  <meta name="twitter:description" content="The Open Source EOC 0.9.2 demo for Windows.">
   <meta name="twitter:image" content="https://islandmountain.io/images/im-badge.webp">
   <link rel="icon" type="image/x-icon" href="../favicon.ico?v=4">
   <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon-32.png?v=4">
@@ -79,7 +79,9 @@
   .eoc-card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: var(--border-radius-lg); backdrop-filter: blur(var(--glass-blur)); -webkit-backdrop-filter: blur(var(--glass-blur)); padding: 36px 32px 28px; text-align: left; }
   .eoc-dl { display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; font-size: 1.1rem; padding: 18px 32px; }
   .eoc-dl i { font-size: 1.35rem; }
-  .eoc-meta { display: grid; grid-template-columns: max-content 1fr; gap: 12px 24px; margin: 28px 0 0; padding: 24px 0 0; border-top: 1px solid var(--au-line); font-size: .95rem; }
+  .eoc-file + .eoc-file { margin-top: 28px; padding-top: 28px; border-top: 1px solid var(--au-line); }
+  .eoc-file-title { font-family: 'Space Grotesk', Inter, system-ui, sans-serif; font-size: 1.2rem; font-weight: 700; color: var(--text-light); margin: 0 0 14px; }
+  .eoc-meta { display: grid; grid-template-columns: max-content 1fr; gap: 12px 24px; margin: 20px 0 0; font-size: .95rem; }
   .eoc-meta dt { color: var(--text-muted); font-weight: 600; }
   .eoc-meta dd { color: var(--text-light); margin: 0; min-width: 0; }
   .eoc-hash { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: .85rem; word-break: break-all; user-select: all; color: var(--copper-light); }
@@ -116,24 +118,35 @@
     <section class="eoc-hero">
       <div class="container eoc-narrow">
         <span class="au-eyebrow-c">Lamprey EOC &middot; Demo build</span>
-        <h1 class="eoc-h1">Open Source EOC 0.9.1</h1>
+        <h1 class="eoc-h1">Open Source EOC 0.9.2</h1>
         <div class="eoc-hrule" aria-hidden="true"></div>
-        <p class="eoc-sub">The demo installer for Windows. The full release will replace this build when it ships.</p>
+        <p class="eoc-sub">Demo downloads for Windows. The full release will replace this build when it ships.</p>
 
         <div class="eoc-card">
-          <a class="btn btn-primary eoc-dl" href="https://downloads.islandmountain.io/lamprey-eoc/Open-Source-EOC-Setup-0.9.1.exe" download><i class="ri-download-2-line" aria-hidden="true"></i> Download for Windows</a>
-          <dl class="eoc-meta">
-            <dt>File</dt>
-            <dd>Open-Source-EOC-Setup-0.9.1.exe</dd>
-            <dt>Version</dt>
-            <dd>0.9.1 (demo)</dd>
-            <dt>Platform</dt>
-            <dd>Windows</dd>
-            <dt>Size</dt>
-            <dd>1.59 GB (1,708,983,964 bytes)</dd>
-            <dt>SHA-256</dt>
-            <dd class="eoc-hash">E820049AA97452131486B2CD8FE56F04E12EA6285E15FB06A18677B7E3D66EE2</dd>
-          </dl>
+          <div class="eoc-file">
+            <h2 class="eoc-file-title">Windows installer</h2>
+            <a class="btn btn-primary eoc-dl" href="https://downloads.islandmountain.io/lamprey-eoc/Open-Source-EOC-Setup-0.9.2.exe" download><i class="ri-download-cloud-line" aria-hidden="true"></i> Download installer (.exe)</a>
+            <dl class="eoc-meta">
+              <dt>File</dt>
+              <dd>Open-Source-EOC-Setup-0.9.2.exe</dd>
+              <dt>Size</dt>
+              <dd>1.75 GB (1,876,460,790 bytes)</dd>
+              <dt>SHA-256</dt>
+              <dd class="eoc-hash">7CCD6A4DBE860395F781ACC6A3AAAE6909CBFCD438EC2F002C540F49755AECFD</dd>
+            </dl>
+          </div>
+          <div class="eoc-file">
+            <h2 class="eoc-file-title">Windows ZIP archive</h2>
+            <a class="btn btn-secondary eoc-dl" href="https://downloads.islandmountain.io/lamprey-eoc/Open-Source-EOC-0.9.2.zip" download><i class="ri-download-cloud-line" aria-hidden="true"></i> Download ZIP (.zip)</a>
+            <dl class="eoc-meta">
+              <dt>File</dt>
+              <dd>Open-Source-EOC-0.9.2.zip</dd>
+              <dt>Size</dt>
+              <dd>1.84 GB (1,979,245,281 bytes)</dd>
+              <dt>SHA-256</dt>
+              <dd class="eoc-hash">16D800E3C59AA8912E079D2A1C40DFB1025310E0335D7147C579681B3D2381E6</dd>
+            </dl>
+          </div>
         </div>
       </div>
     </section>
@@ -145,12 +158,12 @@
         <div class="eoc-steps">
           <div class="eoc-step">
             <h3><i class="ri-shield-check-line" aria-hidden="true"></i> Verify the download</h3>
-            <p>Open PowerShell in the folder you saved it to and run the line below. The output has to match the SHA-256 above, character for character.</p>
-            <code class="eoc-code">Get-FileHash .\Open-Source-EOC-Setup-0.9.1.exe -Algorithm SHA256</code>
+            <p>Open PowerShell in the folder you saved it to and run the line below, with the ZIP's file name if that's what you downloaded. The output has to match that file's SHA-256 above, character for character.</p>
+            <code class="eoc-code">Get-FileHash .\Open-Source-EOC-Setup-0.9.2.exe -Algorithm SHA256</code>
           </div>
           <div class="eoc-step">
             <h3><i class="ri-error-warning-line" aria-hidden="true"></i> Expect a SmartScreen prompt</h3>
-            <p>The demo installer isn't code-signed yet, so Windows flags it as an unrecognized app. Once the hash matches, choose <strong>More info</strong>, then <strong>Run anyway</strong>.</p>
+            <p>The demo isn't code-signed yet, so Windows flags the installer as an unrecognized app. Once the hash matches, choose <strong>More info</strong>, then <strong>Run anyway</strong>.</p>
           </div>
         </div>
       </div>
@@ -158,11 +171,11 @@
 
     <section class="eoc-section" id="release-notes">
       <div class="container eoc-narrow">
-        <span class="au-eyebrow-c">Version 0.9.1</span>
+        <span class="au-eyebrow-c">Version 0.9.2</span>
         <h2>Release notes</h2>
         <div class="eoc-notes">
           <p>Open Source EOC is an amalgamation of popular emergency management software. It's open source and built for rural and remote local and Tribal governments, where one or two people staff the EOC and a single fire can cut the only fiber line into the valley. It runs on a Windows or macOS computer that the jurisdiction owns, with its own database, and it's built to run with no internet connection at all. Maps, imagery and elevation data are stored on the machine, and field forms can be filled out on a phone or tablet without a signal and sent once the connection comes back. A mobile version is planned for release in the coming week, and FEMA approval is expected soon. It covers the day-to-day work of an EOC: incident boards, ICS positions and forms, and a map-centered common operating picture. It also handles email and SMS notification with contact lists and call-down, reports, damage assessment, resources, JIC review, a record of every change, and federation, so two jurisdictions can share one incident while each runs its own server. It uses the standards EOCs exchange data in (CAP, EDXL, CoT, HAVE and GeoJSON). An IPAWS alert doesn't go out until a second administrator confirms it. It's released under the Apache-2.0 license with no per-seat fees, and read-only viewers cost nothing. A Tribe's records and a county's incident history stay on hardware they control, not in a vendor's data center.</p>
-          <p>Open Source EOC has no public-facing side. Every record is treated as For Official Use Only, so there's no anonymous map, public dashboard or citizen intake form. Mutual-aid partners get in through a guest grant that expires. It runs as one server process against one database rather than a load-balanced cluster. It doesn't connect to live outside data such as FEMA flood zones yet. Version 0.9.1 is an evaluation build. Everything proven so far was done on the project's own machines with synthetic data, and live IPAWS, a load test on real deployment hardware and a first pilot jurisdiction still haven't happened. What a small Tribal or county EOC gets today is an operations center it can install, own and run without a contract or a connection, along with a written record of what has been tested and what hasn't.</p>
+          <p>Open Source EOC has no public-facing side. Every record is treated as For Official Use Only, so there's no anonymous map, public dashboard or citizen intake form. Mutual-aid partners get in through a guest grant that expires. It runs as one server process against one database rather than a load-balanced cluster. It doesn't connect to live outside data such as FEMA flood zones yet. Version 0.9.2 is an evaluation build. Everything proven so far was done on the project's own machines with synthetic data, and live IPAWS, a load test on real deployment hardware and a first pilot jurisdiction still haven't happened. What a small Tribal or county EOC gets today is an operations center it can install, own and run without a contract or a connection, along with a written record of what has been tested and what hasn't.</p>
         </div>
       </div>
     </section>
