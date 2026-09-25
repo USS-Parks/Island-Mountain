@@ -195,3 +195,6 @@ bom_preview.html
 
 # Live-worker inspection dumps (assistant IDs, webhook secrets, full prompts)
 worker/.audit-*.json
+
+# Installers are hosted on R2, never in this public repo.
+*.exe
