@@ -16,7 +16,9 @@ ROOT = Path(__file__).resolve().parents[1]
 # desktop navbar and the mobile sidebar of every page. Point it at whichever nav
 # item is stable. It was careers.html until Careers came out of the nav; Home is
 # the one link every nav carries, including the reduced nav on lamprey/index.html.
-NAV_ANCHOR_HREF = re.compile(r"^(?:\.\./)?index\.html$")
+# Home links use the canonical root URL "/" so the canonical homepage receives
+# internal links; the index.html forms remain accepted for older fixtures.
+NAV_ANCHOR_HREF = re.compile(r"^(?:/|(?:\.\./)?index\.html)$")
 FULL_DOCUMENT = re.compile(r"<!doctype html|<html\b", re.IGNORECASE)
 UNQUOTED_HREF = re.compile(r"\bhref\s*=\s*(?![\"'])[^\s>]", re.IGNORECASE)
 KNOWN_CORRUPTION = (

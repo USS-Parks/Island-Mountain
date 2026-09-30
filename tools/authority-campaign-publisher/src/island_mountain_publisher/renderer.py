@@ -113,7 +113,7 @@ def _cta_html(item: ManifestItem) -> str:
 def _related_html() -> str:
     cards = (
         (
-            "../the-island-mountain-doctrine.html",
+            "the-island-mountain-doctrine.html",
             "The Island Mountain Doctrine",
             "The operating principles behind locally owned, forward-deployed AI systems.",
         ),
