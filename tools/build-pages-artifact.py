@@ -32,6 +32,7 @@ REQUIRED_ROOT_FILES = (
     "robots.txt",
     "sitemap.xml",
     "sitemap.txt",
+    "index.md",
     ".well-known/api-catalog",
 )
 SITEMAP_EXCLUDE = {
@@ -209,6 +210,53 @@ def public_loc(relative: PurePosixPath) -> str:
     return f"https://islandmountain.io/{relative.as_posix()}"
 
 
+HOMEPAGE_MD_TOKEN_DIVISOR = 4
+HOMEPAGE_MD_CF_CONFIG = ROOT / "tools" / "cloudflare-homepage-markdown-negotiation.json"
+HOMEPAGE_MD_FORBIDDEN = (
+    "$",
+    "Summit",
+    "Landfall",
+    "Citadel",
+    "casino-301",
+    "LLC",
+    "\u2014",
+    "\u2013",
+)
+
+
+def homepage_markdown_token_count(text: str) -> int:
+    """Conventional English token estimate: ceil(character_count / 4)."""
+    return (len(text) + HOMEPAGE_MD_TOKEN_DIVISOR - 1) // HOMEPAGE_MD_TOKEN_DIVISOR
+
+
+def validate_homepage_markdown(path: Path) -> None:
+    """Keep the homepage twin prose-only and in lockstep with the Tokens header."""
+    text = path.read_text(encoding="utf-8")
+    if not text.lstrip().startswith("# Island Mountain"):
+        raise SystemExit("index.md must start with '# Island Mountain'")
+    for needle in HOMEPAGE_MD_FORBIDDEN:
+        if needle in text:
+            raise SystemExit(f"index.md must omit {needle!r}")
+    if re.search(r"\bactually\b", text, re.IGNORECASE):
+        raise SystemExit("index.md must omit the word 'actually'")
+    tokens = homepage_markdown_token_count(text)
+    try:
+        data = load_json(HOMEPAGE_MD_CF_CONFIG.read_text(encoding="utf-8"))
+    except (OSError, JSONDecodeError) as exc:
+        raise SystemExit(f"homepage markdown Cloudflare config is unreadable: {exc}") from exc
+    header_tokens = None
+    for rule in data.get("rules") or []:
+        headers = (rule.get("action_parameters") or {}).get("headers") or {}
+        tokens_header = headers.get("Tokens") or {}
+        if tokens_header.get("value") is not None:
+            header_tokens = tokens_header.get("value")
+            break
+    if str(header_tokens) != str(tokens):
+        raise SystemExit(
+            f"Tokens header {header_tokens!r} must equal ceil(len(index.md)/4)={tokens}"
+        )
+
+
 def validate_api_catalog(path: Path) -> None:
     """Keep the RFC 9727 placeholder parseable, price-free, and API-free."""
     try:
@@ -343,6 +391,7 @@ def main() -> int:
 
     for name in REQUIRED_ROOT_FILES:
         copy(PurePosixPath(name))
+    validate_homepage_markdown(output / "index.md")
     validate_api_catalog(output / ".well-known" / "api-catalog")
     validate_pages_upload()
     for name in REQUIRED_ASSETS:

@@ -39,6 +39,7 @@ jobs:
         run: |
           test -f "${{ runner.temp }}/island-mountain-validation/.nojekyll"
           test -f "${{ runner.temp }}/island-mountain-validation/.well-known/api-catalog"
+          test -f "${{ runner.temp }}/island-mountain-validation/index.md"
       - name: Validate HTML navigation structure
         run: python tools/html-structure-gate.py full
       - name: Check JavaScript syntax
@@ -83,6 +84,7 @@ jobs:
         run: |
           test -f "${{ runner.temp }}/island-mountain-site/.nojekyll"
           test -f "${{ runner.temp }}/island-mountain-site/.well-known/api-catalog"
+          test -f "${{ runner.temp }}/island-mountain-site/index.md"
       - name: Upload site artifact
         uses: actions/upload-pages-artifact@v5
         with:
