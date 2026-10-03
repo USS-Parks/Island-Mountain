@@ -27,14 +27,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="author" content="Basho Parks">
-  <meta name="date" content="2026-07-25">
-  <title>Forward-Deployed AI Blog | Security, Sovereignty &amp; TCO</title>
-  <meta name="description" content="Field notes on forward-deployed AI engineering: agentic security and governance, HIPAA and ITAR, tribal data sovereignty, and honest cloud vs. local TCO.">
+  <meta name="date" content="2026-05-05">
+  <meta name="robots" content="noindex">
+  <title>404 - Page Not Found | Island Mountain</title>
+  <meta name="description" content="The page you are looking for does not exist or has been moved. Return to Island Mountain for on-premise AI inference servers with NVIDIA RTX PRO 6000 Blackwell GPUs.">
   <link rel="icon" type="image/x-icon" href="favicon.ico?v=4">
   <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png?v=4">
   <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png?v=4">
   <link rel="stylesheet" href="css/style.min.css?v=15">
-  <link rel="stylesheet" href="css/card-nodes.min.css?v=3">
   <link rel="stylesheet" href="icons/remixicon.css" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="icons/remixicon.css"></noscript>
   <link rel="preload" href="fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -57,221 +57,52 @@
     unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
   }
   </style>
-  <link rel="canonical" href="https://islandmountain.io/blog.html">
+  <link rel="canonical" href="https://islandmountain.io/404.html">
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Forward-Deployed AI Blog | Security, Sovereignty &amp; TCO">
-  <meta property="og:description" content="Field notes on forward-deployed AI engineering: agentic security and governance, HIPAA and ITAR, tribal data sovereignty, and honest cloud vs. local TCO.">
-  <meta property="og:url" content="https://islandmountain.io/blog.html">
+  <meta property="og:title" content="404 - Page Not Found | Island Mountain">
+  <meta property="og:description" content="The page you are looking for does not exist or has been moved. Return to Island Mountain for on-premise AI inference servers with NVIDIA RTX PRO 6000 Blackwell GPUs.">
+  <meta property="og:url" content="https://islandmountain.io/404.html">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Island Mountain">
-  <meta property="og:image" content="https://islandmountain.io/images/hero-blog.webp?v=3">
+  <meta property="og:image" content="https://islandmountain.io/images/hero-mountain.webp">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Forward-Deployed AI Blog | Security, Sovereignty &amp; TCO">
-  <meta name="twitter:description" content="Field notes on forward-deployed AI engineering: agentic security and governance, HIPAA and ITAR, tribal data sovereignty, and honest cloud vs. local TCO.">
-  <meta name="twitter:image" content="https://islandmountain.io/images/hero-blog.webp?v=3">
+  <meta name="twitter:title" content="404 - Page Not Found | Island Mountain">
+  <meta name="twitter:description" content="The page you are looking for does not exist or has been moved. Return to Island Mountain for on-premise AI inference servers with NVIDIA RTX PRO 6000 Blackwell GPUs.">
+  <meta name="twitter:image" content="https://islandmountain.io/images/hero-mountain.webp">
 
-  <!-- Blog Schema -->
+  <!-- BreadcrumbList Schema -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Blog",
-    "name": "Island Mountain Blog",
-    "description": "Field notes on forward-deployed AI engineering, agentic security and governance, and data sovereignty",
-    "url": "https://islandmountain.io/blog.html",
-    "publisher": {
-      "@type": "Organization",
-      "name": "Island Mountain",
-      "url": "https://islandmountain.io",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://islandmountain.io/images/hero-blog.webp?v=3"
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://islandmountain.io/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "404",
+        "item": "https://islandmountain.io/404.html"
       }
-    }
+    ]
   }
   </script>
-
-  <!-- Blog-specific styles -->
-  <style>
-    /* Hero copy sits on a busy night photo now, so it carries the copper the
-       style guide uses for accent type instead of white on city lights. */
-    .hero-page h1 {
-      color: var(--copper-light);
-      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.85), 0 2px 24px rgba(0, 0, 0, 0.6);
-    }
-    .hero-badge {
-      color: var(--copper-light);
-      border-color: rgba(245, 158, 11, 0.55);
-      background: rgba(0, 0, 0, 0.45);
-    }
-    .blog-subtitle {
-      color: #f0d9b0;
-      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.85), 0 1px 14px rgba(0, 0, 0, 0.55);
-    }
-
-    /* No scrim over the hero photo: the cards carry their own translucent
-       panel and float on the photo the whole way down. */
-    .section-first { background-color: transparent; }
-    .blog-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 28px;
-    }
-
-    .blog-card {
-      background: var(--card-bg);
-      backdrop-filter: blur(var(--glass-blur));
-      -webkit-backdrop-filter: blur(var(--glass-blur));
-      border: 1px solid var(--card-border);
-      border-radius: var(--border-radius);
-      padding: 32px;
-      transition: transform var(--transition-speed), box-shadow var(--transition-speed), border-color var(--transition-speed);
-    }
-
-    .blog-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
-      border-color: rgba(245, 158, 11, 0.3);
-    }
-
-    .blog-card-meta {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 16px;
-    }
-
-    .blog-card-date {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-    }
-
-    .blog-card-tag {
-      display: inline-block;
-      font-size: 0.7rem;
-      font-weight: 600;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      padding: 4px 12px;
-      border-radius: 50px;
-    }
-
-    .tag-technical {
-      background: rgba(148, 163, 184, 0.1);
-      color: var(--slate-400);
-    }
-
-    .tag-compliance {
-      background: rgba(245, 158, 11, 0.12);
-      color: var(--copper);
-    }
-
-    .tag-financial {
-      background: rgba(180, 83, 9, 0.15);
-      color: var(--copper-darker);
-    }
-
-    .tag-how-to {
-      background: rgba(100, 116, 139, 0.15);
-      color: var(--slate-300);
-    }
-
-    .tag-industry {
-      background: rgba(245, 158, 11, 0.08);
-      color: var(--copper-light);
-    }
-
-    .tag-strategy {
-      background: rgba(148, 163, 184, 0.12);
-      color: var(--slate-300, #cbd5e1);
-    }
-
-    .tag-white-paper {
-      background: rgba(180, 83, 9, 0.12);
-      color: var(--copper-light);
-    }
-
-    .blog-card h2 {
-      font-size: 1.3rem;
-      margin-bottom: 12px;
-      line-height: 1.4;
-    }
-
-    .blog-card h2 a {
-      color: var(--text-light);
-      transition: color var(--transition-speed);
-    }
-
-    .blog-card h2 a:hover {
-      color: var(--copper);
-    }
-
-    .blog-card-excerpt {
-      font-size: 0.95rem;
-      line-height: 1.7;
-      color: var(--text-muted);
-      margin-bottom: 16px;
-    }
-
-    .blog-card-read {
-      font-size: 0.9rem;
-      font-weight: 600;
-      color: var(--copper);
-      transition: color var(--transition-speed);
-    }
-
-    .blog-card-read:hover {
-      color: var(--copper-light);
-    }
-
-    .blog-subtitle {
-      font-size: 1.15rem;
-      color: rgba(255, 255, 255, 0.88);
-      max-width: 700px;
-      margin: 0 auto;
-      line-height: 1.8;
-      text-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
-    }
-
-    @media (max-width: 768px) {
-      .blog-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position": 1,
-      "name": "Home",
-      "item": "https://islandmountain.io/"
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
-      "name": "Blog",
-      "item": "https://islandmountain.io/blog.html"
-    }
-  ]
-}
-</script>
 </head>
 <body>
 
 
   <!-- Hero background photo -->
   <div class="hero-photo">
-    <img srcset="images/hero-blog-mobile.webp?v=3 800w, images/hero-blog.webp?v=3 1915w" sizes="100vw" src="images/hero-blog.webp?v=3" alt="Working at a laptop after dark, city lights and the bay through the window" fetchpriority="high" decoding="async" width="1915" height="897">
+    <img srcset="images/hero-mountain-mobile.webp 800w, images/hero-mountain.webp 1913w" sizes="100vw" src="images/hero-mountain.webp" alt="Island Mountain brand hero - on-premises AI infrastructure, built in California" fetchpriority="high" decoding="async" width="1913" height="892">
   </div>
 
-  <!-- Navbar -->
   <nav class="navbar">
     <div class="container">
       <a href="index.html" class="nav-logo"><img src="images/logo-nav-new.webp" alt="Island Mountain" width="205" height="65"></a>
@@ -281,17 +112,14 @@
         <li><a href="lamprey-woven-security-governance.html">Security Fabric</a></li>
               <li><a href="faq.html">FAQ</a></li>
         <li><a href="resources.html">Resources</a></li>
-        <li><a href="blog.html" class="active">Blog</a></li>
+        <li><a href="blog.html">Blog</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="contact.html" class="nav-cta">Start a Scoping Call</a></li>
       </ul>
-      <button class="hamburger" aria-label="Menu">
-        <span></span><span></span><span></span>
-      </button>
+      <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
     </div>
   </nav>
 
-  <!-- Mobile Sidebar -->
   <div class="sidebar-overlay"></div>
   <div class="mobile-sidebar">
     <a href="index.html">Home</a>
@@ -299,632 +127,42 @@
     <a href="lamprey-woven-security-governance.html">Security Fabric</a>
             <a href="faq.html">FAQ</a>
     <a href="resources.html">Resources</a>
-    <a href="blog.html" class="active">Blog</a>
+    <a href="blog.html">Blog</a>
     <a href="about.html">About</a>
     <a href="contact.html" class="nav-cta">Start a Scoping Call</a>
   </div>
 
-  <!-- Hero -->
+  <!-- Breadcrumb -->
+  <div class="breadcrumb-bar" style="background:var(--secondary-dark);padding:12px 0;border-bottom:1px solid var(--tertiary-dark);">
+    <div class="container" style="font-size:0.85rem;color:var(--text-muted);">
+      <a href="index.html" style="color:var(--copper);text-decoration:none;">Home</a>
+      <span style="margin:0 8px;">/</span>
+      <span>404</span>
+    </div>
+  </div>
+
   <section class="hero hero-page">
     <div class="hero-inner">
-      <span class="hero-badge">Basho&#39;s Pond</span>
-      <h1>The Island Mountain Blog</h1>
-      <p class="blog-subtitle">Field notes from the work: agentic security and governance, data sovereignty, and what the cloud's meter really costs you.</p>
+      <img src="images/404-mascot.webp" alt="A weary Island Mountain badge mascot, worn out from a wrong turn" width="900" height="795" style="display:block;margin:0 auto 24px;width:auto;max-width:min(400px,72%);height:auto;" fetchpriority="high" decoding="async">
+      <span class="hero-badge">Page Not Found</span>
+      <h1>404 - Page Not Found</h1>
+      <p>The page you are looking for does not exist or has been moved.</p>
     </div>
   </section>
 
-  <!-- Blog Grid -->
-  <section class="section section-first">
-    <div class="container">
-      <div class="blog-grid fade-in">
-        <!-- Authority campaign: p15 -->
-        <div class="blog-card beam-card">
-          <div class="blog-card-meta">
-            <span class="blog-card-date">August 28, 2026</span>
-            <span class="blog-card-tag tag-strategy">F4 doctrine clauses</span>
-            <span class="blog-card-tag tag-financial">#CasinoOperations</span>
-          </div>
-          <h2><a href="blog/surveillance-expertise-is-institutional-memory.html">Surveillance Expertise Is Institutional Memory</a></h2>
-          <p class="blog-card-excerpt">The senior surveillance lead notices what the alerting system doesn’t know how to name. A pause running slightly long. A route through the floor that’s technically ordinary and completely wrong. Two innocent actions made meaningful by their order. That judgment took thousands of quiet hours to build, and when she retires it walks out the door, which is why institutions ask me about capturing it.</p>
-          <a href="blog/surveillance-expertise-is-institutional-memory.html" class="blog-card-read">Read &rarr;</a>
-        </div>
-        <!-- Authority campaign: p14 -->
-        <div class="blog-card beam-card">
-          <div class="blog-card-meta">
-            <span class="blog-card-date">August 27, 2026</span>
-            <span class="blog-card-tag tag-strategy">F3 walkthrough</span>
-            <span class="blog-card-tag tag-financial">#CasinoCompliance</span>
-          </div>
-          <h2><a href="blog/an-anomaly-score-can-t-read-the-floor.html">An Anomaly Score Can&#x27;t Read the Floor</a></h2>
-          <p class="blog-card-excerpt">It’s 2:13 a.m. on an invented Tuesday, and a transaction pattern just crossed a threshold. Follow the alert and you’ll see where AI belongs in casino AML work, and where it absolutely doesn’t.</p>
-          <a href="blog/an-anomaly-score-can-t-read-the-floor.html" class="blog-card-read">Read &rarr;</a>
-        </div>
-        <!-- Authority campaign: p13 -->
-        <div class="blog-card beam-card">
-          <div class="blog-card-meta">
-            <span class="blog-card-date">August 26, 2026</span>
-            <span class="blog-card-tag tag-strategy">F6 spec with commentary</span>
-            <span class="blog-card-tag tag-financial">#CloudSecurity</span>
-          </div>
-          <h2><a href="blog/read-the-cloud-contract-beside-the-architecture.html">Read the Cloud Contract Beside the Architecture</a></h2>
-          <p class="blog-card-excerpt">Read seven clauses before you believe a region selector, because data location and data custody aren’t the same thing. A service can store your records in the region you picked while another company’s still running the platform, holding the administrator plane, and answering the legal process.</p>
-          <a href="blog/read-the-cloud-contract-beside-the-architecture.html" class="blog-card-read">Read &rarr;</a>
-        </div>
-        <!-- Authority campaign: p12 -->
-        <div class="blog-card beam-card">
-          <div class="blog-card-meta">
-            <span class="blog-card-date">August 25, 2026</span>
-            <span class="blog-card-tag tag-strategy">F8 dissent</span>
-            <span class="blog-card-tag tag-financial">#LocalLLM</span>
-          </div>
-          <h2><a href="blog/running-two-dgx-sparks-locally.html">Running two DGX Sparks locally</a></h2>
-          <p class="blog-card-excerpt">I love it when the nay-hater brigade gets awful quiet. Six months ago throughput without frontier LLMs at any reasonable price was literally impossible. But boy howdy how things have changed. Rich Sutton said it best on a recent Training Data podcast, &quot;I&#x27;m not weird; everyone else is.&quot;</p>
-          <a href="blog/running-two-dgx-sparks-locally.html" class="blog-card-read">Read &rarr;</a>
-        </div>
-        <!-- Authority campaign: p11 -->
-        <div class="blog-card beam-card">
-          <div class="blog-card-meta">
-            <span class="blog-card-date">August 24, 2026</span>
-            <span class="blog-card-tag tag-strategy">F7 essay</span>
-            <span class="blog-card-tag tag-financial">#IndigenousDataSovereignty</span>
-          </div>
-          <h2><a href="blog/sovereignty-changes-the-requirements.html">Sovereignty Changes the Requirements</a></h2>
-          <p class="blog-card-excerpt">A tribal nation is a sovereign government, not a vertical market, and I’ve watched that single fact reorder every technical question an AI project thought it had already answered.</p>
-          <a href="blog/sovereignty-changes-the-requirements.html" class="blog-card-read">Read &rarr;</a>
-        </div>
-        <!-- Authority campaign: p11 -->
-        <div class="blog-card beam-card">
-          <div class="blog-card-meta">
-            <span class="blog-card-date">August 22, 2026</span>
-            <span class="blog-card-tag tag-strategy">F8 dissent</span>
-            <span class="blog-card-tag tag-financial">#EnterpriseAI</span>
-          </div>
-          <h2><a href="blog/snake-oil-passing-for-water.html">Snake Oil Passing for Water</a></h2>
-          <p class="blog-card-excerpt">If your company's "revenue" is really account teams moving money around in enterprise license agreements due to incentivization goal posts set up by management in-house, then the entire organization is part and parcel to a much larger problem whose way has been paved by dishonest bookkeeping practices - likely in the stark absence of federal or even state regulation.</p>
-          <a href="blog/snake-oil-passing-for-water.html" class="blog-card-read">Read &rarr;</a>
-        </div>
-        <!-- Authority campaign: p10 -->
-        <div class="blog-card beam-card">
-          <div class="blog-card-meta">
-            <span class="blog-card-date">August 21, 2026</span>
-            <span class="blog-card-tag tag-strategy">F2 letter to a role</span>
-            <span class="blog-card-tag tag-financial">#ShadowAI</span>
-          </div>
-          <h2><a href="blog/shadow-ai-usually-arrives-before-policy.html">Shadow AI Usually Arrives Before Policy</a></h2>
-          <p class="blog-card-excerpt">To the CIO who just discovered forty browser tabs of unapproved AI:</p>
-          <a href="blog/shadow-ai-usually-arrives-before-policy.html" class="blog-card-read">Read &rarr;</a>
-        </div>
-        <!-- Authority campaign: p09 -->
-        <div class="blog-card beam-card">
-          <div class="blog-card-meta">
-            <span class="blog-card-date">August 20, 2026</span>
-            <span class="blog-card-tag tag-strategy">F1 field checklist</span>
-            <span class="blog-card-tag tag-financial">#InstitutionalCapacity</span>
-          </div>
-          <h2><a href="blog/a-deployment-should-have-an-ending.html">A Deployment Should Have an Ending</a></h2>
-          <p class="blog-card-excerpt">Before the arrival date gets scheduled, I want the departure test written.</p>
-          <a href="blog/a-deployment-should-have-an-ending.html" class="blog-card-read">Read &rarr;</a>
-        </div>
-        <!-- Authority campaign: p08 -->
-        <div class="blog-card beam-card">
-          <div class="blog-card-meta">
-            <span class="blog-card-date">August 19, 2026</span>
-            <span class="blog-card-tag tag-strategy">F6 spec with commentary</span>
-            <span class="blog-card-tag tag-financial">#CapacityPlanning</span>
-          </div>
-          <h2><a href="blog/concurrency-is-a-workflow-question.html">Concurrency Is a Workflow Question</a></h2>
-          <p class="blog-card-excerpt">There’s a one-page artifact we ask for before any sizing conversation, and I’d rather show it than describe it. A load profile, filled in for an imaginary but typical institution:</p>
-          <a href="blog/concurrency-is-a-workflow-question.html" class="blog-card-read">Read &rarr;</a>
-        </div>
-        <!-- Authority campaign: p07 -->
-        <div class="blog-card beam-card">
-          <div class="blog-card-meta">
-            <span class="blog-card-date">August 18, 2026</span>
-            <span class="blog-card-tag tag-strategy">F8 dissent</span>
-            <span class="blog-card-tag tag-financial">#HealthcareAI</span>
-          </div>
-          <h2><a href="blog/a-baa-is-not-an-architecture.html">A BAA Is Not an Architecture</a></h2>
-          <p class="blog-card-excerpt">“We signed the BAA, so we’re covered.”</p>
-          <a href="blog/a-baa-is-not-an-architecture.html" class="blog-card-read">Read &rarr;</a>
-        </div>
-        <!-- Authority campaign: p06 -->
-        <div class="blog-card beam-card">
-          <div class="blog-card-meta">
-            <span class="blog-card-date">August 17, 2026</span>
-            <span class="blog-card-tag tag-strategy">F3 walkthrough</span>
-            <span class="blog-card-tag tag-financial">#LegalAI</span>
-          </div>
-          <h2><a href="blog/the-docketing-clerk-is-part-of-the-architecture.html">The Docketing Clerk Is Part of the Architecture</a></h2>
-          <p class="blog-card-excerpt">It’s 4:47 on a Friday afternoon. Run the tape forward with me; the scenario is invented, the mechanics aren’t.</p>
-          <a href="blog/the-docketing-clerk-is-part-of-the-architecture.html" class="blog-card-read">Read &rarr;</a>
-        </div>
-        <!-- Authority campaign: p05 -->
-        <div class="blog-card beam-card">
-          <div class="blog-card-meta">
-            <span class="blog-card-date">August 14, 2026</span>
-            <span class="blog-card-tag tag-strategy">F4 doctrine clauses</span>
-            <span class="blog-card-tag tag-financial">#AIDiscovery</span>
-          </div>
-          <h2><a href="blog/discovery-can-kill-the-project.html">Discovery Can Kill the Project</a></h2>
-          <p class="blog-card-excerpt">Discovery at Island Mountain runs under six clauses, and we hold every engagement to them. A sales process that can’t fail can’t be trusted, so these exist to make failure possible.</p>
-          <a href="blog/discovery-can-kill-the-project.html" class="blog-card-read">Read &rarr;</a>
-        </div>
-        <!-- Authority campaign: p04 -->
-        <div class="blog-card beam-card">
-          <div class="blog-card-meta">
-            <span class="blog-card-date">August 13, 2026</span>
-            <span class="blog-card-tag tag-strategy">F5 objection ladder</span>
-            <span class="blog-card-tag tag-financial">#AIAdoption</span>
-          </div>
-          <h2><a href="blog/onboarding-is-part-of-the-system.html">Onboarding Is Part of the System</a></h2>
-          <p class="blog-card-excerpt">“Training is the tour at the end, right?”</p>
-          <a href="blog/onboarding-is-part-of-the-system.html" class="blog-card-read">Read &rarr;</a>
-        </div>
-        <!-- Authority campaign: p03 -->
-        <div class="blog-card beam-card">
-          <div class="blog-card-meta">
-            <span class="blog-card-date">August 12, 2026</span>
-            <span class="blog-card-tag tag-strategy">F1 field checklist</span>
-            <span class="blog-card-tag tag-financial">#DataCenterOperations</span>
-          </div>
-          <h2><a href="blog/the-facility-survey-can-sink-a-good-deployment.html">The Facility Survey Can Sink a Good Deployment</a></h2>
-          <p class="blog-card-excerpt">Measure the building before you sign for the machine.</p>
-          <a href="blog/the-facility-survey-can-sink-a-good-deployment.html" class="blog-card-read">Read &rarr;</a>
-        </div>
-        <!-- Authority campaign: p02 -->
-        <div class="blog-card beam-card">
-          <div class="blog-card-meta">
-            <span class="blog-card-date">August 11, 2026</span>
-            <span class="blog-card-tag tag-strategy">F2 letter to a role</span>
-            <span class="blog-card-tag tag-financial">#AIGovernance</span>
-          </div>
-          <h2><a href="blog/the-compliance-officer-knows-where-the-risk-lives.html">The Compliance Officer Knows Where the Risk Lives</a></h2>
-          <p class="blog-card-excerpt">To the compliance officer who just heard there’s an AI pilot starting:</p>
-          <a href="blog/the-compliance-officer-knows-where-the-risk-lives.html" class="blog-card-read">Read &rarr;</a>
-        </div>
-        <!-- Article: The smaller system -->
-        <div class="blog-card beam-card">
-          <div class="blog-card-meta">
-            <span class="blog-card-date">August 10, 2026</span>
-            <span class="blog-card-tag tag-strategy">Strategy</span>
-            <span class="blog-card-tag tag-financial">Financial</span>
-          </div>
-          <h2><a href="blog/right-sizing-ai-infrastructure-smaller-system.html">The Smaller System Is Often the Honest Answer</a></h2>
-          <p class="blog-card-excerpt">"Buy the biggest box your budget allows. You'll grow into it." I'd like to argue with that in public. Headroom you can't justify bills for power, cooling, and attention from day one, and a maximum-capacity default often hides discovery nobody did. Size from the work, and the honest answer is frequently a smaller machine than the buyer expected.</p>
-          <a href="blog/right-sizing-ai-infrastructure-smaller-system.html" class="blog-card-read">Read &rarr;</a>
-        </div>
-
-        <!-- Article: The idle-GPU problem -->
-        <div class="blog-card beam-card">
-          <div class="blog-card-meta">
-            <span class="blog-card-date">August 9, 2026</span>
-            <span class="blog-card-tag tag-technical">Technical</span>
-            <span class="blog-card-tag tag-financial">Financial</span>
-          </div>
-          <h2><a href="blog/superlinked-sie-self-hosted-inference.html">Self-Hosted Inference and the Idle-GPU Problem: What Superlinked's SIE Changes</a></h2>
-          <p class="blog-card-excerpt">You switched to small models to cut the inference bill and nothing moved, because the cost was never in the calls. It's in the servers, one reserved GPU per model, billed whether traffic arrives or not. Superlinked's open-source SIE serves 85-plus models from one process that loads and evicts by traffic, so a single card runs a rotating working set instead of sitting idle behind one model.</p>
-          <a href="blog/superlinked-sie-self-hosted-inference.html" class="blog-card-read">Read &rarr;</a>
-        </div>
-
-        <!-- Article: The library that burns -->
-        <div class="blog-card beam-card">
-          <div class="blog-card-meta">
-            <span class="blog-card-date">August 2, 2026</span>
-            <span class="blog-card-tag tag-strategy">Strategy</span>
-            <span class="blog-card-tag tag-industry">Industry</span>
-          </div>
-          <h2><a href="blog/capturing-institutional-knowledge-without-surveillance.html">When the Expert Retires, the Library Burns: Capturing Institutional Knowledge Without Building Surveillance</a></h2>
-          <p class="blog-card-excerpt">Every retirement is a library that burns. The tacit expertise that never made the SOP is the part that hurts to lose, and it walks out the door on a schedule you can already see. AI changes the arithmetic by capturing the work in working form while the expert still runs it, owned by the institution and built to preserve expertise, not to police the people who hold it.</p>
-          <a href="blog/capturing-institutional-knowledge-without-surveillance.html" class="blog-card-read">Read &rarr;</a>
-        </div>
-
-        <!-- Article: The giant motor mistake -->
-        <div class="blog-card beam-card">
-          <div class="blog-card-meta">
-            <span class="blog-card-date">July 30, 2026</span>
-            <span class="blog-card-tag tag-strategy">Strategy</span>
-            <span class="blog-card-tag tag-industry">Industry</span>
-          </div>
-          <h2><a href="blog/ai-electricity-analogy-giant-motor.html">AI Is Electricity in 1895, and Everybody&#39;s Shopping for the Biggest Motor in the County</a></h2>
-          <p class="blog-card-excerpt">Factories met electricity by bolting one giant motor onto the old line shafts, and output didn&#39;t much notice; the gains waited four decades for unit drive and redesigned floors. A chatbot subscription over an unchanged workflow is the same play, on a capability curve that compounds in months. Treating AI as a chatbot you subscribe to is meeting electricity and concluding the product is lamps.</p>
-          <a href="blog/ai-electricity-analogy-giant-motor.html" class="blog-card-read">Read &rarr;</a>
-        </div>
-
-        <!-- Article: The Island Mountain Doctrine -->
-        <div class="blog-card beam-card">
-          <div class="blog-card-meta">
-            <span class="blog-card-date">July 28, 2026</span>
-            <span class="blog-card-tag tag-strategy">Strategy</span>
-          </div>
-          <h2><a href="blog/the-island-mountain-doctrine.html">The Island Mountain Doctrine, Distilled</a></h2>
-          <p class="blog-card-excerpt">Most startups begin with a business plan. Island Mountain began with a point of view, and this month I wrote it down: why doctrine exists, the implementation gap it answers, the seven-phase method, the credo's chain of command, and the refusals on the record. The founding document at a fraction of its length.</p>
-          <a href="blog/the-island-mountain-doctrine.html" class="blog-card-read">Read &rarr;</a>
-        </div>
-
-        <!-- Article: ZimReaper session authority -->
-        <div class="blog-card beam-card">
-          <div class="blog-card-meta">
-            <span class="blog-card-date">July 26, 2026</span>
-            <span class="blog-card-tag tag-technical">Technical</span>
-            <span class="blog-card-tag tag-strategy">Strategy</span>
-          </div>
-          <h2><a href="blog/zimreaper-session-authority-ai-agent-credentials.html">ZimReaper Ran With a Human's Session. So Does Your AI Agent.</a></h2>
-          <p class="blog-card-excerpt">TA488's payload never needed privileges of its own. It inherited an authenticated Zimbra session, made only legitimate API calls, and minted itself an app-specific password that survives a password reset. A process with human session authority that provisions its own durable credential is the default shape of an AI agent.</p>
-          <a href="blog/zimreaper-session-authority-ai-agent-credentials.html" class="blog-card-read">Read &rarr;</a>
-        </div>
-
-        <!-- Article: Bonsai 27B -->
-        <div class="blog-card beam-card">
-          <div class="blog-card-meta">
-            <span class="blog-card-date">July 25, 2026</span>
-            <span class="blog-card-tag tag-technical">Technical</span>
-            <span class="blog-card-tag tag-strategy">Strategy</span>
-          </div>
-          <h2><a href="blog/bonsai-27b-phone-local-ai.html">Bonsai 27B Runs on a Phone. The Sovereignty Math Just Moved Again.</a></h2>
-          <p class="blog-card-excerpt">PrismML rounded a 27B multimodal model down to 1.125 bits per weight: 3.9 GB, phone-resident, 90 percent of its benchmark average intact, Apache 2.0. The floor under private multimodal AI just dropped again, and the category table says the deepest cuts land exactly where agentic work lives.</p>
-          <a href="blog/bonsai-27b-phone-local-ai.html" class="blog-card-read">Read &rarr;</a>
-        </div>
-
-        <!-- Article: Agentic Scar Tissue -->
-        <div class="blog-card beam-card">
-          <div class="blog-card-meta">
-            <span class="blog-card-date">July 19, 2026</span>
-            <span class="blog-card-tag tag-strategy">Strategy</span>
-          </div>
-          <h2><a href="blog/agentic-scar-tissue-long-running-agents.html">Agentic Scar Tissue: How Long-Running Agents Drift</a></h2>
-          <p class="blog-card-excerpt">Long-running agents accumulate workarounds, retry policies, fallback paths, and defensive heuristics until operational history starts rewriting behavior. The case for an immutable Hour Zero, adaptation receipts, and behavioral fingerprints.</p>
-          <a href="blog/agentic-scar-tissue-long-running-agents.html" class="blog-card-read">Read &rarr;</a>
-        </div>
-
-        <!-- Article: Education Is the Deployment -->
-        <div class="blog-card beam-card">
-          <div class="blog-card-meta">
-            <span class="blog-card-date">July 16, 2026</span>
-            <span class="blog-card-tag tag-strategy">Strategy</span>
-            <span class="blog-card-tag tag-industry">Industry</span>
-          </div>
-          <h2><a href="blog/education-is-the-deployment.html">Education Is the Deployment</a></h2>
-          <p class="blog-card-excerpt">The companies pulling away in the AI race aren't necessarily choosing better models; their orgs are learning faster. Forward Deployed Engineering is less a software discipline than an educational one, and a good deployment leaves behind a team approaching its work in a fundamentally different way. Forward Deployed Field Notes No. 001, infographic included.</p>
-          <a href="blog/education-is-the-deployment.html" class="blog-card-read">Read &rarr;</a>
-        </div>
-
-        <!-- Article: Agentic Infrastructure Control Plane -->
-        <div class="blog-card beam-card">
-          <div class="blog-card-meta">
-            <span class="blog-card-date">July 11, 2026</span>
-            <span class="blog-card-tag tag-technical">Technical</span>
-            <span class="blog-card-tag tag-strategy">Strategy</span>
-          </div>
-          <h2><a href="blog/agentic-infrastructure-control-plane.html">Agentic Infrastructure Is Shedding Its Scaffolding. The Controls Have to Land Somewhere.</a></h2>
-          <p class="blog-card-excerpt">Anthropic's platform team went on camera and read you the next year of agents: their own service accounts, agent-to-agent MCP traffic, scaffolding deleted, ambient execution, work you order with a budget attached. Every item on that list quietly moves a security control out of the model and into infrastructure. The only question left is whose building it sits in.</p>
-          <a href="blog/agentic-infrastructure-control-plane.html" class="blog-card-read">Read &rarr;</a>
-        </div>
-
-        <!-- Article: The American Open-Source LLM Lab -->
-        <div class="blog-card beam-card">
-          <div class="blog-card-meta">
-            <span class="blog-card-date">July 11, 2026</span>
-            <span class="blog-card-tag tag-strategy">Strategy</span>
-            <span class="blog-card-tag tag-industry">Industry</span>
-          </div>
-          <h2><a href="blog/american-open-source-llm-sovereign-ai.html">Sovereign AI Is Having Its Moment. Now Fund the American Open-Source Lab It Needs.</a></h2>
-          <p class="blog-card-excerpt">Palantir and NVIDIA went sovereign on open models, and the industry's loudest voices are suddenly preaching open source. Good. Now comes the money-where-your-mouth-is part: an independent, American, frontier-cadence open-weight lab with no meter attached.</p>
-          <a href="blog/american-open-source-llm-sovereign-ai.html" class="blog-card-read">Read &rarr;</a>
-        </div>
-
-        <!-- Article: DGX Spark vs RTX PRO 6000 -->
-        <div class="blog-card beam-card">
-          <div class="blog-card-meta">
-            <span class="blog-card-date">July 10, 2026</span>
-            <span class="blog-card-tag tag-technical">Technical</span>
-            <span class="blog-card-tag tag-financial">Financial</span>
-          </div>
-          <h2><a href="blog/dgx-spark-vs-rtx-pro-6000-strix-halo.html">DGX Spark vs RTX PRO 6000: When a $4,700 Box Is Enough, and When It Isn't</a></h2>
-          <p class="blog-card-excerpt">Two DGX Sparks hold 256GB for the price of one RTX PRO 6000 Blackwell, and still generate tokens 6 to 7 times slower per stream. Where Spark and AMD's Strix Halo genuinely win, where they fall over, and the honest sizing call, including for hardware you already own.</p>
-          <a href="blog/dgx-spark-vs-rtx-pro-6000-strix-halo.html" class="blog-card-read">Read &rarr;</a>
-        </div>
-
-        <!-- Article: Self-Hosted AI Inference and the $165,000 Rewrite -->
-        <div class="blog-card beam-card">
-          <div class="blog-card-meta">
-            <span class="blog-card-date">July 10, 2026</span>
-            <span class="blog-card-tag tag-financial">Financial</span>
-            <span class="blog-card-tag tag-strategy">Strategy</span>
-          </div>
-          <h2><a href="blog/self-hosted-ai-inference-165k-rewrite.html">Self-Hosted AI Inference and the $165,000 Rewrite</a></h2>
-          <p class="blog-card-excerpt">Anthropic rewrote Bun from Zig to Rust: 64 parallel Claude agents, 11 days, roughly $165,000 in tokens at API pricing. They never paid it; they own the infrastructure. What the labs' own economics admit about token billing, and what owning inference looks like at your scale.</p>
-          <a href="blog/self-hosted-ai-inference-165k-rewrite.html" class="blog-card-read">Read &rarr;</a>
-        </div>
-
-        <!-- Article: LLM Harnesses, Saddles, and Paddocks -->
-        <div class="blog-card beam-card">
-          <div class="blog-card-meta">
-            <span class="blog-card-date">July 7, 2026</span>
-            <span class="blog-card-tag tag-technical">Technical</span>
-            <span class="blog-card-tag tag-strategy">Strategy</span>
-          </div>
-          <h2><a href="blog/llm-harnesses-saddles-paddocks.html">LLM Harnesses, Saddles, and the Paddocks that corral them</a></h2>
-          <p class="blog-card-excerpt">The word harness comes from draft animals we couldn't trust with the route. As the models earn it, the scaffolding gives way to a saddle, and the controls that hold, identity, egress, metering, audit, a kill switch, move off the animal and into the paddock. The only question left is whose paddock.</p>
-          <a href="blog/llm-harnesses-saddles-paddocks.html" class="blog-card-read">Read &rarr;</a>
-        </div>
-
-        <!-- Article: Agentic Orchestration and Security Map -->
-        <div class="blog-card beam-card">
-          <div class="blog-card-meta">
-            <span class="blog-card-date">July 2, 2026</span>
-            <span class="blog-card-tag tag-technical">Technical</span>
-          </div>
-          <h2><a href="blog/agentic-orchestration-security-map.html">Agentic Orchestration and Security: The Complete Map of How AI Agents Work, and How They Get Attacked</a></h2>
-          <p class="blog-card-excerpt">An animated five-layer map of how AI agents plan, delegate, and act, and how they get attacked. Orchestration patterns, tool trust boundaries, agentjacking, the lethal trifecta, and the deterministic controls that break each attack.</p>
-          <a href="blog/agentic-orchestration-security-map.html" class="blog-card-read">Read &rarr;</a>
-        </div>
-
-        <!-- Article: Agentjacking Fake Bug Report -->
-        <div class="blog-card beam-card">
-          <div class="blog-card-meta">
-            <span class="blog-card-date">June 30, 2026</span>
-            <span class="blog-card-tag tag-technical">Security</span>
-            <span class="blog-card-tag tag-industry">Industry</span>
-          </div>
-          <h2><a href="blog/agentjacking-fake-bug-report.html">Agentjacking Hit a $250B Company Through a Fake Bug Report. Air-Gapped Buys You Half the Fix.</a></h2>
-          <p class="blog-card-excerpt">A single fake Sentry error report hijacked the AI coding agent inside a $250 billion Fortune 100 company and more than 100 other organizations. No breach, no stolen credentials. Air-gapped hardware closes the cloud exfiltration category. It does not close an agent that can't tell trusted data from an instruction.</p>
-          <a href="blog/agentjacking-fake-bug-report.html" class="blog-card-read">Read &rarr;</a>
-        </div>
-
-        <!-- Article: AI Search Visibility Consultant -->
-        <div class="blog-card beam-card">
-          <div class="blog-card-meta">
-            <span class="blog-card-date">June 21, 2026</span>
-            <span class="blog-card-tag tag-technical">Technical</span>
-          </div>
-          <h2><a href="blog/ai-search-visibility-consultant.html">AI Search Visibility in 2026: What Three Years of Production AI Taught Me That Most Consultants Haven't Learned Yet</a></h2>
-          <p class="blog-card-excerpt">AI search summaries are rewriting who gets found. Three years of production on-premises AI experience, turned on the visibility question itself: why AI answer engines cite what they cite, and what most consultants still get wrong.</p>
-          <a href="blog/ai-search-visibility-consultant.html" class="blog-card-read">Read &rarr;</a>
-        </div>
-
-        <!-- Article: The Sovereign Edge On-Device LLMs -->
-        <div class="blog-card beam-card">
-          <div class="blog-card-meta">
-            <span class="blog-card-date">June 14, 2026</span>
-            <span class="blog-card-tag tag-technical">Technical</span>
-          </div>
-          <h2><a href="blog/on-device-llm-sovereign-edge.html">The Sovereign Edge: On-Device LLMs and the Coming Micro-Scale Inference Revolution</a></h2>
-          <p class="blog-card-excerpt">Put your phone in airplane mode and the LLM keeps running. Apple, Google, memristors, and quantized MoE models are collapsing the distance between inference and the device in your pocket. The same sovereignty argument Island Mountain makes at rack scale, now at pocket scale.</p>
-          <a href="blog/on-device-llm-sovereign-edge.html" class="blog-card-read">Read &rarr;</a>
-        </div>
-
-        <!-- Article: EU CADA AI Sovereignty -->
-        <div class="blog-card beam-card">
-          <div class="blog-card-meta">
-            <span class="blog-card-date">June 5, 2026</span>
-            <span class="blog-card-tag tag-compliance">Compliance</span>
-            <span class="blog-card-tag tag-industry">Industry</span>
-          </div>
-          <h2><a href="blog/eu-cada-ai-sovereignty-us-regulated-industries.html">Europe Just Defined AI Sovereignty. The U.S. Is Still Pretending It Does Not Apply to Us.</a></h2>
-          <p class="blog-card-excerpt">On June 3, 2026, the EU published the Cloud and AI Development Act, defining four sovereignty tiers for AI infrastructure. The highest tier blocks any provider subject to the U.S. CLOUD Act. Here is what that framework reveals about every regulated industry in America.</p>
-          <a href="blog/eu-cada-ai-sovereignty-us-regulated-industries.html" class="blog-card-read">Read &rarr;</a>
-        </div>
-
-        <!-- Article: Tribal Sovereignty Data Centers -->
-        <div class="blog-card beam-card">
-          <div class="blog-card-meta">
-            <span class="blog-card-date">May 29, 2026</span>
-            <span class="blog-card-tag tag-industry">Industry</span>
-            <span class="blog-card-tag tag-compliance">Compliance</span>
-          </div>
-          <h2><a href="blog/tribal-sovereignty-data-centers-landlord-or-owner.html">Landlord or Owner: Tribal Nations, Data Centers, and the Sovereignty Question Nobody's Asking</a></h2>
-          <p class="blog-card-excerpt">Over 100 hyperscale data center projects proposed on tribal lands. The Seminole Nation voted 24-0 for a moratorium. The Muscogee Nation rejected a facility on food sovereignty land. The question every tribe needs to answer: landlord or owner?</p>
-          <a href="blog/tribal-sovereignty-data-centers-landlord-or-owner.html" class="blog-card-read">Read &rarr;</a>
-        </div>
-
-        <!-- Article: 50K Month Cloud AI Replacement -->
-        <div class="blog-card beam-card">
-          <div class="blog-card-meta">
-            <span class="blog-card-date">May 29, 2026</span>
-            <span class="blog-card-tag tag-financial">Financial</span>
-            <span class="blog-card-tag tag-strategy">Strategy</span>
-          </div>
-          <h2><a href="blog/50k-month-cloud-ai-local-llm-replacement.html">$50K a Month on Cloud AI Is a Hardware Problem, Not a Budget Problem</a></h2>
-          <p class="blog-card-excerpt">A 100-person company burning $50,000 a month on Claude tokens can replace that spend with on-premise hardware it owns. Break-even in under two months. Five-year savings exceeding $3.5 million. Here is the math.</p>
-          <a href="blog/50k-month-cloud-ai-local-llm-replacement.html" class="blog-card-read">Read &rarr;</a>
-        </div>
-
-        <!-- Article: Grid Screaming Aquifers -->
-        <div class="blog-card beam-card">
-          <div class="blog-card-meta">
-            <span class="blog-card-date">May 14, 2026</span>
-            <span class="blog-card-tag tag-industry">Industry</span>
-          </div>
-          <h2><a href="blog/grid-screaming-aquifers-on-premises-llm.html">The Grid Is Screaming As Our Aquifers Are Sucked Dry; The Answer Is On-Premises LLM Servers</a></h2>
-          <p class="blog-card-excerpt">NERC Level 3 alerts, data centers draining aquifers, and 399 billion gallons of water consumed annually. Local AI inference is the responsible path forward for organizations that refuse to subsidize the cloud.</p>
-          <a href="blog/grid-screaming-aquifers-on-premises-llm.html" class="blog-card-read">Read &rarr;</a>
-        </div>
-
-
-
-        <!-- Article: Local LLM vs Cloud AI Hardware Gap -->
-        <div class="blog-card beam-card">
-          <div class="blog-card-meta">
-            <span class="blog-card-date">May 10, 2026</span>
-            <span class="blog-card-tag tag-technical">Technical</span>
-          </div>
-          <h2><a href="blog/local-llm-vs-cloud-ai-hardware-gap.html">Local LLM vs Cloud AI: Every Con on the List Has a Hardware Fix</a></h2>
-          <p class="blog-card-excerpt">A developer ran Qwen3.6-35B on a MacBook Pro and documented every limitation honestly. Speed, context depth, quality variance. Dedicated on-premise inference hardware solves each one today, whatever silicon the job calls for.</p>
-          <a href="blog/local-llm-vs-cloud-ai-hardware-gap.html" class="blog-card-read">Read &rarr;</a>
-        </div>
-        <!-- Article: Second Revolution Local AI -->
-        <div class="blog-card beam-card">
-          <div class="blog-card-meta">
-            <span class="blog-card-date">May 10, 2026</span>
-            <span class="blog-card-tag tag-industry">Industry</span>
-          </div>
-          <h2><a href="blog/second-revolution-local-ai.html">The Second Revolution of AI Is Local. The Industry Just Admitted It.</a></h2>
-          <p class="blog-card-excerpt">The CEO of Hugging Face ran a 27B model on a laptop in airplane mode and called it the second revolution of AI. For regulated industries paying per-token fees to process sensitive data on someone else's servers, this revolution has been a long time coming.</p>
-          <a href="blog/second-revolution-local-ai.html" class="blog-card-read">Read &rarr;</a>
-        </div>
-        <!-- Article: AI Sovereignty Framework -->
-        <div class="blog-card beam-card">
-          <div class="blog-card-meta">
-            <span class="blog-card-date">May 9, 2026</span>
-            <span class="blog-card-tag tag-industry">Industry</span>
-            <span class="blog-card-tag tag-compliance">Compliance</span>
-            <span class="blog-card-tag tag-white-paper">White Paper</span>
-          </div>
-          <h2><a href="blog/ai-sovereignty-framework-tribal-nations.html">AI Sovereignty Framework for Tribal Nations: Why On-Premise AI Servers Are a Perfect Match for Tribal Governments</a></h2>
-          <p class="blog-card-excerpt">A legal, operational, and strategic framework establishing why on-premise AI infrastructure is the only architecture that satisfies OCAP, HIPAA, the CLOUD Act, and tribal self-determination authority.</p>
-          <a href="blog/ai-sovereignty-framework-tribal-nations.html" class="blog-card-read">Read &rarr;</a>
-        </div>
-
-        <!-- Article: MSP Model -->
-        <div class="blog-card beam-card">
-          <div class="blog-card-meta">
-            <span class="blog-card-date">May 5, 2026</span>
-            <span class="blog-card-tag tag-strategy">Strategy</span>
-          </div>
-          <h2><a href="blog/msp-model-accountability-ticket-queue.html">The MSP Model Sold You Accountability. What You Got Was a Ticket Queue.</a></h2>
-          <p class="blog-card-excerpt">Why the Managed Services Provider model mirrors cloud AI subscriptions: recurring fees for tiered access, culpability transfer instead of real service, and data you don't control.</p>
-          <a href="blog/msp-model-accountability-ticket-queue.html" class="blog-card-read">Read &rarr;</a>
-        </div>
-
-        <!-- Article 1 -->
-        <div class="blog-card beam-card">
-          <div class="blog-card-meta">
-            <span class="blog-card-date">April 30, 2026</span>
-            <span class="blog-card-tag tag-technical">Technical</span>
-          </div>
-          <h2><a href="blog/deepseek-v4-flash-local-deployment.html">DeepSeek V4-Flash Just Changed the Game for Local AI</a></h2>
-          <p class="blog-card-excerpt">How V4-Flash's mixture-of-experts architecture puts 284 billion parameters on 192GB of VRAM, and what that means for organizations running inference on their own hardware.</p>
-          <a href="blog/deepseek-v4-flash-local-deployment.html" class="blog-card-read">Read &rarr;</a>
-        </div>
-
-        <!-- Article 2 -->
-        <div class="blog-card beam-card">
-          <div class="blog-card-meta">
-            <span class="blog-card-date">April 23, 2026</span>
-            <span class="blog-card-tag tag-compliance">Compliance</span>
-          </div>
-          <h2><a href="blog/attorney-client-privilege-cloud-ai.html">Attorney-Client Privilege and Cloud AI: The Structural Problem Law Firms Can't Negotiate Away</a></h2>
-          <p class="blog-card-excerpt">Model Rule 1.6, third-party disclosure mechanics, and why your cloud AI provider's terms of service do not preserve privilege.</p>
-          <a href="blog/attorney-client-privilege-cloud-ai.html" class="blog-card-read">Read &rarr;</a>
-        </div>
-
-        <!-- Article 3 -->
-        <div class="blog-card beam-card">
-          <div class="blog-card-meta">
-            <span class="blog-card-date">April 16, 2026</span>
-            <span class="blog-card-tag tag-technical">Technical</span>
-          </div>
-          <h2><a href="blog/h100-vs-h200-inference-comparison.html">RTX PRO 6000 Blackwell vs. H100: What the Specs Mean for Your Workload</a></h2>
-          <p class="blog-card-excerpt">Memory bandwidth, VRAM capacity, and inference speed explained for the decision-maker who needs to size a deployment honestly.</p>
-          <a href="blog/h100-vs-h200-inference-comparison.html" class="blog-card-read">Read &rarr;</a>
-        </div>
-
-        <!-- Article 4 -->
-        <div class="blog-card beam-card">
-          <div class="blog-card-meta">
-            <span class="blog-card-date">April 9, 2026</span>
-            <span class="blog-card-tag tag-financial">Financial</span>
-          </div>
-          <h2><a href="blog/cloud-ai-vs-local-hardware-tco.html">Cloud AI vs. Local Hardware: Building the Honest Five-Year TCO</a></h2>
-          <p class="blog-card-excerpt">The variables your cloud AI vendor's pricing page omits: compliance overhead, price escalation, vendor lock-in exit costs, and the crossover math.</p>
-          <a href="blog/cloud-ai-vs-local-hardware-tco.html" class="blog-card-read">Read &rarr;</a>
-        </div>
-
-        <!-- Article 5 -->
-        <div class="blog-card beam-card">
-          <div class="blog-card-meta">
-            <span class="blog-card-date">April 2, 2026</span>
-            <span class="blog-card-tag tag-how-to">How-To</span>
-          </div>
-          <h2><a href="blog/openwebui-admin-setup-guide.html">OpenWebUI for Administrators: Multi-User Access, Permissions, and Conversation Controls</a></h2>
-          <p class="blog-card-excerpt">The admin-side setup guide for the IT person who just received the hardware. User accounts, model access by role, audit logging, and network configuration.</p>
-          <a href="blog/openwebui-admin-setup-guide.html" class="blog-card-read">Read &rarr;</a>
-        </div>
-
-        <!-- Article 6 -->
-        <div class="blog-card beam-card">
-          <div class="blog-card-meta">
-            <span class="blog-card-date">March 26, 2026</span>
-            <span class="blog-card-tag tag-industry">Industry</span>
-          </div>
-          <h2><a href="blog/tribal-data-sovereignty-ai-infrastructure.html">Tribal Data Sovereignty and the Cloud AI Problem: Why Sovereign Jurisdictions Need Sovereign Infrastructure</a></h2>
-          <p class="blog-card-excerpt">OCAP principles, IHS data frameworks, emergency management operational security, and why sovereign jurisdictions need sovereign infrastructure.</p>
-          <a href="blog/tribal-data-sovereignty-ai-infrastructure.html" class="blog-card-read">Read &rarr;</a>
-        </div>
-
-        <!-- Article 7 -->
-        <div class="blog-card beam-card">
-          <div class="blog-card-meta">
-            <span class="blog-card-date">March 12, 2026</span>
-            <span class="blog-card-tag tag-industry">Industry</span>
-          </div>
-          <h2><a href="blog/ocap-cloud-act-guide.html">OCAP Principles and the CLOUD Act: Why Tribal Data Requires Local AI Infrastructure</a></h2>
-          <p class="blog-card-excerpt">How the CLOUD Act undermines tribal data sovereignty and why OCAP-compliant AI requires on-premise hardware. Ownership, Control, Access, and Possession in the age of AI.</p>
-          <a href="blog/ocap-cloud-act-guide.html" class="blog-card-read">Read &rarr;</a>
-        </div>
-
-        <!-- Article 8 -->
-        <div class="blog-card beam-card">
-          <div class="blog-card-meta">
-            <span class="blog-card-date">March 5, 2026</span>
-            <span class="blog-card-tag tag-compliance">Compliance</span>
-          </div>
-          <h2><a href="blog/itar-dfars-ai-self-assessment.html">ITAR and DFARS AI Self-Assessment: Can Your AI Infrastructure Pass an Audit?</a></h2>
-          <p class="blog-card-excerpt">Self-assessment guide for ITAR and DFARS compliance when using AI for defense-related work. CUI handling, CMMC alignment, and air-gapped local AI.</p>
-          <a href="blog/itar-dfars-ai-self-assessment.html" class="blog-card-read">Read &rarr;</a>
-        </div>
-
-        <!-- Article 9 -->
-        <div class="blog-card beam-card">
-          <div class="blog-card-meta">
-            <span class="blog-card-date">February 26, 2026</span>
-            <span class="blog-card-tag tag-compliance">Compliance</span>
-          </div>
-          <h2><a href="blog/openai-discovery-risk-law-firms.html">OpenAI Discovery Risk: Why Law Firms Face Subpoena Exposure with Cloud AI</a></h2>
-          <p class="blog-card-excerpt">Cloud AI providers can be subpoenaed for prompt logs and conversation history. Analysis of discovery risk for law firms using ChatGPT, Claude, and other cloud AI services.</p>
-          <a href="blog/openai-discovery-risk-law-firms.html" class="blog-card-read">Read &rarr;</a>
-        </div>
-
-        <!-- Article 10 -->
-        <div class="blog-card beam-card">
-          <div class="blog-card-meta">
-            <span class="blog-card-date">February 19, 2026</span>
-            <span class="blog-card-tag tag-compliance">Compliance</span>
-          </div>
-          <h2><a href="blog/hipaa-technical-checklist.html">HIPAA Technical Safeguards Checklist for Local AI Deployment</a></h2>
-          <p class="blog-card-excerpt">Complete HIPAA technical safeguard checklist mapping access controls, encryption, audit logging, and transmission security to on-premise AI hardware configuration.</p>
-          <a href="blog/hipaa-technical-checklist.html" class="blog-card-read">Read &rarr;</a>
-        </div>
-
-        <!-- Article 11 -->
-        <div class="blog-card beam-card">
-          <div class="blog-card-meta">
-            <span class="blog-card-date">February 12, 2026</span>
-            <span class="blog-card-tag tag-technical">Technical</span>
-          </div>
-          <h2><a href="blog/on-prem-vs-colo-vs-cloud.html">On-Premise vs. Colocation vs. Cloud: A Decision Framework for Regulated Industries</a></h2>
-          <p class="blog-card-excerpt">Decision framework comparing on-premise, colocation, and cloud AI deployment for organizations with compliance requirements. Cost, control, latency, and regulatory analysis.</p>
-          <a href="blog/on-prem-vs-colo-vs-cloud.html" class="blog-card-read">Read &rarr;</a>
-        </div>
-
+  <section class="section section-dark">
+    <div class="container" style="text-align:center;max-width:600px;margin:0 auto;padding:40px 20px;">
+      <p style="font-size:1.1rem;line-height:1.8;color:var(--text-muted);margin-bottom:2rem;">You can head back to the homepage or explore the links below to find what you need.</p>
+      <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:16px;">
+        <a href="index.html" class="btn btn-primary min-w-140">Homepage</a>
+        <a href="forward-deployed-ai-engineering.html" class="btn btn-outline min-w-140">Forward Deployed</a>
+        <a href="solutions.html" class="btn btn-outline min-w-140">Solutions</a>
+        <a href="blog.html" class="btn btn-outline min-w-140">Blog</a>
+        <a href="contact.html" class="btn btn-outline min-w-140">Contact</a>
       </div>
     </div>
   </section>
 
-  <!-- CTA -->
-  <section class="section section-darker text-center">
-    <div class="container fade-in">
-      <h2>Have a Question This Blog Doesn't Answer?</h2>
-      <p class="cta-sub-wrap">Tell us whose desk the work runs through and what hurts about it. One conversation, no sales pitch, and a straight answer about whether we can help.</p>
-      <div class="btn-group">
-        <a href="contact.html" class="btn btn-primary">Start a Scoping Call</a>
-        <a href="faq.html" class="btn btn-secondary">See the FAQ</a>
-      </div>
-      <p class="cta-subtitle"><i class="ri-phone-line icon-copper-mr-sm"></i>Or call directly: <a href="tel:+13414418740" class="copper-semibold">1-341-441-8740</a></p>
-    </div>
-  </section>
-
-  <!-- Footer -->
   <footer class="footer au-footer">
     <div class="container">
       <div class="footer-grid footer-grid--verticals">
@@ -1008,7 +246,6 @@
   </footer>
 
   <script defer src="js/main.min.js?v=4"></script>
-  <script defer src="js/card-nodes.js?v=3"></script>
   <script defer src="js/chat-widget.min.js?v=4"></script>
 
 </body>
