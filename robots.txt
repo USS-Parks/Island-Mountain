@@ -1,42 +1,29 @@
 # Island Mountain — robots.txt
-# Full access for all crawlers and AI answer engines
+# Traditional search engine crawlers only. Every other bot is disallowed,
+# and a Cloudflare WAF rule blocks the ones that ignore this file.
+
+User-agent: Googlebot
+User-agent: Bingbot
+User-agent: DuckDuckBot
+User-agent: Applebot
+Allow: /
+
+# Link-preview fetchers. They run when a person shares a link (LinkedIn,
+# X, Slack, Discord post cards), not as crawlers.
+User-agent: LinkedInBot
+User-agent: Twitterbot
+User-agent: facebookexternalhit
+User-agent: Slackbot
+User-agent: Discordbot
+Allow: /
+
+# AI-training opt-out tokens for the search engines allowed above.
+User-agent: Google-Extended
+User-agent: Applebot-Extended
+Disallow: /
 
 User-agent: *
-Allow: /
-
-# Search engine crawlers
-User-agent: Googlebot
-Allow: /
-
-User-agent: Bingbot
-Allow: /
-
-# AI answer engine crawlers
-User-agent: GPTBot
-Allow: /
-
-User-agent: ChatGPT-User
-Allow: /
-
-User-agent: PerplexityBot
-Allow: /
-
-User-agent: ClaudeBot
-Allow: /
-
-User-agent: anthropic-ai
-Allow: /
-
-User-agent: Bytespider
-Allow: /
-
-User-agent: CCBot
-Allow: /
-
-# Block Cloudflare internal paths from site audit crawlers
-# /cdn-cgi/ is injected by Cloudflare edge (email obfuscation, etc.) — not real pages
-User-agent: AhrefsSiteAudit
-Disallow: /cdn-cgi/
+Disallow: /
 
 # Sitemap location. sitemap.xml is the canonical XML map; sitemap.txt is a
 # plain-text fallback (GitHub Pages serves .txt reliably when XML is challenged).
