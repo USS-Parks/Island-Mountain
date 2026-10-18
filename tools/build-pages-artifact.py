@@ -62,7 +62,7 @@ SEED_PATTERNS = (
     "icons/**/*",
     "js/**/*",
     "lamprey/**/*.html",
-    "lamprey-eoc/**/*.html",
+    "broadwing-eoc/**/*.html",
 )
 FORBIDDEN_TOP_LEVEL = {
     ".git",
