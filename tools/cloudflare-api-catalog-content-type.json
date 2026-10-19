@@ -1,0 +1,36 @@
+{
+  "description": "RFC 9727 api-catalog: override GitHub Pages octet-stream with application/linkset+json.",
+  "notes": [
+    "GitHub Pages cannot emit a custom Content-Type for the extensionless /.well-known/api-catalog path. islandmountain.io is proxied by Cloudflare in front of Pages, so this rule lives on the existing zone ruleset 'Security response headers' (phase http_response_headers_transform).",
+    "ADD this rule. Do not replace the existing security-header rewrite, the homepage Link rule (ref homepage_rfc9727_link_headers), or the Tier A COOP/HSTS rule (ref tier_a_coop_hsts_preload). Do not PUT the whole ruleset with only this payload; a full ruleset replace would wipe live CSP, XFO, Link, COOP, and HSTS.",
+    "Zone: islandmountain.io. Ruleset id from prior Link-headers / Tier A work: c0fae000097143e0ba49736efbe36c87. Confirm with GET /zones/$ZONE_ID/rulesets/phases/http_response_headers_transform/entrypoint before applying if that id is ever rotated.",
+    "Match is path-only and tight: http.request.uri.path eq \"/.well-known/api-catalog\". uri.path ignores the query string, so a trailing query still matches. A trailing slash does not.",
+    "Do not change the placeholder JSON body at .well-known/api-catalog. Do not invent OpenAPI or a product API surface. Do not touch Cloudflare /lamprey redirects."
+  ],
+  "enable": {
+    "dashboard": [
+      "Cloudflare Dashboard > islandmountain.io > Rules > Overview (or Transform Rules) > Modify Response Header.",
+      "Add a new rule. Do not edit the existing security-header rewrite, the homepage Link rule, or the Tier A COOP/HSTS rule.",
+      "When incoming requests match: Custom filter expression `http.request.uri.path eq \"/.well-known/api-catalog\"`.",
+      "Then: Set static header Content-Type = application/linkset+json.",
+      "Deploy. Confirm the older security-header rule, homepage Link rule, and Tier A rule are still enabled."
+    ],
+    "api": [
+      "Additive create-rule only: POST https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID/rules with this object (minus notes/enable).",
+      "Do not PUT https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$RULESET_ID with a rules array that contains only this rule.",
+      "After enable: curl -sI https://islandmountain.io/.well-known/api-catalog must show Content-Type: application/linkset+json."
+    ]
+  },
+  "ref": "api_catalog_linkset_json_content_type",
+  "expression": "http.request.uri.path eq \"/.well-known/api-catalog\"",
+  "action": "rewrite",
+  "enabled": true,
+  "action_parameters": {
+    "headers": {
+      "Content-Type": {
+        "operation": "set",
+        "value": "application/linkset+json"
+      }
+    }
+  }
+}
