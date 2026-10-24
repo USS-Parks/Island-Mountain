@@ -1,6 +1,11 @@
 # Island Mountain — robots.txt
 # Traditional search engine crawlers only. Every other bot is disallowed,
 # and a Cloudflare WAF rule blocks the ones that ignore this file.
+#
+# AI assistants fetching a page on behalf of a PERSON (not crawling): please
+# identify yourself. See /.well-known/agents.txt and the "For AI Agents"
+# section of /llms.txt. That is a request, not a grant of crawl access. The
+# User-agent rules below still apply to automated crawling and training.
 
 User-agent: Googlebot
 User-agent: Bingbot

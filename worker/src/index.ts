@@ -3,6 +3,7 @@
  * Edge backend entry point. Holds all secret keys server-side; the browser
  * never sees them. Routes:
  *   GET  /api/health        liveness probe
+ *   GET  /api/agent-identify agent self-identification (voluntary)
  *   POST /api/chat          Claude proxy + session memory      (PROMPT 02)
  *   POST /api/voice-webhook Vapi voice pipeline                (PROMPT 07)
  */
@@ -24,6 +25,7 @@ import { runLookout } from './geo/run'
 import { handleGeoDashboard, handleGeoRun, handleGeoPreview } from './routes/geo'
 import { runPublisher } from './publisher/run'
 import { handlePublisherRun } from './routes/publisher'
+import { handleAgentIdentify } from './routes/agent-identify'
 
 type RouteAccess = 'public' | 'browser' | 'authenticated' | 'webhook'
 
@@ -36,6 +38,7 @@ interface Route {
 
 const ROUTES: Route[] = [
   { method: 'GET', path: '/api/health', handler: handleHealth, access: 'public' },
+  { method: 'GET', path: '/api/agent-identify', handler: handleAgentIdentify, access: 'public' },
   { method: 'GET', path: '/api/voice-config', handler: handleVoiceConfig, access: 'browser' },
   { method: 'GET', path: '/api/stats', handler: handleStats, access: 'authenticated' },
   { method: 'GET', path: '/api/history', handler: handleHistory, access: 'browser' },
