@@ -27,13 +27,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="author" content="Basho Parks">
-  <meta name="date" content="2026-09-07">
-  <title>Download Lamprey | Island Mountain</title>
-  <meta name="description" content="Download Lamprey v0.34.0, the desktop console for Island Mountain's woven security fabric. Windows, macOS, and Linux installers from the GitHub Latest release.">
+  <meta name="date" content="2026-10-25">
+  <title>Download Lamprey Harness | Island Mountain</title>
+  <meta name="description" content="Lamprey Harness v0.34.0 is a free, MIT-licensed desktop coding workspace that works with 33 model providers or a model running on your own machine. Installers for Windows, macOS and Linux.">
   <link rel="icon" type="image/x-icon" href="favicon.ico?v=4">
   <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png?v=4">
   <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png?v=4">
   <link rel="stylesheet" href="css/style.min.css?v=15">
+  <link rel="stylesheet" href="css/aurora.min.css?v=13">
   <link rel="stylesheet" href="icons/remixicon.css" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="icons/remixicon.css"></noscript>
   <link rel="preload" href="fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -55,18 +56,56 @@
     src: url('fonts/space-grotesk-latin.woff2') format('woff2');
     unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
   }
+  html { background: var(--au-ink); }
+  body { background: radial-gradient(1100px 720px at 78% -12%, var(--secondary-dark) 0, var(--au-slate) 54%, var(--au-ink) 100%) no-repeat; }
+  .lh-narrow { max-width: 900px; }
+  .lh-hero { padding: 150px 0 24px; text-align: center; }
+  .lh-icon { width: 128px; height: 128px; margin: 0 auto 20px; display: block; filter: drop-shadow(0 10px 30px rgba(132, 204, 22, .25)); }
+  .lh-h1 { font-family: 'Space Grotesk', Inter, system-ui, sans-serif; font-size: clamp(2.3rem, 5.4vw, 3.8rem); font-weight: 800; letter-spacing: -.02em; line-height: 1.06; color: var(--white); margin: .2em 0 0; }
+  .lh-hrule { width: 100%; max-width: 420px; height: 3px; margin: 24px auto; border-radius: 2px; background: linear-gradient(90deg, var(--au-copper), var(--au-white-hot)); box-shadow: 0 0 14px var(--copper-glow); }
+  .lh-sub { max-width: 56ch; margin: 0 auto 36px; color: var(--au-muted); font-size: 1.12rem; line-height: 1.65; }
+  .lh-files { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; text-align: left; }
+  .lh-file { min-width: 0; background: var(--card-bg); border: 1px solid var(--card-border); border-radius: var(--border-radius-lg); backdrop-filter: blur(var(--glass-blur)); -webkit-backdrop-filter: blur(var(--glass-blur)); padding: 26px 24px 22px; }
+  .lh-file-title { font-family: 'Space Grotesk', Inter, system-ui, sans-serif; font-size: 1.2rem; font-weight: 700; color: var(--text-light); margin: 0 0 4px; }
+  .lh-file-note { color: var(--text-muted); font-size: .93rem; margin: 0 0 16px; }
+  .lh-dl { display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; font-size: 1.02rem; padding: 14px 24px; }
+  .lh-dl i { font-size: 1.25rem; }
+  .lh-meta { display: grid; grid-template-columns: max-content 1fr; align-items: baseline; gap: 8px 18px; margin: 18px 0 0; font-size: .88rem; }
+  .lh-meta dt { color: var(--text-muted); font-weight: 600; }
+  .lh-meta dd { color: var(--text-light); margin: 0; min-width: 0; }
+  .lh-hash { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: .78rem; word-break: break-all; user-select: all; color: var(--copper-light); }
+  .lh-after { margin: 22px auto 0; max-width: 62ch; color: var(--text-muted); font-size: .95rem; line-height: 1.65; }
+  .lh-section { padding: 56px 0; }
+  .lh-section h2 { font-family: 'Space Grotesk', Inter, system-ui, sans-serif; font-size: clamp(1.6rem, 3.2vw, 2.2rem); font-weight: 800; letter-spacing: -.01em; margin: 0 0 24px; text-align: center; }
+  .lh-section .au-eyebrow-c { display: block; text-align: center; }
+  .lh-notes { max-width: 68ch; margin: 0 auto; }
+  .lh-notes p { color: var(--slate-300); font-size: 1.04rem; line-height: 1.75; margin: 0 0 1.2em; }
+  .lh-notes a, .lh-after a, .lh-step a { color: var(--copper-light); }
+  .lh-steps { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+  .lh-step { min-width: 0; background: var(--card-bg); border: 1px solid var(--card-border); border-radius: var(--border-radius); padding: 26px 24px; }
+  .lh-step h3 { font-size: 1.12rem; font-weight: 700; color: var(--text-light); margin: 0 0 10px; display: flex; align-items: center; gap: 10px; }
+  .lh-step h3 i { color: var(--copper); font-size: 1.3rem; }
+  .lh-step p { color: var(--text-muted); font-size: .96rem; line-height: 1.7; margin: 0; }
+  .lh-step-alt { margin-top: 14px !important; font-size: .9rem !important; }
+  .lh-code { display: block; margin: 12px 0 0; padding: 12px 14px; background: var(--au-ink); border: 1px solid var(--au-line); border-radius: var(--border-radius-sm); font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: .82rem; color: var(--text-light); overflow-x: auto; white-space: nowrap; }
+  .lh-ctas { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-top: 8px; }
+  @media (max-width: 760px) {
+    .lh-files, .lh-steps { grid-template-columns: 1fr; }
+    .lh-hero { padding-top: 120px; }
+    .lh-icon { width: 104px; height: 104px; }
+  }
   </style>
   <link rel="canonical" href="https://islandmountain.io/lamprey.html">
 
-  <meta property="og:title" content="Download Lamprey | Island Mountain">
-  <meta property="og:description" content="Download Lamprey v0.34.0, the desktop console for Island Mountain's woven security fabric. Windows, macOS, and Linux installers from the GitHub Latest release.">
+  <meta property="og:title" content="Download Lamprey Harness | Island Mountain">
+  <meta property="og:description" content="A free, MIT-licensed desktop coding workspace that works with the model you already pay for, or one running on your own machine. Windows, macOS and Linux.">
   <meta property="og:url" content="https://islandmountain.io/lamprey.html">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Island Mountain">
   <meta property="og:image" content="https://islandmountain.io/images/hero-solutions.webp">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Download Lamprey | Island Mountain">
-  <meta name="twitter:description" content="Download Lamprey v0.34.0, the desktop console for Island Mountain's woven security fabric. Windows, macOS, and Linux installers from the GitHub Latest release.">
+  <meta name="twitter:title" content="Download Lamprey Harness | Island Mountain">
+  <meta name="twitter:description" content="A free, MIT-licensed desktop coding workspace that works with the model you already pay for, or one running on your own machine. Windows, macOS and Linux.">
   <meta name="twitter:image" content="https://islandmountain.io/images/hero-solutions.webp">
 
 <script type="application/ld+json">
@@ -83,13 +122,7 @@
     {
       "@type": "ListItem",
       "position": 2,
-      "name": "Security Fabric",
-      "item": "https://islandmountain.io/lamprey-woven-security-governance.html"
-    },
-    {
-      "@type": "ListItem",
-      "position": 3,
-      "name": "Download Lamprey",
+      "name": "Lamprey Harness",
       "item": "https://islandmountain.io/lamprey.html"
     }
   ]
@@ -97,10 +130,6 @@
 </script>
 </head>
 <body>
-
-  <div class="hero-photo">
-    <img srcset="images/hero-solutions-mobile.webp 800w, images/hero-solutions.webp 1632w" sizes="100vw" src="images/hero-solutions.webp" alt="Island Mountain woven security fabric" fetchpriority="high" decoding="async" width="1632" height="964">
-  </div>
 
   <nav class="navbar">
     <div class="container">
@@ -133,84 +162,140 @@
     <a href="contact.html" class="nav-cta">Start a Scoping Call</a>
   </div>
 
-  <section class="hero hero-page">
-    <div class="hero-inner">
-      <span class="hero-badge">Desktop installer</span>
-      <h1>Get Lamprey</h1>
-      <p>Lamprey is the desktop app for Island Mountain&#39;s woven security fabric, the console operators run on a forward-deployed install. This page is the installer door. The product essay lives on the <a href="lamprey-woven-security-governance.html" class="clr-copper">Security Fabric</a> page.</p>
-    </div>
-  </section>
+  <main>
+    <section class="lh-hero">
+      <div class="container lh-narrow">
+        <img class="lh-icon" src="images/lamprey-harness-icon.webp" alt="" width="320" height="320" fetchpriority="high">
+        <span class="au-eyebrow-c">Open source &middot; MIT license &middot; v0.34.0</span>
+        <h1 class="lh-h1">Lamprey Harness</h1>
+        <div class="lh-hrule" aria-hidden="true"></div>
+        <p class="lh-sub">A coding workspace for your desktop that works with the model you already pay for, or the one running on the box under your desk. It's free and it's yours. Your keys and your history stay on your machine.</p>
 
-  <nav class="breadcrumb-nav" aria-label="Breadcrumb">
-    <div class="container">
-      <ol class="breadcrumb-list">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="lamprey-woven-security-governance.html">Security Fabric</a></li>
-        <li aria-current="page">Download Lamprey</li>
-      </ol>
-    </div>
-  </nav>
+        <div class="lh-files">
+          <div class="lh-file">
+            <h2 class="lh-file-title">Windows</h2>
+            <p class="lh-file-note">Installer, 64-bit</p>
+            <a class="btn btn-primary lh-dl" href="https://github.com/USS-Parks/Lamprey-Harness/releases/download/v0.34.0/Lamprey-x64.exe"><i class="ri-download-cloud-line" aria-hidden="true"></i> Download for Windows</a>
+            <dl class="lh-meta">
+              <dt>File</dt>
+              <dd>Lamprey-x64.exe</dd>
+              <dt>Size</dt>
+              <dd>274.2 MB</dd>
+              <dt>SHA-256</dt>
+              <dd class="lh-hash">45c08abd969550b441d1a76983cfdb54a536f199b0be6b5d8cc62dfe9a90dd43</dd>
+            </dl>
+          </div>
+          <div class="lh-file">
+            <h2 class="lh-file-title">macOS</h2>
+            <p class="lh-file-note">Disk image, M1 Mac or newer</p>
+            <a class="btn btn-primary lh-dl" href="https://github.com/USS-Parks/Lamprey-Harness/releases/download/v0.34.0/Lamprey-arm64.dmg"><i class="ri-download-cloud-line" aria-hidden="true"></i> Download for Mac</a>
+            <dl class="lh-meta">
+              <dt>File</dt>
+              <dd>Lamprey-arm64.dmg</dd>
+              <dt>Size</dt>
+              <dd>298.2 MB</dd>
+              <dt>SHA-256</dt>
+              <dd class="lh-hash">714ae22e76b043f7380d395396ad7e211e994cb381ea6fc45cf5dfacb1715dac</dd>
+            </dl>
+          </div>
+          <div class="lh-file">
+            <h2 class="lh-file-title">Linux</h2>
+            <p class="lh-file-note">AppImage, x86_64</p>
+            <a class="btn btn-primary lh-dl" href="https://github.com/USS-Parks/Lamprey-Harness/releases/download/v0.34.0/Lamprey-x86_64.AppImage"><i class="ri-download-cloud-line" aria-hidden="true"></i> Download for Linux</a>
+            <dl class="lh-meta">
+              <dt>File</dt>
+              <dd>Lamprey-x86_64.AppImage</dd>
+              <dt>Size</dt>
+              <dd>501.1 MB</dd>
+              <dt>SHA-256</dt>
+              <dd class="lh-hash">2690ce59c26f93b1358d6c80d576c343ca59b71d9c3e74acf8e20e7c18b8a48e</dd>
+            </dl>
+          </div>
+          <div class="lh-file">
+            <h2 class="lh-file-title">Windows, no install</h2>
+            <p class="lh-file-note">Portable ZIP, 64-bit. Unzip and run.</p>
+            <a class="btn btn-secondary lh-dl" href="https://github.com/USS-Parks/Lamprey-Harness/releases/download/v0.34.0/Lamprey-x64.zip"><i class="ri-download-cloud-line" aria-hidden="true"></i> Download the ZIP</a>
+            <dl class="lh-meta">
+              <dt>File</dt>
+              <dd>Lamprey-x64.zip</dd>
+              <dt>Size</dt>
+              <dd>370.4 MB</dd>
+              <dt>SHA-256</dt>
+              <dd class="lh-hash">fb8d14132a6e0a4c53225177b92651c1bb9b6256f8237cf5e9d35ccb3fc16b8e</dd>
+            </dl>
+          </div>
+        </div>
+        <p class="lh-after">Lamprey updates itself from <a href="https://github.com/USS-Parks/Lamprey-Harness/releases">GitHub releases</a>, so you only install it once. Older versions stay up there too.</p>
+      </div>
+    </section>
 
-  <section class="section section-dark">
-    <div class="container">
-      <div class="section-header fade-in">
-        <span class="section-badge">v0.34.0</span>
-        <h2>Current GitHub Latest</h2>
-        <p>Installers below are the advertised v0.34.0 assets from <a href="https://github.com/USS-Parks/Lamprey-Harness/releases/latest" class="clr-copper">Lamprey-Harness Latest</a>. That Latest tag is v0.34.0.</p>
+    <section class="lh-section">
+      <div class="container lh-narrow">
+        <span class="au-eyebrow-c">What you're installing</span>
+        <h2>One window, any model</h2>
+        <div class="lh-notes">
+          <p>Lamprey puts the chat, the file tree, the terminal, a browser and git review in one window, and lets the model work across all of it. Thirty-three providers are built in. Ollama and LM Studio run with no key at all, and any OpenAI-compatible endpoint plugs in from Settings.</p>
+          <p>I built it for people who'd rather own their tools than rent them. Your conversations sit in a SQLite file on your own disk. Your API keys are encrypted through your operating system's keystore when it has one, and Lamprey won't store a key in plain text unless you tell it to. It talks to the providers and connectors you set up, and nobody else.</p>
+          <p>If you work under privilege, PHI or CUI, the controls that bound what an agent can touch don't belong in the app. They belong in the fence around it: identity, egress, metering, audit and a kill switch. That's the <a href="lamprey-woven-security-governance.html">Security Fabric</a>, and we put it in on-site. I wrote up the difference in <a href="blog/llm-harnesses-saddles-paddocks.html">LLM Harnesses, Saddles, and the Paddocks that corral them</a>.</p>
+        </div>
       </div>
-      <div class="table-wrapper fade-in">
-        <table>
-          <thead>
-            <tr>
-              <th>Platform</th>
-              <th>File</th>
-              <th>Download</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>Windows x64</strong></td>
-              <td>Lamprey-x64.exe</td>
-              <td><a href="https://github.com/USS-Parks/Lamprey-Harness/releases/download/v0.34.0/Lamprey-x64.exe" class="clr-copper">Installer</a></td>
-            </tr>
-            <tr>
-              <td><strong>Windows x64 portable</strong></td>
-              <td>Lamprey-x64.zip</td>
-              <td><a href="https://github.com/USS-Parks/Lamprey-Harness/releases/download/v0.34.0/Lamprey-x64.zip" class="clr-copper">ZIP</a></td>
-            </tr>
-            <tr>
-              <td><strong>macOS Apple silicon</strong></td>
-              <td>Lamprey-arm64.dmg</td>
-              <td><a href="https://github.com/USS-Parks/Lamprey-Harness/releases/download/v0.34.0/Lamprey-arm64.dmg" class="clr-copper">DMG</a></td>
-            </tr>
-            <tr>
-              <td><strong>Linux x86_64</strong></td>
-              <td>Lamprey-x86_64.AppImage</td>
-              <td><a href="https://github.com/USS-Parks/Lamprey-Harness/releases/download/v0.34.0/Lamprey-x86_64.AppImage" class="clr-copper">AppImage</a></td>
-            </tr>
-            <tr>
-              <td><strong>Auto-update manifest</strong></td>
-              <td>latest.yml</td>
-              <td><a href="https://github.com/USS-Parks/Lamprey-Harness/releases/download/v0.34.0/latest.yml" class="clr-copper">latest.yml</a></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="content-block fade-in content-max-800" style="margin-top:28px;">
-        <p class="body-md">These builds are unsigned. There is no iOS package. The release notes for v0.34.0 say the same.</p>
-        <p class="body-md">Island Mountain. Call <a href="tel:+13414418740" class="clr-copper">1-341-441-8740</a> or write <a href="mailto:basho@islandmountain.io" class="clr-copper">basho@islandmountain.io</a> if you need a hand with the install.</p>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="section section-darker text-center">
-    <div class="container fade-in">
-      <h2>Want the essay, not the installer?</h2>
-      <p class="cta-sub-wrap">The Security Fabric page is the product write-up. This page stays the download door.</p>
-      <a href="lamprey-woven-security-governance.html" class="btn btn-secondary">Read the Security Fabric page</a>
-      <p class="cta-subtitle"><i class="ri-phone-line icon-copper-mr-sm"></i>Or call Island Mountain: <a href="tel:+13414418740" class="copper-semibold">1-341-441-8740</a></p>
-    </div>
-  </section>
+    <section class="lh-section">
+      <div class="container lh-narrow">
+        <span class="au-eyebrow-c">New in v0.34.0</span>
+        <h2>It checks the edit before it lands</h2>
+        <div class="lh-notes">
+          <p>Small local models botch edits in boring ways. They patch a file that's changed since they last read it, miss a hunk by one indent, or delete a file and then try to edit it two steps later. Version 0.34.0 checks every change against what's on disk before it runs. It fixes the trivial misses on its own, refuses a batch of edits that contradicts itself, and keeps working a request until its goals are met or a ceiling stops it.</p>
+          <p>None of it touches the prompt. It's ordinary code sitting between the model and your files, so a small model gets the benefit for free. The idea comes from the <a href="https://arxiv.org/abs/2609.19315">GAVEL paper</a>, where a deterministic world model took an 8B model from 41% to 92% task success. Lamprey's own number on a local Qwen or DeepSeek run isn't measured yet, and I won't print one until it is.</p>
+          <p>It's on by default. Settings, Advanced, World model turns it down or off.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="lh-section">
+      <div class="container lh-narrow">
+        <span class="au-eyebrow-c">Before you install</span>
+        <h2>Check the file, then open it</h2>
+        <div class="lh-steps">
+          <div class="lh-step">
+            <h3><i class="ri-shield-check-line" aria-hidden="true"></i> Verify the download</h3>
+            <p>The output has to match the SHA-256 on that file's card, character for character. On Windows, in PowerShell:</p>
+            <code class="lh-code">Get-FileHash .\Lamprey-x64.exe -Algorithm SHA256</code>
+            <p class="lh-step-alt">On a Mac or Linux, in a terminal:</p>
+            <code class="lh-code">shasum -a 256 Lamprey-arm64.dmg</code>
+          </div>
+          <div class="lh-step">
+            <h3><i class="ri-error-warning-line" aria-hidden="true"></i> Windows will warn you</h3>
+            <p>The Windows build isn't code-signed yet, so SmartScreen stops it with "Windows protected your PC." Once the hash matches, choose <strong>More info</strong>, then <strong>Run anyway</strong>.</p>
+          </div>
+          <div class="lh-step">
+            <h3><i class="ri-error-warning-line" aria-hidden="true"></i> So will your Mac</h3>
+            <p>The Mac app is ad-hoc signed and not notarized, so Gatekeeper won't open it on the first try. Drag it into Applications, then open <strong>System Settings</strong>, <strong>Privacy &amp; Security</strong> and choose <strong>Open Anyway</strong>. On older macOS, right-click the app and choose <strong>Open</strong>.</p>
+          </div>
+          <div class="lh-step">
+            <h3><i class="ri-code-s-slash-line" aria-hidden="true"></i> Linux needs one line</h3>
+            <p>Mark the AppImage executable, then run it:</p>
+            <code class="lh-code">chmod +x Lamprey-x86_64.AppImage</code>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="lh-section text-center">
+      <div class="container lh-narrow">
+        <span class="au-eyebrow-c">Source</span>
+        <h2>The code's on GitHub</h2>
+        <div class="lh-notes">
+          <p>All of it, under the MIT license. Read it, fork it, or open an issue when something breaks. Stuck on an install? Call us at <a href="tel:+13414418740">1-341-441-8740</a> or write <a href="mailto:basho@islandmountain.io">basho@islandmountain.io</a>.</p>
+        </div>
+        <div class="lh-ctas">
+          <a href="https://github.com/USS-Parks/Lamprey-Harness" class="btn btn-primary"><i class="ri-open-source-line" aria-hidden="true"></i> View the source</a>
+          <a href="https://github.com/USS-Parks/Lamprey-Harness/releases" class="btn btn-secondary">All releases</a>
+        </div>
+      </div>
+    </section>
+  </main>
 
   <footer class="footer au-footer">
     <div class="container">
