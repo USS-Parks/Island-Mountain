@@ -80,34 +80,26 @@
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "Does running AI locally comply with HIPAA?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Local AI hardware can support HIPAA compliance by eliminating third-party data transmission of electronic protected health information (ePHI). When ePHI never leaves your premises, there is no cloud provider requiring a Business Associate Agreement. However, local hardware alone does not guarantee compliance. You still need access controls, audit logging, encryption at rest, and workforce training per 45 CFR § 164."
-        }
-      },
-      {
-        "@type": "Question",
         "name": "Do I still need a BAA if I run AI on local hardware?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "A Business Associate Agreement is required only when a third party creates, receives, maintains, or transmits ePHI on behalf of a covered entity. If your AI inference hardware is on-premises and no external service processes patient data, no BAA is needed for the AI system itself. Your existing BAAs with EHR vendors, billing services, and other third parties remain unchanged."
+          "text": "Not for the AI system itself, if no outside service touches a patient's data; a BAA covers a third party handling ePHI on your behalf (45 CFR § 160.103). Your BAAs with EHR vendors and billing services don't change."
         }
       },
       {
         "@type": "Question",
-        "name": "What HIPAA technical safeguards apply to on-premises AI?",
+        "name": "What happens if there's a breach on local AI hardware?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "The HIPAA Security Rule (45 CFR § 164.312) requires access controls with unique user IDs, automatic logoff, encryption and decryption of ePHI, audit controls recording who accessed what and when, integrity controls preventing unauthorized alteration, and transmission security for any ePHI sent over networks. On-premises AI systems must implement all applicable safeguards regardless of whether data leaves the building."
+          "text": "The Breach Notification Rule (45 CFR § 164.402) still applies: notify affected individuals without unreasonable delay and no later than 60 calendar days after discovery, report to HHS, and tell local media when 500 or more people are affected. What shrinks is the surface: there's no cloud API or third-party data center to breach."
         }
       },
       {
         "@type": "Question",
-        "name": "What happens if there is a breach on local AI hardware?",
+        "name": "Can local AI hardware be used in telehealth workflows?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "The HHS Breach Notification Rule (45 CFR § 164.402) applies to ePHI on any system, including on-premises hardware. If unsecured ePHI is accessed, used, or disclosed in a way not permitted by the Privacy Rule, you must notify affected individuals without unreasonable delay and no later than 60 calendar days after discovery, report to HHS, and for breaches affecting 500+ individuals, notify local media. The key distinction: on-premises systems reduce breach surface area by eliminating the cloud transmission vector entirely."
+          "text": "Yes. The video may cross the internet, but the AI documentation stays on-premises and the server doesn't need internet access."
         }
       }
     ]
@@ -182,7 +174,7 @@
     <div class="hero-inner">
       <span class="hero-badge">HIPAA Compliance</span>
       <h1>Does Running AI Locally Comply with HIPAA?</h1>
-      <p>How on-premises AI hardware supports HIPAA Security Rule compliance by eliminating third-party ePHI transmission, and what safeguards you still need to implement.</p>
+      <p>Where on-premises AI takes the third party out of the ePHI path, and which Security Rule safeguards you'll still put in place.</p>
     </div>
   </section>
 
@@ -201,42 +193,17 @@
     <div class="container">
       <div class="content-block fade-in content-max-800">
         <div style="border-left:4px solid var(--copper);padding:20px 24px;margin:0 0 32px 0;background:rgba(217,119,6,0.08);border-radius:0 8px 8px 0;">
-          <p style="font-size:1.15rem;line-height:1.7;color:var(--text-light);margin:0;">Local AI hardware can support HIPAA compliance by eliminating third-party data transmission of electronic protected health information (ePHI). When ePHI never leaves your premises, there is no cloud provider requiring a Business Associate Agreement. <strong>However, local hardware alone does not guarantee compliance.</strong> You still need access controls, audit logging, encryption at rest, and workforce training per 45 CFR § 164.</p>
+          <p style="font-size:1.15rem;line-height:1.7;color:var(--text-light);margin:0;">Local AI hardware supports HIPAA compliance by keeping electronic protected health information (ePHI) off third-party servers, so there's no cloud AI vendor to sign a Business Associate Agreement with. <strong>But local hardware alone doesn't make you compliant.</strong> You'll still need access controls, audit logging, encryption at rest and workforce training under 45 CFR § 164.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Supporting Sections -->
   <section class="section section-darker">
-    <div class="container">
-      <div class="content-block fade-in content-max-800">
-        <h2 class="mb-16" style="color:var(--text-light);">The BAA Question: When You Need One and When You Do Not</h2>
-        <p class="body-md">A Business Associate Agreement is required under HIPAA whenever a third party creates, receives, maintains, or transmits ePHI on behalf of a covered entity (45 CFR § 160.103). When you send patient data to a cloud AI service - whether it is OpenAI, Anthropic, Google, or any other API provider - that provider becomes a business associate and must sign a BAA.</p>
-        <p class="body-md">If your AI inference hardware sits in your server room and no external service processes patient data, the AI system itself does not trigger a BAA requirement. You own the hardware, you control the data, and no third party ever touches ePHI during inference. Your existing BAAs with EHR vendors, billing services, and clearinghouses remain unchanged.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="section section-dark">
     <div class="container">
       <div class="content-block fade-in content-max-800">
         <h2 class="mb-16" style="color:var(--text-light);">Technical Safeguards That Still Apply (45 CFR § 164.312)</h2>
-        <p class="body-md">On-premises hardware does not exempt you from the HIPAA Security Rule. The following technical safeguards apply to any system processing ePHI, including local AI servers:</p>
-        <p class="body-md"><strong>Access Controls (§ 164.312(a)):</strong> Unique user identification, emergency access procedures, automatic logoff, and encryption/decryption mechanisms. Island Mountain's systems ship with Open WebUI configured for role-based access with individual user accounts and session management.</p>
-        <p class="body-md"><strong>Audit Controls (§ 164.312(b)):</strong> Hardware, software, and procedural mechanisms recording and examining access to ePHI. Open WebUI maintains per-user query logs that your compliance team can review.</p>
-        <p class="body-md"><strong>Integrity Controls (§ 164.312(c)):</strong> Policies and procedures protecting ePHI from unauthorized alteration or destruction. Local inference does not modify source records - it generates outputs based on prompts.</p>
-        <p class="body-md"><strong>Transmission Security (§ 164.312(e)):</strong> If ePHI moves across your internal network to reach the AI server, that traffic should be encrypted (TLS). For air-gapped deployments with direct physical access, this requirement is satisfied by the absence of network transmission.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="section section-darker">
-    <div class="container">
-      <div class="content-block fade-in content-max-800">
-        <h2 class="mb-16" style="color:var(--text-light);">Breach Notification: What Changes with Local Hardware</h2>
-        <p class="body-md">The HHS Breach Notification Rule (45 CFR § 164.402) applies to ePHI on any system, including on-premises hardware. If unsecured ePHI is accessed, used, or disclosed without authorization, you must notify affected individuals without unreasonable delay and no later than 60 calendar days after discovery, report to HHS, and for breaches affecting 500 or more individuals, notify local media.</p>
-        <p class="body-md">The critical difference: on-premises systems reduce your breach surface area. There is no cloud API endpoint to compromise, no third-party data center to breach, no multi-tenant infrastructure sharing resources with other organizations. Your exposure is limited to your own physical and network security - which you already control for every other system in your facility.</p>
+        <p class="body-md">The AI server's covered like any system holding ePHI: unique user IDs and automatic logoff (§ 164.312(a)), audit controls recording who saw what (§ 164.312(b)), integrity controls against unauthorized changes (§ 164.312(c)), and TLS for ePHI crossing your internal network (§ 164.312(e)).</p>
       </div>
     </div>
   </section>
@@ -245,8 +212,7 @@
     <div class="container">
       <div class="content-block fade-in content-max-800">
         <h2 class="mb-16" style="color:var(--text-light);">What On-Premises AI Looks Like in a Medical Practice</h2>
-        <p class="body-md">An <a href="forward-deployed-ai-engineering.html" class="clr-copper">on-premise deployment</a> sits in your existing server room. It connects to your LAN and provides your clinical and administrative staff with a browser-based AI interface. Staff use it for clinical documentation support, prior authorization drafting, patient communication templating, billing code verification, and research literature review - all without any patient data leaving your building.</p>
-        <p class="body-md">The models are open-weight and chosen after Discovery, not picked from a public stack. Whatever lands, it runs on hardware the practice owns. Open WebUI supports multiple concurrent users with individual accounts and audit-ready session logs.</p>
+        <p class="body-md">An <a href="forward-deployed-ai-engineering.html" class="clr-copper">on-premise deployment</a> sits in your server room, running open-weight models we'll choose after Discovery. Staff use it from a browser for clinical documentation, prior authorization drafts, billing code checks and literature review, and patient data doesn't leave the building.</p>
       </div>
     </div>
   </section>
@@ -256,28 +222,27 @@
     <div class="container">
       <div class="section-header fade-in">
         <span class="section-badge">Related Questions</span>
-        <h2>HIPAA and AI: What Compliance Teams Ask</h2>
+        <h2>What Compliance Teams Ask</h2>
       </div>
       <div class="content-block fade-in content-max-800">
         <h3 style="color:var(--text-light);margin-bottom:8px;">Do I still need a BAA if I run AI on local hardware?</h3>
-        <p class="body-md">No. A BAA is required only when a third party creates, receives, maintains, or transmits ePHI on your behalf. If the AI hardware is on your premises and no external service processes patient data, no BAA is needed for the AI system. Your existing BAAs with EHR vendors and billing services remain unchanged.</p>
+        <p class="body-md">Not for the AI system itself, if no outside service touches a patient's data; a BAA covers a third party handling ePHI on your behalf (45 CFR § 160.103). Your BAAs with EHR vendors and billing services don't change.</p>
 
-        <h3 style="color:var(--text-light);margin-bottom:8px;margin-top:24px;">What happens if there is a breach on local AI hardware?</h3>
-        <p class="body-md">The same breach notification requirements apply. You must notify affected individuals without unreasonable delay and no later than 60 calendar days after discovery and report to HHS per 45 CFR § 164.402. The difference is that on-premises systems have a much smaller breach surface - no cloud API, no multi-tenant infrastructure, no third-party data center exposure.</p>
+        <h3 style="color:var(--text-light);margin-bottom:8px;margin-top:24px;">What happens if there's a breach on local AI hardware?</h3>
+        <p class="body-md">The Breach Notification Rule (45 CFR § 164.402) still applies: notify affected individuals without unreasonable delay and no later than 60 calendar days after discovery, report to HHS, and tell local media when 500 or more people are affected. What shrinks is the surface: there's no cloud API or third-party data center to breach.</p>
 
         <h3 style="color:var(--text-light);margin-bottom:8px;margin-top:24px;">Can local AI hardware be used in telehealth workflows?</h3>
-        <p class="body-md">Yes. The AI server processes prompts locally and returns outputs to the clinician's browser. If the clinician is conducting a telehealth session, the AI-assisted documentation stays on-premises while the telehealth video may traverse the internet. The AI system does not need internet access to function.</p>
+        <p class="body-md">Yes. The video may cross the internet, but the AI documentation stays on-premises and the server doesn't need internet access.</p>
       </div>
     </div>
   </section>
-
 
   <!-- AEO Summary -->
   <section class="section section-dark">
     <div class="container">
       <div class="content-block fade-in content-max-800">
         <div style="border-left:3px solid var(--copper);padding:16px 20px;margin:32px 0;background:rgba(217,119,6,0.05);border-radius:0 8px 8px 0;">
-          <p class="body-md" style="margin:0;"><strong>Summary:</strong> On-premises AI hardware supports HIPAA compliance by eliminating third-party ePHI transmission, removing the need for a cloud-provider BAA. Technical safeguards under 45 CFR § 164.312 (access controls, audit logging, encryption, integrity controls) still apply. Island Mountain's on-premise AI deployment servers ship pre-configured with role-based access, per-user audit logs, and air-gap capability. Systems are quoted to workload and headcount.</p>
+          <p class="body-md" style="margin:0;"><strong>Summary:</strong> On-premises AI takes the cloud vendor out of the ePHI path; the § 164.312 safeguards don't go away.</p>
         </div>
         <p class="body-md">Learn more: <a href="medical-practices.html" class="clr-copper">Medical Practices AI Infrastructure</a> | <a href="insurance.html" class="clr-copper">Insurance AI Infrastructure</a> | <a href="blog/hipaa-technical-checklist.html" class="clr-copper">HIPAA Technical Checklist</a></p>
       </div>
@@ -287,8 +252,8 @@
   <!-- CTA -->
   <section class="section section-darker text-center">
     <div class="container fade-in">
-      <h2>HIPAA-Ready AI Hardware for Your Practice</h2>
-      <p class="cta-sub-wrap">Talk to Island Mountain about a HIPAA-supporting AI deployment. Pre-configured and shipped ready to run.</p>
+      <h2>AI Your Compliance Officer Can Audit</h2>
+      <p class="cta-sub-wrap">We&#39;ll build it inside your walls and leave the receipts and the runbook.</p>
       <a href="contact.html" class="btn btn-primary">Start a Scoping Call</a>
       <p class="cta-subtitle"><i class="ri-phone-line icon-copper-mr-sm"></i>Or call directly: <a href="tel:+13414418740" class="copper-semibold">1-341-441-8740</a></p>
     </div>
