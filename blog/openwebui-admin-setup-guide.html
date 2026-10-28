@@ -82,7 +82,7 @@
   "description": "The admin walkthrough I run on site: user accounts, role-based model access, retention that satisfies an audit, VPN isolation, and a nightly SQLite backup that stays local.",
   "url": "https://islandmountain.io/blog/openwebui-admin-setup-guide.html",
   "datePublished": "2026-04-02",
-  "dateModified": "2026-04-02",
+  "dateModified": "2026-10-28",
   "author": {
     "@type": "Person",
     "name": "Basho Parks"
@@ -119,7 +119,7 @@
       {
         "@type": "HowToStep",
         "name": "Create User Accounts and Assign Roles",
-        "text": "OpenWebUI separates users into three roles: Admin, User, and Moderator. Create accounts for each team member and assign appropriate roles. Admins can modify settings; Users access models and create conversations only."
+        "text": "OpenWebUI separates users into Admin and User roles. Create accounts for each team member and assign appropriate roles. Admins can modify settings; Users access models and create conversations only."
       },
       {
         "@type": "HowToStep",
@@ -235,139 +235,77 @@
         <div class="article-meta">
           <span class="article-date">April 2, 2026</span>
           <span class="article-tag tag-how-to">How-To</span>
-          <span class="article-read-time">9 min read</span>
+          <span class="article-read-time">4 min read</span>
         </div>
         <h1 class="text-2xl">OpenWebUI for Administrators: Multi-User Access, Permissions, and Conversation Controls</h1>
         <p class="article-author">Basho Parks</p>
       </div>
 
       <article class="article-body">
+
+<div style="border-left:3px solid var(--copper);padding:16px 20px;margin:0 0 28px;background:rgba(217,119,6,0.05);border-radius:0 8px 8px 0;">
+<strong>Updated October 28, 2026:</strong> I wrote this against the April 2026 release. OpenWebUI sits at v0.12.4 as of October 25, 2026, and v0.12.0 (October 10, 2026) added realtime voice calls; admin screens move between releases, so the menu paths below are a map, not a script. Pin the version you deploy, update on a schedule you set rather than on release day, and re-check admin roles and retention settings after every upgrade.
+</div>
+
 <p>An on-premise AI system without an admin plan is a compliance problem wearing a nice interface.</p>
 
-<p>You need a clean way to manage who reaches the models, what they can do once they're in, and what record survives the conversation. OpenWebUI's the standard open-source interface for running multiple language models locally, and it handles user permissions, conversation history, and usage logging without shipping a byte to a cloud platform.</p>
-
-<p>This is the guide I walk an admin through on site, in the order I walk it: initial setup, user accounts, role-based model access, retention, and the network configuration that keeps the thing reachable and nothing more. It assumes you've already <a href="../faq.html">got the hardware standing</a> with Ubuntu Server LTS running. None of it assumes where the box came from.</p>
+<p>OpenWebUI's the standard open-source interface for local language models; it handles user permissions, conversation history, and usage logging without shipping a byte to a cloud platform. This is the walkthrough I run with an admin on site, in the order I run it; it assumes <a href="../faq.html">the hardware's standing</a>, not where it came from.</p>
 
 <h2>Initial Setup and Admin Login</h2>
 
-<p>OpenWebUI runs in Docker on your local network. Once the container's up, the first user created becomes the admin, which is worth knowing before somebody's nephew gets there first. You'll reach it at <code>http://ai.yourfirm.local:8080</code> or <code>http://192.168.x.x:8080</code> depending on your network configuration.</p>
+<p>OpenWebUI runs in Docker on your local network, reachable at <code>http://ai.yourfirm.local:8080</code>. The first user created becomes the admin, so get there before somebody's nephew does.</p>
 
-<p>First login sets the admin password. That's a hard security boundary, so use a strong one: 20-plus characters, mixed case, numbers, symbols, stored in your password manager. Bitwarden, 1Password, or whatever vault your firm already runs all work. That password controls user management, model configuration, and conversation history exports, which is to say it controls everything.</p>
+<p>The admin password controls everything, so make it 20-plus characters and keep it in whatever vault your firm already runs. Then, before anything else: disable public registration, require authentication for all access, and set the retention window covered below. I don't leave a site until those three are done; they're the ones that cost people later.</p>
 
-<p>From the admin panel in the top-right menu, go to Settings and handle three things before anything else. Disable public registration so you decide who gets an account. Confirm authentication's required for all access. Set your conversation retention window, which is covered below.</p>
+<h2>User Accounts and Roles</h2>
 
-<p>I don't leave a site until those three are done. They're the ones that quietly cost people later.</p>
+<p>OpenWebUI's roles are Admin and User. Admins change settings, Users reach models and can't touch configuration.</p>
 
-<h2>Creating User Accounts and Role Assignment</h2>
+<p>Admin Settings, then User Management, then Add User: username, password, role. A law firm thinks in Attorney, Paralegal, and Staff, and OpenWebUI doesn't map those onto models natively, so create the accounts first and restrict the models second. Restrict first and the new hire sees nothing.</p>
 
-<p>OpenWebUI separates users into three roles: Admin, User, and Moderator. Most organizations don't need more than Admin and User. Admins see the admin panel and can change settings. Users reach models and create conversations but can't touch global configuration.</p>
+<h2>Model Access by Role</h2>
 
-<p>To create an account, go to Admin Settings, then User Management, then Add User. Set the username, typically firstname.lastname or email, then a password and a role. You can make the password temporary and let people reset it on first login if you turn that option on.</p>
+<p>This is the step I won't prescribe from a blog post. Which models sit on your box depends on what Discovery turned up, and who reaches which one on what those people do all day; I don't know that yet and neither does a checklist. In a law firm that's usually attorneys and senior paralegals on every model, junior paralegals on everything but the model handling live matters, and administrative staff on one summarization model.</p>
 
-<p>A law firm thinks in Attorney, Paralegal, and Staff. OpenWebUI doesn't enforce role-based permissions at the model level natively, and there's a workaround for that below. Create the accounts first, then restrict the models.</p>
+<p>Under Models in Admin Settings, each model carries an access list naming who can reach it. Keep a spreadsheet of who should reach what and reconcile it against the panel monthly; it's cruder than enterprise IAM, auditable, and free.</p>
 
-<p>In that order. I've watched an admin restrict models first and then spend an afternoon wondering why the new hire couldn't see anything at all.</p>
+<h2>Conversation History and Retention</h2>
 
-<h2>Model Access Control by Role</h2>
+<p>Every conversation lives in a SQLite database on the server, for example <code>/root/ollama/web/conversations.db</code>; the exact path depends on your deployment. That's the compliance advantage in one sentence, and the responsibility too: retention, backup, and access are yours now.</p>
 
-<p>Here's the step I won't prescribe from a blog post.</p>
+<p>The Conversations tab shows every conversation across every user, searchable and exportable as JSON with timestamps, model, user, and full text: when a discovery request lands, that's your record.</p>
 
-<p>Which models are on your box depends on what Discovery turned up in your workflows, and who should reach which one depends on what those people do all day. I don't know that yet and neither does a checklist.</p>
+<p>Set the retention window under Admin Settings, then System, then Conversation Retention: 365 days for law firms holding litigation-hold capability, 180 for medical practices, 90 for IT support. Where conversations carry protected health information, all of that has to satisfy HIPAA: encrypt the database at rest and be able to name every person who reaches the admin panel.</p>
 
-<p>The shape's usually familiar, though. In a law firm you might structure it so attorneys and senior paralegals reach every model on the machine, junior paralegals reach the general-purpose ones but not the model doing fast draft analysis on live matters, and administrative staff reach a single model for document summarization only. One building, three exposure profiles.</p>
+<h2>Usage Monitoring</h2>
 
-<p>OpenWebUI handles this through the Models section in Admin Settings. Each model carries an Allow list restricting which users can reach it. There's no built-in group management yet, so you're managing access per user. For a 50-person organization that means individual management, and yes, it's tedious.</p>
+<p>Analytics, once you've enabled it, logs which user ran which model and when, plus the odd spike, like somebody running hundreds of queries a day, usually a script and not a motivated paralegal. That's enough to track adoption and catch anomalies; it isn't a SIEM and I won't pretend otherwise.</p>
 
-<p>A practical workaround: keep a simple spreadsheet tracking who should reach what, then batch-update OpenWebUI monthly. It's more manual than enterprise IAM. It also works reliably under 200 users and costs you nothing in additional software.</p>
+<h2>Network: Static IP, Hostname, VPN</h2>
 
-<p>It's ugly. It's also auditable, and that's the trade I'd make every time.</p>
+<p>Give the server a static IP so it doesn't pull a new address on reboot and a hostname like <code>ai.yourfirm.local</code> in your internal DNS or hosts file; nobody's memorizing an address.</p>
 
-<h2>Conversation History, Retention, and Compliance</h2>
+<p>The server doesn't go on the internet, not even for the consultant who asked nicely; remote staff come in over a VPN. Tailscale's the easiest path, an encrypted mesh limited to devices in your account; WireGuard does the same self-hosted with more configuration and no cloud intermediary. I'd put "no direct internet exposure" in writing before the machine's powered on.</p>
 
-<p>OpenWebUI stores every conversation locally on your server. That's the compliance advantage in one sentence: the conversation data never leaves your network. It's also a responsibility, because you now own retention, backup, and access on purpose instead of by accident.</p>
+<h2>Backups</h2>
 
-<p>All conversation data lives in a SQLite database on your server, typically at <code>/root/ollama/web/conversations.db</code> depending on your deployment. Local to your server. Not cloud storage.</p>
-
-<p>That's the sentence that justifies the whole build.</p>
-
-<p>As admin you've got full visibility. The Conversations tab in Admin Settings shows every conversation across every user, searchable by date or content, exportable. If a discovery request or a regulatory audit lands on your desk, you've got complete access to the model interactions, and that's the entire point.</p>
-
-<p>Set a retention window. Most organizations delete conversations older than 12 months automatically. Admin Settings, then System, then Conversation Retention, then set the number of days. Common settings: 365 days for law firms holding litigation-hold capability, 90 days for IT support teams, 180 days for medical practices.</p>
-
-<p>You can also export conversations as JSON for archival. The export's got timestamps, model used, user, and full conversation text. Useful for migrations, full backups, or a move to a different system.</p>
-
-<p>For HIPAA-regulated organizations, remember that conversations may carry protected health information. Your retention policy, backup procedure, and access controls all have to satisfy HIPAA. Encrypt the database file at rest and make sure only authorized personnel can reach the admin panel.</p>
-
-<p>If you can't name who reaches that panel, you haven't set a retention policy. You've set a wish.</p>
-
-<h2>Usage Monitoring and Analytics</h2>
-
-<p>OpenWebUI logs basic usage: which user ran which model, and when. That data's stored locally and shows up in the admin panel under Analytics once you've enabled it. You'll see per-user token counts, model usage over time, and activity worth a second look, like somebody suddenly running hundreds of queries a day, which usually means programmatic API use rather than an unusually motivated paralegal.</p>
-
-<p>It's enough to track adoption, spot who needs training, and catch anomalies, though it isn't enterprise-grade AI audit logging and I won't pretend otherwise. Some firms use it to bill AI usage back to practice areas by volume.</p>
-
-<p>It's a smoke detector, not a security camera. Worth knowing which one you've got.</p>
-
-<h2>Network Configuration: Static IP and Hostname</h2>
-
-<p>Your <a href="../forward-deployed-ai-engineering.html">inference server</a> needs a stable address. Nobody's going to remember an IP, so don't make them.</p>
-
-<p>Assign a static IP on your router or DHCP server. Something like <code>192.168.1.50</code> keeps the server from pulling a new address on reboot. Then give it a meaningful hostname, <code>ai.yourfirm.local</code> or <code>gpt-local.yourfirm.local</code>, and point that at the static IP in your internal DNS or hosts file. Now people reach OpenWebUI at <code>http://ai.yourfirm.local:8080</code> instead of memorizing an address.</p>
-
-<p>A Windows domain with Active Directory registers the hostname automatically. Without a domain, add it to the hosts file on each machine or configure it in your router's DNS settings.</p>
-
-<p>Somebody's going to type it wrong the first week regardless. Pick a hostname that survives a typo.</p>
-
-<h2>Security: VPN and Network Isolation</h2>
-
-<p>Your inference server doesn't go on the internet. Not behind a rule, not "temporarily," not for the one consultant who asked nicely. Internal network only, and remote staff come in over a VPN.</p>
-
-<p>Tailscale's the easiest path. Install it on the server and on user machines and it builds an encrypted mesh where only devices in your Tailscale account can reach each other. Remote staff hit OpenWebUI exactly like the people down the hall. It's free for personal use and runs about $10 per user per month for business accounts.</p>
-
-<p>If you'd rather stay open-source and self-hosted, deploy WireGuard. It's lighter than traditional VPN protocols, handles remote access without a cloud intermediary, and hands you complete control. More configuration than Tailscale, nothing unreasonable.</p>
-
-<p>Either way: no direct internet exposure, all remote access through the tunnel.</p>
-
-<p>That one isn't negotiable, and it's the line I'd put in writing before the machine gets powered on.</p>
-
-<h2>Backup Strategy</h2>
-
-<p>Run a daily backup of the OpenWebUI database to a local NAS or external drive. A cron job covers it:</p>
+<p>A daily cron job backs the database up to a local NAS or external drive:</p>
 
 <p><code>sqlite3 /root/ollama/web/conversations.db ".backup /mnt/nas/backup/conversations-$(date +\%Y\%m\%d).db"</code></p>
 
-<p>Schedule that at 3 AM and you're covered.</p>
-
-<p>Keep the backups on local network-attached storage, a Synology or Buffalo box works fine, and don't sync them to AWS S3, Google Drive, or Dropbox. You've got hardware in the building specifically to keep this data off cloud platforms. Syncing the backups hands it all back.</p>
-
-<p>I've seen it happen. Once by an IT contractor who figured he was being helpful.</p>
-
-<p>Keep 30 days of dailies, then delete older files. That's the balance between recovery and storage cost. If your NAS supports encrypted shares, turn it on. These database files may carry sensitive information and they belong encrypted at rest.</p>
-
-<h2>Common Admin Tasks</h2>
-
-<p><strong>Adding a new model:</strong> after adding it to your Ollama installation, go to Admin Settings, then Models, and refresh the model list. The new model appears. Set permissions as needed.</p>
-
-<p><strong>Resetting a user password:</strong> User Management in the admin panel, find the user, reset. They'll be logged out and prompted to set a new one on next login.</p>
-
-<p><strong>Viewing a specific conversation:</strong> Admin Settings, then Conversations, search by user or date, click through. Full audit access, exactly what compliance asks for.</p>
-
-<p><strong>Exporting all conversations:</strong> some organizations run quarterly exports to a long-term archive. The export option in Admin Settings generates a JSON file with every conversation and its metadata.</p>
+<p>Keep 30 days of dailies on encrypted local storage, and don't sync them to S3, Google Drive, or Dropbox. You've got hardware in the building to keep this data off cloud platforms; syncing the backups hands it all back.</p>
 
 <h2>Getting Started</h2>
 
-<p>If you're standing OpenWebUI up for your team, here's the checklist in order: create the admin password, disable registration, add users with appropriate roles, restrict models by user, set conversation retention, configure static IP and hostname, deploy VPN access, and set up database backups.</p>
+<p>The checklist, in order: admin password, registration off, users with roles, models restricted by user, retention set, static IP and hostname, VPN, backups.</p>
 
-<p>That's the procedure, and the procedure's the easy half.</p>
-
-<p>What a checklist can't hand you is which of your people needs which model, and I don't learn that from a form. I learn it sitting next to your records clerk while she does the thing she's done for eighteen years, and then the access map more or less writes itself. Configuring this together on site, and onboarding the team afterward on the workflows and the agentic orchestration their vertical runs on, is where a deployment either takes or doesn't.</p>
-
-<p>For specific compliance obligations, HIPAA, FERPA, or SOC 2, <a href="../contact.html">reach out</a> and we'll walk your audit and retention requirements directly. OpenWebUI was built for exactly this: local, controlled, auditable AI with no cloud overhead. Set the admin layer up properly and it scales cleanly to dozens of users with a compliance posture to match.</p>
+<p>That's the easy half. What a checklist can't hand you is which of your people needs which model. I learn that by shadowing the people who run the workflow; the access map follows from what they do, and configuring it together on site is where a deployment takes or doesn't. For HIPAA, FERPA, or SOC 2 obligations, <a href="../contact.html">reach us</a> and we'll walk your audit and retention requirements directly.</p>
 
 <!-- AEO Summary -->
 <div style="border-left:3px solid var(--copper);padding:16px 20px;margin:32px 0;background:rgba(217,119,6,0.05);border-radius:0 8px 8px 0;">
-<strong>Summary:</strong> OpenWebUI gives a local AI deployment user management, role-based model access, conversation history, retention control, and usage logging without sending anything to a cloud platform. Disable public registration, restrict models per user, set a retention window, keep the server off the public internet behind a VPN, and back the SQLite database up nightly to local storage.
+<strong>Summary:</strong> OpenWebUI brings user management, per-model access, retention control, and usage logging to a local deployment without touching a cloud platform. Disable public registration, restrict models per user, set retention, keep the server behind a VPN, and back the database up nightly to local storage.
 </div>
+
 </article>
 
       <!-- CTA -->
