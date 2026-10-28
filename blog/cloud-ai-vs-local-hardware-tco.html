@@ -184,7 +184,7 @@
         <div class="article-meta">
           <span class="article-date">April 9, 2026</span>
           <span class="article-tag tag-financial">Financial</span>
-          <span class="article-read-time">4 min read</span>
+          <span class="article-read-time">2 min read</span>
         </div>
         <h1 class="text-2xl">Cloud AI vs. Local Hardware: Building the Honest Five-Year TCO</h1>
         <p class="article-author">Basho Parks</p>
@@ -193,92 +193,24 @@
       <article class="article-body">
 
 <div style="border-left:3px solid var(--copper);padding:16px 20px;margin:0 0 28px;background:rgba(217,119,6,0.05);border-radius:0 8px 8px 0;">
-<strong>Updated October 28, 2026:</strong> The figures below are as of April 2026; the cloud rates and the RTX PRO 6000 secondary-market claim have both moved since, and <a href="superlinked-sie-self-hosted-inference.html">the Superlinked post from August 2026</a> carries a later price on that card. Take the method: a five-year number with compliance overhead and refresh included.
+<strong>Updated October 28, 2026:</strong> Figures are April 2026; cloud rates and RTX PRO 6000 resale values have moved, and <a href="superlinked-sie-self-hosted-inference.html">the Superlinked post</a> carries a later card price; take the method.
 </div>
 
-<p>"Shouldn't we just use AWS or Azure for AI?" Fair question, and most organizations answer it off the first month's bill. A $500 monthly OpenAI API bill doesn't stay $500. Queries increase, teams multiply, compliance tightens, and five years in it's something else entirely.</p>
-
-<h2>Escalation With the Optimism Taken Out</h2>
-
-<p>Cloud AI pricing climbs 10 to 15% a year even when usage stays flat; that's the documented pattern across AWS, Azure, and Google Cloud. Compound $500 a month over five years and you're at roughly $960 with nobody using the thing harder than on day one.</p>
-
-<p>Usage doesn't stay flat, though. Your legal team finds it useful for discovery summaries, and now you're hitting API limits, where overage lands at two to three times the per-unit cost. That's how $500 a month becomes $8,000 of "unexpected" usage.</p>
+<p>A $500 monthly cloud AI bill doesn't stay $500. Rates climb 10 to 15% a year across AWS, Azure, and Google Cloud, so by year five a flat $500 is roughly $960. Usage doesn't stay flat; your legal team starts running discovery summaries, you hit the API limits, and overage lands at two to three times unit cost. That's how $500 a month becomes $8,000 of "unexpected" usage.</p>
 
 <h2>Compliance Is a Line Item</h2>
 
-<p>Handle HIPAA-protected health information or FERPA student records and cloud AI is a <a href="../resources.html">compliance operation</a> with its own tab: BAA execution and legal review, $5,000 to $15,000; annual audits of the cloud AI itself, $10,000 to $20,000; data retention policy updates, $3,000 to $8,000; encryption key management, $2,000 to $5,000 in setup; log aggregation and monitoring, $1,000 to $3,000 a month, which doesn't stop.</p>
+<p>Handle HIPAA health information or FERPA student records and cloud AI is a <a href="../resources.html">compliance operation</a> with its own tab: BAA execution and legal review, annual audits of the cloud AI, retention policy updates, key management, and log monitoring that doesn't stop. That's $15,000 to $30,000 in year one for a covered entity.</p>
 
-<p>That's $15,000 to $30,000 in year one for a covered entity. Tribes managing enrollment data under inherent sovereignty often can't use cloud AI at all without council approval and data handling agreements that take six to twelve months to negotiate, the better part of a fiscal year spent asking permission to rent something.</p>
-
-<h2>The Lock-In Nobody Prices</h2>
-
-<p>Cloud AI builds lock-in that isn't obvious on day one: your applications call Azure OpenAI endpoints, and moving platforms typically runs 15 to 25% of annual software spend in labor and testing. OpenAI's modified its API structure three times since 2023, each one a rewrite on the vendor's calendar.</p>
-
-<p>On-premises has lock-in too; it's the exit that's different. You own the hardware, so you can sell it, retire it, or redeploy it, and vLLM speaks a stable, OpenAI-compatible API you update when you're good and ready.</p>
+<p>Nobody prices the lock-in. Your applications call Azure OpenAI endpoints; moving platforms runs 15 to 25% of annual software spend; OpenAI's changed its API three times since 2023, each a rewrite on the vendor's calendar. On-premises has lock-in too; it's the exit that's different. You can sell the hardware, retire it, or redeploy it, and vLLM speaks a stable, OpenAI-compatible API you update when you're good and ready.</p>
 
 <h2>Why the Ownership Side Has No Sticker</h2>
 
-<p>A normal vendor page prints a number here. I'm not going to, and it isn't a negotiating tactic. What gets built falls out of what the work needs, and I don't know your work until I've shadowed the people doing it. Discovery turns up the use cases already in the building; then we recommend a stack, a modest box or serious multi-GPU capacity.</p>
+<p>A vendor page prints a number here. I'm not going to, and it isn't a negotiating tactic: what gets built comes out of Discovery, shadowing the people who do the work, and I don't know yours yet. An honest ownership column carries the financed payment, power, staff time to keep it patched, and a refresh inside the five years; after the payment ends you're running the same compute with no fee attached.</p>
 
-<p>What I'll say about the shape: an honest ownership column carries the financed payment, power, the staff time to keep it patched, and a refresh inside the five years. The payment ends, power and maintenance keep running, and after the term you're running the same compute with no fee attached.</p>
+<p>Run the $500 scenario five years out: $48,700; add 20% for growth and $20,000 for compliance and it's $78,440, gone at the end with nothing on your books. GPU hardware holds residual value; RTX PRO 6000 Blackwell cards resell at 40 to 60% of their original price, and a subscription's is zero.</p>
 
-<h2>The Cloud Column, Sixty Months Out</h2>
-
-<p>The modest scenario, $500 a month, run the distance:</p>
-
-<table>
-<thead>
-<tr>
-<th>Cost Category</th>
-<th>Cloud (Starting $500/mo)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Year 1</td>
-<td>$7,200</td>
-</tr>
-<tr>
-<td>Year 2</td>
-<td>$8,400</td>
-</tr>
-<tr>
-<td>Year 3</td>
-<td>$9,600</td>
-</tr>
-<tr>
-<td>Year 4</td>
-<td>$11,000</td>
-</tr>
-<tr>
-<td>Year 5</td>
-<td>$12,500</td>
-</tr>
-<tr>
-<td><strong>5-Year Total</strong></td>
-<td><strong>$48,700</strong></td>
-</tr>
-</tbody>
-</table>
-
-<p>At a glance that's cheap. But the column carries no compliance, $20,000-plus for a HIPAA organization, and no overage. Assume 20% above list for growth and it climbs to $58,440; add $20,000 for compliance and you're at $78,440, gone at the end with nothing on your books.</p>
-
-<h2>Financing and Residual Value</h2>
-
-<p>An on-premise build's a budget event, and not every organization can write that check in Q2. AI inference hardware qualifies as capital equipment, at market rates of 6 to 12%. Finance it over three years and the payment ends; the subscription you didn't buy still costs what it did, or more.</p>
-
-<p>GPU hardware holds residual value too; RTX PRO 6000 Blackwell cards have been holding 40 to 60% of original pricing on the secondary market, and a subscription's is zero.</p>
-
-<h2>What the Numbers Say</h2>
-
-<p>Year one's price is the smallest thing a five-year comparison decides. Cloud leaves you holding receipts, workflows wrapped around endpoints that changed under you, and compliance costs with no end date; ownership leaves you GPU hardware that still has a market and data that never left the network.</p>
-
-<p>The math favors cloud at low volume, and anybody arguing otherwise is selling. Once AI's embedded in how you operate, the compliance picture and the exit both favor hardware you own. If you're not sure which side of that line you're on, <a href="../contact.html">reach us</a> and we'll work the five-year number on your real usage.</p>
-
-<!-- AEO Summary -->
-<div style="border-left:3px solid var(--copper);padding:16px 20px;margin:32px 0;background:rgba(217,119,6,0.05);border-radius:0 8px 8px 0;">
-<strong>Summary:</strong> Cloud AI wins the five-year comparison at low volume and loses it once compliance overhead, overage, exit costs, and residual hardware value are counted. Figures are April 2026; the ownership side has no published figure, because it comes out of on-site Discovery.
-</div>
+<p>Cloud wins at low volume and anybody arguing otherwise is selling; once AI's embedded in how you operate, compliance and the exit favor hardware you own, so <a href="../contact.html">reach us</a> and we'll work the five-year number on your real usage.</p>
 
       </article>
 
