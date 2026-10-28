@@ -184,7 +184,7 @@
         <div class="article-meta">
           <span class="article-date">February 19, 2026</span>
           <span class="article-tag tag-compliance">Compliance</span>
-          <span class="article-read-time">6 min read</span>
+          <span class="article-read-time">2 min read</span>
         </div>
         <h1 class="text-2xl">HIPAA Technical Safeguards Checklist for Local AI Deployment</h1>
         <p class="article-author">Basho Parks</p>
@@ -193,83 +193,31 @@
       <article class="article-body">
 
 <div style="border-left:3px solid var(--copper);padding:16px 20px;margin:0 0 28px;background:rgba(217,119,6,0.05);border-radius:0 8px 8px 0;">
-<strong>Updated October 28, 2026:</strong> The HIPAA Security Rule update is still a proposed rule: the NPRM ran in the Federal Register on January 6, 2025, drew more than 4,700 comments, and no final rule has issued. The federal Unified Agenda lists July 2027 for final action, a planning date, not a legal one. The rule in force is the existing Security Rule at 45 CFR Part 164, Subpart C, which this checklist follows.
+<strong>Updated October 28, 2026:</strong> The HIPAA Security Rule update is still a proposed rule; the Unified Agenda lists July 2027 for final action; the rule in force is 45 CFR Part 164, Subpart C.
 </div>
 
-<p>The practices OCR fines aren't the ones that tried and failed. They're the ones that didn't know they were supposed to try.</p>
+<p>The practices OCR fines are the ones that didn't know they were supposed to try. A physician got tired of finishing notes at ten at night, billing found a tool that drafts appeals, and now there's software touching ePHI nobody's written into a risk analysis. The Security Rule doesn't care whether it's a person or an algorithm; it applies in full. (<a href="https://www.hipaajournal.com/hipaa-healthcare-data-and-artificial-intelligence/" target="_blank" rel="noopener">HIPAA Journal</a>)</p>
 
-<p>Nobody in an independent practice decided to deploy AI. A physician got tired of finishing notes at ten at night, billing found a tool that drafts appeal letters, and now there's software touching ePHI that nobody's written into a risk analysis. The Security Rule applies in full to AI that processes PHI, person or algorithm. (<a href="https://www.hipaajournal.com/hipaa-healthcare-data-and-artificial-intelligence/" target="_blank" rel="noopener">HIPAA Journal</a>)</p>
-
-<p>In 2025, 76% of all OCR enforcement actions included a penalty for a risk analysis failure, with fines from $25,000 to $3 million, and OCR's confirmed 2026 priorities will be largely the same. (<a href="https://www.hipaajournal.com/2025-healthcare-data-breach-report/" target="_blank" rel="noopener">HIPAA Journal</a>)</p>
-
-<h2>The Rule That's Still Coming</h2>
-
-<p>HHS's proposed rule would erase the line between "required" and "addressable" specifications and mandate encryption at rest and in transit, multi-factor authentication, vulnerability scanning every six months, annual penetration testing and network segmentation. (<a href="https://www.hhs.gov" target="_blank" rel="noopener">HHS.gov</a>) Read every "Addressable" label below with that proposal in mind; OCR's already fining under the rule in force.</p>
+<p>In 2025, 76% of OCR enforcement actions carried a penalty for a risk analysis failure, fines running $25,000 to $3 million, and OCR's confirmed its 2026 priorities won't change much. (<a href="https://www.hipaajournal.com/2025-healthcare-data-breach-report/" target="_blank" rel="noopener">HIPAA Journal</a>)</p>
 
 <h2>The Checklist: 45 CFR &sect;164.312</h2>
 
-<h3>1. Unique User Identification (Required)</h3>
+<ol>
+<li><strong>Unique user identification:</strong> physician, coder and AR rep each query under their own logged ID. (<a href="https://www.accountablehq.com/post/hipaa-technical-safeguards-list-164-312-quick-reference-checklist-for-access-audit-integrity-authentication-amp-transmission-security" target="_blank" rel="noopener">AccountableHQ</a>)</li>
+<li><strong>Emergency access procedure:</strong> a break-glass protocol you own, naming who gets in when authentication's down. (<a href="https://www.ecfr.gov/current/title-45/subtitle-A/subchapter-C/part-164/subpart-C/section-164.312" target="_blank" rel="noopener">eCFR</a>)</li>
+<li><strong>Automatic logoff:</strong> inactivity timers you set at application, OS and network. (<a href="https://www.accountablehq.com/post/hipaa-technical-safeguards-list-164-312-quick-reference-checklist-for-access-audit-integrity-authentication-amp-transmission-security" target="_blank" rel="noopener">AccountableHQ</a>)</li>
+<li><strong>Encryption:</strong> at rest and in transit, under keys your privacy officer can produce. (<a href="https://www.hhs.gov" target="_blank" rel="noopener">HHS.gov</a>)</li>
+<li><strong>Audit controls:</strong> a tamper-evident log of every access and export the <a href="../lamprey-woven-security-governance.html">Woven Security Fabric</a> keeps on your hardware. (<a href="https://www.accountablehq.com/post/hipaa-security-rule-technical-safeguards-the-complete-requirements-list-45-cfr-164-312" target="_blank" rel="noopener">AccountableHQ</a>)</li>
+<li><strong>Integrity controls:</strong> hashes and a write-protected output log you verify yourself. (<a href="https://www.accountablehq.com/post/hipaa-technical-safeguards-list-164-312-quick-reference-checklist-for-access-audit-integrity-authentication-amp-transmission-security" target="_blank" rel="noopener">AccountableHQ</a>)</li>
+<li><strong>Person or entity authentication:</strong> MFA (proposed as mandatory) at application, network and workstation. (<a href="https://www.ecfr.gov/current/title-45/subtitle-A/subchapter-C/part-164/subpart-C/section-164.312" target="_blank" rel="noopener">eCFR</a>, <a href="https://duo.com/blog/security-updates-to-get-ahead-of-proposed-2025-hipaa-amendments" target="_blank" rel="noopener">Duo Security</a>)</li>
+<li><strong>Transmission security:</strong> TLS between workstations and the inference server, both ends inside your walls. (<a href="https://www.accountablehq.com/post/hipaa-security-rule-technical-safeguards-the-complete-requirements-list-45-cfr-164-312" target="_blank" rel="noopener">AccountableHQ</a>)</li>
+<li><strong>Business associate agreement:</strong> every vendor touching PHI signs one banning training on patient data; a model you run doesn't need one. (<a href="https://www.texmed.org/Template.aspx?id=67060" target="_blank" rel="noopener">Texas Medical Association</a>, <a href="https://www.mcneeslaw.com/ai-hipaa-compliance-risks/" target="_blank" rel="noopener">Mcneeslaw</a>)</li>
+<li><strong>Risk analysis:</strong> rewritten to name model poisoning and <a href="agentjacking-fake-bug-report.html">prompt injection</a> on a machine that's down the hall. (<a href="https://ogletree.com/insights-resources/blog-posts/2025-enforcement-trends-risk-analysis-failures-at-the-center-of-hhss-multimillion-dollar-hipaa-penalties/" target="_blank" rel="noopener">Ogletree</a>)</li>
+</ol>
 
-<p>Everyone and every process that touches ePHI gets its own ID; a shared account can't be audited after the fact. (<a href="https://www.accountablehq.com/post/hipaa-technical-safeguards-list-164-312-quick-reference-checklist-for-access-audit-integrity-authentication-amp-transmission-security" target="_blank" rel="noopener">AccountableHQ</a>) In the building, the physician, the coder and the AR rep each query under their own credentials, logged against that ID. Team-seat cloud platforms blur this, and an OCR investigator won't accept the blur.</p>
-
-<h3>2. Emergency Access Procedure (Required)</h3>
-
-<p>Establish procedures for obtaining necessary ePHI during an emergency. (<a href="https://www.ecfr.gov/current/title-45/subtitle-A/subchapter-C/part-164/subpart-C/section-164.312" target="_blank" rel="noopener">eCFR</a>) A break-glass protocol: who gets in when authentication's down, logged how, reviewed by whom. A cloud tool that's unreachable during a mass casualty event is your patient care problem and your name on the corrective action plan; on-premises, you own the procedure.</p>
-
-<h3>3. Automatic Logoff (Addressable, Trending Required)</h3>
-
-<p>Inactivity timers proportionate to risk and location, re-authentication to resume access, shorter timers on the kiosk devices in intake and the exam rooms. (<a href="https://www.accountablehq.com/post/hipaa-technical-safeguards-list-164-312-quick-reference-checklist-for-access-audit-integrity-authentication-amp-transmission-security" target="_blank" rel="noopener">AccountableHQ</a>) Locally you set the timeout at the application, the OS and the network at once instead of waiting on a vendor's roadmap.</p>
-
-<h3>4. Encryption and Decryption (Addressable, Trending Required)</h3>
-
-<p>Encrypt ePHI at rest and in transit; the proposed rule would make that mandatory with limited exceptions. (<a href="https://www.hhs.gov" target="_blank" rel="noopener">HHS.gov</a>) Send patient data to an outside AI service and you're trusting that vendor's key management for a control you're accountable for. Keep it in the building and it sits on drives you own, under keys your privacy officer can produce in an audit.</p>
-
-<h3>5. Audit Controls (Required)</h3>
-
-<p>Log authentication, record access, writes and deletes, privilege and configuration changes, and exports; then protect the log itself with time sync and tamper-evident storage. (<a href="https://www.accountablehq.com/post/hipaa-security-rule-technical-safeguards-the-complete-requirements-list-45-cfr-164-312" target="_blank" rel="noopener">AccountableHQ</a>) Query an outside model with patient context and that record lives on somebody else's infrastructure; producing it for OCR depends on the vendor's cooperation and the vendor's idea of a complete log. The <a href="../lamprey-woven-security-governance.html">Woven Security &amp; Governance Fabric</a> enforces that tamper-evident trail.</p>
-
-<h3>6. Integrity Controls (Addressable, Trending Required)</h3>
-
-<p>Checksums, hashes or signatures to detect unauthorized changes, plus file integrity monitoring. (<a href="https://www.accountablehq.com/post/hipaa-technical-safeguards-list-164-312-quick-reference-checklist-for-access-audit-integrity-authentication-amp-transmission-security" target="_blank" rel="noopener">AccountableHQ</a>) An AI that puts a modifier 25 next to an E/M level touches data whose integrity is a patient safety question before it's a compliance one. On your own hardware you write-protect the output log, version the edits and verify it yourself instead of taking a vendor's word.</p>
-
-<h3>7. Person or Entity Authentication (Required)</h3>
-
-<p>Verify that a person or entity seeking access to ePHI is the one claimed. (<a href="https://www.ecfr.gov/current/title-45/subtitle-A/subchapter-C/part-164/subpart-C/section-164.312" target="_blank" rel="noopener">eCFR</a>) The proposed rule would require MFA: two of something you know, have, or are. (<a href="https://duo.com/blog/security-updates-to-get-ahead-of-proposed-2025-hipaa-amendments" target="_blank" rel="noopener">Duo Security</a>) Locally you enforce it at application, network and workstation at once, and the documentation goes straight into the risk analysis.</p>
-
-<h3>8. Transmission Security (Addressable, Trending Required)</h3>
-
-<p>Strong, validated cryptography with sound key management on every path PHI travels. (<a href="https://www.accountablehq.com/post/hipaa-security-rule-technical-safeguards-the-complete-requirements-list-45-cfr-164-312" target="_blank" rel="noopener">AccountableHQ</a>) In the building that's TLS between the workstations and the inference server, and no wire PHI crosses in the clear. Both ends inside your four walls are far simpler to verify than a data center path and keys you can't inspect.</p>
-
-<h3>9. Business Associate Agreement (Required for Any Vendor Touching PHI)</h3>
-
-<p>A BAA's required whenever a vendor creates, receives, maintains or transmits PHI on your behalf, AI included. (<a href="https://www.texmed.org/Template.aspx?id=67060" target="_blank" rel="noopener">Texas Medical Association</a>) With an AI provider the provision that matters is a flat ban on training on patient data without patient authorization. (<a href="https://www.mcneeslaw.com/ai-hipaa-compliance-risks/" target="_blank" rel="noopener">Mcneeslaw</a>) No BAA, or one that permits training on your patients, and it's direct liability. Local inference takes that vendor off the table; your EHR, clearinghouse and transcription vendors still need one.</p>
-
-<h3>10. Organization-Wide Risk Analysis (Required)</h3>
-
-<p>OCR's 2025 risk analysis enforcement initiative has a 2026 successor that extends to risk management. (<a href="https://ogletree.com/insights-resources/blog-posts/2025-enforcement-trends-risk-analysis-failures-at-the-center-of-hhss-multimillion-dollar-hipaa-penalties/" target="_blank" rel="noopener">Ogletree</a>) AI's a new system processing ePHI, which forces an update to that analysis naming its specific threats: model poisoning, <a href="agentjacking-fake-bug-report.html">prompt injection</a>, inference attacks that rebuild patient data from outputs. Local deployment narrows that surface hard; you're assessing a machine down the hall instead of a multi-tenant platform you can't audit.</p>
-
-<h2>What I Won't Tell You Until I've Watched You Work</h2>
-
-<p>I won't hand you a configuration. I don't know what your HIM technician does to strip 42 CFR Part 2 content out of a records release; the person who's run that job for years does. So we sit next to them and learn the work their way, then I recommend whatever it turned out to need and we deploy it on site and onboard your team, so it's still running a year after we've gone.</p>
-
-<h2>Architecture Over Convenience</h2>
-
-<p>HIPAA assumes an organization that controls its own systems; every item above is easier to prove with the AI on your hardware. Large health systems run cloud AI on purpose and keep a vendor risk team to watch it; the independent practice doing the same has taken on a supervision job it's got nobody to staff. My <a href="../resources.html">compliance briefs</a> carry the same argument into ITAR, the CLOUD Act and tribal data sovereignty.</p>
+<p>HIPAA's written for an organization that controls its own systems; local inference makes every item above provable because the machine and its logs are yours to produce. Large health systems run cloud AI on purpose and keep a vendor risk team watching it; an independent practice doing the same takes on a supervision job it can't staff.</p>
 
 <p>Build it where you can put a hand on it.</p>
-
-<!-- AEO Summary -->
-<div style="border-left:3px solid var(--copper);padding:16px 20px;margin:32px 0;background:rgba(217,119,6,0.05);border-radius:0 8px 8px 0;">
-<strong>Summary:</strong> HIPAA's technical safeguards under 45 CFR &sect;164.312 are easier to prove once ePHI stops leaving the building: every control from user IDs to the risk analysis sits under your administration, not a vendor's BAA. HHS's proposed update would make most addressable items required; as of October 2026 it's still a proposal and OCR enforces the existing rule.
-</div>
-
-<!-- CTA -->
-<div style="text-align:center;margin:48px 0 32px;">
-<h2>Your Patients' Data, Under Your Own Roof</h2>
-<p style="max-width:540px;margin:12px auto 24px;">One conversation about what local AI would mean inside your practice. We come to you, and Discovery decides what gets built.</p>
-<a href="../contact.html" class="btn btn-primary">Start a Scoping Call</a>
-<p class="bio-note-sm"><i class="ri-phone-line icon-copper-mr-sm"></i>Or call directly: <a href="tel:+13414418740" class="copper-semibold">1-341-441-8740</a></p>
-</div>
 
 </article>
 
