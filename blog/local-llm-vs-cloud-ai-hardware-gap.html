@@ -184,7 +184,7 @@
         <div class="article-meta">
           <span class="article-date">May 10, 2026</span>
           <span class="article-tag tag-technical">Technical</span>
-          <span class="article-read-time">4 min read</span>
+          <span class="article-read-time">2 min read</span>
         </div>
         <h1 class="text-2xl">Local LLM vs Cloud AI: Every Con on the List Has a Hardware Fix</h1>
         <p class="article-author">Basho Parks</p>
@@ -193,60 +193,22 @@
       <article class="article-body">
 
 <div style="border-left:3px solid var(--copper);padding:16px 20px;margin:0 0 28px;background:rgba(217,119,6,0.05);border-radius:0 8px 8px 0;">
-<strong>Updated October 28, 2026:</strong> The model names below are the May 2026 picture. <a href="running-two-dgx-sparks-locally.html">Running two DGX Sparks locally</a> makes the newer case for what runs in a building. The con-by-con method below still holds.
+<strong>Updated October 28, 2026:</strong> The model names below are the May 2026 picture; <a href="running-two-dgx-sparks-locally.html">running two DGX Sparks locally</a> makes the newer case, and the con-by-con method still holds.
 </div>
 
 <p>The gap between a local model on a laptop and a cloud subscription is one hardware closes, not time, and the hardware's already sitting on a shelf.</p>
 
-<p>A developer on Reddit posted the most honest local-versus-cloud evaluation I've read this year: Qwen3.6-35B on a MacBook Pro M2 Max with 64GB of unified RAM, shipping real features from it. He called local models "12 to 24 months from replacing Opus."</p>
+<p>A developer on Reddit posted the most honest local-versus-cloud test I've read this year: Qwen3.6-35B on a 64GB MacBook Pro M2 Max. He put local models "12 to 24 months from replacing Opus." It's one anonymous post I can't verify past his own numbers, and I'll argue only the timeline.</p>
 
-<p>I'll disagree with the timeline and agree with nearly everything else. It's an anonymous forum post I can't verify beyond the numbers he published; take it as one practitioner's report.</p>
+<p>He listed three cons without softening any. Speed ran about 27 tokens per second, so a landing page Opus builds in 3 to 4 minutes took 8 to 9. Context burned fast even in a 256K window, since the agent framework's injecting system prompts, tool definitions and file contents alongside every ask. And about 75 percent of tasks landed in one shot; the other quarter needed babysitting.</p>
 
-<h2>The Honest Con List</h2>
+<p>All three are laptop constraints. His M2 Max shares one memory bus with the IDE and a browser; <a href="../forward-deployed-ai-engineering.html">dedicated inference hardware</a> competes with nothing. A professional Blackwell card running DeepSeek V4-Flash at FP8 sustains <a href="h100-vs-h200-inference-comparison.html">60 to 90 tokens per second</a> single-user, and batching pushes aggregate throughput past 200. VRAM the browser doesn't share keeps long agent sessions in context. That memory runs models twice his 35B, which won't match Opus everywhere but cuts the 25 percent miss rate to single digits for most work.</p>
 
-<p>He listed three cons and didn't soften any. Each disappears when inference stops sharing a memory bus with a browser.</p>
+<p>Concurrency's the problem a laptop can't touch. A <a href="../law-firms.html">law firm</a> puts 30 attorneys on one system, and no tuning stretches one memory bus across all of them. The fix is a serving layer: <a href="openwebui-admin-setup-guide.html">OpenWebUI</a> with role-based access and vLLM spreading tensor parallelism across whatever's in the box.</p>
 
-<p><strong>Con 1: Speed.</strong> A landing page Opus generates in 3 to 4 minutes took Qwen3.6 about 8 to 9 on his M2 Max, roughly 27 tokens per second. That's respectable for a laptop and nowhere near enough to cancel a subscription.</p>
+<p>His opener was pricing: GitHub's moved Copilot to consumption-based billing, and per-token billing taxes competence. The better your team gets, the more you pay, with every token logged on somebody else's servers. Hardware you own fixes the cost at purchase and keeps every token in the building. What you don't get is Claude Opus 4.6 or GPT-5, so a workflow built on them keeps its subscription.</p>
 
-<p><strong>Con 2: Context burns fast.</strong> Even with a 256K window, agentic coding loops eat context quicker than you'd guess, because the agent framework's injecting system prompts, tool definitions and file contents alongside whatever you asked. That's the con that bites hardest.</p>
-
-<p><strong>Con 3: Quality variance.</strong> Roughly a 75 percent one-shot rate; the other quarter needed iteration. Cloud models one-shot most of this, and that 25 percent is the difference between a tool you trust and a tool you babysit.</p>
-
-<p>All three are real and none are permanent, because they aren't model problems.</p>
-
-<h2>What Dedicated Hardware Changes</h2>
-
-<p>His M2 Max runs the operating system, coding agent, IDE, browser and inference on one memory bus. <a href="../forward-deployed-ai-engineering.html">Dedicated inference hardware</a> competes with nothing; its one job's moving weights through GPU memory as fast as bandwidth allows.</p>
-
-<p><strong>Speed.</strong> A professional Blackwell card running DeepSeek V4-Flash at FP8 sustains <a href="h100-vs-h200-inference-comparison.html">60 to 90 tokens per second</a> single-user, and batching pushes aggregate throughput past 200. His 8 to 9 minute landing page becomes a 2 to 3 minute task, faster than the cloud API he measured against.</p>
-
-<p><strong>Context depth.</strong> VRAM the model doesn't share with a browser is the whole difference. <a href="h100-vs-h200-inference-comparison.html">192GB</a> of it runs a 70B model at full precision with context to spare for long agent sessions. That's a memory number; do the division against whatever cards you're looking at.</p>
-
-<p><strong>Quality.</strong> His 75 percent against near-100 is partly a model gap and partly a parameter gap. He ran 35B; professional-card memory runs Llama 4 Scout, Qwen 3 72B and DeepSeek V4-Flash at double that. It won't match Opus on every task, but the delta drops from 25 percent to single digits for most practical work.</p>
-
-<h2>The Concurrency Problem Laptops Can't Touch</h2>
-
-<p>His post describes one developer running one model. Organizations have teams: a <a href="../law-firms.html">law firm</a> with 30 attorneys on one system, a <a href="../research-labs.html">research lab</a> with a dozen postdocs in parallel, a <a href="../defense-contractors.html">defense subcontractor</a> with analysts handling CUI in isolated sessions.</p>
-
-<p>A laptop's single-user hardware asked to serve a multi-user workload, and no tuning fixes a category error. The fix is mostly the serving layer: <a href="openwebui-admin-setup-guide.html">OpenWebUI</a> with role-based access, <a href="../lamprey-woven-security-governance.html">admin oversight</a>, vLLM spreading tensor parallelism across whatever's in the box, sized to how many people hit it, when, and with what.</p>
-
-<h2>The Pricing Signal</h2>
-
-<p>He opened on pricing: GitHub's moved Copilot from request-based to consumption-based. Billed per token, the better your team gets, the more you pay. For sensitive data it runs deeper than the invoice, because every token's processed and logged on somebody else's servers. Hardware you own flattens both curves: the cost's fixed at purchase, the data never leaves, and heavier use drives the per-token cost down.</p>
-
-<h2>Why "12 to 24 Months" Is the Wrong Frame</h2>
-
-<p>His timeline assumes the laptop is the deployment target and that models will close the gap. That's the right question for a solo developer and the wrong one for an organization that needs multi-user, compliant inference. For them the question is when local models get good enough on hardware built for the job, and they already are.</p>
-
-<p>The <a href="cloud-ai-vs-local-hardware-tco.html">five-year TCO comparison</a> stopped being close a year ago; his post adds that the quality gap closed too. The production deployment's a hardware question and a workflow question stapled together, and only the first gets answered on the internet. The second's answered next to your people, which is why I don't publish a recommended build.</p>
-
-<h2>What You Don't Get</h2>
-
-<p>You don't get the largest frontier models; Claude Opus 4.6 and GPT-5 don't run on hardware you own, so if your workflow depends on them you're keeping the subscription. When the next Qwen or Llama drops, your team tests and deploys it, and capacity's whatever you bought. For most regulated organizations those trade-offs are the point: manual updates mean you control <a href="../faq.html">what runs on your systems</a>, and no elastic scaling means there's no surprise invoice.</p>
-
-<div style="border-left:3px solid var(--copper);padding:16px 20px;margin:32px 0;background:rgba(217,119,6,0.05);border-radius:0 8px 8px 0;">
-<strong>Summary:</strong> An anonymous developer ran local LLM against cloud AI on a MacBook and logged every con: 27 tokens per second, fast-burning context, a 75 percent one-shot rate. All three are laptop constraints; dedicated inference hardware and a serving layer built around the work close each one.
-</div>
+<p>I'd keep his con list and rerun it on hardware built for the job before waiting 24 months on a laptop.</p>
 
 </article>
 
