@@ -69,10 +69,10 @@
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "What is local AI inference hardware, and how is it different from cloud AI?",
+        "name": "What is local AI, and how is it different from cloud AI?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Local AI inference hardware is a physical server with GPUs that runs AI models on your premises instead of sending your data to someone else's data center. Inference means the system processes your prompts and generates responses from pre-trained models; it does not train new models. With a cloud AI service your prompts leave your network, get processed on the provider's GPUs, and come back over the internet. With local hardware the entire cycle happens inside your building: prompt goes to your GPU, response comes back from your GPU, nothing leaves your network. You own the hardware, you own the open-weight models, and you control every variable. Every Island Mountain deployment also carries the Woven Security and Governance Fabric, so governance travels with the work instead of living in a vendor's cloud."
+          "text": "It's a server on your premises that runs AI models, so prompts and answers never leave your network. You'll own the hardware and the open-weight models, and the tradeoff's that open releases trail proprietary ones by weeks to months."
         }
       },
       {
@@ -80,23 +80,15 @@
         "name": "Does sovereign AI hardware work fully air-gapped, with no internet?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes. Every Island Mountain deployment is designed to operate completely air-gapped. The models, the inference engine (vLLM and Ollama), and the interface (OpenWebUI) all run locally. Once the system is set up you can disconnect the ethernet cable entirely and everything still works. Users reach it through a web browser on your local network, even an isolated network with no internet. No phone-home, no license checks, no cloud dependencies. Island Mountain applies a documented air-gap configuration, disabling every outbound feature at the environment-variable level and confirming it before handover. Your IT team can verify each setting independently."
+          "text": "Yes: the models, serving software and interface run on your network with every outbound feature off, and your IT team can confirm it. New models and security updates cross the gap as verified bundles your team controls, and the updates aren't optional."
         }
       },
       {
         "@type": "Question",
-        "name": "What does a forward deployment look like?",
+        "name": "What does a forward deployment look like, and how long are you on-site?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "It starts on-site, watching your people work, before anything gets configured. Island Mountain sits with the staff who run the workflow: the senior paralegal who knows which intake questions matter, the records clerk who can tell you which form gets filled out wrong every time, the compliance officer who knows where the real risk lives. The work is learned the way it is run, not the way the SOP describes it. That study becomes a system design, and only then does hardware enter the picture. After the deployment the team is onboarded to the workflows and agentic orchestration built for their vertical, because a deployment nobody can run is a very expensive shelf."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How long are you on-site, and who do you need access to?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Long enough to understand the work, which depends entirely on how tangled it is. A single-department workflow is a short engagement. An organization with a dozen handoffs between departments takes longer, and Island Mountain would rather say that than quote a tidy number that turns out to be fiction. Who is needed matters more than how long: not a steering committee, but the people who do the job, for enough hours that the exceptions show up and not just the happy path. Those hours pay for themselves several times over, and they are the first thing organizations try to cut."
+          "text": "We sit with the people who do the job until we've seen the exceptions, and that study becomes the system design before anyone names hardware. One department's a short stay, a dozen handoffs take longer, and we'll train your team before we leave."
         }
       },
       {
@@ -104,47 +96,23 @@
         "name": "Who should NOT buy sovereign AI hardware?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "If your organization needs the absolute latest proprietary models on release day, local hardware will not deliver that; open-source closes the gap over time, but there is always a gap. If your data is not sensitive and cloud AI is working fine for a handful of casual users, the sovereignty story may not justify owning infrastructure. And if your organization has no IT capability at all and cannot rack or maintain a server, know that after the included 30-day setup support your team owns the day-to-day, though ongoing support retainers are available. Where local hardware earns its place is exactly where cloud creates exposure: regulated data, privileged data, sovereign data, and agentic workflows that must be governed and audited."
+          "text": "If you need the newest proprietary model on release day, or your data isn't sensitive and cloud AI's fine for a few casual users, it won't earn its keep. It belongs where cloud creates exposure: regulated, privileged or sovereign data and governed agentic workflows."
         }
       },
       {
         "@type": "Question",
-        "name": "What is the Woven Security & Governance Fabric?",
+        "name": "What is the Woven Security & Governance Fabric, and where does it run?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "The Woven Security and Governance Fabric (WSF), built as Lamprey, is the trust and control plane that sits inline on every action an AI agent takes: identity, guardrails, approval gates, and an audit ledger on every tool call. It gives operators cloud visibility, data classification, compliance evidence, and approval-gated remediation without handing a third party standing access or your operating context. It runs two ways: outside your organization through the cloud, or inside as an air-gapped deployment. On Island Mountain deployments it is woven in; findings, samples, credentials, and audit trails stay inside your boundary."
+          "text": "It's the trust and control plane, built as Lamprey, that puts identity, guardrails, approval gates and an audit ledger on every tool call an agent makes. It'll run cloud-side or air-gapped, and the record of who approved each sensitive action stays in your custody."
         }
       },
       {
         "@type": "Question",
-        "name": "Can I run the fabric cloud-side, or does it have to be air-gapped?",
+        "name": "How does the fabric stop prompt injection and other agentic attacks?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Both. It runs two ways: outside your organization through the cloud, or inside as an air-gapped deployment. Either way, findings, samples, credentials, and audit trails stay in your custody, aligned to your existing security and governance model. The architecture is hub-and-gateway: lightweight gateways run near the resources they inspect while evidence, status, and workflow are centralized where operators can act. It covers AWS, Azure, GCP, Kubernetes, and databases, runs inside your environment with no scan-data SaaS, and keeps access scoped through ephemeral credentials and audited approvals."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How does the fabric stop agentic attacks like prompt injection and exfiltration?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Agentic attacks (prompt injection, agent-jacking, tool poisoning, data exfiltration, memory poisoning, rogue agency) ride the same rails as legitimate work, so the controls live outside the model, inline on every call. Orchestration flows down through runtime and tools into the fabric, where identity, guardrails, approval gates, and the audit ledger evaluate each action before it executes. Sensitive actions are approval-gated, access is scoped and short-lived, and every request and approval is recorded. The model can be tricked; the fabric is where the tricked action is stopped and logged."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What is \"zero standing privilege\"?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Zero standing privilege means nothing holds broad, permanent access. Scan access is minted just in time, scoped to the operation, and revoked automatically. Write access and remediation are granted only after approval and remain fully audited. It is designed as a product constraint rather than a dashboard label: a scanner or an agent must earn each action instead of accumulating trust it can later be tricked into misusing. It reduces the blast radius of both honest mistakes and active compromise."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Does the fabric produce compliance evidence and audit trails?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes. The fabric preserves who requested, approved, and executed each sensitive action, connects technical findings to control families, and keeps audit-ready context so remediation reads as an operational control rather than a black box. Evidence collection aligns to control mapping and repeatable review workflows that fit inside an existing compliance program, and it stays in your custody instead of becoming another external data exhaust."
+          "text": "The controls live outside the model, so a tricked agent still has to get each action past identity checks and approval gates, and the ledger records it. Under zero standing privilege, credentials are minted per operation and revoked after, so a compromise can't reach far."
         }
       },
       {
@@ -152,7 +120,7 @@
         "name": "Does running AI locally comply with HIPAA?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Running AI on local hardware eliminates the data-transmission vector that creates HIPAA exposure in the first place. With a cloud service, Protected Health Information leaves your network and is processed on shared infrastructure controlled by a third party; under 45 CFR 164.402 that transmission can constitute a reportable disclosure event. With local inference, PHI never leaves your premises and there is no business associate to sign a BAA with because none is involved. Local hardware does not by itself make your entire workflow compliant. You still own access controls, audit logging, encryption at rest, and staff training. Island Mountain is not a compliance attorney and does not certify HIPAA compliance; the hardware removes the third-party processing variable, and the Woven Security and Governance Fabric adds the audit trail."
+          "text": "PHI never leaves your premises for a third party's servers, and the fabric supplies the audit trail. Access controls, encryption at rest and staff training are still yours, and we don't certify HIPAA compliance."
         }
       },
       {
@@ -160,7 +128,7 @@
         "name": "Can a law firm use local AI without waiving attorney-client privilege?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "The core issue with cloud AI for law firms is that client data sent to a third-party API is data disclosed to a third party. Under ABA Model Rule 1.6, attorneys must make reasonable efforts to prevent unauthorized disclosure of client information, and courts have found privilege waived when confidential information is processed through systems outside the firm's control. Local AI keeps every prompt, document, and response on a server inside your office, behind your firewall, on hardware you own. Your firm still needs internal policies on who accesses the system and what data goes in, but the fundamental architectural risk of third-party disclosure is removed."
+          "text": "Client data sent to a third-party API is disclosed to a third party, and ABA Model Rule 1.6 makes preventing that your duty. Local AI keeps every prompt and document on a server in your office, leaving only your own policy on who uses it."
         }
       },
       {
@@ -168,39 +136,23 @@
         "name": "Can a tribal government run AI without cloud providers?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes; it is one of the primary use cases Island Mountain deployments are built for. Tribal nations exercise inherent sovereignty over constituent data, enrollment records, health information, and governance documents. Local AI keeps everything on tribal premises, under tribal law, processed by hardware the nation owns outright. No data leaves the reservation, no cloud terms of service apply, and no federal or state jurisdiction touches the processing. The nation owns the weights outright, we read each model's license with tribal counsel before it goes into production, and the system runs fully air-gapped if your security posture requires it."
+          "text": "Yes: it runs on tribal premises, on hardware and weights the nation owns outright, under no cloud terms of service and no outside jurisdiction. It'll run air-gapped if you want, and we read each model's license with tribal counsel before production."
         }
       },
       {
         "@type": "Question",
-        "name": "Does local AI hardware meet ITAR and CMMC requirements for defense contractors?",
+        "name": "Does local AI meet ITAR and CMMC requirements?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "ITAR restricts processing and storage of controlled technical data to environments that prevent foreign access, and cloud infrastructure with multinational operations or foreign-national staff creates structural risk. Hardware you own, operate on US soil, and control with US-person-only access removes the cloud processing vector; the data stays on your premises with no third-party infrastructure involved. The open-weight models are not themselves ITAR-controlled; your data is the controlled element, and local hardware keeps it off infrastructure you do not control. Island Mountain does not provide ITAR or CMMC certification. Compliance covers physical security, personnel screening, access controls, and documentation well beyond the hardware, and the Woven Security and Governance Fabric supplies the audit evidence that supports it."
+          "text": "Hardware you own, on US soil with US-person-only access, keeps controlled technical data away from foreign access, and the open-weight models aren't ITAR-controlled. We don't provide ITAR or CMMC certification, but the fabric supplies the audit evidence behind it."
         }
       },
       {
         "@type": "Question",
-        "name": "Is DeepSeek V4-Flash safe to use with sensitive organizational data?",
+        "name": "What hardware do we end up with, and can you use gear we own?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "DeepSeek V4-Flash is an open-weights model released under the MIT license, with publicly available weights that the open-source community has independently audited. When you run it on hardware Island Mountain configured, it executes entirely on your local GPUs. No data is sent to DeepSeek, to any Chinese server, or to any external endpoint. The model does not phone home and cannot: it is a set of numerical weights sitting on your drive, processed by your GPUs through standard inference engines. The risk exists only when you use DeepSeek's cloud API, which routes data through their servers, and that is not how these deployments work."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What hardware will we end up with?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Whatever Discovery says the work needs, and there is no catalog to pick it from. Island Mountain has no set hardware specifications, no reference build, and no standing recommendation, because the recommendation does not exist until the work has been seen. Island Mountain then recommends the stack purchase, and it is deployed and configured together, on-site. Any hardware, any open-weight model, any data server rack. A small office doing real work on a couple of desktop-class machines and a few laptops is one honest answer; a large estate on rack-mounted accelerators with adjacent data server racks is another. Neither is the upsell. If you want something other than the recommendation, that gets installed instead."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Can you size it before you've seen how we work?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "No, and that is deliberate. Which models you would run, how deep the context has to go, and how many people are hitting it at once all move the answer, and none of those are knowable from a phone call. Anyone who sizes your system on the first call is sizing their inventory. Guessing it up front is the most common way on-premises AI deployments fail: the box arrives, it is wrong for the work, and nobody wants to say so. The sizing falls out of Discovery, after the work has been watched."
+          "text": "Whatever Discovery says the work needs, from a couple of desktop-class machines to a rack-mounted estate, and nobody can size that from a phone call. Gear you already own, like DGX Spark or Strix Halo boxes, gets wired in if it fits, and we'll tell you if it doesn't."
         }
       },
       {
@@ -208,23 +160,7 @@
         "name": "Which models do we get, and are we stuck with them?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Open-source, open-weight models chosen to fit your work, and no, you are never stuck with them. The model layer is as swappable as the hardware. There is no fixed stack: Discovery picks the weights after the work has been watched. Current open-weight families such as DeepSeek V4-Flash, Llama 4 Scout, DeepSeek R1, or Qwen 3 are examples, not a catalog. Licenses vary: some are MIT or Apache 2.0, and some, like Meta's Llama-family licenses, carry use restrictions you have to accept, so we read each one with your counsel before a model goes into production. You own the weights outright and switch between them in the OpenWebUI dropdown. Any compatible open-weight model that fits your VRAM can be pulled through Ollama or OpenWebUI, so as the frontier moves you swap rather than renegotiate."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What is OpenWebUI, and how does it work?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "OpenWebUI is a free, open-source, browser-based interface for local AI models. Think of it as a private version of ChatGPT that runs entirely on your network, with no cloud account and no external data transmission. You open a browser on any device on your network, navigate to the server's local address, and start prompting. It includes a dropdown to switch between installed models, full conversation history stored locally on the server, and an admin panel for user management and per-user model access. Conversations live on the server's drive, not in any cloud. It needs no command-line knowledge: if someone can use ChatGPT, they can use OpenWebUI."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How small can this be, and how big does it get?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Small enough for an office with no server room, and big enough to feed several departments at once. Both ends are real deployments, neither one is the upsell, and where you land on that spread comes out of Discovery rather than a configurator. What does not change anywhere on it: it is a one-time hardware purchase with no per-seat fees and no token metering, it stays on your premises, and it is built with room to grow, so you add capacity as the work grows instead of replacing what you already own."
+          "text": "Discovery picks open-weight models you own outright, run on your GPUs with nothing sent to the lab, and swap as better ones ship. Licenses vary: some are MIT or Apache 2.0, and Meta's Llama-family licenses carry use restrictions, so we'll read each one with your counsel before production."
         }
       },
       {
@@ -232,79 +168,31 @@
         "name": "What does it need from our facility?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Power, cooling, network, and somewhere it can physically live, and all four follow from the configuration. A couple of desktop-class machines want a normal wall outlet and the air conditioning you already have. Rack-mounted accelerators want a dedicated high-amperage circuit, real server-room airflow, and a rack to sit in. That is scoped with your facilities people before anything is ordered rather than after it arrives on a loading dock, because facilities gets a veto and hearing it early is far cheaper. If a circuit needs installing, a licensed electrician can do it."
+          "text": "Power, cooling, network and floor space, set by the configuration: a desktop-class machine wants a wall outlet, while rack-mounted accelerators want a dedicated circuit, server-room airflow and a rack. We'll scope it with your facilities people before anything's ordered."
         }
       },
       {
         "@type": "Question",
-        "name": "How can OpenWebUI be air-gapped if it is a web application?",
+        "name": "How does pricing work, and how long until we're running?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "The 'web' in OpenWebUI refers to the browser-based interface, not internet dependency. It is a self-hosted application that runs entirely on the server; users reach it through a browser pointed at the server's local address, the way you reach a router's admin panel. Out of the box it includes outbound features (model downloads, update checks, HuggingFace Hub access, community sharing, web search for RAG, telemetry), and none are required for inference. Island Mountain disables every outbound feature (OFFLINE_MODE, HF_HUB_OFFLINE, ENABLE_COMMUNITY_SHARING, ANONYMIZED_TELEMETRY, ENABLE_RAG_WEB_SEARCH, SAFE_MODE) and confirms it before handover. Your IT team can verify it by inspecting the container environment or watching a monitored segment for zero outbound connections."
+          "text": "Pricing comes after Discovery: a scoping call and time on-site produce a written quote for a one-time hardware purchase with no subscription, per-token or licensing fees. Lead time's roughly 3 to 5 weeks, overlapping the workflow study, and you'll get 30 days of support from the engineer who built it."
         }
       },
       {
         "@type": "Question",
-        "name": "I already own DGX Sparks or a Strix Halo box. Will Island Mountain work with hardware you didn't sell?",
+        "name": "You're a new company. What if a part fails, or you go out of business?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes. Island Mountain wires the serving stack, stands up the software, and trains your team on hardware from any vendor, including NVIDIA DGX Spark units, AMD Ryzen AI Max (Strix Halo) machines, and servers another integrator shipped. There is no catalog to protect, so gear bought elsewhere is not a problem the way it is for a shop attached to a product. The gap that kills most on-premises AI projects is systems design, not hardware: the serving framework, quantization choices, the multi-user layer, and the air-gap configuration. Small unified-memory boxes are real local AI hardware with honest limits: strong for one to three users on mixture-of-experts models, weak on concurrency and long-document prompt processing. If the box you own fits your workload, it gets serving; if it does not, you will be told so before you spend more."
+          "text": "Every system ships with a 1-year hardware warranty, and we diagnose failures remotely and replace parts through supplier RMA agreements. If we closed you'd lose that support, but the open-source software needs no license or connection to us, and any competent Linux administrator can maintain it."
         }
       },
       {
         "@type": "Question",
-        "name": "How does pricing work?",
+        "name": "Why pay you when I could build a similar server myself?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Pricing is scoped to your workload and headcount, and every number comes from a conversation, not a configurator. You describe what you are running, how many people need access, and which models matter; the system is configured to that and a written quote follows. Each deployment is a one-time hardware purchase with no subscription fees, no per-token charges, and no recurring software licensing: the models are open-source, OpenWebUI is open-source, and the operating system is Ubuntu Server LTS. There is no public price list and no self-serve checkout, because configuring sovereign infrastructure is a human decision."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How does an engagement start, and how long until we are running?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "It starts with a scoping call, then time on-site with your people, then a written quote scoped to what was found. Nothing is configured speculatively. Once the design is agreed, that triggers sourcing of your specific components through authorized channels with full procurement documentation. Terms are handled directly, human to human, with no automated checkout. Hardware lead time runs roughly 3 to 5 weeks, longer when the configuration calls for parts sourced per order, and that clock overlaps the workflow study rather than following it. The system is configured and air-gapped before it lands. Every deployment includes 30 days of hands-on support with direct access to the engineer who built it."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What warranty comes with it, and what if a component fails?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Every deployment ships with a 1-year hardware warranty covering all components, including GPUs, CPU, RAM, storage, and power supplies. If a component fails within the first year the replacement is handled directly; GPU failures are managed through supplier RMA agreements with documented timelines, and a 20% warranty reserve is held per unit so replacements are not waiting on budget. You contact the builder directly, the fault is diagnosed remotely, and the part is shipped or a swap arranged. Extended warranty options are available at the time of purchase, and after warranty, support is available per incident or on an annual retainer."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "You are a new company. Why trust a first purchase, and what if you go out of business?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Island Mountain AI Inc. is founded by Basho Parks, its sole founder, who runs every deployment himself. The company is new; the experience is not. Whatever a deployment lands on, it is standard enterprise hardware bought through authorized channels with established supplier RMA agreements, backed by a 1-year warranty and a 20% warranty reserve per unit. Nothing exotic, nothing single-sourced. The software is entirely open-source, so nothing is proprietary or locked. If Island Mountain closed, your system would keep running: Ubuntu Server LTS, vLLM, Ollama, OpenWebUI, and open-weight models depend on none of our servers. You would lose support and warranty, but the system needs no license, no activation, and no connection to us. Any competent Linux administrator can maintain it, because vendor independence is the problem being solved."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Can local AI keep up with cloud AI as models improve?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Not on day one, but within weeks to months, yes. Cloud providers ship proprietary models the day they control the infrastructure; open-source models lag that cycle. What has happened consistently is that open-weight models close the gap fast: DeepSeek V4-Flash, Llama 4 Scout, and DeepSeek R1 reached or exceeded the proprietary models they followed within weeks to months. Your system can run any new open-source model that fits its VRAM: you download it through Ollama or OpenWebUI with no hardware change. And because every deployment is built with room to grow, you add capacity as your needs grow instead of starting over."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Why pay for a build when I could build a similar server myself for less?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "You can, and if you are a developer running experiments you probably should: the guides exist and the software stack is the same (Ollama, vLLM, OpenWebUI, open-weight models). What a DIY build does not include is professional procurement documentation (purchase receipts from authorized channels, a serial-number registry, and RMA history that a compliance officer or contracting officer can audit), professional RMA chains that keep replacement parts inside the same documentation trail for HIPAA, ITAR/DFARS, and CMMC audits, and direct access to the person who built your system. If you are a regulated organization putting AI into production where provenance and evidence matter, that is what the difference covers."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Does Island Mountain have a written doctrine?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes. The Island Mountain Doctrine is the company's founding point of view, published in full: the chain of command (technology serves people, people serve missions, missions serve communities, communities preserve civilization), the seven-phase engagement method, the security posture, and the 28 principles every deployment answers to. It is versioned like an engineering document and revised in the open at islandmountain.io/the-island-mountain-doctrine.html."
+          "text": "If you're a developer running experiments, you probably should, since the software's the same. A regulated organization in production pays for what a DIY box lacks: procurement records an auditor can follow, an RMA chain that keeps replacements in that trail, and direct access to the builder."
         }
       }
     ]
@@ -450,8 +338,8 @@
       <div class="au-sub au-reveal">
         <span class="au-rotator">
           <span class="on">What a deployment looks like, what it protects, what it takes to run.</span>
-          <span>Swappable hardware. Swappable open-weight models. No cloud.</span>
-          <span>Every spec and every quote, human to human.</span>
+          <span>Swappable hardware and open-weight models, with no cloud in the loop.</span>
+          <span>Every quote comes after Discovery, human to human.</span>
         </span>
       </div>
       <div class="au-badges au-stagger">
@@ -476,18 +364,17 @@
     <div class="container">
       <span class="au-eyebrow-c au-reveal">Start Here</span>
       <h2 class="au-h2 au-reveal">Two halves of one sovereign stack.</h2>
-      <p class="au-lede au-reveal">We install the configuration and the governance together: on-premise hardware running open-weight models entirely on your own floor, and the Woven Security &amp; Governance Fabric sitting inline on every action the AI takes. The questions below cover both, plus compliance and how quotes work. There is no public price list, because sizing this is a human conversation and always has been.</p>
       <div class="faq-ways au-stagger">
         <div class="au-card beam-card" style="--i:0">
           <span class="au-ways-eyebrow">The Configuration</span>
           <h3>Whatever the Work Needs</h3>
-          <p>Any hardware, any open-weight model, any data server rack, air-gappable throughout. A couple of desktop-class machines and a few laptops, or a large estate on rack-mounted accelerators. Discovery decides which.</p>
+          <p>Discovery picks the hardware and open-weight models, and all of it runs air-gapped.</p>
           <a class="au-ways-link" href="forward-deployed-ai-engineering.html">See how a configuration gets decided &rarr;</a>
         </div>
         <div class="au-card beam-card" style="--i:1">
           <span class="au-ways-eyebrow">The Trust Plane</span>
           <h3>Woven Security &amp; Governance</h3>
-          <p>Identity, guardrails, approval gates, and an audit ledger inline on every tool call, with zero standing privilege. Woven into every unit, and deployable cloud-side or fully air-gapped.</p>
+          <p>It governs every tool call the AI makes, cloud-side or air-gapped.</p>
           <a class="au-ways-link" href="lamprey-woven-security-governance.html">Explore the Security Fabric &rarr;</a>
         </div>
       </div>
@@ -509,45 +396,30 @@
       <div class="faq-list">
 
         <div class="faq-item beam-card au-reveal" style="--i:0">
-          <h3>What is local AI inference hardware, and how is it different from cloud AI?</h3>
+          <h3>What is local AI, and how is it different from cloud AI?</h3>
           <div class="faq-answer answer-q1">
-            <p><strong>Local AI inference hardware is a physical server with GPUs that runs AI models on your premises instead of sending your data to someone else's data center.</strong> "Inference" means the system processes your prompts and generates responses from pre-trained models. It does not train new models; it runs them locally.</p>
-            <p>With a cloud AI service (ChatGPT, Claude, Gemini, Azure OpenAI), your prompts leave your network, get processed on the provider's GPUs, and the response comes back over the internet. The provider sees your data and processes it on shared infrastructure. With local hardware the entire cycle happens inside your building: prompt goes to your GPU, response comes back from your GPU, nothing leaves your network.</p>
-            <p>You own the hardware, you own the open-weight models, and you control every variable. And because every Island Mountain unit carries the <a href="lamprey-woven-security-governance.html">Woven Security &amp; Governance Fabric</a>, governance travels with the work instead of living in a vendor's cloud. The tradeoff is honest: cloud gives you the latest proprietary models without buying hardware; local gives you data sovereignty, no recurring token fees, and models you control, while open-source releases trail proprietary ones by weeks to months.</p>
+            <p><strong>It's a server on your premises that runs AI models, so prompts and answers never leave your network.</strong> You'll own the hardware and the open-weight models, and the tradeoff's that open releases trail proprietary ones by weeks to months.</p>
           </div>
         </div>
 
         <div class="faq-item beam-card au-reveal" style="--i:1">
           <h3>Does sovereign AI hardware work fully air-gapped, with no internet?</h3>
           <div class="faq-answer">
-            <p><strong>Yes. Every Island Mountain system is designed to operate completely air-gapped.</strong> The models, the inference engine (vLLM and Ollama), and the interface (OpenWebUI) all run locally. Once the system is set up and models are loaded, you can disconnect the ethernet cable entirely and everything still works.</p>
-            <p>Users reach the system through a web browser on your local network. As long as the device and the server share a network, even an isolated one with no internet, inference runs normally. No phone-home. No license checks. No cloud dependencies. The only things that need to cross the gap are new models and security updates, and neither one needs the system online: they come across as verified bundles through a path your team controls. New models are optional. Security updates aren't, and in a month like October they're measured in hours.</p>
-            <p>Island Mountain applies a documented air-gap configuration before delivery, disabling every outbound feature at the environment-variable level, and confirms it before shipping. Your IT team can independently verify every setting on the delivered system.</p>
+            <p><strong>Yes: the models, serving software and interface run on your network with every outbound feature off, and your IT team can confirm it.</strong> New models and security updates cross the gap as verified bundles your team controls, and the updates aren't optional.</p>
           </div>
         </div>
 
         <div class="faq-item beam-card au-reveal" style="--i:2">
-          <h3>What does a forward deployment look like?</h3>
+          <h3>What does a forward deployment look like, and how long are you on-site?</h3>
           <div class="faq-answer">
-            <p><strong>It starts with us on-site, watching your people work, before anything gets specced.</strong> We sit with the staff who run the workflow: the senior paralegal who knows which intake questions matter, the records clerk who can tell you which form gets filled out wrong every time, the compliance officer who knows where the real risk lives. We learn the work the way they run it, not the way the SOP describes it, and fill in the gaps in conversation.</p>
-            <p>That study becomes a system design. Only then does hardware enter the picture, sized to what we found. After the build we hand it off and train your team, because a deployment that leaves behind people who understand the thing is the one still running a year later. The full method is on the <a href="forward-deployed-ai-engineering.html">Forward Deployed</a> page.</p>
+            <p><strong>We sit with the people who do the job until we've seen the exceptions, and that study becomes the <a href="forward-deployed-ai-engineering.html">system design</a> before anyone names hardware.</strong> One department's a short stay, a dozen handoffs take longer, and we'll train your team before we leave.</p>
           </div>
         </div>
 
         <div class="faq-item beam-card au-reveal" style="--i:3">
-          <h3>How long are you on-site, and who do you need access to?</h3>
-          <div class="faq-answer">
-            <p><strong>Long enough to understand the work, which depends entirely on how tangled it is.</strong> A single-department workflow is a short engagement. An organization with a dozen handoffs between departments takes longer, and we would rather tell you that than quote you a tidy number that turns out to be fiction.</p>
-            <p>Who we need is more important than how long. Not a steering committee: the people who do the job, for enough hours that we see the exceptions and not just the happy path. Those hours pay for themselves several times over, and they are the first thing organizations try to cut.</p>
-          </div>
-        </div>
-
-        <div class="faq-item beam-card au-reveal" style="--i:4">
           <h3>Who should NOT buy sovereign AI hardware?</h3>
           <div class="faq-answer">
-            <p><strong>We would rather tell you now than after a serious capital purchase.</strong> If your organization needs the absolute latest proprietary models (GPT-4o, Claude Opus, Gemini Ultra) on release day, local hardware will not deliver that; open-source closes the gap over time, but there is always a gap.</p>
-            <p>If your data is not sensitive and cloud AI is working fine for a handful of casual users, the sovereignty story may not justify owning infrastructure. And if your organization has no IT capability at all and cannot rack or maintain a server, know that after the included 30-day setup support your team owns the day-to-day, though ongoing support retainers are available.</p>
-            <p>Where local hardware earns its place is exactly where cloud creates exposure: regulated data, privileged data, sovereign data, and agentic workflows that must be governed and audited. If that is you, the rest of this page is written for you.</p>
+            <p><strong>If you need the newest proprietary model on release day, or your data isn't sensitive and cloud AI's fine for a few casual users, it won't earn its keep.</strong> It belongs where cloud creates exposure: regulated, privileged or sovereign data and governed agentic workflows.</p>
           </div>
         </div>
 
@@ -560,46 +432,19 @@
     <div class="container">
       <span class="au-eyebrow-c au-reveal">The Security Fabric</span>
       <h2 class="au-h2 au-reveal">Woven security &amp; governance.</h2>
-      <p class="au-lede au-reveal">The model can be tricked. The fabric is where the tricked action is stopped and logged. Here is how the governance layer works, whether it runs cloud-side or fully air-gapped.</p>
       <div class="faq-list">
 
         <div class="faq-item beam-card au-reveal" style="--i:4">
-          <h3>What is the Woven Security &amp; Governance Fabric?</h3>
+          <h3>What is the Woven Security &amp; Governance Fabric, and where does it run?</h3>
           <div class="faq-answer">
-            <p><strong>The Woven Security &amp; Governance Fabric (WSF), built as Lamprey, is the trust and control plane that sits inline on every action an AI agent takes.</strong> Identity, guardrails, approval gates, and an audit ledger on every tool call. It gives operators cloud visibility, data classification, compliance evidence, and approval-gated remediation without handing a third party standing access or your operating context.</p>
-            <p>On Island Mountain hardware it is woven into every unit, so findings, samples, credentials, and audit trails stay inside your boundary. It can also run on its own, cloud-side or air-gapped, for teams that need governance across an estate they already operate. For the full platform, see the <a href="lamprey-woven-security-governance.html">Security Fabric</a> page.</p>
+            <p><strong>It's the <a href="lamprey-woven-security-governance.html">trust and control plane</a>, built as Lamprey, that puts identity, guardrails, approval gates and an audit ledger on every tool call an agent makes.</strong> It'll run cloud-side or air-gapped, and the record of who approved each sensitive action stays in your custody.</p>
           </div>
         </div>
 
         <div class="faq-item beam-card au-reveal" style="--i:5">
-          <h3>Can I run the fabric cloud-side, or does it have to be air-gapped?</h3>
+          <h3>How does the fabric stop prompt injection and other agentic attacks?</h3>
           <div class="faq-answer">
-            <p><strong>Both. It runs two ways: outside your organization through the cloud, or inside as an air-gapped deployment.</strong> Either way, findings, samples, credentials, and audit trails stay in your custody, aligned to your existing security and governance model.</p>
-            <p>The architecture is hub-and-gateway: lightweight gateways run near the resources they inspect while evidence, status, and workflow are centralized where operators can act. It covers AWS, Azure, GCP, Kubernetes, and databases, runs inside your environment with no scan-data SaaS, and keeps access scoped through ephemeral credentials and audited approvals.</p>
-          </div>
-        </div>
-
-        <div class="faq-item beam-card au-reveal" style="--i:6">
-          <h3>How does the fabric stop agentic attacks like prompt injection and exfiltration?</h3>
-          <div class="faq-answer">
-            <p><strong>Agentic attacks ride the same rails as legitimate work, so the controls live outside the model, inline on every call.</strong> Prompt injection, agent-jacking, tool poisoning, data exfiltration, memory poisoning, and rogue agency all try to turn ordinary tool use against you.</p>
-            <p>Orchestration flows down through runtime and tools into the fabric, where identity, guardrails, approval gates, and the audit ledger evaluate each action before it executes. Sensitive actions are approval-gated, access is scoped and short-lived, and every request and approval is recorded. The model can be fooled; the fabric is where the fooled action is caught, stopped, and logged. The homepage <a href="index.html">security map</a> shows the flow end to end.</p>
-          </div>
-        </div>
-
-        <div class="faq-item beam-card au-reveal" style="--i:7">
-          <h3>What is "zero standing privilege"?</h3>
-          <div class="faq-answer">
-            <p><strong>Zero standing privilege means nothing holds broad, permanent access.</strong> Scan access is minted just in time, scoped to the operation, and revoked automatically. Write access and remediation are granted only after approval and stay fully audited.</p>
-            <p>We treat least privilege as a product constraint, not a dashboard label: a scanner or an agent must earn each action instead of accumulating trust it can later be tricked into misusing. That reduces the blast radius of both honest mistakes and active compromise.</p>
-          </div>
-        </div>
-
-        <div class="faq-item beam-card au-reveal" style="--i:8">
-          <h3>Does the fabric produce compliance evidence and audit trails?</h3>
-          <div class="faq-answer">
-            <p><strong>Yes. It preserves who requested, approved, and executed each sensitive action</strong>, connects technical findings to control families, and keeps audit-ready context so remediation reads as an operational control rather than a black box.</p>
-            <p>Evidence collection aligns to control mapping and repeatable review workflows that fit inside an existing compliance program, and it stays in your custody instead of becoming another external data exhaust. That evidence is what turns "we ran AI locally" into something you can show an auditor.</p>
+            <p><strong>The controls live outside the model, so a tricked agent still has to get each action past identity checks and approval gates, and the ledger records it.</strong> Under zero standing privilege, credentials are minted per operation and revoked after, so a compromise can't reach far.</p>
           </div>
         </div>
 
@@ -612,47 +457,34 @@
     <div class="container">
       <span class="au-eyebrow-c au-reveal">Compliance &amp; Sovereignty</span>
       <h2 class="au-h2 au-reveal">The regulated-data questions.</h2>
-      <p class="au-lede au-reveal">We are not your compliance attorney, and nothing here is legal advice. What local hardware does is remove the third-party processing vector; what the fabric adds is the evidence. Your organization still owns the operational program.</p>
+      <p class="au-lede au-reveal">We&#39;re an engineering practice, not a compliance authority, and nothing here is legal advice.</p>
       <div class="faq-list">
 
-        <div class="faq-item beam-card au-reveal" style="--i:9">
+        <div class="faq-item beam-card au-reveal" style="--i:6">
           <h3>Does running AI locally comply with HIPAA?</h3>
           <div class="faq-answer">
-            <p><strong>Running AI on local hardware eliminates the data-transmission vector that creates HIPAA exposure in the first place.</strong> With a cloud service, Protected Health Information (PHI) leaves your network and is processed on shared infrastructure controlled by a third party. Under 45 CFR &sect;164.402, that transmission can constitute a reportable disclosure event. With local inference, PHI never leaves your premises, and there is no business associate to sign a BAA with because none is involved.</p>
-            <p>Local hardware does not by itself make your entire workflow HIPAA-compliant. You still need access controls, audit logging, encryption at rest, and staff training. The hardware removes the cloud transmission risk, the <a href="lamprey-woven-security-governance.html">fabric</a> supplies the audit trail, and your organization owns the rest. Island Mountain is not a compliance attorney and does not certify HIPAA compliance. See our <a href="medical-practices.html">Medical Practices</a> page for how this fits a clinical program.</p>
+            <p><strong>PHI never leaves your premises for a third party's servers, and the fabric supplies the audit trail.</strong> Access controls, encryption at rest and staff training are still yours, and we don't certify <a href="hipaa-local-ai-compliance.html">HIPAA compliance</a>.</p>
           </div>
         </div>
 
-        <div class="faq-item beam-card au-reveal" style="--i:10">
+        <div class="faq-item beam-card au-reveal" style="--i:7">
           <h3>Can a law firm use local AI without waiving attorney-client privilege?</h3>
           <div class="faq-answer">
-            <p><strong>The core issue with cloud AI for law firms is this: client data sent to a third-party API is data disclosed to a third party.</strong> Under ABA Model Rule 1.6, attorneys have a duty to make reasonable efforts to prevent unauthorized disclosure of client information, and courts have found privilege waived when confidential information is processed through systems outside the firm's control.</p>
-            <p>Local AI keeps every prompt, document, and response on a server inside your office, behind your firewall, on hardware you own. Your firm still needs internal policies on who accesses the system, what data goes in, and how outputs are treated in work product, but the fundamental architectural risk of third-party disclosure is removed. See our <a href="law-firms.html">Law Firms</a> page for more.</p>
+            <p><strong>Client data sent to a third-party API is disclosed to a third party, and ABA Model Rule 1.6 makes preventing that your duty.</strong> Local AI keeps every prompt and document on <a href="law-firms.html">a server in your office</a>, leaving only your own policy on who uses it.</p>
           </div>
         </div>
 
-        <div class="faq-item beam-card au-reveal" style="--i:11">
+        <div class="faq-item beam-card au-reveal" style="--i:8">
           <h3>Can a tribal government run AI without cloud providers?</h3>
           <div class="faq-answer">
-            <p><strong>Yes. It is one of the primary use cases Island Mountain hardware is built for.</strong> Tribal nations exercise inherent sovereignty over constituent data, enrollment records, health information, and governance documents. Routing that data through cloud AI means processing sovereign data through jurisdictions and infrastructure outside tribal authority.</p>
-            <p>Local AI keeps everything on tribal premises, under tribal law, processed by hardware the nation owns outright. No data leaves the reservation, no cloud terms of service apply, and no federal or state jurisdiction touches the processing. The nation owns the weights outright, we read each model's license with tribal counsel before it goes into production, and the system runs fully air-gapped if your posture requires it. See our <a href="tribal-nations.html">Tribal Nations</a> page for OCAP-aligned workflows.</p>
+            <p><strong>Yes: it runs on <a href="tribal-nations.html">tribal premises</a>, on hardware and weights the nation owns outright, under no cloud terms of service and no outside jurisdiction.</strong> It'll run air-gapped if you want, and we read each model's license with tribal counsel before production.</p>
           </div>
         </div>
 
-        <div class="faq-item beam-card au-reveal" style="--i:12">
-          <h3>Does local AI hardware meet ITAR and CMMC requirements for defense contractors?</h3>
+        <div class="faq-item beam-card au-reveal" style="--i:9">
+          <h3>Does local AI meet ITAR and CMMC requirements?</h3>
           <div class="faq-answer">
-            <p><strong>ITAR restricts processing and storage of controlled technical data to environments that prevent foreign access.</strong> Cloud infrastructure with multinational operations, overseas data centers, or foreign-national employees creates structural compliance risk. Hardware you own, operate on US soil, and control with US-person-only access removes the cloud processing vector entirely.</p>
-            <p>The open-weight models are not themselves ITAR-controlled; your data is the controlled element, and local hardware keeps it off infrastructure you do not control. Island Mountain does not provide ITAR or CMMC certification. That compliance covers physical security, personnel screening, access controls, and documentation well beyond the hardware, and the <a href="lamprey-woven-security-governance.html">Woven Security &amp; Governance Fabric</a> supplies the audit evidence that supports it. See our <a href="defense-contractors.html">Defense Contractors</a> page for CUI, CMMC, and DFARS workflows.</p>
-          </div>
-        </div>
-
-        <div class="faq-item beam-card au-reveal" style="--i:13">
-          <h3>Is DeepSeek V4-Flash safe to use with sensitive organizational data?</h3>
-          <div class="faq-answer">
-            <p>The safety question usually comes from two concerns: the model's origin and data handling. Here are the facts.</p>
-            <p><strong>DeepSeek V4-Flash is an open-weights model released under the MIT license. When you run it on Island Mountain hardware, it executes entirely on your local GPUs. No data is sent to DeepSeek, to any Chinese server, or to any external endpoint.</strong> The weights are publicly available and independently audited by the open-source community. The model does not phone home and cannot: it is a file on your drive being processed by your GPUs.</p>
-            <p>The risk with DeepSeek exists only when you use its cloud API, which routes your data through their servers. That is not how Island Mountain systems work; ours run the model locally, air-gapped if you want, with zero external communication. Treat it like any other software asset: verify the download hash, apply your acceptable-use policy, and run it on infrastructure you control.</p>
+            <p><strong><a href="defense-contractors.html">Hardware you own</a>, on US soil with US-person-only access, keeps controlled technical data away from foreign access, and the open-weight models aren't ITAR-controlled.</strong> We don't provide ITAR or CMMC certification, but the fabric supplies the audit evidence behind it.</p>
           </div>
         </div>
 
@@ -667,71 +499,24 @@
       <h2 class="au-h2 au-reveal">Hardware, models, and how it scales.</h2>
       <div class="faq-list">
 
-        <div class="faq-item beam-card au-reveal" style="--i:14">
-          <h3>What hardware will we end up with?</h3>
+        <div class="faq-item beam-card au-reveal" style="--i:10">
+          <h3>What hardware do we end up with, and can you use gear we own?</h3>
           <div class="faq-answer">
-            <p><strong>Whatever Discovery says the work needs, and there's no catalog to pick it from.</strong> No set specs, no reference build, no standing recommendation, because the recommendation doesn't exist until we've seen what you do. Then we recommend the stack purchase and we deploy and configure it together, in your building.</p>
-            <p>Any hardware, any open-weight model, any data server rack. A small office doing real work on a couple of desktop-class machines and a few laptops is one honest answer. A large estate on rack-mounted accelerators with adjacent data server racks is another. Neither one is the upsell, and there's no ladder between them that anybody gets walked up.</p>
-            <p>It's your building and your budget, so if you want something other than what we'd put in, we'll install that instead. <a href="forward-deployed-ai-engineering.html">How a configuration gets decided</a> walks through what has to be on the table before anyone names hardware at all.</p>
+            <p><strong>Whatever <a href="forward-deployed-ai-engineering.html">Discovery</a> says the work needs, from a couple of desktop-class machines to a rack-mounted estate, and nobody can size that from a phone call.</strong> Gear you already own, like DGX Spark or Strix Halo boxes, gets wired in if it fits, and we'll tell you if it doesn't.</p>
           </div>
         </div>
 
-        <div class="faq-item beam-card au-reveal" style="--i:15">
-          <h3>Can you size it before you've seen how we work?</h3>
-          <div class="faq-answer">
-            <p><strong>No, and that's deliberate.</strong> Which models you'd run, how deep the context has to go, and how many people are hitting it at once all move the answer, and none of those are knowable from a phone call. Anyone who sizes your system on the first call is sizing their inventory.</p>
-            <p>Guessing it up front is the most common way on-premises AI deployments fail. The box arrives, it's wrong for the work, and nobody involved wants to be the one to say so. The sizing falls out of <a href="forward-deployed-ai-engineering.html">Discovery</a>, after we've watched the work happen. That's slower, and it's the reason these land.</p>
-          </div>
-        </div>
-
-        <div class="faq-item beam-card au-reveal" style="--i:16">
+        <div class="faq-item beam-card au-reveal" style="--i:11">
           <h3>Which models do we get, and are we stuck with them?</h3>
           <div class="faq-answer">
-            <p><strong>Open-source, open-weight models chosen to fit your work, and no, you are never stuck with them.</strong> The model layer is as swappable as the hardware. There is no fixed stack: Discovery picks the weights after the work has been watched. Current open-weight families such as <strong>DeepSeek V4-Flash</strong>, <strong>Llama 4 Scout</strong>, <strong>DeepSeek R1</strong>, or <strong>Qwen 3</strong> are examples, not a catalog.</p>
-            <p>Licenses vary: some are MIT or Apache 2.0, and some, like Meta's Llama-family licenses, carry use restrictions you have to accept, so we read each one with your counsel before a model goes into production. You own the weights outright and switch between them in the OpenWebUI dropdown. Any compatible open-weight model that fits your VRAM can be pulled through Ollama or OpenWebUI, so as the frontier moves you swap rather than renegotiate. That is the point of open weights: no lab holds a meter on you, and nobody can deprecate the model your workflow depends on. For the first 30 days we walk your team through model management directly.</p>
+            <p><strong>Discovery picks open-weight models you own outright, run on your GPUs with nothing sent to the lab, and swap as better ones ship.</strong> Licenses vary: some are MIT or Apache 2.0, and Meta's Llama-family licenses carry use restrictions, so we'll read each one with your counsel before production.</p>
           </div>
         </div>
 
-        <div class="faq-item beam-card au-reveal" style="--i:17">
-          <h3>What is OpenWebUI, and how does it work?</h3>
-          <div class="faq-answer">
-            <p><strong>OpenWebUI is a free, open-source, browser-based interface for local AI models. Think of it as a private version of ChatGPT that runs entirely on your network.</strong> No cloud account, no external data transmission.</p>
-            <p>You open a browser on any device on your network, navigate to the server's local address, and start prompting. It includes a dropdown to switch between installed models, full conversation history stored locally on the server, and an admin panel for user management and per-user model access. Conversations live on the server's drive, not in any cloud.</p>
-            <p>OpenWebUI needs no command-line knowledge. If someone can use ChatGPT, they can use OpenWebUI, and it is pre-configured on every system before it ships.</p>
-          </div>
-        </div>
-
-        <div class="faq-item beam-card au-reveal" style="--i:18">
-          <h3>How small can this be, and how big does it get?</h3>
-          <div class="faq-answer">
-            <p><strong>Small enough for an office with no server room, and big enough to feed several departments at once.</strong> Both ends are real deployments, neither one is the upsell, and where you land on that spread comes out of <a href="forward-deployed-ai-engineering.html">Discovery</a> rather than a configurator.</p>
-            <p>What doesn't change anywhere on it: it's a one-time hardware purchase with no per-seat fees and no token metering, it stays on your premises, and it gets built with room to grow so you add capacity as the work grows instead of replacing what you already own. <a href="forward-deployed-ai-engineering.html">How a configuration gets decided</a> covers what that turns on.</p>
-          </div>
-        </div>
-
-        <div class="faq-item beam-card au-reveal" style="--i:19">
+        <div class="faq-item beam-card au-reveal" style="--i:12">
           <h3>What does it need from our facility?</h3>
           <div class="faq-answer">
-            <p><strong>Power, cooling, network, and somewhere it can physically live, and all four follow from the configuration.</strong> A couple of desktop-class machines want a normal wall outlet and the air conditioning you already have. Rack-mounted accelerators want a dedicated high-amperage circuit, real server-room airflow, and a rack to sit in.</p>
-            <p>Which is why we scope it with your facilities people before anything is ordered, rather than after it turns up on a loading dock. Facilities gets a veto and it is a great deal cheaper to hear it early. If a circuit needs installing, a licensed electrician can do it, and we'll tell you exactly what to ask for.</p>
-          </div>
-        </div>
-
-        <div class="faq-item beam-card au-reveal" style="--i:20">
-          <h3>How can OpenWebUI be air-gapped if it is a web application?</h3>
-          <div class="faq-answer">
-            <p><strong>The "web" in OpenWebUI refers to the browser-based interface, not internet dependency.</strong> It is a self-hosted application that runs entirely on the server. Users reach it through a browser pointed at the server's local address, the way you reach a router's admin panel. No cloud account, no external API calls for inference.</p>
-            <p>Out of the box it does include outbound features: model downloads, update checks, HuggingFace Hub access, community sharing, web search for RAG, and telemetry. None are required for inference, and Island Mountain disables every one before shipping. The key environment variables (OFFLINE_MODE, HF_HUB_OFFLINE, ENABLE_COMMUNITY_SHARING, ANONYMIZED_TELEMETRY, ENABLE_RAG_WEB_SEARCH, SAFE_MODE) are set to their air-gapped states during the build and confirmed before shipping.</p>
-            <p>Your IT team can verify it independently by inspecting the container environment, or by watching a monitored network segment for zero outbound connections during operation.</p>
-          </div>
-        </div>
-
-        <div class="faq-item beam-card au-reveal" style="--i:21">
-          <h3>I already own DGX Sparks or a Strix Halo box. Will Island Mountain work with hardware you didn't sell?</h3>
-          <div class="faq-answer">
-            <p><strong>Yes. We wire the serving stack, stand up the software, and train your team on hardware from any vendor</strong>, including NVIDIA DGX Spark units, AMD Ryzen AI Max (Strix Halo) machines, and servers another integrator shipped and never configured. Since we don't have a catalog to protect, gear we didn't sell isn't a problem for us the way it is for a shop attached to a product.</p>
-            <p>The gap that kills most on-premises AI projects is systems design, not hardware: the serving framework, the quantization choices, the multi-user layer, the air-gap configuration, which is the same work we put into every deployment.</p>
-            <p>Small unified-memory boxes are real local AI hardware with honest limits: strong for one to three users on mixture-of-experts models, weak on concurrency and long-document prompt processing. Our <a href="blog/dgx-spark-vs-rtx-pro-6000-strix-halo.html">DGX Spark vs RTX PRO 6000 comparison</a> runs the numbers. If the box you own fits your workload, we will get it serving; if it does not, we will say so before you spend more. <a href="contact.html">Talk to the builder</a>.</p>
+            <p><strong>Power, cooling, network and floor space, set by the configuration: a desktop-class machine wants a wall outlet, while rack-mounted accelerators want a dedicated circuit, server-room airflow and a rack.</strong> We'll scope it with your facilities people before anything's ordered.</p>
           </div>
         </div>
 
@@ -744,66 +529,26 @@
     <div class="container">
       <span class="au-eyebrow-c au-reveal">Quotes, Delivery &amp; Trust</span>
       <h2 class="au-h2 au-reveal">Owning it, human to human.</h2>
-      <p class="au-lede au-reveal">There is no public price list and no self-serve checkout. Every spec, every number, and every commitment comes from a real conversation with the person who builds the hardware.</p>
       <div class="faq-list">
 
-        <div class="faq-item beam-card au-reveal" style="--i:21">
-          <h3>How does pricing work?</h3>
+        <div class="faq-item beam-card au-reveal" style="--i:13">
+          <h3>How does pricing work, and how long until we're running?</h3>
           <div class="faq-answer">
-            <p><strong>Pricing is scoped after Discovery, and every number comes from the person who'll do the work.</strong> You tell us what you're running and who needs it, we run Discovery on-site, and the written quote comes out of what we find.</p>
-            <p>Each build is a one-time hardware purchase with no subscription fees, no per-token charges, and no recurring software licensing. The models are open-source, OpenWebUI is open-source, and the operating system is Ubuntu Server LTS. There is no public price list because sizing sovereign infrastructure is a human decision, not a shopping-cart line item. <a href="contact.html">Talk to the builder</a> to get a number, or call <a href="tel:+13414418740">1-341-441-8740</a>
- <a href="mailto:basho@islandmountain.io">basho@islandmountain.io</a>.</p>
+            <p><strong>Pricing comes after Discovery: a scoping call and time on-site produce a written quote for a one-time hardware purchase with no subscription, per-token or licensing fees.</strong> Lead time's roughly 3 to 5 weeks, overlapping the workflow study, and you'll get 30 days of support from the engineer who built it.</p>
           </div>
         </div>
 
-        <div class="faq-item beam-card au-reveal" style="--i:22">
-          <h3>How does an engagement start, and how long until we are running?</h3>
+        <div class="faq-item beam-card au-reveal" style="--i:14">
+          <h3>You're a new company. What if a part fails, or you go out of business?</h3>
           <div class="faq-answer">
-            <p><strong>It starts with a scoping call, then time on-site with your people, then a written quote scoped to what we found.</strong> We do not spec speculatively. Once the design is agreed, that triggers sourcing of the specific components through authorized channels with full procurement documentation. Terms are handled directly, human to human, no automated checkout.</p>
-            <p>Hardware lead time runs roughly 3 to 5 weeks, longer when the build calls for parts sourced per order. That clock overlaps the workflow study rather than following it, so the schedule is usually set by how quickly we can get the right hours with the right people, not by shipping. The system is configured and air-gapped before it lands, so once it is racked and powered most organizations run their first real prompts the same day. Power and cooling follow the configuration, not a stock SKU. Every deployment includes 30 days of hands-on support with direct access to the engineer who built it.</p>
+            <p><strong>Every system ships with a 1-year hardware warranty, and we diagnose failures remotely and replace parts through supplier RMA agreements.</strong> If we closed you'd lose that support, but the open-source software needs no license or connection to us, and any competent Linux administrator can maintain it.</p>
           </div>
         </div>
 
-
-        <div class="faq-item beam-card au-reveal" style="--i:24">
-          <h3>What warranty comes with it, and what if a component fails?</h3>
+        <div class="faq-item beam-card au-reveal" style="--i:15">
+          <h3>Why pay you when I could build a similar server myself?</h3>
           <div class="faq-answer">
-            <p><strong>Every system ships with a 1-year hardware warranty covering all components</strong>, including GPUs, CPU, RAM, storage drives, and power supplies. If a component fails within the first year, we handle the replacement.</p>
-            <p>GPU failures are managed through supplier RMA agreements with documented replacement timelines, and we hold a 20% warranty reserve per unit so replacements are not waiting on budget. You contact the builder directly (phone <a href="tel:+13414418740">1-341-441-8740</a>
- <a href="mailto:basho@islandmountain.io">basho@islandmountain.io</a> or email), we diagnose remotely, and we ship the part or arrange a swap. Extended warranty options are available at the time of purchase, and after warranty, support is available per incident or on an annual retainer.</p>
-          </div>
-        </div>
-
-        <div class="faq-item beam-card au-reveal" style="--i:25">
-          <h3>You are a new company. Why trust a first purchase, and what if you go out of business?</h3>
-          <div class="faq-answer">
-            <p>This is a fair question, and you should ask it. <strong>Island Mountain is founded by Basho Parks, who hand-builds each rack. The company is new; the team is not.</strong></p>
-            <p>Whatever a deployment lands on, it's standard enterprise hardware bought through authorized channels with established supplier RMA agreements, backed by a 1-year warranty and a 20% warranty reserve per unit. Nothing exotic, nothing single-sourced, nothing you'd have trouble replacing. The software is entirely open-source, so nothing is proprietary and nothing is locked.</p>
-            <p><strong>If Island Mountain closed, your system would keep running.</strong> Ubuntu Server LTS, vLLM, Ollama, OpenWebUI, and open-weight models depend on none of our servers. You would lose our support and warranty, but the system needs no license, no activation, and no connection to us. OS updates come from Ubuntu, drivers from NVIDIA, models from public libraries, and any competent Linux administrator can maintain it. Vendor independence is exactly the problem we are solving.</p>
-          </div>
-        </div>
-
-        <div class="faq-item beam-card au-reveal" style="--i:26">
-          <h3>Can local AI keep up with cloud AI as models improve?</h3>
-          <div class="faq-answer">
-            <p><strong>Not on day one, but within weeks to months, yes.</strong> Cloud providers ship proprietary models the moment they control the infrastructure. Open-source models lag that cycle, so when a new flagship launches you will not have an equivalent on your local hardware that afternoon.</p>
-            <p>What has happened consistently is that open-weight models close the gap fast. DeepSeek V4-Flash, Llama 4 Scout, and DeepSeek R1 all reached or exceeded the proprietary models they followed within weeks to months. Your system can run any new open-source model that fits its VRAM: you download it through Ollama or OpenWebUI, with no hardware change. And because every deployment is built with room to grow, you add capacity as your needs grow instead of starting over.</p>
-          </div>
-        </div>
-
-        <div class="faq-item beam-card au-reveal" style="--i:27">
-          <h3>Why pay for a build when I could build a similar server myself for less?</h3>
-          <div class="faq-answer">
-            <p><strong>You can, and if you are a developer running experiments, you probably should.</strong> The guides exist and the software stack is the same: Ollama, vLLM, OpenWebUI, and open-weight models like DeepSeek V4-Flash and Llama 4 Scout. With the staff to build, configure, test, and maintain it, a DIY box will run inference.</p>
-            <p>Here is what a DIY build does not include. <strong>Professional procurement documentation:</strong> every accelerator in a deployment has a documented chain, purchase receipts from authorized channels, a serial-number registry, and RMA history, which consumer cards from Amazon or Newegg do not carry. <strong>Professional RMA chains</strong> that keep replacement parts inside the same documentation trail, which matters for HIPAA, ITAR/DFARS, and CMMC audits. <strong>Direct builder support:</strong> you talk to the person who assembled your system, not a ticket queue.</p>
-            <p>The honest answer: if you are experimenting, build your own. If you are a regulated organization putting AI into production where provenance and evidence matter, that is what the difference covers.</p>
-          </div>
-        </div>
-        <div class="faq-item beam-card au-reveal" style="--i:28">
-          <h3>Does Island Mountain have a written doctrine?</h3>
-          <div class="faq-answer">
-            <p><strong>Yes, and it&#39;s public.</strong> The Island Mountain Doctrine is the company&#39;s point of view written down before we knocked on anyone&#39;s door: the chain of command (technology serves people, people serve missions, missions serve communities, communities preserve civilization), the seven-phase method behind every engagement, the security posture, and the 28 principles a deployment answers to. It&#39;s versioned like an engineering document, revised in the open, and silent edits never happen.</p>
-            <p>Read the full text: <a href="the-island-mountain-doctrine.html" class="clr-copper">The Island Mountain Doctrine</a>.</p>
+            <p><strong>If you're a developer running experiments, you probably should, since the software's the same.</strong> A regulated organization in production pays for what a DIY box lacks: procurement records an auditor can follow, an RMA chain that keeps replacements in that trail, and direct access to the builder.</p>
           </div>
         </div>
 
@@ -811,13 +556,9 @@
     </div>
   </section>
 
-  <!-- AEO summary + closing CTA -->
+  <!-- Closing CTA -->
   <section class="au-section au-section--ink">
     <div class="container">
-      <div class="faq-aeo au-reveal">
-        <strong>Summary:</strong> <a href="index.html" class="clr-copper">Island Mountain</a> configures and deploys air-gappable, on-premises AI inference on any hardware and software combination the work calls for, each deployment carrying the <a href="lamprey-woven-security-governance.html" class="clr-copper">Woven Security &amp; Governance Fabric</a> that governs and audits every action an AI agent takes. There is no catalog, no set hardware specification, and no standing recommendation: the configuration is chosen per customer after an on-site immersion and Discovery, then deployed and configured together. Systems run frontier open-weight models fully offline, suited to organizations bound by HIPAA, ITAR/CMMC, attorney-client privilege, tribal data sovereignty (OCAP), and FERPA. There is no public price list: every quote is scoped human to human.
-      </div>
-
       <div class="faq-final" style="margin-top:56px;">
         <span class="au-eyebrow-c au-reveal">Still Have Questions?</span>
         <h2 class="au-h2 au-reveal">Ask a human.</h2>
@@ -838,13 +579,12 @@
       <div class="section-header fade-in">
         <span class="section-badge">Explore the Platform</span>
         <h2>Keep exploring</h2>
-        <p>Answers are a starting point. Here is the deeper reading, and the fastest way to reach a human.</p>
       </div>
       <div class="card-grid card-grid-3 fade-in">
         <div class="card beam-card" style="--i:0">
           <div class="card-icon-im"><img src="images/icons/faq-icon.webp?v=4" alt="" loading="lazy" decoding="async"></div>
           <h3>FAQ</h3>
-          <p>Straight answers on deployment, model selection, air-gapping, governance, and exactly what runs on an on-premises rack.</p>
+          <p>Straight answers on deployment, models, air-gapping and governance.</p>
           <a href="faq.html" class="btn btn-secondary mt-16">Read the FAQ &rarr;</a>
         </div>
         <div class="card beam-card" style="--i:1">
@@ -856,7 +596,7 @@
         <div class="card beam-card" style="--i:2">
           <div class="card-icon-im"><img src="images/icons/contact-icon.webp?v=4" alt="" loading="lazy" decoding="async"></div>
           <h3>Contact</h3>
-          <p>Tell us about your organization and what you're trying to accomplish. One builder, one phone call, real answers.</p>
+          <p>Tell us about your organization and what you're trying to accomplish.</p>
           <a href="contact.html" class="btn btn-secondary mt-16">Reach us &rarr;</a>
         </div>
       </div>
