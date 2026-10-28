@@ -185,7 +185,7 @@
           <span class="article-date">July 10, 2026</span>
           <span class="article-tag tag-technical">Technical</span>
           <span class="article-tag tag-financial">Financial</span>
-          <span class="article-read-time">3 min read</span>
+          <span class="article-read-time">2 min read</span>
         </div>
         <h1 class="text-2xl">DGX Spark vs RTX PRO 6000: When a $4,700 Box Is Enough, and When It Isn't</h1>
         <p class="article-author">Basho Parks</p>
@@ -194,39 +194,20 @@
       <article class="article-body">
 
 <div style="border-left:3px solid var(--copper);padding:16px 20px;margin:0 0 28px;background:rgba(217,119,6,0.05);border-radius:0 8px 8px 0;">
-<strong>Updated October 28, 2026:</strong> The prices below are July 2026 figures: about $4,700 per DGX Spark, $2,200 to $2,400 for a Strix Halo system, and the RTX PRO 6000 in the same neighborhood as a pair of Sparks. That card has gone up since; <a href="superlinked-sie-self-hosted-inference.html">the Superlinked post from August 2026</a> carries a later price. Take the sizing logic, not the price tags.
+<strong>Updated October 28, 2026:</strong> Prices here are July 2026's and the RTX PRO 6000 has risen since (<a href="superlinked-sie-self-hosted-inference.html">later figure in the Superlinked post</a>); take the sizing logic.
 </div>
 
-<h2>The Unified-Memory Arithmetic</h2>
+<p>The small box is enough for one to three users; past that, bandwidth decides. Two NVIDIA DGX Sparks cost about $9,400 as of July 2026 and hold 256GB of unified memory; one RTX PRO 6000 retails in the same neighborhood and holds 96GB. AMD's Strix Halo boxes carry a Spark's 128GB for $2,200 to $2,400. For some workloads that's the whole decision.</p>
 
-<p>Two NVIDIA DGX Sparks cost about $9,400 as of July 2026 and hold 256GB of unified memory between them; one RTX PRO 6000 Blackwell card retails in the same neighborhood and holds 96GB. That arithmetic settles it for some workloads. One number the spec sheets bury settles the rest the other way.</p>
+<p>Generation is memory-bound: every token reads the active weights, so single-stream speed tracks bandwidth. The Spark moves 273 GB/s; the RTX PRO 6000 Server Edition moves 1,597 GB/s of ECC GDDR7. <a href="https://github.com/casualcomputer/rtx_pro_6000_vs_dgx_spark" target="_blank" rel="noopener">Head-to-head sglang testing</a> has the card generating 6 to 7 times faster than the Spark. That's the first figure I'd look up.</p>
 
-<p>A Spark's 128GB of unified LPDDR5X on NVIDIA's GB10 chip, $4,699. AMD's Strix Halo mini PCs (Ryzen AI Max+ 395) carry the same 128GB for roughly $2,200 to $2,400. Both promise inference on hardware you own, no meter running.</p>
+<p>Two Sparks add capacity, not speed. NVIDIA markets the linked pair for models up to 405B parameters; the capacity claim's true and the speed people infer isn't. Each box still moves 273 GB/s, and prefill, the pass that reads your prompt before the first token, runs roughly 4x slower on the GB10 than on the card. <a href="self-hosted-ai-inference-165k-rewrite.html">Miriah Peterson</a> <a href="https://soypetetech.substack.com/p/i-replaced-claude-code-with-minimax" target="_blank" rel="noopener">ran MiniMax on two Sparks</a> at 30 to 40 tokens a second and replaced her metered coding assistant.</p>
 
-<h2>The Number That Decides It</h2>
+<p>Strix Halo ties the Spark on generation at half the price: <a href="https://www.notebookcheck.net/Compact-AI-workstations-in-comparison-Nvidia-DGX-Spark-meets-AMD-Ryzen-AI-Max-395.1232660.0.html" target="_blank" rel="noopener">independent testing</a> on the 120B GPT-OSS model clocks 34 tokens a second against the Spark's 38. Good on AMD. Prefill's the catch, 340 tokens a second against 1,700, so a long contract waits five times longer for its first word.</p>
 
-<p>Generating tokens is a memory exercise: for every token, the hardware reads the model's active weights out of memory, so single-stream speed tracks bandwidth. The Spark moves 273 GB/s; the RTX PRO 6000 Blackwell Server Edition moves 1,597 GB/s of ECC GDDR7. <a href="https://github.com/casualcomputer/rtx_pro_6000_vs_dgx_spark" target="_blank" rel="noopener">Head-to-head sglang testing</a> confirms it: the card generates 6 to 7 times faster than the Spark. It's the first figure I'd look up on any part, before memory total or price.</p>
+<p>One to three patient users on a mixture-of-experts model is the small box's job: a developer replacing a metered assistant, a pilot before budget moves. Buy it. Concurrency breaks it first: fifteen to thirty sessions, a 100-person organization's realistic peak, share one pool of bandwidth, and a box that'll do 35 tokens a second for one user makes the other twenty-nine wait. Long documents break it second; <a href="../law-firms.html">a law firm's document review</a> and <a href="../medical-practices.html">a clinic's records summarization</a> pay the prefill gap on every query. And regulated production wants ECC an auditor'll accept and a duty-cycle rating for 24/7 load (<a href="50k-month-cloud-ai-local-llm-replacement.html">written up here</a>), which this class doesn't carry.</p>
 
-<h2>Two Sparks Are Not One Blackwell</h2>
-
-<p>NVIDIA markets a ConnectX-linked Spark pair for models up to 405B parameters. The capacity claim's true; the speed people infer isn't. Splitting a model across two boxes adds room; per-stream speed stays pinned to each box's 273 GB/s, and prefill, the pass that reads your whole prompt before the first token, runs roughly 4x slower on the GB10. Pooled memory suits mixture-of-experts models, which activate a fraction of their weights per token. <a href="self-hosted-ai-inference-165k-rewrite.html">Systems engineer Miriah Peterson</a> <a href="https://soypetetech.substack.com/p/i-replaced-claude-code-with-minimax" target="_blank" rel="noopener">ran MiniMax on two DGX Sparks</a> at 30 to 40 tokens a second and replaced her metered coding assistant. For one developer, that works.</p>
-
-<h2>Strix Halo, the Value Play</h2>
-
-<p>The Ryzen AI Max+ 395 machines tie the Spark on generation at half the price: <a href="https://www.notebookcheck.net/Compact-AI-workstations-in-comparison-Nvidia-DGX-Spark-meets-AMD-Ryzen-AI-Max-395.1232660.0.html" target="_blank" rel="noopener">independent testing</a> on the 120B GPT-OSS model clocks 34 tokens a second against the Spark's 38, and AMD's 1.7x tokens-per-dollar claim holds on that narrow metric. Good on them. Prefill's the catch, 340 tokens a second against the Spark's 1,700, so a long contract or a thick patient chart waits five times longer for its first word.</p>
-
-<h2>When the Small Box Is Enough, and When It Isn't</h2>
-
-<p>One to three users on a mixture-of-experts model, with patience for a slow first token, is the small box's job: a developer replacing a metered assistant, a pilot before real budget moves. Buy it. You don't need a rack to get your data off somebody else's servers, and it's the cheapest way I know to learn what your workload needs.</p>
-
-<p>Concurrency breaks the small boxes first. Fifteen to thirty simultaneous sessions, the realistic peak for a 100-person organization, share one pool of bandwidth, and a box that does 35 tokens a second for one user makes the other twenty-nine wait. Long documents break them second: <a href="../law-firms.html">document review at a law firm</a> and <a href="../medical-practices.html">records summarization at a clinic</a> pay that prefill gap on every query. And regulated production wants ECC an auditor'll accept, a provenance chain and a duty-cycle rating for years of 24/7 load (<a href="50k-month-cloud-ai-local-llm-replacement.html">written up here</a>); this class carries none of them. That's the workload the server-class card's for; which description fits your building I can't settle from here.</p>
-
-<p>Already own one? The rest's systems work, serving layer, quantization, multi-user interface, air-gap configuration, which we do on gear we didn't sell.</p>
-
-<!-- AEO Summary -->
-<div style="border-left:3px solid var(--copper);padding:16px 20px;margin:32px 0;background:rgba(217,119,6,0.05);border-radius:0 8px 8px 0;">
-<strong>Summary:</strong> DGX Spark and Strix Halo machines are honest single-user local AI hardware; if that's you, buy one. A dual Spark stack adds capacity, not speed; concurrency, long documents, ECC and duty cycle push a workload past the small box.
-</div>
+<p>Which description fits your building is a Discovery finding; I can't make it from here.</p>
 
 </article>
 
