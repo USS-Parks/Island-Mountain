@@ -80,34 +80,18 @@
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "Does processing research data through cloud AI risk intellectual property exposure?",
+        "name": "Does cloud AI risk my unpublished research data?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes. Cloud AI transmits unpublished research data to third-party infrastructure, creating IP exposure and provenance liability for patentable discoveries. Some providers reserve rights to use submitted data for model training, and even where prohibited, data has left your institutional network. For labs handling data subject to 21 CFR Part 11, IRB protocols, or GxP compliance requirements, third-party processing introduces regulatory complications. On-premises AI from Island Mountain eliminates this risk - data stays on your own hardware inside your facility. No third-party transmission. No provenance questions at patent filing or publication."
+          "text": "Yes. Third-party processing muddies provenance at patent filing, and under 21 CFR Part 11, IRB protocols or GxP it's a regulatory complication too."
         }
       },
       {
         "@type": "Question",
-        "name": "How does local AI help with federal grant data residency requirements?",
+        "name": "Can researchers inspect and modify the models?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Local AI satisfies data residency requirements with a simple documentation posture. NIH, NSF, and DoD increasingly require data management plans specifying where grant-funded data is processed and stored. Cloud AI introduces a third-party handler into your governance documentation. With Island Mountain hardware, you document that AI-assisted analysis occurred on institution-owned hardware within your facility, with no external data transmission. This straightforward residency posture satisfies most federal grant data handling requirements."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Can researchers inspect or modify the AI models running on Island Mountain hardware?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes. All models pre-installed on Island Mountain hardware are open-weight with permissive licenses (MIT, Apache 2.0). Researchers can inspect architectures, examine weight distributions, and modify models for specific use cases. This satisfies IRB requirements for methodological transparency and GxP compliance requirements for process documentation. Unlike closed commercial APIs, open-weight models allow full reproducibility - you document exactly which model version, configuration, and parameters produced each result."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How does per-token cloud cost compare to local hardware for a research lab running extended sessions?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Cloud AI APIs charge $15 to $60 per million tokens. A three-researcher lab with heavy usage processes 50 to 200 million tokens per month, costing $750 to $12,000 monthly. Over two years: $18,000 to $288,000 cumulative with ongoing IP exposure. An Island Mountain build is a one-time purchase, sized and quoted to your workload, with unlimited inference and zero per-token charges. Ongoing costs are power, cooling, and the staff time to patch and run the system, all sized in Discovery."
+          "text": "Yes. They're open weights under permissive licenses like MIT and Apache 2.0, and you control which version runs, so a result can be reproduced on the same model."
         }
       }
     ]
@@ -182,7 +166,7 @@
     <div class="hero-inner">
       <span class="hero-badge">Local AI for Research Labs</span>
       <h1>Your Data, Your Models, Your Publication Timeline</h1>
-      <p>Unpublished research run through a cloud API is data you&#39;ve handed to a third party before you&#39;ve published a word. We&#39;ll build the whole system on your own hardware instead: the agents, the orchestration, and the models that carry your lab&#39;s real work, and your unpublished data never leaves the building.</p>
+      <p>Unpublished research run through a cloud API is data you&#39;ve handed to a third party before you&#39;ve published a word. We&#39;ll build agents and models on your hardware, and that data never leaves the building.</p>
     </div>
   </section>
 
@@ -190,7 +174,6 @@
   <nav class="breadcrumb">
     <a href="index.html">Home</a><span>&rsaquo;</span><a href="solutions.html">Solutions</a><span>&rsaquo;</span>Research Labs
   </nav>
-  <div class="cta-hero-wrap"><p class="detail-text">Every deployment starts on-site, with the people who do the work.</p></div>
 
   <!-- The Cloud AI Problem for Research -->
   <section class="section section-first">
@@ -198,18 +181,13 @@
       <div class="section-header fade-in">
         <span class="section-badge">The IP Problem</span>
         <h2>The Cloud AI Problem for Research Institutions</h2>
-        <p>Publication priority, data provenance, and grant compliance all depend on controlling where your research data is processed.</p>
       </div>
       <div class="fade-in content-narrow">
-        <p class="body-lg">When a researcher submits unpublished data to a cloud AI service for analysis, summarization, or writing assistance, that data leaves the institutional network. It is transmitted to a third-party data center, processed on shared infrastructure, and handled according to the provider's data policies - not your institution's. For research teams working toward publication, patent filing, or grant deliverables, this creates multiple risks.</p>
-        <p class="body-lg">First, intellectual property exposure. Even if a cloud provider's policy states they won't use your data for training, the data has still been processed on their infrastructure. If a competing lab later publishes similar findings, questions about data leakage become harder to dismiss when your data was processed through a shared service. This IP exposure risk is why research labs join <a href="solutions.html">law firms, medical practices, and defense contractors</a> in moving AI inference on-premises.</p>
-        <p class="body-lg">Second, grant compliance. Federal agencies including NIH, NSF, and DoD are tightening data management requirements. Data management plans increasingly require documenting where and how research data is processed. Cloud AI processing adds a third-party data handler to your compliance documentation.</p>
-        <p class="body-lg">Third, operational dependency. Cloud API rate limits, outages, and model deprecations can disrupt research workflows at critical moments. When you're running a week-long analysis pipeline or processing a dataset under deadline, your work depends on a service you don't control.</p>
+        <p class="body-lg">Unpublished data on a provider&#39;s servers is a leak question that gets harder to dismiss the day a competing lab publishes first. NIH, NSF and DoD data management plans also ask where grant-funded data gets processed. On your own server the data stays on your network, there&#39;s no rate limit or token meter, and it&#39;ll run air-gapped.</p>
       </div>
     </div>
   </section>
 
-  
   <section class="section-pt-32">
     <div class="container">
       <div class="badge-wrap">
@@ -219,35 +197,7 @@
       </div>
     </div>
   </section>
-  <!-- What Local AI Means -->
-  <section class="section section-dark">
-    <div class="container">
-      <div class="section-header fade-in">
-        <span class="section-badge">How It Works</span>
-        <h2>What Local AI Means for Your Lab</h2>
-        <p>Your data stays in your building. Your inference runs on your schedule. Your models stay available on your terms.</p>
-      </div>
-      <div class="card-grid card-grid-3 fade-in">
-        <div class="card">
-          <div class="card-icon-im"><img src="images/icons/itarr-cmmc-ai-icon.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
-          <h3>IP Stays Under Your Roof</h3>
-          <p>All AI processing happens on a physical server in your lab, department, or institutional data center. Unpublished data, proprietary datasets, and pre-publication analyses never leave your network. No third-party data handling policies apply.</p>
-        </div>
-        <div class="card">
-          <div class="card-icon-im"><img src="images/icons/on-prem-ai-icon.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
-          <h3>Unlimited Inference</h3>
-          <p>No per-token charges. No rate limits. No usage caps. Run extended analysis sessions, process entire datasets, and iterate on research questions without watching a billing dashboard. The hardware runs as much as you need it to.</p>
-        </div>
-        <div class="card">
-          <div class="card-icon-im"><img src="images/ic-default-access.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
-          <h3>Open Weights, Full Transparency</h3>
-          <p>All pre-installed models carry permissive open-source licenses with open weights. You can inspect model architectures, examine parameters, and document exactly which model in which configuration produced your results. Full methodological transparency for reproducible research.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- We build it around the lab -->
+  <!-- The build -->
   <section class="section section-darker">
     <div class="container">
       <div class="section-header fade-in">
@@ -255,86 +205,48 @@
         <h2>We Build It Around How Your Lab Runs</h2>
       </div>
       <div class="fade-in content-narrow">
-        <p class="body-lg">A general model knows science the way a textbook does. In the abstract, sourced from everyone, tuned to no one. It&#39;s never read your instrument logs, doesn&#39;t know your bench protocols, can&#39;t tell your PI&#39;s shorthand from a rotating grad student&#39;s. And it&#39;s never once laid eyes on your unpublished results. That&#39;s the gap we close.</p>
-        <p class="body-lg">Island Mountain builds the agents and the orchestration that carry the multi-step work that&#39;s eating your lab&#39;s hours: literature synthesis across a stack of papers, protocol and methods drafting, grant narratives, data-analysis summaries, experiment write-ups, and the IRB and IACUC paperwork nobody volunteers for. It runs on current open-weight models like Kimi K3, ZAI GLM 5.2, Qwen 3.8+, and Nous Hermes 4, served through Ollama or vLLM behind an OpenWebUI front end, or whatever open weights fit the task. All of it governed by our own agentic orchestration and the <a href="lamprey-woven-security-governance.html" class="clr-copper">Woven Security Fabric</a>, so every action carries an identity, an approval, and a receipt, and the credentials expire when the task is done. Your unpublished data never leaves the building to make any of it happen.</p>
-        <p class="body-lg">When the work needs a model that speaks your science, we&#39;ll build one. Reasoning models and small language models from scratch, trained to orbit your lab&#39;s ontology: your instruments, your protocols, your prior results, the way your group really writes. It picks up your terminology and your cadence, the notation you&#39;ve leaned on since the first grant, not a generic survey of the field.</p>
-        <p class="body-lg">It air-gaps completely for the work that demands it: the embargoed dataset, the sponsor&#39;s proprietary compound, the findings that aren&#39;t published yet. And it reaches the cloud only when a task genuinely needs to. You draw that line, workflow by workflow, and it&#39;s yours to move.</p>
-        <p class="body-lg">Then we hand back the keys. On-site onboarding, SOPs written for your people, the whole thing dropped into your team&#39;s hands so they run and rework the workflows without paging us. Want the upkeep off the lab manager&#39;s desk? We offer tiered support sized to the lab, and we plug in wherever that&#39;s easiest to carry. A lab is a body of work built over years, and the tooling should belong to the institution that outlasts any single grant. We build it alongside you, and we won&#39;t call it done until your people can run it without us.</p>
+        <p class="body-lg">We build the agents that carry the work eating your lab&#39;s hours: literature synthesis, grant narratives, the IRB and IACUC paperwork nobody volunteers for. When the work needs a model trained on your instruments and protocols, we&#39;ll build that too. Every action runs under the <a href="lamprey-woven-security-governance.html" class="clr-copper">Woven Security Fabric</a> with an identity and a receipt, and we hand it over once your people can run it.</p>
       </div>
     </div>
   </section>
 
-
-  <!-- Research Workflows -->
-  <section class="section section-darker">
+  <!-- Workflows -->
+  <section class="section section-dark">
     <div class="container">
       <div class="section-header fade-in">
         <span class="section-badge">Workflows</span>
         <h2>Workflows a Deployment Supports</h2>
-        <p>These aren&#39;t chat prompts. They&#39;re agentic workflows the orchestration runs start to finish, each step carrying its own identity and receipt, and your unpublished data never leaves your network.</p>
       </div>
       <div class="card-grid card-grid-3 fade-in">
         <div class="card">
           <div class="card-icon-im"><img src="images/icons/resources-icon.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
           <h3>Literature Synthesis</h3>
-          <p>Process and synthesize large volumes of published literature. Identify themes across papers, summarize findings, compare methodologies, and generate structured literature review drafts. Long context windows hold a whole stack of sources in a single session, so the analysis spans them at once.</p>
+          <p>A whole stack of papers compared in one long-context session.</p>
         </div>
         <div class="card">
           <div class="card-icon-im"><img src="images/icons/document-review-icon.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
           <h3>Qualitative Data Analysis</h3>
-          <p>Code interview transcripts, identify themes in open-ended survey responses, and analyze field notes. Process sensitive participant data - including IRB-protected information - without transmitting it to cloud services.</p>
+          <p>Interview transcripts and field notes coded, IRB-protected data included.</p>
         </div>
         <div class="card">
           <div class="card-icon-im"><img src="images/icons/grant-funding-icon.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
           <h3>Grant Proposal Drafting</h3>
-          <p>Generate first drafts of specific aims, research plans, significance sections, and budget justifications. Iterate on proposal language with unlimited prompting. Process preliminary data descriptions without exposing unpublished findings.</p>
+          <p>Specific aims and research plans drafted without exposing preliminary data.</p>
         </div>
         <div class="card">
           <div class="card-icon-im"><img src="images/ic-plan.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
           <h3>Dataset Annotation</h3>
-          <p>Assist with data labeling, classification tasks, and annotation workflows. Process proprietary datasets for categorization, tagging, and structured extraction without uploading them to third-party annotation platforms.</p>
+          <p>Proprietary datasets labeled without a third-party annotation platform.</p>
         </div>
         <div class="card">
           <div class="card-icon-im"><img src="images/ic-coding.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
           <h3>Code Generation for Analysis</h3>
-          <p>Generate Python, R, and statistical analysis code. Draft data processing pipelines, create visualization scripts, and write analysis functions. Iterate on code with the full context of your research question without exposing methodology to cloud providers.</p>
+          <p>Python and R analysis code written against your research question.</p>
         </div>
         <div class="card">
           <div class="card-icon-im"><img src="images/icons/document-drafting-icon.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
           <h3>Academic Writing Support</h3>
-          <p>Draft manuscript sections, restructure arguments, improve clarity, and format content for specific journal requirements. The system turns out clean academic prose. Process entire manuscripts locally for revision and editing support.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Extended Context and Open Weights -->
-  <section class="section section-dark">
-    <div class="container">
-      <div class="section-header fade-in">
-        <span class="section-badge">Research Advantages</span>
-        <h2>Why Open Weights and Extended Context Matter for Research</h2>
-      </div>
-      <div class="risk-grid fade-in">
-        <div class="risk-card">
-          <div class="risk-icon"><img src="images/ic-code-window.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
-          <h4>Long-Context Windows</h4>
-          <p>Current open-weight models carry long context windows, and the strongest of them stretch well past what most cloud APIs will hand you. That matters for full-dataset analysis, long-document synthesis, and research sessions that hold a whole body of source material in view at once. We run the model that fits the job, and the context budget climbs as the open weights do.</p>
-        </div>
-        <div class="risk-card">
-          <div class="risk-icon"><img src="images/ic-default-access.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
-          <h4>MIT License: Inspect, Modify, Extend</h4>
-          <p>Every model on Island Mountain hardware carries a permissive open-source license with open weights. You can inspect the model architecture, examine weight distributions, fine-tune on domain-specific data (with additional tooling), and document your exact model configuration for reproducibility. This is impossible with closed commercial APIs where the model is proprietary and opaque.</p>
-        </div>
-        <div class="risk-card">
-          <div class="risk-icon"><img src="images/ic-plan.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
-          <h4>Reproducibility</h4>
-          <p>Research requires reproducible methods. When you use a cloud API, the provider can change the model at any time - versioning is not guaranteed, and behavior may shift between calls. With local hardware, you control which model version runs. Your results are reproducible because the model stays the same until you choose to update it.</p>
-        </div>
-        <div class="risk-card">
-          <div class="risk-icon"><img src="images/icons/hipaa-ai-icon.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
-          <h4>IRB and Data Governance</h4>
-          <p>For research involving human subjects, IRB protocols require documenting data handling procedures. Local AI simplifies this documentation: "AI analysis was performed on institution-owned hardware with no external data transmission." This is a cleaner data governance story than explaining cloud provider data handling policies, BAAs, and third-party risk assessments.</p>
+          <p>Manuscript sections drafted and revised to journal requirements.</p>
         </div>
       </div>
     </div>
@@ -345,8 +257,7 @@
     <div class="container">
       <div class="section-header fade-in">
         <span class="section-badge">Cost Comparison</span>
-        <h2>Cloud AI vs. an On-Premise Deployment for a 3-Researcher Lab</h2>
-        <p>Heavy-usage research scenario: 3 researchers running 40-hour weeks with sustained AI-assisted analysis.</p>
+        <h2>Cloud AI vs. an On-Premise Deployment</h2>
       </div>
       <div class="table-wrapper fade-in">
         <table>
@@ -359,11 +270,6 @@
           </thead>
           <tbody>
             <tr>
-              <td><strong>Monthly Inference Cost</strong></td>
-              <td>$750 - $12,000</td>
-              <td class="highlight-cell">No per-token charges</td>
-            </tr>
-            <tr>
               <td><strong>Year 1 Cost</strong></td>
               <td>$9,000 - $144,000</td>
               <td class="highlight-cell">One-time purchase (quoted to the deployment)</td>
@@ -375,35 +281,25 @@
             </tr>
             <tr>
               <td><strong>Unpublished Data Exposure</strong></td>
-              <td>Every session transmits data externally</td>
-              <td class="highlight-cell">Zero. Data stays in your lab.</td>
+              <td>Every session leaves your network</td>
+              <td class="highlight-cell">Data stays in your lab</td>
             </tr>
             <tr>
-              <td><strong>Rate Limits</strong></td>
-              <td>API rate limits apply</td>
-              <td class="highlight-cell">None. Your hardware, your schedule.</td>
-            </tr>
-            <tr>
-              <td><strong>Model Transparency</strong></td>
-              <td>Closed, proprietary models</td>
-              <td class="highlight-cell">Open weights. Permissive licenses.</td>
+              <td><strong>Per-Token Fees</strong></td>
+              <td>$15 - $60 per million tokens</td>
+              <td class="highlight-cell">None</td>
             </tr>
             <tr>
               <td><strong>Reproducibility</strong></td>
               <td>Model may change without notice</td>
-              <td class="highlight-cell">You control the model version.</td>
-            </tr>
-            <tr>
-              <td><strong>Grant Compliance</strong></td>
-              <td>Third-party data processing</td>
-              <td class="highlight-cell">Institution-owned infrastructure.</td>
+              <td class="highlight-cell">You control the model version</td>
             </tr>
           </tbody>
         </table>
       </div>
       <div class="comparison-note fade-in mt-20">
         <i class="ri-information-line"></i>
-        Cloud estimates assume 50-200M tokens/month at $15-$60 per million tokens. Actual usage varies by research domain and workflow intensity.
+        Cloud estimates assume 50-200M tokens/month at $15-$60 per million tokens.
       </div>
     </div>
   </section>
@@ -414,45 +310,29 @@
       <div class="section-header fade-in">
         <span class="section-badge">Honest Limitations</span>
         <h2>What You Do Not Get</h2>
-        <p>Knowing where the tool ends prevents misapplication.</p>
       </div>
       <div class="risk-grid fade-in">
         <div class="risk-card">
           <div class="risk-icon"><img src="images/icons/server-rack-icon.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
           <h4>Not a Research Computing Cluster</h4>
-          <p>Island Mountain hardware is built for inference - running pre-trained models to generate text, analyze documents, and assist with writing. It is not a GPU compute cluster for model training, large-scale numerical simulation, or HPC workloads. It does not replace your institution's research computing infrastructure.</p>
+          <p>It&#39;s built for inference. It isn&#39;t a GPU cluster for model training, simulation or HPC work, and it won&#39;t replace your research computing.</p>
         </div>
         <div class="risk-card">
-          <div class="risk-icon"><img src="images/icons/local-ai-inference-icon.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
-          <h4>Inference Only, Not Training</h4>
-          <p>The system ships configured for inference. Fine-tuning models on domain-specific data requires additional tooling, expertise, and potentially more GPU memory than inference alone. We can consult on fine-tuning approaches, but it is not a plug-and-play feature at delivery.</p>
-        </div>
-        <div class="risk-card">
-          <div class="risk-icon"><img src="images/icons/resources-icon.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
-          <h4>No Research Database Integration</h4>
-          <p>The system does not connect to PubMed, Web of Science, institutional repositories, or research data management platforms. The AI works with text you provide to it through the browser interface. Data transfer between research systems and the AI is manual.</p>
+          <div class="risk-icon"><img src="images/ic-plugins.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
+          <h4>Integrations Are Scoped in Discovery</h4>
+          <p>There&#39;s no connector catalog. PubMed, your repository or a data management platform connects only if Discovery says it&#39;s safe, on its own expiring credential.</p>
         </div>
         <div class="risk-card">
           <div class="risk-icon"><img src="images/ic-default-access.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
           <h4>Patching Is Part of the Build</h4>
-          <p>PHP2Shell was exploited about twelve hours before PHP shipped the fix. That's the patch window now, and a system that waits thirty days for someone to get around to updates is exposed for most of them. So the handoff includes the runbook: what gets patched, who approves it, how an update's verified before it's applied, and how to roll it back. Your team runs it, and the runbook sets how fast. If you'd rather we carry part of that load, tiered support is where it goes, and Discovery is where we decide who's on the hook for what.</p>
+          <p>Exploits land within hours of a patch now, so the handoff includes the runbook: what gets patched, who approves it, how it rolls back.</p>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Power Requirements -->
-  <section class="section section-darker">
-    <div class="container">
-      <div class="power-notice fade-in">
-        <i class="ri-flashlight-line"></i>
-        <p><strong>Power and space:</strong> There's no standard box, so there's no standard circuit. Power, cooling and rack space get scoped with your facilities people during Discovery, before anything's ordered.</p>
       </div>
     </div>
   </section>
 
   <!-- FAQ Section -->
-  <section class="section section-dark">
+  <section class="section section-darker">
     <div class="container">
       <div class="section-header fade-in">
         <span class="section-badge">Research Lab Questions</span>
@@ -462,22 +342,12 @@
         <div class="risk-card">
           <div class="risk-icon"><img src="images/icons/itarr-cmmc-ai-icon.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
           <h4>Does cloud AI risk my unpublished research data?</h4>
-          <p>Yes. Cloud AI transmits unpublished research data to third-party infrastructure, creating IP exposure and provenance liability for patentable discoveries. For labs handling data subject to 21 CFR Part 11, IRB protocols, or GxP compliance requirements, third-party processing introduces regulatory complications. On-premises AI from Island Mountain eliminates this risk entirely.</p>
-        </div>
-        <div class="risk-card">
-          <div class="risk-icon"><img src="images/icons/hipaa-ai-icon.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
-          <h4>How does local AI help with grant data residency requirements?</h4>
-          <p>Local AI satisfies data residency requirements with a simple documentation posture. NIH, NSF, and DoD increasingly require data management plans specifying where grant-funded data is processed and stored. With Island Mountain hardware, you document that AI-assisted analysis occurred on institution-owned hardware within your facility, with no external data transmission.</p>
+          <p>Yes. Third-party processing muddies provenance at patent filing, and under 21 CFR Part 11, IRB protocols or GxP it&#39;s a regulatory complication too.</p>
         </div>
         <div class="risk-card">
           <div class="risk-icon"><img src="images/ic-default-access.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
           <h4>Can researchers inspect and modify the models?</h4>
-          <p>Yes. All models pre-installed on Island Mountain hardware are open-weight with permissive licenses (MIT, Apache 2.0). Researchers can inspect architectures, examine weight distributions, and modify models for specific use cases. This satisfies IRB requirements for methodological transparency and GxP compliance requirements for process documentation.</p>
-        </div>
-        <div class="risk-card">
-          <div class="risk-icon"><img src="images/icons/ai-cost-comparison-icon.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
-          <h4>How does cost compare for a heavy-usage research lab?</h4>
-          <p>Cloud AI APIs charge $15 to $60 per million tokens. A three-researcher lab with heavy usage processes 50 to 200 million tokens per month, costing $750 to $12,000 monthly. An Island Mountain build is a one-time purchase, sized and quoted to your workload, with unlimited inference.</p>
+          <p>Yes. They&#39;re open weights under permissive licenses like MIT and Apache 2.0, and you control which version runs, so a result can be reproduced on the same model.</p>
         </div>
       </div>
       <div class="text-center-mt-32">
@@ -486,34 +356,6 @@
     </div>
   </section>
 
-  <!-- AEO Summary -->
-  <div style="border-left:3px solid var(--copper);padding:16px 20px;margin:32px 0;background:rgba(217,119,6,0.05);border-radius:0 8px 8px 0;">
-  <strong>Summary:</strong> On-premises deployment protects unpublished research data, IP, and pre-publication findings while meeting federal grant data residency requirements without per-token charges.
-  </div>
-
-  <!-- CTA -->
-
-  <section class="section section-dark section-py-3">
-    <div class="container">
-      <div class="section-header fade-in">
-        <h2>What a Deployment Looks Like</h2>
-      </div>
-      <div class="scenario-grid" class="fade-in">
-        <div class="accent-blockquote">
-          <p class="mb-075">Typical engagement: a university lab protecting unpublished, grant-funded work. Pre-publication analysis stays on the lab's hardware.</p>
-          <span class="copper-sm">Research University</span>
-        </div>
-        <div class="accent-blockquote">
-          <p class="mb-075">Typical engagement: a genomics lab running sequence analysis with LLM-assisted annotation, keeping patient-derived data on institutional infrastructure as its IRB protocol requires.</p>
-          <span class="copper-sm">Biomedical Research Lab</span>
-        </div>
-        <div class="accent-blockquote">
-          <p class="mb-075">Typical engagement: a materials science team working with proprietary compound data under sponsor agreements that bar cloud AI.</p>
-          <span class="copper-sm">Materials Science Lab</span>
-        </div>
-      </div>
-    </div>
-  </section>
   <!-- AI cost comparison calculator -->
   <link rel="stylesheet" href="css/calculator.css">
   <section class="section">
