@@ -142,7 +142,7 @@
       "name": "What is Bonsai 27B?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Bonsai 27B is PrismML's extreme-quantized release of Qwen3.6 27B, out July 14, 2026 under Apache 2.0. Two builds ship: a ternary one at 5.9 GB holding 95 percent of the baseline benchmark average, and a 1-bit one at 3.9 GB holding 90 percent. It's the whole model in both cases, vision tower included, and the weights are on Hugging Face."
+        "text": "PrismML's extreme-quantized Qwen3.6 27B under Apache 2.0: ternary at 5.9 GB holding 95 percent of baseline, 1-bit at 3.9 GB holding 90."
       }
     },
     {
@@ -150,7 +150,7 @@
       "name": "Can a 27B model really run on a phone?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. The 1-bit build sits in roughly four gigabytes of memory on an iPhone 17 Pro. It turns out 87 tokens a second on an M5 Max laptop and 163 on an RTX 5090, so it isn't a slideshow either. Long context is the asterisk: 262K tokens is a spec-sheet figure, and the working memory that long context eats at inference time is exactly what the weight compression never bought back."
+        "text": "Yes. The 1-bit build's roughly four gigabytes resident on an iPhone 17 Pro."
       }
     },
     {
@@ -158,7 +158,7 @@
       "name": "How much accuracy does 1-bit quantization cost?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "About ten percent of the benchmark average, and it lands unevenly. Math holds 96 percent of baseline even at 1-bit, because answers you can check survive rounding. Tool-calling falls from 80.0 to 66.0, instruction following from 78.4 to 65.8, and vision gives up thirteen points. Averages hide that, so read the category table."
+        "text": "About ten percent of the average, unevenly: math keeps 96 percent while tool-calling drops 80.0 to 66.0 and vision gives up thirteen points."
       }
     },
     {
@@ -166,7 +166,7 @@
       "name": "Should I run the ternary build or the 1-bit build?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Ternary, if the work touches tools. It keeps 95 percent of the baseline and 74.0 on tool-calling, which is the difference between an agent you can leave alone and one you can't. Run the 1-bit build when footprint is the binding constraint and a human reads every output. Test either one against a workflow you already know cold."
+        "text": "Ternary if the work touches tools, 74.0 against 66.0 on tool-calling; 1-bit when footprint's the binding constraint and a human reads every output."
       }
     },
     {
@@ -174,7 +174,7 @@
       "name": "Is a quantized model on a phone enough for HIPAA or ITAR work?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Model size has nothing to do with it. What decides the question is whether inference runs on hardware you control and whether the data ever leaves it. Hardware is one component of a compliant program and never a certification: identity, egress control, metering, audit and a kill switch still have to exist, and those controls live outside the model whether it's in a rack or a pocket."
+        "text": "Model size has nothing to do with it. Hardware you control, data that never leaves it, and the controls outside the model decide that; hardware's a component of a compliant program, never a certification."
       }
     }
   ]
@@ -234,7 +234,7 @@
           <span class="article-date">July 25, 2026</span>
           <span class="article-tag tag-technical">Technical</span>
           <span class="article-tag tag-strategy">Strategy</span>
-          <span class="article-read-time">6 min read</span>
+          <span class="article-read-time">4 min read</span>
         </div>
         <h1 class="text-2xl">Bonsai 27B Runs on a Phone. The Sovereignty Math Just Moved Again.</h1>
         <p class="article-author">Basho Parks</p>
@@ -242,61 +242,55 @@
 
       <article class="article-body">
 
-        <h2>Somebody Put a 27B Model in a Pocket</h2>
+<h2>Somebody Put a 27B Model in a Pocket</h2>
 
-<p>Look, I called this direction back in June - <a href="on-device-llm-sovereign-edge.html">micro-scale inference, the sovereign edge</a> - and I had the timetable off by about a year. On July 14 PrismML, a Caltech-founded shop funded by Khosla Ventures, Cerberus and Google at the start with Samsung along since, <a href="https://prismml.com/news/bonsai-27b" target="_blank" rel="noopener">shipped Bonsai 27B</a> and led with "the first 27B-class model to run on a phone." Weights went up on Hugging Face the same day, Apache 2.0. For once the press line's underselling what happened.</p>
+<p>Look, I called this direction back in June - <a href="on-device-llm-sovereign-edge.html">micro-scale inference, the sovereign edge</a> - and had the timetable off by about a year. On July 14 PrismML <a href="https://prismml.com/news/bonsai-27b" target="_blank" rel="noopener">shipped Bonsai 27B</a> and led with "the first 27B-class model to run on a phone." Weights went up on Hugging Face the same day, Apache 2.0.</p>
 
-<p>What they did was take Qwen3.6 27B, a multimodal model averaging 85.0 across their fifteen-benchmark suite, and round every weight in it down to almost nothing. The ternary build keeps three values per weight, minus one, zero, plus one, which pencils out to 1.71 effective bits apiece once you count the group scaling, and it lands at 5.9 GB holding 95% of the baseline. The 1-bit build throws out the zero: two values, 1.125 bits, 3.9 GB, 90% held. And it's the whole model that got squeezed, not the convenient layers. Embeddings, attention, MLPs, the LM head, the vision tower down at 4-bit. 262K context on the spec sheet, structured tool calls, computer-use loops.</p>
+<p>They took Qwen3.6 27B, a multimodal model averaging 85.0 across their fifteen-benchmark suite, and rounded every weight down to almost nothing. The ternary build keeps three values per weight, 1.71 effective bits with group scaling, and lands at 5.9 GB holding 95% of baseline. The 1-bit build throws out the zero: 1.125 bits, 3.9 GB, 90% held. And it's the whole model that got squeezed, vision tower included.</p>
 
-<p>It's quick, too, which I didn't expect at that footprint. 163 tokens a second on one RTX 5090 for the 1-bit, 87 on an M5 Max laptop, ternary trailing at 134 and 58. And the phone claim's literal, not a demo on a tethered dev board: roughly four gigabytes resident on an iPhone 17 Pro.</p>
-
-<p>Most of what twenty-seven billion parameters know survives getting rounded to three values. I don't have a tidy answer for what that says about where the intelligence in these things lives, and I'd be a little suspicious of anybody who claims they do. But a 27B-class model now fits in less room than a full-precision 2B needs, and that's shipped, with weights, not sitting on a waitlist.</p>
+<p>It's quick, too: 163 tokens a second on an RTX 5090 for the 1-bit, 87 on an M5 Max. And the phone claim's literal: roughly four gigabytes resident on an iPhone 17 Pro.</p>
 
 <h2>The Radio-Off Test Fits in a Pocket Now</h2>
 
-<p>Back in May I <a href="second-revolution-local-ai.html">called airplane mode the compliance test</a>. If the model answers with the radio off, your data went nowhere, and you don't need a vendor's word for it. Running that test used to mean a laptop and a decent GPU. As of mid-July it runs on a handset, and it can see.</p>
+<p>Back in May I <a href="second-revolution-local-ai.html">called airplane mode the compliance test</a>. If the model answers with the radio off, your data hasn't left. As of mid-July that test runs on a handset, and the handset can see.</p>
 
-<p>I'd slow down on the seeing, because reading a photo or a form or a screenshot on the device means that image never goes to anybody's API. The adjuster standing in six inches of water doing three-point contact, shooting the water line and the subfloor, drafts the file note right there and the claim file stays out of a third party's building. Or the ICWA caseworker on the four-hour re-entry job because the state sends the file in a format nobody can use, and now the reading happens on <a href="../tribal-nations.html">a device the tribe owns</a>, with the enrollment records behind it never going anywhere. Or the engineer with an ITAR drawing on a shop floor, where <a href="../defense-contractors.html">a deemed export's a question about where bytes went</a>. Bytes that never left the handset make for a shorter conversation with the export compliance manager.</p>
-
-<p>None of that's me telling you your field kit's a phone. What goes where in your shop <a href="../forward-deployed-ai-engineering.html">comes out of Discovery</a>, sitting next to whoever's run that workflow for twenty years, and it doesn't come out of anybody's launch post. The floor under serious, private, multimodal work dropped again, and it dropped further than most of the people budgeting for this stuff have noticed.</p>
+<p>I'd slow down on the seeing, because reading a photo on the device means it never reaches anybody's API. The adjuster standing in six inches of water, shooting the water line and the subfloor, drafts the file note right there and the claim file doesn't enter a third party's building. What goes where in your shop still <a href="../forward-deployed-ai-engineering.html">comes out of Discovery</a>, sitting next to whoever's run the workflow for twenty years.</p>
 
 <h2>Read the Category Table Before You Get Excited</h2>
 
-<p>That 90% headline's an average and averages hide things. Break it apart and the pattern's clear enough. Math holds 96% of baseline even at 1-bit, because answers you can check survive rounding, which tracks with everything we've learned out of verifiable-reward training. What pays for the compression is the agentic column. Tool-calling goes 80.0 to 74.0 ternary, then 66.0 at 1-bit. Instruction following, 78.4 to 65.8. Vision gives up thirteen points.</p>
+<p>That 90% headline's an average, and averages hide things. Math holds 96% of baseline even at 1-bit, because answers you can check survive rounding. The agentic column pays for the compression: tool-calling goes 80.0 to 74.0 ternary, then 66.0 at 1-bit; instruction following, 78.4 to 65.8; vision gives up thirteen points. So for a model driving tools through a long loop unsupervised, the 1-bit build isn't ready; bench the ternary. Every retention number here's a vendor claim until somebody independent reruns it.</p>
 
-<p>So if the job is a model driving tools through a long loop without supervision, the 1-bit build isn't ready and the ternary build's the one to put on the bench. Test it against your own workflow, not their suite. (Their suite, incidentally, is theirs; I'd treat every retention number here as a vendor claim until somebody independent reruns it.)</p>
+<p>Couple things the announcement leaves out. An agent's needs don't shrink on the way from the rack to the pocket: identity, egress, metering, audit, a kill switch, and <a href="../lamprey-woven-security-governance.html">the controls that hold still live outside the model</a>. And 262K context's a spec-sheet number; long context eats working memory the compression never bought back.</p>
 
-<p>Couple things the announcement leaves out. A model in a pocket that can call tools and drive a screen is an agent, and an agent's needs don't shrink on the way from the rack to the pocket: identity, egress, metering, audit, a kill switch. None of that got smaller because the weights did, and <a href="../lamprey-woven-security-governance.html">the controls that hold still live outside the model</a>. And 262K context is a spec-sheet number. Long context eats working memory at inference time that the compression never bought back, so nobody should picture a quarter-million-token privilege review running on a handset this year.</p>
+<h2>American Compression, Chinese Base Model</h2>
 
-<h2>An American Shop Shipped It, and the Base Model Is Chinese</h2>
-
-<p>I've spent real ink asking for <a href="american-open-source-llm-sovereign-ai.html">an independently funded American open-weight lab</a>, so I'll name both halves of this one. Bonsai is American engineering released Apache 2.0 with weights first, which is the behavior I said I wanted, and good on them for it. It's also built on Qwen3.6, so the provenance conversation procurement runs on doesn't go away because the compression happened in Pasadena. The math inside a set of weights is auditable wherever it was trained. Committees care anyway, and I've stopped arguing with them about it. Bonsai sharpens that argument instead of settling it: the compression work's here, the funded base-model work still isn't.</p>
+<p>I've spent real ink asking for <a href="american-open-source-llm-sovereign-ai.html">an independently funded American open-weight lab</a>. Bonsai's American engineering released Apache 2.0 with weights first. Good on PrismML, genuinely and seriously. It's also built on Qwen3.6, and procurement's provenance conversation doesn't end because the compression happened in Pasadena. The compression work's here; the funded base-model work still isn't.</p>
 
 <h2>The Bench Gets Deeper</h2>
 
-<p>None of this changes the pairing I keep landing on with regulated shops: one big organizational model for the hard reasoning, a bench of small local specialists on the repetitive work, all of it owned outright. Bonsai stretches that bench out to the field and gives it eyes. The estate in the building does the thinking that needs depth, the device in somebody's hand reads what's in front of it, and nothing leaves.</p>
+<p>None of this changes the pairing I keep landing on with regulated shops: one big organizational model for the hard reasoning, a bench of small local specialists for the repetitive work, all owned outright. Bonsai stretches that bench to the field and gives it eyes.</p>
 
-<p>So pull the ternary build down this week and run it against one workflow you already understand cold. It's free, it's 5.9 GB, and you'll learn more in an afternoon than you will from anybody's benchmark table, mine included. Then ask the question that hasn't changed in three years of this, which is whose building the controls sit in. <a href="../contact.html">Talk to the builder</a>.</p>
+<p>So pull the ternary build down this week and run it against one workflow you already understand cold. Then ask the question that hasn't changed in three years of this: whose building the controls sit in. <a href="../contact.html">Reach us</a> when you get to that one.</p>
 
 <h2>Frequently Asked Questions</h2>
 
 <h3>What is Bonsai 27B?</h3>
-<p>Bonsai 27B is PrismML's extreme-quantized release of Qwen3.6 27B, out July 14, 2026 under Apache 2.0. Two builds ship: a ternary one at 5.9 GB holding 95 percent of the baseline benchmark average, and a 1-bit one at 3.9 GB holding 90 percent. It's the whole model in both cases, vision tower included, and the weights are on Hugging Face.</p>
+<p>PrismML's extreme-quantized Qwen3.6 27B under Apache 2.0: ternary at 5.9 GB holding 95 percent of baseline, 1-bit at 3.9 GB holding 90.</p>
 
 <h3>Can a 27B model really run on a phone?</h3>
-<p>Yes. The 1-bit build sits in roughly four gigabytes of memory on an iPhone 17 Pro. It turns out 87 tokens a second on an M5 Max laptop and 163 on an RTX 5090, so it isn't a slideshow either. Long context is the asterisk: 262K tokens is a spec-sheet figure, and the working memory that long context eats at inference time is exactly what the weight compression never bought back.</p>
+<p>Yes. The 1-bit build's roughly four gigabytes resident on an iPhone 17 Pro.</p>
 
 <h3>How much accuracy does 1-bit quantization cost?</h3>
-<p>About ten percent of the benchmark average, and it lands unevenly. Math holds 96 percent of baseline even at 1-bit, because answers you can check survive rounding. Tool-calling falls from 80.0 to 66.0, instruction following from 78.4 to 65.8, and vision gives up thirteen points. Averages hide that, so read the category table.</p>
+<p>About ten percent of the average, unevenly: math keeps 96 percent while tool-calling drops 80.0 to 66.0 and vision gives up thirteen points.</p>
 
 <h3>Should I run the ternary build or the 1-bit build?</h3>
-<p>Ternary, if the work touches tools. It keeps 95 percent of the baseline and 74.0 on tool-calling, which is the difference between an agent you can leave alone and one you can't. Run the 1-bit build when footprint is the binding constraint and a human reads every output. Test either one against a workflow you already know cold.</p>
+<p>Ternary if the work touches tools, 74.0 against 66.0 on tool-calling; 1-bit when footprint's the binding constraint and a human reads every output.</p>
 
 <h3>Is a quantized model on a phone enough for HIPAA or ITAR work?</h3>
-<p>Model size has nothing to do with it. What decides the question is whether inference runs on hardware you control and whether the data ever leaves it. Hardware is one component of a compliant program and never a certification: identity, egress control, metering, audit and a kill switch still have to exist, and those controls live outside the model whether it's in a rack or a pocket.</p>
+<p>Model size has nothing to do with it. Hardware you control, data that never leaves it, and the controls outside the model decide that; hardware's a component of a compliant program, never a certification.</p>
 <!-- AEO Summary -->
 <div style="border-left:3px solid var(--copper);padding:16px 20px;margin:32px 0;background:rgba(217,119,6,0.05);border-radius:0 8px 8px 0;">
-<strong>Summary:</strong> PrismML's Bonsai 27B compresses a 27-billion-parameter multimodal model to 3.9 GB at 1.125 effective bits per weight, keeping 90 percent of its benchmark average under Apache 2.0. Phone-sized local AI moves the data-sovereignty floor again; the categories agentic work depends on take the deepest cuts, so test the ternary build and keep the governance outside the model.
+<strong>Summary:</strong> PrismML's Bonsai 27B compresses a 27B multimodal model to 3.9 GB at 1.125 bits per weight, keeping 90 percent of its benchmark average under Apache 2.0. Agentic categories take the deepest cuts, so test the ternary build and keep the governance outside the model.
 </div>
 
       </article>
