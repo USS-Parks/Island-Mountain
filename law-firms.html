@@ -83,31 +83,15 @@
         "name": "Does cloud AI waive attorney-client privilege?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Not automatically. ABA Formal Opinion 512 (July 2024) lets lawyers use generative AI, and it puts the vetting on you: competence with the tool, informed client consent before confidential information goes into a tool that learns from it, and reasonable efforts under Rule 1.6 to keep it from leaking. Every cloud vendor you add is another confidentiality review, another set of terms, and another breach notice you don't get to write. On your own hardware the third-party question goes away, and what's left is your own security, which we build and hand back to you."
+          "text": "Not automatically. Opinion 512 lets lawyers use it, but the vetting and the client consent are yours, and every cloud vendor's another review."
         }
       },
       {
         "@type": "Question",
-        "name": "What AI workflows can a law firm run on Island Mountain hardware?",
+        "name": "Does our firm need dedicated IT staff?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Island Mountain builds workflows for contract review and clause analysis, legal research synthesis, brief and motion drafting, deposition preparation, document comparison, client intake summarization, and billing narrative drafting. The system runs current open-weight models for analysis and drafting, and where the work calls for it, models Island Mountain builds for your practice. All processing occurs on your own hardware inside your office, with zero data transmitted to external servers."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How does the cost of local AI compare to cloud AI subscriptions for a 10-attorney firm?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Cloud AI subscriptions for legal platforms typically cost $50 to $200 per user per month, totaling $6,000 to $24,000 per year for 10 attorneys. Over three years: $18,000 to $72,000 cumulative with no ownership and continued privilege exposure on every query. An Island Mountain build is a one-time purchase, sized and quoted to your workload. Ongoing costs are power, cooling, and the staff time to patch and run the system, all sized in Discovery."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Does our firm need dedicated IT staff to run local AI hardware?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "No. We build it on-site with your people, write the SOPs they'll run it by, and hand over the keys once they can run it without us. If you'd rather keep the upkeep off your IT desk, tiered support covers it."
+          "text": "No. We build it with your people and hand over the keys once they can run it, and tiered support's there if you'd rather keep upkeep off your IT desk."
         }
       }
     ]
@@ -186,7 +170,7 @@
     <div class="hero-inner">
       <span class="hero-badge">Local AI for Law Firms</span>
       <h1>Attorney-Client Privilege Doesn't Survive a Cloud API Call</h1>
-      <p>Every prompt an attorney sends to a cloud AI service is client data handed to a third party. We&#39;ll build the whole system on your floor instead: the models, the agents, and the orchestration that run your firm&#39;s real work, and none of it touches a wire that leaves the building.</p>
+      <p>Every prompt sent to a cloud AI service hands client data to a third party. We&#39;ll build the models, agents and orchestration on your floor instead, and none of it leaves the building.</p>
     </div>
   </section>
 
@@ -194,7 +178,6 @@
   <nav class="breadcrumb">
     <a href="index.html">Home</a><span>&rsaquo;</span><a href="solutions.html">Solutions</a><span>&rsaquo;</span>Law Firms
   </nav>
-  <div class="cta-hero-wrap"><p class="detail-text">Every deployment starts on-site, with the people who do the work.</p></div>
 
   <!-- The Cloud AI Problem for Law Firms -->
   <section class="section section-first">
@@ -202,17 +185,13 @@
       <div class="section-header fade-in">
         <span class="section-badge">The Privilege Problem</span>
         <h2>The Cloud AI Problem for Law Firms</h2>
-        <p>Cloud AI creates a structural conflict with the most fundamental obligation in legal practice: confidentiality.</p>
       </div>
       <div class="fade-in content-narrow">
-        <p class="body-lg">When an attorney pastes a client contract into ChatGPT, Claude, or any cloud-based AI service, that document leaves the firm's network. It travels across the public internet to a data center owned by a third party. It is processed on shared infrastructure alongside data from thousands of other organizations. Law firms are one of <a href="solutions.html">eleven regulated industries</a> where this structural conflict between cloud AI and data confidentiality is most acute. The cloud provider's terms of service - not your engagement letter - govern what happens to that data. Every privileged memo or client communication pasted into a cloud AI tool is confidential information handed to a third party, and if opposing counsel learns of it, you'll be arguing about waiver instead of the merits.</p>
-        <p class="body-lg">ABA Model Rule 1.6(a) requires attorneys to hold client information in confidence. Rule 1.6(c) requires "reasonable efforts to prevent the inadvertent or unauthorized disclosure" of that information. Multiple state bar ethics opinions have addressed whether transmitting client data to cloud AI providers satisfies this standard. The recurring concern: once data leaves the firm's infrastructure, the attorney's ability to control its handling depends entirely on a vendor's privacy policy and contractual commitments - not on the firm's own security measures.</p>
-        <p class="body-lg">This is the mechanical reality of how cloud AI works, not a theoretical risk. Every API call is a data transmission. Every data transmission is a potential privilege question.</p>
+        <p class="body-lg">Paste a client contract into a cloud AI tool and it&#39;s on a third party&#39;s servers, under their terms instead of your engagement letter. <a href="attorney-client-privilege-ai-risk.html" class="clr-copper">ABA Formal Opinion 512</a> puts the vetting of every AI vendor on you. On your own server the prompts don&#39;t leave the building, and it&#39;ll run with no internet at all.</p>
       </div>
     </div>
   </section>
 
-  
   <section class="section-pt-32">
     <div class="container">
       <div class="badge-wrap">
@@ -222,34 +201,6 @@
       </div>
     </div>
   </section>
-  <!-- What Local AI Means -->
-  <section class="section section-dark">
-    <div class="container">
-      <div class="section-header fade-in">
-        <span class="section-badge">How It Works</span>
-        <h2>What Local AI Means for Your Firm</h2>
-        <p>"No data leaves your building" is a description of network architecture, not marketing language.</p>
-      </div>
-      <div class="card-grid card-grid-3 fade-in">
-        <div class="card">
-          <div class="card-icon-im"><img src="images/icons/no-integration-icon.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
-          <h3>Zero External Transmission</h3>
-          <p>The AI models run on a physical server in your office. Prompts go from your workstation to the server over your internal network. No internet connection is required for inference. No data packets leave your building.</p>
-        </div>
-        <div class="card">
-          <div class="card-icon-im"><img src="images/icons/server-rack-icon.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
-          <h3>A System You Own</h3>
-          <p>This is a physical server sitting in your server room or data closet, running on your power and connected to your network, not a hosted service with "local" branding. You own it outright.</p>
-        </div>
-        <div class="card">
-          <div class="card-icon-im"><img src="images/icons/air-gapped-icon.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
-          <h3>Air-Gap Capable</h3>
-          <p>After initial setup and model installation, the system can operate entirely disconnected from the internet. For firms handling the most sensitive matters, this means complete network isolation - no external connections of any kind.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
 
   <!-- We build it around the firm -->
   <section class="section section-darker">
@@ -259,85 +210,48 @@
         <h2>We Build It Around How Your Firm Runs</h2>
       </div>
       <div class="fade-in content-narrow">
-        <p class="body-lg">A general model off the shelf knows plenty about law in the abstract and nothing about yours. It&#39;s never read your engagement letters, doesn&#39;t know your matter numbering, can&#39;t tell a managing partner&#39;s redline habits from a first-year&#39;s. We fix that on purpose.</p>
-        <p class="body-lg">Island Mountain builds the agents and the orchestration that carry multi-step work start to finish: intake to conflicts check to matter open, discovery review to privilege log, time entries to a billing narrative that reads the way your firm bills. It runs on current open-weight models like Kimi K3, ZAI GLM 5.2, Qwen 3.8+, and Nous Hermes 4, served through Ollama or vLLM behind an OpenWebUI front end, or whatever open weights fit the task. All of it deftly governed by our own agentic orchestration and the <a href="lamprey-woven-security-governance.html" class="clr-copper">Woven Security Fabric</a>. Every action carries an identity, an approval, and a receipt, and the credentials expire the moment the task is done.</p>
-        <p class="body-lg">When the work needs a model that thinks in your firm&#39;s own language, we&#39;ll build one. Reasoning models and small language models from scratch, trained to orbit your practice&#39;s ontology: your clause library, your jurisdictions, the institutional memory of how a matter really moves. The system learns your jargon, your cadence, the history nobody ever wrote down.</p>
-        <p class="body-lg">It air-gaps completely for the matters that demand it, and reaches the cloud when a task genuinely needs to. That&#39;s your call, matter by matter.</p>
-        <p class="body-lg">Then we hand it back. On-site onboarding, SOPs written for your people, the keys to the castle dropped into your team&#39;s hands so they run and rework the workflows without calling anyone. Want the upkeep off your IT department&#39;s plate? We offer tiered support sized to your firm, and we plug in wherever that&#39;s easiest. This is your firm&#39;s legacy. We build it alongside you, and we won&#39;t call it done until your people can run it without us.</p>
+        <p class="body-lg">We build the agents that carry the work start to finish: intake to conflicts check, discovery to privilege log, time entries to billing narrative. When the work needs a model trained on your clause library, we&#39;ll build that too. Every action runs under the <a href="lamprey-woven-security-governance.html" class="clr-copper">Woven Security &amp; Governance Fabric</a> with an identity and a receipt, and we hand it over once your people can run it without us.</p>
       </div>
     </div>
   </section>
 
-
   <!-- Legal AI Workflows -->
-  <section class="section section-darker">
+  <section class="section section-dark">
     <div class="container">
       <div class="section-header fade-in">
         <span class="section-badge">Workflows</span>
         <h2>Workflows a Deployment Supports</h2>
-        <p>These aren&#39;t chat prompts. They&#39;re agentic workflows the orchestration runs start to finish, each step carrying its own identity and receipt, none of it leaving your network.</p>
       </div>
       <div class="card-grid card-grid-3 fade-in">
         <div class="card">
           <div class="card-icon-im"><img src="images/icons/document-review-icon.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
           <h3>Contract Review &amp; Analysis</h3>
-          <p>An agent reads the contract, flags the risk clauses, pulls the obligations and dates, and lines them against your standard terms. It handles the conditional language and the cross-references, and it shows its work so an attorney can check it.</p>
+          <p>Risk clauses, obligations and dates pulled against your standard terms.</p>
         </div>
         <div class="card">
           <div class="card-icon-im"><img src="images/icons/resources-icon.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
           <h3>Legal Research Synthesis</h3>
-          <p>Summarize case law, pull the relevant statutes, and synthesize across a stack of sources at once. Long documents and multi-source questions stay on your hardware, start to finish.</p>
+          <p>Case law and statutes summarized across your sources.</p>
         </div>
         <div class="card">
           <div class="card-icon-im"><img src="images/icons/document-drafting-icon.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
           <h3>Document Drafting</h3>
-          <p>First drafts of briefs, motions, correspondence, and memoranda, structured and ready for an attorney to sharpen. The blank page is the system&#39;s problem now, not yours.</p>
+          <p>First drafts of briefs, motions and memos for an attorney to sharpen.</p>
         </div>
         <div class="card">
           <div class="card-icon-im"><img src="images/icons/deposition-preparation-icon.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
           <h3>Deposition Preparation</h3>
-          <p>Read witness statements against the documentary record, surface the inconsistencies, and build question frameworks. The whole case file gets processed in the building, never handed to a cloud service.</p>
+          <p>Witness statements checked against the record.</p>
         </div>
         <div class="card">
           <div class="card-icon-im"><img src="images/icons/document-comparison-icon.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
           <h3>Document Comparison</h3>
-          <p>Compare versions, catch the changed terms, and flag the substantive edits across a revision history. Redlines and track-changes analysis run on-premises.</p>
+          <p>Every substantive edit caught across revisions.</p>
         </div>
         <div class="card">
           <div class="card-icon-im"><img src="images/icons/ai-cost-comparison-icon.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
           <h3>Billing Narrative Drafting</h3>
-          <p>Turn time entries and case notes into clean, defensible billing narratives in your firm&#39;s format. Drafted by the system, signed off by the billing attorney.</p>
-        </div>
-      </div>
-      <div class="comparison-note fade-in mt-32">
-        <i class="ri-information-line"></i>
-        The system reasons, drafts, and carries the steps between. It doesn&#39;t come with a Westlaw or LexisNexis seat, and it doesn&#39;t sign a brief. An attorney still owns the judgment, same as it&#39;s always been. What we build is a tool for your lawyers, not a stand-in for one.
-      </div>
-    </div>
-  </section>
-
-  <!-- Which Models for What -->
-  <section class="section section-dark">
-    <div class="container">
-      <div class="section-header fade-in">
-        <span class="section-badge">Models</span>
-        <h2>The Models We Run, and the Ones We Build</h2>
-      </div>
-      <div class="card-grid card-grid-3 fade-in">
-        <div class="card text-center">
-          <div class="card-icon-im"><img src="images/icons/current-open-weights-icon.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
-          <h3>Current Open Weights</h3>
-          <p>Kimi K3, ZAI GLM 5.2, Qwen 3.8+, Nous Hermes 4, and whatever&#39;s strongest the month we deploy, served through Ollama or vLLM behind OpenWebUI. Open weights turn over fast, so the honest answer turns over with them. We run the model that fits the task, not the one that looked good on a spec sheet last year.</p>
-        </div>
-        <div class="card text-center">
-          <div class="card-icon-im"><img src="images/icons/built-to-orbit-icon.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
-          <h3>Built to Orbit Your Practice</h3>
-          <p>When nothing off the shelf speaks your firm&#39;s language, we build it. Reasoning models and small language models from scratch, trained on your ontology: your clause library and the way your matters move. Small, sharp, and yours alone.</p>
-        </div>
-        <div class="card text-center">
-          <div class="card-icon-im"><img src="images/icons/governed-not-just-installed-icon.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
-          <h3>Governed, Not Just Installed</h3>
-          <p>Every model runs under our agentic orchestration and the Woven Security Fabric. Scoped access, ephemeral credentials, a receipt for every action. Air-gapped when the matter demands it, cloud-connected when a task earns it.</p>
+          <p>Time entries turned into narratives in your firm&#39;s format.</p>
         </div>
       </div>
     </div>
@@ -349,7 +263,6 @@
       <div class="section-header fade-in">
         <span class="section-badge">Cost Comparison</span>
         <h2>Cloud AI vs. an On-Premise Deployment for a 10-Attorney Firm</h2>
-        <p>The cloud costs every month and exposes client data every session. The hardware costs once and keeps everything in-house.</p>
       </div>
       <div class="table-wrapper fade-in">
         <table>
@@ -367,11 +280,6 @@
               <td class="highlight-cell">One-time purchase (quoted to the deployment)</td>
             </tr>
             <tr>
-              <td><strong>Year 3 Cumulative</strong></td>
-              <td>$18,000 - $72,000</td>
-              <td class="highlight-cell">Scoped in Discovery</td>
-            </tr>
-            <tr>
               <td><strong>Year 5 Cumulative</strong></td>
               <td>$30,000 - $120,000</td>
               <td class="highlight-cell">Scoped in Discovery</td>
@@ -379,32 +287,12 @@
             <tr>
               <td><strong>Client Data Location</strong></td>
               <td>Cloud provider servers</td>
-              <td class="highlight-cell">Your server room. Period.</td>
-            </tr>
-            <tr>
-              <td><strong>Privilege Risk</strong></td>
-              <td>Data transmitted to third party</td>
-              <td class="highlight-cell">No third-party AI vendor in the data path. Your own perimeter still has to hold, and we build it to.</td>
+              <td class="highlight-cell">Your server room</td>
             </tr>
             <tr>
               <td><strong>Per-Token Fees</strong></td>
               <td>$15 - $60 per million tokens</td>
-              <td class="highlight-cell">None.</td>
-            </tr>
-            <tr>
-              <td><strong>Model Control</strong></td>
-              <td>Provider decides models and updates</td>
-              <td class="highlight-cell">You choose which models to run</td>
-            </tr>
-            <tr>
-              <td><strong>Case Management Integration</strong></td>
-              <td>Some platforms offer integrations</td>
-              <td>Not included. General-purpose AI.</td>
-            </tr>
-            <tr>
-              <td><strong>Vendor Lock-In</strong></td>
-              <td>Complete</td>
-              <td class="highlight-cell">Low. You keep the weights, and we check every model's license before it's deployed.</td>
+              <td class="highlight-cell">None</td>
             </tr>
           </tbody>
         </table>
@@ -422,55 +310,23 @@
       <div class="section-header fade-in">
         <span class="section-badge">Honest Limitations</span>
         <h2>What You Do Not Get</h2>
-        <p>Knowing the boundaries matters more than knowing the features.</p>
       </div>
       <div class="risk-grid fade-in">
         <div class="risk-card">
-          <div class="risk-icon"><img src="images/ic-search.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
-          <h4>No Legal-Specific Fine-Tuning</h4>
-          <p>The models are general-purpose large language models, not legal-specific AI. They're strong at reasoning, analysis, and prose generation, but they're general tools rather than Westlaw AI or CoCounsel, with no fine-tuning on case law databases, jurisdiction-specific statutes, or citation formats.</p>
-        </div>
-        <div class="risk-card">
           <div class="risk-icon"><img src="images/ic-plugins.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
-          <h4>No Case Management Integration</h4>
-          <p>Island Mountain hardware does not integrate with Clio, MyCase, PracticePanther, or other practice management platforms out of the box. The AI runs through OpenWebUI - a browser-based chat interface. Moving data between your case management system and the AI is a manual process.</p>
+          <h4>Integrations Are Scoped in Discovery</h4>
+          <p>There&#39;s no connector catalog. Clio or iManage gets connected only if Discovery says it&#39;s safe, on its own expiring credential.</p>
         </div>
         <div class="risk-card">
           <div class="risk-icon"><img src="images/icons/resources-icon.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
           <h4>No Legal Database Access</h4>
-          <p>The system does not connect to Westlaw, LexisNexis, or any external legal research database. The AI works with documents and text you provide to it. It reasons about what you give it - it does not independently search case law or verify citations.</p>
+          <p>It doesn&#39;t search Westlaw or verify citations. It works from the documents you give it.</p>
         </div>
         <div class="risk-card">
           <div class="risk-icon"><img src="images/ic-default-access.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
           <h4>Patching Is Part of the Build</h4>
-          <p>PHP2Shell was exploited about twelve hours before PHP shipped the fix. That's the patch window now, and a system that waits thirty days for someone to get around to updates is exposed for most of them. So the handoff includes the runbook: what gets patched, who approves it, how an update's verified before it's applied, and how to roll it back. Your team runs it, and the runbook sets how fast. If you'd rather we carry part of that load, tiered support is where it goes, and Discovery is where we decide who's on the hook for what.</p>
+          <p>Exploits land within hours of a patch now, so the handoff includes the runbook: what gets patched, who approves it, how it rolls back.</p>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Ethics Context -->
-  <section class="section section-darker">
-    <div class="container">
-      <div class="section-header fade-in">
-        <span class="section-badge">Ethics Context</span>
-        <h2>Bar Association Ethics and AI Confidentiality</h2>
-      </div>
-      <div class="fade-in content-narrow">
-        <p class="body-lg">ABA Model Rule 1.6 establishes the duty of confidentiality. Comment [18] to Rule 1.6 specifically addresses electronic transmissions, requiring attorneys to take "special precautions" when the nature of the information warrants it. ABA Formal Opinion 512 (July 2024) is the opinion on point, and state bars from California to Florida have published their own guidance on generative AI.</p>
-        <p class="body-lg">The recurring theme across these opinions: attorneys may use technology that involves third-party data processing, but they must exercise reasonable care in evaluating the provider's confidentiality protections, understand how client data is handled and stored, and take steps to minimize exposure. The bar does not prohibit cloud AI - but it places the burden of due diligence squarely on the attorney.</p>
-        <p class="body-lg">Local AI hardware changes the analysis entirely. When client data never leaves the firm's network, the third-party disclosure question does not arise. The confidentiality evaluation becomes straightforward: the data is on your server, in your building, under your physical and network security controls.</p>
-        <p style="font-size:0.9rem;line-height:1.8;color:var(--text-muted);margin-top:24px;padding:16px 20px;border:1px solid rgba(245,158,11,0.2);border-radius:var(--border-radius);background:rgba(245,158,11,0.04);"><strong>Disclaimer:</strong> This section describes the general ethics environment regarding AI and attorney-client privilege. It is not legal advice and should not be relied upon for compliance decisions. Consult your state bar's ethics hotline or a legal ethics attorney for guidance specific to your jurisdiction and practice.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Power Requirements -->
-  <section class="section section-dark">
-    <div class="container">
-      <div class="power-notice fade-in">
-        <i class="ri-flashlight-line"></i>
-        <p><strong>Power and space:</strong> There's no standard box, so there's no standard circuit. Power, cooling and rack space get scoped with your facilities people during Discovery, before anything's ordered.</p>
       </div>
     </div>
   </section>
@@ -486,22 +342,12 @@
         <div class="risk-card">
           <div class="risk-icon"><img src="images/icons/attorney-client-priv-icon.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
           <h4>Does cloud AI waive attorney-client privilege?</h4>
-          <p>Not automatically. ABA Formal Opinion 512 (July 2024) lets lawyers use generative AI, and it puts the vetting on you: competence with the tool, informed client consent before confidential information goes into a tool that learns from it, and reasonable efforts under Rule 1.6 to keep it from leaking. Every cloud vendor you add is another confidentiality review, another set of terms, and another breach notice you don't get to write. On your own hardware the third-party question goes away, and what's left is your own security, which we build and hand back to you.</p>
-        </div>
-        <div class="risk-card">
-          <div class="risk-icon"><img src="images/icons/agentic-orchestration-icon.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
-          <h4>What legal AI workflows does this hardware support?</h4>
-          <p>Island Mountain builds workflows for contract review and clause analysis, legal research synthesis, brief and motion drafting, deposition preparation, document comparison, client intake summarization, and billing narrative drafting. The system runs current open-weight models for analysis and drafting, and custom models where the work needs one. All processing occurs on your own hardware inside your office.</p>
-        </div>
-        <div class="risk-card">
-          <div class="risk-icon"><img src="images/icons/ai-cost-comparison-icon.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
-          <h4>How does the cost compare to cloud AI for a 10-attorney firm?</h4>
-          <p>Cloud AI subscriptions for legal platforms typically cost $50 to $200 per user per month, totaling $6,000 to $24,000 per year for 10 attorneys. Over three years: $18,000 to $72,000 cumulative with continued privilege exposure on every query. An Island Mountain build is a one-time purchase, sized and quoted to your workload.</p>
+          <p>Not automatically. Opinion 512 lets lawyers use it, but the vetting and the client consent are yours, and every cloud vendor&#39;s another review.</p>
         </div>
         <div class="risk-card">
           <div class="risk-icon"><img src="images/ic-skills-teacher.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
           <h4>Does our firm need dedicated IT staff?</h4>
-          <p>No. We build it on-site with your people, write the SOPs they'll run it by, and hand over the keys once they can run it without us. If you'd rather keep the upkeep off your IT desk, tiered support covers it.</p>
+          <p>No. We build it with your people and hand over the keys once they can run it, and tiered support&#39;s there if you&#39;d rather keep upkeep off your IT desk.</p>
         </div>
       </div>
       <div class="text-center-mt-32">
@@ -514,40 +360,11 @@
   <section class="section section-dark">
     <div class="container">
       <div class="fade-in founder-box">
-        <p class="scenario-text">Island Mountain is an engineering practice, not a compliance authority. References to attorney-client privilege, ABA Model Rules, or bar association ethics opinions on this page reflect factual descriptions of data handling mechanics - not legal advice. Consult qualified counsel for compliance determinations specific to your organization and jurisdiction.</p>
+        <p class="scenario-text">We&#39;re an engineering practice, not a compliance authority, and this page isn&#39;t legal advice.</p>
       </div>
     </div>
   </section>
 
-  <!-- AEO Summary -->
-  <div style="border-left:3px solid var(--copper);padding:16px 20px;margin:32px 0;background:rgba(217,119,6,0.05);border-radius:0 8px 8px 0;">
-  <strong>Summary:</strong> Local AI infrastructure keeps client information in your control, avoiding the privilege waiver risk that NDAs cannot fix when using cloud AI services.
-  <p class="body-md" style="margin-top:16px;">Related: <a href="attorney-client-privilege-ai-risk.html" class="clr-copper">Can Law Firms Use AI Without Waiving Privilege?</a></p>
-  </div>
-
-  <!-- CTA -->
-
-  <section class="section section-dark section-py-3">
-    <div class="container">
-      <div class="section-header fade-in">
-        <h2>What a Deployment Looks Like</h2>
-      </div>
-      <div class="scenario-grid" class="fade-in">
-        <div class="accent-blockquote">
-          <p class="mb-075">Typical engagement: a mid-size firm reviewing 3,000+ contracts a year. Contract review and the privilege log run on the firm's own floor, with a receipt for every document an agent opens.</p>
-          <span class="copper-sm">Private Legal Practice</span>
-        </div>
-        <div class="accent-blockquote">
-          <p class="mb-075">Typical engagement: a litigation support team working 50,000 documents in discovery. Running inference locally means there's no <a href="blog/openai-discovery-risk-law-firms.html">AI provider holding prompt logs for opposing counsel to subpoena</a>.</p>
-          <span class="copper-sm">Litigation Practice</span>
-        </div>
-        <div class="accent-blockquote">
-          <p class="mb-075">Typical engagement: a solo estate-planning practice whose clients hand over their most sensitive financial records, kept on the practice's own machine.</p>
-          <span class="copper-sm">Estate Planning Practice</span>
-        </div>
-      </div>
-    </div>
-  </section>
   <section class="section section-dark">
     <div class="container fade-in">
       <div class="lead-form-wrapper">
