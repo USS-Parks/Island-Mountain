@@ -80,34 +80,18 @@
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "Does using cloud AI for banking operations create GLBA compliance risk?",
+        "name": "Do GLBA, PCI DSS or Reg S-P ban cloud AI?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes. Cloud AI transmits non-public personal information (NPI) to third-party infrastructure, adding a service provider your GLBA safeguards program has to oversee, whether that program answers to the Interagency Guidelines, NCUA Part 748 or the FTC's Safeguards Rule (16 CFR Part 314). PCI DSS v4.0.1 compounds this with cardholder data environment requirements. On-premises AI hardware from Island Mountain eliminates third-party transmission entirely. NPI stays on your own hardware inside your facility, under your physical and logical security controls, with no vendor dependency or shared responsibility model."
+          "text": "No. Each makes every vendor in the data path yours to document, and fewer vendors means less to defend at an exam."
         }
       },
       {
         "@type": "Question",
-        "name": "What AI workflows can a bank or credit union run on Island Mountain hardware?",
+        "name": "Does our institution need dedicated IT staff?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Island Mountain builds workflows for loan document review, KYC and AML analysis, regulatory reporting, fraud detection support, customer correspondence drafting, and investment analysis. The system runs current open-weight models, and custom models we build for your firm, for analysis and drafting. All processing occurs on your own hardware inside your facility with zero data transmitted to external servers."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How does the cost of on-premises AI compare to cloud AI for a financial institution with 50 users?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Cloud AI subscriptions for financial services platforms typically cost $50 to $200 per user per month. For 50 users, that totals $30,000 to $120,000 per year. Over three years, cumulative cloud costs reach $90,000 to $360,000 with no ownership and continued NPI exposure on every query. An Island Mountain build is a one-time purchase, sized and quoted to your workload. Ongoing costs are power, cooling, and the staff time to patch and run the system, all sized in Discovery."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Does a bank need dedicated IT staff to run on-premises AI hardware?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "No. We build it on-site with your people, write the SOPs they'll run it by, and hand over the keys once they can run it without us. If you'd rather keep the upkeep off your IT desk, tiered support covers it."
+          "text": "No. Your people run it by the SOPs we write with them on-site, and tiered support's there if you'd rather keep upkeep off your IT desk."
         }
       }
     ]
@@ -183,7 +167,7 @@
     <div class="hero-inner">
       <span class="hero-badge">Local AI for Financial Services</span>
       <h1>Your Customers' Financial Data Doesn't Belong on Someone Else's Server</h1>
-      <p>Every prompt an analyst sends to a cloud AI service hands non-public customer data to a third party, and GLBA, the SEC, and FINRA all put that data under your control, not a vendor&#39;s. We&#39;ll build the whole system on your own hardware instead: the agents, the orchestration, and the models that run your firm&#39;s real work, and client financial data never leaves your network.</p>
+      <p>Every cloud AI prompt hands non-public customer data to a third party, and GLBA, the SEC and FINRA put it under your control. We&#39;ll build the agents, orchestration and models on your hardware instead.</p>
     </div>
   </section>
 
@@ -191,7 +175,6 @@
   <nav class="breadcrumb">
     <a href="index.html">Home</a><span>&rsaquo;</span><a href="solutions.html">Solutions</a><span>&rsaquo;</span>Financial Services
   </nav>
-  <div class="cta-hero-wrap"><p class="detail-text">Every deployment starts on-site, with the people who do the work.</p></div>
 
   <!-- The Problem -->
   <section class="section section-first">
@@ -199,17 +182,13 @@
       <div class="section-header fade-in">
         <span class="section-badge">The Compliance Risk</span>
         <h2>The Cloud AI Problem for Financial Institutions</h2>
-        <p>Air-gapped AI banking infrastructure eliminates the structural conflict cloud AI creates with the Gramm-Leach-Bliley Act's safeguards for non-public personal information.</p>
       </div>
       <div class="fade-in content-narrow">
-        <p class="body-lg">GLBA's safeguards duty reaches every institution, through the Interagency Guidelines for banks, NCUA Part 748 for credit unions, and the FTC's Safeguards Rule (16 CFR Part 314) for everyone else. The wording differs. The demand doesn't: a written security program, oversight of every service provider that touches customer data, and evidence you'd show an examiner. The core mandate: protect customer non-public personal information from unauthorized access and disclosure - making financial data privacy AI architecture a core compliance decision. When a bank employee pastes loan documents, account details, or customer communications into a cloud AI service, that NPI travels across the internet to infrastructure controlled by a third party. Financial institutions are one of <a href="solutions.html">eleven regulated industries</a> where this structural conflict between cloud AI and data confidentiality is most acute.</p>
-        <p class="body-lg">PCI DSS v4.0.1 adds a second layer of compliance requirements for any institution handling cardholder data. The standard mandates strict controls over cardholder data environments, including network segmentation, access controls, and monitoring. Cloud AI processing introduces third-party infrastructure into the cardholder data flow, complicating scope assessments and creating additional compliance documentation requirements.</p>
-        <p class="body-lg">Amended SEC Regulation S-P now applies to every broker-dealer and RIA it covers: a written incident response program, customer notice within 30 days of a breach, and contracts that make service providers tell you within 72 hours. <a href="insurance.html">Insurance carriers</a> face parallel requirements under state GLBA implementations and NAIC Model Laws. The common thread across GLBA, PCI DSS, and SEC oversight: these frameworks require institutional control over data handling infrastructure. Cloud AI processing creates a dependency on vendor infrastructure that complicates compliance across all three frameworks. The vendor's privacy policy - not your compliance program - controls what happens to that data once transmitted. None of these rules bans the cloud. Each one makes every vendor in the data path your problem to document, and fewer vendors means less to defend at the exam.</p>
+        <p class="body-lg">Cloud AI puts NPI on a third party&#39;s servers. GLBA makes you oversee that vendor under the Interagency Guidelines, NCUA Part 748 or the FTC Safeguards Rule; PCI DSS v4.0.1 pulls it into card-data scope; amended Reg S-P has you contract for its breach notice within 72 hours. On your own hardware NPI stays put, and it&#39;ll run air-gapped.</p>
       </div>
     </div>
   </section>
 
-  
   <section class="section-pt-32">
     <div class="container">
       <div class="badge-wrap">
@@ -219,35 +198,6 @@
       </div>
     </div>
   </section>
-  <!-- How It Works -->
-  <section class="section section-dark">
-    <div class="container">
-      <div class="section-header fade-in">
-        <span class="section-badge">How It Works</span>
-        <h2>What On-Premises AI Means for Your Institution</h2>
-        <p>"No data leaves your building" is a description of network architecture, not marketing language.</p>
-      </div>
-      <div class="card-grid card-grid-3 fade-in">
-        <div class="card">
-          <div class="card-icon-im"><img src="images/icons/no-integration-icon.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
-          <h3>Zero External Transmission</h3>
-          <p>NPI never leaves your network. Prompts travel from workstation to server over your internal network only. No internet connection is required for inference. No data packets leave your building.</p>
-        </div>
-        <div class="card">
-          <div class="card-icon-im"><img src="images/icons/server-rack-icon.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
-          <h3>A System You Own</h3>
-          <p>This is a physical server in your data center, running on your power and connected to your network, not a hosted service. You own it outright.</p>
-        </div>
-        <div class="card">
-          <div class="card-icon-im"><img src="images/icons/air-gapped-icon.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
-          <h3>Air-Gap Capable</h3>
-          <p>After initial setup and model installation, the system can operate entirely disconnected from the internet. For the books that carry your most sensitive customers, that means complete network isolation, no external connections of any kind.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
   <!-- We build it around the firm -->
   <section class="section section-darker">
     <div class="container">
@@ -256,85 +206,48 @@
         <h2>We Build It Around How Your Firm Runs</h2>
       </div>
       <div class="fade-in content-narrow">
-        <p class="body-lg">A general model off the shelf knows finance in the abstract and nothing about your firm. It&#39;s never read your product shelf, doesn&#39;t know your surveillance rules, can&#39;t tell a private-wealth mandate from a checking account. We build for the firm you run, not the one in a textbook.</p>
-        <p class="body-lg">Island Mountain builds the agents and the orchestration that carry the multi-step work start to finish: KYC and AML review with the SAR drafted for a compliance officer to sign, disclosure and regulatory-filing drafting, audit prep, a compliance read on client-facing communications, research pulled and summarized across a stack of sources. It runs on current open-weight models like Kimi K3, ZAI GLM 5.2, Qwen 3.8+, and Nous Hermes 4, served through Ollama or vLLM behind an OpenWebUI front end, or whatever open weights fit the task. All of it governed by our own agentic orchestration and the <a href="lamprey-woven-security-governance.html" class="clr-copper">Woven Security Fabric</a>, so every action carries an identity, an approval, and a receipt, and the credentials expire when the task is done. Client financial data never leaves your network to make any of it happen.</p>
-        <p class="body-lg">When the work needs a model that speaks your book, we&#39;ll build one. Reasoning models and small language models from scratch, trained to orbit your firm&#39;s ontology: your product set, your compliance framework, your client book. It learns your terminology and your cadence, the shorthand your desk trades in that no manual ever wrote down.</p>
-        <p class="body-lg">It air-gaps completely for the books and the deals that demand it, and reaches the cloud only when a task genuinely needs to. That&#39;s your call, workflow by workflow.</p>
-        <p class="body-lg">Then we hand it back. On-site onboarding, SOPs written for your people, the keys dropped into your team&#39;s hands so they run and rework the workflows without calling us. Want the upkeep off your IT desk&#39;s plate? We offer tiered support sized to the firm, and we plug in wherever that&#39;s easiest. This is your firm&#39;s legacy. We build it alongside you, and we won&#39;t call it done until your people can run it without us.</p>
+        <p class="body-lg">We build the agents that carry the work, from KYC review to the SAR your compliance officer signs. When the work needs a model trained on your products and compliance framework, we&#39;ll build that too. Every action runs under the <a href="lamprey-woven-security-governance.html" class="clr-copper">Woven Security Fabric</a> with an identity and a receipt, and we hand it over once your people can run it without us.</p>
       </div>
     </div>
   </section>
 
-
   <!-- Workflows -->
-  <section class="section section-darker">
+  <section class="section section-dark">
     <div class="container">
       <div class="section-header fade-in">
         <span class="section-badge">Workflows</span>
         <h2>AI Workflows a Deployment Supports</h2>
-        <p>These aren&#39;t chat prompts. They&#39;re agentic workflows the orchestration runs start to finish, each step carrying its own identity and receipt, and no client financial data leaves your network.</p>
       </div>
       <div class="card-grid card-grid-3 fade-in">
         <div class="card">
           <div class="card-icon-im"><img src="images/icons/document-review-icon.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
           <h3>Loan Document Review</h3>
-          <p>An agent reads the loan file, flags the risk factors, and pulls the key terms and dates against your lending criteria. Mortgage packages, underwriting memos, credit assessments: the whole application gets processed in the building, never handed to a cloud API.</p>
+          <p>Loan files checked against your lending criteria.</p>
         </div>
         <div class="card">
           <div class="card-icon-im"><img src="images/icons/cloud-posture-scan-icon.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
           <h3>KYC/AML Analysis</h3>
-          <p>Run Know Your Customer documentation and Anti-Money Laundering screening as one orchestrated workflow. An agent works the customer file, reads the transaction patterns, flags what looks off, and drafts the SAR narrative for a compliance officer to review. Customer data stays on your hardware, start to finish.</p>
+          <p>Customer files screened and SAR narratives drafted for review.</p>
         </div>
         <div class="card">
           <div class="card-icon-im"><img src="images/icons/regulatory-filing-icon.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
           <h3>Regulatory Reporting</h3>
-          <p>Draft the regulatory filings, the compliance reports, and the audit responses. An agent summarizes a dense rule and maps it against how your institution runs, with examination data processed on-premises and nowhere else.</p>
+          <p>Filings, compliance reports and audit responses drafted on-premises.</p>
         </div>
         <div class="card">
           <div class="card-icon-im"><img src="images/icons/fraud-detection-icon.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
           <h3>Fraud Detection Support</h3>
-          <p>Read transaction patterns, surface the anomalies, and build fraud investigation summaries an analyst can work from. Sensitive account data never leaves your network to get there.</p>
+          <p>Transaction anomalies summarized for an analyst to work.</p>
         </div>
         <div class="card">
           <div class="card-icon-im"><img src="images/icons/contact-icon.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
           <h3>Customer Communication Drafting</h3>
-          <p>Draft customer correspondence, disclosure documents, and advisory letters that hold the regulatory language steady across every client touchpoint. An agent writes the first pass; your team signs off.</p>
+          <p>Disclosures and advisory letters in steady regulatory language.</p>
         </div>
         <div class="card">
           <div class="card-icon-im"><img src="images/icons/analytics-icon.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
           <h3>Investment Analysis</h3>
-          <p>Summarize market research, read portfolio documentation, and draft investment memoranda. Proprietary strategy and client positions stay in-house, on hardware you own.</p>
-        </div>
-      </div>
-      <div class="comparison-note fade-in mt-32">
-        <i class="ri-information-line"></i>
-        The system reasons, drafts, and carries the steps between. It doesn&#39;t come with a Bloomberg terminal, a market-data feed, or a wire into EDGAR or your core banking platform, and it doesn&#39;t sign off on a filing. A banker, an analyst, or a compliance officer still owns the judgment, same as it&#39;s always been. What we build is a tool for your people, not a stand-in for one.
-      </div>
-    </div>
-  </section>
-
-  <!-- Which Models for What -->
-  <section class="section section-dark">
-    <div class="container">
-      <div class="section-header fade-in">
-        <span class="section-badge">Models</span>
-        <h2>What We Run, and What We Build</h2>
-      </div>
-      <div class="card-grid card-grid-3 fade-in">
-        <div class="card text-center">
-          <div class="card-icon-im"><img src="images/icons/current-open-weights-icon.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
-          <h3>Current Open Weights</h3>
-          <p>Kimi K3, ZAI GLM 5.2, Qwen 3.8+, Nous Hermes 4, and whichever open weight is strongest the month we deploy, served through Ollama or vLLM behind OpenWebUI. This field moves every quarter, so we don&#39;t marry a model. We run the one that clears your task today and swap it the day something sharper lands.</p>
-        </div>
-        <div class="card text-center">
-          <div class="card-icon-im"><img src="images/icons/built-to-orbit-icon.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
-          <h3>Built to Orbit Your Firm</h3>
-          <p>When nothing off the shelf understands your book, we build from scratch. Reasoning models and small language models trained on your ontology: your product set, your compliance framework, your client book, the way money and mandates move through your desks. Compact, precise, and nobody else&#39;s.</p>
-        </div>
-        <div class="card text-center">
-          <div class="card-icon-im"><img src="images/icons/governed-not-just-installed-icon.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
-          <h3>Governed, Not Just Installed</h3>
-          <p>Open weight or custom, every model answers to the same governance: our agentic orchestration and the Woven Security Fabric. Access is scoped, credentials expire with the task, and each action leaves a receipt. The book that demands an air gap gets one; a task reaches the cloud only when it earns it.</p>
+          <p>Research and portfolio documents summarized into investment memos.</p>
         </div>
       </div>
     </div>
@@ -346,27 +259,21 @@
       <div class="section-header fade-in">
         <span class="section-badge">Cost Comparison</span>
         <h2>Cloud AI vs. an On-Premise Deployment for a Mid-Size Financial Institution</h2>
-        <p>The cloud costs every month and transmits NPI every session. The hardware costs once and keeps everything in-house.</p>
       </div>
       <div class="table-wrapper fade-in">
         <table>
           <thead>
             <tr>
               <th></th>
-              <th>Cloud AI</th>
+              <th>Cloud AI (50 Users)</th>
               <th>Island Mountain build</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td><strong>Year 1 Cost</strong></td>
-              <td>$30,000 - $120,000 (50 users)</td>
+              <td>$30,000 - $120,000</td>
               <td class="highlight-cell">One-time purchase (quoted to the deployment)</td>
-            </tr>
-            <tr>
-              <td><strong>Year 3 Cumulative</strong></td>
-              <td>$90,000 - $360,000</td>
-              <td class="highlight-cell">Scoped in Discovery</td>
             </tr>
             <tr>
               <td><strong>Year 5 Cumulative</strong></td>
@@ -376,101 +283,51 @@
             <tr>
               <td><strong>Customer Data Location</strong></td>
               <td>Cloud provider servers</td>
-              <td class="highlight-cell">Your data center. Period.</td>
-            </tr>
-            <tr>
-              <td><strong>Compliance Risk</strong></td>
-              <td>NPI transmitted to third party</td>
-              <td class="highlight-cell">No third-party AI vendor in the data path. Your own perimeter still has to hold, and we build it to.</td>
+              <td class="highlight-cell">Your data center</td>
             </tr>
             <tr>
               <td><strong>Per-Token Fees</strong></td>
               <td>$15 - $60 per million tokens</td>
-              <td class="highlight-cell">None.</td>
+              <td class="highlight-cell">None</td>
             </tr>
             <tr>
-              <td><strong>Model Control</strong></td>
-              <td>Provider decides models and updates</td>
-              <td class="highlight-cell">You choose which models to run</td>
-            </tr>
-            <tr>
-              <td><strong>Banking System Integration</strong></td>
-              <td>Some platforms offer integrations</td>
-              <td>Not included. General-purpose AI.</td>
-            </tr>
-            <tr>
-              <td><strong>Vendor Lock-In</strong></td>
-              <td>Complete</td>
-              <td class="highlight-cell">Low. You keep the weights, and we check every model's license before it's deployed.</td>
+              <td><strong>Compliance Risk</strong></td>
+              <td>NPI transmitted to third party</td>
+              <td class="highlight-cell">No third-party AI vendor in the data path. Your own perimeter still has to hold.</td>
             </tr>
           </tbody>
         </table>
       </div>
       <div class="comparison-note fade-in mt-20">
         <i class="ri-information-line"></i>
-        Cloud estimates based on AI platforms charging $50-$200/user/month for 50 users.
+        Cloud estimates based on AI platforms charging $50-$200/user/month.
       </div>
     </div>
   </section>
 
-  <!-- Honest Limitations -->
+  <!-- What You Do Not Get -->
   <section class="section section-dark">
     <div class="container">
       <div class="section-header fade-in">
         <span class="section-badge">Honest Limitations</span>
         <h2>What You Do Not Get</h2>
-        <p>Knowing the boundaries matters more than knowing the features.</p>
       </div>
       <div class="risk-grid fade-in">
         <div class="risk-card">
-          <div class="risk-icon"><img src="images/ic-search.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
-          <h4>No Financial-Specific Fine-Tuning</h4>
-          <p>The open-weight models are general-purpose large language models, not finance-specific AI. They&#39;re strong at reasoning, analysis, and prose generation, but out of the box they&#39;re general tools rather than a vendor&#39;s finance-tuned platform, with no fine-tuning on financial datasets, no Bloomberg integration, and no real-time market feeds. The finance-specific model is the one we build for you.</p>
-        </div>
-        <div class="risk-card">
           <div class="risk-icon"><img src="images/ic-plugins.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
-          <h4>No Banking System Integration</h4>
-          <p>Island Mountain hardware does not connect to core banking platforms, loan origination systems, or CRM tools out of the box. The AI runs through OpenWebUI - a browser-based chat interface. Moving data between your banking systems and the AI is a manual process.</p>
+          <h4>Integrations Are Scoped in Discovery</h4>
+          <p>There&#39;s no connector catalog. Core banking or CRM gets connected only if Discovery says it&#39;s safe, on its own expiring credential.</p>
         </div>
         <div class="risk-card">
           <div class="risk-icon"><img src="images/icons/resources-icon.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
           <h4>No Regulatory Filing Connectors</h4>
-          <p>The system does not submit to EDGAR, FFIEC, or state regulatory portals. The AI assists with drafting regulatory filings and compliance documentation - but filing is a manual process through your existing regulatory submission systems.</p>
+          <p>It drafts filings but doesn&#39;t submit to EDGAR, FFIEC or state portals.</p>
         </div>
         <div class="risk-card">
           <div class="risk-icon"><img src="images/ic-default-access.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
           <h4>Patching Is Part of the Build</h4>
-          <p>PHP2Shell was exploited about twelve hours before PHP shipped the fix. That's the patch window now, and a system that waits thirty days for someone to get around to updates is exposed for most of them. So the handoff includes the runbook: what gets patched, who approves it, how an update's verified before it's applied, and how to roll it back. Your team runs it, and the runbook sets how fast. If you'd rather we carry part of that load, tiered support is where it goes, and Discovery is where we decide who's on the hook for what.</p>
+          <p>Exploits land within hours of a patch now, so the handoff includes the runbook: what gets patched, who approves it, how it rolls back.</p>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Regulatory Context -->
-  <section class="section section-darker">
-    <div class="container">
-      <div class="section-header fade-in">
-        <span class="section-badge">Regulatory Context</span>
-        <h2>GLBA, PCI DSS, and the Case for Local AI</h2>
-        <p>A GLBA compliant AI server keeps NPI processing under institutional control from day one.</p>
-      </div>
-      <div class="fade-in content-narrow">
-        <p class="body-lg">GLBA's safeguards duty reaches every institution, through the Interagency Guidelines for banks, NCUA Part 748 for credit unions, and the FTC's Safeguards Rule (16 CFR Part 314) for everyone else. The wording differs. The demand doesn't: a written security program, oversight of every service provider that touches customer data, and evidence you'd show an examiner. For the institutions the FTC covers, its 2021 amendments, in force since June 2023, added encryption, multi-factor authentication and continuous monitoring, and a 2023 amendment added breach notice to the FTC. Cloud AI processing introduces external infrastructure into the NPI handling chain, creating additional compliance documentation requirements and vendor management obligations.</p>
-        <p class="body-lg">PCI DSS v4.0.1 mandates strict controls over cardholder data environments. Any system that stores, processes, or transmits cardholder data falls within PCI scope. When cloud AI processes prompts containing card numbers, transaction details, or customer payment information, that cloud infrastructure enters PCI scope - making PCI DSS AI compliance dependent on the vendor's own certification and creating shared responsibility models that complicate audit responses.</p>
-        <p class="body-lg">The amended SEC Regulation S-P, in force for larger firms since December 2025 and smaller firms since June 2026, adds a written incident response program, customer notice within 30 days, and 72-hour notice from service providers. The common thread across all three frameworks: institutional control over data handling infrastructure. Local deployment returns that control entirely to the institution - providing secure AI for SOX compliance, GLBA obligations, and PCI audit requirements simultaneously. No vendor dependency. No shared responsibility models. No third-party data transmission to document and justify.</p>
-        <div class="highlight-box">
-          <p class="scenario-text"><strong>Disclaimer:</strong> This section describes the general regulatory environment regarding AI and financial data protection. It is not legal or compliance advice and should not be relied upon for compliance decisions. Consult qualified compliance counsel or your institution's regulatory advisors for guidance specific to your charter type, jurisdiction, and operational context.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Power Requirements -->
-  <section class="section section-dark">
-    <div class="container">
-      <div class="power-notice fade-in">
-        <i class="ri-flashlight-line"></i>
-        <p><strong>Power and space:</strong> There's no standard box, so there's no standard circuit. Power, cooling and rack space get scoped with your facilities people during Discovery, before anything's ordered.</p>
       </div>
     </div>
   </section>
@@ -485,23 +342,13 @@
       <div class="risk-grid fade-in">
         <div class="risk-card">
           <div class="risk-icon"><img src="images/icons/local-ai-inference-icon.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
-          <h4>Does cloud AI create GLBA compliance risk?</h4>
-          <p>Yes. Cloud AI transmits non-public personal information (NPI) to third-party infrastructure, adding a service provider your GLBA safeguards program has to oversee, whether that program answers to the Interagency Guidelines, NCUA Part 748 or the FTC's Safeguards Rule (16 CFR Part 314). On-premises AI hardware from Island Mountain eliminates third-party transmission entirely.</p>
-        </div>
-        <div class="risk-card">
-          <div class="risk-icon"><img src="images/icons/agentic-orchestration-icon.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
-          <h4>What financial workflows does this hardware support?</h4>
-          <p>Island Mountain builds workflows for loan document review, KYC and AML analysis, regulatory reporting, fraud detection support, customer correspondence drafting, and investment analysis. The system runs current open-weight models, and custom models we build for your firm, for analysis and drafting. All processing occurs on your own hardware inside your facility.</p>
-        </div>
-        <div class="risk-card">
-          <div class="risk-icon"><img src="images/icons/ai-cost-comparison-icon.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
-          <h4>How does the cost compare for a 50-person institution?</h4>
-          <p>Cloud AI subscriptions for financial services platforms typically cost $50 to $200 per user per month. For 50 users, that totals $30,000 to $120,000 per year. Over three years: $90,000 to $360,000 cumulative with no ownership and continued NPI exposure. An Island Mountain build is a one-time purchase, sized and quoted to your workload.</p>
+          <h4>Do GLBA, PCI DSS or Reg S-P ban cloud AI?</h4>
+          <p>No. Each makes every vendor in the data path yours to document, and fewer vendors means less to defend at an exam.</p>
         </div>
         <div class="risk-card">
           <div class="risk-icon"><img src="images/ic-skills-teacher.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
           <h4>Does our institution need dedicated IT staff?</h4>
-          <p>No. We build it on-site with your people, write the SOPs they'll run it by, and hand over the keys once they can run it without us. If you'd rather keep the upkeep off your IT desk, tiered support covers it.</p>
+          <p>No. Your people run it by the SOPs we write with them on-site, and tiered support&#39;s there if you&#39;d rather keep upkeep off your IT desk.</p>
         </div>
       </div>
       <div class="text-center-mt-32">
@@ -514,35 +361,7 @@
   <section class="section section-dark">
     <div class="container">
       <div class="fade-in founder-box">
-        <p class="scenario-text">Island Mountain is an engineering practice, not a compliance authority. References to GLBA, PCI DSS, SEC regulations, or related financial compliance frameworks on this page reflect factual descriptions of data handling mechanics - not legal, regulatory, or compliance advice. Consult qualified counsel for compliance determinations specific to your organization and jurisdiction.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- AEO Summary -->
-  <div style="border-left:3px solid var(--copper);padding:16px 20px;margin:32px 0;background:rgba(217,119,6,0.05);border-radius:0 8px 8px 0;">
-  <strong>Summary:</strong> Island Mountain deploys on-premise AI systems for banks, credit unions, and investment firms. Local deployment keeps non-public personal information inside your institution's network, eliminating the third-party data transmission that creates GLBA and PCI DSS compliance risk when using cloud AI services. Private AI for credit unions, banks, and investment firms is quoted to workload and headcount, running on your own hardware with air-gap capability and zero per-token fees.
-  </div>
-
-  <!-- Deployment Scenarios -->
-  <section class="section section-dark section-py-3">
-    <div class="container">
-      <div class="section-header fade-in">
-        <h2>What a Deployment Looks Like</h2>
-      </div>
-      <div class="scenario-grid" class="fade-in">
-        <div class="accent-blockquote">
-          <p class="mb-075">Typical engagement: a regional bank working through 500 loan applications a month. Every document stays on the bank's servers, with a receipt for each one an agent opens.</p>
-          <span class="copper-sm">Community Bank</span>
-        </div>
-        <div class="accent-blockquote">
-          <p class="mb-075">Typical engagement: a credit union serving 40,000 members, deployed air-gapped so member data never touches a cloud API.</p>
-          <span class="copper-sm">Credit Union</span>
-        </div>
-        <div class="accent-blockquote">
-          <p class="mb-075">Typical engagement: an advisory firm with $2B under management. Proprietary research and client portfolios stay in-house.</p>
-          <span class="copper-sm">Investment Advisory Firm</span>
-        </div>
+        <p class="scenario-text">We&#39;re an engineering practice, not a compliance authority, and this page isn&#39;t legal advice.</p>
       </div>
     </div>
   </section>
