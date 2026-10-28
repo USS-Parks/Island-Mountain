@@ -83,23 +83,7 @@
         "name": "Does cloud AI complicate NERC CIP compliance?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes, though it isn't banned. Since CIP-004-7 and CIP-011-3 took effect in January 2024, BCSI can sit with a cloud provider under documented access and encryption controls. The cost is the paperwork and the new conduit: every external routable connection out of the ESP has to be identified, controlled, and monitored under CIP-005. A system inside the perimeter adds no conduit, and it gets patched and baselined like the rest of your CIP assets, with receipts to show for it."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What energy sector workflows can run on Island Mountain air-gapped AI hardware?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Island Mountain supports outage and incident reporting, grid and asset documentation, NERC CIP compliance evidence, maintenance and field-report synthesis, and regulatory filing drafting. The system runs current open-weight models for operational analysis and documentation, and where the work calls for it, custom models Island Mountain builds for your utility. All processing occurs on your own hardware inside your facility, fully air-gapped from external networks."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How does on-premises AI cost compare to cloud alternatives for a utility company?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Cloud AI costs $50 to $200 per user per month, totaling $15,000 to $60,000 per year for 25 users - plus significant compliance costs for documenting and securing the external connection under NERC CIP. An Island Mountain build is a one-time purchase, sized and quoted to your workload, with no ongoing compliance overhead for the AI connection itself. Ongoing costs are power, cooling, and the staff time to patch and run the system, all sized in Discovery. The system eliminates the external routable path entirely."
+          "text": "Yes, though it isn't banned. CIP-004-7 and CIP-011-3 let BCSI sit with a cloud provider under documented controls. The cost is the paperwork and the new conduit."
         }
       },
       {
@@ -107,7 +91,7 @@
         "name": "Does the system connect to SCADA or operational technology?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Not by default. The system sits on the IT side of your perimeter and works from the data your people hand it. If Discovery turns up a read-only feed worth building, we'll scope it with your OT security team. It never issues a control action."
+          "text": "Not by default. It sits on the IT side and works from what you hand it. If Discovery calls for a read-only feed, we'll scope it with your OT team."
         }
       }
     ]
@@ -184,7 +168,7 @@
     <div class="hero-inner">
       <span class="hero-badge">Local AI for Energy &amp; Utilities</span>
       <h1>Critical Infrastructure Data Doesn't Leave the Facility. Period.</h1>
-      <p>NERC CIP and IEC 62443 exist because the bulk electric system can&#39;t tolerate data walking out the door. We&#39;ll build the whole system inside your perimeter instead: the agents, the orchestration, and the models that carry your utility&#39;s real work, and operational data never leaves your network.</p>
+      <p>NERC CIP and IEC 62443 exist because the bulk electric system can&#39;t tolerate data walking out the door. We&#39;ll build the agents and models inside your perimeter, and operational data never leaves your network.</p>
     </div>
   </section>
 
@@ -192,7 +176,6 @@
   <nav class="breadcrumb">
     <a href="index.html">Home</a><span>&rsaquo;</span><a href="solutions.html">Solutions</a><span>&rsaquo;</span>Energy &amp; Utilities
   </nav>
-  <div class="cta-hero-wrap"><p class="detail-text">Every deployment starts on-site, with the people who do the work.</p></div>
 
   <!-- The Problem -->
   <section class="section section-first">
@@ -200,55 +183,23 @@
       <div class="section-header fade-in">
         <span class="section-badge">The Critical Infrastructure Problem</span>
         <h2>The Cloud AI Problem for Critical Infrastructure Operators</h2>
-        <p>Air-gapped AI for utilities eliminates the compliance violations created when operational technology data from SCADA systems and grid management platforms is transmitted to cloud infrastructure.</p>
       </div>
       <div class="fade-in content-narrow">
-        <p class="body-lg">NERC CIP standards mandate strict cybersecurity controls for the Bulk Electric System (BES). CIP-003 through CIP-013 establish requirements covering electronic security perimeters, personnel and training, system security management, incident reporting, recovery planning, information protection, physical security, configuration management, vulnerability assessment, and supply chain risk management. The scope is comprehensive and the enforcement is real - NERC can levy penalties up to $1 million per violation per day. Energy and utilities represent one of <a href="solutions.html">eleven regulated industries</a> where the structural conflict between cloud AI and data security is most acute. Critical infrastructure AI on-prem is the only architecture that resolves this conflict.</p>
-        <p class="body-lg">IEC 62443 governs industrial automation and control systems (IACS) security. The standard establishes security levels for zones and conduits within OT networks. Introducing cloud AI processing of operational data creates an external conduit that must be evaluated against the security level requirements of each zone it touches. For many critical infrastructure environments, this external conduit simply cannot satisfy the required security level.</p>
-        <p class="body-lg">FERC oversight adds federal enforcement authority - <a href="government.html">government agencies</a> at every level regulate utility cybersecurity posture. The TSA Pipeline Security Directives (post-Colonial Pipeline) added additional cybersecurity requirements for pipeline operators. DOE critical infrastructure guidelines emphasize air-gapped architectures for the most sensitive operational environments. The common thread: operational technology data from SCADA systems, grid management platforms, and pipeline monitoring systems cannot be transmitted to cloud infrastructure without creating compliance exposure and expanding the attack surface. Energy AI without cloud dependency is not a preference - it is a structural mandate for critical infrastructure operators, paralleling the isolation requirements faced by <a href="defense-contractors.html">defense contractors</a> handling CUI under DFARS.</p>
+        <p class="body-lg">IEC 62443 sets security levels for OT zones, and at SL-3 or SL-4 it&#39;s hard to justify a cloud AI connection. Every external connection out of your electronic security perimeter also lands under NERC CIP-005. A system you own sits inside the perimeter, and it&#39;ll run fully air-gapped.</p>
       </div>
     </div>
   </section>
 
-  
   <section class="section-pt-32">
     <div class="container">
       <div class="badge-wrap">
       <div class="authority-badge"><i class="ri-shield-check-line authority-badge-icon"></i><span class="authority-badge-label">NERC CIP-003 to CIP-013</span></div>
       <div class="authority-badge"><i class="ri-settings-3-line authority-badge-icon"></i><span class="authority-badge-label">IEC 62443</span></div>
-      <div class="authority-badge"><i class="ri-lock-line authority-badge-icon"></i><span class="authority-badge-label">TSA Pipeline Security</span></div>
+      <div class="authority-badge"><i class="ri-lock-line authority-badge-icon"></i><span class="authority-badge-label">TSA Security Directives</span></div>
       </div>
     </div>
   </section>
-  <!-- How It Works -->
-  <section class="section section-dark">
-    <div class="container">
-      <div class="section-header fade-in">
-        <span class="section-badge">How It Works</span>
-        <h2>What Air-Gapped AI Means for Energy Operations</h2>
-        <p>Air-gapped inference energy operators can trust. "No data leaves your facility" is not marketing language - it is a description of network architecture.</p>
-      </div>
-      <div class="card-grid card-grid-3 fade-in">
-        <div class="card">
-          <div class="card-icon-im"><img src="images/icons/no-integration-icon.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
-          <h3>Zero External Transmission</h3>
-          <p>Operational data never leaves your facility perimeter. Prompts travel from workstation to server over internal network only. With the air gap in place there's no external network path to attack. The paths that are left, media and people, are the ones we design the update process around. Data-sovereign AI utilities demand - achieved through physical air-gap architecture.</p>
-        </div>
-        <div class="card">
-          <div class="card-icon-im"><img src="images/icons/server-rack-icon.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
-          <h3>A System You Own</h3>
-          <p>A physical server in your facility, running on your power, inside your electronic security perimeter. You own it outright. Not a hosted service with &quot;local&quot; branding on someone else&#39;s box.</p>
-        </div>
-        <div class="card">
-          <div class="card-icon-im"><img src="images/icons/air-gapped-icon.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
-          <h3>Air-Gap Capable</h3>
-          <p>Complete network isolation, no external connections of any kind. The models are loaded and verified before it lands, so the system works the day it&#39;s racked.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- We build it around the utility -->
+  <!-- The build -->
   <section class="section section-darker">
     <div class="container">
       <div class="section-header fade-in">
@@ -256,84 +207,48 @@
         <h2>We Build It Around How Your Utility Runs</h2>
       </div>
       <div class="fade-in content-narrow">
-        <p class="body-lg">A general model knows the grid in the abstract and nothing about the one you run. It&#39;s never opened your asset register, doesn&#39;t know your outage codes, can&#39;t tell a real NERC evidence binder from a textbook diagram. We build for the utility you operate, not the abstraction.</p>
-        <p class="body-lg">Island Mountain builds the agents and the orchestration that carry the work stacking up between shifts: outage and incident reporting, regulatory filings, asset and maintenance documentation, field-report synthesis, the compliance evidence an auditor is going to ask for. It runs on current open-weight models like Kimi K3, ZAI GLM 5.2, Qwen 3.8+, and Nous Hermes 4, served through Ollama or vLLM behind an OpenWebUI front end, or whatever open weights fit the task. All of it governed by our own agentic orchestration and the <a href="lamprey-woven-security-governance.html" class="clr-copper">Woven Security Fabric</a>, so every action carries an identity, an approval, and a receipt, and the credentials expire when the task is done. Operational data never leaves your network to make any of it happen.</p>
-        <p class="body-lg">When the work needs a model that speaks your utility, we&#39;ll build one. Reasoning models and small language models from scratch, trained to orbit your utility&#39;s ontology: your grid and asset map, your maintenance procedures, your regulatory calendar. It learns your terminology and your cadence, not a generic operator&#39;s.</p>
-        <p class="body-lg">It air-gaps completely for the OT and critical-infrastructure work that demands the separation, and reaches out only when a task genuinely needs to. You decide, workflow by workflow.</p>
-        <p class="body-lg">Then we hand it back. On-site onboarding, SOPs your operators can follow at 3 a.m., the keys dropped into your team&#39;s hands so they run and rework the workflows without a phone call. Want the upkeep off your OT staff&#39;s plate? We offer tiered support sized to the utility, and we plug in wherever that&#39;s easiest. This is your utility&#39;s legacy. We build it alongside you, and we won&#39;t call it done until your people can run it without us.</p>
+        <p class="body-lg">We build the agents that carry the work stacking up between shifts: outage reports, regulatory filings, field-report synthesis, the CIP evidence an auditor asks for. When the work needs a model trained on your asset map, we&#39;ll build that too. Every action runs under the <a href="lamprey-woven-security-governance.html" class="clr-copper">Woven Security Fabric</a> with an identity and a receipt, and we hand it over once your people can run it.</p>
       </div>
     </div>
   </section>
 
   <!-- Workflows -->
-  <section class="section section-darker">
+  <section class="section section-dark">
     <div class="container">
       <div class="section-header fade-in">
         <span class="section-badge">Workflows</span>
         <h2>Operational Workflows a Deployment Supports</h2>
-        <p>These aren&#39;t chat prompts. They&#39;re agentic workflows the orchestration runs start to finish, each step carrying its own identity and receipt, and no operational data leaves your network.</p>
       </div>
       <div class="card-grid card-grid-3 fade-in">
         <div class="card">
           <div class="card-icon-im"><img src="images/icons/analytics-icon.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
           <h3>Predictive Maintenance Analysis</h3>
-          <p>On-prem AI for predictive maintenance: analyze equipment sensor data, maintenance logs, and failure histories to identify patterns and predict maintenance needs. Process SCADA telemetry data locally without exposing operational patterns to cloud services.</p>
+          <p>Sensor data and failure histories read for maintenance patterns.</p>
         </div>
         <div class="card">
           <div class="card-icon-im"><img src="images/icons/grid-ops-doc-icon.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
           <h3>Grid Operations Documentation</h3>
-          <p>Secure AI for substation data: draft operations reports, shift summaries, and system performance documentation. Summarize complex operational data into clear narrative reports for regulatory submissions and internal review.</p>
+          <p>Shift summaries and operations reports drafted from your data.</p>
         </div>
         <div class="card">
           <div class="card-icon-im"><img src="images/icons/compliance-evidence-icon.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
           <h3>NERC CIP Compliance Reporting</h3>
-          <p>Assist with compliance evidence documentation, audit preparation, and regulatory filing drafts. Process sensitive security assessment data entirely on-premises without cloud exposure.</p>
+          <p>Evidence binders and audit prep kept on-premises.</p>
         </div>
         <div class="card">
           <div class="card-icon-im"><img src="images/icons/pipeline-monitoring-analysis-icon.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
-          <h3>Pipeline Monitoring Analysis</h3>
-          <p>Local AI for oil and gas operations: analyze pipeline integrity data, flow measurements, and anomaly detection results. Local AI for pipeline monitoring processes operational data from SCADA systems without transmitting sensitive infrastructure information to cloud APIs.</p>
+          <h3>Flow &amp; Integrity Monitoring</h3>
+          <p>Integrity data, flow measurements and anomaly results analyzed locally.</p>
         </div>
         <div class="card">
           <div class="card-icon-im"><img src="images/icons/remediation-workflow-icon.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
           <h3>Outage Response Documentation</h3>
-          <p>Generate after-action reports, incident timelines, and restoration documentation during and after outage events. Process operational data in real-time without cloud dependency.</p>
+          <p>After-action reports and restoration timelines, written during the event.</p>
         </div>
         <div class="card">
           <div class="card-icon-im"><img src="images/icons/regulatory-filing-icon.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
           <h3>Regulatory Filing Drafting</h3>
-          <p>Run an on-prem LLM for FERC compliance: draft FERC filings, state regulatory submissions, and compliance documentation. Summarize complex operational and compliance data into clear regulatory narratives.</p>
-        </div>
-      </div>
-      <div class="comparison-note fade-in mt-32">
-        <i class="ri-information-line"></i>
-        The system reasons, drafts, and carries the steps between. It doesn&#39;t plug into SCADA, run real-time grid management, or wire into your OMS/DMS or market systems. An operator still owns the decisions, same as it&#39;s always been. What we build is a tool for your people, not a control system.
-      </div>
-    </div>
-  </section>
-
-  <!-- Which Models for What -->
-  <section class="section section-dark">
-    <div class="container">
-      <div class="section-header fade-in">
-        <span class="section-badge">Models</span>
-        <h2>The Models We Run, and the Ones We Build</h2>
-      </div>
-      <div class="card-grid card-grid-3 fade-in">
-        <div class="card text-center">
-          <div class="card-icon-im"><img src="images/icons/current-open-weights-icon.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
-          <h3>Current Open Weights</h3>
-          <p>Kimi K3, ZAI GLM 5.2, Qwen 3.8+, Nous Hermes 4, or whatever&#39;s carrying the load the month we deploy, served through Ollama or vLLM behind OpenWebUI. The open-weight field moves quarter to quarter, and our answer moves with it. We run what fits the task in front of us, not last year&#39;s benchmark darling.</p>
-        </div>
-        <div class="card text-center">
-          <div class="card-icon-im"><img src="images/icons/built-to-orbit-icon.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
-          <h3>Built to Orbit Your Grid</h3>
-          <p>When nothing off the shelf speaks your utility&#39;s language, we build it. Reasoning models and small language models from scratch, trained on your ontology: your asset map, your maintenance procedures, the way your crews write up a job. Compact, precise, and nobody else&#39;s.</p>
-        </div>
-        <div class="card text-center">
-          <div class="card-icon-im"><img src="images/icons/governed-not-just-installed-icon.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
-          <h3>Governed, Not Just Installed</h3>
-          <p>Nothing runs unsupervised. Our agentic orchestration and the Woven Security Fabric wrap every model call: access scoped to the task, credentials that expire, a receipt an auditor can read. Air-gapped where the OT side demands it, cloud-connected only where a task earns it.</p>
+          <p>FERC and state filings drafted from your compliance data.</p>
         </div>
       </div>
     </div>
@@ -344,28 +259,22 @@
     <div class="container">
       <div class="section-header fade-in">
         <span class="section-badge">Cost Comparison</span>
-        <h2>Cloud AI vs. an On-Premise Deployment for Utility Operations</h2>
-        <p>The cloud creates external connections to your OT environment. The hardware stays inside your electronic security perimeter.</p>
+        <h2>Cloud AI vs. an On-Premise Deployment</h2>
       </div>
       <div class="table-wrapper fade-in">
         <table>
           <thead>
             <tr>
               <th></th>
-              <th>Cloud AI</th>
+              <th>Cloud AI (25 Users)</th>
               <th>Island Mountain build</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td><strong>Year 1 Cost</strong></td>
-              <td>$15,000 - $60,000 (25 users)</td>
+              <td>$15,000 - $60,000</td>
               <td class="highlight-cell">One-time purchase (quoted to the deployment)</td>
-            </tr>
-            <tr>
-              <td><strong>Year 3 Cumulative</strong></td>
-              <td>$45,000 - $180,000 + compliance costs</td>
-              <td class="highlight-cell">Scoped in Discovery</td>
             </tr>
             <tr>
               <td><strong>Year 5 Cumulative</strong></td>
@@ -375,102 +284,51 @@
             <tr>
               <td><strong>OT Data Location</strong></td>
               <td>Cloud provider servers</td>
-              <td class="highlight-cell">Your facility. Air-gapped.</td>
-            </tr>
-            <tr>
-              <td><strong>NERC CIP Compliance</strong></td>
-              <td>External conduit complicates ESP</td>
-              <td class="highlight-cell">Inside your security perimeter</td>
-            </tr>
-            <tr>
-              <td><strong>Attack Surface</strong></td>
-              <td>Expanded by external connections</td>
-              <td class="highlight-cell">Zero expansion. Air-gapped.</td>
+              <td class="highlight-cell">Your facility, air-gapped</td>
             </tr>
             <tr>
               <td><strong>Per-Token Fees</strong></td>
               <td>$15 - $60 per million tokens</td>
-              <td class="highlight-cell">None.</td>
+              <td class="highlight-cell">None</td>
             </tr>
             <tr>
-              <td><strong>SCADA Integration</strong></td>
-              <td>Not available from cloud AI</td>
-              <td>Not included. General-purpose AI.</td>
-            </tr>
-            <tr>
-              <td><strong>Vendor Lock-In</strong></td>
-              <td>Complete</td>
-              <td class="highlight-cell">Low. You keep the weights, and we check every model's license before it's deployed.</td>
+              <td><strong>NERC CIP Exposure</strong></td>
+              <td>External conduit complicates ESP</td>
+              <td class="highlight-cell">Inside your security perimeter</td>
             </tr>
           </tbody>
         </table>
       </div>
       <div class="comparison-note fade-in mt-20">
         <i class="ri-information-line"></i>
-        Cloud estimates based on AI platforms charging $50-$200/user/month for 25 users. Compliance costs for cloud AI in NERC CIP environments (documentation, auditing, ESP modifications) often exceed the subscription cost itself. For higher concurrent usage, the build is sized to the load and quoted on request.
+        Cloud estimates based on AI platforms charging $50-$200/user/month.
       </div>
     </div>
   </section>
 
-  <!-- Honest Limitations -->
+  <!-- What You Do Not Get -->
   <section class="section section-dark">
     <div class="container">
       <div class="section-header fade-in">
         <span class="section-badge">Honest Limitations</span>
         <h2>What You Do Not Get</h2>
-        <p>Knowing the boundaries matters more than knowing the features.</p>
       </div>
       <div class="risk-grid fade-in">
         <div class="risk-card">
           <div class="risk-icon"><img src="images/ic-plugins.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
-          <h4>No SCADA/OT Integration</h4>
-          <p>Island Mountain hardware does not connect to SCADA systems, DCS platforms, or industrial control systems. The AI runs through OpenWebUI - a browser-based chat interface on the IT network. It processes data you provide to it; it does not read directly from OT systems.</p>
+          <h4>Integrations Are Scoped in Discovery</h4>
+          <p>There&#39;s no connector catalog. Your OMS, DMS or market systems connect only if Discovery says it&#39;s safe, on their own expiring credential.</p>
         </div>
         <div class="risk-card">
           <div class="risk-icon"><img src="images/icons/server-rack-icon.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
           <h4>No Real-Time Grid Management</h4>
-          <p>This is an inference tool, not a control system. It does not manage grid operations, dispatch generation, or control substations. It assists with analysis, documentation, and reporting - not real-time operational decisions.</p>
-        </div>
-        <div class="risk-card">
-          <div class="risk-icon"><img src="images/ic-coding.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
-          <h4>No Utility-Specific Modeling Engine</h4>
-          <p>The system is a general-purpose AI that assists with documentation, analysis, and drafting around your existing modeling tools, not a substitute for power flow analysis, load forecasting, or energy market simulation.</p>
+          <p>It won&#39;t dispatch generation, control substations or run the grid in real time. An operator still owns those decisions.</p>
         </div>
         <div class="risk-card">
           <div class="risk-icon"><img src="images/ic-default-access.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
           <h4>Patching Is Part of the Build</h4>
-          <p>PHP2Shell was exploited about twelve hours before PHP shipped the fix. That's the patch window now, and a system that waits thirty days for someone to get around to updates is exposed for most of them. So the handoff includes the runbook: what gets patched, who approves it, how an update's verified before it's applied, and how to roll it back. Your team runs it, and the runbook sets how fast. If you'd rather we carry part of that load, tiered support is where it goes, and Discovery is where we decide who's on the hook for what.</p>
+          <p>Exploits land within hours of a patch now, so the handoff includes the runbook: what gets patched, who approves it, how it rolls back.</p>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Regulatory Context -->
-  <section class="section section-darker">
-    <div class="container">
-      <div class="section-header fade-in">
-        <span class="section-badge">Regulatory Context</span>
-        <h2>NERC CIP, IEC 62443, and the Case for Air-Gapped AI</h2>
-        <p>NERC CIP compliant AI infrastructure that operates entirely within your electronic security perimeter.</p>
-      </div>
-      <div class="fade-in content-narrow">
-        <p class="body-lg">NERC CIP-005 (Electronic Security Perimeters) requires that all external connections to networks containing BES Cyber Assets be identified, documented, and protected with electronic access controls. Introducing cloud AI processing of operational data creates an external routable connection that must be documented in the ESP and subjected to all CIP-005 requirements - including intrusion detection, access logging, and vulnerability assessments of the connection path.</p>
-        <p class="body-lg">NERC CIP-011 (Information Protection) requires identification and protection of BES Cyber System Information (BCSI). Operational data from grid management systems often qualifies as BCSI. Transmitting BCSI to cloud infrastructure requires documented protections for data in transit and at rest on third-party systems - a significant compliance burden that air-gapped local processing eliminates entirely.</p>
-        <p class="body-lg">IEC 62443 AI server requirements establish security levels (SL 1-4) for industrial automation zones. Higher security levels restrict external communications more severely. For zones rated SL-3 or SL-4, cloud AI connections are difficult or impossible to justify under the standard's requirements for network isolation and data flow control. Local AI hardware operates entirely within the zone, satisfying isolation requirements without architectural compromises.</p>
-        <p class="body-lg">The TSA Pipeline Security Directives (2021-2022) mandate cybersecurity requirements for pipeline operators including network segmentation, access controls, and continuous monitoring. DOE critical infrastructure guidelines emphasize defense-in-depth architectures. Both frameworks favor air-gapped processing of sensitive operational data over cloud-dependent solutions.</p>
-        <div class="highlight-box">
-          <p class="scenario-text"><strong>Disclaimer:</strong> This section describes the general regulatory environment regarding AI and critical infrastructure cybersecurity. It is not legal or compliance advice. Consult your NERC compliance team, qualified cybersecurity counsel, or your regional entity for guidance specific to your registration, asset classification, and operational context.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Power Requirements -->
-  <section class="section section-dark">
-    <div class="container">
-      <div class="power-notice fade-in">
-        <i class="ri-flashlight-line"></i>
-        <p><strong>Power and space:</strong> There's no standard box, so there's no standard circuit. Power, cooling and rack space get scoped with your facilities people during Discovery, before anything's ordered.</p>
       </div>
     </div>
   </section>
@@ -480,28 +338,18 @@
     <div class="container">
       <div class="section-header fade-in">
         <span class="section-badge">Energy &amp; Utilities Questions</span>
-        <h2>Questions Energy Companies Ask About On-Premises AI</h2>
+        <h2>Questions Energy Companies Ask</h2>
       </div>
       <div class="risk-grid fade-in">
         <div class="risk-card">
           <div class="risk-icon"><img src="images/icons/air-gapped-icon.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
           <h4>Does cloud AI complicate NERC CIP compliance?</h4>
-          <p>Yes, though it isn't banned. Since CIP-004-7 and CIP-011-3 took effect in January 2024, BCSI can sit with a cloud provider under documented access and encryption controls. The cost is the paperwork and the new conduit: every external routable connection out of the ESP has to be identified, controlled, and monitored under CIP-005. A system inside the perimeter adds no conduit, and it gets patched and baselined like the rest of your CIP assets, with receipts to show for it.</p>
+          <p>Yes, though it isn&#39;t banned. CIP-004-7 and CIP-011-3 let BCSI sit with a cloud provider under documented controls. The cost is the paperwork and the new conduit.</p>
         </div>
         <div class="risk-card">
           <div class="risk-icon"><img src="images/icons/agentic-orchestration-icon.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
-          <h4>What energy workflows does this hardware support?</h4>
-          <p>Island Mountain supports outage and incident reporting, grid and asset documentation, NERC CIP compliance evidence, maintenance and field-report synthesis, and regulatory filing drafting. The system runs current open-weight models for operational analysis and documentation, and custom models we build for your utility. All processing occurs air-gapped on your own hardware inside your facility.</p>
-        </div>
-        <div class="risk-card">
-          <div class="risk-icon"><img src="images/icons/ai-cost-comparison-icon.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
-          <h4>How does the cost compare for a 25-person operations team?</h4>
-          <p>Cloud AI costs $50 to $200 per user per month, totaling $15,000 to $60,000 per year for 25 users - plus significant compliance costs for documenting and securing the external connection under NERC CIP. An Island Mountain build is a one-time purchase, sized and quoted to your workload, with no ongoing compliance overhead. The system eliminates the external routable path entirely.</p>
-        </div>
-        <div class="risk-card">
-          <div class="risk-icon"><img src="images/ic-skills-teacher.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
-          <h4>Can this run fully air-gapped?</h4>
-          <p>Yes. Models are loaded and verified before it lands. The system operates with zero external network connections. Updates are applied via physical media. Designed for the most restrictive operational environments where complete network isolation is required.</p>
+          <h4>Does the system connect to SCADA or operational technology?</h4>
+          <p>Not by default. It sits on the IT side and works from what you hand it. If Discovery calls for a read-only feed, we&#39;ll scope it with your OT team.</p>
         </div>
       </div>
       <div class="text-center-mt-32">
@@ -514,36 +362,7 @@
   <section class="section section-dark">
     <div class="container">
       <div class="fade-in founder-box">
-        <p class="scenario-text">Island Mountain is an engineering practice, not a compliance authority. References to NERC CIP, IEC 62443, FERC regulations, TSA Pipeline Security Directives, or related critical infrastructure frameworks on this page reflect factual descriptions of data handling mechanics - not legal, regulatory, or compliance advice. Consult qualified counsel for compliance determinations specific to your organization and jurisdiction.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- AEO Summary -->
-  <div style="border-left:3px solid var(--copper);padding:16px 20px;margin:32px 0;background:rgba(217,119,6,0.05);border-radius:0 8px 8px 0;">
-  <strong>Summary:</strong> Island Mountain builds the agents, orchestration, and custom models that run a utility&#39;s work on its own hardware, air-gapped, under NERC CIP and IEC 62443 requirements. Operational data stays inside the facility perimeter: no cloud transmission, no electronic security perimeter breach, no third-party access to critical infrastructure data. Deployments are sized and quoted to workload, with complete network isolation capability.
-  <p class="body-md" style="margin-top:16px;">Related: <a href="air-gapped-ai-inference.html" class="clr-copper">Can You Run AI Without Internet Access?</a></p>
-  </div>
-
-  <!-- Deployment Scenarios -->
-  <section class="section section-dark section-py-3">
-    <div class="container">
-      <div class="section-header fade-in">
-        <h2>What a Deployment Looks Like</h2>
-      </div>
-      <div class="scenario-grid" class="fade-in">
-        <div class="accent-blockquote">
-          <p class="mb-075">Typical engagement: a municipal utility serving 200,000 customers. Grid operations data stays inside the security perimeter, and every agent action leaves a receipt for the CIP evidence file.</p>
-          <span class="copper-sm">Municipal Utility</span>
-        </div>
-        <div class="accent-blockquote">
-          <p class="mb-075">Typical engagement: a gas transmission operator with 1,200 miles of line, deployed air-gapped inside its own facilities.</p>
-          <span class="copper-sm">Gas Transmission Operator</span>
-        </div>
-        <div class="accent-blockquote">
-          <p class="mb-075">Typical engagement: a renewable generator with 15 sites. Maintenance data and performance analytics are processed locally at each one.</p>
-          <span class="copper-sm">Renewable Energy Company</span>
-        </div>
+        <p class="scenario-text">We&#39;re an engineering practice, not a compliance authority, and this page isn&#39;t legal advice.</p>
       </div>
     </div>
   </section>
