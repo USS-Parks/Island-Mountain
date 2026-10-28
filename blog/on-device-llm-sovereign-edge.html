@@ -157,7 +157,7 @@
       "name": "Can an on-device LLM replace a rack-scale inference server?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Not for heavy regulated workloads, no. A quantized 7B on a phone handles routine tasks fine; large-context document review, multi-step legal analysis, and code generation against a substantial codebase still want rack-scale hardware with the VRAM and memory bandwidth those jobs demand. Which of your workflows falls on which side of that line is a question for a site visit, not a spec sheet."
+        "text": "Not for heavy regulated work; large-context review still wants rack-scale VRAM and memory bandwidth."
       }
     },
     {
@@ -165,7 +165,7 @@
       "name": "What makes on-device AI inference sovereign?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "The data never leaves the device. When inference runs entirely on-chip in airplane mode, no cloud provider, server, or network sees the input or the output. That's the same control principle I deploy at rack scale: the data stays where you put it."
+        "text": "No provider, server or network sees the input or output when inference runs on-chip in airplane mode."
       }
     },
     {
@@ -173,7 +173,7 @@
       "name": "Are memristor AI chips available in phones today?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "No. Memristor compute-in-memory is documented in peer-reviewed research with large energy-efficiency gains, but it isn't in commercial smartphones. Manufacturing and reliability at consumer scale aren't solved, though TSMC, Samsung, and specialized fabs are working on it. Realistic consumer deployment is years out."
+        "text": "No. The energy gains are peer-reviewed research; consumer-scale manufacturing isn't solved."
       }
     },
     {
@@ -181,7 +181,7 @@
       "name": "Does quantum computing run large language models today?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "No. Fault-tolerant quantum hardware running a transformer directly is fifteen to twenty years out on optimistic estimates. What's real today is quantum-inspired tensor-network compression, which shrinks model weights using math borrowed from quantum physics and runs on conventional hardware. Firms like Multiverse Computing use it in production now."
+        "text": "No. Fault-tolerant hardware is fifteen to twenty years out; Multiverse Computing's quantum-inspired compression runs on conventional chips today."
       }
     }
   ]
@@ -239,7 +239,7 @@
         <div class="article-meta">
           <span class="article-date">June 14, 2026</span>
           <span class="article-tag tag-technical">Technical</span>
-          <span class="article-read-time">9 min read</span>
+          <span class="article-read-time">4 min read</span>
         </div>
         <h1 class="text-2xl">The Sovereign Edge: On-Device LLMs and the Coming Micro-Scale Inference Revolution</h1>
         <p class="article-author">Basho Parks</p>
@@ -247,101 +247,55 @@
 
       <article class="article-body">
 
-        <p>Put your phone in airplane mode right now. If you're running iOS 26 on an A18-series device, Apple's Foundation Models framework keeps going. Gemini Nano 4 on a Pixel 9 keeps going. A 3B-parameter Qwen3 or Gemma quantized to 4-bit and running through llama.cpp on the NPU keeps going. The cloud isn't involved. Your data doesn't leave the glass in your hand.</p>
+<p>Put your phone in airplane mode. On iOS 26 with an A18, Apple's Foundation Models framework keeps answering; so does Gemini Nano 4 on a Pixel 9, and so does a 3B Qwen3 quantized to 4-bit on the NPU. The cloud isn't involved and your data doesn't leave the glass in your hand. That's shipping software in 2026, not a demo.</p>
 
-        <p>That's shipping production software in 2026, not a demo.</p>
+<p>Somebody's already run a 400-billion-parameter MoE model on an iPhone 17 Pro with SSD-to-GPU streaming and Flash-MoE sparsity, under two percent of the weights lit per token, at 0.6 tokens a second. Useless today, and it won't be in eighteen months. It's the argument I make at rack scale, playing out at pocket scale.</p>
 
-        <p>Apple shipped Foundation Models with iOS 26 and opened on-device LLM inference to anybody writing Swift. Google stood up at I/O 2026 and declared that Android isn't an operating system anymore, it's an intelligence system, with Gemini Nano 4 running as a system service inside AICore, reachable through the ML Kit GenAI APIs, and hybrid routing that lets a developer name ONLY_ON_DEVICE as an explicit mode. Somebody already ran a 400-billion-parameter MoE model on an iPhone 17 Pro using SSD-to-GPU streaming and Flash-MoE sparsity tricks, lighting up under two percent of the weights per token. It managed 0.6 tokens per second, which is useless today. In eighteen months it won't be.</p>
+<h2>Under the Hood</h2>
 
-        <p>This is the argument I've been making at rack scale, playing out at pocket scale. Sovereignty is a direction of travel, not a product category.</p>
+<p>Quantization did most of it. A 7-billion-parameter model in float32 needs roughly 28 gigabytes; at 4-bit it's 4. An iPhone 15 Pro carries 8 gigabytes of RAM, so a 3B-to-7B model fits at conversational speed.</p>
 
-        <h2>What's Happening Under the Hood</h2>
+<p>Mixture of Experts did the rest. Dense models fire every parameter for every token; MoE models light up two to four percent of the weights, so you get a bigger model's reasoning at a smaller model's compute cost.</p>
 
-        <p>On-device inference is viable now and wasn't three years ago, and it comes down to three things converging. None of them is a marketing announcement.</p>
+<p>Then NPUs built for matrix-vector math. One tell: the A18's Neural Engine runs 35 trillion operations a second, and so did the A17 Pro's. Apple held the number flat for a generation and spent the transistors on efficiency, because on this hardware the bottleneck's been memory for a while now, and how much of it you move per token.</p>
 
-        <p>First, quantization. A 7-billion-parameter model in full float32 needs roughly 28 gigabytes. Quantize it to 4-bit and it's 4 gigabytes. The A17 Pro's Neural Engine runs at 35 trillion operations per second and an iPhone 15 Pro carries 8 gigabytes of RAM, so the arithmetic works with room to spare for a 3B-to-7B model at conversational speed. Apple's MLX and llama.cpp both exploit this natively on Apple Silicon, and GGUF has quietly become the de facto format for distributable quantized models, running across CPU, GPU, ARM, and Metal backends without a recompile.</p>
+<h2>The Memristor Angle</h2>
 
-        <p>Second, Mixture of Experts. Dense models fire every parameter for every token. MoE models light up a small fraction of expert subnetworks per token, typically two to four percent of the total weights. Gemma 3, Qwen3, and the recent DeepSeek variants all use MoE in their smaller configurations. For edge inference that matters more than the raw parameter count, because you're getting a much larger model's reasoning at a much smaller model's compute cost. Gemini Nano is built on the principle. The Flash-MoE technique behind that 400B iPhone run pushes it further by streaming the inactive experts off SSD instead of holding them in RAM.</p>
+<p>Phones still run von Neumann architecture: compute and memory sit apart, and dragging billions of weights across a bus for every token is a serious fraction of the energy bill. Quantization shrinks the load without touching the problem; memristors touch it. A crossbar array does matrix-vector multiplication inside memory, where the weights are the resistive states of the nodes. Nature Electronics and Wiley's Advanced Intelligent Systems document memristor-SRAM hybrid processors at 77.64 teraoperations per second per watt with 392-microsecond wake-to-response latency; Llama 3 1B on resistive-RAM compute-in-memory saves more than 40 times the energy of a GPU at equivalent throughput; PUMA, a programmable memristor accelerator, posts 2,446 times the energy efficiency and 66 times lower latency of conventional processors.</p>
 
-        <p>Third, dedicated silicon. The A18's Neural Engine, Qualcomm's Hexagon NPU in the Snapdragon 8 Elite, and MediaTek's APU 790 are all purpose-built for the matrix-vector multiplications that dominate LLM inference. They aren't general-purpose processors running AI code as an afterthought. They're AI inference hardware that happens to also run a phone. Google's AICore handles model distribution and hardware abstraction across chipsets, so an app doesn't need to know which NPU is underneath it.</p>
+<p>That margin's what puts always-on intelligence in an earbud, and none of it's in a commercial phone yet; the figures are research prototypes, and consumer-scale manufacturing is a reliability problem TSMC and Samsung are still working. I'd put a 1B model in an ear canal inside a decade.</p>
 
-        <p>Here's the detail I'd point at, though. The A18's Neural Engine runs at 35 trillion operations per second, and so does the A17 Pro's. Apple held the headline number flat across a generation and spent the transistors on efficiency instead. That's a tell rather than a stumble: on this class of hardware the bottleneck hasn't been raw compute for a while now. It's memory, and how much of it you have to move per token.</p>
+<p>Quantum's near-term contribution is compression and nothing else; fault-tolerant processors running a transformer directly are fifteen to twenty years out, and I'd stop reading anybody who says otherwise. Multiverse Computing applies tensor-network math from quantum physics to LLM weight matrices, loses less quality than standard quantization at the same ratio, and runs on ordinary chips; Moody's Analytics and Bosch are customers.</p>
 
-        <h2>The Memristor Angle, Which Nobody's Talking About Yet</h2>
+<h2>The Same Argument, Smaller</h2>
 
-        <p>The shift worth watching over the next three to five years is architectural, not incremental.</p>
+<p>I do this work because regulated organizations can't hand their data to a cloud inference provider: it leaves the building and runs on hardware somebody else owns. A phone in airplane mode is that argument in your pocket. The tribal health worker in a clinic with no cell coverage gets AI-assisted documentation that never needs an uplink. A <a href="../forward-deployed-ai-engineering.html">rack-mounted server</a> in your building and a quantized 7B on the chip in your hand solve one problem: the data stays where you put it. The trust layer doesn't shrink with it; the <a href="../lamprey-woven-security-governance.html">woven security and governance fabric</a> that rides a rack has nowhere to run on a phone.</p>
 
-        <p>On-device inference still runs on von Neumann architecture: compute and memory sit apart, and the energy cost of dragging weights from RAM to processor is a serious fraction of the total. Every token generated means shuttling billions of values across a bus. Quantization helps. It doesn't touch the underlying problem.</p>
+<h2>What This Doesn't Mean Yet</h2>
 
-        <p>Memristors do. A memristor crossbar array performs matrix-vector multiplication inside memory. The weights are the resistive states of the crossbar nodes. The computation happens where the data already lives. Published work in Nature Electronics and in Wiley's Advanced Intelligent Systems documents memristor-SRAM hybrid processors hitting 77.64 teraoperations per second per watt with 392-microsecond wake-to-response latency. Deploying Llama 3 1B on resistive-RAM compute-in-memory saves more than 40 times the energy of a GPU implementation at equivalent throughput. PUMA, a programmable memristor-based accelerator documented in peer-reviewed literature, hits 2,446 times better energy efficiency and 66 times lower latency on machine learning inference than conventional processors.</p>
+<p>A 7B on a phone isn't a 70B in a datacenter. For 80 percent of routine work the quality gap's already invisible; for large-context document review and code generation against a substantial codebase it's real. An 8-gigabyte phone running a quantized 7B degrades a few thousand tokens into the context. Which workloads a pocket handles and which want a room with a lock on it is a <a href="../faq.html">question to answer before you buy</a>, and it comes out of watching your people work for a few days, not a comparison table.</p>
 
-        <p>None of that's theoretical. It's in journals, not press releases. I'll note that I'm citing those by name rather than by link, and I'd rather say so than pretend this post is a bibliography.</p>
+<h2>Where It's Heading</h2>
 
-        <p>What it implies for micro-scale inference (in-ear devices, wrist-worn compute, embedded industrial sensors, field medical instruments, anything running on a battery with a thermal budget measured in milliwatts) is the whole story. The energy advantage of compute-in-memory over conventional NPU inference is precisely what makes always-on local intelligence possible at that size. An in-ear device with a memristor array running a 1B model for real-time speech processing and private voice assistance is an engineering problem, not science fiction, and the current trajectory makes it solvable inside a decade, probably sooner.</p>
+<p>The cloud's being demoted from default to fallback, and Google's own routing API says so: PREFER_ON_DEVICE is a mode, ONLY_ON_DEVICE is a mode, and PREFER_CLOUD is the one that sends your data somewhere else. In July <a href="bonsai-27b-phone-local-ai.html">a 27B multimodal model landed on a phone at 3.9 GB</a>, sooner than I had it. The earbud's the micro-scale version, three to seven years out, and the principle won't change with the form factor.</p>
 
-        <h2>What Quantum Contributes Here</h2>
+<h2>Frequently Asked Questions</h2>
 
-        <p>Quantum computing's near-term contribution to LLM inference isn't what the press releases suggest. Fault-tolerant quantum processors capable of running a transformer directly are fifteen to twenty years out on optimistic estimates. That's not the relevant story and I'd stop reading anybody who tells you it is.</p>
+<h3>Can an on-device LLM replace a rack-scale inference server?</h3>
+<p>Not for heavy regulated work; large-context review still wants rack-scale VRAM and memory bandwidth.</p>
 
-        <p>The relevant story is quantum-inspired tensor network compression. Multiverse Computing and firms like it are applying mathematical structures built for quantum physics to compress LLM weight matrices, finding and stripping redundancy that classical compression walks straight past. You get smaller, faster models with less quality loss than standard quantization at the same compression ratio. Moody's Analytics and Bosch are already customers. The technique is classical computation on compressed models derived through quantum-inspired math, and it's deployable today on ordinary hardware.</p>
+<h3>What makes on-device AI inference sovereign?</h3>
+<p>No provider, server or network sees the input or output when inference runs on-chip in airplane mode.</p>
 
-        <p>The longer-term story is hybrid quantum-classical routing at scale: quantum optimization handling the reasoning and search components of complex chain-of-thought work while classical silicon does token generation. IBM's been public about targeting quantum advantage by 2026 on specific workloads. IonQ has demonstrated quantum-accelerated LLM fine-tuning in controlled settings. The architecture for fault-tolerant quantum LLMs is being written now, so that the software's ready when the hardware finally shows up.</p>
+<h3>Are memristor AI chips available in phones today?</h3>
+<p>No. The energy gains are peer-reviewed research; consumer-scale manufacturing isn't solved.</p>
 
-        <p>For on-device and edge inference the near-term quantum contribution is compression that makes larger models fit smaller hardware. That's a direct enabler of everything above.</p>
-
-        <h2>This Is the Same Argument, Smaller</h2>
-
-        <p>I do this work because organizations in regulated industries can't hand their data to a cloud inference provider, whatever the contract says. The data leaves the building. The inference happens on hardware somebody else owns. The model may train on the outputs. The regulatory exposure is structural, and structural isn't negotiable.</p>
-
-        <p>On-device inference on your phone is that same argument applied to the thing in your pocket. When Apple's Foundation Models framework runs on-chip and never touches a network, the attorney on a call doesn't get her conversation summarized by a server in Dublin. The tribal health worker in a clinic with no cell coverage gets AI-assisted documentation that doesn't need a satellite uplink. The field investigator in a SCIF works with a model that's physically air-gapped by virtue of being a phone in airplane mode.</p>
-
-        <p>That's the same principle at a different scale, not a different market from the one I serve. A <a href="../forward-deployed-ai-engineering.html">rack-mounted server</a> in your datacenter and a quantized 7B on the chip in your pocket are solving one problem: the data stays where you put it, and nobody else gets to look at it.</p>
-
-        <p>The sovereign inference stack keeps expanding. It used to live in server rooms. Now it fits in a jacket pocket. In five years, with memristors and further quantization, it'll fit in an ear canal. What doesn't shrink is the trust layer around it: at rack scale that stack carries a <a href="../lamprey-woven-security-governance.html">woven security and governance fabric</a> that a phone has nowhere to run.</p>
-
-        <h2>What This Doesn't Mean Yet</h2>
-
-        <p>Honesty matters here, so let me take my own side apart.</p>
-
-        <p>A 7B on a phone isn't a 70B in a datacenter. For 80 percent of routine daily work the quality gap's already invisible. For complex legal analysis, multi-step technical reasoning, large-context document review, and code generation against a substantial codebase, the gap is real and it isn't closing as fast as the marketing implies. 35 trillion operations a second is impressive silicon. It's still orders of magnitude below what rack-scale hardware does, and the memory-bandwidth comparison isn't close. Sorting which workloads still need rack hardware from those a phone handles is the kind of <a href="../faq.html">deployment question worth answering before you buy</a>.</p>
-
-        <p>And that's the whole shape of my advice, so I'll say it plainly. There's no shortlist at the end of this post. Which of your workflows a pocket handles, which want a room with a lock on it, and what goes in that room are three answers that come out of watching your people work for a few days, not out of a comparison table. I've had that sorting go the cheap way more than once, where the honest answer was that a phone and a decent serving layer covered most of it. That's a good outcome. It's also not an outcome anybody can promise you in advance, which is exactly why the visit comes first.</p>
-
-        <p>On-device models are constrained by context window, too. An iPhone with 8 gigabytes of RAM running a quantized 7B has a practical limit of a few thousand tokens before performance degrades. Rack-scale inference hardware doesn't have that problem.</p>
-
-        <p>Memristor crossbar arrays aren't in commercial smartphones. The energy numbers above come from research prototypes and controlled benchmarks. Commercial deployment at consumer scale is a manufacturing and reliability problem that isn't solved yet, though TSMC, Samsung, and a number of specialized fabs are working it.</p>
-
-        <p>Quantum compression tools from firms like Multiverse are real and in production at enterprise scale. Fault-tolerant quantum hardware running LLM inference directly isn't, and anybody quoting a timeline shorter than a decade for that specific application is speculating.</p>
-
-        <h2>The Trajectory Is Clear</h2>
-
-        <p>Two years ago a useful language model on a smartphone was a hobbyist curiosity. Today Apple and Google ship it as a first-party platform feature with production APIs and developers are building on top of it. The A18's Neural Engine runs at 35 trillion operations per second. The Snapdragon 8 Elite's Hexagon NPU runs 45 TOPS. Gemini Nano 4 is a system service on Android 16. Apple opened Foundation Models at WWDC 2026 to any LLM provider.</p>
-
-        <p>Meanwhile memristor compute-in-memory is walking out of academic journals into commercial fab pipelines. Quantum-inspired compression is in production at enterprise customers right now. MoE keeps folding capable reasoning into smaller parameter counts.</p>
-
-        <p>The direction isn't ambiguous. Inference is moving toward the device, toward the edge, toward the individual. The cloud isn't going away, but it's being demoted from default to fallback. Google's own hybrid routing API says it out loud: PREFER_ON_DEVICE is a mode, ONLY_ON_DEVICE is a mode, and PREFER_CLOUD is the one that sends your data somewhere else.</p>
-
-        <p>I deploy the rack-scale version of this argument. The phone is the pocket-scale version, and in July 2026 <a href="bonsai-27b-phone-local-ai.html">a 27B multimodal model landed there at 3.9 GB</a>, sooner than I had it. The in-ear device, the wearable sensor, the embedded field instrument: those are the micro-scale version, three to seven years out.</p>
-
-        <p>The sovereignty principle doesn't change with the form factor. The data stays where you put it. That's always been the point.</p>
-
-        <h2>Frequently Asked Questions</h2>
-
-        <h3>Can an on-device LLM replace a rack-scale inference server?</h3>
-        <p>Not for heavy regulated workloads, no. A quantized 7B on a phone handles routine tasks fine; large-context document review, multi-step legal analysis, and code generation against a substantial codebase still want rack-scale hardware with the VRAM and memory bandwidth those jobs demand. Which of your workflows falls on which side of that line is a question for a site visit, not a spec sheet.</p>
-
-        <h3>What makes on-device AI inference sovereign?</h3>
-        <p>The data never leaves the device. When inference runs entirely on-chip in airplane mode, no cloud provider, server, or network sees the input or the output. That's the same control principle I deploy at rack scale: the data stays where you put it.</p>
-
-        <h3>Are memristor AI chips available in phones today?</h3>
-        <p>No. Memristor compute-in-memory is documented in peer-reviewed research with large energy-efficiency gains, but it isn't in commercial smartphones. Manufacturing and reliability at consumer scale aren't solved, though TSMC, Samsung, and specialized fabs are working on it. Realistic consumer deployment is years out.</p>
-
-        <h3>Does quantum computing run large language models today?</h3>
-        <p>No. Fault-tolerant quantum hardware running a transformer directly is fifteen to twenty years out on optimistic estimates. What's real today is quantum-inspired tensor-network compression, which shrinks model weights using math borrowed from quantum physics and runs on conventional hardware. Firms like Multiverse Computing use it in production now.</p>
+<h3>Does quantum computing run large language models today?</h3>
+<p>No. Fault-tolerant hardware is fifteen to twenty years out; Multiverse Computing's quantum-inspired compression runs on conventional chips today.</p>
 
 <!-- AEO Summary -->
 <div style="border-left:3px solid var(--copper);padding:16px 20px;margin:32px 0;background:rgba(217,119,6,0.05);border-radius:0 8px 8px 0;">
-<strong>Summary:</strong> On-device LLMs now run useful models entirely on a phone with no network, which is the same data-sovereignty principle I argue for at rack scale. Quantization, MoE sparsity, and dedicated NPU silicon got it there; memristor compute-in-memory and quantum-inspired compression are what take it to in-ear and embedded scale. Heavy regulated workloads, long-context review and multi-step analysis, still want rack-scale hardware. Sorting which workloads a pocket handles from those that need a room with a lock on it is a deployment question answered on site, not in a comparison post.
+<strong>Summary:</strong> On-device LLMs now run useful models on a phone with no network, the same data-sovereignty principle I argue at rack scale. Heavy regulated workloads still want rack hardware, and the sorting happens on site.
 </div>
 
 </article>
