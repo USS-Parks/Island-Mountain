@@ -85,34 +85,18 @@
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "Can I process CUI through a commercial cloud AI API?",
+        "name": "Does cloud AI create ITAR export risk?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "No. Commercial cloud AI APIs are generally incompatible with CUI handling requirements under DFARS 252.204-7012. CUI must be processed in environments meeting NIST SP 800-171 security requirements, and a cloud provider holding it has to meet FedRAMP Moderate or equivalent plus the clause's incident terms. Most commercial AI endpoints offer neither. On-premises AI hardware from Island Mountain, properly network-segregated and physically secured within your facility, processes CUI-adjacent documents under your own security controls. Your own hardware operates air-gapped inside your facility with no non-compliant cloud processing path."
+          "text": "It can. If a provider's infrastructure is reachable by foreign nationals or sits outside the US, processing ITAR technical data may be an unauthorized export under 22 CFR 120-130."
         }
       },
       {
         "@type": "Question",
-        "name": "Does processing ITAR-controlled technical data through cloud AI constitute an unauthorized export?",
+        "name": "Does this hardware have CMMC certification?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes. If a cloud AI provider's infrastructure is accessible to foreign nationals or located outside the United States, processing ITAR-controlled technical data constitutes potential unauthorized export under 22 CFR 120-130. ITAR enforcement actions have addressed unauthorized data transfers through commercial technology services - this is not theoretical risk. On-premises Island Mountain hardware under your physical access controls, with network segregation preventing external transmission, eliminates this export control concern entirely. Data never leaves your controlled environment. Consult your export compliance officer for fact-specific guidance."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How does Island Mountain hardware support CMMC compliance?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Island Mountain hardware is commercial off-the-shelf AI infrastructure - it does not carry CMMC certification itself. However, on-premises hardware under your physical and logical access controls directly supports CMMC Level 2 practices for access control, media protection, and system/communications protection. Air-gap capability and network segregation satisfy the most restrictive NIST SP 800-171 controls. The system runs on Linux with full audit logging capability. Local AI hardware gives your CMMC assessor a cleaner compliance story than routing CUI-adjacent data through commercial cloud APIs."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Can the system operate in an air-gapped or restricted network environment?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes. All models are pre-loaded on local NVMe drives before delivery. The inference engine and OpenWebUI interface run entirely locally - zero external network connectivity required for daily operations. Island Mountain configures air-gapped operation during the 30-day setup support period. Model updates in air-gapped environments use approved removable media transfer. Designed for environments where DFARS 252.204-7012, CMMC, and ITAR require complete network isolation from external infrastructure."
+          "text": "No hardware does. CMMC Phase 2 third-party assessments were suspended on July 13, 2026 pending the program review; Phase 1 self-assessments, NIST SP 800-171 and DFARS 252.204-7012 still apply."
         }
       }
     ]
@@ -187,7 +171,7 @@
     <div class="hero-inner">
       <span class="hero-badge">Local AI for Defense Contractors</span>
       <h1>CUI and ITAR Require Infrastructure You Control</h1>
-      <p>Commercial cloud AI APIs are structurally incompatible with CUI handling and ITAR export controls. We&#39;ll build the whole system inside your enclave instead: the agents, the orchestration, and the models that carry your program&#39;s real work, and controlled data never leaves the hardware you own.</p>
+      <p>Commercial cloud AI APIs aren&#39;t built for CUI handling or ITAR export controls. We&#39;ll build the agents, orchestration and models inside your enclave, and controlled data never leaves hardware you own.</p>
     </div>
   </section>
 
@@ -195,7 +179,6 @@
   <nav class="breadcrumb">
     <a href="index.html">Home</a><span>&rsaquo;</span><a href="solutions.html">Solutions</a><span>&rsaquo;</span>Defense Contractors
   </nav>
-  <div class="cta-hero-wrap"><p class="detail-text">Every deployment starts on-site, with the people who do the work.</p></div>
 
   <!-- The Compliance Problem -->
   <section class="section section-first">
@@ -203,52 +186,19 @@
       <div class="section-header fade-in">
         <span class="section-badge">The Compliance Problem</span>
         <h2>The Cloud AI Problem for Defense Contractors</h2>
-        <p>Compliance requirements in defense contracting are conditions of your contracts, not suggestions, and violations carry real consequences.</p>
       </div>
       <div class="fade-in content-narrow">
-        <p class="body-lg">When a defense contractor uses a commercial cloud AI service to analyze a proposal, draft technical documentation, or review contract language that involves Controlled Unclassified Information, that data is transmitted to infrastructure the contractor does not control. Under DFARS 252.204-7012, CUI must be processed in environments meeting NIST SP 800-171 security requirements. If a cloud provider stores or processes covered defense information, DFARS 7012 wants it at FedRAMP Moderate or equivalent, with incident reporting, forensic access and media preservation on top. Most commercial AI APIs don't offer that, and the ones that do sit in government clouds with their own price and paperwork.</p>
-        <p class="body-lg">The ITAR problem is more acute. ITAR restricts the export of defense articles and technical data to foreign persons and entities. If a cloud AI provider's infrastructure is accessible to foreign nationals - which is the case for virtually all commercial cloud AI services - processing ITAR-controlled technical data through that service may constitute an unauthorized export under 22 CFR 120-130. This is an enforcement risk, not a theoretical concern. A single unauthorized export finding can trigger debarment, criminal penalties, and loss of your facility security clearance. The data left your building the moment you hit send.</p>
-        <p class="body-lg">CMMC (Cybersecurity Maturity Model Certification) adds another layer. CMMC Level 2 and Level 3 assessments evaluate your organization's security practices across 110+ controls. Routing CUI-adjacent data through commercial cloud AI APIs introduces a processing path that your assessor will scrutinize closely - and that may not survive that scrutiny. Defense contractors face the strictest version of a problem common to <a href="solutions.html">other regulated contexts we work in</a> - data that cannot leave the building needs AI infrastructure that never asks it to.</p>
+        <p class="body-lg">Send a proposal touching CUI to a cloud AI service and it lands on infrastructure you don&#39;t control. <a href="itar-cmmc-ai-infrastructure.html" class="clr-copper">DFARS 252.204-7012</a> wants any cloud holding it at FedRAMP Moderate or equivalent, and most AI APIs don&#39;t offer that. On hardware you own, the CUI stays on your network and the system runs <a href="air-gapped-ai-inference.html" class="clr-copper">air-gapped</a>.</p>
       </div>
     </div>
   </section>
 
-  
   <section class="section-pt-32">
     <div class="container">
       <div class="badge-wrap">
       <div class="authority-badge"><i class="ri-shield-check-line authority-badge-icon"></i><span class="authority-badge-label">DFARS 252.204-7012</span></div>
       <div class="authority-badge"><i class="ri-lock-line authority-badge-icon"></i><span class="authority-badge-label">CMMC Level 2</span></div>
       <div class="authority-badge"><i class="ri-file-shield-2-line authority-badge-icon"></i><span class="authority-badge-label">NIST SP 800-171</span></div>
-      </div>
-    </div>
-  </section>
-  <!-- What Local AI Means for Defense -->
-  <section class="section section-dark">
-    <div class="container">
-      <div class="section-header fade-in">
-        <span class="section-badge">How It Works</span>
-        <h2>What Local AI Means for Your Facility</h2>
-        <p>Hardware you own, in a facility you control, on a network you secure, disconnectable from the internet entirely.</p>
-      </div>
-      <div class="card-grid card-grid-3 fade-in">
-        <div class="card">
-          <div class="card-icon-im"><img src="images/icons/itarr-cmmc-ai-icon.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
-          <h3>Your Physical Security Controls</h3>
-          <p>The server sits in your facility, behind your physical access controls, within your security perimeter. Badge readers, locked rooms, visitor logs, security cameras - your existing physical security infrastructure governs access to the AI hardware.</p>
-        </div>
-        <div class="card">
-          <div class="card-icon-im"><img src="images/icons/air-gapped-icon.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
-          <h3>Air-Gap Capable</h3>
-          <p>After initial configuration, the system operates without internet connectivity. Models run locally from NVMe storage. The inference engine and user interface are self-contained. No external connections required for daily operations. Complete network isolation is achievable.</p>
-          <p style="margin-top:0.75rem;">Before delivery, Island Mountain applies a hardened configuration to the OpenWebUI deployment. <code>OFFLINE_MODE</code>, <code>HF_HUB_OFFLINE</code>, <code>ANONYMIZED_TELEMETRY</code>, <code>ENABLE_COMMUNITY_SHARING</code>, and <code>ENABLE_RAG_WEB_SEARCH</code> are all set to their disabled states. The system is tested in this configuration before shipping.</p>
-          <p style="margin-top:0.75rem;">For CMMC assessors and security auditors: the complete environment variable configuration is inspectable on the delivered system. Your team can verify every setting independently. We provide a configuration manifest documenting the air-gap hardening applied to your specific build.</p>
-        </div>
-        <div class="card">
-          <div class="card-icon-im"><img src="images/icons/no-integration-icon.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
-          <h3>Network Segregation Ready</h3>
-          <p>The system can be placed on a segregated network segment within your CUI enclave. Linux-based operating system supports your existing access control, auditing, and monitoring requirements. Standard network security tools apply.</p>
-        </div>
       </div>
     </div>
   </section>
@@ -261,70 +211,49 @@
         <h2>We Build It Around How Your Programs Run</h2>
       </div>
       <div class="fade-in content-narrow">
-        <p class="body-lg">A general model knows defense procurement in the abstract and nothing about your shop. It&#39;s never parsed your contract vehicles, doesn&#39;t know your spec conventions, can&#39;t tell a winning past-performance write-up from filler. We build for the programs you run.</p>
-        <p class="body-lg">Island Mountain builds the agents and the orchestration that carry the multi-step work start to finish: proposal and RFP-response drafting, requirements analysis, CMMC and NIST 800-171 control mapping, technical documentation, and SBIR/STTR narratives. It runs on open-weight models vetted against your program&#39;s supply-chain rules, Nous Hermes 4 among them, served through Ollama or vLLM behind an OpenWebUI front end. We run what your provenance requirements clear, and nothing they don&#39;t. All of it governed by our own agentic orchestration and the <a href="lamprey-woven-security-governance.html" class="clr-copper">Woven Security Fabric</a>, so every action carries an identity, an approval, and a receipt, and the credentials expire when the task is done. The CUI never leaves the enclave to make any of it happen.</p>
-        <p class="body-lg">When the work needs a model that speaks your programs, we&#39;ll build one. Reasoning models and small language models from scratch, trained to orbit your program ontology: your contract vehicles, your spec language, your program history. It learns your terminology and your cadence, not a generic contractor&#39;s.</p>
-        <p class="body-lg">It runs as a hard air-gapped enclave for the classified-adjacent work that demands it, and reaches out only when a task genuinely needs to. You decide, workflow by workflow.</p>
-        <p class="body-lg">Then we hand back the keys. On-site onboarding, SOPs your team can run, and the workflows dropped into their hands so they operate and rework them without calling us. Want the upkeep off your security team&#39;s plate? We offer tiered support sized to the program, and we plug in wherever that&#39;s easiest. This is your program&#39;s legacy. We build it alongside you, and we won&#39;t call it done until your people can run it without us.</p>
+        <p class="body-lg">We build the agents that carry the work start to finish, from RFP response to NIST 800-171 control mapping, on open-weight models your supply-chain rules clear. When the work needs a model that speaks your programs, we&#39;ll build that too. Every action runs under the <a href="lamprey-woven-security-governance.html" class="clr-copper">Woven Security Fabric</a> with an identity and a receipt, and the CUI never leaves the enclave.</p>
       </div>
     </div>
   </section>
 
   <!-- Defense Workflows -->
-  <section class="section section-darker">
+  <section class="section section-dark">
     <div class="container">
       <div class="section-header fade-in">
         <span class="section-badge">Workflows</span>
         <h2>Workflows a Deployment Supports</h2>
-        <p>These aren&#39;t chat prompts. They&#39;re agentic workflows the orchestration runs start to finish, each step carrying its own identity and receipt, and no CUI leaves your enclave.</p>
       </div>
       <div class="card-grid card-grid-3 fade-in">
         <div class="card">
           <div class="card-icon-im"><img src="images/icons/document-review-icon.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
           <h3>CUI-Adjacent Document Analysis</h3>
-          <p>Analyze contract requirements, review solicitation documents, compare compliance language, and extract obligations from CUI-marked materials. All processing stays within your controlled environment.</p>
+          <p>Obligations pulled from CUI-marked solicitations and contracts.</p>
         </div>
         <div class="card">
           <div class="card-icon-im"><img src="images/icons/document-drafting-icon.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
           <h3>Proposal Drafting</h3>
-          <p>Generate first drafts of technical volumes, past performance narratives, management approaches, and staffing plans. Process proposal content that references controlled programs without transmitting it to cloud services.</p>
+          <p>First drafts of technical volumes and past-performance narratives.</p>
         </div>
         <div class="card">
           <div class="card-icon-im"><img src="images/icons/tech-writing-support-icon.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
           <h3>Technical Writing Support</h3>
-          <p>Draft technical documentation, engineering reports, test procedures, and program status updates. The system handles structured technical prose and the deeper analytical passes: multi-document synthesis and cross-referencing across a program&#39;s record. All of it on hardware you control.</p>
+          <p>Engineering reports and test procedures drafted from the program record.</p>
         </div>
         <div class="card">
           <div class="card-icon-im"><img src="images/icons/compliance-evidence-icon.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
           <h3>Contract Compliance Research</h3>
-          <p>Analyze FAR/DFARS clauses, compare contract modifications, review compliance requirements, and identify obligations across multiple contract vehicles. Process contract language locally without exposing program details.</p>
+          <p>FAR and DFARS clauses compared across your contract vehicles.</p>
         </div>
         <div class="card">
           <div class="card-icon-im"><img src="images/icons/evidence-mapping-icon.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
           <h3>Security Documentation</h3>
-          <p>Draft System Security Plans, Plan of Action and Milestones documents, incident response procedures, and security policy documentation. Process security-relevant content on segregated, controlled infrastructure.</p>
+          <p>SSPs, POA&amp;Ms and incident response procedures, drafted on segregated hardware.</p>
         </div>
         <div class="card">
           <div class="card-icon-im"><img src="images/icons/internal-comm-icon.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
           <h3>Internal Communications</h3>
-          <p>Draft program status briefings, internal memoranda, subcontractor correspondence, and team communications. Consistent formatting and professional language across all program communications.</p>
+          <p>Status briefings, memos and subcontractor correspondence in your format.</p>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CMMC and Compliance Context -->
-  <section class="section section-dark">
-    <div class="container">
-      <div class="section-header fade-in">
-        <span class="section-badge">Compliance Context</span>
-        <h2>CMMC Level 2 and Level 3: Where Local AI Fits</h2>
-      </div>
-      <div class="fade-in content-narrow">
-        <p class="body-lg">CMMC assessments evaluate your overall security posture across 110+ practices derived from NIST SP 800-171. Island Mountain hardware does not carry CMMC certification - no hardware component does. What it provides is infrastructure that supports a cleaner compliance posture than routing CUI-adjacent data through commercial cloud AI APIs.</p>
-        <p class="body-lg">Access Control (AC): The hardware sits behind your physical and logical access controls. You determine who accesses it, through what authentication mechanisms, from which network segments. Media Protection (MP): AI processing data stays on hardware you own. No data replication to cloud provider infrastructure. System and Communications Protection (SC): Air-gap capability and network segregation prevent unauthorized data egress. Audit and Accountability (AU): Linux-based OS supports the logging and monitoring requirements your CMMC assessor expects.</p>
-        <p class="body-lg">CMMC Phase 2 third-party assessments were suspended on July 13, 2026 pending the program review; Phase 1 self-assessments, NIST SP 800-171 and DFARS 252.204-7012 still apply.</p>
-        <p class="body-lg">The compliance advantage of local AI is that it removes a processing path - cloud AI transmission of controlled data - that creates compliance questions your assessor will ask about. Fewer questionable data flows means a cleaner assessment.</p>
       </div>
     </div>
   </section>
@@ -335,7 +264,6 @@
       <div class="section-header fade-in">
         <span class="section-badge">Comparison</span>
         <h2>Cloud AI vs. an On-Premise Deployment for Defense Contractors</h2>
-        <p>Compliance risk is the cost you can't see on the invoice.</p>
       </div>
       <div class="table-wrapper fade-in">
         <table>
@@ -349,38 +277,23 @@
           <tbody>
             <tr>
               <td><strong>CUI Processing</strong></td>
-              <td>Needs FedRAMP Moderate equivalent plus 7012 terms. Most AI APIs have neither.</td>
-              <td class="highlight-cell">On your hardware. Your controls.</td>
+              <td>Needs FedRAMP Moderate or equivalent, which most AI APIs lack</td>
+              <td class="highlight-cell">On your hardware, under your controls</td>
             </tr>
             <tr>
               <td><strong>ITAR Export Risk</strong></td>
               <td>Potential unauthorized export</td>
-              <td class="highlight-cell">Data never leaves your facility.</td>
-            </tr>
-            <tr>
-              <td><strong>CMMC Assessment Impact</strong></td>
-              <td>Introduces questionable data flow</td>
-              <td class="highlight-cell">Removes the cloud processing question.</td>
-            </tr>
-            <tr>
-              <td><strong>Air-Gap Capability</strong></td>
-              <td>Not possible - requires internet</td>
-              <td class="highlight-cell">Fully air-gappable after setup.</td>
+              <td class="highlight-cell">Data doesn&#39;t leave your facility</td>
             </tr>
             <tr>
               <td><strong>Physical Security</strong></td>
-              <td>Cloud provider's data center</td>
-              <td class="highlight-cell">Your facility. Your badge readers.</td>
+              <td>Cloud provider&#39;s data center</td>
+              <td class="highlight-cell">Your facility and your badge readers</td>
             </tr>
             <tr>
-              <td><strong>Network Segregation</strong></td>
-              <td>Data traverses public internet</td>
-              <td class="highlight-cell">Internal network only. Segregation ready.</td>
-            </tr>
-            <tr>
-              <td><strong>Compliance Finding Risk</strong></td>
-              <td>High - cloud AI path invites scrutiny</td>
-              <td class="highlight-cell">Lower - data stays in controlled environment.</td>
+              <td><strong>Air-Gap Capability</strong></td>
+              <td>Can&#39;t run without the internet</td>
+              <td class="highlight-cell">Fully air-gappable after setup</td>
             </tr>
             <tr>
               <td><strong>Cost</strong></td>
@@ -389,10 +302,6 @@
             </tr>
           </tbody>
         </table>
-      </div>
-      <div class="comparison-note fade-in mt-20">
-        <i class="ri-information-line"></i>
-        The cost of a compliance finding, contract disqualification, or ITAR enforcement action dwarfs the cost of any hardware purchase. This comparison is not purely financial - it is risk management.
       </div>
     </div>
   </section>
@@ -403,64 +312,29 @@
       <div class="section-header fade-in">
         <span class="section-badge">Honest Limitations</span>
         <h2>What You Do Not Get</h2>
-        <p>Compliance precision requires honesty about what this hardware is and is not.</p>
       </div>
       <div class="risk-grid fade-in">
         <div class="risk-card">
-          <div class="risk-icon"><img src="images/icons/compliance-evidence-icon.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
-          <h4>No CMMC Certification</h4>
-          <p>Island Mountain hardware does not carry CMMC certification. No hardware component does. CMMC evaluates your organizational security posture, not individual pieces of equipment. The hardware supports a compliant posture - it does not certify one.</p>
-        </div>
-        <div class="risk-card">
           <div class="risk-icon"><img src="images/icons/itarr-cmmc-ai-icon.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
           <h4>No Classified Network Connectivity</h4>
-          <p>This is commercial off-the-shelf hardware. It is not designed for classified networks, SCIFs, or SIPRNet environments. It processes CUI and ITAR-controlled unclassified data on your commercial or CUI-enclave network. Classified processing requires government-furnished equipment and accredited facilities.</p>
+          <p>It&#39;s commercial hardware for CUI and ITAR-controlled unclassified data. SCIFs and SIPRNet need government-furnished equipment and accredited facilities.</p>
         </div>
         <div class="risk-card">
-          <div class="risk-icon"><img src="images/icons/local-govt-ai-icon.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
-          <h4>No GFE Integration</h4>
-          <p>Island Mountain hardware is a standalone commercial AI system for internal use inside your contractor facility, with no integration into government-furnished equipment, government networks, or government information systems.</p>
+          <div class="risk-icon"><img src="images/ic-plugins.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
+          <h4>Integrations Are Scoped in Discovery</h4>
+          <p>It doesn&#39;t touch GFE or government networks. Your own systems get connected only if Discovery says it&#39;s safe, each on its own expiring credential.</p>
         </div>
         <div class="risk-card">
           <div class="risk-icon"><img src="images/ic-default-access.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
           <h4>Incident Readiness Is in the Handoff</h4>
-          <p>DFARS 7012 gives you 72 hours to report a cyber incident, and October showed how little time a patch window leaves. So the handoff includes the runbook: who patches what, how an update gets verified before it crosses into the enclave, and how to pull the receipts for a report. Your security team runs it. Tiered support is there if you want us closer to the pager.</p>
+          <p>DFARS 7012 gives you 72 hours to report a cyber incident, so the handoff includes the runbook: who patches what and how to pull receipts.</p>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Critical Disclaimer -->
-  <section class="section section-darker">
-    <div class="container">
-      <div class="fade-in" style="max-width:760px;margin:0 auto;padding:24px;border:1px solid rgba(239,68,68,0.3);border-radius:var(--border-radius);background:rgba(239,68,68,0.04);">
-        <p style="font-size:0.95rem;line-height:1.8;margin:0 0 12px;color:var(--text-light);"><strong>Important Compliance Notice</strong></p>
-        <p class="scenario-text">Island Mountain is not a compliance attorney, CMMC assessor, or C3PAO. CUI handling requirements are complex and fact-specific. ITAR export control determinations depend on the specific data, the specific cloud infrastructure, and the specific contractual requirements involved. Do not make infrastructure decisions based solely on the information on this page. Consult your compliance officer, export control counsel, or a CMMC C3PAO before making changes to your data processing architecture based on compliance requirements.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- General Compliance Disclaimer -->
-  <section class="section section-dark">
-    <div class="container">
-      <div class="fade-in founder-box">
-        <p class="scenario-text">Island Mountain is an engineering practice, not a compliance authority. References to ITAR, CUI, CMMC, DFARS, or NIST SP 800-171 on this page reflect factual descriptions of data handling mechanics - not legal, regulatory, or compliance advice. Consult qualified counsel for compliance determinations specific to your organization and contract requirements.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Power Requirements -->
-  <section class="section section-darker">
-    <div class="container">
-      <div class="power-notice fade-in">
-        <i class="ri-flashlight-line"></i>
-        <p><strong>Power and space:</strong> There's no standard box, so there's no standard circuit. Power, cooling and rack space get scoped with your facilities people during Discovery, before anything's ordered.</p>
       </div>
     </div>
   </section>
 
   <!-- FAQ Section -->
-  <section class="section section-dark">
+  <section class="section section-darker">
     <div class="container">
       <div class="section-header fade-in">
         <span class="section-badge">Defense Contractor Questions</span>
@@ -468,24 +342,14 @@
       </div>
       <div class="risk-grid fade-in">
         <div class="risk-card">
-          <div class="risk-icon"><img src="images/icons/hipaa-ai-icon.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
-          <h4>Can I process CUI through a commercial cloud AI API?</h4>
-          <p>No. Commercial cloud AI APIs are generally incompatible with CUI handling requirements under DFARS 252.204-7012. CUI must be processed in environments meeting NIST SP 800-171 security requirements, and a cloud provider holding it has to meet FedRAMP Moderate or equivalent plus the clause's incident terms. Most commercial AI endpoints offer neither. On-premises AI hardware from Island Mountain processes CUI-adjacent documents under your own security controls.</p>
-        </div>
-        <div class="risk-card">
           <div class="risk-icon"><img src="images/icons/itarr-cmmc-ai-icon.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
           <h4>Does cloud AI create ITAR export risk?</h4>
-          <p>Yes. If a cloud AI provider's infrastructure is accessible to foreign nationals or located outside the United States, processing ITAR-controlled technical data constitutes potential unauthorized export under 22 CFR 120-130. On-premises Island Mountain hardware under your physical access controls eliminates this export control concern entirely. Consult your export compliance officer for fact-specific guidance.</p>
+          <p>It can. If a provider&#39;s infrastructure is reachable by foreign nationals or sits outside the US, processing ITAR technical data may be an unauthorized export under 22 CFR 120-130.</p>
         </div>
         <div class="risk-card">
-          <div class="risk-icon"><img src="images/icons/air-gapped-icon.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
+          <div class="risk-icon"><img src="images/icons/compliance-evidence-icon.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
           <h4>Does this hardware have CMMC certification?</h4>
-          <p>Island Mountain hardware is commercial off-the-shelf AI infrastructure - it does not carry CMMC certification itself. However, on-premises hardware under your physical and logical access controls directly supports CMMC Level 2 practices for access control, media protection, and system/communications protection. Air-gap capability and network segregation satisfy the most restrictive NIST SP 800-171 controls.</p>
-        </div>
-        <div class="risk-card">
-          <div class="risk-icon"><img src="images/icons/air-gapped-icon.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
-          <h4>Can it operate air-gapped?</h4>
-          <p>Yes. All models are pre-loaded on local NVMe drives before delivery. The inference engine and OpenWebUI interface run entirely locally - zero external network connectivity required for daily operations. Model updates in air-gapped environments use approved removable media transfer. Designed for environments where DFARS, CMMC, and ITAR require complete network isolation.</p>
+          <p>No hardware does. CMMC Phase 2 third-party assessments were suspended on July 13, 2026 pending the program review; Phase 1 self-assessments, NIST SP 800-171 and DFARS 252.204-7012 still apply.</p>
         </div>
       </div>
       <div class="text-center-mt-32">
@@ -494,40 +358,15 @@
     </div>
   </section>
 
-
-  <!-- Western-Origin Model Note -->
-  <div style="border-left:3px solid var(--copper);padding:16px 20px;margin:32px 0;background:rgba(217,119,6,0.05);border-radius:0 8px 8px 0;">
-  <strong>Model Provenance:</strong> For defense contractors subject to CMMC, DFARS, or DoD acquisition policy, Island Mountain configures the model stack to your program&#39;s requirements: current open-weight models, and custom models we build for your programs. Every model&#39;s weight provenance is documented in the delivery manifest, and we settle the stack with you during discovery. <a href="contact.html" class="clr-copper">Contact us</a> to discuss your compliance requirements.
-  </div>
-  <!-- AEO Summary -->
-  <div style="border-left:3px solid var(--copper);padding:16px 20px;margin:32px 0;background:rgba(217,119,6,0.05);border-radius:0 8px 8px 0;">
-  <strong>Summary:</strong> On-premises AI processing lets defense contractors handle CUI and ITAR-controlled data without the export control and compliance risks of cloud infrastructure.
-  </div>
-  <p class="body-md" style="margin-top:16px;">Related: <a href="itar-cmmc-ai-infrastructure.html" class="clr-copper">Can Defense Contractors Use AI with ITAR Data?</a> | <a href="air-gapped-ai-inference.html" class="clr-copper">Air-Gapped AI Inference</a></p>
-
-  <!-- CTA -->
-
-  <section class="section section-dark section-py-3">
+  <!-- Compliance Disclaimer -->
+  <section class="section section-dark">
     <div class="container">
-      <div class="section-header fade-in">
-        <h2>What a Deployment Looks Like</h2>
-      </div>
-      <div class="scenario-grid" class="fade-in">
-        <div class="accent-blockquote">
-          <p class="mb-075">Typical engagement: a CMMC Level 2 subcontractor handling CUI for a DoD program. Every agent action is logged to a receipt their ISSO pulls into the SSP.</p>
-          <span class="copper-sm">CMMC Level 2 Subcontractor</span>
-        </div>
-        <div class="accent-blockquote">
-          <p class="mb-075">Typical engagement: an ITAR-regulated manufacturer drafting technical documentation with AI. Export-controlled data stays on hardware inside the facility, so no cloud provider enters the export picture.</p>
-          <span class="copper-sm">Defense Manufacturer</span>
-        </div>
-        <div class="accent-blockquote">
-          <p class="mb-075">Typical engagement: a small defense sub handling DFARS-covered technical data, using AI without adding a cloud provider to its supply-chain risk.</p>
-          <span class="copper-sm">Defense Subcontractor</span>
-        </div>
+      <div class="fade-in founder-box">
+        <p class="scenario-text">We&#39;re an engineering practice, not a compliance attorney, CMMC assessor or C3PAO, and this page isn&#39;t legal advice.</p>
       </div>
     </div>
   </section>
+
   <section class="section section-dark">
     <div class="container fade-in">
       <div class="lead-form-wrapper">
