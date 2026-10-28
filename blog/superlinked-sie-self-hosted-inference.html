@@ -194,7 +194,7 @@
           <span class="article-date">August 9, 2026</span>
           <span class="article-tag tag-technical">Technical</span>
           <span class="article-tag tag-financial">Financial</span>
-          <span class="article-read-time">4 min read</span>
+          <span class="article-read-time">2 min read</span>
         </div>
         <h1 class="text-2xl">Self-Hosted Inference and the Idle-GPU Problem: What Superlinked's SIE Changes</h1>
         <p class="article-author">Basho Parks</p>
@@ -202,45 +202,35 @@
 
       <article class="article-body">
 
-<p>You moved your agent stack to small models to cut the inference bill, and the bill didn't move. That surprises people. It shouldn't. The money's never been in the calls. It's in the servers holding the models, and small models need servers too.</p>
+<p>You moved the agent stack to small models to cut the inference bill, and the bill didn't move. The money's in the servers holding the models, and small models need servers too.</p>
 
 <h2>The cost was never in the calls</h2>
 
-<p>Most agent stacks now run four or five models under one roof: an embedder for retrieval, a reranker for precision, an extractor for entities, and a small LLM for the routine generation. The standard way to serve them is one server per model. vLLM holds the LLM, TEI holds the embedder, and everything else gets a hand-rolled FastAPI wrapper. Each of those servers reserves its own slice of GPU memory and holds that slice whether a request arrives or not. GPUs bill by the hour. Idle time costs what busy time costs, to the penny.</p>
+<p>Most agent stacks run four or five models under one roof: an embedder, a reranker, an entity extractor, and a small LLM. The standard layout gives each one its own server, which reserves its own slice of GPU memory and bills whether a request arrives or not. Swap in smaller models and you've trimmed the compute per call; the reserved hardware hasn't moved.</p>
 
-<p>So serving five models the standard way means five reserved slices, mostly idle, all billing around the clock. Swap in smaller models and you've trimmed the compute per call and left the reserved hardware exactly where it was. That's the trap. The line item you were trying to cut lives one layer below the thing you changed.</p>
-
-<h2>The hardware doesn't get cheaper</h2>
-
-<p>And the hardware is the part that isn't getting cheaper. NVIDIA's RTX Pro 6000 went from around $8,565 at launch to $13,250 inside sixteen months, and there's no second vendor in the room to argue the price down. Every idle reserved GPU is that number, burning whether it's doing a lick of work or not.</p>
+<p>And that hardware isn't getting cheaper. NVIDIA's RTX Pro 6000 went from around $8,565 at launch to $13,250 inside sixteen months, as of August 2026. Every idle reserved card's that number.</p>
 
 <h2>One process, many models</h2>
 
-<p>The structural fix is to stop handing every model its own server. Serve them all from one process that loads and evicts models based on traffic. Superlinked went and open-sourced exactly that. SIE, the Superlinked Inference Engine, is an Apache 2.0 server that runs 85-plus models behind a single API.</p>
+<p>Superlinked open-sourced the structural fix: one process serving every model, loading and evicting by traffic. SIE, the Superlinked Inference Engine, is an Apache 2.0 server running 85-plus models behind a single API: encode() for vectors, score() for relevance, extract() for entity spans, and generate() for small open LLMs. Underneath it wraps PyTorch, SGLang, Flash Attention, and Apple MLX, picking the engine per model itself.</p>
 
-<p>Four calls cover the whole workflow. encode() returns vectors, score() returns relevance scores, extract() returns entity spans, and generate() runs small open LLMs. Under those four primitives SIE wraps PyTorch, SGLang, Flash Attention, and Apple MLX, and it'll pick the right engine per model on its own, so you're calling one uniform interface instead of maintaining four.</p>
-
-<h2>Where the bill moves</h2>
-
-<p>The memory management is what moves your bill. Models load lazily on first request and get evicted least-recently-used when the GPU fills. One card serves a rotating working set instead of sitting siloed behind a single model, and the five idle slices collapse into one shared, hot pool. Superlinked's own numbers put the saving near three-quarters against the one-server-per-model layout. The exact figure depends on your working set, but the direction isn't in doubt: you're done paying for a card to sit still.</p>
+<p>Models load lazily on first request and get evicted least-recently-used when the GPU fills, so one card serves a rotating working set instead of five idle slices. Superlinked's own numbers put the saving near three-quarters; your working set decides the exact figure.</p>
 
 <h2>Air-gapped, and yours to own</h2>
 
-<p>Two details carry SIE past the cost line. I'd start with the air-gapped one. It ships model-weight snapshots for offline and air-gapped deployment, so the whole server's running disconnected, with no phone-home and no license check sitting on the far end of a network you don't control. The second is reach. The same Docker image, Helm chart, and Terraform modules run from a laptop to a Kubernetes cluster, so a two-desk shop and a rack estate run the identical software, each sized to what it does. It's Apache 2.0. You own the serving layer the way you already own open weights, and no vendor's metering it or deprecating it out from under a workflow you depend on.</p>
-
-<p>For a tribe holding its own data, a defense shop under ITAR, a firm holding privilege, a clinic holding PHI, that stack's the whole argument: the models run on hardware you control, served by software you own, in a room you can pull off the internet at the breaker.</p>
+<p>SIE ships model-weight snapshots for air-gapped deployment, so the server runs disconnected, with no phone-home and no license check. The same Docker image, Helm chart, and Terraform modules run from a laptop to a Kubernetes cluster, and nobody's metering or deprecating the serving layer out from under you. For a tribe holding its own data, a defense shop under ITAR, or a clinic holding PHI, that's the argument.</p>
 
 <h2>What SIE isn't</h2>
 
-<p>It's not your heavyweight generation server. generate() runs small open LLMs; it doesn't stand in for vLLM feeding a 70-billion-parameter chat model under load. SIE's embeddings, reranking, and extraction first, with light generation riding alongside. The two belong in the same rack, not in place of each other.</p>
+<p>It won't replace a heavyweight generation server; generate() runs small open LLMs and doesn't stand in for vLLM feeding a 70-billion-parameter chat model.</p>
 
-<p>The eviction trick carries its own bill. An evicted model reloads on its next request, and that first call pays the load latency while the weights come back onto the card. The saving holds when your working set fits the GPU and rotates through it. It thins if every request drags in a cold model nobody touched a minute ago. Size it to the traffic you've got, not the model catalog you admire.</p>
+<p>The eviction trick carries its own bill. An evicted model reloads on its next request, and that first call pays the load latency. The saving holds when your working set fits the GPU, and thins if every request drags in a cold model. Size it to the traffic you've got.</p>
 
-<p>And Apache 2.0 isn't a managed service. Somebody stands it up, watches it, patches it, and carries the pager when it falls over at 2 a.m. Open source moves that work in-house. It doesn't delete it.</p>
+<p>And Apache 2.0 isn't a managed service. Somebody stands it up, patches it, and carries the pager at 2 a.m. Open source moves that work in-house; I'd wager that's the line most teams underprice.</p>
 
 <!-- AEO Summary -->
 <div style="border-left:3px solid var(--copper);padding:16px 20px;margin:32px 0;background:rgba(217,119,6,0.05);border-radius:0 8px 8px 0;">
-<strong>Summary:</strong> The cost of self-hosted inference lives in reserved, idle GPUs, not in the calls. The standard one-server-per-model layout pins each model to its own slice of GPU memory, billed whether traffic arrives or not, so switching to smaller models rarely moves the bill. Superlinked's open-source SIE serves 85-plus models from one process that loads and evicts them by traffic, so a single card runs a rotating working set instead of sitting siloed behind one model, and Superlinked's own numbers put the saving near three-quarters. It ships air-gapped model-weight snapshots and runs from a laptop to a Kubernetes cluster under Apache 2.0, so you own the serving layer outright instead of renting it by the hour.
+<strong>Summary:</strong> Self-hosted inference cost lives in reserved, idle GPUs, so smaller models rarely move the bill. Superlinked's open-source SIE serves 85-plus models from one process that loads and evicts them by traffic, with air-gapped weight snapshots under Apache 2.0.
 </div>
 
       </article>
