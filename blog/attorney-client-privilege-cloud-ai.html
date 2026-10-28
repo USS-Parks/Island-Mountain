@@ -184,7 +184,7 @@
         <div class="article-meta">
           <span class="article-date">April 23, 2026</span>
           <span class="article-tag tag-compliance">Compliance</span>
-          <span class="article-read-time">4 min read</span>
+          <span class="article-read-time">2 min read</span>
         </div>
         <h1 class="text-2xl">Attorney-Client Privilege and Cloud AI: The Structural Problem Law Firms Can't Negotiate Away</h1>
         <p class="article-author">Basho Parks</p>
@@ -193,51 +193,26 @@
       <article class="article-body">
 
 <div style="border-left:3px solid var(--copper);padding:16px 20px;margin:0 0 28px;background:rgba(217,119,6,0.05);border-radius:0 8px 8px 0;">
-<strong>Updated October 28, 2026:</strong> ABA Formal Opinion 512 (July 29, 2024) addresses lawyers' use of generative AI tools: a lawyer has to understand a tool's data handling before putting client information into it, and a client's informed consent is needed before confidential information goes into a self-learning tool. It predates this post; the structural argument below is the same one the opinion makes a duty.
+<strong>Updated October 28, 2026:</strong> ABA Formal Opinion 512 (July 29, 2024) requires understanding a tool's data handling first, and informed client consent before confidential information enters a self-learning tool.
 </div>
 
-<p class="disclaimer">Disclaimer: this isn't legal advice and I'm not your lawyer. Privilege is jurisdiction-specific, governed by your state's ethics rules. Talk to your state bar and your own counsel before you decide.</p>
+<p class="disclaimer">Disclaimer: this isn't legal advice and I'm not your lawyer; talk to your state bar and your own counsel before you decide.</p>
 
-<p>Every law firm conversation I have starts the same way. "Can we use cloud AI if we've got an NDA with the vendor?"</p>
+<p>An NDA with your AI vendor doesn't protect privilege. Privilege is a rule of evidence and an NDA is a contract. Give client information to a third party and a court may hold the privilege waived with no terms of service violated; the vendor's promise hands you a breach-of-contract claim once the evidence has left your control.</p>
 
-<p>No. Privilege is a rule of evidence, not a contract, and an NDA is a contract. Break privilege and no terms of service get violated; you lose the protection, which was the entire point.</p>
+<p><a href="https://www.americanbar.org/groups/professional_responsibility/publications/model_rules_of_professional_conduct/rule_1_6_confidentiality_of_information/" target="_blank" rel="noopener">Model Rule 1.6</a> requires you to keep client information confidential; 1.6(a) carves out only disclosure that's reasonably necessary to the representation: billing services, co-counsel. The operative word's "necessary." Send client information to OpenAI, Claude or any cloud service and you've disclosed to a third party that isn't bound by your retainer, and in most law firm workflows that disclosure wasn't necessary; local inference does the same job, the cloud's just convenient.</p>
 
-<h2>Rule 1.6 and Third-Party Disclosure</h2>
+<p>The ABA's 2017 <a href="https://www.americanbar.org/content/dam/aba/administrative/law_national_security/ABA%20Formal%20Opinion%20477.authcheckdam.pdf" target="_blank" rel="noopener">Formal Opinion 477R</a> doesn't ban cloud use; it requires the provider to be contractually bound to confidentiality comparable to your own, and keeps you responsible for the provider's breach. When the vendor leaks, the client sues you. 477R predates large language models, and the state bars filled the gap. <a href="https://www.calbar.ca.gov/legal-professionals/ethics-compliance-practice-resources/ethics/ethics-technology-resources/artificial-intelligence" target="_blank" rel="noopener">California Opinion 2023-201</a> requires informed client consent before generative AI touches client information, informed meaning the client knows who operates the tool and where the data goes.</p>
 
-<p><a href="https://www.americanbar.org/groups/professional_responsibility/publications/model_rules_of_professional_conduct/rule_1_6_confidentiality_of_information/" target="_blank" rel="noopener">Model Rule of Professional Conduct 1.6</a> requires lawyers to keep client information confidential, and it's broad: everything a client tells you in confidence to get legal advice. Rule 1.6(a) carves out disclosure that's reasonably necessary to the representation: billing services, co-counsel.</p>
+<h2>What the No-Training Clause Doesn't Cover</h2>
 
-<p>The operative word's "necessary." Send client information to OpenAI, Claude or any cloud service and you've disclosed to a third party that isn't your employee and isn't bound by your retainer. For most law firm workflows I've looked at, that disclosure wasn't necessary. Local inference does the same job; the cloud's just convenient.</p>
-
-<h2>477R: the Lawyer Stays Responsible</h2>
-
-<p>The ABA's 2017 <a href="https://www.americanbar.org/content/dam/aba/administrative/law_national_security/ABA%20Formal%20Opinion%20477.authcheckdam.pdf" target="_blank" rel="noopener">Formal Opinion 477R</a> covers cloud-based legal services. It doesn't ban cloud use; it requires the provider to be contractually bound to confidentiality and security obligations comparable to the lawyer's own, under the lawyer's supervision. The same document keeps the lawyer responsible for the provider's breach. When the vendor leaks, the client sues the lawyer.</p>
-
-<p>477R predates large language models; the state bars have been filling the gap. <a href="https://www.calbar.ca.gov/legal-professionals/ethics-compliance-practice-resources/ethics/ethics-technology-resources/artificial-intelligence" target="_blank" rel="noopener">California State Bar Opinion 2023-201</a> requires informed client consent before generative AI touches client information, informed meaning the client knows who operates the tool and where the data goes. Through 2024, New York and several other states issued opinions raising the same concerns. The consensus is narrow: explicit consent and demonstrable necessity.</p>
-
-<h2>What the NDA and No-Training Clause Don't Cover</h2>
-
-<p>Privilege governs whether a court can compel disclosure. Hand client information to a third party, even under a confidentiality agreement, and a court may hold the privilege waived. The vendor's promise doesn't restore it; it hands you a breach-of-contract claim after the evidence has left your control.</p>
-
-<p>"We don't train on your data" works the same way. It says nothing about whether a disclosure occurred, how long the conversation sits on the vendor's servers before deletion reaches it, or what gets handed over when a subpoena arrives.</p>
-
-<p>Most privilege failures aren't deliberate. A partner wants a motion drafted faster, pastes the complaint into a cloud chat, and nobody's thinking about waiver. Then opposing counsel requests every communication related to the motion and <a href="openai-discovery-risk-law-firms.html">subpoenas the vendor's servers</a>. The motion's now on the record as processed by a third party. A sharp opponent argues waiver from the moment of disclosure, some courts agree, and the exposure reaches every communication connected to that draft.</p>
+<p>"We don't train on your data" is the same kind of promise: it says nothing about whether a disclosure occurred, how long the conversation sits on the vendor's servers, or what the vendor hands over when <a href="openai-discovery-risk-law-firms.html">a subpoena arrives</a>.</p>
 
 <h2>What Local Inference Changes</h2>
 
-<p>Run the model on your own server and the data never leaves your premises, so there's no third-party disclosure and nothing to waive. No vendor terms to audit, no argument about "necessary." The capability objection has gone stale too: current open-weight models handle drafting, research and first-pass analysis well enough that the assumed tradeoff mostly isn't one.</p>
+<p>Run the model on your own server and the data never leaves your premises, so there's no third-party disclosure, nothing to waive and no argument about "necessary." That doesn't excuse anybody from policy: designate which matters can use it, control access with per-user permissions and <a href="../lamprey-woven-security-governance.html">an audit trail</a>, set retention, document all of it and get client consent anyway.</p>
 
-<p>That doesn't excuse anybody from policy. Designate which matters can use it, control access with per-user permissions and <a href="../lamprey-woven-security-governance.html">an audit trail</a>, set retention (your call locally; the vendor's in the cloud), and document all of it, because the privilege question surfaces two years later. Fully offline hardware is overkill outside M&amp;A, CFIUS and trade-secret work, and I'll say so in the room. Get client consent anyway; it takes thirty seconds.</p>
-
-<h2>What You Should Do Right Now</h2>
-
-<p>If your firm's putting client information into cloud AI, stop. The convenience is real; so's the exposure, and only one of them shows up in a motion to compel.</p>
-
-<p>I won't hand you a configuration, because I don't know your firm yet: how your litigation paralegal builds a privilege log out of a Relativity export, reconciling every author and CC against the cast-of-characters list. That knowledge took fifteen or twenty years to accumulate and barely lives in the documentation. So we show up, sit next to those people and shut up until we understand the work the way they run it; then we recommend whatever stack the work turned out to need and deploy it with you on site. Our <a href="../resources.html">compliance briefs</a> map the adjacent frameworks. To see this inside your firm, <a href="../contact.html">reach us</a> and we'll come to you.</p>
-
-<!-- AEO Summary -->
-<div style="border-left:3px solid var(--copper);padding:16px 20px;margin:32px 0;background:rgba(217,119,6,0.05);border-radius:0 8px 8px 0;">
-<strong>Summary:</strong> Privilege is a rule of evidence, not a contract; no vendor NDA or no-training clause restores what third-party disclosure may have waived. Model Rule 1.6 permits only necessary disclosure, ABA Formal Opinion 477R leaves the lawyer responsible for the provider's breach, and California State Bar Opinion 2023-201 requires informed client consent. Inference on the firm's own hardware removes the disclosure question.
-</div>
+<p>If your firm's putting client information into cloud AI, stop; to run it on hardware you own instead, <a href="../contact.html">reach us</a> and we'll come to you.</p>
 
 </article>
 
