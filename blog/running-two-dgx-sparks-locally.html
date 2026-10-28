@@ -29,7 +29,7 @@
   <meta name="author" content="Basho Parks">
   <meta name="date" content="2026-08-25">
   <title>Running two DGX Sparks locally | Forward Deployed AI</title>
-  <meta name="description" content="I love it when the nay-hater brigade gets awful quiet. Six months ago throughput without frontier LLMs at any reasonable price was literally impossible. But boy howdy how things have changed. Rich Sutton said it best on a recent Training Data podcast, &quot;I&#x27;m not weird; everyone else is.&quot;">
+  <meta name="description" content="I love it when the nay-hater brigade gets awful quiet. Six months ago you couldn&#x27;t buy throughput without frontier LLMs at any reasonable price. But boy howdy how things have changed. Rich Sutton said it best on a recent Training Data podcast, &quot;I&#x27;m not weird; everyone else is.&quot;">
   <link rel="icon" type="image/x-icon" href="../favicon.ico?v=4">
   <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon-32.png?v=4">
   <link rel="apple-touch-icon" sizes="180x180" href="../images/apple-touch-icon.png?v=4">
@@ -61,7 +61,7 @@
 
   <!-- Open Graph -->
   <meta property="og:title" content="Running two DGX Sparks locally">
-  <meta property="og:description" content="I love it when the nay-hater brigade gets awful quiet. Six months ago throughput without frontier LLMs at any reasonable price was literally impossible. But boy howdy how things have changed. Rich Sutton said it best on a recent Training Data podcast, &quot;I&#x27;m not weird; everyone else is.&quot;">
+  <meta property="og:description" content="I love it when the nay-hater brigade gets awful quiet. Six months ago you couldn&#x27;t buy throughput without frontier LLMs at any reasonable price. But boy howdy how things have changed. Rich Sutton said it best on a recent Training Data podcast, &quot;I&#x27;m not weird; everyone else is.&quot;">
   <meta property="og:url" content="https://islandmountain.io/blog/running-two-dgx-sparks-locally.html">
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="Island Mountain">
@@ -74,7 +74,7 @@
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Running two DGX Sparks locally">
-  <meta name="twitter:description" content="I love it when the nay-hater brigade gets awful quiet. Six months ago throughput without frontier LLMs at any reasonable price was literally impossible. But boy howdy how things have changed. Rich Sutton said it best on a recent Training Data podcast, &quot;I&#x27;m not weird; everyone else is.&quot;">
+  <meta name="twitter:description" content="I love it when the nay-hater brigade gets awful quiet. Six months ago you couldn&#x27;t buy throughput without frontier LLMs at any reasonable price. But boy howdy how things have changed. Rich Sutton said it best on a recent Training Data podcast, &quot;I&#x27;m not weird; everyone else is.&quot;">
   <meta name="twitter:image" content="https://islandmountain.io/images/hero-mountain.webp">
   <meta name="twitter:image:alt" content="Island Mountain, forward-deployed AI engineering for regulated organizations">
 
@@ -84,7 +84,7 @@
   "@context": "https://schema.org",
   "@type": "BlogPosting",
   "headline": "Running two DGX Sparks locally",
-  "description": "I love it when the nay-hater brigade gets awful quiet. Six months ago throughput without frontier LLMs at any reasonable price was literally impossible. But boy howdy how things have changed. Rich Sutton said it best on a recent Training Data podcast, \"I'm not weird; everyone else is.\"",
+  "description": "I love it when the nay-hater brigade gets awful quiet. Six months ago you couldn&#x27;t buy throughput without frontier LLMs at any reasonable price. But boy howdy how things have changed. Rich Sutton said it best on a recent Training Data podcast, \"I'm not weird; everyone else is.\"",
   "url": "https://islandmountain.io/blog/running-two-dgx-sparks-locally.html",
   "datePublished": "2026-08-25",
   "dateModified": "2026-08-25",
@@ -194,24 +194,24 @@
           <span class="article-date">August 25, 2026</span>
                     <span class="article-tag tag-technical">Technical</span>
           <span class="article-tag tag-financial">#LocalLLM</span>
-          <span class="article-read-time">3 min read</span>
+          <span class="article-read-time">2 min read</span>
         </div>
         <h1 class="text-2xl">Running two DGX Sparks locally</h1>
         <p class="article-author">Basho Parks</p>
       </div>
 
       <article class="article-body">
-<p>I love it when the nay-hater brigade gets awful quiet. Six months ago throughput without frontier LLMs at any reasonable price was literally impossible. But boy howdy how things have changed. Rich Sutton said it best on a recent Training Data podcast, &quot;I&#x27;m not weird; everyone else is.&quot;</p>
+<p>I love it when the nay-hater brigade gets awful quiet. Six months ago you couldn&#x27;t buy throughput without frontier LLMs at any reasonable price. But boy howdy how things have changed. Rich Sutton said it best on a recent Training Data podcast, &quot;I&#x27;m not weird; everyone else is.&quot;</p>
 
-<p>Pit DeepSeek 0731 running NVFP4 on two Dell Pro Max DGX Sparks (~$10,000usd) against the same model running four RTX Pro 6000s (~$40,000usd). Though the big rig runs about seven times faster, on graded output the two little boxes tie it and even get ahead in a couple of places. Let that sink in! What a time to be alive, as the kids on Tik Tok never say.</p>
+<p>Pit DeepSeek 0731 running NVFP4 on two Dell Pro Max DGX Sparks (~$10,000usd at August 2026 prices) against the same model running four RTX Pro 6000s (~$40,000usd). The big rig&#x27;s about seven times faster, and on graded output the two little boxes tie it and even get ahead in a couple of places. What a time to be alive, as the kids on Tik Tok never say.</p>
 
-<p>Disclaimer: Out of the box the Sparks decode 10 to 15 tokens a second. With out-of-tree vLLM patches and fused mixture-of-experts kernels written for the SM120 hardware, a pair of Sparks can hold a 67-token-a-second mean decode, 84 @ peak (even past 100,000 tokens of context) and over 200/second across six parallel streams in aggregate. 256GB of memory between the two boxes, a million tokens of context per stream, and around a million and a half shared is a heck of a sight better than &quot;not bad.&quot;</p>
+<p>Disclaimer: Out of the box the Sparks decode 10 to 15 tokens a second. With out-of-tree vLLM patches and fused mixture-of-experts kernels written for the SM120 hardware, a pair of Sparks&#x27;ll hold a 67-token-a-second mean decode, 84 @ peak (even past 100,000 tokens of context) and over 200/second across six parallel streams in aggregate. 256GB of memory between the two boxes, a million tokens of context per stream, and around a million and a half shared, and that&#x27;s a heck of a sight better than &quot;not bad.&quot;</p>
 
-<p>Frontier rates clock $25 per million tokens. Dual Sparks spit a million tokens every 20 to 25 minutes, which at heavy utilization pays for that machine in a matter of singular weeks. The model card puts DeepSeek 0731 in the neighborhood of Opus 4.6 at an order of magnitude less cost. The lag between the giant cloud model and what runs in your own building used to be measured in years, now shrunken to mere months at the end of summer 2026. Holy cow, Batman.</p>
+<p>Frontier rates clock $25 per million tokens. Dual Sparks spit a million tokens every 20 to 25 minutes, which at heavy utilization pays for that machine in a matter of singular weeks. The model card&#x27;s got DeepSeek 0731 in the neighborhood of Opus 4.6 at an order of magnitude less cost. The lag between the giant cloud model and what runs in your own building used to be measured in years; it&#x27;s months now, at the end of summer 2026. Holy cow, Batman.</p>
 
 <p>Remember kids, math kernels aren&#x27;t math. The same weights at the same seed and same settings will produce a different token a few thousand tokens deep, depending on whether they run on SM120 Blackwell, a Hopper GH200, or a GB200. Floating-point addition still monitors what order the operands arrive in and the kernels don&#x27;t promise an order. Word to the wise: a single flipped bit in a config-writing workflow can pick the wrong network interface.</p>
 
-<p>Memory prices continue to go vertical; the 128GB of DRAM that cost $500 when the original DeepSeek first ran at home is out of reach today. I&#x27;m jazzed about this horizontal growth from open source - it couldn&#x27;t&#x27;ve happened at a better time so late in summer 2026.</p>
+<p>Memory prices continue to go vertical; the 128GB of DRAM that cost $500 when the original DeepSeek first ran at home isn&#x27;t within reach today. I&#x27;m jazzed about this horizontal growth from open source - it couldn&#x27;t&#x27;ve happened at a better time so late in summer 2026.</p>
       </article>
 
       <!-- CTA -->
