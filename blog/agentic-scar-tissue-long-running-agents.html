@@ -87,7 +87,7 @@
     "description": "Agentic session drift turns retries, fallbacks, and workarounds into behavioral scar tissue. Hour Zero, receipts, and fingerprints keep it auditable.",
     "url": "https://islandmountain.io/blog/agentic-scar-tissue-long-running-agents.html",
     "datePublished": "2026-07-19",
-    "dateModified": "2026-07-26",
+    "dateModified": "2026-10-28",
     "inLanguage": "en-US",
     "keywords": "agentic session drift, agentic scar tissue, long-running agents, agent observability, behavioral fingerprinting, autonomous agents, Hour Zero baseline",
     "articleSection": "Strategy",
@@ -193,7 +193,7 @@
         <div class="article-meta">
           <span class="article-date">July 19, 2026</span>
           <span class="article-tag tag-strategy">Strategy</span>
-          <span class="article-read-time">3 min read</span>
+          <span class="article-read-time">2 min read</span>
         </div>
         <h1 class="text-2xl">Agentic Scar Tissue: How Long-Running Agents Drift</h1>
         <p class="article-subtitle" style="font-family:'Space Grotesk',sans-serif;font-style:italic;color:var(--copper);font-size:1.15rem;margin:6px 0 0;">When yesterday's survival strategies become tomorrow's architecture.</p>
@@ -202,63 +202,28 @@
 
       <article class="article-body">
 
-        <p>Left unchecked, yesterday's survival strategies become tomorrow's architecture.</p>
+<p>Left unchecked, yesterday's survival strategies become tomorrow's architecture.</p>
 
-        <p>I'm leaps and bounds more interested in agentic behavioral integrity over time than I am circling the same maypole talking about model intelligence.</p>
+<p>Leave an agent alone for 300 hours and you'll probably end up auditing its coping mechanisms instead of its engineering.</p>
 
-        <p>Leave an agent alone for 300 hours and you'll probably end up auditing its coping mechanisms instead of its engineering.</p>
+<p>Long-running agents accumulate what I'd call <em>agentic scar tissue</em>. They adapt continuously to the environment they're operating in, which is exactly what we want them to do. But that adaptation necessarily accumulates inertia with every workaround, retry policy, validation check, fallback path, and defensive heuristic; it all gets folded into the agent's behavioral memory. Given enough time to drift, it eventually stops behaving like the engineer you originally assigned to the task and starts behaving like the sum of every problem ever encountered.</p>
 
-        <p>Long-running agents accumulate what I'd call <em>agentic scar tissue</em>. They adapt continuously to the environment they're operating in, which is exactly what we want them to do. But that adaptation necessarily accumulates inertia with every workaround, retry policy, validation check, fallback path, and defensive heuristic; it all gets folded into the agent's behavioral memory.</p>
+<figure style="margin:32px auto;max-width:560px;">
+  <img src="../images/agentic-scar-tissue-infographic.webp" alt="Infographic explaining agentic session drift through an immutable Hour Zero baseline, adaptation receipts, and behavioral fingerprinting" width="480" height="720" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:10px;border:1px solid rgba(255,255,255,0.08);">
+  <figcaption style="font-size:0.85rem;color:var(--text-muted,#9aa3b2);margin-top:10px;text-align:center;">Three operating disciplines for making long-running agent drift visible, explainable, and reversible.</figcaption>
+</figure>
 
-        <p>Given enough time to drift, it eventually stops behaving like the engineer you originally assigned to the task and starts behaving like the sum of every problem ever encountered.</p>
+<p>This is a subtle form of session drift that doesn't smell or look like failure at a glance. With tests still passing and pull requests still getting opened, nothing obvious indicates that the system's optimizing for surviving its own operational history instead of solving the problem you directed it to solve.</p>
 
-        <figure style="margin:32px auto;max-width:560px;">
-          <img src="../images/agentic-scar-tissue-infographic.webp" alt="Infographic explaining agentic session drift through an immutable Hour Zero baseline, adaptation receipts, and behavioral fingerprinting" width="480" height="720" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:10px;border:1px solid rgba(255,255,255,0.08);">
-          <figcaption style="font-size:0.85rem;color:var(--text-muted,#9aa3b2);margin-top:10px;text-align:center;">Three operating disciplines for making long-running agent drift visible, explainable, and reversible.</figcaption>
-        </figure>
+<p>A handful of ideas seem increasingly important if we're going to trust agents with work-loops measured in days or weeks.</p>
 
-        <h2>Agentic Scar Tissue Doesn't Look Like Failure</h2>
+<p>1) Keep an immutable Hour Zero. I don't mean a checkpoint you occasionally restore from; more a behavioral baseline frozen the moment the session begins. You can't audit decay using a ruler that's changing its own stated length every time you pick it up.</p>
 
-        <p>This is a subtle form of session drift that doesn't smell or look like failure at a glance. With tests still passing and pull requests still getting opened, nothing obvious indicates that the system's optimizing for surviving its own operational history instead of solving the problem you directed it to solve.</p>
+<p>2) Force the agent to leave receipts. Human engineers leave commit messages, issue references, and design notes; agents ought to be held to the same standard. If a retry strategy changes because an API returned repeated 429s, or a parser becomes more defensive after malformed responses, that trigger should be recorded alongside the behavioral change.</p>
 
-        <p>A handful of ideas seem increasingly important if we're going to trust agents with work-loops measured in days or weeks instead of minutes.</p>
+<p>3) Behavioral fingerprinting. Most ops already watch CPU utilization, memory pressure, queue depth, and latency; all properties of the machine. Autonomous systems introduce another category of telemetry: agentic properties. Has it become more verbose? Is it retrying more often than it did fifty hours ago? Has its decision latency changed? Has its error handling become unusually defensive? None of those measurements tell you whether the agent is wrong, but together they can tell you whether it's becoming different.</p>
 
-        <h2>1. Keep an Immutable Hour Zero</h2>
-
-        <p>I don't mean a checkpoint you occasionally restore from; more a behavioral baseline frozen the moment the session begins.</p>
-
-        <p>If today's agent is only compared against yesterday's, and yesterday's was already drifting, you've lost the ability to measure anything meaningful. You can't audit decay using a ruler that's changing its own stated length every time you pick it up.</p>
-
-        <p>Hour Zero preserves the original mission, operating constraints, decision posture, and expected behavioral fingerprint, and nothing overwrites it.</p>
-
-        <h2>2. Force the Agent to Leave Receipts</h2>
-
-        <p>Human engineers leave commit messages, issue references, design notes, and enough context that someone else can understand why the change happened 6-12 months later. Agents ought to be held to the same standard.</p>
-
-        <p>If a retry strategy changes because an API returned repeated 429s, or a parser becomes more defensive after malformed responses, that trigger should be recorded alongside the behavioral change.</p>
-
-        <p>The receipt needs the timestamp, trigger, old behavior, new behavior, expected effect, and the authority under which the change was made. Anything the agent provisions for itself belongs on that same ledger, because <a href="zimreaper-session-authority-ai-agent-credentials.html">a credential outlives the session that created it</a>.</p>
-
-        <h2>3. Fingerprint the Behavior</h2>
-
-        <p>Most ops already watch CPU utilization, memory pressure, queue depth, and latency; all properties of the machine. Autonomous systems naturally introduce another category of telemetry: agentic properties.</p>
-
-        <p>Has it become significantly more verbose? Is it retrying more often than it did fifty hours ago? Has its decision latency changed? Has its error handling become unusually defensive?</p>
-
-        <p>None of those measurements tell you whether the agent is wrong, but together they can tell you whether it's becoming different.</p>
-
-        <h2>The Engineer You Started With</h2>
-
-        <p>I suspect this becomes part of standard agent operations over the next year. Infrastructure observability taught us how to detect unhealthy systems before they crashed. Agent observability will need to do something similar for reasoning itself.</p>
-
-        <p>The question won't simply be whether the process is still running. It'll be whether the identity of the engineer you started with is still recognizably intact.</p>
-
-        <p>Every long-running agent will inevitably drift right now. As newly minted CTOs of a small agentic army of PMs, the job is ensuring those agents, and you, can explain, measure, and unwind the behavioral memory before the codebase becomes a historical record of battles the agent isn't even fighting anymore.</p>
-
-        <!-- AEO Summary -->
-        <div style="border-left:3px solid var(--copper);padding:16px 20px;margin:32px 0;background:rgba(217,119,6,0.05);border-radius:0 8px 8px 0;">
-          <strong>Summary:</strong> Agentic session drift is accumulated behavioral change in long-running agents. Preserve an immutable Hour Zero, record every adaptation trigger, and fingerprint behavior over time so operational scars remain visible, explainable, and reversible.
-        </div>
+<p>The question won't be whether the process is still running; it'll be whether the engineer you started with is still recognizably intact.</p>
 
       </article>
 
