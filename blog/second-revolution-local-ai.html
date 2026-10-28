@@ -184,7 +184,7 @@
         <div class="article-meta">
           <span class="article-date">May 10, 2026</span>
           <span class="article-tag tag-industry">Industry</span>
-          <span class="article-read-time">4 min read</span>
+          <span class="article-read-time">2 min read</span>
         </div>
         <h1 class="text-2xl">The Second Revolution of AI Is Local. The Industry Just Admitted It.</h1>
         <p class="article-author">Basho Parks</p>
@@ -193,54 +193,20 @@
       <article class="article-body">
 
 <div style="border-left:3px solid var(--copper);padding:16px 20px;margin:0 0 28px;background:rgba(217,119,6,0.05);border-radius:0 8px 8px 0;">
-<strong>Updated October 28, 2026:</strong> The model names below are the May 2026 lineup and have turned over since. DeepSeek shipped V4.1 Flash in September 2026; Reflection AI released Beam 1.0, a 501B open-weight model under Apache 2.0, on October 16, 2026. The argument doesn't depend on which open model is current.
+<strong>Updated October 28, 2026:</strong> The models below are the May 2026 lineup; DeepSeek V4.1 Flash (September 2026) and Beam 1.0 (Apache 2.0, October 16, 2026) followed, and the argument doesn't depend on the model.
 </div>
 
-<p>A guy on an airplane just retired the last honest argument for cloud AI.</p>
+<p>A guy on an airplane just retired the last honest argument for cloud AI. On April 24, 2026, Hugging Face CEO Julien Chaumond posted a photo: a MacBook Pro running Qwen3.6 27B through Llama.cpp in airplane mode, no internet, no API key. He called it "the second revolution of AI" and reckoned most hadn't clocked it yet. He's right; the ones who have are three years into renting infrastructure they'll never own.</p>
 
-<p>On April 24, 2026, Julien Chaumond, CEO of Hugging Face, posted a photo from an airplane seat: his MacBook Pro running Qwen3.6 27B through Llama.cpp in airplane mode, no internet, no API key. He called it "the second revolution of AI" and reckoned most people hadn't clocked it yet.</p>
-
-<p>He's right. I'd only add that the organizations clocking it first are the ones who've spent three years paying rent on infrastructure they'll never own.</p>
-
-<h2>What the First Revolution Got Wrong</h2>
-
-<p>The first wave was a land grab, and nobody's shy about saying so now. Every major lab shipped the same proposition: send us your data, rent our compute, pay per token, and trust us with it. Fine for consumer work. For regulated work it's been a structural compromise from day one.</p>
-
-<p>A <a href="../law-firms.html">law firm</a> routing client communications through a cloud API is handing privileged material to infrastructure whose terms reserve the right to process it. A <a href="../medical-practices.html">medical practice</a> is copying protected health information onto servers it can't audit. A <a href="../tribal-nations.html">tribal government</a> is putting sovereign data under the <a href="https://www.congress.gov/bill/115th-congress/house-bill/4943" target="_blank" rel="noopener">CLOUD Act</a>, which hands the U.S. government compulsory access wherever the bytes sit.</p>
-
-<p>None of that's a secret. But the counterargument held: there wasn't a practical alternative. The models worth using wanted data-center compute and a crew to babysit it.</p>
-
-<h2>Open Weights Closed the Gap</h2>
-
-<p>Chaumond's claim deserves a second read. For non-trivial coding work on the Hugging Face codebases, Qwen3.6 27B running locally felt "very, very close to hitting the latest Opus in Claude Code." That's the CEO of the company hosting more open models than anybody, setting a laptop next to one of the strongest closed models money can rent.</p>
-
-<p>He isn't alone in the read. DeepSeek V4-Flash, Llama 3.3 70B, Qwen 2.5 72B, Mistral Large: contract review, code generation, structured extraction, at a quality that belonged to cloud APIs eighteen months back, and all of it <a href="deepseek-v4-flash-local-deployment.html">put into production</a>. The <a href="cloud-ai-vs-local-hardware-tco.html">five-year cost comparison</a> hasn't been close for a while; what's new is the quality argument went with it.</p>
+<p>For non-trivial coding work on the Hugging Face codebases, the laptop felt "very, very close to hitting the latest Opus in Claude Code." That's the CEO of the company hosting more open models than anybody, setting a laptop next to one of the strongest closed models money can rent. The <a href="cloud-ai-vs-local-hardware-tco.html">five-year cost comparison</a> hasn't been close for a while; the quality argument just went with it.</p>
 
 <h2>Airplane Mode Is the Compliance Test</h2>
 
-<p>What that photo demonstrates is an absence: no handshake with an auth server, no telemetry, nothing leaving the device. Chaumond framed it as efficiency, security, privacy, sovereignty; for regulated work that absence is the requirement.</p>
+<p>The photo shows an absence: nothing left the device. For regulated work that's the requirement. ITAR's <a href="https://www.ecfr.gov/current/title-22/chapter-I/subchapter-M/part-120" target="_blank" rel="noopener">22 CFR Part 120</a> bars controlled technical data from foreign-accessible infrastructure; an <a href="itar-dfars-ai-self-assessment.html">air-gapped server</a> closes that. HIPAA's <a href="https://www.ecfr.gov/current/title-45/subtitle-A/subchapter-C/part-164/subpart-C" target="_blank" rel="noopener">45 CFR 164.312</a> wants access, audit, integrity and transmission controls on PHI; a server behind your own firewall satisfies all four. The <a href="ocap-cloud-act-guide.html">OCAP Principles</a> require Possession, which cloud violates by definition. <a href="../law-firms.html">ABA Model Rule 1.6</a> asks for reasonable efforts against disclosure; on a server down the hall the <a href="attorney-client-privilege-cloud-ai.html">privilege analysis collapses to one question</a>: is the building secure?</p>
 
-<p>ITAR under <a href="https://www.ecfr.gov/current/title-22/chapter-I/subchapter-M/part-120" target="_blank" rel="noopener">22 CFR Part 120</a> prohibits transferring controlled technical data to foreign persons or foreign-accessible infrastructure. Cloud AI run by multinationals with globally distributed engineering teams is a structural exposure no contract clause I've read closes. An <a href="itar-dfars-ai-self-assessment.html">air-gapped inference server</a> closes it by construction.</p>
+<p>A laptop demo isn't a deployment; the distance between them is knowing what the work is, not hardware. The person who's done the job for fifteen or twenty years knows where it hurts, and that knowledge barely lives in the documentation. So we sit next to them first and recommend a stack only after Discovery, <a href="../forward-deployed-ai-engineering.html">whatever the work turned out to need</a>.</p>
 
-<p>HIPAA's Technical Safeguards under <a href="https://www.ecfr.gov/current/title-45/subtitle-A/subchapter-C/part-164/subpart-C" target="_blank" rel="noopener">45 CFR 164.312</a> want access, audit, integrity, and transmission controls for electronic PHI. A server behind your own firewall satisfies every one of them; a cloud API adds subprocessors and BAA provisions that manufacture compliance surface without compliance certainty. The <a href="hipaa-technical-checklist.html">technical checklist</a> for local AI is shorter and easier to defend to somebody holding a clipboard.</p>
-
-<p>The <a href="ocap-cloud-act-guide.html">OCAP Principles</a>, Ownership, Control, Access, and Possession, require that a nation keep physical possession of its data; cloud violates Possession by definition, and <a href="tribal-data-sovereignty-ai-infrastructure.html">infrastructure on tribal land</a> satisfies all four. <a href="../law-firms.html">ABA Model Rule 1.6</a> asks lawyers for reasonable efforts against unauthorized disclosure; through a cloud service that turns into an essay about the vendor's subprocessors and jurisdiction, and on a server down the hall the <a href="attorney-client-privilege-cloud-ai.html">privilege analysis collapses to one question</a>: is the building secure?</p>
-
-<h2>The Gap Between a Laptop and a Building</h2>
-
-<p>Chaumond's demo ran on a MacBook Pro. It proves the concept and it's still a single-user tool. A proof of concept isn't a deployment, and the distance between them is knowing what the work is, not hardware.</p>
-
-<p>That's why we don't lead with a configuration. The person who's done the job for fifteen or twenty years knows where the work hurts, and that knowledge barely lives in the documentation. So we show up first and sit next to them. Only after Discovery do we recommend a stack, <a href="../forward-deployed-ai-engineering.html">whatever the work turned out to need</a>, deploy it on site, and onboard your team on the workflows their vertical runs on.</p>
-
-<h2>What You Don't Get</h2>
-
-<p>Local isn't a drop-in for every cloud service, and I'd rather say so here than in month four. You don't get the largest frontier models on site. You don't get automatic updates; somebody downloads, tests, and deploys each new model. You don't get a 24/7 NOC or elastic scale: your capacity's the capacity you built.</p>
-
-<p>For plenty of organizations those are cheap trades against compliance certainty and knowing where the data sleeps at night. For the few with enormous variable workloads and no regulatory exposure, cloud's the better fit and we'll say so on the first call.</p>
-
-<div style="border-left:3px solid var(--copper);padding:16px 20px;margin:32px 0;background:rgba(217,119,6,0.05);border-radius:0 8px 8px 0;">
-<strong>Summary:</strong> Hugging Face's CEO called local inference "the second revolution of AI" after running Qwen3.6 27B on a laptop in airplane mode. Open weights match cloud API quality for most professional work, and the compliance frameworks were describing a local architecture all along.
-</div>
+<p>Local isn't a drop-in for every cloud service, and I'd rather say so here than in month four: you don't get the largest frontier models on site, somebody downloads and tests every update, and your capacity's the capacity you built. For enormous variable workloads with no regulatory exposure, cloud's the better fit, and we'll say so on the first call.</p>
 
 </article>
 
