@@ -169,7 +169,7 @@
         <span class="au-eyebrow-c">Open source &middot; MIT license &middot; v0.34.0</span>
         <h1 class="lh-h1">Lamprey Harness</h1>
         <div class="lh-hrule" aria-hidden="true"></div>
-        <p class="lh-sub">A coding workspace for your desktop that works with the model you already pay for, or the one running on the box under your desk. It's free and it's yours. Your keys and your history stay on your machine.</p>
+        <p class="lh-sub">A desktop coding workspace for the model you pay for, or the one under your desk. It's free, and your keys stay on your machine.</p>
 
         <div class="lh-files">
           <div class="lh-file">
@@ -225,7 +225,7 @@
             </dl>
           </div>
         </div>
-        <p class="lh-after">Lamprey updates itself from <a href="https://github.com/USS-Parks/Lamprey-Harness/releases">GitHub releases</a>, so you only install it once. Older versions stay up there too.</p>
+        <p class="lh-after">It updates itself from <a href="https://github.com/USS-Parks/Lamprey-Harness/releases">GitHub releases</a>, so you'll install it once.</p>
       </div>
     </section>
 
@@ -234,9 +234,9 @@
         <span class="au-eyebrow-c">What you're installing</span>
         <h2>One window, any model</h2>
         <div class="lh-notes">
-          <p>Lamprey puts the chat, the file tree, the terminal, a browser and git review in one window, and lets the model work across all of it. Thirty-three providers are built in. Ollama and LM Studio run with no key at all, and any OpenAI-compatible endpoint plugs in from Settings.</p>
-          <p>I built it for people who'd rather own their tools than rent them. Your conversations sit in a SQLite file on your own disk. Your API keys are encrypted through your operating system's keystore when it has one, and Lamprey won't store a key in plain text unless you tell it to. It talks to the providers and connectors you set up, and nobody else.</p>
-          <p>If you work under privilege, PHI or CUI, the controls that bound what an agent can touch don't belong in the app. They belong in the fence around it: identity, egress, metering, audit and a kill switch. That's the <a href="lamprey-woven-security-governance.html">Security Fabric</a>, and we put it in on-site. I wrote up the difference in <a href="blog/llm-harnesses-saddles-paddocks.html">LLM Harnesses, Saddles, and the Paddocks that corral them</a>.</p>
+          <p>Chat, file tree, terminal, browser and git review share one window the model works across. Thirty-three providers are built in, any OpenAI-compatible endpoint plugs in, and Ollama and LM Studio need no key.</p>
+          <p>I built it for people who'd rather own their tools than rent them. Chats stay in a SQLite file on your disk, keys go to your OS keystore when it has one, and it only talks to your providers.</p>
+          <p>Under privilege, PHI or CUI, an agent's limits belong in a fence around the app: identity, egress, metering, audit and a kill switch. That's the <a href="lamprey-woven-security-governance.html">Security Fabric</a>, which we install on-site; <a href="blog/llm-harnesses-saddles-paddocks.html">here's why</a> it's separate.</p>
         </div>
       </div>
     </section>
@@ -244,11 +244,10 @@
     <section class="lh-section">
       <div class="container lh-narrow">
         <span class="au-eyebrow-c">New in v0.34.0</span>
-        <h2>It checks the edit before it lands</h2>
+        <h2>It checks edits before they land</h2>
         <div class="lh-notes">
-          <p>Small local models botch edits in boring ways. They patch a file that's changed since they last read it, miss a hunk by one indent, or delete a file and then try to edit it two steps later. Version 0.34.0 checks every change against what's on disk before it runs. It fixes the trivial misses on its own, refuses a batch of edits that contradicts itself, and keeps working a request until its goals are met or a ceiling stops it.</p>
-          <p>None of it touches the prompt. It's ordinary code sitting between the model and your files, so a small model gets the benefit for free. The idea comes from the <a href="https://arxiv.org/abs/2609.19315">GAVEL paper</a>, where a deterministic world model took an 8B model from 41% to 92% task success. Lamprey's own number on a local Qwen or DeepSeek run isn't measured yet, and I won't print one until it is.</p>
-          <p>It's on by default. Settings, Advanced, World model turns it down or off.</p>
+          <p>Small local models botch edits, like patching a stale file or missing a hunk by one indent. Version 0.34.0 checks each change against the disk first, fixes trivial misses and refuses a batch that contradicts itself.</p>
+          <p>It's plain code, not prompt text, after the <a href="https://arxiv.org/abs/2609.19315">GAVEL paper&#39;s</a> deterministic world model, which took an 8B model from 41% to 92% task success. Lamprey's own number isn't measured yet. It's on by default (Settings, Advanced, World model).</p>
         </div>
       </div>
     </section>
@@ -260,18 +259,18 @@
         <div class="lh-steps">
           <div class="lh-step">
             <h3><i class="ri-shield-check-line" aria-hidden="true"></i> Verify the download</h3>
-            <p>The output has to match the SHA-256 on that file's card, character for character. On Windows, in PowerShell:</p>
+            <p>Match the output to the SHA-256 on that file's card. In PowerShell:</p>
             <code class="lh-code">Get-FileHash .\Lamprey-x64.exe -Algorithm SHA256</code>
-            <p class="lh-step-alt">On a Mac or Linux, in a terminal:</p>
+            <p class="lh-step-alt">On a Mac or Linux:</p>
             <code class="lh-code">shasum -a 256 Lamprey-arm64.dmg</code>
           </div>
           <div class="lh-step">
             <h3><i class="ri-error-warning-line" aria-hidden="true"></i> Windows will warn you</h3>
-            <p>The Windows build isn't code-signed yet, so SmartScreen stops it with "Windows protected your PC." Once the hash matches, choose <strong>More info</strong>, then <strong>Run anyway</strong>.</p>
+            <p>It isn't code-signed yet, so SmartScreen says "Windows protected your PC." Once the hash matches, choose <strong>More info</strong>, then <strong>Run anyway</strong>.</p>
           </div>
           <div class="lh-step">
             <h3><i class="ri-error-warning-line" aria-hidden="true"></i> So will your Mac</h3>
-            <p>The Mac app is ad-hoc signed and not notarized, so Gatekeeper won't open it on the first try. Drag it into Applications, then open <strong>System Settings</strong>, <strong>Privacy &amp; Security</strong> and choose <strong>Open Anyway</strong>. On older macOS, right-click the app and choose <strong>Open</strong>.</p>
+            <p>It's ad-hoc signed, not notarized, so Gatekeeper balks at first. Drag it into Applications, then choose <strong>Open Anyway</strong> in <strong>System Settings</strong>, <strong>Privacy &amp; Security</strong>. On older macOS, right-click it and choose <strong>Open</strong>.</p>
           </div>
           <div class="lh-step">
             <h3><i class="ri-code-s-slash-line" aria-hidden="true"></i> Linux needs one line</h3>
@@ -287,7 +286,7 @@
         <span class="au-eyebrow-c">Source</span>
         <h2>The code's on GitHub</h2>
         <div class="lh-notes">
-          <p>All of it, under the MIT license. Read it, fork it, or open an issue when something breaks. Stuck on an install? Call us at <a href="tel:+13414418740">1-341-441-8740</a> or write <a href="mailto:basho@islandmountain.io">basho@islandmountain.io</a>.</p>
+          <p>Open an issue when it breaks, or if an install's stuck, call <a href="tel:+13414418740">1-341-441-8740</a> or write <a href="mailto:basho@islandmountain.io">basho@islandmountain.io</a>.</p>
         </div>
         <div class="lh-ctas">
           <a href="https://github.com/USS-Parks/Lamprey-Harness" class="btn btn-primary"><i class="ri-open-source-line" aria-hidden="true"></i> View the source</a>
