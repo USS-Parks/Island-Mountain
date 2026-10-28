@@ -82,7 +82,7 @@
   "description": "Sentry called a live exploit \"technically not defensible\" and filtered one string. One fake error report hijacked coding agents at a $250B company and 100+ organizations.",
   "url": "https://islandmountain.io/blog/agentjacking-fake-bug-report.html",
   "datePublished": "2026-06-30",
-  "dateModified": "2026-06-30",
+  "dateModified": "2026-10-28",
   "author": {
     "@type": "Person",
     "name": "Basho Parks"
@@ -185,7 +185,7 @@
           <span class="article-date">June 30, 2026</span>
           <span class="article-tag tag-technical">Security</span>
           <span class="article-tag tag-industry">Industry</span>
-          <span class="article-read-time">3 min read</span>
+          <span class="article-read-time">2 min read</span>
         </div>
         <h1 class="text-2xl">Agentjacking Hit a $250B Company Through a Fake Bug Report. Air-Gapped Buys You Half the Fix.</h1>
         <p class="article-author">Basho Parks</p>
@@ -193,35 +193,19 @@
 
       <article class="article-body">
 
-<p>One fake bug report hijacked the AI coding agent inside a $250 billion Fortune 100 company and more than 100 other organizations, and Sentry answered with a content filter for one payload string. The flaw isn't Sentry's, and the air-gapped deployments we build won't close it either. A one-string filter is still a shrug with a changelog entry.</p>
+<p>One fake bug report hijacked the AI coding agent inside a $250 billion Fortune 100 company and more than 100 other organizations, and Sentry answered with a content filter for one payload string. The flaw isn't Sentry's, and air-gapped hardware won't close it either.</p>
 
-<p><a href="https://tenetsecurity.ai/blog/agentjacking-coding-agents-with-fake-sentry-errors/" target="_blank" rel="noopener">Tenet Security's Threat Labs</a> calls the attack Agentjacking. It needs no breach, stolen credential or phishing email. An attacker posts a crafted error event to Sentry through a public DSN, the write-only credential Sentry embeds in production frontend JavaScript, and the error carries a fake "Resolution" section formatted like Sentry's own remediation guidance. A developer asks their coding agent to triage the bug, the agent reads that resolution as a trusted instruction, and it runs the attacker's code with the developer's credentials. Tenet found 2,388 organizations exposed and confirmed execution at more than 100 of them.</p>
+<p><a href="https://tenetsecurity.ai/blog/agentjacking-coding-agents-with-fake-sentry-errors/" target="_blank" rel="noopener">Tenet Security's Threat Labs</a> calls it Agentjacking, and it needs no breach, stolen credential or phishing email. An attacker posts a crafted error event to Sentry through a public DSN, the write-only credential Sentry embeds in production frontend JavaScript, and the error carries a fake "Resolution" section formatted like Sentry's own remediation guidance. A developer asks their coding agent to triage the bug, the agent reads that resolution as an instruction and runs the attacker's code with the developer's credentials. Tenet found 2,388 organizations exposed, confirmed execution at more than 100, and 85 percent of the agents it tested (Cursor, Claude Code, Codex) ran the payload.</p>
 
 <h2>Why It Isn't Sentry's Bug</h2>
 
-<p>Any coding agent connected through MCP treats whatever a tool returns the way it treats the developer's typed instructions. It can't tell a real crash from an error an attacker typed into a public API. So Sentry's diagnosis was correct. What I can't get past is stopping there: the next payload won't use the filtered string.</p>
-
-<h2>Sandboxing and Prompts Both Failed</h2>
-
-<p>Tenet ran the payload against Cursor, Claude Code and Codex; eighty-five percent of agents executed it. A network-restricted CI agent inside a CircleCI job got hit anyway, because the instruction rode in through data the agent was asked to read. Prompts telling agents to ignore untrusted data failed too. Every step is authorized by design, so EDR, WAF, IAM and the firewall see a developer getting help.</p>
+<p>An agent connected through MCP treats whatever a tool returns like the developer's typed instructions; it can't tell a real crash from an error an attacker typed into a public API. So Sentry's diagnosis was correct. What I can't get past is stopping at a filter: the next payload won't use the filtered string, and a sandbox doesn't help when the instruction rides in through data the agent was asked to read. Every step is authorized, so EDR, IAM and the firewall see a developer getting help.</p>
 
 <h2>Where Air-Gapped Stops</h2>
 
-<p>An agent on hardware you own, inside a network you control, closes off a whole category of exposure: nobody's harvesting your queries or logging your source code on someone else's servers. But Agentjacking doesn't care whose GPU runs the inference. If your local agent still queries a public Sentry instance over MCP, the same fake resolution runs the same npx command with your developer's credentials. <a href="../air-gapped-ai-inference.html">Air-gapped hardware</a> solves cloud exfiltration; it doesn't solve an agent that can't tell data from an instruction.</p>
+<p>An agent on <a href="../forward-deployed-ai-engineering.html">hardware you own</a>, inside a network you control, closes a whole category of exposure: nobody's harvesting your queries or logging your source code on someone else's servers. But Agentjacking doesn't care whose GPU runs the inference. If your local agent still queries public Sentry over MCP, the same fake resolution runs with your developer's credentials. <a href="../air-gapped-ai-inference.html">Air-gapped hardware</a> solves cloud exfiltration; it doesn't solve an agent that can't tell data from an instruction.</p>
 
-<h2>The Missing Layer Gates Trust by Origin</h2>
-
-<p>Nobody, me included, ships a layer that decides whether an agent may execute something by where it came from rather than what it looks like. I've been building <a href="../lamprey-woven-security-governance.html">Lamprey MAI</a> around that gap, an inference governance layer that gates trust at the architecture level. I won't claim that "solves" prompt injection; it shrinks the blast radius and puts a checkpoint between an agent's decision and its execution.</p>
-
-<h2>What to Ask Any AI Vendor</h2>
-
-<p>If you're a <a href="../tribal-nations.html">tribal government</a>, a <a href="../law-firms.html">law firm</a> or a <a href="../medical-practices.html">hospital system</a> evaluating AI tooling, air-gapped is necessary and it isn't sufficient. Ask any vendor, us included, what their agent's allowed to execute and who decided it could. Then check your own site's JavaScript for a Sentry DSN, the public credential this attack runs on.</p>
-
-<p>I don't have a clean answer to Agentjacking, and neither does anyone else. We can keep the rest of your exposure off someone else's cloud with <a href="../forward-deployed-ai-engineering.html">hardware you own</a> while the industry builds the next layer.</p>
-
-<div style="border-left:3px solid var(--copper);padding:16px 20px;margin:32px 0;background:rgba(217,119,6,0.05);border-radius:0 8px 8px 0;">
-<strong>Summary:</strong> One fake Sentry error report hijacked AI coding agents at a $250B company and 100+ other organizations (Tenet Security); Sentry filtered one payload string. MCP-connected agents treat tool output as trusted instructions, so air-gapped hardware closes cloud exfiltration but not this. Ask any vendor what their agent's allowed to execute and who decided it could.
-</div>
+<p>If you're a <a href="../tribal-nations.html">tribal government</a>, a <a href="../law-firms.html">law firm</a> or a <a href="../medical-practices.html">hospital system</a> evaluating AI tooling, air-gapped is necessary and it isn't sufficient. Nobody, me included, ships a layer that gates what an agent may execute by where it came from rather than what it looks like. Ask any vendor, us included, what their agent's allowed to execute and who decided it could; then check your own site's JavaScript for a Sentry DSN.</p>
 
 </article>
 
