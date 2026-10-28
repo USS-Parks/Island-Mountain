@@ -184,7 +184,7 @@
         <div class="article-meta">
           <span class="article-date">July 2, 2026</span>
           <span class="article-tag tag-technical">Technical</span>
-          <span class="article-read-time">5 min read</span>
+          <span class="article-read-time">2 min read</span>
         </div>
         <h1 class="text-2xl">Agentic Orchestration and Security: The Complete Map of How AI Agents Work, and How They Get Attacked</h1>
         <p class="article-author">Basho Parks</p>
@@ -193,10 +193,10 @@
       <article class="article-body">
 
 <div style="border-left:3px solid var(--copper);padding:16px 20px;margin:0 0 28px;background:rgba(217,119,6,0.05);border-radius:0 8px 8px 0;">
-<strong>Updated October 28, 2026:</strong> Three rows of this map picked up live examples between May and October 2026. LiteLLM's hijacked release process sits in the supply-chain row, a poisoned gateway build that went looking for AI provider keys. Manus and Microsoft's write-up on prompts becoming shells sit in the prompt-injection row, now with code execution attached. OpenCode and Railway sit in the identity row, standing keys stolen from somebody else's console. The controls below still break each of them.
+<strong>Updated October 28, 2026:</strong> Between May and October 2026 the supply-chain, prompt-injection and identity rows picked up examples: LiteLLM's hijacked release, Manus and Microsoft's prompts-turned-shells, OpenCode and Railway's stolen keys.
 </div>
 
-<p>An AI agent with credentials is an actor on your network, running with whatever permissions somebody clicked past during setup: email, databases, code, external APIs, at machine speed. The day your organization lets a model take actions instead of answering questions, you've inherited a security problem the people selling the agents would rather not walk you through. Agentic orchestration's already the default architecture; the security model for it isn't, and that gap's why I drew this map. Where the controls sit once you've handed a machine your credentials is a question about buildings and wires. The map below runs five layers, top to bottom, from how the work gets split to the attacks aimed at it.</p>
+<p>An AI agent with credentials is an actor on your network, running with whatever permissions somebody clicked past during setup. Agentic orchestration's the default architecture; its security model isn't, and that gap's why I drew this map.</p>
 
 <figure style="margin:32px 0;">
   <a href="agentic-orchestration-security-map-interactive.html">
@@ -205,54 +205,19 @@
   <figcaption style="font-size:0.85rem;color:var(--text-muted,#9aa3b2);margin-top:10px;text-align:center;">The Agentic Orchestration &amp; Security Map. <a href="agentic-orchestration-security-map-interactive.html">Open the full-size version</a> to zoom into any card.</figcaption>
 </figure>
 
-<h2>Agentic Orchestration Is a Control Surface</h2>
+<p>Tools are where an agent stops thinking and starts touching, and every tool call crosses a trust boundary. Anything flowing back up is hostile until proven otherwise, because models follow instructions wherever they find them and prompt injection rides in on the pages, emails and files you asked the agent to read.</p>
 
-<p>Layer one lays out the eight canonical patterns, orchestrator-workers through human-in-the-loop gates. Each buys throughput by handing you a new place for the work to fail. Layer two is what a single agent needs to stand up: explicit success criteria, role-scoped tool access, provenance tags on every memory write, durable checkpoints, and hard budgets on tokens, cost, wall-clock, and iterations with a kill switch behind them. That's the floor. Put the two layers together and orchestration reads as a control surface: a runaway agent tree's the default outcome the second nobody sets the depth caps and iteration limits.</p>
+<p>The control plane under it is the answer: per-agent least-privilege identity, sandboxes with egress allowlists, guardrails, approval gates on anything you can't undo, session integrity and immutable audit logs. Every one's deterministic and lives outside the model. A system prompt is a request and a sandbox is a fact.</p>
 
-<h2>Every Tool Call Crosses a Trust Boundary</h2>
-
-<p>Layer three's the pivot. Tools (MCP servers, RAG stores, shells, browsers, external APIs) are where an agent stops thinking and starts touching, and every arrow crossing that surface crosses a trust boundary. Anything flowing back up is hostile until proven otherwise, because indirect prompt injection rides in on the pages, emails, and files you asked the agent to read. Models are trained to follow instructions wherever they find them.</p>
-
-<p>The amber control plane under it is the answer: per-agent least-privilege identity, sandboxing with egress allowlists, guardrails, approval gates on anything you can't undo, session integrity, immutable audit logs, and supply-chain vetting. Every one's deterministic and lives outside the model. A system prompt is a request. A sandbox is a fact. Making that enforcement plane something you own is the entire job of the <a href="../lamprey-woven-security-governance.html">Woven Security and Governance Fabric</a>.</p>
-
-<h2>The Threat Layer, From Prompt Injection to Agentjacking</h2>
-
-<p>The red bottom row's what attackers do on a Tuesday. Nine threat families sort into four moods: trickery, takeover, corruption, and abuse, and not one needs a zero-day. The names come from the <a href="https://owasp.org/www-project-top-10-for-large-language-model-applications/" target="_blank" rel="noopener">OWASP Top 10 for LLM applications</a>; I didn't invent that vocabulary and I'd rather not compete with it. Prompt injection's the trickery. <a href="agentjacking-fake-bug-report.html">Agentjacking</a> is the takeover, where the hijacked session inherits every credential and standing approval the agent carried. Tool poisoning, memory poisoning, and supply-chain compromise are the corruption; data exfiltration, excessive agency, identity spoofing, and resource exhaustion are the abuse.</p>
-
-<p>Data exfiltration runs on the recipe <a href="https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/" target="_blank" rel="noopener">Simon Willison named the lethal trifecta</a>: give an agent private data, untrusted content, and an outbound channel, and you've built an exfiltration machine whether you meant to or not. Knock out any one leg and the attack falls over. People nod along and then don't apply it, because breaking a leg means telling somebody they can't have the feature they wanted.</p>
-
-<p>The map's sidebar pairs each threat with the primary control that breaks it:</p>
-
-<table>
-<thead>
-<tr><th>Threat</th><th>Primary Control</th><th>How It Breaks the Attack</th></tr>
-</thead>
-<tbody>
-<tr><td>Prompt injection</td><td>Guardrails + human approval gates</td><td>Screen untrusted text; a human approves mutations</td></tr>
-<tr><td>Agentjacking</td><td>Session integrity</td><td>Signed checkpoints, re-authentication on resume, kill-switch</td></tr>
-<tr><td>Tool poisoning</td><td>Supply-chain security</td><td>Sign, pin, and re-vet tool manifests</td></tr>
-<tr><td>Data exfiltration</td><td>Egress allowlists</td><td>Severs the trifecta's outbound leg</td></tr>
-<tr><td>Excessive agency</td><td>Least-privilege identity</td><td>Per-agent scoped, short-lived tokens</td></tr>
-<tr><td>Memory poisoning</td><td>Provenance tagging</td><td>Quarantine unverified writes</td></tr>
-<tr><td>Identity spoofing</td><td>Authentication on every handoff</td><td>Mutual auth between agents</td></tr>
-<tr><td>Supply chain</td><td>SBOM + scanning</td><td>Signed artifacts, pinned versions</td></tr>
-<tr><td>Resource exhaustion</td><td>Budgets and ceilings</td><td>Token, cost, depth, and iteration caps</td></tr>
-</tbody>
-</table>
-
-<p>No single control's enough; the security lives in the layers stacking on one another. If you're shopping for the one box that fixes this, I haven't got it and neither has anybody else.</p>
+<p>The bottom row's nine threats, prompt injection through <a href="agentjacking-fake-bug-report.html">agentjacking</a>, take their names from the <a href="https://owasp.org/www-project-top-10-for-large-language-model-applications/" target="_blank" rel="noopener">OWASP Top 10 for LLM applications</a>. Data exfiltration runs on the recipe <a href="https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/" target="_blank" rel="noopener">Simon Willison named the lethal trifecta</a>: private data, untrusted content and an outbound channel. Knock out any one leg and the attack falls over. People nod along and don't apply it, because breaking a leg means telling somebody they can't have the feature they wanted.</p>
 
 <h2>Where the Infrastructure Decision Enters</h2>
 
-<p>The exfiltration row's egress allowlist is a policy in the cloud: something you configure, audit, and pray survives every new integration and vendor update you never asked for. On an air-gapped box in your own building the outbound channel is absent; an agent can't beacon your data anywhere when there's no road out. Same logic on the identity and audit rows. On <a href="../forward-deployed-ai-engineering.html">hardware you own</a>, the agent's credentials, session state, and audit trail stay inside your perimeter. For <a href="itar-dfars-ai-self-assessment.html">ITAR and CUI environments</a>, an agent that can't reach the internet can't leak to it, and topology's the one part of this you can walk over and check.</p>
+<p>In the cloud the outbound leg's a policy you pray survives the next integration; on an air-gapped box in your own building it's absent, and an agent can't beacon data when there's no road out. Identity and audit follow the same logic on <a href="../forward-deployed-ai-engineering.html">hardware you own</a>, and for <a href="itar-dfars-ai-self-assessment.html">ITAR and CUI environments</a> topology's the one control you can walk over and check.</p>
 
-<h2>What You Don't Get</h2>
+<p>The air gap doesn't stop prompt injection. A poisoned document on your own file share still carries hostile instructions. That's why the guardrails, approval gates and audit ledger sit inline on every call; on an Island Mountain deployment the <a href="../lamprey-woven-security-governance.html">Woven Security and Governance Fabric</a> ships them in the crate.</p>
 
-<p>This map's an architecture reference, not a compliance certificate. Air-gapping doesn't stop prompt injection: a poisoned document on your own file share still carries hostile instructions, which is why the guardrails, approval gates, and audit ledger sit inline on every call. On an Island Mountain deployment they come in the crate. And the air gap's guarantee weakens the second you punch an egress hole; agents that need the live web put you back on allowlists with everybody else.</p>
-
-<div style="border-left:3px solid var(--copper);padding:16px 20px;margin:32px 0;background:rgba(217,119,6,0.05);border-radius:0 8px 8px 0;">
-<strong>Summary:</strong> Every action an AI agent takes crosses a trust boundary, and the controls that hold are deterministic and live outside the model. Local infrastructure turns the most decisive of them, the outbound channel, from a line in a vendor's terms of service into physical fact, and the fabric that polices the rest ships with the machine.
-</div>
+<p>Before an agent gets a credential, pick the trifecta leg you'll break and whose building that control lives in.</p>
 
       </article>
 
