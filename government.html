@@ -28,7 +28,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="author" content="Basho Parks">
   <meta name="date" content="2026-06-06">
-  <title>Air-Gapped AI for Government | FedRAMP &amp; CUI Ready</title>
+  <title>On-Premises AI for Government | CUI and CJIS on Your Hardware</title>
   <meta name="description" content="AI inference for federal, state and local agencies, configured after Discovery rather than picked from a catalog. Process CUI on hardware you own.">
   <link rel="icon" type="image/x-icon" href="favicon.ico?v=4">
   <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png?v=4">
@@ -59,7 +59,7 @@
   <link rel="canonical" href="https://islandmountain.io/government.html">
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Air-Gapped AI for Government | FedRAMP &amp; CUI Ready">
+  <meta property="og:title" content="On-Premises AI for Government | CUI and CJIS on Your Hardware">
   <meta property="og:description" content="AI inference for federal, state and local agencies, configured after Discovery rather than picked from a catalog. Process CUI on hardware you own.">
   <meta property="og:url" content="https://islandmountain.io/government.html">
   <meta property="og:type" content="website">
@@ -68,7 +68,7 @@
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Air-Gapped AI for Government | FedRAMP &amp; CUI Ready">
+  <meta name="twitter:title" content="On-Premises AI for Government | CUI and CJIS on Your Hardware">
   <meta name="twitter:description" content="AI inference for federal, state and local agencies, configured after Discovery rather than picked from a catalog. Process CUI on hardware you own.">
   <meta name="twitter:image" content="https://islandmountain.io/images/hero-government.webp">
 
@@ -99,15 +99,15 @@
         "name": "How does on-premises AI cost compare to cloud AI for a 20-person government office?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Cloud AI costs $50 to $200 per user per month ($12,000 to $48,000 per year for 20 users) plus FedRAMP compliance overhead and ATO documentation burden. An Island Mountain build is a one-time purchase, quoted to your workload, with no FedRAMP dependency, no ATO process, and no per-token fees once it's running. Simpler procurement. Simpler compliance. Full agency ownership."
+          "text": "Cloud AI costs $50 to $200 per user per month ($12,000 to $48,000 per year for 20 users) plus FedRAMP compliance overhead and ATO documentation burden. An Island Mountain build is a one-time purchase, quoted to your workload, with no per-token fees once it's running. There's no FedRAMP dependency and no separate cloud authorization: the system joins your existing ATO boundary through your authorizing official's normal change process, with a receipt trail your ISSO can pull into the SSP."
         }
       },
       {
         "@type": "Question",
-        "name": "Is Island Mountain hardware rated for classified data processing?",
+        "name": "Can this handle CUI?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "No. Island Mountain hardware is designed for Controlled Unclassified Information (CUI), sensitive but unclassified (SBU) data, law enforcement sensitive data, and CJIS-governed criminal justice information. It is not SCIF-rated and has not been certified for classified data processing. The system does support complete air-gap operation and can satisfy many CUI handling requirements under NIST SP 800-171. For agencies requiring classified processing, different procurement channels and certification requirements apply."
+          "text": "Yes, inside an environment built for it. We build for CUI, sensitive but unclassified data, law enforcement sensitive data, and CJIS criminal justice information, with full air-gap operation. It isn't SCIF-rated or certified for classified processing, which runs through different channels."
         }
       }
     ]
@@ -207,7 +207,7 @@
       <div class="fade-in content-narrow">
         <p class="body-lg">Federal agencies face FedRAMP authorization requirements for any cloud service processing government data. The authorization process takes 12-18 months on average and limits agencies to a small pool of pre-authorized cloud AI providers. Even with FedRAMP authorization, the structural reality remains: government data sits on commercial infrastructure operated by private companies and their subprocessors. Government agencies represent one of <a href="solutions.html">eleven regulated industries</a> where this structural conflict between cloud AI and data sovereignty is most acute.</p>
         <p class="body-lg">Controlled Unclassified Information (CUI) falls under NIST SP 800-171, which establishes 110 security requirements across 14 control families - the same framework that <a href="defense-contractors.html">defense contractors</a> must satisfy under DFARS 252.204-7012. Cloud AI processing of CUI requires the cloud provider to meet these requirements and subjects the agency to shared responsibility models that complicate audit responses and incident reporting. For sensitive CUI categories, air-gapped processing may be the only architecture that satisfies handling requirements. Secure AI for law enforcement data, CUI, and investigative records demands this same isolation.</p>
-        <p class="body-lg">On-premise AI for state government agencies addresses their own data residency laws and citizen privacy requirements. Many states have enacted data localization statutes requiring certain government data to remain within state boundaries. CJIS Security Policy governs criminal justice information. IRS Publication 1075 controls Federal Tax Information. Each framework shares a common requirement: government control over the infrastructure processing government data. <a href="tribal-nations.html">Tribal nations</a> exercise parallel data sovereignty principles under OCAP and the CLOUD Act. Government AI without cloud dependency eliminates this architectural conflict entirely.</p>
+        <p class="body-lg">On-premise AI for state government agencies addresses their own data residency laws and citizen privacy requirements. Many states have enacted data localization statutes requiring certain government data to remain within state boundaries. CJIS Security Policy governs criminal justice information. IRS Publication 1075 controls Federal Tax Information. Each framework shares a common requirement: government control over the infrastructure processing government data. <a href="tribal-nations.html">Tribal governments</a> add OCAP, and they know the CLOUD Act from the other side: it lets US authorities compel a US cloud provider to hand over data wherever it's stored. Government AI without cloud dependency eliminates this architectural conflict entirely.</p>
       </div>
     </div>
   </section>
@@ -456,12 +456,12 @@
       <div class="section-header fade-in">
         <span class="section-badge">Regulatory Context</span>
         <h2>FedRAMP, NIST 800-171, and the Case for On-Premises AI</h2>
-        <p>FedRAMP compatible AI hardware that operates within your agency ATO boundary - no cloud authorization required.</p>
+        <p>AI that runs inside your agency's existing ATO boundary, with no separate cloud authorization.</p>
       </div>
       <div class="fade-in content-narrow">
         <p class="body-lg">FedRAMP establishes a standardized approach to security assessment, authorization, and continuous monitoring of cloud products and services. The authorization process evaluates cloud providers against NIST SP 800-53 controls. A CUI compliant AI server sidesteps this process entirely - there is no cloud service to authorize. The hardware operates within the agency's existing Authority to Operate (ATO) boundary and is evaluated as part of the agency's own system security plan.</p>
         <p class="body-lg">FISMA (Federal Information Security Modernization Act) requires federal agencies to develop, document, and implement information security programs. NIST SP 800-53 provides the control catalog. NIST SP 800-171 governs CUI protection for non-federal systems. The common requirement: agencies must maintain control over information processing infrastructure. On-premises AI satisfies this structurally - the processing happens on government-owned, government-controlled hardware.</p>
-        <p class="body-lg">Executive Orders on AI in government (EO 14110 and subsequent guidance) emphasize both the adoption of AI capabilities and the protection of government data. OMB memoranda provide implementation guidance that increasingly favors architectures maintaining government control over AI processing of sensitive data. State and local governments face analogous requirements through state data protection statutes and local ordinances governing citizen data handling. <a href="education.html">Public school districts</a> navigate overlapping FERPA obligations within this same state regulatory structure.</p>
+        <p class="body-lg">Federal AI policy has changed hands more than once since 2023, and the executive orders and OMB memos that govern how agencies use and buy AI shift with each administration. The data rules haven't: CJIS, Federal Tax Information under Pub 1075, and CUI all still require you to know where it's processed and who can reach it. State and local governments face analogous requirements through state data protection statutes and local ordinances governing citizen data handling. <a href="education.html">Public school districts</a> navigate overlapping FERPA obligations within this same state regulatory structure.</p>
         <p class="body-lg">CJIS Security Policy requires criminal justice information to be processed in environments meeting specific security requirements. IRS Publication 1075 mandates safeguards for Federal Tax Information. Both frameworks restrict data processing to controlled environments - making on-premises AI the architecturally simplest path to compliance for agencies handling these data categories.</p>
         <div class="highlight-box">
           <p class="scenario-text"><strong>Disclaimer:</strong> This section describes the general regulatory environment regarding AI and government data protection. It is not legal or compliance advice. Consult your agency's CISO, authorizing official, or qualified counsel for guidance specific to your agency's mission, data categories, and authorization boundary.</p>
@@ -501,12 +501,12 @@
         <div class="risk-card">
           <div class="risk-icon"><img src="images/icons/ai-cost-comparison-icon.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
           <h4>How does cost compare for a 20-person office?</h4>
-          <p>Cloud AI costs $50 to $200 per user per month ($12,000 to $48,000 per year for 20 users) plus FedRAMP compliance overhead and ATO documentation burden. An Island Mountain build is a one-time purchase, quoted to your workload, with no FedRAMP dependency, no ATO process, and only electricity costs ongoing. Simpler procurement. Simpler compliance.</p>
+          <p>Cloud AI costs $50 to $200 per user per month ($12,000 to $48,000 per year for 20 users) plus FedRAMP compliance overhead and ATO documentation burden. An Island Mountain build is a one-time purchase, quoted to your workload, with no per-token fees once it's running. There's no FedRAMP dependency and no separate cloud authorization: the system joins your existing ATO boundary through your authorizing official's normal change process, with a receipt trail your ISSO can pull into the SSP.</p>
         </div>
         <div class="risk-card">
           <div class="risk-icon"><img src="images/icons/itarr-cmmc-ai-icon.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
           <h4>Can this handle CUI?</h4>
-          <p>No. Island Mountain hardware is designed for Controlled Unclassified Information (CUI), sensitive but unclassified (SBU) data, law enforcement sensitive data, and CJIS-governed criminal justice information. It is not SCIF-rated and has not been certified for classified data processing. The system does support complete air-gap operation and can satisfy many CUI handling requirements under NIST SP 800-171.</p>
+          <p>Yes, inside an environment built for it. We build for CUI, sensitive but unclassified data, law enforcement sensitive data, and CJIS criminal justice information, with full air-gap operation. It isn't SCIF-rated or certified for classified processing, which runs through different channels.</p>
         </div>
       </div>
       <div class="text-center-mt-32">

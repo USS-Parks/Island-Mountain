@@ -28,7 +28,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="author" content="Basho Parks">
   <meta name="date" content="2026-06-06">
-  <title>On-Premises AI for Defense | ITAR &amp; CMMC Compliant</title>
+  <title>On-Premises AI for Defense | ITAR &amp; CMMC Aligned</title>
   <meta name="description" content="On-premises AI for defense contractors: agents, orchestration, and models built around your programs, run on your own hardware. CUI stays in the enclave. Air-gap capable, ITAR and CMMC aligned.">
   <link rel="icon" type="image/x-icon" href="favicon.ico?v=4">
   <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png?v=4">
@@ -59,7 +59,7 @@
   <link rel="canonical" href="https://islandmountain.io/defense-contractors.html">
 
   <!-- Open Graph -->
-  <meta property="og:title" content="On-Premises AI for Defense | ITAR &amp; CMMC Compliant">
+  <meta property="og:title" content="On-Premises AI for Defense | ITAR &amp; CMMC Aligned">
   <meta property="og:description" content="On-premises AI for defense contractors: agents, orchestration, and models built around your programs, run on your own hardware. CUI stays in the enclave. Air-gap capable, ITAR and CMMC aligned.">
   <meta property="og:url" content="https://islandmountain.io/defense-contractors.html">
   <meta property="og:type" content="website">
@@ -68,7 +68,7 @@
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="On-Premises AI for Defense | ITAR &amp; CMMC Compliant">
+  <meta name="twitter:title" content="On-Premises AI for Defense | ITAR &amp; CMMC Aligned">
   <meta name="twitter:description" content="On-premises AI for defense contractors: agents, orchestration, and models built around your programs, run on your own hardware. CUI stays in the enclave. Air-gap capable, ITAR and CMMC aligned.">
   <meta name="twitter:image" content="https://islandmountain.io/images/hero-defense-contractors.webp?v=2">
 
@@ -88,7 +88,7 @@
         "name": "Can I process CUI through a commercial cloud AI API?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "No. Commercial cloud AI APIs are generally incompatible with CUI handling requirements under DFARS 252.204-7012. CUI must be processed in environments meeting NIST SP 800-171 security requirements - most commercial AI endpoints do not operate on FedRAMP High authorized infrastructure. On-premises AI hardware from Island Mountain, properly network-segregated and physically secured within your facility, processes CUI-adjacent documents under your own security controls. Your own hardware operates air-gapped inside your facility with no non-compliant cloud processing path."
+          "text": "No. Commercial cloud AI APIs are generally incompatible with CUI handling requirements under DFARS 252.204-7012. CUI must be processed in environments meeting NIST SP 800-171 security requirements, and a cloud provider holding it has to meet FedRAMP Moderate or equivalent plus the clause's incident terms. Most commercial AI endpoints offer neither. On-premises AI hardware from Island Mountain, properly network-segregated and physically secured within your facility, processes CUI-adjacent documents under your own security controls. Your own hardware operates air-gapped inside your facility with no non-compliant cloud processing path."
         }
       },
       {
@@ -206,7 +206,7 @@
         <p>Compliance requirements in defense contracting are conditions of your contracts, not suggestions, and violations carry real consequences.</p>
       </div>
       <div class="fade-in content-narrow">
-        <p class="body-lg">When a defense contractor uses a commercial cloud AI service to analyze a proposal, draft technical documentation, or review contract language that involves Controlled Unclassified Information, that data is transmitted to infrastructure the contractor does not control. Under DFARS 252.204-7012, CUI must be processed in environments meeting NIST SP 800-171 security requirements. Most commercial AI API endpoints do not operate on FedRAMP High authorized infrastructure and therefore do not meet this baseline.</p>
+        <p class="body-lg">When a defense contractor uses a commercial cloud AI service to analyze a proposal, draft technical documentation, or review contract language that involves Controlled Unclassified Information, that data is transmitted to infrastructure the contractor does not control. Under DFARS 252.204-7012, CUI must be processed in environments meeting NIST SP 800-171 security requirements. If a cloud provider stores or processes covered defense information, DFARS 7012 wants it at FedRAMP Moderate or equivalent, with incident reporting, forensic access and media preservation on top. Most commercial AI APIs don't offer that, and the ones that do sit in government clouds with their own price and paperwork.</p>
         <p class="body-lg">The ITAR problem is more acute. ITAR restricts the export of defense articles and technical data to foreign persons and entities. If a cloud AI provider's infrastructure is accessible to foreign nationals - which is the case for virtually all commercial cloud AI services - processing ITAR-controlled technical data through that service may constitute an unauthorized export under 22 CFR 120-130. This is an enforcement risk, not a theoretical concern. A single unauthorized export finding can trigger debarment, criminal penalties, and loss of your facility security clearance. The data left your building the moment you hit send.</p>
         <p class="body-lg">CMMC (Cybersecurity Maturity Model Certification) adds another layer. CMMC Level 2 and Level 3 assessments evaluate your organization's security practices across 110+ controls. Routing CUI-adjacent data through commercial cloud AI APIs introduces a processing path that your assessor will scrutinize closely - and that may not survive that scrutiny. Defense contractors face the strictest version of a problem common to <a href="solutions.html">other regulated contexts we work in</a> - data that cannot leave the building needs AI infrastructure that never asks it to.</p>
       </div>
@@ -323,6 +323,7 @@
       <div class="fade-in content-narrow">
         <p class="body-lg">CMMC assessments evaluate your overall security posture across 110+ practices derived from NIST SP 800-171. Island Mountain hardware does not carry CMMC certification - no hardware component does. What it provides is infrastructure that supports a cleaner compliance posture than routing CUI-adjacent data through commercial cloud AI APIs.</p>
         <p class="body-lg">Access Control (AC): The hardware sits behind your physical and logical access controls. You determine who accesses it, through what authentication mechanisms, from which network segments. Media Protection (MP): AI processing data stays on hardware you own. No data replication to cloud provider infrastructure. System and Communications Protection (SC): Air-gap capability and network segregation prevent unauthorized data egress. Audit and Accountability (AU): Linux-based OS supports the logging and monitoring requirements your CMMC assessor expects.</p>
+        <p class="body-lg">CMMC Phase 2 third-party assessments were suspended on July 13, 2026 pending the program review; Phase 1 self-assessments, NIST SP 800-171 and DFARS 252.204-7012 still apply.</p>
         <p class="body-lg">The compliance advantage of local AI is that it removes a processing path - cloud AI transmission of controlled data - that creates compliance questions your assessor will ask about. Fewer questionable data flows means a cleaner assessment.</p>
       </div>
     </div>
@@ -348,7 +349,7 @@
           <tbody>
             <tr>
               <td><strong>CUI Processing</strong></td>
-              <td>Requires FedRAMP High (most APIs lack this)</td>
+              <td>Needs FedRAMP Moderate equivalent plus 7012 terms. Most AI APIs have neither.</td>
               <td class="highlight-cell">On your hardware. Your controls.</td>
             </tr>
             <tr>
@@ -469,7 +470,7 @@
         <div class="risk-card">
           <div class="risk-icon"><img src="images/icons/hipaa-ai-icon.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
           <h4>Can I process CUI through a commercial cloud AI API?</h4>
-          <p>No. Commercial cloud AI APIs are generally incompatible with CUI handling requirements under DFARS 252.204-7012. CUI must be processed in environments meeting NIST SP 800-171 security requirements - most commercial AI endpoints do not operate on FedRAMP High authorized infrastructure. On-premises AI hardware from Island Mountain processes CUI-adjacent documents under your own security controls.</p>
+          <p>No. Commercial cloud AI APIs are generally incompatible with CUI handling requirements under DFARS 252.204-7012. CUI must be processed in environments meeting NIST SP 800-171 security requirements, and a cloud provider holding it has to meet FedRAMP Moderate or equivalent plus the clause's incident terms. Most commercial AI endpoints offer neither. On-premises AI hardware from Island Mountain processes CUI-adjacent documents under your own security controls.</p>
         </div>
         <div class="risk-card">
           <div class="risk-icon"><img src="images/icons/itarr-cmmc-ai-icon.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
@@ -513,8 +514,8 @@
       </div>
       <div class="scenario-grid" class="fade-in">
         <div class="accent-blockquote">
-          <p class="mb-075">Defense subcontractor processing CUI for a DoD program. Air-gapped inference on hardware they own. Zero cloud dependency. CMMC audit-ready from deployment day.</p>
-          <span class="copper-sm">Scenario: CMMC Level 1 Facility</span>
+          <p class="mb-075">Typical engagement: a CMMC Level 2 subcontractor handling CUI for a DoD program. Every agent action is logged to a receipt their ISSO pulls into the SSP.</p>
+          <span class="copper-sm">CMMC Level 2 subcontractor</span>
         </div>
         <div class="accent-blockquote">
           <p class="mb-075">ITAR-regulated manufacturer using AI for technical documentation. Export-controlled data on a cloud provider's infrastructure was a non-starter.</p>
