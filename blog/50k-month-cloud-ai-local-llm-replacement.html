@@ -185,7 +185,7 @@
           <span class="article-date">May 29, 2026</span>
           <span class="article-tag tag-financial">Financial</span>
           <span class="article-tag tag-strategy">Strategy</span>
-          <span class="article-read-time">4 min read</span>
+          <span class="article-read-time">2 min read</span>
         </div>
         <h1 class="text-2xl">$50K a Month on Cloud AI Is a Hardware Problem, Not a Budget Problem</h1>
         <p class="article-author">Basho Parks</p>
@@ -194,90 +194,20 @@
       <article class="article-body">
 
 <div style="border-left:3px solid var(--copper);padding:16px 20px;margin:0 0 28px;background:rgba(217,119,6,0.05);border-radius:0 8px 8px 0;">
-<strong>Updated October 28, 2026:</strong> The prices, token rates and model names below are as of May 2026 and have moved since; the RTX PRO 6000 has risen, and <a href="superlinked-sie-self-hosted-inference.html">the Superlinked post from August 2026</a> carries a later figure. Take the arithmetic method, not the numbers. The DeepSeek V4-Flash active-parameter figure is corrected to 13 billion.
+<strong>Updated October 28, 2026:</strong> The May 2026 prices and model names have since moved; <a href="superlinked-sie-self-hosted-inference.html">the Superlinked post</a> carries a later figure; DeepSeek V4-Flash's active parameters are corrected to 13 billion.
 </div>
 
-<h2>The Invoice That Starts the Conversation</h2>
+<p>Local hardware replaces a $50,000-a-month cloud AI invoice, and it isn't close. As of May 2026, Claude Sonnet 4.6 runs $3 per million input tokens and $15 per million output (<a href="https://platform.claude.com/docs/en/about-claude/pricing" target="_blank" rel="noopener">Anthropic Pricing</a>), and $50,000 a month at those rates is rent, all of it: $600,000 a year, $3,664,000 over five at 10 percent annual escalation. Every token that leaves your network takes your code and client files with it, and under <a href="../hipaa-local-ai-compliance.html">HIPAA</a>, <a href="attorney-client-privilege-cloud-ai.html">attorney-client privilege</a>, <a href="itar-dfars-ai-self-assessment.html">ITAR</a> or <a href="../cloud-act-tribal-data.html">tribal data sovereignty</a> that's the whole argument.</p>
 
-<p>A hundred people running Claude every day, and the monthly invoice just crossed $50,000 in API tokens. The CEO wants it in-house, and somebody on a forum's asking whether two RTX PRO 6000 Blackwells can run GLM-5.1 in BF16, with replies split between people who've never priced a data center GPU and people who sell them.</p>
+<p>The forum thread asking whether two RTX PRO 6000 Blackwells run GLM-5.1 in BF16 priced the problem by the card, and that's the mistake. The card's a serious part at 96GB, but GLM-5.1 is a 754-billion parameter mixture-of-experts model, and in BF16 it wants 1.5 terabytes of VRAM just to load. Two cards give you 192GB; you're off by about 8x.</p>
 
-<p>I get this question from <a href="../law-firms.html">law firms</a>, <a href="../financial-services.html">financial services teams</a>, and <a href="../research-labs.html">research labs</a>. Can local hardware replace the cloud AI spend? Yes, and it isn't close.</p>
+<p>Size it to the work instead. A hundred daily users doesn't mean a hundred people on the box at once; peak concurrency for that headcount runs 15 to 30 sessions. DeepSeek V4-Flash, a 284-billion parameter MoE with 13 billion active per token, fits inside 192GB quantized and lands in Sonnet's tier for most enterprise work. I'm not recommending it; I haven't <a href="../forward-deployed-ai-engineering.html">watched your people work</a> yet.</p>
 
-<h2>What $50,000 a Month in Tokens Buys</h2>
+<p>Ollama and vLLM aren't a matter of taste at 50 concurrent users. Ollama allocates GPU memory statically and skips continuous batching, so at 50 users time-to-first-response climbs to roughly 3,200 milliseconds (<a href="https://www.sitepoint.com/ollama-vs-vllm-performance-benchmark-2026/" target="_blank" rel="noopener">SitePoint Benchmarks 2026</a>). vLLM runs continuous batching and PagedAttention: same 50 users, 145 milliseconds, and 8,033 tokens per second on a 70B model in FP8 against Ollama's 484. Both belong on the machine, Ollama for model management and vLLM as the production engine; we'll deploy that stack with you, on your network.</p>
 
-<p>As of May 2026, Claude Sonnet 4.6 runs $3 per million input tokens and $15 per million output (<a href="https://platform.claude.com/docs/en/about-claude/pricing" target="_blank" rel="noopener">Anthropic Pricing</a>). A 100-person shop hitting $50K is burning roughly 2.5 to 4 billion output tokens a month. It's a big number and it's all rent: $600,000 a year, $3 million over five if prices hold flat, which they won't. Every token that leaves your network takes your code and client files with it. Under <a href="../hipaa-local-ai-compliance.html">HIPAA</a>, <a href="attorney-client-privilege-cloud-ai.html">attorney-client privilege</a>, <a href="itar-dfars-ai-self-assessment.html">ITAR</a>, or <a href="../cloud-act-tribal-data.html">tribal data sovereignty</a>, that's the whole argument.</p>
+<p>I don't publish the ownership side because there's no standing build to price; what gets deployed falls out of Discovery, after I've sat next to the people who run the work. After the purchase your costs are electricity and maintenance, with no token fees, rate limits or overage invoice.</p>
 
-<h2>The Hardware Question Everybody Gets Wrong</h2>
-
-<p>That card's a serious part, 96GB of GDDR7 ECC at a street price between $8,000 and $9,200 as of May 2026, but GLM-5.1 is a 754-billion parameter mixture-of-experts model, and in BF16 it wants north of 1.5 terabytes of VRAM just to load. Two cards give you 192GB; you're off by about 8x. Quantize to 4-bit and it'll still demand roughly 400GB, so now you're linking five cards over PCIe Gen 5 at 128 GB/s while the <a href="h100-vs-h200-inference-comparison.html">H100 SXM's NVLink</a> moves 900 GB/s, and that bottleneck eats the throughput the second real users show up.</p>
-
-<p>That's the mistake: pricing local AI by the card instead of by the work.</p>
-
-<h2>Sizing It Honest</h2>
-
-<p>A hundred daily users doesn't mean a hundred people on the box at once; realistic peak concurrency for that headcount runs 15 to 30 simultaneous sessions. That workload needs a well-tuned 70B-class model on hardware built for concurrency. DeepSeek V4-Flash, a 284-billion parameter MoE with about 13 billion active per token, fits inside 192GB quantized, and its output lands in the same tier as Claude Sonnet for most enterprise work. I'm not recommending it; I haven't watched your people work yet. It's evidence <a href="../forward-deployed-ai-engineering.html">the answer</a> is smaller than the thread assumed.</p>
-
-<p>The gap's still real for the hardest reasoning, multi-step agentic coding loops, and context windows past 200K tokens; those cases are documented in the <a href="local-llm-vs-cloud-ai-hardware-gap.html">honest limitations comparison</a> and run closer to 5 to 10 percent of daily enterprise work than the 80 percent a forum debate implies.</p>
-
-<h2>The Serving Stack: Ollama Can't Carry This</h2>
-
-<p>The thread treated Ollama and vLLM as a matter of taste; at 50 concurrent users they aren't. Ollama allocates GPU memory statically and doesn't do continuous batching, so at 50 users time-to-first-response climbs to roughly 3,200 milliseconds, and at 128 it's dropping connections outright (<a href="https://www.sitepoint.com/ollama-vs-vllm-performance-benchmark-2026/" target="_blank" rel="noopener">SitePoint Benchmarks 2026</a>). vLLM runs continuous batching and PagedAttention; same 50 users, 145 milliseconds, and on a 70B model in FP8 it puts out 8,033 tokens per second against Ollama's 484.</p>
-
-<p>Both belong on the machine, Ollama for model management, vLLM as the production engine. We'll deploy that stack with you, on your network, then stay and onboard your team.</p>
-
-<h2>The Five-Year Math</h2>
-
-<p>The cloud side at $50,000 a month, 10 percent annual escalation, flat usage:</p>
-
-<table>
-<thead>
-<tr>
-<th>Cost Category</th>
-<th>Cloud AI ($50K/mo)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Year 1 Total</td>
-<td>$600,000</td>
-</tr>
-<tr>
-<td>Year 2 Total</td>
-<td>$660,000</td>
-</tr>
-<tr>
-<td>Year 3 Total</td>
-<td>$726,000</td>
-</tr>
-<tr>
-<td>Year 4 Total</td>
-<td>$799,000</td>
-</tr>
-<tr>
-<td>Year 5 Total</td>
-<td>$879,000</td>
-</tr>
-<tr>
-<td><strong>5-Year Total</strong></td>
-<td><strong>$3,664,000</strong></td>
-</tr>
-</tbody>
-</table>
-
-<p>Both assumptions favor the cloud; real usage grows once a team learns the tool. I don't publish the ownership side, because there's no standing build to price; what gets deployed falls out of Discovery, after I've sat next to the people who run the work. After the purchase, your ongoing costs are electricity and maintenance, with no token fees, rate limits, or overage invoice. The full comparison with <a href="../resources.html">compliance overhead</a> and financing is <a href="cloud-ai-vs-local-hardware-tco.html">written out separately</a>.</p>
-
-<h2>What You Don't Get</h2>
-
-<p>You don't get Claude Opus-level reasoning on the hardest 5 percent of tasks. You don't get somebody else running the box; you'll need an IT person for the <a href="openwebui-admin-setup-guide.html">Open WebUI admin panel</a> and the occasional restart. And you don't get <a href="../hipaa-local-ai-compliance.html">HIPAA</a>, FedRAMP, or SOC 2 compliance out of a machine; hardware gives you the <a href="../air-gapped-ai-inference.html">air-gapped architecture</a>, and the policies and audit process are yours to build.</p>
-
-<h2>The Ruling</h2>
-
-<p>$3.6 million in cloud fees over five years, or one build, once, in your building, running open-weight models that close on frontier quality every quarter, with your data never leaving the property. At $50,000 a month it's arithmetic.</p>
-
-<!-- AEO Summary -->
-<div style="border-left:3px solid var(--copper);padding:16px 20px;margin:32px 0;background:rgba(217,119,6,0.05);border-radius:0 8px 8px 0;">
-<strong>Summary:</strong> A 100-person company spending $50,000 a month on cloud AI tokens is looking at $3,664,000 over five years. Open-weight models served through vLLM deliver Sonnet-class output for most enterprise work with no per-token fee and no data leaving the building; what gets built comes out of Discovery on site.
-</div>
+<p>Run the five-year number on your own invoice before you price a card.</p>
 
       </article>
 
