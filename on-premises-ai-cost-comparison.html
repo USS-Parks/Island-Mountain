@@ -101,7 +101,7 @@
         "name": "What are the ongoing costs of on-premises AI hardware?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "After the initial hardware purchase, ongoing costs include electricity (approximately $200-400 per month for a two-accelerator example system under typical workloads), IT staff time for basic administration, and optional extended warranty coverage. There are no per-query fees, no per-seat licensing, no API rate limits, and no subscription charges. Total annual operating cost is typically $3,000-$6,000 compared to $33,000-$58,000 or more in annual frontier API fees for equivalent usage at July 2026 rates."
+          "text": "After the purchase, ongoing costs are power, cooling, the staff time to patch and run the system, and any support tier you choose, all sized in Discovery for your build. There are no per-query fees, no per-seat licensing, no API rate limits, and no subscription charges."
         }
       },
       {
@@ -109,7 +109,7 @@
         "name": "Does on-premises AI have hidden costs that cloud AI avoids?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "On-premises AI requires physical rack space (2-4U), adequate power and cooling, and basic IT administration. These are real costs but they are predictable and fixed. Cloud AI has its own hidden costs: per-token pricing that scales unpredictably with usage, API rate limits that constrain productivity, data egress fees, and the risk of price increases that you cannot negotiate. The key difference is that on-premises costs are bounded and owner-controlled while cloud costs are variable and vendor-controlled."
+          "text": "On-premises AI requires physical rack space, adequate power and cooling, and basic IT administration. These are real costs but they are predictable and fixed. Cloud AI has its own hidden costs: per-token pricing that scales unpredictably with usage, API rate limits that constrain productivity, data egress fees, and the risk of price increases that you cannot negotiate. The key difference is that on-premises costs are bounded and owner-controlled while cloud costs are variable and vendor-controlled."
         }
       }
     ]
@@ -223,7 +223,7 @@
     <div class="container">
       <div class="content-block fade-in content-max-800">
         <h2 class="mb-16" style="color:var(--text-light);">The Five-Year TCO Math</h2>
-        <p class="body-md"><strong>On-premises (example, two accelerators):</strong> Hardware: a one-time purchase, quoted to the deployment. Annual electricity ~$3,600 ($300/month at typical workloads). Annual IT administration overhead ~$2,400 (estimated 2 hours/month at $100/hour). Optional extended warranty ~$5,000/year. Five-year operating total on top of the hardware: approximately $30,000-$55,000 depending on warranty coverage.</p>
+        <p class="body-md"><strong>On-premises:</strong> A one-time purchase, quoted to the deployment after Discovery. Power, cooling, administration and any support tier get sized for your build at the same time, so the owned side of this comparison comes from your numbers, not a sample box.</p>
         <p class="body-md"><strong>Cloud AI API (July 2026 rate sheet):</strong> At 40 users running 50 queries per day (2,000 queries/day), with an average query consuming ~4,000 tokens (3,000 input + 1,000 output, typical for enterprise RAG workflows with document context), daily token usage is approximately 6 million input and 2 million output tokens. Price that workload against the three columns on the wall:</p>
         <p class="body-md" style="padding-left:20px;"><strong>OpenAI Sol 5.6</strong> ($5 in / $30 out per million tokens): ~$90/day, ~$32,850/year, ~$164,000 over five years.<br><strong>Anthropic Fable 5</strong> ($10 in / $50 out): ~$160/day, ~$58,400/year, ~$292,000 over five years.<br><strong>DeepSeek V4 Flash, open weights</strong> ($0.14 uncached in / $0.28 out, hosted; cache hits drop input to a third of a cent per million): ~$1.40/day, ~$511/year, ~$2,555 over five years.</p>
         <p class="body-md">Same workload, same tokens. The per-token gap between the frontier columns and the open-weight column runs from 36x on Sol's input to 179x on Fable's output; on this workload it lands between 64x and 114x. That gap used to buy real capability. As of July 2026 it doesn't: open weights are going toe to toe with the frontier labs, and the models we're most excited to deploy, Kimi K3 and the pending Qwen releases, sit in the same column as DeepSeek.</p>
@@ -249,9 +249,9 @@
     <div class="container">
       <div class="content-block fade-in content-max-800">
         <h2 class="mb-16" style="color:var(--text-light);">Ongoing Costs: What You Pay After the Purchase</h2>
-        <p class="body-md"><strong>Electricity:</strong> As a worked example, a system on 2x NVIDIA RTX PRO 6000 Blackwell 96GB GPUs draws approximately 1.5-2.5 kW under typical inference workloads. At national average electricity rates (~$0.12/kWh), that is $130-$220 per month. Heavy sustained workloads push toward $300-$400/month.</p>
+        <p class="body-md"><strong>Electricity:</strong> Power draw depends entirely on the build Discovery lands on, so we size it with your facilities people before anything's ordered.</p>
         <p class="body-md"><strong>IT administration:</strong> Open WebUI administration is straightforward for any IT team that manages servers. User account creation, model updates (optional - the system works fine without updates), and basic monitoring. Estimated 1-2 hours per month for routine administration.</p>
-        <p class="body-md"><strong>Physical infrastructure:</strong> The system requires standard 2-4U rack space, adequate power (single 240V circuit), and server-room cooling. If your facility already has a server room, no additional infrastructure is needed.</p>
+        <p class="body-md"><strong>Physical infrastructure:</strong> Rack space, power and cooling get scoped in Discovery. If your facility already has a server room, the build may need nothing new, and if it doesn't, you'll know what it needs before anything's ordered.</p>
         <p class="body-md"><strong>What you do NOT pay:</strong> No per-query fees. No per-seat licensing. No per-token charges. No API rate limit upgrades. No data egress. No subscription renewals. No vendor lock-in penalties.</p>
       </div>
     </div>
@@ -282,7 +282,7 @@
     <div class="container">
       <div class="content-block fade-in content-max-800">
         <div style="border-left:3px solid var(--copper);padding:16px 20px;margin:32px 0;background:rgba(217,119,6,0.05);border-radius:0 8px 8px 0;">
-          <p class="body-md" style="margin:0;"><strong>Summary:</strong> On-premises AI is a one-time capital purchase quoted to the deployment, with annual operating costs of $3,000-$6,000. The same 40-user workload on closed frontier APIs (OpenAI Sol 5.6 at $5/$30 per million tokens, Anthropic Fable 5 at $10/$50, July 2026 published rates) runs $33,000-$58,000 per year, $164,000-$292,000+ over five years at flat usage. Open weights (DeepSeek V4 Flash at $0.14/$0.28) cost 36x-179x less per token; air-gapped on owned hardware, the weights themselves are free and there is no meter at all. Owning the system eliminates per-token fees, rate limits, and vendor price volatility.</p>
+          <p class="body-md" style="margin:0;"><strong>Summary:</strong> On-premises AI is a one-time capital purchase quoted to the deployment, with operating costs sized in Discovery. The same 40-user workload on closed frontier APIs (OpenAI Sol 5.6 at $5/$30 per million tokens, Anthropic Fable 5 at $10/$50, July 2026 published rates) runs $33,000-$58,000 per year, $164,000-$292,000+ over five years at flat usage. Open weights (DeepSeek V4 Flash at $0.14/$0.28) cost 36x-179x less per token; air-gapped on owned hardware, the weights themselves are free and there is no meter at all. Owning the system eliminates per-token fees, rate limits, and vendor price volatility.</p>
         </div>
         <p class="body-md">Learn more: <a href="blog/cloud-ai-vs-local-hardware-tco.html" class="clr-copper">Cloud AI vs Local Hardware TCO</a> | <a href="forward-deployed-ai-engineering.html" class="clr-copper">on-premise AI deployment Products</a></p>
       </div>
