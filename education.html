@@ -80,34 +80,18 @@
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "Does using cloud AI for student data create FERPA risk?",
+        "name": "Does cloud AI create FERPA compliance risk?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "It can. FERPA's school-official exception lets a district outsource only to a party under its direct control over how records are used and kept. Proving that control over a cloud AI vendor is a contract-and-audit job that never ends. When the system runs on district hardware, no third party receives the records, so the exception never comes into play."
+          "text": "It can. The school-official exception needs a vendor under your direct control over records, and proving that control is an audit that never ends. On district hardware, no third party receives them."
         }
       },
       {
         "@type": "Question",
-        "name": "What education workflows can run on Island Mountain campus AI hardware?",
+        "name": "Does our institution need additional IT staff?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Island Mountain hardware supports curriculum design assistance, student record summarization and academic advising, research data analysis for faculty, administrative document drafting including accreditation reports, grant proposal development, and assessment assistance. The system runs current open-weight models, and custom models we build for your district. All processing occurs on campus-controlled hardware with no student data transmitted to external servers."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How does on-premises AI cost compare to cloud AI for a university?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Cloud AI at education pricing ($20 to $100 per user per month) for 200 campus users costs $48,000 to $240,000 annually with ongoing student data exposure. An Island Mountain deployment is a one-time purchase, quoted to your workload, supporting unlimited users on the campus network. Research-intensive workloads call for more capacity than a teaching-focused deployment, and which is which comes out of Discovery rather than a catalog. Ongoing costs are power, cooling, and the staff time to patch and run the system, all sized in Discovery."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Does a school need dedicated IT staff to run on-premises AI hardware?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "No. We build it on-site with your people, write the SOPs they'll run it by, and hand over the keys once they can run it without us. If you'd rather keep the upkeep off your IT desk, tiered support covers it."
+          "text": "No. We build it on-site with your people, write the SOPs they'll run it by, and hand over the keys. Tiered support covers upkeep if you'd rather not."
         }
       }
     ]
@@ -186,7 +170,7 @@
     <div class="hero-inner">
       <span class="hero-badge">Local AI for Education</span>
       <h1>Student Data Privacy Isn't Optional. Your AI Architecture Shouldn't Treat It That Way.</h1>
-      <p>FERPA protects student education records. The "school official" exception was written for people under the district&#39;s direct control, not a cloud vendor&#39;s terms of service. We&#39;ll build the whole system on your own hardware instead: the agents, the orchestration, and the models that run the district&#39;s real work, and student records never leave your network.</p>
+      <p>Every prompt sent to a cloud AI service hands student records to a third party. We&#39;ll build the agents and models on your own hardware instead, and none of it leaves your network.</p>
     </div>
   </section>
 
@@ -194,7 +178,6 @@
   <nav class="breadcrumb">
     <a href="index.html">Home</a><span>&rsaquo;</span><a href="solutions.html">Solutions</a><span>&rsaquo;</span>Education
   </nav>
-  <div class="cta-hero-wrap"><p class="detail-text">We start beside the registrar, the financial aid counselor, and the IRB coordinator, because that is where student data moves.</p></div>
 
   <!-- The Problem -->
   <section class="section section-first">
@@ -202,17 +185,13 @@
       <div class="section-header fade-in">
         <span class="section-badge">The Student Privacy Problem</span>
         <h2>The Cloud AI Problem for Educational Institutions</h2>
-        <p>Air-gapped AI education infrastructure keeps student records on campus. FERPA requires institutional control over student education records - cloud AI transmits those records to commercial infrastructure.</p>
       </div>
       <div class="fade-in content-narrow">
-        <p class="body-lg">FERPA (20 U.S.C. &sect; 1232g) establishes that educational institutions receiving federal funding must protect the privacy of student education records. The "school official" exception permits disclosure of education records to school officials with legitimate educational interests - but the exception was designed for employees and contractors under direct institutional control. Cloud AI vendors operate commercial infrastructure under their own terms of service, privacy policies, and data handling practices. Educational institutions are one of <a href="solutions.html">eleven regulated industries</a> where this structural conflict between cloud AI and data privacy requirements is most acute.</p>
-        <p class="body-lg">For K-12 institutions, COPPA (Children's Online Privacy Protection Act) adds requirements for children under 13. State student privacy laws - California's SOPIPA (Student Online Personal Information Protection Act), New York Education Law 2-d, Illinois SOPPA, and similar statutes in over 40 states - impose additional restrictions on how student data can be collected, used, and disclosed to third parties. Cloud AI processing triggers many of these disclosure provisions.</p>
-        <p class="body-lg">Universities face additional complexity: IRB requirements for student research data (requirements shared with <a href="research-labs.html">dedicated research labs</a>), Title IV data protection obligations, and institutional review of data sharing agreements for any technology processing student records. On-premise AI for edtech resolves the structural problem that is consistent across all levels of education: cloud AI vendors process student education records on commercial infrastructure, creating a data handling dependency that complicates FERPA compliance and exposes institutions to enforcement risk from the Department of Education. Public institutions face additional <a href="government.html">government data handling requirements</a> as recipients of state and federal funding.</p>
+        <p class="body-lg">FERPA (20 U.S.C. &sect; 1232g) requires institutional control over student records, and COPPA and state laws like SOPIPA restrict what third parties get. A cloud AI vendor is a third party running under its own terms. On hardware you own the records stay on your network, and it&#39;ll run air-gapped.</p>
       </div>
     </div>
   </section>
 
-  
   <section class="section-pt-32">
     <div class="container">
       <div class="badge-wrap">
@@ -222,36 +201,7 @@
       </div>
     </div>
   </section>
-  <!-- How It Works -->
-  <section class="section section-dark">
-    <div class="container">
-      <div class="section-header fade-in">
-        <span class="section-badge">How It Works</span>
-        <h2>What On-Premises AI Means for Your Campus</h2>
-        <p>Air-gapped inference university IT departments can trust. "No data leaves your campus" is not marketing language - it is a description of campus-controlled network architecture.</p>
-      </div>
-      <div class="card-grid card-grid-3 fade-in">
-        <div class="card">
-          <div class="card-icon-im"><img src="images/icons/no-integration-icon.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
-          <h3>Zero External Transmission</h3>
-          <p>Student data never leaves your campus network. Prompts travel from workstation to server over internal network only. No cloud vendor processes student records.</p>
-        </div>
-        <div class="card">
-          <div class="card-icon-im"><img src="images/icons/server-rack-icon.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
-          <h3>A System You Own</h3>
-          <p>Physical hardware in your campus data center, on your network, under your IT department's control. Institutional ownership of AI infrastructure, configured to what the institution does.</p>
-        </div>
-        <div class="card">
-          <div class="card-icon-im"><img src="images/icons/air-gapped-icon.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
-          <h3>Air-Gap Capable</h3>
-          <p>Air-gap GPU server college and university deployments with complete network isolation available after initial setup. For institutions with the most stringent data handling requirements, the system operates with zero external connections.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- We build it around the district -->
+  <!-- The build -->
   <section class="section section-darker">
     <div class="container">
       <div class="section-header fade-in">
@@ -259,85 +209,48 @@
         <h2>We Build It Around How Your District Runs</h2>
       </div>
       <div class="fade-in content-narrow">
-        <p class="body-lg">A general model knows plenty about education in the abstract and nothing about your district. It&#39;s never opened your IEP templates, doesn&#39;t know the fields in your SIS, can&#39;t tell your board&#39;s policy language from a principal&#39;s weekly memo. We build for the district you run.</p>
-        <p class="body-lg">Island Mountain builds the agents and the orchestration that carry the work that fills a district&#39;s week: IEP drafting support with the goal bank and the templates in view, lesson and curriculum planning against your standards, grant writing, parent communications, public-records responses, and board-packet prep. It runs on current open-weight models like Kimi K3, ZAI GLM 5.2, Qwen 3.8+, and Nous Hermes 4, served through Ollama or vLLM behind an OpenWebUI front end, or whatever open weights fit the task. All of it governed by our own agentic orchestration and the <a href="lamprey-woven-security-governance.html" class="clr-copper">Woven Security Fabric</a>, so every action carries an identity, an approval, and a receipt, and the credentials expire when the task is done. Student records never leave the district network to make any of it happen.</p>
-        <p class="body-lg">When the work needs a model that speaks your district, we&#39;ll build one. Reasoning models and small language models from scratch, trained to orbit your district&#39;s ontology: your curriculum standards, your student-services process, your board and department structure. It learns your terminology and cadence, not a generic school&#39;s.</p>
-        <p class="body-lg">For student records that can&#39;t touch an outside wire, the system runs fully air-gapped. For a task that genuinely needs the open web, it reaches out. That line gets drawn workflow by workflow, and the district draws it.</p>
-        <p class="body-lg">Then we hand back the keys. On-site onboarding, SOPs a teacher or an office administrator can follow, the login and the controls in your team&#39;s hands so they run and rework the workflows without calling us. Want the upkeep off your technology department&#39;s plate? We offer tiered support sized to the district, and we plug in wherever that&#39;s easiest. This is your district&#39;s legacy. We build it alongside you, and we won&#39;t call it done until your people can run it without us.</p>
+        <p class="body-lg">We build the agents that carry a district&#39;s week: IEP drafting, lesson planning against your standards, grant writing, public-records responses, board-packet prep. When the work needs a model trained on your curriculum and student-services process, we&#39;ll build that too. Every action runs under the <a href="lamprey-woven-security-governance.html" class="clr-copper">Woven Security Fabric</a> with an identity and a receipt, and we hand it over once your people can run it.</p>
       </div>
     </div>
   </section>
 
-
   <!-- Workflows -->
-  <section class="section section-darker">
+  <section class="section section-dark">
     <div class="container">
       <div class="section-header fade-in">
         <span class="section-badge">Workflows</span>
         <h2>Campus Workflows a Deployment Supports</h2>
-        <p>These aren&#39;t chat prompts. They&#39;re agentic workflows the orchestration runs start to finish, each step carrying its own identity and receipt, and no student records leave your network.</p>
       </div>
       <div class="card-grid card-grid-3 fade-in">
         <div class="card">
           <div class="card-icon-im"><img src="images/icons/curriculum-design-assist-icon.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
           <h3>Curriculum Design Assistance</h3>
-          <p>Local AI for curriculum design: analyze learning objectives, generate course outlines, develop assessment rubrics, and create supplementary materials. Support faculty in curriculum development without exposing proprietary course materials to cloud services.</p>
+          <p>Course outlines, rubrics and materials built from your learning objectives.</p>
         </div>
         <div class="card">
           <div class="card-icon-im"><img src="images/icons/document-review-icon.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
           <h3>Student Record Summarization</h3>
-          <p>Secure AI for student records: process enrollment records, academic transcripts, and advising notes to generate student summaries for advisors and administrators. Keep personally identifiable student information entirely on campus hardware.</p>
+          <p>Advisor summaries from transcripts and advising notes.</p>
         </div>
         <div class="card">
           <div class="card-icon-im"><img src="images/icons/analytics-icon.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
           <h3>Research Data Analysis</h3>
-          <p>On-prem AI for research: support faculty with AI-assisted data analysis, literature review synthesis, and methodology documentation. Keep unpublished findings and grant-funded research data on institutional hardware.</p>
+          <p>Unpublished findings analyzed on institutional hardware.</p>
         </div>
         <div class="card">
           <div class="card-icon-im"><img src="images/icons/document-drafting-icon.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
           <h3>Administrative Document Drafting</h3>
-          <p>Draft accreditation reports, institutional effectiveness documentation, board presentations, and administrative correspondence. Run an on-prem LLM for admissions communications, enrollment management, and institutional reporting. Process sensitive institutional data locally.</p>
+          <p>Accreditation reports, board presentations and admissions correspondence.</p>
         </div>
         <div class="card">
           <div class="card-icon-im"><img src="images/icons/grant-funding-icon.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
           <h3>Grant Proposal Support</h3>
-          <p>Assist with grant narrative development, budget justification drafting, and proposal editing. Process preliminary research data and institutional information without cloud exposure.</p>
+          <p>Grant narratives and budget justifications drafted where the data lives.</p>
         </div>
         <div class="card">
           <div class="card-icon-im"><img src="images/icons/assessment-grading-assist-icon.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
           <h3>Assessment &amp; Grading Assistance</h3>
-          <p>Local AI for grading support: develop rubrics, draft feedback, and analyze assessment data. The AI assists with documentation and drafting - educators make all evaluation decisions.</p>
-        </div>
-      </div>
-      <div class="comparison-note fade-in mt-32">
-        <i class="ri-information-line"></i>
-        Island Mountain hardware runs general-purpose large language models. These are not education-specific fine-tuned models. They do not include LMS integration (Canvas, Blackboard, Moodle), SIS connectors (Banner, PowerSchool, Ellucian), or automated grading capabilities. The models assist with drafting and analysis - educators make all educational judgments.
-      </div>
-    </div>
-  </section>
-
-  <!-- Models -->
-  <section class="section section-dark">
-    <div class="container">
-      <div class="section-header fade-in">
-        <span class="section-badge">Models</span>
-        <h2>The Models Behind a District Deployment</h2>
-      </div>
-      <div class="card-grid card-grid-3 fade-in">
-        <div class="card text-center">
-          <div class="card-icon-im"><img src="images/icons/current-open-weights-icon.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
-          <h3>Current Open Weights</h3>
-          <p>Kimi K3, ZAI GLM 5.2, Qwen 3.8+, Nous Hermes 4, or whatever&#39;s leading the month a district goes live, all served through Ollama or vLLM behind OpenWebUI. The open-weight field moves fast, and the deployment moves with it. We pick the model that fits the job in front of us, not the one that topped a leaderboard last spring.</p>
-        </div>
-        <div class="card text-center">
-          <div class="card-icon-im"><img src="images/icons/built-to-orbit-icon.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
-          <h3>Built to Orbit Your District</h3>
-          <p>When no open model fits the way your district works, we train one from the ground up. Reasoning models and small language models built on your ontology: the curriculum standards, the student-services process, the board and department structure that make your district itself. Compact, precise, and nobody else&#39;s.</p>
-        </div>
-        <div class="card text-center">
-          <div class="card-icon-im"><img src="images/icons/governed-not-just-installed-icon.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
-          <h3>Governed, Not Just Installed</h3>
-          <p>Every model answers to our agentic orchestration and the Woven Security Fabric. Scoped access, credentials that expire, a receipt for every action taken against student data. Air-gapped for the records that demand it, cloud-connected only when a task earns it.</p>
+          <p>Rubrics and feedback drafted from your assessment data.</p>
         </div>
       </div>
     </div>
@@ -348,133 +261,76 @@
     <div class="container">
       <div class="section-header fade-in">
         <span class="section-badge">Cost Comparison</span>
-        <h2>Cloud AI vs. an On-Premise Deployment for a University Department</h2>
-        <p>The cloud transmits student records to commercial servers. The hardware keeps everything on campus.</p>
+        <h2>Cloud AI vs. an On-Premise Deployment</h2>
       </div>
       <div class="table-wrapper fade-in">
         <table>
           <thead>
             <tr>
               <th></th>
-              <th>Cloud AI</th>
+              <th>Cloud AI (200 Users)</th>
               <th>An Island Mountain Deployment</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td><strong>Year 1 Cost (30 users)</strong></td>
-              <td>$7,200 - $36,000 (edu pricing)</td>
+              <td><strong>Year 1 Cost</strong></td>
+              <td>$48,000 - $240,000</td>
               <td class="highlight-cell">One-time purchase (quoted to the deployment; unlimited users)</td>
             </tr>
             <tr>
-              <td><strong>Year 1 Cost (200 users)</strong></td>
-              <td>$48,000 - $240,000</td>
-              <td class="highlight-cell">One-time purchase (same hardware)</td>
-            </tr>
-            <tr>
-              <td><strong>Year 3 Cumulative (200 users)</strong></td>
+              <td><strong>Year 3 Cumulative</strong></td>
               <td>$144,000 - $720,000</td>
               <td class="highlight-cell">Scoped in Discovery</td>
             </tr>
             <tr>
               <td><strong>Student Data Location</strong></td>
               <td>Commercial cloud servers</td>
-              <td class="highlight-cell">Your campus data center.</td>
-            </tr>
-            <tr>
-              <td><strong>FERPA Compliance</strong></td>
-              <td>Depends on vendor contract terms</td>
-              <td class="highlight-cell">Student data never leaves campus.</td>
+              <td class="highlight-cell">Your campus data center</td>
             </tr>
             <tr>
               <td><strong>Per-Token Fees</strong></td>
               <td>$10 - $40 per million tokens (edu)</td>
-              <td class="highlight-cell">None.</td>
+              <td class="highlight-cell">None</td>
             </tr>
             <tr>
-              <td><strong>Model Control</strong></td>
-              <td>Provider decides models and updates</td>
-              <td class="highlight-cell">You choose which models to run</td>
-            </tr>
-            <tr>
-              <td><strong>LMS Integration</strong></td>
-              <td>Some platforms offer integrations</td>
-              <td>Not included. General-purpose AI.</td>
-            </tr>
-            <tr>
-              <td><strong>Vendor Lock-In</strong></td>
-              <td>Complete</td>
-              <td class="highlight-cell">Low. You keep the weights, and we check every model's license before it's deployed.</td>
+              <td><strong>FERPA Exposure</strong></td>
+              <td>Depends on vendor contract terms</td>
+              <td class="highlight-cell">Student data never leaves campus</td>
             </tr>
           </tbody>
         </table>
       </div>
       <div class="comparison-note fade-in mt-20">
         <i class="ri-information-line"></i>
-        Cloud estimates based on educational pricing of $20-$100/user/month. Many cloud AI platforms offer educational discounts but still process student data on commercial infrastructure. Power draw on our side depends entirely on the configuration, which is why site electrical readiness gets scoped with your facilities people before anything is ordered.
+        Cloud estimates based on educational pricing of $20-$100/user/month.
       </div>
     </div>
   </section>
 
-  <!-- Honest Limitations -->
+  <!-- What You Do Not Get -->
   <section class="section section-dark">
     <div class="container">
       <div class="section-header fade-in">
         <span class="section-badge">Honest Limitations</span>
         <h2>What You Do Not Get</h2>
-        <p>Knowing the boundaries matters more than knowing the features.</p>
       </div>
       <div class="risk-grid fade-in">
         <div class="risk-card">
-          <div class="risk-icon"><img src="images/ic-search.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
-          <h4>No Education-Specific Fine-Tuning</h4>
-          <p>The models are general-purpose large language models. They're strong at reasoning, analysis, and prose generation, but they're general tools rather than education-specific AI, with no training on educational datasets, pedagogical frameworks, or discipline-specific knowledge bases.</p>
-        </div>
-        <div class="risk-card">
           <div class="risk-icon"><img src="images/ic-plugins.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
-          <h4>No LMS/SIS Integration</h4>
-          <p>Island Mountain hardware does not connect to Canvas, Blackboard, Moodle, Banner, PowerSchool, Ellucian, or other educational technology platforms. The AI runs through OpenWebUI - a browser-based chat interface. Moving data between your educational systems and the AI is a manual process.</p>
+          <h4>Integrations Are Scoped in Discovery</h4>
+          <p>There&#39;s no connector catalog. Canvas, PowerSchool or Banner gets connected only if Discovery says it&#39;s safe, on its own expiring credential.</p>
         </div>
         <div class="risk-card">
           <div class="risk-icon"><img src="images/icons/higher-learning-ai-icon.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
-          <h4>No Automated Grading or Assessment Scoring</h4>
-          <p>The system provides drafting assistance for feedback and rubric development, but it does not automatically grade student work or generate scores. Local AI for campus security documentation is possible through the chat interface, but the system has no direct integration with campus safety systems. AI assists with the prose around assessment - educators make all evaluation decisions and exercise professional judgment.</p>
+          <h4>No Automated Grading</h4>
+          <p>It drafts rubrics and feedback but doesn&#39;t grade student work or generate scores. Educators make every evaluation decision.</p>
         </div>
         <div class="risk-card">
           <div class="risk-icon"><img src="images/ic-default-access.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
           <h4>Patching Is Part of the Build</h4>
-          <p>PHP2Shell was exploited about twelve hours before PHP shipped the fix. That's the patch window now, and a system that waits thirty days for someone to get around to updates is exposed for most of them. So the handoff includes the runbook: what gets patched, who approves it, how an update's verified before it's applied, and how to roll it back. Your team runs it, and the runbook sets how fast. If you'd rather we carry part of that load, tiered support is where it goes, and Discovery is where we decide who's on the hook for what.</p>
+          <p>Exploits land within hours of a patch now, so the handoff includes the runbook: what gets patched, who approves it, how it rolls back.</p>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Regulatory Context -->
-  <section class="section section-darker">
-    <div class="container">
-      <div class="section-header fade-in">
-        <span class="section-badge">Regulatory Context</span>
-        <h2>FERPA, COPPA, and the School Official Exception</h2>
-        <p>A FERPA compliant AI server keeps student education records under institutional control from day one.</p>
-      </div>
-      <div class="fade-in content-narrow">
-        <p class="body-lg">FERPA's "school official" exception (34 CFR &sect; 99.31(a)(1)) permits disclosure of education records to school officials with legitimate educational interests. For third-party contractors to qualify under this exception, they must perform an institutional service or function, be under direct control of the institution with respect to use and maintenance of education records, and use records only for authorized purposes. FERPA school official AI designations through cloud vendors may satisfy these contractual requirements - but the structural dependency on commercial infrastructure for student data processing creates ongoing compliance risk and audit complexity.</p>
-        <p class="body-lg">COPPA (15 U.S.C. &sect;&sect; 6501-6506) requires verifiable parental consent before collecting personal information from children under 13. K-12 institutions using cloud AI for student data create disclosure scenarios that may trigger COPPA requirements beyond what the school consent exception covers. Local processing eliminates the third-party collection that triggers COPPA's disclosure provisions.</p>
-        <p class="body-lg">State student privacy laws add jurisdiction-specific requirements. California's SOPIPA prohibits operators of educational technology services from using student data for non-educational purposes. New York Education Law 2-d requires data privacy and security plans from third-party contractors. Illinois SOPPA mandates transparency in data collection by educational technology operators. Over 40 states have enacted similar legislation. The common thread: restrictions on third-party access to student data that cloud AI processing inherently involves. Education AI without cloud dependency resolves these restrictions architecturally.</p>
-        <p class="body-lg">For research universities, IRB requirements govern the handling of student research data. Campus health centers face <a href="medical-practices.html">HIPAA obligations identical to medical practices</a>. Title IV data protection obligations apply to financial aid information. Institutional review of data sharing agreements adds administrative overhead for any technology processing student records. Local AI deployment simplifies this entire analysis: when student data never leaves campus infrastructure, the third-party disclosure and data sharing questions do not arise.</p>
-        <div class="highlight-box">
-          <p class="scenario-text"><strong>Disclaimer:</strong> This section describes the general regulatory environment regarding AI and student data protection. It is not legal or compliance advice. Consult your institution's general counsel, FERPA officer, or qualified education law attorney for guidance specific to your institution type, student population, and operational context.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Power Requirements -->
-  <section class="section section-dark">
-    <div class="container">
-      <div class="power-notice fade-in">
-        <i class="ri-flashlight-line"></i>
-        <p><strong>Power and space:</strong> There's no standard box, so there's no standard circuit. Power, cooling and rack space get scoped with your facilities people during Discovery, before anything's ordered.</p>
       </div>
     </div>
   </section>
@@ -484,28 +340,18 @@
     <div class="container">
       <div class="section-header fade-in">
         <span class="section-badge">Education Questions</span>
-        <h2>Questions Educators Ask About On-Premises AI</h2>
+        <h2>Questions Educators Ask</h2>
       </div>
       <div class="risk-grid fade-in">
         <div class="risk-card">
           <div class="risk-icon"><img src="images/icons/higher-learning-ai-icon.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
           <h4>Does cloud AI create FERPA compliance risk?</h4>
-          <p>It can. FERPA's school-official exception lets a district outsource only to a party under its direct control over how records are used and kept. Proving that control over a cloud AI vendor is a contract-and-audit job that never ends. When the system runs on district hardware, no third party receives the records, so the exception never comes into play.</p>
-        </div>
-        <div class="risk-card">
-          <div class="risk-icon"><img src="images/icons/agentic-orchestration-icon.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
-          <h4>What educational workflows does this hardware support?</h4>
-          <p>Island Mountain hardware supports curriculum design assistance, student record summarization and academic advising, research data analysis for faculty, administrative document drafting including accreditation reports, grant proposal development, and assessment assistance. The system runs current open-weight models for analysis and drafting, and custom models we build for your district.</p>
-        </div>
-        <div class="risk-card">
-          <div class="risk-icon"><img src="images/icons/ai-cost-comparison-icon.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
-          <h4>How does cost compare for campus-wide deployment?</h4>
-          <p>Cloud AI at education pricing ($20 to $100 per user per month) for 200 campus users costs $48,000 to $240,000 annually with ongoing student data exposure. An Island Mountain build is a one-time purchase, quoted to your workload, supporting unlimited users on the campus network.</p>
+          <p>It can. The school-official exception needs a vendor under your direct control over records, and proving that control is an audit that never ends. On district hardware, no third party receives them.</p>
         </div>
         <div class="risk-card">
           <div class="risk-icon"><img src="images/ic-skills-teacher.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
           <h4>Does our institution need additional IT staff?</h4>
-          <p>No. We build it on-site with your people, write the SOPs they'll run it by, and hand over the keys once they can run it without us. If you'd rather keep the upkeep off your IT desk, tiered support covers it.</p>
+          <p>No. We build it on-site with your people, write the SOPs they&#39;ll run it by, and hand over the keys. Tiered support covers upkeep if you&#39;d rather not.</p>
         </div>
       </div>
       <div class="text-center-mt-32">
@@ -518,35 +364,7 @@
   <section class="section section-dark">
     <div class="container">
       <div class="fade-in founder-box">
-        <p class="scenario-text">Island Mountain is an engineering practice, not a compliance authority. References to FERPA, COPPA, state student privacy laws, or related educational data protection frameworks on this page reflect factual descriptions of data handling mechanics - not legal, regulatory, or compliance advice. Consult qualified counsel for compliance determinations specific to your organization and jurisdiction.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- AEO Summary -->
-  <div style="border-left:3px solid var(--copper);padding:16px 20px;margin:32px 0;background:rgba(217,119,6,0.05);border-radius:0 8px 8px 0;">
-  <strong>Summary:</strong> Island Mountain deploys on-premise AI systems for K-12 schools, community colleges, and universities. Student education records stay on campus-controlled servers - no cloud transmission, no third-party data handling, and full alignment with FERPA's school official exception. Student data privacy AI systems are quoted to workload and headcount, with air-gap capability and unlimited campus-wide access.
-  </div>
-
-  <!-- Deployment Scenarios -->
-  <section class="section section-dark section-py-3">
-    <div class="container">
-      <div class="section-header fade-in">
-        <h2>What a Deployment Looks Like</h2>
-      </div>
-      <div class="scenario-grid" class="fade-in">
-        <div class="accent-blockquote">
-          <p class="mb-075">Typical engagement: a community college serving about 8,000 students. Advising records, enrollment data and institutional research run on the college's own servers.</p>
-          <span class="copper-sm">Community College</span>
-        </div>
-        <div class="accent-blockquote">
-          <p class="mb-075">Typical engagement: a K-12 district with 12,000 students across 18 schools. Student records stay on district servers, and every record an agent reads leaves a receipt.</p>
-          <span class="copper-sm">K-12 School District</span>
-        </div>
-        <div class="accent-blockquote">
-          <p class="mb-075">Typical engagement: a research university running analysis on unpublished data and student records on its own hardware, with no third party in the data path.</p>
-          <span class="copper-sm">Research University</span>
-        </div>
+        <p class="scenario-text">We&#39;re an engineering practice, not a compliance authority, and this page isn&#39;t legal advice.</p>
       </div>
     </div>
   </section>
