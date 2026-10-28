@@ -244,7 +244,7 @@
         <div class="article-meta">
           <span class="article-date">June 21, 2026</span>
           <span class="article-tag tag-strategy">Strategy</span>
-          <span class="article-read-time">3 min read</span>
+          <span class="article-read-time">2 min read</span>
         </div>
         <h1 class="text-2xl">AI Search Visibility in 2026: What Three Years of Production AI Taught Me That Most Consultants Haven't Learned Yet</h1>
         <p class="article-author">Basho Parks</p>
@@ -253,38 +253,20 @@
       <article class="article-body">
 
 <div style="border-left:3px solid var(--copper);padding:16px 20px;margin:0 0 28px;background:rgba(217,119,6,0.05);border-radius:0 8px 8px 0;">
-<strong>Updated October 28, 2026:</strong> This June 2026 post pitched AI search visibility consulting. Island Mountain's work is forward-deployed AI engineering and AI security for regulated organizations. The production-AI observations below stand; the consulting offer doesn't. For what we do, read <a href="the-island-mountain-doctrine.html">the Island Mountain doctrine</a>.
+<strong>Updated October 28, 2026:</strong> This June 2026 post pitched AI search visibility consulting, but Island Mountain's work is <a href="the-island-mountain-doctrine.html">forward-deployed AI engineering and AI security for regulated organizations</a>; the observations stand and the offer doesn't.
 </div>
 
-<p>Most AI search visibility consultants have never touched a GPU. They've never racked a server, never written a compliance routing rule, never sat across from a CISO explaining why every cloud AI endpoint is a data governance exposure. They're selling visibility into systems they've never built.</p>
+<p>Most AI search visibility consultants have never touched a GPU. They've never racked a server or written a compliance routing rule, and they're selling visibility into systems they've never built. I come at it from the other direction: three-plus years of production AI inside the inference stack, where you watch what the machine's doing to your page after it reads it.</p>
 
-<p>I come at this from the other direction: three-plus years of production AI across on-premises inference, compliance-governed routing, and regulated-industry deployments, where you watch what the machine's doing to your page after it reads it.</p>
+<p>Search changed in 2026 and most businesses haven't noticed. Google's AI Overviews show on roughly 36 percent of informational queries, and 58 percent of searches end without a click. Businesses cited inside an AI Overview earn about <a href="https://heroicrankings.com/seo/managed/google-ai-overview-statistics-2026/" target="_blank" rel="noopener">35 percent more organic clicks</a> than the ones that aren't, on the same results page. If you still think of SEO as rank for a keyword and collect the click, you're working from rules that expired.</p>
 
-<h2>The 2026 Search Reality Most Businesses Haven't Noticed</h2>
+<p>I built Lamprey Model Abstraction Interface, a Rust governance layer that reads a prompt's data classification, checks it against trust policy and routes it to the right model on the right hardware under <a href="../resources.html">HIPAA, ITAR, and OCAP</a> rules. Building that compliance-routing layer meant instrumenting what happens to text on the way into a model, and nobody in the visibility trade seems to have watched that up close. You see which structures survive the trip and which get flattened into noise.</p>
 
-<p>Google's AI Overviews now appear on roughly 36% of informational queries. Fifty-eight percent of Google searches end without a click. Businesses cited inside an AI Overview earn approximately <a href="https://heroicrankings.com/seo/managed/google-ai-overview-statistics-2026/" target="_blank" rel="noopener">35% more organic clicks</a> than businesses that aren't, on the same results page.</p>
+<p>The Lamprey Harness taught the same lesson. It's an open-source LLM IDE that routes across DeepSeek, Qwen, Gemma and ZAI models, and watching four model families disagree about which part of a page is the answer teaches you more about citation than any audit tool I've seen.</p>
 
-<p>Bing's Copilot routes queries through a generative layer before a traditional result renders. Perplexity, ChatGPT search, and Gemini summaries are pulling traffic off traditional SERPs at a rate that'd have sounded unhinged two years ago, and the cost of running those features decides which queries get AI treatment and which ones don't.</p>
+<p>If you don't know how a language model consumes, weights and surfaces content, you're guessing at why your visibility strategy isn't landing; you're applying search heuristics to a system that doesn't work like search. None of this makes me a better keyword researcher, and I'd be lying if I claimed it did. What it shows is how entity resolution behaves at inference time, and why a clean entity definition gets picked up while a paragraph of adjectives doesn't.</p>
 
-<p>If you still think of SEO as "rank for a keyword, get a click," you're working from rules that expired. Schema markup's now the machine-readable signal that decides whether your organization exists inside an AI-generated summary or gets skipped. Snippet architecture, structured data depth, entity authority, and topical coverage breadth drive visibility when an AI's the de facto header on every informational result.</p>
-
-<h2>Where the Argument Comes From</h2>
-
-<p>I built Lamprey Model Abstraction Interface, a Rust-based inference governance layer with OpenBao trust gating and compliance-enforced routing across <a href="../resources.html">HIPAA, ITAR, and OCAP regimes</a>. A prompt hits the system, MAI reads the data classification, checks it against the trust policy, and routes the call to the correct model on the correct hardware with the correct audit trail. No human in the routing decision.</p>
-
-<p>Building that meant instrumenting what happens to text on the way into a model, and that's the part nobody in the visibility trade seems to have watched up close. You see which structures survive the trip and which ones get flattened into noise. You see why a clean entity definition gets picked up and a paragraph of adjectives doesn't, because you watched the tokens.</p>
-
-<p>I also built the Lamprey Harness, an open-source Electron LLM IDE that routes across DeepSeek, Qwen, Gemma, and ZAI models with a Planner-Coder-Reviewer loop, local SQLite persistence, and MCP support. Every one of those four weighs the same source material a little differently, and watching them disagree about which part of a page is the answer teaches you more about citation behavior than any audit tool.</p>
-
-<h2>Why That Changes the Visibility Equation</h2>
-
-<p>If you don't know how a language model consumes, weights, and surfaces content, you're guessing at why your visibility strategy isn't landing. You're applying search heuristics to a system that doesn't work like search.</p>
-
-<p>That experience doesn't make me a better keyword researcher, and I'd be lying if I claimed it did. What it shows is what happens to your schema markup after the parse, how entity resolution behaves at inference time, and why a tight FAQ block gets cited while a wall of marketing copy gets skipped. Write the entity definition in one clean sentence, put the answer where the parser meets it first, and mark it up.</p>
-
-<div style="border-left:3px solid var(--copper);padding:16px 20px;margin:32px 0;background:rgba(217,119,6,0.05);border-radius:0 8px 8px 0;">
-<strong>Summary:</strong> AI search visibility in 2026 turns on how language models consume and surface content rather than how search engines rank pages. Google's AI Overviews hit roughly 36% of informational queries, 58% of searches end without a click, and cited businesses earn about 35% more organic clicks on the same page. The argument comes from building the inference and compliance-routing layers those systems run on.
-</div>
+<p>Write the entity definition in one clean sentence, put the answer where the parser meets it first, and mark it up.</p>
 
 </article>
 
