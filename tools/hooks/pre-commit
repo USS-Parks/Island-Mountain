@@ -39,11 +39,12 @@ while IFS= read -r -d '' f; do
     fi
     # --- Pricing posture (Basho ruling 2026-07-10): no IM selling-price figure goes
     #     public. High-confidence markers only — retired tier names and selling-price
-    #     language near a dollar figure. Cloud/competitor/fine figures carry no marker
+    #     language near a dollar figure,
+    #     plus any Section 179 or cost-parity claim (2026-10-28). Cloud/competitor/fine figures carry no marker
     #     and never match; COGS/margin figures on the investor page carry no marker. ---
     case "${f,,}" in
       *.html|*.htm)
-        if LC_ALL=C grep -Eq -- '\b(Summit|Landfall|Citadel|ASP|MSRP|[Ll]ist [Pp]rice)\b[^<]{0,60}\$[0-9]' "$f"; then
+        if LC_ALL=C grep -Eq -- '\b(Summit|Landfall|Citadel|ASP|MSRP|[Ll]ist [Pp]rice)\b[^<]{0,60}\$[0-9]|Section 179|[Cc]ost parity' "$f"; then
           echo "BLOCK  IM selling-price figure on a public page (pricing posture 2026-07-10): $f" >&2; FAIL=1
         fi ;;
     esac

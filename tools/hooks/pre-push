@@ -14,8 +14,9 @@ while IFS= read -r f; do
        fi ;;
   esac
   # Pricing posture (2026-07-10): no IM selling-price figure publishes. Markers only —
-  # tier names / ASP / MSRP / list price near $N; unmarked cloud+competitor figures pass.
-  if LC_ALL=C grep -Eq -- '\b(Summit|Landfall|Citadel|ASP|MSRP|[Ll]ist [Pp]rice)\b[^<]{0,60}\$[0-9]' "$f"; then
+  # tier names / ASP / MSRP / list price near $N, plus any
+  # Section 179 or cost-parity claim (2026-10-28); unmarked cloud+competitor figures pass.
+  if LC_ALL=C grep -Eq -- '\b(Summit|Landfall|Citadel|ASP|MSRP|[Ll]ist [Pp]rice)\b[^<]{0,60}\$[0-9]|Section 179|[Cc]ost parity' "$f"; then
     echo "BLOCK  IM selling-price figure on a public page (pricing posture 2026-07-10): $f" >&2; FAIL=1
   fi
 done < <(git ls-files '*.html')
