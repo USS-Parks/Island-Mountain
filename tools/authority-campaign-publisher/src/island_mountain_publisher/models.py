@@ -44,6 +44,12 @@ class CampaignItem(BaseModel):
             raise ValueError("campaign text must not contain outer whitespace")
         return value
 
+    @property
+    def topic(self) -> str:
+        """Reader-facing tag. delivery_form is an internal authoring code and never prints."""
+        technical = self.delivery_form.split(" ", 1)[0] in {"F1", "F3", "F6"}
+        return "Technical" if technical else "Strategy"
+
 
 class PublicationSchedule(BaseModel):
     """Manifest-fixed publication instants expressed with timezone offsets."""

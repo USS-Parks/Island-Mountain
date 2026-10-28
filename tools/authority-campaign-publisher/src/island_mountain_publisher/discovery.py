@@ -36,7 +36,7 @@ def _blog_card(item: ManifestItem, newline: str) -> str:
         f"{item.campaign.publish_date.strftime('%B')} "
         f"{item.campaign.publish_date.day}, {item.campaign.publish_date.year}"
     )
-    form = html.escape(item.campaign.delivery_form)
+    topic = item.campaign.topic
     hashtag = html.escape(item.campaign.article_hashtags[0])
     href = html.escape(item.blog_path, quote=True)
     lines = (
@@ -44,7 +44,7 @@ def _blog_card(item: ManifestItem, newline: str) -> str:
         '        <div class="blog-card beam-card">',
         '          <div class="blog-card-meta">',
         f'            <span class="blog-card-date">{date}</span>',
-        f'            <span class="blog-card-tag tag-strategy">{form}</span>',
+        f'            <span class="blog-card-tag tag-{topic.lower()}">{topic}</span>',
         f'            <span class="blog-card-tag tag-financial">{hashtag}</span>',
         "          </div>",
         f'          <h2><a href="{href}">{title}</a></h2>',
@@ -63,7 +63,7 @@ def _rail_card(item: ManifestItem, newline: str) -> str:
         f"{item.campaign.publish_date.strftime('%B')} "
         f"{item.campaign.publish_date.day}, {item.campaign.publish_date.year}"
     )
-    form = html.escape(item.campaign.delivery_form)
+    topic = item.campaign.topic
     hashtag = html.escape(item.campaign.article_hashtags[0])
     href = html.escape(item.blog_path, quote=True)
     lines = (
@@ -71,7 +71,7 @@ def _rail_card(item: ManifestItem, newline: str) -> str:
         '        <article class="blog-rail-card beam-card">',
         '          <div class="blog-rail-meta">',
         f'            <span class="blog-rail-date">{date}</span>',
-        f'            <span class="blog-rail-tag tag-strategy">{form}</span>',
+        f'            <span class="blog-rail-tag tag-{topic.lower()}">{topic}</span>',
         f'            <span class="blog-rail-tag tag-financial">{hashtag}</span>',
         "          </div>",
         f'          <h3><a href="{href}">{title}</a></h3>',

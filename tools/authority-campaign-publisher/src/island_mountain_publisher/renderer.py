@@ -186,8 +186,8 @@ def render_article(item: ManifestItem, template_path: Path) -> RenderedArticle:
     tags_html = "\n".join(
         (
             (
-                '          <span class="article-tag tag-strategy">'
-                f"{html.escape(item.campaign.delivery_form)}</span>"
+                f'          <span class="article-tag tag-{item.campaign.topic.lower()}">'
+                f"{item.campaign.topic}</span>"
             ),
             (
                 '          <span class="article-tag tag-financial">'
