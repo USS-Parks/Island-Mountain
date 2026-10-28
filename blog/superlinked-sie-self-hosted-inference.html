@@ -87,7 +87,7 @@
   "description": "Superlinked open-sourced SIE, an Apache-2.0 server running 85+ models on one GPU via LRU eviction. It cuts self-hosted inference cost by ending idle-GPU waste.",
   "url": "https://islandmountain.io/blog/superlinked-sie-self-hosted-inference.html",
   "datePublished": "2026-08-09",
-  "dateModified": "2026-08-09",
+  "dateModified": "2026-10-28",
   "inLanguage": "en-US",
   "keywords": "self-hosted inference, Superlinked SIE, multi-model inference server, LRU model eviction, GPU cost, vLLM, TEI, air-gapped inference, local AI, open source inference",
   "articleSection": "Technical",
@@ -202,36 +202,23 @@
 
       <article class="article-body">
 
-<p>You moved the agent stack to small models to cut the inference bill, and the bill didn't move. The money's in the servers holding the models, and small models need servers too.</p>
+<p>You moved the agent stack to small models to cut the inference bill, and the bill didn't move. The money's in the GPUs holding the models, and they bill whether a request arrives or not.</p>
 
-<h2>The cost was never in the calls</h2>
-
-<p>Most agent stacks run four or five models under one roof: an embedder, a reranker, an entity extractor, and a small LLM. The standard layout gives each one its own server, which reserves its own slice of GPU memory and bills whether a request arrives or not. Swap in smaller models and you've trimmed the compute per call; the reserved hardware hasn't moved.</p>
-
-<p>And that hardware isn't getting cheaper. NVIDIA's RTX Pro 6000 went from around $8,565 at launch to $13,250 inside sixteen months, as of August 2026. Every idle reserved card's that number.</p>
+<p>Most agent stacks run four or five models under one roof: an embedder, a reranker, an entity extractor, and a small LLM. The standard layout gives each one its own server, and each server reserves its own slice of GPU memory. Smaller models trim the compute per call and leave that reserved memory exactly where it was. The hardware isn't getting cheaper either. NVIDIA's RTX Pro 6000 went from around $8,565 at launch to $13,250 inside sixteen months, as of August 2026. Every idle reserved card's that number.</p>
 
 <h2>One process, many models</h2>
 
-<p>Superlinked open-sourced the structural fix: one process serving every model, loading and evicting by traffic. SIE, the Superlinked Inference Engine, is an Apache 2.0 server running 85-plus models behind a single API: encode() for vectors, score() for relevance, extract() for entity spans, and generate() for small open LLMs. Underneath it wraps PyTorch, SGLang, Flash Attention, and Apple MLX, picking the engine per model itself.</p>
+<p>Superlinked open-sourced the structural fix. SIE, the Superlinked Inference Engine, is an Apache 2.0 server running 85-plus models from one process behind a single API: encode() for vectors, score() for relevance, extract() for entity spans, and generate() for small open LLMs. Models load on first request and get evicted least-recently-used when the GPU fills, so one card serves a rotating working set instead of five idle slices. Superlinked's own numbers put the saving near three-quarters; your working set decides the exact figure.</p>
 
-<p>Models load lazily on first request and get evicted least-recently-used when the GPU fills, so one card serves a rotating working set instead of five idle slices. Superlinked's own numbers put the saving near three-quarters; your working set decides the exact figure.</p>
-
-<h2>Air-gapped, and yours to own</h2>
-
-<p>SIE ships model-weight snapshots for air-gapped deployment, so the server runs disconnected, with no phone-home and no license check. The same Docker image, Helm chart, and Terraform modules run from a laptop to a Kubernetes cluster, and nobody's metering or deprecating the serving layer out from under you. For a tribe holding its own data, a defense shop under ITAR, or a clinic holding PHI, that's the argument.</p>
+<p>SIE also ships model-weight snapshots for air-gapped deployment, so the server runs disconnected, with no phone-home and no license check, and nobody's metering or deprecating the serving layer out from under you. For a tribe holding its own data, a defense shop under ITAR, or a clinic holding PHI, that's the argument.</p>
 
 <h2>What SIE isn't</h2>
 
-<p>It won't replace a heavyweight generation server; generate() runs small open LLMs and doesn't stand in for vLLM feeding a 70-billion-parameter chat model.</p>
-
-<p>The eviction trick carries its own bill. An evicted model reloads on its next request, and that first call pays the load latency. The saving holds when your working set fits the GPU, and thins if every request drags in a cold model. Size it to the traffic you've got.</p>
+<p>It won't replace a heavyweight generation server; generate() runs small open LLMs and doesn't stand in for vLLM feeding a 70-billion-parameter chat model. The eviction trick carries its own bill, too. An evicted model reloads on its next request, and that first call pays the load latency. The saving holds when your working set fits the GPU and thins if every request drags in a cold model.</p>
 
 <p>And Apache 2.0 isn't a managed service. Somebody stands it up, patches it, and carries the pager at 2 a.m. Open source moves that work in-house; I'd wager that's the line most teams underprice.</p>
 
-<!-- AEO Summary -->
-<div style="border-left:3px solid var(--copper);padding:16px 20px;margin:32px 0;background:rgba(217,119,6,0.05);border-radius:0 8px 8px 0;">
-<strong>Summary:</strong> Self-hosted inference cost lives in reserved, idle GPUs, so smaller models rarely move the bill. Superlinked's open-source SIE serves 85-plus models from one process that loads and evicts them by traffic, with air-gapped weight snapshots under Apache 2.0.
-</div>
+<p>Size SIE to the traffic you've got before you buy another card.</p>
 
       </article>
 
