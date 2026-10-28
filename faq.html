@@ -521,7 +521,7 @@
           <h3>Does sovereign AI hardware work fully air-gapped, with no internet?</h3>
           <div class="faq-answer">
             <p><strong>Yes. Every Island Mountain system is designed to operate completely air-gapped.</strong> The models, the inference engine (vLLM and Ollama), and the interface (OpenWebUI) all run locally. Once the system is set up and models are loaded, you can disconnect the ethernet cable entirely and everything still works.</p>
-            <p>Users reach the system through a web browser on your local network. As long as the device and the server share a network, even an isolated one with no internet, inference runs normally. No phone-home. No license checks. No cloud dependencies. The only things that ever need internet are downloading new models and applying OS security updates, both optional and on your schedule.</p>
+            <p>Users reach the system through a web browser on your local network. As long as the device and the server share a network, even an isolated one with no internet, inference runs normally. No phone-home. No license checks. No cloud dependencies. The only things that need to cross the gap are new models and security updates, and neither one needs the system online: they come across as verified bundles through a path your team controls. New models are optional. Security updates aren't, and in a month like October they're measured in hours.</p>
             <p>Island Mountain applies a documented air-gap configuration before delivery, disabling every outbound feature at the environment-variable level, and confirms it before shipping. Your IT team can independently verify every setting on the delivered system.</p>
           </div>
         </div>

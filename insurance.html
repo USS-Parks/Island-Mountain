@@ -383,12 +383,12 @@
             <tr>
               <td><strong>Compliance Risk</strong></td>
               <td>PHI/PII transmitted to third party</td>
-              <td class="highlight-cell">Zero transmission. Zero risk.</td>
+              <td class="highlight-cell">No third-party AI vendor in the data path. Your own perimeter still has to hold, and we build it to.</td>
             </tr>
             <tr>
               <td><strong>Per-Token Fees</strong></td>
               <td>$15 - $60 per million tokens</td>
-              <td class="highlight-cell">None. Unlimited use.</td>
+              <td class="highlight-cell">None.</td>
             </tr>
             <tr>
               <td><strong>Model Control</strong></td>
@@ -403,7 +403,7 @@
             <tr>
               <td><strong>Vendor Lock-In</strong></td>
               <td>Complete</td>
-              <td class="highlight-cell">None. Permissive open-source licenses.</td>
+              <td class="highlight-cell">Low. You keep the weights, and we check every model's license before it's deployed.</td>
             </tr>
           </tbody>
         </table>
@@ -441,8 +441,8 @@
         </div>
         <div class="risk-card">
           <div class="risk-icon"><img src="images/ic-default-access.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
-          <h4>You Own the Maintenance</h4>
-          <p>After the 30-day included support period, your organization is responsible for OS security updates, model updates, and general system maintenance. This is the same maintenance profile as any Linux server in a professional environment.</p>
+          <h4>Patching Is Part of the Build</h4>
+          <p>PHP2Shell was exploited about twelve hours before PHP shipped the fix. That's the patch window now, and a system that waits thirty days for someone to get around to updates is exposed for most of them. So the handoff includes the runbook: what gets patched, who approves it, how an update's verified before it's applied, and how to roll it back. Your team runs it, and the runbook sets how fast. If you'd rather we carry part of that load, tiered support is where it goes, and Discovery is where we decide who's on the hook for what.</p>
         </div>
       </div>
     </div>
