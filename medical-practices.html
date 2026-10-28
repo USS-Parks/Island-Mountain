@@ -80,34 +80,18 @@
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "Do I need a Business Associate Agreement to use local AI with patient data?",
+        "name": "Do I need a BAA to use local AI with patient data?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Not with a cloud AI provider, because there isn't one in the data path. PHI stays on hardware you own, inside your network, under your HIPAA Security Rule controls. The crew that builds and supports the system is a separate question: anyone whose people can see PHI while working for your practice may be your business associate, and that gets settled in the engagement agreement before anyone touches a record."
+          "text": "Not with a cloud AI vendor, because there isn't one in the data path. Whether our crew is your business associate gets settled first, in the engagement agreement."
         }
       },
       {
         "@type": "Question",
-        "name": "Is Island Mountain hardware a medical device or clinical decision support tool?",
+        "name": "Can non-technical staff use it without IT training?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "No. Island Mountain hardware is general-purpose AI inference infrastructure, not a medical device or clinical decision support tool. It carries no FDA classification and provides no diagnostic assistance or treatment recommendations. The system runs current open-weight models and, where the work needs one, models we build for your practice, all on your own hardware inside your facility under your direct control. Any use of AI output in clinical contexts requires the same professional judgment that applies to any information source."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Can non-technical medical staff use the system without IT training?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes. The system runs OpenWebUI, a browser-based interface that works like ChatGPT. Staff open any web browser on the office network, log in, and start typing. No command line, no technical configuration, no software installation. Administrative staff, billing specialists, and clinical support staff who can use a web browser can use the system on day one. Island Mountain provides 30 days of hands-on setup support included with purchase."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How does the cost compare to cloud AI for a 15-provider medical practice?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Cloud AI subscriptions for healthcare platforms typically cost $30 to $150 per user per month. For 25 users (15 providers plus 10 staff), that totals $9,000 to $45,000 per year with ongoing BAA management overhead and breach exposure on every query. An Island Mountain build is a one-time purchase, sized and quoted to your workload. There are no per-user or per-token fees, and ongoing costs (power, cooling, and the staff time to patch the system) are sized in Discovery."
+          "text": "Yes. They log in from a web browser on the office network, there's nothing to install, and onboarding and SOPs come with the build."
         }
       }
     ]
@@ -186,7 +170,7 @@
     <div class="hero-inner">
       <span class="hero-badge">Local AI for Medical Practices</span>
       <h1>PHI Stays on Your Hardware. No Cloud AI Vendor in the Chain.</h1>
-      <p>Cloud AI services want a Business Associate Agreement and create breach exposure every time PHI moves. We&#39;ll build the whole system on your hardware instead: the agents, the orchestration, and the models that run your practice&#39;s work, and patient data never leaves your network.</p>
+      <p>Cloud AI services want a Business Associate Agreement and create breach exposure every time PHI moves. We&#39;ll build the agents, orchestration and models on your hardware instead.</p>
     </div>
   </section>
 
@@ -194,7 +178,6 @@
   <nav class="breadcrumb">
     <a href="index.html">Home</a><span>&rsaquo;</span><a href="solutions.html">Solutions</a><span>&rsaquo;</span>Medical Practices
   </nav>
-  <div class="cta-hero-wrap"><p class="detail-text">Every deployment starts on-site, with the people who do the work.</p></div>
 
   <!-- The Cloud AI Problem for Medical Practices -->
   <section class="section section-first">
@@ -202,17 +185,13 @@
       <div class="section-header fade-in">
         <span class="section-badge">The HIPAA Problem</span>
         <h2>The Cloud AI Problem for Medical Practices</h2>
-        <p>HIPAA was built for a world where data stays within defined boundaries. Cloud AI breaks those boundaries by design. HHS levied $9.4 million in HIPAA penalties since 2024, with per-violation fines reaching $2.19 million for willful neglect. Every patient record processed through a cloud LLM is a transmission you cannot undo.</p>
       </div>
       <div class="fade-in content-narrow">
-        <p class="body-lg">When a provider uses a cloud AI service to draft a clinical note, summarize a patient encounter, or write a prior authorization letter, the Protected Health Information in that prompt leaves the practice's network. It is transmitted to a cloud data center, processed on shared infrastructure, and returned over the public internet. Under HIPAA, this transmission makes the cloud AI provider a business associate. A Business Associate Agreement (BAA) is required. The provider's data handling practices become your compliance responsibility.</p>
-        <p class="body-lg">Some cloud AI providers now offer "HIPAA-eligible" tiers with BAA support. This addresses the contractual requirement - but it does not eliminate the structural risk. PHI is still transmitted to, and processed on, infrastructure you do not control. A breach at the cloud provider is a breach of your patient data. Under the HIPAA Breach Notification Rule (45 CFR 164.402), that disclosure may be reportable.</p>
-        <p class="body-lg">The distinction matters: "HIPAA-eligible" means a cloud provider has agreed to certain contractual obligations. "HIPAA-simpler" means the data never left your building in the first place, and the entire third-party compliance layer does not apply. Medical practices share this challenge with <a href="solutions.html">every data-sovereign industry we serve</a> - the solution is the same infrastructure, applied to different compliance frameworks.</p>
+        <p class="body-lg">A cloud AI prompt carrying PHI leaves your network, and that vendor becomes your business associate. A "HIPAA-eligible" tier adds a BAA, not control: a breach on their servers can still be reportable under <a href="hipaa-local-ai-compliance.html" class="clr-copper">45 CFR 164.402</a>. On hardware you own, behind your firewall, PHI doesn&#39;t leave the building, and it&#39;ll run with no internet at all.</p>
       </div>
     </div>
   </section>
 
-  
   <section class="section-pt-32">
     <div class="container">
       <div class="badge-wrap">
@@ -222,35 +201,6 @@
       </div>
     </div>
   </section>
-  <!-- What Local AI Means -->
-  <section class="section section-dark">
-    <div class="container">
-      <div class="section-header fade-in">
-        <span class="section-badge">How It Works</span>
-        <h2>What Local AI Means for Your Practice</h2>
-        <p>PHI stays within your physical infrastructure. The compliance path gets shorter.</p>
-      </div>
-      <div class="card-grid card-grid-3 fade-in">
-        <div class="card">
-          <div class="card-icon-im"><img src="images/icons/air-gapped-icon.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
-          <h3>No PHI Transmission</h3>
-          <p>AI models run on a physical server in your facility. Patient data travels from the workstation to the server over your internal network. No internet connection required for inference. No data packets leave your building.</p>
-        </div>
-        <div class="card">
-          <div class="card-icon-im"><img src="images/icons/hipaa-ai-icon.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
-          <h3>No Cloud AI Business Associate</h3>
-          <p>When PHI never leaves your network, there's no cloud AI vendor acting as your business associate. The vendor BAA, the vendor security assessment, and the ongoing monitoring of a cloud provider's handling all go away.</p>
-        </div>
-        <div class="card">
-          <div class="card-icon-im"><img src="images/icons/itarr-cmmc-ai-icon.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
-          <h3>Your Security Controls</h3>
-          <p>The server lives behind your firewall, under your physical access controls, governed by your security policies. You control who accesses it, how data is handled, and what stays logged. Your compliance posture. Your rules.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
   <!-- We build it around the practice -->
   <section class="section section-darker">
     <div class="container">
@@ -259,78 +209,51 @@
         <h2>We Build It Around How Your Practice Runs</h2>
       </div>
       <div class="fade-in content-narrow">
-        <p class="body-lg">A general model knows textbook medicine and nothing about your clinic. It&#39;s never seen your note templates, doesn&#39;t know your referral network, can&#39;t tell your billing team&#39;s shorthand from a nurse&#39;s triage note. We build for the practice you run.</p>
-        <p class="body-lg">Island Mountain builds the agents and the orchestration that carry the work that eats your staff&#39;s day: intake and history, prior-auth drafting with the payer&#39;s own denial patterns in view, a clinical note from a dictated encounter, coding review against the documentation, the referral letter and the appeal. It runs on current open-weight models like Kimi K3, ZAI GLM 5.2, Qwen 3.8+, and Nous Hermes 4, served through Ollama or vLLM behind an OpenWebUI front end, or whatever open weights fit the task. All of it governed by our own agentic orchestration and the <a href="lamprey-woven-security-governance.html" class="clr-copper">Woven Security Fabric</a>, so every action carries an identity, an approval, and a receipt, and the credentials expire when the task is done. PHI never leaves the building to make any of it happen.</p>
-        <p class="body-lg">When the work needs a model that speaks your medicine, we&#39;ll build one. Reasoning models and small language models from scratch, trained to orbit your clinical ontology: your specialties, your order sets, your payer mix, the way your practice charts. It learns your abbreviations and your cadence, not a generic hospital&#39;s.</p>
-        <p class="body-lg">It air-gaps for the records that demand it, and reaches out only when a task genuinely needs to. You decide, workflow by workflow.</p>
-        <p class="body-lg">Then we hand it back. On-site onboarding, SOPs your staff can follow, the keys dropped into your team&#39;s hands so they run and rework the workflows without a support ticket. Want the upkeep off your practice&#39;s plate? We offer tiered support sized to your clinic, and we plug in wherever that&#39;s easiest. This is your practice&#39;s legacy. We build it alongside you, and we won&#39;t call it done until your people can run it without us.</p>
+        <p class="body-lg">We build the agents that carry your staff&#39;s day, from dictated encounter to finished note and from prior auth to appeal. When the work needs a model trained on your order sets and charting, we&#39;ll build that too. Every action runs under the <a href="lamprey-woven-security-governance.html" class="clr-copper">Woven Security Fabric</a> with an identity and a receipt, and we hand it over once your people can run it without us.</p>
       </div>
     </div>
   </section>
 
-
   <!-- Medical AI Workflows -->
-  <section class="section section-darker">
+  <section class="section section-dark">
     <div class="container">
       <div class="section-header fade-in">
         <span class="section-badge">Workflows</span>
         <h2>Workflows a Deployment Supports</h2>
-        <p>These aren&#39;t chat prompts. They&#39;re agentic workflows the orchestration runs start to finish, each step carrying its own identity and receipt, and no PHI leaves your network.</p>
       </div>
       <div class="card-grid card-grid-3 fade-in">
         <div class="card">
           <div class="card-icon-im"><img src="images/icons/document-drafting-icon.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
           <h3>Clinical Note Drafting</h3>
-          <p>Generate first drafts of SOAP notes, progress notes, and visit summaries from dictated or typed encounter descriptions. Providers review and finalize. The AI handles the documentation burden - the provider retains clinical judgment.</p>
+          <p>First-draft SOAP notes from dictation, finalized by the provider.</p>
         </div>
         <div class="card">
           <div class="card-icon-im"><img src="images/icons/regulatory-filing-icon.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
           <h3>Prior Authorization Letters</h3>
-          <p>Draft prior authorization narratives with clinical justification language. Feed in the procedure, diagnosis, and clinical context - the AI produces a structured letter that addresses common payer denial patterns.</p>
+          <p>Justification letters written against common payer denial patterns.</p>
         </div>
         <div class="card">
           <div class="card-icon card-icon-purple">
             <i class="ri-hearts-line"></i>
           </div>
           <h3>Patient Education Materials</h3>
-          <p>Generate plain-language patient education documents tailored to specific conditions, procedures, or medication regimens. Produce materials at appropriate reading levels for your patient population.</p>
+          <p>Plain-language handouts at your patients&#39; reading level.</p>
         </div>
         <div class="card">
           <div class="card-icon-im"><img src="images/icons/document-review-icon.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
           <h3>Coding Documentation Review</h3>
-          <p>Review encounter documentation against coding requirements. Identify documentation gaps that could affect code selection or audit defensibility. Flag areas where additional clinical detail would support the billed level of service.</p>
+          <p>Documentation gaps caught before they affect code selection.</p>
         </div>
         <div class="card">
           <div class="card-icon-im"><img src="images/icons/contact-icon.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
           <h3>Administrative Correspondence</h3>
-          <p>Draft referral letters, insurance appeal letters, patient recall correspondence, and internal communications. Consistent formatting and professional tone across all practice communications.</p>
+          <p>Referral, appeal and recall letters in your practice&#39;s format.</p>
         </div>
         <div class="card">
           <div class="card-icon-im"><img src="images/icons/multilingual-support-icon.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
           <h3>Multilingual Support</h3>
-          <p>Draft patient communications, translate education materials, and produce discharge instructions in your patients&#39; languages. A second model runs these in parallel while the primary handles clinical drafting, all on your own hardware.</p>
+          <p>Patient letters and discharge instructions in your patients&#39; languages.</p>
         </div>
-      </div>
-
-      <!-- Critical Disclaimer -->
-      <div class="comparison-note fade-in" style="margin-top:32px;border-color:rgba(239,68,68,0.3);background:rgba(239,68,68,0.04);">
-        <i class="ri-error-warning-line" style="color:var(--red-accent);"></i>
-        <strong style="color:var(--text-light);">Island Mountain hardware is not a medical device.</strong> It does not provide clinical decision support. It integrates with no EHR system and carries no FDA classification. It is AI infrastructure - the same kind your staff currently routes through cloud services, now kept on your own hardware. Any clinical use of AI-generated content requires professional review and judgment.
-      </div>
-    </div>
-  </section>
-
-  <!-- Staff Training Reality -->
-  <section class="section section-dark">
-    <div class="container">
-      <div class="section-header fade-in">
-        <span class="section-badge">Usability</span>
-        <h2>Staff Training: Same Day, Same Browser</h2>
-      </div>
-      <div class="fade-in content-narrow">
-        <p class="body-lg">OpenWebUI is a browser-based chat interface. It looks and operates like ChatGPT. Your staff open Chrome or Firefox on any device connected to your office network, log in with their credentials, and start typing. There is no software to install on workstations, no command-line interface, no technical configuration.</p>
-        <p class="body-lg">Administrative staff who draft correspondence, billing specialists who write appeal letters, and clinical support staff who prepare patient education materials can use the system immediately. The learning curve is the same as any chat-based AI tool they may have already tried at home.</p>
-        <p class="body-lg">OpenWebUI includes user management and access controls. You can create accounts for each staff member, track usage, and control which models are available to which users. Admin controls are built in.</p>
       </div>
     </div>
   </section>
@@ -341,7 +264,6 @@
       <div class="section-header fade-in">
         <span class="section-badge">Cost Comparison</span>
         <h2>Cloud AI vs. an On-Premise Deployment for a 15-Provider Practice</h2>
-        <p>25 total users: 15 providers plus 10 administrative and billing staff.</p>
       </div>
       <div class="table-wrapper fade-in">
         <table>
@@ -366,37 +288,17 @@
             <tr>
               <td><strong>PHI Location</strong></td>
               <td>Cloud provider data centers</td>
-              <td class="highlight-cell">Your server room. Your control.</td>
-            </tr>
-            <tr>
-              <td><strong>BAA Required</strong></td>
-              <td>Yes - mandatory for HIPAA</td>
-              <td class="highlight-cell">Not for a cloud AI vendor. Data never leaves your network.</td>
-            </tr>
-            <tr>
-              <td><strong>Breach Exposure</strong></td>
-              <td>Every session transmits PHI externally</td>
-              <td class="highlight-cell">Zero external transmission.</td>
+              <td class="highlight-cell">Your server room</td>
             </tr>
             <tr>
               <td><strong>Per-User Fees</strong></td>
               <td>$30 - $150 per user per month</td>
-              <td class="highlight-cell">None.</td>
+              <td class="highlight-cell">None</td>
             </tr>
             <tr>
-              <td><strong>EHR Integration</strong></td>
-              <td>Some platforms offer integrations</td>
-              <td>Not included. Standalone AI.</td>
-            </tr>
-            <tr>
-              <td><strong>Vendor Compliance Monitoring</strong></td>
-              <td>Ongoing - your responsibility</td>
-              <td class="highlight-cell">Not applicable. No vendor.</td>
-            </tr>
-            <tr>
-              <td><strong>Staff Training</strong></td>
-              <td>Platform-specific onboarding</td>
-              <td class="highlight-cell">Browser-based. Same day.</td>
+              <td><strong>BAA Required</strong></td>
+              <td>Yes</td>
+              <td class="highlight-cell">Not for a cloud AI vendor</td>
             </tr>
           </tbody>
         </table>
@@ -414,45 +316,29 @@
       <div class="section-header fade-in">
         <span class="section-badge">Honest Limitations</span>
         <h2>What You Do Not Get</h2>
-        <p>Clarity on boundaries prevents bad purchasing decisions.</p>
       </div>
       <div class="risk-grid fade-in">
         <div class="risk-card">
-          <div class="risk-icon"><img src="images/icons/hipaa-ai-icon.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
-          <h4>Not an EHR Integration</h4>
-          <p>Island Mountain hardware does not connect to Epic, Cerner, Athenahealth, or any EHR system. The AI runs through OpenWebUI - a standalone browser-based interface. Moving data between your EHR and the AI is a manual copy-paste process.</p>
+          <div class="risk-icon"><img src="images/ic-plugins.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
+          <h4>Integrations Are Scoped in Discovery</h4>
+          <p>There&#39;s no connector catalog. Epic or Athenahealth gets connected only if Discovery says it&#39;s safe, on its own expiring credential.</p>
         </div>
         <div class="risk-card">
           <div class="risk-icon"><img src="images/icons/hipaa-ai-icon.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
           <h4>Not a Medical Device</h4>
-          <p>This hardware is not FDA-classified, not a clinical decision support tool, and not a diagnostic system. It generates text based on what you provide. It does not access medical databases, imaging systems, or lab results. Clinical judgment remains entirely with the provider.</p>
-        </div>
-        <div class="risk-card">
-          <div class="risk-icon"><img src="images/ic-search.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
-          <h4>No Clinical Analytics</h4>
-          <p>The system is a text generation tool, not a data analytics platform, so it performs no population health analytics, quality measure reporting, or clinical outcome tracking. It writes what you ask it to write - it does not analyze your practice data.</p>
+          <p>It carries no FDA classification and isn&#39;t clinical decision support, so clinical judgment stays with the provider.</p>
         </div>
         <div class="risk-card">
           <div class="risk-icon"><img src="images/ic-default-access.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
           <h4>Patching Is Part of the Build</h4>
-          <p>PHP2Shell was exploited about twelve hours before PHP shipped the fix. That's the patch window now, and a system that waits thirty days for someone to get around to updates is exposed for most of them. So the handoff includes the runbook: what gets patched, who approves it, how an update's verified before it's applied, and how to roll it back. Your team runs it, and the runbook sets how fast. If you'd rather we carry part of that load, tiered support is where it goes, and Discovery is where we decide who's on the hook for what.</p>
+          <p>Exploits land within hours of a patch now, so the handoff includes the runbook: what gets patched, who approves it, how it rolls back.</p>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Power Requirements -->
-  <section class="section section-darker">
-    <div class="container">
-      <div class="power-notice fade-in">
-        <i class="ri-flashlight-line"></i>
-        <p><strong>Power and space:</strong> There's no standard box, so there's no standard circuit. Power, cooling and rack space get scoped with your facilities people during Discovery, before anything's ordered.</p>
       </div>
     </div>
   </section>
 
   <!-- FAQ Section -->
-  <section class="section section-dark">
+  <section class="section section-darker">
     <div class="container">
       <div class="section-header fade-in">
         <span class="section-badge">Medical Practice Questions</span>
@@ -462,22 +348,12 @@
         <div class="risk-card">
           <div class="risk-icon"><img src="images/icons/hipaa-ai-icon.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
           <h4>Do I need a BAA to use local AI with patient data?</h4>
-          <p>Not with a cloud AI provider, because there isn't one in the data path. PHI stays on hardware you own, inside your network, under your HIPAA Security Rule controls. The crew that builds and supports the system is a separate question: anyone whose people can see PHI while working for your practice may be your business associate, and that gets settled in the engagement agreement before anyone touches a record.</p>
-        </div>
-        <div class="risk-card">
-          <div class="risk-icon"><img src="images/icons/hipaa-ai-icon.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
-          <h4>Is this a medical device or clinical decision support tool?</h4>
-          <p>No. Island Mountain builds general-purpose AI infrastructure, not a medical device or clinical decision support tool. It is not classified under FDA regulations and does not provide diagnostic assistance or treatment recommendations. The system runs current open-weight models and custom models we build for your practice, all on your own hardware inside your facility.</p>
+          <p>Not with a cloud AI vendor, because there isn&#39;t one in the data path. Whether our crew is your business associate gets settled first, in the engagement agreement.</p>
         </div>
         <div class="risk-card">
           <div class="risk-icon"><img src="images/ic-skills-teacher.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
           <h4>Can non-technical staff use it without IT training?</h4>
-          <p>Yes. The system runs OpenWebUI, a browser-based interface that works like ChatGPT. Staff open any web browser on the office network, log in, and start typing. No command line, no technical configuration, no software installation. Administrative staff, billing specialists, and clinical support staff can use the system on day one.</p>
-        </div>
-        <div class="risk-card">
-          <div class="risk-icon"><img src="images/icons/ai-cost-comparison-icon.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
-          <h4>How does cost compare for a 15-provider practice?</h4>
-          <p>Cloud AI subscriptions for healthcare platforms typically cost $30 to $150 per user per month. For 25 users, that totals $9,000 to $45,000 per year with ongoing BAA management overhead and breach exposure on every query. An Island Mountain build is a one-time purchase, sized and quoted to your workload. There are no per-user fees and no cloud AI vendor to sign a BAA with.</p>
+          <p>Yes. They log in from a web browser on the office network, there&#39;s nothing to install, and onboarding and SOPs come with the build.</p>
         </div>
       </div>
       <div class="text-center-mt-32">
@@ -487,43 +363,14 @@
   </section>
 
   <!-- Compliance Disclaimer -->
-  <section class="section section-darker">
+  <section class="section section-dark">
     <div class="container">
       <div class="fade-in founder-box">
-        <p class="scenario-text">Island Mountain is an engineering practice, not a compliance authority. References to HIPAA, the Breach Notification Rule, or Business Associate Agreement requirements on this page reflect factual descriptions of data handling mechanics - not legal or regulatory advice. Consult qualified counsel or your compliance officer for determinations specific to your practice.</p>
+        <p class="scenario-text">We&#39;re an engineering practice, not a compliance authority, and this page isn&#39;t legal advice.</p>
       </div>
     </div>
   </section>
 
-  <!-- AEO Summary -->
-  <div style="border-left:3px solid var(--copper);padding:16px 20px;margin:32px 0;background:rgba(217,119,6,0.05);border-radius:0 8px 8px 0;">
-  <strong>Summary:</strong> On-premises AI hardware eliminates HIPAA compliance complexity by ensuring patient data never leaves your network without requiring a Business Associate Agreement.
-  <p class="body-md" style="margin-top:16px;">Related: <a href="hipaa-local-ai-compliance.html" class="clr-copper">Does Running AI Locally Comply with HIPAA?</a></p>
-  </div>
-
-  <!-- CTA -->
-
-  <section class="section section-dark section-py-3">
-    <div class="container">
-      <div class="section-header fade-in">
-        <h2>What a Deployment Looks Like</h2>
-      </div>
-      <div class="scenario-grid" class="fade-in">
-        <div class="accent-blockquote">
-          <p class="mb-075">Typical engagement: a tribal health services department serving about 12,000 patients. Patient data stays on the nation's hardware, and every record an agent opens leaves a receipt the privacy officer can read.</p>
-          <span class="copper-sm">Tribal Health Department</span>
-        </div>
-        <div class="accent-blockquote">
-          <p class="mb-075">Typical engagement: a multi-site rural practice with patchy broadband. Notes, prior auths and patient letters keep drafting when the line's down, because none of it depends on the line.</p>
-          <span class="copper-sm">Rural Health Network</span>
-        </div>
-        <div class="accent-blockquote">
-          <p class="mb-075">Typical engagement: a behavioral health clinic drafting from sensitive patient narratives. The notes stay on the clinic's hardware, with no cloud AI provider in the path.</p>
-          <span class="copper-sm">Behavioral Health Practice</span>
-        </div>
-      </div>
-    </div>
-  </section>
   <section class="section section-dark">
     <div class="container fade-in">
       <div class="lead-form-wrapper">
