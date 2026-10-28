@@ -184,7 +184,7 @@
         <div class="article-meta">
           <span class="article-date">March 5, 2026</span>
           <span class="article-tag tag-compliance">Compliance</span>
-          <span class="article-read-time">5 min read</span>
+          <span class="article-read-time">2 min read</span>
         </div>
         <h1 class="text-2xl">ITAR and DFARS AI Self-Assessment: Can Your AI Infrastructure Pass an Audit?</h1>
         <p class="article-author">Basho Parks</p>
@@ -193,51 +193,22 @@
       <article class="article-body">
 
 <div style="border-left:3px solid var(--copper);padding:16px 20px;margin:0 0 28px;background:rgba(217,119,6,0.05);border-radius:0 8px 8px 0;">
-<strong>Updated October 28, 2026:</strong> CMMC Phase 2 was suspended on July 13, 2026 with no replacement date. The deadline language below is revised to match.
+<strong>Updated October 28, 2026:</strong> CMMC Phase 2 was suspended on July 13, 2026 with no replacement date; the Phase 1 self-assessment, NIST SP 800-171 Rev. 2 and DFARS 252.204-7012 still bind.
 </div>
 
-<p>Your team's already using AI. That isn't a guess.</p>
+<p>Your team's already using AI, and some of it's touching CUI from a browser tab you don't control.</p>
 
-<p>Somebody pasted contract language into ChatGPT this week to get a summary, and somewhere in there Controlled Unclassified Information left the building without a single alert firing. (<a href="https://greypike.com/ai-tools-cui-data-spillage-government-contractors" target="_blank" rel="noopener">Greypike</a>)</p>
+<p>Somebody pasted contract language into ChatGPT this week, and the CUI in it sat outside your CMMC boundary inside five seconds. (<a href="https://openapproach.com/learn/is-your-teams-ai-use-putting-your-defense-contracts-at-risk/" target="_blank" rel="noopener">Openapproach</a>) That's a spillage you can't undo (<a href="https://vso-inc.com/how-to-use-ai-without-breaking-cmmc-compliance-a-defense-contractors-guide/" target="_blank" rel="noopener">VSO</a>), and most contractors don't find out until a C3PAO assessor asks about data handling.</p>
 
-<p>That's the daily reality of the Defense Industrial Base in 2026, and the contractors it's happening to don't find out until a C3PAO assessor asks them to walk through their data handling. "Productive" and "compliant" aren't the same word, and confusing them costs contracts, clearances, and under the False Claims Act, a good deal more.</p>
+<p><a href="../resources.html">ITAR</a> runs civil penalties to $1,271,078 per violation or twice the transaction's value, and criminal to $1 million and twenty years. (<a href="https://www.preveil.com/blog/itar-compliance/" target="_blank" rel="noopener">PreVeil</a>) ITAR also governs who's allowed to touch controlled data, and a commercial AI platform employs people outside the United States with access to the infrastructure processing your prompt. (<a href="https://iternal.ai/ai-for-government-contractors" target="_blank" rel="noopener">Iternal</a>) That's a deemed export.</p>
 
-<h2>What ITAR and DFARS Require</h2>
+<p>In 2024 Raytheon paid DOJ and SEC more than $950 million over AECA and ITAR violations (<a href="https://www.venable.com/insights/publications/2025/01/defense-contractor-resolves-doj-and-sec-fcpa" target="_blank" rel="noopener">Venable</a>), then $8.4 million more in May 2025 under the False Claims Act for certifying cybersecurity controls it hadn't implemented. (<a href="https://www.consensusdocs.org/news/the-department-of-justice-prioritizes-federal-cont/" target="_blank" rel="noopener">ConsensusDocs</a>) In December 2025 a machine shop paid about $421,000 over unprotected technical drawings, in a qui tam its former quality manager filed. (<a href="https://www.hklaw.com/en/insights/publications/2026/01/cmmc-affirmation-trap-fca-exposure" target="_blank" rel="noopener">Holland &amp; Knight</a>)</p>
 
-<p><a href="../resources.html">ITAR</a>, enforced by the State Department's Directorate of Defense Trade Controls, governs anything on the United States Munitions List. Civil penalties run up to $1,271,078 per violation or twice the transaction's value; criminal penalties reach $1 million per violation and twenty years. (<a href="https://www.preveil.com/blog/itar-compliance/" target="_blank" rel="noopener">PreVeil</a>) Per violation, and violations don't arrive one at a time.</p>
+<p>The self-assessment starts with inventory: every AI tool, commercial assistants on work devices included, and whether each touches CUI; if it does and the backend isn't FedRAMP-authorized, the tool goes. (<a href="https://www.washingtontechnology.com/opinion/2026/04/ai-and-cmmc-double-edge-sword-defense-contractors/412981/" target="_blank" rel="noopener">Washington Technology</a>) Your SSP then carries each tool as an in-scope asset, your acceptable use policy names the authorized ones, and you train your people, because the engineer pasting a drawing at midnight isn't reading either.</p>
 
-<p>DFARS adds the cybersecurity layer. CMMC 2.0 took effect December 16, 2024, and Phase 1 enforcement began November 10, 2025. (<a href="https://www.goodwinlaw.com/en/insights/publications/2025/09/alerts-otherindustries-dod-final-rule-incorporates-cmmc-20-into-dfars" target="_blank" rel="noopener">Goodwin</a>) Phase 2, third-party Level 2 certification for most contractors handling CUI, was due November 10, 2026, until the Department of War suspended it and every later milestone on July 13, 2026, pending a 60-day Reform Task Force review. (<a href="https://www.steptoe.com/en/news-publications/international-compliance-blog/department-of-war-pauses-cmmc-phase-ii-implementation-and-launches-60-day-program-review.html" target="_blank" rel="noopener">Steptoe</a>) That changed the assessor's calendar and nothing else: the Phase 1 self-assessment, NIST SP 800-171 Rev. 2 and DFARS 252.204-7012 still bind, and the False Claims Act never had a phase.</p>
+<p>An architecture you control physically, inside your boundary, clears DFARS and CMMC for CUI; it ends the cloud transmission, the deemed export and the FedRAMP chase, and it leaves <a href="../lamprey-woven-security-governance.html">an audit trail you can hand an assessor</a>. Hardware isn't the certification, though: sign the annual CMMC affirmation without verifying it and you can be accused of reckless disregard sufficient for False Claims Act liability. (<a href="https://www.hklaw.com/en/insights/publications/2026/01/cmmc-affirmation-trap-fca-exposure" target="_blank" rel="noopener">Holland &amp; Knight</a>) Owning the box makes the AI portion of that affirmation provable instead of argued.</p>
 
-<p>ITAR also regulates who's allowed to touch controlled data. The paste into ChatGPT lands that CUI in a commercial cloud outside your CMMC boundary inside five seconds (<a href="https://openapproach.com/learn/is-your-teams-ai-use-putting-your-defense-contracts-at-risk/" target="_blank" rel="noopener">Openapproach</a>), and the platform almost certainly employs people outside the United States with access to the infrastructure that processes it. (<a href="https://iternal.ai/ai-for-government-contractors" target="_blank" rel="noopener">Iternal Technologies</a>) That's a deemed export.</p>
-
-<h2>The Enforcement Environment</h2>
-
-<p>In October 2024, DOJ and SEC settled with Raytheon over AECA and ITAR violations for more than $950 million. (<a href="https://www.venable.com/insights/publications/2025/01/defense-contractor-resolves-doj-and-sec-fcpa" target="_blank" rel="noopener">Venable LLP</a>) On May 1, 2025, Raytheon paid another $8.4 million under the False Claims Act for certifying cybersecurity controls it hadn't implemented on an internal development system. (<a href="https://www.consensusdocs.org/news/the-department-of-justice-prioritizes-federal-cont/" target="_blank" rel="noopener">ConsensusDocs</a>) That's how narrow the target gets.</p>
-
-<p>In December 2025, DOJ announced its first settlement aimed at the defense supply chain: a precision machining subcontractor paid about $421,000 over inadequate protection of technical drawings supplied to primes, in a qui tam action a former quality control manager filed. (<a href="https://www.hklaw.com/en/insights/publications/2026/01/cmmc-affirmation-trap-fca-exposure" target="_blank" rel="noopener">Holland &amp; Knight</a>) The informants in this environment used to work down the hall.</p>
-
-<h2>What an Honest Self-Assessment Looks Like</h2>
-
-<p>It starts with your data. Identify every AI tool in the environment, including the commercial assistants on work devices, and determine whether each can touch CUI; if it can, check whether the backend's FedRAMP-authorized for it. (<a href="https://www.washingtontechnology.com/opinion/2026/04/ai-and-cmmc-double-edge-sword-defense-contractors/412981/" target="_blank" rel="noopener">Washington Technology</a>) One instance of CUI in a non-compliant system is a spillage you can't undo. (<a href="https://vso-inc.com/how-to-use-ai-without-breaking-cmmc-compliance-a-defense-contractors-guide/" target="_blank" rel="noopener">VSO</a>)</p>
-
-<p>From there, your System Security Plan documents every AI tool as an in-scope asset, your acceptable use policy names which tools are authorized, and you train your people, because the engineer pasting a drawing at eleven at night isn't reading your SSP. The NDAA also directs DoD to fold an AI/ML security framework into DFARS and CMMC, covering AI acquired by DoD down to its source code, weights and training data. (<a href="https://www.governmentcontractslegalforum.com/2026/01/articles/ai/cmmc-for-ai-defense-policy-law-imposes-ai-security-framework-and-requirements-on-contractors/" target="_blank" rel="noopener">Governmentcontractslegalforum</a>) Build any AI capability for a DoD customer and you're already inside that perimeter.</p>
-
-<h2>The Only Architecture That Clears These Frameworks</h2>
-
-<p>Public AI platforms don't provide the data handling, logging or contractual protections DFARS and CMMC require for CUI. (<a href="https://www.hdtech.com/blog/how-defense-contractors-can-use-ai-in-a-cmmc-compliant-environment" target="_blank" rel="noopener">Hdtech</a>) The architecture that clears them is one you control physically, inside your boundary. That kills the cloud transmission problem, the deemed export problem and the FedRAMP chase in one move, and leaves you with <a href="../lamprey-woven-security-governance.html">an audit trail you can hand an assessor</a>, every action identified, approved and logged.</p>
-
-<p>Hardware won't write your SSP, work your POA&amp;M or defend your SPRS score, and a contractor that signs an annual CMMC affirmation without verifying it can be accused of reckless disregard sufficient for False Claims Act liability. (<a href="https://www.hklaw.com/en/insights/publications/2026/01/cmmc-affirmation-trap-fca-exposure" target="_blank" rel="noopener">Holland &amp; Knight</a>) What owning the box does is make the AI portion of that affirmation provable instead of argued. You can't certify with a straight face while your engineers prompt a commercial chatbot with design specifications.</p>
-
-<h2>What I Won't Recommend Until I've Watched You Work</h2>
-
-<p>I don't have a boundary diagram for you yet. I don't know how your FSO and your ISSM divide the work, or which of the 110 NIST SP 800-171 controls your compliance analyst's still assembling evidence for. That work barely lives in the documentation, so I show up, sit next to the people who run it, and shut up until I understand it their way. Then I recommend whatever the work turned out to need, inside your boundary, and we deploy it together on site so it's still working a year after I've gone.</p>
-
-<p>The Phase 2 date is gone and the standard isn't. It moved from good faith effort to provable accuracy. (<a href="https://www.mayerbrown.com/en/insights/publications/2026/03/false-claims-act-enforcement-record-breaking-year-signals-continued-attention-to-cybersecurity" target="_blank" rel="noopener">Mayer Brown</a>) If you can't show an assessor that CUI never touched an unauthorized system, you don't pass, and that's the contract gone. If you'd like to know what it'd look like in your shop, <a href="../contact.html">start there</a>, and I'll come to you.</p>
-
-<!-- AEO Summary -->
-<div style="border-left:3px solid var(--copper);padding:16px 20px;margin:32px 0;background:rgba(217,119,6,0.05);border-radius:0 8px 8px 0;">
-<strong>Summary:</strong> CMMC Phase 2 is suspended with no new date; the Phase 1 self-assessment, NIST SP 800-171 and DFARS 252.204-7012 still apply. Every AI tool that can touch CUI has to be documented in the SSP and kept inside your boundary. Inference on infrastructure you control clears that; the hardware's never the certification itself.
-</div>
+<p>If you can't show an assessor that CUI never touched an unauthorized system, that's the contract gone; <a href="../contact.html">reach us</a> before they ask.</p>
 
 </article>
 
