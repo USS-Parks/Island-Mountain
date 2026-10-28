@@ -83,7 +83,7 @@
         "name": "Do I need a Business Associate Agreement to use local AI with patient data?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "No. A Business Associate Agreement is only required under HIPAA when Protected Health Information (PHI) is shared with a third-party service provider. On-premises AI hardware processes PHI entirely within your facility - no data transmitted to any external service means no business associate relationship exists. The BAA requirement under 45 CFR Part 164 does not apply because no third-party handling occurs. Island Mountain keeps ePHI on servers you own, inside your network, under your HIPAA Security Rule controls. The HITECH Act's breach notification requirements become far simpler when PHI never leaves the building."
+          "text": "Not with a cloud AI provider, because there isn't one in the data path. PHI stays on hardware you own, inside your network, under your HIPAA Security Rule controls. The crew that builds and supports the system is a separate question: anyone whose people can see PHI while working for your practice may be your business associate, and that gets settled in the engagement agreement before anyone touches a record."
         }
       },
       {
@@ -185,7 +185,7 @@
   <section class="hero hero-page">
     <div class="hero-inner">
       <span class="hero-badge">Local AI for Medical Practices</span>
-      <h1>PHI Stays on Your Hardware. No BAA Required.</h1>
+      <h1>PHI Stays on Your Hardware. No Cloud AI Vendor in the Chain.</h1>
       <p>Cloud AI services want a Business Associate Agreement and create breach exposure every time PHI moves. We&#39;ll build the whole system on your hardware instead: the agents, the orchestration, and the models that run your practice&#39;s work, and patient data never leaves your network.</p>
     </div>
   </section>
@@ -238,8 +238,8 @@
         </div>
         <div class="card">
           <div class="card-icon-im"><img src="images/icons/hipaa-ai-icon.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
-          <h3>No BAA Required</h3>
-          <p>When PHI never leaves your network, there is no third-party business associate. The BAA requirement, the vendor security assessment, and the ongoing compliance monitoring of the cloud provider - all of it goes away.</p>
+          <h3>No Cloud AI Business Associate</h3>
+          <p>When PHI never leaves your network, there's no cloud AI vendor acting as your business associate. The vendor BAA, the vendor security assessment, and the ongoing monitoring of a cloud provider's handling all go away.</p>
         </div>
         <div class="card">
           <div class="card-icon-im"><img src="images/icons/itarr-cmmc-ai-icon.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
@@ -371,7 +371,7 @@
             <tr>
               <td><strong>BAA Required</strong></td>
               <td>Yes - mandatory for HIPAA</td>
-              <td class="highlight-cell">No. Data never leaves your network.</td>
+              <td class="highlight-cell">Not for a cloud AI vendor. Data never leaves your network.</td>
             </tr>
             <tr>
               <td><strong>Breach Exposure</strong></td>
@@ -462,7 +462,7 @@
         <div class="risk-card">
           <div class="risk-icon"><img src="images/icons/hipaa-ai-icon.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
           <h4>Do I need a BAA to use local AI with patient data?</h4>
-          <p>No. A Business Associate Agreement is only required under HIPAA when Protected Health Information (PHI) is shared with a third-party service provider. On-premises AI hardware processes PHI entirely within your facility - no data transmitted to any external service means no business associate relationship exists. The BAA requirement under 45 CFR Part 164 does not apply.</p>
+          <p>Not with a cloud AI provider, because there isn't one in the data path. PHI stays on hardware you own, inside your network, under your HIPAA Security Rule controls. The crew that builds and supports the system is a separate question: anyone whose people can see PHI while working for your practice may be your business associate, and that gets settled in the engagement agreement before anyone touches a record.</p>
         </div>
         <div class="risk-card">
           <div class="risk-icon"><img src="images/icons/hipaa-ai-icon.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
@@ -477,7 +477,7 @@
         <div class="risk-card">
           <div class="risk-icon"><img src="images/icons/ai-cost-comparison-icon.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
           <h4>How does cost compare for a 15-provider practice?</h4>
-          <p>Cloud AI subscriptions for healthcare platforms typically cost $30 to $150 per user per month. For 25 users, that totals $9,000 to $45,000 per year with ongoing BAA management overhead and breach exposure on every query. An Island Mountain build is a one-time purchase, sized and quoted to your workload. No per-user fees. No BAA required.</p>
+          <p>Cloud AI subscriptions for healthcare platforms typically cost $30 to $150 per user per month. For 25 users, that totals $9,000 to $45,000 per year with ongoing BAA management overhead and breach exposure on every query. An Island Mountain build is a one-time purchase, sized and quoted to your workload. There are no per-user fees and no cloud AI vendor to sign a BAA with.</p>
         </div>
       </div>
       <div class="text-center-mt-32">
@@ -510,11 +510,11 @@
       </div>
       <div class="scenario-grid" class="fade-in">
         <div class="accent-blockquote">
-          <p class="mb-075">Tribal health services department serving 12,000 patients. Patient data never leaves sovereign territory. Full HIPAA and OCAP compliance from day one.</p>
+          <p class="mb-075">Typical engagement: a tribal health services department serving about 12,000 patients. Patient data stays on the nation's hardware, and every record an agent opens leaves a receipt the privacy officer can read.</p>
           <span class="copper-sm">Scenario: Tribal Health Department</span>
         </div>
         <div class="accent-blockquote">
-          <p class="mb-075">Multi-site rural practice with no reliable broadband. Local AI runs clinical decision support without depending on internet connectivity.</p>
+          <p class="mb-075">Typical engagement: a multi-site rural practice with patchy broadband. Notes, prior auths and patient letters keep drafting when the line's down, because none of it depends on the line.</p>
           <span class="copper-sm">Scenario: Rural Health Network</span>
         </div>
         <div class="accent-blockquote">

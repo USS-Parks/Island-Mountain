@@ -80,10 +80,10 @@
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "Does using cloud AI for legal research violate attorney-client privilege?",
+        "name": "Does cloud AI waive attorney-client privilege?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes. Cloud AI transmits client data to third-party infrastructure, constituting disclosure that risks waiving attorney-client privilege. ABA Model Rule 1.6 requires reasonable efforts to prevent unauthorized disclosure of client information - cloud processing moves confidential data outside the firm's control by design. Multiple state bar ethics opinions confirm that attorneys must evaluate whether cloud AI providers offer adequate confidentiality protections. On-premises AI from Island Mountain eliminates this transmission entirely. Client data stays on your own hardware inside your office. No third-party disclosure. No privilege risk from the AI infrastructure itself."
+          "text": "Not automatically. ABA Formal Opinion 512 (July 2024) lets lawyers use generative AI, and it puts the vetting on you: competence with the tool, informed client consent before confidential information goes into a tool that learns from it, and reasonable efforts under Rule 1.6 to keep it from leaking. Every cloud vendor you add is another confidentiality review, another set of terms, and another breach notice you don't get to write. On your own hardware the third-party question goes away, and what's left is your own security, which we build and hand back to you."
         }
       },
       {
@@ -205,7 +205,7 @@
         <p>Cloud AI creates a structural conflict with the most fundamental obligation in legal practice: confidentiality.</p>
       </div>
       <div class="fade-in content-narrow">
-        <p class="body-lg">When an attorney pastes a client contract into ChatGPT, Claude, or any cloud-based AI service, that document leaves the firm's network. It travels across the public internet to a data center owned by a third party. It is processed on shared infrastructure alongside data from thousands of other organizations. Law firms are one of <a href="solutions.html">eleven regulated industries</a> where this structural conflict between cloud AI and data confidentiality is most acute. The cloud provider's terms of service - not your engagement letter - govern what happens to that data. Every contract analyzed through cloud AI is a privileged communication handed to a third party. If opposing counsel discovers the transmission, the privilege argument you built your case on may collapse.</p>
+        <p class="body-lg">When an attorney pastes a client contract into ChatGPT, Claude, or any cloud-based AI service, that document leaves the firm's network. It travels across the public internet to a data center owned by a third party. It is processed on shared infrastructure alongside data from thousands of other organizations. Law firms are one of <a href="solutions.html">eleven regulated industries</a> where this structural conflict between cloud AI and data confidentiality is most acute. The cloud provider's terms of service - not your engagement letter - govern what happens to that data. Every privileged memo or client communication pasted into a cloud AI tool is confidential information handed to a third party, and if opposing counsel learns of it, you'll be arguing about waiver instead of the merits.</p>
         <p class="body-lg">ABA Model Rule 1.6(a) requires attorneys to hold client information in confidence. Rule 1.6(c) requires "reasonable efforts to prevent the inadvertent or unauthorized disclosure" of that information. Multiple state bar ethics opinions have addressed whether transmitting client data to cloud AI providers satisfies this standard. The recurring concern: once data leaves the firm's infrastructure, the attorney's ability to control its handling depends entirely on a vendor's privacy policy and contractual commitments - not on the firm's own security measures.</p>
         <p class="body-lg">This is the mechanical reality of how cloud AI works, not a theoretical risk. Every API call is a data transmission. Every data transmission is a potential privilege question.</p>
       </div>
@@ -457,7 +457,7 @@
         <h2>Bar Association Ethics and AI Confidentiality</h2>
       </div>
       <div class="fade-in content-narrow">
-        <p class="body-lg">ABA Model Rule 1.6 establishes the duty of confidentiality. Comment [18] to Rule 1.6 specifically addresses electronic transmissions, requiring attorneys to take "special precautions" when the nature of the information warrants it. Multiple state bar associations have issued ethics opinions addressing cloud computing and AI in legal practice.</p>
+        <p class="body-lg">ABA Model Rule 1.6 establishes the duty of confidentiality. Comment [18] to Rule 1.6 specifically addresses electronic transmissions, requiring attorneys to take "special precautions" when the nature of the information warrants it. ABA Formal Opinion 512 (July 2024) is the opinion on point, and state bars from California to Florida have published their own guidance on generative AI.</p>
         <p class="body-lg">The recurring theme across these opinions: attorneys may use technology that involves third-party data processing, but they must exercise reasonable care in evaluating the provider's confidentiality protections, understand how client data is handled and stored, and take steps to minimize exposure. The bar does not prohibit cloud AI - but it places the burden of due diligence squarely on the attorney.</p>
         <p class="body-lg">Local AI hardware changes the analysis entirely. When client data never leaves the firm's network, the third-party disclosure question does not arise. The confidentiality evaluation becomes straightforward: the data is on your server, in your building, under your physical and network security controls.</p>
         <p style="font-size:0.9rem;line-height:1.8;color:var(--text-muted);margin-top:24px;padding:16px 20px;border:1px solid rgba(245,158,11,0.2);border-radius:var(--border-radius);background:rgba(245,158,11,0.04);"><strong>Disclaimer:</strong> This section describes the general ethics environment regarding AI and attorney-client privilege. It is not legal advice and should not be relied upon for compliance decisions. Consult your state bar's ethics hotline or a legal ethics attorney for guidance specific to your jurisdiction and practice.</p>
@@ -485,8 +485,8 @@
       <div class="risk-grid fade-in">
         <div class="risk-card">
           <div class="risk-icon"><img src="images/icons/attorney-client-priv-icon.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
-          <h4>Does cloud AI violate attorney-client privilege?</h4>
-          <p>Yes. Cloud AI transmits client data to third-party infrastructure, constituting disclosure that risks waiving attorney-client privilege. ABA Model Rule 1.6 requires reasonable efforts to prevent unauthorized disclosure of client information - cloud processing moves confidential data outside the firm's control by design. On-premises AI hardware from Island Mountain eliminates this transmission entirely.</p>
+          <h4>Does cloud AI waive attorney-client privilege?</h4>
+          <p>Not automatically. ABA Formal Opinion 512 (July 2024) lets lawyers use generative AI, and it puts the vetting on you: competence with the tool, informed client consent before confidential information goes into a tool that learns from it, and reasonable efforts under Rule 1.6 to keep it from leaking. Every cloud vendor you add is another confidentiality review, another set of terms, and another breach notice you don't get to write. On your own hardware the third-party question goes away, and what's left is your own security, which we build and hand back to you.</p>
         </div>
         <div class="risk-card">
           <div class="risk-icon"><img src="images/icons/agentic-orchestration-icon.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>

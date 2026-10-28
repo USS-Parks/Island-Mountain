@@ -168,7 +168,7 @@
         "name": "Can a tribal government run AI without cloud providers?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes; it is one of the primary use cases Island Mountain deployments are built for. Tribal nations exercise inherent sovereignty over constituent data, enrollment records, health information, and governance documents. Local AI keeps everything on tribal premises, under tribal law, processed by hardware the nation owns outright. No data leaves the reservation, no cloud terms of service apply, and no federal or state jurisdiction touches the processing. The open-weight models carry permissive open-source licenses, so the nation owns them with no usage restrictions, and the system runs fully air-gapped if your security posture requires it."
+          "text": "Yes; it is one of the primary use cases Island Mountain deployments are built for. Tribal nations exercise inherent sovereignty over constituent data, enrollment records, health information, and governance documents. Local AI keeps everything on tribal premises, under tribal law, processed by hardware the nation owns outright. No data leaves the reservation, no cloud terms of service apply, and no federal or state jurisdiction touches the processing. The nation owns the weights outright, we read each model's license with tribal counsel before it goes into production, and the system runs fully air-gapped if your security posture requires it."
         }
       },
       {
@@ -208,7 +208,7 @@
         "name": "Which models do we get, and are we stuck with them?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Open-source, open-weight models chosen to fit your work, and no, you are never stuck with them. The model layer is as swappable as the hardware. There is no fixed stack: Discovery picks the weights after the work has been watched. Current open-weight families such as DeepSeek V4-Flash, Llama 4 Scout, DeepSeek R1, or Qwen 3 are examples, not a catalog. All carry permissive open-source licenses with no usage restrictions; you own them outright and switch between them in the OpenWebUI dropdown. Any compatible open-weight model that fits your VRAM can be pulled through Ollama or OpenWebUI, so as the frontier moves you swap rather than renegotiate."
+          "text": "Open-source, open-weight models chosen to fit your work, and no, you are never stuck with them. The model layer is as swappable as the hardware. There is no fixed stack: Discovery picks the weights after the work has been watched. Current open-weight families such as DeepSeek V4-Flash, Llama 4 Scout, DeepSeek R1, or Qwen 3 are examples, not a catalog. Licenses vary: some are MIT or Apache 2.0, and some, like Meta's Llama-family licenses, carry use restrictions you have to accept, so we read each one with your counsel before a model goes into production. You own the weights outright and switch between them in the OpenWebUI dropdown. Any compatible open-weight model that fits your VRAM can be pulled through Ollama or OpenWebUI, so as the frontier moves you swap rather than renegotiate."
         }
       },
       {
@@ -635,7 +635,7 @@
           <h3>Can a tribal government run AI without cloud providers?</h3>
           <div class="faq-answer">
             <p><strong>Yes. It is one of the primary use cases Island Mountain hardware is built for.</strong> Tribal nations exercise inherent sovereignty over constituent data, enrollment records, health information, and governance documents. Routing that data through cloud AI means processing sovereign data through jurisdictions and infrastructure outside tribal authority.</p>
-            <p>Local AI keeps everything on tribal premises, under tribal law, processed by hardware the nation owns outright. No data leaves the reservation, no cloud terms of service apply, and no federal or state jurisdiction touches the processing. The pre-installed models carry permissive open-source licenses, so the nation owns them with no usage restrictions, and the system runs fully air-gapped if your posture requires it. See our <a href="tribal-nations.html">Tribal Nations</a> page for OCAP-aligned workflows.</p>
+            <p>Local AI keeps everything on tribal premises, under tribal law, processed by hardware the nation owns outright. No data leaves the reservation, no cloud terms of service apply, and no federal or state jurisdiction touches the processing. The nation owns the weights outright, we read each model's license with tribal counsel before it goes into production, and the system runs fully air-gapped if your posture requires it. See our <a href="tribal-nations.html">Tribal Nations</a> page for OCAP-aligned workflows.</p>
           </div>
         </div>
 
@@ -688,7 +688,7 @@
           <h3>Which models do we get, and are we stuck with them?</h3>
           <div class="faq-answer">
             <p><strong>Open-source, open-weight models chosen to fit your work, and no, you are never stuck with them.</strong> The model layer is as swappable as the hardware. There is no fixed stack: Discovery picks the weights after the work has been watched. Current open-weight families such as <strong>DeepSeek V4-Flash</strong>, <strong>Llama 4 Scout</strong>, <strong>DeepSeek R1</strong>, or <strong>Qwen 3</strong> are examples, not a catalog.</p>
-            <p>All carry permissive open-source licenses with no usage restrictions. You own them outright and switch between them in the OpenWebUI dropdown. Any compatible open-weight model that fits your VRAM can be pulled through Ollama or OpenWebUI, so as the frontier moves you swap rather than renegotiate. That is the point of open weights: no lab holds a meter on you, and nobody can deprecate the model your workflow depends on. For the first 30 days we walk your team through model management directly.</p>
+            <p>Licenses vary: some are MIT or Apache 2.0, and some, like Meta's Llama-family licenses, carry use restrictions you have to accept, so we read each one with your counsel before a model goes into production. You own the weights outright and switch between them in the OpenWebUI dropdown. Any compatible open-weight model that fits your VRAM can be pulled through Ollama or OpenWebUI, so as the frontier moves you swap rather than renegotiate. That is the point of open weights: no lab holds a meter on you, and nobody can deprecate the model your workflow depends on. For the first 30 days we walk your team through model management directly.</p>
           </div>
         </div>
 

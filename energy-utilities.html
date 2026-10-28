@@ -80,10 +80,10 @@
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "Does cloud AI processing of operational data violate NERC CIP requirements?",
+        "name": "Does cloud AI complicate NERC CIP compliance?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes. Cloud AI creates external routable connections that must be documented in your Electronic Security Perimeter under CIP-005, subjected to access management requirements, and continuously monitored. Operational data transmitted to cloud AI may qualify as BES Cyber System Information (BCSI) under CIP-011, triggering additional protection requirements. On-premises AI hardware from Island Mountain operates entirely within the Electronic Security Perimeter. No external connections. No CIP-005 complications. No BCSI exposure to third parties. Your own hardware processes operational data air-gapped inside your facility."
+          "text": "Yes, though it isn't banned. Since CIP-004-7 and CIP-011-3 took effect in January 2024, BCSI can sit with a cloud provider under documented access and encryption controls. The cost is the paperwork and the new conduit: every external routable connection out of the ESP has to be identified, controlled, and monitored under CIP-005. A system inside the perimeter adds no conduit, and it gets patched and baselined like the rest of your CIP assets, with receipts to show for it."
         }
       },
       {
@@ -104,10 +104,10 @@
       },
       {
         "@type": "Question",
-        "name": "Can Island Mountain hardware integrate with SCADA or operational technology systems?",
+        "name": "Does the system connect to SCADA or operational technology?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes. All models are loaded and verified before it lands. The system operates with zero external network connections - no internet, no cloud callbacks, no telemetry. Updates are applied via physical media when needed. Designed specifically for operational environments where NERC CIP, IEC 62443, or TSA Pipeline Security Directives require complete network isolation from external infrastructure."
+          "text": "Not by default. The system sits on the IT side of your perimeter and works from the data your people hand it. If Discovery turns up a read-only feed worth building, we'll scope it with your OT security team. It never issues a control action."
         }
       }
     ]
@@ -486,7 +486,7 @@
         <div class="risk-card">
           <div class="risk-icon"><img src="images/icons/air-gapped-icon.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
           <h4>Does cloud AI complicate NERC CIP compliance?</h4>
-          <p>Yes. Cloud AI creates external routable connections that must be documented in your Electronic Security Perimeter under CIP-005, subjected to access management requirements, and continuously monitored. Operational data transmitted to cloud AI may qualify as BES Cyber System Information (BCSI) under CIP-011, triggering additional protection requirements. On-premises AI from Island Mountain operates entirely within the Electronic Security Perimeter.</p>
+          <p>Yes, though it isn't banned. Since CIP-004-7 and CIP-011-3 took effect in January 2024, BCSI can sit with a cloud provider under documented access and encryption controls. The cost is the paperwork and the new conduit: every external routable connection out of the ESP has to be identified, controlled, and monitored under CIP-005. A system inside the perimeter adds no conduit, and it gets patched and baselined like the rest of your CIP assets, with receipts to show for it.</p>
         </div>
         <div class="risk-card">
           <div class="risk-icon"><img src="images/icons/agentic-orchestration-icon.webp?v=4" alt="" loading="lazy" decoding="async" width="104" height="104"></div>
