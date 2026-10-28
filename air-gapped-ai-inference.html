@@ -80,34 +80,18 @@
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "Can you run AI models without internet access?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes. On-premises AI inference servers operate entirely on local hardware with no internet dependency. Models are pre-loaded onto the system before deployment, inference runs on local NVIDIA GPUs, and the system functions identically whether connected to a network or fully air-gapped. This is critical for SCIF environments, classified networks, remote field operations, and any facility where network isolation is a security requirement."
-        }
-      },
-      {
-        "@type": "Question",
         "name": "What does air-gapped mean for AI systems?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "An air-gapped AI system has no physical or logical connection to the internet or any external network. The server operates entirely on its own hardware, with all software, models, and configuration pre-loaded. No data can enter or exit the system via network connection. Users access the AI through a local area network or direct physical connection within the same secured facility."
+          "text": "It means the system doesn't have a physical or logical connection to any outside network. Software, models and data stay on local hardware, and users reach it over the facility's LAN."
         }
       },
       {
         "@type": "Question",
-        "name": "How are AI models updated on air-gapped systems?",
+        "name": "Does air-gapped AI perform differently than connected AI?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Model updates on air-gapped systems are performed via physical media transfer. New model files are downloaded to a separate internet-connected workstation, transferred to approved removable media (USB drive, external SSD), scanned per your organization's security protocols, and then loaded onto the air-gapped system. This manual process ensures that the air gap is never breached and that all updates pass through your security review before deployment."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What software features are disabled in air-gapped configuration?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Island Mountain disables all external connectivity features at the environment variable level: OFFLINE_MODE is enabled, HF_HUB_OFFLINE prevents Hugging Face downloads, ENABLE_COMMUNITY_SHARING is disabled, ANONYMIZED_TELEMETRY is disabled, ENABLE_RAG_WEB_SEARCH is disabled, SAFE_MODE is enabled, and ENABLE_SIGNUP is disabled to prevent unauthorized account creation. Your IT team can verify each setting independently."
+          "text": "No. The same models give the same answers; you only lose web search and community sharing, and that's the point of the gap."
         }
       }
     ]
@@ -182,7 +166,7 @@
     <div class="hero-inner">
       <span class="hero-badge">Air-Gapped Operations</span>
       <h1>Can You Run AI Models Without Internet Access?</h1>
-      <p>How on-premises AI inference servers operate fully air-gapped for SCIF environments, classified networks, remote field operations, and network-isolated facilities.</p>
+      <p>How on-premises AI runs fully air-gapped for SCIFs, classified networks, field operations and any facility that's cut off from the internet.</p>
     </div>
   </section>
 
@@ -197,23 +181,12 @@
   </nav>
 
   <!-- Direct Answer -->
-  <section class="section section-dark">
-    <div class="container">
-      <div class="content-block fade-in content-max-800">
-        <div style="border-left:4px solid var(--copper);padding:20px 24px;margin:0 0 32px 0;background:rgba(217,119,6,0.08);border-radius:0 8px 8px 0;">
-          <p style="font-size:1.15rem;line-height:1.7;color:var(--text-light);margin:0;"><strong>Yes.</strong> On-premises AI inference servers operate entirely on local hardware with no internet dependency. Models are pre-loaded, inference runs on local NVIDIA GPUs, and the system functions identically whether connected or fully air-gapped. This is critical for SCIF environments, classified networks, remote field operations, and any facility where network isolation is a security requirement.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Supporting Sections -->
   <section class="section section-darker">
     <div class="container">
       <div class="content-block fade-in content-max-800">
-        <h2 class="mb-16" style="color:var(--text-light);">What Air-Gapped AI Means in Practice</h2>
-        <p class="body-md">An air-gapped AI system has no physical or logical connection to the internet or any external network. The server operates on its own hardware, with all software, models, and configuration pre-loaded before deployment. No data enters or exits the system via network connection. Users access the AI through a local area network or direct physical connection within the secured facility.</p>
-        <p class="body-md">This is not a software toggle that can be accidentally reversed. Island Mountain pre-configures the system for air-gapped operation by disabling all external connectivity features at the environment variable level before the server ships. Your IT team can verify each setting independently and confirm that no outbound connections are possible.</p>
+        <div style="border-left:4px solid var(--copper);padding:20px 24px;margin:0 0 32px 0;background:rgba(217,119,6,0.08);border-radius:0 8px 8px 0;">
+          <p style="font-size:1.15rem;line-height:1.7;color:var(--text-light);margin:0;"><strong>Yes.</strong> On-premises AI doesn't need the internet; it runs on local hardware. The models are loaded before handover, inference runs on local GPUs, and the system works the same connected or fully air-gapped, which is what SCIFs, classified networks and remote field sites can't do without.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -222,14 +195,7 @@
     <div class="container">
       <div class="content-block fade-in content-max-800">
         <h2 class="mb-16" style="color:var(--text-light);">What Gets Disabled and How You Verify It</h2>
-        <p class="body-md">The following OpenWebUI environment variables are configured for air-gapped operation on every Island Mountain system:</p>
-        <p class="body-md"><strong>OFFLINE_MODE=true</strong> - Disables all outbound network requests from the application layer.</p>
-        <p class="body-md"><strong>HF_HUB_OFFLINE=1</strong> - Prevents Hugging Face model hub downloads. All models are loaded from local storage only.</p>
-        <p class="body-md"><strong>ENABLE_COMMUNITY_SHARING=false</strong> - Disables community prompt sharing that would require external connectivity.</p>
-        <p class="body-md"><strong>ANONYMIZED_TELEMETRY=false</strong> - Disables all anonymized usage telemetry that would phone home to external servers.</p>
-        <p class="body-md"><strong>ENABLE_RAG_WEB_SEARCH=false</strong> - Disables web-based retrieval augmented generation that would require internet access.</p>
-        <p class="body-md"><strong>SAFE_MODE=true</strong> - Enables restricted mode preventing execution of potentially unsafe operations.</p>
-        <p class="body-md"><strong>ENABLE_SIGNUP=false</strong> - Disables self-registration. Only pre-configured administrator accounts can create new users.</p>
+        <p class="body-md">We switch off every outbound feature in configuration before handover, from telemetry and web search to model-hub downloads and self-signup. Your IT team doesn't have to take our word for it: they can check each setting and watch the network to confirm there aren't any outbound connections.</p>
       </div>
     </div>
   </section>
@@ -238,10 +204,7 @@
     <div class="container">
       <div class="content-block fade-in content-max-800">
         <h2 class="mb-16" style="color:var(--text-light);">Who Needs Air-Gapped AI</h2>
-        <p class="body-md"><strong>Defense contractors:</strong> SCIF environments and classified networks governed by ICD 503 and CNSS Instruction 1253 require physical network isolation. On-premises AI brings inference capability inside the security perimeter without breaching the air gap. <a href="defense-contractors.html" class="clr-copper">Learn more about defense contractor AI infrastructure.</a></p>
-        <p class="body-md"><strong>Energy and utilities:</strong> NERC CIP-protected control system environments require network segmentation. AI inference on isolated operational technology (OT) networks supports grid analytics without exposing critical infrastructure to internet-connected AI services. <a href="energy-utilities.html" class="clr-copper">Learn more about energy sector AI infrastructure.</a></p>
-        <p class="body-md"><strong>Government agencies:</strong> Federal and state agencies handling CUI under NIST SP 800-171 benefit from air-gapped AI that stays within their existing security authorization boundary. No FedRAMP dependency, no cloud provider contract, no external data flow. <a href="government.html" class="clr-copper">Learn more about government AI infrastructure.</a></p>
-        <p class="body-md"><strong>Remote and field operations:</strong> Tribal lands, rural clinics, disaster response forward operating bases, research stations, and maritime vessels - anywhere internet connectivity is unreliable or nonexistent. The system processes queries on local hardware with zero internet dependency.</p>
+        <p class="body-md"><a href="defense-contractors.html" class="clr-copper">Defense contractors</a> working in SCIFs under ICD 503 and CNSS Instruction 1253, <a href="energy-utilities.html" class="clr-copper">utilities</a> segmenting NERC CIP control networks, <a href="government.html" class="clr-copper">agencies</a> keeping CUI inside an existing authorization boundary, and field sites like rural clinics, research stations and vessels where the connection's unreliable or missing.</p>
       </div>
     </div>
   </section>
@@ -250,8 +213,7 @@
     <div class="container">
       <div class="content-block fade-in content-max-800">
         <h2 class="mb-16" style="color:var(--text-light);">How Model Updates Work on Air-Gapped Systems</h2>
-        <p class="body-md">Model updates are performed via physical media transfer. New model files are downloaded to a separate internet-connected workstation, transferred to approved removable media (USB drive, external SSD), scanned per your organization's security protocols, and loaded onto the air-gapped system. This process ensures the air gap is never breached and all updates pass through your security review before deployment.</p>
-        <p class="body-md">Model updates are optional - the system runs the same models indefinitely without updates. Many air-gapped deployments intentionally freeze their model configuration to maintain a known, tested baseline. Updates are available when your team decides they are needed, not when a vendor pushes them.</p>
+        <p class="body-md">New model files come down on a separate internet-connected workstation, move over on approved removable media, get scanned under your organization's security protocols and load onto the air-gapped system. Every update passes your security review, and the gap's never breached.</p>
       </div>
     </div>
   </section>
@@ -265,13 +227,10 @@
       </div>
       <div class="content-block fade-in content-max-800">
         <h3 style="color:var(--text-light);margin-bottom:8px;">What does air-gapped mean for AI systems?</h3>
-        <p class="body-md">An air-gapped AI system has no physical or logical connection to any external network. All software, models, and data stay on the local hardware. Users access the system through a LAN or direct connection within the secured facility. No data can enter or exit via network.</p>
+        <p class="body-md">It means the system doesn't have a physical or logical connection to any outside network. Software, models and data stay on local hardware, and users reach it over the facility's LAN.</p>
 
         <h3 style="color:var(--text-light);margin-bottom:8px;margin-top:24px;">Does air-gapped AI perform differently than connected AI?</h3>
-        <p class="body-md">No. The inference engine runs identically regardless of network connectivity. The same models, the same GPU hardware, the same response quality. The only difference is that web search augmentation and community sharing features are unavailable - which is the point of air-gapping.</p>
-
-        <h3 style="color:var(--text-light);margin-bottom:8px;margin-top:24px;">Can the air gap be verified by our security team?</h3>
-        <p class="body-md">Yes. Every environment variable controlling external connectivity is documented. Your IT security team can inspect the configuration, run network monitoring tools, and confirm that zero outbound connections occur. The system is designed to be independently verifiable, not to require trust in the vendor's claims.</p>
+        <p class="body-md">No. The same models give the same answers; you only lose web search and community sharing, and that's the point of the gap.</p>
       </div>
     </div>
   </section>
@@ -281,7 +240,7 @@
     <div class="container">
       <div class="content-block fade-in content-max-800">
         <div style="border-left:3px solid var(--copper);padding:16px 20px;margin:32px 0;background:rgba(217,119,6,0.05);border-radius:0 8px 8px 0;">
-          <p class="body-md" style="margin:0;"><strong>Summary:</strong> On-premises AI inference servers operate with zero internet dependency. Inference runs on local hardware you own, and all external connectivity features are disabled at the environment variable level. Air-gapped deployment supports SCIF environments, classified networks, NERC CIP-protected systems, and remote field operations. Island Mountain's on-premise AI deployments are configured after Discovery, quoted to your workload, and set up for air-gapped operation before handover.</p>
+          <p class="body-md" style="margin:0;"><strong>Summary:</strong> On-premises AI that doesn't need the internet, with every outbound feature switched off where your team can verify it, for SCIFs, NERC CIP networks and remote field sites.</p>
         </div>
         <p class="body-md">Learn more: <a href="defense-contractors.html" class="clr-copper">Defense Contractors</a> | <a href="energy-utilities.html" class="clr-copper">Energy &amp; Utilities</a> | <a href="government.html" class="clr-copper">Government</a></p>
       </div>
@@ -291,8 +250,8 @@
   <!-- CTA -->
   <section class="section section-darker text-center">
     <div class="container fade-in">
-      <h2>Air-Gapped AI Hardware, Ready to Deploy</h2>
-      <p class="cta-sub-wrap">Talk to Island Mountain about on-premises AI that works without internet. Pre-configured and shipped to your facility.</p>
+      <h2>Air-Gapped AI, Built on Your Site</h2>
+      <p class="cta-sub-wrap">We&#39;ll stand it up inside your boundary with its patch path and receipts in place.</p>
       <a href="contact.html" class="btn btn-primary">Start a Scoping Call</a>
       <p class="cta-subtitle"><i class="ri-phone-line icon-copper-mr-sm"></i>Or call directly: <a href="tel:+13414418740" class="copper-semibold">1-341-441-8740</a></p>
     </div>
