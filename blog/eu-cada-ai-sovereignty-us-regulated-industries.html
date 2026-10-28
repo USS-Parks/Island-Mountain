@@ -142,60 +142,23 @@
   </script>
 
   <!-- FAQPage Schema (AEO/GEO) -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "What is the Cloud and AI Development Act (CADA)?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "CADA is a June 2026 EU regulation defining four mandatory sovereignty tiers for cloud and AI services used by public bodies. Tier 4, reserved for defense, law enforcement and border management, effectively excludes any provider subject to U.S. CLOUD Act jurisdiction."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Does the EU Cloud and AI Development Act apply to U.S. organizations?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "CADA does not apply to U.S. organizations directly. What it does is put a formal legal definition on the same structural problem U.S. regulated industries have tolerated for years: if your provider is subject to the CLOUD Act, nothing in your contract keeps sensitive data private from government compulsion."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What is the CLOUD Act and how does it affect AI data sovereignty?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "The U.S. CLOUD Act (18 U.S.C. § 2713) requires American cloud providers to disclose customer data when compelled by law, regardless of where that data is stored. For tribal governments, law firms, defense contractors and healthcare systems, that is a third-party custody exposure no NDA or BAA removes, because a contract governs the vendor's obligations to you while the statute governs the vendor's obligations to the government."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What is the only technical control that fully addresses AI data sovereignty?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Air-gapped, on-premises AI inference. When the system lives in your building and no cloud provider ever takes custody of the data, there is nothing for the CLOUD Act or any foreign government to compel. It is one technical control, not a compliance certification."
-        }
-      }
-    ]
-  }
-  </script>
+  
 
   <!-- Speakable Schema (GEO - voice/AI assistants) -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    "name": "Europe Just Defined AI Sovereignty. The U.S. Is Still Pretending It Doesn't Apply to Us.",
-    "speakable": {
-      "@type": "SpeakableSpecification",
-      "cssSelector": [".aeo-summary", ".article-header h1"]
-    },
-    "url": "https://islandmountain.io/blog/eu-cada-ai-sovereignty-us-regulated-industries.html"
-  }
-  </script>
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Europe Just Defined AI Sovereignty. The U.S. Is Still Pretending It Doesn't Apply to Us.",
+  "speakable": {
+    "@type": "SpeakableSpecification",
+    "cssSelector": [
+      ".article-header h1"
+    ]
+  },
+  "url": "https://islandmountain.io/blog/eu-cada-ai-sovereignty-us-regulated-industries.html"
+}
+</script>
 
   <link rel="stylesheet" href="../css/blog.css?v=3">
 </head>
@@ -251,7 +214,7 @@
           <span class="article-date">June 5, 2026</span>
           <span class="article-tag tag-compliance">Compliance</span>
           <span class="article-tag tag-industry">Industry</span>
-          <span class="article-read-time">4 min read</span>
+          <span class="article-read-time">2 min read</span>
         </div>
         <h1 class="text-2xl">Europe Just Defined AI Sovereignty. The U.S. Is Still Pretending It Doesn't Apply to Us.</h1>
         <p class="article-author">Basho Parks</p>
@@ -260,47 +223,24 @@
       <article class="article-body">
 
 <div style="border-left:3px solid var(--copper);padding:16px 20px;margin:0 0 28px;background:rgba(217,119,6,0.05);border-radius:0 8px 8px 0;">
-<strong>Updated October 28, 2026:</strong> CADA is still a proposal under review by the European Parliament and the Council. Separately, the Digital Omnibus on AI, Regulation (EU) 2026/1744, was published in the Official Journal on 24 July 2026 and entered into force on 27 July; it moved the AI Act's high-risk obligations to 2 December 2027 for stand-alone Annex III systems and 2 August 2028 for AI embedded in Annex I regulated products, and left the Article 50 transparency duties on their original schedule. The sovereignty argument below doesn't depend on either date.
+<strong>Updated October 28, 2026:</strong> CADA is still a proposal; the Digital Omnibus on AI, Regulation (EU) 2026/1744, moved high-risk duties to 2 December 2027 and 2 August 2028.
 </div>
 
-<p>Europe just wrote down the thing American compliance teams have spent years refusing to say out loud, and it wrote it down in four numbered tiers.</p>
+<p>Europe just wrote down, in four numbered tiers, what American compliance teams have spent years refusing to say out loud.</p>
 
-<p>On June 3, 2026, the European Commission proposed the <a href="https://digital-strategy.ec.europa.eu/en/policies/cloud-and-ai-development-act" target="_blank" rel="noopener">Cloud and AI Development Act (CADA)</a>, COM(2026) 502. Parliament and the Council can still change it, but the shape's plain: a four-tier sovereignty framework for public-sector cloud and AI, with a top tier that shuts out any provider subject to foreign law. Executive Vice-President Henna Virkkunen said critical cloud providers shouldn't have a "kill switch," and U.S. companies would struggle to reach the top tiers because of the <a href="https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title18-section2713&num=0&edition=prelim" target="_blank" rel="noopener">U.S. CLOUD Act (18 U.S.C. § 2713)</a>, which lets Washington compel American companies to produce data wherever it's stored.</p>
+<p>On June 3, 2026, the European Commission proposed the <a href="https://digital-strategy.ec.europa.eu/en/policies/cloud-and-ai-development-act" target="_blank" rel="noopener">Cloud and AI Development Act (CADA)</a>, COM(2026) 502: a four-tier sovereignty framework for public-sector cloud and AI whose top tier shuts out any provider subject to foreign law. Tier 4, the defense and law-enforcement tier, wants hardware, software, people and jurisdiction all EU-originating. U.S. providers can't reach it because of the <a href="https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title18-section2713&num=0&edition=prelim" target="_blank" rel="noopener">CLOUD Act (18 U.S.C. § 2713)</a>, which lets Washington compel American companies to produce data wherever it's stored.</p>
 
-<p>Europe named it. I'm watching whether the American law firms, tribal governments, defense contractors and healthcare systems carrying the same exposure have noticed.</p>
+<p>CADA won't bind you. It names what American regulated industries have tolerated for years: a tribal government's records on AWS or a defense contractor's CUI in a cloud LLM sit where their own federal government can reach them through a provider-level order, without notice. Europe drew Tier 4 around that. American regulators haven't, and the exposure's identical.</p>
 
-<h2>What CADA Proposes</h2>
+<p>A tribal government on a U.S.-headquartered cloud has <a href="ocap-cloud-act-guide.html">surrendered Possession</a>, the P in <a href="https://fnigc.ca/ocap-training/" target="_blank" rel="noopener">OCAP</a>, by operation of law and without a council vote. <a href="https://www.americanbar.org/groups/professional_responsibility/publications/model_rules_of_professional_conduct/rule_1_6_confidentiality_of_information/" target="_blank" rel="noopener">ABA Model Rule 1.6</a> asks for "reasonable" efforts, and now that local AI's on the market, privileged material in a third-party cloud is a <a href="attorney-client-privilege-cloud-ai.html">harder position to call reasonable</a> than two years ago.</p>
 
-<p><strong>Tier 1:</strong> infrastructure inside the EU, the floor. <strong>Tier 2:</strong> documented independence from third-country operational interference. <strong>Tier 3:</strong> EU ownership, control and personnel. <strong>Tier 4:</strong> supply-chain control with no third-country interference, hardware, software, people and legal jurisdiction all EU-originating, reserved for defense, law enforcement and border management.</p>
+<p>A compelled disclosure that touches a foreign national is a deemed export under <a href="https://www.ecfr.gov/current/title-22/chapter-I/subchapter-M" target="_blank" rel="noopener">ITAR</a>, and <a href="https://www.acq.osd.mil/cmmc/" target="_blank" rel="noopener">CMMC</a> isolation is only fully met off the cloud. <a href="https://www.ecfr.gov/current/title-45/subtitle-A/subchapter-C/part-164/subpart-C/section-164.312" target="_blank" rel="noopener">45 C.F.R. § 164.312</a> wants technical measures around ePHI, and a Business Associate Agreement moves liability; it doesn't move the data.</p>
 
-<p>The Commission puts U.S. companies above 70% of the EU cloud market and EU spending at &euro;264 billion a year, mostly on U.S. proprietary IT. Whatever you make of Brussels, it put a number on the dependency.</p>
+<p>Any major cloud AI service, OpenAI's API or AWS Bedrock, puts you at Tier 1 at best: domestic infrastructure and a provider that's subject to U.S. law. Tier 1 doesn't hold for PHI, CUI, client confidences or tribal proprietary data.</p>
 
-<h2>The Same Exposure, Without the Vocabulary</h2>
+<p>We deploy <a href="../air-gapped-ai-inference.html">air-gapped inference</a> on site with the <a href="../lamprey-woven-security-governance.html">Woven Security &amp; Governance Fabric</a> built in, and the CLOUD Act can't compel data a cloud provider doesn't have. What you don't get is a certification; local hardware kills one category of risk, third-party custody, and leaves every other obligation where it was.</p>
 
-<p>CADA won't bind you, but it names the problem American regulated industries have tolerated for years: extraterritoriality. The CLOUD Act compels American providers to disclose customer data wherever it's stored. So when a tribal government uploads records to AWS or a defense contractor feeds CUI into a cloud LLM, that data sits where its own federal government can reach it through a provider-level order, without notice. Europe drew Tier 4 around exactly that. American regulators haven't, and the exposure's identical.</p>
-
-<p><strong>Tribal nations.</strong> The <a href="https://fnigc.ca/ocap-training/" target="_blank" rel="noopener">First Nations Principles of OCAP</a> (Ownership, Control, Access, and Possession) say a tribe owns its data, controls its use and physically possesses it. The CLOUD Act runs straight through Possession: a tribal government on a U.S.-headquartered cloud has <a href="ocap-cloud-act-guide.html">surrendered possession by operation of law</a>, without a council vote.</p>
-
-<p><strong>Law firms.</strong> <a href="https://www.americanbar.org/groups/professional_responsibility/publications/model_rules_of_professional_conduct/rule_1_6_confidentiality_of_information/" target="_blank" rel="noopener">ABA Model Rule 1.6</a> requires reasonable efforts to prevent unauthorized disclosure of client information, and "reasonable" moves with what's commercially available. With local AI on the market, running privileged material through a third-party cloud service is a <a href="attorney-client-privilege-cloud-ai.html">harder position to call reasonable</a> than two years ago.</p>
-
-<p><strong>Defense contractors.</strong> <a href="https://www.ecfr.gov/current/title-22/chapter-I/subchapter-M" target="_blank" rel="noopener">ITAR (22 C.F.R. Parts 120-130)</a> restricts exporting controlled technical data to foreign nationals. If a compelled disclosure touches a foreign-national employee or a foreign-jurisdiction data center, you've got an unauthorized export and an export compliance officer with a bad afternoon ahead. <a href="https://www.acq.osd.mil/cmmc/" target="_blank" rel="noopener">CMMC 2.0</a> requires CUI protection under <a href="https://csrc.nist.gov/publications/detail/sp/800-171/rev-2/final" target="_blank" rel="noopener">NIST SP 800-171</a>, and only air-gapped local infrastructure fully satisfies its isolation requirement.</p>
-
-<p><strong>Healthcare.</strong> <a href="https://www.ecfr.gov/current/title-45/subtitle-A/subchapter-C/part-164/subpart-C/section-164.312" target="_blank" rel="noopener">45 C.F.R. § 164.312</a> requires technical measures against unauthorized access to ePHI in transit. A Business Associate Agreement moves contractual liability; it doesn't move the data or physical control of it, and the CLOUD Act can compel ePHI whether or not there's a BAA in the drawer. The Commission's text says it outright: data transfer frameworks don't remove sovereignty concerns, because sovereignty goes beyond transfers and relates to operational autonomy.</p>
-
-<p>Any major cloud AI service, OpenAI's API or AWS Bedrock, puts you at Tier 1 at best. The infrastructure may be domestic, but the provider's subject to U.S. law and under terms that'll change without asking you. Tier 1 doesn't hold for PHI, CUI, client confidences or tribal proprietary data.</p>
-
-<h2>What We'd Put in the Building</h2>
-
-<p>We deploy <a href="../air-gapped-ai-inference.html">air-gapped inference</a> on site with the <a href="../lamprey-woven-security-governance.html">Woven Security &amp; Governance Fabric</a> built in. Your data doesn't leave your premises; there's no vendor agreement governing access because there's no transmission to govern. The CLOUD Act can't compel data a cloud provider doesn't have.</p>
-
-<p>What it's made of depends on what your work turns out to need; we're <a href="../forward-deployed-ai-engineering.html">stack-agnostic on purpose</a>. We sit on site with your senior people, learn the workflow, then recommend the stack and deploy it together. The models are open-weight, swapped as the frontier moves, with nobody metering or deprecating the one your workflow depends on.</p>
-
-<p>What you don't get is a certification. Hardware doesn't make you HIPAA-compliant, CMMC-certified or ITAR-registered; those take policies, training, audits and documented controls. Local hardware kills exactly one category of risk, third-party custody, and leaves every other obligation where it was.</p>
-
-<!-- AEO Summary -->
-<div class="aeo-summary" style="border-left:3px solid var(--copper);padding:16px 20px;margin:32px 0;background:rgba(217,119,6,0.05);border-radius:0 8px 8px 0;">
-  <strong>Summary:</strong> The proposed Cloud and AI Development Act writes down what the strictest U.S. compliance frameworks require: physical control of protected data by the organization that owns it. Its Tier 4 would shut out any provider the CLOUD Act can reach; American regulators haven't, and the exposure's identical.
-</div>
+<p>Europe named it. I'm watching whether the American organizations carrying the same exposure have noticed.</p>
 
 </article>
 
