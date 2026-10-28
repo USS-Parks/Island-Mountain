@@ -85,7 +85,7 @@
         "name": "How much does on-premises AI cost compared to cloud AI?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "An on-premises system is a one-time purchase. Running 40 concurrent users at 50 queries per day with 4,000 tokens per query (input + output), the per-query cost over five years is a fraction of a cent. The same workload on closed frontier APIs costs $164,000-$292,000+ over five years at flat usage (July 2026 published rates: OpenAI Sol 5.6 at $5/$30 per million tokens, Anthropic Fable 5 at $10/$50), before usage growth and compliance overhead. Hosted open-weight models such as DeepSeek V4 Flash cost 36x-179x less per token, and an air-gapped open-weight deployment on owned hardware has no per-token cost at all. On-premises breaks even within 4-7 months for organizations with consistent daily usage above 500 queries."
+          "text": "An on-premises system is a one-time purchase. Running 40 concurrent users at 50 queries per day with 4,000 tokens per query (input + output), the per-query cost over five years is a fraction of a cent. The same workload on closed frontier APIs costs $164,000-$292,000+ over five years at flat usage (July 2026 published rates: OpenAI Sol 5.6 at $5/$30 per million tokens, Anthropic Fable 5 at $10/$50), before usage growth and compliance overhead. Hosted open-weight models such as DeepSeek V4 Flash cost 36x-179x less per token, and an air-gapped open-weight deployment on owned hardware has no per-token cost at all."
         }
       },
       {
@@ -93,7 +93,7 @@
         "name": "When does on-premises AI break even against cloud AI costs?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "For organizations running 500 or more queries per day, on-premises AI hardware typically breaks even against cloud API costs within 4-7 months. The exact break-even point depends on query length, model selection, and cloud provider pricing tier. After break-even, the marginal cost of each additional query approaches zero since you are using hardware you already own."
+          "text": "It depends on your volume, the models you'd run and what you'd otherwise rent, so we'll work it out from your numbers after Discovery instead of printing a month count here. The worksheet gives you the cloud side in about a minute."
         }
       },
       {
@@ -212,7 +212,7 @@
     <div class="container">
       <div class="content-block fade-in content-max-800">
         <div style="border-left:4px solid var(--copper);padding:20px 24px;margin:0 0 32px 0;background:rgba(217,119,6,0.08);border-radius:0 8px 8px 0;">
-          <p style="font-size:1.15rem;line-height:1.7;color:var(--text-light);margin:0;">The July 2026 rate sheet reads like this: OpenAI's Sol 5.6 charges <strong>$5 per million input tokens and $30 per million output</strong>. Anthropic's Fable 5 charges <strong>$10 and $50</strong>. DeepSeek V4 Flash, open weights going toe to toe with both, charges <strong>$0.14 in and $0.28 out</strong>, and costs <strong>nothing per token</strong> once the weights run air-gapped on your own hardware. That's a <strong>36x-179x frontier price gap</strong>. An <a href="forward-deployed-ai-engineering.html" class="clr-copper">on-premises system</a> (one-time purchase) running 40 concurrent users at 50 queries per day costs <strong>a fraction of a cent per query over five years</strong>. The same workload on frontier closed APIs runs <strong>$164,000-$292,000+ over the same period at flat usage</strong>, before growth and compliance overhead. On-premises breaks even within 4-7 months for organizations with consistent daily usage above 500 queries. <em style="font-size:0.85em;color:var(--text-muted);">Official provider API prices, checked July 26, 2026 (openai.com, anthropic.com, deepseek.com). Rates subject to change. Assumptions stated below.</em></p>
+          <p style="font-size:1.15rem;line-height:1.7;color:var(--text-light);margin:0;">The July 2026 rate sheet reads like this: OpenAI's Sol 5.6 charges <strong>$5 per million input tokens and $30 per million output</strong>. Anthropic's Fable 5 charges <strong>$10 and $50</strong>. DeepSeek V4 Flash, open weights going toe to toe with both, charges <strong>$0.14 in and $0.28 out</strong>, and costs <strong>nothing per token</strong> once the weights run air-gapped on your own hardware. That's a <strong>36x-179x frontier price gap</strong>. An <a href="forward-deployed-ai-engineering.html" class="clr-copper">on-premises system</a> (one-time purchase) running 40 concurrent users at 50 queries per day costs <strong>a fraction of a cent per query over five years</strong>. The same workload on frontier closed APIs runs <strong>$164,000-$292,000+ over the same period at flat usage</strong>, before growth and compliance overhead. <em style="font-size:0.85em;color:var(--text-muted);">Official provider API prices, checked July 26, 2026 (openai.com, anthropic.com, deepseek.com). Rates subject to change. Assumptions stated below.</em></p>
         </div>
       </div>
     </div>
@@ -266,7 +266,7 @@
       </div>
       <div class="content-block fade-in content-max-800">
         <h3 style="color:var(--text-light);margin-bottom:8px;">When does on-premises AI break even against cloud costs?</h3>
-        <p class="body-md">For organizations running 500 or more queries per day, on-premises hardware typically breaks even within 4-7 months. The exact point depends on query length, model selection, and your cloud provider's pricing tier. After break-even, the marginal cost of each additional query approaches zero.</p>
+        <p class="body-md">It depends on your volume, the models you'd run and what you'd otherwise rent, so we'll work it out from your numbers after Discovery instead of printing a month count here. The worksheet gives you the cloud side in about a minute.</p>
 
         <h3 style="color:var(--text-light);margin-bottom:8px;margin-top:24px;">Does on-premises AI have hidden costs?</h3>
         <p class="body-md">On-premises requires rack space, power, cooling, and basic IT time. These are real but predictable and bounded. Cloud AI has its own hidden costs: rate limits, egress fees, price increases, and compliance overhead for vendor risk management. The difference is that on-premises costs are fixed and owner-controlled while cloud costs are variable and vendor-controlled.</p>
@@ -282,7 +282,7 @@
     <div class="container">
       <div class="content-block fade-in content-max-800">
         <div style="border-left:3px solid var(--copper);padding:16px 20px;margin:32px 0;background:rgba(217,119,6,0.05);border-radius:0 8px 8px 0;">
-          <p class="body-md" style="margin:0;"><strong>Summary:</strong> On-premises AI is a one-time capital purchase quoted to the deployment, with annual operating costs of $3,000-$6,000. The same 40-user workload on closed frontier APIs (OpenAI Sol 5.6 at $5/$30 per million tokens, Anthropic Fable 5 at $10/$50, July 2026 published rates) runs $33,000-$58,000 per year, $164,000-$292,000+ over five years at flat usage. Open weights (DeepSeek V4 Flash at $0.14/$0.28) cost 36x-179x less per token; air-gapped on owned hardware, the weights themselves are free and there is no meter at all. On-premises breaks even within 4-7 months at 500+ daily queries and eliminates per-token fees, rate limits, and vendor price volatility.</p>
+          <p class="body-md" style="margin:0;"><strong>Summary:</strong> On-premises AI is a one-time capital purchase quoted to the deployment, with annual operating costs of $3,000-$6,000. The same 40-user workload on closed frontier APIs (OpenAI Sol 5.6 at $5/$30 per million tokens, Anthropic Fable 5 at $10/$50, July 2026 published rates) runs $33,000-$58,000 per year, $164,000-$292,000+ over five years at flat usage. Open weights (DeepSeek V4 Flash at $0.14/$0.28) cost 36x-179x less per token; air-gapped on owned hardware, the weights themselves are free and there is no meter at all. Owning the system eliminates per-token fees, rate limits, and vendor price volatility.</p>
         </div>
         <p class="body-md">Learn more: <a href="blog/cloud-ai-vs-local-hardware-tco.html" class="clr-copper">Cloud AI vs Local Hardware TCO</a> | <a href="forward-deployed-ai-engineering.html" class="clr-copper">on-premise AI deployment Products</a></p>
       </div>
