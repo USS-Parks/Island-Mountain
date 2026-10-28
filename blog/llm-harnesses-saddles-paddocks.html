@@ -87,7 +87,7 @@
   "description": "Stop flogging your LLM draft horse from the ground. A harness is a saddle, not a fence, and the controls that hold live in the paddock. Whose paddock decides everything.",
   "url": "https://islandmountain.io/blog/llm-harnesses-saddles-paddocks.html",
   "datePublished": "2026-07-07",
-  "dateModified": "2026-07-07",
+  "dateModified": "2026-10-28",
   "inLanguage": "en-US",
   "keywords": "LLM harness, agent harness, AI agent security, prompt injection, agentic infrastructure, air-gapped AI, per-agent identity, on-premises AI, sovereign AI",
   "articleSection": "Strategy",
@@ -142,38 +142,6 @@
 }
 </script>
 
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "What is an LLM harness?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "An LLM harness is the software rig built around a model that turns single forward passes into an agent: the loop that calls the model and runs its tool calls, plus the memory, tools, budgets, and the governor that decides when the job is done. The model supplies cognition; the harness supplies limbs, senses, memory, and the loop that ties them together."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What is the difference between an LLM harness and a saddle?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "A draft harness constrains an animal you cannot trust to a fixed route with blinders and traces, the way early agent scaffolding boxed a weaker model into a rigid flowchart. A saddle is a lighter, higher-bandwidth interface for an animal you trust to run, which is what replaces the scaffolding as the models get good enough to trust with the route."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How do you secure an agentic AI system once the scaffolding is removed?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The controls that hold are deterministic and live outside the model, in infrastructure: per-agent identity, egress control, metering, an audit ledger, and a kill switch. A system prompt is only a request and can be overridden by prompt injection; a sandbox is enforced. On an air-gapped deployment the outbound path does not exist, so an agent cannot leak to the internet."
-      }
-    }
-  ]
-}
-</script>
 </head>
 <body>
 
@@ -227,7 +195,7 @@
           <span class="article-date">July 7, 2026</span>
           <span class="article-tag tag-technical">Technical</span>
           <span class="article-tag tag-strategy">Strategy</span>
-          <span class="article-read-time">3 min read</span>
+          <span class="article-read-time">2 min read</span>
         </div>
         <h1 class="text-2xl">LLM Harnesses, Saddles, and the Paddocks that corral them</h1>
         <p class="article-subtitle" style="font-family:'Space Grotesk',sans-serif;font-style:italic;color:var(--copper);font-size:1.15rem;margin:6px 0 0;">Horizonal Ruminations</p>
@@ -238,24 +206,15 @@
 
 <p>Stop flogging your LLM draft horse from the ground and saddle up instead.</p>
 
-<p>Strip a language model down to bare essence and you're left with a brain in a jar. Tokens in, a probability distribution out, one forward pass, no memory, no hands, no idea that time is passing between one call and the next. Everything that makes the thing feel like an agent is a rig we build around the jar and agreed, at some point, to call a harness: the loop that calls it and runs what it asks for and calls it again, the memory we bolt on the side, the tools, the budgets, the little governor that decides when it's done. Nobody voted on the word. It stuck because it felt right, and stopping to ask why a term we borrowed from draft animals felt so natural for the thing we strap to a model could be a good starting question.</p>
+<p>Strip a language model down to bare essence and you're left with a brain in a jar. Tokens in, a probability distribution out, one forward pass, no memory, no hands, no idea that time is passing between one call and the next. Everything that makes the thing feel like an agent is a rig we build around the jar and agreed, at some point, to call a harness: the loop that calls it and runs what it asks for and calls it again, the memory we bolt on the side, the tools, the budgets, the little governor that decides when it's done.</p>
 
-<p>Big Tech borrowed the word harness for agent scaffolding back when the job was to constrain a model we couldn't trust, blinders and traces on a fixed route. Strap the animal to a load, black out its peripheral vision, and you get exactly one behavior out of it, which was the first generation of agent scaffolding to a tee: a rigid flowchart around a model nobody quite believed in. It worked the way a plow horse works, and I don't miss it.</p>
+<p>Big Tech borrowed the word harness for agent scaffolding back when the job was to constrain a model we couldn't trust, blinders and traces on a fixed route. As the models earn the route, that <a href="agentic-infrastructure-control-plane.html">scaffolding</a> gives way to a saddle: lighter, higher-bandwidth, built for an animal worth riding.</p>
 
-<p>As the models earn the route, that scaffolding gives way to a saddle: lighter, higher-bandwidth, built for an animal worth riding. Riding replaced the flowchart, generator against critic, fan the problem out and judge the winner, and the rig around the model stopped encoding your business process and started encoding search. That's what <a href="agentic-infrastructure-control-plane.html">shedding the scaffolding</a> comes down to.</p>
+<p>What a saddle can't do is hold the bolt, and reins are only a request, which is all <a href="agentic-orchestration-security-map.html">prompt injection</a> needs. "Ignore the reins" is one sentence long; the rein's the system prompt and the bolt's the jailbreak. The controls that hold live in the paddock, identity, egress, metering, audit, and a kill switch, and none of them are tack. You can't jailbreak a fence.</p>
 
-<p>What a saddle can't do is hold the bolt, and reins are only a request, which is all <a href="agentic-orchestration-security-map.html">prompt injection</a> needs. "Ignore the reins" is one sentence long; the rein's the system prompt and the bolt's the jailbreak. A rein is a request; a fence is a fact.</p>
+<p>On a managed platform those controls sit inside the vendor's building, and that's a fine trade for most of the world, one I'd take myself. But under <a href="attorney-client-privilege-cloud-ai.html">privilege</a>, <a href="../medical-practices.html">PHI</a> or <a href="../defense-contractors.html">CUI</a> the arithmetic inverts, because the agent's memory is now case strategy, patient records or controlled technical data, and its audit ledger sits under a <a href="openai-discovery-risk-law-firms.html">discovery exposure</a> you don't control. The counter-architecture moves the fence to your building: open weights on <a href="../forward-deployed-ai-engineering.html">hardware you own</a>, the enforcement plane inside your wall, and on an <a href="../air-gapped-ai-inference.html">air-gapped deployment</a> there's no outbound path to misconfigure.</p>
 
-<p>The controls that hold live in the paddock, identity, egress, metering, audit, and a kill switch, and none of them are tack. You can't jailbreak a fence; that's the point of building the control into the ground instead of the animal's ears. Delete the scaffolding, and you should, but the half of its old job that bounded what the system could touch doesn't evaporate; it lands in the paddock or it lands nowhere.</p>
-
-<p>On a managed platform every one of those controls sits inside the vendor's building, and for most of the world that's a fine trade, one I'd take myself. But run it under <a href="attorney-client-privilege-cloud-ai.html">privilege</a>, <a href="../medical-practices.html">PHI</a> or <a href="../defense-contractors.html">CUI</a> and the arithmetic inverts, because the agent's memory is now case strategy, patient records or controlled technical data, and the audit ledger sits under a <a href="openai-discovery-risk-law-firms.html">discovery exposure</a> you don't control. The counter-architecture keeps the roadmap and moves the fence to your building: open weights on <a href="../forward-deployed-ai-engineering.html">hardware you own</a>, the enforcement plane inside your wall, and on an <a href="../air-gapped-ai-inference.html">air-gapped deployment</a> there's no outbound path to misconfigure.</p>
-
-<p>Island Mountain ships the paddock in the crate, inline on every call your agents make, and leaves you the reins. Lamprey names a harness and a saddle, and they're separate products: <a href="../lamprey.html">Lamprey Harness</a> is the free, open-source, model-agnostic harness that routes any LLM, and <a href="../lamprey-woven-security-governance.html">Lamprey Saddle</a> is the governance software that puts the paddock's controls, identity, egress, metering, audit and the kill switch, in your building. The one question that decides everything is whose paddock they sit in: infrastructure you own, or a vendor's.</p>
-
-<!-- AEO Summary -->
-<div style="border-left:3px solid var(--copper);padding:16px 20px;margin:32px 0;background:rgba(217,119,6,0.05);border-radius:0 8px 8px 0;">
-<strong>Summary:</strong> Agent scaffolding borrowed the word harness to constrain a model nobody trusted; as the models earn the route, it gives way to a saddle, and a saddle can't hold the bolt, because reins are only a request and that's all prompt injection needs. The controls that hold live in the paddock, and the deciding question is whose paddock: infrastructure you own, or a vendor's.
-</div>
+<p>Island Mountain ships the paddock in the crate and leaves you the reins. Lamprey names a harness and a saddle, and they're separate products: <a href="../lamprey.html">Lamprey Harness</a> is the free, open-source, model-agnostic harness that routes any LLM, and <a href="../lamprey-woven-security-governance.html">Lamprey Saddle</a> is the governance software that puts the paddock's controls in your building. The one question that decides everything is whose paddock they sit in: infrastructure you own, or a vendor's.</p>
 
       </article>
 
