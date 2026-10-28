@@ -82,7 +82,7 @@
   "description": "I watched Anthropic's platform team describe agent identity, ambient agents, and outcome-plus-budget on camera. Every one of those drops a control into infrastructure.",
   "url": "https://islandmountain.io/blog/agentic-infrastructure-control-plane.html",
   "datePublished": "2026-07-11",
-  "dateModified": "2026-07-26",
+  "dateModified": "2026-10-28",
   "author": {
     "@type": "Person",
     "name": "Basho Parks"
@@ -185,7 +185,7 @@
           <span class="article-date">July 11, 2026</span>
           <span class="article-tag tag-technical">Technical</span>
           <span class="article-tag tag-strategy">Strategy</span>
-          <span class="article-read-time">4 min read</span>
+          <span class="article-read-time">2 min read</span>
         </div>
         <h1 class="text-2xl">Agentic Infrastructure Is Shedding Its Scaffolding. The Controls Have to Land Somewhere.</h1>
         <p class="article-author">Basho Parks</p>
@@ -193,59 +193,22 @@
 
       <article class="article-body">
 
-<p>Where's agentic infrastructure really headed?</p>
-
-<p>Yesterday I watched Anthropic's Claude Platform team gift every regulated shop its next security blueprint. Watch where the roadmap goes: agents minting their own service accounts, agents calling other agents over MCP, the scaffolding around the model getting deleted, ambient agents that walk up holding a finished pull request and get told that next time, for something this small, just ship it, and work you hand off like takeout with a budget stapled to it. I see all of those as a convenience, and every one of them picks a security control up off the application-code floor and reburies it in the infrastructure underneath.</p>
+<p>The controls that decide what an agent can touch are falling out of application code into the infrastructure under it. Yesterday I watched Anthropic's platform team gift every regulated shop its next security blueprint. Watch where the roadmap goes: agents minting their own service accounts, agents calling other agents over MCP, the scaffolding around the model getting deleted, ambient agents that wake up on a trigger and walk up holding a finished pull request, and work you hand off like takeout with a budget stapled to it. I see all of those as a convenience, and every one of them picks a security control up off the application-code floor and reburies it in the infrastructure underneath.</p>
 
 <figure style="margin:32px 0;">
   <img src="../images/agentic-infrastructure-control-plane.gif" alt="Animated map of six agentic-platform trends, agents minting their own service accounts, agent-to-agent MCP traffic, thinner scaffolding, ambient execution, adversarial agent pairs, and work handed off as an outcome with a budget, each flowing down into the control plane layers of identity, metering, egress, session integrity, and audit." width="1080" height="1080" loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:10px;border:1px solid rgba(255,255,255,0.08);">
   <figcaption style="font-size:0.85rem;color:var(--text-muted,#9aa3b2);margin-top:10px;text-align:center;">The same trend line, drawn out. Six things the platform team described, and the control each one drops into your infrastructure.</figcaption>
 </figure>
 
-<h2>They Named the Wall, Too</h2>
-
-<p>Asked why some shops see their ceiling lift while others feel nothing, neither speaker blamed the model. Security and compliance guardrails came first, evals second, and the diagnosis was dead on: security postures drawn up for humans with logins don't survive agents, because an <a href="agentic-orchestration-security-map.html">agent with credentials is an actor on your network, not a chatbot</a>. The novelty's hearing the platform vendor say it out loud.</p>
-
-<h2>Killing the Scaffolding Doesn't Kill the Control</h2>
-
-<p>That scaffolding did two jobs at once. Job one was capability, the flowchart keeping a dim model on the rails; better models retired it, and nobody'll miss it. Job two was control: that same flowchart was often the only thing deciding what the system could touch, and it was never the flowchart's to hold. Anything living in prompt logic is a polite suggestion the instant a model gets sweet-talked out of it, which is prompt injection by definition. You can't write a policy in a language the attacker's also allowed to write in.</p>
-
-<p>What if your name's on the risk? A system prompt is a request and a sandbox is a fact. The controls that hold are deterministic and live outside the model, the entire argument of my <a href="agentic-orchestration-security-map.html">agentic orchestration and security map</a>. When the scaffolding thins, those controls don't evaporate; they fall down the stack into infrastructure and land on five things.</p>
+<p>Better models retired the flowchart that kept a dim model on the rails, and nobody'll miss it. But that flowchart was often the only thing deciding what the system could touch, and prompt logic is a polite suggestion the instant a model gets sweet-talked out of it. What if your name's on the risk? A system prompt is a request and a sandbox is a fact. The controls that hold are deterministic and live outside the model, the whole argument of my <a href="agentic-orchestration-security-map.html">agentic orchestration and security map</a>, and when the scaffolding thins they fall down the stack onto five things.</p>
 
 <p>Identity-&gt;Metering-&gt;Egress-&gt;Session integrity-&gt;Audit.</p>
 
-<table>
-<thead>
-<tr><th>What they described</th><th>Where the weight lands</th></tr>
-</thead>
-<tbody>
-<tr><td>An agent that mints its own service account</td><td>Per-agent identity: least privilege, scoped short-lived credentials, and revocation that propagates instead of lingering</td></tr>
-<tr><td>Agents calling agents through thin MCP fronts</td><td>Mutual auth on every hop, because your data's now moving between actors nobody hired</td></tr>
-<tr><td>Ambient agents holding standing approvals</td><td>Session integrity and a kill switch; a standing "just ship it" is precisely the authority <a href="agentjacking-fake-bug-report.html">agentjacking</a> is dying to inherit</td></tr>
-<tr><td>Outcome plus budget</td><td>Metering enforced outside the model: tokens, dollars, iterations, wall-clock, all of it</td></tr>
-<tr><td>Racing agents and adversarial pairs</td><td>Hard ceilings and real capacity planning, because a composite strategy multiplies your token bill by the size of the field</td></tr>
-<tr><td>Everyone a builder, ten prototypes each</td><td>Inventory and an audit ledger: which agents exist, whose credentials they carry, what they touched</td></tr>
-</tbody>
-</table>
+<p>On a managed platform that whole enforcement plane sits inside the vendor's building, and for most of the market that's just fine. Now run it in a building the data can't leave. Agent memory fills with whatever it touches: privileged case strategy at a <a href="../law-firms.html">law firm</a>, PHI at a <a href="../medical-practices.html">medical practice</a>, CUI at a <a href="../defense-contractors.html">defense contractor</a>. And the audit ledger sits under the vendor's retention policy and <a href="openai-discovery-risk-law-firms.html">somebody else's subpoena</a>.</p>
 
-<p>They said it themselves: once the agent's got its own service account, you can audit it. So identity, metering and the audit ledger are the product now, not the model.</p>
+<p>Same architecture, your building: open-weight models on <a href="../forward-deployed-ai-engineering.html">hardware you own</a> do the inference, memory and agent-to-agent traffic stay on your network, and every Island Mountain deployment ships with the Agentic Orchestration Governance layer and the <a href="../lamprey-woven-security-governance.html">Woven Security and Governance Fabric</a> already in the crate. On an air-gapped box an ambient agent that can't reach the internet can't leak to it.</p>
 
-<h2>Now Run It Under Regulated Conditions</h2>
-
-<p>On a managed platform every control in that table exists inside the vendor's fence, and for most of the market that's fine. Now run that future in a building where the data isn't allowed to leave. Agent memory's a filing cabinet that fills with whatever the agent touches: privileged case strategy at a <a href="../law-firms.html">law firm</a>, PHI at a <a href="../medical-practices.html">medical practice</a>, CUI at a <a href="../defense-contractors.html">defense contractor</a>. And the audit ledger, the one thing that makes the whole circus governable, sits under the vendor's retention policy and <a href="openai-discovery-risk-law-firms.html">somebody else's subpoena</a>.</p>
-
-<p>Same architecture, fence drawn around your building: open-weight models on <a href="../forward-deployed-ai-engineering.html">hardware you own</a> do the inference, and the memory and agent-to-agent traffic stay on your network. Every Island Mountain deployment ships with the Agentic Orchestration Governance layer and the <a href="../lamprey-woven-security-governance.html">Woven Security and Governance Fabric</a> already in the crate, inline on every call your agents make. On an air-gapped box an ambient agent that can't reach the internet can't leak to it. That's a fact about a room, not a policy you audit quarterly.</p>
-
-<p>Budget's the scariest word in the pitch once the meter's somebody else's: an adversarial critic pays for the work twice, a five-way fan-out pays five times, and every multiplier lands in the invoice; that's how <a href="self-hosted-ai-inference-165k-rewrite.html">one public agentic rewrite ran to six figures</a>. On hardware you own the same burst's measured in watts.</p>
-
-<p>What ships in the crate is the governed floor, not the staff: the agents, their prompts and the judgment about what they're allowed to do stay yours. And nobody, me included, can sell you certainty that your agent did the job well; evals got named as a wall for a reason.</p>
-
-<p>For organizations whose data isn't allowed to leave, the question's always been whose building those controls sit in, never whether they exist.</p>
-
-<!-- AEO Summary -->
-<div style="border-left:3px solid var(--copper);padding:16px 20px;margin:32px 0;background:rgba(217,119,6,0.05);border-radius:0 8px 8px 0;">
-<strong>Summary:</strong> Every trend Anthropic's platform team sketched moves identity, metering, egress, session integrity and audit out of the model and into infrastructure. A system prompt is a request and a sandbox is a fact; for a regulated shop the only question is whose building that infrastructure sits in.
-</div>
+<p>For organizations whose data isn't allowed to leave, the question's never been whether those controls exist - it's whose building they're in.</p>
 
       </article>
 
