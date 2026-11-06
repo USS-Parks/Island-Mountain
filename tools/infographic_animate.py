@@ -306,11 +306,21 @@ class ArrowPulse:
     """Translucent scaled copy of the arrow's own pixels, breathing over the
     original. Saturation-masked so only the colored arrowhead is lifted, then
     tight-cropped and scaled about its geometric center: at scale 1 the copy
-    sits exactly on the original, and growth is concentric, never offset."""
-    def __init__(self, box, arr):
+    sits exactly on the original, and growth is concentric, never offset.
+
+    An entry in arrows.boxes is either a plain [x0,y0,x1,y1] or an object
+    {"box": [...], "phase": 0.25} — phase shifts this arrow's breath by that
+    fraction of the period, so a card's arrows can pulse tail-to-head in
+    sequence. `sat` is the block-level saturation cutoff for the sprite mask;
+    low-chroma arrows (slate/gray) need it well under the 45 default."""
+    def __init__(self, box, arr, sat=45, phase=0.0):
+        if isinstance(box, dict):
+            phase = box.get("phase", phase)
+            box = box["box"]
+        self.phase = phase
         x0, y0, x1, y1 = [int(v) for v in box]
         sub = arr[y0:y1, x0:x1]
-        mask = _feather(((sub.max(2) - sub.min(2)) > 45).astype(np.float32), 1)
+        mask = _feather(((sub.max(2) - sub.min(2)) > sat).astype(np.float32), 1)
         a = (np.clip(mask, 0, 1) * 255).astype(np.uint8)
         im = Image.fromarray(np.dstack([sub.astype(np.uint8), a]), "RGBA")
         bb = im.getchannel("A").getbbox()
@@ -365,7 +375,7 @@ def render_slots(cfg, out_path, fps, scale, keep_frames, scratch):
     ringflows = [RingFlow(c, H, W) for c in cfg.get("ringflows", [])]
 
     ac = cfg.get("arrows", {})
-    pulses = [ArrowPulse(b, arr) for b in ac.get("boxes", [])]
+    pulses = [ArrowPulse(b, arr, sat=ac.get("sat", 45)) for b in ac.get("boxes", [])]
     period = ac.get("period_frames", max(1, total // 3))
     amax, aalpha = ac.get("max_scale", 1.3), ac.get("alpha", 0.5)
 
@@ -399,8 +409,8 @@ def render_slots(cfg, out_path, fps, scale, keep_frames, scratch):
                 sub = frame[y0:y1, x0:x1]
                 sub += (rf.color[None, None, :] - sub) * gm[..., None]
             img = Image.fromarray(frame.astype(np.uint8), "RGB")
-            p = 0.5 * (1 - math.cos(2 * math.pi * fi / period))
             for ap in pulses:
+                p = 0.5 * (1 - math.cos(2 * math.pi * (fi / period - ap.phase)))
                 ap.paste(img, p, amax, aalpha)
             for oi, ox, oy in overlays:
                 img.paste(oi, (ox, oy), oi)
@@ -448,7 +458,8 @@ if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("--config", default="")
     ap.add_argument("--out", default="llm-vs-slm-linkedin.gif")
-    ap.add_argument("--fps", type=int, default=20)
+    ap.add_argument("--fps", default="20",
+                    help="frames per second; ffmpeg fractions work (50/3 = exact 60ms GIF delay)")
     ap.add_argument("--scale", type=float, default=1.0)
     ap.add_argument("--keep-frames", action="store_true")
     ap.add_argument("--scratch", default=os.environ.get("TMPDIR", "."))
