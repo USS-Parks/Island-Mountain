@@ -1,0 +1,76 @@
+{
+  "description": "Robauto Technical Groundwork: homepage Accept negotiation. Serve the committed index.md twin when Accept contains text/markdown. GitHub Pages cannot do this with static files alone.",
+  "notes": [
+    "Homepage only. No sitemap expansion. No robots.txt Content Signals. No OpenAPI, agent cards, MCP, OAuth, x402, or commerce surfaces.",
+    "GitHub Pages cannot emit Accept negotiation. islandmountain.io is proxied by Cloudflare in front of Pages. These are three additive rules in three phases. Do not PUT any whole ruleset.",
+    "Tokens is ceil(character_count / 4) of the committed index.md UTF-8 body, a conventional English token estimate. Recompute and update the Tokens header value if the twin changes. Header name: Tokens (not X-Markdown-Tokens).",
+    "http.request.uri.path is the original client path. After the URL rewrite, origin fetches /index.md but response-header and cache expressions still see / or /index.html. Match both the homepage paths (with Accept) and a direct /index.md fetch.",
+    "Cloudflare's default cache key is the original URL, so a cached HTML homepage would otherwise be served to markdown Accept. The cache rule bypasses cache for that Accept on / and /index.html only. HTML cache for browsers stays.",
+    "Do not edit the existing security-header rewrite, the homepage Link rule (ref homepage_rfc9727_link_headers), the Tier A COOP/HSTS rule (ref tier_a_coop_hsts_preload), or the api-catalog Content-Type rule owned by PR #14 (ref api_catalog_linkset_json_content_type)."
+  ],
+  "enable": {
+    "dashboard": [
+      "1) URL Rewrite. Cloudflare Dashboard > islandmountain.io > Rules > Overview > Transform Rules > Rewrite URL. Add a new rule. Custom filter: (http.request.uri.path eq \"/\" or http.request.uri.path eq \"/index.html\") and any(http.request.headers[\"accept\"][*] contains \"text/markdown\"). Then rewrite Path to Static /index.md. Deploy. If this is the first URL Rewrite on the zone, creating the phase ruleset with this one rule is OK. If other URL Rewrites already exist, add this rule only.",
+      "2) Response headers. Rules > Transform Rules > Modify Response Header. Add a new rule. Do not edit the security-header rewrite, homepage Link rule, Tier A rule, or api-catalog Content-Type rule. Custom filter: (http.request.uri.path eq \"/index.md\") or ((http.request.uri.path eq \"/\" or http.request.uri.path eq \"/index.html\") and any(http.request.headers[\"accept\"][*] contains \"text/markdown\")). Set static Content-Type = text/markdown; charset=utf-8. Set static Vary = Accept. Set static Tokens = 1696. Deploy. Confirm the older header rules stay enabled.",
+      "3) Cache bypass. Rules > Cache Rules. Add a new rule. Custom filter: (http.request.uri.path eq \"/\" or http.request.uri.path eq \"/index.html\") and any(http.request.headers[\"accept\"][*] contains \"text/markdown\"). Then: Bypass cache. Deploy. Do not replace existing cache rules."
+    ],
+    "api": [
+      "Additive create-rule only. Do not PUT a ruleset with a rules array that contains only these rules if that ruleset already has live rules.",
+      "URL Rewrite: GET /zones/$ZONE_ID/rulesets/phases/http_request_transform/entrypoint. If missing, create a zone ruleset for that phase with the rewrite object below. If present, POST /zones/$ZONE_ID/rulesets/$REWRITE_RULESET_ID/rules with the rewrite object.",
+      "Response headers: POST /zones/$ZONE_ID/rulesets/$HEADER_RULESET_ID/rules with the headers object. Header ruleset id from prior Link / Tier A work: c0fae000097143e0ba49736efbe36c87. Confirm with GET /zones/$ZONE_ID/rulesets/phases/http_response_headers_transform/entrypoint if that id is ever rotated.",
+      "Cache: GET /zones/$ZONE_ID/rulesets/phases/http_request_cache_settings/entrypoint. If missing, create a zone ruleset for that phase with the cache object below. If present, POST /zones/$ZONE_ID/rulesets/$CACHE_RULESET_ID/rules with the cache object."
+    ]
+  },
+  "rules": [
+    {
+      "phase": "http_request_transform",
+      "ref": "homepage_markdown_accept_rewrite",
+      "description": "Homepage markdown Accept: fetch /index.md from origin",
+      "expression": "(http.request.uri.path eq \"/\" or http.request.uri.path eq \"/index.html\") and any(http.request.headers[\"accept\"][*] contains \"text/markdown\")",
+      "action": "rewrite",
+      "enabled": true,
+      "action_parameters": {
+        "uri": {
+          "path": {
+            "value": "/index.md"
+          }
+        }
+      }
+    },
+    {
+      "phase": "http_response_headers_transform",
+      "ref": "homepage_markdown_accept_headers",
+      "description": "Homepage markdown Accept: Content-Type, Vary, Tokens",
+      "expression": "(http.request.uri.path eq \"/index.md\") or ((http.request.uri.path eq \"/\" or http.request.uri.path eq \"/index.html\") and any(http.request.headers[\"accept\"][*] contains \"text/markdown\"))",
+      "action": "rewrite",
+      "enabled": true,
+      "action_parameters": {
+        "headers": {
+          "Content-Type": {
+            "operation": "set",
+            "value": "text/markdown; charset=utf-8"
+          },
+          "Vary": {
+            "operation": "set",
+            "value": "Accept"
+          },
+          "Tokens": {
+            "operation": "set",
+            "value": "1696"
+          }
+        }
+      }
+    },
+    {
+      "phase": "http_request_cache_settings",
+      "ref": "homepage_markdown_accept_bypass_cache",
+      "description": "Homepage markdown Accept: bypass HTML cache for /",
+      "expression": "(http.request.uri.path eq \"/\" or http.request.uri.path eq \"/index.html\") and any(http.request.headers[\"accept\"][*] contains \"text/markdown\")",
+      "action": "set_cache_settings",
+      "enabled": true,
+      "action_parameters": {
+        "cache": false
+      }
+    }
+  ]
+}

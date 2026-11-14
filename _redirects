@@ -18,6 +18,10 @@
 # (not a redirect). Payload: tools/cloudflare-homepage-link-headers.json.
 # GitHub Pages cannot emit custom headers; _headers files are ignored here.
 #
+# Homepage markdown Accept negotiation is not a redirect. Payload:
+# tools/cloudflare-homepage-markdown-negotiation.json (URL Rewrite +
+# response headers + cache bypass). GitHub Pages cannot negotiate Accept.
+#
 # After the rules are enabled:
 #   curl -sI https://islandmountain.io/pricing.html
 # should show HTTP 301 and a Location header, not 200.
